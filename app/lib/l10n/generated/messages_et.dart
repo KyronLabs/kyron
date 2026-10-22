@@ -1191,6 +1191,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Detsentraliseeritud ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostika"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupid"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Gruppe pole"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Siin on grupid, kuhu sa kuulud, ja kogukondade vestlused, millega liitud."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Meeldinud"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvestatud"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
@@ -1312,6 +1316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Liitu"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Liitus"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Keel"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("Vali keel"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Õiguslik"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Meeldi"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
@@ -1333,6 +1338,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Veel ei ole midagi salvestatud",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Sinu kontot uuendati"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Sinu kaebus juhtumi \$number kohta rahuldati"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Vaatasime sinu kaebuse juhtumi \$number kohta uuesti üle ja otsus jääb kehtima"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto blokeeriti jäädavalt"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Juhtum \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("jälgib sind nüüd"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
+          "märkis sinu postituse meeldivaks"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Varasemad"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Sinu sõnum kogukonna vestluses eemaldati"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Midagi, mille avaldasid, eemaldati"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Sinu postitus eemaldati"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Sinu vastus eemaldati"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("vastas sinu postitusele"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Võtsime sinu teatise põhjal meetmeid. Aitäh, et andsid teada."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Vaatasime sinu teatise üle ega leidnud, et see rikuks meie reegleid."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Teatatud põhjusel: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("jagas sinu postitust"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Tühistasime juhtumi \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Sinu konto on peatatud"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto on peatatud kuni \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Kõik"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Jälgijad"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Meeldimised"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Vastused"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Sel nädalal"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Täna"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Sinu konto sai hoiatuse"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Eile"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Lõpeta",
@@ -1378,6 +1431,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Eelistused"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privaatsus"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Saad teavituse, kui meeskond otsustab, ja saad seda jälgida jaotises Sinu teatised."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Vaata oma teatisi"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Sõnum kogukonna vestluses"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Postitus"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Vastus"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Meetmed võetud"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Konto"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Otsustatud \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Reegleid ei rikutud"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Sinu teatisi ei õnnestunud laadida"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Mille kohta oled viimase 90 päeva jooksul teatanud ja mis sellest sai. Saad teavituse, kui meeskond otsustab. Keegi, kelle kohta teatad, ei saa teada, kes teatas."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Teatisi pole"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui teatad postitusest, vastusest, sõnumist või kontost, kuvatakse see siin koos tulemusega."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Ülevaatamisel"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Teatatud \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Mille kohta teatasid ja mis sellest sai"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Sinu teatised"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Laste turvalisus"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Ahistamine või kiusamine"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Vihakõne"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Ebaseaduslikud kaubad või teenused"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Kellegi teisena esinemine"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intellektuaalomand"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Väärinfo"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Enesetapp või enesevigastamine"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Täiskasvanutele mõeldud sisu"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Midagi muud"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Rämpspost"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Vägivald või ähvardused"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Salvestatud postitused",
       ),
@@ -1450,6 +1554,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_this_post": MessageLookupByLibrary.simpleMessage("see postitus"),
       "ui_thread_muted":
           MessageLookupByLibrary.simpleMessage("Lõim vaigistatud"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage(
         "Lülita heli välja",
       ),

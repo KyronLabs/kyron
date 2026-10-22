@@ -1151,6 +1151,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Nhóm"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Không có nhóm"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Các nhóm bạn tham gia và các cuộc trò chuyện cộng đồng bạn vào sẽ hiển thị ở đây."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Đã thích"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Đã lưu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1269,6 +1274,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1286,6 +1293,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn đã được cập nhật"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Kháng nghị của bạn cho vụ việc \$number đã được chấp nhận"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Chúng tôi đã xem lại kháng nghị của bạn cho vụ việc \$number và quyết định được giữ nguyên"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn đã bị cấm vĩnh viễn"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Vụ việc \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("đã theo dõi bạn"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("đã thích bài viết của bạn"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Cũ hơn"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Tin nhắn của bạn trong cuộc trò chuyện cộng đồng đã bị gỡ"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Một nội dung bạn đăng đã bị gỡ"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Bài viết của bạn đã bị gỡ"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Phản hồi của bạn đã bị gỡ"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("đã trả lời bài viết của bạn"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Chúng tôi đã xử lý nội dung bạn báo cáo. Cảm ơn bạn đã cho chúng tôi biết."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Chúng tôi đã xem xét nội dung bạn báo cáo và không thấy nó vi phạm quy tắc của chúng tôi."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Lý do báo cáo: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("đã đăng lại bài viết của bạn"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Chúng tôi đã đảo ngược quyết định cho vụ việc \$number"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn đang bị tạm ngưng"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn bị tạm ngưng đến \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Theo dõi"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lượt thích"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Phản hồi"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Tuần này"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn có một cảnh cáo"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1327,6 +1382,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Bạn sẽ nhận thông báo khi nhóm quyết định và có thể theo dõi trong Báo cáo của bạn."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Xem báo cáo của bạn"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Một tin nhắn trò chuyện cộng đồng"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Một bài viết"),
+      "ui_reports_a_reply":
+          MessageLookupByLibrary.simpleMessage("Một phản hồi"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("Đã xử lý"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Một tài khoản"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Quyết định ngày \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Không vi phạm quy tắc"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Không thể tải báo cáo của bạn"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Những gì bạn đã báo cáo trong 90 ngày qua và kết quả. Bạn nhận thông báo khi nhóm quyết định. Người bị bạn báo cáo không bao giờ được biết ai đã báo cáo họ."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Chưa báo cáo gì"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Khi bạn báo cáo một bài viết, phản hồi, tin nhắn hoặc tài khoản, nó sẽ hiển thị ở đây cùng kết quả."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Đang xem xét"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Báo cáo ngày \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Những gì bạn đã báo cáo và kết quả"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Báo cáo của bạn"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("An toàn trẻ em"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Quấy rối hoặc bắt nạt"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ngôn từ thù ghét"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Hàng hóa hoặc dịch vụ bất hợp pháp"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage("Mạo danh"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Sở hữu trí tuệ"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Thông tin sai lệch"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Tự tử hoặc tự gây hại"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Nội dung người lớn"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Lý do khác"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Bạo lực hoặc đe dọa"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1395,6 +1503,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Thử lại"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

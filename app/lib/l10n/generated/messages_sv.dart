@@ -1145,6 +1145,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupper"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Inga grupper"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Grupper du är med i och communitychattar du går med i visas här."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gillade"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Sparade"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1264,6 +1268,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("Välj språk"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1281,6 +1286,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Ditt konto har uppdaterats"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Ditt överklagande i ärende \$number har godkänts"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Vi har granskat ditt överklagande i ärende \$number igen, och beslutet står fast"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Ditt konto har stängts av permanent"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Ärende \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("följer dig nu"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("gillade ditt inlägg"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Äldre"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Ditt meddelande i en communitychatt har tagits bort"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Något du publicerade har tagits bort"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Ditt inlägg har tagits bort"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Ditt svar har tagits bort"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("svarade på ditt inlägg"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Vi har vidtagit åtgärder mot något du anmälde. Tack för att du sa till."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Vi har tittat på något du anmälde och fann inte att det bröt mot våra regler."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Anmält för: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("delade ditt inlägg"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Vi har upphävt ärende \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Ditt konto är avstängt"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Ditt konto är avstängt till \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Alla"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Följare"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("Gilla-markeringar"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Svar"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Den här veckan"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("I dag"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Ditt konto har fått en varning"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1322,6 +1377,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Du får en avisering när teamet har beslutat, och du kan följa det under Dina anmälningar."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Visa dina anmälningar"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Ett meddelande i en communitychatt"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Ett inlägg"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Ett svar"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Åtgärd vidtagen"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Ett konto"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Beslutat \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Ingen regel bruten"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Dina anmälningar kunde inte läsas in"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Det du har anmält de senaste 90 dagarna och vad som hände. Du får en avisering när teamet beslutar. Den du anmäler får aldrig veta vem som anmälde."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Inget anmält"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "När du anmäler ett inlägg, ett svar, ett meddelande eller ett konto visas det här med vad som hände."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Granskas"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Anmält \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Det du har anmält och vad som hände"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Dina anmälningar"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Barns säkerhet"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Trakasserier eller mobbning"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Hatretorik"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Olagliga varor eller tjänster"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Utger sig för att vara någon annan"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Immateriella rättigheter"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Falsk information"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Självmord eller självskada"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Innehåll för vuxna"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Något annat"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Våld eller hot"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1390,6 +1497,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Försök igen"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

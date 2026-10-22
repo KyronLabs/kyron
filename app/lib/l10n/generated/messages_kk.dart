@@ -1146,6 +1146,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Топтар"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Топтар жоқ"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Мұнда сіз мүше топтар мен қосылған қауымдастық чаттары көрсетіледі."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ұнағандар"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Сақталғандар"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1262,6 +1266,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Тілді таңдаңыз"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1279,6 +1285,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз жаңартылды"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "\$number ісі бойынша апелляцияңыз қанағаттандырылды"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "\$number ісі бойынша апелляцияңызды қайта қарадық, шешім күшінде қалады"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз біржола бұғатталды"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Іс \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("сізге жазылды"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("жазбаңызды ұнатты"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ескілері"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Қауымдастық чатындағы хабарламаңыз жойылды"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Сіз жариялаған бір нәрсе жойылды"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Жазбаңыз жойылды"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Жауабыңыз жойылды"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("жазбаңызға жауап берді"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Сіз шағымданған нәрсе бойынша шара қолдандық. Хабарлағаныңызға рахмет."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Сіз шағымданған нәрсені қарап шығып, ережелерімізді бұзғанын анықтамадық."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Шағым себебі: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("жазбаңызды бөлісті"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "\$number ісі бойынша шешімді жойдық"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз тоқтатылған"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз \$date дейін тоқтатылған"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Барлығы"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Жазылушылар"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Ұнатулар"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Жауаптар"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Осы аптада"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Бүгін"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз ескерту алды"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Кеше"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1320,6 +1375,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Команда шешім қабылдағанда хабарландыру аласыз, оны «Шағымдарыңыз» бөлімінде бақылай аласыз."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Шағымдарыңызды көру"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Қауымдастық чатындағы хабарлама"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Жазба"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Жауап"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Шара қолданылды"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Аккаунт"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Шешілген күні: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Ереже бұзылмаған"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Шағымдарыңыз жүктелмеді"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Соңғы 90 күнде неге шағымданғаныңыз және оның нәтижесі. Команда шешім қабылдағанда хабарландыру аласыз. Сіз шағымданған адам кімнің шағымданғанын ешқашан білмейді."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Шағымдар жоқ"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Жазбаға, жауапқа, хабарламаға немесе аккаунтқа шағымданғанда, ол осында нәтижесімен бірге көрсетіледі."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Қаралуда"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Шағым күні: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Неге шағымданғаныңыз және нәтижесі"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Шағымдарыңыз"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Балалар қауіпсіздігі"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Қудалау немесе буллинг"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Өшпенділік сөзі"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Заңсыз тауарлар немесе қызметтер"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Басқа адамның атын жамылу"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Зияткерлік меншік"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Жалған ақпарат"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Суицид немесе өзіне зиян келтіру"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Ересектерге арналған контент"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Басқа нәрсе"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Спам"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage(
+          "Зорлық-зомбылық немесе қорқыту"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1388,6 +1493,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Қайталау"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

@@ -1144,6 +1144,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("گروه‌ها"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("گروهی نیست"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "گروه‌هایی که در آن‌ها هستید و گفتگوهای انجمن‌هایی که به آن‌ها می‌پیوندید اینجا نمایش داده می‌شوند."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("پسندیده‌ها"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("ذخیره‌شده‌ها"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1259,6 +1263,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("زبان خود را انتخاب کنید"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1276,6 +1282,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("حساب شما به‌روزرسانی شد"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "درخواست تجدیدنظر شما در پرونده \$number پذیرفته شد"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "درخواست تجدیدنظر شما در پرونده \$number را دوباره بررسی کردیم و تصمیم پابرجاست"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("حساب شما برای همیشه مسدود شد"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("پرونده \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("شما را دنبال کرد"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("پست شما را پسندید"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("قدیمی‌تر"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "پیام شما در گفتگوی انجمن حذف شد"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "چیزی که منتشر کرده بودید حذف شد"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("پست شما حذف شد"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("پاسخ شما حذف شد"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("به پست شما پاسخ داد"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "درباره چیزی که گزارش کردید اقدام کردیم. از اطلاع‌رسانی شما سپاسگزاریم."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "چیزی را که گزارش کردید بررسی کردیم و نقضی در قوانین ما نیافتیم."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("گزارش‌شده به دلیل: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("پست شما را بازنشر کرد"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "تصمیم پرونده \$number را لغو کردیم"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("حساب شما تعلیق شده است"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "حساب شما تا \$date تعلیق شده است"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("همه"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("دنبال‌کنندگان"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("پسندها"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("پاسخ‌ها"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("این هفته"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("امروز"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("حساب شما اخطار گرفت"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("دیروز"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1318,6 +1373,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "وقتی تیم تصمیم بگیرد اعلانی دریافت می‌کنید و می‌توانید آن را در «گزارش‌های شما» دنبال کنید."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("دیدن گزارش‌های شما"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("پیامی در گفتگوی انجمن"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("یک پست"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("یک پاسخ"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("اقدام شد"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("یک حساب"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("تصمیم در \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("نقض قانونی نبود"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("گزارش‌های شما بارگیری نشد"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "آنچه در ۹۰ روز گذشته گزارش کرده‌اید و نتیجه آن. وقتی تیم تصمیم می‌گیرد اعلانی دریافت می‌کنید. کسی که گزارشش را می‌دهید هرگز نمی‌فهمد چه کسی گزارش داده است."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("گزارشی نیست"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "وقتی یک پست، پاسخ، پیام یا حساب را گزارش می‌کنید، همراه با نتیجه‌اش اینجا نمایش داده می‌شود."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("در حال بررسی"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("گزارش‌شده در \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "آنچه گزارش کرده‌اید و نتیجه آن"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("گزارش‌های شما"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("امنیت کودکان"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("آزار یا قلدری"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("سخن نفرت‌پراکن"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("کالاها یا خدمات غیرقانونی"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage("جعل هویت"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("مالکیت فکری"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("اطلاعات نادرست"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("خودکشی یا آسیب به خود"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("محتوای بزرگسالان"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("چیز دیگری"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("هرزنامه"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("خشونت یا تهدید"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1386,6 +1490,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("تلاش دوباره"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

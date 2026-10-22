@@ -1287,6 +1287,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Διαγνωστικά"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Ομάδες"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Καμία ομάδα"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Εδώ εμφανίζονται οι ομάδες στις οποίες είστε μέλος και οι συνομιλίες κοινοτήτων στις οποίες συμμετέχετε."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Μου αρέσουν"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Αποθηκευμένα"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Τίποτα εδώ ακόμα"),
@@ -1408,6 +1412,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Γίνε μέλος"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Εγγράφηκε"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Γλώσσα"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Επιλέξτε γλώσσα"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Νομικά"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Μου αρέσει"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
@@ -1431,6 +1437,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Δεν έχετε αποθηκεύσει τίποτα ακόμη",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Ο λογαριασμός σας ενημερώθηκε"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Η έφεσή σας για την υπόθεση \$number έγινε δεκτή"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Εξετάσαμε ξανά την έφεσή σας για την υπόθεση \$number και η απόφαση ισχύει"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Ο λογαριασμός σας αποκλείστηκε οριστικά"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Υπόθεση \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("σας ακολουθεί"),
+      "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
+          "έκανε «μου αρέσει» στην ανάρτησή σας"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Παλαιότερα"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Το μήνυμά σας σε συνομιλία κοινότητας αφαιρέθηκε"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Κάτι που δημοσιεύσατε αφαιρέθηκε"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Η ανάρτησή σας αφαιρέθηκε"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Η απάντησή σας αφαιρέθηκε"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("απάντησε στην ανάρτησή σας"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Λάβαμε μέτρα για κάτι που αναφέρατε. Ευχαριστούμε που μας ενημερώσατε."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Εξετάσαμε κάτι που αναφέρατε και δεν διαπιστώσαμε παραβίαση των κανόνων μας."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Αναφέρθηκε για: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("κοινοποίησε την ανάρτησή σας"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Ανακαλέσαμε την υπόθεση \$number"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "Ο λογαριασμός σας είναι σε αναστολή"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Ο λογαριασμός σας είναι σε αναστολή έως \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Όλες"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Ακόλουθοι"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("«Μου αρέσει»"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Απαντήσεις"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Αυτή την εβδομάδα"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Σήμερα"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Ο λογαριασμός σας έλαβε προειδοποίηση"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Χθες"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Ολοκλήρωση",
@@ -1477,6 +1534,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Προτιμήσεις"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Απόρρητο"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Θα λάβετε ειδοποίηση όταν αποφασίσει η ομάδα και μπορείτε να το παρακολουθείτε στις Αναφορές σας."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Δείτε τις αναφορές σας"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Ένα μήνυμα σε συνομιλία κοινότητας"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Μια ανάρτηση"),
+      "ui_reports_a_reply":
+          MessageLookupByLibrary.simpleMessage("Μια απάντηση"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Λήφθηκαν μέτρα"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Ένας λογαριασμός"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Αποφασίστηκε \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Καμία παραβίαση κανόνων"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση των αναφορών σας"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Τι αναφέρατε τις τελευταίες 90 ημέρες και τι προέκυψε. Λαμβάνετε ειδοποίηση όταν αποφασίζει η ομάδα. Κανείς από όσους αναφέρετε δεν μαθαίνει ποιος τον ανέφερε."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Καμία αναφορά"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Όταν αναφέρετε μια ανάρτηση, μια απάντηση, ένα μήνυμα ή έναν λογαριασμό, εμφανίζεται εδώ μαζί με το τι προέκυψε."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Υπό εξέταση"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Αναφέρθηκε \$date"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("Τι αναφέρατε και τι προέκυψε"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Οι αναφορές σας"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Ασφάλεια παιδιών"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Παρενόχληση ή εκφοβισμός"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ρητορική μίσους"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Παράνομα προϊόντα ή υπηρεσίες"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Πλαστοπροσωπία"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Πνευματική ιδιοκτησία"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Ψευδείς πληροφορίες"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Αυτοκτονία ή αυτοτραυματισμός"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Περιεχόμενο για ενηλίκους"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Κάτι άλλο"),
+      "ui_rule_spam":
+          MessageLookupByLibrary.simpleMessage("Ανεπιθύμητο περιεχόμενο"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage("Βία ή απειλές"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Αποθηκευμένες δημοσιεύσεις",
       ),
@@ -1552,6 +1662,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Όροι"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("αυτή η δημοσίευση"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Νήμα σε σίγαση"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage(
         "Απενεργοποίηση ήχου",
       ),

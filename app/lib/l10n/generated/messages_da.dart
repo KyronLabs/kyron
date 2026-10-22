@@ -1177,6 +1177,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentraliseret ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostik"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupper"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Ingen grupper"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Grupper, du er med i, og communitychats, du deltager i, vises her."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Synes godt om"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gemte"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Intet her endnu"),
@@ -1295,6 +1300,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Deltag"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Deltog"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Sprog"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Vælg dit sprog"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Juridisk"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Synes godt om"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
@@ -1315,6 +1322,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Intet gemt endnu",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Din konto er blevet opdateret"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Din klage over sag \$number er blevet godkendt"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Vi har set på din klage over sag \$number igen, og afgørelsen står ved magt"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("Din konto er blevet udelukket"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Sag \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("følger dig nu"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("synes godt om dit opslag"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ældre"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Din besked i en communitychat er blevet fjernet"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Noget, du har slået op, er blevet fjernet"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Dit opslag er blevet fjernet"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Dit svar er blevet fjernet"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("svarede på dit opslag"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Vi har grebet ind over for noget, du har indberettet. Tak, fordi du sagde til."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Vi har set på noget, du har indberettet, og fandt ikke, at det brød vores regler."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Indberettet for: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("delte dit opslag"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Vi har omstødt sag \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Din konto er suspenderet"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Din konto er suspenderet indtil \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Alle"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Følgere"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Svar"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Denne uge"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("I dag"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Din konto har fået en advarsel"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Afslut",
@@ -1356,6 +1412,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Præferencer"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privatliv"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Du får en notifikation, når teamet har besluttet sig, og du kan følge det under Dine indberetninger."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Se dine indberetninger"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("En besked i en communitychat"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Et opslag"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Et svar"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Der er grebet ind"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("En konto"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Besluttet \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Ingen regler brudt"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Dine indberetninger kunne ikke indlæses"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Det, du har indberettet de seneste 90 dage, og hvad der skete. Du får en notifikation, når teamet beslutter. Den, du indberetter, får aldrig at vide, hvem der indberettede."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Intet indberettet"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Når du indberetter et opslag, et svar, en besked eller en konto, vises det her med, hvad der skete."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Under behandling"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Indberettet \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Det, du har indberettet, og hvad der skete"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Dine indberetninger"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Børns sikkerhed"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Chikane eller mobning"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Hadefuld tale"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Ulovlige varer eller tjenester"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Udgiver sig for at være en anden"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Immaterielle rettigheder"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Falske oplysninger"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Selvmord eller selvskade"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Indhold for voksne"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Noget andet"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Vold eller trusler"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Gemte opslag"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tryk på arkivikonet på et opslag for at gemme det her. Kun du kan se, hvad du gemmer.",
@@ -1425,6 +1534,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Vilkår"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("dette opslag"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Tråd dæmpet"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Prøv igen"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Slå lyden fra"),
       "ui_turn_sound_on":

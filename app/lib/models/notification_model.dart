@@ -1,7 +1,73 @@
 import 'package:intl/intl.dart';
 
+import '../repositories/moderation_repository.dart';
+import 'account_standing.dart';
+
 /// What somebody did. The screen's tabs narrow to one of the first three.
-enum NotificationType { like, comment, follow, repost }
+///
+/// [account] and [report] are Kyron's, not a person's: a decision about this
+/// account, an appeal answered or a decision reversed, and what came of
+/// something this account reported.
+enum NotificationType { like, comment, follow, repost, account, report }
+
+/// What the team decided, as a row says it. The words are the app's, in the
+/// reader's language; this is only what happened.
+class AccountNoticeRow {
+  /// decision, appeal or reversal.
+  final String event;
+  final String actionId;
+  final int number;
+  final ModerationKind kind;
+  final ReportReason rule;
+  final ReportTarget? target;
+  final DateTime? endsAt;
+
+  /// For an appeal: accepted, and the decision undone.
+  final bool overturned;
+
+  const AccountNoticeRow({
+    required this.event,
+    required this.actionId,
+    required this.number,
+    required this.kind,
+    required this.rule,
+    this.target,
+    this.endsAt,
+    this.overturned = false,
+  });
+
+  factory AccountNoticeRow.fromJson(Map<String, dynamic> json) =>
+      AccountNoticeRow(
+        event: json['event'] as String? ?? 'decision',
+        actionId: json['actionId'] as String? ?? '',
+        number: (json['number'] as num?)?.toInt() ?? 0,
+        kind: ModerationKind.fromWire(json['kind']),
+        rule: ReportReason.fromWire(json['rule']),
+        target: ReportTarget.fromWire(json['target']),
+        endsAt: DateTime.tryParse(json['endsAt'] as String? ?? '')?.toLocal(),
+        overturned: json['overturned'] == true,
+      );
+}
+
+/// What came of something the reader reported. Never who looked at it.
+class ReportOutcomeRow {
+  final bool actioned;
+  final ReportTarget? target;
+  final ReportReason reason;
+
+  const ReportOutcomeRow({
+    required this.actioned,
+    required this.reason,
+    this.target,
+  });
+
+  factory ReportOutcomeRow.fromJson(Map<String, dynamic> json) =>
+      ReportOutcomeRow(
+        actioned: json['outcome'] == 'ACTIONED',
+        target: ReportTarget.fromWire(json['target']),
+        reason: ReportReason.fromWire(json['reason']),
+      );
+}
 
 /// Who did it.
 class NotificationActor {
@@ -44,7 +110,10 @@ class NotificationActor {
 class NotificationModel {
   final String id;
   final NotificationType type;
-  final NotificationActor actor;
+
+  /// Who did it. Null for [NotificationType.account] and
+  /// [NotificationType.report], which are Kyron's.
+  final NotificationActor? actor;
 
   /// The post it happened to. Null for a follow.
   final String? postId;
@@ -58,15 +127,20 @@ class NotificationModel {
   final DateTime timestamp;
   final bool isRead;
 
+  final AccountNoticeRow? account;
+  final ReportOutcomeRow? report;
+
   const NotificationModel({
     required this.id,
     required this.type,
-    required this.actor,
     required this.timestamp,
     required this.isRead,
+    this.actor,
     this.postId,
     this.postSnippet,
     this.content,
+    this.account,
+    this.report,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) {
@@ -77,11 +151,19 @@ class NotificationModel {
         'comment' => NotificationType.comment,
         'follow' => NotificationType.follow,
         'repost' => NotificationType.repost,
+        'account' => NotificationType.account,
+        'report' => NotificationType.report,
         _ => NotificationType.like,
       },
-      actor: NotificationActor.fromJson(
-        (json['actor'] as Map<String, dynamic>?) ?? const {},
-      ),
+      actor: json['actor'] is Map<String, dynamic>
+          ? NotificationActor.fromJson(json['actor'] as Map<String, dynamic>)
+          : null,
+      account: json['account'] is Map<String, dynamic>
+          ? AccountNoticeRow.fromJson(json['account'] as Map<String, dynamic>)
+          : null,
+      report: json['report'] is Map<String, dynamic>
+          ? ReportOutcomeRow.fromJson(json['report'] as Map<String, dynamic>)
+          : null,
       postId: json['postId'] as String?,
       postSnippet: json['postSnippet'] as String?,
       content: json['content'] as String?,
@@ -110,12 +192,9 @@ class NotificationModel {
     return 'Older';
   }
 
-  String get actionText => switch (type) {
-        NotificationType.like => 'liked your post',
-        NotificationType.comment => 'replied to your post',
-        NotificationType.follow => 'followed you',
-        NotificationType.repost => 'reposted your post',
-      };
+  /// Kyron's, not a person's.
+  bool get fromKyron =>
+      type == NotificationType.account || type == NotificationType.report;
 }
 
 /// One page of them.

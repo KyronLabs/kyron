@@ -49,9 +49,10 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
   bool _hidden = false;
 
   /// Which conversations the list shows. All, Unread and Unanswered from
-  /// the filter menu; Hidden from its own chip.
+  /// the filter menu; Groups and Hidden from chips of their own, one at a
+  /// time, over whatever the menu says.
   ConversationFilter _filter = ConversationFilter.all;
-  bool _showingHidden = false;
+  ConversationFilter? _chip;
 
   final _search = TextEditingController();
 
@@ -67,8 +68,10 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
     super.dispose();
   }
 
-  ConversationFilter get _shown =>
-      _showingHidden ? ConversationFilter.hidden : _filter;
+  ConversationFilter get _shown => _chip ?? _filter;
+
+  void _toggle(ConversationFilter chip) =>
+      setState(() => _chip = _chip == chip ? null : chip);
 
   bool _onScroll(UserScrollNotification notification) {
     if (notification.metrics.axis != Axis.vertical) return false;
@@ -103,7 +106,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
     if (picked == null || !mounted) return;
     setState(() {
       _filter = picked;
-      _showingHidden = false;
+      _chip = null;
     });
   }
 
@@ -113,6 +116,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
         ConversationFilter.unread => l10n.ui('ui_dm_filter_unread', 'Unread'),
         ConversationFilter.unanswered =>
           l10n.ui('ui_dm_filter_unanswered', 'Unanswered'),
+        ConversationFilter.groups => l10n.ui('ui_dm_groups', 'Groups'),
         ConversationFilter.hidden => l10n.ui('ui_dm_hidden', 'Hidden'),
       };
 
@@ -120,7 +124,7 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
-    final filtered = _filter != ConversationFilter.all && !_showingHidden;
+    final filtered = _filter != ConversationFilter.all && _chip == null;
 
     return Column(
       children: [
@@ -173,10 +177,19 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
               ),
             ),
             const SizedBox(width: SpacingTokens.space8),
+            // Groups, and the community chats joined: every conversation
+            // with more than one other person in it, in one place.
+            ListChip(
+              key: const ValueKey('messages-groups'),
+              selected: _chip == ConversationFilter.groups,
+              onTap: () => _toggle(ConversationFilter.groups),
+              label: l10n.ui('ui_dm_groups', 'Groups'),
+            ),
+            const SizedBox(width: SpacingTokens.space8),
             ListChip(
               key: const ValueKey('messages-hidden'),
-              selected: _showingHidden,
-              onTap: () => setState(() => _showingHidden = !_showingHidden),
+              selected: _chip == ConversationFilter.hidden,
+              onTap: () => _toggle(ConversationFilter.hidden),
               label: l10n.ui('ui_dm_hidden', 'Hidden'),
             ),
           ],
@@ -327,12 +340,14 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     final hidden = widget.filter == ConversationFilter.hidden;
 
     // The reader's community chats, in among their conversations by when
-    // each was last spoken in. Not in Unanswered or Hidden, which mean
-    // nothing for a room. Only as far back as the conversations loaded so
-    // far reach: further, and a chat would sit above a conversation that
-    // belongs before it once the next page arrives.
+    // each was last spoken in -- under Groups too, since a community chat
+    // is one. Not in Unanswered or Hidden, which mean nothing for a room.
+    // Only as far back as the conversations loaded so far reach: further,
+    // and a chat would sit above a conversation that belongs before it once
+    // the next page arrives.
     final listsChats = widget.filter == ConversationFilter.all ||
-        widget.filter == ConversationFilter.unread;
+        widget.filter == ConversationFilter.unread ||
+        widget.filter == ConversationFilter.groups;
     final joined = listsChats
         ? ref.watch(joinedChatsProvider).asData?.value ??
             const <CommunityChat>[]
@@ -385,6 +400,15 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                               detail: l10n.ui(
                                 'ui_dm_unanswered_none_detail',
                                 'Every conversation ends on your word.',
+                              ),
+                            ),
+                          ConversationFilter.groups => EmptyState(
+                              art: EmptyArt.people,
+                              title: l10n.ui('ui_dm_groups_none', 'No groups'),
+                              detail: l10n.ui(
+                                'ui_dm_groups_none_detail',
+                                'Groups you are in, and the community chats '
+                                    'you join, are listed here.',
                               ),
                             ),
                           ConversationFilter.hidden => EmptyState(

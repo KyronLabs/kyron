@@ -19,6 +19,9 @@ class NotificationsRepository {
         'limit': limit,
         if (cursor != null) 'cursor': cursor,
         if (kind != null) 'kind': kind.name,
+        // Decisions about the account and what came of its reports, as rows.
+        // Asked for: an older app reads them as likes.
+        'include': 'moderation',
       },
     );
     return NotificationPage.fromJson(res.data ?? const {});
@@ -28,6 +31,7 @@ class NotificationsRepository {
   Future<int> unreadCount() async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/notifications/unread',
+      queryParameters: {'include': 'moderation'},
     );
     return (res.data?['count'] as num?)?.toInt() ?? 0;
   }

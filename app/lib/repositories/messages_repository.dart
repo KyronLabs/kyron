@@ -16,6 +16,10 @@ enum ConversationFilter {
   /// Ending on the other person's word: waiting on a reply.
   unanswered,
 
+  /// Groups, rather than conversations between two. The list adds the
+  /// community chats the reader joined.
+  groups,
+
   /// Removed from the list by the reader, to be put back or left.
   hidden,
 }

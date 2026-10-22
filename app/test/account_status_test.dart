@@ -8,6 +8,7 @@ import 'package:kyron_app/providers/enforcement_provider.dart';
 import 'package:kyron_app/repositories/enforcement_repository.dart';
 import 'package:kyron_app/repositories/moderation_repository.dart';
 import 'package:kyron_app/screens/account_status_screen.dart';
+import 'package:kyron_app/screens/your_reports_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/services/push_tap.dart';
 import 'package:kyron_app/routes.dart';
@@ -115,9 +116,12 @@ void main() {
         find.textContaining('Reporting, blocking and muting'), findsOneWidget);
   });
 
-  testWidgets('shows what came of the things it reported', (tester) async {
+  testWidgets('Your reports shows what came of each', (tester) async {
+    // It was a section at the foot of Account status, which is about
+    // decisions against the account -- not where anybody looks.
     await _open(
       tester,
+      home: const YourReportsScreen(),
       AccountStanding(
         status: StandingStatus.active,
         reports: [
@@ -139,8 +143,45 @@ void main() {
         ],
       ),
     );
-    expect(find.textContaining('Action taken'), findsOneWidget);
-    expect(find.textContaining('No rule broken'), findsOneWidget);
+    expect(find.text('Action taken'), findsOneWidget);
+    expect(find.text('No rule broken'), findsOneWidget);
+    expect(find.text('A post · Harassment or bullying'), findsOneWidget);
+    expect(find.text('An account · Spam'), findsOneWidget);
+    expect(find.text('“you are awful”'), findsOneWidget);
+  });
+
+  testWidgets('Your reports says when there is nothing in it', (tester) async {
+    await _open(
+      tester,
+      home: const YourReportsScreen(),
+      const AccountStanding(status: StandingStatus.active),
+    );
+    expect(find.text('Nothing reported'), findsOneWidget);
+  });
+
+  testWidgets('Account status leads to Your reports instead of listing them', (
+    tester,
+  ) async {
+    await _open(
+      tester,
+      AccountStanding(
+        status: StandingStatus.active,
+        reports: [
+          ReportUpdate(
+            id: 'r1',
+            target: ReportTarget.post,
+            reason: ReportReason.spam,
+            createdAt: DateTime(2026, 10, 17),
+            outcome: ReportOutcome.pending,
+          ),
+        ],
+      ),
+    );
+    expect(
+      find.byKey(const ValueKey('account-status-your-reports')),
+      findsOneWidget,
+    );
+    expect(find.text('In review'), findsNothing);
   });
 
   testWidgets('a decision shows why, what it was about, and the appeal', (
@@ -278,6 +319,11 @@ void main() {
     expect(
       pushDestination({'type': 'moderation'})?.route,
       Routes.accountStatus,
+    );
+    // What came of a report opens the reader's reports instead.
+    expect(
+      pushDestination({'type': 'moderation', 'about': 'report'})?.route,
+      Routes.yourReports,
     );
     expect(
       pushDestination({'type': 'moderation.queue'})?.route,

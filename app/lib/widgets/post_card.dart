@@ -6,8 +6,6 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
-import '../l10n/app_localizations.dart';
-import 'community_avatar.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
@@ -32,6 +30,11 @@ import 'verified_badge.dart';
 /// post turns a feed into a stack of tiles, and the border was competing with
 /// the card's own fill for the same edge.
 class PostCard extends ConsumerWidget {
+  /// The most of the name line an author's name may take before it is cut.
+  /// Enough for nearly any name; what is left is for the handle or the
+  /// community and the time.
+  static const double _nameShare = 0.62;
+
   final FeedPost post;
 
   /// Which list this card belongs to; its like and save taps go there.
@@ -52,7 +55,12 @@ class PostCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final handle = post.author.handle;
-    final community = post.community;
+    // Which community, unless this is that community's own page, where
+    // saying so on every post is the same words fifty times.
+    final community =
+        post.community != null && !source.isCommunity(post.community!.slug)
+            ? post.community
+            : null;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -71,68 +79,81 @@ class PostCard extends ConsumerWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              community == null
-                  ? GestureDetector(
-                      onTap: () => openAuthor(context, post.author),
-                      child: PostAvatar(author: post.author),
-                    )
-                  : StackedPostAvatar(
-                      community: community,
-                      author: PostAvatar(author: post.author, radius: 11),
-                      onCommunityTap: () => openCommunity(context, community),
-                      onAuthorTap: () => openAuthor(context, post.author),
-                    ),
+              // The author, as on any other post. A community post used to
+              // stack a small author on the community's picture -- bigger,
+              // busier, and for a glance the community's face where the
+              // person's belongs. The community is named beside the author.
+              GestureDetector(
+                onTap: () => openAuthor(context, post.author),
+                child: PostAvatar(author: post.author),
+              ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Which community, when it came from one. A post from a
-                    // place you joined arriving in the home feed with nothing
-                    // to say so reads as somebody posting to everybody.
-                    if (community != null)
-                      PostCommunityLine(community: community),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: GestureDetector(
-                            onTap: () => openAuthor(context, post.author),
-                            child: NameWithBadge(
-                              name: post.author.displayName,
-                              verified: post.author.verified,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: TypographyTokens.fontSize3,
+                    // The name takes what it needs, up to most of the line;
+                    // the handle or the community has the rest. Three flex
+                    // children here -- name, handle, and a Spacer -- each got
+                    // a third of the free width, so "Yunnieee" was cut to
+                    // "Yunni…" with half the line empty after it.
+                    LayoutBuilder(
+                      builder: (context, line) => Row(
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: line.maxWidth * _nameShare,
+                            ),
+                            child: GestureDetector(
+                              onTap: () => openAuthor(context, post.author),
+                              child: NameWithBadge(
+                                name: post.author.displayName,
+                                verified: post.author.verified,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: TypographyTokens.fontSize3,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        // Only when the account actually has a handle. The old
-                        // feed printed "@user" for everyone.
-                        if (handle != null) ...[
-                          const SizedBox(width: SpacingTokens.space4),
-                          Flexible(
-                            child: Text(
-                              handle,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: TypographyTokens.fontSize2,
-                                color: scheme.onSurface.withValues(alpha: 0.55),
+                          // Which community, beside the name, in place of the
+                          // handle: a post from a place you joined arriving in
+                          // the home feed with nothing to say so reads as
+                          // somebody posting to everybody. It had a line of
+                          // its own above the name, for one word.
+                          if (community != null) ...[
+                            const SizedBox(width: SpacingTokens.space2),
+                            Flexible(
+                              child: PostCommunityTag(community: community),
+                            ),
+                          ]
+                          // Only when the account actually has a handle. The
+                          // old feed printed "@user" for everyone.
+                          else if (handle != null) ...[
+                            const SizedBox(width: SpacingTokens.space4),
+                            Flexible(
+                              child: Text(
+                                handle,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: TypographyTokens.fontSize2,
+                                  color:
+                                      scheme.onSurface.withValues(alpha: 0.55),
+                                ),
                               ),
+                            ),
+                          ],
+                          const SizedBox(width: SpacingTokens.space4),
+                          Text(
+                            '· ${age(post.createdAt)}',
+                            style: TextStyle(
+                              fontSize: TypographyTokens.fontSize2,
+                              color: scheme.onSurface.withValues(alpha: 0.45),
                             ),
                           ),
                         ],
-                        const SizedBox(width: SpacingTokens.space4),
-                        Text(
-                          '· ${age(post.createdAt)}',
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize2,
-                            color: scheme.onSurface.withValues(alpha: 0.45),
-                          ),
-                        ),
-                        const Spacer(),
-                      ],
+                      ),
                     ),
                     if (post.content.trim().isNotEmpty)
                       Padding(
@@ -193,49 +214,51 @@ class PostCard extends ConsumerWidget {
   }
 }
 
-/// Which community a post came from, above the author's name.
+/// Which community a post came from, beside its author's name: "› Gardeners".
 ///
 /// Tappable, and it opens the community rather than the post -- a name that
-/// looks like a link and is not one is worse than plain text. The target is
-/// the whole line, not just the letters: at this size the words alone are a
-/// sliver a thumb misses, and the miss lands on the post behind it.
-class PostCommunityLine extends StatelessWidget {
+/// looks like a link and is not one is worse than plain text. The chevron is
+/// part of the target, so a thumb that lands a little short still gets there.
+class PostCommunityTag extends StatelessWidget {
   final PostCommunity community;
 
-  const PostCommunityLine({super.key, required this.community});
+  const PostCommunityTag({super.key, required this.community});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final ink = scheme.primary.withValues(alpha: 0.9);
 
     return Semantics(
       button: true,
       label: community.name,
       excludeSemantics: true,
       child: GestureDetector(
+        key: ValueKey('post-community-${community.slug}'),
         behavior: HitTestBehavior.opaque,
         onTap: () => openCommunity(context, community),
         child: Padding(
-          padding: const EdgeInsets.only(bottom: SpacingTokens.space2),
+          padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space2),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Iconsax.people_copy, size: 12, color: ink),
-              const SizedBox(width: SpacingTokens.space4),
+              Icon(
+                Iconsax.arrow_right_3_copy,
+                size: 12,
+                color: scheme.onSurface.withValues(alpha: 0.4),
+              ),
+              const SizedBox(width: SpacingTokens.space2),
               Flexible(
                 child: Text(
                   community.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: TypographyTokens.fontSize1,
+                    fontSize: TypographyTokens.fontSize2,
                     fontWeight: FontWeight.w600,
-                    color: ink,
+                    color: scheme.primary,
                   ),
                 ),
               ),
-              // Says it goes somewhere, which a coloured name alone does not.
-              Icon(Iconsax.arrow_right_3_copy, size: 12, color: ink),
             ],
           ),
         ),

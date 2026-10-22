@@ -1246,6 +1246,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "ID descentralitzat",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnòstics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grups"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("No hi ha grups"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Aquí es mostren els grups on ets i els xats de comunitat als quals t'uneixes."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("M'agraden"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Desats"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
@@ -1366,6 +1371,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Uneix-te"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("S'hi ha unit"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Idioma"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Tria el teu idioma"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("M'agrada"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
@@ -1387,6 +1394,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Encara no hi ha res desat",
       ),
+      "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
+          "S'ha actualitzat el teu compte"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "S'ha acceptat la teva apel·lació sobre el cas \$number"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Hem tornat a revisar la teva apel·lació sobre el cas \$number i la decisió es manté"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "El teu compte ha estat bloquejat permanentment"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Cas \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("ha començat a seguir-te"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("li agrada la teva publicació"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Anteriors"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "S'ha eliminat el teu missatge en un xat de comunitat"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "S'ha eliminat una cosa que vas publicar"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "S'ha eliminat la teva publicació"),
+      "ui_notif_removed_reply": MessageLookupByLibrary.simpleMessage(
+          "S'ha eliminat la teva resposta"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "ha respost a la teva publicació"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Hem actuat sobre una cosa que vas denunciar. Gràcies per avisar-nos."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Hem revisat una cosa que vas denunciar i no hem trobat que incomplís les nostres normes."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Denunciat per: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "ha republicat la teva publicació"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Hem revocat la decisió del cas \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("El teu compte està suspès"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "El teu compte està suspès fins al \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Tot"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Seguiments"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("M'agrada"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Respostes"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Aquesta setmana"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Avui"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("El teu compte té un avís"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Ahir"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finalitza",
@@ -1432,6 +1489,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferències"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacitat"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Rebràs una notificació quan l'equip decideixi, i ho pots seguir a Les teves denúncies."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Mostra les teves denúncies"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Un missatge de xat de comunitat"),
+      "ui_reports_a_post":
+          MessageLookupByLibrary.simpleMessage("Una publicació"),
+      "ui_reports_a_reply":
+          MessageLookupByLibrary.simpleMessage("Una resposta"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("S'ha actuat"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Un compte"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Decidit el \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("No s'ha incomplert cap norma"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'han pogut carregar les teves denúncies"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "El que has denunciat els darrers 90 dies i com ha acabat. Reps una notificació quan l'equip decideix. A qui denuncies mai no se li diu qui l'ha denunciat."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("No has denunciat res"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Quan denuncies una publicació, una resposta, un missatge o un compte, apareix aquí amb el resultat."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("En revisió"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Denunciat el \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "El que has denunciat i com ha acabat"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Les teves denúncies"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Seguretat infantil"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Assetjament o intimidació"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Discurs d'odi"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Béns o serveis il·legals"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Suplantació d'identitat"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Propietat intel·lectual"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Informació falsa"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Suïcidi o autolesions"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Contingut per a adults"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Una altra cosa"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Correu brossa"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Violència o amenaces"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Publicacions desades",
       ),
@@ -1507,6 +1619,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_this_post":
           MessageLookupByLibrary.simpleMessage("aquesta publicació"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Fil silenciat"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Torna-ho a provar"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Desactiva el so"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Activa el so"),

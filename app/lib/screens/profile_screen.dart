@@ -18,6 +18,7 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../models/conversation.dart';
 import '../providers/messages_provider.dart';
+import '../widgets/glass_icon_button.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
@@ -65,12 +66,13 @@ class ProfileScreen extends ConsumerWidget {
       appBar: KyronAppBar(
         backgroundColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
-        leading: const _GlassBack(),
+        leading: const GlassBackButton(),
         actions: [
           if (state.hasValue)
             Padding(
-              padding: const EdgeInsets.only(right: SpacingTokens.space8),
-              child: _GlassAction(
+              // The disc's edge where it was: the target around it is wider.
+              padding: const EdgeInsets.only(right: SpacingTokens.space4),
+              child: GlassIconButton(
                 icon: Iconsax.export_1_copy,
                 tooltip: AppLocalizations.of(context).literalshareThisProfile,
                 onPressed: () => shareProfile(state.value!),
@@ -558,58 +560,6 @@ class _DefaultCover extends StatelessWidget {
             scheme.primary.withValues(alpha: 0.35),
             scheme.tertiary.withValues(alpha: 0.35),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-/// A back button that stays visible over a photograph.
-class _GlassBack extends StatelessWidget {
-  const _GlassBack();
-
-  @override
-  Widget build(BuildContext context) {
-    return _GlassAction(
-      icon: Iconsax.arrow_left_copy,
-      tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-      onPressed: () => Navigator.pop(context),
-    );
-  }
-}
-
-class _GlassAction extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onPressed;
-
-  const _GlassAction({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Tooltip(
-        message: tooltip,
-        child: Semantics(
-          button: true,
-          label: tooltip,
-          child: InkWell(
-            onTap: onPressed,
-            customBorder: const CircleBorder(),
-            child: Container(
-              width: 36,
-              height: 36,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0x59000000),
-              ),
-              child: Icon(icon, size: 19, color: Colors.white),
-            ),
-          ),
         ),
       ),
     );

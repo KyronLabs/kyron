@@ -1211,6 +1211,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralizované ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostika"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Skupiny"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Žádné skupiny"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Zde jsou skupiny, ve kterých jste, a komunitní chaty, ke kterým se připojíte."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Líbí se mi"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Uložené"),
       "ui_feed_empty":
@@ -1330,6 +1335,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Připojit se"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Připojeno"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Jazyk"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Vyberte jazyk"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Právní"),
       "ui_like": MessageLookupByLibrary.simpleMessage("To se mi líbí"),
       "ui_liked_posts":
@@ -1350,6 +1357,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Zatím nic uloženo",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Váš účet byl aktualizován"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Vaše odvolání v případu \$number bylo přijato"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Vaše odvolání v případu \$number jsme znovu posoudili a rozhodnutí platí"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Váš účet byl natrvalo zablokován"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Případ \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vás sleduje"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("dal(a) like vašemu příspěvku"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Starší"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Vaše zpráva v komunitním chatu byla odstraněna"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Něco, co jste zveřejnili, bylo odstraněno"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Váš příspěvek byl odstraněn"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Vaše odpověď byla odstraněna"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("odpověděl(a) na váš příspěvek"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Na základě vašeho nahlášení jsme zasáhli. Děkujeme, že jste nám dali vědět."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Prověřili jsme vaše nahlášení a nezjistili jsme porušení našich pravidel."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Nahlášeno kvůli: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("sdílel(a) váš příspěvek"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Zrušili jsme případ \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Váš účet je pozastaven"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Váš účet je pozastaven do \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Vše"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sledující"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lajky"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odpovědi"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Tento týden"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Dnes"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Váš účet dostal varování"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Včera"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Dokončit",
@@ -1394,6 +1448,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Předvolby"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Soukromí"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Až tým rozhodne, dostanete oznámení, a celou věc můžete sledovat v sekci Vaše nahlášení."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Zobrazit vaše nahlášení"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Zpráva v komunitním chatu"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Příspěvek"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Odpověď"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Zasáhli jsme"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Účet"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Rozhodnuto \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Pravidla neporušena"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Vaše nahlášení se nepodařilo načíst"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Co jste za posledních 90 dní nahlásili a jak to dopadlo. Až tým rozhodne, dostanete oznámení. Nikdo, koho nahlásíte, se nedozví, kdo ho nahlásil."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Nic nenahlášeno"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Když nahlásíte příspěvek, odpověď, zprávu nebo účet, objeví se tady i s tím, jak to dopadlo."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Posuzuje se"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Nahlášeno \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Co jste nahlásili a jak to dopadlo"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Vaše nahlášení"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Bezpečnost dětí"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Obtěžování nebo šikana"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("Nenávistné projevy"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Nelegální zboží nebo služby"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Vydávání se za jiného"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Duševní vlastnictví"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Nepravdivé informace"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Sebevražda nebo sebepoškozování"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Obsah pro dospělé"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Něco jiného"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Násilí nebo výhrůžky"),
       "ui_saved_posts":
           MessageLookupByLibrary.simpleMessage("Uložené příspěvky"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
@@ -1466,6 +1573,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_this_post": MessageLookupByLibrary.simpleMessage("tento příspěvek"),
       "ui_thread_muted":
           MessageLookupByLibrary.simpleMessage("Vlákno ztlumeno"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Vypnout zvuk"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Zapnout zvuk"),
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(

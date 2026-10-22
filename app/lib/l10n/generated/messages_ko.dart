@@ -252,6 +252,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("고정 해제"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("음성 메시지 녹음"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("나"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("그룹"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("그룹이 없습니다"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "참여 중인 그룹과 가입한 커뮤니티 채팅이 여기에 표시됩니다."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("좋아요"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("저장됨"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),
@@ -331,6 +335,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_view_profile": MessageLookupByLibrary.simpleMessage("프로필 보기"),
       "ui_group_you": MessageLookupByLibrary.simpleMessage("나"),
       "ui_group_you_spectate": MessageLookupByLibrary.simpleMessage("관전자입니다"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("언어 선택"),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("계정이 업데이트되었습니다"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "사건 \$number에 대한 이의 제기가 받아들여졌습니다"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "사건 \$number에 대한 이의 제기를 다시 검토했으며, 결정은 유지됩니다"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage("계정이 영구 정지되었습니다"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("사건 \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("님이 회원님을 팔로우했습니다"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("님이 회원님의 게시물을 좋아합니다"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("이전"),
+      "ui_notif_removed_message":
+          MessageLookupByLibrary.simpleMessage("커뮤니티 채팅의 메시지가 삭제되었습니다"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("게시한 콘텐츠가 삭제되었습니다"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("게시물이 삭제되었습니다"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("답글이 삭제되었습니다"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("님이 회원님의 게시물에 답글을 남겼습니다"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "신고하신 내용에 대해 조치를 취했습니다. 알려 주셔서 감사합니다."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "신고하신 내용을 검토했지만 규칙 위반을 발견하지 못했습니다."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("신고 사유: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("님이 회원님의 게시물을 리포스트했습니다"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("사건 \$number의 결정을 취소했습니다"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("계정이 일시 정지되었습니다"),
+      "ui_notif_suspended_until":
+          MessageLookupByLibrary.simpleMessage("계정이 \$date까지 일시 정지되었습니다"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("전체"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("팔로우"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("좋아요"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("답글"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("이번 주"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("오늘"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage("계정에 경고가 있습니다"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("어제"),
       "ui_once_already": MessageLookupByLibrary.simpleMessage("이미 열어 본 항목입니다."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("만료됨"),
       "ui_once_failed": MessageLookupByLibrary.simpleMessage("열 수 없습니다."),
@@ -344,6 +395,45 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("보낸 상대만 한 번 열 수 있습니다."),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("한 번 보기로 보내기"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("탭하여 보기"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "팀이 결정하면 알림을 받게 되며, 내 신고에서 진행 상황을 확인할 수 있습니다."),
+      "ui_report_see_reports": MessageLookupByLibrary.simpleMessage("내 신고 보기"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("커뮤니티 채팅 메시지"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("게시물"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("답글"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("조치됨"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("계정"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("\$date 결정"),
+      "ui_reports_dismissed": MessageLookupByLibrary.simpleMessage("규칙 위반 없음"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("신고 내역을 불러올 수 없습니다"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "지난 90일 동안 신고한 내용과 그 결과입니다. 팀이 결정하면 알림을 받습니다. 신고 대상자에게는 누가 신고했는지 절대 알리지 않습니다."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("신고 내역 없음"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "게시물, 답글, 메시지 또는 계정을 신고하면 그 결과와 함께 여기에 표시됩니다."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("검토 중"),
+      "ui_reports_sent_on": MessageLookupByLibrary.simpleMessage("\$date 신고"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("신고한 내용과 그 결과"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("내 신고"),
+      "ui_rule_child_safety": MessageLookupByLibrary.simpleMessage("아동 안전"),
+      "ui_rule_harassment": MessageLookupByLibrary.simpleMessage("괴롭힘 또는 따돌림"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("혐오 발언"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("불법 상품 또는 서비스"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage("사칭"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("지식 재산권"),
+      "ui_rule_misinformation": MessageLookupByLibrary.simpleMessage("허위 정보"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage("자살 또는 자해"),
+      "ui_rule_sexual_content": MessageLookupByLibrary.simpleMessage("성인 콘텐츠"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("기타"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("스팸"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage("폭력 또는 위협"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("다시 시도"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("리포스트 취소"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("비밀번호 업데이트"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage("다른 주소 사용"),

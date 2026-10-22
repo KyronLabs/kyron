@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/notification_model.dart';
+import '../utils/notification_text.dart';
 import 'verified_badge.dart';
 
 /// One thing somebody did, as a row.
@@ -29,6 +31,8 @@ class NotificationItem extends StatelessWidget {
         NotificationType.comment => Iconsax.message_copy,
         NotificationType.follow => Iconsax.user_add_copy,
         NotificationType.repost => Iconsax.repeat_copy,
+        NotificationType.account => Iconsax.shield_tick_copy,
+        NotificationType.report => Iconsax.flag_copy,
       };
 
   Color _badgeColor(ColorScheme scheme) => switch (notification.type) {
@@ -39,8 +43,10 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (notification.fromKyron) return _FromKyron(notification, onTap: onTap);
     final scheme = Theme.of(context).colorScheme;
-    final actor = notification.actor;
+    final l10n = AppLocalizations.of(context);
+    final actor = notification.actor ?? const NotificationActor(id: '');
     final snippet = notification.content ?? notification.postSnippet;
 
     return InkWell(
@@ -113,7 +119,10 @@ class NotificationItem extends StatelessWidget {
                               ),
                             ),
                           ),
-                        TextSpan(text: ' ${notification.actionText}'),
+                        TextSpan(
+                          text:
+                              ' ${notificationAction(l10n, notification.type)}',
+                        ),
                       ],
                     ),
                     maxLines: 2,
@@ -127,6 +136,93 @@ class NotificationItem extends StatelessWidget {
                     const SizedBox(height: SpacingTokens.space4),
                     Text(
                       snippet,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize2,
+                        color: scheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            const SizedBox(width: SpacingTokens.space8),
+            Text(
+              notification.displayTimestamp,
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                color: scheme.onSurface.withValues(alpha: 0.5),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// A row from Kyron: a decision about this account, an appeal answered, or
+/// what came of something it reported. No face, because nobody is named --
+/// the team decides as Kyron -- and the words are the reader's language.
+class _FromKyron extends StatelessWidget {
+  final NotificationModel notification;
+  final VoidCallback onTap;
+
+  const _FromKyron(this.notification, {required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    final text = moderationText(
+      l10n,
+      notification,
+      locale: Localizations.maybeLocaleOf(context)?.toLanguageTag(),
+    );
+    final report = notification.type == NotificationType.report;
+
+    return InkWell(
+      key: ValueKey('notification-kyron-${notification.id}'),
+      onTap: onTap,
+      child: Container(
+        color:
+            notification.isRead ? null : scheme.primary.withValues(alpha: 0.06),
+        padding: const EdgeInsets.symmetric(
+          horizontal: SpacingTokens.space16,
+          vertical: SpacingTokens.space12,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: 22,
+              backgroundColor: scheme.primary.withValues(alpha: 0.12),
+              child: Icon(
+                report ? Iconsax.flag_copy : Iconsax.shield_tick_copy,
+                size: 20,
+                color: scheme.primary,
+              ),
+            ),
+            const SizedBox(width: SpacingTokens.space12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    text.headline,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                      fontWeight: FontWeight.w600,
+                      color: scheme.onSurface,
+                    ),
+                  ),
+                  if (text.detail != null) ...[
+                    const SizedBox(height: SpacingTokens.space4),
+                    Text(
+                      text.detail!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

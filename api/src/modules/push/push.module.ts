@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
+import { ActivityPushService } from './activity-push.service';
 import { DeliveryService } from './delivery.service';
 import { PushController } from './push.controller';
 import { PushService } from './push.service';
@@ -13,7 +14,7 @@ import { PushService } from './push.service';
 @Module({
   imports: [SupabaseTokenModule],
   controllers: [PushController],
-  providers: [PushService, DeliveryService],
+  providers: [PushService, DeliveryService, ActivityPushService],
   exports: [PushService, DeliveryService],
 })
 export class PushModule {}

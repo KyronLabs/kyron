@@ -29,15 +29,21 @@ export class ListConversationsDto {
 
   /**
    * Which conversations: every one, those with something unread, those
-   * whose last word was the other person's, or those the reader removed
-   * from their list. Takes over from [unreadOnly], which older apps send.
+   * whose last word was the other person's, groups, or those the reader
+   * removed from their list. Takes over from [unreadOnly], which older apps
+   * send.
    */
   @IsOptional()
-  @IsIn(['all', 'unread', 'unanswered', 'hidden'])
+  @IsIn(['all', 'unread', 'unanswered', 'groups', 'hidden'])
   filter?: ConversationFilter;
 }
 
-export type ConversationFilter = 'all' | 'unread' | 'unanswered' | 'hidden';
+export type ConversationFilter =
+  | 'all'
+  | 'unread'
+  | 'unanswered'
+  | 'groups'
+  | 'hidden';
 
 export class MessagingSettingsDto {
   @IsOptional()

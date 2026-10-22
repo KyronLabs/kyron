@@ -112,6 +112,19 @@ run('groups and view-once, against a real database', () => {
       });
     });
 
+    it('can be listed apart from conversations between two', async () => {
+      const { id: direct } = await messages.openWith(ada, ben);
+      await messages.send(ada, direct, 'Are you coming on Saturday?');
+
+      const all = (await messages.list(ben)).items.map((c) => c.id);
+      expect(all).toEqual(expect.arrayContaining([groupId, direct]));
+      const groupsOnly = (
+        await messages.list(ben, { filter: 'groups' })
+      ).items.map((c) => c.id);
+      expect(groupsOnly).toContain(groupId);
+      expect(groupsOnly).not.toContain(direct);
+    });
+
     it('keeps spectators to reading, reacting and asking', async () => {
       await groups.setRole(ada, groupId, cy, MemberRole.SPECTATOR);
       await expect(messages.send(cy, groupId, 'hello')).rejects.toMatchObject({

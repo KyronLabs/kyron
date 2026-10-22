@@ -1206,6 +1206,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Gedesentraliseerde ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostiek"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Groepe"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Geen groepe nie"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Groepe waarin jy is, en die gemeenskapkletse waarby jy aansluit, word hier gelys."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gehou van"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gestoor"),
       "ui_feed_empty":
@@ -1325,6 +1330,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Sluit aan"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Aangesluit"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Taal"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Kies jou taal"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Regs"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Hou van"),
       "ui_liked_posts":
@@ -1345,6 +1352,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nog niks gestoor nie",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Jou rekening is bygewerk"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Jou appèl oor saak \$number is aanvaar"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Ons het weer na jou appèl oor saak \$number gekyk, en die besluit staan"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening is permanent verban"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Saak \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("het jou gevolg"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("hou van jou plasing"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ouer"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Jou boodskap in 'n gemeenskapklets is verwyder"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Iets wat jy geplaas het, is verwyder"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Jou plasing is verwyder"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Jou antwoord is verwyder"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("het op jou plasing geantwoord"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Ons het opgetree oor iets wat jy gerapporteer het. Dankie dat jy ons laat weet het."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Ons het na iets gekyk wat jy gerapporteer het en nie gevind dat dit ons reëls oortree het nie."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Gerapporteer weens: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("het jou plasing herplaas"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Ons het die besluit in saak \$number omgekeer"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Jou rekening is opgeskort"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening is opgeskort tot \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Alles"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Volgers"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Laaiks"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Antwoorde"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Hierdie week"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Vandag"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening het 'n waarskuwing"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Gister"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Voltooi",
@@ -1387,6 +1443,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Voorkeure"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privaatheid"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Jy kry 'n kennisgewing wanneer die span besluit, en jy kan dit in Jou verslae volg."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Sien jou verslae"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("'n Gemeenskapkletsboodskap"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("'n Plasing"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("'n Antwoord"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("Opgetree"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("'n Rekening"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Besluit \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Geen reël oortree nie"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Jou verslae kon nie gelaai word nie"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Wat jy die afgelope 90 dae gerapporteer het, en wat daarvan geword het. Jy kry 'n kennisgewing wanneer die span besluit. Niemand wat jy rapporteer, word ooit vertel wie hulle gerapporteer het nie."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Niks gerapporteer nie"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Wanneer jy 'n plasing, 'n antwoord, 'n boodskap of 'n rekening rapporteer, word dit hier gelys met wat daarvan geword het."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Word nagegaan"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Gerapporteer \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Wat jy gerapporteer het, en wat daarvan geword het"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jou verslae"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Kinderveiligheid"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Teistering of afknouery"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Haatspraak"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Onwettige goedere of dienste"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Nabootsing"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intellektuele eiendom"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Vals inligting"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Selfmoord of selfskade"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Volwasse inhoud"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Iets anders"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Gemorspos"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Geweld of dreigemente"),
       "ui_saved_posts":
           MessageLookupByLibrary.simpleMessage("Gestoorde plasings"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
@@ -1458,6 +1566,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terme"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("hierdie plasing"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Draad gedemp"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Probeer weer"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Skakel klank af"),
       "ui_turn_sound_on":

@@ -1149,6 +1149,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Skupine"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Ni skupin"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Tu so skupine, v katerih ste, in klepeti skupnosti, ki se jim pridružite."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Všečkano"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Shranjeno"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1268,6 +1272,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Izberite jezik"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1285,6 +1291,53 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Vaš račun je bil posodobljen"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Vaša pritožba v zadevi \$number je bila sprejeta"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Vašo pritožbo v zadevi \$number smo ponovno pregledali in odločitev ostaja"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Vaš račun je bil trajno blokiran"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Zadeva \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vas spremlja"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("je všečkal(a) vašo objavo"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Starejše"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Vaše sporočilo v klepetu skupnosti je bilo odstranjeno"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Nekaj, kar ste objavili, je bilo odstranjeno"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "Vaša objava je bila odstranjena"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Vaš odgovor je bil odstranjen"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "je odgovoril(a) na vašo objavo"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Na podlagi vaše prijave smo ukrepali. Hvala, ker ste nam sporočili."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Pregledali smo vašo prijavo in nismo ugotovili kršitve naših pravil."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Prijavljeno zaradi: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("je delil(a) vašo objavo"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Zadevo \$number smo razveljavili"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Vaš račun je začasno blokiran"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Vaš račun je blokiran do \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Vse"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sledilci"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Všečki"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odgovori"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ta teden"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Danes"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Vaš račun je prejel opozorilo"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Včeraj"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1326,6 +1379,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Ko se ekipa odloči, prejmete obvestilo, zadevo pa lahko spremljate v razdelku Vaše prijave."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Ogled vaših prijav"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Sporočilo v klepetu skupnosti"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Objava"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Odgovor"),
+      "ui_reports_actioned": MessageLookupByLibrary.simpleMessage("Ukrepano"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Račun"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Odločeno \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Brez kršitve pravil"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Vaših prijav ni bilo mogoče naložiti"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Kaj ste prijavili v zadnjih 90 dneh in kaj je sledilo. Ko se ekipa odloči, prejmete obvestilo. Nihče, ki ga prijavite, ne izve, kdo ga je prijavil."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Nič prijavljenega"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ko prijavite objavo, odgovor, sporočilo ali račun, se prikaže tukaj skupaj s tem, kaj je sledilo."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("V pregledu"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Prijavljeno \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Kaj ste prijavili in kaj je sledilo"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Vaše prijave"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Varnost otrok"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Nadlegovanje ali ustrahovanje"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Sovražni govor"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Nezakonito blago ali storitve"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Lažno predstavljanje"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intelektualna lastnina"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Lažne informacije"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Samomor ali samopoškodovanje"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Vsebina za odrasle"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Nekaj drugega"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Neželena vsebina"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Nasilje ali grožnje"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1394,6 +1497,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Poskusi znova"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

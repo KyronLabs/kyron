@@ -202,15 +202,12 @@ export class ProfileService {
       },
     });
 
-    this.delivery.tell(
+    // Named, with their picture (ActivityPushService); a tap opens their
+    // profile rather than a list to find it in.
+    this.delivery.tellActivity(
       targetId,
       { type: 'notification.new', kind: 'follow', actorId: userId },
-      {
-        title: 'Kyron',
-        body: 'Somebody started following you.',
-        // Who, so a tap opens their profile rather than a list to find it in.
-        data: { type: 'notification', kind: 'follow', actorId: userId },
-      },
+      { kind: 'follow', actorId: userId },
     );
 
     this.logger.log(`User ${userId} followed ${targetId}`);

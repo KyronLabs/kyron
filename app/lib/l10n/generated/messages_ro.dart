@@ -1151,6 +1151,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupuri"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Niciun grup"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Aici apar grupurile din care faci parte și chaturile comunităților în care intri."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Apreciate"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvate"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1270,6 +1274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("Alege limba"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1287,6 +1292,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Contul tău a fost actualizat"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Contestația ta pentru cazul \$number a fost acceptată"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Am analizat din nou contestația ta pentru cazul \$number, iar decizia rămâne valabilă"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Contul tău a fost interzis definitiv"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Cazul \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("te urmărește acum"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("a apreciat postarea ta"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Mai vechi"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Mesajul tău dintr-un chat al comunității a fost eliminat"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Ceva ce ai publicat a fost eliminat"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Postarea ta a fost eliminată"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Răspunsul tău a fost eliminat"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("a răspuns la postarea ta"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Am luat măsuri privind ceva ce ai raportat. Mulțumim că ne-ai spus."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Am analizat ceva ce ai raportat și nu am constatat încălcarea regulilor noastre."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Raportat pentru: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("a redistribuit postarea ta"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Am anulat cazul \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Contul tău este suspendat"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Contul tău este suspendat până la \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Toate"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Urmăritori"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Aprecieri"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Răspunsuri"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Săptămâna aceasta"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Azi"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Contul tău a primit un avertisment"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Ieri"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1330,6 +1386,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Primești o notificare când echipa decide și poți urmări totul în Rapoartele tale."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Vezi rapoartele tale"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Un mesaj dintr-un chat al comunității"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("O postare"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Un răspuns"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("S-au luat măsuri"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Un cont"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Decis pe \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Nicio regulă încălcată"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Rapoartele tale nu au putut fi încărcate"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Ce ai raportat în ultimele 90 de zile și ce s-a întâmplat. Primești o notificare când echipa decide. Nimeni pe care îl raportezi nu află cine l-a raportat."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Nimic raportat"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Când raportezi o postare, un răspuns, un mesaj sau un cont, apare aici împreună cu ce s-a întâmplat."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("În analiză"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Raportat pe \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Ce ai raportat și ce s-a întâmplat"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Rapoartele tale"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Siguranța copiilor"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Hărțuire sau intimidare"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("Discurs instigator la ură"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("Bunuri sau servicii ilegale"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Uzurpare de identitate"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Proprietate intelectuală"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Informații false"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Sinucidere sau autovătămare"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Conținut pentru adulți"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Altceva"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Violență sau amenințări"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1398,6 +1505,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

@@ -1144,6 +1144,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("קבוצות"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("אין קבוצות"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "כאן מופיעות הקבוצות שלך וצ׳אטים של קהילות שהצטרפת אליהם."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("אהבתי"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("שמורים"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1257,6 +1261,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail": MessageLookupByLibrary.simpleMessage("בחירת שפה"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1274,6 +1279,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך עודכן"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "הערעור שלך בתיק \$number התקבל"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "בחנו שוב את הערעור שלך בתיק \$number, וההחלטה בעינה עומדת"),
+      "ui_notif_banned":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך נחסם לצמיתות"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("תיק \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("התחיל/ה לעקוב אחריך"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("אהב/ה את הפוסט שלך"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("ישנות יותר"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "ההודעה שלך בצ׳אט של קהילה הוסרה"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("משהו שפרסמת הוסר"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("הפוסט שלך הוסר"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("התגובה שלך הוסרה"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("הגיב/ה לפוסט שלך"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "נקטנו צעדים בעקבות דיווח שלך. תודה שסיפרת לנו."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "בדקנו דיווח שלך ולא מצאנו שהוא מפר את הכללים שלנו."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("דווח בגלל: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("שיתף/ה את הפוסט שלך"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "ביטלנו את ההחלטה בתיק \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך מושעה"),
+      "ui_notif_suspended_until":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך מושעה עד \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("הכול"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("עוקבים"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("לייקים"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("תגובות"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("השבוע"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("היום"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך קיבל אזהרה"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("אתמול"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1314,6 +1367,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "תתקבל התראה כשהצוות יחליט, ואפשר לעקוב בדיווחים שלך."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("לדיווחים שלך"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("הודעה בצ׳אט של קהילה"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("פוסט"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("תגובה"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("ננקטו צעדים"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("חשבון"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("הוחלט ב־\$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("לא הופר אף כלל"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הדיווחים שלך"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "מה דיווחת ב־90 הימים האחרונים ומה יצא מזה. תתקבל התראה כשהצוות מחליט. מי שמדווחים עליו אף פעם לא יודע מי דיווח."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("אין דיווחים"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "כשמדווחים על פוסט, תגובה, הודעה או חשבון, הדיווח מופיע כאן יחד עם מה שיצא ממנו."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("בבדיקה"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("דווח ב־\$date"),
+      "ui_reports_settings_help":
+          MessageLookupByLibrary.simpleMessage("מה דיווחת ומה יצא מזה"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("הדיווחים שלך"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("בטיחות ילדים"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("הטרדה או בריונות"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("דברי שטנה"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("מוצרים או שירותים לא חוקיים"),
+      "ui_rule_impersonation": MessageLookupByLibrary.simpleMessage("התחזות"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("קניין רוחני"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("מידע כוזב"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("התאבדות או פגיעה עצמית"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("תוכן למבוגרים"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("משהו אחר"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("ספאם"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("אלימות או איומים"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1382,6 +1484,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("ניסיון נוסף"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

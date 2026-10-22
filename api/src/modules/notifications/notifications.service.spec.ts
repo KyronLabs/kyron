@@ -99,7 +99,7 @@ describe('NotificationsService', () => {
       'follow:f1',
     ]);
     expect(items[0].content).toBe('nice one');
-    expect(items[0].actor.username).toBe('bo');
+    expect(items[0].actor?.username).toBe('bo');
     // A follow is about the account, not about any one post.
     expect(items[2].postId).toBeNull();
   });

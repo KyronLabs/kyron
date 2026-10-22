@@ -1149,6 +1149,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Taldeak"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Ez dago talderik"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Hemen agertzen dira zauden taldeak eta batzen zaren komunitateko txatak."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gustukoak"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gordetakoak"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1264,6 +1269,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Aukeratu zure hizkuntza"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1281,6 +1288,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Zure kontua eguneratu da"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "\$number kasuari buruzko zure helegitea onartu da"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "\$number kasuari buruzko zure helegitea berriro aztertu dugu, eta erabakiak bere horretan dirau"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua betiko debekatu da"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("\$number kasua · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("jarraitzen hasi zaizu"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("atsegin du zure argitalpena"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Zaharragoak"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Komunitateko txat bateko zure mezua kendu da"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Argitaratu zenuen zerbait kendu da"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Zure argitalpena kendu da"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Zure erantzuna kendu da"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "erantzun dio zure argitalpenari"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Salatu zenuen zerbaiten aurrean neurriak hartu ditugu. Eskerrik asko jakinarazteagatik."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Salatu zenuen zerbait aztertu dugu, eta ez dugu ikusi gure arauak hautsi zituenik."),
+      "ui_notif_reported_for": MessageLookupByLibrary.simpleMessage(
+          "Salaketaren arrazoia: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "berriro argitaratu du zure argitalpena"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "\$number kasuko erabakia atzera bota dugu"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Zure kontua etenda dago"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua \$date arte etenda dago"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Guztiak"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Jarraipenak"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Atsegiteak"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Erantzunak"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Aste honetan"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Gaur"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "Zure kontuak ohartarazpen bat du"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Atzo"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1322,6 +1380,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Taldeak erabakitzen duenean jakinarazpen bat jasoko duzu, eta Zure salaketak atalean jarrai dezakezu."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Ikusi zure salaketak"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Komunitateko txat bateko mezu bat"),
+      "ui_reports_a_post":
+          MessageLookupByLibrary.simpleMessage("Argitalpen bat"),
+      "ui_reports_a_reply":
+          MessageLookupByLibrary.simpleMessage("Erantzun bat"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Neurriak hartu dira"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("Kontu bat"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Erabakia: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Ez da araurik hautsi"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan dira kargatu zure salaketak"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Azken 90 egunetan salatu duzuna, eta zertan geratu den. Taldeak erabakitzen duenean jakinarazpen bat jasotzen duzu. Salatzen duzunari ez zaio inoiz esaten nork salatu duen."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Ez duzu ezer salatu"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Argitalpen, erantzun, mezu edo kontu bat salatzen duzunean, hemen agertzen da emaitzarekin batera."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Berrikusten"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Salatua: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Salatu duzuna, eta zertan geratu den"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Zure salaketak"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Haurren segurtasuna"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Jazarpena edo bullyinga"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("Gorroto-diskurtsoa"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Legez kanpoko ondasunak edo zerbitzuak"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Nortasun-ordezpena"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Jabetza intelektuala"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Informazio faltsua"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Suizidioa edo autolesioa"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Helduentzako edukia"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Beste zerbait"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spama"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Indarkeria edo mehatxuak"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1390,6 +1504,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

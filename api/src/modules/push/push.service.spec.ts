@@ -99,10 +99,12 @@ describe('a message to a phone', () => {
       ).android.notification.tag;
 
     expect(tagOf({ type: 'notification', kind: 'like', postId: 'p1' })).toBe(
-      'post-p1',
+      'like-post-p1',
     );
+    // Apart from likes on the same post: a reply a like replaced was a reply
+    // nobody saw.
     expect(tagOf({ type: 'notification', kind: 'comment', postId: 'p1' })).toBe(
-      'post-p1',
+      'comment-post-p1',
     );
     expect(tagOf({ type: 'notification', kind: 'follow', actorId: 'u' })).toBe(
       'follows',
@@ -123,6 +125,21 @@ describe('a message to a phone', () => {
         tag: 'community-chat-k1',
       }),
     );
+  });
+
+  it('carries the picture of the person it is about', () => {
+    const payload = PushService.payload('t', {
+      title: 'Ada',
+      body: 'Followed you',
+      image: 'https://cdn.test/ada.jpg',
+      data: { type: 'notification', kind: 'follow' },
+    }) as { notification: { image?: string } };
+    expect(payload.notification.image).toBe('https://cdn.test/ada.jpg');
+
+    const plain = PushService.payload('t', { title: 'Kyron', body: 'x' }) as {
+      notification: object;
+    };
+    expect(plain.notification).not.toHaveProperty('image');
   });
 
   it('everything else goes on the Activity channel', () => {

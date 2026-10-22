@@ -46,6 +46,12 @@ class PostListView extends ConsumerStatefulWidget {
 
   final EdgeInsets padding;
 
+  /// Whether "nothing here yet" carries a Refresh button. Off where the
+  /// screen has a button of its own for the same moment -- the community
+  /// page's create button, which in the corner sat on top of this one.
+  /// Pulling to refresh works either way.
+  final bool emptyRefresh;
+
   /// How much of this list's own box is covered by something opaque above it.
   ///
   /// The home feed runs full height with its top bar laid over it, so the
@@ -70,6 +76,7 @@ class PostListView extends ConsumerStatefulWidget {
     this.topInset = 0,
     this.asTiles = false,
     this.highlightTag,
+    this.emptyRefresh = true,
   });
 
   @override
@@ -200,8 +207,8 @@ class _PostListViewState extends ConsumerState<PostListView> {
         art: widget.emptyArt,
         title: widget.emptyTitle,
         detail: widget.emptyDetail,
-        action: 'Refresh',
-        onAction: _notifier.refresh,
+        action: widget.emptyRefresh ? 'Refresh' : null,
+        onAction: widget.emptyRefresh ? _notifier.refresh : null,
       ).sliver;
     }
 

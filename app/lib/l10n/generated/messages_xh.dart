@@ -1147,6 +1147,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Amaqela"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Akukho maqela"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Amaqela okuwo, kunye neencoko zoluntu ozijoyinayo, aboniswa apha."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ezithandiweyo"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ezigciniweyo"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1267,6 +1272,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Khetha ulwimi lwakho"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1284,6 +1291,56 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("I-akhawunti yakho ihlaziyiwe"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Isibheno sakho kwityala \$number samkelwe"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Siphinde sajonga isibheno sakho kwityala \$number, kwaye isigqibo asitshintshi"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "I-akhawunti yakho ivaliwe ngokusisigxina"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Ityala \$number · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ukulandele"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("ulithandile ipowusti yakho"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ezindala"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Umyalezo wakho kwincoko yoluntu ususiwe"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("Into othe wayipapasha isusiwe"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Ipowusti yakho isusiwe"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Impendulo yakho isusiwe"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("uphendule ipowusti yakho"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Sithathe inyathelo ngento oyixeleyo. Enkosi ngokusazisa."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Siyijongile into oyixeleyo kwaye asifumananga ukuba yaphule imithetho yethu."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Ixelwe ngenxa ye: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "uphinde wapapasha ipowusti yakho"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Sisirhoxisile isigqibo setyala \$number"),
+      "ui_notif_suspended": MessageLookupByLibrary.simpleMessage(
+          "I-akhawunti yakho inqunyanyisiwe"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "I-akhawunti yakho inqunyanyisiwe de kube ngu-\$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Zonke"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("Abalandeli"),
+      "ui_notif_tab_likes":
+          MessageLookupByLibrary.simpleMessage("Izinto ezithandiweyo"),
+      "ui_notif_tab_replies":
+          MessageLookupByLibrary.simpleMessage("Iimpendulo"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Kule veki"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Namhlanje"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "I-akhawunti yakho inesilumkiso"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Izolo"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1326,6 +1383,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Uya kufumana isaziso xa iqela lisenza isigqibo, kwaye ungakulandela kwiiNgxelo zakho."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Bona iingxelo zakho"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Umyalezo wencoko yoluntu"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Ipowusti"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Impendulo"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Kuthathwe inyathelo"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("I-akhawunti"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Kugqitywe ngo-\$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Akukho mthetho waphulweyo"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Iingxelo zakho azikwazanga ukulayishwa"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Oko ukuxeleyo kwiintsuku ezingama-90 ezidlulileyo, kunye nesiphumo sako. Ufumana isaziso xa iqela lisenza isigqibo. Lowo umxelayo akaze axelelwe ukuba ngubani omxeleyo."),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("Akukho nto ixelweyo"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Xa uxela ipowusti, impendulo, umyalezo okanye i-akhawunti, iboniswa apha kunye nesiphumo sayo."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Iyaphononongwa"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Ixelwe ngo-\$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Oko ukuxeleyo, kunye nesiphumo sako"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Iingxelo zakho"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Ukhuseleko lwabantwana"),
+      "ui_rule_harassment": MessageLookupByLibrary.simpleMessage(
+          "Ukuxhatshazwa okanye ukuphathwa gadalala"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Intetho yentiyo"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Iimpahla okanye iinkonzo ezingekho mthethweni"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Ukuzenza omnye umntu"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Ipropathi yobukrelekrele"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Ulwazi olungeyonyani"),
+      "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Ukuzibulala okanye ukuzenzakalisa"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Umxholo wabantu abadala"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Enye into"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Ugaxekile"),
+      "ui_rule_violence": MessageLookupByLibrary.simpleMessage(
+          "Ubundlobongela okanye izisongelo"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1394,6 +1505,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Zama kwakhona"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

@@ -1,5 +1,6 @@
 import type { RealtimeEvent } from '../realtime/realtime.service';
 import { RealtimeService } from '../realtime/realtime.service';
+import type { Activity } from './activity-push.service';
 import { DeliveryService } from './delivery.service';
 import type { PushMessage } from './push.service';
 import { PushService } from './push.service';
@@ -39,6 +40,18 @@ export class RecordingDelivery extends DeliveryService {
     push?: PushMessage,
   ): void {
     this.told.push({ userIds: [...userIds], event, push });
+  }
+
+  /** Activity told to somebody, whose push is worked out later. */
+  readonly activities: { userId: string; activity: Activity }[] = [];
+
+  override tellActivity(
+    userId: string,
+    event: RealtimeEvent,
+    activity: Activity,
+  ): void {
+    this.told.push({ userIds: [userId], event });
+    this.activities.push({ userId, activity });
   }
 
   /** Pushes with no event of their own. */

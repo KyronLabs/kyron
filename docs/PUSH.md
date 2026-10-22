@@ -47,6 +47,41 @@ Permission is asked for at sign-in rather than at launch. The question would
 otherwise land before anybody had seen a screen, and "no" from a stranger is
 permanent on both platforms.
 
+## What a push says
+
+A like, a reply, a repost or a follow is pushed the way Threads pushes it:
+who did it is the title, what they did is the body, and their picture rides
+along.
+
+| Kind | Title | Body |
+|:--|:--|:--|
+| Like | Ada Obi | Liked your post: “first few words…” |
+| Reply | Ada Obi | Replied: “what they wrote…” |
+| Repost | Ada Obi | Reposted your post: “first few words…” |
+| Follow | Ada Obi | Followed you |
+
+- **The name** is the display name, else the @handle. When whoever did it
+  is gone, banned, or blocked by or blocking the reader, no push goes at
+  all.
+- **"and 2 others"** counts the others who did the same to the same post
+  since the reader last opened Notifications (90 days if they never have),
+  leaving out the reader and anybody blocked either way. A newer push of a
+  kind replaces the older one on the handset (below), so the count keeps the
+  replaced ones from vanishing.
+- **Snippets** are 80 characters at most, cut at a word.
+- **The picture** is the actor's avatar, sent as FCM's `notification.image`
+  when it is an `https` URL. Android shows it beside the text, and as a large
+  picture when the notification is pulled open. iOS shows nothing without a
+  notification service extension, which the app does not have yet.
+- **One per kind per post on the handset.** The tag is `like-post-<id>`,
+  `comment-post-<id>` or `repost-post-<id>`, and `follows` for follows, so a
+  like no longer replaces a reply about the same post.
+- The words are built off the request (`ActivityPushService`, called from
+  `DeliveryService.tellActivity`): the socket event goes first, and a like is
+  never slowed down by working out who else liked it.
+- **English only.** The server does not know which language a device is set
+  to. Storing it with the device token would fix that.
+
 ## Configuring it
 
 **1. The server.** From the Firebase console, Project settings → Service

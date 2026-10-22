@@ -12,7 +12,10 @@ import '../providers/feed_provider.dart';
 import '../utils/format_count.dart';
 import '../widgets/action_button.dart';
 import '../widgets/community_avatar.dart';
+import '../providers/community_chats_provider.dart';
 import '../widgets/community_chats_section.dart';
+import '../widgets/glass_icon_button.dart';
+import '../widgets/kyron_app_bar.dart';
 import '../widgets/hairline.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
@@ -39,19 +42,38 @@ class CommunityScreen extends ConsumerWidget {
     final community = state.community;
 
     return Scaffold(
-      // No app bar. The banner is the top of this page: a bar above it left a
-      // strip of surface colour between the status bar and the picture, and
+      // The banner is the top of this page, under a bar with nothing in it
+      // but the controls, as on a profile: a bar with a colour of its own
+      // left a strip of surface between the status bar and the picture, and
       // the community's name in two places at once.
       extendBodyBehindAppBar: true,
+      appBar: KyronAppBar(
+        backgroundColor: Colors.transparent,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        leading: const GlassBackButton(),
+        actions: [
+          if (community != null) ...[
+            // The chats, in a sheet. They were a section between the header
+            // and the posts, which pushed every post a screen down on every
+            // visit to show a list most visits do not open.
+            _ChatsButton(community: community),
+            GlassIconButton(
+              icon: Iconsax.more_copy,
+              tooltip: AppLocalizations.of(context).literalthisCommunity,
+              onPressed: () => _openMenu(context, ref, community, notifier),
+            ),
+          ],
+          const SizedBox(width: SpacingTokens.space4),
+        ],
+      ),
       // Only for members. A button that answers "join first" is a button that
       // should not have been there.
-      // Centred, and the same disc the bottom bar carries one screen back.
-      // It was a stock Material FloatingActionButton in the bottom-right
-      // corner: a different shape, a different colour and a different place
-      // from the create button on the page this one is opened from, for the
-      // same job. Sitting in the corner also put it over the right-hand end
-      // of whatever post happened to be at the foot of the list.
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      //
+      // In the bottom-right corner, where a thumb is and where a create
+      // button is expected. It was centred, to match the bottom bar's: in
+      // the middle of the screen it sat over the middle of every post, which
+      // is where the words are.
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: community == null || !community.canPost
           ? null
           : Padding(
@@ -75,7 +97,7 @@ class CommunityScreen extends ConsumerWidget {
       body: Stack(
         children: [
           if (state.loading)
-            Center(child: CircularProgressIndicator())
+            const Center(child: CircularProgressIndicator())
           else if (community == null)
             SafeArea(
               child: EmptyState.failed(
@@ -101,7 +123,12 @@ class CommunityScreen extends ConsumerWidget {
                   ? 'Be the first to say something.'
                   : 'Join to post in ${community.name}.',
               emptyArt: EmptyArt.communities,
-              padding: const EdgeInsets.only(bottom: SpacingTokens.space40),
+              // The create button in the corner is what to do here.
+              emptyRefresh: !community.canPost,
+              // Room to scroll the last post -- and the empty page's own
+              // button -- clear of the create button in the corner: its 56,
+              // the 16 it floats at, and a little air.
+              padding: const EdgeInsets.only(bottom: 96),
               headerSlivers: [
                 SliverToBoxAdapter(
                   child: Column(
@@ -123,52 +150,11 @@ class CommunityScreen extends ConsumerWidget {
                         },
                       ),
                       const Hairline(),
-                      // Above the posts: a community can have several chats,
-                      // and they are where it talks between posts.
-                      CommunityChatsSection(community: community),
-                      const Hairline(),
                     ],
                   ),
                 ),
               ],
             ),
-
-          // Over the banner rather than in a bar above it. Pinned, because a
-          // back button that scrolls away leaves a page with no way out of it
-          // on a phone with no back gesture.
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SafeArea(
-              bottom: false,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space8,
-                  vertical: SpacingTokens.space4,
-                ),
-                child: Row(
-                  children: [
-                    _GlassButton(
-                      icon: Iconsax.arrow_left_copy,
-                      tooltip:
-                          MaterialLocalizations.of(context).backButtonTooltip,
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                    const Spacer(),
-                    if (community != null)
-                      _GlassButton(
-                        icon: Iconsax.more_copy,
-                        tooltip:
-                            AppLocalizations.of(context).literalthisCommunity,
-                        onPressed: () =>
-                            _openMenu(context, ref, community, notifier),
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -519,42 +505,25 @@ class _Banner extends StatelessWidget {
   }
 }
 
-/// A control that reads over a photograph.
-///
-/// Filled with a dark scrim rather than left bare: a plain white glyph
-/// disappears against a pale banner, and a dark one against a dark banner.
-class _GlassButton extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onPressed;
+/// The community's chats, beside More. A dot when one the reader joined
+/// has something new.
+class _ChatsButton extends ConsumerWidget {
+  final Community community;
 
-  const _GlassButton({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-  });
+  const _ChatsButton({required this.community});
 
   @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: Material(
-        color: Colors.black.withValues(alpha: 0.45),
-        shape: const CircleBorder(),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onPressed,
-          child: SizedBox.square(
-            // 44, the floor for a touch target. These sit over a banner
-            // photograph where there is nothing else to hit.
-            dimension: 44,
-            // The icon. It was declared on this widget and never drawn, so
-            // both controls over the banner rendered as a black disc with
-            // nothing in it -- pressable, correct, and invisible.
-            child: Icon(icon, size: 20, color: Colors.white),
-          ),
-        ),
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Only asked for by a member: the server refuses anybody else.
+    final fresh = community.joined &&
+        (ref.watch(communityChatsProvider(community.slug)).value ?? const [])
+            .any((chat) => chat.joined && !chat.muted && chat.unread > 0);
+    return GlassIconButton(
+      key: const ValueKey('community-chats-button'),
+      icon: Iconsax.messages_2_copy,
+      tooltip: AppLocalizations.of(context).ui('ui_cchat_heading', 'Chats'),
+      dot: fresh,
+      onPressed: () => CommunityChatsSheet.show(context, community),
     );
   }
 }

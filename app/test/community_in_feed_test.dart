@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
@@ -22,6 +23,8 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/community_avatar.dart';
 import 'package:kyron_app/widgets/post_card.dart';
 import 'package:kyron_app/widgets/squircle.dart';
+import 'package:kyron_app/widgets/glass_icon_button.dart';
+import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -81,6 +84,7 @@ Future<void> _card(
   WidgetTester tester,
   FeedPost post, {
   _Pushes? pushes,
+  PostListSource source = PostListSource.recent,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
@@ -98,7 +102,7 @@ Future<void> _card(
         onGenerateRoute: pushes?.route ?? Routes.onGenerateRoute,
         home: Scaffold(
           body: SingleChildScrollView(
-            child: PostCard(post: post, source: PostListSource.recent),
+            child: PostCard(post: post, source: source),
           ),
         ),
       ),
@@ -158,18 +162,60 @@ void main() {
       expect(find.text('Gardeners'), findsOneWidget);
     });
 
-    testWidgets('stacks the author on the community picture', (tester) async {
+    testWidgets("shows the author's own picture, not the community's", (
+      tester,
+    ) async {
+      // A community post stacked a small author on the community's picture:
+      // bigger than any other post's, and the place's face where the
+      // person's belongs.
       await _card(tester, _post(community: _gardeners));
 
-      expect(find.byType(StackedPostAvatar), findsOneWidget);
-      // The author is still there, in front of it.
       expect(find.byType(PostAvatar), findsOneWidget);
+      expect(find.byType(Squircle), findsNothing);
     });
 
-    testWidgets('draws the community as a squircle', (tester) async {
+    testWidgets('names the community beside the author, not on a line above', (
+      tester,
+    ) async {
+      // It had a line of its own above the name, for one word.
       await _card(tester, _post(community: _gardeners));
 
-      expect(find.byType(Squircle), findsOneWidget);
+      final name = tester.getRect(find.text('Ada'));
+      final tag = tester.getRect(find.byType(PostCommunityTag));
+      expect(tag.center.dy, closeTo(name.center.dy, 2));
+      expect(tag.left, greaterThan(name.right));
+      // In the handle's place.
+      expect(find.text('@ada'), findsNothing);
+    });
+
+    testWidgets("shows the author's whole name when there is room", (
+      tester,
+    ) async {
+      // Name, handle and a Spacer each got a third of the free width, so a
+      // name was cut with half the line empty after it.
+      tester.view.physicalSize = const Size(360, 640);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      for (final community in [_gardeners, null]) {
+        await _card(
+          tester,
+          FeedPost(
+            id: 'p1',
+            content: 'hi',
+            createdAt: DateTime(2026, 1, 1),
+            author:
+                const FeedAuthor(id: 'u1', username: 'yo', name: 'Yunnieee'),
+            community: community,
+          ),
+        );
+        expect(
+          tester
+              .renderObject<RenderParagraph>(find.text('Yunnieee'))
+              .didExceedMaxLines,
+          isFalse,
+          reason: community == null ? 'with a handle' : 'with a community',
+        );
+      }
     });
 
     testWidgets('opens the community when the name is tapped', (tester) async {
@@ -183,49 +229,43 @@ void main() {
       expect(find.byType(CommunityScreen), findsOneWidget);
     });
 
-    testWidgets('opens the community when its picture is tapped', (
-      tester,
-    ) async {
-      // The larger shape in the stack is the place. It used to open the
-      // author, which left nothing on the post big enough to hit that led to
-      // the community.
+    testWidgets("opens the author from the author's picture", (tester) async {
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      // The corner the author's face does not cover.
-      final picture = find.byKey(const ValueKey('stacked-avatar-community'));
-      await tester.tapAt(tester.getTopLeft(picture) + const Offset(5, 5));
-      await tester.pump();
-
-      expect(pushes.names, [Routes.community]);
-    });
-
-    testWidgets("opens the author when the author's face is tapped", (
-      tester,
-    ) async {
-      final pushes = _Pushes();
-      await _card(tester, _post(community: _gardeners), pushes: pushes);
-
-      await tester.tap(find.byKey(const ValueKey('stacked-avatar-author')));
+      await tester.tap(find.byType(PostAvatar));
       await tester.pump();
 
       expect(pushes.names, [Routes.profile]);
     });
 
-    testWidgets('the whole community line is the target, not just its name', (
+    testWidgets('the chevron is part of the target, not just the name', (
       tester,
     ) async {
-      // At this size the letters alone are a sliver, and a miss lands on the
-      // post behind them and opens the post instead.
+      // A thumb that lands a little short of the word still gets there,
+      // rather than opening the post behind it.
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      final line = find.byType(PostCommunityLine);
-      final box = tester.getRect(line);
-      await tester.tapAt(Offset(box.right - 8, box.center.dy));
+      final tag = tester.getRect(find.byType(PostCommunityTag));
+      await tester.tapAt(Offset(tag.left + 3, tag.center.dy));
       await tester.pump();
 
       expect(pushes.names, [Routes.community]);
+    });
+
+    testWidgets("says nothing about it on that community's own page", (
+      tester,
+    ) async {
+      // The same word on every post of the page that is that community.
+      await _card(
+        tester,
+        _post(community: _gardeners),
+        source: PostListSource.community('Gardeners'),
+      );
+
+      expect(find.byType(PostCommunityTag), findsNothing);
+      expect(find.text('@ada'), findsOneWidget);
     });
   });
 
@@ -255,8 +295,8 @@ void main() {
       // the place it came from.
       await page(tester);
 
-      expect(find.byType(PostCommunityLine), findsOneWidget);
-      expect(find.byType(StackedPostAvatar), findsOneWidget);
+      expect(find.byType(PostCommunityTag), findsOneWidget);
+      expect(find.byType(Squircle), findsNothing);
     });
 
     testWidgets('opens the community from its name', (tester) async {
@@ -270,10 +310,10 @@ void main() {
   });
 
   group('a post to the wall', () {
-    testWidgets('has no community line and no stack', (tester) async {
+    testWidgets('has no community tag', (tester) async {
       await _card(tester, _post());
 
-      expect(find.byType(StackedPostAvatar), findsNothing);
+      expect(find.byType(PostCommunityTag), findsNothing);
       expect(find.byType(Squircle), findsNothing);
       expect(find.byType(PostAvatar), findsOneWidget);
     });
@@ -354,13 +394,65 @@ void main() {
       posts: 2,
     );
 
-    testWidgets('has no app bar above the banner', (tester) async {
-      // The bar left a strip of surface colour between the status bar and the
-      // picture, and put the community's name on screen twice.
+    testWidgets('has a see-through bar with only its controls in it', (
+      tester,
+    ) async {
+      // A bar with a colour of its own left a strip of surface between the
+      // status bar and the picture, and put the community's name on screen
+      // twice. The profile's bar -- clear, controls only -- does neither.
       await pump(tester, community);
 
-      expect(find.byType(AppBar), findsNothing);
+      final bar = tester.widget<AppBar>(find.byType(AppBar));
+      expect(bar.backgroundColor, Colors.transparent);
+      expect(bar.title, isNull);
       expect(find.text('Gardeners'), findsOneWidget);
+    });
+
+    testWidgets("its top controls are the profile page's, not bigger", (
+      tester,
+    ) async {
+      // They were 44-pixel discs, a size heavier than the profile's for the
+      // same job over the same kind of picture.
+      await pump(tester, community);
+
+      expect(find.byType(GlassIconButton), findsNWidgets(3));
+      final discs = find.descendant(
+        of: find.byType(GlassIconButton),
+        matching: find.byWidgetPredicate(
+          (w) =>
+              w is Container &&
+              w.decoration is BoxDecoration &&
+              (w.decoration as BoxDecoration).shape == BoxShape.circle &&
+              (w.decoration as BoxDecoration).color == const Color(0x59000000),
+        ),
+      );
+      expect(discs, findsNWidgets(3));
+      for (final disc in discs.evaluate()) {
+        expect(tester.getSize(find.byWidget(disc.widget)), const Size(36, 36));
+      }
+      // Still easy to hit.
+      expect(
+        tester.getSize(find.byType(GlassIconButton).first).height,
+        greaterThanOrEqualTo(44),
+      );
+    });
+
+    testWidgets('keeps its chats in a sheet, not between header and posts', (
+      tester,
+    ) async {
+      // A section above the posts pushed every post a screen down, on every
+      // visit, for a list most visits do not open.
+      await pump(tester, community);
+      expect(find.byType(CommunityChatsSection), findsNothing);
+
+      await tester.tap(find.byKey(const ValueKey('community-chats-button')));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const ValueKey('community-chats-sheet')),
+        findsOneWidget,
+      );
+      expect(find.text('Chats'), findsOneWidget);
     });
 
     testWidgets('puts the banner at the very top of the screen', (
@@ -484,12 +576,10 @@ void main() {
     });
 
     testWidgets(
-      'the floating button is centred and clears the home indicator',
+      'the floating button is in the bottom-right corner, clear of the inset',
       (tester) async {
-        // Centred, because this is the same disc the bottom bar carries one
-        // screen back and it should not move between the two. It was in the
-        // bottom-right corner: a different shape, colour and place from the
-        // create button on the page this one is opened from.
+        // In the corner, where a thumb is and a create button is expected.
+        // Centred, it sat over the middle of every post, where the words are.
         //
         // Vertically it still has to clear the gesture inset. A floating button
         // is placed 16 above the *body*, and this body runs to the bottom of
@@ -507,9 +597,9 @@ void main() {
           reason: 'the button is inside the gesture inset',
         );
         expect(
-          fab.center.dx,
-          closeTo(screen.width / 2, 1),
-          reason: 'the button is not centred: $fab on a $screen screen',
+          screen.width - fab.right,
+          closeTo(16, 1),
+          reason: 'the button is not in the corner: $fab on a $screen screen',
         );
       },
     );

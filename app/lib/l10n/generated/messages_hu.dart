@@ -1153,6 +1153,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Csoportok"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("Nincsenek csoportok"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Itt láthatod a csoportokat, amelyeknek tagja vagy, és a közösségi csevegéseket, amelyekhez csatlakozol."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Kedvelt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Mentett"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1272,6 +1277,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Válassz nyelvet"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1289,6 +1296,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("A fiókod frissült"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Elfogadtuk a fellebbezésedet a(z) \$number. ügyben"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Újra megvizsgáltuk a fellebbezésedet a(z) \$number. ügyben, és a döntés érvényben marad"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "A fiókodat véglegesen letiltottuk"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("\$number. ügy · \$rule"),
+      "ui_notif_followed": MessageLookupByLibrary.simpleMessage("követ téged"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("kedvelte a bejegyzésedet"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Régebbiek"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Az üzenetedet eltávolítottuk egy közösségi csevegésből"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Eltávolítottunk valamit, amit közzétettél"),
+      "ui_notif_removed_post": MessageLookupByLibrary.simpleMessage(
+          "A bejegyzésedet eltávolítottuk"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("A válaszodat eltávolítottuk"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("válaszolt a bejegyzésedre"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Intézkedtünk valami miatt, amit jelentettél. Köszönjük, hogy szóltál."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Megvizsgáltunk valamit, amit jelentettél, és nem találtuk, hogy megsértené a szabályainkat."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Jelentés oka: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("megosztotta a bejegyzésedet"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "Visszavontuk a(z) \$number. ügyben hozott döntést"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("A fiókod fel van függesztve"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "A fiókod felfüggesztése eddig tart: \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Összes"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Követők"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Kedvelések"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Válaszok"),
+      "ui_notif_this_week":
+          MessageLookupByLibrary.simpleMessage("Ezen a héten"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Ma"),
+      "ui_notif_warned": MessageLookupByLibrary.simpleMessage(
+          "A fiókod figyelmeztetést kapott"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Tegnap"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1332,6 +1387,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Értesítést kapsz, amikor a csapat döntött, és a Jelentéseid között követheted."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Jelentéseid megtekintése"),
+      "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
+          "Egy üzenet egy közösségi csevegésben"),
+      "ui_reports_a_post":
+          MessageLookupByLibrary.simpleMessage("Egy bejegyzés"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Egy válasz"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Intézkedtünk"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Egy fiók"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Döntés: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Nincs szabálysértés"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni a jelentéseidet"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Amit az elmúlt 90 napban jelentettél, és mi lett vele. Értesítést kapsz, amikor a csapat dönt. Akit jelentesz, sosem tudja meg, ki jelentette."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Nincs jelentés"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Ha jelentesz egy bejegyzést, választ, üzenetet vagy fiókot, itt jelenik meg azzal együtt, hogy mi lett vele."),
+      "ui_reports_pending":
+          MessageLookupByLibrary.simpleMessage("Ellenőrzés alatt"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Jelentve: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Amit jelentettél, és mi lett vele"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jelentéseid"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Gyermekek biztonsága"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Zaklatás vagy megfélemlítés"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Gyűlöletbeszéd"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Illegális áruk vagy szolgáltatások"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Más személy megszemélyesítése"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Szellemi tulajdon"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Hamis információ"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Öngyilkosság vagy önsértés"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Felnőtt tartalom"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Valami más"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Kéretlen tartalom"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Erőszak vagy fenyegetés"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1400,6 +1507,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

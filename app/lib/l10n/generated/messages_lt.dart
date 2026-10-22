@@ -1154,6 +1154,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupės"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Grupių nėra"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Čia rodomos grupės, kuriose esate, ir bendruomenių pokalbiai, prie kurių prisijungiate."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Patikę"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Išsaugoti"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1276,6 +1280,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Pasirinkite kalbą"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1293,6 +1299,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Jūsų paskyra atnaujinta"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "Jūsų apeliacija byloje \$number patenkinta"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Dar kartą peržiūrėjome jūsų apeliaciją byloje \$number, ir sprendimas lieka galioti"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Jūsų paskyra užblokuota visam laikui"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("Byla \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("pradėjo jus sekti"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("pamėgo jūsų įrašą"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Senesni"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "Jūsų žinutė bendruomenės pokalbyje pašalinta"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "Kažkas, ką paskelbėte, pašalinta"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Jūsų įrašas pašalintas"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Jūsų atsakymas pašalintas"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("atsakė į jūsų įrašą"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Ėmėmės veiksmų dėl jūsų skundo. Ačiū, kad pranešėte."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Išnagrinėjome jūsų skundą ir nenustatėme mūsų taisyklių pažeidimo."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Skundo priežastis: \$reason"),
+      "ui_notif_reposted":
+          MessageLookupByLibrary.simpleMessage("pasidalijo jūsų įrašu"),
+      "ui_notif_reversed":
+          MessageLookupByLibrary.simpleMessage("Atšaukėme bylą \$number"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Jūsų paskyra sustabdyta"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Jūsų paskyra sustabdyta iki \$date"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Visi"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sekėjai"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Pamėgimai"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Atsakymai"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Šią savaitę"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Šiandien"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Jūsų paskyra gavo įspėjimą"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Vakar"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1335,6 +1389,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Gausite pranešimą, kai komanda nuspręs, o eigą galite sekti skiltyje „Jūsų skundai“."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Peržiūrėti savo skundus"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("Žinutė bendruomenės pokalbyje"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Įrašas"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Atsakymas"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Imtasi veiksmų"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Paskyra"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Nuspręsta \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Taisyklės nepažeistos"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Nepavyko įkelti jūsų skundų"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Jūsų skundai per pastarąsias 90 dienų ir kuo jie baigėsi. Gausite pranešimą, kai komanda nuspręs. Niekas, dėl kurio skundžiatės, nesužino, kas pateikė skundą."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Skundų nėra"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai pasiskųsite dėl įrašo, atsakymo, žinutės ar paskyros, skundas atsiras čia kartu su rezultatu."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Nagrinėjama"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Pateikta \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Jūsų skundai ir kuo jie baigėsi"),
+      "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jūsų skundai"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Vaikų saugumas"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Priekabiavimas ar patyčios"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Neapykantos kalba"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Neteisėtos prekės ar paslaugos"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Apsimetinėjimas kitu asmeniu"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Intelektinė nuosavybė"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Klaidinga informacija"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("Savižudybė ar savęs žalojimas"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Turinys suaugusiesiems"),
+      "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("Kita"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Šlamštas"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Smurtas ar grasinimai"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1403,6 +1506,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Bandyti dar kartą"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

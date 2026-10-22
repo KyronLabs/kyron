@@ -223,13 +223,6 @@ export interface TrendingTag {
   recent: number;
 }
 
-/** What a push says for each kind of notification. */
-const PUSH_COPY: Record<string, string> = {
-  like: 'Somebody liked your post.',
-  comment: 'Somebody replied to you.',
-  repost: 'Somebody reposted you.',
-};
-
 const DEFAULT_LIMIT = 20;
 
 @Injectable()
@@ -1726,22 +1719,18 @@ export class FeedService {
   private tellAuthor(
     authorId: string,
     actorId: string,
-    kind: string,
+    kind: 'like' | 'comment' | 'repost',
     postId: string,
+    text?: string,
   ): void {
     if (authorId === actorId) return;
-    this.delivery.tell(
+    // The push names who and says which post (ActivityPushService), worked
+    // out after this request has answered. The post goes in its data, so a
+    // tap opens that post.
+    this.delivery.tellActivity(
       authorId,
       { type: 'notification.new', kind, actorId, postId },
-      // Deliberately without a name: resolving the actor would be a query per
-      // like on a post that is going well. The post it is about goes in the
-      // data, so a tap opens that post -- it used to carry only the kind, and
-      // the app could do no better than the notifications page.
-      {
-        title: 'Kyron',
-        body: PUSH_COPY[kind] ?? 'Something happened on one of your posts.',
-        data: { type: 'notification', kind, postId, actorId },
-      },
+      { kind, actorId, postId, text },
     );
   }
 
@@ -1936,14 +1925,14 @@ export class FeedService {
     });
     // The post's author hears about a comment; so does the person being
     // answered, when the reply is under somebody else's comment.
-    this.tellAuthor(post.authorId, authorId, 'comment', postId);
+    this.tellAuthor(post.authorId, authorId, 'comment', postId, content);
     if (threadParentId) {
       const parent = await this.prisma.comment.findUnique({
         where: { id: threadParentId },
         select: { authorId: true },
       });
       if (parent && parent.authorId !== post.authorId) {
-        this.tellAuthor(parent.authorId, authorId, 'comment', postId);
+        this.tellAuthor(parent.authorId, authorId, 'comment', postId, content);
       }
     }
 

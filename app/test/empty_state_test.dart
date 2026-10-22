@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/notification_model.dart';
+import 'package:kyron_app/utils/notification_text.dart';
 import 'package:kyron_app/widgets/empty_artwork.dart';
 import 'package:kyron_app/widgets/empty_state.dart';
 
@@ -226,20 +228,23 @@ void main() {
       });
 
       expect(row.type, NotificationType.comment);
-      expect(row.actor.label, 'Ada');
+      expect(row.actor!.label, 'Ada');
       expect(row.content, 'nice one');
       expect(row.isRead, isFalse);
-      expect(row.actionText, 'replied to your post');
+      expect(
+        notificationAction(AppLocalizations(), row.type),
+        'replied to your post',
+      );
     });
 
     test('falls back through the name to the handle', () {
       expect(
         parse({
           'actor': {'id': 'u1', 'username': 'ada'},
-        }).actor.label,
+        }).actor!.label,
         '@ada',
       );
-      expect(parse({'actor': <String, dynamic>{}}).actor.label, 'Someone');
+      expect(parse({'actor': <String, dynamic>{}}).actor!.label, 'Someone');
     });
 
     test('an unknown kind is a like rather than a crash', () {

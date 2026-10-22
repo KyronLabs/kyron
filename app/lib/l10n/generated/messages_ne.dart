@@ -1153,6 +1153,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("समूहहरू"),
+      "ui_dm_groups_none":
+          MessageLookupByLibrary.simpleMessage("कुनै समूह छैन"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "तपाईं भएका समूहहरू र तपाईंले सामेल हुने समुदाय च्याटहरू यहाँ देखिन्छन्।"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("मन परेका"),
       "ui_drawer_saved":
           MessageLookupByLibrary.simpleMessage("सुरक्षित गरिएका"),
@@ -1275,6 +1280,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("आफ्नो भाषा छान्नुहोस्"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
@@ -1292,6 +1299,54 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Nothing saved yet",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("तपाईंको खाता अद्यावधिक भयो"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "केस \$number मा तपाईंको पुनरावेदन स्वीकार गरियो"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "हामीले केस \$number मा तपाईंको पुनरावेदन फेरि हेर्यौं, र निर्णय कायम छ"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको खातामा स्थायी प्रतिबन्ध लगाइयो"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("केस \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("ले तपाईंलाई फलो गर्नुभयो"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("ले तपाईंको पोस्ट मन पराउनुभयो"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("पुराना"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "समुदाय च्याटमा तपाईंको सन्देश हटाइयो"),
+      "ui_notif_removed_other": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले पोस्ट गरेको केही हटाइयो"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("तपाईंको पोस्ट हटाइयो"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("तपाईंको जवाफ हटाइयो"),
+      "ui_notif_replied": MessageLookupByLibrary.simpleMessage(
+          "ले तपाईंको पोस्टमा जवाफ दिनुभयो"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले रिपोर्ट गरेको कुरामा हामीले कारबाही गर्यौं। हामीलाई बताउनुभएकोमा धन्यवाद।"),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले रिपोर्ट गरेको कुरा हामीले हेर्यौं र त्यसले हाम्रा नियम तोडेको पाएनौं।"),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("रिपोर्टको कारण: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "ले तपाईंको पोस्ट पुनः सेयर गर्नुभयो"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "हामीले केस \$number को निर्णय उल्टायौं"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("तपाईंको खाता निलम्बित छ"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको खाता \$date सम्म निलम्बित छ"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("सबै"),
+      "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("फलो"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("जवाफहरू"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("यो हप्ता"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("आज"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("तपाईंको खातामा चेतावनी छ"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("हिजो"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Finish",
@@ -1334,6 +1389,60 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "टोलीले निर्णय गरेपछि तपाईंले सूचना पाउनुहुनेछ, र तपाईं यसलाई आफ्ना रिपोर्टहरूमा हेर्न सक्नुहुन्छ।"),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("आफ्ना रिपोर्टहरू हेर्नुहोस्"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("समुदाय च्याटको एउटा सन्देश"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("एउटा पोस्ट"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("एउटा जवाफ"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("कारबाही गरियो"),
+      "ui_reports_an_account":
+          MessageLookupByLibrary.simpleMessage("एउटा खाता"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("निर्णय \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("कुनै नियम तोडिएन"),
+      "ui_reports_failed": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका रिपोर्टहरू लोड गर्न सकिएन"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "पछिल्लो 90 दिनमा तपाईंले के रिपोर्ट गर्नुभयो र त्यसको के भयो। टोलीले निर्णय गर्दा तपाईंले सूचना पाउनुहुन्छ। तपाईंले जसको रिपोर्ट गर्नुहुन्छ, उसलाई कहिल्यै भनिँदैन कि कसले रिपोर्ट गर्यो।"),
+      "ui_reports_none":
+          MessageLookupByLibrary.simpleMessage("केही रिपोर्ट गरिएको छैन"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले कुनै पोस्ट, जवाफ, सन्देश वा खाता रिपोर्ट गर्दा, त्यो यहाँ त्यसको नतिजासँगै देखिन्छ।"),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("समीक्षामा"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("रिपोर्ट गरिएको \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले के रिपोर्ट गर्नुभयो र त्यसको के भयो"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("तपाईंका रिपोर्टहरू"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("बाल सुरक्षा"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("उत्पीडन वा दादागिरी"),
+      "ui_rule_hate":
+          MessageLookupByLibrary.simpleMessage("घृणाजन्य अभिव्यक्ति"),
+      "ui_rule_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("अवैध सामान वा सेवाहरू"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("अरूको भेष धारण"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("बौद्धिक सम्पत्ति"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("गलत जानकारी"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("आत्महत्या वा आत्मक्षति"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("वयस्क सामग्री"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("अरू केही"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("स्प्याम"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("हिंसा वा धम्की"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
         "Tap the archive icon on any post to keep it here. Only you can see what you save.",
@@ -1402,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_try_again":
+          MessageLookupByLibrary.simpleMessage("फेरि प्रयास गर्नुहोस्"),
       "ui_turn_sound_off":
           MessageLookupByLibrary.simpleMessage("Turn sound off"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),

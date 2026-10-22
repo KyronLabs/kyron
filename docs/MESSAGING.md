@@ -139,8 +139,11 @@ Be straight about this in the app and anywhere else it is described:
 
 A community can have up to **20 chats**, each with a name (up to 40
 characters, one of each name per community whatever the case) and an optional
-line about what it is for. They are listed on the community's page, above its
-posts.
+line about what it is for. They open in a sheet from the chat button at the
+top of the community's page, beside More, which carries a dot when a chat
+there has something unread. They used to be a section above the posts, which
+pushed the posts down for everybody and the chats out of sight for anybody who
+scrolled.
 
 **They are not end-to-end encrypted**, and every chat says so above its first
 message, as does the screen for opening one. A room anyone in a community can
@@ -264,6 +267,11 @@ by when each was last spoken in, under All and Unread. A chat older than the
 oldest conversation loaded waits until the list reaches back to it, so it
 never sits above conversations that belong first. The Messages count adds
 the joined chats with something unseen (`GET /community-chats/unread`).
+
+**Groups**, beside Hidden at the top of the list, shows the groups somebody
+is in (`GET /messages?filter=groups`, narrowed on the server so a page of
+groups is a full page) and the community chats they joined. Tapping it again
+goes back to what the filter menu says.
 
 **Muting** a chat (from its menu) stops its notifications and leaves it out
 of that count. It stays in the list, with its own unread figure, faded.

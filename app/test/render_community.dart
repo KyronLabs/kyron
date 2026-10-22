@@ -7,10 +7,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community.dart';
+import 'package:kyron_app/models/community_chat.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/providers/communities_provider.dart';
+import 'package:kyron_app/providers/community_chats_provider.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/repositories/communities_repository.dart';
+import 'package:kyron_app/repositories/community_chats_repository.dart';
 import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/screens/community_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
@@ -40,6 +43,15 @@ class _Repo extends CommunitiesRepository {
 
   @override
   Future<void> markRead(String slug) async {}
+}
+
+/// The page asks for its chats (the button beside More). Without this the
+/// tool reached for the real API, and only finished because exit(0) came
+/// before the failure was reported.
+class _Chats extends CommunityChatsRepository {
+  _Chats() : super(ApiClient());
+  @override
+  Future<List<CommunityChat>> list(String slug) async => const [];
 }
 
 class _Feed extends FeedRepository {
@@ -94,6 +106,7 @@ void main() {
           child: ProviderScope(
             overrides: [
               communitiesRepositoryProvider.overrideWithValue(_Repo()),
+              communityChatsRepositoryProvider.overrideWithValue(_Chats()),
               feedRepositoryProvider.overrideWithValue(_Feed()),
             ],
             child: MaterialApp(

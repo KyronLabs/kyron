@@ -1217,6 +1217,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Decentralized ID",
       ),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diaqnostika"),
+      "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Qruplar"),
+      "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Qrup yoxdur"),
+      "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Üzv olduğunuz qruplar və qoşulduğunuz icma söhbətləri burada göstərilir."),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Bəyənilənlər"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saxlanılanlar"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
@@ -1333,6 +1337,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_join": MessageLookupByLibrary.simpleMessage("Qoşul"),
       "ui_joined": MessageLookupByLibrary.simpleMessage("Qoşuldu"),
       "ui_language": MessageLookupByLibrary.simpleMessage("Dil"),
+      "ui_language_detail":
+          MessageLookupByLibrary.simpleMessage("Dilinizi seçin"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Hüquqi"),
       "ui_like": MessageLookupByLibrary.simpleMessage("Bəyən"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
@@ -1354,6 +1360,55 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
         "Hələ heç nə saxlanmayıb",
       ),
+      "ui_notif_account_update":
+          MessageLookupByLibrary.simpleMessage("Hesabınız yeniləndi"),
+      "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
+          "\$number saylı iş üzrə müraciətiniz qəbul olundu"),
+      "ui_notif_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "\$number saylı iş üzrə müraciətinizə yenidən baxdıq və qərar qüvvədə qalır"),
+      "ui_notif_banned": MessageLookupByLibrary.simpleMessage(
+          "Hesabınız birdəfəlik bloklandı"),
+      "ui_notif_case":
+          MessageLookupByLibrary.simpleMessage("İş \$number · \$rule"),
+      "ui_notif_followed":
+          MessageLookupByLibrary.simpleMessage("sizi izləməyə başladı"),
+      "ui_notif_liked":
+          MessageLookupByLibrary.simpleMessage("paylaşımınızı bəyəndi"),
+      "ui_notif_older": MessageLookupByLibrary.simpleMessage("Daha köhnə"),
+      "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
+          "İcma söhbətindəki mesajınız silindi"),
+      "ui_notif_removed_other":
+          MessageLookupByLibrary.simpleMessage("Paylaşdığınız bir şey silindi"),
+      "ui_notif_removed_post":
+          MessageLookupByLibrary.simpleMessage("Paylaşımınız silindi"),
+      "ui_notif_removed_reply":
+          MessageLookupByLibrary.simpleMessage("Cavabınız silindi"),
+      "ui_notif_replied":
+          MessageLookupByLibrary.simpleMessage("paylaşımınıza cavab verdi"),
+      "ui_notif_report_actioned": MessageLookupByLibrary.simpleMessage(
+          "Şikayət etdiyiniz bir şeylə bağlı tədbir gördük. Bizə bildirdiyiniz üçün təşəkkür edirik."),
+      "ui_notif_report_dismissed": MessageLookupByLibrary.simpleMessage(
+          "Şikayət etdiyiniz bir şeyə baxdıq və qaydalarımızı pozduğunu müəyyən etmədik."),
+      "ui_notif_reported_for":
+          MessageLookupByLibrary.simpleMessage("Şikayət səbəbi: \$reason"),
+      "ui_notif_reposted": MessageLookupByLibrary.simpleMessage(
+          "paylaşımınızı yenidən paylaşdı"),
+      "ui_notif_reversed": MessageLookupByLibrary.simpleMessage(
+          "\$number saylı iş üzrə qərarı ləğv etdik"),
+      "ui_notif_suspended":
+          MessageLookupByLibrary.simpleMessage("Hesabınız dayandırılıb"),
+      "ui_notif_suspended_until": MessageLookupByLibrary.simpleMessage(
+          "Hesabınız \$date tarixinədək dayandırılıb"),
+      "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Hamısı"),
+      "ui_notif_tab_follows":
+          MessageLookupByLibrary.simpleMessage("İzləyicilər"),
+      "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Bəyənmələr"),
+      "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Cavablar"),
+      "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Bu həftə"),
+      "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bu gün"),
+      "ui_notif_warned":
+          MessageLookupByLibrary.simpleMessage("Hesabınız xəbərdarlıq aldı"),
+      "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Dünən"),
       "ui_onboard_step3_screen_finish_5c0ad8":
           MessageLookupByLibrary.simpleMessage(
         "Bitir",
@@ -1399,6 +1454,57 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Seçimlər"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Məxfilik"),
+      "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
+          "Komanda qərar verəndə bildiriş alacaqsınız və bunu Şikayətləriniz bölməsində izləyə bilərsiniz."),
+      "ui_report_see_reports":
+          MessageLookupByLibrary.simpleMessage("Şikayətlərinizə baxın"),
+      "ui_reports_a_message":
+          MessageLookupByLibrary.simpleMessage("İcma söhbətində mesaj"),
+      "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Paylaşım"),
+      "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("Cavab"),
+      "ui_reports_actioned":
+          MessageLookupByLibrary.simpleMessage("Tədbir görüldü"),
+      "ui_reports_an_account": MessageLookupByLibrary.simpleMessage("Hesab"),
+      "ui_reports_decided_on":
+          MessageLookupByLibrary.simpleMessage("Qərar tarixi: \$date"),
+      "ui_reports_dismissed":
+          MessageLookupByLibrary.simpleMessage("Qayda pozulmayıb"),
+      "ui_reports_failed":
+          MessageLookupByLibrary.simpleMessage("Şikayətləriniz yüklənmədi"),
+      "ui_reports_intro": MessageLookupByLibrary.simpleMessage(
+          "Son 90 gündə şikayət etdikləriniz və nəticəsi. Komanda qərar verəndə bildiriş alırsınız. Şikayət etdiyiniz şəxs kimin şikayət etdiyini heç vaxt bilmir."),
+      "ui_reports_none": MessageLookupByLibrary.simpleMessage("Şikayət yoxdur"),
+      "ui_reports_none_detail": MessageLookupByLibrary.simpleMessage(
+          "Paylaşım, cavab, mesaj və ya hesab barədə şikayət etdikdə, nəticəsi ilə birlikdə burada göstərilir."),
+      "ui_reports_pending": MessageLookupByLibrary.simpleMessage("Baxılır"),
+      "ui_reports_sent_on":
+          MessageLookupByLibrary.simpleMessage("Şikayət tarixi: \$date"),
+      "ui_reports_settings_help": MessageLookupByLibrary.simpleMessage(
+          "Şikayət etdikləriniz və nəticəsi"),
+      "ui_reports_title":
+          MessageLookupByLibrary.simpleMessage("Şikayətləriniz"),
+      "ui_rule_child_safety":
+          MessageLookupByLibrary.simpleMessage("Uşaqların təhlükəsizliyi"),
+      "ui_rule_harassment":
+          MessageLookupByLibrary.simpleMessage("Təqib və ya zorbalıq"),
+      "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Nifrət nitqi"),
+      "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Qanunsuz mallar və ya xidmətlər"),
+      "ui_rule_impersonation":
+          MessageLookupByLibrary.simpleMessage("Başqasını təqlid etmə"),
+      "ui_rule_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("Əqli mülkiyyət"),
+      "ui_rule_misinformation":
+          MessageLookupByLibrary.simpleMessage("Yalan məlumat"),
+      "ui_rule_self_harm":
+          MessageLookupByLibrary.simpleMessage("İntihar və ya özünə zərər"),
+      "ui_rule_sexual_content":
+          MessageLookupByLibrary.simpleMessage("Böyüklər üçün məzmun"),
+      "ui_rule_something_else":
+          MessageLookupByLibrary.simpleMessage("Başqa bir şey"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_violence":
+          MessageLookupByLibrary.simpleMessage("Zorakılıq və ya təhdid"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Saxlanmış paylaşımlar",
       ),
@@ -1475,6 +1581,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage(
         "Mövzu səssizləşdirildi",
       ),
+      "ui_try_again": MessageLookupByLibrary.simpleMessage("Yenidən cəhd edin"),
       "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Səsi söndür"),
       "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Səsi aç"),
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
