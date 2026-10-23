@@ -8,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'browser_chrome.dart';
 import 'browser_palette.dart';
 import 'browser_tab.dart';
+import '../../widgets/app_sheet.dart';
 
 /// What a reader picked from the page sheet.
 enum PageChoice { copy, share, leave }
@@ -21,9 +22,8 @@ enum PageChoice { copy, share, leave }
 /// connection is private.
 abstract final class PageSheet {
   static Future<PageChoice?> show(BuildContext context, BrowserTab tab) {
-    return showModalBottomSheet<PageChoice>(
+    return showAppSheet<PageChoice>(
       context: context,
-      showDragHandle: true,
       isScrollControlled: true,
       builder: (context) {
         final palette = BrowserPalette.of(context);
@@ -180,9 +180,8 @@ abstract final class TabSheet {
     required List<BrowserTab> tabs,
     required int activeIndex,
   }) {
-    return showModalBottomSheet<TabChoice>(
+    return showAppSheet<TabChoice>(
       context: context,
-      showDragHandle: true,
       isScrollControlled: true,
       builder: (context) {
         final palette = BrowserPalette.of(context);

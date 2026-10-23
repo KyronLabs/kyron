@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Iets anders",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Geweld of bedreigingen",
-  "ui_try_again": "Opnieuw proberen"
+  "ui_try_again": "Opnieuw proberen",
+  "ui_community_posts": "Berichten:"
 }

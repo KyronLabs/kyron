@@ -8,6 +8,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 import '../services/app_preferences.dart';
+import 'app_sheet.dart';
 
 /// What somebody agrees to the first time they sign in.
 ///
@@ -41,9 +42,8 @@ abstract final class TermsGate {
   }
 
   static Future<bool?> _show(BuildContext context) {
-    return showModalBottomSheet<bool>(
+    return showAppSheet<bool>(
       context: context,
-      showDragHandle: true,
       isScrollControlled: true,
       // Not dismissible by tapping away: closing it is a decision, and the
       // button that makes it is right there.

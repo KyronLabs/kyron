@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Басқа нәрсе",
   "ui_rule_spam": "Спам",
   "ui_rule_violence": "Зорлық-зомбылық немесе қорқыту",
-  "ui_try_again": "Қайталау"
+  "ui_try_again": "Қайталау",
+  "ui_community_posts": "Жазбалар:"
 }

@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Другое",
   "ui_rule_spam": "Спам",
   "ui_rule_violence": "Насилие или угрозы",
-  "ui_try_again": "Повторить"
+  "ui_try_again": "Повторить",
+  "ui_community_posts": "Публикации:"
 }

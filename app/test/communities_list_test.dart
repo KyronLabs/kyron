@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/widgets/action_button.dart';
+import 'package:kyron_app/widgets/hairline.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/community.dart';
 import 'package:kyron_app/models/current_user.dart';
@@ -328,11 +329,12 @@ void main() {
       expect(find.byType(FloatingActionButton), findsNothing);
     });
 
-    testWidgets('a card is the card: no Open button, and no footer', (
+    testWidgets('a row is the row: no Open button, no footer, no card', (
       tester,
     ) async {
       // Open did what tapping the card did, and the footer under a rule said
-      // when the last post was in type bigger than the post.
+      // when the last post was in type bigger than the post. Then the cards
+      // themselves went: rows on the page, like every other list in Kyron.
       await _pump(
         tester,
         _communities(),
@@ -360,11 +362,30 @@ void main() {
         tester.getSize(find.byKey(const ValueKey('community-write-id-busy'))),
         const Size.square(ActionButton.compactHeight),
       );
-      // And the whole card is not much taller than its picture.
+      // The full width of the screen, on the page, a hairline between two.
+      final row = find.byKey(const ValueKey('community-id-busy'));
       expect(
-        tester.getSize(find.byKey(const ValueKey('community-id-busy'))).height,
-        lessThan(100),
+        tester.getSize(row).width,
+        tester.getSize(find.byType(Scaffold)).width,
       );
+      expect(
+        find.ancestor(
+          of: row,
+          matching: find.byWidgetPredicate(
+            (w) => w is Material && w.borderRadius != null,
+          ),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: find.byType(ListView),
+          matching: find.byType(Hairline),
+        ),
+        findsOneWidget,
+      );
+      // Two lines of the newest post at most under the name.
+      expect(tester.getSize(row).height, lessThan(140));
     });
 
     testWidgets('names the reader’s role beside the members', (tester) async {

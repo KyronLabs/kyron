@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Başqa bir şey",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Zorakılıq və ya təhdid",
-  "ui_try_again": "Yenidən cəhd edin"
+  "ui_try_again": "Yenidən cəhd edin",
+  "ui_community_posts": "Paylaşımlar:"
 }

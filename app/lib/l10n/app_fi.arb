@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Jokin muu",
   "ui_rule_spam": "Roskaposti",
   "ui_rule_violence": "Väkivalta tai uhkaukset",
-  "ui_try_again": "Yritä uudelleen"
+  "ui_try_again": "Yritä uudelleen",
+  "ui_community_posts": "Julkaisut:"
 }

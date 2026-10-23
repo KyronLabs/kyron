@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import 'action_button.dart';
+import 'app_sheet.dart';
 
 /// Picking a date on three scrolling wheels.
 ///
@@ -26,10 +27,9 @@ class DateWheelSheet {
     DateTime? first,
     DateTime? last,
   }) {
-    return showModalBottomSheet<DateTime>(
+    return showAppSheet<DateTime>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       builder: (_) => _Sheet(
         title: title,
         initial: initial,

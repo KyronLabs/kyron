@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Coś innego",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Przemoc lub groźby",
-  "ui_try_again": "Spróbuj ponownie"
+  "ui_try_again": "Spróbuj ponownie",
+  "ui_community_posts": "Posty:"
 }

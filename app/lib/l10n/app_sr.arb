@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Нешто друго",
   "ui_rule_spam": "Нежељени садржај",
   "ui_rule_violence": "Насиље или претње",
-  "ui_try_again": "Покушај поново"
+  "ui_try_again": "Покушај поново",
+  "ui_community_posts": "Објаве:"
 }

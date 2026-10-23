@@ -7,6 +7,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
 import 'app_logo.dart';
+import 'nav_destinations.dart';
 
 class TopEdge extends StatelessWidget {
   final VoidCallback? onProfileTap;
@@ -92,6 +93,11 @@ class TopEdge extends StatelessWidget {
 ///
 /// A count rather than a bare dot: "3" and "40" are different enough to be
 /// worth telling apart before deciding whether to look.
+///
+/// The count is the Messages tab's own badge. This drew one of its own --
+/// the theme's error colour rather than the tab's red, smaller, and pinned to
+/// the corner of the 32-pixel button rather than to the bell, so it floated
+/// off to the side of the icon it counted for.
 class _NotificationButton extends ConsumerWidget {
   final VoidCallback? onPressed;
 
@@ -104,47 +110,17 @@ class _NotificationButton extends ConsumerWidget {
     // not worth an error state, and a wrong number is worse than none.
     final unread = ref.watch(unreadNotificationsProvider).asData?.value ?? 0;
 
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Iconsax.notification_copy, size: 22),
-          tooltip:
-              unread == 0 ? 'Notifications' : 'Notifications, $unread unread',
-          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
-          padding: EdgeInsets.zero,
-        ),
-        if (unread > 0)
-          Positioned(
-            top: -2,
-            right: -4,
-            // Ignored by the pointer so the badge cannot eat the tap that is
-            // meant for the bell underneath it.
-            child: IgnorePointer(
-              child: Container(
-                constraints: const BoxConstraints(minWidth: 16),
-                height: 16,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                decoration: BoxDecoration(
-                  color: scheme.error,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: scheme.surface, width: 1.5),
-                ),
-                child: Text(
-                  unread > 99 ? '99+' : '$unread',
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize0,
-                    height: 1,
-                    fontWeight: FontWeight.w700,
-                    color: scheme.onError,
-                  ),
-                ),
-              ),
-            ),
-          ),
-      ],
+    return IconButton(
+      key: const ValueKey('home-notifications'),
+      onPressed: onPressed,
+      icon: NavBadge(
+        count: unread,
+        ring: scheme.surface,
+        child: const Icon(Iconsax.notification_copy, size: 22),
+      ),
+      tooltip: unread == 0 ? 'Notifications' : 'Notifications, $unread unread',
+      constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+      padding: EdgeInsets.zero,
     );
   }
 }

@@ -14,12 +14,11 @@ import '../widgets/action_button.dart';
 import '../widgets/community_avatar.dart';
 import '../providers/community_chats_provider.dart';
 import '../widgets/community_chats_section.dart';
-import '../widgets/glass_icon_button.dart';
+import '../widgets/app_sheet.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../widgets/hairline.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/post_list_view.dart';
-import '../widgets/squircle.dart';
 import '../widgets/toast.dart';
 import 'community_composer_screen.dart';
 import 'community_manage_screen.dart';
@@ -41,29 +40,75 @@ class CommunityScreen extends ConsumerWidget {
     final notifier = ref.read(communityProvider(slug).notifier);
     final community = state.community;
 
+    Future<void> toggle() async {
+      final error = await notifier.toggleMembership();
+      if (!context.mounted) return;
+      if (error != null) {
+        Toast.show(context, error);
+      } else {
+        // Both lists on the Communities screen are now out of date about
+        // this one.
+        ref.invalidate(myCommunitiesProvider);
+        ref.invalidate(discoverCommunitiesProvider);
+      }
+    }
+
+    void about() {
+      if (community == null) return;
+      _About.show(context, community, onJoin: toggle);
+    }
+
     return Scaffold(
-      // The banner is the top of this page, under a bar with nothing in it
-      // but the controls, as on a profile: a bar with a colour of its own
-      // left a strip of surface between the status bar and the picture, and
-      // the community's name in two places at once.
-      extendBodyBehindAppBar: true,
+      // One row, pinned, the way a feed's header is: back, the community's
+      // picture and name, how many are in it, its chats, More -- and Join
+      // for somebody who is not in it. It was a banner a third of the
+      // screen tall with an 86-pixel picture hanging off it, then the name,
+      // the description and the counts, so the first post started half way
+      // down the phone. The banner and the whole description are a tap on
+      // the name away.
       appBar: KyronAppBar(
-        backgroundColor: Colors.transparent,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-        leading: const GlassBackButton(),
+        toolbarHeight: _barHeight,
+        titleSpacing: 0,
+        // Narrower than Material's 56, and every button after the name the
+        // same: each pixel they do not take is one more letter of the name.
+        leadingWidth: 48,
+        leading: _BarButton(
+          icon: Iconsax.arrow_left_copy,
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          onPressed: () => Navigator.maybePop(context),
+        ),
+        title: community == null
+            ? null
+            : _Identity(community: community, onTap: about),
         actions: [
           if (community != null) ...[
+            _Members(community: community, onTap: about),
             // The chats, in a sheet. They were a section between the header
             // and the posts, which pushed every post a screen down on every
-            // visit to show a list most visits do not open.
-            _ChatsButton(community: community),
-            GlassIconButton(
+            // visit to show a list most visits do not open. Not offered to
+            // somebody outside: the server would refuse them.
+            if (community.joined) _ChatsButton(community: community),
+            _BarButton(
               icon: Iconsax.more_copy,
               tooltip: AppLocalizations.of(context).literalthisCommunity,
               onPressed: () => _openMenu(context, ref, community, notifier),
             ),
+            // Join, and nothing once you have. "Joined" was a button whose
+            // only action was to leave; leaving is in the menu, behind a
+            // question.
+            if (!community.joined)
+              Padding(
+                padding: const EdgeInsets.only(left: SpacingTokens.space4),
+                child: ActionButton(
+                  key: const ValueKey('community-join'),
+                  compact: true,
+                  label: AppLocalizations.of(context).ui('ui_join', 'Join'),
+                  busy: state.busy,
+                  onPressed: toggle,
+                ),
+              ),
           ],
-          const SizedBox(width: SpacingTokens.space4),
+          const SizedBox(width: SpacingTokens.space8),
         ],
       ),
       // Only for members. A button that answers "join first" is a button that
@@ -130,29 +175,10 @@ class CommunityScreen extends ConsumerWidget {
               // the 16 it floats at, and a little air.
               padding: const EdgeInsets.only(bottom: 96),
               headerSlivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      _Header(
-                        community: community,
-                        busy: state.busy,
-                        onToggle: () async {
-                          final error = await notifier.toggleMembership();
-                          if (!context.mounted) return;
-                          if (error != null) {
-                            Toast.show(context, error);
-                          } else {
-                            // Both tabs of the Communities screen are now out
-                            // of date about this one.
-                            ref.invalidate(myCommunitiesProvider);
-                            ref.invalidate(discoverCommunitiesProvider);
-                          }
-                        },
-                      ),
-                      const Hairline(),
-                    ],
+                if (community.description?.trim().isNotEmpty ?? false)
+                  SliverToBoxAdapter(
+                    child: _Description(community: community, onTap: about),
                   ),
-                ),
               ],
             ),
         ],
@@ -286,221 +312,350 @@ class CommunityScreen extends ConsumerWidget {
   }
 }
 
-class _Header extends StatelessWidget {
+/// The bar's height: a 40-pixel picture with room around it.
+const double _barHeight = 60;
+
+/// The community's picture and name, with its address under it. Tapping it
+/// opens [_About].
+class _Identity extends StatelessWidget {
   final Community community;
-  final bool busy;
-  final VoidCallback onToggle;
+  final VoidCallback onTap;
 
-  const _Header({
-    required this.community,
-    required this.busy,
-    required this.onToggle,
-  });
-
-  /// The picture itself. Large enough to be the thing you look at first,
-  /// which is what a community's identity should be on its own page.
-  static const double _avatar = 80;
-
-  /// The ring of page colour around it.
-  static const double _ring = 3;
-
-  /// The whole tile, ring included, which is what actually straddles the edge.
-  static const double _tile = _avatar + _ring * 2;
-
-  /// Exactly half of it hangs below the banner, so the banner's bottom edge
-  /// runs through the middle of the picture. It was 28 of 86 before -- a
-  /// third -- which reads as a picture that slipped rather than one placed.
-  static const double _overhang = _tile / 2;
+  const _Identity({required this.community, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final description = community.description?.trim();
-    final banner = community.bannerUrl?.trim();
 
-    // Under the status bar: this is the top of the screen now, so the banner
-    // has to fill the inset rather than start below it.
-    final topInset = MediaQuery.paddingOf(context).top;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            _Banner(url: banner, topInset: topInset),
-            // Stacked on the banner, hanging over its bottom edge. Side by
-            // side under it, the two pictures read as two unrelated things.
-            Positioned(
-              left: SpacingTokens.space16,
-              bottom: -_overhang,
-              child: Container(
-                padding: const EdgeInsets.all(_ring),
-                decoration: ShapeDecoration(
-                  color: scheme.surface,
-                  // The ring is the page's own colour in the same shape, so
-                  // the picture reads as lifted off the banner rather than
-                  // punched through it.
-                  shape: SquircleShape.borderFor(_tile),
-                ),
-                child: CommunityAvatar(
-                  avatarUrl: community.avatarUrl,
-                  initial: community.name.trim().isEmpty
-                      ? '#'
-                      : community.name.trim()[0].toUpperCase(),
-                  size: _avatar,
-                ),
-              ),
-            ),
-          ],
-        ),
-        // Clear of the overhang.
-        const SizedBox(height: _overhang + SpacingTokens.space8),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-            SpacingTokens.space16,
-            0,
-            SpacingTokens.space16,
-            SpacingTokens.space16,
+    return Semantics(
+      button: true,
+      label: community.name,
+      excludeSemantics: true,
+      child: InkWell(
+        key: const ValueKey('community-identity'),
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(RadiusTokens.radius12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: SpacingTokens.space4,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          community.name,
-                          style: const TextStyle(
-                            fontSize: TypographyTokens.fontSize6,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          'c/${community.slug}',
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize2,
-                            color: scheme.onSurface.withValues(alpha: 0.55),
-                          ),
-                        ),
-                      ],
+              CommunityAvatar(
+                avatarUrl: community.avatarUrl,
+                initial: _initial(community),
+              ),
+              const SizedBox(width: 10),
+              Flexible(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      community.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize4,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2,
+                        color: scheme.onSurface,
+                      ),
                     ),
-                  ),
-                  // Join, and nothing once you have.
-                  //
-                  // "Joined" was a button, and the only thing it did was leave.
-                  // One stray tap in the header of a community somebody reads
-                  // every day dropped them out of it, with no warning and
-                  // nothing to say it had happened -- and the button then read
-                  // "Join", which looks like it failed rather than like it
-                  // worked. Leaving is in the menu at the top of the banner
-                  // now, behind a question.
-                  if (!community.joined) ...[
-                    const SizedBox(width: SpacingTokens.space12),
-                    SizedBox(
-                      width: 112,
-                      child: ActionButton(
-                        compact: true,
-                        label: 'Join',
-                        icon: Iconsax.add_copy,
-                        busy: busy,
-                        onPressed: onToggle,
+                    Text(
+                      'c/${community.slug}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize2,
+                        height: 1.3,
+                        color: scheme.onSurface.withValues(alpha: 0.55),
                       ),
                     ),
                   ],
-                ],
-              ),
-              if (description != null && description.isNotEmpty) ...[
-                const SizedBox(height: SpacingTokens.space12),
-                Text(
-                  description,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize2,
-                    height: 1.4,
-                    color: scheme.onSurface.withValues(alpha: 0.8),
-                  ),
                 ),
-              ],
-              const SizedBox(height: SpacingTokens.space12),
-              Row(
-                children: [
-                  _Stat(
-                    value: community.members,
-                    noun: 'member',
-                    icon: Iconsax.people_copy,
-                  ),
-                  const SizedBox(width: SpacingTokens.space16),
-                  _Stat(
-                    value: community.posts,
-                    noun: 'post',
-                    icon: Iconsax.message_text_copy,
-                  ),
-                ],
               ),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
 
-/// The banner, filling the top of the screen including the status bar.
-///
-/// A community with no banner still gets the same block of height: without it
-/// the picture has nothing to hang off, and the page jumps by eighty pixels
-/// between one community and the next.
-class _Banner extends StatelessWidget {
-  final String? url;
-  final double topInset;
+String _initial(Community community) {
+  final name = community.name.trim();
+  return name.isEmpty ? '#' : name[0].toUpperCase();
+}
 
-  const _Banner({required this.url, required this.topInset});
+/// How many are in it, as a feed's header shows its likes: an icon and a
+/// number. Opens [_About], which says the rest.
+class _Members extends StatelessWidget {
+  final Community community;
+  final VoidCallback onTap;
 
-  /// Wide and shallow: a banner is a strip behind the name, and a taller one
-  /// pushes the posts off the first screen.
-  static const double _ratio = 3;
+  const _Members({required this.community, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final muted =
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6);
+    final label = AppLocalizations.of(context).ui(
+      'ui_community_members',
+      'Members:',
+    );
+
+    return Tooltip(
+      message: '$label ${community.members}',
+      child: InkWell(
+        key: const ValueKey('community-members'),
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Iconsax.people_copy, size: 18, color: muted),
+              const SizedBox(width: SpacingTokens.space4),
+              Text(
+                formatCount(community.members),
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize2,
+                  fontWeight: FontWeight.w600,
+                  color: muted,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// An icon in the bar, with a dot when something behind it is new.
+class _BarButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+  final bool dot;
+
+  const _BarButton({
+    super.key,
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+    this.dot = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final width = MediaQuery.sizeOf(context).width;
-    final height = width / _ratio + topInset;
 
-    return SizedBox(
-      width: double.infinity,
-      height: height,
-      child: url == null || url!.isEmpty
-          ? DecoratedBox(
-              // The community's own colour rather than a grey block, so a
-              // community with no banner still looks deliberate.
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    scheme.primary.withValues(alpha: 0.35),
-                    scheme.tertiary.withValues(alpha: 0.25),
-                  ],
-                ),
-              ),
-            )
-          : Image.network(
-              url!,
-              fit: BoxFit.cover,
-              // The gradient shows through rather than a broken-image glyph:
-              // a banner that will not load is not worth telling anybody
-              // about, but the space still has to be filled.
-              errorBuilder: (_, __, ___) => DecoratedBox(
+    return IconButton(
+      tooltip: tooltip,
+      onPressed: onPressed,
+      // 40 across rather than 48: four of them in one row with a name.
+      // Still 44 tall, the floor for a thumb.
+      constraints: const BoxConstraints.tightFor(width: 40, height: 44),
+      padding: EdgeInsets.zero,
+      icon: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Icon(icon, size: 22),
+          if (dot)
+            Positioned(
+              right: -2,
+              top: -2,
+              child: Container(
+                key: const ValueKey('bar-dot'),
+                width: 9,
+                height: 9,
                 decoration: BoxDecoration(
-                  color: scheme.primary.withValues(alpha: 0.2),
+                  shape: BoxShape.circle,
+                  color: scheme.primary,
+                  border: Border.all(color: scheme.surface, width: 1.5),
                 ),
               ),
             ),
+        ],
+      ),
+    );
+  }
+}
+
+/// What the community is for, under the bar, three lines at most; the rest
+/// is in [_About].
+class _Description extends StatelessWidget {
+  final Community community;
+  final VoidCallback onTap;
+
+  const _Description({required this.community, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
+    return InkWell(
+      key: const ValueKey('community-description'),
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(
+          SpacingTokens.space16,
+          SpacingTokens.space4,
+          SpacingTokens.space16,
+          SpacingTokens.space12,
+        ),
+        decoration: BoxDecoration(border: Border(bottom: postRule(scheme))),
+        child: Text(
+          community.description!.trim(),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize2,
+            height: 1.4,
+            color: scheme.onSurface.withValues(alpha: 0.8),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Everything about the community the bar has no room for: its banner, the
+/// whole description, how many members and posts -- and Join.
+class _About extends StatelessWidget {
+  final Community community;
+  final Future<void> Function() onJoin;
+
+  const _About({required this.community, required this.onJoin});
+
+  static Future<void> show(
+    BuildContext context,
+    Community community, {
+    required Future<void> Function() onJoin,
+  }) =>
+      showAppSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        builder: (_) => _About(community: community, onJoin: onJoin),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final scheme = Theme.of(context).colorScheme;
+    final banner = community.bannerUrl?.trim();
+    final description = community.description?.trim();
+
+    return SafeArea(
+      top: false,
+      child: SingleChildScrollView(
+        key: const ValueKey('community-about'),
+        padding: const EdgeInsets.fromLTRB(
+          SpacingTokens.space16,
+          SpacingTokens.space4,
+          SpacingTokens.space16,
+          SpacingTokens.space16,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (banner != null && banner.isNotEmpty) ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(RadiusTokens.radius16),
+                child: AspectRatio(
+                  aspectRatio: 3,
+                  child: Image.network(
+                    banner,
+                    fit: BoxFit.cover,
+                    // A banner that will not load is not worth telling
+                    // anybody about; the space is still filled.
+                    errorBuilder: (_, __, ___) => ColoredBox(
+                      color: scheme.primary.withValues(alpha: 0.2),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: SpacingTokens.space16),
+            ],
+            Row(
+              children: [
+                CommunityAvatar(
+                  avatarUrl: community.avatarUrl,
+                  initial: _initial(community),
+                  size: 56,
+                ),
+                const SizedBox(width: SpacingTokens.space12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        community.name,
+                        style: const TextStyle(
+                          fontSize: TypographyTokens.fontSize5,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'c/${community.slug}',
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize2,
+                          color: scheme.onSurface.withValues(alpha: 0.55),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            if (description != null && description.isNotEmpty) ...[
+              const SizedBox(height: SpacingTokens.space12),
+              Text(
+                description,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize3,
+                  height: 1.4,
+                  color: scheme.onSurface.withValues(alpha: 0.85),
+                ),
+              ),
+            ],
+            const SizedBox(height: SpacingTokens.space12),
+            Row(
+              children: [
+                _Stat(
+                  label: l10n.ui('ui_community_members', 'Members:'),
+                  value: community.members,
+                  icon: Iconsax.people_copy,
+                ),
+                const SizedBox(width: SpacingTokens.space16),
+                _Stat(
+                  label: l10n.ui('ui_community_posts', 'Posts:'),
+                  value: community.posts,
+                  icon: Iconsax.message_text_copy,
+                ),
+              ],
+            ),
+            if (!community.joined) ...[
+              const SizedBox(height: SpacingTokens.space16),
+              ActionButton(
+                key: const ValueKey('community-about-join'),
+                expand: true,
+                label: l10n.ui('ui_join', 'Join'),
+                onPressed: () {
+                  Navigator.pop(context);
+                  onJoin();
+                },
+              ),
+            ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -518,7 +673,7 @@ class _ChatsButton extends ConsumerWidget {
     final fresh = community.joined &&
         (ref.watch(communityChatsProvider(community.slug)).value ?? const [])
             .any((chat) => chat.joined && !chat.muted && chat.unread > 0);
-    return GlassIconButton(
+    return _BarButton(
       key: const ValueKey('community-chats-button'),
       icon: Iconsax.messages_2_copy,
       tooltip: AppLocalizations.of(context).ui('ui_cchat_heading', 'Chats'),
@@ -529,11 +684,11 @@ class _ChatsButton extends ConsumerWidget {
 }
 
 class _Stat extends StatelessWidget {
+  final String label;
   final int value;
-  final String noun;
   final IconData icon;
 
-  const _Stat({required this.value, required this.noun, required this.icon});
+  const _Stat({required this.label, required this.value, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -545,8 +700,11 @@ class _Stat extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: muted),
         const SizedBox(width: SpacingTokens.space4),
+        // "Members: 12", the way the Communities list says it, rather than
+        // "12 members", which needs a plural every language forms
+        // differently.
         Text(
-          '${formatCount(value)} $noun${value == 1 ? '' : 's'}',
+          '$label ${formatCount(value)}',
           style: TextStyle(fontSize: TypographyTokens.fontSize2, color: muted),
         ),
       ],

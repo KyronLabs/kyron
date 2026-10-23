@@ -8,6 +8,8 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/language.dart';
 
 import 'hairline.dart';
+import 'app_sheet.dart';
+import 'app_sheet.dart';
 
 /// Picking a language, or several.
 ///
@@ -56,9 +58,8 @@ class LanguageSheet {
     required Set<String> selected,
     required bool multiple,
   }) {
-    return showModalBottomSheet<List<Language>>(
+    return showAppSheet<List<Language>>(
       context: context,
-      showDragHandle: true,
       isScrollControlled: true,
       builder: (context) => _LanguageSheetBody(
         title: title,

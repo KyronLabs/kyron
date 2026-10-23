@@ -11,6 +11,28 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **A community's page opens on one row**, like a feed's header: back, the
+  community's picture and name, how many are in it, its chats, More, and
+  Join if you are not in it. What it is for sits under it. The banner, the
+  whole description and the counts are a tap on the name away. The first
+  post is no longer half way down the screen.
+- **Communities is a list of rows** on the page, like a list of people to
+  follow: picture, name, members, the button on the right, and the
+  description or newest post underneath.
+- **Community posts in your feeds** show the author in front of the
+  community's picture again, with the community's name above. On the
+  community's own page they look like any other post.
+- **The bell on the home screen** counts with the same red badge as
+  Messages, sitting on the bell.
+- **Every sheet's handle** has less space above and below it.
+
+### Fixed
+
+- **YouTube links in posts get a preview** — title, channel and thumbnail —
+  and so do TikTok videos. Links that failed before are tried again within
+  15 minutes.
 
 ## [0.1.12] - 2026-10-22
 ### Added

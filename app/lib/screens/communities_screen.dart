@@ -16,8 +16,9 @@ import '../providers/preferences_provider.dart';
 import '../routes.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/bottom_nav_v4.dart';
-import '../widgets/community_cards.dart';
+import '../widgets/community_rows.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/hairline.dart';
 import '../widgets/list_controls.dart';
 import 'community_composer_screen.dart';
 import '../widgets/simple_app_bar.dart';
@@ -183,24 +184,22 @@ class _CommunitiesScreenState extends ConsumerState<CommunitiesScreen> {
           ],
         ),
         const SizedBox(height: SpacingTokens.space8),
+        const Hairline(),
         Expanded(
-          child: ColoredBox(
-            color: communityPageColor(context),
-            child: NotificationListener<UserScrollNotification>(
-              onNotification: _onScroll,
-              // The bar above is a sibling inside its own SafeArea, so the
-              // status bar inset is still on the MediaQuery down here.
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: _discovering
-                    ? _DiscoverList(query: _search.text.trim())
-                    : _MyList(
-                        key: ValueKey(_filter),
-                        filter: _filter,
-                        query: _search.text.trim(),
-                      ),
-              ),
+          child: NotificationListener<UserScrollNotification>(
+            onNotification: _onScroll,
+            // The bar above is a sibling inside its own SafeArea, so the
+            // status bar inset is still on the MediaQuery down here.
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: _discovering
+                  ? _DiscoverList(query: _search.text.trim())
+                  : _MyList(
+                      key: ValueKey(_filter),
+                      filter: _filter,
+                      query: _search.text.trim(),
+                    ),
             ),
           ),
         ),
@@ -286,7 +285,7 @@ class _MyListState extends ConsumerState<_MyList> {
     final me = ref.watch(currentUserProvider).asData?.value.id;
     final counts = ref.watch(preferencesProvider).communityCounts;
 
-    if (state.loadingFirstPage) return const CommunityCardsSkeleton();
+    if (state.loadingFirstPage) return const CommunityRowsSkeleton();
 
     final shown = state.items.where(_matches).toList();
 
@@ -338,15 +337,9 @@ class _MyListState extends ConsumerState<_MyList> {
           : ListView.separated(
               controller: _scroll,
               physics: const AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.fromLTRB(
-                SpacingTokens.space16,
-                SpacingTokens.space12,
-                SpacingTokens.space16,
-                _listFootroom(context),
-              ),
+              padding: EdgeInsets.only(bottom: _listFootroom(context)),
               itemCount: shown.length + (state.loadingMore ? 1 : 0),
-              separatorBuilder: (_, __) =>
-                  const SizedBox(height: SpacingTokens.space8),
+              separatorBuilder: (_, __) => const Hairline(),
               itemBuilder: (context, index) {
                 if (index >= shown.length) {
                   return const Padding(
@@ -355,7 +348,7 @@ class _MyListState extends ConsumerState<_MyList> {
                   );
                 }
                 final community = shown[index];
-                return CommunityCard(
+                return CommunityRow(
                   community: community,
                   mine: me != null && community.lastPost?.authorId == me,
                   showCount: counts,
@@ -464,18 +457,12 @@ class _DiscoverListState extends ConsumerState<_DiscoverList> {
               .scrollable
           : ListView.separated(
               physics: const AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.fromLTRB(
-                SpacingTokens.space16,
-                SpacingTokens.space12,
-                SpacingTokens.space16,
-                _listFootroom(context),
-              ),
+              padding: EdgeInsets.only(bottom: _listFootroom(context)),
               itemCount: state.items.length,
-              separatorBuilder: (_, __) =>
-                  const SizedBox(height: SpacingTokens.space8),
+              separatorBuilder: (_, __) => const Hairline(),
               itemBuilder: (context, index) {
                 final community = state.items[index];
-                return DiscoverCommunityCard(
+                return DiscoverCommunityRow(
                   key: ValueKey('discover-${community.id}'),
                   community: community,
                   onOpen: () => Navigator.pushNamed(

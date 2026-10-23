@@ -1227,6 +1227,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities": MessageLookupByLibrary.simpleMessage("Comunitats"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Per a què serveix? (opcional)"),
+      "ui_community_posts":
+          MessageLookupByLibrary.simpleMessage("Publicacions:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "Contingut i visualització",
       ),

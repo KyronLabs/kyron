@@ -4,6 +4,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
 import '../l10n/app_localizations.dart';
+import 'app_sheet.dart';
 
 /// Who can reply to the post being written.
 ///
@@ -14,9 +15,8 @@ class InteractionSettingsSheet {
   const InteractionSettingsSheet._();
 
   static Future<ReplyPolicy?> show(BuildContext context, ReplyPolicy current) {
-    return showModalBottomSheet<ReplyPolicy>(
+    return showAppSheet<ReplyPolicy>(
       context: context,
-      showDragHandle: true,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,

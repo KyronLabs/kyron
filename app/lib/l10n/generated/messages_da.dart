@@ -1158,6 +1158,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities": MessageLookupByLibrary.simpleMessage("Fællesskaber"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Hvad er det til? (valgfrit)"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("Opslag:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "Indhold & visning",
       ),

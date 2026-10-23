@@ -3,6 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
+import 'app_sheet.dart';
 
 /// What to do with a post that is being abandoned.
 enum DraftChoice { save, discard, keepEditing }
@@ -15,9 +16,8 @@ class DraftSheet {
   const DraftSheet._();
 
   static Future<DraftChoice> show(BuildContext context) async {
-    final choice = await showModalBottomSheet<DraftChoice>(
+    final choice = await showAppSheet<DraftChoice>(
       context: context,
-      showDragHandle: true,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,

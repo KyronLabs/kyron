@@ -4,6 +4,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'hairline.dart';
+import 'app_sheet.dart';
 
 /// One line in an [ActionSheet].
 class SheetAction<T> {
@@ -51,9 +52,8 @@ class ActionSheet {
     String? title,
     Widget Function(BuildContext sheet)? header,
   }) {
-    return showModalBottomSheet<T>(
+    return showAppSheet<T>(
       context: context,
-      showDragHandle: true,
       // Tall menus scroll rather than being cut off at the top.
       isScrollControlled: true,
       builder: (context) {

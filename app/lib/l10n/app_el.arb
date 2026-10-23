@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Κάτι άλλο",
   "ui_rule_spam": "Ανεπιθύμητο περιεχόμενο",
   "ui_rule_violence": "Βία ή απειλές",
-  "ui_try_again": "Δοκιμάστε ξανά"
+  "ui_try_again": "Δοκιμάστε ξανά",
+  "ui_community_posts": "Αναρτήσεις:"
 }

@@ -951,5 +951,6 @@
   "ui_rule_something_else": "অন্য কিছু",
   "ui_rule_spam": "স্প্যাম",
   "ui_rule_violence": "সহিংসতা বা হুমকি",
-  "ui_try_again": "আবার চেষ্টা করুন"
+  "ui_try_again": "আবার চেষ্টা করুন",
+  "ui_community_posts": "পোস্ট:"
 }

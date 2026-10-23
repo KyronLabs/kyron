@@ -223,6 +223,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("取消置顶"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("录制语音消息"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("你"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("帖子："),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("群组"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("没有群组"),
       "ui_dm_groups_none_detail":

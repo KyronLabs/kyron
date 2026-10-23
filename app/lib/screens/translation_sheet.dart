@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../services/app_browser.dart';
 
 import '../l10n/app_localizations.dart';
+import '../widgets/app_sheet.dart';
 
 /// Translating a post.
 ///
@@ -18,10 +19,9 @@ class TranslationSheet {
   const TranslationSheet._();
 
   static Future<void> show(BuildContext context, String content) {
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       builder: (_) => _Sheet(content: content),
     );
   }

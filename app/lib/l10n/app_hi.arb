@@ -951,5 +951,6 @@
   "ui_rule_something_else": "कुछ और",
   "ui_rule_spam": "स्पैम",
   "ui_rule_violence": "हिंसा या धमकियाँ",
-  "ui_try_again": "फिर से कोशिश करें"
+  "ui_try_again": "फिर से कोशिश करें",
+  "ui_community_posts": "पोस्ट:"
 }

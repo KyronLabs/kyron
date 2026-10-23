@@ -951,5 +951,6 @@
   "ui_rule_something_else": "სხვა რამ",
   "ui_rule_spam": "სპამი",
   "ui_rule_violence": "ძალადობა ან მუქარა",
-  "ui_try_again": "ხელახლა ცდა"
+  "ui_try_again": "ხელახლა ცდა",
+  "ui_community_posts": "პოსტები:"
 }

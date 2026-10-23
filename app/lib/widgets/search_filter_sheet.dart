@@ -9,6 +9,7 @@ import '../providers/search_provider.dart';
 
 import 'action_button.dart';
 import 'date_wheel_sheet.dart';
+import 'app_sheet.dart';
 
 /// A date the way it reads on a chip: `4 Mar 2026`.
 String formatFilterDate(DateTime value) =>
@@ -44,10 +45,9 @@ class SearchFilterSheet {
     required SearchFilters filters,
     required ValueChanged<SearchFilters> onApply,
   }) {
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       builder: (_) => _Sheet(initial: filters, onApply: onApply),
     );
   }

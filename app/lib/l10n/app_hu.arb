@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Valami más",
   "ui_rule_spam": "Kéretlen tartalom",
   "ui_rule_violence": "Erőszak vagy fenyegetés",
-  "ui_try_again": "Próbáld újra"
+  "ui_try_again": "Próbáld újra",
+  "ui_community_posts": "Bejegyzések:"
 }

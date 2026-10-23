@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Lý do khác",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Bạo lực hoặc đe dọa",
-  "ui_try_again": "Thử lại"
+  "ui_try_again": "Thử lại",
+  "ui_community_posts": "Bài viết:"
 }

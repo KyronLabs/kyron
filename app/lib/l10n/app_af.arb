@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Iets anders",
   "ui_rule_spam": "Gemorspos",
   "ui_rule_violence": "Geweld of dreigemente",
-  "ui_try_again": "Probeer weer"
+  "ui_try_again": "Probeer weer",
+  "ui_community_posts": "Plasings:"
 }
