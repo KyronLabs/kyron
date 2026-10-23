@@ -11,7 +11,11 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 /// their own gaps: 10, 12, 16, 20. This is one bar, with eight above and
 /// eight under.
 class SheetHandle extends StatelessWidget {
-  const SheetHandle({super.key});
+  /// Whether a screen reader's tap on it closes the sheet. Not for a sheet
+  /// that must be closed with its own buttons -- a recording under way.
+  final bool dismissible;
+
+  const SheetHandle({super.key, this.dismissible = true});
 
   static const double width = 36;
   static const double thickness = 4;
@@ -30,12 +34,15 @@ class SheetHandle extends StatelessWidget {
         scheme.onSurfaceVariant.withValues(alpha: 0.4);
 
     // What Material's says to a screen reader, and what tapping it does there:
-    // close the sheet.
+    // close the sheet -- unless the sheet is one that cannot be dismissed,
+    // which Material's would close all the same.
     return Semantics(
       key: const ValueKey('sheet-handle'),
       container: true,
-      label: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-      onTap: () => Navigator.maybePop(context),
+      label: dismissible
+          ? MaterialLocalizations.of(context).modalBarrierDismissLabel
+          : null,
+      onTap: dismissible ? () => Navigator.maybePop(context) : null,
       child: SizedBox(
         height: height,
         child: Center(
@@ -81,7 +88,7 @@ Future<T?> showAppSheet<T>({
           padding: const EdgeInsets.only(top: SheetHandle.height),
           child: builder(context),
         ),
-        const SheetHandle(),
+        SheetHandle(dismissible: isDismissible),
       ],
     ),
   );

@@ -67,6 +67,36 @@ void main() {
     expect(find.byType(BottomSheet), findsNothing);
   });
 
+  testWidgets('a sheet that cannot be dismissed is not closed from it', (
+    tester,
+  ) async {
+    // The voice recorder: closing it mid-recording loses the recording.
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (context) => Scaffold(
+            body: TextButton(
+              onPressed: () => showAppSheet<void>(
+                context: context,
+                isDismissible: false,
+                enableDrag: false,
+                builder: (_) => const SizedBox(height: 120),
+              ),
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+
+    final handle = tester.widget<Semantics>(
+      find.byKey(const ValueKey('sheet-handle')),
+    );
+    expect(handle.properties.onTap, isNull);
+  });
+
   test("nothing in the app asks for Material's handle", () {
     final offenders = [
       for (final file in Directory('lib').listSync(recursive: true))
