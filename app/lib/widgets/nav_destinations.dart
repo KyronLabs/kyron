@@ -88,7 +88,17 @@ class NavBadge extends StatelessWidget {
   final int count;
   final Widget child;
 
-  const NavBadge({super.key, required this.count, required this.child});
+  /// The colour behind the icon, for the ring. The bar's and the rail's own
+  /// surface unless said otherwise -- the home screen's bell sits on the
+  /// page's.
+  final Color? ring;
+
+  const NavBadge({
+    super.key,
+    required this.count,
+    required this.child,
+    this.ring,
+  });
 
   static const red = Color(0xFFFF3B30);
 
@@ -96,8 +106,8 @@ class NavBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     if (count <= 0) return child;
     final dark = Theme.of(context).brightness == Brightness.dark;
-    // The bar's and the rail's own surface.
-    final ring = dark ? KyronTheme.darkSurface : KyronTheme.lightSurface;
+    final ring =
+        this.ring ?? (dark ? KyronTheme.darkSurface : KyronTheme.lightSurface);
     final text = count > 9 ? '9+' : '$count';
 
     return Stack(
