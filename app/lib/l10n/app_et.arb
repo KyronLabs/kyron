@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Midagi muud",
   "ui_rule_spam": "Rämpspost",
   "ui_rule_violence": "Vägivald või ähvardused",
-  "ui_try_again": "Proovi uuesti"
+  "ui_try_again": "Proovi uuesti",
+  "ui_community_posts": "Postitused:"
 }

@@ -951,5 +951,6 @@
   "ui_rule_something_else": "その他",
   "ui_rule_spam": "スパム",
   "ui_rule_violence": "暴力や脅迫",
-  "ui_try_again": "もう一度試す"
+  "ui_try_again": "もう一度試す",
+  "ui_community_posts": "投稿:"
 }

@@ -1192,6 +1192,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities": MessageLookupByLibrary.simpleMessage("Komunity"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("K čemu to je? (volitelné)"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("Příspěvky:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "Obsah a zobrazení",
       ),

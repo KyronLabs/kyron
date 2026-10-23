@@ -951,5 +951,6 @@
   "ui_rule_something_else": "வேறு ஏதோ",
   "ui_rule_spam": "ஸ்பேம்",
   "ui_rule_violence": "வன்முறை அல்லது அச்சுறுத்தல்",
-  "ui_try_again": "மீண்டும் முயலவும்"
+  "ui_try_again": "மீண்டும் முயலவும்",
+  "ui_community_posts": "இடுகைகள்:"
 }

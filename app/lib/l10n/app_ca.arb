@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Una altra cosa",
   "ui_rule_spam": "Correu brossa",
   "ui_rule_violence": "Violència o amenaces",
-  "ui_try_again": "Torna-ho a provar"
+  "ui_try_again": "Torna-ho a provar",
+  "ui_community_posts": "Publicacions:"
 }

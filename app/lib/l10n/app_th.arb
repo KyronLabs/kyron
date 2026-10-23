@@ -951,5 +951,6 @@
   "ui_rule_something_else": "อย่างอื่น",
   "ui_rule_spam": "สแปม",
   "ui_rule_violence": "ความรุนแรงหรือการข่มขู่",
-  "ui_try_again": "ลองอีกครั้ง"
+  "ui_try_again": "ลองอีกครั้ง",
+  "ui_community_posts": "โพสต์:"
 }

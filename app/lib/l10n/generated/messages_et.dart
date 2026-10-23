@@ -1172,6 +1172,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities": MessageLookupByLibrary.simpleMessage("Kogukonnad"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Milleks see on? (valikuline)"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("Postitused:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "Sisu ja kuvamine",
       ),

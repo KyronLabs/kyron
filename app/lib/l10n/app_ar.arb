@@ -951,5 +951,6 @@
   "ui_rule_something_else": "شيء آخر",
   "ui_rule_spam": "رسائل مزعجة",
   "ui_rule_violence": "العنف أو التهديدات",
-  "ui_try_again": "إعادة المحاولة"
+  "ui_try_again": "إعادة المحاولة",
+  "ui_community_posts": "المنشورات:"
 }

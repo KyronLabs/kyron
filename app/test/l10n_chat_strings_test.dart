@@ -378,6 +378,7 @@ const _keys = [
   'ui_rule_spam',
   'ui_rule_violence',
   'ui_try_again',
+  'ui_community_posts',
 ];
 
 void main() {

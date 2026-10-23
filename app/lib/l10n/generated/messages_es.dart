@@ -343,6 +343,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Grabar una nota de voz"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tú"),
+      "ui_community_posts":
+          MessageLookupByLibrary.simpleMessage("Publicaciones:"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupos"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("No hay grupos"),

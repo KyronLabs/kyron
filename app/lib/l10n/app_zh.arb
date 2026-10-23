@@ -951,5 +951,6 @@
   "ui_rule_something_else": "其他",
   "ui_rule_spam": "垃圾信息",
   "ui_rule_violence": "暴力或威胁",
-  "ui_try_again": "重试"
+  "ui_try_again": "重试",
+  "ui_community_posts": "帖子："
 }

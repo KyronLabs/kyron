@@ -951,5 +951,6 @@
   "ui_rule_something_else": "기타",
   "ui_rule_spam": "스팸",
   "ui_rule_violence": "폭력 또는 위협",
-  "ui_try_again": "다시 시도"
+  "ui_try_again": "다시 시도",
+  "ui_community_posts": "게시물:"
 }

@@ -951,5 +951,6 @@
   "ui_rule_something_else": "چیز دیگری",
   "ui_rule_spam": "هرزنامه",
   "ui_rule_violence": "خشونت یا تهدید",
-  "ui_try_again": "تلاش دوباره"
+  "ui_try_again": "تلاش دوباره",
+  "ui_community_posts": "پست‌ها:"
 }

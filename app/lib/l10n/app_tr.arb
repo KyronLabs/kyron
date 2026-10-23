@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Başka bir şey",
   "ui_rule_spam": "İstenmeyen içerik",
   "ui_rule_violence": "Şiddet veya tehdit",
-  "ui_try_again": "Tekrar dene"
+  "ui_try_again": "Tekrar dene",
+  "ui_community_posts": "Gönderiler:"
 }

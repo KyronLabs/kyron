@@ -1268,6 +1268,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage(
               "Για τι προορίζεται; (προαιρετικό)"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("Αναρτήσεις:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "Περιεχόμενο & Εμφάνιση",
       ),

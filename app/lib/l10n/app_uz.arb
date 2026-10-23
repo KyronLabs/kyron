@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Boshqa narsa",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Zo‘ravonlik yoki tahdidlar",
-  "ui_try_again": "Qayta urinish"
+  "ui_try_again": "Qayta urinish",
+  "ui_community_posts": "Postlar:"
 }

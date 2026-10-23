@@ -252,6 +252,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("固定を解除"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ボイスメッセージを録音"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("あなた"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("投稿:"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("グループ"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("グループはありません"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(

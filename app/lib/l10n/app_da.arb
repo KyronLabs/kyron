@@ -951,5 +951,6 @@
   "ui_rule_something_else": "Noget andet",
   "ui_rule_spam": "Spam",
   "ui_rule_violence": "Vold eller trusler",
-  "ui_try_again": "Prøv igen"
+  "ui_try_again": "Prøv igen",
+  "ui_community_posts": "Opslag:"
 }

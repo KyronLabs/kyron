@@ -1031,6 +1031,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_communities": MessageLookupByLibrary.simpleMessage("ማህበረሰቦች"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("ይህ ስለምንድን ነው? (አማራጭ)"),
+      "ui_community_posts": MessageLookupByLibrary.simpleMessage("ልጥፎች፦"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage("ይዘት እና ማሳያ"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
         "የእርስዎን ፊድ ማስገባት አልቻለም",
