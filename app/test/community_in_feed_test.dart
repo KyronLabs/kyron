@@ -162,30 +162,61 @@ void main() {
       expect(find.text('Gardeners'), findsOneWidget);
     });
 
-    testWidgets("shows the author's own picture, not the community's", (
+    testWidgets("stacks the author in front of the community's picture", (
       tester,
     ) async {
-      // A community post stacked a small author on the community's picture:
-      // bigger than any other post's, and the place's face where the
-      // person's belongs.
+      // In a feed a post from a place reads as from that place at a glance.
+      // It was the author alone for a day, and missed.
       await _card(tester, _post(community: _gardeners));
 
-      expect(find.byType(PostAvatar), findsOneWidget);
-      expect(find.byType(Squircle), findsNothing);
+      final stack = find.byType(StackedPostAvatar);
+      expect(stack, findsOneWidget);
+      expect(
+        find.descendant(of: stack, matching: find.byType(Squircle)),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(of: stack, matching: find.byType(PostAvatar)),
+        findsOneWidget,
+      );
+      // The author is in front, at the lower right.
+      final community = tester.getRect(
+        find.byKey(const ValueKey('stacked-avatar-community')),
+      );
+      final author = tester.getRect(
+        find.byKey(const ValueKey('stacked-avatar-author')),
+      );
+      expect(author.right, greaterThan(community.right));
+      expect(author.bottom, greaterThan(community.bottom));
     });
 
-    testWidgets('names the community beside the author, not on a line above', (
+    testWidgets('names the community on a line above the author', (
       tester,
     ) async {
-      // It had a line of its own above the name, for one word.
       await _card(tester, _post(community: _gardeners));
 
       final name = tester.getRect(find.text('Ada'));
-      final tag = tester.getRect(find.byType(PostCommunityTag));
-      expect(tag.center.dy, closeTo(name.center.dy, 2));
-      expect(tag.left, greaterThan(name.right));
-      // In the handle's place.
-      expect(find.text('@ada'), findsNothing);
+      final line = tester.getRect(find.byType(PostCommunityLine));
+      expect(line.bottom, lessThanOrEqualTo(name.top + 1));
+      // So the handle keeps its place beside the name.
+      expect(find.text('@ada'), findsOneWidget);
+      expect(find.byType(PostCommunityTag), findsNothing);
+    });
+
+    testWidgets('opens the community from its picture', (tester) async {
+      final pushes = _Pushes();
+      await _card(tester, _post(community: _gardeners), pushes: pushes);
+
+      // The part of it the author is not in front of.
+      await tester.tapAt(
+        tester.getTopLeft(
+              find.byKey(const ValueKey('stacked-avatar-community')),
+            ) +
+            const Offset(4, 4),
+      );
+      await tester.pump();
+
+      expect(pushes.names, [Routes.community]);
     });
 
     testWidgets("shows the author's whole name when there is room", (
@@ -233,13 +264,13 @@ void main() {
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      await tester.tap(find.byType(PostAvatar));
+      await tester.tap(find.byKey(const ValueKey('stacked-avatar-author')));
       await tester.pump();
 
       expect(pushes.names, [Routes.profile]);
     });
 
-    testWidgets('the chevron is part of the target, not just the name', (
+    testWidgets('the whole line is the target, not just the name', (
       tester,
     ) async {
       // A thumb that lands a little short of the word still gets there,
@@ -247,8 +278,8 @@ void main() {
       final pushes = _Pushes();
       await _card(tester, _post(community: _gardeners), pushes: pushes);
 
-      final tag = tester.getRect(find.byType(PostCommunityTag));
-      await tester.tapAt(Offset(tag.left + 3, tag.center.dy));
+      final line = tester.getRect(find.byType(PostCommunityLine));
+      await tester.tapAt(Offset(line.left + 3, line.center.dy));
       await tester.pump();
 
       expect(pushes.names, [Routes.community]);
@@ -264,7 +295,11 @@ void main() {
         source: PostListSource.community('Gardeners'),
       );
 
+      // Drawn as any other post: the author's own picture, no line above.
+      expect(find.byType(StackedPostAvatar), findsNothing);
+      expect(find.byType(PostCommunityLine), findsNothing);
       expect(find.byType(PostCommunityTag), findsNothing);
+      expect(find.byType(PostAvatar), findsOneWidget);
       expect(find.text('@ada'), findsOneWidget);
     });
   });
@@ -314,6 +349,7 @@ void main() {
       await _card(tester, _post());
 
       expect(find.byType(PostCommunityTag), findsNothing);
+      expect(find.byType(PostCommunityLine), findsNothing);
       expect(find.byType(Squircle), findsNothing);
       expect(find.byType(PostAvatar), findsOneWidget);
     });
