@@ -30,9 +30,9 @@ section for that version, so what is written here is what people read.
 
 ### Fixed
 
-- **YouTube links get a preview** — title, channel and thumbnail — in posts,
-  messages and the composer. So do TikTok videos. Links that failed before
-  are tried again within 15 minutes.
+- **YouTube links in posts get a preview** — title, channel and thumbnail —
+  and so do TikTok videos. Links that failed before are tried again within
+  15 minutes.
 
 ## [0.1.12] - 2026-10-22
 ### Added
