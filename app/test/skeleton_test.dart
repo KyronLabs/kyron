@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kyron_app/widgets/community_cards.dart';
+import 'package:kyron_app/widgets/community_rows.dart';
 import 'package:kyron_app/widgets/skeleton.dart';
 
 Future<void> show(WidgetTester tester, Widget child) => tester.pumpWidget(
@@ -28,7 +28,7 @@ void main() {
       // Its own shape since the list became cards: rows of square badges
       // would rearrange themselves into cards the moment they landed.
       await tester.pumpWidget(
-        const MaterialApp(home: Scaffold(body: CommunityCardsSkeleton())),
+        const MaterialApp(home: Scaffold(body: CommunityRowsSkeleton())),
       );
 
       expect(find.byType(SkeletonBox), findsAtLeast(9));

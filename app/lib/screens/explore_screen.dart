@@ -21,7 +21,7 @@ import '../utils/api_error_message.dart';
 import '../widgets/action_button.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/bottom_nav_v4.dart';
-import '../widgets/community_cards.dart';
+import '../widgets/community_rows.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/list_controls.dart';
 import '../widgets/media_tile_grid.dart';
