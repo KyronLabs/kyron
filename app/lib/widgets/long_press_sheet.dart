@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:kyron_design_system/kyron_design_system.dart';
+import 'app_sheet.dart';
 
 class LongPressSheet extends StatelessWidget {
   final Map<String, IconData> items;
@@ -12,20 +13,11 @@ class LongPressSheet extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          /* ---------- handle ---------- */
-          Container(
-            height: 4,
-            width: 40,
-            decoration: BoxDecoration(
-              color: scheme.outline.withValues(alpha: .3),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: 12),
+          const SheetHandle(),
 
           /* ---------- rounded card ---------- */
           Material(

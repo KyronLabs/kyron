@@ -20,6 +20,7 @@ import 'interaction_settings_sheet.dart';
 import 'toast.dart';
 
 import '../l10n/app_localizations.dart';
+import 'app_sheet.dart';
 
 /// The menu behind a post's overflow button.
 ///
@@ -36,10 +37,9 @@ class PostOptionsSheet {
     required PostListSource source,
   }) {
     HapticFeedback.lightImpact();
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       builder: (_) => _Options(post: post, source: source),
     );
   }

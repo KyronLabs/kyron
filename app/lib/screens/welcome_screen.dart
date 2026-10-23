@@ -19,6 +19,7 @@ import '../widgets/app_language_selector.dart';
 import '../widgets/rooster_art.dart';
 import '../widgets/google_button.dart';
 import '../widgets/terms_gate.dart';
+import '../widgets/app_sheet.dart';
 
 /// The first screen anybody sees, and for most people the only one they will
 /// ever judge Kyron by.
@@ -190,9 +191,8 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   /// redirect.
   Future<void> _explainNoGoogleHere() {
     final platform = PlatformSupport.current.name;
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
-      showDragHandle: true,
       // Scroll-controlled and capped rather than left to the default 9/16 of
       // the screen, which this overflowed on a small window -- a sheet whose
       // only button is under a black-and-yellow overflow bar.

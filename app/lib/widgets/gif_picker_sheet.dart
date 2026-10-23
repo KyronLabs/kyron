@@ -13,6 +13,7 @@ import 'toast.dart';
 import 'empty_state.dart';
 
 import '../l10n/app_localizations.dart';
+import 'app_sheet.dart';
 
 /// Picking a GIF. Returns the path of the downloaded file, ready to attach.
 ///
@@ -23,10 +24,9 @@ class GifPickerSheet {
   const GifPickerSheet._();
 
   static Future<String?> show(BuildContext context) {
-    return showModalBottomSheet<String>(
+    return showAppSheet<String>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       builder: (_) => const _Sheet(),
     );
   }

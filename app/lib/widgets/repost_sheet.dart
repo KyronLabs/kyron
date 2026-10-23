@@ -9,6 +9,7 @@ import '../routes.dart';
 import 'toast.dart';
 
 import '../l10n/app_localizations.dart';
+import 'app_sheet.dart';
 
 /// The choice behind the repost button: pass it on as-is, or say something.
 class RepostSheet {
@@ -27,9 +28,8 @@ class RepostSheet {
     required Future<String?> Function() onRepost,
   }) {
     HapticFeedback.lightImpact();
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
-      showDragHandle: true,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,

@@ -12,6 +12,7 @@ import '../screens/community_chat_screen.dart';
 import '../screens/community_chat_settings_screen.dart';
 import '../utils/api_error_message.dart';
 import 'list_controls.dart' show CountBadge;
+import 'app_sheet.dart';
 
 /// A community's chats, in a sheet opened from the top of its page.
 ///
@@ -23,11 +24,10 @@ class CommunityChatsSheet {
   const CommunityChatsSheet._();
 
   static Future<void> show(BuildContext context, Community community) =>
-      showModalBottomSheet<void>(
+      showAppSheet<void>(
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
-        showDragHandle: true,
         builder: (sheet) => ConstrainedBox(
           // As tall as its chats, up to most of the screen.
           constraints: BoxConstraints(

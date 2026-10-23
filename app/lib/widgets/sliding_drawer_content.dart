@@ -19,6 +19,7 @@ import '../config/legal_links.dart';
 import '../services/app_browser.dart';
 
 import 'skeleton.dart';
+import 'app_sheet.dart';
 
 class SlidingDrawerContent extends ConsumerWidget {
   final VoidCallback onCloseDrawer;
@@ -663,19 +664,17 @@ class SlidingDrawerContent extends ConsumerWidget {
       builder: (sheetContext) => SafeArea(
           top: false,
           child: Padding(
-            padding: const EdgeInsets.all(SpacingTokens.space24),
+            padding: const EdgeInsets.fromLTRB(
+              SpacingTokens.space24,
+              0,
+              SpacingTokens.space24,
+              SpacingTokens.space24,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: SpacingTokens.space20),
-                  decoration: BoxDecoration(
-                    color: scheme.onSurface.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(RadiusTokens.radius2),
-                  ),
-                ),
+                const SheetHandle(),
+                const SizedBox(height: SpacingTokens.space4),
                 Text(
                   AppLocalizations.of(context)
                       .ui('ui_decentralized_id', 'Decentralized ID'),

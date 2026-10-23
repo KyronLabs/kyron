@@ -16,6 +16,7 @@ import '../../models/post_media.dart';
 import '../action_button.dart';
 import '../view_once.dart';
 import '../voice_waveform.dart';
+import '../app_sheet.dart';
 
 /// Recording a voice post.
 ///
@@ -38,12 +39,11 @@ class VoiceRecorderSheet {
     bool forMessage = false,
     ValueNotifier<bool>? viewOnce,
   }) {
-    return showModalBottomSheet<PendingMedia>(
+    return showAppSheet<PendingMedia>(
       context: context,
       isScrollControlled: true,
       isDismissible: false,
       enableDrag: false,
-      showDragHandle: true,
       builder: (_) => _Sheet(forMessage: forMessage, viewOnce: viewOnce),
     );
   }

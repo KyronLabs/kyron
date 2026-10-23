@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import '../models/feed_post.dart';
 
 import 'toast.dart';
+import 'app_sheet.dart';
 
 /// Sharing one post.
 ///
@@ -19,9 +20,8 @@ import 'toast.dart';
 /// only the first and buries the two people ask for most.
 class SharePostSheet {
   static Future<void> show(BuildContext context, FeedPost post) {
-    return showModalBottomSheet<void>(
+    return showAppSheet<void>(
       context: context,
-      showDragHandle: true,
       builder: (_) => _Sheet(post: post),
     );
   }

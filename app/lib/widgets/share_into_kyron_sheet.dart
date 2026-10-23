@@ -25,6 +25,7 @@ import '../screens/thread_screen.dart' show ThreadArgs;
 import 'create_post/url_preview.dart' show firstLinkIn;
 import 'hairline.dart';
 import 'toast.dart';
+import 'app_sheet.dart';
 
 /// What another app shared, and where in Kyron it can go: a new post, or one
 /// or more conversations at once, with a line of one's own beside it.
@@ -39,11 +40,10 @@ class ShareIntoKyronSheet extends ConsumerStatefulWidget {
   const ShareIntoKyronSheet({super.key, required this.content});
 
   static Future<void> show(BuildContext context, SharedContent content) =>
-      showModalBottomSheet<void>(
+      showAppSheet<void>(
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
-        showDragHandle: true,
         builder: (_) =>
             SafeArea(top: false, child: ShareIntoKyronSheet(content: content)),
       );

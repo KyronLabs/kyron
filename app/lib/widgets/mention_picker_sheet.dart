@@ -17,6 +17,7 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 
 import 'skeleton.dart';
+import 'app_sheet.dart';
 
 /// Picks somebody to tag, and answers with their handle.
 ///
@@ -36,9 +37,8 @@ class MentionPickerSheet {
     BuildContext context, {
     String initialQuery = '',
   }) {
-    return showModalBottomSheet<String>(
+    return showAppSheet<String>(
       context: context,
-      showDragHandle: true,
       isScrollControlled: true,
       useSafeArea: true,
       builder: (context) => SafeArea(

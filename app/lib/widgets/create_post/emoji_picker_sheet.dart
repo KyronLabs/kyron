@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
+import '../app_sheet.dart';
 
 class EmojiPickerSheet {
   static Future<Emoji?> show(BuildContext context) async {
@@ -38,7 +39,6 @@ class __EmojiPickerWidgetState extends State<_EmojiPickerWidget> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final scheme = Theme.of(context).colorScheme;
 
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
@@ -53,19 +53,7 @@ class __EmojiPickerWidgetState extends State<_EmojiPickerWidget> {
           ),
           child: Column(
             children: [
-              // Handle bar
-              Container(
-                height: 24,
-                alignment: Alignment.center,
-                child: Container(
-                  height: 4,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: scheme.outline.withValues(alpha: .3),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
+              const SheetHandle(),
               // Emoji Picker
               Expanded(
                 child: EmojiPicker(
