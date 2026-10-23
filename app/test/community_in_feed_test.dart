@@ -23,7 +23,7 @@ import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/community_avatar.dart';
 import 'package:kyron_app/widgets/post_card.dart';
 import 'package:kyron_app/widgets/squircle.dart';
-import 'package:kyron_app/widgets/glass_icon_button.dart';
+import 'package:kyron_app/widgets/post_list_view.dart';
 import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -430,46 +430,81 @@ void main() {
       posts: 2,
     );
 
-    testWidgets('has a see-through bar with only its controls in it', (
+    final banner = find.byWidgetPredicate(
+      (w) =>
+          w is Image &&
+          w.image is NetworkImage &&
+          (w.image as NetworkImage).url == 'https://example.test/banner.png',
+    );
+
+    Community described(String description) => Community(
+          id: community.id,
+          slug: community.slug,
+          name: community.name,
+          bannerUrl: community.bannerUrl,
+          avatarUrl: community.avatarUrl,
+          members: community.members,
+          posts: community.posts,
+          description: description,
+        );
+
+    testWidgets('is one pinned row: picture, name and address', (
       tester,
     ) async {
-      // A bar with a colour of its own left a strip of surface between the
-      // status bar and the picture, and put the community's name on screen
-      // twice. The profile's bar -- clear, controls only -- does neither.
+      // Like a feed's header. It was a banner a third of the screen tall
+      // with an 86-pixel picture hanging off it, then the name, the
+      // description and the counts: the first post half way down the phone.
       await pump(tester, community);
 
-      final bar = tester.widget<AppBar>(find.byType(AppBar));
-      expect(bar.backgroundColor, Colors.transparent);
-      expect(bar.title, isNull);
-      expect(find.text('Gardeners'), findsOneWidget);
+      final bar = find.byType(AppBar);
+      expect(
+        find.descendant(of: bar, matching: find.byType(CommunityAvatar)),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(of: bar, matching: find.text('Gardeners')),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(of: bar, matching: find.text('c/gardeners')),
+        findsOneWidget,
+      );
+      // How many are in it, as a number beside the name.
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('community-members')),
+          matching: find.text('4'),
+        ),
+        findsOneWidget,
+      );
+      expect(tester.getSize(bar).height, lessThanOrEqualTo(60));
+      // No banner on the page itself.
+      expect(banner, findsNothing);
     });
 
-    testWidgets("its top controls are the profile page's, not bigger", (
+    testWidgets('its buttons are 40 across, and still 44 tall', (
       tester,
     ) async {
-      // They were 44-pixel discs, a size heavier than the profile's for the
-      // same job over the same kind of picture.
-      await pump(tester, community);
+      // Four of them share a row with the name; each pixel they do not take
+      // is a letter of the name not cut.
+      await pump(tester, community.copyWith(joined: true));
 
-      expect(find.byType(GlassIconButton), findsNWidgets(3));
-      final discs = find.descendant(
-        of: find.byType(GlassIconButton),
-        matching: find.byWidgetPredicate(
-          (w) =>
-              w is Container &&
-              w.decoration is BoxDecoration &&
-              (w.decoration as BoxDecoration).shape == BoxShape.circle &&
-              (w.decoration as BoxDecoration).color == const Color(0x59000000),
-        ),
-      );
-      expect(discs, findsNWidgets(3));
-      for (final disc in discs.evaluate()) {
-        expect(tester.getSize(find.byWidget(disc.widget)), const Size(36, 36));
+      for (final button in [
+        find.byTooltip('Chats'),
+        find.byTooltip('This community'),
+      ]) {
+        expect(tester.getSize(button), const Size(40, 44));
       }
-      // Still easy to hit.
+      // Back fills the bar's leading slot, which is narrowed to match.
       expect(
-        tester.getSize(find.byType(GlassIconButton).first).height,
-        greaterThanOrEqualTo(44),
+        tester
+            .getSize(
+              find.byTooltip(
+                const DefaultMaterialLocalizations().backButtonTooltip,
+              ),
+            )
+            .width,
+        48,
       );
     });
 
@@ -478,7 +513,7 @@ void main() {
     ) async {
       // A section above the posts pushed every post a screen down, on every
       // visit, for a list most visits do not open.
-      await pump(tester, community);
+      await pump(tester, community.copyWith(joined: true));
       expect(find.byType(CommunityChatsSection), findsNothing);
 
       await tester.tap(find.byKey(const ValueKey('community-chats-button')));
@@ -488,29 +523,57 @@ void main() {
         find.byKey(const ValueKey('community-chats-sheet')),
         findsOneWidget,
       );
-      expect(find.text('Chats'), findsOneWidget);
+      expect(find.text('Chats'), findsWidgets);
     });
 
-    testWidgets('puts the banner at the very top of the screen', (
+    testWidgets('offers no chats to somebody outside it', (tester) async {
+      // The server refuses them; a button that opens a refusal is not one.
+      await pump(tester, community);
+
+      expect(
+          find.byKey(const ValueKey('community-chats-button')), findsNothing);
+      expect(find.byKey(const ValueKey('community-join')), findsOneWidget);
+    });
+
+    testWidgets('says what it is for under the bar, three lines at most', (
       tester,
     ) async {
-      await pump(tester, community);
+      await pump(
+        tester,
+        described(List.filled(40, 'Tomatoes.').join(' ')),
+      );
 
-      final banner = find.byType(Image).first;
-      expect(tester.getTopLeft(banner).dy, 0);
+      final text = tester.widget<Text>(
+        find.descendant(
+          of: find.byKey(const ValueKey('community-description')),
+          matching: find.byType(Text),
+        ),
+      );
+      expect(text.maxLines, 3);
     });
 
-    testWidgets('stacks the picture on the banner', (tester) async {
-      await pump(tester, community);
+    testWidgets('the banner and the rest are a tap on the name away', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        described('Tomatoes, mostly.'),
+      );
 
-      final avatar = find.byType(CommunityAvatar);
-      expect(avatar, findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('community-identity')));
+      await tester.pumpAndSettle();
 
-      // It hangs over the banner's bottom edge rather than sitting under it.
-      final bannerBottom = tester.getRect(find.byType(Image).first).bottom;
-      final box = tester.getRect(avatar);
-      expect(box.top, lessThan(bannerBottom));
-      expect(box.bottom, greaterThan(bannerBottom));
+      final about = find.byKey(const ValueKey('community-about'));
+      expect(about, findsOneWidget);
+      expect(find.descendant(of: about, matching: banner), findsOneWidget);
+      expect(
+        find.descendant(of: about, matching: find.text('Tomatoes, mostly.')),
+        findsOneWidget,
+      );
+      expect(find.text('Members: 4'), findsOneWidget);
+      expect(find.text('Posts: 2'), findsOneWidget);
+      // Join, for somebody who is not in it.
+      expect(find.byKey(const ValueKey('community-about-join')), findsOne);
     });
 
     testWidgets('still has a way back out', (tester) async {
@@ -521,21 +584,6 @@ void main() {
         find.byTooltip(const DefaultMaterialLocalizations().backButtonTooltip),
         findsOneWidget,
       );
-    });
-
-    testWidgets('a community with no banner still has one to hang off', (
-      tester,
-    ) async {
-      // Otherwise the picture has nothing behind it and the page jumps by
-      // eighty pixels between one community and the next.
-      await pump(
-        tester,
-        const Community(id: 'c2', slug: 'quiet', name: 'Quiet'),
-      );
-
-      final avatar = find.byType(CommunityAvatar);
-      expect(avatar, findsOneWidget);
-      expect(tester.getRect(avatar).top, greaterThan(0));
     });
   });
 
@@ -579,36 +627,31 @@ void main() {
       role: CommunityRole.member,
     );
 
-    testWidgets('the picture sits exactly halfway across the banner edge', (
-      tester,
-    ) async {
-      // It hung a third of itself below before, which reads as a picture that
-      // slipped rather than one that was placed.
+    testWidgets('the bar draws its icons', (tester) async {
+      // A button over the old banner took an icon and never drew it: an
+      // empty box inside a black disc, reported as "the icons at the top
+      // aren't showing, only their backgrounds are".
       await pumpPhone(tester, withBanner);
 
-      final banner = tester.getRect(find.byType(Image).first);
-      final avatar = tester.getRect(find.byType(CommunityAvatar));
-
-      expect(avatar.center.dy, closeTo(banner.bottom, 0.5));
+      for (final tip in [
+        const DefaultMaterialLocalizations().backButtonTooltip,
+        'Chats',
+        'This community',
+      ]) {
+        expect(
+          find.descendant(of: find.byTooltip(tip), matching: find.byType(Icon)),
+          findsOneWidget,
+          reason: tip,
+        );
+      }
     });
 
-    testWidgets('the controls over the banner draw their icons', (
-      tester,
-    ) async {
-      // `_GlassButton` took an icon and never drew it: an empty box inside a
-      // black disc. The button showed, the tap worked, and there was nothing
-      // in it -- reported as "the icons at the top aren't showing, only their
-      // backgrounds are, but they work just fine".
+    testWidgets('starts the posts right under the bar', (tester) async {
       await pumpPhone(tester, withBanner);
 
-      final back = find.byTooltip(
-        const DefaultMaterialLocalizations().backButtonTooltip,
-      );
-      expect(back, findsOneWidget);
-      expect(
-        find.descendant(of: back, matching: find.byType(Icon)),
-        findsOneWidget,
-      );
+      final bar = tester.getRect(find.byType(AppBar));
+      final post = tester.getRect(find.byType(PostListView));
+      expect(post.top, bar.bottom);
     });
 
     testWidgets(
