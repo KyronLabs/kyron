@@ -1,7 +1,8 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { normaliseUrl, resolveIfPublic } from './link-safety';
-import { parseCard } from './open-graph';
+import { oembedEndpoint, parseOembed } from './oembed';
+import { LinkCard, parseCard } from './open-graph';
 
 export interface LinkPreviewResult {
   url: string;
@@ -21,6 +22,17 @@ export class LinksService {
 
   /** How long a failure is remembered, so a dead link is not retried per scroll. */
   private static readonly retryFailedAfter = 6 * 60 * 60 * 1000;
+
+  /**
+   * The same for a link with an oEmbed endpoint, which is cheap to ask and
+   * rarely down: a failure there is more likely a blip than a dead link. It
+   * also lets a link that failed before the endpoint was used -- every
+   * YouTube link -- get its card within minutes rather than hours.
+   */
+  private static readonly retryFailedOembedAfter = 15 * 60 * 1000;
+
+  /** An oEmbed answer is a few hundred bytes of JSON. */
+  private static readonly maxOembedBytes = 64 * 1024;
 
   /** Long enough for a slow site, short enough not to hold a request open. */
   private static readonly timeoutMs = 5000;
@@ -54,11 +66,18 @@ export class LinksService {
       where: { url: key },
     });
 
-    if (cached && this.isFresh(cached.fetchedAt, cached.failedAt !== null)) {
+    const failed = cached?.failedAt != null;
+    const retryAfter =
+      failed && oembedEndpoint(url)
+        ? LinksService.retryFailedOembedAfter
+        : failed
+          ? LinksService.retryFailedAfter
+          : LinksService.freshFor;
+    if (cached && Date.now() - cached.fetchedAt.getTime() < retryAfter) {
       return cached.failedAt ? null : this.toResult(cached);
     }
 
-    let card: Awaited<ReturnType<typeof this.fetchCard>>;
+    let card: LinkCard | null;
     try {
       card = await this.fetchCard(url);
     } catch (error) {
@@ -96,13 +115,6 @@ export class LinksService {
     return card ? this.toResult(row) : null;
   }
 
-  private isFresh(fetchedAt: Date, failed: boolean): boolean {
-    const age = Date.now() - fetchedAt.getTime();
-    return (
-      age < (failed ? LinksService.retryFailedAfter : LinksService.freshFor)
-    );
-  }
-
   private toResult(row: {
     url: string;
     host: string;
@@ -122,13 +134,57 @@ export class LinksService {
   }
 
   /**
+   * The card for a link: from the site's oEmbed endpoint when it has one and
+   * it answers, otherwise from the page.
+   */
+  private async fetchCard(start: URL): Promise<LinkCard | null> {
+    const endpoint = oembedEndpoint(start);
+    if (endpoint) {
+      try {
+        const card = await this.fetchOembed(endpoint);
+        if (card) return card;
+      } catch (error) {
+        this.logger.warn(
+          `No oEmbed for ${start.host}: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
+    }
+    return this.fetchPage(start);
+  }
+
+  /**
+   * Asks an oEmbed endpoint. Its host goes through the same address check as
+   * a page's, and a redirect is a failure rather than something to follow:
+   * the endpoints are fixed, and none of them redirects.
+   */
+  private async fetchOembed(endpoint: URL): Promise<LinkCard | null> {
+    await resolveIfPublic(endpoint.hostname);
+    const response = await this.get(endpoint, 'application/json');
+
+    if (!response.ok) {
+      response.body?.cancel().catch(() => undefined);
+      throw new Error(`Answered ${response.status}.`);
+    }
+    const type = response.headers.get('content-type') ?? '';
+    if (!type.includes('json')) {
+      response.body?.cancel().catch(() => undefined);
+      throw new Error(`Not JSON (${type || 'no content type'}).`);
+    }
+
+    const text = await readCapped(response, LinksService.maxOembedBytes, {
+      stopAtHead: false,
+    });
+    return parseOembed(JSON.parse(text));
+  }
+
+  /**
    * Fetches the page and reads its card, following redirects by hand.
    *
    * By hand because every hop has to be checked: fetch's own redirect
    * following would happily walk from a public URL to http://127.0.0.1/, and
    * the address check is worthless if it only guards the first request.
    */
-  private async fetchCard(start: URL) {
+  private async fetchPage(start: URL): Promise<LinkCard | null> {
     let url = start;
 
     for (let hop = 0; hop <= LinksService.maxRedirects; hop++) {
@@ -167,7 +223,10 @@ export class LinksService {
     throw new Error('Too many redirects.');
   }
 
-  private async get(url: URL): Promise<Response> {
+  private async get(
+    url: URL,
+    accept = 'text/html,application/xhtml+xml',
+  ): Promise<Response> {
     const abort = new AbortController();
     const timer = setTimeout(() => abort.abort(), LinksService.timeoutMs);
 
@@ -180,7 +239,7 @@ export class LinksService {
           // Identifies the fetch so a site owner seeing it in their logs knows
           // what it is, and can refuse it.
           'user-agent': 'KyronBot/1.0 (+https://kyron.so/bot)',
-          accept: 'text/html,application/xhtml+xml',
+          accept,
           'accept-language': 'en',
         },
       });
@@ -207,7 +266,11 @@ function isRedirect(status: number): boolean {
  * about it, and stream forever. Counting what actually arrives is the only
  * limit that holds.
  */
-async function readCapped(response: Response, limit: number): Promise<string> {
+async function readCapped(
+  response: Response,
+  limit: number,
+  { stopAtHead = true }: { stopAtHead?: boolean } = {},
+): Promise<string> {
   const reader = response.body?.getReader() as
     | ReadableStreamDefaultReader<Uint8Array>
     | undefined;
@@ -226,7 +289,7 @@ async function readCapped(response: Response, limit: number): Promise<string> {
       read += value.byteLength;
       text += decoder.decode(value, { stream: true });
 
-      if (read >= limit || /<\/head>/i.test(text)) break;
+      if (read >= limit || (stopAtHead && /<\/head>/i.test(text))) break;
     }
   } finally {
     await reader.cancel().catch(() => undefined);
