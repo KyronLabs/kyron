@@ -1082,6 +1082,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
       "ui_after": MessageLookupByLibrary.simpleMessage("পরে"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("অ্যাপ ও ডিভাইস"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "এই উদ্ধৃতি মানুষকে প্রতারণা সম্পর্কে সতর্ক করার জন্য ছিল।"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "বলুন কেন আপনার মনে হয় সিদ্ধান্তটি ভুল ছিল: পোস্টটির মানে কী ছিল, দল কী এড়িয়ে গিয়ে থাকতে পারে, বা নিয়মটি কেন খাটে না। যিনি সিদ্ধান্ত নিয়েছেন তিনি নন, অন্য কেউ এটি পড়েন।"),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("আপনার আপিল"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "অন্তত \$count অক্ষর লিখুন। প্রতিটি সিদ্ধান্তের বিরুদ্ধে একবার আপিল করতে পারবেন।"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("আপিল পাঠান"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "আপিল পাঠানো হয়েছে। সিদ্ধান্ত হলে আপনি একটি বিজ্ঞপ্তি পাবেন।"),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("কেস \$number-এ আপিল"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("অবয়ব"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "লাইট, ডার্ক, অথবা ফোনের সেটিং অনুসরণ",
@@ -1223,6 +1235,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("কোনো গ্রুপ নেই"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "আপনি যেসব গ্রুপে আছেন এবং যেসব কমিউনিটি চ্যাটে যোগ দেন, সেগুলো এখানে দেখা যায়।"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "আপনি সর্বোচ্চ \$countটি চ্যাট পিন করতে পারবেন। আগে একটি আনপিন করুন।"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("পিন করা"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("পছন্দ করা"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("সংরক্ষিত"),
       "ui_feed_empty":
@@ -1454,10 +1469,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("রুচি"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("কিছু যোগ করবেন? (ঐচ্ছিক)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "টিম সিদ্ধান্ত নিলে আপনি একটি নোটিফিকেশন পাবেন, এবং আপনার রিপোর্টে এটি অনুসরণ করতে পারবেন।"),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "আপনি যদি এই ব্যক্তিকেও আর দেখতে না চান, একই মেনু থেকে মিউট বা ব্লক করুন।"),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "একই জিনিস দুবার রিপোর্ট করলে তার গুরুত্ব বাড়ে না: আমরা প্রতি ব্যক্তির একটি রিপোর্ট রাখি।"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "আপনার রিপোর্ট সেই ব্যক্তির সঙ্গে শেয়ার করা হয় না। আপনি যা রিপোর্ট করেছেন তার একটি কপি আমরা রাখি, যাতে মুছে ফেলা হলেও তা পর্যালোচনা করা যায়।"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "আপনার রিপোর্ট পাওয়া গেছে এবং পর্যালোচনার অপেক্ষায় আছে। কে রিপোর্ট করেছেন তা আমরা সেই ব্যক্তিকে জানাই না।"),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("আপনার রিপোর্ট দেখুন"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("কী সমস্যা তা আমাদের বলুন"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("জানানোর জন্য ধন্যবাদ"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name-এর সমস্যা কী?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("এই বার্তার সমস্যা কী?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("এই পোস্টের সমস্যা কী?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("এই উত্তরের সমস্যা কী?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("একটি কমিউনিটি চ্যাট মেসেজ"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("একটি পোস্ট"),
@@ -1487,6 +1524,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("আপনার রিপোর্ট"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("শিশুর নিরাপত্তা"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "এমন যেকোনো কিছু যা কোনো নাবালককে বিপদে ফেলে বা যৌনভাবে উপস্থাপন করে।"),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "লক্ষ্য করে হয়রানি, হুমকি বা অনাকাঙ্ক্ষিত যোগাযোগ।"),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "মানুষের পরিচয়ের কারণে তাদের ওপর আক্রমণ।"),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "বেআইনি কিছু বিক্রি বা প্রচার করা।"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("অন্য কেউ হওয়ার ভান করা।"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "আপনার কাজ বা ট্রেডমার্ক অনুমতি ছাড়া ব্যবহার করে।"),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "স্বাস্থ্য, নির্বাচন বা ঘটনা নিয়ে বিভ্রান্তিকর দাবি।"),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "আত্মক্ষতিতে উৎসাহ দেওয়া বা তা দেখানো।"),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "সতর্কতা ছাড়া দেখানো যৌন কনটেন্ট।"),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "উপরের কোনোটিই নয়। কী সমস্যা তা আমাদের বলুন।"),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "বারবার, বিভ্রান্তিকর বা অনাকাঙ্ক্ষিত প্রচার।"),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "সহিংসতার হুমকি, তার গুণগান বা তাতে উসকানি।"),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("হয়রানি বা উৎপীড়ন"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("ঘৃণাসূচক কথা"),
@@ -1575,6 +1637,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "এই পোস্ট শেয়ার করুন",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("বিষয়টি কী ছিল"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট স্থায়ীভাবে নিষিদ্ধ"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("উত্তর, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("আপিল"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "এই সিদ্ধান্তের বিরুদ্ধে আপিল করুন"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "এই সিদ্ধান্তের বিরুদ্ধে আর আপিল করা যাবে না। কিছু ভুল থাকলে সহায়তায় যোগাযোগ করুন।"),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("আপিল পর্যালোচনাধীন"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("আপিল গৃহীত হয়েছে"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "দলের অন্য কেউ এটি আবার দেখছেন। সিদ্ধান্ত হলে আপনি একটি বিজ্ঞপ্তি পাবেন।"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "আপনার যদি মনে হয় এটি ভুল ছিল, \$date পর্যন্ত আবার পর্যালোচনার অনুরোধ করতে পারেন। দলের অন্য কেউ সিদ্ধান্ত নেন।"),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("আপিলের পর: সিদ্ধান্ত বহাল আছে"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "কেস \$number। নিয়ম: \$rule। দল লিখেছে:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "অ্যাকাউন্ট মুছলে নিষেধাজ্ঞা ওঠে না: একই ইমেল ঠিকানার নতুন অ্যাকাউন্টও নিষিদ্ধ অবস্থায় শুরু হয়।"),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("স্থায়ীভাবে নিষিদ্ধ"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "শুধু এই পৃষ্ঠা, আপিল, সহায়তা এবং অ্যাকাউন্ট মোছা এখনও কাজ করে।"),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("আপিল করা যায়"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("কেস \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("সিদ্ধান্ত: \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট নিয়ে সিদ্ধান্ত"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("আপনার অ্যাকাউন্ট মুছুন"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("বিস্তারিত দেখুন"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("বিস্তারিত দেখুন ও আপিল করুন"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("শেষ হবে: \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট ভালো অবস্থায় আছে"),
+      "ui_standing_good_detail": MessageLookupByLibrary.simpleMessage(
+          "কোনো কিছু এটিকে সীমিত করছে না।"),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "অ্যাকাউন্টের অবস্থা লোড করা যায়নি"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("বার্তা সরানো হয়েছে"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট নিয়ে কোনো সিদ্ধান্ত নেওয়া হয়নি। দল যদি কখনো আপনার কিছু সরায় বা আপনার অ্যাকাউন্ট সীমিত করে, তা কারণসহ এখানে দেখানো হবে, এবং আপনি আপিল করতে পারবেন।"),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "আপিল করার কিছু নেই: সিদ্ধান্তটি বাতিল করা হয়েছে।"),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("পোস্ট সরানো হয়েছে"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("আবার দেখতে নিচে টানুন।"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron-এর নিয়ম পড়ুন"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("উত্তর সরানো হয়েছে"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("বাতিল করা হয়েছে"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date-এ বাতিল করা হয়েছে। যা সরানো হয়েছিল সব ফিরে এসেছে, আর কোনো নিষেধাজ্ঞা প্রযোজ্য নয়।"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("নিয়ম: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("সাইন আউট"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("স্থগিত"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "আপনি পড়তে পারবেন, কিন্তু পোস্ট, উত্তর, ফলো বা বার্তা পাঠাতে পারবেন না। রিপোর্ট, ব্লক ও মিউট এখনও কাজ করে।"),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট স্থগিত: আপনি পড়তে পারবেন, কিন্তু পোস্ট করতে পারবেন না।"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date পর্যন্ত স্থগিত"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "আপনার অ্যাকাউন্ট \$date পর্যন্ত স্থগিত: আপনি পড়তে পারবেন, কিন্তু পোস্ট করতে পারবেন না।"),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("দল কী লিখেছে"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("অ্যাকাউন্টের অবস্থা"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("সতর্কতা"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("কেন?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("আপনি \$date-এ লিখেছেন:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("আপনার বার্তা"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("আপনার পোস্ট"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("আপনার উত্তর"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("শর্তাবলী"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("এই পোস্ট"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage(

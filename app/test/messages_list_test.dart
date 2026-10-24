@@ -4,6 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/community_chat.dart';
 import 'package:kyron_app/providers/community_chats_provider.dart';
+import 'package:kyron_app/repositories/community_chats_repository.dart';
 import 'package:kyron_app/widgets/toast.dart';
 import 'package:kyron_app/widgets/action_button.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
@@ -56,6 +57,7 @@ Conversation _conversation(
   DirectMessage? last,
   int unread = 0,
   bool online = false,
+  DateTime? pinnedAt,
 }) =>
     Conversation(
       id: id,
@@ -70,6 +72,7 @@ Conversation _conversation(
       lastMessage: last,
       unread: unread,
       lastMessageAt: last?.createdAt ?? DateTime(2026, 10, 1),
+      pinnedAt: pinnedAt,
     );
 
 class _Repo extends MessagesRepository {
@@ -101,6 +104,25 @@ class _Repo extends MessagesRepository {
 
   @override
   Future<int> unreadCount() async => 0;
+
+  final List<(String, bool)> pins = [];
+
+  @override
+  Future<void> setPinned(String conversationId, bool pinned) async {
+    pins.add((conversationId, pinned));
+    // As the server does: every list read after this says so.
+    for (final filter in byFilter.keys.toList()) {
+      byFilter[filter] = [
+        for (final c in byFilter[filter]!)
+          c.id == conversationId
+              ? c.copyWith(
+                  pin: true,
+                  pinnedAt: pinned ? DateTime(2026, 10, 20) : null,
+                )
+              : c,
+      ];
+    }
+  }
 
   @override
   Future<void> restore(String conversationId) async {
@@ -147,6 +169,27 @@ class _Repo extends MessagesRepository {
   }
 }
 
+/// The reader's community chats, pinned and unpinned as the server would.
+class _Chats extends CommunityChatsRepository {
+  _Chats(this.rooms) : super(ApiClient()..dio.interceptors.clear());
+
+  final List<CommunityChat> rooms;
+  final List<(String, bool)> pins = [];
+
+  @override
+  Future<void> setPinned(String chatId, bool pinned) async {
+    pins.add((chatId, pinned));
+    for (var i = 0; i < rooms.length; i++) {
+      if (rooms[i].id == chatId) {
+        rooms[i] = rooms[i].copyWith(
+          pin: true,
+          pinnedAt: pinned ? DateTime(2026, 10, 20) : null,
+        );
+      }
+    }
+  }
+}
+
 class _Me extends CurrentUserNotifier {
   _Me(super.ref);
 
@@ -165,12 +208,14 @@ Future<_Repo> _pump(
   List<ProfileSummary> found = const [],
   List<RouteSettings>? routes,
   List<CommunityChat> chats = const [],
+  _Chats? chatsRepo,
   String? more,
 }) async {
   tester.view.physicalSize = const Size(1170, 2532);
   tester.view.devicePixelRatio = 3;
   addTearDown(tester.view.reset);
   final repo = _Repo({...lists})..more = more;
+  final joined = chatsRepo?.rooms ?? chats;
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
@@ -178,7 +223,9 @@ Future<_Repo> _pump(
         messagesRepositoryProvider.overrideWithValue(repo),
         peopleSearchProvider.overrideWith((ref, q) async => found),
         // The reader's community chats, which the list mixes in.
-        joinedChatsProvider.overrideWith((ref) async => chats),
+        joinedChatsProvider.overrideWith((ref) async => [...joined]),
+        if (chatsRepo != null)
+          communityChatsRepositoryProvider.overrideWithValue(chatsRepo),
       ],
       child: MaterialApp(
         theme: KyronTheme.lightTheme,
@@ -749,6 +796,136 @@ void main() {
       await tester.pump();
       expect(find.text('General'), findsOneWidget);
       expect(find.text('Newest'), findsNothing);
+    });
+  });
+
+  group('pinning', () {
+    CommunityChat chat(String id, String name, DateTime at) => CommunityChat(
+          id: id,
+          communityId: 'c1',
+          communitySlug: 'birders',
+          communityName: 'Birders',
+          name: name,
+          joined: true,
+          lastMessageAt: at,
+        );
+    Map<ConversationFilter, List<Conversation>> lists({DateTime? pinnedB}) => {
+          ConversationFilter.all: [
+            _conversation(
+              'a',
+              'Newest',
+              last: _msg(at: DateTime(2026, 10, 12)),
+            ),
+            _conversation(
+              'b',
+              'Oldest',
+              last: _msg(at: DateTime(2026, 10, 1)),
+              pinnedAt: pinnedB,
+            ),
+          ],
+        };
+    double y(WidgetTester tester, String text) =>
+        tester.getTopLeft(find.text(text)).dy;
+
+    testWidgets('a pinned conversation sits at the top, marked', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _messages(),
+        lists: lists(pinnedB: DateTime(2026, 10, 20)),
+      );
+      expect(y(tester, 'Oldest'), lessThan(y(tester, 'Newest')));
+      expect(find.byKey(const ValueKey('pinned-b')), findsOneWidget);
+      expect(find.byKey(const ValueKey('pinned-a')), findsNothing);
+    });
+
+    testWidgets('a long press pins one, and another unpins it', (
+      tester,
+    ) async {
+      final repo = await _pump(tester, _messages(), lists: lists());
+      expect(y(tester, 'Newest'), lessThan(y(tester, 'Oldest')));
+
+      await tester.longPress(find.text('Oldest'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Pin to the top'));
+      await tester.pumpAndSettle();
+      expect(repo.pins, [('b', true)]);
+      expect(y(tester, 'Oldest'), lessThan(y(tester, 'Newest')));
+      expect(find.byKey(const ValueKey('pinned-b')), findsOneWidget);
+
+      await tester.longPress(find.text('Oldest'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Unpin'));
+      await tester.pumpAndSettle();
+      expect(repo.pins, [('b', true), ('b', false)]);
+      expect(y(tester, 'Newest'), lessThan(y(tester, 'Oldest')));
+      expect(find.byKey(const ValueKey('pinned-b')), findsNothing);
+    });
+
+    testWidgets('five is as many as there can be', (tester) async {
+      final repo = await _pump(
+        tester,
+        _messages(),
+        lists: {
+          ConversationFilter.all: [
+            for (var i = 0; i < maxPinnedChats; i++)
+              _conversation(
+                'p$i',
+                'Pinned $i',
+                last: _msg(at: DateTime(2026, 10, 1)),
+                pinnedAt: DateTime(2026, 10, 10 + i),
+              ),
+            _conversation('x', 'Sixth', last: _msg(at: DateTime(2026, 10, 2))),
+          ],
+        },
+      );
+      await tester.longPress(find.text('Sixth'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Pin to the top'));
+      await tester.pump();
+      expect(
+        find.text('You can pin up to 5 chats. Unpin one first.'),
+        findsOneWidget,
+      );
+      expect(repo.pins, isEmpty);
+      await tester.pump(const Duration(seconds: 6));
+    });
+
+    testWidgets('a community chat pins too, and stays up past what has loaded',
+        (tester) async {
+      final chats = _Chats([
+        chat('k1', 'General', DateTime(2026, 10, 5)),
+        // Older than the oldest conversation loaded, with more to come:
+        // unpinned, it waits for the page that reaches it.
+        chat('k2', 'Archive talk', DateTime(2026, 9, 1)),
+      ]);
+      await _pump(
+        tester,
+        _messages(),
+        lists: lists(),
+        chatsRepo: chats,
+        more: 'next',
+      );
+      expect(find.text('Archive talk'), findsNothing);
+      expect(y(tester, 'Newest'), lessThan(y(tester, 'General')));
+
+      await tester.longPress(find.text('General'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Pin to the top'));
+      await tester.pumpAndSettle();
+      expect(chats.pins, [('k1', true)]);
+      expect(y(tester, 'General'), lessThan(y(tester, 'Newest')));
+      expect(
+        find.byKey(const ValueKey('inbox-chat-pinned-k1')),
+        findsOneWidget,
+      );
+
+      // Pinned, the old one is at the top before its page has loaded.
+      await chats.setPinned('k2', true);
+      await tester.drag(find.text('Newest'), const Offset(0, 400));
+      await tester.pumpAndSettle();
+      expect(find.text('Archive talk'), findsOneWidget);
     });
   });
 }

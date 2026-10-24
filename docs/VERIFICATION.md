@@ -123,7 +123,8 @@ is the kind the team cannot defend later.
 
 ## Known limits
 
-- **English only.** The page and notices are not translated yet.
+- **The page is English only.** Its pushes are in the phone's language; the
+  page itself is not translated yet.
 - **No expiry.** A badge stays until the name changes or somebody removes
   it. If accounts start changing hands, add a periodic re-check.
 - **No public explanation page.** Tapping the badge shows a tooltip; a page

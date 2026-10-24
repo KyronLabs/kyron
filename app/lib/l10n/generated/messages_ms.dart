@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Tukar"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Hubungi sokongan"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Selesai"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Laporkan"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Laporan dihantar"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Hantar laporan"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Cuba lagi"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Saya memetik penipuan itu untuk memberi amaran kepada orang lain."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Terangkan sebab anda fikir keputusan itu salah: maksud siaran tersebut, perkara yang mungkin terlepas pandang oleh pasukan, atau sebab peraturan itu tidak sesuai. Ia dibaca oleh orang lain, bukan orang yang membuat keputusan."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Rayuan anda"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Tulis sekurang-kurangnya \$count aksara. Anda boleh merayu setiap keputusan sekali."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Hantar rayuan"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Rayuan dihantar. Anda akan menerima pemberitahuan apabila keputusan dibuat."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Rayuan bagi kes \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1153,6 +1166,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tiada kumpulan"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Kumpulan yang anda sertai dan sembang komuniti yang anda masuki dipaparkan di sini."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Anda boleh menyemat sehingga \$count sembang. Nyahsemat satu dahulu."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Disemat"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Disukai"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Disimpan"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1380,10 +1396,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Ada apa-apa untuk ditambah? (pilihan)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Anda akan menerima pemberitahuan apabila pasukan membuat keputusan, dan boleh mengikutinya dalam Laporan anda."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Jika anda juga tidak mahu melihat orang ini lagi, redamkan atau sekat mereka daripada menu yang sama."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Melaporkan perkara yang sama dua kali tidak menambah beratnya: kami menyimpan satu laporan bagi setiap orang."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Laporan anda tidak dikongsi dengan orang tersebut. Kami menyimpan salinan perkara yang anda laporkan supaya ia masih boleh disemak walaupun dipadamkan."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Laporan anda telah diterima dan sedang menunggu semakan. Kami tidak memberitahu orang tersebut siapa yang melaporkannya."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Lihat laporan anda"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Beritahu kami apa yang salah"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Terima kasih kerana memberitahu kami"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Apa yang salah dengan \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Apa yang salah dengan mesej ini?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Apa yang salah dengan siaran ini?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Apa yang salah dengan balasan ini?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Mesej sembang komuniti"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Siaran"),
@@ -1411,6 +1449,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Laporan anda"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Keselamatan kanak-kanak"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Apa-apa sahaja yang membahayakan atau menyeksualkan kanak-kanak bawah umur."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Penderaan yang disasarkan, ugutan atau hubungan yang tidak diingini."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Serangan terhadap orang kerana siapa mereka."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Menjual atau mempromosikan sesuatu yang menyalahi undang-undang."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Menyamar sebagai orang lain."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Menggunakan karya atau tanda dagangan anda tanpa kebenaran."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Dakwaan mengelirukan tentang kesihatan, pilihan raya atau peristiwa."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Menggalakkan atau memaparkan perbuatan mencederakan diri."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Kandungan seksual yang dipaparkan tanpa amaran."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Tiada yang di atas. Beritahu kami apa yang salah."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Promosi berulang, mengelirukan atau tidak diingini."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Mengugut, mengagungkan atau menghasut keganasan."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Gangguan atau buli"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ucapan kebencian"),
@@ -1496,6 +1559,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Perkara yang berkaitan"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Akaun anda telah diharamkan secara kekal"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Jawapan, pada \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Rayuan"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Rayu keputusan ini"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Keputusan ini tidak boleh dirayu lagi. Jika ada yang salah, hubungi sokongan."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Rayuan sedang disemak"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Rayuan diterima"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Orang lain dalam pasukan sedang menyemaknya semula. Anda akan menerima pemberitahuan apabila keputusan dibuat."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Jika anda fikir ini satu kesilapan, anda boleh meminta semakan semula sehingga \$date. Orang lain dalam pasukan yang membuat keputusan."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("Telah dirayu: keputusan kekal"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Kes \$number. Peraturan: \$rule. Pasukan menulis:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Memadamkan akaun anda tidak menarik balik larangan: akaun baharu dengan alamat e-mel yang sama juga bermula dalam keadaan diharamkan."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Diharamkan secara kekal"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Hanya halaman ini, rayuan, sokongan dan pemadaman akaun yang masih berfungsi."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Boleh dirayu"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Kes \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Diputuskan \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Keputusan tentang akaun anda"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Padamkan akaun anda"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Lihat butiran"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Lihat butiran dan rayu"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("Tamat \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Akaun anda dalam keadaan baik"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Tiada sekatan."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Status akaun tidak dapat dimuatkan"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Mesej dialih keluar"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Tiada keputusan dibuat tentang akaun anda. Jika pasukan pernah mengalih keluar sesuatu milik anda atau menyekat akaun anda, ia akan disenaraikan di sini bersama sebabnya, dan anda boleh merayu."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Tiada apa untuk dirayu: keputusan telah dibatalkan."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Siaran dialih keluar"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Tarik ke bawah untuk menyemak semula."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Baca peraturan Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Balasan dialih keluar"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Dibatalkan"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Dibatalkan pada \$date. Semua yang dialih keluar telah dikembalikan, dan tiada sekatan yang masih berkuat kuasa."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Peraturan: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Log keluar"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Digantung"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Anda boleh membaca, tetapi tidak boleh menyiarkan, membalas, mengikuti atau menghantar mesej. Melaporkan, menyekat dan meredam masih berfungsi."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Akaun anda digantung: anda boleh membaca, tetapi tidak boleh menyiarkan."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Digantung sehingga \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Akaun anda digantung sehingga \$date: anda boleh membaca, tetapi tidak boleh menyiarkan."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Apa yang ditulis oleh pasukan"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Status akaun"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Amaran"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Kenapa?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Anda menulis, pada \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Mesej anda"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Siaran anda"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Balasan anda"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1529,7 +1686,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Apa yang berlaku, dan apa yang perlu kami semak?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

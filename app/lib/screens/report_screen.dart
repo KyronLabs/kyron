@@ -11,6 +11,7 @@ import '../providers/moderation_provider.dart';
 import '../repositories/moderation_repository.dart';
 import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
+import '../utils/notification_text.dart';
 import '../widgets/kyron_app_bar.dart';
 
 /// Reporting a post, a comment or an account.
@@ -23,7 +24,9 @@ class ReportScreen extends ConsumerStatefulWidget {
   final ReportTarget target;
   final String targetId;
 
-  /// What is being reported, in words: "this post", "@ada".
+  /// Who is being reported, for an account: "@ada". A post, a reply or a
+  /// message is named by what it is instead: "this post" set into another
+  /// sentence takes a case in most languages that it does not take alone.
   final String subject;
 
   const ReportScreen({
@@ -82,7 +85,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
       ),
       body: SafeArea(
         child: _sent
-            ? _Sent(subject: widget.subject)
+            ? const _Sent()
             : _reason == null
                 ? _reasons()
                 : _details(_reason!),
@@ -91,7 +94,19 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
   }
 
   Widget _reasons() {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
+    final question = switch (widget.target) {
+      ReportTarget.post =>
+        l10n.ui('ui_report_what_post', 'What is wrong with this post?'),
+      ReportTarget.comment =>
+        l10n.ui('ui_report_what_reply', 'What is wrong with this reply?'),
+      ReportTarget.communityMessage =>
+        l10n.ui('ui_report_what_message', 'What is wrong with this message?'),
+      ReportTarget.user => l10n
+          .ui('ui_report_what_account', r'What is wrong with $name?')
+          .replaceAll(r'$name', widget.subject),
+    };
 
     return ListView(
       padding: const EdgeInsets.only(bottom: SpacingTokens.space32),
@@ -106,14 +121,15 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'What is wrong with ${widget.subject}?',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              Text(question, style: Theme.of(context).textTheme.titleMedium),
               const SizedBox(height: SpacingTokens.space4),
               Text(
-                'Your report is not shared with them. We keep a copy of what '
-                'you reported, so it can still be reviewed if it is deleted.',
+                l10n.ui(
+                  'ui_report_private',
+                  'Your report is not shared with them. We keep a copy of '
+                      'what you reported, so it can still be reviewed if it '
+                      'is deleted.',
+                ),
                 style: TextStyle(
                   fontSize: TypographyTokens.fontSize2,
                   color: scheme.onSurface.withValues(alpha: .7),
@@ -124,8 +140,8 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
         ),
         for (final reason in ReportReason.values)
           ListTile(
-            title: Text(reason.label),
-            subtitle: Text(reason.detail),
+            title: Text(ruleLabel(l10n, reason)),
+            subtitle: Text(ruleDetail(l10n, reason)),
             trailing: const Icon(Iconsax.arrow_right_3_copy, size: 16),
             onTap: () => setState(() => _reason = reason),
           ),
@@ -134,6 +150,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
   }
 
   Widget _details(ReportReason reason) {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     // "Something else" tells a reviewer nothing on its own.
     final required = reason.needsDetail;
@@ -155,12 +172,12 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      reason.label,
+                      ruleLabel(l10n, reason),
                       style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: SpacingTokens.space2),
                     Text(
-                      reason.detail,
+                      ruleDetail(l10n, reason),
                       style: TextStyle(
                         fontSize: TypographyTokens.fontSize2,
                         color: scheme.onSurface.withValues(alpha: .7),
@@ -172,14 +189,16 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
               TextButton(
                 onPressed:
                     _sending ? null : () => setState(() => _reason = null),
-                child: Text(AppLocalizations.of(context).change),
+                child: Text(l10n.change),
               ),
             ],
           ),
         ),
         const SizedBox(height: SpacingTokens.space20),
         Text(
-          required ? 'Tell us what is wrong' : 'Anything to add? (optional)',
+          required
+              ? l10n.ui('ui_report_tell_us', 'Tell us what is wrong')
+              : l10n.ui('ui_report_add', 'Anything to add? (optional)'),
           style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(height: SpacingTokens.space8),
@@ -190,7 +209,7 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
           enabled: !_sending,
           onChanged: (_) => setState(() {}),
           decoration: InputDecoration(
-            hintText: AppLocalizations.of(context).whatHappenedAndLookAt,
+            hintText: l10n.whatHappenedAndLookAt,
           ),
         ),
         if (_error != null) ...[
@@ -211,12 +230,15 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
                   dimension: 18,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : Text(AppLocalizations.of(context).sendReport),
+              : Text(l10n.sendReport),
         ),
         const SizedBox(height: SpacingTokens.space12),
         Text(
-          'Reporting the same thing twice does not add weight to it -- we keep '
-          'one report per person.',
+          l10n.ui(
+            'ui_report_once',
+            'Reporting the same thing twice does not add weight to it: we '
+                'keep one report per person.',
+          ),
           style: TextStyle(
             fontSize: TypographyTokens.fontSize1,
             color: scheme.onSurface.withValues(alpha: .6),
@@ -259,12 +281,11 @@ class _ReportScreenState extends ConsumerState<ReportScreen> {
 }
 
 class _Sent extends StatelessWidget {
-  final String subject;
-
-  const _Sent({required this.subject});
+  const _Sent();
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
 
     return Center(
@@ -276,20 +297,26 @@ class _Sent extends StatelessWidget {
             Icon(Iconsax.tick_circle_copy, size: 48, color: scheme.primary),
             const SizedBox(height: SpacingTokens.space16),
             Text(
-              'Thanks for telling us',
+              l10n.ui('ui_report_thanks', 'Thanks for telling us'),
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: SpacingTokens.space8),
             Text(
-              'Your report about $subject has been received and is queued for '
-              'review. We do not tell them who reported it.',
+              l10n.ui(
+                'ui_report_received',
+                'Your report has been received and is queued for review. We '
+                    'do not tell them who reported it.',
+              ),
               textAlign: TextAlign.center,
               style: TextStyle(color: scheme.onSurface.withValues(alpha: .7)),
             ),
             const SizedBox(height: SpacingTokens.space20),
             Text(
-              'If you also want to stop seeing them, mute or block them from '
-              'the same menu.',
+              l10n.ui(
+                'ui_report_mute_block',
+                'If you also want to stop seeing them, mute or block them '
+                    'from the same menu.',
+              ),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize1,
@@ -300,7 +327,7 @@ class _Sent extends StatelessWidget {
             // Where it can be followed. It went into a queue with nothing to
             // say what came of it except a push that is easy to miss.
             Text(
-              AppLocalizations.of(context).ui(
+              l10n.ui(
                 'ui_report_follow_up',
                 'You get a notification when the team decides, and you can '
                     'follow it in Your reports.',
@@ -314,16 +341,13 @@ class _Sent extends StatelessWidget {
             const SizedBox(height: SpacingTokens.space24),
             FilledButton(
               onPressed: () => Navigator.pop(context),
-              child: Text(AppLocalizations.of(context).done),
+              child: Text(l10n.done),
             ),
             TextButton(
               key: const ValueKey('report-see-reports'),
               onPressed: () =>
                   Navigator.pushReplacementNamed(context, Routes.yourReports),
-              child: Text(
-                AppLocalizations.of(context)
-                    .ui('ui_report_see_reports', 'See your reports'),
-              ),
+              child: Text(l10n.ui('ui_report_see_reports', 'See your reports')),
             ),
           ],
         ),

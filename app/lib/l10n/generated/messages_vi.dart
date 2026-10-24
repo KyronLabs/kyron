@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Thay đổi"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport": MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Xong"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +911,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Báo cáo"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Đã gửi báo cáo"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +955,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Gửi báo cáo"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1003,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Thử lại"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1013,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Tôi trích dẫn trò lừa đảo để cảnh báo mọi người."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Hãy nói lý do bạn cho rằng quyết định là sai: bài viết có ý gì, nhóm có thể đã bỏ sót điều gì, hoặc vì sao quy tắc không phù hợp. Người đọc sẽ là người khác, không phải người đã quyết định."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("Kháng nghị của bạn"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Viết ít nhất \$count ký tự. Bạn có thể kháng nghị mỗi quyết định một lần."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Gửi kháng nghị"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Đã gửi kháng nghị. Bạn sẽ nhận được thông báo khi có quyết định."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Kháng nghị vụ việc \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1157,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Không có nhóm"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Các nhóm bạn tham gia và các cuộc trò chuyện cộng đồng bạn vào sẽ hiển thị ở đây."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể ghim tối đa \$count cuộc trò chuyện. Hãy bỏ ghim một cuộc trước."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Đã ghim"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Đã thích"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Đã lưu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1383,10 +1399,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Bạn muốn bổ sung gì không? (không bắt buộc)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Bạn sẽ nhận thông báo khi nhóm quyết định và có thể theo dõi trong Báo cáo của bạn."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Nếu bạn cũng không muốn thấy người này nữa, hãy tắt tiếng hoặc chặn họ từ cùng menu đó."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Báo cáo cùng một nội dung hai lần không làm nó nặng ký hơn: chúng tôi giữ một báo cáo cho mỗi người."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Báo cáo của bạn không được chia sẻ với người đó. Chúng tôi lưu bản sao nội dung bạn báo cáo để vẫn có thể xem xét ngay cả khi nó bị xóa."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Chúng tôi đã nhận báo cáo của bạn và đang chờ xem xét. Chúng tôi không cho người đó biết ai đã báo cáo."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Xem báo cáo của bạn"),
+      "ui_report_tell_us": MessageLookupByLibrary.simpleMessage(
+          "Cho chúng tôi biết có vấn đề gì"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Cảm ơn bạn đã cho chúng tôi biết"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name có vấn đề gì?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn này có vấn đề gì?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Bài viết này có vấn đề gì?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Phản hồi này có vấn đề gì?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Một tin nhắn trò chuyện cộng đồng"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Một bài viết"),
@@ -1417,6 +1455,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Báo cáo của bạn"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("An toàn trẻ em"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Bất cứ điều gì gây nguy hiểm hoặc tình dục hóa trẻ vị thành niên."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Lăng mạ có chủ đích, đe dọa hoặc liên lạc không mong muốn."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Tấn công người khác vì con người của họ."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Bán hoặc quảng bá thứ bất hợp pháp."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Mạo danh người khác."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Sử dụng tác phẩm hoặc nhãn hiệu của bạn khi chưa được phép."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Tuyên bố gây hiểu lầm về sức khỏe, bầu cử hoặc sự kiện."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Khuyến khích hoặc mô tả hành vi tự gây hại."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Nội dung tình dục hiển thị mà không có cảnh báo."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Không thuộc mục nào ở trên. Cho chúng tôi biết có vấn đề gì."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Quảng bá lặp đi lặp lại, gây hiểu lầm hoặc không mong muốn."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Đe dọa, tôn vinh hoặc kích động bạo lực."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Quấy rối hoặc bắt nạt"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ngôn từ thù ghét"),
@@ -1501,6 +1564,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Nội dung liên quan"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn đã bị cấm vĩnh viễn"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Câu trả lời, ngày \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Kháng nghị"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Kháng nghị quyết định này"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Quyết định này không còn kháng nghị được nữa. Nếu có gì sai, hãy liên hệ bộ phận hỗ trợ."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Kháng nghị đang được xem xét"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Kháng nghị được chấp nhận"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Một người khác trong nhóm đang xem xét lại. Bạn sẽ nhận được thông báo khi có quyết định."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Nếu bạn cho rằng đây là nhầm lẫn, bạn có thể yêu cầu xem xét lại đến \$date. Một người khác trong nhóm sẽ quyết định."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Đã kháng nghị: giữ nguyên quyết định"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Vụ việc \$number. Quy tắc: \$rule. Nhóm đã viết:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Xóa tài khoản không gỡ lệnh cấm: tài khoản mới với cùng địa chỉ email cũng sẽ bị cấm ngay từ đầu."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Bị cấm vĩnh viễn"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Chỉ trang này, kháng nghị, hỗ trợ và xóa tài khoản là còn hoạt động."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Có thể kháng nghị"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Vụ việc \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Quyết định ngày \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Quyết định về tài khoản của bạn"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Xóa tài khoản của bạn"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Xem chi tiết"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Xem chi tiết và kháng nghị"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Kết thúc ngày \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn ở trạng thái tốt"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Không có hạn chế nào."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Không tải được trạng thái tài khoản"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Đã gỡ tin nhắn"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Chưa có quyết định nào về tài khoản của bạn. Nếu nhóm từng gỡ nội dung của bạn hoặc hạn chế tài khoản của bạn, thông tin sẽ hiện ở đây kèm lý do và bạn có thể kháng nghị."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Không có gì để kháng nghị: quyết định đã được hủy."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Đã gỡ bài viết"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("Kéo xuống để kiểm tra lại."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Đọc quy tắc của Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Đã gỡ phản hồi"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Đã hủy"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Đã hủy ngày \$date. Mọi thứ bị gỡ đã được khôi phục và không còn hạn chế nào áp dụng."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Quy tắc: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Bị tạm ngưng"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể đọc, nhưng không thể đăng, trả lời, theo dõi hoặc nhắn tin. Báo cáo, chặn và tắt tiếng vẫn hoạt động."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn đang bị tạm ngưng: bạn có thể đọc nhưng không thể đăng."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Tạm ngưng đến \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản của bạn bị tạm ngưng đến \$date: bạn có thể đọc nhưng không thể đăng."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Nhóm đã viết gì"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Trạng thái tài khoản"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Cảnh báo"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Vì sao?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Bạn đã viết, ngày \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Tin nhắn của bạn"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Bài viết của bạn"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Phản hồi của bạn"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1534,7 +1692,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Đã xảy ra chuyện gì, và chúng tôi nên xem gì?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

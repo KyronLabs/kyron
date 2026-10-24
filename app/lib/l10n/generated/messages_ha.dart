@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Canza"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport": MessageLookupByLibrary.simpleMessage("Tuntuɓi tallafi"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("An gama"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +911,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Kai rahoto"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("An aika rahoto"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +955,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Aika rahoto"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1003,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1013,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Na ambaci zambar ne don in gargaɗi mutane."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Faɗi dalilin da kake ganin hukuncin bai dace ba: me rubutun yake nufi, me ƙungiyar ta iya rasa gani, ko me ya sa dokar ba ta dace ba. Wani daban ne zai karanta, ba wanda ya yanke hukuncin ba."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("Ɗaukaka ƙararka"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Rubuta aƙalla haruffa \$count. Za ka iya ɗaukaka ƙara kan kowane hukunci sau ɗaya."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Aika ɗaukaka ƙara"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "An aika ɗaukaka ƙara. Za ka sami sanarwa idan an yanke hukunci."),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
+          "Ɗaukaka ƙara kan shari'a \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1151,6 +1165,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Babu rukuni"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Rukunonin da kake ciki, da hirarrakin al'umma da ka shiga, ana nuna su a nan."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Za ka iya maƙala hira har \$count. Ka cire ɗaya tukuna."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("An maƙala"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Waɗanda aka so"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ajiyayyu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1378,10 +1395,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Akwai abin da kake son ƙarawa? (na zaɓi)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Za ka sami sanarwa idan ƙungiyar ta yanke shawara, kuma za ka iya bibiyar sa a cikin Rahotanninka."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Idan kai ma ba ka son ganin wannan mutumin kuma, za ka iya yin shiru ko toshe shi daga menu ɗaya."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Kai rahoton abu ɗaya sau biyu ba ya ƙara masa nauyi: muna ajiye rahoto ɗaya ga kowane mutum."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Ba a raba rahotonka da wannan mutumin. Muna ajiye kwafin abin da ka kai rahoto, don a iya duba shi ko da an goge shi."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "An karɓi rahotonka kuma yana jiran a duba shi. Ba ma gaya wa wannan mutumin wanda ya kai rahoto."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Duba rahotanninka"),
+      "ui_report_tell_us": MessageLookupByLibrary.simpleMessage(
+          "Faɗa mana abin da ba daidai ba"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Mun gode da ka faɗa mana"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Me ke damun \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Me ke damun wannan saƙon?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Me ke damun wannan rubutun?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Me ke damun wannan amsar?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Saƙon hirar al'umma"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Rubutu"),
@@ -1408,6 +1447,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Rahotanninka"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Tsaron yara"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Duk wani abu da ke jefa ƙaramin yaro cikin haɗari ko yin lalata da shi."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Cin zarafi da aka nufa, barazana, ko tuntuɓa da ba a so."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Kai hari ga mutane saboda ko su wane ne."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Sayarwa ko tallata wani abu da ya saɓa wa doka."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Yin kamar kai wani ne daban."),
+      "ui_rule_detail_intellectual_property": MessageLookupByLibrary.simpleMessage(
+          "Yana amfani da aikinka ko alamar kasuwancinka ba tare da izini ba."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Iƙirari masu ɓatarwa game da lafiya, zaɓe, ko abubuwan da suka faru."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Ƙarfafa cutar da kai ko nuna shi."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Abun jima'i da aka nuna ba tare da gargaɗi ba."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Babu ɗaya daga cikin waɗannan. Faɗa mana abin da ba daidai ba."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Talla mai maimaituwa, mai ɓatarwa, ko wadda ba a so."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Barazanar tashin hankali, ɗaukaka shi, ko tunzura shi."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Cin zarafi ko tsangwama"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Kalaman ƙiyayya"),
@@ -1493,6 +1556,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Abin da ya shafa"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("An haramta asusunka har abada"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Amsar, a \$date:"),
+      "ui_standing_appeal":
+          MessageLookupByLibrary.simpleMessage("Ɗaukaka ƙara"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "Ɗaukaka ƙara kan wannan hukuncin"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Ba za a iya ɗaukaka ƙara kan wannan hukuncin ba kuma. Idan akwai matsala, tuntuɓi tallafi."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Ana duba ɗaukaka ƙara"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("An karɓi ɗaukaka ƙara"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Wani daban a ƙungiyar yana sake duba shi. Za ka sami sanarwa idan an yanke hukunci."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Idan kana ganin kuskure ne, za ka iya neman a sake duba shi har zuwa \$date. Wani daban a ƙungiyar ne zai yanke hukunci."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "An ɗaukaka ƙara: hukuncin ya tsaya"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Shari'a \$number. Doka: \$rule. Ƙungiyar ta rubuta:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Goge asusunka ba ya cire haramcin: sabon asusu mai adireshin imel ɗaya shi ma yana farawa a haramce."),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("An haramta"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Wannan shafin, ɗaukaka ƙara, tallafi da goge asusunka ne kaɗai ke aiki yanzu."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Ana iya ɗaukaka ƙara"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Shari'a \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("An yanke hukunci a \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Hukunce-hukunce game da asusunka"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Goge asusunka"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Duba bayanai"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Duba bayanai ka ɗaukaka ƙara"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Zai ƙare a \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Asusunka yana cikin yanayi mai kyau"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Babu abin da ke takura shi."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya loda yanayin asusu ba"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("An cire saƙo"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Ba a yanke wani hukunci game da asusunka ba. Idan ƙungiyar ta taɓa cire wani abu naka ko ta takura asusunka, za a nuna shi a nan tare da dalilin, kuma za ka iya ɗaukaka ƙara."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Babu abin ɗaukaka ƙara: an soke hukuncin."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("An cire rubutu"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("Ja ƙasa don sake dubawa."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Karanta dokokin Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("An cire amsa"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("An soke"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "An soke a \$date. Duk abin da aka cire ya dawo, kuma babu wata takura da ke aiki yanzu."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Doka: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Fita"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("An dakatar"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Kana iya karantawa, amma ba za ka iya wallafawa, ba da amsa, bi, ko aika saƙo ba. Kai rahoto, toshewa da yin shiru suna aiki har yanzu."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "An dakatar da asusunka: kana iya karantawa, amma ba za ka iya wallafawa ba."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("An dakatar har zuwa \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "An dakatar da asusunka har zuwa \$date: kana iya karantawa, amma ba za ka iya wallafawa ba."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Abin da ƙungiyar ta rubuta"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Yanayin asusu"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Gargaɗi"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Me ya sa?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Ka rubuta, a \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Saƙonka"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Rubutunka"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("Amsarka"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1526,7 +1682,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Me ya faru, kuma me ya kamata mu duba?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

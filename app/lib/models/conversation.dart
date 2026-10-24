@@ -528,6 +528,9 @@ class Conversation {
 
   final DateTime lastMessageAt;
 
+  /// When the reader pinned it to the top of their list, or null.
+  final DateTime? pinnedAt;
+
   const Conversation({
     required this.id,
     this.people = const [],
@@ -535,9 +538,12 @@ class Conversation {
     this.lastMessage,
     this.unread = 0,
     required this.lastMessageAt,
+    this.pinnedAt,
   });
 
   bool get isGroup => group != null;
+
+  bool get pinned => pinnedAt != null;
 
   factory Conversation.fromJson(Map<String, dynamic> json) {
     final last = json['lastMessage'];
@@ -554,6 +560,7 @@ class Conversation {
       lastMessageAt: DateTime.tryParse(json['lastMessageAt'] as String? ?? '')
               ?.toLocal() ??
           DateTime.now(),
+      pinnedAt: DateTime.tryParse(json['pinnedAt'] as String? ?? '')?.toLocal(),
     );
   }
 
@@ -568,7 +575,13 @@ class Conversation {
   /// there is no one "other" to name, call or block.
   MessagePerson? get other => isGroup || people.isEmpty ? null : people.first;
 
-  Conversation copyWith({DirectMessage? lastMessage, int? unread}) =>
+  /// [pinnedAt] is taken as given, null included, when [pin] is true.
+  Conversation copyWith({
+    DirectMessage? lastMessage,
+    int? unread,
+    bool pin = false,
+    DateTime? pinnedAt,
+  }) =>
       Conversation(
         id: id,
         people: people,
@@ -576,6 +589,7 @@ class Conversation {
         lastMessage: lastMessage ?? this.lastMessage,
         unread: unread ?? this.unread,
         lastMessageAt: lastMessage?.createdAt ?? lastMessageAt,
+        pinnedAt: pin ? pinnedAt : this.pinnedAt,
       );
 }
 

@@ -1016,6 +1016,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("الحساب"),
       "ui_after": MessageLookupByLibrary.simpleMessage("بعد"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("التطبيق والجهاز"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "كنت أقتبس الاحتيال لتحذير الناس منه."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "اشرح لماذا تعتقد أن القرار كان خاطئًا: ماذا كان يقصد المنشور، أو ما الذي ربما فات الفريق، أو لماذا لا تنطبق القاعدة. سيقرؤه شخص غير الذي اتخذ القرار."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("طعنك"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "اكتب \$count حرفًا على الأقل. يمكنك الطعن في كل قرار مرة واحدة."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("إرسال الطعن"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "أُرسل الطعن. سيصلك إشعار عند البت فيه."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("الطعن في القضية \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "فاتح، داكن، أو كما هو مُعين على الهاتف",
@@ -1154,6 +1166,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("لا توجد مجموعات"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "تظهر هنا المجموعات التي أنت فيها ودردشات المجتمعات التي تنضم إليها."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "يمكنك تثبيت \$count محادثات كحد أقصى. ألغِ تثبيت واحدة أولًا."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("مثبّتة"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("الإعجابات"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("المحفوظة"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),
@@ -1374,10 +1389,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("الخصوصية"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("هل تريد إضافة شيء؟ (اختياري)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "سيصلك إشعار عندما يتخذ الفريق قراره، ويمكنك المتابعة في «بلاغاتك»."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "إذا كنت لا تريد رؤية هذا الشخص أيضًا، يمكنك كتمه أو حظره من القائمة نفسها."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "الإبلاغ عن الشيء نفسه مرتين لا يمنحه وزنًا أكبر: نحتفظ ببلاغ واحد لكل شخص."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "لا نشارك بلاغك مع الشخص المعني. نحتفظ بنسخة مما أبلغت عنه حتى يمكن مراجعته حتى لو حُذف."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "استلمنا بلاغك وهو في قائمة الانتظار للمراجعة. لا نخبر الشخص المعني بمن أبلغ عنه."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("عرض بلاغاتك"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("أخبرنا بما هو الخطأ"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("شكرًا لإخبارنا"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("ما المشكلة في \$name؟"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("ما المشكلة في هذه الرسالة؟"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("ما المشكلة في هذا المنشور؟"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("ما المشكلة في هذا الرد؟"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("رسالة في دردشة مجتمع"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("منشور"),
@@ -1405,6 +1442,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("بلاغاتك"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("سلامة الأطفال"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "أي شيء يعرّض قاصرًا للخطر أو يستغله جنسيًا."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "إساءة موجهة أو تهديدات أو تواصل غير مرغوب فيه."),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("هجمات على الناس بسبب هويتهم."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "بيع شيء غير قانوني أو الترويج له."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("انتحال شخصية شخص آخر."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "يستخدم عملك أو علامتك التجارية دون إذن."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "ادعاءات مضللة عن الصحة أو الانتخابات أو الأحداث."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "التشجيع على إيذاء النفس أو تصويره."),
+      "ui_rule_detail_sexual_content":
+          MessageLookupByLibrary.simpleMessage("محتوى جنسي يُعرض دون تحذير."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "لا شيء مما سبق. أخبرنا بما هو الخطأ."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "ترويج متكرر أو مضلل أو غير مرغوب فيه."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "التهديد بالعنف أو تمجيده أو التحريض عليه."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("التحرش أو التنمر"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("خطاب الكراهية"),
@@ -1493,6 +1555,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "مشاركة هذه المشاركة",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("ما الذي كان يتعلق به"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("حسابك محظور نهائيًا"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("الرد، في \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("الطعن"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("الطعن في هذا القرار"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "لم يعد بالإمكان الطعن في هذا القرار. إذا كان هناك خطأ، فتواصل مع الدعم."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("الطعن قيد المراجعة"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("قُبل الطعن"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "يراجعه شخص آخر من الفريق من جديد. سيصلك إشعار عند البت فيه."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "إذا كنت تعتقد أن هذا خطأ، يمكنك طلب مراجعته من جديد حتى \$date. يقرر شخص آخر من الفريق."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("بعد الطعن: القرار قائم"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "القضية \$number. القاعدة: \$rule. كتب الفريق:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "حذف حسابك لا يرفع الحظر: الحساب الجديد بعنوان البريد الإلكتروني نفسه يبدأ محظورًا أيضًا."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("محظور نهائيًا"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "لا يعمل إلا هذه الصفحة والطعون والدعم وحذف حسابك."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("قابل للطعن"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("القضية \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("صدر القرار في \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("قرارات بشأن حسابك"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("حذف حسابك"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("عرض التفاصيل والطعن"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("ينتهي في \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("حسابك في وضع جيد"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("لا يوجد ما يقيده."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل حالة الحساب"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("أُزيلت الرسالة"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "لم يُتخذ أي قرار بشأن حسابك. إذا أزال الفريق يومًا شيئًا من محتواك أو قيّد حسابك، فسيظهر هنا مع السبب، ويمكنك الطعن فيه."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "لا شيء للطعن فيه: أُلغي القرار."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("أُزيل المنشور"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("اسحب للأسفل للتحقق مرة أخرى."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("اقرأ قواعد Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("أُزيل الرد"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("أُلغي"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "أُلغي في \$date. عاد كل ما أُزيل، ولم يعد أي قيد ساريًا."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("القاعدة: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("موقوف"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "يمكنك القراءة، لكن لا يمكنك النشر أو الرد أو المتابعة أو إرسال الرسائل. لا يزال الإبلاغ والحظر والكتم متاحًا."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "حسابك موقوف: يمكنك القراءة، لكن لا يمكنك النشر."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("موقوف حتى \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "حسابك موقوف حتى \$date: يمكنك القراءة، لكن لا يمكنك النشر."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("ما قاله الفريق"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("حالة الحساب"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("تحذير"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("لماذا؟"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("كتبت، في \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("رسالتك"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("منشورك"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("ردك"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("الشروط"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("هذه المشاركة"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("الموضوع مكتوم"),

@@ -1,0 +1,73 @@
+// Pushes in ko. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ko: Copy = {
+  someone: '누군가',
+  and_one_other: '{name}님 외 1명',
+  and_others: '{name}님 외 {count}명',
+  followed: '회원님을 팔로우했습니다',
+  liked: '회원님의 게시물을 좋아합니다',
+  liked_quote: '회원님의 게시물을 좋아합니다: “{snippet}”',
+  reposted: '회원님의 게시물을 리포스트했습니다',
+  reposted_quote: '회원님의 게시물을 리포스트했습니다: “{snippet}”',
+  replied: '회원님에게 답글을 남겼습니다',
+  replied_quote: '답글: “{snippet}”',
+  group: '그룹',
+  new_message: '새 메시지',
+  dm_once: '한 번만 볼 수 있는 것을 보냈습니다',
+  dm_attachment: '첨부 파일을 보냈습니다',
+  dm_group_message: '메시지를 보냈습니다',
+  dm_message: '회원님에게 메시지를 보냈습니다',
+  named_line: '{name}: {text}',
+  group_added: '{name}님이 회원님을 그룹에 추가했습니다.',
+  group_hand: '{name}님이 글을 쓰고 싶다고 손을 들었습니다.',
+  chat_poll: '투표: {text}',
+  chat_photo: '사진',
+  chat_gif: 'GIF',
+  chat_clip: '클립',
+  chat_voice: '음성 메시지',
+  mod_removed_post: '게시물이 삭제되었습니다.',
+  mod_removed_reply: '답글이 삭제되었습니다.',
+  mod_removed_message: '커뮤니티 채팅의 메시지가 삭제되었습니다.',
+  mod_removed_other: '게시한 콘텐츠가 삭제되었습니다.',
+  mod_warned: '계정에 경고가 있습니다.',
+  mod_suspended_until: '계정이 {date}까지 일시 정지되었습니다.',
+  mod_banned: '계정이 영구 정지되었습니다.',
+  mod_rule: '규칙: {rule}.',
+  mod_rules_general: 'Kyron 규칙을 위반했습니다.',
+  mod_case:
+    '사건 {number}: 이유를 확인하거나 이의를 제기하려면 Kyron을 여세요.',
+  mod_reversed: '사건 {number}의 결정을 취소했습니다.',
+  appeal_accepted:
+    '사건 {number}에 대한 이의 제기가 받아들여져 결정이 취소되었습니다.',
+  appeal_upheld:
+    '사건 {number}에 대한 이의 제기를 다시 검토했으며, 결정은 유지됩니다.',
+  report_actioned:
+    '신고하신 내용에 대해 조치를 취했습니다. 알려 주셔서 감사합니다.',
+  report_dismissed:
+    '신고하신 내용을 검토했지만 Kyron 규칙 위반을 발견하지 못했습니다. 알려 주셔서 감사합니다.',
+  verified: '인증되었습니다. 이제 이름 옆에 배지가 표시됩니다.',
+  verify_declined: '인증 요청이 승인되지 않았습니다.',
+  verify_removed: '인증 배지가 삭제되었습니다.',
+  verify_lapsed_rename:
+    '이름이 바뀌어 인증 배지가 삭제되었습니다. 메뉴에서 다시 요청하면 누군가 새 이름을 확인합니다.',
+  staff_title: 'Kyron 운영',
+  staff_appeal: '이의 제기가 검토를 기다리고 있습니다.',
+  staff_report_urgent:
+    '긴급 신고가 기다리고 있습니다: 누군가 위험할 수 있습니다.',
+  staff_report: '신고가 검토를 기다리고 있습니다.',
+  staff_verify: '누군가 인증을 요청했습니다.',
+  test_working: '알림이 작동합니다.',
+  rule_spam: '스팸',
+  rule_harassment: '괴롭힘 또는 따돌림',
+  rule_hate: '혐오 발언',
+  rule_violence: '폭력 또는 위협',
+  rule_self_harm: '자살 또는 자해',
+  rule_sexual_content: '성인 콘텐츠',
+  rule_child_safety: '아동 안전',
+  rule_misinformation: '허위 정보',
+  rule_impersonation: '사칭',
+  rule_intellectual_property: '지식 재산권',
+  rule_illegal_goods: '불법 상품 또는 서비스',
+};

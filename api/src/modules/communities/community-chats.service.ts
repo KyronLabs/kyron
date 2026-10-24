@@ -20,6 +20,8 @@ import { SupabaseService } from '../../infrastructure/supabase/supabase.service'
 import { MediaService } from '../media/media.service';
 import { MessagesService } from '../messages/messages.service';
 import { DeliveryService } from '../push/delivery.service';
+import { type PushText, say } from '../push/push-text';
+import { assertRoomForPin } from '../messages/pins';
 
 /** A community chat, as the community's list and the chat's header need it. */
 export interface CommunityChatSummary {
@@ -52,6 +54,8 @@ export interface CommunityChatSummary {
   unread: number;
   /** The reader has muted it: no pushes, and not in the Messages badge. */
   muted: boolean;
+  /** When the reader pinned it to the top of Messages, or null. */
+  pinnedAt: Date | null;
   lastMessageAt: Date | null;
   createdAt: Date;
 }
@@ -327,8 +331,12 @@ export class CommunityChatsService {
       },
       // The liveliest hundred, not any hundred: taken before ordering, the
       // cap kept whichever rows the database met first, and somebody in many
-      // chats could find the one they were just talking in missing.
-      orderBy: { chat: { lastMessageAt: { sort: 'desc', nulls: 'last' } } },
+      // chats could find the one they were just talking in missing. Pinned
+      // ones before any of them, however quiet, so the cap never drops one.
+      orderBy: [
+        { pinnedAt: { sort: 'desc', nulls: 'last' } },
+        { chat: { lastMessageAt: { sort: 'desc', nulls: 'last' } } },
+      ],
       take: 100,
     });
     const blocked = await this.blockedWith(viewerId);
@@ -847,6 +855,42 @@ export class CommunityChatsService {
       throw new ForbiddenException('Join this chat to mute it.');
     }
     return { id: chat.id, muted };
+  }
+
+  /**
+   * Keeps a joined chat at the top of the reader's Messages list, or stops.
+   * Not the chat's pinned message ([pin]), which is the moderators' and
+   * everybody's; this is the reader's alone, like muting.
+   */
+  async setPinned(
+    viewerId: string,
+    chatId: string,
+    pinned: boolean,
+  ): Promise<{ id: string; pinnedAt: Date | null }> {
+    const { chat } = await this.access(viewerId, chatId);
+    const member = await this.prisma.communityChatMember.findUnique({
+      where: { chatId_userId: { chatId: chat.id, userId: viewerId } },
+      select: { pinnedAt: true },
+    });
+    if (!member) {
+      throw new ForbiddenException('Join this chat to pin it.');
+    }
+    if (!pinned) {
+      await this.prisma.communityChatMember.update({
+        where: { chatId_userId: { chatId: chat.id, userId: viewerId } },
+        data: { pinnedAt: null },
+      });
+      return { id: chat.id, pinnedAt: null };
+    }
+    // Already pinned keeps its place rather than moving up.
+    if (member.pinnedAt) return { id: chat.id, pinnedAt: member.pinnedAt };
+    await assertRoomForPin(this.prisma, viewerId);
+    const { pinnedAt } = await this.prisma.communityChatMember.update({
+      where: { chatId_userId: { chatId: chat.id, userId: viewerId } },
+      data: { pinnedAt: new Date() },
+      select: { pinnedAt: true },
+    });
+    return { id: chat.id, pinnedAt };
   }
 
   /**
@@ -1542,12 +1586,15 @@ export class CommunityChatsService {
         )
       RETURNING cm."userId" AS "userId"`;
     if (rows.length === 0) return;
-    const who = item.sender.name ?? item.sender.username ?? 'Someone';
+    const who = item.sender.name ?? item.sender.username ?? say('someone');
     this.delivery.pushMany(
       rows.map((r) => r.userId),
       {
         title: `${chat.name} · ${chat.community.name}`,
-        body: `${who}: ${CommunityChatsService.preview(item)}`,
+        body: say('named_line', {
+          name: who,
+          text: CommunityChatsService.preview(item),
+        }),
         data: { type: 'community.chat', chatId: chat.id },
       },
     );
@@ -1558,21 +1605,23 @@ export class CommunityChatsService {
     body: string;
     media: { kind: MediaKind }[];
     poll: unknown;
-  }): string {
+  }): PushText {
     const words = item.body.trim().replace(/\s+/g, ' ');
-    if (item.poll) return `Poll: ${CommunityChatsService.clip(words)}`;
+    if (item.poll) {
+      return say('chat_poll', { text: CommunityChatsService.clip(words) });
+    }
     if (words) return CommunityChatsService.clip(words);
     switch (item.media[0]?.kind) {
       case MediaKind.IMAGE:
-        return 'Photo';
+        return say('chat_photo');
       case MediaKind.GIF:
-        return 'GIF';
+        return say('chat_gif');
       case MediaKind.VIDEO:
-        return 'Clip';
+        return say('chat_clip');
       case MediaKind.VOICE:
-        return 'Voice note';
+        return say('chat_voice');
       default:
-        return 'New message';
+        return say('new_message');
     }
   }
 
@@ -1682,7 +1731,12 @@ export class CommunityChatsService {
       _count: { select: { members: true } },
       members: {
         where: { userId: viewerId },
-        select: { joinedAt: true, lastReadAt: true, mutedAt: true },
+        select: {
+          joinedAt: true,
+          lastReadAt: true,
+          mutedAt: true,
+          pinnedAt: true,
+        },
       },
     } as const;
   }
@@ -1703,6 +1757,7 @@ export class CommunityChatsService {
         joinedAt: Date;
         lastReadAt: Date | null;
         mutedAt: Date | null;
+        pinnedAt: Date | null;
       }[];
     },
     community: {
@@ -1750,6 +1805,7 @@ export class CommunityChatsService {
       role,
       unread,
       muted: membership?.mutedAt != null,
+      pinnedAt: membership?.pinnedAt ?? null,
       lastMessageAt: chat.lastMessageAt,
       createdAt: chat.createdAt,
     };

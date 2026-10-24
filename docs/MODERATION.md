@@ -223,11 +223,11 @@ say so, and to describe:
 - **No automatic escalation.** Repeated warnings do not turn into a
   suspension by themselves. The reviewer sees the account's record on every
   case and decides.
-- **Partly translated.** The rows in Notifications, Your reports and the
-  report confirmation are in every language the app has. The pushes are
-  English only, because the server does not know which language a device is
-  set to; so are Account status, its appeal form and the rest of the report
-  form, which nobody has translated yet.
+- **Translated, except the team's own words.** Account status, a case, the
+  appeal form, the ban screen, the report form, the rows in Notifications and
+  Your reports, and the pushes are in every language the app has, dates
+  included. What a reviewer writes (the message on a decision, the answer to
+  an appeal) is shown as written. The team's own screens are English.
 
 ## Testing it
 

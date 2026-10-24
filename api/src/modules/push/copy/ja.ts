@@ -1,0 +1,73 @@
+// Pushes in ja. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ja: Copy = {
+  someone: '誰か',
+  and_one_other: '{name}さんと他1人',
+  and_others: '{name}さんと他{count}人',
+  followed: 'あなたをフォローしました',
+  liked: 'あなたの投稿にいいねしました',
+  liked_quote: 'あなたの投稿にいいねしました：「{snippet}」',
+  reposted: 'あなたの投稿を再投稿しました',
+  reposted_quote: 'あなたの投稿を再投稿しました：「{snippet}」',
+  replied: 'あなたに返信しました',
+  replied_quote: '返信：「{snippet}」',
+  group: 'グループ',
+  new_message: '新しいメッセージ',
+  dm_once: '1回だけ表示できるものを送信しました',
+  dm_attachment: '添付ファイルを送信しました',
+  dm_group_message: 'メッセージを送信しました',
+  dm_message: 'あなたにメッセージを送信しました',
+  named_line: '{name}：{text}',
+  group_added: '{name}さんがあなたをグループに追加しました。',
+  group_hand: '{name}さんが書き込みを希望して手を挙げました。',
+  chat_poll: 'アンケート：{text}',
+  chat_photo: '写真',
+  chat_gif: 'GIF',
+  chat_clip: 'クリップ',
+  chat_voice: 'ボイスメッセージ',
+  mod_removed_post: 'あなたの投稿が削除されました。',
+  mod_removed_reply: 'あなたの返信が削除されました。',
+  mod_removed_message: 'コミュニティチャットのメッセージが削除されました。',
+  mod_removed_other: 'あなたが投稿したものが削除されました。',
+  mod_warned: 'アカウントに警告があります。',
+  mod_suspended_until: 'アカウントは{date}まで一時停止されています。',
+  mod_banned: 'アカウントが停止されました。',
+  mod_rule: 'ルール：{rule}。',
+  mod_rules_general: 'Kyronのルールに違反していました。',
+  mod_case:
+    'ケース{number}：理由の確認や異議申し立ては Kyron を開いてください。',
+  mod_reversed: 'ケース{number}の判断を取り消しました。',
+  appeal_accepted:
+    'ケース{number}に対する異議申し立てが認められ、判断は取り消されました。',
+  appeal_upheld:
+    'ケース{number}に対する異議申し立てを再確認しましたが、判断は変わりません。',
+  report_actioned:
+    'あなたが報告した内容に対して措置を取りました。お知らせいただきありがとうございます。',
+  report_dismissed:
+    'あなたが報告した内容を確認しましたが、Kyronのルール違反は見つかりませんでした。お知らせいただきありがとうございます。',
+  verified: '認証されました。バッジが名前の横に表示されるようになりました。',
+  verify_declined: '認証のリクエストは承認されませんでした。',
+  verify_removed: '認証バッジが外されました。',
+  verify_lapsed_rename:
+    '名前が変更されたため、認証バッジが外されました。メニューから再申請すると、新しい名前を誰かが確認します。',
+  staff_title: 'Kyron モデレーション',
+  staff_appeal: '異議申し立てが確認を待っています。',
+  staff_report_urgent:
+    '緊急の報告があります：危険にさらされている人がいるかもしれません。',
+  staff_report: '報告が確認を待っています。',
+  staff_verify: '認証の申請がありました。',
+  test_working: '通知は正常に動作しています。',
+  rule_spam: 'スパム',
+  rule_harassment: '嫌がらせやいじめ',
+  rule_hate: 'ヘイトスピーチ',
+  rule_violence: '暴力や脅迫',
+  rule_self_harm: '自殺や自傷行為',
+  rule_sexual_content: '成人向けコンテンツ',
+  rule_child_safety: '子どもの安全',
+  rule_misinformation: '虚偽の情報',
+  rule_impersonation: 'なりすまし',
+  rule_intellectual_property: '知的財産',
+  rule_illegal_goods: '違法な商品やサービス',
+};

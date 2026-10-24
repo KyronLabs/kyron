@@ -10,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/community_chat.dart';
 import '../models/conversation.dart';
 import '../providers/community_chats_provider.dart';
+import '../utils/api_error_message.dart';
 import '../utils/conversation_text.dart';
 import '../widgets/community_avatar.dart';
 import 'community_chat_screen.dart';
@@ -19,6 +20,7 @@ import '../widgets/group_avatar.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
+import '../widgets/action_sheet.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/simple_app_bar.dart';
@@ -236,6 +238,10 @@ class _ConversationList extends ConsumerStatefulWidget {
 class _ConversationListState extends ConsumerState<_ConversationList> {
   final ScrollController _scroll = ScrollController();
 
+  /// Community chats pinned or unpinned here and not yet read back from the
+  /// server, so the row moves when it is tapped rather than a request later.
+  final Map<String, DateTime?> _chatPins = {};
+
   @override
   void initState() {
     super.initState();
@@ -294,6 +300,64 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     await refreshConversations(ref);
   }
 
+  /// Whether one more pin fits, saying why not when it does not.
+  bool _roomForPin(int pinnedNow) {
+    if (pinnedNow < maxPinnedChats) return true;
+    Toast.show(
+      context,
+      AppLocalizations.of(context)
+          .ui(
+            'ui_dm_pin_limit',
+            r'You can pin up to $count chats. Unpin one first.',
+          )
+          .replaceAll(r'$count', '$maxPinnedChats'),
+    );
+    return false;
+  }
+
+  /// Long-pressed: pin it to the top of the list, or take it off.
+  Future<void> _pinMenu({
+    required bool pinned,
+    required int pinnedNow,
+    required Future<String?> Function(bool pin) apply,
+  }) async {
+    final l10n = AppLocalizations.of(context);
+    final picked = await ActionSheet.show<bool>(
+      context,
+      actions: [
+        SheetAction(
+          value: !pinned,
+          label: pinned
+              ? l10n.ui('ui_cchat_unpin', 'Unpin')
+              : l10n.ui('ui_cchat_pin', 'Pin to the top'),
+          // The glyph a chat's own Pin to the top uses.
+          icon: Iconsax.attach_square_copy,
+        ),
+      ],
+    );
+    if (picked == null || !mounted) return;
+    if (picked && !_roomForPin(pinnedNow)) return;
+    final error = await apply(picked);
+    if (error != null && mounted) Toast.show(context, error);
+  }
+
+  Future<String?> _pinChat(CommunityChat chat, bool pin) async {
+    setState(() => _chatPins[chat.id] = pin ? DateTime.now() : null);
+    try {
+      await ref.read(communityChatsRepositoryProvider).setPinned(chat.id, pin);
+    } catch (error) {
+      if (mounted) setState(() => _chatPins.remove(chat.id));
+      return describeApiError(error, sessionIsLive: true);
+    }
+    ref.invalidate(joinedChatsProvider);
+    // Held until the list read back says the same.
+    await ref
+        .read(joinedChatsProvider.future)
+        .catchError((_) => <CommunityChat>[]);
+    if (mounted) setState(() => _chatPins.remove(chat.id));
+    return null;
+  }
+
   Future<void> _openChat(CommunityChat chat) async {
     await CommunityChatScreen.open(context, chat);
     // Read while it was open, perhaps muted: the row and the badge say so.
@@ -307,6 +371,21 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
   static DateTime _when(Object entry) => entry is Conversation
       ? entry.lastMessage?.createdAt ?? entry.lastMessageAt
       : (entry as CommunityChat).activeAt;
+
+  static DateTime? _pinnedAt(Object entry) => entry is Conversation
+      ? entry.pinnedAt
+      : (entry as CommunityChat).pinnedAt;
+
+  /// Pinned first, the latest pinned on top; then whatever moved last.
+  static int _order(Object a, Object b) {
+    final pa = _pinnedAt(a), pb = _pinnedAt(b);
+    if (pa != null || pb != null) {
+      if (pa == null) return 1;
+      if (pb == null) return -1;
+      return pb.compareTo(pa);
+    }
+    return _when(b).compareTo(_when(a));
+  }
 
   bool _chatMatches(CommunityChat chat) {
     final query = widget.query.toLowerCase();
@@ -348,10 +427,16 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
     final listsChats = widget.filter == ConversationFilter.all ||
         widget.filter == ConversationFilter.unread ||
         widget.filter == ConversationFilter.groups;
-    final joined = listsChats
-        ? ref.watch(joinedChatsProvider).asData?.value ??
-            const <CommunityChat>[]
-        : const <CommunityChat>[];
+    // The last list read, while the next is on its way: rows that blink out
+    // and back after every pin or open are worse than ones a second old.
+    final joined = [
+      for (final chat in listsChats
+          ? ref.watch(joinedChatsProvider).value ?? const <CommunityChat>[]
+          : const <CommunityChat>[])
+        _chatPins.containsKey(chat.id)
+            ? chat.copyWith(pin: true, pinnedAt: _chatPins[chat.id])
+            : chat,
+    ];
     final reach = state.cursor != null && state.items.isNotEmpty
         ? _when(state.items.last)
         : null;
@@ -359,11 +444,17 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
       for (final chat in joined)
         if ((widget.filter != ConversationFilter.unread || chat.unread > 0) &&
             _chatMatches(chat) &&
-            (reach == null || !chat.activeAt.isBefore(reach)))
+            // A pinned one is at the top whatever has loaded below it.
+            (chat.pinnedAt != null ||
+                reach == null ||
+                !chat.activeAt.isBefore(reach)))
           chat,
     ];
-    final entries = <Object>[...items, ...chats]
-      ..sort((a, b) => _when(b).compareTo(_when(a)));
+    final entries = <Object>[...items, ...chats]..sort(_order);
+    // Counted over everything pinned, shown or not: the limit is the
+    // reader's, not this filter's.
+    final pinnedNow = state.items.where((c) => c.pinned).length +
+        joined.where((c) => c.pinnedAt != null).length;
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -455,6 +546,11 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                   return _CommunityChatRow(
                     chat: entry,
                     onTap: () => _openChat(entry),
+                    onLongPress: () => _pinMenu(
+                      pinned: entry.pinnedAt != null,
+                      pinnedNow: pinnedNow,
+                      apply: (pin) => _pinChat(entry, pin),
+                    ),
                   );
                 }
                 final conversation = entry as Conversation;
@@ -463,6 +559,20 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
                   me: ref.watch(currentUserProvider).asData?.value.id,
                   hidden: hidden,
                   onTap: () => _open(conversation),
+                  // Not from Hidden: a pin there would bring it back, which
+                  // is what the swipe is for.
+                  onLongPress: hidden
+                      ? null
+                      : () => _pinMenu(
+                            pinned: conversation.pinned,
+                            pinnedNow: pinnedNow,
+                            apply: (pin) => setConversationPinned(
+                              ref,
+                              widget.filter,
+                              conversation,
+                              pin,
+                            ),
+                          ),
                   onRestore: () => _restore(conversation),
                   onHide: () async {
                     final error = await notifier.hide(conversation);
@@ -481,6 +591,7 @@ class _ConversationListState extends ConsumerState<_ConversationList> {
 class _ConversationRow extends StatelessWidget {
   final Conversation conversation;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
   final VoidCallback onHide;
   final VoidCallback onRestore;
 
@@ -493,6 +604,7 @@ class _ConversationRow extends StatelessWidget {
   const _ConversationRow({
     required this.conversation,
     required this.onTap,
+    this.onLongPress,
     required this.onHide,
     required this.onRestore,
     this.hidden = false,
@@ -599,6 +711,7 @@ class _ConversationRow extends StatelessWidget {
       onDismissed: (_) => hidden ? onRestore() : onHide(),
       child: InkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: SpacingTokens.space16,
@@ -648,6 +761,10 @@ class _ConversationRow extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: SpacingTokens.space8),
+                        if (conversation.pinned) ...[
+                          _PinMark(key: ValueKey('pinned-${conversation.id}')),
+                          const SizedBox(width: SpacingTokens.space4),
+                        ],
                         Text(
                           conversationTime(
                             l10n,
@@ -716,8 +833,13 @@ class _ConversationRow extends StatelessWidget {
 class _CommunityChatRow extends StatelessWidget {
   final CommunityChat chat;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
 
-  const _CommunityChatRow({required this.chat, required this.onTap});
+  const _CommunityChatRow({
+    required this.chat,
+    required this.onTap,
+    this.onLongPress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -746,6 +868,7 @@ class _CommunityChatRow extends StatelessWidget {
     return InkWell(
       key: ValueKey('inbox-chat-${chat.id}'),
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: SpacingTokens.space16,
@@ -799,6 +922,10 @@ class _CommunityChatRow extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: SpacingTokens.space8),
+                      if (chat.pinnedAt != null) ...[
+                        _PinMark(key: ValueKey('inbox-chat-pinned-${chat.id}')),
+                        const SizedBox(width: SpacingTokens.space4),
+                      ],
                       Text(
                         conversationTime(
                           l10n,
@@ -852,6 +979,20 @@ class _CommunityChatRow extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The mark on a pinned row, beside its time.
+class _PinMark extends StatelessWidget {
+  const _PinMark({super.key});
+
+  @override
+  Widget build(BuildContext context) => Icon(
+        Iconsax.attach_square,
+        size: 14,
+        semanticLabel:
+            AppLocalizations.of(context).ui('ui_dm_pinned', 'Pinned'),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45),
+      );
 }
 
 /// "Seen" or "Sent", for the reader's own last message. Seen in the accent,

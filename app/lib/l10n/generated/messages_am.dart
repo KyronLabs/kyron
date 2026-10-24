@@ -926,6 +926,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("መለያ"),
       "ui_after": MessageLookupByLibrary.simpleMessage("ይበከላል"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("መተግበሪያ እና መሣሪያ"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "ይህ ጥቅስ ሰዎችን ስለ ማጭበርበሩ ለማስጠንቀቅ ነበር።"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "ውሳኔው ለምን ስህተት ነው ብለው እንደሚያስቡ ይግለጹ፦ ልጥፉ ምን ማለት ነበር፣ ቡድኑ ምን ሊያልፈው ይችላል፣ ወይም ደንቡ ለምን አይመጥንም። የወሰነው ሰው ሳይሆን ሌላ ሰው ያነበዋል።"),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("ይግባኝዎ"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "ቢያንስ \$count ፊደላት ይጻፉ። በእያንዳንዱ ውሳኔ ላይ አንድ ጊዜ ይግባኝ ማለት ይችላሉ።"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("ይግባኝ ላክ"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "ይግባኙ ተልኳል። ሲወሰን ማሳወቂያ ይደርስዎታል።"),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("በጉዳይ \$number ላይ ይግባኝ"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("አይነት"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "ፍጥነት፣ ጨለማ፣ ወይም ስልኩ የተቀመጠውን ይከተላሉ",
@@ -1053,6 +1065,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("ምንም ቡድን የለም"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "ያሉባቸው ቡድኖች እና የሚቀላቀሏቸው የማህበረሰብ ውይይቶች እዚህ ይታያሉ።"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "እስከ \$count ውይይቶች ድረስ መሰካት ይችላሉ። መጀመሪያ አንዱን ይንቀሉ።"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("ተሰክቷል"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("የወደድኳቸው"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("የተቀመጡ"),
       "ui_feed_empty":
@@ -1264,10 +1279,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("ተመራማሪዎች"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("ግላዊነት"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("የሚጨምሩት ነገር አለ? (አማራጭ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "ቡድኑ ሲወስን ማሳወቂያ ይደርስዎታል፣ በሪፖርቶችዎ ውስጥም መከታተል ይችላሉ።"),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "ይህን ሰው ደግሞ ማየት ካልፈለጉ፣ ከዚያው ምናሌ ድምጸ-ከል ማድረግ ወይም ማገድ ይችላሉ።"),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "ተመሳሳይ ነገርን ሁለት ጊዜ ሪፖርት ማድረግ ተጨማሪ ክብደት አይሰጠውም፦ ከእያንዳንዱ ሰው አንድ ሪፖርት እናስቀምጣለን።"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "ሪፖርትዎ ለዚያ ሰው አይጋራም። ቢሰረዝም እንኳ እንዲገመገም ሪፖርት ያደረጉትን ቅጂ እናስቀምጣለን።"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "ሪፖርትዎ ደርሶናል፣ ግምገማ እየጠበቀ ነው። ሪፖርቱን ማን እንዳደረገ ለዚያ ሰው አንነግረውም።"),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("ሪፖርቶችዎን ይመልከቱ"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("ምን ችግር እንዳለ ይንገሩን"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("ስለነገሩን እናመሰግናለን"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name ላይ ምን ችግር አለ?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("በዚህ መልዕክት ላይ ምን ችግር አለ?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("በዚህ ልጥፍ ላይ ምን ችግር አለ?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("በዚህ ምላሽ ላይ ምን ችግር አለ?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("የማህበረሰብ ውይይት መልዕክት"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ልጥፍ"),
@@ -1293,6 +1330,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("ሪፖርቶችዎ"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("የልጆች ደህንነት"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "ለአካለ መጠን ያልደረሰን ልጅ አደጋ ላይ የሚጥል ወይም ወሲባዊ የሚያደርግ ማንኛውም ነገር።"),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "ያነጣጠረ ትንኮሳ፣ ዛቻ ወይም ያልተፈለገ ግንኙነት።"),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("ሰዎችን በማንነታቸው ምክንያት ማጥቃት።"),
+      "ui_rule_detail_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("ሕገ-ወጥ ነገርን መሸጥ ወይም ማስተዋወቅ።"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("ሌላ ሰው መስሎ መቅረብ።"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "ስራዎን ወይም የንግድ ምልክትዎን ያለፈቃድ ይጠቀማል።"),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "ስለ ጤና፣ ምርጫዎች ወይም ክስተቶች አሳሳች የይገባኛል ጥያቄዎች።"),
+      "ui_rule_detail_self_harm":
+          MessageLookupByLibrary.simpleMessage("ራስን መጉዳትን ማበረታታት ወይም ማሳየት።"),
+      "ui_rule_detail_sexual_content":
+          MessageLookupByLibrary.simpleMessage("ያለማስጠንቀቂያ የሚታይ ወሲባዊ ይዘት።"),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "ከላይ ካሉት አንዱም አይደለም። ምን ችግር እንዳለ ይንገሩን።"),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "ተደጋጋሚ፣ አሳሳች ወይም ያልተፈለገ ማስተዋወቂያ።"),
+      "ui_rule_detail_violence":
+          MessageLookupByLibrary.simpleMessage("በአመጽ ማስፈራራት፣ ማወደስ ወይም ማነሳሳት።"),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("ትንኮሳ ወይም ጉልበተኝነት"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("የጥላቻ ንግግር"),
@@ -1373,6 +1435,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ከቡድናችን ይረዱ"),
       "ui_share": MessageLookupByLibrary.simpleMessage("አጋራ"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage("ይህን ጽሑፍ አጋራ"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("ስለ ምን ነበር"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("መለያዎ በቋሚነት ታግዷል"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("መልሱ፣ በ\$date፦"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("ይግባኝ"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("በዚህ ውሳኔ ላይ ይግባኝ ይበሉ"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "በዚህ ውሳኔ ላይ ከአሁን በኋላ ይግባኝ ማለት አይቻልም። የሆነ ችግር ካለ ድጋፍን ያግኙ።"),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("ይግባኙ እየታየ ነው"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("ይግባኙ ተቀባይነት አግኝቷል"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "ከቡድኑ ሌላ ሰው እንደገና እያየው ነው። ሲወሰን ማሳወቂያ ይደርስዎታል።"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "ስህተት ነው ብለው ካሰቡ፣ እስከ \$date ድረስ እንደገና እንዲታይ መጠየቅ ይችላሉ። የሚወስነው ከቡድኑ ሌላ ሰው ነው።"),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("ይግባኝ ከተባለ በኋላ፦ ውሳኔው ጸንቷል"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "ጉዳይ \$number። ደንብ፦ \$rule። ቡድኑ የጻፈው፦"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "መለያዎን መሰረዝ እገዳውን አያነሳም፦ በተመሳሳይ የኢሜይል አድራሻ የሚከፈት አዲስ መለያም ታግዶ ይጀምራል።"),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("በቋሚነት ታግዷል"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "አሁንም የሚሰሩት ይህ ገጽ፣ ይግባኞች፣ ድጋፍ እና መለያዎን መሰረዝ ብቻ ናቸው።"),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("ይግባኝ ማለት ይቻላል"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("ጉዳይ \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("በ\$date ተወስኗል"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("ስለ መለያዎ የተሰጡ ውሳኔዎች"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("መለያዎን ይሰርዙ"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("ዝርዝሮችን ይመልከቱ"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("ዝርዝሮችን ይመልከቱ እና ይግባኝ ይበሉ"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("በ\$date ያበቃል"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("መለያዎ በጥሩ ሁኔታ ላይ ነው"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("ምንም ገደብ የለበትም።"),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("የመለያ ሁኔታን መጫን አልተቻለም"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("መልዕክቱ ተወግዷል"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "ስለ መለያዎ ምንም ውሳኔ አልተሰጠም። ቡድኑ መቼም የእርስዎን የሆነ ነገር ቢያስወግድ ወይም መለያዎን ቢገድብ፣ ከምክንያቱ ጋር እዚህ ይታያል፣ እና ይግባኝ ማለት ይችላሉ።"),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "ይግባኝ የሚባልበት ነገር የለም፦ ውሳኔው ተሽሯል።"),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("ልጥፉ ተወግዷል"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("እንደገና ለማረጋገጥ ወደ ታች ይጎትቱ።"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("የKyron ደንቦችን ያንብቡ"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("ምላሹ ተወግዷል"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("ተሽሯል"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "በ\$date ተሽሯል። የተወገደው ሁሉ ተመልሷል፣ እና ምንም ገደብ ከአሁን በኋላ አይሰራም።"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("ደንብ፦ \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("ውጣ"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("ታግዷል"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "ማንበብ ይችላሉ፣ ግን መለጠፍ፣ መመለስ፣ መከተል ወይም መልዕክት መላክ አይችሉም። ሪፖርት ማድረግ፣ ማገድ እና ድምጸ-ከል ማድረግ አሁንም ይሰራሉ።"),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "መለያዎ ታግዷል፦ ማንበብ ይችላሉ፣ ግን መለጠፍ አይችሉም።"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("እስከ \$date ታግዷል"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "መለያዎ እስከ \$date ታግዷል፦ ማንበብ ይችላሉ፣ ግን መለጠፍ አይችሉም።"),
+      "ui_standing_team_said": MessageLookupByLibrary.simpleMessage("ቡድኑ የጻፈው"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("የመለያ ሁኔታ"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("ማስጠንቀቂያ"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("ለምን?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("በ\$date የጻፉት፦"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("መልዕክትዎ"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("ልጥፍዎ"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("ምላሽዎ"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("ውሎች"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("ይህ ጽሑፍ"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("ገጽታ ዝም ብለዋል"),

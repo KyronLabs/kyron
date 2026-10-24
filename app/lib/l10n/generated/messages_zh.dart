@@ -143,6 +143,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻译"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("重试"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage("我引用这个骗局是为了提醒大家。"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "说明你为什么认为这个决定是错的：帖子本来的意思、团队可能忽略了什么，或者为什么这条规则不适用。阅读它的人不是做出决定的人。"),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("你的申诉"),
+      "ui_appeal_rules":
+          MessageLookupByLibrary.simpleMessage("至少写 \$count 个字符。每个决定只能申诉一次。"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("提交申诉"),
+      "ui_appeal_sent":
+          MessageLookupByLibrary.simpleMessage("申诉已提交。有结果时你会收到通知。"),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage("申诉案件 \$number"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage("用途（可选）"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage("仅版主可以发言"),
       "ui_cchat_announcements_detail":
@@ -228,6 +238,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("没有群组"),
       "ui_dm_groups_none_detail":
           MessageLookupByLibrary.simpleMessage("你所在的群组和你加入的社区聊天会显示在这里。"),
+      "ui_dm_pin_limit":
+          MessageLookupByLibrary.simpleMessage("最多可以置顶 \$count 个聊天。请先取消置顶一个。"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("已置顶"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),
@@ -355,9 +368,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("只有你发送的对象可以打开，且只能打开一次。"),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("以仅看一次的方式发送"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("点按查看"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage("还有要补充的吗？（可选）"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "团队作出决定后你会收到通知，也可以在“你的举报”中查看进展。"),
+      "ui_report_mute_block":
+          MessageLookupByLibrary.simpleMessage("如果你也不想再看到对方，可以在同一菜单中将其静音或屏蔽。"),
+      "ui_report_once":
+          MessageLookupByLibrary.simpleMessage("重复举报同一内容不会增加分量：每人只保留一份举报。"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "你的举报不会告知对方。我们会保留你举报内容的副本，即使内容被删除也能审核。"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "你的举报已收到，正在排队等待审核。我们不会告诉对方是谁举报的。"),
       "ui_report_see_reports": MessageLookupByLibrary.simpleMessage("查看你的举报"),
+      "ui_report_tell_us": MessageLookupByLibrary.simpleMessage("告诉我们哪里有问题"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage("感谢你告诉我们"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name 有什么问题？"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("这条消息有什么问题？"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage("这个帖子有什么问题？"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("这条回复有什么问题？"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage("一条社区聊天消息"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("一篇帖子"),
       "ui_reports_a_reply": MessageLookupByLibrary.simpleMessage("一条回复"),
@@ -378,6 +409,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("你举报的内容及处理结果"),
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("你的举报"),
       "ui_rule_child_safety": MessageLookupByLibrary.simpleMessage("儿童安全"),
+      "ui_rule_detail_child_safety":
+          MessageLookupByLibrary.simpleMessage("任何危害未成年人或将其性化的内容。"),
+      "ui_rule_detail_harassment":
+          MessageLookupByLibrary.simpleMessage("针对性的辱骂、威胁或不受欢迎的联系。"),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage("因身份而攻击他人。"),
+      "ui_rule_detail_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("销售或宣传违法的东西。"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("冒充他人。"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("未经许可使用你的作品或商标。"),
+      "ui_rule_detail_misinformation":
+          MessageLookupByLibrary.simpleMessage("关于健康、选举或事件的误导性说法。"),
+      "ui_rule_detail_self_harm":
+          MessageLookupByLibrary.simpleMessage("鼓励或展示自残。"),
+      "ui_rule_detail_sexual_content":
+          MessageLookupByLibrary.simpleMessage("未加警告就展示的色情内容。"),
+      "ui_rule_detail_something_else":
+          MessageLookupByLibrary.simpleMessage("以上都不是。告诉我们哪里有问题。"),
+      "ui_rule_detail_spam":
+          MessageLookupByLibrary.simpleMessage("重复、误导或不受欢迎的推广。"),
+      "ui_rule_detail_violence":
+          MessageLookupByLibrary.simpleMessage("威胁、美化或煽动暴力。"),
       "ui_rule_harassment": MessageLookupByLibrary.simpleMessage("骚扰或霸凌"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("仇恨言论"),
       "ui_rule_illegal_goods": MessageLookupByLibrary.simpleMessage("非法商品或服务"),
@@ -390,6 +444,82 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("其他"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("垃圾信息"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力或威胁"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("涉及的内容"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("你的账号已被永久封禁"),
+      "ui_standing_answer": MessageLookupByLibrary.simpleMessage("答复，\$date："),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("申诉"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("对此决定提出申诉"),
+      "ui_standing_appeal_closed":
+          MessageLookupByLibrary.simpleMessage("此决定已无法申诉。如有问题，请联系客服。"),
+      "ui_standing_appeal_open": MessageLookupByLibrary.simpleMessage("申诉审核中"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("申诉已通过"),
+      "ui_standing_appeal_pending":
+          MessageLookupByLibrary.simpleMessage("团队中的其他人正在重新审核。有结果时你会收到通知。"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "如果你认为这是错误，可以在 \$date 之前请求重新审核。由团队中的其他人决定。"),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("已申诉：维持原决定"),
+      "ui_standing_ban_case":
+          MessageLookupByLibrary.simpleMessage("案件 \$number。规则：\$rule。团队写道："),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "删除账号不会解除封禁：使用同一邮箱地址的新账号同样会被封禁。"),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("永久封禁"),
+      "ui_standing_banned_detail":
+          MessageLookupByLibrary.simpleMessage("只有此页面、申诉、客服和删除账号仍可使用。"),
+      "ui_standing_can_appeal": MessageLookupByLibrary.simpleMessage("可申诉"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("案件 \$number"),
+      "ui_standing_decided": MessageLookupByLibrary.simpleMessage("决定于 \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage("关于你账号的决定"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("删除你的账号"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("查看详情"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("查看详情并申诉"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("结束于 \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage("你的账号状态良好"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("没有任何限制。"),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("无法加载账号状态"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("消息已移除"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "尚未对你的账号做出任何决定。如果团队移除了你的内容或限制了你的账号，会连同原因显示在这里，你也可以申诉。"),
+      "ui_standing_nothing_to_appeal":
+          MessageLookupByLibrary.simpleMessage("无需申诉：此决定已撤销。"),
+      "ui_standing_post_removed": MessageLookupByLibrary.simpleMessage("帖子已移除"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("下拉以重新检查。"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("阅读 Kyron 的规则"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("回复已移除"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("已撤销"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "已于 \$date 撤销。被移除的内容已恢复，所有限制均已解除。"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("规则：\$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("退出登录"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("已暂停"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "你可以浏览，但不能发帖、回复、关注或发消息。举报、屏蔽和静音仍然可用。"),
+      "ui_standing_suspended_toast":
+          MessageLookupByLibrary.simpleMessage("你的账号已被暂停：可以浏览，但不能发帖。"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("暂停至 \$date"),
+      "ui_standing_suspended_until_toast":
+          MessageLookupByLibrary.simpleMessage("你的账号已被暂停至 \$date：可以浏览，但不能发帖。"),
+      "ui_standing_team_said": MessageLookupByLibrary.simpleMessage("团队的说明"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("账号状态"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("警告"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("为什么？"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("你于 \$date 写道："),
+      "ui_standing_your_message": MessageLookupByLibrary.simpleMessage("你的消息"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("你的帖子"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("你的回复"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("重试"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("撤销转发"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("更新密码"),

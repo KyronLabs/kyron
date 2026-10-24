@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Badilisha"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Wasiliana na usaidizi"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Imekamilika"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Ripoti"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Ripoti imetumwa"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Tuma ripoti"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Jaribu tena"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Nilinukuu utapeli huo ili kuwaonya watu."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Eleza kwa nini unadhani uamuzi ulikuwa si sahihi: chapisho lilimaanisha nini, timu huenda ilikosa nini, au kwa nini sheria haifai. Anayeisoma ni mtu mwingine, si aliyefanya uamuzi."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Rufaa yako"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Andika angalau herufi \$count. Unaweza kukata rufaa kwa kila uamuzi mara moja."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Tuma rufaa"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Rufaa imetumwa. Utapokea arifa uamuzi utakapofanywa."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Rufaa ya kesi \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1150,6 +1163,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Hakuna vikundi"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Vikundi ulivyomo, na gumzo za jumuiya unazojiunga nazo, vinaonyeshwa hapa."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kubandika hadi soga \$count. Bandua moja kwanza."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Imebandikwa"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Zilizopendwa"),
       "ui_drawer_saved":
           MessageLookupByLibrary.simpleMessage("Zilizohifadhiwa"),
@@ -1380,10 +1396,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Una chochote cha kuongeza? (si lazima)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Utapata arifa timu itakapoamua, na unaweza kufuatilia katika Ripoti zako."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ikiwa pia hutaki kumwona mtu huyu tena, unaweza kumnyamazisha au kumzuia kwenye menyu hiyo hiyo."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Kuripoti kitu kimoja mara mbili hakukipi uzito zaidi: tunahifadhi ripoti moja kwa kila mtu."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Ripoti yako haishirikiwi na mtu huyo. Tunahifadhi nakala ya ulichoripoti ili kiweze kukaguliwa hata kikifutwa."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Ripoti yako imepokelewa na inasubiri kukaguliwa. Hatumwambii mtu huyo nani aliyeripoti."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Tazama ripoti zako"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Tuambie kuna tatizo gani"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Asante kwa kutuambia"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name ana tatizo gani?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Ujumbe huu una tatizo gani?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Chapisho hili lina tatizo gani?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Jibu hili lina tatizo gani?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Ujumbe wa gumzo la jumuiya"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Chapisho"),
@@ -1411,6 +1449,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Ripoti zako"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Usalama wa watoto"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Chochote kinachomhatarisha mtoto au kumtumia kingono."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Unyanyasaji unaomlenga mtu, vitisho au mawasiliano yasiyotakiwa."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Mashambulizi dhidi ya watu kwa sababu ya utambulisho wao."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Kuuza au kutangaza kitu kisicho halali."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Kujifanya kuwa mtu mwingine."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Inatumia kazi yako au chapa yako ya biashara bila ruhusa."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Madai ya kupotosha kuhusu afya, uchaguzi au matukio."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Kuhimiza au kuonyesha kujidhuru."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Maudhui ya ngono yanayoonyeshwa bila onyo."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Hakuna kati ya hivi. Tuambie kuna tatizo gani."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Matangazo yanayojirudia, ya kupotosha au yasiyotakiwa."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Kutishia, kusifu au kuchochea vurugu."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Unyanyasaji au uonevu"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Matamshi ya chuki"),
@@ -1496,6 +1559,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Lilihusu nini"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Akaunti yako imepigwa marufuku kabisa"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Jibu, tarehe \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Rufaa"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "Kata rufaa dhidi ya uamuzi huu"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Uamuzi huu hauwezi tena kukatiwa rufaa. Ikiwa kuna tatizo, wasiliana na usaidizi."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Rufaa inakaguliwa"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Rufaa imekubaliwa"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Mtu mwingine kwenye timu analikagua tena. Utapokea arifa uamuzi utakapofanywa."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ikiwa unadhani ni kosa, unaweza kuomba likaguliwe tena hadi \$date. Mtu mwingine kwenye timu ndiye anayeamua."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Rufaa imekatwa: uamuzi unabaki"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Kesi \$number. Sheria: \$rule. Timu iliandika:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Kufuta akaunti yako hakuondoi marufuku: akaunti mpya yenye anwani ile ile ya barua pepe nayo huanza ikiwa imepigwa marufuku."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Imepigwa marufuku"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Ni ukurasa huu tu, rufaa, usaidizi na kufuta akaunti yako ndivyo bado vinafanya kazi."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Inaweza kukatiwa rufaa"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Kesi \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Iliamuliwa \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Maamuzi kuhusu akaunti yako"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Futa akaunti yako"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Angalia maelezo"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Angalia maelezo na ukate rufaa"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Inaisha \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Akaunti yako iko katika hali nzuri"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Hakuna kinachoizuia."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Hali ya akaunti haikuweza kupakiwa"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Ujumbe umeondolewa"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Hakuna kilichoamuliwa kuhusu akaunti yako. Timu ikiwahi kuondoa kitu chako au kuzuia akaunti yako, kitaonyeshwa hapa pamoja na sababu, na unaweza kukata rufaa."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Hakuna cha kukatia rufaa: uamuzi umebatilishwa."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Chapisho limeondolewa"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Vuta chini ili kuangalia tena."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Soma sheria za Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Jibu limeondolewa"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Umebatilishwa"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Ulibatilishwa \$date. Kila kilichoondolewa kimerudishwa, na hakuna kizuizi kinachotumika tena."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Sheria: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Toka"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Imesimamishwa"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kusoma, lakini huwezi kuchapisha, kujibu, kufuata au kutuma ujumbe. Kuripoti, kuzuia na kunyamazisha bado vinafanya kazi."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Akaunti yako imesimamishwa: unaweza kusoma, lakini huwezi kuchapisha."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Imesimamishwa hadi \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Akaunti yako imesimamishwa hadi \$date: unaweza kusoma, lakini huwezi kuchapisha."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Timu iliandika nini"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Hali ya akaunti"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Onyo"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Kwa nini?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Uliandika, tarehe \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Ujumbe wako"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Chapisho lako"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Jibu lako"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1529,7 +1687,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Nini kilitokea, na tuangalie nini?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

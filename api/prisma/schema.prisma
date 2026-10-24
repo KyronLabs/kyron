@@ -1204,6 +1204,10 @@ model ConversationMember {
   // something the other side should be able to see or undo.
   mutedAt DateTime? @db.Timestamptz()
 
+  // Set when this member keeps it at the top of their list, and when. Their
+  // own setting, like muting. Cleared when they hide it.
+  pinnedAt DateTime? @db.Timestamptz()
+
   /// What they may do here. Meaningful in a group; MEMBER in a direct one.
   role MemberRole @default(MEMBER)
 
@@ -1388,6 +1392,11 @@ model DeviceToken {
 
   /// ios, android or web. Kept so a send can be shaped per platform later.
   platform String
+
+  /// The language the app on this device is in, as it said when it last
+  /// registered -- `fr`, `pt-BR`. Pushes to it are said in that language
+  /// (src/modules/push/copy). Null from an app that never said: English.
+  locale String?
 
   createdAt DateTime @default(now()) @db.Timestamptz()
   /// Refreshed on every launch, so tokens nobody has used can be swept.
@@ -1676,6 +1685,10 @@ model CommunityChatMember {
   /// Muted by this member: no pushes from it, and it is not counted in the
   /// Messages badge. Still listed, still counted as unread in the list.
   mutedAt DateTime? @db.Timestamptz()
+
+  /// Kept at the top of this member's Messages list, and since when. Not the
+  /// chat's pinned message, which is CommunityChat.pinnedMessageId.
+  pinnedAt DateTime? @db.Timestamptz()
 
   /// When this member was last pushed about this chat. One push per run of
   /// unread messages: not again until they have read past this.

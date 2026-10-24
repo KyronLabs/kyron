@@ -9,6 +9,7 @@ import '../l10n/app_localizations.dart';
 import '../models/account_standing.dart';
 import '../providers/enforcement_provider.dart';
 import '../utils/api_error_message.dart';
+import '../utils/local_date.dart';
 import '../utils/notification_text.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
@@ -95,7 +96,7 @@ class ReportRow extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     final locale = Localizations.maybeLocaleOf(context)?.toLanguageTag();
-    final day = DateFormat.yMMMd(locale);
+    String day(DateTime when) => localDate(locale, DateFormat.yMMMd, when);
     final about = report.about?.trim();
 
     return Padding(
@@ -152,13 +153,13 @@ class ReportRow extends StatelessWidget {
                   [
                     l10n
                         .ui('ui_reports_sent_on', r'Reported $date')
-                        .replaceAll(r'$date', day.format(report.createdAt)),
+                        .replaceAll(r'$date', day(report.createdAt)),
                     if (report.resolvedAt != null)
                       l10n
                           .ui('ui_reports_decided_on', r'Decided $date')
                           .replaceAll(
                             r'$date',
-                            day.format(report.resolvedAt!.toLocal()),
+                            day(report.resolvedAt!.toLocal()),
                           ),
                   ].join(' · '),
                   style: TextStyle(

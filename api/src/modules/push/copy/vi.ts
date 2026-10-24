@@ -1,0 +1,73 @@
+// Pushes in vi. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const vi: Copy = {
+  someone: 'Ai đó',
+  and_one_other: '{name} và 1 người khác',
+  and_others: '{name} và {count} người khác',
+  followed: 'Đã theo dõi bạn',
+  liked: 'Đã thích bài viết của bạn',
+  liked_quote: 'Đã thích bài viết của bạn: “{snippet}”',
+  reposted: 'Đã đăng lại bài viết của bạn',
+  reposted_quote: 'Đã đăng lại bài viết của bạn: “{snippet}”',
+  replied: 'Đã trả lời bạn',
+  replied_quote: 'Đã trả lời: “{snippet}”',
+  group: 'Nhóm',
+  new_message: 'Tin nhắn mới',
+  dm_once: 'Đã gửi nội dung xem một lần',
+  dm_attachment: 'Đã gửi một tệp đính kèm',
+  dm_group_message: 'Đã gửi một tin nhắn',
+  dm_message: 'Đã gửi cho bạn một tin nhắn',
+  named_line: '{name}: {text}',
+  group_added: '{name} đã thêm bạn vào nhóm.',
+  group_hand: '{name} đã giơ tay xin được viết.',
+  chat_poll: 'Bình chọn: {text}',
+  chat_photo: 'Ảnh',
+  chat_gif: 'GIF',
+  chat_clip: 'Clip',
+  chat_voice: 'Tin nhắn thoại',
+  mod_removed_post: 'Bài viết của bạn đã bị gỡ.',
+  mod_removed_reply: 'Phản hồi của bạn đã bị gỡ.',
+  mod_removed_message:
+    'Tin nhắn của bạn trong cuộc trò chuyện cộng đồng đã bị gỡ.',
+  mod_removed_other: 'Một nội dung bạn đăng đã bị gỡ.',
+  mod_warned: 'Tài khoản của bạn có một cảnh cáo.',
+  mod_suspended_until: 'Tài khoản của bạn bị tạm ngưng đến {date}.',
+  mod_banned: 'Tài khoản của bạn đã bị cấm.',
+  mod_rule: 'Quy tắc: {rule}.',
+  mod_rules_general: 'Nội dung đã vi phạm quy tắc của Kyron.',
+  mod_case: 'Vụ việc {number}: mở Kyron để xem lý do hoặc kháng nghị.',
+  mod_reversed: 'Chúng tôi đã đảo ngược quyết định cho vụ việc {number}.',
+  appeal_accepted:
+    'Kháng nghị của bạn cho vụ việc {number} đã được chấp nhận và quyết định đã bị hủy.',
+  appeal_upheld:
+    'Chúng tôi đã xem lại kháng nghị của bạn cho vụ việc {number} và quyết định được giữ nguyên.',
+  report_actioned:
+    'Chúng tôi đã xử lý nội dung bạn báo cáo. Cảm ơn bạn đã cho chúng tôi biết.',
+  report_dismissed:
+    'Chúng tôi đã xem xét nội dung bạn báo cáo và không thấy nó vi phạm quy tắc của Kyron. Cảm ơn bạn đã cho chúng tôi biết.',
+  verified: 'Bạn đã được xác minh. Huy hiệu giờ hiển thị cạnh tên bạn.',
+  verify_declined: 'Yêu cầu xác minh của bạn không được chấp thuận.',
+  verify_removed: 'Huy hiệu xác minh của bạn đã bị gỡ.',
+  verify_lapsed_rename:
+    'Huy hiệu xác minh của bạn đã bị gỡ vì tên bạn đã thay đổi. Hãy yêu cầu lại từ menu và sẽ có người kiểm tra tên mới.',
+  staff_title: 'Kiểm duyệt Kyron',
+  staff_appeal: 'Có một kháng nghị đang chờ xem xét.',
+  staff_report_urgent:
+    'Có một báo cáo khẩn đang chờ: ai đó có thể đang gặp nguy hiểm.',
+  staff_report: 'Có một báo cáo đang chờ xem xét.',
+  staff_verify: 'Có người yêu cầu được xác minh.',
+  test_working: 'Thông báo đang hoạt động.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Quấy rối hoặc bắt nạt',
+  rule_hate: 'Ngôn từ thù ghét',
+  rule_violence: 'Bạo lực hoặc đe dọa',
+  rule_self_harm: 'Tự tử hoặc tự gây hại',
+  rule_sexual_content: 'Nội dung người lớn',
+  rule_child_safety: 'An toàn trẻ em',
+  rule_misinformation: 'Thông tin sai lệch',
+  rule_impersonation: 'Mạo danh',
+  rule_intellectual_property: 'Sở hữu trí tuệ',
+  rule_illegal_goods: 'Hàng hóa hoặc dịch vụ bất hợp pháp',
+};

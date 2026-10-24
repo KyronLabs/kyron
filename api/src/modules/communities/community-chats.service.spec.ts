@@ -4,6 +4,7 @@ import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RecordingPrivateStorage } from '../../infrastructure/supabase/private-storage.test-double';
 import { RecordingDelivery } from '../push/delivery.test-double';
 import { CommunityChatsService } from './community-chats.service';
+import { render } from '../push/push-text';
 
 /**
  * Who may do what in a community chat, without a database, so CI holds the
@@ -24,6 +25,10 @@ interface Scene {
   sent?: { senderId: string; secondsAgo: number }[];
   /** The message being acted on, and who wrote it. */
   message?: { id: string; senderId: string };
+  /** When the joined members pinned the chat in their Messages list. */
+  pinnedAt?: Date;
+  /** How many chats, of both kinds, the reader has pinned already. */
+  pins?: number;
 }
 
 type Transaction = Promise<unknown>[] | ((tx: unknown) => Promise<unknown>);
@@ -77,13 +82,21 @@ function service(scene: Scene) {
         ({ where }: { where: { chatId_userId: { userId: string } } }) =>
           Promise.resolve(
             scene.joined.includes(where.chatId_userId.userId)
-              ? { userId: where.chatId_userId.userId }
+              ? {
+                  userId: where.chatId_userId.userId,
+                  pinnedAt: scene.pinnedAt ?? null,
+                }
               : null,
           ),
       ),
       findMany: jest.fn(() => Promise.resolve([])),
       updateMany: jest.fn(() => Promise.resolve({ count: 1 })),
+      update: jest.fn((args: { data: { pinnedAt?: Date | null } }) =>
+        Promise.resolve({ pinnedAt: args.data.pinnedAt ?? null }),
+      ),
+      count: jest.fn(() => Promise.resolve(scene.pins ?? 0)),
     },
+    conversationMember: { count: jest.fn(() => Promise.resolve(0)) },
     communityChatMessage: {
       findMany: jest.fn(
         ({
@@ -430,7 +443,7 @@ describe('what a push says', () => {
       body: string,
       media: { kind: MediaKind }[] = [],
       poll: unknown = null,
-    ) => CommunityChatsService.preview({ body, media, poll });
+    ) => render(CommunityChatsService.preview({ body, media, poll }), 'en');
     expect(say('hello   there')).toBe('hello there');
     expect(say('x'.repeat(150))).toHaveLength(100);
     expect(say('', [{ kind: MediaKind.IMAGE }])).toBe('Photo');
@@ -465,5 +478,72 @@ describe('searching a chat', () => {
       items: [],
     });
     expect(prisma.communityChatMessage.findMany).not.toHaveBeenCalled();
+  });
+});
+
+describe('pinning a chat in Messages', () => {
+  it('pins one the reader has joined', async () => {
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: ['ada'],
+    });
+    const { pinnedAt } = await svc.setPinned('ada', CHAT, true);
+    expect(pinnedAt).toBeInstanceOf(Date);
+    expect(prisma.communityChatMember.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: { pinnedAt: expect.any(Date) as unknown },
+      }),
+    );
+  });
+
+  it('is only for a joined chat', async () => {
+    const { svc } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: [],
+    });
+    await expect(svc.setPinned('ada', CHAT, true)).rejects.toThrow(
+      'Join this chat to pin it.',
+    );
+  });
+
+  it('shares the limit of five with conversations', async () => {
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: ['ada'],
+      pins: 5,
+    });
+    await expect(svc.setPinned('ada', CHAT, true)).rejects.toThrow(
+      'You can pin up to 5 chats.',
+    );
+    expect(prisma.communityChatMember.update).not.toHaveBeenCalled();
+  });
+
+  it('unpins', async () => {
+    const { svc, prisma } = service({
+      roles: { ada: CommunityRole.MEMBER },
+      joined: ['ada'],
+      pinnedAt: new Date('2026-10-01'),
+      pins: 5,
+    });
+    await expect(svc.setPinned('ada', CHAT, false)).resolves.toEqual({
+      id: CHAT,
+      pinnedAt: null,
+    });
+    expect(prisma.communityChatMember.update).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { pinnedAt: null } }),
+    );
+  });
+
+  it('keeps pinned chats inside the hundred the list takes', async () => {
+    const { svc, prisma } = service({ roles: {}, joined: [] });
+    await svc.joined('ada');
+    expect(prisma.communityChatMember.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        orderBy: [
+          { pinnedAt: { sort: 'desc', nulls: 'last' } },
+          { chat: { lastMessageAt: { sort: 'desc', nulls: 'last' } } },
+        ],
+      }),
+    );
   });
 });

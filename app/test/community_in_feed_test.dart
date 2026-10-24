@@ -200,7 +200,6 @@ void main() {
       expect(line.bottom, lessThanOrEqualTo(name.top + 1));
       // So the handle keeps its place beside the name.
       expect(find.text('@ada'), findsOneWidget);
-      expect(find.byType(PostCommunityTag), findsNothing);
     });
 
     testWidgets('opens the community from its picture', (tester) async {
@@ -298,7 +297,6 @@ void main() {
       // Drawn as any other post: the author's own picture, no line above.
       expect(find.byType(StackedPostAvatar), findsNothing);
       expect(find.byType(PostCommunityLine), findsNothing);
-      expect(find.byType(PostCommunityTag), findsNothing);
       expect(find.byType(PostAvatar), findsOneWidget);
       expect(find.text('@ada'), findsOneWidget);
     });
@@ -325,13 +323,31 @@ void main() {
       return pushes;
     }
 
-    testWidgets('says which community it was posted in', (tester) async {
-      // It said nothing, so the post's own page was a dead end on the way to
-      // the place it came from.
+    testWidgets('has the header the post has in a feed', (tester) async {
+      // The author in front of the community's picture, and the community
+      // named above: the same post should not look like a different kind of
+      // thing once it is opened.
       await page(tester);
 
-      expect(find.byType(PostCommunityTag), findsOneWidget);
-      expect(find.byType(Squircle), findsNothing);
+      final stack = find.byType(StackedPostAvatar);
+      expect(stack, findsOneWidget);
+      expect(
+        find.descendant(of: stack, matching: find.byType(Squircle)),
+        findsOneWidget,
+      );
+      final line = tester.getRect(find.byType(PostCommunityLine));
+      expect(line.bottom,
+          lessThanOrEqualTo(tester.getRect(find.text('Ada')).top + 1));
+      expect(find.text('@ada'), findsOneWidget);
+    });
+
+    testWidgets('opens the author from the author, in front', (tester) async {
+      final pushes = await page(tester);
+
+      await tester.tap(find.byKey(const ValueKey('stacked-avatar-author')));
+      await tester.pump();
+
+      expect(pushes.names, [Routes.profile]);
     });
 
     testWidgets('opens the community from its name', (tester) async {
@@ -348,7 +364,6 @@ void main() {
     testWidgets('has no community tag', (tester) async {
       await _card(tester, _post());
 
-      expect(find.byType(PostCommunityTag), findsNothing);
       expect(find.byType(PostCommunityLine), findsNothing);
       expect(find.byType(Squircle), findsNothing);
       expect(find.byType(PostAvatar), findsOneWidget);

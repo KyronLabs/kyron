@@ -1,0 +1,73 @@
+// Pushes in tl. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const tl: Copy = {
+  someone: 'May isang tao',
+  and_one_other: '{name} at 1 pa',
+  and_others: '{name} at {count} pa',
+  followed: 'Nag-follow sa iyo',
+  liked: 'Nag-like sa post mo',
+  liked_quote: 'Nag-like sa post mo: “{snippet}”',
+  reposted: 'Nag-repost ng post mo',
+  reposted_quote: 'Nag-repost ng post mo: “{snippet}”',
+  replied: 'Nag-reply sa iyo',
+  replied_quote: 'Nag-reply: “{snippet}”',
+  group: 'Grupo',
+  new_message: 'Bagong mensahe',
+  dm_once: 'Nagpadala ng isang bagay na makikita nang isang beses',
+  dm_attachment: 'Nagpadala ng attachment',
+  dm_group_message: 'Nagpadala ng mensahe',
+  dm_message: 'Nagpadala sa iyo ng mensahe',
+  named_line: '{name}: {text}',
+  group_added: 'Idinagdag ka ni {name} sa grupo.',
+  group_hand: 'Nagtaas ng kamay si {name} para humiling na makasulat.',
+  chat_poll: 'Poll: {text}',
+  chat_photo: 'Larawan',
+  chat_gif: 'GIF',
+  chat_clip: 'Clip',
+  chat_voice: 'Voice note',
+  mod_removed_post: 'Inalis ang post mo.',
+  mod_removed_reply: 'Inalis ang reply mo.',
+  mod_removed_message: 'Inalis ang mensahe mo sa isang community chat.',
+  mod_removed_other: 'May inalis na isang bagay na pinost mo.',
+  mod_warned: 'May babala ang iyong account.',
+  mod_suspended_until: 'Suspendido ang iyong account hanggang {date}.',
+  mod_banned: 'Na-ban ang iyong account.',
+  mod_rule: 'Patakaran: {rule}.',
+  mod_rules_general: 'Lumabag ito sa mga patakaran ng Kyron.',
+  mod_case:
+    'Kaso {number}: buksan ang Kyron para makita kung bakit, o para mag-apela.',
+  mod_reversed: 'Binawi namin ang desisyon sa kaso {number}.',
+  appeal_accepted:
+    'Tinanggap ang apela mo sa kaso {number}, at binawi ang desisyon.',
+  appeal_upheld:
+    'Muli naming tiningnan ang apela mo sa kaso {number}, at nananatili ang desisyon.',
+  report_actioned:
+    'Kumilos kami sa isang bagay na ini-report mo. Salamat sa pagsabi sa amin.',
+  report_dismissed:
+    'Tiningnan namin ang isang bagay na ini-report mo at hindi namin nakitang lumabag ito sa mga patakaran ng Kyron. Salamat sa pagsabi sa amin.',
+  verified: 'Verified ka na. Makikita na ang badge sa tabi ng pangalan mo.',
+  verify_declined: 'Hindi naaprubahan ang hiling mong ma-verify.',
+  verify_removed: 'Inalis ang verified badge mo.',
+  verify_lapsed_rename:
+    'Inalis ang verified badge mo dahil nagbago ang pangalan mo. Humiling ulit mula sa menu at may titingin sa bago.',
+  staff_title: 'Moderasyon ng Kyron',
+  staff_appeal: 'May apelang naghihintay ng pagsusuri.',
+  staff_report_urgent:
+    'May apurahang report na naghihintay: maaaring nasa panganib ang isang tao.',
+  staff_report: 'May report na naghihintay ng pagsusuri.',
+  staff_verify: 'May humiling na ma-verify.',
+  test_working: 'Gumagana ang mga notification.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Panliligalig o pambu-bully',
+  rule_hate: 'Mapoot na pananalita',
+  rule_violence: 'Karahasan o pagbabanta',
+  rule_self_harm: 'Pagpapakamatay o pananakit sa sarili',
+  rule_sexual_content: 'Pang-adultong nilalaman',
+  rule_child_safety: 'Kaligtasan ng bata',
+  rule_misinformation: 'Maling impormasyon',
+  rule_impersonation: 'Pagpapanggap',
+  rule_intellectual_property: 'Intellectual property',
+  rule_illegal_goods: 'Ilegal na produkto o serbisyo',
+};

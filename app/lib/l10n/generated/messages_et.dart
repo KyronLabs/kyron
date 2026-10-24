@@ -1057,6 +1057,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_after": MessageLookupByLibrary.simpleMessage("Pärast"),
       "ui_app_device":
           MessageLookupByLibrary.simpleMessage("Rakendus ja seade"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Tsiteerisin pettust, et teisi hoiatada."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Selgita, miks sinu arvates otsus oli vale: mida postitus tähendas, mis võis meeskonnal märkamata jääda või miks reegel ei sobi. Seda loeb keegi teine kui see, kes otsustas."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Sinu kaebus"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Kirjuta vähemalt \$count tähemärki. Igale otsusele saad kaevata ühe korra."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Saada kaebus"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Kaebus saadetud. Saad teavituse, kui otsus on tehtud."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Kaebus juhtumi \$number kohta"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Välimus"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Hele, tume või vastavalt telefoni seadetele",
@@ -1196,6 +1208,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Gruppe pole"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Siin on grupid, kuhu sa kuulud, ja kogukondade vestlused, millega liitud."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Saad kinnitada kuni \$count vestlust. Vabasta enne üks."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kinnitatud"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Meeldinud"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvestatud"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
@@ -1432,10 +1447,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Eelistused"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privaatsus"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Kas soovid midagi lisada? (valikuline)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Saad teavituse, kui meeskond otsustab, ja saad seda jälgida jaotises Sinu teatised."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Kui sa ei soovi teda enam ka näha, saad ta samast menüüst vaigistada või blokeerida."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Sama asja kaks korda teatamine ei anna sellele rohkem kaalu: säilitame ühe teatise inimese kohta."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Sinu teatist ei jagata selle inimesega. Säilitame koopia sellest, millest teatasid, et seda saaks üle vaadata ka siis, kui see kustutatakse."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Sinu teatis on kätte saadud ja ootab ülevaatamist. Me ei ütle sellele inimesele, kes teatas."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Vaata oma teatisi"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Ütle meile, mis on valesti"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Aitäh, et andsid teada"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Mis on valesti kasutajaga \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Mis on selle sõnumiga valesti?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Mis on selle postitusega valesti?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Mis on selle vastusega valesti?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Sõnum kogukonna vestluses"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Postitus"),
@@ -1463,6 +1500,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Sinu teatised"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Laste turvalisus"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Kõik, mis ohustab või seksualiseerib alaealist."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Sihitud kiusamine, ähvardused või soovimatu kontakt."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Rünnakud inimeste vastu selle pärast, kes nad on."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Ebaseadusliku müümine või reklaamimine."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Kellenagi teisena esinemine."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Kasutab sinu teost või kaubamärki loata."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Eksitavad väited tervise, valimiste või sündmuste kohta."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Enesevigastamisele õhutamine või selle näitamine."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Hoiatuseta näidatav seksuaalne sisu."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Mitte ükski neist. Ütle meile, mis on valesti."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Korduv, eksitav või soovimatu reklaam."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Vägivallaga ähvardamine, selle ülistamine või sellele õhutamine."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Ahistamine või kiusamine"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Vihakõne"),
@@ -1551,6 +1613,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Jaga seda postitust",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Millega oli tegu"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto on jäädavalt blokeeritud"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Vastus, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Kaebus"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Kaeba see otsus edasi"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Seda otsust ei saa enam edasi kaevata. Kui midagi on valesti, võta ühendust toega."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Kaebus on läbivaatamisel"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Kaebus rahuldati"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Keegi teine meeskonnast vaatab selle uuesti üle. Saad teavituse, kui otsus on tehtud."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Kui arvad, et see oli viga, saad kuni \$date paluda uut läbivaatamist. Otsustab keegi teine meeskonnast."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Edasi kaevatud: otsus jääb jõusse"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Juhtum \$number. Reegel: \$rule. Meeskond kirjutas:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Konto kustutamine ei tühista blokeeringut: sama e-posti aadressiga uus konto on samuti blokeeritud."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Jäädavalt blokeeritud"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Töötavad ainult see leht, kaebused, tugi ja konto kustutamine."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Saab edasi kaevata"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Juhtum \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Otsustatud \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Sinu kontot puudutavad otsused"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Kustuta oma konto"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Vaata üksikasju"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Vaata üksikasju ja kaeba edasi"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("Lõpeb \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Sinu kontoga on kõik korras"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Miski ei piira seda."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Konto olekut ei õnnestunud laadida"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Sõnum eemaldatud"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto kohta pole midagi otsustatud. Kui meeskond kunagi eemaldab midagi sinu omast või piirab sinu kontot, on see siin koos põhjusega ja saad selle edasi kaevata."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Pole midagi edasi kaevata: otsus tühistati."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Postitus eemaldatud"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Uuesti kontrollimiseks tõmba alla."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Loe Kyroni reegleid"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Vastus eemaldatud"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Tühistatud"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Tühistatud \$date. Kõik eemaldatu on tagasi ja ükski piirang enam ei kehti."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Reegel: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Logi välja"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("Peatatud"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Saad lugeda, kuid mitte postitada, vastata, jälgida ega sõnumeid saata. Teatamine, blokeerimine ja vaigistamine töötavad endiselt."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto on peatatud: saad lugeda, kuid mitte postitada."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Peatatud kuni \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto on peatatud kuni \$date: saad lugeda, kuid mitte postitada."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Mida meeskond kirjutas"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Konto olek"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Hoiatus"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Miks?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Kirjutasid \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Sinu sõnum"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Sinu postitus"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Sinu vastus"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Kasutustingimused"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("see postitus"),
       "ui_thread_muted":

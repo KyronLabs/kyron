@@ -19,6 +19,7 @@ import {
   handleProblem,
   normaliseHandle,
 } from '../../common/handles';
+import { say } from '../push/push-text';
 
 @Injectable()
 export class ProfileService {
@@ -583,9 +584,7 @@ export class ProfileService {
       { type: 'moderation.updated' },
       {
         title: 'Kyron',
-        body:
-          'Your verified badge was removed because your name changed. ' +
-          'Ask again from the menu and somebody will check the new one.',
+        body: say('verify_lapsed_rename'),
         data: { type: 'verification' },
       },
     );

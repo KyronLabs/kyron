@@ -119,6 +119,18 @@ export class CommunityChatsController {
     return this.chats.setMuted(req.user.id, id, false);
   }
 
+  /** Keeps a joined chat at the top of the reader's Messages list. Not
+   * ':id/pin', which pins a message in the chat for everybody. */
+  @Put(':id/pinned')
+  pinInList(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.chats.setPinned(req.user.id, id, true);
+  }
+
+  @Delete(':id/pinned')
+  unpinInList(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.chats.setPinned(req.user.id, id, false);
+  }
+
   @Get(':id/search')
   search(
     @Req() req: AuthRequest,

@@ -1,5 +1,6 @@
 import { generateKeyPairSync } from 'crypto';
 
+import { say } from './push-text';
 import { PushService } from './push.service';
 
 /**
@@ -9,13 +10,16 @@ import { PushService } from './push.service';
  * dead -- never for a malformed message -- and the message is built to arrive
  * promptly on Android, on the channel it belongs to.
  */
-function serviceWith(devices: string[]) {
+function serviceWith(
+  devices: Array<string | { token: string; locale: string }>,
+) {
   const deleted: string[] = [];
+  const rows = devices.map((d) =>
+    typeof d === 'string' ? { token: d, locale: null } : d,
+  );
   const prisma = {
     deviceToken: {
-      findMany: jest.fn(() =>
-        Promise.resolve(devices.map((token) => ({ token }))),
-      ),
+      findMany: jest.fn(() => Promise.resolve(rows)),
       count: jest.fn(() => Promise.resolve(devices.length)),
       deleteMany: jest.fn((args: { where: { token: string } }) => {
         deleted.push(args.where.token);
@@ -184,6 +188,50 @@ describe('when Google says no', () => {
     await service.sendTo('u1', { title: 'x', body: 'y' });
 
     expect(deleted).toEqual([]);
+  });
+});
+
+describe('the language a push is in', () => {
+  it("is each phone's own: one person's two phones can differ", async () => {
+    const { service } = serviceWith([
+      { token: 'paris', locale: 'fr' },
+      { token: 'lagos', locale: 'yo' },
+      { token: 'old-app', locale: '' },
+    ]);
+    configure(service);
+    const sends = mockGoogle([]) as {
+      message: { token: string; notification: { title: string; body: string } };
+    }[];
+
+    await service.sendTo('u1', {
+      title: say('and_others', { name: 'Ada', count: 2 }),
+      body: say('followed'),
+    });
+
+    const said = Object.fromEntries(
+      sends.map((s) => [s.message.token, s.message.notification]),
+    );
+    expect(said.paris).toEqual({ title: 'Ada et 2 autres', body: 'Vous suit' });
+    expect(said.lagos.body).toBe('Tẹ̀lé ọ');
+    // An app that never said which language: English.
+    expect(said['old-app']).toEqual({
+      title: 'Ada and 2 others',
+      body: 'Followed you',
+    });
+  });
+
+  it('the test push too', async () => {
+    const { service } = serviceWith([{ token: 'a', locale: 'de' }]);
+    configure(service);
+    const sends = mockGoogle([]) as {
+      message: { notification: { body: string } };
+    }[];
+
+    await service.test('u1');
+
+    expect(sends[0].message.notification.body).toBe(
+      'Benachrichtigungen funktionieren.',
+    );
   });
 });
 

@@ -7,11 +7,17 @@ class DevicesRepository {
 
   DevicesRepository(this._api);
 
-  /// Records the token, moving it if it belonged to another account. Called
-  /// on every launch, because a token can rotate while the app is closed.
-  Future<void> register(String token, String platform) => _api.dio.put<void>(
+  /// Records the token, moving it if it belonged to another account, and the
+  /// language the app is in, so the server says its pushes in it. Called on
+  /// every launch, because a token can rotate while the app is closed.
+  Future<void> register(String token, String platform, {String? locale}) =>
+      _api.dio.put<void>(
         '/devices',
-        data: {'token': token, 'platform': platform},
+        data: {
+          'token': token,
+          'platform': platform,
+          if (locale != null) 'locale': locale,
+        },
       );
 
   /// Forgets it, on sign-out.

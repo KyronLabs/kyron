@@ -5,6 +5,7 @@ import '../repositories/devices_repository.dart';
 import '../services/firebase_push.dart';
 import '../services/push_registrar.dart';
 import 'api_client_provider.dart';
+import 'preferences_provider.dart';
 
 /// How this install gets a push token.
 ///
@@ -23,9 +24,19 @@ final devicesRepositoryProvider = Provider<DevicesRepository>(
   (ref) => DevicesRepository(ref.read(apiClientProvider)),
 );
 
-final pushRegistrarProvider = Provider<PushRegistrar>(
-  (ref) => PushRegistrar(
+final pushRegistrarProvider = Provider<PushRegistrar>((ref) {
+  final registrar = PushRegistrar(
     ref.read(devicesRepositoryProvider),
     connect: ref.read(pushTokenSourceProvider),
-  ),
-);
+    locale: () => ref.read(preferencesProvider).language.code,
+  );
+  // A reader who changes the app's language should get their next push in
+  // it, not in the one the phone registered with.
+  ref.listen(
+    preferencesProvider.select((p) => p.language.code),
+    (previous, next) {
+      if (previous != next) registrar.languageChanged();
+    },
+  );
+  return registrar;
+});

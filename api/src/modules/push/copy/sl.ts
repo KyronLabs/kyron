@@ -1,0 +1,73 @@
+// Pushes in sl. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const sl: Copy = {
+  someone: 'Nekdo',
+  and_one_other: '{name} in še 1',
+  and_others: '{name} in še {count}',
+  followed: 'Vas spremlja',
+  liked: 'Všeč mu je vaša objava',
+  liked_quote: 'Všeč mu je vaša objava: »{snippet}«',
+  reposted: 'Delil je vašo objavo',
+  reposted_quote: 'Delil je vašo objavo: »{snippet}«',
+  replied: 'Odgovoril vam je',
+  replied_quote: 'Odgovor: »{snippet}«',
+  group: 'Skupina',
+  new_message: 'Novo sporočilo',
+  dm_once: 'Poslal je nekaj za enkratni ogled',
+  dm_attachment: 'Poslal je prilogo',
+  dm_group_message: 'Poslal je sporočilo',
+  dm_message: 'Poslal vam je sporočilo',
+  named_line: '{name}: {text}',
+  group_added: '{name} vas je dodal v skupino.',
+  group_hand: '{name} je dvignil roko, da bi lahko pisal.',
+  chat_poll: 'Anketa: {text}',
+  chat_photo: 'Fotografija',
+  chat_gif: 'GIF',
+  chat_clip: 'Posnetek',
+  chat_voice: 'Glasovno sporočilo',
+  mod_removed_post: 'Vaša objava je bila odstranjena.',
+  mod_removed_reply: 'Vaš odgovor je bil odstranjen.',
+  mod_removed_message:
+    'Vaše sporočilo v klepetu skupnosti je bilo odstranjeno.',
+  mod_removed_other: 'Nekaj, kar ste objavili, je bilo odstranjeno.',
+  mod_warned: 'Vaš račun ima opozorilo.',
+  mod_suspended_until: 'Vaš račun je začasno onemogočen do {date}.',
+  mod_banned: 'Vaš račun je bil prepovedan.',
+  mod_rule: 'Pravilo: {rule}.',
+  mod_rules_general: 'Kršilo je pravila Kyrona.',
+  mod_case:
+    'Primer {number}: odprite Kyron in poglejte zakaj ali se pritožite.',
+  mod_reversed: 'Primer {number} smo razveljavili.',
+  appeal_accepted:
+    'Vaši pritožbi v primeru {number} smo ugodili, odločitev je razveljavljena.',
+  appeal_upheld:
+    'Vašo pritožbo v primeru {number} smo ponovno pregledali in odločitev ostaja.',
+  report_actioned:
+    'Ukrepali smo glede nečesa, kar ste prijavili. Hvala, da ste nam povedali.',
+  report_dismissed:
+    'Pregledali smo nekaj, kar ste prijavili, in nismo ugotovili kršitve pravil Kyrona. Hvala, da ste nam povedali.',
+  verified: 'Preverjeni ste. Značka je zdaj prikazana ob vašem imenu.',
+  verify_declined: 'Vaša prošnja za preverjanje ni bila odobrena.',
+  verify_removed: 'Vaša značka preverjenosti je bila odstranjena.',
+  verify_lapsed_rename:
+    'Vaša značka preverjenosti je bila odstranjena, ker ste spremenili ime. Ponovno zaprosite v meniju in nekdo bo preveril novo.',
+  staff_title: 'Moderiranje Kyron',
+  staff_appeal: 'Pritožba čaka na pregled.',
+  staff_report_urgent: 'Nujna prijava čaka: nekdo je morda v nevarnosti.',
+  staff_report: 'Prijava čaka na pregled.',
+  staff_verify: 'Nekdo je zaprosil za preverjanje.',
+  test_working: 'Obvestila delujejo.',
+  rule_spam: 'Neželena vsebina',
+  rule_harassment: 'Nadlegovanje ali ustrahovanje',
+  rule_hate: 'Sovražni govor',
+  rule_violence: 'Nasilje ali grožnje',
+  rule_self_harm: 'Samomor ali samopoškodovanje',
+  rule_sexual_content: 'Vsebina za odrasle',
+  rule_child_safety: 'Varnost otrok',
+  rule_misinformation: 'Lažne informacije',
+  rule_impersonation: 'Lažno predstavljanje',
+  rule_intellectual_property: 'Intelektualna lastnina',
+  rule_illegal_goods: 'Nezakonito blago ali storitve',
+};

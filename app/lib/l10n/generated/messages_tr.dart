@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Değiştir"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Destekle iletişime geç"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Bitti"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Şikayet et"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Şikayet gönderildi"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Şikayeti gönder"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Tekrar dene"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Dolandırıcılığı insanları uyarmak için alıntılıyordum."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Kararın neden yanlış olduğunu düşündüğünü anlat: gönderinin ne demek istediğini, ekibin neyi gözden kaçırmış olabileceğini ya da kuralın neden uymadığını. Kararı verenden farklı biri okur."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("İtirazın"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "En az \$count karakter yaz. Her karara bir kez itiraz edebilirsin."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("İtirazı gönder"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "İtiraz gönderildi. Karar verildiğinde bildirim alacaksın."),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
+          "\$number numaralı vakaya itiraz"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1150,6 +1163,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Grup yok"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Üyesi olduğun gruplar ve katıldığın topluluk sohbetleri burada listelenir."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "En fazla \$count sohbet sabitleyebilirsin. Önce birini sabitlemeden kaldır."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Sabitlendi"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Beğenilenler"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Kaydedilenler"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1374,10 +1390,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Eklemek istediğin bir şey var mı? (isteğe bağlı)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ekip karar verdiğinde bildirim alırsın ve durumu Şikayetlerin bölümünden takip edebilirsin."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Bu kişiyi artık görmek de istemiyorsan, aynı menüden sessize alabilir veya engelleyebilirsin."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Aynı şeyi iki kez şikayet etmek ona daha fazla ağırlık katmaz: kişi başına bir şikayet tutarız."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Şikayetin o kişiyle paylaşılmaz. Şikayet ettiğin içeriğin bir kopyasını saklarız, böylece silinse bile incelenebilir."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Şikayetin alındı ve incelenmek üzere sırada. O kişiye kimin şikayet ettiğini söylemeyiz."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Şikayetlerini gör"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Neyin yanlış olduğunu anlat"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Bize bildirdiğin için teşekkürler"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name ile ilgili sorun ne?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Bu mesajla ilgili sorun ne?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Bu gönderiyle ilgili sorun ne?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Bu yanıtla ilgili sorun ne?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Bir topluluk sohbeti mesajı"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Bir gönderi"),
@@ -1405,6 +1443,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Şikayetlerin"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Çocuk güvenliği"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Bir reşit olmayanı tehlikeye atan veya cinselleştiren her şey."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Hedefli taciz, tehdit veya istenmeyen iletişim."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "İnsanlara kim oldukları için yapılan saldırılar."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Yasa dışı bir şeyin satışı veya tanıtımı."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Başka biri gibi davranmak."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Eserini veya markanı izinsiz kullanıyor."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Sağlık, seçimler veya olaylar hakkında yanıltıcı iddialar."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Kendine zarar vermeyi teşvik etmek veya göstermek."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Uyarı olmadan gösterilen cinsel içerik."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Hiçbiri. Neyin yanlış olduğunu anlat."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Tekrarlayan, yanıltıcı veya istenmeyen tanıtım."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Şiddetle tehdit etmek, şiddeti yüceltmek veya kışkırtmak."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Taciz veya zorbalık"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Nefret söylemi"),
@@ -1490,6 +1553,95 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Ne hakkındaydı"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Hesabın kalıcı olarak yasaklandı"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Yanıt, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("İtiraz"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Bu karara itiraz et"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Bu karara artık itiraz edilemez. Bir sorun varsa destek ekibiyle iletişime geç."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("İtiraz inceleniyor"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("İtiraz kabul edildi"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Ekipten başka biri yeniden inceliyor. Karar verildiğinde bildirim alacaksın."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Bunun bir hata olduğunu düşünüyorsan \$date tarihine kadar yeniden incelenmesini isteyebilirsin. Ekipten başka biri karar verir."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("İtiraz edildi: karar geçerli"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Vaka \$number. Kural: \$rule. Ekip şunu yazdı:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Hesabını silmek yasağı kaldırmaz: aynı e-posta adresiyle açılan yeni hesap da yasaklı başlar."),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("Yasaklandı"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Yalnızca bu sayfa, itirazlar, destek ve hesabını silme hâlâ çalışıyor."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("İtiraz edilebilir"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Vaka \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Karar tarihi: \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Hesabınla ilgili kararlar"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Hesabını sil"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Ayrıntıları gör"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Ayrıntıları gör ve itiraz et"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("Bitiş: \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Hesabın sorunsuz"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Hiçbir kısıtlama yok."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("Hesap durumu yüklenemedi"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Mesaj kaldırıldı"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Hesabınla ilgili bir karar verilmedi. Ekip bir gün senden bir şeyi kaldırır ya da hesabını kısıtlarsa, nedeniyle birlikte burada görünür ve itiraz edebilirsin."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "İtiraz edilecek bir şey yok: karar geri alındı."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Gönderi kaldırıldı"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Tekrar kontrol etmek için aşağı çek."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron kurallarını oku"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Yanıt kaldırıldı"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Geri alındı"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date tarihinde geri alındı. Kaldırılan her şey geri geldi ve hiçbir kısıtlama artık geçerli değil."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Kural: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Çıkış yap"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Askıya alındı"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Okuyabilirsin ama gönderi paylaşamaz, yanıtlayamaz, takip edemez veya mesaj gönderemezsin. Şikayet etme, engelleme ve sessize alma çalışmaya devam ediyor."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Hesabın askıya alındı: okuyabilirsin ama paylaşamazsın."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date tarihine kadar askıda"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Hesabın \$date tarihine kadar askıya alındı: okuyabilirsin ama paylaşamazsın."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Ekibin yazdıkları"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Hesap durumu"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Uyarı"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Neden?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("\$date tarihinde yazdıkların:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Mesajın"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("Gönderin"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("Yanıtın"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1523,7 +1675,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Ne oldu ve neye bakmamız gerekiyor?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

@@ -6,22 +6,45 @@ import {
 } from '@nestjs/common';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { type PushText, render, say } from './push-text';
 import {
   readSecretFiles,
   readServiceAccount,
   type ServiceAccount,
 } from './service-account';
 
-/** What a push says when it lands on a locked screen. */
+/** What a push says when it lands on a locked screen. Kyron's own words
+ * are [Phrase]s, said in each device's language when it is sent. */
 export interface PushMessage {
-  title: string;
-  body: string;
+  title: PushText;
+  body: PushText;
   /** Carried through so a tap can open the right screen. */
   data?: Record<string, string>;
   /** A picture for the notification: the person it is about. Android shows
    * it beside the words, and larger when the notification is opened out.
    * Ignored on iPhone, which would need a notification service extension. */
   image?: string;
+}
+
+/** A push in one language, as it goes to one device. */
+export interface RenderedPush {
+  title: string;
+  body: string;
+  data?: Record<string, string>;
+  image?: string;
+}
+
+/** [message] in the language of a device that reported [locale]. */
+export function renderPush(
+  message: PushMessage,
+  locale: string | null | undefined,
+): RenderedPush {
+  return {
+    title: render(message.title, locale),
+    body: render(message.body, locale),
+    ...(message.data ? { data: message.data } : {}),
+    ...(message.image ? { image: message.image } : {}),
+  };
 }
 
 /** Google's endpoint for a single send, per project. */
@@ -103,17 +126,27 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
     };
   }
 
-  /** Remembers where to reach somebody, moving the token if it has moved. */
+  /**
+   * Remembers where to reach somebody, moving the token if it has moved, and
+   * which language the phone is in. An app from before languages were sent
+   * says nothing about it, and whatever was recorded stands.
+   */
   async register(
     userId: string,
     token: string,
     platform: string,
+    locale?: string,
   ): Promise<void> {
     await this.prisma.deviceToken.upsert({
       where: { token },
       // A handset that changed hands belongs to whoever is signed in now.
-      update: { userId, platform, updatedAt: new Date() },
-      create: { userId, token, platform },
+      update: {
+        userId,
+        platform,
+        ...(locale ? { locale } : {}),
+        updatedAt: new Date(),
+      },
+      create: { userId, token, platform, locale: locale ?? null },
     });
   }
 
@@ -154,7 +187,7 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
     }
     const delivered = await this.sendCounting(userId, {
       title: 'Kyron',
-      body: 'Notifications are working.',
+      body: say('test_working'),
       data: { type: 'test' },
     });
     return { configured: true, devices, delivered };
@@ -169,22 +202,29 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
 
     const devices = await this.prisma.deviceToken.findMany({
       where: { userId },
-      select: { token: true },
+      select: { token: true, locale: true },
     });
     if (devices.length === 0) return 0;
 
     const accessToken = await this.authorize();
     if (!accessToken) return 0;
 
+    // Each phone in its own language: one person's two phones can differ.
     const outcomes = await Promise.all(
-      devices.map((device) => this.deliver(device.token, message, accessToken)),
+      devices.map((device) =>
+        this.deliver(
+          device.token,
+          renderPush(message, device.locale),
+          accessToken,
+        ),
+      ),
     );
     return outcomes.filter((outcome) => outcome === 'sent').length;
   }
 
   private async deliver(
     token: string,
-    message: PushMessage,
+    message: RenderedPush,
     accessToken: string,
   ): Promise<'sent' | 'gone' | 'failed'> {
     const projectId = this.credentials?.project_id;
@@ -230,7 +270,7 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
    * Messages from one conversation share a tag and replace each other rather
    * than stacking, since each says only that something arrived.
    */
-  static payload(token: string, message: PushMessage): object {
+  static payload(token: string, message: RenderedPush): object {
     const data = message.data ?? {};
     const isMessage = data.type === 'message' || data.type === 'community.chat';
     const tag = PushService.tagFor(data);

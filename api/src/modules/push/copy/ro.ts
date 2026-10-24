@@ -1,0 +1,74 @@
+// Pushes in ro. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ro: Copy = {
+  someone: 'Cineva',
+  and_one_other: '{name} și încă 1 persoană',
+  and_others: '{name} și încă {count}',
+  followed: 'Te urmărește',
+  liked: 'Ți-a apreciat postarea',
+  liked_quote: 'Ți-a apreciat postarea: „{snippet}”',
+  reposted: 'Ți-a redistribuit postarea',
+  reposted_quote: 'Ți-a redistribuit postarea: „{snippet}”',
+  replied: 'Ți-a răspuns',
+  replied_quote: 'A răspuns: „{snippet}”',
+  group: 'Grup',
+  new_message: 'Mesaj nou',
+  dm_once: 'Ți-a trimis ceva de văzut o singură dată',
+  dm_attachment: 'A trimis un atașament',
+  dm_group_message: 'A trimis un mesaj',
+  dm_message: 'Ți-a trimis un mesaj',
+  named_line: '{name}: {text}',
+  group_added: '{name} te-a adăugat în grup.',
+  group_hand: '{name} a ridicat mâna ca să ceară să scrie.',
+  chat_poll: 'Sondaj: {text}',
+  chat_photo: 'Fotografie',
+  chat_gif: 'GIF',
+  chat_clip: 'Clip',
+  chat_voice: 'Mesaj vocal',
+  mod_removed_post: 'Postarea ta a fost eliminată.',
+  mod_removed_reply: 'Răspunsul tău a fost eliminat.',
+  mod_removed_message:
+    'Mesajul tău dintr-un chat al comunității a fost eliminat.',
+  mod_removed_other: 'Ceva ce ai publicat a fost eliminat.',
+  mod_warned: 'Contul tău are un avertisment.',
+  mod_suspended_until: 'Contul tău este suspendat până la {date}.',
+  mod_banned: 'Contul tău a fost interzis.',
+  mod_rule: 'Regulă: {rule}.',
+  mod_rules_general: 'A încălcat regulile Kyron.',
+  mod_case:
+    'Cazul {number}: deschide Kyron ca să vezi de ce sau ca să faci contestație.',
+  mod_reversed: 'Am anulat cazul {number}.',
+  appeal_accepted:
+    'Contestația ta pentru cazul {number} a fost acceptată, iar decizia a fost anulată.',
+  appeal_upheld:
+    'Am reanalizat contestația ta pentru cazul {number}, iar decizia rămâne valabilă.',
+  report_actioned:
+    'Am luat măsuri cu privire la ceva ce ai raportat. Mulțumim că ne-ai spus.',
+  report_dismissed:
+    'Am analizat ceva ce ai raportat și nu am constatat că a încălcat regulile Kyron. Mulțumim că ne-ai spus.',
+  verified: 'Ești verificat. Insigna apare acum lângă numele tău.',
+  verify_declined: 'Cererea ta de verificare nu a fost aprobată.',
+  verify_removed: 'Insigna ta de verificare a fost retrasă.',
+  verify_lapsed_rename:
+    'Insigna ta de verificare a fost retrasă pentru că ți s-a schimbat numele. Cere din nou din meniu și cineva va verifica numele nou.',
+  staff_title: 'Moderare Kyron',
+  staff_appeal: 'O contestație așteaptă analiza.',
+  staff_report_urgent:
+    'O raportare urgentă așteaptă: cineva ar putea fi în pericol.',
+  staff_report: 'O raportare așteaptă analiza.',
+  staff_verify: 'Cineva a cerut să fie verificat.',
+  test_working: 'Notificările funcționează.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Hărțuire sau intimidare',
+  rule_hate: 'Discurs instigator la ură',
+  rule_violence: 'Violență sau amenințări',
+  rule_self_harm: 'Sinucidere sau autovătămare',
+  rule_sexual_content: 'Conținut pentru adulți',
+  rule_child_safety: 'Siguranța copiilor',
+  rule_misinformation: 'Informații false',
+  rule_impersonation: 'Uzurpare de identitate',
+  rule_intellectual_property: 'Proprietate intelectuală',
+  rule_illegal_goods: 'Bunuri sau servicii ilegale',
+};

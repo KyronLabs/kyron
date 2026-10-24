@@ -1072,6 +1072,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Rekening"),
       "ui_after": MessageLookupByLibrary.simpleMessage("Na"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Toestel"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Ek het die swendelary aangehaal om mense te waarsku."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Sê waarom jy dink die besluit was verkeerd: wat die plasing bedoel het, wat die span dalk gemis het of waarom die reël nie pas nie. Iemand anders as die persoon wat besluit het, lees dit."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Jou appèl"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Skryf minstens \$count karakters. Jy kan een keer teen elke besluit appelleer."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Stuur appèl"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Appèl gestuur. Jy kry 'n kennisgewing wanneer daar besluit is."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Appèl oor saak \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Voorkoms"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Lig, donker, of wat die foon ingestel is op",
@@ -1212,6 +1224,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Geen groepe nie"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Groepe waarin jy is, en die gemeenskapkletse waarby jy aansluit, word hier gelys."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Jy kan tot \$count kletse vasspeld. Maak eers een los."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Vasgespeld"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gehou van"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gestoor"),
       "ui_feed_empty":
@@ -1444,10 +1459,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Voorkeure"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privaatheid"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Iets om by te voeg? (opsioneel)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Jy kry 'n kennisgewing wanneer die span besluit, en jy kan dit in Jou verslae volg."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "As jy hulle ook nie meer wil sien nie, kan jy hulle in dieselfde kieslys demp of blokkeer."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Om dieselfde ding twee keer aan te meld, gee dit nie meer gewig nie: ons hou een verslag per persoon."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Jou verslag word nie met hulle gedeel nie. Ons hou 'n kopie van wat jy aangemeld het, sodat dit nog nagegaan kan word as dit uitgevee word."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Jou verslag is ontvang en wag om nagegaan te word. Ons sê nie vir hulle wie dit aangemeld het nie."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Sien jou verslae"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Sê vir ons wat fout is"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Dankie dat jy ons laat weet het"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Wat is fout met \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Wat is fout met hierdie boodskap?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Wat is fout met hierdie plasing?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Wat is fout met hierdie antwoord?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("'n Gemeenskapkletsboodskap"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("'n Plasing"),
@@ -1476,6 +1513,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jou verslae"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Kinderveiligheid"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Enigiets wat 'n minderjarige in gevaar stel of seksualiseer."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Geteikende mishandeling, dreigemente of ongewenste kontak."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Aanvalle op mense oor wie hulle is."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Die verkoop of bevordering van iets onwettigs."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Om voor te gee jy is iemand anders."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Gebruik jou werk of handelsmerk sonder toestemming."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Misleidende bewerings oor gesondheid, verkiesings of gebeure."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Die aanmoediging of uitbeelding van selfbesering."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Seksuele inhoud wat sonder waarskuwing gewys word."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Geen van bogenoemde nie. Sê vir ons wat fout is."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Herhalende, misleidende of ongewenste bevordering."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Om met geweld te dreig, dit te verheerlik of daartoe aan te hits."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Teistering of afknouery"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Haatspraak"),
@@ -1564,6 +1626,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Deel hierdie plasing",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Waaroor dit gegaan het"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening is permanent verban"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Die antwoord, op \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Appèl"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "Appelleer teen hierdie besluit"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Jy kan nie meer teen hierdie besluit appelleer nie. As iets fout is, kontak ondersteuning."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Appèl word oorweeg"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Appèl aanvaar"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Iemand anders in die span kyk weer daarna. Jy kry 'n kennisgewing wanneer daar besluit is."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "As jy dink dit was 'n fout, kan jy tot \$date vra dat dit weer nagegaan word. Iemand anders in die span besluit."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Geappelleer: die besluit staan"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Saak \$number. Reël: \$rule. Die span het geskryf:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Om jou rekening uit te vee, hef nie 'n verbanning op nie: 'n nuwe rekening met dieselfde e-posadres begin ook verban."),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("Verban"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Net hierdie bladsy, appèlle, ondersteuning en die uitvee van jou rekening werk nog."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Appèl moontlik"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Saak \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Besluit op \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Besluite oor jou rekening"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Vee jou rekening uit"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Sien besonderhede"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Sien besonderhede en appelleer"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Eindig op \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Jou rekening is in goeie orde"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Niks beperk dit nie."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Rekeningstatus kon nie gelaai word nie"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Boodskap verwyder"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Niks is oor jou rekening besluit nie. As die span ooit iets van jou verwyder of jou rekening beperk, word dit hier met die rede gelys en kan jy appelleer."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Niks om teen te appelleer nie: die besluit is omgekeer."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Plasing verwyder"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("Trek af om weer te kyk."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Lees Kyron se reëls"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Antwoord verwyder"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Omgekeer"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Omgekeer op \$date. Alles wat verwyder is, is terug, en geen beperking geld meer nie."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Reël: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Teken uit"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Opgeskort"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Jy kan lees, maar nie plaas, antwoord, volg of boodskappe stuur nie. Aanmeld, blokkeer en demp werk steeds."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening is opgeskort: jy kan lees, maar nie plaas nie."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Opgeskort tot \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Jou rekening is opgeskort tot \$date: jy kan lees, maar nie plaas nie."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Wat die span gesê het"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Rekeningstatus"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Waarskuwing"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Hoekom?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Jy het op \$date geskryf:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Jou boodskap"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Jou plasing"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Jou antwoord"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terme"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("hierdie plasing"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Draad gedemp"),

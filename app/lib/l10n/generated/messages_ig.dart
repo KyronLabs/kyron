@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Gbanwee"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport": MessageLookupByLibrary.simpleMessage("Kpọtụrụ nkwado"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Emechaala"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +911,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Kọọ akụkọ"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("E zipụla akụkọ"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +955,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Zipu akụkọ"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1003,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1013,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Ana m ehota aghụghọ ahụ iji dọọ ndị mmadụ aka ná ntị."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Kọwaa ihe mere i chere na mkpebi ahụ ezighi ezi: ihe post ahụ pụtara, ihe otu ahụ nwere ike ọ hụghị, ma ọ bụ ihe mere iwu ahụ adabaghị. Onye ọzọ ga-agụ ya, ọ bụghị onye mere mkpebi ahụ."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Mkpesa gị"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Dee opekata mpe mkpụrụedemede \$count. Ị nwere ike ịrịọ maka mkpebi ọ bụla otu ugboro."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Zipu mkpesa"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "E zipụla mkpesa. Ị ga-enweta ọkwa mgbe e mere mkpebi."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Mkpesa na okwu \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1155,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Enweghị otu"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Otu ị nọ na ha, na mkparịta ụka obodo ị sonyere, ka egosiri ebe a."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Ị nwere ike ịpịn ruo nkata \$count. Wepụ otu pin mbụ."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Apịnara"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ndị m masịrị"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Echekwara"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
@@ -1378,10 +1393,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Ọ nwere ihe ị chọrọ ịgbakwunye? (nhọrọ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ị ga-enweta ọkwa mgbe otu ahụ kpebiri, ị nwekwara ike ịgbaso ya na Akụkọ gị."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụrụ na ị chọghịkwa ịhụ onye a ọzọ, ị nwere ike ime ka ọ gbachi nkịtị ma ọ bụ gbochie ya site na otu menu ahụ."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Ịkọ banyere otu ihe ugboro abụọ anaghị eme ka ọ dị arọ karịa: anyị na-edobe otu akụkọ maka onye ọ bụla."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Anaghị ekere onye ahụ akụkọ gị. Anyị na-edobe otu nnomi nke ihe i kọrọ, ka e nwee ike nyochaa ya ọ bụrụgodị na ehichapụrụ ya."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Anatala akụkọ gị, ọ na-echere nyocha. Anyị anaghị agwa onye ahụ onye kọrọ akụkọ."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Hụ akụkọ gị"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Gwa anyị ihe na-adịghị mma"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Daalụ maka ịgwa anyị"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Gịnị na-adịghị mma na \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Gịnị na-adịghị mma na ozi a?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Gịnị na-adịghị mma na post a?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Gịnị na-adịghị mma na nzaghachi a?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Ozi mkparịta ụka obodo"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Post"),
@@ -1409,6 +1446,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Akụkọ gị"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Nchekwa ụmụaka"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Ihe ọ bụla na-etinye nwata n'ihe ize ndụ ma ọ bụ na-eji ya eme ihe gbasara mmekọahụ."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Mmegbu e lekwasịrị anya, iyi egwu, ma ọ bụ kọntaktị a na-achọghị."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Mwakpo e bu n'isi ndị mmadụ n'ihi onye ha bụ."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Ire ma ọ bụ ịkwalite ihe megidere iwu."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Ime ka à ga-asị na ị bụ onye ọzọ."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Na-eji ọrụ gị ma ọ bụ akara azụmahịa gị eme ihe n'enweghị ikike."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Nkwupụta na-eduhie ụzọ gbasara ahụike, ntuli aka, ma ọ bụ ihe ndị mere."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Ịgba ume imerụ onwe gị ahụ ma ọ bụ igosi ya."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Ọdịnaya mmekọahụ e gosiri n'enweghị ịdọ aka ná ntị."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị nke ọ bụla n'ime ndị a. Gwa anyị ihe na-adịghị mma."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Mkpọsa na-emegharị onwe ya, na-eduhie ụzọ, ma ọ bụ nke a na-achọghị."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Iyi egwu ime ihe ike, ito ya, ma ọ bụ ịkpali ya."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Mkparị ma ọ bụ mmegbu"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Okwu ịkpọasị"),
@@ -1493,6 +1555,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Ihe ọ gbasara"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Amachibidoro akaụntụ gị ruo mgbe ebighị ebi"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Azịza ya, na \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Mkpesa"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Rịọ maka mkpebi a"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Ị nweghịzi ike ịrịọ maka mkpebi a. Ọ bụrụ na ihe adịghị mma, kpọtụrụ nkwado."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("A na-enyocha mkpesa"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Anabatara mkpesa"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Onye ọzọ n'otu ahụ na-enyochagharị ya. Ị ga-enweta ọkwa mgbe e mere mkpebi."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụrụ na i chere na ọ bụ njehie, ị nwere ike ịrịọ ka e nyochagharịa ya ruo \$date. Onye ọzọ n'otu ahụ ga-ekpebi."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Mgbe mkpesa gasịrị: mkpebi ahụ ka guzo"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Okwu \$number. Iwu: \$rule. Otu ahụ dere:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Ihichapụ akaụntụ gị anaghị ewepụ mmachibido: akaụntụ ọhụrụ nwere otu adreesị email ahụ na-amalitekwa na mmachibido."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Amachibidoro ya"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Naanị ibe a, mkpesa, nkwado na ihichapụ akaụntụ gị ka na-arụ ọrụ."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Enwere ike ịrịọ"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Okwu \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("E kpebiri na \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Mkpebi gbasara akaụntụ gị"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Hichapụ akaụntụ gị"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("Hụ nkọwa"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Hụ nkọwa ma rịọ"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Ọ ga-agwụ na \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Akaụntụ gị nọ n'ọnọdụ dị mma"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe na-egbochi ya."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ibugo ọnọdụ akaụntụ"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Ewepụrụ ozi"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "E kpebibeghị ihe ọ bụla gbasara akaụntụ gị. Ọ bụrụ na otu ahụ ewepụ ihe gị ma ọ bụ gbochie akaụntụ gị, ọ ga-apụta ebe a ya na ihe kpatara ya, ị ga-enwekwa ike ịrịọ."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị ihe a ga-arịọ: a kagburu mkpebi ahụ."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Ewepụrụ post"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("Dọda ala ka ị lelee ọzọ."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Gụọ iwu Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Ewepụrụ nzaghachi"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("A kagburu ya"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "A kagburu ya na \$date. Ihe niile e wepụrụ alaghachila, ọ dịkwaghị mgbochi ọ bụla na-arụ ọrụ."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Iwu: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Pụọ"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Akwụsịtụrụ ya"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Ị nwere ike ịgụ, mana ị nweghị ike ibipụta, ịzaghachi, ịgbaso, ma ọ bụ iziga ozi. Ịkọ akụkọ, igbochi na ime ka ọ gbachi nkịtị ka na-arụ ọrụ."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Akwụsịtụrụ akaụntụ gị: ị nwere ike ịgụ, mana ị nweghị ike ibipụta."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Akwụsịtụrụ ruo \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Akwụsịtụrụ akaụntụ gị ruo \$date: ị nwere ike ịgụ, mana ị nweghị ike ibipụta."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Ihe otu ahụ dere"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Ọnọdụ akaụntụ"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Ịdọ aka ná ntị"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Gịnị kpatara?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("I dere, na \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Ozi gị"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("Post gị"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Nzaghachi gị"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1526,7 +1681,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Gịnị mere, gịnị ka anyị kwesịrị ilele?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

@@ -163,6 +163,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("번역"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("다시 시도"),
+      "ui_appeal_hint":
+          MessageLookupByLibrary.simpleMessage("사람들에게 경고하려고 사기 내용을 인용한 것입니다."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "결정이 잘못되었다고 생각하는 이유를 적어 주세요. 게시물의 의도, 팀이 놓쳤을 수 있는 부분, 규칙이 맞지 않는 이유 등. 결정한 사람이 아닌 다른 사람이 읽습니다."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("이의 제기 내용"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "\$count자 이상 작성하세요. 각 결정에는 한 번만 이의를 제기할 수 있습니다."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("이의 제기 보내기"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "이의 제기를 보냈습니다. 결정되면 알림을 보내 드립니다."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("사건 \$number 이의 제기"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage("용도 (선택 사항)"),
       "ui_cchat_announcements":
           MessageLookupByLibrary.simpleMessage("운영자만 쓸 수 있음"),
@@ -257,6 +269,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("그룹이 없습니다"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "참여 중인 그룹과 가입한 커뮤니티 채팅이 여기에 표시됩니다."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "채팅은 최대 \$count개까지 고정할 수 있습니다. 먼저 하나를 고정 해제하세요."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("고정됨"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("좋아요"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("저장됨"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),
@@ -396,9 +411,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("보낸 상대만 한 번 열 수 있습니다."),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("한 번 보기로 보내기"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("탭하여 보기"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("덧붙일 내용이 있나요? (선택)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "팀이 결정하면 알림을 받게 되며, 내 신고에서 진행 상황을 확인할 수 있습니다."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "이 사람을 더 이상 보고 싶지 않다면 같은 메뉴에서 뮤트하거나 차단할 수 있습니다."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "같은 내용을 두 번 신고해도 비중이 커지지 않습니다. 신고는 한 사람당 하나만 보관합니다."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "신고 내용은 상대방에게 공유되지 않습니다. 신고한 내용의 사본을 보관하므로 삭제되더라도 검토할 수 있습니다."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "신고가 접수되어 검토를 기다리고 있습니다. 누가 신고했는지는 상대방에게 알리지 않습니다."),
       "ui_report_see_reports": MessageLookupByLibrary.simpleMessage("내 신고 보기"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("무엇이 문제인지 알려 주세요"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage("알려 주셔서 감사합니다"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name의 문제는 무엇인가요?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("이 메시지의 문제는 무엇인가요?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("이 게시물의 문제는 무엇인가요?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("이 답글의 문제는 무엇인가요?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("커뮤니티 채팅 메시지"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("게시물"),
@@ -421,6 +457,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("신고한 내용과 그 결과"),
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("내 신고"),
       "ui_rule_child_safety": MessageLookupByLibrary.simpleMessage("아동 안전"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "미성년자를 위험에 빠뜨리거나 성적으로 대상화하는 모든 것."),
+      "ui_rule_detail_harassment":
+          MessageLookupByLibrary.simpleMessage("특정인을 겨냥한 괴롭힘, 위협 또는 원치 않는 연락."),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("사람의 정체성을 이유로 한 공격."),
+      "ui_rule_detail_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("불법적인 것의 판매나 홍보."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("다른 사람을 사칭하는 행위."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("내 작품이나 상표를 허락 없이 사용함."),
+      "ui_rule_detail_misinformation":
+          MessageLookupByLibrary.simpleMessage("건강, 선거, 사건에 관한 오해의 소지가 있는 주장."),
+      "ui_rule_detail_self_harm":
+          MessageLookupByLibrary.simpleMessage("자해를 조장하거나 묘사하는 행위."),
+      "ui_rule_detail_sexual_content":
+          MessageLookupByLibrary.simpleMessage("경고 없이 표시되는 성적인 콘텐츠."),
+      "ui_rule_detail_something_else":
+          MessageLookupByLibrary.simpleMessage("해당 사항 없음. 무엇이 문제인지 알려 주세요."),
+      "ui_rule_detail_spam":
+          MessageLookupByLibrary.simpleMessage("반복적이거나 오해의 소지가 있거나 원치 않는 홍보."),
+      "ui_rule_detail_violence":
+          MessageLookupByLibrary.simpleMessage("폭력을 위협하거나 미화하거나 선동하는 행위."),
       "ui_rule_harassment": MessageLookupByLibrary.simpleMessage("괴롭힘 또는 따돌림"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("혐오 발언"),
       "ui_rule_illegal_goods":
@@ -434,6 +494,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("기타"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("스팸"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("폭력 또는 위협"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("관련 내용"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("계정이 영구 정지되었습니다"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("답변 (\$date):"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("이의 제기"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("이 결정에 이의 제기"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "이 결정에는 더 이상 이의를 제기할 수 없습니다. 문제가 있다면 지원팀에 문의하세요."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("이의 제기 검토 중"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("이의 제기가 받아들여짐"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "팀의 다른 사람이 다시 검토하고 있습니다. 결정되면 알림을 보내 드립니다."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "실수라고 생각되면 \$date까지 다시 검토를 요청할 수 있습니다. 팀의 다른 사람이 결정합니다."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("이의 제기 결과: 결정 유지"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "사건 \$number. 규칙: \$rule. 팀의 설명:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "계정을 삭제해도 정지는 풀리지 않습니다. 같은 이메일 주소로 만든 새 계정도 정지된 상태로 시작합니다."),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("영구 정지"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "이 페이지, 이의 제기, 지원, 계정 삭제만 사용할 수 있습니다."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("이의 제기 가능"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("사건 \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("결정일: \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("내 계정에 대한 결정"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("계정 삭제"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("자세히 보기"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("자세히 보고 이의 제기"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("종료일: \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage("계정 상태가 양호합니다"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("제한 사항이 없습니다."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("계정 상태를 불러오지 못했습니다"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("메시지 삭제됨"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "내 계정에 대해 결정된 사항이 없습니다. 팀이 내 콘텐츠를 삭제하거나 계정을 제한하면 사유와 함께 여기에 표시되며, 이의를 제기할 수 있습니다."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "이의를 제기할 내용이 없습니다: 결정이 취소되었습니다."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("게시물 삭제됨"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("아래로 당겨 다시 확인하세요."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron 규칙 읽기"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("답글 삭제됨"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("취소됨"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date에 취소되었습니다. 삭제된 것은 모두 복원되었고 더 이상 적용되는 제한이 없습니다."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("규칙: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("로그아웃"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("일시 정지"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "읽을 수는 있지만 게시, 답글, 팔로우, 메시지 보내기는 할 수 없습니다. 신고, 차단, 뮤트는 계속 사용할 수 있습니다."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "계정이 일시 정지되었습니다: 읽을 수는 있지만 게시할 수 없습니다."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date까지 일시 정지"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "계정이 \$date까지 일시 정지되었습니다: 읽을 수는 있지만 게시할 수 없습니다."),
+      "ui_standing_team_said": MessageLookupByLibrary.simpleMessage("팀의 설명"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("계정 상태"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("경고"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("이유 보기"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("내가 쓴 내용 (\$date):"),
+      "ui_standing_your_message": MessageLookupByLibrary.simpleMessage("내 메시지"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("내 게시물"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("내 답글"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("다시 시도"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("리포스트 취소"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("비밀번호 업데이트"),

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/account_standing.dart';
 import '../models/moderation_case.dart';
 import '../models/post_media.dart';
@@ -255,7 +256,7 @@ class _AppealTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       leading: Icon(decisionIcon(notice.kind), size: 20),
       title: Text(
-        'Case ${notice.number}: ${decisionTitle(notice)}, '
+        'Case ${notice.number}: ${decisionTitle(AppLocalizations.of(context), notice)}, '
         '${item.action.subject?.handle ?? 'a deleted account'}',
       ),
       subtitle: Column(
@@ -1190,7 +1191,7 @@ class _RecordEntry extends StatelessWidget {
     final notice = action.notice;
     final faint =
         Theme.of(context).colorScheme.onSurface.withValues(alpha: .55);
-    final state = appealState(notice);
+    final state = appealState(AppLocalizations.of(context), notice);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
       child: Column(
@@ -1202,7 +1203,7 @@ class _RecordEntry extends StatelessWidget {
               const SizedBox(width: SpacingTokens.space8),
               Expanded(
                 child: Text(
-                  'Case ${notice.number}: ${decisionTitle(notice)}',
+                  'Case ${notice.number}: ${decisionTitle(AppLocalizations.of(context), notice)}',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     decoration:
@@ -1314,7 +1315,7 @@ class _AppealCaseScreenState extends ConsumerState<AppealCaseScreen> {
             const SizedBox(height: SpacingTokens.space16),
           ],
           if (subject != null) AccountLine(account: subject),
-          _Heading(decisionTitle(notice)),
+          _Heading(decisionTitle(AppLocalizations.of(context), notice)),
           Text(
             [
               notice.rule.label,

@@ -10,6 +10,7 @@ import '../l10n/app_localizations.dart';
 import '../models/community_chat.dart';
 import '../providers/community_chats_provider.dart';
 import '../utils/api_error_message.dart';
+import '../utils/local_date.dart';
 import '../widgets/kyron_app_bar.dart';
 
 /// Searching one community chat. Answers the message the reader picked, to
@@ -166,7 +167,8 @@ class _CommunityChatSearchScreenState
                             overflow: TextOverflow.ellipsis,
                           ),
                           trailing: Text(
-                            DateFormat.MMMd(locale).format(message.createdAt),
+                            localDate(
+                                locale, DateFormat.MMMd, message.createdAt),
                             style: TextStyle(
                               fontSize: TypographyTokens.fontSize1,
                               color: scheme.onSurface.withValues(alpha: 0.5),

@@ -9,6 +9,7 @@ import { ConversationKind, MemberRole, Prisma } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { MessagesService } from './messages.service';
+import { say } from '../push/push-text';
 
 /** Somebody named in a group's event line, as they were called then. */
 interface EventPerson {
@@ -141,7 +142,7 @@ export class GroupsService {
       { type: 'conversation.updated', conversationId: conversation.id },
       {
         title: name,
-        body: `${actor.name} added you to the group.`,
+        body: say('group_added', { name: actor.name }),
         data: { type: 'message', conversationId: conversation.id },
       },
     );
@@ -274,7 +275,7 @@ export class GroupsService {
       { type: 'conversation.updated', conversationId },
       {
         title: group.title,
-        body: `${actor.name} added you to the group.`,
+        body: say('group_added', { name: actor.name }),
         data: { type: 'message', conversationId },
       },
     );
@@ -416,7 +417,7 @@ export class GroupsService {
       { type: 'conversation.updated', conversationId },
       {
         title: group.title,
-        body: `${actor.name} raised a hand to ask to write.`,
+        body: say('group_hand', { name: actor.name }),
         data: { type: 'message', conversationId },
       },
     );

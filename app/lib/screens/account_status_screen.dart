@@ -16,6 +16,8 @@ import '../repositories/moderation_repository.dart';
 import '../routes.dart';
 import '../services/app_browser.dart';
 import '../utils/api_error_message.dart';
+import '../utils/local_date.dart';
+import '../utils/notification_text.dart';
 import '../widgets/action_button.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/hairline.dart';
@@ -23,45 +25,75 @@ import '../widgets/settings_scaffold.dart';
 import '../widgets/toast.dart';
 
 // ---- Words shared with the team's screens ----------------------------------
+//
+// Dates are in the reader's way of writing them when a locale is given. The
+// team's screens give none and keep "3 Nov 2026".
 
 final _day = DateFormat('d MMM y');
 final _moment = DateFormat('d MMM y, HH:mm');
 
-String standingDay(DateTime when) => _day.format(when);
-String standingMoment(DateTime when) => _moment.format(when);
+/// A day, "3 Nov 2026", in the reader's way of writing one when [locale] is
+/// given.
+String standingDay(DateTime when, {String? locale}) => locale == null
+    ? _day.format(when)
+    : localDate(locale, DateFormat.yMMMd, when);
 
-/// What a decision did, as a title: "Post removed", "Suspended for 7 days".
-String decisionTitle(ModerationNotice notice) => switch (notice.kind) {
+/// A day and the time, in the reader's clock when [locale] is given.
+String standingMoment(DateTime when, {String? locale}) => locale == null
+    ? _moment.format(when)
+    : localDate(locale, (locale) => DateFormat.yMMMd(locale).add_jm(), when);
+
+/// The reader's locale, for [standingDay] and [standingMoment].
+String? readerLocale(BuildContext context) =>
+    Localizations.maybeLocaleOf(context)?.toLanguageTag();
+
+/// What a decision did, as a title: "Post removed", "Banned".
+String decisionTitle(
+  AppLocalizations l10n,
+  ModerationNotice notice, {
+  String? locale,
+}) =>
+    switch (notice.kind) {
       ModerationKind.remove => switch (notice.target) {
-          ReportTarget.comment => 'Reply removed',
-          ReportTarget.communityMessage => 'Message removed',
-          _ => 'Post removed',
+          ReportTarget.comment =>
+            l10n.ui('ui_standing_reply_removed', 'Reply removed'),
+          ReportTarget.communityMessage =>
+            l10n.ui('ui_standing_message_removed', 'Message removed'),
+          _ => l10n.ui('ui_standing_post_removed', 'Post removed'),
         },
-      ModerationKind.warn => 'Warning',
+      ModerationKind.warn => l10n.ui('ui_standing_warning', 'Warning'),
       ModerationKind.suspend => notice.endsAt == null
-          ? 'Suspended'
-          : 'Suspended for ${_days(notice.createdAt, notice.endsAt!)}',
-      ModerationKind.ban => 'Banned',
+          ? l10n.ui('ui_standing_suspended', 'Suspended')
+          // Until when rather than for how long: "7 days" takes a plural
+          // that most of the languages this is in form differently, and the
+          // date is what the reader needs anyway.
+          : l10n
+              .ui('ui_standing_suspended_until', r'Suspended until $date')
+              .replaceAll(
+                r'$date',
+                standingDay(notice.endsAt!, locale: locale),
+              ),
+      ModerationKind.ban => l10n.ui('ui_standing_banned', 'Banned'),
     };
-
-String _days(DateTime from, DateTime to) {
-  final days = (to.difference(from).inHours / 24).round();
-  return days == 1 ? '1 day' : '$days days';
-}
 
 /// Where an appeal stands, in a few words, or null when there is nothing
 /// to say.
-String? appealState(ModerationNotice notice) {
-  if (notice.reversed) return 'Reversed';
+String? appealState(AppLocalizations l10n, ModerationNotice notice) {
+  if (notice.reversed) return l10n.ui('ui_standing_reversed', 'Reversed');
   final appeal = notice.appeal;
   if (appeal != null) {
     return switch (appeal.status) {
-      AppealStatus.open => 'Appeal under review',
-      AppealStatus.upheld => 'Appealed: the decision stands',
-      AppealStatus.overturned => 'Appeal accepted',
+      AppealStatus.open =>
+        l10n.ui('ui_standing_appeal_open', 'Appeal under review'),
+      AppealStatus.upheld =>
+        l10n.ui('ui_standing_appeal_upheld', 'Appealed: the decision stands'),
+      AppealStatus.overturned =>
+        l10n.ui('ui_standing_appeal_overturned', 'Appeal accepted'),
     };
   }
-  return notice.appealBy == null ? null : 'Can be appealed';
+  return notice.appealBy == null
+      ? null
+      : l10n.ui('ui_standing_can_appeal', 'Can be appealed');
 }
 
 IconData decisionIcon(ModerationKind kind) => switch (kind) {
@@ -108,9 +140,10 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final standing = ref.watch(standingProvider);
     return SettingsScaffold(
-      title: 'Account status',
+      title: l10n.ui('ui_standing_title', 'Account status'),
       child: standing.when(
         loading: () => const Padding(
           padding: EdgeInsets.only(top: SpacingTokens.space40),
@@ -118,9 +151,12 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
         ),
         error: (error, _) => EmptyState(
           art: EmptyArt.offline,
-          title: 'Account status could not be loaded',
+          title: l10n.ui(
+            'ui_standing_load_failed',
+            'Account status could not be loaded',
+          ),
           detail: describeApiError(error, sessionIsLive: true),
-          action: 'Try again',
+          action: l10n.tryAgain,
           onAction: () => ref.invalidate(standingProvider),
         ),
         data: (standing) => Column(
@@ -128,7 +164,10 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
           children: [
             StandingCard(standing: standing),
             if (standing.notices.isNotEmpty) ...[
-              const _Group('Decisions about your account'),
+              _Group(
+                l10n.ui(
+                    'ui_standing_decisions', 'Decisions about your account'),
+              ),
               for (final notice in standing.notices)
                 _NoticeTile(notice: notice, onTap: () => _open(notice)),
             ],
@@ -141,10 +180,7 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
                 key: const ValueKey('account-status-your-reports'),
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Iconsax.flag_copy, size: 20),
-                title: Text(
-                  AppLocalizations.of(context)
-                      .ui('ui_reports_title', 'Your reports'),
-                ),
+                title: Text(l10n.ui('ui_reports_title', 'Your reports')),
                 trailing: const Icon(Iconsax.arrow_right_3_copy, size: 18),
                 onTap: () => Navigator.pushNamed(context, Routes.yourReports),
               ),
@@ -152,9 +188,13 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
             if (standing.notices.isEmpty) ...[
               const SizedBox(height: SpacingTokens.space16),
               Text(
-                'Nothing has been decided about your account. If the team '
-                'ever removes something of yours or restricts your account, '
-                'it is listed here with the reason, and you can appeal it.',
+                l10n.ui(
+                  'ui_standing_nothing_decided',
+                  'Nothing has been decided about your account. If the team '
+                      'ever removes something of yours or restricts your '
+                      'account, it is listed here with the reason, and you '
+                      'can appeal it.',
+                ),
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
@@ -166,7 +206,8 @@ class _AccountStatusScreenState extends ConsumerState<AccountStatusScreen> {
                 title: LegalLinks.termsTitle,
               ),
               icon: const Icon(Iconsax.document_text_copy, size: 18),
-              label: const Text("Read Kyron's rules"),
+              label:
+                  Text(l10n.ui('ui_standing_read_rules', "Read Kyron's rules")),
             ),
           ],
         ),
@@ -183,28 +224,43 @@ class StandingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     final (icon, title, detail, tint) = switch (standing.status) {
       StandingStatus.active => (
           Iconsax.shield_tick_copy,
-          'Your account is in good standing',
-          'Nothing is restricting it.',
+          l10n.ui('ui_standing_good', 'Your account is in good standing'),
+          l10n.ui('ui_standing_good_detail', 'Nothing is restricting it.'),
           scheme.primary,
         ),
       StandingStatus.suspended => (
           Iconsax.timer_pause_copy,
           standing.until == null
-              ? 'Your account is suspended'
-              : 'Suspended until ${standingMoment(standing.until!)}',
-          'You can read, but not post, reply, follow or message until then. '
-              'Reporting, blocking and muting still work.',
+              ? l10n.ui('ui_notif_suspended', 'Your account is suspended')
+              : l10n
+                  .ui('ui_standing_suspended_until', r'Suspended until $date')
+                  .replaceAll(
+                    r'$date',
+                    standingMoment(
+                      standing.until!,
+                      locale: readerLocale(context),
+                    ),
+                  ),
+          l10n.ui(
+            'ui_standing_suspended_detail',
+            'You can read, but not post, reply, follow or message. '
+                'Reporting, blocking and muting still work.',
+          ),
           scheme.tertiary,
         ),
       StandingStatus.banned => (
           Iconsax.slash_copy,
-          'Your account is banned',
-          'Only this page, appeals, support and deleting your account still '
-              'work.',
+          l10n.ui('ui_standing_account_banned', 'Your account is banned'),
+          l10n.ui(
+            'ui_standing_banned_detail',
+            'Only this page, appeals, support and deleting your account '
+                'still work.',
+          ),
           scheme.error,
         ),
     };
@@ -274,21 +330,23 @@ class _NoticeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final locale = readerLocale(context);
     final scheme = Theme.of(context).colorScheme;
-    final state = appealState(notice);
+    final state = appealState(l10n, notice);
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(decisionIcon(notice.kind), size: 20),
       title: Text(
-        decisionTitle(notice),
+        decisionTitle(l10n, notice, locale: locale),
         style: TextStyle(
           decoration: notice.reversed ? TextDecoration.lineThrough : null,
         ),
       ),
       subtitle: Text(
         [
-          notice.rule.label,
-          standingDay(notice.createdAt),
+          ruleLabel(l10n, notice.rule),
+          standingDay(notice.createdAt, locale: locale),
           if (state != null) state,
         ].join(' · '),
         style: TextStyle(color: scheme.onSurface.withValues(alpha: .55)),
@@ -340,13 +398,19 @@ class _ModerationNoticeScreenState
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final locale = readerLocale(context);
+    String day(DateTime when) => standingDay(when, locale: locale);
+    String moment(DateTime when) => standingMoment(when, locale: locale);
     final notice = _notice;
     final scheme = Theme.of(context).colorScheme;
     final faint = scheme.onSurface.withValues(alpha: .55);
     final appeal = notice.appeal;
 
     return SettingsScaffold(
-      title: 'Case ${notice.number}',
+      title: l10n
+          .ui('ui_standing_case', r'Case $number')
+          .replaceAll(r'$number', '${notice.number}'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -356,7 +420,7 @@ class _ModerationNoticeScreenState
               const SizedBox(width: SpacingTokens.space8),
               Expanded(
                 child: Text(
-                  decisionTitle(notice),
+                  decisionTitle(l10n, notice, locale: locale),
                   style: const TextStyle(
                     fontSize: TypographyTokens.fontSize6,
                     fontWeight: FontWeight.bold,
@@ -368,11 +432,17 @@ class _ModerationNoticeScreenState
           const SizedBox(height: SpacingTokens.space8),
           Text(
             [
-              'For breaking the rule on ${notice.rule.label.toLowerCase()}',
-              'Decided ${standingMoment(notice.createdAt)}',
+              l10n
+                  .ui('ui_standing_rule', r'Rule: $rule')
+                  .replaceAll(r'$rule', ruleLabel(l10n, notice.rule)),
+              l10n
+                  .ui('ui_standing_decided', r'Decided $date')
+                  .replaceAll(r'$date', moment(notice.createdAt)),
               if (notice.kind == ModerationKind.suspend &&
                   notice.endsAt != null)
-                'Ends ${standingMoment(notice.endsAt!)}',
+                l10n
+                    .ui('ui_standing_ends', r'Ends $date')
+                    .replaceAll(r'$date', moment(notice.endsAt!)),
             ].join('\n'),
             style: TextStyle(color: faint, height: 1.4),
           ),
@@ -381,34 +451,44 @@ class _ModerationNoticeScreenState
             _Callout(
               icon: Iconsax.refresh_circle_copy,
               text: [
-                'Reversed on ${standingDay(notice.reversedAt!)}. Anything it '
-                    'removed is back, and nothing it restricted still applies.',
+                l10n
+                    .ui(
+                      'ui_standing_reversed_on',
+                      r'Reversed on $date. Anything it removed is back, and '
+                          'nothing it restricted still applies.',
+                    )
+                    .replaceAll(r'$date', day(notice.reversedAt!)),
                 if (notice.reversal != null) notice.reversal!,
               ].join('\n\n'),
             ),
           ],
-          const _Heading('What the team said'),
+          _Heading(l10n.ui('ui_standing_team_said', 'What the team said')),
           Quote(notice.message),
           if (notice.snapshot != null) ...[
             _Heading(
               switch (notice.target) {
-                ReportTarget.comment => 'Your reply',
-                ReportTarget.post => 'Your post',
-                ReportTarget.communityMessage => 'Your message',
-                _ => 'What it was about',
+                ReportTarget.comment =>
+                  l10n.ui('ui_standing_your_reply', 'Your reply'),
+                ReportTarget.post =>
+                  l10n.ui('ui_standing_your_post', 'Your post'),
+                ReportTarget.communityMessage =>
+                  l10n.ui('ui_standing_your_message', 'Your message'),
+                _ => l10n.ui('ui_standing_about', 'What it was about'),
               },
             ),
             Quote(notice.snapshot!, italic: true),
           ],
-          const _Heading('Appeal'),
+          _Heading(l10n.ui('ui_standing_appeal', 'Appeal')),
           if (appeal != null) ...[
-            Text(appealState(notice) ?? '',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                )),
+            Text(
+              appealState(l10n, notice) ?? '',
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: SpacingTokens.space8),
             Text(
-              'You wrote, on ${standingDay(appeal.createdAt)}:',
+              l10n
+                  .ui('ui_standing_you_wrote', r'You wrote, on $date:')
+                  .replaceAll(r'$date', day(appeal.createdAt)),
               style: TextStyle(color: faint),
             ),
             const SizedBox(height: SpacingTokens.space4),
@@ -416,7 +496,12 @@ class _ModerationNoticeScreenState
             if (appeal.response != null) ...[
               const SizedBox(height: SpacingTokens.space12),
               Text(
-                'The answer, on ${standingDay(appeal.decidedAt ?? appeal.createdAt)}:',
+                l10n
+                    .ui('ui_standing_answer', r'The answer, on $date:')
+                    .replaceAll(
+                      r'$date',
+                      day(appeal.decidedAt ?? appeal.createdAt),
+                    ),
                 style: TextStyle(color: faint),
               ),
               const SizedBox(height: SpacingTokens.space4),
@@ -424,34 +509,49 @@ class _ModerationNoticeScreenState
             ] else ...[
               const SizedBox(height: SpacingTokens.space8),
               Text(
-                'Somebody else on the team is looking at it again. You will '
-                'get a notification when it is decided.',
+                l10n.ui(
+                  'ui_standing_appeal_pending',
+                  'Somebody else on the team is looking at it again. You '
+                      'will get a notification when it is decided.',
+                ),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ] else if (notice.reversed) ...[
             Text(
-              'Nothing to appeal: the decision was reversed.',
+              l10n.ui(
+                'ui_standing_nothing_to_appeal',
+                'Nothing to appeal: the decision was reversed.',
+              ),
               style: TextStyle(color: faint),
             ),
           ] else if (notice.appealBy != null) ...[
             Text(
-              'If you think this was a mistake, you can ask for it to be '
-              'looked at again until ${standingDay(notice.appealBy!)}. '
-              'Somebody else on the team decides.',
+              l10n
+                  .ui(
+                    'ui_standing_appeal_until',
+                    r'If you think this was a mistake, you can ask for it to '
+                        r'be looked at again until $date. Somebody else on '
+                        'the team decides.',
+                  )
+                  .replaceAll(r'$date', day(notice.appealBy!)),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: SpacingTokens.space12),
             ActionButton(
-              label: 'Appeal this decision',
+              label:
+                  l10n.ui('ui_standing_appeal_button', 'Appeal this decision'),
               icon: Iconsax.message_question_copy,
               expand: true,
               onPressed: _appeal,
             ),
           ] else
             Text(
-              'This decision can no longer be appealed. If something is '
-              'wrong, contact support.',
+              l10n.ui(
+                'ui_standing_appeal_closed',
+                'This decision can no longer be appealed. If something is '
+                    'wrong, contact support.',
+              ),
               style: TextStyle(color: faint),
             ),
           const SizedBox(height: SpacingTokens.space24),
@@ -581,7 +681,10 @@ class _AppealScreenState extends ConsumerState<AppealScreen> {
       ref.invalidate(standingProvider);
       Toast.show(
         context,
-        'Appeal sent. You will get a notification when it is decided.',
+        AppLocalizations.of(context).ui(
+          'ui_appeal_sent',
+          'Appeal sent. You will get a notification when it is decided.',
+        ),
       );
       Navigator.of(context).pop(updated);
     } catch (error) {
@@ -595,16 +698,23 @@ class _AppealScreenState extends ConsumerState<AppealScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     return SettingsScaffold(
-      title: 'Appeal case ${widget.notice.number}',
+      title: l10n
+          .ui('ui_appeal_title', r'Appeal case $number')
+          .replaceAll(r'$number', '${widget.notice.number}'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Say why you think the decision was wrong: what the post meant, '
-            'what the team may have missed, or why the rule does not fit. '
-            'Somebody other than whoever decided reads it.',
+            l10n.ui(
+              'ui_appeal_intro',
+              'Say why you think the decision was wrong: what the post '
+                  'meant, what the team may have missed, or why the rule '
+                  'does not fit. Somebody other than whoever decided reads '
+                  'it.',
+            ),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: SpacingTokens.space16),
@@ -613,14 +723,25 @@ class _AppealScreenState extends ConsumerState<AppealScreen> {
             maxLines: 8,
             maxLength: 2000,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
-              labelText: 'Your appeal',
+            decoration: InputDecoration(
+              labelText: l10n.ui('ui_appeal_label', 'Your appeal'),
               alignLabelWithHint: true,
-              hintText: 'I was quoting the scam to warn people about it.',
+              hintText: l10n.ui(
+                'ui_appeal_hint',
+                'I was quoting the scam to warn people about it.',
+              ),
             ),
           ),
+          // The button stays off until the server's minimum is met, which
+          // says nothing about why on its own.
           Text(
-            'You can appeal each decision once.',
+            l10n
+                .ui(
+                  'ui_appeal_rules',
+                  r'Write at least $count characters. You can appeal each '
+                      'decision once.',
+                )
+                .replaceAll(r'$count', '${AppealScreen.minLength}'),
             style: Theme.of(context).textTheme.bodySmall,
           ),
           if (_error != null) ...[
@@ -635,7 +756,7 @@ class _AppealScreenState extends ConsumerState<AppealScreen> {
           ],
           const SizedBox(height: SpacingTokens.space16),
           ActionButton(
-            label: 'Send appeal',
+            label: l10n.ui('ui_appeal_send', 'Send appeal'),
             expand: true,
             busy: _sending,
             onPressed: _canSend ? _send : null,
@@ -697,6 +818,7 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final standing = ref.watch(standingProvider);
     final faint =
         Theme.of(context).colorScheme.onSurface.withValues(alpha: .55);
@@ -714,10 +836,10 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                 const SizedBox(height: SpacingTokens.space24),
                 const Icon(Iconsax.slash_copy, size: 40),
                 const SizedBox(height: SpacingTokens.space16),
-                const Text(
-                  'Your account has been banned',
+                Text(
+                  l10n.ui('ui_notif_banned', 'Your account has been banned'),
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: TypographyTokens.fontSize6,
                     fontWeight: FontWeight.bold,
                   ),
@@ -735,18 +857,29 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                     final notice = standing.restrictedBy;
                     if (notice == null) {
                       return Text(
-                        'Pull down to check again.',
+                        l10n.ui(
+                          'ui_standing_pull_to_check',
+                          'Pull down to check again.',
+                        ),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: faint),
                       );
                     }
-                    final state = appealState(notice);
+                    final state = appealState(l10n, notice);
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          'Case ${notice.number}, for breaking the rule on '
-                          '${notice.rule.label.toLowerCase()}. The team said:',
+                          l10n
+                              .ui(
+                                'ui_standing_ban_case',
+                                r'Case $number. Rule: $rule. The team said:',
+                              )
+                              .replaceAll(r'$number', '${notice.number}')
+                              .replaceAll(
+                                r'$rule',
+                                ruleLabel(l10n, notice.rule),
+                              ),
                           style: TextStyle(color: faint),
                         ),
                         const SizedBox(height: SpacingTokens.space8),
@@ -755,8 +888,14 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                         ActionButton(
                           label:
                               notice.appeal == null && notice.appealBy != null
-                                  ? 'See details and appeal'
-                                  : 'See details',
+                                  ? l10n.ui(
+                                      'ui_standing_details_appeal',
+                                      'See details and appeal',
+                                    )
+                                  : l10n.ui(
+                                      'ui_standing_details',
+                                      'See details',
+                                    ),
                           icon: Iconsax.document_text_copy,
                           expand: true,
                           onPressed: () => _open(notice),
@@ -778,7 +917,7 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Iconsax.message_question_copy, size: 20),
-                  title: const Text('Contact support'),
+                  title: Text(l10n.contactSupport),
                   onTap: () => Navigator.pushNamed(
                     context,
                     Routes.settingsContactSupport,
@@ -787,7 +926,9 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Iconsax.document_text_copy, size: 20),
-                  title: const Text("Read Kyron's rules"),
+                  title: Text(
+                    l10n.ui('ui_standing_read_rules', "Read Kyron's rules"),
+                  ),
                   onTap: () => AppBrowser.open(
                     context,
                     LegalLinks.terms,
@@ -797,13 +938,16 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Iconsax.trash_copy, size: 20),
-                  title: const Text('Delete your account'),
+                  title: Text(
+                    l10n.ui(
+                        'ui_standing_delete_account', 'Delete your account'),
+                  ),
                   onTap: () =>
                       Navigator.pushNamed(context, Routes.deleteAccount),
                 ),
                 const SizedBox(height: SpacingTokens.space16),
                 ActionButton(
-                  label: 'Sign out',
+                  label: l10n.ui('ui_standing_sign_out', 'Sign out'),
                   icon: Iconsax.logout_copy,
                   kind: ActionButtonKind.outlined,
                   expand: true,
@@ -812,8 +956,11 @@ class _RestrictedScreenState extends ConsumerState<RestrictedScreen> {
                 ),
                 const SizedBox(height: SpacingTokens.space12),
                 Text(
-                  'Deleting your account does not lift a ban: a new account '
-                  'at the same email address starts banned too.',
+                  l10n.ui(
+                    'ui_standing_ban_note',
+                    'Deleting your account does not lift a ban: a new '
+                        'account at the same email address starts banned too.',
+                  ),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),

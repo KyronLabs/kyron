@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/account_standing.dart';
 import 'package:kyron_app/models/moderation_case.dart';
 import 'package:kyron_app/providers/enforcement_provider.dart';
@@ -72,12 +74,25 @@ Future<_Enforcement> _open(
   WidgetTester tester,
   AccountStanding standing, {
   Widget home = const AccountStatusScreen(),
+  Locale? locale,
 }) async {
   final repo = _Enforcement(standing);
   await tester.pumpWidget(
     ProviderScope(
       overrides: [enforcementRepositoryProvider.overrideWithValue(repo)],
-      child: MaterialApp(home: home),
+      child: MaterialApp(
+        locale: locale,
+        supportedLocales: [if (locale != null) locale, const Locale('en')],
+        localizationsDelegates: locale == null
+            ? null
+            : const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+        home: home,
+      ),
     ),
   );
   await tester.pumpAndSettle();
@@ -111,7 +126,11 @@ void main() {
         until: DateTime(2026, 10, 26, 12),
       ),
     );
-    expect(find.text('Suspended until 26 Oct 2026, 12:00'), findsOneWidget);
+    // In the reader's way of writing a date, and their clock.
+    expect(
+      find.textContaining('Suspended until Oct 26, 2026'),
+      findsOneWidget,
+    );
     expect(
         find.textContaining('Reporting, blocking and muting'), findsOneWidget);
   });
@@ -246,9 +265,32 @@ void main() {
       const AccountStanding(status: StandingStatus.active),
       home: ModerationNoticeScreen(notice: reversed),
     );
-    expect(find.text('Suspended for 7 days'), findsOneWidget);
+    // Until when, not "for 7 days": a plural most of the languages this is
+    // in form differently.
+    expect(find.text('Suspended until Oct 17, 2026'), findsOneWidget);
     expect(find.textContaining('It was a scam warning'), findsOneWidget);
     expect(find.text('Appeal this decision'), findsNothing);
+  });
+
+  testWidgets('reads in the reader\'s language, dates included', (
+    tester,
+  ) async {
+    // It was English whatever the phone was set to, down to the date.
+    await _open(
+      tester,
+      AccountStanding(status: StandingStatus.active, notices: [_removed]),
+      locale: const Locale('fr'),
+    );
+    expect(find.text('Votre compte est en règle'), findsOneWidget);
+    expect(find.text('Publication supprimée'), findsOneWidget);
+    expect(find.textContaining('18 oct. 2026'), findsOneWidget);
+    expect(find.textContaining('Appel possible'), findsOneWidget);
+
+    await tester.tap(find.text('Publication supprimée'));
+    await tester.pumpAndSettle();
+    expect(find.text('Cas 12'), findsOneWidget);
+    expect(find.textContaining('Règle : Spam'), findsOneWidget);
+    expect(find.text('Faire appel de cette décision'), findsOneWidget);
   });
 
   testWidgets('a banned account sees why, and the ways out', (tester) async {

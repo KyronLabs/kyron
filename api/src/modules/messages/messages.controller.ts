@@ -102,6 +102,17 @@ export class MessagesController {
     return this.svc.setMuted(req.user.id, id, false);
   }
 
+  /** Keeps a conversation at the top of the reader's list. Theirs alone. */
+  @Put(':id/pinned')
+  pin(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setPinned(req.user.id, id, true);
+  }
+
+  @Delete(':id/pinned')
+  unpin(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setPinned(req.user.id, id, false);
+  }
+
   /**
    * Blocks the other person and takes the thread out of the reader's list.
    *

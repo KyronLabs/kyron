@@ -1,0 +1,74 @@
+// Pushes in ms. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ms: Copy = {
+  someone: 'Seseorang',
+  and_one_other: '{name} dan 1 lagi',
+  and_others: '{name} dan {count} lagi',
+  followed: 'Mengikuti anda',
+  liked: 'Menyukai siaran anda',
+  liked_quote: 'Menyukai siaran anda: “{snippet}”',
+  reposted: 'Menyiarkan semula siaran anda',
+  reposted_quote: 'Menyiarkan semula siaran anda: “{snippet}”',
+  replied: 'Membalas anda',
+  replied_quote: 'Membalas: “{snippet}”',
+  group: 'Kumpulan',
+  new_message: 'Mesej baharu',
+  dm_once: 'Menghantar sesuatu untuk dilihat sekali',
+  dm_attachment: 'Menghantar lampiran',
+  dm_group_message: 'Menghantar mesej',
+  dm_message: 'Menghantar mesej kepada anda',
+  named_line: '{name}: {text}',
+  group_added: '{name} menambah anda ke dalam kumpulan.',
+  group_hand: '{name} mengangkat tangan untuk meminta menulis.',
+  chat_poll: 'Undian: {text}',
+  chat_photo: 'Foto',
+  chat_gif: 'GIF',
+  chat_clip: 'Klip',
+  chat_voice: 'Nota suara',
+  mod_removed_post: 'Siaran anda telah dialih keluar.',
+  mod_removed_reply: 'Balasan anda telah dialih keluar.',
+  mod_removed_message: 'Mesej anda dalam sembang komuniti telah dialih keluar.',
+  mod_removed_other: 'Sesuatu yang anda siarkan telah dialih keluar.',
+  mod_warned: 'Akaun anda menerima amaran.',
+  mod_suspended_until: 'Akaun anda digantung sehingga {date}.',
+  mod_banned: 'Akaun anda telah diharamkan.',
+  mod_rule: 'Peraturan: {rule}.',
+  mod_rules_general: 'Ia melanggar peraturan Kyron.',
+  mod_case:
+    'Kes {number}: buka Kyron untuk melihat sebabnya atau membuat rayuan.',
+  mod_reversed: 'Kami membatalkan keputusan kes {number}.',
+  appeal_accepted:
+    'Rayuan anda bagi kes {number} diterima dan keputusan dibatalkan.',
+  appeal_upheld:
+    'Kami menyemak semula rayuan anda bagi kes {number}, dan keputusan kekal.',
+  report_actioned:
+    'Kami telah mengambil tindakan terhadap sesuatu yang anda laporkan. Terima kasih kerana memberitahu kami.',
+  report_dismissed:
+    'Kami menyemak sesuatu yang anda laporkan dan tidak mendapati ia melanggar peraturan Kyron. Terima kasih kerana memberitahu kami.',
+  verified:
+    'Anda telah disahkan. Lencana kini dipaparkan di sebelah nama anda.',
+  verify_declined: 'Permintaan pengesahan anda tidak diluluskan.',
+  verify_removed: 'Lencana pengesahan anda telah dibuang.',
+  verify_lapsed_rename:
+    'Lencana pengesahan anda dibuang kerana nama anda berubah. Minta semula daripada menu dan seseorang akan menyemak nama baharu.',
+  staff_title: 'Moderasi Kyron',
+  staff_appeal: 'Satu rayuan menunggu semakan.',
+  staff_report_urgent:
+    'Satu laporan segera menunggu: seseorang mungkin dalam bahaya.',
+  staff_report: 'Satu laporan menunggu semakan.',
+  staff_verify: 'Seseorang meminta pengesahan.',
+  test_working: 'Pemberitahuan berfungsi.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Gangguan atau buli',
+  rule_hate: 'Ucapan kebencian',
+  rule_violence: 'Keganasan atau ugutan',
+  rule_self_harm: 'Bunuh diri atau mencederakan diri',
+  rule_sexual_content: 'Kandungan dewasa',
+  rule_child_safety: 'Keselamatan kanak-kanak',
+  rule_misinformation: 'Maklumat palsu',
+  rule_impersonation: 'Penyamaran',
+  rule_intellectual_property: 'Harta intelek',
+  rule_illegal_goods: 'Barangan atau perkhidmatan haram',
+};
