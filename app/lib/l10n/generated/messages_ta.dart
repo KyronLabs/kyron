@@ -1174,6 +1174,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("குழுக்கள் இல்லை"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "நீங்கள் உள்ள குழுக்களும், நீங்கள் சேரும் சமூக அரட்டைகளும் இங்கே காட்டப்படும்."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "அதிகபட்சம் \$count அரட்டைகளைப் பின் செய்யலாம். முதலில் ஒன்றை அன்பின் செய்யவும்."),
+      "ui_dm_pinned":
+          MessageLookupByLibrary.simpleMessage("பின் செய்யப்பட்டது"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("விரும்பியவை"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("சேமித்தவை"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

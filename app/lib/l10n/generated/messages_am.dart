@@ -1065,6 +1065,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("ምንም ቡድን የለም"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "ያሉባቸው ቡድኖች እና የሚቀላቀሏቸው የማህበረሰብ ውይይቶች እዚህ ይታያሉ።"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "እስከ \$count ውይይቶች ድረስ መሰካት ይችላሉ። መጀመሪያ አንዱን ይንቀሉ።"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("ተሰክቷል"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("የወደድኳቸው"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("የተቀመጡ"),
       "ui_feed_empty":

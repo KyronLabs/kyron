@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tidak ada grup"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Grup yang kamu ikuti dan obrolan komunitas yang kamu masuki ditampilkan di sini."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Kamu bisa menyematkan hingga \$count chat. Lepas sematan satu dulu."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Disematkan"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Disukai"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Disimpan"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

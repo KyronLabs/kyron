@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "আপনি $date-এ লিখেছেন:",
   "ui_standing_your_message": "আপনার বার্তা",
   "ui_standing_your_post": "আপনার পোস্ট",
-  "ui_standing_your_reply": "আপনার উত্তর"
+  "ui_standing_your_reply": "আপনার উত্তর",
+  "ui_dm_pin_limit": "আপনি সর্বোচ্চ $countটি চ্যাট পিন করতে পারবেন। আগে একটি আনপিন করুন।",
+  "ui_dm_pinned": "পিন করা"
 }

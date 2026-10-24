@@ -1166,6 +1166,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("لا توجد مجموعات"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "تظهر هنا المجموعات التي أنت فيها ودردشات المجتمعات التي تنضم إليها."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "يمكنك تثبيت \$count محادثات كحد أقصى. ألغِ تثبيت واحدة أولًا."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("مثبّتة"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("الإعجابات"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("المحفوظة"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),

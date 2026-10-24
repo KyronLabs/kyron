@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Ubhale, ngo-$date:",
   "ui_standing_your_message": "Umyalezo wakho",
   "ui_standing_your_post": "Ipowusti yakho",
-  "ui_standing_your_reply": "Impendulo yakho"
+  "ui_standing_your_reply": "Impendulo yakho",
+  "ui_dm_pin_limit": "Ungaqhoboshela iincoko ezifikelela kwi-$count. Qala ukhulule enye.",
+  "ui_dm_pinned": "Iqhoboshelwe"
 }

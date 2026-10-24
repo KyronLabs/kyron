@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "คุณเขียนเมื่อ $date:",
   "ui_standing_your_message": "ข้อความของคุณ",
   "ui_standing_your_post": "โพสต์ของคุณ",
-  "ui_standing_your_reply": "การตอบกลับของคุณ"
+  "ui_standing_your_reply": "การตอบกลับของคุณ",
+  "ui_dm_pin_limit": "ปักหมุดแชทได้สูงสุด $count รายการ เลิกปักหมุดสักรายการก่อน",
+  "ui_dm_pinned": "ปักหมุดแล้ว"
 }

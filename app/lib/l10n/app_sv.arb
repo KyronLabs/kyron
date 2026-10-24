@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Du skrev, den $date:",
   "ui_standing_your_message": "Ditt meddelande",
   "ui_standing_your_post": "Ditt inlägg",
-  "ui_standing_your_reply": "Ditt svar"
+  "ui_standing_your_reply": "Ditt svar",
+  "ui_dm_pin_limit": "Du kan fästa upp till $count chattar. Lossa en först.",
+  "ui_dm_pinned": "Fäst"
 }

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "ನೀವು $date ರಂದು ಬರೆದದ್ದು:",
   "ui_standing_your_message": "ನಿಮ್ಮ ಸಂದೇಶ",
   "ui_standing_your_post": "ನಿಮ್ಮ ಪೋಸ್ಟ್",
-  "ui_standing_your_reply": "ನಿಮ್ಮ ಪ್ರತ್ಯುತ್ತರ"
+  "ui_standing_your_reply": "ನಿಮ್ಮ ಪ್ರತ್ಯುತ್ತರ",
+  "ui_dm_pin_limit": "ನೀವು ಗರಿಷ್ಠ $count ಚಾಟ್‌ಗಳನ್ನು ಪಿನ್ ಮಾಡಬಹುದು. ಮೊದಲು ಒಂದನ್ನು ಅನ್‌ಪಿನ್ ಮಾಡಿ.",
+  "ui_dm_pinned": "ಪಿನ್ ಮಾಡಲಾಗಿದೆ"
 }

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Escribiches, o $date:",
   "ui_standing_your_message": "A túa mensaxe",
   "ui_standing_your_post": "A túa publicación",
-  "ui_standing_your_reply": "A túa resposta"
+  "ui_standing_your_reply": "A túa resposta",
+  "ui_dm_pin_limit": "Podes fixar ata $count chats. Primeiro deixa de fixar un.",
+  "ui_dm_pinned": "Fixado"
 }

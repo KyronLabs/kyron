@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Nema grupa"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Ovdje su grupe u kojima ste i chatovi zajednica kojima se pridružite."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Možete prikvačiti do \$count razgovora. Najprije otkvačite jedan."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Prikvačeno"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Sviđa mi se"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Spremljeno"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Du hast am $date geschrieben:",
   "ui_standing_your_message": "Deine Nachricht",
   "ui_standing_your_post": "Dein Beitrag",
-  "ui_standing_your_reply": "Deine Antwort"
+  "ui_standing_your_reply": "Deine Antwort",
+  "ui_dm_pin_limit": "Du kannst bis zu $count Chats anheften. Löse zuerst einen.",
+  "ui_dm_pinned": "Angeheftet"
 }

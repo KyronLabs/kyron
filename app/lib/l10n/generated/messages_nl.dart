@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Geen groepen"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Groepen waar je in zit en communitychats waar je lid van wordt, staan hier."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Je kunt maximaal \$count chats vastzetten. Maak er eerst een los."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Vastgezet"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Vind ik leuk"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Opgeslagen"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

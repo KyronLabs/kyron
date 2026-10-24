@@ -191,6 +191,19 @@ class ConversationListNotifier extends StateNotifier<ConversationListState> {
     }
   }
 
+  /// Pins or unpins one row where it is. The list puts pinned rows first
+  /// when it draws them.
+  void markPinned(String conversationId, DateTime? pinnedAt) {
+    state = state.copyWith(
+      items: [
+        for (final row in state.items)
+          row.id == conversationId
+              ? row.copyWith(pin: true, pinnedAt: pinnedAt)
+              : row,
+      ],
+    );
+  }
+
   /// Clears the unread badge on one row, after it has been opened.
   void markRead(String conversationId) {
     state = state.copyWith(
@@ -281,6 +294,42 @@ Future<void> refreshConversations(WidgetRef ref) async {
         ref.read(conversationListProvider(filter).notifier).refresh(),
   ]);
   ref.invalidate(unreadConversationsProvider);
+}
+
+/// How many chats, conversations and community chats together, the reader
+/// can pin. The server holds the same number (api/src/modules/messages/
+/// pins.ts) and refuses a sixth either way.
+const maxPinnedChats = 5;
+
+/// Pins [conversation] to the top of the reader's list, or unpins it, and
+/// answers with what went wrong, if anything.
+///
+/// At once in [shown], the list it was pinned from, and put back if the
+/// server says no. The other lists are read again afterwards, out of sight,
+/// rather than redrawn from under the reader.
+Future<String?> setConversationPinned(
+  WidgetRef ref,
+  ConversationFilter shown,
+  Conversation conversation,
+  bool pinned,
+) async {
+  final list = ref.read(conversationListProvider(shown).notifier);
+  list.markPinned(conversation.id, pinned ? DateTime.now() : null);
+  try {
+    await ref.read(messagesRepositoryProvider).setPinned(
+          conversation.id,
+          pinned,
+        );
+  } catch (error) {
+    list.markPinned(conversation.id, conversation.pinnedAt);
+    return describeApiError(error, sessionIsLive: true);
+  }
+  for (final filter in ConversationFilter.values) {
+    if (filter != shown && ref.exists(conversationListProvider(filter))) {
+      unawaited(ref.read(conversationListProvider(filter).notifier).refresh());
+    }
+  }
+  return null;
 }
 
 /// Everybody in a group, for its info page. Kept fresh by the

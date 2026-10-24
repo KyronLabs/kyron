@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Du skrev, $date:",
   "ui_standing_your_message": "Meldingen din",
   "ui_standing_your_post": "Innlegget ditt",
-  "ui_standing_your_reply": "Svaret ditt"
+  "ui_standing_your_reply": "Svaret ditt",
+  "ui_dm_pin_limit": "Du kan feste opptil $count chatter. Løsne én først.",
+  "ui_dm_pinned": "Festet"
 }

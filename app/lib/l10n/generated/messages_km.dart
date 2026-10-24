@@ -1164,6 +1164,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("គ្មានក្រុម"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "ក្រុមដែលអ្នកនៅ និងការជជែកសហគមន៍ដែលអ្នកចូលរួម បង្ហាញនៅទីនេះ។"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "អ្នកអាចខ្ទាស់ការជជែកបានរហូតដល់ \$count។ សូមដកការខ្ទាស់មួយជាមុនសិន។"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("បានខ្ទាស់"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("បានចូលចិត្ត"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("បានរក្សាទុក"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

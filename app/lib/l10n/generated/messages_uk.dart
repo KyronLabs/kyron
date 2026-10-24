@@ -1172,6 +1172,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Немає груп"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Тут групи, у яких ви є, і чати спільнот, до яких ви приєднуєтеся."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Можна закріпити не більше \$count чатів. Спершу відкріпіть один."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Закріплено"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Вподобане"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Збережене"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

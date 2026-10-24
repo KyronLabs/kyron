@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Você escreveu, em $date:",
   "ui_standing_your_message": "Sua mensagem",
   "ui_standing_your_post": "Sua publicação",
-  "ui_standing_your_reply": "Sua resposta"
+  "ui_standing_your_reply": "Sua resposta",
+  "ui_dm_pin_limit": "Você pode fixar até $count conversas. Desafixe uma primeiro.",
+  "ui_dm_pinned": "Fixada"
 }

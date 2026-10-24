@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Twoje słowa, $date:",
   "ui_standing_your_message": "Twoja wiadomość",
   "ui_standing_your_post": "Twój post",
-  "ui_standing_your_reply": "Twoja odpowiedź"
+  "ui_standing_your_reply": "Twoja odpowiedź",
+  "ui_dm_pin_limit": "Możesz przypiąć maksymalnie $count czatów. Najpierw odepnij jeden.",
+  "ui_dm_pinned": "Przypięty"
 }

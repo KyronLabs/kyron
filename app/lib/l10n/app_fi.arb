@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Kirjoitit $date:",
   "ui_standing_your_message": "Viestisi",
   "ui_standing_your_post": "Julkaisusi",
-  "ui_standing_your_reply": "Vastauksesi"
+  "ui_standing_your_reply": "Vastauksesi",
+  "ui_dm_pin_limit": "Voit kiinnittää enintään $count keskustelua. Irrota ensin yksi.",
+  "ui_dm_pinned": "Kiinnitetty"
 }

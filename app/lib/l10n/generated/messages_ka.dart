@@ -1168,6 +1168,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ჯგუფები არ არის"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "აქ ჩანს ჯგუფები, რომლებშიც ხართ, და თემების ჩატები, რომლებსაც უერთდებით."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "შეგიძლიათ მიამაგროთ \$count ჩატამდე. ჯერ ერთი მოხსენით."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("მიმაგრებული"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("მოწონებული"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("შენახული"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

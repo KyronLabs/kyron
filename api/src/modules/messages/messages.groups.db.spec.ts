@@ -125,6 +125,26 @@ run('groups and view-once, against a real database', () => {
       expect(groupsOnly).not.toContain(direct);
     });
 
+    it('keeps a pinned one at the top, and never lists it twice', async () => {
+      const { id: direct } = await messages.openWith(ada, ben);
+      await messages.send(ada, direct, 'Saturday it is');
+
+      // The group is the quieter of the two, and pinned it comes first.
+      await messages.setPinned(ben, groupId, true);
+      const pinned = await messages.list(ben, { limit: 1 });
+      expect(pinned.items.map((c) => c.id)).toEqual([groupId, direct]);
+      expect(pinned.items[0].pinnedAt).toBeInstanceOf(Date);
+      expect(pinned.nextCursor).toBeNull();
+
+      // Only for Ben: Ada's list is in the order things were said.
+      const adas = (await messages.list(ada)).items.map((c) => c.id);
+      expect(adas[0]).toBe(direct);
+
+      await messages.setPinned(ben, groupId, false);
+      const after = (await messages.list(ben)).items.map((c) => c.id);
+      expect(after.indexOf(direct)).toBeLessThan(after.indexOf(groupId));
+    });
+
     it('keeps spectators to reading, reacting and asking', async () => {
       await groups.setRole(ada, groupId, cy, MemberRole.SPECTATOR);
       await expect(messages.send(cy, groupId, 'hello')).rejects.toMatchObject({

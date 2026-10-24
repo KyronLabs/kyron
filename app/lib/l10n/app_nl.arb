@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Je schreef, op $date:",
   "ui_standing_your_message": "Je bericht",
   "ui_standing_your_post": "Je post",
-  "ui_standing_your_reply": "Je reactie"
+  "ui_standing_your_reply": "Je reactie",
+  "ui_dm_pin_limit": "Je kunt maximaal $count chats vastzetten. Maak er eerst een los.",
+  "ui_dm_pinned": "Vastgezet"
 }

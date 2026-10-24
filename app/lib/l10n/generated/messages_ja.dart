@@ -269,6 +269,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("グループはありません"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "参加しているグループと、参加したコミュニティチャットがここに表示されます。"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "固定できるチャットは \$count 件までです。先にどれかの固定を外してください。"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("固定済み"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("メンバーを追加"),

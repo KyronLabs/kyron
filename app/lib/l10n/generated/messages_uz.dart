@@ -1172,6 +1172,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Guruhlar yo‘q"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Bu yerda siz a’zo bo‘lgan guruhlar va qo‘shilgan hamjamiyat chatlari ko‘rsatiladi."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Ko‘pi bilan \$count ta chatni qadash mumkin. Avval bittasini bo‘shating."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Qadalgan"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Yoqqanlar"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saqlanganlar"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

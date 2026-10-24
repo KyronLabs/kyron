@@ -1169,6 +1169,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("කණ්ඩායම් නැත"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "ඔබ සිටින කණ්ඩායම් සහ ඔබ සම්බන්ධ වන ප්‍රජා කතාබස් මෙහි පෙන්වයි."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "ඔබට කතාබස් \$count ක් දක්වා අමුණා තැබිය හැක. පළමුව එකක් ඉවත් කරන්න."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("අමුණා ඇත"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("කැමති"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("සුරැකි"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

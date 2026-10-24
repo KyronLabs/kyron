@@ -1175,6 +1175,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Nincsenek csoportok"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Itt láthatod a csoportokat, amelyeknek tagja vagy, és a közösségi csevegéseket, amelyekhez csatlakozol."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Legfeljebb \$count csevegést tűzhetsz ki. Előbb vegyél le egyet."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kitűzve"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Kedvelt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Mentett"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

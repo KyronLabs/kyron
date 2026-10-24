@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Vaše slova, $date:",
   "ui_standing_your_message": "Vaše zpráva",
   "ui_standing_your_post": "Váš příspěvek",
-  "ui_standing_your_reply": "Vaše odpověď"
+  "ui_standing_your_reply": "Vaše odpověď",
+  "ui_dm_pin_limit": "Připnout můžete až $count chatů. Nejdřív jeden odepněte.",
+  "ui_dm_pinned": "Připnuto"
 }

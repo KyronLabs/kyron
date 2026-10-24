@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Akukho maqela"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Amaqela okuwo, kunye neencoko zoluntu ozijoyinayo, aboniswa apha."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Ungaqhoboshela iincoko ezifikelela kwi-\$count. Qala ukhulule enye."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Iqhoboshelwe"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ezithandiweyo"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ezigciniweyo"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

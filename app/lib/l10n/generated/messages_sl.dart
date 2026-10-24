@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Ni skupin"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Tu so skupine, v katerih ste, in klepeti skupnosti, ki se jim pridružite."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Pripnete lahko največ \$count klepetov. Najprej enega odpnite."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Pripeto"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Všečkano"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Shranjeno"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

@@ -1164,6 +1164,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("گروهی نیست"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "گروه‌هایی که در آن‌ها هستید و گفتگوهای انجمن‌هایی که به آن‌ها می‌پیوندید اینجا نمایش داده می‌شوند."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "حداکثر \$count گفتگو را می‌توانید سنجاق کنید. اول یکی را از سنجاق بردارید."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("سنجاق‌شده"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("پسندیده‌ها"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("ذخیره‌شده‌ها"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

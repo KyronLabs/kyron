@@ -1304,6 +1304,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Καμία ομάδα"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Εδώ εμφανίζονται οι ομάδες στις οποίες είστε μέλος και οι συνομιλίες κοινοτήτων στις οποίες συμμετέχετε."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Μπορείτε να καρφιτσώσετε έως \$count συνομιλίες. Ξεκαρφιτσώστε πρώτα μία."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Καρφιτσωμένη"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Μου αρέσουν"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Αποθηκευμένα"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Τίποτα εδώ ακόμα"),

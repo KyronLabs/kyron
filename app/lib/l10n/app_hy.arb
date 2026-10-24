@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Դուք գրել եք $date՝",
   "ui_standing_your_message": "Ձեր հաղորդագրությունը",
   "ui_standing_your_post": "Ձեր գրառումը",
-  "ui_standing_your_reply": "Ձեր պատասխանը"
+  "ui_standing_your_reply": "Ձեր պատասխանը",
+  "ui_dm_pin_limit": "Կարող եք ամրացնել մինչև $count զրույց։ Նախ ապամրացրեք մեկը։",
+  "ui_dm_pinned": "Ամրացված"
 }

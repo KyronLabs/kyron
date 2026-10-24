@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Vas escriure, el $date:",
   "ui_standing_your_message": "El teu missatge",
   "ui_standing_your_post": "La teva publicació",
-  "ui_standing_your_reply": "La teva resposta"
+  "ui_standing_your_reply": "La teva resposta",
+  "ui_dm_pin_limit": "Pots fixar fins a $count xats. Primer deixa'n de fixar un.",
+  "ui_dm_pinned": "Fixat"
 }

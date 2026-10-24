@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Сіз $date жаздыңыз:",
   "ui_standing_your_message": "Хабарламаңыз",
   "ui_standing_your_post": "Жазбаңыз",
-  "ui_standing_your_reply": "Жауабыңыз"
+  "ui_standing_your_reply": "Жауабыңыз",
+  "ui_dm_pin_limit": "$count чатқа дейін бекітуге болады. Алдымен біреуін босатыңыз.",
+  "ui_dm_pinned": "Бекітілген"
 }

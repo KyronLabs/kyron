@@ -1173,6 +1173,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Koox ma jirto"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Kooxaha aad ku jirto, iyo sheekaysiyada bulshada aad ku biirto, halkan ayaa lagu muujiyaa."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Waxaad dhejin kartaa ilaa \$count sheekeysi. Marka hore mid ka fur."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("La dhejiyey"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("La jeclaaday"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("La keydiyay"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

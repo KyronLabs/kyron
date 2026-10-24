@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Bạn đã viết, ngày $date:",
   "ui_standing_your_message": "Tin nhắn của bạn",
   "ui_standing_your_post": "Bài viết của bạn",
-  "ui_standing_your_reply": "Phản hồi của bạn"
+  "ui_standing_your_reply": "Phản hồi của bạn",
+  "ui_dm_pin_limit": "Bạn có thể ghim tối đa $count cuộc trò chuyện. Hãy bỏ ghim một cuộc trước.",
+  "ui_dm_pinned": "Đã ghim"
 }

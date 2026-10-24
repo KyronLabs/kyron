@@ -13,6 +13,10 @@ section for that version, so what is written here is what people read.
 ## [Unreleased]
 ### Added
 
+- **Pin chats to the top of Messages.** Press and hold a conversation, a
+  group or a community chat and choose Pin to the top. Up to five stay
+  above everything else, whenever they were last talked in, and follow you
+  to your other phones.
 - **Pushes in your phone's language.** Likes, replies, messages, decisions
   about your account and the rest arrive in the language the app is set to,
   whichever of its languages that is. This needs this version of the app;

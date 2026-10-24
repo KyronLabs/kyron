@@ -1176,6 +1176,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ഗ്രൂപ്പുകളില്ല"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "നിങ്ങളുള്ള ഗ്രൂപ്പുകളും നിങ്ങൾ ചേരുന്ന കമ്മ്യൂണിറ്റി ചാറ്റുകളും ഇവിടെ കാണാം."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "പരമാവധി \$count ചാറ്റുകൾ പിൻ ചെയ്യാം. ആദ്യം ഒന്ന് അൺപിൻ ചെയ്യുക."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("പിൻ ചെയ്തു"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("ഇഷ്ടപ്പെട്ടവ"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("സംരക്ഷിച്ചവ"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

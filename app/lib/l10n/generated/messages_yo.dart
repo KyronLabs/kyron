@@ -1169,6 +1169,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Kò sí ẹgbẹ́"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Àwọn ẹgbẹ́ tí o wà nínú wọn, àti àwọn ìjíròrò àwùjọ tí o darapọ̀ mọ́, ni a fihàn níbí."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "O lè pin ìjíròrò tó tó \$count. Kọ́kọ́ yọ pin kan kúrò."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("A ti pin"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Tí a fẹ́ràn"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Tí a fipamọ́"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Ви написали $date:",
   "ui_standing_your_message": "Ваше повідомлення",
   "ui_standing_your_post": "Ваш допис",
-  "ui_standing_your_reply": "Ваша відповідь"
+  "ui_standing_your_reply": "Ваша відповідь",
+  "ui_dm_pin_limit": "Можна закріпити не більше $count чатів. Спершу відкріпіть один.",
+  "ui_dm_pinned": "Закріплено"
 }

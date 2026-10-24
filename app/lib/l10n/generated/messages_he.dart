@@ -1161,6 +1161,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("אין קבוצות"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "כאן מופיעות הקבוצות שלך וצ׳אטים של קהילות שהצטרפת אליהם."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "אפשר להצמיד עד \$count צ'אטים. יש לבטל הצמדה של אחד קודם."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("מוצמד"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("אהבתי"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("שמורים"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

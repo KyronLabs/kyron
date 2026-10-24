@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Hai scritto, il $date:",
   "ui_standing_your_message": "Il tuo messaggio",
   "ui_standing_your_post": "Il tuo post",
-  "ui_standing_your_reply": "La tua risposta"
+  "ui_standing_your_reply": "La tua risposta",
+  "ui_dm_pin_limit": "Puoi fissare fino a $count chat. Prima toglierne una.",
+  "ui_dm_pinned": "Fissata"
 }

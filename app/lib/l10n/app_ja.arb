@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "あなたのコメント（$date）：",
   "ui_standing_your_message": "あなたのメッセージ",
   "ui_standing_your_post": "あなたの投稿",
-  "ui_standing_your_reply": "あなたの返信"
+  "ui_standing_your_reply": "あなたの返信",
+  "ui_dm_pin_limit": "固定できるチャットは $count 件までです。先にどれかの固定を外してください。",
+  "ui_dm_pinned": "固定済み"
 }

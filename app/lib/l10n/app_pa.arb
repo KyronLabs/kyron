@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "ਤੁਸੀਂ $date ਨੂੰ ਲਿਖਿਆ:",
   "ui_standing_your_message": "ਤੁਹਾਡਾ ਸੁਨੇਹਾ",
   "ui_standing_your_post": "ਤੁਹਾਡੀ ਪੋਸਟ",
-  "ui_standing_your_reply": "ਤੁਹਾਡਾ ਜਵਾਬ"
+  "ui_standing_your_reply": "ਤੁਹਾਡਾ ਜਵਾਬ",
+  "ui_dm_pin_limit": "ਤੁਸੀਂ ਵੱਧ ਤੋਂ ਵੱਧ $count ਚੈਟਾਂ ਪਿੰਨ ਕਰ ਸਕਦੇ ਹੋ। ਪਹਿਲਾਂ ਇੱਕ ਨੂੰ ਅਨਪਿੰਨ ਕਰੋ।",
+  "ui_dm_pinned": "ਪਿੰਨ ਕੀਤੀ"
 }

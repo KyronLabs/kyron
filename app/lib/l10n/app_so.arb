@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Waxaad qortay, $date:",
   "ui_standing_your_message": "Fariintaada",
   "ui_standing_your_post": "Qoraalkaaga",
-  "ui_standing_your_reply": "Jawaabtaada"
+  "ui_standing_your_reply": "Jawaabtaada",
+  "ui_dm_pin_limit": "Waxaad dhejin kartaa ilaa $count sheekeysi. Marka hore mid ka fur.",
+  "ui_dm_pinned": "La dhejiyey"
 }

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Γράψατε, στις $date:",
   "ui_standing_your_message": "Το μήνυμά σας",
   "ui_standing_your_post": "Η ανάρτησή σας",
-  "ui_standing_your_reply": "Η απάντησή σας"
+  "ui_standing_your_reply": "Η απάντησή σας",
+  "ui_dm_pin_limit": "Μπορείτε να καρφιτσώσετε έως $count συνομιλίες. Ξεκαρφιτσώστε πρώτα μία.",
+  "ui_dm_pinned": "Καρφιτσωμένη"
 }

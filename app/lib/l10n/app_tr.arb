@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "$date tarihinde yazdıkların:",
   "ui_standing_your_message": "Mesajın",
   "ui_standing_your_post": "Gönderin",
-  "ui_standing_your_reply": "Yanıtın"
+  "ui_standing_your_reply": "Yanıtın",
+  "ui_dm_pin_limit": "En fazla $count sohbet sabitleyebilirsin. Önce birini sabitlemeden kaldır.",
+  "ui_dm_pinned": "Sabitlendi"
 }

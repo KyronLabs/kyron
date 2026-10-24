@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Ezt írtad, $date:",
   "ui_standing_your_message": "Az üzeneted",
   "ui_standing_your_post": "A bejegyzésed",
-  "ui_standing_your_reply": "A válaszod"
+  "ui_standing_your_reply": "A válaszod",
+  "ui_dm_pin_limit": "Legfeljebb $count csevegést tűzhetsz ki. Előbb vegyél le egyet.",
+  "ui_dm_pinned": "Kitűzve"
 }

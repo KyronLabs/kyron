@@ -1170,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Không có nhóm"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Các nhóm bạn tham gia và các cuộc trò chuyện cộng đồng bạn vào sẽ hiển thị ở đây."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể ghim tối đa \$count cuộc trò chuyện. Hãy bỏ ghim một cuộc trước."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Đã ghim"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Đã thích"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Đã lưu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

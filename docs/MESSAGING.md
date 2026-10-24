@@ -316,6 +316,32 @@ the old. Reactions are shown as counts, and who reacted is not sent.
 - The pictures are not end-to-end encrypted, like everything else in a
   community chat.
 
+## Pinned chats
+
+A long press on a row in Messages pins it to the top: a conversation, a
+group or a community chat. Pinned rows come first, the most recently pinned
+on top, with a pin beside the time; the rest follow by when each was last
+spoken in. A second long press unpins.
+
+- **Five at most**, of all kinds together (`MAX_PINNED` in
+  `api/src/modules/messages/pins.ts`, `maxPinnedChats` in the app). A pin is
+  for the few somebody opens every day. The app says so before asking, and
+  the server refuses a sixth either way.
+- **The reader's own**, like muting: `ConversationMember.pinnedAt` and
+  `CommunityChatMember.pinnedAt`. Nobody else sees it. Set with
+  `PUT`/`DELETE /messages/:id/pinned` and `/community-chats/:id/pinned`
+  (not `/community-chats/:id/pin`, which pins a message in the chat for
+  everybody).
+- **On the first page, ahead of it.** `GET /messages` reads the pinned
+  conversations that fit the filter on its first page, before the page
+  itself, and pages only the rest. A pin stays at the top however long it
+  has been quiet, and none is listed twice. Joined chats are read with the
+  pinned ones first, so the hundred-chat cap never drops one; a pinned chat
+  shows at once rather than waiting for the list to reach back to it.
+- **Hiding unpins.** A conversation moved to Hidden is out of the top too.
+  Pinning one in Hidden would bring it back, which the swipe already does,
+  so Hidden offers no pin.
+
 ## What the server knows
 
 | | Sealed | Readable by the server |
@@ -330,6 +356,7 @@ the old. Reactions are shown as counts, and who reacted is not sent.
 | Who opened a view-once message, when | — | yes |
 | Everything in a community chat | — | yes, it is not encrypted |
 | Who answered what in a community chat poll | — | yes, stored, never shown |
+| Which chats you pinned | — | yes, it orders your list |
 
 ## Testing it
 

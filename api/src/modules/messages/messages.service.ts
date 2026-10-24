@@ -23,6 +23,7 @@ import {
   ViewOnceService,
 } from './view-once.service';
 import { say } from '../push/push-text';
+import { assertRoomForPin } from './pins';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -80,6 +81,8 @@ export interface ConversationSummary {
   /** Messages from the other side the reader has not seen. */
   unread: number;
   lastMessageAt: Date;
+  /** When the reader pinned it to the top of their list, or null. */
+  pinnedAt: Date | null;
 }
 
 /** What the reader has chosen about their messages. */
@@ -299,60 +302,89 @@ export class MessagesService {
       return { items: [] as ConversationSummary[], nextCursor: null };
     }
 
-    const rows = await this.prisma.conversation.findMany({
-      where: {
-        ...(only ? { id: { in: only } } : {}),
-        // Groups, as a filter of their own, narrowed here like the rest so
-        // a page of groups is a full page.
-        ...(which === 'groups' ? { kind: ConversationKind.GROUP } : {}),
-        members: {
-          some: {
-            userId: viewerId,
-            hiddenAt: hidden ? { not: null } : null,
-          },
+    // Pinned conversations come first, ahead of the first page, and the
+    // pages are the rest -- so a pin stays at the top however long it has
+    // been quiet, and the cursor never has to cross between the two. Not in
+    // Hidden: hiding one unpins it.
+    const pinsFirst = !hidden;
+    const where = (pinned?: boolean): Prisma.ConversationWhereInput => ({
+      ...(only ? { id: { in: only } } : {}),
+      // Groups, as a filter of their own, narrowed here like the rest so
+      // a page of groups is a full page.
+      ...(which === 'groups' ? { kind: ConversationKind.GROUP } : {}),
+      members: {
+        some: {
+          userId: viewerId,
+          hiddenAt: hidden ? { not: null } : null,
+          ...(pinned === undefined
+            ? {}
+            : { pinnedAt: pinned ? { not: null } : null }),
         },
-        // A conversation nobody has said anything in yet is a draft, not a
-        // thread, and it should not sit at the top of the list.
-        messages: { some: { deletedAt: null } },
       },
+      // A conversation nobody has said anything in yet is a draft, not a
+      // thread, and it should not sit at the top of the list.
+      messages: { some: { deletedAt: null } },
+    });
+    const select = {
+      id: true,
+      kind: true,
+      title: true,
+      joinRole: true,
+      lastMessageAt: true,
+      members: {
+        select: {
+          userId: true,
+          lastReadAt: true,
+          role: true,
+          joinedAt: true,
+          handRaisedAt: true,
+          pinnedAt: true,
+          user: { select: { ...this.personShape, readReceipts: true } },
+        },
+      },
+      messages: {
+        where: { deletedAt: null },
+        orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+        take: 1,
+        select: {
+          id: true,
+          body: true,
+          senderId: true,
+          createdAt: true,
+          viewOnce: true,
+          event: true,
+          media: { select: this.mediaShape, orderBy: { position: 'asc' } },
+          keyShares: this.keySharesFor(viewerId),
+        },
+      },
+    } satisfies Prisma.ConversationSelect;
+
+    const pinnedAtOf = (row: {
+      members: { userId: string; pinnedAt: Date | null }[];
+    }) => row.members.find((m) => m.userId === viewerId)?.pinnedAt ?? null;
+    // Few by design (MAX_PINNED), so all of them, most recently pinned first.
+    const pinnedRows =
+      pinsFirst && !cursor
+        ? (
+            await this.prisma.conversation.findMany({
+              where: where(true),
+              select,
+            })
+          ).sort(
+            (a, b) =>
+              (pinnedAtOf(b)?.getTime() ?? 0) - (pinnedAtOf(a)?.getTime() ?? 0),
+          )
+        : [];
+    const rows = await this.prisma.conversation.findMany({
+      where: where(pinsFirst ? false : undefined),
       orderBy: [{ lastMessageAt: 'desc' }, { id: 'desc' }],
       take: limit + 1,
       ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
-      select: {
-        id: true,
-        kind: true,
-        title: true,
-        joinRole: true,
-        lastMessageAt: true,
-        members: {
-          select: {
-            userId: true,
-            lastReadAt: true,
-            role: true,
-            joinedAt: true,
-            handRaisedAt: true,
-            user: { select: { ...this.personShape, readReceipts: true } },
-          },
-        },
-        messages: {
-          where: { deletedAt: null },
-          orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
-          take: 1,
-          select: {
-            id: true,
-            body: true,
-            senderId: true,
-            createdAt: true,
-            viewOnce: true,
-            event: true,
-            media: { select: this.mediaShape, orderBy: { position: 'asc' } },
-            keyShares: this.keySharesFor(viewerId),
-          },
-        },
-      },
+      select,
     });
 
-    const page = rows.slice(0, limit);
+    const rest = rows.slice(0, limit);
+    const page = [...pinnedRows, ...rest];
     if (page.length === 0) {
       return { items: [] as ConversationSummary[], nextCursor: null };
     }
@@ -413,12 +445,13 @@ export class MessagesService {
           : null,
         unread: unreadOf.get(row.id) ?? 0,
         lastMessageAt: row.lastMessageAt,
+        pinnedAt: pinnedAtOf(row),
       };
     });
 
     return {
       items,
-      nextCursor: rows.length > limit ? page[page.length - 1].id : null,
+      nextCursor: rows.length > limit ? rest[rest.length - 1].id : null,
     };
   }
 
@@ -1195,7 +1228,8 @@ export class MessagesService {
     await this.requireMembership(viewerId, conversationId);
     await this.prisma.conversationMember.updateMany({
       where: { conversationId, userId: viewerId },
-      data: { hiddenAt: new Date() },
+      // Out of the list is out of the top of it too.
+      data: { hiddenAt: new Date(), pinnedAt: null },
     });
     return { ok: true };
   }
@@ -1367,6 +1401,43 @@ export class MessagesService {
   }
 
   /**
+   * Keeps a conversation at the top of the reader's list, or stops.
+   *
+   * The reader's own, like muting. Pinning one already pinned keeps its
+   * place rather than moving it up; a hidden one comes back into the list,
+   * since a pin on something out of sight would do nothing.
+   */
+  async setPinned(
+    viewerId: string,
+    conversationId: string,
+    pinned: boolean,
+  ): Promise<{ id: string; pinnedAt: Date | null }> {
+    const member = await this.prisma.conversationMember.findUnique({
+      where: { conversationId_userId: { conversationId, userId: viewerId } },
+      select: { pinnedAt: true },
+    });
+    if (!member) {
+      throw new NotFoundException('That conversation does not exist.');
+    }
+    if (!pinned) {
+      await this.prisma.conversationMember.update({
+        where: { conversationId_userId: { conversationId, userId: viewerId } },
+        data: { pinnedAt: null },
+      });
+      return { id: conversationId, pinnedAt: null };
+    }
+    if (member.pinnedAt)
+      return { id: conversationId, pinnedAt: member.pinnedAt };
+    await assertRoomForPin(this.prisma, viewerId);
+    const { pinnedAt } = await this.prisma.conversationMember.update({
+      where: { conversationId_userId: { conversationId, userId: viewerId } },
+      data: { pinnedAt: new Date(), hiddenAt: null },
+      select: { pinnedAt: true },
+    });
+    return { id: conversationId, pinnedAt };
+  }
+
+  /**
    * Blocks the other person in a conversation, and hides it.
    *
    * One call rather than two, because blocking somebody you are talking to and
@@ -1403,7 +1474,7 @@ export class MessagesService {
       }),
       this.prisma.conversationMember.updateMany({
         where: { conversationId, userId: viewerId },
-        data: { hiddenAt: new Date() },
+        data: { hiddenAt: new Date(), pinnedAt: null },
       }),
     ]);
 

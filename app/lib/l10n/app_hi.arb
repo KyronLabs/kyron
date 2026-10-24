@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "आपने $date को लिखा:",
   "ui_standing_your_message": "आपका संदेश",
   "ui_standing_your_post": "आपकी पोस्ट",
-  "ui_standing_your_reply": "आपका जवाब"
+  "ui_standing_your_reply": "आपका जवाब",
+  "ui_dm_pin_limit": "आप ज़्यादा से ज़्यादा $count चैट पिन कर सकते हैं। पहले एक अनपिन करें।",
+  "ui_dm_pinned": "पिन किया गया"
 }

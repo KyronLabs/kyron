@@ -70,6 +70,12 @@ class CommunityChatsRepository {
       ? _api.dio.put<void>('/community-chats/$chatId/mute')
       : _api.dio.delete<void>('/community-chats/$chatId/mute');
 
+  /// Keeps a joined chat at the top of the reader's Messages list, or stops.
+  /// Not [pin], which pins a message in the chat for everybody.
+  Future<void> setPinned(String chatId, bool pinned) => pinned
+      ? _api.dio.put<void>('/community-chats/$chatId/pinned')
+      : _api.dio.delete<void>('/community-chats/$chatId/pinned');
+
   /// Messages in a chat whose words hold [query], newest first.
   Future<List<CommunityChatMessage>> search(String chatId, String query) async {
     final res = await _api.dio.get<Map<String, dynamic>>(

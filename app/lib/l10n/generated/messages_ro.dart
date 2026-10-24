@@ -1170,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Niciun grup"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Aici apar grupurile din care faci parte și chaturile comunităților în care intri."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Poți fixa până la \$count conversații. Anulează mai întâi fixarea uneia."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Fixată"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Apreciate"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvate"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

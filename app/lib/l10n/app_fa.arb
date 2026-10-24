@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "نوشته شما، در $date:",
   "ui_standing_your_message": "پیام شما",
   "ui_standing_your_post": "پست شما",
-  "ui_standing_your_reply": "پاسخ شما"
+  "ui_standing_your_reply": "پاسخ شما",
+  "ui_dm_pin_limit": "حداکثر $count گفتگو را می‌توانید سنجاق کنید. اول یکی را از سنجاق بردارید.",
+  "ui_dm_pinned": "سنجاق‌شده"
 }

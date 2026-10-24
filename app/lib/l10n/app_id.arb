@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Kamu menulis, pada $date:",
   "ui_standing_your_message": "Pesanmu",
   "ui_standing_your_post": "Postinganmu",
-  "ui_standing_your_reply": "Balasanmu"
+  "ui_standing_your_reply": "Balasanmu",
+  "ui_dm_pin_limit": "Kamu bisa menyematkan hingga $count chat. Lepas sematan satu dulu.",
+  "ui_dm_pinned": "Disematkan"
 }

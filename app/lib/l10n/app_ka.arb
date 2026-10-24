@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "თქვენ დაწერეთ $date:",
   "ui_standing_your_message": "თქვენი შეტყობინება",
   "ui_standing_your_post": "თქვენი პოსტი",
-  "ui_standing_your_reply": "თქვენი პასუხი"
+  "ui_standing_your_reply": "თქვენი პასუხი",
+  "ui_dm_pin_limit": "შეგიძლიათ მიამაგროთ $count ჩატამდე. ჯერ ერთი მოხსენით.",
+  "ui_dm_pinned": "მიმაგრებული"
 }

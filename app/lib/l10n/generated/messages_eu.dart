@@ -1170,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ez dago talderik"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Hemen agertzen dira zauden taldeak eta batzen zaren komunitateko txatak."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Gehienez \$count txat aingura ditzakezu. Kendu bat lehenik."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Ainguratuta"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gustukoak"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gordetakoak"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

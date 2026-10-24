@@ -1167,6 +1167,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Enweghị otu"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Otu ị nọ na ha, na mkparịta ụka obodo ị sonyere, ka egosiri ebe a."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Ị nwere ike ịpịn ruo nkata \$count. Wepụ otu pin mbụ."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Apịnara"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ndị m masịrị"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Echekwara"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

@@ -1170,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("အဖွဲ့ မရှိပါ"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "သင်ပါဝင်သော အဖွဲ့များနှင့် သင်ဝင်ရောက်သော အသိုင်းအဝိုင်း ချက်တ်များကို ဤနေရာတွင် ပြသည်။"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "ချတ်များကို \$count ခုအထိ ပင်ထိုးနိုင်သည်။ တစ်ခုကို အရင် ပင်ဖြုတ်ပါ။"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("ပင်ထိုးထားသည်"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("နှစ်သက်သည်"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("သိမ်းထားသည်"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

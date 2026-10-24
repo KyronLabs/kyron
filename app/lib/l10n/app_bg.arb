@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Вашите думи, $date:",
   "ui_standing_your_message": "Вашето съобщение",
   "ui_standing_your_post": "Вашата публикация",
-  "ui_standing_your_reply": "Вашият отговор"
+  "ui_standing_your_reply": "Вашият отговор",
+  "ui_dm_pin_limit": "Можете да закачите до $count чата. Първо откачете един.",
+  "ui_dm_pinned": "Закачен"
 }

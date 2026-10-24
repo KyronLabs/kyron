@@ -1163,6 +1163,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Hakuna vikundi"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Vikundi ulivyomo, na gumzo za jumuiya unazojiunga nazo, vinaonyeshwa hapa."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kubandika hadi soga \$count. Bandua moja kwanza."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Imebandikwa"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Zilizopendwa"),
       "ui_drawer_saved":
           MessageLookupByLibrary.simpleMessage("Zilizohifadhiwa"),

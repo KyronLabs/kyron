@@ -59,6 +59,10 @@ class CommunityChat {
   /// by itself, not in a list.
   final CommunityChatMessage? pinned;
 
+  /// When the reader pinned the chat to the top of their Messages list, or
+  /// null. Theirs alone; nothing to do with [pinned], the chat's message.
+  final DateTime? pinnedAt;
+
   /// The newest message, for a row in a list of joined chats: its words, or
   /// what it carried when it had none.
   final ({
@@ -88,6 +92,7 @@ class CommunityChat {
     this.muted = false,
     this.lastMessageAt,
     this.pinned,
+    this.pinnedAt,
     this.lastMessage,
   });
 
@@ -98,7 +103,14 @@ class CommunityChat {
   DateTime get activeAt =>
       lastMessageAt ?? DateTime.fromMillisecondsSinceEpoch(0);
 
-  CommunityChat copyWith({bool? muted, int? unread}) => CommunityChat(
+  /// [pinnedAt] is taken as given, null included, when [pin] is true.
+  CommunityChat copyWith({
+    bool? muted,
+    int? unread,
+    bool pin = false,
+    DateTime? pinnedAt,
+  }) =>
+      CommunityChat(
         id: id,
         communityId: communityId,
         communitySlug: communitySlug,
@@ -117,6 +129,7 @@ class CommunityChat {
         muted: muted ?? this.muted,
         lastMessageAt: lastMessageAt,
         pinned: pinned,
+        pinnedAt: pin ? pinnedAt : this.pinnedAt,
         lastMessage: lastMessage,
       );
 
@@ -148,6 +161,7 @@ class CommunityChat {
       pinned: pinned is Map<String, dynamic>
           ? CommunityChatMessage.fromJson(pinned)
           : null,
+      pinnedAt: DateTime.tryParse(json['pinnedAt'] as String? ?? '')?.toLocal(),
       lastMessage: last is Map<String, dynamic>
           ? (
               senderName: last['senderName'] as String?,

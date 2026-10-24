@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Vous avez écrit, le $date :",
   "ui_standing_your_message": "Votre message",
   "ui_standing_your_post": "Votre publication",
-  "ui_standing_your_reply": "Votre réponse"
+  "ui_standing_your_reply": "Votre réponse",
+  "ui_dm_pin_limit": "Vous pouvez épingler jusqu'à $count discussions. Désépinglez-en une d'abord.",
+  "ui_dm_pinned": "Épinglée"
 }

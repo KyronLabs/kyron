@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Kirjutasid $date:",
   "ui_standing_your_message": "Sinu sõnum",
   "ui_standing_your_post": "Sinu postitus",
-  "ui_standing_your_reply": "Sinu vastus"
+  "ui_standing_your_reply": "Sinu vastus",
+  "ui_dm_pin_limit": "Saad kinnitada kuni $count vestlust. Vabasta enne üks.",
+  "ui_dm_pinned": "Kinnitatud"
 }

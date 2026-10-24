@@ -238,6 +238,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("没有群组"),
       "ui_dm_groups_none_detail":
           MessageLookupByLibrary.simpleMessage("你所在的群组和你加入的社区聊天会显示在这里。"),
+      "ui_dm_pin_limit":
+          MessageLookupByLibrary.simpleMessage("最多可以置顶 \$count 个聊天。请先取消置顶一个。"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("已置顶"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),

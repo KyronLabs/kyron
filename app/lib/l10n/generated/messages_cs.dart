@@ -1230,6 +1230,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Žádné skupiny"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Zde jsou skupiny, ve kterých jste, a komunitní chaty, ke kterým se připojíte."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Připnout můžete až \$count chatů. Nejdřív jeden odepněte."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Připnuto"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Líbí se mi"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Uložené"),
       "ui_feed_empty":

@@ -1169,6 +1169,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Ei ryhmiä"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Tässä näkyvät ryhmät, joissa olet mukana, ja yhteisökeskustelut, joihin liityt."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Voit kiinnittää enintään \$count keskustelua. Irrota ensin yksi."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kiinnitetty"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Tykätyt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Tallennetut"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

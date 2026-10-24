@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Uliandika, tarehe $date:",
   "ui_standing_your_message": "Ujumbe wako",
   "ui_standing_your_post": "Chapisho lako",
-  "ui_standing_your_reply": "Jibu lako"
+  "ui_standing_your_reply": "Jibu lako",
+  "ui_dm_pin_limit": "Unaweza kubandika hadi soga $count. Bandua moja kwanza.",
+  "ui_dm_pinned": "Imebandikwa"
 }

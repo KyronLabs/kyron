@@ -1165,6 +1165,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Խմբեր չկան"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Այստեղ են այն խմբերը, որոնցում դուք եք, և համայնքների զրույցները, որոնց միանում եք։"),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Կարող եք ամրացնել մինչև \$count զրույց։ Նախ ապամրացրեք մեկը։"),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Ամրացված"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Հավանած"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Պահպանված"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

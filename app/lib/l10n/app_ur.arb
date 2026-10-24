@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "آپ نے $date کو لکھا:",
   "ui_standing_your_message": "آپ کا پیغام",
   "ui_standing_your_post": "آپ کی پوسٹ",
-  "ui_standing_your_reply": "آپ کا جواب"
+  "ui_standing_your_reply": "آپ کا جواب",
+  "ui_dm_pin_limit": "آپ زیادہ سے زیادہ $count چیٹس پن کر سکتے ہیں۔ پہلے ایک کو ان پن کریں۔",
+  "ui_dm_pinned": "پن شدہ"
 }

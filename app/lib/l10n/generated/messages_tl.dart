@@ -1165,6 +1165,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Walang grupo"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Dito nakalista ang mga grupong kinabibilangan mo at ang mga community chat na sinasalihan mo."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Hanggang \$count chat lang ang puwede mong i-pin. Mag-unpin muna ng isa."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Naka-pin"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Nagustuhan"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Naka-save"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

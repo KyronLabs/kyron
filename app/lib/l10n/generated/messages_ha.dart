@@ -1165,6 +1165,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Babu rukuni"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Rukunonin da kake ciki, da hirarrakin al'umma da ka shiga, ana nuna su a nan."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Za ka iya maƙala hira har \$count. Ka cire ɗaya tukuna."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("An maƙala"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Waɗanda aka so"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ajiyayyu"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

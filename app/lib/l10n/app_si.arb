@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "ඔබ $date දින ලියූ දේ:",
   "ui_standing_your_message": "ඔබේ පණිවිඩය",
   "ui_standing_your_post": "ඔබේ පළ කිරීම",
-  "ui_standing_your_reply": "ඔබේ පිළිතුර"
+  "ui_standing_your_reply": "ඔබේ පිළිතුර",
+  "ui_dm_pin_limit": "ඔබට කතාබස් $count ක් දක්වා අමුණා තැබිය හැක. පළමුව එකක් ඉවත් කරන්න.",
+  "ui_dm_pinned": "අමුණා ඇත"
 }

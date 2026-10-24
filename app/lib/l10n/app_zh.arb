@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "你于 $date 写道：",
   "ui_standing_your_message": "你的消息",
   "ui_standing_your_post": "你的帖子",
-  "ui_standing_your_reply": "你的回复"
+  "ui_standing_your_reply": "你的回复",
+  "ui_dm_pin_limit": "最多可以置顶 $count 个聊天。请先取消置顶一个。",
+  "ui_dm_pinned": "已置顶"
 }

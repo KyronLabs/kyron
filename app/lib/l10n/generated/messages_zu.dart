@@ -1170,6 +1170,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Awekho amaqembu"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Amaqembu okuwo, kanye nezingxoxo zomphakathi ojoyina kuzo, kuboniswa lapha."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Ungaphina izingxoxo ezifika ku-\$count. Qala ususe okukodwa."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kuphiniwe"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Okuthandwayo"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Okulondoloziwe"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

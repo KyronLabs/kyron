@@ -18,6 +18,10 @@ interface Stub {
   conversation?: Record<string, unknown> | null;
   block?: unknown;
   user?: unknown;
+  /** The reader's own membership row, for pinning. */
+  member?: { pinnedAt: Date | null } | null;
+  /** How many conversations and community chats the reader has pinned. */
+  pins?: [number, number];
 }
 
 function serviceWith(stub: Stub = {}) {
@@ -40,10 +44,21 @@ function serviceWith(stub: Stub = {}) {
     },
     conversationMember: {
       findMany: jest.fn().mockResolvedValue([]),
+      findUnique: jest
+        .fn()
+        .mockResolvedValue('member' in stub ? stub.member : { pinnedAt: null }),
+      count: jest.fn().mockResolvedValue(stub.pins?.[0] ?? 0),
+      update: jest.fn((args: { data: Record<string, unknown> }) => {
+        calls.memberUpdates.push(args);
+        return Promise.resolve({ pinnedAt: args.data.pinnedAt ?? null });
+      }),
       updateMany: jest.fn((args: unknown) => {
         calls.memberUpdates.push(args);
         return Promise.resolve({ count: 1 });
       }),
+    },
+    communityChatMember: {
+      count: jest.fn().mockResolvedValue(stub.pins?.[1] ?? 0),
     },
     message: {
       findMany: jest.fn().mockResolvedValue([]),
@@ -81,6 +96,22 @@ function serviceWith(stub: Stub = {}) {
     calls,
     realtime,
   };
+}
+
+/** Answers the list's two reads: the pinned conversations, and the rest. */
+function stubList(
+  prisma: PrismaService,
+  { pinned = [], rest = [] }: { pinned?: object[]; rest?: object[] },
+) {
+  (prisma.conversation.findMany as jest.Mock).mockImplementation(
+    (args: { where: { members: { some: { pinnedAt?: unknown } } } }) =>
+      Promise.resolve(
+        args.where.members.some.pinnedAt === null ||
+          args.where.members.some.pinnedAt === undefined
+          ? rest
+          : pinned,
+      ),
+  );
 }
 
 /** `expect.objectContaining`, typed, so the matchers are not `any`. */
@@ -594,21 +625,74 @@ describe('the conversation list', () => {
 
   it('carries the last message’s attachments, so a voice note is not blank', async () => {
     const { service, prisma } = serviceWith();
-    (prisma.conversation.findMany as jest.Mock).mockResolvedValue([
-      row(ME, [{ id: 'v1', kind: 'VOICE', url: 'https://cdn.invalid/v.m4a' }]),
-    ]);
+    stubList(prisma, {
+      rest: [
+        row(ME, [
+          { id: 'v1', kind: 'VOICE', url: 'https://cdn.invalid/v.m4a' },
+        ]),
+      ],
+    });
     const { items } = await service.list(ME);
     expect(items[0].lastMessage?.media).toHaveLength(1);
   });
 
   it('says whether the reader’s own last message has been seen', async () => {
     const { service, prisma } = serviceWith();
-    (prisma.conversation.findMany as jest.Mock).mockResolvedValue([
-      row(ME),
-      { ...row(ME, [], new Date('2026-01-01')), id: 'c2' },
-    ]);
+    stubList(prisma, {
+      rest: [row(ME), { ...row(ME, [], new Date('2026-01-01')), id: 'c2' }],
+    });
     const { items } = await service.list(ME);
     expect(items.map((i) => i.lastMessage?.seen)).toEqual([true, false]);
+  });
+
+  it('puts pinned ones first, the latest pinned on top, and pages the rest', async () => {
+    const { service, prisma } = serviceWith();
+    const pinnedAt = (at: string) => (r: ReturnType<typeof row>) => ({
+      ...r,
+      members: r.members.map((m) =>
+        m.userId === ME ? { ...m, pinnedAt: new Date(at) } : m,
+      ),
+    });
+    stubList(prisma, {
+      // Quiet for months, and still first.
+      pinned: [
+        pinnedAt('2026-03-01')({ ...row(THEM), id: 'p-old' }),
+        pinnedAt('2026-03-09')({ ...row(THEM), id: 'p-new' }),
+      ],
+      rest: [{ ...row(THEM), id: 'c1' }],
+    });
+    const { items } = await service.list(ME);
+    expect(items.map((i) => i.id)).toEqual(['p-new', 'p-old', 'c1']);
+    expect(items[0].pinnedAt).toEqual(new Date('2026-03-09'));
+    expect(items[2].pinnedAt).toBeNull();
+
+    // The paged read leaves the pins out, so none is listed twice.
+    const [, restQuery] = (prisma.conversation.findMany as jest.Mock).mock
+      .calls as [unknown, unknown][];
+    expect(restQuery[0]).toEqual(
+      containing({
+        where: containing({
+          members: { some: { userId: ME, hiddenAt: null, pinnedAt: null } },
+        }),
+      }),
+    );
+  });
+
+  it('does not list the pins again on a later page', async () => {
+    const { service, prisma } = serviceWith();
+    stubList(prisma, { pinned: [{ ...row(THEM), id: 'p1' }], rest: [] });
+    await service.list(ME, { cursor: 'c9' });
+    const calls = (prisma.conversation.findMany as jest.Mock).mock.calls as [
+      unknown,
+    ][];
+    expect(calls).toHaveLength(1);
+    expect(calls[0][0]).toEqual(
+      containing({
+        where: containing({
+          members: { some: { userId: ME, hiddenAt: null, pinnedAt: null } },
+        }),
+      }),
+    );
   });
 
   it('Unanswered is the ones ending on the other person’s word', async () => {
@@ -641,11 +725,73 @@ describe('the conversation list', () => {
     );
   });
 
+  it('hiding one unpins it', async () => {
+    const { service, calls } = serviceWith({ conversation: membership(null) });
+    await service.hide(ME, 'c1');
+    expect(calls.memberUpdates).toContainEqual(
+      containing({
+        data: { hiddenAt: expect.any(Date) as unknown, pinnedAt: null },
+      }),
+    );
+  });
+
   it('restoring one puts it back', async () => {
     const { service, calls } = serviceWith({ conversation: membership(null) });
     await service.unhide(ME, 'c1');
     expect(calls.memberUpdates).toContainEqual(
       containing({ data: { hiddenAt: null } }),
+    );
+  });
+});
+
+describe('pinning a conversation', () => {
+  it('keeps it at the top, and brings it back from Hidden', async () => {
+    const { service, calls } = serviceWith();
+    const { pinnedAt } = await service.setPinned(ME, 'c1', true);
+    expect(pinnedAt).toBeInstanceOf(Date);
+    expect(calls.memberUpdates).toContainEqual(
+      containing({
+        data: { pinnedAt: expect.any(Date) as unknown, hiddenAt: null },
+      }),
+    );
+  });
+
+  it('allows five, conversations and community chats together', async () => {
+    const { service, calls } = serviceWith({ pins: [3, 2] });
+    await expect(service.setPinned(ME, 'c1', true)).rejects.toBeInstanceOf(
+      BadRequestException,
+    );
+    expect(calls.memberUpdates).toHaveLength(0);
+  });
+
+  it('pinning one already pinned keeps its place', async () => {
+    const at = new Date('2026-03-01');
+    const { service, calls } = serviceWith({
+      member: { pinnedAt: at },
+      pins: [5, 0],
+    });
+    await expect(service.setPinned(ME, 'c1', true)).resolves.toEqual({
+      id: 'c1',
+      pinnedAt: at,
+    });
+    expect(calls.memberUpdates).toHaveLength(0);
+  });
+
+  it('unpins, even with the list full', async () => {
+    const { service, calls } = serviceWith({
+      member: { pinnedAt: new Date('2026-03-01') },
+      pins: [5, 0],
+    });
+    await service.setPinned(ME, 'c1', false);
+    expect(calls.memberUpdates).toContainEqual(
+      containing({ data: { pinnedAt: null } }),
+    );
+  });
+
+  it('is only for a conversation the reader is in', async () => {
+    const { service } = serviceWith({ member: null });
+    await expect(service.setPinned(ME, 'c1', true)).rejects.toBeInstanceOf(
+      NotFoundException,
     );
   });
 });

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "អ្នកបានសរសេរ នៅ $date៖",
   "ui_standing_your_message": "សាររបស់អ្នក",
   "ui_standing_your_post": "ការបង្ហោះរបស់អ្នក",
-  "ui_standing_your_reply": "ការឆ្លើយតបរបស់អ្នក"
+  "ui_standing_your_reply": "ការឆ្លើយតបរបស់អ្នក",
+  "ui_dm_pin_limit": "អ្នកអាចខ្ទាស់ការជជែកបានរហូតដល់ $count។ សូមដកការខ្ទាស់មួយជាមុនសិន។",
+  "ui_dm_pinned": "បានខ្ទាស់"
 }

@@ -1165,6 +1165,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Топтар жоқ"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Мұнда сіз мүше топтар мен қосылған қауымдастық чаттары көрсетіледі."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "\$count чатқа дейін бекітуге болады. Алдымен біреуін босатыңыз."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Бекітілген"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ұнағандар"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Сақталғандар"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

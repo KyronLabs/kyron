@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "သင် $date တွင် ရေးခဲ့သည်-",
   "ui_standing_your_message": "သင့်မက်ဆေ့ချ်",
   "ui_standing_your_post": "သင့်ပို့စ်",
-  "ui_standing_your_reply": "သင့်ပြန်စာ"
+  "ui_standing_your_reply": "သင့်ပြန်စာ",
+  "ui_dm_pin_limit": "ချတ်များကို $count ခုအထိ ပင်ထိုးနိုင်သည်။ တစ်ခုကို အရင် ပင်ဖြုတ်ပါ။",
+  "ui_dm_pinned": "ပင်ထိုးထားသည်"
 }

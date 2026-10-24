@@ -1174,6 +1174,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Grupių nėra"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Čia rodomos grupės, kuriose esate, ir bendruomenių pokalbiai, prie kurių prisijungiate."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Galite prisegti iki \$count pokalbių. Pirmiausia atsekite vieną."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Prisegta"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Patikę"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Išsaugoti"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),

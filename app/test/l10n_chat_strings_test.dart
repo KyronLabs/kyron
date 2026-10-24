@@ -459,6 +459,8 @@ const _keys = [
   'ui_standing_your_message',
   'ui_standing_your_post',
   'ui_standing_your_reply',
+  'ui_dm_pin_limit',
+  'ui_dm_pinned',
 ];
 
 void main() {

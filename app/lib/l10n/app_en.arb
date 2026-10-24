@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "You wrote, on $date:",
   "ui_standing_your_message": "Your message",
   "ui_standing_your_post": "Your post",
-  "ui_standing_your_reply": "Your reply"
+  "ui_standing_your_reply": "Your reply",
+  "ui_dm_pin_limit": "You can pin up to $count chats. Unpin one first.",
+  "ui_dm_pinned": "Pinned"
 }

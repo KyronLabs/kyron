@@ -253,6 +253,12 @@ class MessagesRepository {
       ? _api.dio.put<void>('/messages/$conversationId/mute')
       : _api.dio.delete<void>('/messages/$conversationId/mute');
 
+  /// Keeps a conversation at the top of the reader's list, or stops. Theirs
+  /// alone, like muting.
+  Future<void> setPinned(String conversationId, bool pinned) => pinned
+      ? _api.dio.put<void>('/messages/$conversationId/pinned')
+      : _api.dio.delete<void>('/messages/$conversationId/pinned');
+
   /// Blocks the other person and takes the thread out of the reader's list.
   Future<void> blockOther(String conversationId) =>
       _api.dio.put<void>('/messages/$conversationId/block');

@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "మీరు $date న రాశారు:",
   "ui_standing_your_message": "మీ సందేశం",
   "ui_standing_your_post": "మీ పోస్ట్",
-  "ui_standing_your_reply": "మీ ప్రత్యుత్తరం"
+  "ui_standing_your_reply": "మీ ప్రత్యుత్తరం",
+  "ui_dm_pin_limit": "మీరు గరిష్ఠంగా $count చాట్‌లను పిన్ చేయవచ్చు. ముందుగా ఒకదాన్ని అన్‌పిన్ చేయండి.",
+  "ui_dm_pinned": "పిన్ చేయబడింది"
 }

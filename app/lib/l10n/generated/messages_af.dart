@@ -1224,6 +1224,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Geen groepe nie"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Groepe waarin jy is, en die gemeenskapkletse waarby jy aansluit, word hier gelys."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Jy kan tot \$count kletse vasspeld. Maak eers een los."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Vasgespeld"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gehou van"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gestoor"),
       "ui_feed_empty":

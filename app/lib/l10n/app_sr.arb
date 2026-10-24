@@ -1032,5 +1032,7 @@
   "ui_standing_you_wrote": "Ваше речи, $date:",
   "ui_standing_your_message": "Ваша порука",
   "ui_standing_your_post": "Ваша објава",
-  "ui_standing_your_reply": "Ваш одговор"
+  "ui_standing_your_reply": "Ваш одговор",
+  "ui_dm_pin_limit": "Можете да закачите највише $count ћаскања. Прво откачите једно.",
+  "ui_dm_pinned": "Закачено"
 }

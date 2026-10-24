@@ -1267,6 +1267,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("No hi ha grups"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
           "Aquí es mostren els grups on ets i els xats de comunitat als quals t'uneixes."),
+      "ui_dm_pin_limit": MessageLookupByLibrary.simpleMessage(
+          "Pots fixar fins a \$count xats. Primer deixa'n de fixar un."),
+      "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Fixat"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("M'agraden"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Desats"),
       "ui_feed_empty": MessageLookupByLibrary.simpleMessage(
