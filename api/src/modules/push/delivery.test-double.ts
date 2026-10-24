@@ -2,8 +2,8 @@ import type { RealtimeEvent } from '../realtime/realtime.service';
 import { RealtimeService } from '../realtime/realtime.service';
 import type { Activity } from './activity-push.service';
 import { DeliveryService } from './delivery.service';
-import type { PushMessage } from './push.service';
-import { PushService } from './push.service';
+import type { PushMessage, RenderedPush } from './push.service';
+import { PushService, renderPush } from './push.service';
 
 /**
  * A delivery service that records instead of sending.
@@ -11,13 +11,14 @@ import { PushService } from './push.service';
  * Services take DeliveryService in their constructor, so a spec that builds
  * one by hand needs something to pass. This keeps what it was told, so a test
  * can assert an event was raised without a socket server or a Firebase
- * project.
+ * project. Pushes are kept as an English phone would show them, so a spec
+ * says what the words are rather than which phrase keys made them.
  */
 export class RecordingDelivery extends DeliveryService {
   readonly told: {
     userIds: string[];
     event: RealtimeEvent;
-    push?: PushMessage;
+    push?: RenderedPush;
   }[] = [];
 
   constructor() {
@@ -39,7 +40,11 @@ export class RecordingDelivery extends DeliveryService {
     event: RealtimeEvent,
     push?: PushMessage,
   ): void {
-    this.told.push({ userIds: [...userIds], event, push });
+    this.told.push({
+      userIds: [...userIds],
+      event,
+      ...(push ? { push: renderPush(push, 'en') } : {}),
+    });
   }
 
   /** Activity told to somebody, whose push is worked out later. */
@@ -55,10 +60,10 @@ export class RecordingDelivery extends DeliveryService {
   }
 
   /** Pushes with no event of their own. */
-  readonly pushed: { userIds: string[]; push: PushMessage }[] = [];
+  readonly pushed: { userIds: string[]; push: RenderedPush }[] = [];
 
   override pushMany(userIds: readonly string[], push: PushMessage): void {
-    this.pushed.push({ userIds: [...userIds], push });
+    this.pushed.push({ userIds: [...userIds], push: renderPush(push, 'en') });
   }
 
   /** Everything of one type, for asserting on one thing at a time. */

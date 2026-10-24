@@ -7,19 +7,27 @@ import {
   displayName,
   snippetOf,
 } from './activity-push.service';
+import { render } from './push-text';
+import { renderPush } from './push.service';
+
+/** What an English phone shows. */
+const copy = (input: Parameters<typeof activityCopy>[0]) => {
+  const words = activityCopy(input);
+  return { title: render(words.title, 'en'), body: render(words.body, 'en') };
+};
 
 describe('what an activity push says', () => {
   it('names the person, as the title, and says what they did', () => {
     // It said "Kyron" over "Somebody liked your post." -- the app where the
     // person belongs, and nothing to say which post.
     expect(
-      activityCopy({ kind: 'like', actor: 'Ada', others: 0, snippet: 'Hi' }),
+      copy({ kind: 'like', actor: 'Ada', others: 0, snippet: 'Hi' }),
     ).toEqual({ title: 'Ada', body: 'Liked your post: “Hi”' });
     expect(
-      activityCopy({ kind: 'follow', actor: 'Ada', others: 0, snippet: null }),
+      copy({ kind: 'follow', actor: 'Ada', others: 0, snippet: null }),
     ).toEqual({ title: 'Ada', body: 'Followed you' });
     expect(
-      activityCopy({
+      copy({
         kind: 'comment',
         actor: 'Ada',
         others: 0,
@@ -27,25 +35,29 @@ describe('what an activity push says', () => {
       }),
     ).toEqual({ title: 'Ada', body: 'Replied: “Yes”' });
     expect(
-      activityCopy({ kind: 'repost', actor: 'Ada', others: 0, snippet: null }),
+      copy({ kind: 'repost', actor: 'Ada', others: 0, snippet: null }),
     ).toEqual({ title: 'Ada', body: 'Reposted your post' });
   });
 
   it('counts the ones a newer notification replaced', () => {
     expect(
-      activityCopy({ kind: 'like', actor: 'Ada', others: 1, snippet: null })
-        .title,
+      copy({ kind: 'like', actor: 'Ada', others: 1, snippet: null }).title,
     ).toBe('Ada and 1 other');
     expect(
-      activityCopy({ kind: 'follow', actor: 'Ada', others: 3, snippet: null })
-        .title,
+      copy({ kind: 'follow', actor: 'Ada', others: 3, snippet: null }).title,
     ).toBe('Ada and 3 others');
   });
 
   it('names somebody by their name, then their handle', () => {
-    expect(displayName({ name: ' Ada ', username: 'ada' })).toBe('Ada');
-    expect(displayName({ name: '  ', username: 'ada' })).toBe('@ada');
-    expect(displayName({ name: null, username: null })).toBe('Someone');
+    expect(render(displayName({ name: ' Ada ', username: 'ada' }), 'en')).toBe(
+      'Ada',
+    );
+    expect(render(displayName({ name: '  ', username: 'ada' }), 'en')).toBe(
+      '@ada',
+    );
+    expect(render(displayName({ name: null, username: null }), 'en')).toBe(
+      'Someone',
+    );
   });
 
   it('keeps a snippet to one line, cut at a word', () => {
@@ -115,7 +127,7 @@ describe('ActivityPushService', () => {
       actorId: 'actor',
       postId: 'p1',
     });
-    expect(push).toEqual({
+    expect(push && renderPush(push, 'en')).toEqual({
       title: 'Ada and 2 others',
       body: 'Liked your post: “Kingfisher at dawn”',
       image: 'https://cdn.test/ada.jpg',
@@ -184,7 +196,7 @@ describe('ActivityPushService', () => {
       postId: 'p1',
       text: 'Lovely   shot',
     });
-    expect(push?.body).toBe('Replied: “Lovely shot”');
+    expect(push && render(push.body, 'en')).toBe('Replied: “Lovely shot”');
   });
 
   it('carries no picture that is not an https address', async () => {

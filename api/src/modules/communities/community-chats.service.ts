@@ -20,6 +20,7 @@ import { SupabaseService } from '../../infrastructure/supabase/supabase.service'
 import { MediaService } from '../media/media.service';
 import { MessagesService } from '../messages/messages.service';
 import { DeliveryService } from '../push/delivery.service';
+import { type PushText, say } from '../push/push-text';
 
 /** A community chat, as the community's list and the chat's header need it. */
 export interface CommunityChatSummary {
@@ -1542,12 +1543,15 @@ export class CommunityChatsService {
         )
       RETURNING cm."userId" AS "userId"`;
     if (rows.length === 0) return;
-    const who = item.sender.name ?? item.sender.username ?? 'Someone';
+    const who = item.sender.name ?? item.sender.username ?? say('someone');
     this.delivery.pushMany(
       rows.map((r) => r.userId),
       {
         title: `${chat.name} · ${chat.community.name}`,
-        body: `${who}: ${CommunityChatsService.preview(item)}`,
+        body: say('named_line', {
+          name: who,
+          text: CommunityChatsService.preview(item),
+        }),
         data: { type: 'community.chat', chatId: chat.id },
       },
     );
@@ -1558,21 +1562,23 @@ export class CommunityChatsService {
     body: string;
     media: { kind: MediaKind }[];
     poll: unknown;
-  }): string {
+  }): PushText {
     const words = item.body.trim().replace(/\s+/g, ' ');
-    if (item.poll) return `Poll: ${CommunityChatsService.clip(words)}`;
+    if (item.poll) {
+      return say('chat_poll', { text: CommunityChatsService.clip(words) });
+    }
     if (words) return CommunityChatsService.clip(words);
     switch (item.media[0]?.kind) {
       case MediaKind.IMAGE:
-        return 'Photo';
+        return say('chat_photo');
       case MediaKind.GIF:
-        return 'GIF';
+        return say('chat_gif');
       case MediaKind.VIDEO:
-        return 'Clip';
+        return say('chat_clip');
       case MediaKind.VOICE:
-        return 'Voice note';
+        return say('chat_voice');
       default:
-        return 'New message';
+        return say('new_message');
     }
   }
 

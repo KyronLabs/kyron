@@ -9,6 +9,7 @@ import {
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import type { DeliveryService } from '../push/delivery.service';
 import { EnforcementService, noticeFor } from './enforcement.service';
+import { type PushText, render } from '../push/push-text';
 
 /**
  * The rules, on their own: who may decide, what an account is told, and
@@ -129,10 +130,10 @@ describe('who may decide', () => {
       reviewerId: ADMIN.id,
     });
     const [[to, , push]] = delivery.tell.mock.calls as [
-      [string, unknown, { body: string }],
+      [string, unknown, { body: PushText }],
     ];
     expect(to).toBe(ADA.id);
-    expect(push.body).toContain('stands');
+    expect(render(push.body, 'en')).toContain('stands');
   });
 });
 
@@ -237,60 +238,78 @@ describe('appealing', () => {
 
 describe('what the account is told', () => {
   const at = new Date('2026-10-26T12:00:00Z');
+  const body = (
+    input: Parameters<typeof noticeFor>[0],
+    locale = 'en',
+  ): string => render(noticeFor(input).body, locale);
 
   it('names what went, the rule, and the case to quote', () => {
     expect(
-      noticeFor({
+      body({
         kind: ModerationKind.REMOVE,
         rule: ReportReason.SPAM,
         target: ReportTarget.POST,
         endsAt: null,
         number: 7,
-      }).body,
+      }),
     ).toBe(
-      'Your post was removed for breaking the rule on spam. Case 7: open ' +
-        'Kyron to see why, or to appeal.',
+      'Your post was removed. Rule: Spam. Case 7: open Kyron to see why, ' +
+        'or to appeal.',
     );
   });
 
   it('says until when, for a suspension', () => {
     expect(
-      noticeFor({
+      body({
         kind: ModerationKind.SUSPEND,
         rule: ReportReason.HARASSMENT,
         target: null,
         endsAt: at,
         number: 8,
-      }).body,
-    ).toContain(
-      'suspended until Mon, 26 Oct 2026 for breaking the rule on harassment',
+      }),
+    ).toBe(
+      'Your account is suspended until Oct 26, 2026. Rule: Harassment or ' +
+        'bullying. Case 8: open Kyron to see why, or to appeal.',
     );
   });
 
   it('says a reply when it was a reply', () => {
     expect(
-      noticeFor({
+      body({
         kind: ModerationKind.WARN,
         rule: ReportReason.HATE,
         target: ReportTarget.COMMENT,
         endsAt: null,
         number: 9,
-      }).body,
-    ).toMatch(/^Your reply was removed, and your account has a warning/);
+      }),
+    ).toMatch(/^Your reply was removed\. Your account has a warning\./);
+  });
+
+  it("says Kyron's rules, not a rule called Something else", () => {
+    expect(
+      body({
+        kind: ModerationKind.REMOVE,
+        rule: ReportReason.SOMETHING_ELSE,
+        target: ReportTarget.POST,
+        endsAt: null,
+        number: 11,
+      }),
+    ).toContain("It broke Kyron's rules.");
   });
 
   it('never carries the content itself', () => {
     // A notification shows on a lock screen.
-    const notice = noticeFor({
-      kind: ModerationKind.BAN,
-      rule: ReportReason.SEXUAL_CONTENT,
-      target: ReportTarget.POST,
-      endsAt: null,
-      number: 10,
-    });
-    expect(notice.body).toBe(
-      'Your account has been banned for breaking the rule on adult content. ' +
-        'Case 10: open Kyron to see why, or to appeal.',
+    expect(
+      body({
+        kind: ModerationKind.BAN,
+        rule: ReportReason.SEXUAL_CONTENT,
+        target: ReportTarget.POST,
+        endsAt: null,
+        number: 10,
+      }),
+    ).toBe(
+      'Your account has been banned. Rule: Adult content. Case 10: open ' +
+        'Kyron to see why, or to appeal.',
     );
   });
 });

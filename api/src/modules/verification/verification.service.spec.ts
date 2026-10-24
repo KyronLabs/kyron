@@ -8,6 +8,7 @@ import {
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import type { DeliveryService } from '../push/delivery.service';
 import { VerificationService } from './verification.service';
+import { type PushText, render } from '../push/push-text';
 
 /**
  * The rules of the badge: who may ask, who answers, and what they are told.
@@ -220,10 +221,10 @@ describe('who answers', () => {
       details: { by: ADMIN.id, request: 3 },
     });
     const [[to, , push]] = delivery.tell.mock.calls as [
-      [string, unknown, { body: string }],
+      [string, unknown, { body: PushText }],
     ];
     expect(to).toBe(ADA.id);
-    expect(push.body).toContain("You're verified");
+    expect(render(push.body, 'en')).toContain("You're verified");
   });
 
   it('nobody gives themselves the badge directly', async () => {

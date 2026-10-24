@@ -23,6 +23,8 @@ import { emailHash } from '../../common/guards/standing';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
 import { DeliveryService } from '../push/delivery.service';
+import type { PushKey } from '../push/copy/en';
+import { type PushText, say } from '../push/push-text';
 
 /** Who is asking, as AuthGuard resolved them. */
 export interface Staff {
@@ -143,19 +145,20 @@ const OPEN = [ReportStatus.RECEIVED, ReportStatus.REVIEWING];
 const DAY = 86_400_000;
 
 /** Rules, as a notice names them. */
-const RULE_NAMES: Record<ReportReason, string> = {
-  SPAM: 'spam',
-  HARASSMENT: 'harassment',
-  HATE: 'hate speech',
-  VIOLENCE: 'violence and threats',
-  SELF_HARM: 'suicide and self-harm',
-  SEXUAL_CONTENT: 'adult content',
-  CHILD_SAFETY: 'child safety',
-  MISINFORMATION: 'false information',
-  IMPERSONATION: 'impersonation',
-  INTELLECTUAL_PROPERTY: 'intellectual property',
-  ILLEGAL_GOODS: 'illegal goods and services',
-  SOMETHING_ELSE: "Kyron's rules",
+/** Each rule as a push names it, in the reader's language: the app's own
+ * names for them. Anything else is "Kyron's rules", said as a sentence. */
+const RULE_KEYS: Record<Exclude<ReportReason, 'SOMETHING_ELSE'>, PushKey> = {
+  SPAM: 'rule_spam',
+  HARASSMENT: 'rule_harassment',
+  HATE: 'rule_hate',
+  VIOLENCE: 'rule_violence',
+  SELF_HARM: 'rule_self_harm',
+  SEXUAL_CONTENT: 'rule_sexual_content',
+  CHILD_SAFETY: 'rule_child_safety',
+  MISINFORMATION: 'rule_misinformation',
+  IMPERSONATION: 'rule_impersonation',
+  INTELLECTUAL_PROPERTY: 'rule_intellectual_property',
+  ILLEGAL_GOODS: 'rule_illegal_goods',
 };
 
 /**
@@ -449,8 +452,7 @@ export class EnforcementService {
     });
     this.tellReporters(
       open.map((r) => r.reporterId),
-      'We looked at something you reported and did not find that it broke ' +
-        "Kyron's rules. Thank you for telling us.",
+      say('report_dismissed'),
     );
     return { dismissed: count };
   }
@@ -577,10 +579,7 @@ export class EnforcementService {
         `${input.rule} by ${staff.id}`,
     );
     this.tellSubject(subjectId, noticeFor(action.created));
-    this.tellReporters(
-      action.reporters,
-      'We acted on something you reported. Thank you for telling us.',
-    );
+    this.tellReporters(action.reporters, say('report_actioned'));
 
     return this.staffAction(action.created.id);
   }
@@ -622,7 +621,11 @@ export class EnforcementService {
     if (action.subjectId) {
       this.tellSubject(action.subjectId, {
         title: 'Kyron',
-        body: `We reversed case ${action.number}. ${reason.trim()}`,
+        // The team's own words follow as they wrote them.
+        body: [
+          say('mod_reversed', { number: String(action.number) }),
+          reason.trim(),
+        ],
       });
     }
     return this.staffAction(actionId);
@@ -722,9 +725,9 @@ export class EnforcementService {
     );
     this.tellSubject(appeal.userId, {
       title: 'Kyron',
-      body: overturn
-        ? `Your appeal on case ${appeal.action.number} was accepted, and the decision is reversed.`
-        : `We looked at your appeal on case ${appeal.action.number} again, and the decision stands.`,
+      body: say(overturn ? 'appeal_accepted' : 'appeal_upheld', {
+        number: String(appeal.action.number),
+      }),
     });
     return { status: overturn ? AppealStatus.OVERTURNED : AppealStatus.UPHELD };
   }
@@ -851,7 +854,7 @@ export class EnforcementService {
       throw error;
     }
 
-    await this.tellStaff('An appeal is waiting for review.');
+    await this.tellStaff(say('staff_appeal'));
     const fresh = await this.prisma.moderationAction.findUniqueOrThrow({
       where: { id: actionId },
       include: { appeal: true },
@@ -862,9 +865,7 @@ export class EnforcementService {
   /** Tells the team a report arrived. Called by ModerationService.report. */
   async reportFiled(reason: ReportReason): Promise<void> {
     await this.tellStaff(
-      URGENT.has(reason)
-        ? 'An urgent report is waiting: somebody may be at risk.'
-        : 'A report is waiting for review.',
+      say(URGENT.has(reason) ? 'staff_report_urgent' : 'staff_report'),
     );
   }
 
@@ -1211,7 +1212,7 @@ export class EnforcementService {
 
   private tellSubject(
     userId: string,
-    push: { title: string; body: string },
+    push: { title: PushText; body: PushText },
   ): void {
     this.delivery.tell(
       userId,
@@ -1220,7 +1221,7 @@ export class EnforcementService {
     );
   }
 
-  private tellReporters(userIds: string[], body: string): void {
+  private tellReporters(userIds: string[], body: PushText): void {
     const unique = [...new Set(userIds)];
     if (unique.length === 0) return;
     this.delivery.tellMany(
@@ -1232,7 +1233,7 @@ export class EnforcementService {
     );
   }
 
-  private async tellStaff(body: string): Promise<void> {
+  private async tellStaff(body: PushText): Promise<void> {
     const staff = await this.prisma.user.findMany({
       where: {
         role: { in: [...STAFF] },
@@ -1244,7 +1245,11 @@ export class EnforcementService {
     this.delivery.tellMany(
       staff.map((s) => s.id),
       { type: 'moderation.queue' },
-      { title: 'Kyron moderation', body, data: { type: 'moderation.queue' } },
+      {
+        title: say('staff_title'),
+        body,
+        data: { type: 'moderation.queue' },
+      },
     );
   }
 }
@@ -1254,38 +1259,58 @@ const actionInclude = {
   moderator: { select: { id: true, username: true } },
 } satisfies Prisma.ModerationActionInclude;
 
-/** The notice an account gets when a decision is made about it. */
+/**
+ * The notice an account gets when a decision is made about it.
+ *
+ * Short sentences, each a phrase of its own -- what was removed, what
+ * happened to the account, the rule, the case -- so every language can say
+ * each one whole. As one English sentence with clauses spliced in ("Your
+ * post was removed, and your account has a warning for breaking the rule
+ * on spam") it could not be translated at all.
+ */
 export function noticeFor(action: {
   kind: ModerationKind;
   rule: ReportReason;
   target: ReportTarget | null;
   endsAt: Date | null;
   number: number;
-}): { title: string; body: string } {
-  const rule = RULE_NAMES[action.rule];
-  const what =
+}): { title: PushText; body: PushText } {
+  const removed: PushText | null =
     action.target === ReportTarget.COMMENT
-      ? 'Your reply was removed'
+      ? say('mod_removed_reply')
       : action.target === ReportTarget.POST
-        ? 'Your post was removed'
+        ? say('mod_removed_post')
         : action.target === ReportTarget.COMMUNITY_MESSAGE
-          ? 'Your message in a community chat was removed'
+          ? say('mod_removed_message')
           : null;
-  const body = (() => {
+  const account: PushText[] = (() => {
     switch (action.kind) {
       case ModerationKind.REMOVE:
-        return `${what ?? 'Something you posted was removed'} for breaking the rule on ${rule}.`;
+        return [removed ?? say('mod_removed_other')];
       case ModerationKind.WARN:
-        return `${what ? `${what}, and your` : 'Your'} account has a warning for breaking the rule on ${rule}.`;
+        return [removed ?? '', say('mod_warned')];
       case ModerationKind.SUSPEND:
-        return `${what ? `${what}, and your` : 'Your'} account is suspended until ${action.endsAt?.toUTCString().slice(0, 16)} for breaking the rule on ${rule}.`;
+        return [
+          removed ?? '',
+          action.endsAt
+            ? say('mod_suspended_until', { date: action.endsAt })
+            : say('mod_warned'),
+        ];
       case ModerationKind.BAN:
-        return `Your account has been banned for breaking the rule on ${rule}.`;
+        return [say('mod_banned')];
     }
   })();
+  const rule =
+    action.rule === ReportReason.SOMETHING_ELSE
+      ? say('mod_rules_general')
+      : say('mod_rule', { rule: say(RULE_KEYS[action.rule]) });
   return {
     title: 'Kyron',
-    body: `${body} Case ${action.number}: open Kyron to see why, or to appeal.`,
+    body: [
+      ...account,
+      rule,
+      say('mod_case', { number: String(action.number) }),
+    ],
   };
 }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AccountStatus } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { type PushText, say } from './push-text';
 import type { PushMessage } from './push.service';
 
 /** Something one person did that another hears about. */
@@ -164,14 +165,14 @@ export class ActivityPushService {
 }
 
 /** A person as a notification names them: what they call themselves, or
- * their handle. */
+ * their handle -- or, with neither, "Someone" in the reader's language. */
 export function displayName(user: {
   name: string | null;
   username: string | null;
-}): string {
+}): PushText {
   const name = user.name?.trim();
   if (name) return name;
-  return user.username ? `@${user.username}` : 'Someone';
+  return user.username ? `@${user.username}` : say('someone');
 }
 
 /** One line of somebody's words, cut at a word where it can be. */
@@ -185,27 +186,40 @@ export function snippetOf(text: string | null | undefined): string | null {
 }
 
 /** The words of an activity push. The person is the title, as on every
- * other app's notification about a person; what they did is the body. */
+ * other app's notification about a person; what they did is the body. Said
+ * in each phone's language when it is sent. */
 export function activityCopy(input: {
   kind: Activity['kind'];
-  actor: string;
+  actor: PushText;
   others: number;
   snippet: string | null;
-}): { title: string; body: string } {
+}): { title: PushText; body: PushText } {
   const { kind, actor, others, snippet } = input;
   const title =
     others > 0
-      ? `${actor} and ${others} other${others === 1 ? '' : 's'}`
+      ? say(others === 1 ? 'and_one_other' : 'and_others', {
+          name: actor,
+          count: others,
+        })
       : actor;
-  const quoted = snippet ? `: “${snippet}”` : '';
+  const quoted = snippet ? { snippet } : null;
   switch (kind) {
     case 'follow':
-      return { title, body: 'Followed you' };
+      return { title, body: say('followed') };
     case 'like':
-      return { title, body: `Liked your post${quoted}` };
+      return {
+        title,
+        body: quoted ? say('liked_quote', quoted) : say('liked'),
+      };
     case 'repost':
-      return { title, body: `Reposted your post${quoted}` };
+      return {
+        title,
+        body: quoted ? say('reposted_quote', quoted) : say('reposted'),
+      };
     case 'comment':
-      return { title, body: snippet ? `Replied${quoted}` : 'Replied to you' };
+      return {
+        title,
+        body: quoted ? say('replied_quote', quoted) : say('replied'),
+      };
   }
 }

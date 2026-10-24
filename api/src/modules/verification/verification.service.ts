@@ -19,6 +19,7 @@ import {
   type Staff,
 } from '../moderation/enforcement.service';
 import { DeliveryService } from '../push/delivery.service';
+import { type PushText, say } from '../push/push-text';
 
 /** One thing an account needs before it can ask for the badge. */
 export interface Requirement {
@@ -138,7 +139,7 @@ export class VerificationService {
       },
     });
     this.logger.log(`verification request ${created.number} from ${userId}`);
-    await this.tellStaff('Somebody asked to be verified.');
+    await this.tellStaff(say('staff_verify'));
     return this.view(created);
   }
 
@@ -265,9 +266,8 @@ export class VerificationService {
     );
     this.tell(
       request.userId,
-      approve
-        ? "You're verified. The badge now shows beside your name."
-        : `Your request to be verified was not approved. ${text}`,
+      // The team's own words follow as they wrote them.
+      approve ? say('verified') : [say('verify_declined'), text ?? ''],
     );
     return { status: approve ? 'APPROVED' : 'DENIED' };
   }
@@ -319,9 +319,7 @@ export class VerificationService {
     ]);
     this.tell(
       userId,
-      verified
-        ? "You're verified. The badge now shows beside your name."
-        : `Your verified badge was removed. ${reason.trim()}`,
+      verified ? say('verified') : [say('verify_removed'), reason.trim()],
     );
     return { verified };
   }
@@ -417,7 +415,7 @@ export class VerificationService {
     if (!EnforcementService.isStaff(staff.role)) throw new NotFoundException();
   }
 
-  private tell(userId: string, body: string): void {
+  private tell(userId: string, body: PushText): void {
     this.delivery.tell(
       userId,
       { type: 'moderation.updated' },
@@ -425,7 +423,7 @@ export class VerificationService {
     );
   }
 
-  private async tellStaff(body: string): Promise<void> {
+  private async tellStaff(body: PushText): Promise<void> {
     const staff = await this.prisma.user.findMany({
       where: {
         role: { in: ['ADMIN', 'MODERATOR'] },
@@ -437,7 +435,11 @@ export class VerificationService {
     this.delivery.tellMany(
       staff.map((s) => s.id),
       { type: 'moderation.queue' },
-      { title: 'Kyron moderation', body, data: { type: 'moderation.queue' } },
+      {
+        title: say('staff_title'),
+        body,
+        data: { type: 'moderation.queue' },
+      },
     );
   }
 }

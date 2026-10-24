@@ -4,6 +4,7 @@ import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RecordingPrivateStorage } from '../../infrastructure/supabase/private-storage.test-double';
 import { RecordingDelivery } from '../push/delivery.test-double';
 import { CommunityChatsService } from './community-chats.service';
+import { render } from '../push/push-text';
 
 /**
  * Who may do what in a community chat, without a database, so CI holds the
@@ -430,7 +431,7 @@ describe('what a push says', () => {
       body: string,
       media: { kind: MediaKind }[] = [],
       poll: unknown = null,
-    ) => CommunityChatsService.preview({ body, media, poll });
+    ) => render(CommunityChatsService.preview({ body, media, poll }), 'en');
     expect(say('hello   there')).toBe('hello there');
     expect(say('x'.repeat(150))).toHaveLength(100);
     expect(say('', [{ kind: MediaKind.IMAGE }])).toBe('Photo');

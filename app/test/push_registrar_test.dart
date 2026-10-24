@@ -9,13 +9,19 @@ class FakeDevices extends DevicesRepository {
   FakeDevices() : super(ApiClient());
 
   final List<String> registered = [];
+  final List<String?> locales = [];
   final List<String> forgotten = [];
   bool fails = false;
 
   @override
-  Future<void> register(String token, String platform) async {
+  Future<void> register(
+    String token,
+    String platform, {
+    String? locale,
+  }) async {
     if (fails) throw Exception('offline');
     registered.add(token);
+    locales.add(locale);
   }
 
   @override
@@ -72,6 +78,45 @@ void main() {
       await Future<void>.delayed(Duration.zero);
 
       expect(devices.registered, ['same']);
+    });
+
+    test('says which language the app is in, with the token', () async {
+      // A push is shown by the phone before the app can say anything, so the
+      // server has to say it in the reader's language itself.
+      final devices = FakeDevices();
+      await PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+        locale: () => 'fr',
+      ).start();
+
+      expect(devices.locales, ['fr']);
+    });
+
+    test('tells the server again when the language changes', () async {
+      final devices = FakeDevices();
+      var language = 'fr';
+      final registrar = PushRegistrar(
+        devices,
+        connect: () async => FakeTokens('abc'),
+        locale: () => language,
+      );
+      await registrar.start();
+
+      language = 'yo';
+      await registrar.languageChanged();
+      // The same language again is not news.
+      await registrar.languageChanged();
+
+      expect(devices.registered, ['abc', 'abc']);
+      expect(devices.locales, ['fr', 'yo']);
+    });
+
+    test('a language change before any token sends nothing', () async {
+      final devices = FakeDevices();
+      await PushRegistrar(devices, locale: () => 'fr').languageChanged();
+
+      expect(devices.registered, isEmpty);
     });
 
     test('sends nothing when there is no source', () async {

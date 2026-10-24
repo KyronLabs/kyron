@@ -22,6 +22,7 @@ import {
   type OnceState,
   ViewOnceService,
 } from './view-once.service';
+import { say } from '../push/push-text';
 
 /** The other person in a conversation, as a list row needs them. */
 export interface MessagePerson {
@@ -918,8 +919,8 @@ export class MessagesService {
         // not carry the sender should cost a generic push, never the message.
         // A group's is its name, with who wrote it in the line under.
         title: group
-          ? conversation.title?.trim() || 'Group'
-          : senderName || 'New message',
+          ? conversation.title?.trim() || say('group')
+          : senderName || say('new_message'),
         // Never the message. This used to be the stored body, and the body of
         // a sealed message is ciphertext: the push is shown by the phone's
         // own notification system, with no chance for the app to open it
@@ -930,16 +931,20 @@ export class MessagesService {
         // and must not repeat an unsealed one, so the push says only that
         // something arrived. Showing the words again means opening them on
         // the device, in a push the app handles itself -- docs/E2EE.md.
-        body: [
-          group && senderName ? `${senderName}: ` : '',
-          once
-            ? 'Sent something to view once'
-            : media.length > 0
-              ? 'Sent an attachment'
-              : group
-                ? 'Sent a message'
-                : 'Sent you a message',
-        ].join(''),
+        body: (() => {
+          const what = say(
+            once
+              ? 'dm_once'
+              : media.length > 0
+                ? 'dm_attachment'
+                : group
+                  ? 'dm_group_message'
+                  : 'dm_message',
+          );
+          return group && senderName
+            ? say('named_line', { name: senderName, text: what })
+            : what;
+        })(),
         data: { type: 'message', conversationId },
       },
     );

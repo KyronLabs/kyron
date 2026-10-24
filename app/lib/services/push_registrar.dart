@@ -43,11 +43,23 @@ class PushRegistrar {
   final DevicesRepository _devices;
   final PushTokenSourceFactory? _connect;
 
-  PushRegistrar(this._devices, {PushTokenSourceFactory? connect})
-      : _connect = connect;
+  /// The language the app is in now, as a code: `fr`, `pt`. A push is shown
+  /// by the phone before the app can say anything, so the server has to know
+  /// which language to say it in.
+  final String Function()? _locale;
+
+  PushRegistrar(
+    this._devices, {
+    PushTokenSourceFactory? connect,
+    String Function()? locale,
+  })  : _connect = connect,
+        _locale = locale;
 
   PushTokenSource? _source;
   String? _registered;
+
+  /// The language the server was last told along with [_registered].
+  String? _registeredLocale;
   StreamSubscription<String>? _rotations;
 
   /// The start that is already running, so a second caller joins it rather
@@ -125,6 +137,7 @@ class PushRegistrar {
 
     final token = _registered;
     _registered = null;
+    _registeredLocale = null;
     if (token == null) return;
     try {
       await _devices.forget(token);
@@ -133,11 +146,23 @@ class PushRegistrar {
     }
   }
 
+  /// Tells the server the app's language changed, so the next push is in the
+  /// new one. Nothing to do until a token has been registered: the language
+  /// goes with it when it is.
+  Future<void> languageChanged() async {
+    final token = _registered;
+    if (token == null) return;
+    await _send(token);
+  }
+
   Future<void> _send(String? token) async {
-    if (token == null || token.isEmpty || token == _registered) return;
+    if (token == null || token.isEmpty) return;
+    final locale = _locale?.call();
+    if (token == _registered && locale == _registeredLocale) return;
     try {
-      await _devices.register(token, platform);
+      await _devices.register(token, platform, locale: locale);
       _registered = token;
+      _registeredLocale = locale;
     } catch (error) {
       // Not fatal and not retried here: the next launch registers again, and
       // a failure to register costs push, not the session.

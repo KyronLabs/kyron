@@ -8,7 +8,14 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { IsIn, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsIn,
+  IsOptional,
+  IsString,
+  Matches,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { AllowRestricted } from '../../common/guards/standing';
@@ -24,6 +31,14 @@ export class RegisterDeviceDto {
 
   @IsIn(['ios', 'android', 'web'])
   platform!: string;
+
+  /** The language the app is in -- `fr`, `pt-BR` -- so pushes are said in
+   * it. Optional: an app from before this sends none, and gets English. */
+  @IsOptional()
+  @IsString()
+  @Matches(/^[A-Za-z]{2,3}(?:[-_][A-Za-z0-9]{2,8})*$/)
+  @MaxLength(35)
+  locale?: string;
 }
 
 export class ForgetDeviceDto {
@@ -49,7 +64,7 @@ export class PushController {
     @Req() req: AuthRequest,
     @Body() dto: RegisterDeviceDto,
   ): Promise<{ registered: boolean }> {
-    await this.push.register(req.user.id, dto.token, dto.platform);
+    await this.push.register(req.user.id, dto.token, dto.platform, dto.locale);
     return { registered: true };
   }
 

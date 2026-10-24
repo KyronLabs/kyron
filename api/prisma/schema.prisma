@@ -1389,6 +1389,11 @@ model DeviceToken {
   /// ios, android or web. Kept so a send can be shaped per platform later.
   platform String
 
+  /// The language the app on this device is in, as it said when it last
+  /// registered -- `fr`, `pt-BR`. Pushes to it are said in that language
+  /// (src/modules/push/copy). Null from an app that never said: English.
+  locale String?
+
   createdAt DateTime @default(now()) @db.Timestamptz()
   /// Refreshed on every launch, so tokens nobody has used can be swept.
   updatedAt DateTime @updatedAt @db.Timestamptz()
