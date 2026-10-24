@@ -21,6 +21,7 @@ import '../widgets/media_grid.dart';
 import '../widgets/media_tray.dart';
 import '../widgets/poll_card.dart';
 import '../widgets/post_actions_row.dart';
+import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
 import '../models/post_media.dart' show MediaKind;
 import '../widgets/gif_picker_sheet.dart';
@@ -456,10 +457,21 @@ class _Post extends ConsumerWidget {
         children: [
           Row(
             children: [
-              GestureDetector(
-                onTap: () => openAuthor(context, post.author),
-                child: PostAvatar(author: post.author, radius: 20),
-              ),
+              // The same header a community post has in a feed: the author
+              // in front of the community's picture, and the community named
+              // above. Two targets, as it is two things.
+              community == null
+                  ? GestureDetector(
+                      onTap: () => openAuthor(context, post.author),
+                      child: PostAvatar(author: post.author, radius: 20),
+                    )
+                  : StackedPostAvatar(
+                      community: community,
+                      size: 48,
+                      author: PostAvatar(author: post.author, radius: 13),
+                      onCommunityTap: () => openCommunity(context, community),
+                      onAuthorTap: () => openAuthor(context, post.author),
+                    ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(
                 child: GestureDetector(
@@ -467,6 +479,8 @@ class _Post extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (community != null)
+                        PostCommunityLine(community: community),
                       NameWithBadge(
                         name: post.author.displayName,
                         verified: post.author.verified,
@@ -475,32 +489,7 @@ class _Post extends ConsumerWidget {
                           fontSize: TypographyTokens.fontSize3,
                         ),
                       ),
-                      // The handle, and the community beside it as in the
-                      // feed, so the post's own page is not the one place it
-                      // forgets where it was posted -- and not a dead end on
-                      // the way to that community.
-                      if (community != null)
-                        Row(
-                          children: [
-                            if (handle != null)
-                              Flexible(
-                                child: Text(
-                                  handle,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: TypographyTokens.fontSize2,
-                                    color: scheme.onSurface
-                                        .withValues(alpha: 0.55),
-                                  ),
-                                ),
-                              ),
-                            Flexible(
-                              child: PostCommunityTag(community: community),
-                            ),
-                          ],
-                        )
-                      else if (handle != null)
+                      if (handle != null)
                         Text(
                           handle,
                           maxLines: 1,

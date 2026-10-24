@@ -217,7 +217,7 @@ class PostCard extends ConsumerWidget {
   }
 }
 
-/// Which community a post came from, above the author's name, in a feed.
+/// Which community a post came from, above the author's name.
 ///
 /// Tappable, and it opens the community rather than the post -- a name that
 /// looks like a link and is not one is worse than plain text. The target is
@@ -261,60 +261,6 @@ class PostCommunityLine extends StatelessWidget {
               ),
               // Says it goes somewhere, which a coloured name alone does not.
               Icon(Iconsax.arrow_right_3_copy, size: 12, color: ink),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Which community a post came from, beside its author's name on the post's
-/// own page: "› Gardeners".
-///
-/// Tappable, and it opens the community rather than the post -- a name that
-/// looks like a link and is not one is worse than plain text. The chevron is
-/// part of the target, so a thumb that lands a little short still gets there.
-class PostCommunityTag extends StatelessWidget {
-  final PostCommunity community;
-
-  const PostCommunityTag({super.key, required this.community});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-
-    return Semantics(
-      button: true,
-      label: community.name,
-      excludeSemantics: true,
-      child: GestureDetector(
-        key: ValueKey('post-community-${community.slug}'),
-        behavior: HitTestBehavior.opaque,
-        onTap: () => openCommunity(context, community),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: SpacingTokens.space2),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Iconsax.arrow_right_3_copy,
-                size: 12,
-                color: scheme.onSurface.withValues(alpha: 0.4),
-              ),
-              const SizedBox(width: SpacingTokens.space2),
-              Flexible(
-                child: Text(
-                  community.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize2,
-                    fontWeight: FontWeight.w600,
-                    color: scheme.primary,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
