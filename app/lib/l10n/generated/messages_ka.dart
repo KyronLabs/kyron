@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("შეცვლა"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("მხარდაჭერასთან დაკავშირება"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("მზადაა"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("დაჩივლება"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("საჩივარი გაიგზავნა"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("საჩივრის გაგზავნა"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("ხელახლა ცდა"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "ციტატა სხვების თაღლითობაზე გასაფრთხილებლად იყო."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "დაწერეთ, რატომ ფიქრობთ, რომ გადაწყვეტილება მცდარი იყო: რას ნიშნავდა პოსტი, რა შეიძლება გამორჩენოდა გუნდს ან რატომ არ შეესაბამება წესი. მას წაიკითხავს სხვა ადამიანი და არა ის, ვინც გადაწყვიტა."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("თქვენი გასაჩივრება"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "დაწერეთ მინიმუმ \$count სიმბოლო. თითოეული გადაწყვეტილების გასაჩივრება ერთხელ შეგიძლიათ."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("გასაჩივრების გაგზავნა"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "გასაჩივრება გაიგზავნა. როცა გადაწყვეტილება მიიღება, შეტყობინებას მიიღებთ."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("საქმე \$number-ის გასაჩივრება"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1378,10 +1393,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "გსურთ რამის დამატება? (არასავალდებულო)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "გუნდის გადაწყვეტილებისას შეტყობინებას მიიღებთ, ხოლო მიმდინარეობას „თქვენს საჩივრებში“ ნახავთ."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "თუ ამ ადამიანის ნახვაც აღარ გსურთ, იმავე მენიუდან შეგიძლიათ დაადუმოთ ან დაბლოკოთ."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "ერთი და იმავეზე ორჯერ საჩივარი მას მეტ წონას არ სძენს: თითო ადამიანისგან ერთ საჩივარს ვინახავთ."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "თქვენი საჩივარი ამ ადამიანს არ ეზიარება. ვინახავთ იმის ასლს, რაზეც იჩივლეთ, რომ წაშლის შემთხვევაშიც შემოწმდეს."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "თქვენი საჩივარი მიღებულია და შემოწმების რიგშია. ამ ადამიანს არ ვეუბნებით, ვინ იჩივლა."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("თქვენი საჩივრების ნახვა"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("გვითხარით, რა არის არასწორი"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("გმადლობთ, რომ გვაცნობეთ"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "რა პრობლემაა ანგარიშთან \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "რა პრობლემაა ამ შეტყობინებასთან?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("რა პრობლემაა ამ პოსტთან?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("რა პრობლემაა ამ პასუხთან?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("შეტყობინება თემის ჩატში"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("პოსტი"),
@@ -1411,6 +1448,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("თქვენი საჩივრები"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("ბავშვების უსაფრთხოება"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "ყველაფერი, რაც საფრთხეს უქმნის ან სექსუალიზაციას უკეთებს არასრულწლოვანს."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "მიზანმიმართული შევიწროება, მუქარა ან არასასურველი კონტაქტი."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "თავდასხმა ადამიანებზე იმის გამო, თუ ვინ არიან."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "რაიმე უკანონოს გაყიდვა ან რეკლამირება."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "სხვა ადამიანად თავის გასაღება."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "იყენებს თქვენს ნამუშევარს ან სავაჭრო ნიშანს ნებართვის გარეშე."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "შეცდომაში შემყვანი მტკიცებები ჯანმრთელობაზე, არჩევნებზე ან მოვლენებზე."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "თვითდაზიანების წახალისება ან ჩვენება."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "გაფრთხილების გარეშე ნაჩვენები სექსუალური შინაარსი."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "არცერთი ზემოთ ჩამოთვლილი. გვითხარით, რა არის არასწორი."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "განმეორებადი, შეცდომაში შემყვანი ან არასასურველი რეკლამა."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "ძალადობით მუქარა, მისი განდიდება ან მისკენ წაქეზება."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("შევიწროება ან ბულინგი"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("სიძულვილის ენა"),
@@ -1496,6 +1558,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("რას ეხებოდა"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში სამუდამოდ დაიბლოკა"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("პასუხი, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("გასაჩივრება"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "ამ გადაწყვეტილების გასაჩივრება"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "ამ გადაწყვეტილების გასაჩივრება აღარ შეიძლება. თუ რამე არასწორია, დაუკავშირდით მხარდაჭერას."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("გასაჩივრება განიხილება"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("გასაჩივრება დაკმაყოფილდა"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "გუნდის სხვა წევრი ამას ხელახლა განიხილავს. როცა გადაწყვეტილება მიიღება, შეტყობინებას მიიღებთ."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "თუ ფიქრობთ, რომ ეს შეცდომა იყო, \$date-მდე შეგიძლიათ ხელახალი განხილვა მოითხოვოთ. გადაწყვეტს გუნდის სხვა წევრი."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "გასაჩივრდა: გადაწყვეტილება ძალაში რჩება"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "საქმე \$number. წესი: \$rule. გუნდმა დაწერა:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "ანგარიშის წაშლა ბლოკს არ ხსნის: იმავე ელფოსტის მისამართით შექმნილი ახალი ანგარიშიც დაბლოკილი იწყება."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("სამუდამოდ დაბლოკილი"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "მუშაობს მხოლოდ ეს გვერდი, გასაჩივრებები, მხარდაჭერა და ანგარიშის წაშლა."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("შესაძლებელია გასაჩივრება"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("საქმე \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("გადაწყდა \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "გადაწყვეტილებები თქვენს ანგარიშზე"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("თქვენი ანგარიშის წაშლა"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("დეტალების ნახვა"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "დეტალების ნახვა და გასაჩივრება"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("მთავრდება \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში კარგ მდგომარეობაშია"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("არაფერი ზღუდავს მას."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "ანგარიშის სტატუსი ვერ ჩაიტვირთა"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("შეტყობინება წაიშალა"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "თქვენს ანგარიშზე გადაწყვეტილება არ მიღებულა. თუ გუნდი ოდესმე წაშლის თქვენს რამეს ან შეზღუდავს თქვენს ანგარიშს, ეს აქ მიზეზთან ერთად გამოჩნდება და შეძლებთ გასაჩივრებას."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "გასაჩივრებელი არაფერია: გადაწყვეტილება გაუქმდა."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("პოსტი წაიშალა"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "ხელახლა შესამოწმებლად ჩამოწიეთ."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron-ის წესების წაკითხვა"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("პასუხი წაიშალა"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("გაუქმდა"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "გაუქმდა \$date. ყველაფერი წაშლილი დაბრუნდა და შეზღუდვა აღარ მოქმედებს."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("წესი: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("გასვლა"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("შეჩერებულია"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "შეგიძლიათ კითხვა, მაგრამ ვერ გამოაქვეყნებთ, ვერ უპასუხებთ, ვერ გამოიწერთ და ვერ გაგზავნით შეტყობინებებს. საჩივარი, დაბლოკვა და დადუმება კვლავ მუშაობს."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში შეჩერებულია: შეგიძლიათ კითხვა, მაგრამ ვერ გამოაქვეყნებთ."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("შეჩერებულია \$date-მდე"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "თქვენი ანგარიში შეჩერებულია \$date-მდე: შეგიძლიათ კითხვა, მაგრამ ვერ გამოაქვეყნებთ."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("რა დაწერა გუნდმა"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("ანგარიშის სტატუსი"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("გაფრთხილება"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("რატომ?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("თქვენ დაწერეთ \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("თქვენი შეტყობინება"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("თქვენი პოსტი"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("თქვენი პასუხი"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1529,7 +1685,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "რა მოხდა და რას უნდა მივხედოთ?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

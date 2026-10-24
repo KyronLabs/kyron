@@ -1090,6 +1090,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_app_device": MessageLookupByLibrary.simpleMessage(
         "Приложение и устройство",
       ),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Цитатът трябваше да предупреди другите за измамата."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Обяснете защо смятате, че решението е грешно: какво е означавала публикацията, какво може да е пропуснал екипът или защо правилото не пасва. Ще го прочете друг човек, а не този, който е решил."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("Вашето обжалване"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Напишете поне \$count знака. Можете да обжалвате всяко решение веднъж."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Изпрати обжалването"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Обжалването е изпратено. Ще получите известие, когато бъде решено."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Обжалване по случай \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Външен вид"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Светъл, тъмен или както е настроен телефонът",
@@ -1474,10 +1488,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Предпочитания"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Поверителност"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("Нещо да добавите? (по избор)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ще получите известие, когато екипът реши, и можете да следите в раздела Вашите доклади."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ако също не искате да виждате този човек, заглушете го или го блокирайте от същото меню."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Ако докладвате едно и също два пъти, това не му придава повече тежест: пазим по един доклад от човек."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Докладът ви не се споделя с този човек. Пазим копие на докладваното, за да може да бъде прегледано, дори ако бъде изтрито."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Докладът ви е получен и чака преглед. Не казваме на този човек кой го е докладвал."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Вижте докладите си"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Кажете ни какво не е наред"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Благодарим, че ни казахте"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Какво не е наред с \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Какво не е наред с това съобщение?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Какво не е наред с тази публикация?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Какво не е наред с този отговор?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Съобщение в чат на общност"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Публикация"),
@@ -1506,6 +1542,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Вашите доклади"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Безопасност на децата"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Всичко, което застрашава или сексуализира непълнолетни."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Целенасочен тормоз, заплахи или нежелан контакт."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Нападки срещу хора заради това кои са."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Продажба или реклама на нещо незаконно."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Представяне за някой друг."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Използва вашето произведение или търговска марка без разрешение."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Подвеждащи твърдения за здраве, избори или събития."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Насърчаване или показване на самонараняване."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Сексуално съдържание, показано без предупреждение."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Нищо от изброеното. Кажете ни какво не е наред."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Повтаряща се, подвеждаща или нежелана реклама."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Заплахи с насилие, възхваляването му или подбуждане към него."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Тормоз или преследване"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Реч на омразата"),
@@ -1595,6 +1656,102 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Сподели тази публикация",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("За какво ставаше дума"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви е блокиран за постоянно"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Отговорът, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Обжалване"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Обжалвайте това решение"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Това решение вече не може да бъде обжалвано. Ако нещо не е наред, свържете се с поддръжката."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Обжалването се разглежда"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Обжалването е уважено"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Друг човек от екипа го преглежда отново. Ще получите известие, когато бъде решено."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ако смятате, че е грешка, можете да поискате повторен преглед до \$date. Решава друг човек от екипа."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Обжалвано: решението остава в сила"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Случай \$number. Правило: \$rule. Екипът написа:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Изтриването на профила не премахва блокирането: нов профил със същия имейл адрес също започва блокиран."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Блокиран за постоянно"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Работят само тази страница, обжалванията, поддръжката и изтриването на профила."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Може да се обжалва"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Случай \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Решено на \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Решения за вашия профил"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Изтрийте профила си"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Вижте подробности"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Вижте подробности и обжалвайте"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Изтича на \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви е в добро състояние"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Нищо не го ограничава."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Състоянието на профила не можа да се зареди"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Съобщението е премахнато"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Нищо не е решено за профила ви. Ако екипът някога премахне нещо ваше или ограничи профила ви, това ще бъде посочено тук с причината и ще можете да го обжалвате."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Няма какво да се обжалва: решението е отменено."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Публикацията е премахната"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Плъзнете надолу, за да проверите отново."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Прочетете правилата на Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Отговорът е премахнат"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Отменено"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Отменено на \$date. Всичко премахнато е върнато и никое ограничение вече не важи."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Правило: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Изход"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Временно спрян"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Можете да четете, но не и да публикувате, отговаряте, следвате или пишете съобщения. Докладването, блокирането и заглушаването продължават да работят."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви е временно спрян: можете да четете, но не и да публикувате."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Спрян до \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Профилът ви е спрян до \$date: можете да четете, но не и да публикувате."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Какво написа екипът"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Състояние на профила"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Предупреждение"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Защо?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Вашите думи, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Вашето съобщение"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Вашата публикация"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Вашият отговор"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Условия"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("тази публикация"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage(

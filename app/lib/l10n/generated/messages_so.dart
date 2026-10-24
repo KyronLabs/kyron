@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Beddel"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("La xiriir taageerada"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Waa la dhammeeyey"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Warbixi"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent":
+          MessageLookupByLibrary.simpleMessage("Warbixinta waa la diray"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +957,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Dir warbixinta"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1005,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Isku day mar kale"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1015,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Waxaan soo xigtay khiyaanada si aan dadka uga digo."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Sheeg sababta aad u malaynayso in go'aanku khaldanaa: waxa qoraalku ula jeeday, waxa laga yaabo in kooxdu ka indho tirtay, ama sababta xeerku u habboonayn. Qof kale ayaa akhrinaya, ma aha qofkii go'aamiyey."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Racfaankaaga"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Qor ugu yaraan \$count xaraf. Go'aan kasta hal mar ayaad racfaan ka qaadan kartaa."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Dir racfaanka"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Racfaanka waa la diray. Ogeysiis ayaad heli doontaa marka go'aan la gaaro."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Racfaanka kiiska \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1390,10 +1404,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Ma jiraa wax aad ku darayso? (ikhtiyaari)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ogeysiis ayaad heli doontaa marka kooxdu go'aan gaarto, waxaadna kala socon kartaa Warbixinahaaga."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Haddii aadan sidoo kale rabin inaad qofkan aragto, waxaad ka aamusin kartaa ama ka xannibi kartaa isla menu-ga."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Isla shay laba jeer warbixin laga bixiyo culays dheeraad ah kuma darayso: qof kasta hal warbixin ayaan ka kaydinaa."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Warbixintaada lalama wadaago qofkaas. Waxaan kaydinaa nuqul waxa aad ka warbixisay, si loo eegi karo xitaa haddii la tirtiro."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Warbixintaada waa la helay waxayna sugaysaa dib u eegis. Uma sheegno qofkaas cidda warbixinta bixisay."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Eeg warbixinahaaga"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Noo sheeg waxa khaldan"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Waad ku mahadsan tahay inaad noo sheegtay"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Maxaa ku khaldan \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Maxaa ku khaldan fariintan?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Maxaa ku khaldan qoraalkan?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Maxaa ku khaldan jawaabtan?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Fariin sheekaysi bulsho"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Qoraal"),
@@ -1423,6 +1459,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Warbixinahaaga"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Badbaadada carruurta"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Wax kasta oo ilmo yar khatar geliya ama galmo ku sameeya."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Xadgudub loo jeediyey qof, hanjabaad, ama xiriir aan la rabin."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Weerarro lagu qaado dadka sababta ay yihiin awgeed."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Iibinta ama xayeysiinta wax sharci darro ah."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Iska dhigid qof kale."),
+      "ui_rule_detail_intellectual_property": MessageLookupByLibrary.simpleMessage(
+          "Wuxuu adeegsanayaa shaqadaada ama summaddaada ganacsi ogolaansho la'aan."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Sheegashooyin marin habaabin ah oo ku saabsan caafimaadka, doorashooyinka, ama dhacdooyinka."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Dhiirrigelinta ama muujinta is-dhaawicidda."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Waxyaabo galmo ah oo la muujiyey digniin la'aan."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Midkoodna ma aha. Noo sheeg waxa khaldan."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Xayeysiin soo noqnoqota, marin habaabin ah, ama aan la rabin."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Ku hanjabaadda rabshad, ammaanideeda, ama ku kicinteeda."),
       "ui_rule_harassment": MessageLookupByLibrary.simpleMessage(
           "Dhibaataynta ama cagajuglaynta"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Hadal nacayb"),
@@ -1509,6 +1569,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Waxa uu ku saabsanaa"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Akoonkaaga si joogto ah ayaa loo mamnuucay"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Jawaabta, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Racfaan"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Racfaan ka qaado go'aankan"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Go'aankan racfaan lagama qaadan karo hadda. Haddii wax khaldan yihiin, la xiriir taageerada."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Racfaanka waa la eegayaa"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Racfaanka waa la aqbalay"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Qof kale oo kooxda ka mid ah ayaa dib u eegaya. Ogeysiis ayaad heli doontaa marka go'aan la gaaro."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Haddii aad u malaynayso inay khalad ahayd, waxaad codsan kartaa dib u eegis ilaa \$date. Qof kale oo kooxda ka mid ah ayaa go'aaminaya."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Racfaan kadib: go'aanku wuu taagan yahay"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Kiis \$number. Xeer: \$rule. Kooxdu waxay qortay:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Tirtiridda akoonkaagu ma qaado mamnuucidda: akoon cusub oo leh isla cinwaanka iimaylka ayaa sidoo kale ku bilaabanaya mamnuuc."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Waa la mamnuucay"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Kaliya boggan, racfaannada, taageerada iyo tirtiridda akoonkaaga ayaa weli shaqeeya."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Racfaan waa laga qaadan karaa"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Kiis \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Go'aan la gaaray \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Go'aannada ku saabsan akoonkaaga"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Tirtir akoonkaaga"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Eeg faahfaahinta"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Eeg faahfaahinta oo racfaan qaado"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Wuxuu dhammaanayaa \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Akoonkaagu wuxuu ku jiraa xaalad wanaagsan"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Waxba ma xaddidayaan."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Xaaladda akoonka lama soo dejin karin"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Fariinta waa la saaray"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Wax go'aan ah lagama gaarin akoonkaaga. Haddii kooxdu waligeed wax kaa saarto ama akoonkaaga xaddido, halkan ayay kaga muuqan doontaa sababta, waxaadna racfaan qaadan kartaa."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Wax racfaan laga qaado ma jiro: go'aanka waa la laalay."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Qoraalka waa la saaray"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Hoos u jiid si aad mar kale u hubiso."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Akhri xeerarka Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Jawaabta waa la saaray"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Waa la laalay"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Waa la laalay \$date. Wax kasta oo la saaray waa soo laabteen, mana jiro xaddid weli dhaqan galaya."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Xeer: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Ka bax"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Waa la hakiyay"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Waad akhrin kartaa, laakiin ma daabici kartid, ma jawaabi kartid, ma raaci kartid, mana diri kartid fariimo. Warbixinta, xannibidda iyo aamusinta weli way shaqeeyaan."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Akoonkaaga waa la hakiyay: waad akhrin kartaa, laakiin ma daabici kartid."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Waa la hakiyay ilaa \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Akoonkaaga waa la hakiyay ilaa \$date: waad akhrin kartaa, laakiin ma daabici kartid."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Waxa kooxdu qortay"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Xaaladda akoonka"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Digniin"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Waayo?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Waxaad qortay, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Fariintaada"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Qoraalkaaga"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Jawaabtaada"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1542,7 +1696,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Maxaa dhacay, maxaanse eegnaa?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

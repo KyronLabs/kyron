@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Schimbă"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Contactează asistența"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Gata"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Raportează"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Raport trimis"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Trimite raportul"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Citam escrocheria ca să-i avertizez pe alții."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Spune de ce crezi că decizia a fost greșită: ce a vrut să spună postarea, ce ar fi putut scăpa echipei sau de ce regula nu se potrivește. O citește altcineva decât cel care a decis."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Contestația ta"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Scrie cel puțin \$count de caractere. Poți contesta fiecare decizie o singură dată."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Trimite contestația"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Contestație trimisă. Vei primi o notificare când se decide."),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
+          "Contestație pentru cazul \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1387,10 +1401,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Ai ceva de adăugat? (opțional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Primești o notificare când echipa decide și poți urmări totul în Rapoartele tale."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Dacă nu mai vrei să vezi această persoană, o poți ignora sau bloca din același meniu."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Dacă raportezi același lucru de două ori, nu îi dai mai multă greutate: păstrăm un raport de persoană."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Raportul tău nu este trimis persoanei respective. Păstrăm o copie a ceea ce ai raportat, ca să poată fi analizat chiar dacă este șters."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Raportul tău a fost primit și așteaptă analiza. Nu îi spunem persoanei respective cine a raportat-o."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Vezi rapoartele tale"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Spune-ne ce nu e în regulă"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Mulțumim că ne-ai spus"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Ce nu e în regulă cu \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Ce nu e în regulă cu acest mesaj?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Ce nu e în regulă cu această postare?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Ce nu e în regulă cu acest răspuns?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Un mesaj dintr-un chat al comunității"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("O postare"),
@@ -1418,6 +1454,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Rapoartele tale"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Siguranța copiilor"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Orice pune în pericol sau sexualizează un minor."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Abuz țintit, amenințări sau contact nedorit."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Atacuri asupra oamenilor pentru cine sunt."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Vânzarea sau promovarea a ceva ilegal."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Pretinderea că ești altcineva."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Îți folosește opera sau marca fără permisiune."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Afirmații înșelătoare despre sănătate, alegeri sau evenimente."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Încurajarea sau prezentarea autovătămării."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Conținut sexual afișat fără avertisment."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Niciuna dintre cele de mai sus. Spune-ne ce nu e în regulă."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Promovare repetitivă, înșelătoare sau nedorită."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Amenințarea, glorificarea sau incitarea la violență."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Hărțuire sau intimidare"),
       "ui_rule_hate":
@@ -1503,6 +1564,102 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Despre ce era vorba"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("Contul tău este interzis"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Răspunsul, pe \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Contestație"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Contestă această decizie"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Această decizie nu mai poate fi contestată. Dacă ceva nu e în regulă, contactează asistența."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Contestație în analiză"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Contestație acceptată"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Altcineva din echipă analizează din nou. Vei primi o notificare când se decide."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Dacă crezi că a fost o greșeală, poți cere o nouă analiză până pe \$date. Decide altcineva din echipă."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("Contestată: decizia rămâne"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Cazul \$number. Regula: \$rule. Echipa a scris:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Ștergerea contului nu ridică interdicția: un cont nou cu aceeași adresă de e-mail începe tot interzis."),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("Interzis"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Funcționează doar această pagină, contestațiile, asistența și ștergerea contului."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Poate fi contestată"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Cazul \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Decis pe \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Decizii despre contul tău"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Șterge-ți contul"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Vezi detalii"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Vezi detalii și contestă"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Se încheie pe \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Contul tău este în regulă"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Nimic nu îl restricționează."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Starea contului nu a putut fi încărcată"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Mesaj eliminat"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a decis nimic despre contul tău. Dacă echipa elimină vreodată ceva de-al tău sau îți restricționează contul, apare aici cu motivul și poți contesta."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Nimic de contestat: decizia a fost anulată."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Postare eliminată"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Trage în jos pentru a verifica din nou."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Citește regulile Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Răspuns eliminat"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Anulată"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Anulată pe \$date. Tot ce a fost eliminat a revenit și nicio restricție nu se mai aplică."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Regula: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Deconectează-te"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Suspendat"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Poți citi, dar nu poți posta, răspunde, urmări sau trimite mesaje. Raportarea, blocarea și ignorarea funcționează în continuare."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Contul tău este suspendat: poți citi, dar nu poți posta."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Suspendat până pe \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Contul tău este suspendat până pe \$date: poți citi, dar nu poți posta."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Ce a spus echipa"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Starea contului"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Avertisment"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("De ce?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Ai scris, pe \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Mesajul tău"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Postarea ta"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Răspunsul tău"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1536,7 +1693,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Ce s-a întâmplat și ce ar trebui să verificăm?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

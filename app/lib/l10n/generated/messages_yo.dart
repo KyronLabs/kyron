@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Yí padà"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Kàn sí ìrànlọ́wọ́"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Ó ti parí"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Jábọ̀"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent":
+          MessageLookupByLibrary.simpleMessage("A ti fi ìjábọ̀ ránṣẹ́"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +957,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Fi ìjábọ̀ ránṣẹ́"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1005,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain":
+          MessageLookupByLibrary.simpleMessage("Gbìyànjú lẹ́ẹ̀kan sí i"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1016,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Mo ń fa ọ̀rọ̀ jìbìtì náà yọ láti kìlọ̀ fún àwọn ènìyàn."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Sọ ìdí tí o fi rò pé ìpinnu náà kò tọ́: ohun tí ìfiránṣẹ́ náà túmọ̀ sí, ohun tí ẹgbẹ́ lè ti fojú fò, tàbí ìdí tí òfin náà kò fi bá a mu. Ẹlòmíràn ló máa kà á, kì í ṣe ẹni tó ṣe ìpinnu."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Ẹ̀bẹ̀ rẹ"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Kọ ó kéré tán lẹ́tà \$count. O lè bẹ̀bẹ̀ lórí ìpinnu kọ̀ọ̀kan lẹ́ẹ̀kan ṣoṣo."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Fi ẹ̀bẹ̀ ránṣẹ́"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "A ti fi ẹ̀bẹ̀ ránṣẹ́. Wàá gba ìfitónilétí nígbà tí a bá ṣe ìpinnu."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Ẹ̀bẹ̀ lórí ẹjọ́ \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1382,10 +1397,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Ṣé o fẹ́ ṣàfikún nǹkan kan? (àṣàyàn)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ìwọ yóò gba ìfitónilétí nígbà tí ẹgbẹ́ bá pinnu, o sì lè tẹ̀lé e nínú Àwọn ìjábọ̀ rẹ."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Tí o kò bá fẹ́ rí ẹni yìí mọ́ pẹ̀lú, o lè pa á lẹ́nu mọ́ tàbí dí i lọ́nà láti inú àkójọ kan náà."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Jíjábọ̀ ohun kan náà lẹ́ẹ̀mejì kò fi kún ìwúwo rẹ̀: a máa ń tọ́jú ìjábọ̀ kan fún ènìyàn kọ̀ọ̀kan."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "A kì í pín ìjábọ̀ rẹ pẹ̀lú ẹni náà. A máa ń tọ́jú ẹ̀dà ohun tí o jábọ̀, kí a lè ṣàyẹ̀wò rẹ̀ bí wọ́n tilẹ̀ pa á rẹ́."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "A ti gba ìjábọ̀ rẹ, ó sì ń dúró de àyẹ̀wò. A kì í sọ fún ẹni náà ẹni tó jábọ̀."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Wo àwọn ìjábọ̀ rẹ"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Sọ ohun tí kò tọ́ fún wa"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("O ṣeun tí o sọ fún wa"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Kí ló ṣe \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Kí ló ṣe ìfiránṣẹ́ yìí?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Kí ló ṣe àtẹ̀jáde yìí?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Kí ló ṣe èsì yìí?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Ìfiranṣẹ́ ìjíròrò àwùjọ"),
       "ui_reports_a_post":
@@ -1416,6 +1453,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Àwọn ìjábọ̀ rẹ"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Ààbò ọmọdé"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Ohunkóhun tó fi ọmọdé sínú ewu tàbí tó ń lò ó ní ọ̀nà ìbálòpọ̀."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Ìfìyàjẹ tí a dojú kọ ẹnì kan, ìhalẹ̀, tàbí ìbánisọ̀rọ̀ tí a kò fẹ́."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Ìkọlù sí àwọn ènìyàn nítorí irú ẹni tí wọ́n jẹ́."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Títa tàbí pípolówó ohun tí kò bófin mu."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Ṣíṣe bí ẹni pé o jẹ́ ẹlòmíràn."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Ó ń lo iṣẹ́ rẹ tàbí àmì-ìdámọ̀ rẹ láìgba àṣẹ."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ọ̀rọ̀ tó ń ṣini lọ́nà nípa ìlera, ìdìbò, tàbí ìṣẹ̀lẹ̀."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Gbígbani níyànjú láti ṣe ara ẹni léṣe tàbí fífi hàn."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Àkóónú ìbálòpọ̀ tí a fi hàn láìkìlọ̀."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Kò sí èyíkéyìí lókè. Sọ ohun tí kò tọ́ fún wa."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Ìpolówó tó ń tún ara rẹ̀ ṣe, tó ń ṣini lọ́nà, tàbí tí a kò fẹ́."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Ìhalẹ̀ ìwà ipá, gbígbé e ga, tàbí rírú u sókè."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Ìyọlẹ́nu tàbí ìfipá-ṣèkà"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Ọ̀rọ̀ ìkórìíra"),
@@ -1501,6 +1563,97 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Ohun tó jẹ mọ́"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "A ti fòfin de àkọọ́lẹ̀ rẹ títí láé"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Ìdáhùn náà, ní \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Ẹ̀bẹ̀"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Bẹ̀bẹ̀ lórí ìpinnu yìí"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè bẹ̀bẹ̀ lórí ìpinnu yìí mọ́. Tí nǹkan kan kò bá tọ́, kàn sí ìrànlọ́wọ́."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("A ń ṣàyẹ̀wò ẹ̀bẹ̀ náà"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("A gba ẹ̀bẹ̀ náà"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Ẹlòmíràn nínú ẹgbẹ́ ń tún un wò. Wàá gba ìfitónilétí nígbà tí a bá ṣe ìpinnu."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Tí o bá rò pé àṣìṣe ni, o lè béèrè pé kí a tún un wò títí di \$date. Ẹlòmíràn nínú ẹgbẹ́ ló máa pinnu."),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("Lẹ́yìn ẹ̀bẹ̀: ìpinnu náà dúró"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Ẹjọ́ \$number. Òfin: \$rule. Ẹgbẹ́ kọ pé:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Pípa àkọọ́lẹ̀ rẹ rẹ́ kò mú ìfòfinde kúrò: àkọọ́lẹ̀ tuntun pẹ̀lú àdírẹ́sì ímeèlì kan náà yóò bẹ̀rẹ̀ ní ìfòfinde pẹ̀lú."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("A ti fòfin dè é"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Ojú-ìwé yìí, ẹ̀bẹ̀, ìrànlọ́wọ́ àti pípa àkọọ́lẹ̀ rẹ́ nìkan ló ṣì ń ṣiṣẹ́."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("A lè bẹ̀bẹ̀"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Ẹjọ́ \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("A pinnu ní \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìpinnu nípa àkọọ́lẹ̀ rẹ"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Pa àkọọ́lẹ̀ rẹ rẹ́"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("Wo àlàyé"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Wo àlàyé kí o sì bẹ̀bẹ̀"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Ó parí ní \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Àkọọ́lẹ̀ rẹ wà ní ipò rere"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Kò sí ohun tó ń dí i lọ́wọ́."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("A kò lè ṣí ipò àkọọ́lẹ̀"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("A ti yọ ìfiránṣẹ́ kúrò"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "A kò tíì ṣe ìpinnu kankan nípa àkọọ́lẹ̀ rẹ. Tí ẹgbẹ́ bá yọ nǹkan rẹ kúrò tàbí tí wọ́n bá dí àkọọ́lẹ̀ rẹ lọ́wọ́, yóò hàn níbí pẹ̀lú ìdí rẹ̀, o sì lè bẹ̀bẹ̀."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ohun láti bẹ̀bẹ̀ lé: a ti fagi lé ìpinnu náà."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("A ti yọ àtẹ̀jáde kúrò"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("Fà á sílẹ̀ láti tún ṣàyẹ̀wò."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Ka àwọn òfin Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("A ti yọ èsì kúrò"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("A ti fagi lé e"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "A fagi lé e ní \$date. Gbogbo ohun tí a yọ ti padà, kò sì sí ìdíwọ́ kankan tó ń ṣiṣẹ́ mọ́."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Òfin: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Jáde"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("A ti dá a dúró"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "O lè kà, ṣùgbọ́n o kò lè fi nǹkan ránṣẹ́, fèsì, tẹ̀lé, tàbí fi ìfiránṣẹ́ ránṣẹ́. Jíjábọ̀, dídínà àti pípa lẹ́nu mọ́ ṣì ń ṣiṣẹ́."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "A ti dá àkọọ́lẹ̀ rẹ dúró: o lè kà, ṣùgbọ́n o kò lè fi nǹkan ránṣẹ́."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("A dá a dúró títí di \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "A ti dá àkọọ́lẹ̀ rẹ dúró títí di \$date: o lè kà, ṣùgbọ́n o kò lè fi nǹkan ránṣẹ́."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Ohun tí ẹgbẹ́ kọ"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Ipò àkọọ́lẹ̀"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Ìkìlọ̀"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Kí nìdí?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("O kọ, ní \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ rẹ"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Àtẹ̀jáde rẹ"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("Èsì rẹ"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1535,7 +1688,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Kí ló ṣẹlẹ̀, kí ni ó yẹ ká wò?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

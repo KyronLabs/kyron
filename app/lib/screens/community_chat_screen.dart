@@ -18,6 +18,7 @@ import '../providers/community_chats_provider.dart';
 import '../providers/current_user_provider.dart';
 import '../repositories/moderation_repository.dart' show ReportTarget;
 import '../utils/conversation_text.dart' show mediaPreview;
+import '../utils/local_date.dart';
 import '../utils/media_basket.dart' show MediaBasket, mediaKindOf;
 import '../widgets/action_button.dart';
 import '../widgets/action_sheet.dart';
@@ -1186,10 +1187,12 @@ class _MessageTile extends StatelessWidget {
                           ],
                           const SizedBox(width: SpacingTokens.space8),
                           Text(
-                            DateFormat.jm(
+                            localDate(
                               Localizations.maybeLocaleOf(context)
                                   ?.toLanguageTag(),
-                            ).format(message.createdAt),
+                              DateFormat.jm,
+                              message.createdAt,
+                            ),
                             style: TextStyle(
                               fontSize: TypographyTokens.fontSize1,
                               color: scheme.onSurface.withValues(alpha: 0.5),

@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Zmeniť"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Kontaktovať podporu"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Hotovo"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Nahlásiť"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Nahlásenie odoslané"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Odoslať nahlásenie"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Skúsiť znova"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Citát mal varovať ostatných pred podvodom."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Napíšte, prečo si myslíte, že rozhodnutie bolo nesprávne: čo príspevok znamenal, čo mohol tím prehliadnuť alebo prečo pravidlo nesedí. Prečíta si to niekto iný ako ten, kto rozhodol."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Vaše odvolanie"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Napíšte aspoň \$count znakov. Proti každému rozhodnutiu sa môžete odvolať raz."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Odoslať odvolanie"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Odvolanie odoslané. Keď bude rozhodnuté, dostanete upozornenie."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Odvolanie v prípade \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1383,10 +1397,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Chcete niečo doplniť? (nepovinné)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Keď tím rozhodne, dostanete upozornenie, a vec môžete sledovať v sekcii Vaše nahlásenia."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ak túto osobu už tiež nechcete vidieť, stlmte ju alebo zablokujte v tej istej ponuke."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Nahlásiť tú istú vec dvakrát jej nepridá na váhe: od každého uchovávame jedno nahlásenie."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Vaše nahlásenie sa s danou osobou nezdieľa. Uchovávame kópiu nahláseného obsahu, aby ho bolo možné posúdiť, aj keď bude odstránený."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Vaše nahlásenie sme prijali a čaká na posúdenie. Danej osobe nehovoríme, kto ju nahlásil."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Zobraziť vaše nahlásenia"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Povedzte nám, čo je zlé"),
+      "ui_report_thanks": MessageLookupByLibrary.simpleMessage(
+          "Ďakujeme, že ste nám dali vedieť"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Čo je zlé na účte \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Čo je zlé na tejto správe?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Čo je zlé na tomto príspevku?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Čo je zlé na tejto odpovedi?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Správa v komunitnom chate"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Príspevok"),
@@ -1416,6 +1452,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Vaše nahlásenia"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Bezpečnosť detí"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Čokoľvek, čo ohrozuje alebo sexualizuje maloletých."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Cielené obťažovanie, vyhrážky alebo nevyžiadaný kontakt."),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("Útoky na ľudí pre to, kým sú."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Predaj alebo propagácia niečoho nezákonného."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Vydávanie sa za niekoho iného."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Používa vaše dielo alebo ochrannú známku bez povolenia."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Zavádzajúce tvrdenia o zdraví, voľbách alebo udalostiach."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Podnecovanie k sebapoškodzovaniu alebo jeho zobrazovanie."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Sexuálny obsah zobrazený bez upozornenia."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Nič z uvedeného. Povedzte nám, čo je zlé."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Opakovaná, zavádzajúca alebo nevyžiadaná propagácia."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Vyhrážanie sa násilím, jeho oslavovanie alebo podnecovanie k nemu."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Obťažovanie alebo šikana"),
       "ui_rule_hate":
@@ -1502,6 +1563,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Čoho sa to týkalo"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Váš účet je natrvalo zablokovaný"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Odpoveď, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Odvolanie"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Odvolať sa proti rozhodnutiu"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Proti tomuto rozhodnutiu sa už nedá odvolať. Ak je niečo zlé, kontaktujte podporu."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Odvolanie sa posudzuje"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Odvolanie prijaté"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Niekto iný z tímu to posudzuje znova. Keď bude rozhodnuté, dostanete upozornenie."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ak si myslíte, že išlo o chybu, môžete do \$date požiadať o nové posúdenie. Rozhoduje niekto iný z tímu."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Po odvolaní: rozhodnutie platí"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Prípad \$number. Pravidlo: \$rule. Tím napísal:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Odstránenie účtu zablokovanie nezruší: nový účet s rovnakou e-mailovou adresou bude tiež zablokovaný."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Natrvalo zablokovaný"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Funguje už len táto stránka, odvolania, podpora a odstránenie účtu."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Dá sa odvolať"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Prípad \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Rozhodnuté \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Rozhodnutia o vašom účte"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Odstrániť účet"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Zobraziť podrobnosti"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Zobraziť podrobnosti a odvolať sa"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("Končí \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Váš účet je v poriadku"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Nič ho neobmedzuje."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Stav účtu sa nepodarilo načítať"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Správa odstránená"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "O vašom účte sa nič nerozhodlo. Ak tím niekedy odstráni niečo vaše alebo obmedzí váš účet, uvidíte to tu aj s dôvodom a budete sa môcť odvolať."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Nie je proti čomu sa odvolať: rozhodnutie bolo zrušené."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Príspevok odstránený"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Potiahnite nadol a skontrolujte znova."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Prečítať pravidlá Kyronu"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Odpoveď odstránená"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Zrušené"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Zrušené \$date. Všetko, čo bolo odstránené, je späť, a žiadne obmedzenie už neplatí."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Pravidlo: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Odhlásiť sa"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Pozastavený"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Môžete čítať, ale nie pridávať príspevky, odpovedať, sledovať ani posielať správy. Nahlasovanie, blokovanie a stlmenie stále fungujú."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Váš účet je pozastavený: môžete čítať, ale nie pridávať príspevky."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Pozastavený do \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Váš účet je pozastavený do \$date: môžete čítať, ale nie pridávať príspevky."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Čo napísal tím"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Stav účtu"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Upozornenie"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Prečo?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Vaše slová, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Vaša správa"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Váš príspevok"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Vaša odpoveď"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1535,7 +1691,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Čo sa stalo a na čo sa máme pozrieť?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

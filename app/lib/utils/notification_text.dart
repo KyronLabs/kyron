@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../models/account_standing.dart';
 import '../models/notification_model.dart';
 import '../repositories/moderation_repository.dart';
+import 'local_date.dart';
 
 /// What a person did, after their name: "liked your post".
 String notificationAction(AppLocalizations l10n, NotificationType type) =>
@@ -19,8 +20,8 @@ String notificationAction(AppLocalizations l10n, NotificationType type) =>
       NotificationType.account || NotificationType.report => '',
     };
 
-/// A rule, in the reader's language. The report screen's own labels are
-/// English, and a notice that names the rule should not be.
+/// A rule, in the reader's language. [ReportReason]'s own labels are
+/// English, and are for the team's screens.
 String ruleLabel(AppLocalizations l10n, ReportReason reason) =>
     switch (reason) {
       ReportReason.spam => l10n.ui('ui_rule_spam', 'Spam'),
@@ -45,6 +46,36 @@ String ruleLabel(AppLocalizations l10n, ReportReason reason) =>
         l10n.ui('ui_rule_illegal_goods', 'Illegal goods or services'),
       ReportReason.somethingElse =>
         l10n.ui('ui_rule_something_else', 'Something else'),
+    };
+
+/// What a rule covers, under its name on the report screen.
+String ruleDetail(AppLocalizations l10n, ReportReason reason) =>
+    switch (reason) {
+      ReportReason.spam => l10n.ui('ui_rule_detail_spam',
+          'Repetitive, misleading, or unwanted promotion.'),
+      ReportReason.harassment => l10n.ui('ui_rule_detail_harassment',
+          'Targeted abuse, threats, or unwanted contact.'),
+      ReportReason.hate =>
+        l10n.ui('ui_rule_detail_hate', 'Attacks on people for who they are.'),
+      ReportReason.violence => l10n.ui('ui_rule_detail_violence',
+          'Threatening, glorifying, or inciting harm.'),
+      ReportReason.selfHarm => l10n.ui(
+          'ui_rule_detail_self_harm', 'Encouraging or depicting self-harm.'),
+      ReportReason.sexualContent => l10n.ui('ui_rule_detail_sexual_content',
+          'Sexual content shown without warning.'),
+      ReportReason.childSafety => l10n.ui('ui_rule_detail_child_safety',
+          'Anything endangering or sexualising a minor.'),
+      ReportReason.misinformation => l10n.ui('ui_rule_detail_misinformation',
+          'Misleading claims about health, elections, or events.'),
+      ReportReason.impersonation => l10n.ui(
+          'ui_rule_detail_impersonation', 'Pretending to be someone else.'),
+      ReportReason.intellectualProperty => l10n.ui(
+          'ui_rule_detail_intellectual_property',
+          'Uses your work or trademark without permission.'),
+      ReportReason.illegalGoods => l10n.ui('ui_rule_detail_illegal_goods',
+          'Selling or promoting something unlawful.'),
+      ReportReason.somethingElse => l10n.ui('ui_rule_detail_something_else',
+          'None of the above. Tell us what is wrong.'),
     };
 
 /// What was reported, as a noun: "A post".
@@ -144,7 +175,7 @@ String _decision(
                   r'Your account is suspended until $date')
               .replaceAll(
                 r'$date',
-                DateFormat.yMMMd(locale).format(account.endsAt!),
+                localDate(locale, DateFormat.yMMMd, account.endsAt!),
               ),
       ModerationKind.ban =>
         l10n.ui('ui_notif_banned', 'Your account has been banned'),

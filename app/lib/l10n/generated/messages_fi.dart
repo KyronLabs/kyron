@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Vaihda"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Ota yhteyttä tukeen"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Valmis"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Raportoi"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Raportti lähetetty"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Lähetä raportti"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Lainasin huijausta varoittaakseni muita."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Kerro, miksi päätös on mielestäsi väärä: mitä julkaisu tarkoitti, mitä tiimiltä on voinut jäädä huomaamatta tai miksi sääntö ei sovi. Sen lukee joku muu kuin päätöksen tehnyt."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Valituksesi"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Kirjoita vähintään \$count merkkiä. Voit valittaa jokaisesta päätöksestä kerran."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Lähetä valitus"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Valitus lähetetty. Saat ilmoituksen, kun asia on ratkaistu."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Valitus tapauksesta \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1384,10 +1397,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("Lisättävää? (valinnainen)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Saat ilmoituksen, kun tiimi on päättänyt, ja voit seurata asiaa kohdassa Raportoimasi."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Jos et myöskään halua nähdä häntä enää, voit mykistää tai estää hänet samasta valikosta."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Saman asian raportoiminen kahdesti ei lisää sen painoarvoa: säilytämme yhden raportin henkilöä kohden."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Raporttiasi ei jaeta hänen kanssaan. Säilytämme kopion raportoimastasi, jotta se voidaan tarkistaa, vaikka se poistettaisiin."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Raporttisi on vastaanotettu ja odottaa tarkistusta. Emme kerro hänelle, kuka raportoi."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Näytä raportoimasi"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Kerro, mikä on vialla"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Kiitos, että kerroit"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Mitä vikaa on käyttäjässä \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Mitä vikaa tässä viestissä on?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Mitä vikaa tässä julkaisussa on?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Mitä vikaa tässä vastauksessa on?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Viesti yhteisökeskustelussa"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Julkaisu"),
@@ -1416,6 +1451,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Raportoimasi"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Lasten turvallisuus"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Kaikki, mikä vaarantaa tai seksualisoi alaikäisen."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Kohdistettu häirintä, uhkaukset tai ei-toivottu yhteydenpito."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Ihmisiin kohdistuvat hyökkäykset sen vuoksi, keitä he ovat."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Jonkin laittoman myyminen tai mainostaminen."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Toiseksi henkilöksi tekeytyminen."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Käyttää teostasi tai tavaramerkkiäsi ilman lupaa."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Harhaanjohtavat väitteet terveydestä, vaaleista tai tapahtumista."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Itsensä vahingoittamiseen kannustaminen tai sen näyttäminen."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Seksuaalinen sisältö ilman varoitusta."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Ei mikään yllä olevista. Kerro, mikä on vialla."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Toistuva, harhaanjohtava tai ei-toivottu mainostaminen."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Väkivallalla uhkaaminen, sen ihannointi tai siihen yllyttäminen."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Häirintä tai kiusaaminen"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Vihapuhe"),
@@ -1501,6 +1561,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Mitä asia koski"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("Tilisi on suljettu pysyvästi"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Vastaus, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Valitus"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Valita tästä päätöksestä"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Tästä päätöksestä ei voi enää valittaa. Jos jokin on vialla, ota yhteyttä tukeen."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Valitus käsittelyssä"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Valitus hyväksytty"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Joku muu tiimistä käy asian uudelleen läpi. Saat ilmoituksen, kun asia on ratkaistu."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Jos pidät tätä virheenä, voit pyytää uutta käsittelyä \$date asti. Päätöksen tekee joku muu tiimistä."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Valitettu: päätös pysyy voimassa"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Tapaus \$number. Sääntö: \$rule. Tiimi kirjoitti:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Tilin poistaminen ei kumoa sulkemista: uusi tili samalla sähköpostiosoitteella on myös suljettu."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Suljettu pysyvästi"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Vain tämä sivu, valitukset, tuki ja tilin poistaminen toimivat enää."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Valituskelpoinen"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Tapaus \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Päätetty \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Tiliäsi koskevat päätökset"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Poista tilisi"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Näytä tiedot"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Näytä tiedot ja valita"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Päättyy \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Tililläsi ei ole huomautettavaa"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Mikään ei rajoita sitä."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("Tilin tilaa ei voitu ladata"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Viesti poistettu"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Tilistäsi ei ole tehty päätöksiä. Jos tiimi joskus poistaa jotain sinun tekemääsi tai rajoittaa tiliäsi, se näkyy täällä perusteluineen, ja voit valittaa siitä."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Ei valitettavaa: päätös on kumottu."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Julkaisu poistettu"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Tarkista uudelleen vetämällä alas."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Lue Kyronin säännöt"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Vastaus poistettu"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Kumottu"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Kumottu \$date. Kaikki poistettu on palautettu, eikä mikään rajoitus ole enää voimassa."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Sääntö: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Kirjaudu ulos"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Jäädytetty"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Voit lukea, mutta et julkaista, vastata, seurata tai lähettää viestejä. Raportointi, estäminen ja mykistäminen toimivat edelleen."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Tilisi on jäädytetty: voit lukea, mutta et julkaista."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Jäädytetty \$date asti"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Tilisi on jäädytetty \$date asti: voit lukea, mutta et julkaista."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Mitä tiimi sanoi"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Tilin tila"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Varoitus"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Miksi?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Kirjoitit \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Viestisi"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Julkaisusi"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Vastauksesi"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1534,7 +1689,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Mitä tapahtui, ja mitä meidän pitäisi tarkistaa?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

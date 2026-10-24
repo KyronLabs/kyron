@@ -1110,6 +1110,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_app_device": MessageLookupByLibrary.simpleMessage(
         "Aplicació i dispositiu",
       ),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Citava l'estafa per advertir la gent."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Explica per què creus que la decisió va ser errònia: què volia dir la publicació, què se li pot haver escapat a l'equip o per què la norma no encaixa. La llegeix una persona diferent de qui va decidir."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("La teva apel·lació"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Escriu almenys \$count caràcters. Pots apel·lar cada decisió una sola vegada."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Envia l'apel·lació"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Apel·lació enviada. Rebràs una notificació quan es decideixi."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Apel·lació del cas \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Aparença"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Clar, fosc o el que tingui configurat el telèfon",
@@ -1491,10 +1505,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferències"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacitat"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Vols afegir-hi alguna cosa? (opcional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Rebràs una notificació quan l'equip decideixi, i ho pots seguir a Les teves denúncies."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Si tampoc no vols veure aquesta persona, pots silenciar-la o bloquejar-la des del mateix menú."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Denunciar el mateix dues vegades no li dona més pes: guardem una denúncia per persona."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "La teva denúncia no es comparteix amb l'altra persona. Guardem una còpia del que has denunciat perquè es pugui revisar encara que s'elimini."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Hem rebut la teva denúncia i està a la cua per revisar-la. No diem a l'altra persona qui l'ha denunciat."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Mostra les teves denúncies"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Explica'ns què passa"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Gràcies per avisar-nos"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Quin problema hi ha amb \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Quin problema hi ha amb aquest missatge?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Quin problema hi ha amb aquesta publicació?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Quin problema hi ha amb aquesta resposta?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Un missatge de xat de comunitat"),
       "ui_reports_a_post":
@@ -1526,6 +1562,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Les teves denúncies"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Seguretat infantil"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Qualsevol cosa que posi en perill o sexualitzi un menor."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Abús dirigit, amenaces o contacte no desitjat."),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("Atacs a persones per qui són."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Vendre o promocionar alguna cosa il·legal."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Fer-se passar per una altra persona."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Fa servir la teva obra o marca sense permís."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Afirmacions enganyoses sobre salut, eleccions o esdeveniments."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Encoratjar o mostrar autolesions."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Contingut sexual mostrat sense avís."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Cap de les anteriors. Explica'ns què passa."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Promoció repetitiva, enganyosa o no desitjada."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Amenaçar, glorificar o incitar a fer mal."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Assetjament o intimidació"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Discurs d'odi"),
@@ -1617,6 +1678,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Comparteix aquesta publicació",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("De què es tractava"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "El teu compte està bloquejat permanentment"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("La resposta, el \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Apel·lació"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Apel·la aquesta decisió"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Aquesta decisió ja no es pot apel·lar. Si alguna cosa no va bé, contacta amb el suport."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Apel·lació en revisió"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Apel·lació acceptada"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Una altra persona de l'equip ho està revisant de nou. Rebràs una notificació quan es decideixi."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Si creus que ha estat un error, pots demanar que es torni a revisar fins al \$date. Decideix una altra persona de l'equip."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Apel·lada: la decisió es manté"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Cas \$number. Norma: \$rule. L'equip va escriure:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Eliminar el compte no aixeca el bloqueig: un compte nou amb la mateixa adreça electrònica també comença bloquejat."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Bloquejat permanentment"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Només funcionen aquesta pàgina, les apel·lacions, el suport i l'eliminació del compte."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Es pot apel·lar"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Cas \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Decidit el \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Decisions sobre el teu compte"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Elimina el teu compte"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Mostra els detalls"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Mostra els detalls i apel·la"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Acaba el \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("El teu compte està en regla"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("No té cap restricció."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut carregar l'estat del compte"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Missatge eliminat"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "No s'ha decidit res sobre el teu compte. Si algun dia l'equip elimina alguna cosa teva o restringeix el teu compte, apareixerà aquí amb el motiu i podràs apel·lar."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "No hi ha res a apel·lar: la decisió s'ha revocat."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Publicació eliminada"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Llisca cap avall per tornar-ho a comprovar."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Llegeix les normes de Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Resposta eliminada"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Revocada"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Revocada el \$date. Tot el que s'havia eliminat ha tornat, i ja no s'aplica cap restricció."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Norma: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Tanca la sessió"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("Suspès"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Pots llegir, però no publicar, respondre, seguir ni enviar missatges. Denunciar, bloquejar i silenciar continuen funcionant."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "El teu compte està suspès: pots llegir, però no publicar."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Suspès fins al \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "El teu compte està suspès fins al \$date: pots llegir, però no publicar."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Què va dir l'equip"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Estat del compte"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Advertiment"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Per què?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Vas escriure, el \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("El teu missatge"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("La teva publicació"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("La teva resposta"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Termes"),
       "ui_this_post":
           MessageLookupByLibrary.simpleMessage("aquesta publicació"),

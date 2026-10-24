@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Módosítás"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport": MessageLookupByLibrary.simpleMessage(
+          "Kapcsolatfelvétel az ügyfélszolgálattal"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Kész"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Jelentés"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Jelentés elküldve"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Jelentés küldése"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Az átverést azért idéztem, hogy figyelmeztessem az embereket."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Írd le, miért gondolod, hogy a döntés hibás volt: mit jelentett a bejegyzés, mit hagyhatott figyelmen kívül a csapat, vagy miért nem illik rá a szabály. Nem az olvassa, aki döntött."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("A fellebbezésed"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Írj legalább \$count karaktert. Minden döntés ellen egyszer fellebbezhetsz."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Fellebbezés küldése"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Fellebbezés elküldve. Értesítést kapsz, amikor döntés születik."),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
+          "Fellebbezés a(z) \$number. ügyben"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1389,10 +1404,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Van, amit hozzátennél? (nem kötelező)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Értesítést kapsz, amikor a csapat döntött, és a Jelentéseid között követheted."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ha őt sem szeretnéd többé látni, ugyanebben a menüben elnémíthatod vagy letilthatod."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Ha ugyanazt kétszer jelented, attól nem lesz nagyobb súlya: személyenként egy jelentést őrzünk meg."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "A jelentésedet nem osztjuk meg vele. Megőrizzük a jelentett tartalom másolatát, hogy akkor is ellenőrizhető legyen, ha törlik."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "A jelentésedet megkaptuk, és ellenőrzésre vár. Nem mondjuk el neki, ki jelentette."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Jelentéseid megtekintése"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Mondd el, mi a baj"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Köszönjük, hogy szóltál"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Mi a baj vele: \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Mi a baj ezzel az üzenettel?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Mi a baj ezzel a bejegyzéssel?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Mi a baj ezzel a válasszal?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Egy üzenet egy közösségi csevegésben"),
       "ui_reports_a_post":
@@ -1421,6 +1458,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jelentéseid"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Gyermekek biztonsága"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Bármi, ami kiskorút veszélyeztet vagy szexualizál."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Célzott bántalmazás, fenyegetés vagy nem kívánt kapcsolatfelvétel."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Emberek elleni támadás azért, akik."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Valami illegális árusítása vagy reklámozása."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Más személynek kiadni magát."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Engedély nélkül használja a művedet vagy a védjegyedet."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Félrevezető állítások egészségről, választásokról vagy eseményekről."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Önsértésre buzdítás vagy annak ábrázolása."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Figyelmeztetés nélkül megjelenő szexuális tartalom."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Egyik sem. Mondd el, mi a baj."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Ismétlődő, félrevezető vagy kéretlen reklám."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Erőszakkal fenyegetés, annak dicsőítése vagy arra uszítás."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Zaklatás vagy megfélemlítés"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Gyűlöletbeszéd"),
@@ -1506,6 +1568,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("Miről szólt"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "A fiókodat véglegesen letiltottuk"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("A válasz, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Fellebbezés"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Fellebbezés a döntés ellen"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "E döntés ellen már nem lehet fellebbezni. Ha valami nincs rendben, fordulj az ügyfélszolgálathoz."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("A fellebbezés elbírálás alatt"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Fellebbezés elfogadva"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "A csapat egy másik tagja újra megvizsgálja. Értesítést kapsz, amikor döntés születik."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ha szerinted ez tévedés volt, kérheted az újbóli vizsgálatot. Határidő: \$date. A csapat egy másik tagja dönt."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Fellebbezve: a döntés érvényben marad"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "\$number. ügy. Szabály: \$rule. A csapat ezt írta:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "A fiókod törlése nem oldja fel a letiltást: az ugyanazzal az e-mail-címmel létrehozott új fiók is letiltva indul."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Véglegesen letiltva"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Már csak ez az oldal, a fellebbezés, az ügyfélszolgálat és a fiók törlése működik."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Fellebbezhető"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("\$number. ügy"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Döntés: \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("A fiókodat érintő döntések"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Fiók törlése"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("Részletek"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Részletek és fellebbezés"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("Lejár: \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("A fiókod rendben van"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Semmi sem korlátozza."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni a fiók állapotát"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Üzenet eltávolítva"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "A fiókodról nem született döntés. Ha a csapat valaha eltávolít valamit tőled vagy korlátozza a fiókodat, itt jelenik meg az indoklással együtt, és fellebbezhetsz."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Nincs mit megfellebbezni: a döntést visszavonták."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés eltávolítva"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Húzd le az újbóli ellenőrzéshez."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Olvasd el a Kyron szabályait"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Válasz eltávolítva"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Visszavonva"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Visszavonva: \$date. Minden eltávolított tartalom visszakerült, és semmilyen korlátozás nem érvényes többé."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Szabály: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Kijelentkezés"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Felfüggesztve"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Olvashatsz, de nem tehetsz közzé, nem válaszolhatsz, nem követhetsz és nem küldhetsz üzenetet. A jelentés, a letiltás és az elnémítás továbbra is működik."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "A fiókod fel van függesztve: olvashatsz, de nem tehetsz közzé."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Felfüggesztve eddig: \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "A fiókod fel van függesztve eddig: \$date. Olvashatsz, de nem tehetsz közzé."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Mit írt a csapat"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Fiók állapota"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Figyelmeztetés"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Miért?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Ezt írtad, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Az üzeneted"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("A bejegyzésed"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("A válaszod"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1539,7 +1695,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Mi történt, és mit nézzünk meg?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

@@ -164,6 +164,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("翻訳"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("再試行"),
+      "ui_appeal_hint":
+          MessageLookupByLibrary.simpleMessage("詐欺を注意喚起するために引用していました。"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "決定が間違っていると思う理由を書いてください。投稿の意図、チームが見落とした可能性のある点、ルールが当てはまらない理由など。決定した人とは別の人が読みます。"),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("異議申し立ての内容"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "\$count 文字以上で書いてください。各決定に対する異議申し立ては1回までです。"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("異議申し立てを送信"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "異議申し立てを送信しました。結果が出たら通知でお知らせします。"),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("ケース \$number への異議申し立て"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage("用途（任意）"),
       "ui_cchat_announcements":
           MessageLookupByLibrary.simpleMessage("モデレーターのみ投稿できます"),
@@ -394,10 +406,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_own": MessageLookupByLibrary.simpleMessage("送信した相手だけが一度だけ開けます。"),
       "ui_once_send": MessageLookupByLibrary.simpleMessage("1回表示で送信"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("タップして表示"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage("補足はありますか？（任意）"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "チームが判断すると通知が届きます。経過は「あなたの報告」で確認できます。"),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "この相手を今後表示したくない場合は、同じメニューからミュートまたはブロックできます。"),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "同じものを2回通報しても重みは増えません。通報は1人につき1件として扱います。"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "あなたの通報は相手には知らされません。通報された内容のコピーを保存するため、削除されても確認できます。"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "通報を受け付けました。確認待ちです。誰が通報したかは相手に伝えません。"),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("あなたの報告を見る"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("問題の内容を教えてください"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("お知らせいただきありがとうございます"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name の問題は何ですか？"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("このメッセージの問題は何ですか？"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("この投稿の問題は何ですか？"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("この返信の問題は何ですか？"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("コミュニティチャットのメッセージ"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("投稿"),
@@ -420,6 +453,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("報告した内容とその結果"),
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("あなたの報告"),
       "ui_rule_child_safety": MessageLookupByLibrary.simpleMessage("子どもの安全"),
+      "ui_rule_detail_child_safety":
+          MessageLookupByLibrary.simpleMessage("未成年者を危険にさらす、または性的に扱うもの。"),
+      "ui_rule_detail_harassment":
+          MessageLookupByLibrary.simpleMessage("特定の人への嫌がらせ、脅迫、望まない接触。"),
+      "ui_rule_detail_hate":
+          MessageLookupByLibrary.simpleMessage("その人の属性を理由にした攻撃。"),
+      "ui_rule_detail_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("違法なものの販売や宣伝。"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("他人へのなりすまし。"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage("あなたの作品や商標を無断で使用している。"),
+      "ui_rule_detail_misinformation":
+          MessageLookupByLibrary.simpleMessage("健康、選挙、出来事に関する誤解を招く主張。"),
+      "ui_rule_detail_self_harm":
+          MessageLookupByLibrary.simpleMessage("自傷行為の助長や描写。"),
+      "ui_rule_detail_sexual_content":
+          MessageLookupByLibrary.simpleMessage("警告なしに表示される性的なコンテンツ。"),
+      "ui_rule_detail_something_else":
+          MessageLookupByLibrary.simpleMessage("上記のいずれでもない。問題の内容を教えてください。"),
+      "ui_rule_detail_spam":
+          MessageLookupByLibrary.simpleMessage("繰り返しの、誤解を招く、または望まない宣伝。"),
+      "ui_rule_detail_violence":
+          MessageLookupByLibrary.simpleMessage("暴力の脅迫、賛美、扇動。"),
       "ui_rule_harassment": MessageLookupByLibrary.simpleMessage("嫌がらせやいじめ"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("ヘイトスピーチ"),
       "ui_rule_illegal_goods":
@@ -434,6 +491,87 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("その他"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("スパム"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力や脅迫"),
+      "ui_standing_about": MessageLookupByLibrary.simpleMessage("対象の内容"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("アカウントが永久に停止されています"),
+      "ui_standing_answer": MessageLookupByLibrary.simpleMessage("回答（\$date）："),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("異議申し立て"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("この決定に異議を申し立てる"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "この決定にはもう異議を申し立てられません。問題がある場合はサポートにお問い合わせください。"),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("異議申し立てを審査中"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("異議申し立てが認められました"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "チームの別のメンバーが改めて確認しています。結果が出たら通知でお知らせします。"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "間違いだと思う場合は、\$date まで再審査を依頼できます。判断するのはチームの別のメンバーです。"),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("異議申し立て済み：決定は維持されました"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "ケース \$number。ルール：\$rule。チームのコメント："),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "アカウントを削除しても停止は解除されません。同じメールアドレスの新しいアカウントも停止された状態で始まります。"),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("永久停止"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "使えるのはこのページ、異議申し立て、サポート、アカウントの削除だけです。"),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("異議申し立て可能"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("ケース \$number"),
+      "ui_standing_decided": MessageLookupByLibrary.simpleMessage("決定日：\$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("あなたのアカウントに関する決定"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("アカウントを削除"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("詳細を見る"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("詳細を見て異議を申し立てる"),
+      "ui_standing_ends": MessageLookupByLibrary.simpleMessage("終了日：\$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage("アカウントは良好な状態です"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("制限はありません。"),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("アカウントの状態を読み込めませんでした"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("メッセージが削除されました"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "あなたのアカウントについての決定はありません。チームがあなたのコンテンツを削除したりアカウントを制限したりした場合は、理由とともにここに表示され、異議を申し立てることができます。"),
+      "ui_standing_nothing_to_appeal":
+          MessageLookupByLibrary.simpleMessage("異議申し立ての対象はありません：決定は取り消されました。"),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("投稿が削除されました"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("下に引いてもう一度確認します。"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyronのルールを読む"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("返信が削除されました"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("取り消し済み"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date に取り消されました。削除されたものは元に戻り、制限もすべて解除されています。"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("ルール：\$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("ログアウト"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("一時停止中"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "閲覧はできますが、投稿、返信、フォロー、メッセージの送信はできません。通報、ブロック、ミュートは引き続き使えます。"),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "アカウントは一時停止中です：閲覧はできますが、投稿はできません。"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date まで一時停止"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "アカウントは \$date まで一時停止中です：閲覧はできますが、投稿はできません。"),
+      "ui_standing_team_said": MessageLookupByLibrary.simpleMessage("チームのコメント"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("アカウントの状態"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("警告"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("理由を見る"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("あなたのコメント（\$date）："),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("あなたのメッセージ"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("あなたの投稿"),
+      "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("あなたの返信"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("もう一度試す"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("リポストを取り消す"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("パスワードを更新"),

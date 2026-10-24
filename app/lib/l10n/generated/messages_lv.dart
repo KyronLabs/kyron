@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Mainīt"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Sazināties ar atbalstu"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Gatavs"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Ziņot"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Sūdzība nosūtīta"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Nosūtīt sūdzību"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Citāts bija domāts, lai brīdinātu citus par krāpšanu."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Paskaidrojiet, kāpēc uzskatāt, ka lēmums bija nepareizs: ko ieraksts nozīmēja, ko komanda varēja nepamanīt vai kāpēc noteikums neder. To izlasīs kāds cits, nevis tas, kurš pieņēma lēmumu."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Jūsu apelācija"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Uzrakstiet vismaz \$count rakstzīmes. Katru lēmumu varat pārsūdzēt vienu reizi."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Nosūtīt apelāciju"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Apelācija nosūtīta. Kad lēmums būs pieņemts, saņemsiet paziņojumu."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Apelācija lietā \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1391,10 +1405,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Vai vēlaties ko piebilst? (neobligāti)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Jūs saņemsiet paziņojumu, kad komanda pieņems lēmumu, un to varat sekot sadaļā “Jūsu sūdzības”."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ja arī nevēlaties vairs redzēt šo personu, apklusiniet vai bloķējiet to tajā pašā izvēlnē."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Ziņojot par to pašu divreiz, tam netiek piešķirts lielāks svars: mēs glabājam vienu sūdzību no katras personas."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Jūsu sūdzība netiek kopīgota ar šo personu. Mēs glabājam kopiju tam, par ko ziņojāt, lai to varētu izskatīt arī tad, ja tas tiek izdzēsts."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Jūsu sūdzība ir saņemta un gaida izskatīšanu. Mēs nesakām šai personai, kas par to ziņoja."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Skatīt savas sūdzības"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Pastāstiet, kas nav kārtībā"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Paldies, ka pastāstījāt"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Kas nav kārtībā ar kontu \$name?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Kas nav kārtībā ar šo ziņu?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Kas nav kārtībā ar šo ierakstu?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Kas nav kārtībā ar šo atbildi?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Ziņa kopienas tērzēšanā"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Ieraksts"),
@@ -1422,6 +1458,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Jūsu sūdzības"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Bērnu drošība"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Viss, kas apdraud vai seksualizē nepilngadīgos."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Mērķtiecīga aizskaršana, draudi vai nevēlams kontakts."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Uzbrukumi cilvēkiem par to, kas viņi ir."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Kaut kā nelikumīga pārdošana vai reklamēšana."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Uzdošanās par kādu citu."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Izmanto jūsu darbu vai preču zīmi bez atļaujas."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Maldinoši apgalvojumi par veselību, vēlēšanām vai notikumiem."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Pašsavainošanās veicināšana vai attēlošana."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Seksuāls saturs, kas parādīts bez brīdinājuma."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Nekas no minētā. Pastāstiet, kas nav kārtībā."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Atkārtota, maldinoša vai nevēlama reklāma."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Draudi ar vardarbību, tās slavināšana vai kūdīšana uz to."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Uzmākšanās vai iebiedēšana"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Naida runa"),
@@ -1507,6 +1568,103 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Par ko bija runa"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Jūsu konts ir neatgriezeniski bloķēts"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Atbilde, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Apelācija"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Pārsūdzēt šo lēmumu"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Šo lēmumu vairs nevar pārsūdzēt. Ja kaut kas nav kārtībā, sazinieties ar atbalsta dienestu."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Apelācija tiek izskatīta"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Apelācija apmierināta"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Kāds cits no komandas to izskata vēlreiz. Kad lēmums būs pieņemts, saņemsiet paziņojumu."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ja uzskatāt, ka tā bija kļūda, līdz \$date varat lūgt to izskatīt vēlreiz. Lēmumu pieņem kāds cits no komandas."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Pārsūdzēts: lēmums paliek spēkā"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Lieta \$number. Noteikums: \$rule. Komanda rakstīja:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Konta dzēšana neatceļ bloķēšanu: arī jauns konts ar to pašu e-pasta adresi būs bloķēts."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Neatgriezeniski bloķēts"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Darbojas tikai šī lapa, apelācijas, atbalsts un konta dzēšana."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Var pārsūdzēt"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Lieta \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Lemts \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Lēmumi par jūsu kontu"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Dzēst kontu"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Skatīt informāciju"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Skatīt informāciju un pārsūdzēt"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Beidzas \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Jūsu konts ir kārtībā"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Nekas to neierobežo."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās ielādēt konta statusu"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Ziņa noņemta"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Par jūsu kontu nekas nav lemts. Ja komanda kādreiz noņems kaut ko jūsu vai ierobežos jūsu kontu, tas būs redzams šeit ar iemeslu, un jūs varēsiet to pārsūdzēt."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Nav ko pārsūdzēt: lēmums ir atcelts."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Ieraksts noņemts"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Velciet uz leju, lai pārbaudītu vēlreiz."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Lasīt Kyron noteikumus"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Atbilde noņemta"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Atcelts"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Atcelts \$date. Viss noņemtais ir atgriezts, un neviens ierobežojums vairs nav spēkā."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Noteikums: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Izrakstīties"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Darbība apturēta"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Varat lasīt, bet nevarat publicēt, atbildēt, sekot vai sūtīt ziņas. Ziņošana, bloķēšana un apklusināšana joprojām darbojas."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Jūsu konta darbība ir apturēta: varat lasīt, bet ne publicēt."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Apturēts līdz \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Jūsu konta darbība ir apturēta līdz \$date: varat lasīt, bet ne publicēt."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Ko rakstīja komanda"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Konta statuss"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Brīdinājums"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Kāpēc?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Jūs rakstījāt \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Jūsu ziņa"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Jūsu ieraksts"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Jūsu atbilde"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1540,7 +1698,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Kas notika, un ko mums vajadzētu apskatīt?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

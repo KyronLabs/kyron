@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Змінити"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Звернутися до підтримки"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Готово"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Поскаржитися"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Скаргу надіслано"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Надіслати скаргу"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Це цитата, щоб застерегти людей від шахрайства."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Поясніть, чому ви вважаєте рішення помилковим: що означав допис, що команда могла пропустити або чому правило тут не підходить. Її прочитає інша людина, а не та, що ухвалила рішення."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Ваша апеляція"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Напишіть щонайменше \$count символів. Кожне рішення можна оскаржити один раз."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Надіслати апеляцію"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Апеляцію надіслано. Ви отримаєте сповіщення, коли буде ухвалено рішення."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Апеляція у справі \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1389,10 +1403,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Хочете щось додати? (необов’язково)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Ви отримаєте сповіщення, коли команда ухвалить рішення, а стежити за скаргою можна в розділі «Ваші скарги»."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Якщо ви також не хочете бачити цю людину, приховайте або заблокуйте її в тому самому меню."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Повторна скарга на те саме не додає їй ваги: ми зберігаємо одну скаргу від кожної людини."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Вашу скаргу не передають цій людині. Ми зберігаємо копію того, на що ви поскаржилися, щоб це можна було перевірити, навіть якщо його видалять."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Вашу скаргу отримано, і вона чекає на перевірку. Ми не повідомляємо цій людині, хто на неї поскаржився."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Переглянути ваші скарги"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Розкажіть, що не так"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Дякуємо, що повідомили"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Що не так із \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Що не так із цим повідомленням?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Що не так із цим дописом?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Що не так із цією відповіддю?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Повідомлення в чаті спільноти"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Допис"),
@@ -1420,6 +1456,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Ваші скарги"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Безпека дітей"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Усе, що загрожує неповнолітнім або сексуалізує їх."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Цілеспрямовані образи, погрози або небажаний контакт."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Напади на людей через те, ким вони є."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Продаж або реклама чогось незаконного."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Видавання себе за іншу людину."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Використовує ваш твір або торговельну марку без дозволу."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Оманливі твердження про здоров’я, вибори чи події."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Заохочення до самоушкодження або його показ."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Сексуальний вміст без попередження."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Нічого з переліченого. Розкажіть, що не так."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Повторювана, оманлива або небажана реклама."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Погрози насильством, його прославлення або заклики до нього."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Цькування або булінг"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Мова ворожнечі"),
@@ -1504,6 +1565,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Про що йшлося"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис заблоковано назавжди"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Відповідь, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Апеляція"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Оскаржити це рішення"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Це рішення вже не можна оскаржити. Якщо щось не так, зверніться до підтримки."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Апеляція на розгляді"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Апеляцію задоволено"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Інша людина з команди переглядає це знову. Ви отримаєте сповіщення, коли буде ухвалено рішення."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Якщо ви вважаєте, що це помилка, можете попросити переглянути рішення до \$date. Вирішує інша людина з команди."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Оскаржено: рішення залишається в силі"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Справа \$number. Правило: \$rule. Команда написала:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Видалення облікового запису не знімає блокування: новий обліковий запис із тією самою адресою електронної пошти теж буде заблоковано."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Заблоковано назавжди"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Працюють лише ця сторінка, апеляції, підтримка й видалення облікового запису."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Можна оскаржити"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Справа \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Рішення ухвалено \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Рішення щодо вашого облікового запису"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Видалити обліковий запис"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("Докладніше"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Докладніше й оскаржити"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Закінчується \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "З вашим обліковим записом усе гаразд"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Жодних обмежень."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити статус облікового запису"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Повідомлення видалено"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Щодо вашого облікового запису не ухвалювали жодних рішень. Якщо команда колись видалить щось ваше або обмежить ваш обліковий запис, це з’явиться тут із причиною, і ви зможете це оскаржити."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Нічого оскаржувати: рішення скасовано."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Допис видалено"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Потягніть униз, щоб перевірити ще раз."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Прочитати правила Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Відповідь видалено"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Скасовано"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Скасовано \$date. Усе видалене відновлено, і жодні обмеження більше не діють."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Правило: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Вийти"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Тимчасово заблоковано"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Ви можете читати, але не можете публікувати, відповідати, стежити чи надсилати повідомлення. Скарги, блокування й приховування й далі працюють."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис тимчасово заблоковано: ви можете читати, але не публікувати."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Заблоковано до \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Ваш обліковий запис заблоковано до \$date: ви можете читати, але не публікувати."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Що написала команда"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Статус облікового запису"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Попередження"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Чому?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Ви написали \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Ваше повідомлення"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Ваш допис"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Ваша відповідь"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1537,7 +1693,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Що сталося і на що нам звернути увагу?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

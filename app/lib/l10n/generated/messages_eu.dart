@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Aldatu"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport": MessageLookupByLibrary.simpleMessage(
+          "Jarri harremanetan laguntzarekin"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Eginda"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Salatu"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Salaketa bidalita"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Bidali salaketa"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Iruzurra aipatzen ari nintzen jendeari ohartarazteko."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Azaldu zergatik uste duzun erabakia okerra izan zela: zer esan nahi zuen argitalpenak, zer pasa zitzaion taldeari oharkabean edo zergatik ez datorren bat araua. Erabakia hartu ez zuen beste norbaitek irakurriko du."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Zure helegitea"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Idatzi gutxienez \$count karaktere. Erabaki bakoitzari behin aurkez diezaiokezu helegitea."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Bidali helegitea"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Helegitea bidali da. Erabakia hartzean jakinarazpena jasoko duzu."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("\$number kasuaren helegitea"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1382,10 +1396,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Zerbait gehitu nahi duzu? (aukerakoa)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Taldeak erabakitzen duenean jakinarazpen bat jasoko duzu, eta Zure salaketak atalean jarrai dezakezu."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Pertsona hori ere ikusi nahi ez baduzu, isildu edo blokeatu menu beretik."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Gauza bera bi aldiz salatzeak ez dio pisu gehiago ematen: pertsona bakoitzeko salaketa bat gordetzen dugu."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Zure salaketa ez zaio pertsona horri erakusten. Salatu duzunaren kopia bat gordetzen dugu, ezabatzen bada ere berrikusi ahal izateko."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Zure salaketa jaso dugu eta berrikusteko zain dago. Ez diogu pertsona horri esaten nork salatu duen."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Ikusi zure salaketak"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Esaguzu zer dagoen gaizki"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Eskerrik asko esateagatik"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Zer dago gaizki \$name kontuarekin?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("Zer dago gaizki mezu honekin?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Zer dago gaizki argitalpen honekin?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Zer dago gaizki erantzun honekin?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Komunitateko txat bateko mezu bat"),
       "ui_reports_a_post":
@@ -1417,6 +1453,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Zure salaketak"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Haurren segurtasuna"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Adingabe bat arriskuan jartzen edo sexualizatzen duen edozer."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Jazarpen zuzendua, mehatxuak edo nahi ez den harremana."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Pertsonei diren bezalakoak izateagatik egindako erasoak."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Legez kanpoko zerbait saltzea edo sustatzea."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Beste norbait balitz bezala aurkeztea."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Zure lana edo marka baimenik gabe erabiltzen du."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Osasunari, hauteskundeei edo gertaerei buruzko baieztapen engainagarriak."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Autolesioa bultzatzea edo erakustea."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Abisurik gabe erakutsitako eduki sexuala."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Aurrekoetako bat ere ez. Esaguzu zer dagoen gaizki."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Sustapen errepikakorra, engainagarria edo nahi gabea."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Indarkeriaz mehatxatzea, goratzea edo hartara bultzatzea."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Jazarpena edo bullyinga"),
       "ui_rule_hate":
@@ -1503,6 +1564,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Zeri buruzkoa zen"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua betiko debekatu da"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Erantzuna, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Helegitea"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "Aurkeztu helegitea erabaki honen aurka"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Erabaki honen aurka ezin da helegiterik aurkeztu. Zerbait gaizki badago, jarri harremanetan laguntzarekin."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Helegitea aztertzen"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Helegitea onartu da"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Taldeko beste norbait berriro aztertzen ari da. Erabakia hartzean jakinarazpena jasoko duzu."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Akats bat izan dela uste baduzu, berriro aztertzeko eska dezakezu \$date arte. Taldeko beste norbaitek erabakiko du."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Helegitea aurkeztuta: erabakiak bere horretan dirau"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "\$number kasua. Araua: \$rule. Taldeak idatzi zuen:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Kontua ezabatzeak ez du debekua kentzen: helbide elektroniko bera duen kontu berria ere debekatuta hasiko da."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Betiko debekatua"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Orri hau, helegiteak, laguntza eta kontua ezabatzea baino ez dabiltza."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Helegitea aurkez daiteke"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("\$number kasua"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Erabakia: \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Zure kontuari buruzko erabakiak"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Ezabatu zure kontua"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Ikusi xehetasunak"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Ikusi xehetasunak eta aurkeztu helegitea"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Amaiera: \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Zure kontua egoera onean dago"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Ez du murrizketarik."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da kargatu kontuaren egoera"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Mezua kendu da"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Ez da ezer erabaki zure kontuari buruz. Taldeak noizbait zurea den zerbait kentzen badu edo zure kontua mugatzen badu, hemen agertuko da arrazoiarekin, eta helegitea aurkeztu ahal izango duzu."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Ez dago ezer helegiteko: erabakia atzera bota da."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Argitalpena kendu da"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Arrastatu behera berriro egiaztatzeko."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Irakurri Kyronen arauak"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Erantzuna kendu da"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Atzera bota da"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Atzera bota da \$date. Kendutako guztia itzuli da, eta ez dago murrizketarik indarrean."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Araua: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Amaitu saioa"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("Etenda"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Irakur dezakezu, baina ezin duzu argitaratu, erantzun, jarraitu edo mezurik bidali. Salatzea, blokeatzea eta isiltzea oraindik dabiltza."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua etenda dago: irakur dezakezu, baina ez argitaratu."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Etenda \$date arte"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Zure kontua etenda dago \$date arte: irakur dezakezu, baina ez argitaratu."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Taldeak esandakoa"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Kontuaren egoera"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Abisua"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Zergatik?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Zuk idatzia, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Zure mezua"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Zure argitalpena"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Zure erantzuna"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1536,7 +1692,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Zer gertatu da, eta zer begiratu behar dugu?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

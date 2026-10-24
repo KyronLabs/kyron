@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("ਬਦਲੋ"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("ਸਹਾਇਤਾ ਨਾਲ ਸੰਪਰਕ ਕਰੋ"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("ਹੋ ਗਿਆ"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("ਰਿਪੋਰਟ ਕਰੋ"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("ਰਿਪੋਰਟ ਭੇਜੋ"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਹਵਾਲਾ ਲੋਕਾਂ ਨੂੰ ਧੋਖਾਧੜੀ ਤੋਂ ਸਾਵਧਾਨ ਕਰਨ ਲਈ ਸੀ।"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਫ਼ੈਸਲਾ ਗ਼ਲਤ ਕਿਉਂ ਲੱਗਦਾ ਹੈ: ਪੋਸਟ ਦਾ ਮਤਲਬ ਕੀ ਸੀ, ਟੀਮ ਤੋਂ ਕੀ ਖੁੰਝ ਗਿਆ ਹੋ ਸਕਦਾ ਹੈ, ਜਾਂ ਨਿਯਮ ਕਿਉਂ ਲਾਗੂ ਨਹੀਂ ਹੁੰਦਾ। ਇਸਨੂੰ ਫ਼ੈਸਲਾ ਕਰਨ ਵਾਲੇ ਦੀ ਥਾਂ ਕੋਈ ਹੋਰ ਪੜ੍ਹਦਾ ਹੈ।"),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੀ ਅਪੀਲ"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "ਘੱਟੋ-ਘੱਟ \$count ਅੱਖਰ ਲਿਖੋ। ਤੁਸੀਂ ਹਰ ਫ਼ੈਸਲੇ ’ਤੇ ਇੱਕ ਵਾਰ ਅਪੀਲ ਕਰ ਸਕਦੇ ਹੋ।"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("ਅਪੀਲ ਭੇਜੋ"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "ਅਪੀਲ ਭੇਜੀ ਗਈ। ਫ਼ੈਸਲਾ ਹੋਣ ’ਤੇ ਤੁਹਾਨੂੰ ਸੂਚਨਾ ਮਿਲੇਗੀ।"),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("ਕੇਸ \$number ’ਤੇ ਅਪੀਲ"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1373,10 +1386,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("ਕੁਝ ਹੋਰ ਜੋੜਨਾ ਹੈ? (ਵਿਕਲਪਿਕ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "ਟੀਮ ਦੇ ਫ਼ੈਸਲਾ ਕਰਨ ’ਤੇ ਤੁਹਾਨੂੰ ਸੂਚਨਾ ਮਿਲੇਗੀ, ਅਤੇ ਤੁਸੀਂ ਇਸ ਨੂੰ ਆਪਣੀਆਂ ਰਿਪੋਰਟਾਂ ਵਿੱਚ ਦੇਖ ਸਕਦੇ ਹੋ।"),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "ਜੇ ਤੁਸੀਂ ਇਸ ਵਿਅਕਤੀ ਨੂੰ ਵੀ ਨਹੀਂ ਦੇਖਣਾ ਚਾਹੁੰਦੇ, ਤਾਂ ਉਸੇ ਮੀਨੂ ਤੋਂ ਮਿਊਟ ਜਾਂ ਬਲੌਕ ਕਰੋ।"),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "ਇੱਕੋ ਚੀਜ਼ ਨੂੰ ਦੋ ਵਾਰ ਰਿਪੋਰਟ ਕਰਨ ਨਾਲ ਉਸਦਾ ਵਜ਼ਨ ਨਹੀਂ ਵਧਦਾ: ਅਸੀਂ ਹਰ ਵਿਅਕਤੀ ਦੀ ਇੱਕ ਰਿਪੋਰਟ ਰੱਖਦੇ ਹਾਂ।"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਉਸ ਵਿਅਕਤੀ ਨਾਲ ਸਾਂਝੀ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ। ਤੁਸੀਂ ਜੋ ਰਿਪੋਰਟ ਕੀਤਾ ਉਸਦੀ ਕਾਪੀ ਅਸੀਂ ਰੱਖਦੇ ਹਾਂ, ਤਾਂ ਜੋ ਮਿਟਾਏ ਜਾਣ ’ਤੇ ਵੀ ਉਸਦੀ ਸਮੀਖਿਆ ਹੋ ਸਕੇ।"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਮਿਲ ਗਈ ਹੈ ਅਤੇ ਸਮੀਖਿਆ ਦੀ ਕਤਾਰ ਵਿੱਚ ਹੈ। ਅਸੀਂ ਉਸ ਵਿਅਕਤੀ ਨੂੰ ਨਹੀਂ ਦੱਸਦੇ ਕਿ ਰਿਪੋਰਟ ਕਿਸਨੇ ਕੀਤੀ।"),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("ਆਪਣੀਆਂ ਰਿਪੋਰਟਾਂ ਦੇਖੋ"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਕੀ ਗ਼ਲਤ ਹੈ"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("ਦੱਸਣ ਲਈ ਧੰਨਵਾਦ"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name ਵਿੱਚ ਕੀ ਗ਼ਲਤ ਹੈ?"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ਸੁਨੇਹੇ ਵਿੱਚ ਕੀ ਗ਼ਲਤ ਹੈ?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ਪੋਸਟ ਵਿੱਚ ਕੀ ਗ਼ਲਤ ਹੈ?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ਜਵਾਬ ਵਿੱਚ ਕੀ ਗ਼ਲਤ ਹੈ?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("ਕਮਿਊਨਿਟੀ ਚੈਟ ਦਾ ਇੱਕ ਸੁਨੇਹਾ"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ਇੱਕ ਪੋਸਟ"),
@@ -1405,6 +1440,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੀਆਂ ਰਿਪੋਰਟਾਂ"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("ਬੱਚਿਆਂ ਦੀ ਸੁਰੱਖਿਆ"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "ਕੋਈ ਵੀ ਚੀਜ਼ ਜੋ ਕਿਸੇ ਨਾਬਾਲਗ ਨੂੰ ਖ਼ਤਰੇ ਵਿੱਚ ਪਾਵੇ ਜਾਂ ਉਸਦਾ ਜਿਨਸੀਕਰਨ ਕਰੇ।"),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "ਨਿਸ਼ਾਨਾ ਬਣਾ ਕੇ ਬਦਸਲੂਕੀ, ਧਮਕੀਆਂ ਜਾਂ ਅਣਚਾਹਿਆ ਸੰਪਰਕ।"),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "ਲੋਕਾਂ ’ਤੇ ਉਨ੍ਹਾਂ ਦੀ ਪਛਾਣ ਕਾਰਨ ਹਮਲੇ।"),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "ਕਿਸੇ ਗ਼ੈਰ-ਕਾਨੂੰਨੀ ਚੀਜ਼ ਦੀ ਵਿਕਰੀ ਜਾਂ ਪ੍ਰਚਾਰ।"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("ਕਿਸੇ ਹੋਰ ਹੋਣ ਦਾ ਦਿਖਾਵਾ ਕਰਨਾ।"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "ਤੁਹਾਡਾ ਕੰਮ ਜਾਂ ਟ੍ਰੇਡਮਾਰਕ ਇਜਾਜ਼ਤ ਤੋਂ ਬਿਨਾਂ ਵਰਤਦਾ ਹੈ।"),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "ਸਿਹਤ, ਚੋਣਾਂ ਜਾਂ ਘਟਨਾਵਾਂ ਬਾਰੇ ਗੁੰਮਰਾਹਕੁੰਨ ਦਾਅਵੇ।"),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "ਆਪਣੇ ਆਪ ਨੂੰ ਨੁਕਸਾਨ ਪਹੁੰਚਾਉਣ ਲਈ ਉਤਸ਼ਾਹਿਤ ਕਰਨਾ ਜਾਂ ਦਿਖਾਉਣਾ।"),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "ਚੇਤਾਵਨੀ ਤੋਂ ਬਿਨਾਂ ਦਿਖਾਈ ਗਈ ਜਿਨਸੀ ਸਮੱਗਰੀ।"),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "ਉੱਪਰੋਂ ਕੋਈ ਨਹੀਂ। ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਕੀ ਗ਼ਲਤ ਹੈ।"),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "ਵਾਰ-ਵਾਰ, ਗੁੰਮਰਾਹਕੁੰਨ ਜਾਂ ਅਣਚਾਹਿਆ ਪ੍ਰਚਾਰ।"),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "ਹਿੰਸਾ ਦੀ ਧਮਕੀ ਦੇਣਾ, ਉਸਦੀ ਵਡਿਆਈ ਕਰਨਾ ਜਾਂ ਉਸ ਲਈ ਭੜਕਾਉਣਾ।"),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("ਤੰਗ-ਪਰੇਸ਼ਾਨੀ ਜਾਂ ਧੱਕੇਸ਼ਾਹੀ"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("ਨਫ਼ਰਤੀ ਬੋਲ"),
@@ -1489,6 +1549,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("ਮਾਮਲਾ ਕਿਸ ਬਾਰੇ ਸੀ"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਖਾਤੇ ’ਤੇ ਪੱਕੀ ਪਾਬੰਦੀ ਹੈ"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("ਜਵਾਬ, \$date ਨੂੰ:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("ਅਪੀਲ"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ਫ਼ੈਸਲੇ ’ਤੇ ਅਪੀਲ ਕਰੋ"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "ਇਸ ਫ਼ੈਸਲੇ ’ਤੇ ਹੁਣ ਅਪੀਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਜੇ ਕੁਝ ਗ਼ਲਤ ਹੈ, ਤਾਂ ਸਹਾਇਤਾ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।"),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("ਅਪੀਲ ਦੀ ਸਮੀਖਿਆ ਹੋ ਰਹੀ ਹੈ"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("ਅਪੀਲ ਮਨਜ਼ੂਰ ਹੋਈ"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "ਟੀਮ ਦਾ ਕੋਈ ਹੋਰ ਮੈਂਬਰ ਇਸਨੂੰ ਦੁਬਾਰਾ ਦੇਖ ਰਿਹਾ ਹੈ। ਫ਼ੈਸਲਾ ਹੋਣ ’ਤੇ ਤੁਹਾਨੂੰ ਸੂਚਨਾ ਮਿਲੇਗੀ।"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "ਜੇ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਗ਼ਲਤੀ ਸੀ, ਤਾਂ ਤੁਸੀਂ \$date ਤੱਕ ਦੁਬਾਰਾ ਸਮੀਖਿਆ ਦੀ ਬੇਨਤੀ ਕਰ ਸਕਦੇ ਹੋ। ਫ਼ੈਸਲਾ ਟੀਮ ਦਾ ਕੋਈ ਹੋਰ ਮੈਂਬਰ ਕਰਦਾ ਹੈ।"),
+      "ui_standing_appeal_upheld":
+          MessageLookupByLibrary.simpleMessage("ਅਪੀਲ ਤੋਂ ਬਾਅਦ: ਫ਼ੈਸਲਾ ਕਾਇਮ ਹੈ"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "ਕੇਸ \$number। ਨਿਯਮ: \$rule। ਟੀਮ ਨੇ ਲਿਖਿਆ:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "ਖਾਤਾ ਮਿਟਾਉਣ ਨਾਲ ਪਾਬੰਦੀ ਨਹੀਂ ਹਟਦੀ: ਉਸੇ ਈਮੇਲ ਪਤੇ ਵਾਲਾ ਨਵਾਂ ਖਾਤਾ ਵੀ ਪਾਬੰਦੀ ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ।"),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("ਪੱਕੀ ਪਾਬੰਦੀ"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "ਸਿਰਫ਼ ਇਹ ਪੰਨਾ, ਅਪੀਲਾਂ, ਸਹਾਇਤਾ ਅਤੇ ਖਾਤਾ ਮਿਟਾਉਣਾ ਹੀ ਅਜੇ ਕੰਮ ਕਰਦੇ ਹਨ।"),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("ਅਪੀਲ ਹੋ ਸਕਦੀ ਹੈ"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("ਕੇਸ \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("\$date ਨੂੰ ਫ਼ੈਸਲਾ ਹੋਇਆ"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਖਾਤੇ ਬਾਰੇ ਫ਼ੈਸਲੇ"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਓ"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("ਵੇਰਵੇ ਦੇਖੋ"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("ਵੇਰਵੇ ਦੇਖੋ ਅਤੇ ਅਪੀਲ ਕਰੋ"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("\$date ਨੂੰ ਖ਼ਤਮ ਹੁੰਦਾ ਹੈ"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡਾ ਖਾਤਾ ਚੰਗੀ ਸਥਿਤੀ ਵਿੱਚ ਹੈ"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ’ਤੇ ਕੋਈ ਪਾਬੰਦੀ ਨਹੀਂ।"),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("ਖਾਤੇ ਦੀ ਸਥਿਤੀ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀ"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹਾ ਹਟਾਇਆ ਗਿਆ"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਖਾਤੇ ਬਾਰੇ ਕੋਈ ਫ਼ੈਸਲਾ ਨਹੀਂ ਹੋਇਆ। ਜੇ ਟੀਮ ਕਦੇ ਤੁਹਾਡੀ ਕੋਈ ਚੀਜ਼ ਹਟਾਉਂਦੀ ਹੈ ਜਾਂ ਤੁਹਾਡੇ ਖਾਤੇ ’ਤੇ ਪਾਬੰਦੀ ਲਗਾਉਂਦੀ ਹੈ, ਤਾਂ ਇਹ ਕਾਰਨ ਸਮੇਤ ਇੱਥੇ ਦਿਖੇਗਾ, ਅਤੇ ਤੁਸੀਂ ਅਪੀਲ ਕਰ ਸਕੋਗੇ।"),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "ਅਪੀਲ ਕਰਨ ਲਈ ਕੁਝ ਨਹੀਂ: ਫ਼ੈਸਲਾ ਰੱਦ ਕਰ ਦਿੱਤਾ ਗਿਆ।"),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("ਪੋਸਟ ਹਟਾਈ ਗਈ"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("ਦੁਬਾਰਾ ਜਾਂਚਣ ਲਈ ਹੇਠਾਂ ਖਿੱਚੋ।"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron ਦੇ ਨਿਯਮ ਪੜ੍ਹੋ"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("ਜਵਾਬ ਹਟਾਇਆ ਗਿਆ"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("ਰੱਦ ਕੀਤਾ ਗਿਆ"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date ਨੂੰ ਰੱਦ ਕੀਤਾ ਗਿਆ। ਜੋ ਕੁਝ ਹਟਾਇਆ ਗਿਆ ਸੀ ਉਹ ਵਾਪਸ ਆ ਗਿਆ ਹੈ, ਅਤੇ ਹੁਣ ਕੋਈ ਪਾਬੰਦੀ ਲਾਗੂ ਨਹੀਂ।"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("ਨਿਯਮ: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("ਸਾਈਨ ਆਊਟ ਕਰੋ"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("ਮੁਅੱਤਲ"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ ਪੜ੍ਹ ਸਕਦੇ ਹੋ, ਪਰ ਪੋਸਟ, ਜਵਾਬ, ਫ਼ਾਲੋ ਜਾਂ ਸੁਨੇਹਾ ਨਹੀਂ ਭੇਜ ਸਕਦੇ। ਰਿਪੋਰਟ, ਬਲੌਕ ਅਤੇ ਮਿਊਟ ਅਜੇ ਵੀ ਕੰਮ ਕਰਦੇ ਹਨ।"),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡਾ ਖਾਤਾ ਮੁਅੱਤਲ ਹੈ: ਤੁਸੀਂ ਪੜ੍ਹ ਸਕਦੇ ਹੋ, ਪਰ ਪੋਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ।"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date ਤੱਕ ਮੁਅੱਤਲ"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡਾ ਖਾਤਾ \$date ਤੱਕ ਮੁਅੱਤਲ ਹੈ: ਤੁਸੀਂ ਪੜ੍ਹ ਸਕਦੇ ਹੋ, ਪਰ ਪੋਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ।"),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("ਟੀਮ ਨੇ ਕੀ ਲਿਖਿਆ"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("ਖਾਤੇ ਦੀ ਸਥਿਤੀ"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("ਚੇਤਾਵਨੀ"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("ਕਿਉਂ?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("ਤੁਸੀਂ \$date ਨੂੰ ਲਿਖਿਆ:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡਾ ਸੁਨੇਹਾ"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੀ ਪੋਸਟ"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡਾ ਜਵਾਬ"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1522,7 +1674,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "ਕੀ ਹੋਇਆ, ਅਤੇ ਸਾਨੂੰ ਕੀ ਦੇਖਣਾ ਚਾਹੀਦਾ ਹੈ?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

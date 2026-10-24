@@ -8,11 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart' show DateFormat;
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/language.dart';
 import 'package:kyron_app/providers/preferences_provider.dart';
 import 'package:kyron_app/screens/settings_subscreens.dart';
 import 'package:kyron_app/services/app_preferences.dart';
+import 'package:kyron_app/utils/flutter_fallback_localizations.dart';
+import 'package:kyron_app/utils/local_date.dart';
 import 'package:kyron_app/widgets/language_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -140,6 +143,45 @@ void main() {
         ['ja', 'ko'],
       );
     });
+  });
+
+  group('every language in the list', () {
+    // Yoruba, Hausa, Igbo, Xhosa and Somali have no Material strings in
+    // Flutter. Choosing one left the app with none, and every back button
+    // and dialog threw while it was being built.
+    for (final language in Languages.all) {
+      testWidgets('${language.code} builds a screen', (tester) async {
+        String? date;
+        await tester.pumpWidget(
+          MaterialApp(
+            locale: language.locale,
+            supportedLocales: [for (final l in Languages.all) l.locale],
+            localizationsDelegates: appLocalizationsDelegates,
+            home: Builder(
+              builder: (context) {
+                date = localDate(
+                  Localizations.maybeLocaleOf(context)?.toLanguageTag(),
+                  DateFormat.yMMMd,
+                  DateTime(2026, 10, 18),
+                );
+                return Scaffold(
+                  appBar: AppBar(
+                    leading: const BackButton(),
+                    title: Text(AppLocalizations.of(context).done),
+                  ),
+                  body: const TextField(),
+                );
+              },
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
+        expect(find.byType(BackButton), findsOneWidget);
+        // Not '2026': Arabic, Persian and others write it in their own digits.
+        expect(date, isNotEmpty);
+      });
+    }
   });
 
   group('the app language reaches the widget tree', () {

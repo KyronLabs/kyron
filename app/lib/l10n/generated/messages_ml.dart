@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("മാറ്റുക"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("സപ്പോർട്ടുമായി ബന്ധപ്പെടുക"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("പൂർത്തിയായി"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("റിപ്പോർട്ട് ചെയ്യുക"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("റിപ്പോർട്ട് അയച്ചു"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport":
+          MessageLookupByLibrary.simpleMessage("റിപ്പോർട്ട് അയയ്ക്കുക"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1005,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("വീണ്ടും ശ്രമിക്കുക"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1015,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "തട്ടിപ്പിനെക്കുറിച്ച് ആളുകൾക്ക് മുന്നറിയിപ്പ് നൽകാനായിരുന്നു ഈ ഉദ്ധരണി."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "തീരുമാനം തെറ്റാണെന്ന് നിങ്ങൾ കരുതുന്നത് എന്തുകൊണ്ടെന്ന് പറയുക: പോസ്റ്റിന്റെ അർത്ഥം എന്തായിരുന്നു, ടീം എന്ത് ശ്രദ്ധിക്കാതെ പോയിരിക്കാം, അല്ലെങ്കിൽ നിയമം എന്തുകൊണ്ട് യോജിക്കുന്നില്ല. തീരുമാനമെടുത്തയാളല്ല, മറ്റൊരാളാണ് ഇത് വായിക്കുക."),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ അപ്പീൽ"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "കുറഞ്ഞത് \$count അക്ഷരങ്ങൾ എഴുതുക. ഓരോ തീരുമാനത്തിനും ഒരിക്കൽ അപ്പീൽ നൽകാം."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("അപ്പീൽ അയയ്ക്കുക"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "അപ്പീൽ അയച്ചു. തീരുമാനമായാൽ നിങ്ങൾക്ക് അറിയിപ്പ് ലഭിക്കും."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("കേസ് \$number-ലെ അപ്പീൽ"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1391,10 +1407,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "എന്തെങ്കിലും ചേർക്കാനുണ്ടോ? (ഓപ്ഷണൽ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "ടീം തീരുമാനിക്കുമ്പോൾ നിങ്ങൾക്ക് അറിയിപ്പ് ലഭിക്കും, നിങ്ങളുടെ റിപ്പോർട്ടുകളിൽ അത് പിന്തുടരാം."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "ഈ വ്യക്തിയെ ഇനി കാണാനും ആഗ്രഹിക്കുന്നില്ലെങ്കിൽ, അതേ മെനുവിൽ നിന്ന് മ്യൂട്ട് ചെയ്യുകയോ ബ്ലോക്ക് ചെയ്യുകയോ ചെയ്യാം."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "ഒരേ കാര്യം രണ്ടുതവണ റിപ്പോർട്ട് ചെയ്യുന്നത് അതിന് കൂടുതൽ പ്രാധാന്യം നൽകുന്നില്ല: ഓരോ വ്യക്തിയുടെയും ഒരു റിപ്പോർട്ട് മാത്രമേ ഞങ്ങൾ സൂക്ഷിക്കൂ."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ റിപ്പോർട്ട് ആ വ്യക്തിയുമായി പങ്കിടില്ല. നിങ്ങൾ റിപ്പോർട്ട് ചെയ്തതിന്റെ ഒരു പകർപ്പ് ഞങ്ങൾ സൂക്ഷിക്കുന്നു, അത് ഇല്ലാതാക്കിയാലും പരിശോധിക്കാൻ കഴിയും."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ റിപ്പോർട്ട് ലഭിച്ചു, അവലോകനത്തിനായി കാത്തിരിക്കുന്നു. ആരാണ് റിപ്പോർട്ട് ചെയ്തതെന്ന് ഞങ്ങൾ ആ വ്യക്തിയോട് പറയില്ല."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ റിപ്പോർട്ടുകൾ കാണുക"),
+      "ui_report_tell_us": MessageLookupByLibrary.simpleMessage(
+          "എന്താണ് പ്രശ്നമെന്ന് ഞങ്ങളോട് പറയുക"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("അറിയിച്ചതിന് നന്ദി"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name-ന് എന്താണ് പ്രശ്നം?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "ഈ സന്ദേശത്തിന് എന്താണ് പ്രശ്നം?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("ഈ പോസ്റ്റിന് എന്താണ് പ്രശ്നം?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("ഈ മറുപടിക്ക് എന്താണ് പ്രശ്നം?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "ഒരു കമ്മ്യൂണിറ്റി ചാറ്റ് സന്ദേശം"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("ഒരു പോസ്റ്റ്"),
@@ -1424,6 +1462,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ റിപ്പോർട്ടുകൾ"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("കുട്ടികളുടെ സുരക്ഷ"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "പ്രായപൂർത്തിയാകാത്തവരെ അപകടത്തിലാക്കുന്നതോ ലൈംഗികവൽക്കരിക്കുന്നതോ ആയ എന്തും."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "ലക്ഷ്യമിട്ടുള്ള ഉപദ്രവം, ഭീഷണികൾ അല്ലെങ്കിൽ ആവശ്യമില്ലാത്ത സമ്പർക്കം."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "ആളുകൾ ആരാണെന്നതിന്റെ പേരിലുള്ള ആക്രമണങ്ങൾ."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "നിയമവിരുദ്ധമായ എന്തെങ്കിലും വിൽക്കുകയോ പ്രചരിപ്പിക്കുകയോ ചെയ്യുന്നത്."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "മറ്റൊരാളായി ആൾമാറാട്ടം നടത്തുന്നത്."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "നിങ്ങളുടെ സൃഷ്ടിയോ ട്രേഡ്‌മാർക്കോ അനുമതിയില്ലാതെ ഉപയോഗിക്കുന്നു."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "ആരോഗ്യം, തിരഞ്ഞെടുപ്പുകൾ അല്ലെങ്കിൽ സംഭവങ്ങളെക്കുറിച്ചുള്ള തെറ്റിദ്ധരിപ്പിക്കുന്ന അവകാശവാദങ്ങൾ."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "സ്വയം ഉപദ്രവിക്കുന്നതിനെ പ്രോത്സാഹിപ്പിക്കുകയോ ചിത്രീകരിക്കുകയോ ചെയ്യുന്നത്."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "മുന്നറിയിപ്പില്ലാതെ കാണിക്കുന്ന ലൈംഗിക ഉള്ളടക്കം."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "മുകളിലുള്ളവയൊന്നുമല്ല. എന്താണ് പ്രശ്നമെന്ന് ഞങ്ങളോട് പറയുക."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "ആവർത്തിച്ചുള്ളതോ തെറ്റിദ്ധരിപ്പിക്കുന്നതോ ആവശ്യമില്ലാത്തതോ ആയ പ്രചാരണം."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "അക്രമം ഭീഷണിപ്പെടുത്തൽ, മഹത്വവൽക്കരിക്കൽ അല്ലെങ്കിൽ പ്രേരിപ്പിക്കൽ."),
       "ui_rule_harassment": MessageLookupByLibrary.simpleMessage(
           "ഉപദ്രവം അല്ലെങ്കിൽ ഭീഷണിപ്പെടുത്തൽ"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("വിദ്വേഷ പ്രസംഗം"),
@@ -1509,6 +1572,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("എന്തിനെക്കുറിച്ചായിരുന്നു"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് സ്ഥിരമായി വിലക്കിയിരിക്കുന്നു"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("മറുപടി, \$date-ന്:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("അപ്പീൽ"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "ഈ തീരുമാനത്തിനെതിരെ അപ്പീൽ നൽകുക"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "ഈ തീരുമാനത്തിനെതിരെ ഇനി അപ്പീൽ നൽകാനാവില്ല. എന്തെങ്കിലും തെറ്റുണ്ടെങ്കിൽ, സപ്പോർട്ടുമായി ബന്ധപ്പെടുക."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("അപ്പീൽ പരിശോധനയിലാണ്"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("അപ്പീൽ അംഗീകരിച്ചു"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "ടീമിലെ മറ്റൊരാൾ ഇത് വീണ്ടും പരിശോധിക്കുന്നു. തീരുമാനമായാൽ നിങ്ങൾക്ക് അറിയിപ്പ് ലഭിക്കും."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "ഇത് പിശകാണെന്ന് തോന്നുന്നുവെങ്കിൽ, \$date വരെ പുനഃപരിശോധന അഭ്യർത്ഥിക്കാം. ടീമിലെ മറ്റൊരാളാണ് തീരുമാനിക്കുക."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "അപ്പീലിന് ശേഷം: തീരുമാനം നിലനിൽക്കുന്നു"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "കേസ് \$number. നിയമം: \$rule. ടീം എഴുതിയത്:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "അക്കൗണ്ട് ഇല്ലാതാക്കിയാൽ വിലക്ക് നീങ്ങില്ല: അതേ ഇമെയിൽ വിലാസമുള്ള പുതിയ അക്കൗണ്ടും വിലക്കോടെയാണ് ആരംഭിക്കുക."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("സ്ഥിരമായ വിലക്ക്"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "ഈ പേജ്, അപ്പീലുകൾ, സപ്പോർട്ട്, അക്കൗണ്ട് ഇല്ലാതാക്കൽ എന്നിവ മാത്രമേ ഇപ്പോഴും പ്രവർത്തിക്കൂ."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("അപ്പീൽ നൽകാം"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("കേസ് \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("\$date-ന് തീരുമാനിച്ചു"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ടിനെക്കുറിച്ചുള്ള തീരുമാനങ്ങൾ"),
+      "ui_standing_delete_account": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കുക"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("വിശദാംശങ്ങൾ കാണുക"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "വിശദാംശങ്ങൾ കണ്ട് അപ്പീൽ നൽകുക"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("\$date-ന് അവസാനിക്കും"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് നല്ല നിലയിലാണ്"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("ഒരു നിയന്ത്രണവുമില്ല."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "അക്കൗണ്ട് നില ലോഡ് ചെയ്യാനായില്ല"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("സന്ദേശം നീക്കം ചെയ്തു"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ടിനെക്കുറിച്ച് ഒരു തീരുമാനവും എടുത്തിട്ടില്ല. ടീം എപ്പോഴെങ്കിലും നിങ്ങളുടെ എന്തെങ്കിലും നീക്കം ചെയ്യുകയോ അക്കൗണ്ട് നിയന്ത്രിക്കുകയോ ചെയ്താൽ, അത് കാരണം സഹിതം ഇവിടെ കാണിക്കും, നിങ്ങൾക്ക് അപ്പീൽ നൽകാം."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "അപ്പീൽ നൽകാൻ ഒന്നുമില്ല: തീരുമാനം റദ്ദാക്കി."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് നീക്കം ചെയ്തു"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "വീണ്ടും പരിശോധിക്കാൻ താഴേക്ക് വലിക്കുക."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron നിയമങ്ങൾ വായിക്കുക"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("മറുപടി നീക്കം ചെയ്തു"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("റദ്ദാക്കി"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date-ന് റദ്ദാക്കി. നീക്കം ചെയ്തതെല്ലാം തിരികെ വന്നു, ഇനി ഒരു നിയന്ത്രണവും ബാധകമല്ല."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("നിയമം: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("സൈൻ ഔട്ട്"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("സസ്പെൻഡ് ചെയ്തു"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾക്ക് വായിക്കാം, പക്ഷേ പോസ്റ്റ് ചെയ്യാനോ മറുപടി നൽകാനോ ഫോളോ ചെയ്യാനോ സന്ദേശം അയയ്ക്കാനോ കഴിയില്ല. റിപ്പോർട്ട്, ബ്ലോക്ക്, മ്യൂട്ട് എന്നിവ ഇപ്പോഴും പ്രവർത്തിക്കും."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് സസ്പെൻഡ് ചെയ്തിരിക്കുന്നു: നിങ്ങൾക്ക് വായിക്കാം, പക്ഷേ പോസ്റ്റ് ചെയ്യാനാവില്ല."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date വരെ സസ്പെൻഡ് ചെയ്തു"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ അക്കൗണ്ട് \$date വരെ സസ്പെൻഡ് ചെയ്തിരിക്കുന്നു: നിങ്ങൾക്ക് വായിക്കാം, പക്ഷേ പോസ്റ്റ് ചെയ്യാനാവില്ല."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("ടീം എഴുതിയത്"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("അക്കൗണ്ട് നില"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("മുന്നറിയിപ്പ്"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("എന്തുകൊണ്ട്?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങൾ \$date-ന് എഴുതിയത്:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ സന്ദേശം"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ പോസ്റ്റ്"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ മറുപടി"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1543,7 +1700,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "എന്താണ് സംഭവിച്ചത്, ഞങ്ങൾ എന്താണ് പരിശോധിക്കേണ്ടത്?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

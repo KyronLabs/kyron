@@ -1099,6 +1099,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Konto"),
       "ui_after": MessageLookupByLibrary.simpleMessage("Nach"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Gerät"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Ich habe den Betrug zitiert, um andere davor zu warnen."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Erkläre, warum die Entscheidung deiner Meinung nach falsch war: was der Beitrag bedeuten sollte, was das Team übersehen haben könnte oder warum die Regel nicht passt. Jemand anderes als die Person, die entschieden hat, liest ihn."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Dein Einspruch"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Schreibe mindestens \$count Zeichen. Gegen jede Entscheidung kannst du einmal Einspruch einlegen."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Einspruch senden"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Einspruch gesendet. Du bekommst eine Benachrichtigung, sobald entschieden ist."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Einspruch zu Fall \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Darstellung"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Hell, dunkel oder wie das Telefon eingestellt ist",
@@ -1477,10 +1490,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Einstellungen"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Datenschutz"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Möchtest du etwas ergänzen? (optional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Du bekommst eine Benachrichtigung, wenn das Team entschieden hat, und kannst es unter „Deine Meldungen“ verfolgen."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Wenn du sie auch nicht mehr sehen möchtest, kannst du sie im selben Menü stummschalten oder blockieren."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Dieselbe Sache zweimal zu melden, verleiht ihr kein größeres Gewicht: Wir behalten eine Meldung pro Person."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Deine Meldung wird nicht mit der Person geteilt. Wir bewahren eine Kopie des Gemeldeten auf, damit es auch nach dem Löschen noch geprüft werden kann."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Deine Meldung ist eingegangen und wartet auf Prüfung. Wir sagen der Person nicht, wer sie gemeldet hat."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Deine Meldungen ansehen"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Sag uns, was nicht stimmt"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Danke für deinen Hinweis"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("Was stimmt mit \$name nicht?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Was stimmt mit dieser Nachricht nicht?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Was stimmt mit diesem Beitrag nicht?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Was stimmt mit dieser Antwort nicht?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Eine Nachricht in einem Community-Chat"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Ein Beitrag"),
@@ -1511,6 +1546,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Deine Meldungen"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Kinderschutz"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Alles, was Minderjährige gefährdet oder sexualisiert."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Gezielte Beleidigungen, Drohungen oder unerwünschter Kontakt."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Angriffe auf Menschen dafür, wer sie sind."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Verkauf von oder Werbung für Rechtswidriges."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Sich als jemand anderes ausgeben."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Nutzt dein Werk oder deine Marke ohne Erlaubnis."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Irreführende Behauptungen über Gesundheit, Wahlen oder Ereignisse."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Selbstverletzung fördern oder darstellen."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Sexuelle Inhalte ohne Vorwarnung."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Nichts davon. Sag uns, was nicht stimmt."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Wiederholte, irreführende oder unerwünschte Werbung."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Gewalt androhen, verherrlichen oder dazu aufrufen."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Belästigung oder Mobbing"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Hassrede"),
@@ -1602,6 +1662,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Diesen Beitrag teilen",
       ),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Worum es ging"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Dein Konto ist dauerhaft gesperrt"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Die Antwort, am \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Einspruch"),
+      "ui_standing_appeal_button": MessageLookupByLibrary.simpleMessage(
+          "Einspruch gegen diese Entscheidung einlegen"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Gegen diese Entscheidung ist kein Einspruch mehr möglich. Wenn etwas nicht stimmt, wende dich an den Support."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Einspruch wird geprüft"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Einspruch angenommen"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Jemand anderes im Team sieht es sich noch einmal an. Du bekommst eine Benachrichtigung, sobald entschieden ist."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Wenn du das für einen Fehler hältst, kannst du bis \$date um eine erneute Prüfung bitten. Jemand anderes im Team entscheidet."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Einspruch eingelegt: Die Entscheidung bleibt bestehen"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Fall \$number. Regel: \$rule. Das Team schrieb:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Das Löschen deines Kontos hebt eine Sperre nicht auf: Ein neues Konto mit derselben E-Mail-Adresse ist ebenfalls gesperrt."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Dauerhaft gesperrt"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Nur diese Seite, Einsprüche, der Support und das Löschen deines Kontos funktionieren noch."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Einspruch möglich"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Fall \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Entschieden am \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Entscheidungen zu deinem Konto"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Konto löschen"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Details ansehen"),
+      "ui_standing_details_appeal": MessageLookupByLibrary.simpleMessage(
+          "Details ansehen und Einspruch einlegen"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Endet am \$date"),
+      "ui_standing_good": MessageLookupByLibrary.simpleMessage(
+          "Dein Konto ist in gutem Zustand"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Nichts schränkt es ein."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kontostatus konnte nicht geladen werden"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Nachricht entfernt"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Zu deinem Konto wurde nichts entschieden. Wenn das Team jemals etwas von dir entfernt oder dein Konto einschränkt, steht es hier mit dem Grund, und du kannst Einspruch einlegen."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Nichts anzufechten: Die Entscheidung wurde aufgehoben."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Beitrag entfernt"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Zum erneuten Prüfen nach unten ziehen."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyrons Regeln lesen"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Antwort entfernt"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Aufgehoben"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Aufgehoben am \$date. Alles Entfernte ist wieder da, und keine Einschränkung gilt mehr."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Regel: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Abmelden"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Vorübergehend gesperrt"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Du kannst lesen, aber nicht posten, antworten, folgen oder Nachrichten senden. Melden, Blockieren und Stummschalten funktionieren weiterhin."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Dein Konto ist vorübergehend gesperrt: Du kannst lesen, aber nicht posten."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Gesperrt bis \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Dein Konto ist bis \$date gesperrt: Du kannst lesen, aber nicht posten."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Was das Team geschrieben hat"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Kontostatus"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Verwarnung"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Warum?"),
+      "ui_standing_you_wrote": MessageLookupByLibrary.simpleMessage(
+          "Du hast am \$date geschrieben:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Deine Nachricht"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Dein Beitrag"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Deine Antwort"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Nutzungsbedingungen"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("diesen Beitrag"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage(

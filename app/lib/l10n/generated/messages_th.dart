@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("เปลี่ยน"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("ติดต่อฝ่ายสนับสนุน"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("เสร็จสิ้น"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("รายงาน"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("ส่งรายงานแล้ว"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("ส่งรายงาน"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("ลองอีกครั้ง"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "ฉันยกข้อความหลอกลวงมาเพื่อเตือนคนอื่น"),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "บอกเหตุผลที่คุณคิดว่าการตัดสินใจนั้นผิด เช่น โพสต์ตั้งใจจะสื่ออะไร ทีมอาจมองข้ามอะไรไป หรือทำไมกฎนี้ไม่เข้ากัน คนที่อ่านจะเป็นคนอื่น ไม่ใช่คนที่ตัดสิน"),
+      "ui_appeal_label":
+          MessageLookupByLibrary.simpleMessage("คำอุทธรณ์ของคุณ"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "เขียนอย่างน้อย \$count ตัวอักษร คุณอุทธรณ์แต่ละการตัดสินใจได้หนึ่งครั้ง"),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("ส่งคำอุทธรณ์"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "ส่งคำอุทธรณ์แล้ว คุณจะได้รับการแจ้งเตือนเมื่อมีการตัดสิน"),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("อุทธรณ์เคส \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1365,10 +1379,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "มีอะไรจะเพิ่มเติมไหม (ไม่บังคับ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "คุณจะได้รับการแจ้งเตือนเมื่อทีมตัดสิน และติดตามได้ในรายงานของคุณ"),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "หากคุณไม่อยากเห็นบุคคลนี้อีก สามารถปิดเสียงหรือบล็อกได้จากเมนูเดียวกัน"),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "การรายงานสิ่งเดียวกันสองครั้งไม่ได้ทำให้มีน้ำหนักมากขึ้น เราเก็บรายงานไว้หนึ่งรายการต่อคน"),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "รายงานของคุณจะไม่ถูกแชร์ให้บุคคลนั้น เราเก็บสำเนาสิ่งที่คุณรายงานไว้ เพื่อให้ตรวจสอบได้แม้ถูกลบไปแล้ว"),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "เราได้รับรายงานของคุณแล้วและอยู่ในคิวรอตรวจสอบ เราจะไม่บอกบุคคลนั้นว่าใครเป็นผู้รายงาน"),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("ดูรายงานของคุณ"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("บอกเราว่ามีอะไรผิดปกติ"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("ขอบคุณที่บอกเรา"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("\$name มีปัญหาอะไร"),
+      "ui_report_what_message":
+          MessageLookupByLibrary.simpleMessage("ข้อความนี้มีปัญหาอะไร"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("โพสต์นี้มีปัญหาอะไร"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("การตอบกลับนี้มีปัญหาอะไร"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("ข้อความในแชทชุมชน"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("โพสต์"),
@@ -1396,6 +1432,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("รายงานของคุณ"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("ความปลอดภัยของเด็ก"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "สิ่งใดก็ตามที่เป็นอันตรายต่อผู้เยาว์หรือทำให้ผู้เยาว์ถูกมองในเชิงทางเพศ"),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "การคุกคามแบบเจาะจง การข่มขู่ หรือการติดต่อที่ไม่ต้องการ"),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "การโจมตีผู้คนเพราะตัวตนของพวกเขา"),
+      "ui_rule_detail_illegal_goods":
+          MessageLookupByLibrary.simpleMessage("การขายหรือโปรโมตสิ่งผิดกฎหมาย"),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("การแอบอ้างเป็นคนอื่น"),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "ใช้ผลงานหรือเครื่องหมายการค้าของคุณโดยไม่ได้รับอนุญาต"),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "การกล่าวอ้างที่ชวนให้เข้าใจผิดเกี่ยวกับสุขภาพ การเลือกตั้ง หรือเหตุการณ์"),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "การส่งเสริมหรือแสดงการทำร้ายตัวเอง"),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "เนื้อหาทางเพศที่แสดงโดยไม่มีคำเตือน"),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "ไม่ใช่ข้อใดข้างต้น บอกเราว่ามีอะไรผิดปกติ"),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "การโปรโมตซ้ำๆ ชวนให้เข้าใจผิด หรือไม่พึงประสงค์"),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "การข่มขู่ การเชิดชู หรือการยุยงให้ใช้ความรุนแรง"),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("การคุกคามหรือกลั่นแกล้ง"),
       "ui_rule_hate":
@@ -1482,6 +1543,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("เกี่ยวกับอะไร"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณถูกแบนถาวร"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("คำตอบ เมื่อ \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("อุทธรณ์"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("อุทธรณ์การตัดสินใจนี้"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "การตัดสินใจนี้ไม่สามารถอุทธรณ์ได้อีกแล้ว หากมีอะไรผิดพลาด โปรดติดต่อฝ่ายสนับสนุน"),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("กำลังพิจารณาคำอุทธรณ์"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("คำอุทธรณ์ได้รับการยอมรับ"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "อีกคนในทีมกำลังตรวจสอบอีกครั้ง คุณจะได้รับการแจ้งเตือนเมื่อมีการตัดสิน"),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "หากคุณคิดว่านี่เป็นความผิดพลาด คุณขอให้ตรวจสอบใหม่ได้จนถึง \$date คนอื่นในทีมจะเป็นผู้ตัดสิน"),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "อุทธรณ์แล้ว: คงการตัดสินใจเดิม"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "เคส \$number กฎ: \$rule ทีมเขียนว่า:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "การลบบัญชีไม่ได้ยกเลิกการแบน บัญชีใหม่ที่ใช้อีเมลเดิมจะถูกแบนตั้งแต่เริ่มด้วย"),
+      "ui_standing_banned": MessageLookupByLibrary.simpleMessage("ถูกแบนถาวร"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "ใช้งานได้เฉพาะหน้านี้ การอุทธรณ์ ฝ่ายสนับสนุน และการลบบัญชี"),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("อุทธรณ์ได้"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("เคส \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("ตัดสินเมื่อ \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "การตัดสินใจเกี่ยวกับบัญชีของคุณ"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("ลบบัญชีของคุณ"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("ดูรายละเอียด"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("ดูรายละเอียดและอุทธรณ์"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("สิ้นสุด \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณอยู่ในสถานะดี"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("ไม่มีข้อจำกัดใดๆ"),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("โหลดสถานะบัญชีไม่ได้"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("ลบข้อความแล้ว"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "ยังไม่มีการตัดสินใจใดๆ เกี่ยวกับบัญชีของคุณ หากทีมลบเนื้อหาของคุณหรือจำกัดบัญชีของคุณ จะแสดงไว้ที่นี่พร้อมเหตุผล และคุณสามารถอุทธรณ์ได้"),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "ไม่มีอะไรให้อุทธรณ์: การตัดสินใจถูกยกเลิกแล้ว"),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("ลบโพสต์แล้ว"),
+      "ui_standing_pull_to_check":
+          MessageLookupByLibrary.simpleMessage("ดึงลงเพื่อตรวจสอบอีกครั้ง"),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("อ่านกฎของ Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("ลบการตอบกลับแล้ว"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("ยกเลิกแล้ว"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "ยกเลิกเมื่อ \$date สิ่งที่ถูกลบได้กลับคืนมาแล้ว และไม่มีข้อจำกัดใดมีผลอีก"),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("กฎ: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("ออกจากระบบ"),
+      "ui_standing_suspended": MessageLookupByLibrary.simpleMessage("ถูกระงับ"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณอ่านได้ แต่โพสต์ ตอบกลับ ติดตาม หรือส่งข้อความไม่ได้ การรายงาน การบล็อก และการปิดเสียงยังใช้ได้"),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "บัญชีของคุณถูกระงับ: คุณอ่านได้ แต่โพสต์ไม่ได้"),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("ระงับถึง \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "บัญชีของคุณถูกระงับถึง \$date: คุณอ่านได้ แต่โพสต์ไม่ได้"),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("สิ่งที่ทีมเขียน"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("สถานะบัญชี"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("คำเตือน"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("ดูเหตุผล"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("คุณเขียนเมื่อ \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("ข้อความของคุณ"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("โพสต์ของคุณ"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("การตอบกลับของคุณ"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1515,7 +1668,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "เกิดอะไรขึ้น และเราควรดูอะไร",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

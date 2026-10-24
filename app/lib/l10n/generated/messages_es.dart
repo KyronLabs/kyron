@@ -238,6 +238,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "translate": MessageLookupByLibrary.simpleMessage("Traduccir"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Estaba citando la estafa para advertir a la gente."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Explica por qué crees que la decisión fue un error: qué quería decir la publicación, qué pudo pasar por alto el equipo o por qué la regla no aplica. La leerá alguien distinto de quien decidió."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Tu apelación"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Escribe al menos \$count caracteres. Puedes apelar cada decisión una sola vez."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Enviar apelación"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Apelación enviada. Recibirás una notificación cuando se decida."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Apelar el caso \$number"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Para qué es (opcional)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -509,10 +522,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Enviar para ver una vez"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Toca para ver"),
+      "ui_report_add":
+          MessageLookupByLibrary.simpleMessage("¿Algo que añadir? (opcional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Recibirás una notificación cuando el equipo decida, y puedes seguirlo en Tus reportes."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Si además quieres dejar de ver a esa persona, puedes silenciarla o bloquearla desde el mismo menú."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Reportar lo mismo dos veces no le da más peso: guardamos un reporte por persona."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Tu reporte no se comparte con la otra persona. Guardamos una copia de lo que reportaste para poder revisarlo aunque se elimine."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Recibimos tu reporte y está en cola para revisión. No le decimos a la otra persona quién lo reportó."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Ver tus reportes"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Cuéntanos qué pasa"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Gracias por avisarnos"),
+      "ui_report_what_account":
+          MessageLookupByLibrary.simpleMessage("¿Qué problema hay con \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "¿Qué problema hay con este mensaje?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "¿Qué problema hay con esta publicación?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "¿Qué problema hay con esta respuesta?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Un mensaje de un chat de comunidad"),
       "ui_reports_a_post":
@@ -542,6 +577,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Tus reportes"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Seguridad infantil"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Cualquier cosa que ponga en peligro o sexualice a un menor."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Abuso dirigido, amenazas o contacto no deseado."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Ataques a personas por quienes son."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Vender o promocionar algo ilegal."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Hacerse pasar por otra persona."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Usa tu obra o tu marca sin permiso."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Afirmaciones engañosas sobre salud, elecciones o acontecimientos."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Fomentar o mostrar autolesiones."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Contenido sexual mostrado sin advertencia."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Nada de lo anterior. Cuéntanos qué pasa."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Promoción repetitiva, engañosa o no deseada."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Amenazar, glorificar o incitar a hacer daño."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Acoso o intimidación"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Discurso de odio"),
@@ -562,6 +622,101 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Violencia o amenazas"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("De qué se trataba"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Tu cuenta está suspendida de forma permanente"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("La respuesta, el \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Apelación"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Apelar esta decisión"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Ya no se puede apelar esta decisión. Si algo está mal, contacta con soporte."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Apelación en revisión"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Apelación aceptada"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Otra persona del equipo lo está revisando de nuevo. Recibirás una notificación cuando se decida."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Si crees que fue un error, puedes pedir que se revise de nuevo hasta el \$date. Decide otra persona del equipo."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Apelada: la decisión se mantiene"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Caso \$number. Regla: \$rule. El equipo dijo:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Eliminar tu cuenta no anula una suspensión permanente: una cuenta nueva con el mismo correo también empieza suspendida."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Suspendida permanentemente"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Solo esta página, las apelaciones, el soporte y eliminar tu cuenta siguen funcionando."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Se puede apelar"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Caso \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Decidido el \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Decisiones sobre tu cuenta"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Eliminar tu cuenta"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Ver detalles"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Ver detalles y apelar"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Termina el \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Tu cuenta está en regla"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("No tiene ninguna restricción."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "No se pudo cargar el estado de la cuenta"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Mensaje eliminado"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "No se ha decidido nada sobre tu cuenta. Si el equipo alguna vez elimina algo tuyo o restringe tu cuenta, aparecerá aquí con el motivo y podrás apelarlo."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "No hay nada que apelar: la decisión se revocó."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Publicación eliminada"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Desliza hacia abajo para volver a comprobar."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Leer las normas de Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Respuesta eliminada"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Revocada"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Revocada el \$date. Todo lo que se eliminó ha vuelto y ya no se aplica ninguna restricción."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Regla: \$rule"),
+      "ui_standing_sign_out":
+          MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Suspendida"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Puedes leer, pero no publicar, responder, seguir ni enviar mensajes. Reportar, bloquear y silenciar siguen funcionando."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Tu cuenta está suspendida: puedes leer, pero no publicar."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Suspendida hasta el \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Tu cuenta está suspendida hasta el \$date: puedes leer, pero no publicar."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Lo que dijo el equipo"),
+      "ui_standing_title":
+          MessageLookupByLibrary.simpleMessage("Estado de la cuenta"),
+      "ui_standing_warning":
+          MessageLookupByLibrary.simpleMessage("Advertencia"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("¿Por qué?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Escribiste, el \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Tu mensaje"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Tu publicación"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Tu respuesta"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Reintentar"),
       "undoRepost":
           MessageLookupByLibrary.simpleMessage("Deshacer republicación"),

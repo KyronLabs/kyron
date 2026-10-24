@@ -11,7 +11,6 @@ import 'services/draft_service.dart';
 import 'services/platform_support.dart';
 
 import 'package:kyron_design_system/kyron_design_system.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'l10n/app_localizations.dart';
 import 'models/app_theme.dart';
@@ -30,6 +29,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'config/supabase_config.dart';
+import 'utils/flutter_fallback_localizations.dart';
 import 'utils/route_watch.dart';
 import 'services/firebase_push.dart';
 import 'services/push_tap.dart';
@@ -251,14 +251,28 @@ class _KyronAppState extends ConsumerState<KyronApp> {
     }
     _remindedAt = now;
     final until = restriction.until;
+    // The navigator sits under the app's Localizations, so its context reads
+    // the reader's language.
+    final l10n = AppLocalizations.of(navigator.context);
     Toast.showOn(
       navigator.overlay,
       until == null
-          ? 'Your account is suspended: you can read, but not post.'
-          : 'Your account is suspended until ${standingMoment(until)}: you '
-              'can read, but not post.',
+          ? l10n.ui(
+              'ui_standing_suspended_toast',
+              'Your account is suspended: you can read, but not post.',
+            )
+          : l10n
+              .ui(
+                'ui_standing_suspended_until_toast',
+                r'Your account is suspended until $date: you can read, but '
+                    'not post.',
+              )
+              .replaceAll(
+                r'$date',
+                standingMoment(until, locale: readerLocale(navigator.context)),
+              ),
       action: ToastAction(
-        'Why?',
+        l10n.ui('ui_standing_why', 'Why?'),
         () => navigator.pushNamed(Routes.accountStatus),
       ),
     );
@@ -447,12 +461,9 @@ class _KyronAppState extends ConsumerState<KyronApp> {
       // and Urdu, because Directionality comes from the locale.
       locale: language.locale,
       supportedLocales: [for (final l in Languages.all) l.locale],
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      // Flutter's own strings fall back to English for the languages it has
+      // none for, rather than to none at all.
+      localizationsDelegates: appLocalizationsDelegates,
       // Flutter ships translations for most of this list but not all of it.
       // Without this, asking for one it does not have drops the app to the
       // first supported locale -- which is whatever happens to be first in

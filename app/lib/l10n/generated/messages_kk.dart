@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Өзгерту"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Қолдау қызметіне хабарласу"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Дайын"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Шағымдану"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Шағым жіберілді"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Шағым жіберу"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Қайталап көру"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Бұл дәйексөз адамдарды алаяқтықтан сақтандыру үшін еді."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Шешім неге қате деп ойлайтыныңызды жазыңыз: жазба нені білдірді, команда нені байқамай қалуы мүмкін немесе ереже неге сәйкес келмейді. Оны шешім қабылдаған адам емес, басқа біреу оқиды."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Апелляцияңыз"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Кемінде \$count таңба жазыңыз. Әр шешімге бір рет апелляция бере аласыз."),
+      "ui_appeal_send":
+          MessageLookupByLibrary.simpleMessage("Апелляцияны жіберу"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Апелляция жіберілді. Шешім шыққанда хабарландыру аласыз."),
+      "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
+          "\$number ісі бойынша апелляция"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1376,10 +1390,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Қосатын нәрсе бар ма? (міндетті емес)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Команда шешім қабылдағанда хабарландыру аласыз, оны «Шағымдарыңыз» бөлімінде бақылай аласыз."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Бұл адамды енді көргіңіз келмесе, сол мәзірден оның дыбысын өшіріп немесе бұғаттай аласыз."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Бір нәрсеге екі рет шағымдану оның салмағын арттырмайды: әр адамнан бір шағым сақтаймыз."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Шағымыңыз ол адамға көрсетілмейді. Жойылса да тексеруге болатындай, сіз шағымданған нәрсенің көшірмесін сақтаймыз."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Шағымыңыз қабылданды және тексеруді күтуде. Ол адамға кім шағымданғанын айтпаймыз."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Шағымдарыңызды көру"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Не дұрыс емес екенін айтыңыз"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Хабарлағаныңыз үшін рақмет"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "\$name аккаунтында не дұрыс емес?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Бұл хабарламада не дұрыс емес?"),
+      "ui_report_what_post":
+          MessageLookupByLibrary.simpleMessage("Бұл жазбада не дұрыс емес?"),
+      "ui_report_what_reply":
+          MessageLookupByLibrary.simpleMessage("Бұл жауапта не дұрыс емес?"),
       "ui_reports_a_message": MessageLookupByLibrary.simpleMessage(
           "Қауымдастық чатындағы хабарлама"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Жазба"),
@@ -1406,6 +1442,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Шағымдарыңыз"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Балалар қауіпсіздігі"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Кәмелетке толмағандарға қауіп төндіретін немесе оларды сексуализациялайтын кез келген нәрсе."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Нысаналы қорлау, қоқан-лоқы немесе қалаусыз байланыс."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Адамдарға кім екені үшін шабуыл жасау."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Заңсыз нәрсені сату немесе жарнамалау."),
+      "ui_rule_detail_impersonation":
+          MessageLookupByLibrary.simpleMessage("Басқа адамның атын жамылу."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Шығармаңызды немесе тауар белгіңізді рұқсатсыз пайдаланады."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Денсаулық, сайлау немесе оқиғалар туралы жаңылыстыратын мәлімдемелер."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Өзіне зиян келтіруді насихаттау немесе көрсету."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Ескертусіз көрсетілген жыныстық мазмұн."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Бұлардың ешқайсысы емес. Не дұрыс емес екенін айтыңыз."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Қайталанатын, жаңылыстыратын немесе қалаусыз жарнама."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Зорлық-зомбылықпен қорқыту, оны дәріптеу немесе оған итермелеу."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Қудалау немесе буллинг"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Өшпенділік сөзі"),
@@ -1491,6 +1552,97 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("Не туралы болды"),
+      "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз біржола бұғатталды"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Жауап, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Апелляция"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Бұл шешімге апелляция беру"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "Бұл шешімге енді апелляция беру мүмкін емес. Бірдеңе дұрыс болмаса, қолдау қызметіне жазыңыз."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Апелляция қаралуда"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Апелляция қанағаттандырылды"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Командадағы басқа біреу оны қайта қарап жатыр. Шешім шыққанда хабарландыру аласыз."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Бұл қате деп ойласаңыз, \$date дейін қайта қарауды сұрай аласыз. Шешімді командадағы басқа біреу қабылдайды."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "Апелляция берілді: шешім күшінде қалады"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Іс \$number. Ереже: \$rule. Команда былай деп жазды:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтты жою бұғатты алмайды: сол электрондық пошта мекенжайымен ашылған жаңа аккаунт та бұғатталған күйде басталады."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Біржола бұғатталған"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Тек осы бет, апелляциялар, қолдау және аккаунтты жою ғана жұмыс істейді."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Апелляция беруге болады"),
+      "ui_standing_case": MessageLookupByLibrary.simpleMessage("Іс \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Шешім күні: \$date"),
+      "ui_standing_decisions": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңызға қатысты шешімдер"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңызды жою"),
+      "ui_standing_details": MessageLookupByLibrary.simpleMessage("Толығырақ"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Толығырақ және апелляция беру"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Аяқталу күні: \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз жақсы күйде"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Ешқандай шектеу жоқ."),
+      "ui_standing_load_failed":
+          MessageLookupByLibrary.simpleMessage("Аккаунт күйі жүктелмеді"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Хабарлама жойылды"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз туралы ешқандай шешім қабылданбаған. Егер команда бір кезде сіздің бір нәрсеңізді жойса немесе аккаунтыңызды шектесе, ол мұнда себебімен бірге көрсетіледі және апелляция бере аласыз."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Апелляция беретін ештеңе жоқ: шешімнің күші жойылды."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Жазба жойылды"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Қайта тексеру үшін төмен тартыңыз."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Kyron ережелерін оқу"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Жауап жойылды"),
+      "ui_standing_reversed":
+          MessageLookupByLibrary.simpleMessage("Күші жойылды"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "\$date күні күші жойылды. Жойылғанның бәрі қайтарылды, енді ешқандай шектеу қолданылмайды."),
+      "ui_standing_rule": MessageLookupByLibrary.simpleMessage("Ереже: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Шығу"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Тоқтатылған"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Оқи аласыз, бірақ жариялай, жауап бере, жазыла немесе хабарлама жібере алмайсыз. Шағымдану, бұғаттау және дыбысын өшіру жұмыс істей береді."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз тоқтатылған: оқи аласыз, бірақ жариялай алмайсыз."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("\$date дейін тоқтатылған"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз \$date дейін тоқтатылған: оқи аласыз, бірақ жариялай алмайсыз."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Команда не жазды"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Аккаунт күйі"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Ескерту"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Неге?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Сіз \$date жаздыңыз:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Хабарламаңыз"),
+      "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("Жазбаңыз"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Жауабыңыз"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1524,7 +1676,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Не болды және нені тексеруіміз керек?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",

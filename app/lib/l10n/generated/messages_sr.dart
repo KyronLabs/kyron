@@ -195,7 +195,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "By signing up you agree to our",
       ),
       "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-      "change": MessageLookupByLibrary.simpleMessage("Change"),
+      "change": MessageLookupByLibrary.simpleMessage("Промени"),
       "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
         "Check your email to confirm your account.",
@@ -231,7 +231,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "confirmPassword":
           MessageLookupByLibrary.simpleMessage("Confirm password"),
-      "contactSupport": MessageLookupByLibrary.simpleMessage("Contact support"),
+      "contactSupport":
+          MessageLookupByLibrary.simpleMessage("Контактирај подршку"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
         "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
       ),
@@ -273,7 +274,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "description": MessageLookupByLibrary.simpleMessage("Description"),
       "didCopied":
           MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
-      "done": MessageLookupByLibrary.simpleMessage("Done"),
+      "done": MessageLookupByLibrary.simpleMessage("Готово"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
         "Close the composer with something written and you will be offered a draft.",
       ),
@@ -911,11 +912,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "reply_who_can_reply":
           MessageLookupByLibrary.simpleMessage("Who can reply?"),
-      "report": MessageLookupByLibrary.simpleMessage("Report"),
+      "report": MessageLookupByLibrary.simpleMessage("Пријави"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
         "Report copied. Paste it into an email to support.",
       ),
-      "reportSent": MessageLookupByLibrary.simpleMessage("Report sent"),
+      "reportSent": MessageLookupByLibrary.simpleMessage("Пријава је послата"),
       "repost": MessageLookupByLibrary.simpleMessage("Repost"),
       "reset": MessageLookupByLibrary.simpleMessage("Reset"),
       "resetPassword":
@@ -955,7 +956,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "sendErrorReport":
           MessageLookupByLibrary.simpleMessage("Send error report"),
       "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
-      "sendReport": MessageLookupByLibrary.simpleMessage("Send report"),
+      "sendReport": MessageLookupByLibrary.simpleMessage("Пошаљи пријаву"),
       "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
       "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
       "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -1003,7 +1004,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "translation_description": MessageLookupByLibrary.simpleMessage(
         "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
       ),
-      "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+      "tryAgain": MessageLookupByLibrary.simpleMessage("Покушај поново"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privacy Policy",
       ),
@@ -1013,6 +1014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
       "ui_after": MessageLookupByLibrary.simpleMessage("After"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
+          "Цитат је требало да упозори друге на превару."),
+      "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
+          "Напишите зашто мислите да је одлука била погрешна: шта је објава значила, шта је тим можда пропустио или зашто правило не одговара. Прочитаће је неко други, а не онај ко је одлучио."),
+      "ui_appeal_label": MessageLookupByLibrary.simpleMessage("Ваша жалба"),
+      "ui_appeal_rules": MessageLookupByLibrary.simpleMessage(
+          "Напишите најмање \$count знакова. На сваку одлуку можете да се жалите једном."),
+      "ui_appeal_send": MessageLookupByLibrary.simpleMessage("Пошаљи жалбу"),
+      "ui_appeal_sent": MessageLookupByLibrary.simpleMessage(
+          "Жалба је послата. Добићете обавештење када се одлучи."),
+      "ui_appeal_title":
+          MessageLookupByLibrary.simpleMessage("Жалба на случај \$number"),
       "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Light, dark, or whatever the phone is set to",
@@ -1381,10 +1394,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_report_add": MessageLookupByLibrary.simpleMessage(
+          "Желите ли нешто да додате? (опционо)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
           "Када тим одлучи, добићете обавештење, а случај можете пратити у одељку Ваше пријаве."),
+      "ui_report_mute_block": MessageLookupByLibrary.simpleMessage(
+          "Ако ту особу такође више не желите да видите, утишајте је или блокирајте у истом менију."),
+      "ui_report_once": MessageLookupByLibrary.simpleMessage(
+          "Пријављивање исте ствари двапут не даје јој већу тежину: чувамо једну пријаву по особи."),
+      "ui_report_private": MessageLookupByLibrary.simpleMessage(
+          "Ваша пријава се не дели са том особом. Чувамо копију пријављеног садржаја како би могао да се прегледа и ако буде избрисан."),
+      "ui_report_received": MessageLookupByLibrary.simpleMessage(
+          "Ваша пријава је примљена и чека на преглед. Тој особи не кажемо ко ју је пријавио."),
       "ui_report_see_reports":
           MessageLookupByLibrary.simpleMessage("Погледајте своје пријаве"),
+      "ui_report_tell_us":
+          MessageLookupByLibrary.simpleMessage("Реците нам шта није у реду"),
+      "ui_report_thanks":
+          MessageLookupByLibrary.simpleMessage("Хвала што сте нам рекли"),
+      "ui_report_what_account": MessageLookupByLibrary.simpleMessage(
+          "Шта није у реду са налогом \$name?"),
+      "ui_report_what_message": MessageLookupByLibrary.simpleMessage(
+          "Шта није у реду са овом поруком?"),
+      "ui_report_what_post": MessageLookupByLibrary.simpleMessage(
+          "Шта није у реду са овом објавом?"),
+      "ui_report_what_reply": MessageLookupByLibrary.simpleMessage(
+          "Шта није у реду са овим одговором?"),
       "ui_reports_a_message":
           MessageLookupByLibrary.simpleMessage("Порука у ћаскању заједнице"),
       "ui_reports_a_post": MessageLookupByLibrary.simpleMessage("Објава"),
@@ -1412,6 +1447,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_reports_title": MessageLookupByLibrary.simpleMessage("Ваше пријаве"),
       "ui_rule_child_safety":
           MessageLookupByLibrary.simpleMessage("Безбедност деце"),
+      "ui_rule_detail_child_safety": MessageLookupByLibrary.simpleMessage(
+          "Све што угрожава или сексуализује малолетнике."),
+      "ui_rule_detail_harassment": MessageLookupByLibrary.simpleMessage(
+          "Циљано злостављање, претње или нежељени контакт."),
+      "ui_rule_detail_hate": MessageLookupByLibrary.simpleMessage(
+          "Напади на људе због тога ко су."),
+      "ui_rule_detail_illegal_goods": MessageLookupByLibrary.simpleMessage(
+          "Продаја или промовисање нечег незаконитог."),
+      "ui_rule_detail_impersonation": MessageLookupByLibrary.simpleMessage(
+          "Лажно представљање као неко други."),
+      "ui_rule_detail_intellectual_property":
+          MessageLookupByLibrary.simpleMessage(
+              "Користи ваше дело или жиг без дозволе."),
+      "ui_rule_detail_misinformation": MessageLookupByLibrary.simpleMessage(
+          "Обмањујуће тврдње о здрављу, изборима или догађајима."),
+      "ui_rule_detail_self_harm": MessageLookupByLibrary.simpleMessage(
+          "Подстицање или приказивање самоповређивања."),
+      "ui_rule_detail_sexual_content": MessageLookupByLibrary.simpleMessage(
+          "Сексуални садржај приказан без упозорења."),
+      "ui_rule_detail_something_else": MessageLookupByLibrary.simpleMessage(
+          "Ништа од наведеног. Реците нам шта није у реду."),
+      "ui_rule_detail_spam": MessageLookupByLibrary.simpleMessage(
+          "Понављајуће, обмањујуће или нежељено оглашавање."),
+      "ui_rule_detail_violence": MessageLookupByLibrary.simpleMessage(
+          "Претње насиљем, величање насиља или подстицање на њега."),
       "ui_rule_harassment":
           MessageLookupByLibrary.simpleMessage("Узнемиравање или малтретирање"),
       "ui_rule_hate": MessageLookupByLibrary.simpleMessage("Говор мржње"),
@@ -1497,6 +1557,100 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
+      "ui_standing_about":
+          MessageLookupByLibrary.simpleMessage("На шта се односило"),
+      "ui_standing_account_banned":
+          MessageLookupByLibrary.simpleMessage("Ваш налог је трајно забрањен"),
+      "ui_standing_answer":
+          MessageLookupByLibrary.simpleMessage("Одговор, \$date:"),
+      "ui_standing_appeal": MessageLookupByLibrary.simpleMessage("Жалба"),
+      "ui_standing_appeal_button":
+          MessageLookupByLibrary.simpleMessage("Уложи жалбу на ову одлуку"),
+      "ui_standing_appeal_closed": MessageLookupByLibrary.simpleMessage(
+          "На ову одлуку више није могуће уложити жалбу. Ако нешто није у реду, обратите се подршци."),
+      "ui_standing_appeal_open":
+          MessageLookupByLibrary.simpleMessage("Жалба се разматра"),
+      "ui_standing_appeal_overturned":
+          MessageLookupByLibrary.simpleMessage("Жалба прихваћена"),
+      "ui_standing_appeal_pending": MessageLookupByLibrary.simpleMessage(
+          "Неко други из тима поново то прегледа. Добићете обавештење када се одлучи."),
+      "ui_standing_appeal_until": MessageLookupByLibrary.simpleMessage(
+          "Ако мислите да је реч о грешци, до \$date можете да затражите поновни преглед. Одлучује неко други из тима."),
+      "ui_standing_appeal_upheld": MessageLookupByLibrary.simpleMessage(
+          "После жалбе: одлука остаје на снази"),
+      "ui_standing_ban_case": MessageLookupByLibrary.simpleMessage(
+          "Случај \$number. Правило: \$rule. Тим је написао:"),
+      "ui_standing_ban_note": MessageLookupByLibrary.simpleMessage(
+          "Брисање налога не укида забрану: нови налог са истом адресом е-поште такође ће бити забрањен."),
+      "ui_standing_banned":
+          MessageLookupByLibrary.simpleMessage("Трајно забрањен"),
+      "ui_standing_banned_detail": MessageLookupByLibrary.simpleMessage(
+          "Раде само још ова страница, жалбе, подршка и брисање налога."),
+      "ui_standing_can_appeal":
+          MessageLookupByLibrary.simpleMessage("Могућа жалба"),
+      "ui_standing_case":
+          MessageLookupByLibrary.simpleMessage("Случај \$number"),
+      "ui_standing_decided":
+          MessageLookupByLibrary.simpleMessage("Одлучено \$date"),
+      "ui_standing_decisions":
+          MessageLookupByLibrary.simpleMessage("Одлуке о вашем налогу"),
+      "ui_standing_delete_account":
+          MessageLookupByLibrary.simpleMessage("Избриши налог"),
+      "ui_standing_details":
+          MessageLookupByLibrary.simpleMessage("Прикажи детаље"),
+      "ui_standing_details_appeal":
+          MessageLookupByLibrary.simpleMessage("Прикажи детаље и уложи жалбу"),
+      "ui_standing_ends":
+          MessageLookupByLibrary.simpleMessage("Завршава се \$date"),
+      "ui_standing_good":
+          MessageLookupByLibrary.simpleMessage("Ваш налог је у реду"),
+      "ui_standing_good_detail":
+          MessageLookupByLibrary.simpleMessage("Ништа га не ограничава."),
+      "ui_standing_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Стање налога није могуће учитати"),
+      "ui_standing_message_removed":
+          MessageLookupByLibrary.simpleMessage("Порука уклоњена"),
+      "ui_standing_nothing_decided": MessageLookupByLibrary.simpleMessage(
+          "О вашем налогу ништа није одлучено. Ако тим икада уклони нешто ваше или ограничи ваш налог, то ће бити наведено овде са разлогом и моћи ћете да уложите жалбу."),
+      "ui_standing_nothing_to_appeal": MessageLookupByLibrary.simpleMessage(
+          "Нема на шта да се жалите: одлука је поништена."),
+      "ui_standing_post_removed":
+          MessageLookupByLibrary.simpleMessage("Објава уклоњена"),
+      "ui_standing_pull_to_check": MessageLookupByLibrary.simpleMessage(
+          "Повуците надоле да проверите поново."),
+      "ui_standing_read_rules":
+          MessageLookupByLibrary.simpleMessage("Прочитај правила Kyron"),
+      "ui_standing_reply_removed":
+          MessageLookupByLibrary.simpleMessage("Одговор уклоњен"),
+      "ui_standing_reversed": MessageLookupByLibrary.simpleMessage("Поништено"),
+      "ui_standing_reversed_on": MessageLookupByLibrary.simpleMessage(
+          "Поништено \$date. Све уклоњено је враћено и ниједно ограничење више не важи."),
+      "ui_standing_rule":
+          MessageLookupByLibrary.simpleMessage("Правило: \$rule"),
+      "ui_standing_sign_out": MessageLookupByLibrary.simpleMessage("Одјави се"),
+      "ui_standing_suspended":
+          MessageLookupByLibrary.simpleMessage("Суспендован"),
+      "ui_standing_suspended_detail": MessageLookupByLibrary.simpleMessage(
+          "Можете да читате, али не и да објављујете, одговарате, пратите или шаљете поруке. Пријављивање, блокирање и утишавање и даље раде."),
+      "ui_standing_suspended_toast": MessageLookupByLibrary.simpleMessage(
+          "Ваш налог је суспендован: можете да читате, али не и да објављујете."),
+      "ui_standing_suspended_until":
+          MessageLookupByLibrary.simpleMessage("Суспендован до \$date"),
+      "ui_standing_suspended_until_toast": MessageLookupByLibrary.simpleMessage(
+          "Ваш налог је суспендован до \$date: можете да читате, али не и да објављујете."),
+      "ui_standing_team_said":
+          MessageLookupByLibrary.simpleMessage("Шта је тим написао"),
+      "ui_standing_title": MessageLookupByLibrary.simpleMessage("Стање налога"),
+      "ui_standing_warning": MessageLookupByLibrary.simpleMessage("Упозорење"),
+      "ui_standing_why": MessageLookupByLibrary.simpleMessage("Зашто?"),
+      "ui_standing_you_wrote":
+          MessageLookupByLibrary.simpleMessage("Ваше речи, \$date:"),
+      "ui_standing_your_message":
+          MessageLookupByLibrary.simpleMessage("Ваша порука"),
+      "ui_standing_your_post":
+          MessageLookupByLibrary.simpleMessage("Ваша објава"),
+      "ui_standing_your_reply":
+          MessageLookupByLibrary.simpleMessage("Ваш одговор"),
       "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
       "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
       "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
@@ -1530,7 +1684,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
       "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
-        "What happened, and what should we look at?",
+        "Шта се догодило и шта треба да погледамо?",
       ),
       "whatInPicture": MessageLookupByLibrary.simpleMessage(
         "What is in this picture?",
