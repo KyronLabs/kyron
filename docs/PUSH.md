@@ -79,8 +79,16 @@ along.
 - The words are built off the request (`ActivityPushService`, called from
   `DeliveryService.tellActivity`): the socket event goes first, and a like is
   never slowed down by working out who else liked it.
-- **English only.** The server does not know which language a device is set
-  to. Storing it with the device token would fix that.
+- **In the phone's language.** The app sends its language with the token
+  (`DeviceToken.locale`) and again whenever the reader changes it, and each
+  push is worded per device from `api/src/modules/push/copy/`: one catalog
+  for each language the app has. Callers build a `PushText` with `say()`
+  rather than a string, and it is rendered per device at send time. An app
+  from before this sends no language, and gets English; so does a language
+  with no catalog. Names, post snippets and the team's own words go as
+  written.
+- **Adding a phrase** means adding it to `copy/en.ts`. Every other catalog is
+  typed against it, so the build fails until each one has it too.
 
 ## Configuring it
 

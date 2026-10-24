@@ -11,6 +11,26 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Pushes in your phone's language.** Likes, replies, messages, decisions
+  about your account and the rest arrive in the language the app is set to,
+  whichever of its languages that is. This needs this version of the app;
+  older ones get English.
+
+### Changed
+
+- **A community post's own page** shows the author in front of the
+  community's picture, the way it looks in your feeds.
+- **Account status, the appeal form and the report form are in your
+  language**, dates included. A suspension says until when, and the appeal
+  form says how much to write before it can be sent.
+
+### Fixed
+
+- **Yoruba, Hausa, Igbo, Xhosa and Somali** no longer break the app's
+  screens. Flutter has no words of its own in these, so its buttons and
+  menus are in English while Kyron's are in yours.
 
 ## [0.1.13] - 2026-10-23
 ### Changed
