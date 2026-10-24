@@ -1,0 +1,73 @@
+// Pushes in ha. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ha: Copy = {
+  someone: 'Wani',
+  and_one_other: '{name} da wani 1',
+  and_others: '{name} da wasu {count}',
+  followed: 'Ya bi ka',
+  liked: 'Ya so rubutunka',
+  liked_quote: 'Ya so rubutunka: “{snippet}”',
+  reposted: 'Ya sake wallafa rubutunka',
+  reposted_quote: 'Ya sake wallafa rubutunka: “{snippet}”',
+  replied: 'Ya ba ka amsa',
+  replied_quote: 'Ya amsa: “{snippet}”',
+  group: 'Rukuni',
+  new_message: 'Sabon saƙo',
+  dm_once: 'Ya aiko wani abu na kallo sau ɗaya',
+  dm_attachment: 'Ya aiko abin haɗe',
+  dm_group_message: 'Ya aiko saƙo',
+  dm_message: 'Ya aiko maka saƙo',
+  named_line: '{name}: {text}',
+  group_added: '{name} ya ƙara ka cikin rukunin.',
+  group_hand: '{name} ya ɗaga hannu don neman izinin rubutu.',
+  chat_poll: "Ƙuri'a: {text}",
+  chat_photo: 'Hoto',
+  chat_gif: 'GIF',
+  chat_clip: 'Gajeren bidiyo',
+  chat_voice: 'Saƙon murya',
+  mod_removed_post: 'An cire rubutunka.',
+  mod_removed_reply: 'An cire amsarka.',
+  mod_removed_message: "An cire saƙonka a hirar al'umma.",
+  mod_removed_other: 'An cire wani abu da ka wallafa.',
+  mod_warned: 'Asusunka yana da gargaɗi.',
+  mod_suspended_until: 'An dakatar da asusunka har zuwa {date}.',
+  mod_banned: 'An haramta asusunka.',
+  mod_rule: 'Doka: {rule}.',
+  mod_rules_general: 'Ya karya dokokin Kyron.',
+  mod_case:
+    "Shari'a {number}: buɗe Kyron don ganin dalili, ko don ɗaukaka ƙara.",
+  mod_reversed: "Mun soke hukuncin shari'a {number}.",
+  appeal_accepted:
+    "An karɓi ɗaukaka ƙararka kan shari'a {number}, kuma an soke hukuncin.",
+  appeal_upheld:
+    "Mun sake duba ɗaukaka ƙararka kan shari'a {number}, kuma hukuncin yana nan daram.",
+  report_actioned:
+    'Mun ɗauki mataki kan wani abu da ka kai rahoto. Mun gode da ka sanar da mu.',
+  report_dismissed:
+    'Mun duba wani abu da ka kai rahoto kuma ba mu ga ya karya dokokin Kyron ba. Mun gode da ka sanar da mu.',
+  verified: 'An tabbatar da kai. Lambar yanzu tana kusa da sunanka.',
+  verify_declined: 'Ba a amince da buƙatarka ta tabbatarwa ba.',
+  verify_removed: 'An cire lambar tabbatarwarka.',
+  verify_lapsed_rename:
+    'An cire lambar tabbatarwarka saboda sunanka ya canja. Sake nema daga menu kuma wani zai duba sabon.',
+  staff_title: 'Kula da Kyron',
+  staff_appeal: 'Ɗaukaka ƙara tana jiran dubawa.',
+  staff_report_urgent:
+    'Rahoto na gaggawa yana jira: wani na iya kasancewa cikin haɗari.',
+  staff_report: 'Rahoto yana jiran dubawa.',
+  staff_verify: 'Wani ya nemi a tabbatar da shi.',
+  test_working: 'Sanarwa suna aiki.',
+  rule_spam: 'Saƙon banza',
+  rule_harassment: 'Cin zarafi ko tsangwama',
+  rule_hate: 'Kalaman ƙiyayya',
+  rule_violence: 'Tashin hankali ko barazana',
+  rule_self_harm: 'Kashe kai ko cutar da kai',
+  rule_sexual_content: 'Abun manya',
+  rule_child_safety: 'Tsaron yara',
+  rule_misinformation: 'Bayanan ƙarya',
+  rule_impersonation: 'Yin sojan gona',
+  rule_intellectual_property: 'Mallakar fasaha',
+  rule_illegal_goods: 'Kayayyaki ko ayyuka na haram',
+};

@@ -1,0 +1,73 @@
+// Pushes in hy. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const hy: Copy = {
+  someone: 'Ինչ-որ մեկը',
+  and_one_other: '{name}-ն ու ևս 1-ը',
+  and_others: '{name}-ն ու ևս {count}-ը',
+  followed: 'Սկսեց հետևել ձեզ',
+  liked: 'Հավանեց ձեր գրառումը',
+  liked_quote: 'Հավանեց ձեր գրառումը՝ «{snippet}»',
+  reposted: 'Տարածեց ձեր գրառումը',
+  reposted_quote: 'Տարածեց ձեր գրառումը՝ «{snippet}»',
+  replied: 'Պատասխանեց ձեզ',
+  replied_quote: 'Պատասխանեց՝ «{snippet}»',
+  group: 'Խումբ',
+  new_message: 'Նոր հաղորդագրություն',
+  dm_once: 'Ուղարկեց մեկանգամյա դիտման բան',
+  dm_attachment: 'Ուղարկեց կցորդ',
+  dm_group_message: 'Ուղարկեց հաղորդագրություն',
+  dm_message: 'Ձեզ հաղորդագրություն ուղարկեց',
+  named_line: '{name}՝ {text}',
+  group_added: '{name}-ն ավելացրեց ձեզ խմբում։',
+  group_hand: '{name}-ը ձեռք բարձրացրեց՝ գրելու թույլտվություն խնդրելու համար։',
+  chat_poll: 'Հարցում՝ {text}',
+  chat_photo: 'Լուսանկար',
+  chat_gif: 'GIF',
+  chat_clip: 'Տեսահոլովակ',
+  chat_voice: 'Ձայնային հաղորդագրություն',
+  mod_removed_post: 'Ձեր գրառումը հեռացվեց։',
+  mod_removed_reply: 'Ձեր պատասխանը հեռացվեց։',
+  mod_removed_message: 'Համայնքի զրույցում ձեր հաղորդագրությունը հեռացվեց։',
+  mod_removed_other: 'Ձեր հրապարակածներից մեկը հեռացվեց։',
+  mod_warned: 'Ձեր հաշիվը նախազգուշացում ստացավ։',
+  mod_suspended_until: 'Ձեր հաշիվը կասեցված է մինչև {date}։',
+  mod_banned: 'Ձեր հաշիվն արգելափակվեց։',
+  mod_rule: 'Կանոն՝ {rule}։',
+  mod_rules_general: 'Այն խախտում էր Kyron-ի կանոնները։',
+  mod_case:
+    'Գործ {number}․ բացեք Kyron-ը՝ պատճառը տեսնելու կամ բողոքարկելու համար։',
+  mod_reversed: 'Մենք չեղարկեցինք {number} գործով որոշումը։',
+  appeal_accepted:
+    '{number} գործով ձեր բողոքարկումը բավարարվեց, և որոշումը չեղարկվեց։',
+  appeal_upheld:
+    'Մենք կրկին քննեցինք {number} գործով ձեր բողոքարկումը, և որոշումն ուժի մեջ է։',
+  report_actioned:
+    'Մենք միջոցներ ձեռնարկեցինք ձեր բողոքի հիման վրա։ Շնորհակալություն, որ տեղեկացրիք։',
+  report_dismissed:
+    'Մենք քննեցինք ձեր բողոքը և Kyron-ի կանոնների խախտում չհայտնաբերեցինք։ Շնորհակալություն, որ տեղեկացրիք։',
+  verified: 'Դուք հաստատված եք։ Նշանն այժմ ցուցադրվում է ձեր անվան կողքին։',
+  verify_declined: 'Ձեր հաստատման հայտը չհաստատվեց։',
+  verify_removed: 'Ձեր հաստատման նշանը հանվեց։',
+  verify_lapsed_rename:
+    'Ձեր հաստատման նշանը հանվեց, քանի որ ձեր անունը փոխվել է։ Կրկին խնդրեք ընտրացանկից, և որևէ մեկը կստուգի նորը։',
+  staff_title: 'Kyron մոդերացիա',
+  staff_appeal: 'Բողոքարկումը սպասում է քննության։',
+  staff_report_urgent:
+    'Հրատապ բողոք է սպասում․ ինչ-որ մեկը կարող է վտանգի մեջ լինել։',
+  staff_report: 'Բողոքը սպասում է քննության։',
+  staff_verify: 'Ինչ-որ մեկը հաստատում խնդրեց։',
+  test_working: 'Ծանուցումներն աշխատում են։',
+  rule_spam: 'Սպամ',
+  rule_harassment: 'Ոտնձգություն կամ բուլինգ',
+  rule_hate: 'Ատելության խոսք',
+  rule_violence: 'Բռնություն կամ սպառնալիքներ',
+  rule_self_harm: 'Ինքնասպանություն կամ ինքնավնասում',
+  rule_sexual_content: 'Մեծահասակների համար բովանդակություն',
+  rule_child_safety: 'Երեխաների անվտանգություն',
+  rule_misinformation: 'Կեղծ տեղեկություն',
+  rule_impersonation: 'Այլ անձի անունից հանդես գալը',
+  rule_intellectual_property: 'Մտավոր սեփականություն',
+  rule_illegal_goods: 'Անօրինական ապրանքներ կամ ծառայություններ',
+};

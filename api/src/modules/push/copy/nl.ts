@@ -1,0 +1,73 @@
+// Pushes in nl. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const nl: Copy = {
+  someone: 'Iemand',
+  and_one_other: '{name} en 1 ander',
+  and_others: '{name} en {count} anderen',
+  followed: 'Volgt je nu',
+  liked: 'Vindt je bericht leuk',
+  liked_quote: 'Vindt je bericht leuk: ‘{snippet}’',
+  reposted: 'Heeft je bericht gedeeld',
+  reposted_quote: 'Heeft je bericht gedeeld: ‘{snippet}’',
+  replied: 'Heeft je geantwoord',
+  replied_quote: 'Antwoordde: ‘{snippet}’',
+  group: 'Groep',
+  new_message: 'Nieuw bericht',
+  dm_once: 'Heeft je iets gestuurd om één keer te bekijken',
+  dm_attachment: 'Heeft een bijlage gestuurd',
+  dm_group_message: 'Heeft een bericht gestuurd',
+  dm_message: 'Heeft je een bericht gestuurd',
+  named_line: '{name}: {text}',
+  group_added: '{name} heeft je aan de groep toegevoegd.',
+  group_hand: '{name} heeft een hand opgestoken om te mogen schrijven.',
+  chat_poll: 'Peiling: {text}',
+  chat_photo: 'Foto',
+  chat_gif: 'GIF',
+  chat_clip: 'Clip',
+  chat_voice: 'Spraakbericht',
+  mod_removed_post: 'Je bericht is verwijderd.',
+  mod_removed_reply: 'Je antwoord is verwijderd.',
+  mod_removed_message: 'Je bericht in een communitychat is verwijderd.',
+  mod_removed_other: 'Iets wat je hebt geplaatst is verwijderd.',
+  mod_warned: 'Je account heeft een waarschuwing.',
+  mod_suspended_until: 'Je account is geschorst tot {date}.',
+  mod_banned: 'Je account is verbannen.',
+  mod_rule: 'Regel: {rule}.',
+  mod_rules_general: 'Het was in strijd met de regels van Kyron.',
+  mod_case:
+    'Zaak {number}: open Kyron om te zien waarom, of om bezwaar te maken.',
+  mod_reversed: 'We hebben zaak {number} teruggedraaid.',
+  appeal_accepted:
+    'Je bezwaar in zaak {number} is aanvaard en het besluit is teruggedraaid.',
+  appeal_upheld:
+    'We hebben je bezwaar in zaak {number} opnieuw bekeken en het besluit blijft staan.',
+  report_actioned:
+    'We hebben actie ondernomen op iets wat je hebt gemeld. Bedankt dat je het ons liet weten.',
+  report_dismissed:
+    'We hebben iets wat je hebt gemeld bekeken en vonden niet dat het de regels van Kyron schond. Bedankt dat je het ons liet weten.',
+  verified: 'Je bent geverifieerd. Het badge staat nu naast je naam.',
+  verify_declined: 'Je verzoek om verificatie is niet goedgekeurd.',
+  verify_removed: 'Je verificatiebadge is verwijderd.',
+  verify_lapsed_rename:
+    'Je verificatiebadge is verwijderd omdat je naam is gewijzigd. Vraag het opnieuw aan via het menu, dan controleert iemand de nieuwe.',
+  staff_title: 'Kyron-moderatie',
+  staff_appeal: 'Er wacht een bezwaar op beoordeling.',
+  staff_report_urgent:
+    'Er wacht een dringende melding: iemand loopt mogelijk gevaar.',
+  staff_report: 'Er wacht een melding op beoordeling.',
+  staff_verify: 'Iemand heeft gevraagd om verificatie.',
+  test_working: 'Meldingen werken.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Intimidatie of pesten',
+  rule_hate: 'Haatzaaiende taal',
+  rule_violence: 'Geweld of bedreigingen',
+  rule_self_harm: 'Zelfmoord of zelfbeschadiging',
+  rule_sexual_content: 'Inhoud voor volwassenen',
+  rule_child_safety: 'Veiligheid van kinderen',
+  rule_misinformation: 'Onjuiste informatie',
+  rule_impersonation: 'Zich voordoen als iemand anders',
+  rule_intellectual_property: 'Intellectueel eigendom',
+  rule_illegal_goods: 'Illegale goederen of diensten',
+};

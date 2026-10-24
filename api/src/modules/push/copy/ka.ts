@@ -1,0 +1,73 @@
+// Pushes in ka. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const ka: Copy = {
+  someone: 'ვიღაც',
+  and_one_other: '{name} და კიდევ 1',
+  and_others: '{name} და კიდევ {count}',
+  followed: 'გამოგიწერათ',
+  liked: 'მოიწონა თქვენი პოსტი',
+  liked_quote: 'მოიწონა თქვენი პოსტი: „{snippet}“',
+  reposted: 'გააზიარა თქვენი პოსტი',
+  reposted_quote: 'გააზიარა თქვენი პოსტი: „{snippet}“',
+  replied: 'გიპასუხათ',
+  replied_quote: 'უპასუხა: „{snippet}“',
+  group: 'ჯგუფი',
+  new_message: 'ახალი შეტყობინება',
+  dm_once: 'გამოგიგზავნათ რაღაც ერთჯერადი ნახვისთვის',
+  dm_attachment: 'გამოგზავნა მიმაგრებული ფაილი',
+  dm_group_message: 'გამოგზავნა შეტყობინება',
+  dm_message: 'გამოგიგზავნათ შეტყობინება',
+  named_line: '{name}: {text}',
+  group_added: '{name}-მა დაგამატათ ჯგუფში.',
+  group_hand: '{name}-მა ხელი ასწია, რომ წერის უფლება ითხოვოს.',
+  chat_poll: 'გამოკითხვა: {text}',
+  chat_photo: 'ფოტო',
+  chat_gif: 'GIF',
+  chat_clip: 'კლიპი',
+  chat_voice: 'ხმოვანი შეტყობინება',
+  mod_removed_post: 'თქვენი პოსტი წაიშალა.',
+  mod_removed_reply: 'თქვენი პასუხი წაიშალა.',
+  mod_removed_message: 'თქვენი შეტყობინება თემის ჩატში წაიშალა.',
+  mod_removed_other: 'თქვენ მიერ გამოქვეყნებული რაღაც წაიშალა.',
+  mod_warned: 'თქვენმა ანგარიშმა გაფრთხილება მიიღო.',
+  mod_suspended_until: 'თქვენი ანგარიში შეჩერებულია {date}-მდე.',
+  mod_banned: 'თქვენი ანგარიში დაიბლოკა.',
+  mod_rule: 'წესი: {rule}.',
+  mod_rules_general: 'ეს არღვევდა Kyron-ის წესებს.',
+  mod_case: 'საქმე {number}: გახსენით Kyron, რომ ნახოთ მიზეზი ან გაასაჩივროთ.',
+  mod_reversed: 'საქმეზე {number} გადაწყვეტილება გავაუქმეთ.',
+  appeal_accepted:
+    'თქვენი გასაჩივრება საქმეზე {number} დაკმაყოფილდა და გადაწყვეტილება გაუქმდა.',
+  appeal_upheld:
+    'თქვენი გასაჩივრება საქმეზე {number} ხელახლა განვიხილეთ და გადაწყვეტილება ძალაში რჩება.',
+  report_actioned:
+    'თქვენს საჩივარზე ზომები მივიღეთ. გმადლობთ, რომ შეგვატყობინეთ.',
+  report_dismissed:
+    'თქვენი საჩივარი განვიხილეთ და Kyron-ის წესების დარღვევა ვერ დავადგინეთ. გმადლობთ, რომ შეგვატყობინეთ.',
+  verified:
+    'თქვენ დადასტურებული ხართ. ნიშანი ახლა თქვენი სახელის გვერდით ჩანს.',
+  verify_declined: 'თქვენი დადასტურების მოთხოვნა არ დაკმაყოფილდა.',
+  verify_removed: 'თქვენი დადასტურების ნიშანი მოიხსნა.',
+  verify_lapsed_rename:
+    'თქვენი დადასტურების ნიშანი მოიხსნა, რადგან სახელი შეიცვალა. ხელახლა მოითხოვეთ მენიუდან და ვინმე შეამოწმებს ახალს.',
+  staff_title: 'Kyron-ის მოდერაცია',
+  staff_appeal: 'გასაჩივრება განხილვას ელოდება.',
+  staff_report_urgent:
+    'სასწრაფო საჩივარი ელოდება: ვიღაც შეიძლება საფრთხეში იყოს.',
+  staff_report: 'საჩივარი განხილვას ელოდება.',
+  staff_verify: 'ვიღაცამ დადასტურება მოითხოვა.',
+  test_working: 'შეტყობინებები მუშაობს.',
+  rule_spam: 'სპამი',
+  rule_harassment: 'შევიწროება ან ბულინგი',
+  rule_hate: 'სიძულვილის ენა',
+  rule_violence: 'ძალადობა ან მუქარა',
+  rule_self_harm: 'თვითმკვლელობა ან თვითდაზიანება',
+  rule_sexual_content: 'ზრდასრულთა კონტენტი',
+  rule_child_safety: 'ბავშვების უსაფრთხოება',
+  rule_misinformation: 'ცრუ ინფორმაცია',
+  rule_impersonation: 'სხვის სახელით გამოსვლა',
+  rule_intellectual_property: 'ინტელექტუალური საკუთრება',
+  rule_illegal_goods: 'უკანონო საქონელი ან მომსახურება',
+};

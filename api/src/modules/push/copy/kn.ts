@@ -1,0 +1,73 @@
+// Pushes in kn. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const kn: Copy = {
+  someone: 'ಯಾರೋ',
+  and_one_other: '{name} ಮತ್ತು ಇನ್ನೊಬ್ಬರು',
+  and_others: '{name} ಮತ್ತು ಇನ್ನೂ {count} ಮಂದಿ',
+  followed: 'ನಿಮ್ಮನ್ನು ಫಾಲೋ ಮಾಡಿದ್ದಾರೆ',
+  liked: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ಇಷ್ಟಪಟ್ಟಿದ್ದಾರೆ',
+  liked_quote: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ಇಷ್ಟಪಟ್ಟಿದ್ದಾರೆ: “{snippet}”',
+  reposted: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ಮರುಹಂಚಿಕೊಂಡಿದ್ದಾರೆ',
+  reposted_quote: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ಮರುಹಂಚಿಕೊಂಡಿದ್ದಾರೆ: “{snippet}”',
+  replied: 'ನಿಮಗೆ ಪ್ರತ್ಯುತ್ತರಿಸಿದ್ದಾರೆ',
+  replied_quote: 'ಪ್ರತ್ಯುತ್ತರ: “{snippet}”',
+  group: 'ಗುಂಪು',
+  new_message: 'ಹೊಸ ಸಂದೇಶ',
+  dm_once: 'ಒಮ್ಮೆ ನೋಡಲು ಏನನ್ನೋ ಕಳುಹಿಸಿದ್ದಾರೆ',
+  dm_attachment: 'ಒಂದು ಲಗತ್ತು ಕಳುಹಿಸಿದ್ದಾರೆ',
+  dm_group_message: 'ಒಂದು ಸಂದೇಶ ಕಳುಹಿಸಿದ್ದಾರೆ',
+  dm_message: 'ನಿಮಗೆ ಒಂದು ಸಂದೇಶ ಕಳುಹಿಸಿದ್ದಾರೆ',
+  named_line: '{name}: {text}',
+  group_added: '{name} ನಿಮ್ಮನ್ನು ಗುಂಪಿಗೆ ಸೇರಿಸಿದ್ದಾರೆ.',
+  group_hand: '{name} ಬರೆಯಲು ಅನುಮತಿ ಕೇಳಿ ಕೈ ಎತ್ತಿದ್ದಾರೆ.',
+  chat_poll: 'ಸಮೀಕ್ಷೆ: {text}',
+  chat_photo: 'ಫೋಟೋ',
+  chat_gif: 'GIF',
+  chat_clip: 'ಕ್ಲಿಪ್',
+  chat_voice: 'ಧ್ವನಿ ಸಂದೇಶ',
+  mod_removed_post: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ.',
+  mod_removed_reply: 'ನಿಮ್ಮ ಪ್ರತ್ಯುತ್ತರ ತೆಗೆದುಹಾಕಲಾಗಿದೆ.',
+  mod_removed_message: 'ಸಮುದಾಯ ಚಾಟ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ.',
+  mod_removed_other: 'ನೀವು ಪೋಸ್ಟ್ ಮಾಡಿದ ಒಂದನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ.',
+  mod_warned: 'ನಿಮ್ಮ ಖಾತೆಗೆ ಎಚ್ಚರಿಕೆ ಇದೆ.',
+  mod_suspended_until: 'ನಿಮ್ಮ ಖಾತೆ {date} ರವರೆಗೆ ಅಮಾನತುಗೊಂಡಿದೆ.',
+  mod_banned: 'ನಿಮ್ಮ ಖಾತೆಯನ್ನು ನಿಷೇಧಿಸಲಾಗಿದೆ.',
+  mod_rule: 'ನಿಯಮ: {rule}.',
+  mod_rules_general: 'ಇದು Kyron ನಿಯಮಗಳನ್ನು ಉಲ್ಲಂಘಿಸಿದೆ.',
+  mod_case:
+    'ಪ್ರಕರಣ {number}: ಕಾರಣ ನೋಡಲು ಅಥವಾ ಮೇಲ್ಮನವಿ ಸಲ್ಲಿಸಲು Kyron ತೆರೆಯಿರಿ.',
+  mod_reversed: 'ಪ್ರಕರಣ {number} ನಿರ್ಧಾರವನ್ನು ಹಿಂಪಡೆದಿದ್ದೇವೆ.',
+  appeal_accepted:
+    'ಪ್ರಕರಣ {number} ಕುರಿತ ನಿಮ್ಮ ಮೇಲ್ಮನವಿ ಸ್ವೀಕರಿಸಲಾಗಿದೆ, ನಿರ್ಧಾರ ಹಿಂಪಡೆಯಲಾಗಿದೆ.',
+  appeal_upheld:
+    'ಪ್ರಕರಣ {number} ಕುರಿತ ನಿಮ್ಮ ಮೇಲ್ಮನವಿಯನ್ನು ಮತ್ತೆ ಪರಿಶೀಲಿಸಿದೆವು, ನಿರ್ಧಾರ ಹಾಗೆಯೇ ಇದೆ.',
+  report_actioned:
+    'ನೀವು ವರದಿ ಮಾಡಿದ ವಿಷಯದ ಮೇಲೆ ಕ್ರಮ ಕೈಗೊಂಡಿದ್ದೇವೆ. ನಮಗೆ ತಿಳಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು.',
+  report_dismissed:
+    'ನೀವು ವರದಿ ಮಾಡಿದ ವಿಷಯವನ್ನು ಪರಿಶೀಲಿಸಿದೆವು; ಅದು Kyron ನಿಯಮಗಳನ್ನು ಉಲ್ಲಂಘಿಸಿದ್ದು ಕಂಡುಬಂದಿಲ್ಲ. ನಮಗೆ ತಿಳಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು.',
+  verified:
+    'ನೀವು ಪರಿಶೀಲಿಸಲ್ಪಟ್ಟಿದ್ದೀರಿ. ಬ್ಯಾಡ್ಜ್ ಈಗ ನಿಮ್ಮ ಹೆಸರಿನ ಪಕ್ಕದಲ್ಲಿ ಕಾಣುತ್ತದೆ.',
+  verify_declined: 'ಪರಿಶೀಲನೆಗಾಗಿ ನಿಮ್ಮ ವಿನಂತಿ ಅನುಮೋದನೆಯಾಗಿಲ್ಲ.',
+  verify_removed: 'ನಿಮ್ಮ ಪರಿಶೀಲನಾ ಬ್ಯಾಡ್ಜ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ.',
+  verify_lapsed_rename:
+    'ನಿಮ್ಮ ಹೆಸರು ಬದಲಾದ ಕಾರಣ ಪರಿಶೀಲನಾ ಬ್ಯಾಡ್ಜ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ. ಮೆನುವಿನಿಂದ ಮತ್ತೆ ಕೇಳಿ, ಯಾರಾದರೂ ಹೊಸ ಹೆಸರನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ.',
+  staff_title: 'Kyron ಮಾಡರೇಶನ್',
+  staff_appeal: 'ಒಂದು ಮೇಲ್ಮನವಿ ಪರಿಶೀಲನೆಗಾಗಿ ಕಾಯುತ್ತಿದೆ.',
+  staff_report_urgent: 'ಒಂದು ತುರ್ತು ವರದಿ ಕಾಯುತ್ತಿದೆ: ಯಾರಾದರೂ ಅಪಾಯದಲ್ಲಿರಬಹುದು.',
+  staff_report: 'ಒಂದು ವರದಿ ಪರಿಶೀಲನೆಗಾಗಿ ಕಾಯುತ್ತಿದೆ.',
+  staff_verify: 'ಯಾರೋ ಪರಿಶೀಲನೆಗೆ ವಿನಂತಿಸಿದ್ದಾರೆ.',
+  test_working: 'ಅಧಿಸೂಚನೆಗಳು ಕೆಲಸ ಮಾಡುತ್ತಿವೆ.',
+  rule_spam: 'ಸ್ಪ್ಯಾಮ್',
+  rule_harassment: 'ಕಿರುಕುಳ ಅಥವಾ ಬೆದರಿಕೆ',
+  rule_hate: 'ದ್ವೇಷ ಭಾಷಣ',
+  rule_violence: 'ಹಿಂಸೆ ಅಥವಾ ಬೆದರಿಕೆಗಳು',
+  rule_self_harm: 'ಆತ್ಮಹತ್ಯೆ ಅಥವಾ ಸ್ವಯಂ ಹಾನಿ',
+  rule_sexual_content: 'ವಯಸ್ಕರ ವಿಷಯ',
+  rule_child_safety: 'ಮಕ್ಕಳ ಸುರಕ್ಷತೆ',
+  rule_misinformation: 'ಸುಳ್ಳು ಮಾಹಿತಿ',
+  rule_impersonation: 'ಇನ್ನೊಬ್ಬರಂತೆ ನಟಿಸುವುದು',
+  rule_intellectual_property: 'ಬೌದ್ಧಿಕ ಆಸ್ತಿ',
+  rule_illegal_goods: 'ಕಾನೂನುಬಾಹಿರ ವಸ್ತುಗಳು ಅಥವಾ ಸೇವೆಗಳು',
+};

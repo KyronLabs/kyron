@@ -1,0 +1,73 @@
+// Pushes in el. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const el: Copy = {
+  someone: 'Κάποιος',
+  and_one_other: '{name} και 1 ακόμη',
+  and_others: '{name} και {count} ακόμη',
+  followed: 'Σας ακολουθεί',
+  liked: 'Του άρεσε η ανάρτησή σας',
+  liked_quote: 'Του άρεσε η ανάρτησή σας: «{snippet}»',
+  reposted: 'Αναδημοσίευσε την ανάρτησή σας',
+  reposted_quote: 'Αναδημοσίευσε την ανάρτησή σας: «{snippet}»',
+  replied: 'Σας απάντησε',
+  replied_quote: 'Απάντησε: «{snippet}»',
+  group: 'Ομάδα',
+  new_message: 'Νέο μήνυμα',
+  dm_once: 'Έστειλε κάτι για μία προβολή',
+  dm_attachment: 'Έστειλε συνημμένο',
+  dm_group_message: 'Έστειλε μήνυμα',
+  dm_message: 'Σας έστειλε μήνυμα',
+  named_line: '{name}: {text}',
+  group_added: 'Ο/Η {name} σας πρόσθεσε στην ομάδα.',
+  group_hand: 'Ο/Η {name} σήκωσε το χέρι για να ζητήσει να γράψει.',
+  chat_poll: 'Δημοσκόπηση: {text}',
+  chat_photo: 'Φωτογραφία',
+  chat_gif: 'GIF',
+  chat_clip: 'Κλιπ',
+  chat_voice: 'Φωνητικό μήνυμα',
+  mod_removed_post: 'Η ανάρτησή σας αφαιρέθηκε.',
+  mod_removed_reply: 'Η απάντησή σας αφαιρέθηκε.',
+  mod_removed_message: 'Το μήνυμά σας σε συνομιλία κοινότητας αφαιρέθηκε.',
+  mod_removed_other: 'Κάτι που δημοσιεύσατε αφαιρέθηκε.',
+  mod_warned: 'Ο λογαριασμός σας έχει προειδοποίηση.',
+  mod_suspended_until: 'Ο λογαριασμός σας είναι σε αναστολή έως {date}.',
+  mod_banned: 'Ο λογαριασμός σας αποκλείστηκε.',
+  mod_rule: 'Κανόνας: {rule}.',
+  mod_rules_general: 'Παραβίαζε τους κανόνες του Kyron.',
+  mod_case:
+    'Υπόθεση {number}: ανοίξτε το Kyron για να δείτε γιατί ή για να κάνετε έφεση.',
+  mod_reversed: 'Ανακαλέσαμε την υπόθεση {number}.',
+  appeal_accepted:
+    'Η έφεσή σας για την υπόθεση {number} έγινε δεκτή και η απόφαση ανακλήθηκε.',
+  appeal_upheld:
+    'Εξετάσαμε ξανά την έφεσή σας για την υπόθεση {number} και η απόφαση ισχύει.',
+  report_actioned:
+    'Λάβαμε μέτρα για κάτι που αναφέρατε. Ευχαριστούμε που μας το είπατε.',
+  report_dismissed:
+    'Εξετάσαμε κάτι που αναφέρατε και δεν διαπιστώσαμε παραβίαση των κανόνων του Kyron. Ευχαριστούμε που μας το είπατε.',
+  verified: 'Έχετε επαληθευτεί. Το σήμα εμφανίζεται πλέον δίπλα στο όνομά σας.',
+  verify_declined: 'Το αίτημά σας για επαλήθευση δεν εγκρίθηκε.',
+  verify_removed: 'Το σήμα επαλήθευσής σας αφαιρέθηκε.',
+  verify_lapsed_rename:
+    'Το σήμα επαλήθευσής σας αφαιρέθηκε επειδή άλλαξε το όνομά σας. Ζητήστε το ξανά από το μενού και κάποιος θα ελέγξει το νέο.',
+  staff_title: 'Εποπτεία Kyron',
+  staff_appeal: 'Μια έφεση περιμένει εξέταση.',
+  staff_report_urgent:
+    'Μια επείγουσα αναφορά περιμένει: κάποιος ίσως κινδυνεύει.',
+  staff_report: 'Μια αναφορά περιμένει εξέταση.',
+  staff_verify: 'Κάποιος ζήτησε επαλήθευση.',
+  test_working: 'Οι ειδοποιήσεις λειτουργούν.',
+  rule_spam: 'Ανεπιθύμητο περιεχόμενο',
+  rule_harassment: 'Παρενόχληση ή εκφοβισμός',
+  rule_hate: 'Ρητορική μίσους',
+  rule_violence: 'Βία ή απειλές',
+  rule_self_harm: 'Αυτοκτονία ή αυτοτραυματισμός',
+  rule_sexual_content: 'Περιεχόμενο για ενηλίκους',
+  rule_child_safety: 'Ασφάλεια παιδιών',
+  rule_misinformation: 'Ψευδείς πληροφορίες',
+  rule_impersonation: 'Πλαστοπροσωπία',
+  rule_intellectual_property: 'Πνευματική ιδιοκτησία',
+  rule_illegal_goods: 'Παράνομα προϊόντα ή υπηρεσίες',
+};

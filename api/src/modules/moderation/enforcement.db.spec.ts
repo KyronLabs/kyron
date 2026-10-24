@@ -23,6 +23,7 @@ import { NotificationsService } from '../notifications/notifications.service';
 import type { DeliveryService } from '../push/delivery.service';
 import { EnforcementService } from './enforcement.service';
 import { ModerationService } from './moderation.service';
+import { type PushText, render } from '../push/push-text';
 
 /**
  * The whole of enforcement against a real Postgres: every query as Postgres
@@ -62,10 +63,13 @@ run('enforcement, against a real database', () => {
   beforeAll(async () => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
     const delivery = {
-      tell: (userId: string, _e: unknown, push?: { body: string }) =>
-        told.push({ userId, body: push?.body }),
-      tellMany: (userIds: string[], _e: unknown, push?: { body: string }) =>
-        userIds.forEach((userId) => told.push({ userId, body: push?.body })),
+      // As an English phone would show it.
+      tell: (userId: string, _e: unknown, push?: { body: PushText }) =>
+        told.push({ userId, body: push && render(push.body, 'en') }),
+      tellMany: (userIds: string[], _e: unknown, push?: { body: PushText }) =>
+        userIds.forEach((userId) =>
+          told.push({ userId, body: push && render(push.body, 'en') }),
+        ),
     } as unknown as DeliveryService;
     svc = new EnforcementService(prisma as PrismaService, delivery);
     moderation = new ModerationService(prisma as PrismaService, svc);
@@ -179,7 +183,7 @@ run('enforcement, against a real database', () => {
     });
     const notice = told.find((t) => t.userId === ids.ada)?.body ?? '';
     expect(notice).toMatch(
-      /^Your post was removed, and your account is suspended until .+ for breaking the rule on spam\. Case \d+:/,
+      /^Your post was removed\. Your account is suspended until .+\. Rule: Spam\. Case \d+:/,
     );
   });
 

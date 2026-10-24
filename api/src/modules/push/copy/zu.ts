@@ -1,0 +1,73 @@
+// Pushes in zu. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const zu: Copy = {
+  someone: 'Othile',
+  and_one_other: '{name} nomunye oyedwa',
+  and_others: '{name} nabanye abangu-{count}',
+  followed: 'Ukulandele',
+  liked: 'Uthande okuthunyelwe kwakho',
+  liked_quote: 'Uthande okuthunyelwe kwakho: “{snippet}”',
+  reposted: 'Uphinde wathumela okuthunyelwe kwakho',
+  reposted_quote: 'Uphinde wathumela okuthunyelwe kwakho: “{snippet}”',
+  replied: 'Ukuphendule',
+  replied_quote: 'Uphendule: “{snippet}”',
+  group: 'Iqembu',
+  new_message: 'Umlayezo omusha',
+  dm_once: 'Uthumele okuthile okubukwa kanye',
+  dm_attachment: 'Uthumele okunamathiselwe',
+  dm_group_message: 'Uthumele umlayezo',
+  dm_message: 'Ukuthumelele umlayezo',
+  named_line: '{name}: {text}',
+  group_added: '{name} ukufake eqenjini.',
+  group_hand: '{name} uphakamise isandla ecela ukubhala.',
+  chat_poll: 'Inhlolovo: {text}',
+  chat_photo: 'Isithombe',
+  chat_gif: 'GIF',
+  chat_clip: 'Isiqeshana',
+  chat_voice: 'Inothi lezwi',
+  mod_removed_post: 'Okuthunyelwe kwakho kususiwe.',
+  mod_removed_reply: 'Impendulo yakho isusiwe.',
+  mod_removed_message: 'Umlayezo wakho engxoxweni yomphakathi ususiwe.',
+  mod_removed_other: 'Okuthile okuthumele kususiwe.',
+  mod_warned: 'I-akhawunti yakho inesixwayiso.',
+  mod_suspended_until: 'I-akhawunti yakho imisiwe kuze kube ngu-{date}.',
+  mod_banned: 'I-akhawunti yakho ivinjelwe.',
+  mod_rule: 'Umthetho: {rule}.',
+  mod_rules_general: 'Kwephule imithetho ye-Kyron.',
+  mod_case:
+    'Icala {number}: vula i-Kyron ukuze ubone isizathu, noma ukuze udlulise icala.',
+  mod_reversed: 'Sihoxise isinqumo secala {number}.',
+  appeal_accepted:
+    'Isikhalazo sakho ecaleni {number} samukelwe, futhi isinqumo sihoxisiwe.',
+  appeal_upheld:
+    'Siphinde sabheka isikhalazo sakho ecaleni {number}, isinqumo asiguquki.',
+  report_actioned:
+    'Sithathe isinyathelo ngokuthile okubikile. Siyabonga ngokusitshela.',
+  report_dismissed:
+    'Sibheke okuthile okubikile futhi asitholanga ukuthi kwephule imithetho ye-Kyron. Siyabonga ngokusitshela.',
+  verified: 'Uqinisekisiwe. Ibheji manje livela eduze kwegama lakho.',
+  verify_declined: 'Isicelo sakho sokuqinisekiswa asivunyelwanga.',
+  verify_removed: 'Ibheji lakho lokuqinisekisa lisusiwe.',
+  verify_lapsed_rename:
+    'Ibheji lakho lokuqinisekisa lisusiwe ngoba igama lakho lishintshile. Cela futhi kumenyu bese othile uzohlola elisha.',
+  staff_title: 'Ukulawulwa kwe-Kyron',
+  staff_appeal: 'Isikhalazo silinde ukubuyekezwa.',
+  staff_report_urgent:
+    'Umbiko ophuthumayo ulindile: othile angase abe sengozini.',
+  staff_report: 'Umbiko ulinde ukubuyekezwa.',
+  staff_verify: 'Othile ucele ukuqinisekiswa.',
+  test_working: 'Izaziso ziyasebenza.',
+  rule_spam: 'Ugaxekile',
+  rule_harassment: 'Ukuhlukumeza noma ukuxhaphaza',
+  rule_hate: 'Inkulumo yenzondo',
+  rule_violence: 'Udlame noma izinsongo',
+  rule_self_harm: 'Ukuzibulala noma ukuzilimaza',
+  rule_sexual_content: 'Okuqukethwe kwabadala',
+  rule_child_safety: 'Ukuphepha kwezingane',
+  rule_misinformation: 'Ulwazi olungelona iqiniso',
+  rule_impersonation: 'Ukuzenza omunye umuntu',
+  rule_intellectual_property: 'Impahla yengqondo',
+  rule_illegal_goods: 'Izimpahla noma izinsizakalo ezingekho emthethweni',
+};

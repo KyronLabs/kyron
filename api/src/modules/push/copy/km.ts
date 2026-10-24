@@ -1,0 +1,73 @@
+// Pushes in km. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const km: Copy = {
+  someone: 'នរណាម្នាក់',
+  and_one_other: '{name} និងម្នាក់ទៀត',
+  and_others: '{name} និង {count} នាក់ទៀត',
+  followed: 'បានតាមដានអ្នក',
+  liked: 'បានចូលចិត្តការបង្ហោះរបស់អ្នក',
+  liked_quote: 'បានចូលចិត្តការបង្ហោះរបស់អ្នក៖ “{snippet}”',
+  reposted: 'បានបង្ហោះឡើងវិញនូវការបង្ហោះរបស់អ្នក',
+  reposted_quote: 'បានបង្ហោះឡើងវិញនូវការបង្ហោះរបស់អ្នក៖ “{snippet}”',
+  replied: 'បានឆ្លើយតបអ្នក',
+  replied_quote: 'បានឆ្លើយតប៖ “{snippet}”',
+  group: 'ក្រុម',
+  new_message: 'សារថ្មី',
+  dm_once: 'បានផ្ញើអ្វីមួយសម្រាប់មើលតែម្ដង',
+  dm_attachment: 'បានផ្ញើឯកសារភ្ជាប់',
+  dm_group_message: 'បានផ្ញើសារ',
+  dm_message: 'បានផ្ញើសារមកអ្នក',
+  named_line: '{name}៖ {text}',
+  group_added: '{name} បានបន្ថែមអ្នកទៅក្នុងក្រុម។',
+  group_hand: '{name} បានលើកដៃសុំសរសេរ។',
+  chat_poll: 'ការស្ទង់មតិ៖ {text}',
+  chat_photo: 'រូបថត',
+  chat_gif: 'GIF',
+  chat_clip: 'ឃ្លីប',
+  chat_voice: 'សារជាសំឡេង',
+  mod_removed_post: 'ការបង្ហោះរបស់អ្នកត្រូវបានដកចេញ។',
+  mod_removed_reply: 'ការឆ្លើយតបរបស់អ្នកត្រូវបានដកចេញ។',
+  mod_removed_message: 'សាររបស់អ្នកក្នុងការជជែកសហគមន៍ត្រូវបានដកចេញ។',
+  mod_removed_other: 'អ្វីមួយដែលអ្នកបានបង្ហោះត្រូវបានដកចេញ។',
+  mod_warned: 'គណនីរបស់អ្នកមានការព្រមាន។',
+  mod_suspended_until: 'គណនីរបស់អ្នកត្រូវបានផ្អាករហូតដល់ {date}។',
+  mod_banned: 'គណនីរបស់អ្នកត្រូវបានហាមឃាត់។',
+  mod_rule: 'ច្បាប់៖ {rule}។',
+  mod_rules_general: 'វាបានបំពានច្បាប់របស់ Kyron។',
+  mod_case: 'ករណី {number}៖ បើក Kyron ដើម្បីមើលមូលហេតុ ឬដាក់បណ្ដឹងឧទ្ធរណ៍។',
+  mod_reversed: 'យើងបានលុបចោលការសម្រេចលើករណី {number}។',
+  appeal_accepted:
+    'បណ្ដឹងឧទ្ធរណ៍របស់អ្នកលើករណី {number} ត្រូវបានទទួលយក ហើយការសម្រេចត្រូវបានលុបចោល។',
+  appeal_upheld:
+    'យើងបានពិនិត្យបណ្ដឹងឧទ្ធរណ៍របស់អ្នកលើករណី {number} ម្ដងទៀត ហើយការសម្រេចនៅដដែល។',
+  report_actioned:
+    'យើងបានចាត់វិធានការលើអ្វីដែលអ្នកបានរាយការណ៍។ អរគុណដែលបានប្រាប់យើង។',
+  report_dismissed:
+    'យើងបានពិនិត្យអ្វីដែលអ្នកបានរាយការណ៍ ហើយមិនឃើញថាវាបំពានច្បាប់របស់ Kyron ទេ។ អរគុណដែលបានប្រាប់យើង។',
+  verified:
+    'អ្នកត្រូវបានផ្ទៀងផ្ទាត់។ ផ្លាកសញ្ញាឥឡូវបង្ហាញនៅក្បែរឈ្មោះរបស់អ្នក។',
+  verify_declined: 'សំណើផ្ទៀងផ្ទាត់របស់អ្នកមិនត្រូវបានយល់ព្រមទេ។',
+  verify_removed: 'ផ្លាកសញ្ញាផ្ទៀងផ្ទាត់របស់អ្នកត្រូវបានដកចេញ។',
+  verify_lapsed_rename:
+    'ផ្លាកសញ្ញាផ្ទៀងផ្ទាត់របស់អ្នកត្រូវបានដកចេញ ព្រោះឈ្មោះរបស់អ្នកបានផ្លាស់ប្ដូរ។ សុំម្ដងទៀតពីម៉ឺនុយ ហើយនឹងមាននរណាម្នាក់ពិនិត្យឈ្មោះថ្មី។',
+  staff_title: 'ការត្រួតពិនិត្យ Kyron',
+  staff_appeal: 'បណ្ដឹងឧទ្ធរណ៍មួយកំពុងរង់ចាំការពិនិត្យ។',
+  staff_report_urgent:
+    'របាយការណ៍បន្ទាន់មួយកំពុងរង់ចាំ៖ នរណាម្នាក់អាចកំពុងមានគ្រោះថ្នាក់។',
+  staff_report: 'របាយការណ៍មួយកំពុងរង់ចាំការពិនិត្យ។',
+  staff_verify: 'នរណាម្នាក់បានស្នើសុំការផ្ទៀងផ្ទាត់។',
+  test_working: 'ការជូនដំណឹងដំណើរការ។',
+  rule_spam: 'សារឥតបានការ',
+  rule_harassment: 'ការយាយី ឬការសម្លុត',
+  rule_hate: 'ពាក្យសម្ដីស្អប់ខ្ពើម',
+  rule_violence: 'អំពើហិង្សា ឬការគំរាមកំហែង',
+  rule_self_harm: 'ការធ្វើអត្តឃាត ឬធ្វើបាបខ្លួនឯង',
+  rule_sexual_content: 'ខ្លឹមសារសម្រាប់មនុស្សពេញវ័យ',
+  rule_child_safety: 'សុវត្ថិភាពកុមារ',
+  rule_misinformation: 'ព័ត៌មានមិនពិត',
+  rule_impersonation: 'ការក្លែងខ្លួន',
+  rule_intellectual_property: 'កម្មសិទ្ធិបញ្ញា',
+  rule_illegal_goods: 'ទំនិញ ឬសេវាខុសច្បាប់',
+};

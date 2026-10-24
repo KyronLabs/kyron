@@ -1,0 +1,73 @@
+// Pushes in uz. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const uz: Copy = {
+  someone: 'Kimdir',
+  and_one_other: '{name} va yana 1 kishi',
+  and_others: '{name} va yana {count} kishi',
+  followed: 'Sizga obuna bo‘ldi',
+  liked: 'Postingizni yoqtirdi',
+  liked_quote: 'Postingizni yoqtirdi: “{snippet}”',
+  reposted: 'Postingizni ulashdi',
+  reposted_quote: 'Postingizni ulashdi: “{snippet}”',
+  replied: 'Sizga javob berdi',
+  replied_quote: 'Javob berdi: “{snippet}”',
+  group: 'Guruh',
+  new_message: 'Yangi xabar',
+  dm_once: 'Bir marta ko‘rish uchun nimadir yubordi',
+  dm_attachment: 'Ilova yubordi',
+  dm_group_message: 'Xabar yubordi',
+  dm_message: 'Sizga xabar yubordi',
+  named_line: '{name}: {text}',
+  group_added: '{name} sizni guruhga qo‘shdi.',
+  group_hand: '{name} yozish uchun qo‘l ko‘tardi.',
+  chat_poll: 'So‘rovnoma: {text}',
+  chat_photo: 'Rasm',
+  chat_gif: 'GIF',
+  chat_clip: 'Klip',
+  chat_voice: 'Ovozli xabar',
+  mod_removed_post: 'Postingiz o‘chirildi.',
+  mod_removed_reply: 'Javobingiz o‘chirildi.',
+  mod_removed_message: 'Hamjamiyat chatidagi xabaringiz o‘chirildi.',
+  mod_removed_other: 'Siz e’lon qilgan narsa o‘chirildi.',
+  mod_warned: 'Hisobingiz ogohlantirish oldi.',
+  mod_suspended_until: 'Hisobingiz {date} gacha to‘xtatilgan.',
+  mod_banned: 'Hisobingiz bloklandi.',
+  mod_rule: 'Qoida: {rule}.',
+  mod_rules_general: 'Bu Kyron qoidalarini buzgan.',
+  mod_case:
+    'Ish {number}: sababini ko‘rish yoki shikoyat qilish uchun Kyron’ni oching.',
+  mod_reversed: '{number} raqamli ish bo‘yicha qarorni bekor qildik.',
+  appeal_accepted:
+    '{number} raqamli ish bo‘yicha apellyatsiyangiz qanoatlantirildi va qaror bekor qilindi.',
+  appeal_upheld:
+    '{number} raqamli ish bo‘yicha apellyatsiyangizni qayta ko‘rib chiqdik, qaror kuchda qoladi.',
+  report_actioned:
+    'Siz shikoyat qilgan narsa bo‘yicha choralar ko‘rdik. Xabar berganingiz uchun rahmat.',
+  report_dismissed:
+    'Siz shikoyat qilgan narsani ko‘rib chiqdik va Kyron qoidalari buzilganini aniqlamadik. Xabar berganingiz uchun rahmat.',
+  verified: 'Siz tasdiqlandingiz. Belgi endi ismingiz yonida ko‘rinadi.',
+  verify_declined: 'Tasdiqlash so‘rovingiz ma’qullanmadi.',
+  verify_removed: 'Tasdiqlash belgingiz olib tashlandi.',
+  verify_lapsed_rename:
+    'Ismingiz o‘zgargani uchun tasdiqlash belgingiz olib tashlandi. Menyudan qayta so‘rang, kimdir yangisini tekshiradi.',
+  staff_title: 'Kyron moderatsiyasi',
+  staff_appeal: 'Apellyatsiya ko‘rib chiqilishini kutmoqda.',
+  staff_report_urgent:
+    'Shoshilinch shikoyat kutmoqda: kimdir xavf ostida bo‘lishi mumkin.',
+  staff_report: 'Shikoyat ko‘rib chiqilishini kutmoqda.',
+  staff_verify: 'Kimdir tasdiqlanishni so‘radi.',
+  test_working: 'Bildirishnomalar ishlayapti.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Ta’qib yoki bezorilik',
+  rule_hate: 'Nafrat nutqi',
+  rule_violence: 'Zo‘ravonlik yoki tahdidlar',
+  rule_self_harm: 'O‘z joniga qasd qilish yoki o‘ziga zarar yetkazish',
+  rule_sexual_content: 'Kattalar uchun kontent',
+  rule_child_safety: 'Bolalar xavfsizligi',
+  rule_misinformation: 'Yolg‘on ma’lumot',
+  rule_impersonation: 'Boshqa shaxs nomidan chiqish',
+  rule_intellectual_property: 'Intellektual mulk',
+  rule_illegal_goods: 'Noqonuniy tovarlar yoki xizmatlar',
+};

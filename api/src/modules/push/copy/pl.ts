@@ -1,0 +1,73 @@
+// Pushes in pl. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const pl: Copy = {
+  someone: 'Ktoś',
+  and_one_other: '{name} i 1 inna osoba',
+  and_others: '{name} i inni ({count})',
+  followed: 'Obserwuje cię',
+  liked: 'Polubił(a) twój post',
+  liked_quote: 'Polubił(a) twój post: „{snippet}”',
+  reposted: 'Udostępnił(a) twój post',
+  reposted_quote: 'Udostępnił(a) twój post: „{snippet}”',
+  replied: 'Odpowiedział(a) ci',
+  replied_quote: 'Odpowiedź: „{snippet}”',
+  group: 'Grupa',
+  new_message: 'Nowa wiadomość',
+  dm_once: 'Wysłał(a) coś do jednorazowego wyświetlenia',
+  dm_attachment: 'Wysłał(a) załącznik',
+  dm_group_message: 'Wysłał(a) wiadomość',
+  dm_message: 'Wysłał(a) ci wiadomość',
+  named_line: '{name}: {text}',
+  group_added: '{name} dodał(a) cię do grupy.',
+  group_hand: '{name} podnosi rękę, by poprosić o możliwość pisania.',
+  chat_poll: 'Ankieta: {text}',
+  chat_photo: 'Zdjęcie',
+  chat_gif: 'GIF',
+  chat_clip: 'Klip',
+  chat_voice: 'Wiadomość głosowa',
+  mod_removed_post: 'Twój post został usunięty.',
+  mod_removed_reply: 'Twoja odpowiedź została usunięta.',
+  mod_removed_message:
+    'Twoja wiadomość na czacie społeczności została usunięta.',
+  mod_removed_other: 'Coś, co opublikowałeś(-aś), zostało usunięte.',
+  mod_warned: 'Twoje konto otrzymało ostrzeżenie.',
+  mod_suspended_until: 'Twoje konto jest zawieszone do {date}.',
+  mod_banned: 'Twoje konto zostało zablokowane.',
+  mod_rule: 'Zasada: {rule}.',
+  mod_rules_general: 'Naruszało to zasady Kyron.',
+  mod_case: 'Sprawa {number}: otwórz Kyron, by zobaczyć powód lub się odwołać.',
+  mod_reversed: 'Cofnęliśmy decyzję w sprawie {number}.',
+  appeal_accepted:
+    'Twoje odwołanie w sprawie {number} zostało przyjęte, a decyzja cofnięta.',
+  appeal_upheld:
+    'Ponownie rozpatrzyliśmy twoje odwołanie w sprawie {number} i decyzja zostaje utrzymana.',
+  report_actioned:
+    'Podjęliśmy działania w sprawie czegoś, co zgłosiłeś(-aś). Dziękujemy za zgłoszenie.',
+  report_dismissed:
+    'Sprawdziliśmy coś, co zgłosiłeś(-aś), i nie stwierdziliśmy naruszenia zasad Kyron. Dziękujemy za zgłoszenie.',
+  verified: 'Masz weryfikację. Odznaka jest teraz widoczna obok twojej nazwy.',
+  verify_declined: 'Twoja prośba o weryfikację nie została zatwierdzona.',
+  verify_removed: 'Twoja odznaka weryfikacji została usunięta.',
+  verify_lapsed_rename:
+    'Twoja odznaka weryfikacji została usunięta, bo zmieniła się twoja nazwa. Poproś ponownie w menu, a ktoś sprawdzi nową.',
+  staff_title: 'Moderacja Kyron',
+  staff_appeal: 'Odwołanie czeka na rozpatrzenie.',
+  staff_report_urgent:
+    'Pilne zgłoszenie czeka: ktoś może być w niebezpieczeństwie.',
+  staff_report: 'Zgłoszenie czeka na rozpatrzenie.',
+  staff_verify: 'Ktoś poprosił o weryfikację.',
+  test_working: 'Powiadomienia działają.',
+  rule_spam: 'Spam',
+  rule_harassment: 'Nękanie lub zastraszanie',
+  rule_hate: 'Mowa nienawiści',
+  rule_violence: 'Przemoc lub groźby',
+  rule_self_harm: 'Samobójstwo lub samookaleczenie',
+  rule_sexual_content: 'Treści dla dorosłych',
+  rule_child_safety: 'Bezpieczeństwo dzieci',
+  rule_misinformation: 'Fałszywe informacje',
+  rule_impersonation: 'Podszywanie się',
+  rule_intellectual_property: 'Własność intelektualna',
+  rule_illegal_goods: 'Nielegalne towary lub usługi',
+};

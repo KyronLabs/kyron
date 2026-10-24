@@ -12,6 +12,7 @@ import type { SupabaseService } from '../../infrastructure/supabase/supabase.ser
 import { ProfileService } from '../profile/profile.service';
 import type { DeliveryService } from '../push/delivery.service';
 import { VerificationService } from './verification.service';
+import { type PushText, render } from '../push/push-text';
 
 /**
  * The badge against a real Postgres: asking, answering, renaming, and the
@@ -35,8 +36,9 @@ run('verification, against a real database', () => {
   beforeAll(async () => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
     const delivery = {
-      tell: (userId: string, _e: unknown, push?: { body: string }) =>
-        told.push({ userId, body: push?.body }),
+      // As an English phone would show it.
+      tell: (userId: string, _e: unknown, push?: { body: PushText }) =>
+        told.push({ userId, body: push && render(push.body, 'en') }),
       tellMany: () => undefined,
     } as unknown as DeliveryService;
     svc = new VerificationService(prisma as PrismaService, delivery);

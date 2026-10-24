@@ -1,0 +1,73 @@
+// Pushes in uk. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const uk: Copy = {
+  someone: 'Хтось',
+  and_one_other: '{name} та ще 1',
+  and_others: '{name} та ще {count}',
+  followed: 'Стежить за вами',
+  liked: 'Сподобався ваш допис',
+  liked_quote: 'Сподобався ваш допис: «{snippet}»',
+  reposted: 'Поширив ваш допис',
+  reposted_quote: 'Поширив ваш допис: «{snippet}»',
+  replied: 'Відповів вам',
+  replied_quote: 'Відповідь: «{snippet}»',
+  group: 'Група',
+  new_message: 'Нове повідомлення',
+  dm_once: 'Надіслав щось для одноразового перегляду',
+  dm_attachment: 'Надіслав вкладення',
+  dm_group_message: 'Надіслав повідомлення',
+  dm_message: 'Надіслав вам повідомлення',
+  named_line: '{name}: {text}',
+  group_added: '{name} додав вас до групи.',
+  group_hand: '{name} підняв руку, щоб попросити слово.',
+  chat_poll: 'Опитування: {text}',
+  chat_photo: 'Фото',
+  chat_gif: 'GIF',
+  chat_clip: 'Кліп',
+  chat_voice: 'Голосове повідомлення',
+  mod_removed_post: 'Ваш допис видалено.',
+  mod_removed_reply: 'Вашу відповідь видалено.',
+  mod_removed_message: 'Ваше повідомлення в чаті спільноти видалено.',
+  mod_removed_other: 'Щось із опублікованого вами видалено.',
+  mod_warned: 'Ваш обліковий запис отримав попередження.',
+  mod_suspended_until: 'Ваш обліковий запис призупинено до {date}.',
+  mod_banned: 'Ваш обліковий запис заблоковано.',
+  mod_rule: 'Правило: {rule}.',
+  mod_rules_general: 'Це порушувало правила Kyron.',
+  mod_case:
+    'Справа {number}: відкрийте Kyron, щоб дізнатися причину або оскаржити.',
+  mod_reversed: 'Ми скасували рішення у справі {number}.',
+  appeal_accepted:
+    'Вашу апеляцію у справі {number} прийнято, рішення скасовано.',
+  appeal_upheld:
+    'Ми ще раз розглянули вашу апеляцію у справі {number}, рішення залишається в силі.',
+  report_actioned:
+    'Ми вжили заходів щодо вашої скарги. Дякуємо, що повідомили.',
+  report_dismissed:
+    'Ми розглянули вашу скаргу й не виявили порушення правил Kyron. Дякуємо, що повідомили.',
+  verified: 'Вас верифіковано. Значок тепер показано поруч із вашим іменем.',
+  verify_declined: 'Ваш запит на верифікацію не схвалено.',
+  verify_removed: 'Ваш значок верифікації знято.',
+  verify_lapsed_rename:
+    'Ваш значок верифікації знято, бо ви змінили ім’я. Запросіть його знову в меню, і хтось перевірить нове.',
+  staff_title: 'Модерація Kyron',
+  staff_appeal: 'Апеляція чекає на розгляд.',
+  staff_report_urgent:
+    'Термінова скарга чекає: комусь може загрожувати небезпека.',
+  staff_report: 'Скарга чекає на розгляд.',
+  staff_verify: 'Хтось попросив верифікацію.',
+  test_working: 'Сповіщення працюють.',
+  rule_spam: 'Спам',
+  rule_harassment: 'Цькування або булінг',
+  rule_hate: 'Мова ворожнечі',
+  rule_violence: 'Насильство або погрози',
+  rule_self_harm: 'Самогубство або самоушкодження',
+  rule_sexual_content: 'Контент для дорослих',
+  rule_child_safety: 'Безпека дітей',
+  rule_misinformation: 'Неправдива інформація',
+  rule_impersonation: 'Видавання себе за іншу особу',
+  rule_intellectual_property: 'Інтелектуальна власність',
+  rule_illegal_goods: 'Незаконні товари чи послуги',
+};

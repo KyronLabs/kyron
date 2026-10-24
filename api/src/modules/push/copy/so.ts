@@ -1,0 +1,74 @@
+// Pushes in so. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const so: Copy = {
+  someone: 'Qof',
+  and_one_other: '{name} iyo 1 kale',
+  and_others: '{name} iyo {count} kale',
+  followed: 'Wuu ku raacay',
+  liked: 'Wuu jeclaaday qoraalkaaga',
+  liked_quote: 'Wuu jeclaaday qoraalkaaga: “{snippet}”',
+  reposted: 'Dib ayuu u daabacay qoraalkaaga',
+  reposted_quote: 'Dib ayuu u daabacay qoraalkaaga: “{snippet}”',
+  replied: 'Wuu kaa jawaabay',
+  replied_quote: 'Wuu jawaabay: “{snippet}”',
+  group: 'Koox',
+  new_message: 'Fariin cusub',
+  dm_once: 'Wuxuu soo diray wax hal mar la arko',
+  dm_attachment: 'Wuxuu soo diray lifaaq',
+  dm_group_message: 'Wuxuu soo diray fariin',
+  dm_message: 'Wuxuu kuu soo diray fariin',
+  named_line: '{name}: {text}',
+  group_added: '{name} ayaa kaa dhigay kooxda.',
+  group_hand: '{name} ayaa gacanta kor u qaaday si uu u codsado inuu wax qoro.',
+  chat_poll: 'Codbixin: {text}',
+  chat_photo: 'Sawir',
+  chat_gif: 'GIF',
+  chat_clip: 'Muuqaal gaaban',
+  chat_voice: 'Fariin cod ah',
+  mod_removed_post: 'Qoraalkaaga waa la saaray.',
+  mod_removed_reply: 'Jawaabtaada waa la saaray.',
+  mod_removed_message: 'Fariintaadii sheekaysiga bulshada waa la saaray.',
+  mod_removed_other: 'Wax aad daabacday ayaa la saaray.',
+  mod_warned: 'Akoonkaagu wuxuu leeyahay digniin.',
+  mod_suspended_until: 'Akoonkaaga waa la hakiyay ilaa {date}.',
+  mod_banned: 'Akoonkaaga waa la mamnuucay.',
+  mod_rule: 'Xeer: {rule}.',
+  mod_rules_general: 'Wuxuu jebiyay xeerarka Kyron.',
+  mod_case:
+    'Kiis {number}: fur Kyron si aad u aragto sababta, ama si aad racfaan u qaadato.',
+  mod_reversed: "Waxaan beddelnay go'aanka kiiska {number}.",
+  appeal_accepted:
+    "Racfaankaaga kiiska {number} waa la aqbalay, go'aankiina waa la beddelay.",
+  appeal_upheld:
+    "Mar kale ayaan eegnay racfaankaaga kiiska {number}, go'aankuna wuu taagan yahay.",
+  report_actioned:
+    'Tallaabo ayaan ka qaadnay wax aad soo sheegtay. Waad ku mahadsan tahay inaad noo sheegtay.',
+  report_dismissed:
+    'Waxaan eegnay wax aad soo sheegtay mana aanaan helin inuu jebiyay xeerarka Kyron. Waad ku mahadsan tahay inaad noo sheegtay.',
+  verified:
+    'Waa lagu xaqiijiyay. Calaamaddu hadda waxay ka muuqataa magacaaga agtiisa.',
+  verify_declined: 'Codsigaaga xaqiijinta lama ansixin.',
+  verify_removed: 'Calaamaddaada xaqiijinta waa laga qaaday.',
+  verify_lapsed_rename:
+    'Calaamaddaada xaqiijinta waa laga qaaday sababtoo ah magacaagu wuu isbeddelay. Mar kale ka codso liiska, qof ayaa hubin doona kan cusub.',
+  staff_title: 'Maamulka Kyron',
+  staff_appeal: 'Racfaan ayaa sugaya dib-u-eegis.',
+  staff_report_urgent:
+    'Warbixin degdeg ah ayaa sugaysa: qof ayaa laga yaabaa inuu khatar ku jiro.',
+  staff_report: 'Warbixin ayaa sugaysa dib-u-eegis.',
+  staff_verify: 'Qof ayaa codsaday in la xaqiijiyo.',
+  test_working: 'Ogeysiisyadu way shaqeynayaan.',
+  rule_spam: 'Fariimo aan loo baahnayn',
+  rule_harassment: 'Dhibaataynta ama cagajuglaynta',
+  rule_hate: 'Hadal nacayb',
+  rule_violence: 'Rabshad ama hanjabaad',
+  rule_self_harm: 'Is-dil ama is-waxyeelayn',
+  rule_sexual_content: 'Waxyaabaha dadka waaweyn',
+  rule_child_safety: 'Badbaadada carruurta',
+  rule_misinformation: 'Macluumaad been ah',
+  rule_impersonation: 'Iska dhigid qof kale',
+  rule_intellectual_property: 'Hantida aqooneed',
+  rule_illegal_goods: 'Alaab ama adeeg sharci-darro ah',
+};

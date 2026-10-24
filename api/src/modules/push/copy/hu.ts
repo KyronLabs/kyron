@@ -1,0 +1,73 @@
+// Pushes in hu. Generated from the push translations: a change to a
+// string here is fine, as long as every {placeholder} stays.
+import type { Copy } from './en';
+
+export const hu: Copy = {
+  someone: 'Valaki',
+  and_one_other: '{name} és még 1 személy',
+  and_others: '{name} és még {count} személy',
+  followed: 'Követ téged',
+  liked: 'Kedveli a bejegyzésedet',
+  liked_quote: 'Kedveli a bejegyzésedet: „{snippet}”',
+  reposted: 'Megosztotta a bejegyzésedet',
+  reposted_quote: 'Megosztotta a bejegyzésedet: „{snippet}”',
+  replied: 'Válaszolt neked',
+  replied_quote: 'Válaszolt: „{snippet}”',
+  group: 'Csoport',
+  new_message: 'Új üzenet',
+  dm_once: 'Egyszer megtekinthető üzenetet küldött',
+  dm_attachment: 'Mellékletet küldött',
+  dm_group_message: 'Üzenetet küldött',
+  dm_message: 'Üzenetet küldött neked',
+  named_line: '{name}: {text}',
+  group_added: '{name} hozzáadott a csoporthoz.',
+  group_hand: '{name} jelentkezett, hogy írhasson.',
+  chat_poll: 'Szavazás: {text}',
+  chat_photo: 'Fotó',
+  chat_gif: 'GIF',
+  chat_clip: 'Klip',
+  chat_voice: 'Hangüzenet',
+  mod_removed_post: 'A bejegyzésedet eltávolítottuk.',
+  mod_removed_reply: 'A válaszodat eltávolítottuk.',
+  mod_removed_message:
+    'A közösségi csevegőben küldött üzenetedet eltávolítottuk.',
+  mod_removed_other: 'Eltávolítottunk valamit, amit közzétettél.',
+  mod_warned: 'A fiókod figyelmeztetést kapott.',
+  mod_suspended_until: 'A fiókod {date}-ig fel van függesztve.',
+  mod_banned: 'A fiókodat letiltottuk.',
+  mod_rule: 'Szabály: {rule}.',
+  mod_rules_general: 'Megsértette a Kyron szabályait.',
+  mod_case:
+    '{number}. ügy: nyisd meg a Kyront, hogy lásd az okát, vagy fellebbezz.',
+  mod_reversed: 'Visszavontuk a(z) {number}. ügyben hozott döntést.',
+  appeal_accepted:
+    'A(z) {number}. ügyben benyújtott fellebbezésedet elfogadtuk, a döntést visszavontuk.',
+  appeal_upheld:
+    'Újra megvizsgáltuk a(z) {number}. ügyben benyújtott fellebbezésedet, a döntés érvényben marad.',
+  report_actioned:
+    'Intézkedtünk valami ügyében, amit jelentettél. Köszönjük, hogy szóltál.',
+  report_dismissed:
+    'Megvizsgáltunk valamit, amit jelentettél, és nem találtuk úgy, hogy megsértette volna a Kyron szabályait. Köszönjük, hogy szóltál.',
+  verified: 'Hitelesítve vagy. A jelvény mostantól a neved mellett látható.',
+  verify_declined: 'A hitelesítési kérelmedet nem hagyták jóvá.',
+  verify_removed: 'A hitelesítési jelvényedet eltávolítottuk.',
+  verify_lapsed_rename:
+    'A hitelesítési jelvényedet eltávolítottuk, mert megváltozott a neved. Kérd újra a menüből, és valaki ellenőrzi az újat.',
+  staff_title: 'Kyron moderáció',
+  staff_appeal: 'Egy fellebbezés vár elbírálásra.',
+  staff_report_urgent: 'Sürgős bejelentés vár: valaki veszélyben lehet.',
+  staff_report: 'Egy bejelentés vár elbírálásra.',
+  staff_verify: 'Valaki hitelesítést kért.',
+  test_working: 'Az értesítések működnek.',
+  rule_spam: 'Kéretlen tartalom',
+  rule_harassment: 'Zaklatás vagy megfélemlítés',
+  rule_hate: 'Gyűlöletbeszéd',
+  rule_violence: 'Erőszak vagy fenyegetés',
+  rule_self_harm: 'Öngyilkosság vagy önsértés',
+  rule_sexual_content: 'Felnőtt tartalom',
+  rule_child_safety: 'Gyermekek biztonsága',
+  rule_misinformation: 'Hamis információ',
+  rule_impersonation: 'Más személy megszemélyesítése',
+  rule_intellectual_property: 'Szellemi tulajdon',
+  rule_illegal_goods: 'Illegális áruk vagy szolgáltatások',
+};
