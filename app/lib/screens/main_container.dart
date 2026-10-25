@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
+import '../providers/keys_provider.dart';
 import '../providers/messages_provider.dart';
 import '../providers/notifications_provider.dart';
 import '../providers/realtime_provider.dart';
@@ -118,6 +119,10 @@ class _MainContainerState extends ConsumerState<MainContainer>
       // A message that arrived while the app was away came as a push, not
       // over the socket, so nothing has moved the count since.
       ref.invalidate(unreadConversationsProvider);
+      // A new phone may have asked this one for keys while it was away. The
+      // request is told over the socket only, and a socket that stayed up in
+      // the background does not always say so on return.
+      unawaited(ref.read(messageVaultProvider).answerPending());
     }
   }
 

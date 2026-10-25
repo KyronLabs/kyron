@@ -1,6 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  Optional,
+} from '@nestjs/common';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { RealtimeService } from '../realtime/realtime.service';
 
 /** One install's public half. */
 export interface PublishedKey {
@@ -27,9 +33,24 @@ const KEY_PATTERN = /^[A-Za-z0-9_-]{43}=?$/;
  */
 @Injectable()
 export class KeysService {
-  constructor(private readonly prisma: PrismaService) {}
+  private readonly logger = new Logger(KeysService.name);
 
-  /** Publishes, or replaces, this install's key. */
+  constructor(
+    private readonly prisma: PrismaService,
+    @Optional() private readonly realtime?: RealtimeService,
+  ) {}
+
+  /**
+   * Publishes, or replaces, this install's key.
+   *
+   * A key that is new here -- a new phone, a reinstall -- is announced to
+   * everybody who shares a conversation with its owner, the owner included.
+   * Their apps keep each conversation's device list for minutes, and until
+   * they fetched it again they sealed for the list without this device on
+   * it: everything sent to somebody in the first minutes on a new phone
+   * arrived as "Waiting for this message". The same key published again,
+   * which happens on every sign-in, says nothing.
+   */
   async publish(
     userId: string,
     deviceId: string,
@@ -39,11 +60,16 @@ export class KeysService {
       throw new BadRequestException('That is not an X25519 public key.');
     }
 
+    const before = await this.prisma.messageKey.findUnique({
+      where: { userId_deviceId: { userId, deviceId } },
+      select: { publicKey: true },
+    });
     const row = await this.prisma.messageKey.upsert({
       where: { userId_deviceId: { userId, deviceId } },
       update: { publicKey },
       create: { userId, deviceId, publicKey },
     });
+    if (before?.publicKey !== publicKey) await this.announce(userId);
     return {
       userId: row.userId,
       deviceId: row.deviceId,
@@ -93,6 +119,25 @@ export class KeysService {
       select: { userId: true, deviceId: true, publicKey: true },
     });
     return rows;
+  }
+
+  /** Tells everybody who writes to [userId] that their devices changed. */
+  private async announce(userId: string): Promise<void> {
+    if (!this.realtime) return;
+    try {
+      const people = await this.prisma.conversationMember.findMany({
+        where: { conversation: { members: { some: { userId } } } },
+        select: { userId: true },
+        distinct: ['userId'],
+      });
+      this.realtime.emitToMany(
+        [...new Set([userId, ...people.map((p) => p.userId)])],
+        { type: 'keys.changed', userId },
+      );
+    } catch (error) {
+      // The key is published either way; the lists catch up within minutes.
+      this.logger.warn(`Could not announce a new key: ${String(error)}`);
+    }
   }
 
   /** Withdraws one install's key, on sign-out. */

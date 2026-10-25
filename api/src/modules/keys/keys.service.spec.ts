@@ -1,6 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import type { RealtimeService } from '../realtime/realtime.service';
 import { KeysService } from './keys.service';
 
 /** A well-formed X25519 key: 32 bytes, base64url, 43 characters. */
@@ -8,6 +9,7 @@ const KEY = 'a'.repeat(43);
 
 const build = (overrides: Record<string, unknown> = {}) => {
   const messageKey = {
+    findUnique: jest.fn().mockResolvedValue(null),
     upsert: jest.fn(),
     findMany: jest.fn().mockResolvedValue([]),
     deleteMany: jest.fn().mockResolvedValue({ count: 1 }),
@@ -22,7 +24,13 @@ const build = (overrides: Record<string, unknown> = {}) => {
     conversationMember,
     ...overrides,
   } as unknown as PrismaService;
-  return { service: new KeysService(prisma), messageKey, conversationMember };
+  const realtime = { emitToMany: jest.fn() };
+  return {
+    service: new KeysService(prisma, realtime as unknown as RealtimeService),
+    messageKey,
+    conversationMember,
+    realtime,
+  };
 };
 
 describe('KeysService', () => {
@@ -42,6 +50,46 @@ describe('KeysService', () => {
           where: { userId_deviceId: { userId: 'me', deviceId: 'device-1234' } },
         }),
       );
+    });
+
+    it('tells everybody who writes to the account about a new device', async () => {
+      // Their apps hold each conversation's device list for minutes, and
+      // sealed for the old one meanwhile: the new phone could open nothing
+      // sent to it in its first minutes.
+      const { service, messageKey, conversationMember, realtime } = build();
+      messageKey.upsert.mockResolvedValue({
+        userId: 'me',
+        deviceId: 'new-phone',
+        publicKey: KEY,
+      });
+
+      await service.publish('me', 'new-phone', KEY);
+
+      expect(conversationMember.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { conversation: { members: { some: { userId: 'me' } } } },
+        }),
+      );
+      expect(realtime.emitToMany).toHaveBeenCalledWith(['me', 'them'], {
+        type: 'keys.changed',
+        userId: 'me',
+      });
+    });
+
+    it('says nothing when the same key is published again', async () => {
+      // Every sign-in publishes; announcing each would drop every
+      // correspondent's device lists on every launch.
+      const { service, messageKey, realtime } = build();
+      messageKey.findUnique.mockResolvedValue({ publicKey: KEY });
+      messageKey.upsert.mockResolvedValue({
+        userId: 'me',
+        deviceId: 'phone',
+        publicKey: KEY,
+      });
+
+      await service.publish('me', 'phone', KEY);
+
+      expect(realtime.emitToMany).not.toHaveBeenCalled();
     });
 
     it('refuses anything that is not a key', async () => {

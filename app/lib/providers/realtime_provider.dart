@@ -201,6 +201,12 @@ void applyRealtimeEvent(Ref ref, RealtimeEvent event) {
       // message it was not sealed for. This one may be able to open it.
       ref.read(messageVaultProvider).answerPending();
 
+    case 'keys.changed':
+      // Somebody -- maybe this reader, on another phone -- has a new device.
+      // Without this, messages went on being sealed for the old list for up
+      // to ten minutes, and the new phone could open none of them.
+      ref.read(messageVaultProvider).forgetDevices();
+
     case 'message.keys.shared':
       // Somebody answered: the waiting messages in that thread can open.
       final sharedIn = event.conversationId;

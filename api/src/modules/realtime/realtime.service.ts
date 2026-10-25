@@ -50,6 +50,12 @@ export type RealtimeEvent =
   | { type: 'message.keys.requested'; conversationId: string }
   /** One of the reader's requests was answered: the thread can open more. */
   | { type: 'message.keys.shared'; conversationId: string }
+  /**
+   * Somebody the reader writes to -- or the reader -- has a new device. The
+   * app forgets the device lists it was holding, so the next message is
+   * sealed for it too (KeysService.publish).
+   */
+  | { type: 'keys.changed'; userId: string }
   /** Something happened that the notifications screen would show. */
   | {
       type: 'notification.new';

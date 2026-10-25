@@ -85,6 +85,9 @@ function store() {
   ];
   const shares: Share[] = [];
   let next = 0;
+  // One tick per request, so a later request is strictly newer than an
+  // earlier one -- the order the ceiling cuts by -- whatever the clock does.
+  let batch = 0;
 
   const inMine = (viewer: string, conversationId: string) =>
     members.some(
@@ -95,12 +98,13 @@ function store() {
   type Where = {
     id?: string | { in: string[] };
     messageId?: { in: string[] };
-    publicKey?: string;
+    publicKey?: string | { not: string };
     sealed?: null;
     message?: {
       deletedAt: null;
       createdAt?: { gte: Date };
       conversation: { members: { some: { userId: string } } };
+      OR?: { body: { contains: string } }[];
     };
   };
   const matches = (s: Share, where: Where) => {
@@ -109,11 +113,20 @@ function store() {
       return false;
     if (where.messageId && !where.messageId.in.includes(s.messageId))
       return false;
-    if (where.publicKey && s.publicKey !== where.publicKey) return false;
+    if (typeof where.publicKey === 'string' && s.publicKey !== where.publicKey)
+      return false;
+    if (
+      typeof where.publicKey === 'object' &&
+      s.publicKey === where.publicKey.not
+    )
+      return false;
     if (where.sealed === null && s.sealed !== null) return false;
     if (where.message) {
       const m = messageOf(s.messageId);
       if (m.deletedAt) return false;
+      const any = where.message.OR;
+      if (any && !any.some((o) => m.body.includes(o.body.contains)))
+        return false;
       if (where.message.createdAt && m.createdAt < where.message.createdAt.gte)
         return false;
       if (
@@ -183,10 +196,14 @@ function store() {
         ),
     },
     messageKeyShare: {
-      findMany: ({ where }: { where: Where }) =>
+      // Newest first, as asked, and no more than [take]: the ceiling is what
+      // a pile of unanswerable requests used to fill.
+      findMany: ({ where, take }: { where: Where; take?: number }) =>
         Promise.resolve(
           shares
             .filter((s) => matches(s, where))
+            .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+            .slice(0, take)
             .map((s) => ({ ...s, message: messageOf(s.messageId) })),
         ),
       createMany: ({
@@ -194,6 +211,7 @@ function store() {
       }: {
         data: { messageId: string; userId: string; publicKey: string }[];
       }) => {
+        const createdAt = new Date(Date.now() + ++batch * 1000);
         for (const row of data) {
           if (
             shares.some(
@@ -207,7 +225,7 @@ function store() {
             id: `s${++next}`,
             sealed: null,
             answeredAt: null,
-            createdAt: new Date(),
+            createdAt,
           });
         }
         return Promise.resolve({ count: data.length });
@@ -229,16 +247,23 @@ function store() {
     },
   };
 
+  // The bodies were 'k2.sealed', which names no device. These two name
+  // Bo's phone, as an envelope sealed for it would.
+  const sealedFor = (k: string) =>
+    `k2.sender.nonce.body.mac.${KeySharesService.keyId(k)}:n:k:m`;
+  messages[0].body = sealedFor(BO_PHONE);
+  messages[1].body = sealedFor(BO_PHONE);
+
   const service = new KeySharesService(
     prisma as unknown as PrismaService,
     delivery as unknown as DeliveryService,
   );
-  return { service, shares, keys, messages, told };
+  return { service, shares, keys, messages, told, sealedFor };
 }
 
 describe('KeySharesService', () => {
   it('a new device asks, and the sender answers', async () => {
-    const { service, told } = store();
+    const { service, told, messages } = store();
 
     await expect(
       service.request(ADA, C1, 'ada-new', ['m1', 'm2']),
@@ -254,7 +279,7 @@ describe('KeySharesService', () => {
     ]);
     // The sealed body travels with it, so the answering device can open it
     // without fetching the thread.
-    expect(pending[0].body).toBe('k2.sealed');
+    expect(pending[0].body).toBe(messages[0].body);
 
     told.length = 0;
     await expect(
@@ -353,6 +378,56 @@ describe('KeySharesService', () => {
     );
 
     await expect(service.pending(BO)).resolves.toEqual([]);
+  });
+
+  it('names a key the way the app does', () => {
+    // From the app's MessageCrypto.keyId, for the key of seed 0..31.
+    expect(
+      KeySharesService.keyId('j0DFrbaPJWJK5bIU6nZ6bslNgp09e14a0bpvPiE4KF8='),
+    ).toBe('7t2IPaCpRRU=');
+  });
+
+  it('hands a device only what it can answer', async () => {
+    const { service, messages, sealedFor } = store();
+    // m2 sealed for somebody else's device: Bo's phone cannot open it.
+    messages[1].body = sealedFor(CY_PHONE);
+    await service.request(ADA, C1, 'ada-new', ['m1', 'm2']);
+    await service.request(BO, C1, 'bo-phone', ['m1']);
+
+    const mine = await service.pending(BO, 'bo-phone');
+    // Not m2, which it was not sealed for, and not its own request.
+    expect(mine.map((p) => [p.messageId, p.publicKey])).toEqual([
+      ['m1', ADA_NEW],
+    ]);
+  });
+
+  it('requests nobody can answer do not bury one that can be', async () => {
+    // What kept a new phone waiting with the old one signed in beside it:
+    // a hundred unanswerable requests, newest first, above the one it could.
+    const { service, messages, sealedFor } = store();
+    for (let i = 0; i < KeySharesService.maxPending + 5; i++) {
+      messages.push({
+        id: `lost${i}`,
+        conversationId: C1,
+        body: sealedFor(CY_PHONE),
+        linkCard: null,
+        createdAt: days(1),
+        deletedAt: null,
+      });
+    }
+    await service.request(ADA, C1, 'ada-new', ['m1']);
+    await service.request(
+      ADA,
+      C1,
+      'ada-new',
+      Array.from(
+        { length: KeySharesService.maxPending + 5 },
+        (_, i) => `lost${i}`,
+      ),
+    );
+
+    const mine = await service.pending(BO, 'bo-phone');
+    expect(mine.map((p) => p.messageId)).toEqual(['m1']);
   });
 
   it('a withdrawn message is not answered for', async () => {

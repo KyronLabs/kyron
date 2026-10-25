@@ -162,15 +162,28 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// they are not looking at.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Back with no camera: the one let go below. This used to return early
+    // whenever there was no controller -- which, after letting it go, was
+    // always -- so the camera never came back and the viewfinder spun.
+    // Not while one is already opening: the permission prompt steps the app
+    // back and forward again in the middle of the first open.
+    if (state == AppLifecycleState.resumed) {
+      if (_controller == null && !_opening && _problem == null) _open();
+      return;
+    }
+
     final controller = _controller;
     if (controller == null || !controller.value.isInitialized) return;
 
     if (state == AppLifecycleState.inactive) {
       _controller = null;
+      // The frames stop with the controller. Left true, the flag said a
+      // stream was running on a controller that no longer existed, so the
+      // camera came back with a face lens chosen and nothing tracking it --
+      // until a colour lens was picked, which is the one path that cleared it.
+      _streaming = false;
       controller.dispose();
       if (mounted) setState(() {});
-    } else if (state == AppLifecycleState.resumed) {
-      _open();
     }
   }
 
@@ -227,6 +240,11 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         _controller = controller;
         _opening = false;
       });
+      // A face lens chosen before the camera was ready, or still chosen when
+      // it comes back from the background or a flip, is tracked on this
+      // controller. Only picking a lens used to start tracking, and picking
+      // one before there was a controller started nothing at all.
+      if (_lens.needsFace) await _startTracking();
     } on CameraException catch (error) {
       AppLog.instance.error('ar', 'Camera would not open: ${error.code}');
       if (!mounted) return;
@@ -348,14 +366,28 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     // Fetch first: a lens whose pictures have not arrived would otherwise
     // track a face and draw nothing on it.
     if (await _pictures.load(lens) && mounted) setState(() {});
+    // Something else was picked while the pictures were arriving.
+    if (!mounted || !_lens.needsFace) return;
     await _startTracking();
   }
 
   Future<void> _startTracking() async {
-    if (_streaming) return;
+    if (_streaming || _startingTracking) return;
     final controller = _controller;
     if (controller == null || !controller.value.isInitialized) return;
+    _startingTracking = true;
+    try {
+      await _streamFrom(controller);
+    } finally {
+      _startingTracking = false;
+    }
+  }
 
+  /// True while [_startTracking] is opening the tracker or the stream, so a
+  /// lens picked and the camera opening at the same moment start it once.
+  bool _startingTracking = false;
+
+  Future<void> _streamFrom(CameraController controller) async {
     if (!await _tracker.open()) {
       if (!mounted) return;
       // Said out loud rather than left as a lens that quietly does nothing.
@@ -366,6 +398,10 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       );
       return;
     }
+
+    // The camera went away, or a colour lens was picked, while the tracker
+    // was starting.
+    if (!mounted || _controller != controller || !_lens.needsFace) return;
 
     try {
       await controller.startImageStream(_onFrame);
@@ -471,6 +507,8 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     if (_cameras.length < 2) return;
     final controller = _controller;
     _controller = null;
+    // Its frames end with it; [_open] starts them again on the new camera.
+    _streaming = false;
     setState(() => _opening = true);
     await controller?.dispose();
     _cameraIndex = (_cameraIndex + 1) % _cameras.length;

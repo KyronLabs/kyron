@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 import {
   BadRequestException,
   Injectable,
@@ -140,18 +142,64 @@ export class KeySharesService {
   }
 
   /**
+   * The name an envelope gives a device's sealed key: eight bytes of the
+   * SHA-256 of its public key, base64url with its padding. The same
+   * arithmetic as the app's `MessageCrypto.keyId`.
+   */
+  static keyId(publicKey: string): string {
+    const raw = Buffer.from(publicKey, 'base64url');
+    return createHash('sha256')
+      .update(raw)
+      .digest()
+      .subarray(0, 8)
+      .toString('base64url')
+      .padEnd(12, '=');
+  }
+
+  /**
    * What the reader's devices may be able to answer: requests in their
    * conversations, from a device whose key is still published, for a message
    * inside the window.
+   *
+   * With [deviceId], only what that device can answer: a request for a
+   * message whose envelope names its key, from some other device. Without
+   * it, every request in the reader's conversations -- and those included
+   * the ones this device can never answer, which nobody else answers either
+   * when the only device that could is gone. They stay unanswered for the
+   * whole window, newest first, and once a hundred of them sat above a
+   * request this device *could* answer, it was never handed that one: the
+   * new phone said "Waiting for this message" with the old one signed in
+   * beside it.
    */
-  async pending(viewerId: string): Promise<KeyRequest[]> {
+  async pending(viewerId: string, deviceId?: string): Promise<KeyRequest[]> {
+    const own = deviceId
+      ? await this.prisma.messageKey.findUnique({
+          where: { userId_deviceId: { userId: viewerId, deviceId } },
+          select: { publicKey: true },
+        })
+      : null;
+    // The envelope lists each device as `<key id>:<nonce>:<key>:<mac>`,
+    // after the body's `.` or another device's `~`. Prisma passes `_` in a
+    // `contains` through as LIKE's one-character wildcard, so this matches a
+    // little wider than exactly, never narrower; the device checks every
+    // request it is handed anyway.
+    const id = own ? KeySharesService.keyId(own.publicKey) : null;
     const rows = await this.prisma.messageKeyShare.findMany({
       where: {
         sealed: null,
+        ...(own ? { publicKey: { not: own.publicKey } } : {}),
         message: {
           deletedAt: null,
           createdAt: { gte: KeySharesService.since() },
           conversation: { members: { some: { userId: viewerId } } },
+          ...(id
+            ? {
+                OR: [
+                  { body: { contains: `.${id}:` } },
+                  { body: { contains: `~${id}:` } },
+                ],
+              }
+            : {}),
         },
       },
       orderBy: { createdAt: 'desc' },

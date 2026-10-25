@@ -27,8 +27,10 @@ is the second:
   phrase is real work and a real support burden — a phrase somebody loses is
   an account nobody can prove they own. Signed posts mean a key on every
   device that composes. None of it is visible to a person using the app today.
-- **The app has not shipped.** Every week spent on the identity layer is a
-  week the thing people would actually use stays in debug builds.
+- **The app had not shipped.** Every week spent on the identity layer was a
+  week the thing people would actually use stayed in debug builds. It is in
+  closed testing now (October 2026), which is the reason this held, not a
+  reason to reopen it.
 
 What Kyron *is* is true today without any of it: an open-source social app you
 can run yourself, with a ranking engine anybody can read. That is the
