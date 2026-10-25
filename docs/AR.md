@@ -202,12 +202,32 @@ camera and no phone attached to it.
   rather than guesses when the face is half out of frame. Both camera plane
   layouts are decoded from hand-built buffers. In `test/skin_sampler_test.dart`.
 
-**Not checked, because it needs hardware:**
+**Seen on a phone, in closed testing (October 2026):**
 
-- **Any of the tracking, live.** Frame rate, jitter, how far the overlay lags
-  the preview, and whether dropping frames while inference is busy keeps it in
-  step. All of it is written to fail safely -- no face means nothing drawn --
-  but none of it has been seen running.
+- **Tracking runs live.** A face lens finds the face and hangs its pictures on
+  it. It still needs work; how much, and where, is for the testers to say.
+- **And it found a bug nothing here could have.** A face lens could track
+  nothing until a colour lens had been picked and the face lens picked again.
+  Tracking started only when a lens was picked, and the flag saying frames
+  were streaming outlived the camera they streamed from: the camera is let go
+  whenever the app steps back -- a notification shade pulled down, a call --
+  and replaced when the lens is flipped, and the
+  replacement came back with the flag still set and no frames. A face lens
+  picked before the camera had opened started nothing at all. Picking a
+  colour lens was the one path that cleared the flag. Now the flag goes with
+  the camera, and a camera that opens with a face lens chosen starts tracking
+  it.
+- **Found beside it, by reading rather than on a phone:** coming back to the
+  app never reopened the camera it had let go. The handler returned early
+  whenever there was no camera -- and having let it go, there never was -- so
+  the viewfinder would spin until the screen was left. It reopens now. Worth
+  confirming on a phone: pull the shade down over a lens and let it go.
+
+**Not checked on a phone yet:**
+
+- Frame rate, jitter, how far the overlay lags the preview, and whether
+  dropping frames while inference is busy keeps it in step. All of it is
+  written to fail safely -- no face means nothing drawn.
 - **The live effects.** `LensEffectLayer` leans on `BackdropFilter` to read the
   camera underneath it, and `RepaintBoundary.toImage` does not run one -- so
   the preview path cannot be rendered here at all. Only the baker, which draws
@@ -220,9 +240,9 @@ camera and no phone attached to it.
 - Frame rate with a filter on the preview.
 - The front camera's mirroring.
 
-Those need somebody to run it on a phone. Nothing below the plumbing is
-guessed — the lens maths is exercised — but the camera itself has only been
-compiled, not seen.
+Those need somebody to look for them on a phone. Nothing below the plumbing
+is guessed — the lens maths is exercised — and the camera has now been seen,
+but only the tracking and the bug above were reported back from it.
 
 ## If a lens looks wrong
 

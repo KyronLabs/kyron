@@ -11,6 +11,21 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Fixed
+
+- **Messages on a new phone no longer wait forever** while your old phone is
+  signed in. Your other phones now answer for the new one as soon as they
+  can: when they are asked, when they come back to the front, and without
+  being crowded out by requests nobody can answer. Messages sent to you in
+  your first minutes on a new phone are also sealed for it, rather than only
+  for the phones you had before. Your old phone still has to open Kyron once
+  for older messages to arrive. Needs this version of the app and the
+  server.
+- **Face lenses track straight away.** A face lens could do nothing until a
+  colour lens had been picked first -- after the notification shade, a call,
+  flipping the camera, or picking the face lens before the camera had opened.
+- **The lens camera comes back** after the notification shade or a call,
+  rather than leaving the viewfinder spinning.
 
 ## [0.1.14] - 2026-10-24
 ### Added

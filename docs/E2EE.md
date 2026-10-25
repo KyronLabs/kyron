@@ -63,7 +63,8 @@ is sent, so a device that did not exist yet -- a new phone, a reinstall, a key
 lost to the old sign-out -- was never among them. Such a device now asks
 (`POST /messages/:id/keys/requests`), and the thread reads "Waiting for this
 message. This may take a while." Every other device in the conversation is
-told over the socket and checks on its next launch; any that can open the
+told over the socket, and checks again on its next launch and whenever it
+comes back to the foreground; any that can open the
 message -- the sender's phone, or another of the reader's own -- seals the
 message's key again, for the asking device's public key alone, under a key
 derived from X25519 between the two devices (`kyron/dm/v2/share`), and posts it
@@ -79,6 +80,42 @@ still cannot open, and asking again clears an answer that did not open.
 
 Only messages from the last **30 days** can be asked for or answered. That
 bound is deliberate; see "No key verification" below for why.
+
+**What kept a new phone waiting, found in closed testing on 25 October
+2026.** Somebody signed in on a second phone, with the first still signed in
+beside it, and the new one said "Waiting for this message" and stayed there.
+Three things, each enough on its own:
+
+- **Requests nobody could answer buried the ones somebody could.** A device
+  fetched the hundred newest unanswered requests in all its conversations,
+  including every one it could never answer -- for messages it was not sealed
+  for, which nobody answers when the only device that was is gone. Those sit
+  for the whole 30 days. Once a hundred of them were newer than a request the
+  old phone *could* answer, it was never handed that one. A device now names
+  itself when it asks, and the server hands it only requests for messages
+  whose envelope lists its key, from some other device. The envelope says
+  which devices it was sealed for in the clear already, by key id, so this
+  tells the server nothing new.
+- **Messages went on being sealed for the old list.** A device keeps each
+  conversation's device list for ten minutes, so for up to ten minutes after
+  somebody signed in on a new phone, everything sent to them left that phone
+  out -- and could only be read there if the sender's phone answered later. A
+  key that is new to the server is now announced (`keys.changed`) to
+  everybody who shares a conversation with its owner, the owner included, and
+  their apps drop the lists they were holding. The same key published again,
+  which every sign-in does, announces nothing.
+- **A phone in the background did not answer when it came back.** Requests
+  are told over the socket, and a socket that stayed up while the app was in
+  the background does not always say so on return. Coming back to the
+  foreground now answers whatever is waiting.
+
+What none of this changes: an answer still needs a device that was sealed for
+the message to be **opened**. A phone in a drawer with the app closed answers
+nothing until somebody opens Kyron on it -- requests are not pushed, because
+answering one needs the key, and a push handler that wakes in the background,
+signs in and reads the keychain is a larger change than this. And a message
+whose only devices are gone stays waiting for good, which is what the Kyron
+Vault below is for.
 
 ### What `k1` got wrong
 

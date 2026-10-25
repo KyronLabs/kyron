@@ -13,7 +13,10 @@ overclaimed for a day, and was believed. Neither document outranks the other.
 the code recently should be treated as a guess.
 
 Last audited: 14 September 2026 — every claim below re-checked against the
-repository.
+repository. **Updated 25 October 2026** with what closed testing on real phones
+showed — push, AR tracking and encrypted messages between two phones all seen
+working — and with the October messaging work. Claims not named in that update
+are still as of September.
 
 That pass found the failure this file was written to prevent, pointing the
 other way. **AR camera lenses sat under *Stubs shipped as if finished*, and in
@@ -29,8 +32,9 @@ notice, because a document that undersells itself does not read as a lie.
 ## Where the project actually is
 
 A working single-server social app: NestJS + Prisma over one Postgres
-(Supabase), a Flutter client, REST between them. 851 Flutter tests and 458 API
-tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
+(Supabase), a Flutter client, REST between them. **In closed testing on Google
+Play.** 1,554 Flutter tests and 927 API tests, both wired to CI. Measured, not
+guessed: `docs/PERFORMANCE.md`.
 
 ### Built and working
 
@@ -41,7 +45,7 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Posts | Text, images, video, polls, voice, link previews, quotes, reposts |
 | Comments | Real threading at depth, connectors, per-comment pages, media in replies |
 | Profiles | Full profile, followers/following, editing, avatar and cover upload |
-| Messages | One-to-one, attachments, read state, mute, block, report, delete |
+| Messages | One-to-one and groups with roles and spectators, community chats in the inbox, view-once attachments, pinned chats, attachments, read state, mute, block, report, delete -- `docs/MESSAGING.md` |
 | Communities | Create, join, post, manage, roles, bans, gallery images |
 | Explore | Trending hashtags, topics, suggested people |
 | Moderation | Report, block, mute users and threads and words |
@@ -50,14 +54,14 @@ tests, both wired to CI. Measured, not guessed: `docs/PERFORMANCE.md`.
 | Security | Anon key shut out of all 40 API tables, RLS on, rate limiting on |
 | Operations | Request ids, structured request logs, a guarded `/metrics`, error aggregation |
 | Account identifier | A real `did:key` per account, made on the device and claimed by signing a server challenge. A fingerprint anybody can verify without asking Kyron -- deliberately not portable, see Phase 3 -- `docs/IDENTITY.md` |
-| AR camera | Seven colour lenses bundled, more from the kyron-lenses catalogue without an app release. Face-tracked attachments and effects that change the face, on MediaPipe's 478 landmarks, measured in pupil-gaps. Flat sprites: no 3D, expression, occlusion or warping -- `docs/AR.md` |
+| AR camera | Seven colour lenses bundled, more from the kyron-lenses catalogue without an app release. Face-tracked attachments and effects that change the face, on MediaPipe's 478 landmarks, measured in pupil-gaps, and seen tracking on a phone in closed testing. Flat sprites: no 3D, expression, occlusion or warping -- `docs/AR.md` |
 
 ### Stubs shipped as if finished
 
 | Thing | Reality |
 |:--|:--|
 | Live | `ComingSoonScreen.live()` |
-| End-to-end encryption | Built for direct messages. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. One device per install, no forward secrecy, no key verification, attachments still in the clear |
+| End-to-end encryption | Built for direct messages, and seen working between two phones in closed testing. X25519 per install, XChaCha20-Poly1305 on the wire, the server holding ciphertext it has no key for -- `docs/E2EE.md`. A new phone reads history only when an old device answers for it, and no backup until the Kyron Vault; no forward secrecy, no key verification, attachments still in the clear |
 | Creator equity pool | No contract, no chain, no testnet |
 | `media/` service | A Dockerfile |
 | Redis | In config and docker-compose, never read by `api/src` |
@@ -71,10 +75,10 @@ is shippable on its own.
 
 ### Phase 1 — Make it a live app ✅ done
 
-1. ~~**Push notifications.**~~ Built. `DeliveryService` picks the socket or a
-   push per person. Turning it on needs a Firebase project — `docs/PUSH.md`.
-   The app still needs one class to supply a token, which is the only step
-   that could not be verified without an Android SDK.
+1. ~~**Push notifications.**~~ Built, and delivering to phones in closed
+   testing. `DeliveryService` sends over the socket and as a push, and the
+   phone decides which to show. Setting up a Firebase project for it —
+   `docs/PUSH.md`.
 2. ~~**Realtime messages.**~~ Built. One authenticated socket at `/realtime`,
    carrying ids; the client fetches through the endpoints it already used.
 3. ~~**Realtime notification badge.**~~ Built, on the same channel.
@@ -176,7 +180,8 @@ and needs nothing more from this layer.
 
 The short version of why: an export is only portable if another server reads
 it, and none exists; every step towards one costs now and pays later; and the
-app has not shipped. The long version, and what would reopen it -- somebody
+app had not shipped -- it has since gone into closed testing, which changes
+none of the first two. The long version, and what would reopen it -- somebody
 running their own Kyron who needs to move an account between instances -- is
 in `docs/IDENTITY.md`.
 
@@ -269,9 +274,11 @@ in `docs/IDENTITY.md`.
     ever executed: a lens names things the app already knows how to do.
 
     Still not done: no 3D, no expression (the tracker reports 52 blendshapes
-    and nothing reads them), no occlusion, no warping, and no video. And none
-    of the tracking has been seen running on a phone -- `docs/AR.md` keeps the
-    list of what is checked and what is not.
+    and nothing reads them), no occlusion, no warping, and no video. Tracking
+    has now been seen running on a phone, in closed testing, and that is what
+    found a face lens that tracked nothing until a colour lens had been picked
+    first -- fixed, see `docs/AR.md`, which keeps the list of what is checked
+    on a phone and what is not.
 14. **Live.** Streaming infrastructure is its own project, and the decision
     comes before the code: broadcast or interactive settles the vendor, the
     cost and the client, and the managed options differ by more than price
@@ -315,15 +322,17 @@ something.
   `.github/` that GitHub never read, for a service the identity decision means
   will not be written. The Nest module of the same name is real and stays.
 - `media/` — an empty service shell. Start it or remove it.
-- **Translations: 52 of the 68 non-English catalogs are English.** Found on
-  11 October 2026. Sixteen are translated -- af, am, ar, az, bg, bn, ca, cs,
-  da, de, el, es, et, ja, ko, zh -- and the rest, French, Portuguese, Russian,
-  Hindi, Italian and Turkish among them, are `app_en.arb` copied by
-  `scripts/generate_all_catalogs.py` and never translated: all 595 strings
-  identical. The work stopped, alphabetically, at Estonian. CI's localization
-  check only *reports* strings identical to English, so it passes, and
-  choosing French in the app today shows it in English. The chat strings
-  added in October are translated in all 68; the other 595 are not.
+- **Translations: 52 of the 68 non-English catalogs are still more than half
+  English.** Found on 11 October 2026, re-counted on 25 October. Sixteen are
+  translated -- af, am, ar, az, bg, bn, ca, cs, da, de, el, es, et, ja, ko,
+  zh -- and the rest, French, Portuguese, Russian, Hindi, Italian and Turkish
+  among them, began as `app_en.arb` copied by
+  `scripts/generate_all_catalogs.py`. Every string added since is translated
+  in all 68 languages; the original ~595 are not, so of the catalog's 1,034
+  strings those 52 carry between 582 and 600 identical to English (56-58%).
+  CI's localization check only *reports* strings identical to English, so it
+  passes, and choosing French in the app today shows half of it in English.
+  With testers now reading it, this is no longer housekeeping.
 - `User.kyronPoints` and the `KyronPointEvent` table — nothing reads or writes
   either since 11 October 2026. Points were awarded by `POST /profile/kp/award`,
   which let any signed-in account give any account any number of them, and
