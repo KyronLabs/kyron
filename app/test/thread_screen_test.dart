@@ -237,7 +237,8 @@ class _QuietKeys extends KeysRepository {
   Future<void> publish(String publicKey, String deviceId) async {}
 
   @override
-  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async => const [];
+  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async =>
+      const [];
 
   @override
   Future<void> requestShares(

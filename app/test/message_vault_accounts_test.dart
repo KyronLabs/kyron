@@ -24,7 +24,8 @@ class _Keys extends KeysRepository {
   final withdrawn = <String>[];
 
   @override
-  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async => const [];
+  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async =>
+      const [];
 
   @override
   Future<void> publish(String publicKey, String deviceId) async {
