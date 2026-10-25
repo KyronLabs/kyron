@@ -30,6 +30,9 @@ class _Server {
   })>[];
   final answers = <String, String>{};
 
+  /// The device each fetch of pending requests named.
+  final askedAs = <String?>[];
+
   /// What the thread would be sent for [user]: the answers for their keys.
   List<KeyShare> sharesFor(String user, String messageId) => [
         for (final r in requests)
@@ -81,7 +84,11 @@ class _Keys extends KeysRepository {
   }
 
   @override
-  Future<List<KeyRequest>> pendingRequests() async => [
+  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async => [
+        ...?(() {
+          server.askedAs.add(deviceId);
+          return null;
+        })(),
         for (final r in server.requests)
           if (server.answers[r.id] == null)
             KeyRequest(
@@ -221,6 +228,40 @@ void main() {
       ),
       'hello from review',
     );
+  });
+
+  test('names itself when asking what it can answer', () async {
+    // So the server hands over only requests this device can answer. Without
+    // it, a hundred nobody could answer sat above the one it could.
+    final server = _Server();
+    final reviewer = await _install(server, 'reviewer');
+    server.askedAs.clear();
+
+    await reviewer.answerPending();
+
+    // Unlocking also asks, so there may be more than one fetch; every one
+    // names this device.
+    final mine = server.keys.firstWhere((k) => k.userId == 'reviewer');
+    expect(server.askedAs, isNotEmpty);
+    expect(server.askedAs, everyElement(mine.deviceId));
+  });
+
+  test('a new device is written to as soon as it is announced', () async {
+    // The sender's device list is kept for minutes. Sealed for the old list,
+    // a message to somebody on a phone they had just signed in on reached
+    // it as "Waiting for this message".
+    final server = _Server();
+    final reviewer = await _install(server, 'reviewer');
+    await _install(server, 'yun');
+    await reviewer.seal('before', 'c1'); // the list is now cached
+
+    final newPhone = await _install(server, 'yun');
+    final stale = (await reviewer.seal('in the first minutes', 'c1'))!;
+    expect(await newPhone.open(stale, 'c1'), isNull);
+
+    reviewer.forgetDevices(); // what `keys.changed` does
+    final fresh = (await reviewer.seal('after the announcement', 'c1'))!;
+    expect(await newPhone.open(fresh, 'c1'), 'after the announcement');
   });
 
   test('another of the reader\'s own devices can answer too', () async {

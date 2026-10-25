@@ -165,8 +165,13 @@ export class MessagesController {
    * answer. See KeySharesService.
    */
   @Get('keys/requests')
-  keyRequests(@Req() req: AuthRequest) {
-    return this.keyShares.pending(req.user.id);
+  keyRequests(@Req() req: AuthRequest, @Query('deviceId') deviceId?: string) {
+    return this.keyShares.pending(
+      req.user.id,
+      typeof deviceId === 'string' && deviceId.length > 0
+        ? deviceId
+        : undefined,
+    );
   }
 
   /** Answers them, with keys sealed for the devices that asked. */

@@ -28,7 +28,7 @@ class _Keys extends KeysRepository {
   }
 
   @override
-  Future<List<KeyRequest>> pendingRequests() async => const [];
+  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async => const [];
 
   @override
   Future<void> publish(String publicKey, String deviceId) async {}

@@ -266,6 +266,14 @@ class MessageVault {
     _devicesByConversation.remove(conversationId);
   }
 
+  /// Forgets every conversation's device list, when somebody in one of them
+  /// has a new device. Which conversations they are in is not worth working
+  /// out: the next message in each fetches its list again, once.
+  void forgetDevices() {
+    _sharedByConversation.clear();
+    _devicesByConversation.clear();
+  }
+
   /// Uses [pair] as this install's key, without secure storage. For tests,
   /// which have no keychain.
   @visibleForTesting
@@ -521,9 +529,17 @@ class MessageVault {
     if (mine == null) return 0;
     final ownKey = MessageCrypto.encodePublicKey(await mine.extractPublicKey());
 
+    // Named, so the server hands over only what this device can answer.
+    // Without it, requests nobody can answer crowded out the ones this
+    // device could, a hundred at a time (KeySharesService.pending).
+    final account = _account ?? _signedIn();
+    final device = account == null
+        ? null
+        : await _storage.read(key: _deviceIdName(account));
+
     final List<KeyRequest> pending;
     try {
-      pending = await _keys.pendingRequests();
+      pending = await _keys.pendingRequests(deviceId: device);
     } catch (error) {
       AppLog.instance.error('e2ee', 'Could not fetch key requests: $error');
       return 0;

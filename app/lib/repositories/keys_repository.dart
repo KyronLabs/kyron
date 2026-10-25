@@ -59,9 +59,13 @@ class KeysRepository {
         data: {'deviceId': deviceId, 'messageIds': messageIds},
       );
 
-  /// Requests that this account's devices may be able to answer.
-  Future<List<KeyRequest>> pendingRequests() async {
-    final res = await _api.dio.get<List<dynamic>>('/messages/keys/requests');
+  /// Requests that this account's devices may be able to answer -- with
+  /// [deviceId], only the ones that device can.
+  Future<List<KeyRequest>> pendingRequests({String? deviceId}) async {
+    final res = await _api.dio.get<List<dynamic>>(
+      '/messages/keys/requests',
+      queryParameters: {if (deviceId != null) 'deviceId': deviceId},
+    );
     return [
       for (final item
           in (res.data ?? const []).whereType<Map<String, dynamic>>())
