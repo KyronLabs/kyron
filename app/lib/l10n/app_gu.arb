@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "તમારી પોસ્ટ",
   "ui_standing_your_reply": "તમારો જવાબ",
   "ui_dm_pin_limit": "તમે વધુમાં વધુ $count ચેટ પિન કરી શકો છો. પહેલા એક અનપિન કરો.",
-  "ui_dm_pinned": "પિન કરેલ"
+  "ui_dm_pinned": "પિન કરેલ",
+  "ui_undo": "પૂર્વવત્ કરો",
+  "ui_feed_signals": "તમારા ફીડ સંકેતો",
+  "ui_feed_signals_help": "વધુ બતાવો અને રસ નથી તમારા ફીડને શું કહે છે",
+  "ui_feed_signals_intro": "આ હોમ અને એક્સપ્લોરને ઘડે છે, મોટાભાગે દરેક પોસ્ટ શેના વિશે હતી તેના આધારે. દરેક દર મહિને અડધું થાય છે અને છ મહિના પછી ગણાતું નથી. હમણાં રોકવા માટે એક દૂર કરો.",
+  "ui_feed_signals_empty_title": "હજી અહીં કંઈ નથી",
+  "ui_feed_signals_empty": "કોઈ પોસ્ટ પર આના જેવી વધુ પોસ્ટ બતાવો અથવા આમાં રસ નથી ટૅપ કરો, અને તે અહીં દેખાશે.",
+  "ui_feed_signal_more": "આના જેવી વધુ બતાવો",
+  "ui_feed_signal_less": "રસ નથી",
+  "ui_feed_signal_fading": "ઝાંખું થાય છે",
+  "ui_feed_signal_removed": "દૂર કર્યું"
 }

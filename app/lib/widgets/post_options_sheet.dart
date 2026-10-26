@@ -69,6 +69,10 @@ class _OptionsState extends ConsumerState<_Options> {
     final me = ref.watch(currentUserProvider).asData?.value;
     final mine = me != null && me.id == _post.author.id;
     final author = _post.author.displayName;
+    // Held here rather than read through `ref` later: an Undo is tapped on
+    // the toast after this sheet has closed, and a closed sheet's `ref` is
+    // gone with it.
+    final moderation = _moderation;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -119,6 +123,7 @@ class _OptionsState extends ConsumerState<_Options> {
                   'ui_interest_noted',
                   'Noted. This helps shape what you are shown.',
                 ),
+                undo: () => moderation.clearInterest(_post.id),
               ),
             ),
             _Item(
@@ -133,6 +138,9 @@ class _OptionsState extends ConsumerState<_Options> {
                   'Hidden. We will show you fewer like it.',
                 ),
                 removesPost: true,
+                // Taking it back brings the post back too: the server
+                // unhides what this tap hid.
+                undo: () => moderation.clearInterest(_post.id),
               ),
             ),
             _Item(
@@ -300,10 +308,15 @@ class _OptionsState extends ConsumerState<_Options> {
   /// [removesPost] drops it from the list straight away: an action whose whole
   /// point is "stop showing me this" that leaves it on screen has not visibly
   /// done anything.
+  ///
+  /// [undo], when given, puts an Undo on the toast that runs it and puts the
+  /// post back where it was. "Not interested" used to have none, and nowhere
+  /// else to take it back either: a slip of the thumb stayed in the ranking.
   Future<void> _run(
     Future<void> Function() action,
     String done, {
     bool removesPost = false,
+    Future<void> Function()? undo,
   }) async {
     if (_busy) return;
     setState(() => _busy = true);
@@ -312,20 +325,37 @@ class _OptionsState extends ConsumerState<_Options> {
     // something to say about what it did.
     final overlay = Toast.anchor(context);
     final navigator = Navigator.of(context);
+    final l10n = AppLocalizations.of(context);
+    final list = ref.read(postListProvider(widget.source).notifier);
+    final post = _post;
+    final at = ref
+        .read(postListProvider(widget.source))
+        .posts
+        .indexWhere((p) => p.id == post.id);
     try {
       await action();
-      if (removesPost) {
-        ref.read(postListProvider(widget.source).notifier).remove(_post.id);
-      }
-      navigator.pop();
-      Toast.showOn(overlay, done);
-    } catch (e) {
-      AppLog.instance.error('moderation', 'Action failed: $e');
+      if (removesPost) list.remove(post.id);
       navigator.pop();
       Toast.showOn(
         overlay,
-        AppLocalizations.of(context).literalthatDidNotGoThroughTryAgain,
+        done,
+        action: undo == null
+            ? null
+            : ToastAction(l10n.ui('ui_undo', 'Undo'), () async {
+                try {
+                  await undo();
+                  if (removesPost && at >= 0) list.restore(post, at);
+                } catch (e) {
+                  AppLog.instance.error('moderation', 'Undo failed: $e');
+                  Toast.showOn(
+                      overlay, l10n.literalthatDidNotGoThroughTryAgain);
+                }
+              }),
       );
+    } catch (e) {
+      AppLog.instance.error('moderation', 'Action failed: $e');
+      navigator.pop();
+      Toast.showOn(overlay, l10n.literalthatDidNotGoThroughTryAgain);
     }
   }
 

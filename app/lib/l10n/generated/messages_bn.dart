@@ -1251,6 +1251,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "মানুষ যখন পোস্ট করে, পোস্টগুলো এখানে দেখাবে।",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("ম্লান হচ্ছে"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("আগ্রহী নই"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("এমন আরও দেখান"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("সরানো হয়েছে"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("আপনার ফিডের সংকেত"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "কোনো পোস্টে এমন আরও পোস্ট দেখান বা এতে আগ্রহী নই চাপুন, এটি এখানে দেখা যাবে।"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("এখনও কিছু নেই"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "আরও দেখান এবং আগ্রহী নই আপনার ফিডকে যা বলছে"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "এগুলো হোম ও এক্সপ্লোর গড়ে তোলে, বেশিরভাগই প্রতিটি পোস্ট কী নিয়ে ছিল তা দিয়ে। প্রতিটি প্রতি মাসে অর্ধেক হয়ে যায় এবং ছয় মাস পরে আর গোনা হয় না। এখনই থামাতে একটি সরান।"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "ক্লিপ বহন করে এমন পোস্ট এখানে দেখাবে।",
       ),
@@ -1743,6 +1760,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "দুই বা তার বেশি অক্ষর।",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("পূর্বাবস্থায় ফেরান"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "শব্দ, বা একটি ফিল্টার — একটি অ্যাকাউন্ট, তারিখ সীমা, বা একটি পোস্টে কী আছে।",
       ),

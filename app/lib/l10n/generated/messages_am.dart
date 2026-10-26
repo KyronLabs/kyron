@@ -1081,6 +1081,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "ሰዎች ሲጻፉ ጽሑፎች እዚህ ይታያሉ።",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("እየደበዘዘ"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("ፍላጎት የለኝም"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("እንደዚህ ያሉ ተጨማሪ አሳይ"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("ተወግዷል"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("የምግብዎ ምልክቶች"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "በልጥፍ ላይ እንደዚህ ያሉ ተጨማሪ ልጥፎችን አሳይ ወይም በዚህ ፍላጎት የለኝም የሚለውን ይንኩ፣ እዚህ ይታያል።"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("እስካሁን ምንም የለም"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "ተጨማሪ አሳይ እና ፍላጎት የለኝም ለምግቦችዎ የሚናገሩት"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "እነዚህ መነሻን እና አስስን ይቀርጻሉ፣ በአብዛኛው እያንዳንዱ ልጥፍ ስለምን እንደነበር። እያንዳንዱ በየወሩ በግማሽ ይደበዝዛል፣ ከስድስት ወር በኋላም አይቆጠርም። አሁን ለማቆም አንዱን ያስወግዱ።"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "የክሊፕ ይዞ የሚለቀቁ ጽሑፎች እዚህ ይታያሉ።",
       ),
@@ -1529,6 +1543,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "ሁለት ፊደላት ወይም ከዚያ በላይ።",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("ቀልብስ"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "ቃላት፣ ወይም ማጥፊያ — መለያ፣ የቀን ክልል፣ ወይም ጽሑፉ የያዘው።",
       ),

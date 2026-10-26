@@ -37,14 +37,15 @@ Age is the score's job, and a score does not hide anything.
 For each candidate:
 
 ```
-score = (0.6 + engagement) × freshness × affinity × seen × shown × wobble
+score = (0.6 + engagement) × freshness × affinity × taste × seen × shown × wobble
 ```
 
 | Part | What it is |
 |:--|:--|
 | engagement | `ln(1 + likes + 2.5·comments + 4·reposts)`. Damped, so one hit does not own the feed for a fortnight. |
 | freshness | `0.5 ^ (age / half-life)`. See below. |
-| affinity | ×1.6 if the reader follows the author; up to ×1.6 more for authors they like, read (8s+) or asked to see more of; ×1.25 for a topic they follow; ×0.2 per "see less of this", floored at ×0.05. |
+| affinity | ×1.6 if the reader follows the author; up to ×1.6 more for authors they like or read (8s+); ×1.25 for a topic they follow. |
+| taste | What the reader said with **Show more posts like this** and **Not interested in this**, faded by age. See below. |
 | seen | ×0.25 per time the reader **opened** the post, floored at ×0.02. |
 | shown | ×0.5 per sitting the post was **on screen** without regard to opening, floored at ×0.05; the count halves every 48 hours since it was last shown, so a post passed over last week comes round again. |
 | wobble | ×0.65–1.35, seeded per session, so two sessions read differently but one session pages coherently. |
@@ -93,6 +94,43 @@ per person (`PostView`), and is unaffected.
 
 Only For You reports. Following is not ranked, and a second surface
 reporting the same post inside one For You session would move it mid-session.
+
+## "Show more" and "Not interested"
+
+Both buttons on a post's menu write one `InterestSignal` per (reader, post).
+`InterestTaste` (`api/src/modules/feed/interest-taste.ts`) turns them into a
+multiplier for Home's For You and for Explore.
+
+**What a signal lands on.** Mostly what the post was about -- every topic it
+was filed under and every hashtag in it -- and gently who wrote it. One fresh
+signal is worth 1 on each of those; "not interested" counts negative.
+
+| On | Not interested (per unit) | Show more (per unit) |
+|:--|:--|:--|
+| the author | ×0.6, floored at ×0.3 | +0.25, capped at ×1.5 |
+| the post's topics and hashtags, summed | ×0.5, floored at ×0.15 | +0.3, capped at ×1.6 |
+
+So one "not interested" on a friend's football post leaves the friend at
+about ×1 if the reader follows them (1.6 × 0.6), and halves football from
+everybody. Muting the author is the strong, per-person button, and it is in
+the same menu.
+
+**Fading.** A signal is worth `0.5 ^ (age / 30 days)`, and is not read after
+180 days. Tapping again on the same post renews its signal from today.
+
+**Taking it back.** The toast after either tap has an Undo, and Settings →
+Your feed signals lists every signal still being read, how faded it is, and
+removes any of them. Taking back "not interested" brings the post back too.
+
+**What it replaced.** Until 26 October 2026 both buttons acted on the author
+only: "not interested" was ×0.2 per tap, floored at ×0.05, overrode following,
+and was meant never to expire -- except that only the newest 200 signals were
+read, so it did expire, silently, after enough other taps. "Show more" was two
+likes of affinity, about ×1.22, below following. The topics and hashtags the
+menu's wording promised were never read, and neither button had an undo.
+
+**Where it does not apply.** Videos, topic and hashtag feeds are newest
+first, not ranked, so neither button changes them.
 
 ## Paging: one session, one world
 

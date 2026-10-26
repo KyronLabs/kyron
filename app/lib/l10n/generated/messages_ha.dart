@@ -1180,6 +1180,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Yana raguwa"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ba na sha'awa"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Nuna ƙari kamar wannan"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("An cire"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Alamun ciyarwarka"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Taɓa Nuna ƙarin rubutu kamar wannan ko Ba na sha'awar wannan a kan rubutu, kuma zai bayyana a nan."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Babu komai a nan tukuna"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Abin da Nuna ƙari da Ba na sha'awa ke faɗa wa ciyarwarka"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Waɗannan suna tsara Gida da Bincika, galibi bisa abin da kowane rubutu ya kasance a kai. Kowanne yana raguwa da rabi kowane wata kuma ba a ƙirga shi bayan watanni shida. Cire ɗaya don dakatar da shi yanzu."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1659,6 +1676,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Soke"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

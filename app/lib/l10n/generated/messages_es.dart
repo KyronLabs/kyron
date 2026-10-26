@@ -368,6 +368,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Fijado"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Me gusta"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Guardados"),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Perdiendo fuerza"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("No me interesa"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Mostrar más como esta"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Quitada"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Tus señales del feed"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Toca Mostrar más publicaciones como esta o No me interesa en una publicación y aparecerá aquí."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Aún no hay nada"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Lo que Mostrar más y No me interesa les dicen a tus feeds"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Dan forma a Inicio y Explorar, sobre todo según el tema de cada publicación. Cada una se reduce a la mitad cada mes y deja de contar a los seis. Quita una para detenerla ya."),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Añadir personas"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Añadir"),
       "ui_group_add_name":
@@ -721,6 +738,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Tu respuesta"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Reintentar"),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Deshacer"),
       "undoRepost":
           MessageLookupByLibrary.simpleMessage("Deshacer republicación"),
       "updatePassword": MessageLookupByLibrary.simpleMessage(

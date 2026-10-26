@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Jūsu ieraksts",
   "ui_standing_your_reply": "Jūsu atbilde",
   "ui_dm_pin_limit": "Varat piespraust līdz $count tērzēšanām. Vispirms atspraudiet vienu.",
-  "ui_dm_pinned": "Piesprausts"
+  "ui_dm_pinned": "Piesprausts",
+  "ui_undo": "Atsaukt",
+  "ui_feed_signals": "Jūsu plūsmas signāli",
+  "ui_feed_signals_help": "Ko jūsu plūsmām saka Rādīt vairāk un Neinteresē",
+  "ui_feed_signals_intro": "Tie veido Sākumu un Izpēti, galvenokārt pēc katras ziņas tēmas. Katrs ik mēnesi kļūst uz pusi vājāks un pēc sešiem vairs netiek skaitīts. Noņemiet kādu, lai to apturētu tūlīt.",
+  "ui_feed_signals_empty_title": "Šeit vēl nekā nav",
+  "ui_feed_signals_empty": "Pieskarieties ziņai Rādīt vairāk līdzīgu ziņu vai Mani tas neinteresē, un tā parādīsies šeit.",
+  "ui_feed_signal_more": "Rādīt vairāk līdzīgu",
+  "ui_feed_signal_less": "Neinteresē",
+  "ui_feed_signal_fading": "Vājinās",
+  "ui_feed_signal_removed": "Noņemts"
 }

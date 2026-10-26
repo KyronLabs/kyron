@@ -1180,6 +1180,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Humihina"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Hindi interesado"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Magpakita pa ng ganito"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Inalis"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Mga signal ng feed mo"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "I-tap ang Magpakita pa ng mga post na ganito o Hindi interesado rito sa isang post, at lalabas ito rito."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Wala pa rito"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ang sinasabi ng Ipakita pa at Hindi interesado sa mga feed mo"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Hinuhubog nito ang Home at Explore, kadalasan ayon sa paksa ng bawat post. Humihina nang kalahati ang bawat isa buwan-buwan at hindi na binibilang pagkalipas ng anim. Alisin ang isa para itigil ito ngayon."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1669,6 +1685,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("I-undo"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

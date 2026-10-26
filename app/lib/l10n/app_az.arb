@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Paylaşımınız",
   "ui_standing_your_reply": "Cavabınız",
   "ui_dm_pin_limit": "Ən çox $count söhbəti sancmaq olar. Əvvəlcə birini ayırın.",
-  "ui_dm_pinned": "Sancılıb"
+  "ui_dm_pinned": "Sancılıb",
+  "ui_undo": "Geri al",
+  "ui_feed_signals": "Lent siqnallarınız",
+  "ui_feed_signals_help": "Daha çox göstər və Maraqlı deyil lentlərinizə nə deyir",
+  "ui_feed_signals_intro": "Bunlar Əsas səhifəni və Kəşfi, əsasən hər paylaşımın nə haqqında olduğuna görə formalaşdırır. Hər biri hər ay yarıya qədər zəifləyir və altı aydan sonra nəzərə alınmır. İndi dayandırmaq üçün birini silin.",
+  "ui_feed_signals_empty_title": "Hələ burada heç nə yoxdur",
+  "ui_feed_signals_empty": "Paylaşımda Buna oxşar daha çox paylaşım göstər və ya Bununla maraqlanmıram düyməsinə toxunun, burada görünəcək.",
+  "ui_feed_signal_more": "Buna oxşar daha çox göstər",
+  "ui_feed_signal_less": "Maraqlı deyil",
+  "ui_feed_signal_fading": "Zəifləyir",
+  "ui_feed_signal_removed": "Silindi"
 }

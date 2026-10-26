@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Je post",
   "ui_standing_your_reply": "Je reactie",
   "ui_dm_pin_limit": "Je kunt maximaal $count chats vastzetten. Maak er eerst een los.",
-  "ui_dm_pinned": "Vastgezet"
+  "ui_dm_pinned": "Vastgezet",
+  "ui_undo": "Ongedaan maken",
+  "ui_feed_signals": "Je feedsignalen",
+  "ui_feed_signals_help": "Wat Meer tonen en Niet geïnteresseerd je feeds vertellen",
+  "ui_feed_signals_intro": "Ze bepalen Home en Ontdekken, vooral naar het onderwerp van elk bericht. Elk signaal wordt elke maand half zo sterk en telt na zes niet meer mee. Verwijder er een om het nu te stoppen.",
+  "ui_feed_signals_empty_title": "Nog niets hier",
+  "ui_feed_signals_empty": "Tik bij een bericht op Meer berichten zoals dit tonen of Niet geïnteresseerd hierin, en het verschijnt hier.",
+  "ui_feed_signal_more": "Meer zoals dit tonen",
+  "ui_feed_signal_less": "Niet geïnteresseerd",
+  "ui_feed_signal_fading": "Vervaagt",
+  "ui_feed_signal_removed": "Verwijderd"
 }

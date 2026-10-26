@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Postarea ta",
   "ui_standing_your_reply": "Răspunsul tău",
   "ui_dm_pin_limit": "Poți fixa până la $count conversații. Anulează mai întâi fixarea uneia.",
-  "ui_dm_pinned": "Fixată"
+  "ui_dm_pinned": "Fixată",
+  "ui_undo": "Anulează",
+  "ui_feed_signals": "Semnalele fluxului tău",
+  "ui_feed_signals_help": "Ce le spun fluxurilor tale Arată mai multe și Nu mă interesează",
+  "ui_feed_signals_intro": "Ele modelează Acasă și Explorează, mai ales după subiectul fiecărei postări. Fiecare slăbește la jumătate în fiecare lună și nu mai contează după șase. Elimină unul ca să-l oprești acum.",
+  "ui_feed_signals_empty_title": "Încă nimic aici",
+  "ui_feed_signals_empty": "Atinge Arată mai multe postări ca aceasta sau Nu mă interesează la o postare și va apărea aici.",
+  "ui_feed_signal_more": "Arată mai multe ca aceasta",
+  "ui_feed_signal_less": "Nu mă interesează",
+  "ui_feed_signal_fading": "Slăbește",
+  "ui_feed_signal_removed": "Eliminat"
 }

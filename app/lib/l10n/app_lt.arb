@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Jūsų įrašas",
   "ui_standing_your_reply": "Jūsų atsakymas",
   "ui_dm_pin_limit": "Galite prisegti iki $count pokalbių. Pirmiausia atsekite vieną.",
-  "ui_dm_pinned": "Prisegta"
+  "ui_dm_pinned": "Prisegta",
+  "ui_undo": "Anuliuoti",
+  "ui_feed_signals": "Jūsų sklaidos kanalo signalai",
+  "ui_feed_signals_help": "Ką jūsų kanalams sako Rodyti daugiau ir Nedomina",
+  "ui_feed_signals_intro": "Jie formuoja Pradžią ir Naršymą, daugiausia pagal kiekvieno įrašo temą. Kiekvienas kas mėnesį susilpnėja perpus ir po šešių nebeskaičiuojamas. Pašalinkite vieną, kad sustabdytumėte jį dabar.",
+  "ui_feed_signals_empty_title": "Kol kas nieko nėra",
+  "ui_feed_signals_empty": "Įraše bakstelėkite Rodyti daugiau panašių įrašų arba Manęs tai nedomina, ir jis atsiras čia.",
+  "ui_feed_signal_more": "Rodyti daugiau panašių",
+  "ui_feed_signal_less": "Nedomina",
+  "ui_feed_signal_fading": "Silpnėja",
+  "ui_feed_signal_removed": "Pašalinta"
 }

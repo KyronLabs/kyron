@@ -1185,6 +1185,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Đang mờ dần"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Không quan tâm"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Hiện thêm như thế này"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Đã xóa"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Tín hiệu bảng tin của bạn"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Nhấn Hiện thêm bài viết như thế này hoặc Không quan tâm đến nội dung này trên một bài viết, và nó sẽ xuất hiện ở đây."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Chưa có gì ở đây"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Điều mà Hiện thêm và Không quan tâm đang nói với bảng tin của bạn"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Chúng định hình Trang chủ và Khám phá, chủ yếu theo chủ đề của từng bài viết. Mỗi tín hiệu yếu đi một nửa mỗi tháng và thôi được tính sau sáu tháng. Xóa một tín hiệu để dừng nó ngay."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1669,6 +1686,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Hoàn tác"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

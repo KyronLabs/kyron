@@ -1246,6 +1246,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Příspěvky se tu objeví, jak je lidé píší.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Slábne"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Nezajímá mě"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Zobrazit víc podobných"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Odebráno"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Signály pro váš kanál"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Klepněte u příspěvku na Zobrazit víc podobných příspěvků nebo Tohle mě nezajímá a objeví se tady."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Zatím tu nic není"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Co vašim kanálům říká Zobrazit víc a Nezajímá mě"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Utvářejí Domů a Prozkoumat, hlavně podle toho, o čem příspěvek byl. Každý každý měsíc zeslábne na polovinu a po šesti přestane platit. Odeberte některý, chcete-li ho zastavit hned."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Příspěvky s klipem se zde budou zobrazovat.",
       ),
@@ -1737,6 +1754,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Dva nebo více znaků.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Zpět"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Slova nebo filtr — účet, rozsah dat nebo co příspěvek nese.",
       ),

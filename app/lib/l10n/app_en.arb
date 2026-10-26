@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Your post",
   "ui_standing_your_reply": "Your reply",
   "ui_dm_pin_limit": "You can pin up to $count chats. Unpin one first.",
-  "ui_dm_pinned": "Pinned"
+  "ui_dm_pinned": "Pinned",
+  "ui_undo": "Undo",
+  "ui_feed_signals": "Your feed signals",
+  "ui_feed_signals_help": "What Show more and Not interested are telling your feeds",
+  "ui_feed_signals_intro": "These shape Home and Explore, mostly by what each post was about. Each one fades by half every month and stops counting after six. Remove one to stop it now.",
+  "ui_feed_signals_empty_title": "Nothing here yet",
+  "ui_feed_signals_empty": "Tap Show more posts like this or Not interested in this on a post, and it shows up here.",
+  "ui_feed_signal_more": "Show more like this",
+  "ui_feed_signal_less": "Not interested",
+  "ui_feed_signal_fading": "Fading",
+  "ui_feed_signal_removed": "Removed"
 }

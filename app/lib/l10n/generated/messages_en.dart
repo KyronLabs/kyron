@@ -334,6 +334,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Pinned"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Liked"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saved"),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Fading"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Not interested"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Show more like this"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Removed"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Your feed signals"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tap Show more posts like this or Not interested in this on a post, and it shows up here."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "What Show more and Not interested are telling your feeds"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "These shape Home and Explore, mostly by what each post was about. Each one fades by half every month and stops counting after six. Remove one to stop it now."),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Add people"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Add"),
       "ui_group_add_name":
@@ -672,6 +688,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Your reply"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Try again"),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Undo"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage(

@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Ditt inlägg",
   "ui_standing_your_reply": "Ditt svar",
   "ui_dm_pin_limit": "Du kan fästa upp till $count chattar. Lossa en först.",
-  "ui_dm_pinned": "Fäst"
+  "ui_dm_pinned": "Fäst",
+  "ui_undo": "Ångra",
+  "ui_feed_signals": "Dina flödessignaler",
+  "ui_feed_signals_help": "Vad Visa mer och Inte intresserad säger till dina flöden",
+  "ui_feed_signals_intro": "De formar Hem och Utforska, mest efter vad varje inlägg handlade om. Varje signal försvagas till hälften varje månad och räknas inte efter sex. Ta bort en för att stoppa den nu.",
+  "ui_feed_signals_empty_title": "Inget här än",
+  "ui_feed_signals_empty": "Tryck på Visa fler inlägg som detta eller Inte intresserad av detta på ett inlägg, så visas det här.",
+  "ui_feed_signal_more": "Visa fler som detta",
+  "ui_feed_signal_less": "Inte intresserad",
+  "ui_feed_signal_fading": "Försvagas",
+  "ui_feed_signal_removed": "Borttagen"
 }

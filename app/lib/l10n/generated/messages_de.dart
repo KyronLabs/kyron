@@ -1270,6 +1270,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Beiträge erscheinen hier, sobald Leute sie schreiben.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Lässt nach"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Kein Interesse"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Mehr wie diesen anzeigen"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Entfernt"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Deine Feed-Signale"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tippe bei einem Beitrag auf „Mehr Beiträge wie diesen anzeigen“ oder „Kein Interesse daran“, dann erscheint er hier."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Noch nichts hier"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Was „Mehr anzeigen“ und „Kein Interesse“ deinen Feeds sagen"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Sie prägen Startseite und Entdecken, vor allem danach, worum es in einem Beitrag ging. Jedes wird jeden Monat halb so stark und zählt nach sechs nicht mehr. Entferne eines, um es sofort zu beenden."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Beiträge mit einem Clip werden hier angezeigt.",
       ),
@@ -1771,6 +1789,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Zwei oder mehr Zeichen.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Rückgängig"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Wörter oder ein Filter — ein Konto, ein Zeitraum oder was ein Beitrag enthält.",
       ),

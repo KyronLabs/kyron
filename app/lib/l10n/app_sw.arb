@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Chapisho lako",
   "ui_standing_your_reply": "Jibu lako",
   "ui_dm_pin_limit": "Unaweza kubandika hadi soga $count. Bandua moja kwanza.",
-  "ui_dm_pinned": "Imebandikwa"
+  "ui_dm_pinned": "Imebandikwa",
+  "ui_undo": "Tendua",
+  "ui_feed_signals": "Ishara za mlisho wako",
+  "ui_feed_signals_help": "Kile Onyesha zaidi na Sivutiwi vinaambia milisho yako",
+  "ui_feed_signals_intro": "Hizi huunda Nyumbani na Gundua, hasa kwa mada ya kila chapisho. Kila moja hufifia nusu kila mwezi na huacha kuhesabiwa baada ya miezi sita. Ondoa moja ili kuisimamisha sasa.",
+  "ui_feed_signals_empty_title": "Bado hakuna kitu hapa",
+  "ui_feed_signals_empty": "Gusa Onyesha machapisho zaidi kama haya au Sivutiwi na hili kwenye chapisho, na litaonekana hapa.",
+  "ui_feed_signal_more": "Onyesha zaidi kama hili",
+  "ui_feed_signal_less": "Sivutiwi",
+  "ui_feed_signal_fading": "Inafifia",
+  "ui_feed_signal_removed": "Imeondolewa"
 }

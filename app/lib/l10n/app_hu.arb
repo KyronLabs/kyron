@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "A bejegyzésed",
   "ui_standing_your_reply": "A válaszod",
   "ui_dm_pin_limit": "Legfeljebb $count csevegést tűzhetsz ki. Előbb vegyél le egyet.",
-  "ui_dm_pinned": "Kitűzve"
+  "ui_dm_pinned": "Kitűzve",
+  "ui_undo": "Visszavonás",
+  "ui_feed_signals": "A hírfolyamod jelzései",
+  "ui_feed_signals_help": "Amit a Több ilyet és a Nem érdekel mond a hírfolyamaidnak",
+  "ui_feed_signals_intro": "Ezek alakítják a Kezdőlapot és a Felfedezést, főleg aszerint, miről szólt egy bejegyzés. Mindegyik havonta a felére gyengül, és hat hónap után már nem számít. Távolíts el egyet, hogy most leállítsd.",
+  "ui_feed_signals_empty_title": "Még nincs itt semmi",
+  "ui_feed_signals_empty": "Koppints egy bejegyzésen a Több ilyen bejegyzés vagy a Nem érdekel lehetőségre, és itt megjelenik.",
+  "ui_feed_signal_more": "Több ilyet",
+  "ui_feed_signal_less": "Nem érdekel",
+  "ui_feed_signal_fading": "Halványul",
+  "ui_feed_signal_removed": "Eltávolítva"
 }

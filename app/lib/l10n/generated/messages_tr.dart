@@ -1178,6 +1178,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Zayıflıyor"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("İlgilenmiyorum"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Bunun gibi daha fazla göster"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Kaldırıldı"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Akış sinyallerin"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Bir gönderide Bunun gibi daha fazla gönderi göster veya Bununla ilgilenmiyorum'a dokun, burada görünür."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Burada henüz bir şey yok"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Daha fazla göster ve İlgilenmiyorum'un akışlarına söyledikleri"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Bunlar Ana Sayfa ve Keşfet'i, çoğunlukla her gönderinin konusuna göre şekillendirir. Her biri her ay yarı yarıya zayıflar ve altı aydan sonra sayılmaz. Şimdi durdurmak için birini kaldır."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1652,6 +1670,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Geri al"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

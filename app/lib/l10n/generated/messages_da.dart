@@ -1210,6 +1210,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Opslag vises her, efterhånden som folk skriver dem.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Svækkes"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ikke interesseret"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Vis flere som dette"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Fjernet"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Dine feedsignaler"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tryk på Vis flere opslag som dette eller Ikke interesseret i dette på et opslag, så vises det her."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Intet her endnu"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Hvad Vis mere og Ikke interesseret fortæller dine feeds"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "De former Hjem og Udforsk, mest efter hvad hvert opslag handlede om. Hvert signal svækkes til det halve hver måned og tæller ikke efter seks. Fjern et for at stoppe det nu."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Opslag med et klip vises her.",
       ),
@@ -1696,6 +1712,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "To tegn eller flere.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Fortryd"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Ord, eller et filter — en konto, et datointerval eller hvad et opslag bærer.",
       ),

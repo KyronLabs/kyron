@@ -124,6 +124,21 @@ export class ModerationController {
     return this.svc.setInterest(req.user.id, id, dto.kind);
   }
 
+  /** Takes a "show more" or "not interested" back. */
+  @Delete('feed/posts/:id/interest')
+  clearInterest(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return this.svc.clearInterest(req.user.id, id);
+  }
+
+  /** Every signal still shaping the reader's feeds, for Settings. */
+  @Get('feed/interest')
+  listInterest(@Req() req: AuthRequest) {
+    return this.svc.listInterest(req.user.id).then((items) => ({ items }));
+  }
+
   // ---- Reporting ----------------------------------------------------------
 
   @Post('reports')

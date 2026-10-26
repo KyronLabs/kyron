@@ -1184,6 +1184,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Ń dín kù"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Kò wù mí"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Fi bíi èyí sí i hàn"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("A ti yọ ọ́ kúrò"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Àwọn àmì ìfúnni rẹ"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tẹ Fi àwọn ìfiránṣẹ́ bíi èyí sí i hàn tàbí Èyí kò wù mí lórí ìfiránṣẹ́ kan, yóò sì hàn níbí."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Kò sí nǹkan kan níbí síbẹ̀"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí Fi sí i hàn àti Kò wù mí ń sọ fún àwọn ìfúnni rẹ"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ìwọ̀nyí ń ṣe àgbékalẹ̀ Ilé àti Ṣàwárí, ní pàtàkì nípa ohun tí ìfiránṣẹ́ kọ̀ọ̀kan dá lé. Ọ̀kọ̀ọ̀kan ń dín kù ní ìdajì lóṣooṣù, kò sì ní kà mọ́ lẹ́yìn oṣù mẹ́fà. Yọ ọ̀kan kúrò láti dá a dúró báyìí."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1668,6 +1684,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Padà"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

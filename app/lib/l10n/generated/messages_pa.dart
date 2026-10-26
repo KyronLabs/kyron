@@ -1180,6 +1180,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("ਫਿੱਕਾ ਹੋ ਰਿਹਾ"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("ਦਿਲਚਸਪੀ ਨਹੀਂ"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("ਇਸ ਵਰਗੀਆਂ ਹੋਰ ਦਿਖਾਓ"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("ਹਟਾਇਆ ਗਿਆ"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਫੀਡ ਸੰਕੇਤ"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "ਕਿਸੇ ਪੋਸਟ 'ਤੇ ਇਸ ਵਰਗੀਆਂ ਹੋਰ ਪੋਸਟਾਂ ਦਿਖਾਓ ਜਾਂ ਇਸ ਵਿੱਚ ਦਿਲਚਸਪੀ ਨਹੀਂ 'ਤੇ ਟੈਪ ਕਰੋ, ਅਤੇ ਇਹ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ।"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("ਹਾਲੇ ਇੱਥੇ ਕੁਝ ਨਹੀਂ"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "ਹੋਰ ਦਿਖਾਓ ਅਤੇ ਦਿਲਚਸਪੀ ਨਹੀਂ ਤੁਹਾਡੀਆਂ ਫੀਡਾਂ ਨੂੰ ਕੀ ਦੱਸ ਰਹੇ ਹਨ"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਹੋਮ ਅਤੇ ਐਕਸਪਲੋਰ ਨੂੰ ਘੜਦੇ ਹਨ, ਜ਼ਿਆਦਾਤਰ ਇਸ ਗੱਲ ਤੋਂ ਕਿ ਹਰ ਪੋਸਟ ਕਿਸ ਬਾਰੇ ਸੀ। ਹਰ ਇੱਕ ਹਰ ਮਹੀਨੇ ਅੱਧਾ ਹੋ ਜਾਂਦਾ ਹੈ ਅਤੇ ਛੇ ਮਹੀਨਿਆਂ ਬਾਅਦ ਗਿਣਿਆ ਨਹੀਂ ਜਾਂਦਾ। ਹੁਣੇ ਰੋਕਣ ਲਈ ਇੱਕ ਹਟਾਓ।"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1654,6 +1672,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("ਵਾਪਸ ਕਰੋ"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

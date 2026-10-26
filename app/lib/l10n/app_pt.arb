@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Sua publicação",
   "ui_standing_your_reply": "Sua resposta",
   "ui_dm_pin_limit": "Você pode fixar até $count conversas. Desafixe uma primeiro.",
-  "ui_dm_pinned": "Fixada"
+  "ui_dm_pinned": "Fixada",
+  "ui_undo": "Desfazer",
+  "ui_feed_signals": "Seus sinais do feed",
+  "ui_feed_signals_help": "O que Mostrar mais e Não tenho interesse dizem aos seus feeds",
+  "ui_feed_signals_intro": "Eles moldam o Início e o Explorar, sobretudo pelo assunto de cada publicação. Cada um enfraquece pela metade todo mês e deixa de contar após seis. Remova um para pará-lo agora.",
+  "ui_feed_signals_empty_title": "Nada aqui ainda",
+  "ui_feed_signals_empty": "Toque em Mostrar mais publicações como esta ou Não tenho interesse nisto em uma publicação, e ela aparecerá aqui.",
+  "ui_feed_signal_more": "Mostrar mais como esta",
+  "ui_feed_signal_less": "Não tenho interesse",
+  "ui_feed_signal_fading": "Enfraquecendo",
+  "ui_feed_signal_removed": "Removido"
 }

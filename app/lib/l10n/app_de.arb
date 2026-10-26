@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Dein Beitrag",
   "ui_standing_your_reply": "Deine Antwort",
   "ui_dm_pin_limit": "Du kannst bis zu $count Chats anheften. Löse zuerst einen.",
-  "ui_dm_pinned": "Angeheftet"
+  "ui_dm_pinned": "Angeheftet",
+  "ui_undo": "Rückgängig",
+  "ui_feed_signals": "Deine Feed-Signale",
+  "ui_feed_signals_help": "Was „Mehr anzeigen“ und „Kein Interesse“ deinen Feeds sagen",
+  "ui_feed_signals_intro": "Sie prägen Startseite und Entdecken, vor allem danach, worum es in einem Beitrag ging. Jedes wird jeden Monat halb so stark und zählt nach sechs nicht mehr. Entferne eines, um es sofort zu beenden.",
+  "ui_feed_signals_empty_title": "Noch nichts hier",
+  "ui_feed_signals_empty": "Tippe bei einem Beitrag auf „Mehr Beiträge wie diesen anzeigen“ oder „Kein Interesse daran“, dann erscheint er hier.",
+  "ui_feed_signal_more": "Mehr wie diesen anzeigen",
+  "ui_feed_signal_less": "Kein Interesse",
+  "ui_feed_signal_fading": "Lässt nach",
+  "ui_feed_signal_removed": "Entfernt"
 }

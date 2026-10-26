@@ -243,6 +243,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("已置顶"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("已点赞"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("已保存"),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("正在减弱"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("不感兴趣"),
+      "ui_feed_signal_more": MessageLookupByLibrary.simpleMessage("显示更多类似内容"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("已移除"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("你的信息流信号"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "在帖子上点按“显示更多类似帖子”或“对此不感兴趣”，它就会出现在这里。"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("这里还没有内容"),
+      "ui_feed_signals_help":
+          MessageLookupByLibrary.simpleMessage("“显示更多”和“不感兴趣”在告诉你的信息流什么"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "它们塑造首页和探索，主要依据每条帖子的主题。每个信号每月减弱一半，六个月后不再计入。移除一个即可立即停止。"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("添加成员"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("添加"),
       "ui_group_add_name": MessageLookupByLibrary.simpleMessage("添加群组名称"),
@@ -521,6 +534,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("你的帖子"),
       "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("你的回复"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("重试"),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("撤销"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("撤销转发"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("更新密码"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage("使用其他地址"),

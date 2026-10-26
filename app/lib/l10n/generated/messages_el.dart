@@ -1319,6 +1319,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Οι δημοσιεύσεις θα εμφανίζονται εδώ καθώς οι άνθρωποι τις γράφουν.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Εξασθενεί"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Δεν ενδιαφέρομαι"),
+      "ui_feed_signal_more": MessageLookupByLibrary.simpleMessage(
+          "Εμφάνιση περισσότερων παρόμοιων"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Αφαιρέθηκε"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Τα σήματα της ροής σας"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Πατήστε Εμφάνιση περισσότερων παρόμοιων αναρτήσεων ή Δεν με ενδιαφέρει σε μια ανάρτηση και θα εμφανιστεί εδώ."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Τίποτα ακόμα"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Τι λένε στις ροές σας το Εμφάνιση περισσότερων και το Δεν ενδιαφέρομαι"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Διαμορφώνουν την Αρχική και την Εξερεύνηση, κυρίως με βάση το θέμα κάθε ανάρτησης. Το καθένα εξασθενεί στο μισό κάθε μήνα και παύει να μετρά μετά από έξι. Αφαιρέστε ένα για να το σταματήσετε τώρα."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Οι δημοσιεύσεις που περιέχουν κλιπ θα εμφανιστούν εδώ.",
       ),
@@ -1831,6 +1849,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Δύο χαρακτήρες ή περισσότεροι.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Αναίρεση"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Λέξεις, ή ένα φίλτρο — ένας λογαριασμός, εύρος ημερομηνιών ή τι περιέχει μια δημοσίευση.",
       ),

@@ -1180,6 +1180,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Försvagas"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Inte intresserad"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Visa fler som detta"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Borttagen"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Dina flödessignaler"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tryck på Visa fler inlägg som detta eller Inte intresserad av detta på ett inlägg, så visas det här."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Inget här än"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Vad Visa mer och Inte intresserad säger till dina flöden"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "De formar Hem och Utforska, mest efter vad varje inlägg handlade om. Varje signal försvagas till hälften varje månad och räknas inte efter sex. Ta bort en för att stoppa den nu."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1662,6 +1680,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Ångra"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

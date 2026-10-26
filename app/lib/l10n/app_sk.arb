@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Váš príspevok",
   "ui_standing_your_reply": "Vaša odpoveď",
   "ui_dm_pin_limit": "Pripnúť môžete najviac $count chatov. Najprv jeden odopnite.",
-  "ui_dm_pinned": "Pripnuté"
+  "ui_dm_pinned": "Pripnuté",
+  "ui_undo": "Späť",
+  "ui_feed_signals": "Signály pre váš kanál",
+  "ui_feed_signals_help": "Čo vašim kanálom hovorí Zobraziť viac a Nezaujíma ma",
+  "ui_feed_signals_intro": "Formujú Domov a Preskúmať, hlavne podľa toho, o čom príspevok bol. Každý každý mesiac zoslabne na polovicu a po šiestich prestane platiť. Odstráňte niektorý, ak ho chcete zastaviť hneď.",
+  "ui_feed_signals_empty_title": "Zatiaľ tu nič nie je",
+  "ui_feed_signals_empty": "Ťuknite pri príspevku na Zobraziť viac podobných príspevkov alebo Toto ma nezaujíma a objaví sa tu.",
+  "ui_feed_signal_more": "Zobraziť viac podobných",
+  "ui_feed_signal_less": "Nezaujíma ma",
+  "ui_feed_signal_fading": "Slabne",
+  "ui_feed_signal_removed": "Odstránené"
 }

@@ -1185,6 +1185,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("မှိန်လာနေသည်"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("စိတ်မဝင်စားပါ"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("ဤကဲ့သို့ ပိုပြပါ"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("ဖယ်ရှားပြီး"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("သင့်ဖိဒ်အချက်ပြမှုများ"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "ပို့စ်ပေါ်ရှိ ဤကဲ့သို့ပို့စ်များ ပိုပြပါ သို့မဟုတ် ဤအရာကို စိတ်မဝင်စားပါ ကို နှိပ်ပါ၊ ၎င်းသည် ဤနေရာတွင် ပေါ်လာမည်။"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("ဤနေရာတွင် ဘာမျှမရှိသေးပါ"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "ပိုပြပါ နှင့် စိတ်မဝင်စားပါ က သင့်ဖိဒ်များကို ပြောနေသည့်အရာ"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "၎င်းတို့သည် ပင်မနှင့် ရှာဖွေရန်ကို ပို့စ်တစ်ခုချင်းစီ၏ အကြောင်းအရာအလိုက် အဓိကပုံဖော်သည်။ တစ်ခုချင်းစီသည် လစဉ် တစ်ဝက်လျော့ပြီး ခြောက်လအကြာတွင် မရေတွက်တော့ပါ။ ယခုရပ်ရန် တစ်ခုကို ဖယ်ရှားပါ။"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1672,6 +1690,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("ပြန်ဖျက်ရန်"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

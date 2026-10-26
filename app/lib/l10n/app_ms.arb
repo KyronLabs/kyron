@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Siaran anda",
   "ui_standing_your_reply": "Balasan anda",
   "ui_dm_pin_limit": "Anda boleh menyemat sehingga $count sembang. Nyahsemat satu dahulu.",
-  "ui_dm_pinned": "Disemat"
+  "ui_dm_pinned": "Disemat",
+  "ui_undo": "Buat asal",
+  "ui_feed_signals": "Isyarat suapan anda",
+  "ui_feed_signals_help": "Apa yang Tunjukkan lagi dan Tidak berminat beritahu suapan anda",
+  "ui_feed_signals_intro": "Ini membentuk Laman Utama dan Teroka, kebanyakannya mengikut topik setiap siaran. Setiap satu lemah separuh setiap bulan dan tidak dikira selepas enam bulan. Alih keluar satu untuk menghentikannya sekarang.",
+  "ui_feed_signals_empty_title": "Belum ada apa-apa di sini",
+  "ui_feed_signals_empty": "Ketik Tunjukkan lebih banyak siaran seperti ini atau Tidak berminat dengan ini pada siaran, dan ia akan muncul di sini.",
+  "ui_feed_signal_more": "Tunjukkan lagi seperti ini",
+  "ui_feed_signal_less": "Tidak berminat",
+  "ui_feed_signal_fading": "Semakin pudar",
+  "ui_feed_signal_removed": "Dialih keluar"
 }

@@ -1181,6 +1181,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Ослабевает"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Не интересно"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Показывать больше таких"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Удалено"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Сигналы вашей ленты"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Нажмите «Показывать больше таких публикаций» или «Не интересно» у публикации, и она появится здесь."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Здесь пока ничего нет"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Что «Показывать больше» и «Не интересно» сообщают вашим лентам"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Они формируют Главную и Обзор, в основном по теме каждой публикации. Каждый сигнал каждый месяц ослабевает вдвое и через шесть перестаёт учитываться. Удалите сигнал, чтобы остановить его сейчас."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1669,6 +1686,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Отменить"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

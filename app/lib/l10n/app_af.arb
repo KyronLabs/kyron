@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Jou plasing",
   "ui_standing_your_reply": "Jou antwoord",
   "ui_dm_pin_limit": "Jy kan tot $count kletse vasspeld. Maak eers een los.",
-  "ui_dm_pinned": "Vasgespeld"
+  "ui_dm_pinned": "Vasgespeld",
+  "ui_undo": "Ontdoen",
+  "ui_feed_signals": "Jou voerseine",
+  "ui_feed_signals_help": "Wat Wys meer en Nie belangstel nie vir jou voere sê",
+  "ui_feed_signals_intro": "Dit vorm Tuis en Verken, meestal volgens waaroor elke plasing gegaan het. Elkeen verswak elke maand met die helfte en tel ná ses nie meer nie. Verwyder een om dit nou te stop.",
+  "ui_feed_signals_empty_title": "Nog niks hier nie",
+  "ui_feed_signals_empty": "Tik Wys meer plasings soos hierdie of Nie belangstel nie op 'n plasing, en dit verskyn hier.",
+  "ui_feed_signal_more": "Wys meer soos hierdie",
+  "ui_feed_signal_less": "Nie belangstel nie",
+  "ui_feed_signal_fading": "Verswak",
+  "ui_feed_signal_removed": "Verwyder"
 }

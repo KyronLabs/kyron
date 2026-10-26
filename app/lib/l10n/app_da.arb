@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Dit opslag",
   "ui_standing_your_reply": "Dit svar",
   "ui_dm_pin_limit": "Du kan fastgøre op til $count chats. Frigør en først.",
-  "ui_dm_pinned": "Fastgjort"
+  "ui_dm_pinned": "Fastgjort",
+  "ui_undo": "Fortryd",
+  "ui_feed_signals": "Dine feedsignaler",
+  "ui_feed_signals_help": "Hvad Vis mere og Ikke interesseret fortæller dine feeds",
+  "ui_feed_signals_intro": "De former Hjem og Udforsk, mest efter hvad hvert opslag handlede om. Hvert signal svækkes til det halve hver måned og tæller ikke efter seks. Fjern et for at stoppe det nu.",
+  "ui_feed_signals_empty_title": "Intet her endnu",
+  "ui_feed_signals_empty": "Tryk på Vis flere opslag som dette eller Ikke interesseret i dette på et opslag, så vises det her.",
+  "ui_feed_signal_more": "Vis flere som dette",
+  "ui_feed_signal_less": "Ikke interesseret",
+  "ui_feed_signal_fading": "Svækkes",
+  "ui_feed_signal_removed": "Fjernet"
 }

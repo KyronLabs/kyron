@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "내 게시물",
   "ui_standing_your_reply": "내 답글",
   "ui_dm_pin_limit": "채팅은 최대 $count개까지 고정할 수 있습니다. 먼저 하나를 고정 해제하세요.",
-  "ui_dm_pinned": "고정됨"
+  "ui_dm_pinned": "고정됨",
+  "ui_undo": "실행 취소",
+  "ui_feed_signals": "내 피드 신호",
+  "ui_feed_signals_help": "더 보기와 관심 없음이 피드에 알려 주는 내용",
+  "ui_feed_signals_intro": "홈과 탐색을, 주로 각 게시물의 주제에 따라 만들어 갑니다. 각 신호는 매달 절반으로 약해지고 6개월이 지나면 더 이상 반영되지 않습니다. 지금 멈추려면 삭제하세요.",
+  "ui_feed_signals_empty_title": "아직 아무것도 없어요",
+  "ui_feed_signals_empty": "게시물에서 이런 게시물 더 보기나 관심 없음을 누르면 여기에 표시됩니다.",
+  "ui_feed_signal_more": "이런 게시물 더 보기",
+  "ui_feed_signal_less": "관심 없음",
+  "ui_feed_signal_fading": "약해지는 중",
+  "ui_feed_signal_removed": "삭제됨"
 }

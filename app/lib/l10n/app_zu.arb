@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Okuthunyelwe kwakho",
   "ui_standing_your_reply": "Impendulo yakho",
   "ui_dm_pin_limit": "Ungaphina izingxoxo ezifika ku-$count. Qala ususe okukodwa.",
-  "ui_dm_pinned": "Kuphiniwe"
+  "ui_dm_pinned": "Kuphiniwe",
+  "ui_undo": "Hlehlisa",
+  "ui_feed_signals": "Izimpawu zokuphakelayo kwakho",
+  "ui_feed_signals_help": "Lokho okushiwo yi-Bonisa okwengeziwe ne-Anginandaba kokuphakelayo kwakho",
+  "ui_feed_signals_intro": "Lokhu kubumba iKhaya kanye ne-Hlola, ikakhulukazi ngokwalokho okuthunyelwe ngakunye bekumayelana nakho. Ngakunye kuncipha ngengxenye nyanga zonke futhi akusabalwa ngemuva kwezinyanga eziyisithupha. Susa okukodwa ukuze ukumise manje.",
+  "ui_feed_signals_empty_title": "Akukho lutho lapha okwamanje",
+  "ui_feed_signals_empty": "Thepha u-Bonisa okuthunyelwe okwengeziwe okunje noma u-Anginandaba nalokhu kokuthunyelwe, futhi kuzovela lapha.",
+  "ui_feed_signal_more": "Bonisa okwengeziwe okunje",
+  "ui_feed_signal_less": "Anginandaba",
+  "ui_feed_signal_fading": "Kuyancipha",
+  "ui_feed_signal_removed": "Kususiwe"
 }

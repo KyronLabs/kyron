@@ -1187,6 +1187,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Susaymoqda"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Qiziq emas"),
+      "ui_feed_signal_more": MessageLookupByLibrary.simpleMessage(
+          "Shunga o‘xshashni ko‘proq ko‘rsatish"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Olib tashlandi"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Lenta signallaringiz"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Postda Shunga o‘xshash postlarni ko‘proq ko‘rsatish yoki Bu menga qiziq emas tugmasini bosing, u shu yerda paydo bo‘ladi."),
+      "ui_feed_signals_empty_title": MessageLookupByLibrary.simpleMessage(
+          "Hozircha bu yerda hech narsa yo‘q"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ko‘proq ko‘rsatish va Qiziq emas lentalaringizga nima deyapti"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ular Bosh sahifa va Kashf etishni, asosan har bir post nima haqida bo‘lganiga qarab shakllantiradi. Har biri har oy ikki baravar susayadi va olti oydan keyin hisobga olinmaydi. Hozir to‘xtatish uchun birini olib tashlang."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1678,6 +1695,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

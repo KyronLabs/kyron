@@ -1179,6 +1179,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Inafifia"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Sivutiwi"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Onyesha zaidi kama hili"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Imeondolewa"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Ishara za mlisho wako"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Gusa Onyesha machapisho zaidi kama haya au Sivutiwi na hili kwenye chapisho, na litaonekana hapa."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna kitu hapa"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Kile Onyesha zaidi na Sivutiwi vinaambia milisho yako"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Hizi huunda Nyumbani na Gundua, hasa kwa mada ya kila chapisho. Kila moja hufifia nusu kila mwezi na huacha kuhesabiwa baada ya miezi sita. Ondoa moja ili kuisimamisha sasa."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1664,6 +1680,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Tendua"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

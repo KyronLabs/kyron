@@ -1191,6 +1191,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("മങ്ങുന്നു"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("താൽപ്പര്യമില്ല"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("ഇതുപോലുള്ളവ കൂടുതൽ കാണിക്കുക"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("നീക്കം ചെയ്തു"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ ഫീഡ് സിഗ്നലുകൾ"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "ഒരു പോസ്റ്റിൽ ഇതുപോലുള്ള കൂടുതൽ പോസ്റ്റുകൾ കാണിക്കുക അല്ലെങ്കിൽ ഇതിൽ താൽപ്പര്യമില്ല ടാപ്പ് ചെയ്യുക, അത് ഇവിടെ കാണാം."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("ഇവിടെ ഇതുവരെ ഒന്നുമില്ല"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "കൂടുതൽ കാണിക്കുക, താൽപ്പര്യമില്ല എന്നിവ നിങ്ങളുടെ ഫീഡുകളോട് പറയുന്നത്"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "ഇവ ഹോമും എക്സ്പ്ലോറും രൂപപ്പെടുത്തുന്നു, പ്രധാനമായും ഓരോ പോസ്റ്റും എന്തിനെക്കുറിച്ചായിരുന്നു എന്നതനുസരിച്ച്. ഓരോന്നും ഓരോ മാസവും പകുതിയാകുന്നു, ആറ് മാസത്തിന് ശേഷം കണക്കാക്കില്ല. ഇപ്പോൾ നിർത്താൻ ഒന്ന് നീക്കം ചെയ്യുക."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1680,6 +1698,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("പഴയപടിയാക്കുക"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

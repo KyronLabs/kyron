@@ -1189,6 +1189,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Silpnėja"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Nedomina"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Rodyti daugiau panašių"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Pašalinta"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Jūsų sklaidos kanalo signalai"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Įraše bakstelėkite Rodyti daugiau panašių įrašų arba Manęs tai nedomina, ir jis atsiras čia."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Kol kas nieko nėra"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ką jūsų kanalams sako Rodyti daugiau ir Nedomina"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Jie formuoja Pradžią ir Naršymą, daugiausia pagal kiekvieno įrašo temą. Kiekvienas kas mėnesį susilpnėja perpus ir po šešių nebeskaičiuojamas. Pašalinkite vieną, kad sustabdytumėte jį dabar."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1674,6 +1690,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Anuliuoti"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

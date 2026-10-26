@@ -28,7 +28,12 @@ describe('ModerationService', () => {
     upsert: jest.fn<Promise<unknown>, [unknown]>(),
     deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
   };
-  const interestSignal = { upsert: jest.fn<Promise<unknown>, [unknown]>() };
+  const interestSignal = {
+    upsert: jest.fn<Promise<unknown>, [unknown]>(),
+    findUnique: jest.fn<Promise<{ kind: InterestKind } | null>, [unknown]>(),
+    deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    findMany: jest.fn<Promise<unknown[]>, [unknown]>(),
+  };
   const follow = {
     deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
   };
@@ -184,6 +189,91 @@ describe('ModerationService', () => {
 
       expect(interestSignal.upsert).toHaveBeenCalled();
       expect(hiddenPost.upsert).not.toHaveBeenCalled();
+    });
+
+    it('renews a signal given again, so it fades from the latest tap', async () => {
+      await (await service()).setInterest(VIEWER, 'p1', InterestKind.LESS);
+
+      const [args] = interestSignal.upsert.mock.calls[0] as [
+        { update: { createdAt?: Date } },
+      ];
+      expect(args.update.createdAt).toBeInstanceOf(Date);
+    });
+  });
+
+  describe('clearInterest', () => {
+    it('takes back "not interested", and brings the post back', async () => {
+      // It was hidden by that tap; undoing half of what they did is not undo.
+      interestSignal.findUnique.mockResolvedValue({ kind: InterestKind.LESS });
+
+      await expect(
+        (await service()).clearInterest(VIEWER, 'p1'),
+      ).resolves.toEqual({ cleared: true });
+      expect(interestSignal.deleteMany).toHaveBeenCalledWith({
+        where: { userId: VIEWER, postId: 'p1' },
+      });
+      expect(hiddenPost.deleteMany).toHaveBeenCalledWith({
+        where: { userId: VIEWER, postId: 'p1' },
+      });
+    });
+
+    it('takes back "more" without touching what is hidden', async () => {
+      interestSignal.findUnique.mockResolvedValue({ kind: InterestKind.MORE });
+
+      await (await service()).clearInterest(VIEWER, 'p1');
+
+      expect(interestSignal.deleteMany).toHaveBeenCalled();
+      expect(hiddenPost.deleteMany).not.toHaveBeenCalled();
+    });
+
+    it('says so when there was nothing to take back', async () => {
+      interestSignal.findUnique.mockResolvedValue(null);
+
+      await expect(
+        (await service()).clearInterest(VIEWER, 'p1'),
+      ).resolves.toEqual({ cleared: false });
+      expect(interestSignal.deleteMany).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('listInterest', () => {
+    it('lists what is still shaping the feed, with how much is left', async () => {
+      const recent = new Date(Date.now() - 30 * 86_400_000);
+      interestSignal.findMany.mockResolvedValue([
+        {
+          kind: InterestKind.LESS,
+          createdAt: recent,
+          post: {
+            id: 'p1',
+            content: 'A   long\n\npost '.repeat(20),
+            deletedAt: null,
+            author: {
+              id: 'a',
+              name: 'Ada',
+              username: 'ada',
+              profile: { avatarUrl: null },
+            },
+            topics: [{ interest: { name: 'Football' } }],
+            hashtags: [{ hashtag: { tag: 'derby' } }],
+          },
+        },
+        // A deleted post is nothing to recognise and nothing to undo.
+        {
+          kind: InterestKind.MORE,
+          createdAt: recent,
+          post: { id: 'p2', deletedAt: new Date() },
+        },
+      ]);
+
+      const [item, ...rest] = await (await service()).listInterest(VIEWER);
+
+      expect(rest).toEqual([]);
+      expect(item.postId).toBe('p1');
+      expect(item.topics).toEqual(['Football']);
+      expect(item.hashtags).toEqual(['derby']);
+      expect(item.strength).toBeCloseTo(0.5, 1);
+      expect(item.excerpt.length).toBeLessThanOrEqual(140);
+      expect(item.excerpt).not.toMatch(/\s{2}/);
     });
   });
 

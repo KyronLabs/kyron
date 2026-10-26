@@ -1184,6 +1184,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Heikkenee"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ei kiinnosta"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Näytä lisää tällaisia"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Poistettu"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Syötteesi signaalit"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Napauta julkaisussa Näytä lisää tällaisia julkaisuja tai Ei kiinnosta, niin se näkyy täällä."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Täällä ei ole vielä mitään"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Mitä Näytä lisää ja Ei kiinnosta kertovat syötteillesi"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ne muokkaavat Kotia ja Tutkia, enimmäkseen sen mukaan, mistä julkaisu kertoi. Jokainen heikkenee puoleen joka kuukausi eikä lasketa enää kuuden jälkeen. Poista jokin, niin se loppuu heti."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1669,6 +1687,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Kumoa"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),
