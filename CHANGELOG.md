@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.16] - 2026-10-26
 ### Changed
 
 - **"Not interested in this" now means posts like this, not this person.**
@@ -2072,7 +2074,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.15...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.16...HEAD
+[0.1.16]: https://github.com/KyronLabs/kyron/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/KyronLabs/kyron/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/KyronLabs/kyron/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/KyronLabs/kyron/compare/v0.1.12...v0.1.13
