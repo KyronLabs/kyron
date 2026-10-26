@@ -113,10 +113,13 @@ is shippable on its own.
 6. ~~**Feed quality signals.**~~ Built, and the worst of it was not the
    missing data but the data already being collected and read by nothing:
    every "show me less of this" tap wrote a row that changed no subsequent
-   feed. That is now a standing damper on the author, unexpiring, and strong
-   enough to outweigh following them -- asking for less of somebody you follow
-   is a correction, not a contradiction to split the difference on. "Show me
-   more" lifts them, above a like.
+   feed. That became a standing damper on the author, unexpiring, and strong
+   enough to outweigh following them. **Changed on 26 October 2026:** that
+   read one tap on one post as a verdict on the person, ignored what the post
+   was about, and could not be seen or undone. Both buttons now land mostly
+   on the post's topics and hashtags and gently on its author, fade over six
+   months, shape Explore as well as Home, and can be undone from the toast or
+   from Settings → Your feed signals -- `docs/FEED.md`.
 
    Alongside it: `seen` was one bit with a flat penalty, so a post read four
    times ranked exactly where one glanced at once did. The view row counts the

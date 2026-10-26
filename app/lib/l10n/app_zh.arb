@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "你的帖子",
   "ui_standing_your_reply": "你的回复",
   "ui_dm_pin_limit": "最多可以置顶 $count 个聊天。请先取消置顶一个。",
-  "ui_dm_pinned": "已置顶"
+  "ui_dm_pinned": "已置顶",
+  "ui_undo": "撤销",
+  "ui_feed_signals": "你的信息流信号",
+  "ui_feed_signals_help": "“显示更多”和“不感兴趣”在告诉你的信息流什么",
+  "ui_feed_signals_intro": "它们塑造首页和探索，主要依据每条帖子的主题。每个信号每月减弱一半，六个月后不再计入。移除一个即可立即停止。",
+  "ui_feed_signals_empty_title": "这里还没有内容",
+  "ui_feed_signals_empty": "在帖子上点按“显示更多类似帖子”或“对此不感兴趣”，它就会出现在这里。",
+  "ui_feed_signal_more": "显示更多类似内容",
+  "ui_feed_signal_less": "不感兴趣",
+  "ui_feed_signal_fading": "正在减弱",
+  "ui_feed_signal_removed": "已移除"
 }

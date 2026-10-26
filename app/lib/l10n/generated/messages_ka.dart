@@ -1183,6 +1183,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("სუსტდება"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("არ მაინტერესებს"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("მსგავსის მეტის ჩვენება"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("წაიშალა"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("თქვენი არხის სიგნალები"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "შეეხეთ პოსტზე „მსგავსი პოსტების მეტის ჩვენებას“ ან „ეს არ მაინტერესებს“ და ის აქ გამოჩნდება."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("აქ ჯერ არაფერია"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "რას ეუბნება თქვენს არხებს „მეტის ჩვენება“ და „არ მაინტერესებს“"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "ისინი აყალიბებენ მთავარს და აღმოჩენას, ძირითადად თითოეული პოსტის თემის მიხედვით. თითოეული ყოველთვე ნახევრდება და ექვსი თვის შემდეგ აღარ ითვლება. წაშალეთ ერთ-ერთი, რომ ახლავე შეაჩეროთ."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1665,6 +1681,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("გაუქმება"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

@@ -1181,6 +1181,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "ستظهر المشاركات هنا بينما يكتبها الناس.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("تتلاشى"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("غير مهتم"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("إظهار المزيد مثل هذا"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("تمت الإزالة"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("إشارات خلاصتك"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "اضغط «إظهار المزيد من المنشورات المشابهة» أو «غير مهتم بهذا» على منشور، وسيظهر هنا."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("لا شيء هنا بعد"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "ما تخبر به «إظهار المزيد» و«غير مهتم» خلاصاتك"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "تشكّل هذه الصفحة الرئيسية والاستكشاف، غالبًا بحسب موضوع كل منشور. تضعف كل واحدة إلى النصف كل شهر وتتوقف عن الاحتساب بعد ستة أشهر. أزل إحداها لإيقافها الآن."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "المشاركات التي تحمل مقطعًا ستظهر هنا.",
       ),
@@ -1656,6 +1671,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "حرفان أو أكثر.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("تراجع"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "كلمات، أو مرشح — حساب، نطاق زمني، أو ما تحمله المشاركة.",
       ),

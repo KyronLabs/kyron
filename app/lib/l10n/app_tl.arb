@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Ang post mo",
   "ui_standing_your_reply": "Ang reply mo",
   "ui_dm_pin_limit": "Hanggang $count chat lang ang puwede mong i-pin. Mag-unpin muna ng isa.",
-  "ui_dm_pinned": "Naka-pin"
+  "ui_dm_pinned": "Naka-pin",
+  "ui_undo": "I-undo",
+  "ui_feed_signals": "Mga signal ng feed mo",
+  "ui_feed_signals_help": "Ang sinasabi ng Ipakita pa at Hindi interesado sa mga feed mo",
+  "ui_feed_signals_intro": "Hinuhubog nito ang Home at Explore, kadalasan ayon sa paksa ng bawat post. Humihina nang kalahati ang bawat isa buwan-buwan at hindi na binibilang pagkalipas ng anim. Alisin ang isa para itigil ito ngayon.",
+  "ui_feed_signals_empty_title": "Wala pa rito",
+  "ui_feed_signals_empty": "I-tap ang Magpakita pa ng mga post na ganito o Hindi interesado rito sa isang post, at lalabas ito rito.",
+  "ui_feed_signal_more": "Magpakita pa ng ganito",
+  "ui_feed_signal_less": "Hindi interesado",
+  "ui_feed_signal_fading": "Humihina",
+  "ui_feed_signal_removed": "Inalis"
 }

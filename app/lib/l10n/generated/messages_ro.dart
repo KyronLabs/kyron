@@ -1185,6 +1185,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Slăbește"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Nu mă interesează"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Arată mai multe ca aceasta"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Eliminat"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Semnalele fluxului tău"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Atinge Arată mai multe postări ca aceasta sau Nu mă interesează la o postare și va apărea aici."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Încă nimic aici"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ce le spun fluxurilor tale Arată mai multe și Nu mă interesează"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ele modelează Acasă și Explorează, mai ales după subiectul fiecărei postări. Fiecare slăbește la jumătate în fiecare lună și nu mai contează după șase. Elimină unul ca să-l oprești acum."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1673,6 +1690,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Anulează"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

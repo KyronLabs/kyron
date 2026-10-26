@@ -1240,6 +1240,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Plasings sal hier verskyn soos mense dit skryf.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Verswak"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Nie belangstel nie"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Wys meer soos hierdie"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Verwyder"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("Jou voerseine"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tik Wys meer plasings soos hierdie of Nie belangstel nie op 'n plasing, en dit verskyn hier."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Nog niks hier nie"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Wat Wys meer en Nie belangstel nie vir jou voere sê"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Dit vorm Tuis en Verken, meestal volgens waaroor elke plasing gegaan het. Elkeen verswak elke maand met die helfte en tel ná ses nie meer nie. Verwyder een om dit nou te stop."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Plasings met 'n klip sal hier verskyn.",
       ),
@@ -1730,6 +1746,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Twee karakters of meer.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Ontdoen"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Woorde, of 'n filter — 'n rekening, 'n datumreeks, of wat 'n plasing dra.",
       ),

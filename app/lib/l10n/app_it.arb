@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Il tuo post",
   "ui_standing_your_reply": "La tua risposta",
   "ui_dm_pin_limit": "Puoi fissare fino a $count chat. Prima toglierne una.",
-  "ui_dm_pinned": "Fissata"
+  "ui_dm_pinned": "Fissata",
+  "ui_undo": "Annulla",
+  "ui_feed_signals": "I segnali del tuo feed",
+  "ui_feed_signals_help": "Cosa dicono ai tuoi feed Mostra di più e Non mi interessa",
+  "ui_feed_signals_intro": "Danno forma a Home ed Esplora, soprattutto in base all'argomento di ogni post. Ognuno si dimezza ogni mese e smette di contare dopo sei. Rimuovine uno per fermarlo subito.",
+  "ui_feed_signals_empty_title": "Ancora niente qui",
+  "ui_feed_signals_empty": "Tocca Mostra più post come questo o Non mi interessa su un post e comparirà qui.",
+  "ui_feed_signal_more": "Mostra di più come questo",
+  "ui_feed_signal_less": "Non mi interessa",
+  "ui_feed_signal_fading": "In calo",
+  "ui_feed_signal_removed": "Rimosso"
 }

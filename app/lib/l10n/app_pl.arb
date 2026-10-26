@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Twój post",
   "ui_standing_your_reply": "Twoja odpowiedź",
   "ui_dm_pin_limit": "Możesz przypiąć maksymalnie $count czatów. Najpierw odepnij jeden.",
-  "ui_dm_pinned": "Przypięty"
+  "ui_dm_pinned": "Przypięty",
+  "ui_undo": "Cofnij",
+  "ui_feed_signals": "Sygnały Twojego kanału",
+  "ui_feed_signals_help": "Co Pokaż więcej i Nie interesuje mnie mówią Twoim kanałom",
+  "ui_feed_signals_intro": "Kształtują Główną i Odkrywaj, głównie według tematu każdego posta. Każdy co miesiąc słabnie o połowę i po sześciu przestaje się liczyć. Usuń któryś, aby zatrzymać go teraz.",
+  "ui_feed_signals_empty_title": "Na razie nic tu nie ma",
+  "ui_feed_signals_empty": "Stuknij w poście Pokaż więcej takich postów lub Nie interesuje mnie to, a pojawi się tutaj.",
+  "ui_feed_signal_more": "Pokaż więcej takich",
+  "ui_feed_signal_less": "Nie interesuje mnie",
+  "ui_feed_signal_fading": "Słabnie",
+  "ui_feed_signal_removed": "Usunięto"
 }

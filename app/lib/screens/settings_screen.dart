@@ -445,6 +445,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               helpText: 'Keep posts containing these out of your feed',
             ),
             _settingsRow(
+              icon: Iconsax.like_dislike_copy,
+              label: AppLocalizations.of(context)
+                  .ui('ui_feed_signals', 'Your feed signals'),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.feedSignals),
+              helpText: AppLocalizations.of(context).ui(
+                'ui_feed_signals_help',
+                'What Show more and Not interested are telling your feeds',
+              ),
+            ),
+            _settingsRow(
               icon: Iconsax.volume_slash_copy,
               label:
                   AppLocalizations.of(context).literalmutedAndBlockedAccounts,

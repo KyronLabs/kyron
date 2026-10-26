@@ -229,6 +229,16 @@ class PostListNotifier extends StateNotifier<FeedState> {
     state = state.copyWith(posts: dedupePosts([post, ...state.posts]));
   }
 
+  /// Puts a post back where it was, for an Undo: at [index] if the list is
+  /// still that long, at the end if it is not, and nowhere if it is already
+  /// there.
+  void restore(FeedPost post, int index) {
+    if (state.posts.any((p) => p.id == post.id)) return;
+    final posts = [...state.posts];
+    posts.insert(index.clamp(0, posts.length), post);
+    state = state.copyWith(posts: posts);
+  }
+
   /// Drops a post from this list.
   ///
   /// For hiding, muting and blocking: an action whose whole point is "stop

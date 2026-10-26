@@ -1253,6 +1253,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "İnsanlar yazdıqca paylaşımlar burada görünəcək.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Zəifləyir"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Maraqlı deyil"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Buna oxşar daha çox göstər"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Silindi"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Lent siqnallarınız"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımda Buna oxşar daha çox paylaşım göstər və ya Bununla maraqlanmıram düyməsinə toxunun, burada görünəcək."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Hələ burada heç nə yoxdur"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Daha çox göstər və Maraqlı deyil lentlərinizə nə deyir"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Bunlar Əsas səhifəni və Kəşfi, əsasən hər paylaşımın nə haqqında olduğuna görə formalaşdırır. Hər biri hər ay yarıya qədər zəifləyir və altı aydan sonra nəzərə alınmır. İndi dayandırmaq üçün birini silin."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Klip olan paylaşımlar burada görünəcək.",
       ),
@@ -1747,6 +1764,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "İki və ya daha çox simvol.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Geri al"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Sözlər, və ya filtr — bir hesab, tarix aralığı və ya paylaşımın daşıdığı şey.",
       ),

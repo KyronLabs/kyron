@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "あなたの投稿",
   "ui_standing_your_reply": "あなたの返信",
   "ui_dm_pin_limit": "固定できるチャットは $count 件までです。先にどれかの固定を外してください。",
-  "ui_dm_pinned": "固定済み"
+  "ui_dm_pinned": "固定済み",
+  "ui_undo": "元に戻す",
+  "ui_feed_signals": "フィードのシグナル",
+  "ui_feed_signals_help": "「もっと見る」と「興味なし」がフィードに伝えていること",
+  "ui_feed_signals_intro": "これらはホームと発見を、主に各投稿の内容にもとづいて形づくります。それぞれ毎月半分に弱まり、6か月で数えられなくなります。今すぐ止めるには削除してください。",
+  "ui_feed_signals_empty_title": "まだ何もありません",
+  "ui_feed_signals_empty": "投稿で「このような投稿をもっと表示」か「興味なし」をタップすると、ここに表示されます。",
+  "ui_feed_signal_more": "このような投稿をもっと",
+  "ui_feed_signal_less": "興味なし",
+  "ui_feed_signal_fading": "弱まっています",
+  "ui_feed_signal_removed": "削除しました"
 }

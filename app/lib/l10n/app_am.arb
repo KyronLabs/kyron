@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "ልጥፍዎ",
   "ui_standing_your_reply": "ምላሽዎ",
   "ui_dm_pin_limit": "እስከ $count ውይይቶች ድረስ መሰካት ይችላሉ። መጀመሪያ አንዱን ይንቀሉ።",
-  "ui_dm_pinned": "ተሰክቷል"
+  "ui_dm_pinned": "ተሰክቷል",
+  "ui_undo": "ቀልብስ",
+  "ui_feed_signals": "የምግብዎ ምልክቶች",
+  "ui_feed_signals_help": "ተጨማሪ አሳይ እና ፍላጎት የለኝም ለምግቦችዎ የሚናገሩት",
+  "ui_feed_signals_intro": "እነዚህ መነሻን እና አስስን ይቀርጻሉ፣ በአብዛኛው እያንዳንዱ ልጥፍ ስለምን እንደነበር። እያንዳንዱ በየወሩ በግማሽ ይደበዝዛል፣ ከስድስት ወር በኋላም አይቆጠርም። አሁን ለማቆም አንዱን ያስወግዱ።",
+  "ui_feed_signals_empty_title": "እስካሁን ምንም የለም",
+  "ui_feed_signals_empty": "በልጥፍ ላይ እንደዚህ ያሉ ተጨማሪ ልጥፎችን አሳይ ወይም በዚህ ፍላጎት የለኝም የሚለውን ይንኩ፣ እዚህ ይታያል።",
+  "ui_feed_signal_more": "እንደዚህ ያሉ ተጨማሪ አሳይ",
+  "ui_feed_signal_less": "ፍላጎት የለኝም",
+  "ui_feed_signal_fading": "እየደበዘዘ",
+  "ui_feed_signal_removed": "ተወግዷል"
 }

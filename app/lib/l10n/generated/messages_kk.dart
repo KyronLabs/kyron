@@ -1180,6 +1180,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Әлсіреп барады"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Қызық емес"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Осындайды көбірек көрсету"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Алып тасталды"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Таспа сигналдарыңыз"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Жазбада Осындай жазбаларды көбірек көрсету немесе Бұл маған қызық емес түймесін түртіңіз, ол осында шығады."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Әзірге ештеңе жоқ"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Көбірек көрсету мен Қызық емес таспаларыңызға не айтады"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Олар Басты бет пен Шолуды, негізінен әр жазбаның тақырыбы бойынша қалыптастырады. Әрқайсысы ай сайын екі есе әлсірейді және алты айдан кейін есептелмейді. Қазір тоқтату үшін біреуін алып тастаңыз."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1656,6 +1673,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Болдырмау"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

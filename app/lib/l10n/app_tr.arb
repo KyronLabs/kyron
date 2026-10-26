@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Gönderin",
   "ui_standing_your_reply": "Yanıtın",
   "ui_dm_pin_limit": "En fazla $count sohbet sabitleyebilirsin. Önce birini sabitlemeden kaldır.",
-  "ui_dm_pinned": "Sabitlendi"
+  "ui_dm_pinned": "Sabitlendi",
+  "ui_undo": "Geri al",
+  "ui_feed_signals": "Akış sinyallerin",
+  "ui_feed_signals_help": "Daha fazla göster ve İlgilenmiyorum'un akışlarına söyledikleri",
+  "ui_feed_signals_intro": "Bunlar Ana Sayfa ve Keşfet'i, çoğunlukla her gönderinin konusuna göre şekillendirir. Her biri her ay yarı yarıya zayıflar ve altı aydan sonra sayılmaz. Şimdi durdurmak için birini kaldır.",
+  "ui_feed_signals_empty_title": "Burada henüz bir şey yok",
+  "ui_feed_signals_empty": "Bir gönderide Bunun gibi daha fazla gönderi göster veya Bununla ilgilenmiyorum'a dokun, burada görünür.",
+  "ui_feed_signal_more": "Bunun gibi daha fazla göster",
+  "ui_feed_signal_less": "İlgilenmiyorum",
+  "ui_feed_signal_fading": "Zayıflıyor",
+  "ui_feed_signal_removed": "Kaldırıldı"
 }

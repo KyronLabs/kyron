@@ -1188,6 +1188,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Vājinās"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Neinteresē"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Rādīt vairāk līdzīgu"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Noņemts"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Jūsu plūsmas signāli"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Pieskarieties ziņai Rādīt vairāk līdzīgu ziņu vai Mani tas neinteresē, un tā parādīsies šeit."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Šeit vēl nekā nav"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ko jūsu plūsmām saka Rādīt vairāk un Neinteresē"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Tie veido Sākumu un Izpēti, galvenokārt pēc katras ziņas tēmas. Katrs ik mēnesi kļūst uz pusi vājāks un pēc sešiem vairs netiek skaitīts. Noņemiet kādu, lai to apturētu tūlīt."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1678,6 +1693,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Atsaukt"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

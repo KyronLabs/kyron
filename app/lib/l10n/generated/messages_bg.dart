@@ -1263,6 +1263,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Публикациите ще се появяват тук, когато хората ги пишат.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Отслабва"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Не ме интересува"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Показвай повече такива"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Премахнато"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Сигнали за емисията ви"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Докоснете „Показвай повече такива публикации“ или „Не ме интересува“ на публикация и тя ще се появи тук."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Все още няма нищо"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Какво казват „Показвай повече“ и „Не ме интересува“ на емисиите ви"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Те оформят Начало и Разгледай, най-вече според темата на всяка публикация. Всеки отслабва наполовина всеки месец и спира да се брои след шест. Премахнете някой, за да го спрете сега."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Публикации с клип ще се появяват тук.",
       ),
@@ -1767,6 +1784,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Две или повече букви.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Отмяна"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Думи или филтър — акаунт, период от време или какво съдържа публикацията.",
       ),

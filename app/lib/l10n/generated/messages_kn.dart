@@ -1184,6 +1184,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("ಮಸುಕಾಗುತ್ತಿದೆ"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("ಆಸಕ್ತಿಯಿಲ್ಲ"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("ಇಂತಹ ಇನ್ನಷ್ಟು ತೋರಿಸಿ"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("ತೆಗೆದುಹಾಕಲಾಗಿದೆ"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಫೀಡ್ ಸಂಕೇತಗಳು"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "ಪೋಸ್ಟ್‌ನಲ್ಲಿ ಇಂತಹ ಇನ್ನಷ್ಟು ಪೋಸ್ಟ್‌ಗಳನ್ನು ತೋರಿಸಿ ಅಥವಾ ಇದರಲ್ಲಿ ಆಸಕ್ತಿಯಿಲ್ಲ ಟ್ಯಾಪ್ ಮಾಡಿ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "ಇನ್ನಷ್ಟು ತೋರಿಸಿ ಮತ್ತು ಆಸಕ್ತಿಯಿಲ್ಲ ನಿಮ್ಮ ಫೀಡ್‌ಗಳಿಗೆ ಏನು ಹೇಳುತ್ತಿವೆ"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "ಇವು ಹೋಮ್ ಮತ್ತು ಎಕ್ಸ್‌ಪ್ಲೋರ್ ಅನ್ನು ರೂಪಿಸುತ್ತವೆ, ಹೆಚ್ಚಾಗಿ ಪ್ರತಿ ಪೋಸ್ಟ್ ಯಾವುದರ ಬಗ್ಗೆ ಇತ್ತು ಎಂಬುದರ ಮೇಲೆ. ಪ್ರತಿಯೊಂದೂ ಪ್ರತಿ ತಿಂಗಳು ಅರ್ಧದಷ್ಟು ಕುಗ್ಗುತ್ತದೆ ಮತ್ತು ಆರು ತಿಂಗಳ ನಂತರ ಎಣಿಕೆಯಾಗುವುದಿಲ್ಲ. ಈಗಲೇ ನಿಲ್ಲಿಸಲು ಒಂದನ್ನು ತೆಗೆದುಹಾಕಿ."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1666,6 +1684,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("ರದ್ದುಮಾಡಿ"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

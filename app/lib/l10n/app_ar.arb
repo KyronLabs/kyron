@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "منشورك",
   "ui_standing_your_reply": "ردك",
   "ui_dm_pin_limit": "يمكنك تثبيت $count محادثات كحد أقصى. ألغِ تثبيت واحدة أولًا.",
-  "ui_dm_pinned": "مثبّتة"
+  "ui_dm_pinned": "مثبّتة",
+  "ui_undo": "تراجع",
+  "ui_feed_signals": "إشارات خلاصتك",
+  "ui_feed_signals_help": "ما تخبر به «إظهار المزيد» و«غير مهتم» خلاصاتك",
+  "ui_feed_signals_intro": "تشكّل هذه الصفحة الرئيسية والاستكشاف، غالبًا بحسب موضوع كل منشور. تضعف كل واحدة إلى النصف كل شهر وتتوقف عن الاحتساب بعد ستة أشهر. أزل إحداها لإيقافها الآن.",
+  "ui_feed_signals_empty_title": "لا شيء هنا بعد",
+  "ui_feed_signals_empty": "اضغط «إظهار المزيد من المنشورات المشابهة» أو «غير مهتم بهذا» على منشور، وسيظهر هنا.",
+  "ui_feed_signal_more": "إظهار المزيد مثل هذا",
+  "ui_feed_signal_less": "غير مهتم",
+  "ui_feed_signal_fading": "تتلاشى",
+  "ui_feed_signal_removed": "تمت الإزالة"
 }

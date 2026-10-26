@@ -1190,6 +1190,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Halványul"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Nem érdekel"),
+      "ui_feed_signal_more": MessageLookupByLibrary.simpleMessage("Több ilyet"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Eltávolítva"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("A hírfolyamod jelzései"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Koppints egy bejegyzésen a Több ilyen bejegyzés vagy a Nem érdekel lehetőségre, és itt megjelenik."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Még nincs itt semmi"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Amit a Több ilyet és a Nem érdekel mond a hírfolyamaidnak"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ezek alakítják a Kezdőlapot és a Felfedezést, főleg aszerint, miről szólt egy bejegyzés. Mindegyik havonta a felére gyengül, és hat hónap után már nem számít. Távolíts el egyet, hogy most leállítsd."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1675,6 +1692,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Visszavonás"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

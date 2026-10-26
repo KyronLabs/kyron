@@ -1225,6 +1225,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Postitused ilmuvad siia, kui inimesed neid kirjutavad.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Nõrgeneb"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Ei huvita"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Näita rohkem selliseid"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Eemaldatud"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Sinu voo signaalid"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Puuduta postitusel Näita rohkem selliseid postitusi või See ei huvita mind ja see ilmub siia."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Siin pole veel midagi"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Mida Näita rohkem ja Ei huvita sinu voogudele ütlevad"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Need kujundavad Avalehte ja Avastamist, peamiselt selle järgi, millest postitus rääkis. Iga signaal nõrgeneb igas kuus poole võrra ja kuue järel enam ei loe. Eemalda üks, et see kohe peatada."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Postitused, mis sisaldavad klippi, ilmuvad siia.",
       ),
@@ -1720,6 +1736,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Kaks või enam sümbolit.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Võta tagasi"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Sõnad või filter — konto, ajavahemik või see, mida postitus kannab.",
       ),

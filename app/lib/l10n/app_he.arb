@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "הפוסט שלך",
   "ui_standing_your_reply": "התגובה שלך",
   "ui_dm_pin_limit": "אפשר להצמיד עד $count צ'אטים. יש לבטל הצמדה של אחד קודם.",
-  "ui_dm_pinned": "מוצמד"
+  "ui_dm_pinned": "מוצמד",
+  "ui_undo": "ביטול",
+  "ui_feed_signals": "האותות של הפיד שלך",
+  "ui_feed_signals_help": "מה הצג עוד ולא מעניין אותי אומרים לפידים שלך",
+  "ui_feed_signals_intro": "הם מעצבים את הבית ואת הגילוי, בעיקר לפי הנושא של כל פוסט. כל אחד נחלש בחצי בכל חודש ומפסיק להיחשב אחרי שישה. הסר אחד כדי לעצור אותו עכשיו.",
+  "ui_feed_signals_empty_title": "עדיין אין כאן כלום",
+  "ui_feed_signals_empty": "הקש על הצג עוד פוסטים כאלה או לא מעניין אותי בפוסט, והוא יופיע כאן.",
+  "ui_feed_signal_more": "הצג עוד כאלה",
+  "ui_feed_signal_less": "לא מעניין אותי",
+  "ui_feed_signal_fading": "נחלש",
+  "ui_feed_signal_removed": "הוסר"
 }

@@ -1182,6 +1182,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Na-ada"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ọ masịghị m"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Gosi ndị ọzọ dị ka nke a"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Ewepụrụ"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("Akara nri gị"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Pịa Gosi posts ndị ọzọ dị ka nke a ma ọ bụ Ọ masịghị m nke a na post, ọ ga-apụta ebe a."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe ọ bụla ebe a"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Ihe Gosi ndị ọzọ na Ọ masịghị m na-agwa nri gị"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ha na-akpụzi Ụlọ na Nyochaa, ọkachasị dịka ihe post ọ bụla gbasara. Nke ọ bụla na-ada ọkara kwa ọnwa ma kwụsị ịgụ mgbe ọnwa isii gachara. Wepụ otu iji kwụsị ya ugbu a."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1658,6 +1673,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Mehie"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

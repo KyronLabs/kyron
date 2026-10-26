@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Votre publication",
   "ui_standing_your_reply": "Votre réponse",
   "ui_dm_pin_limit": "Vous pouvez épingler jusqu'à $count discussions. Désépinglez-en une d'abord.",
-  "ui_dm_pinned": "Épinglée"
+  "ui_dm_pinned": "Épinglée",
+  "ui_undo": "Annuler",
+  "ui_feed_signals": "Vos signaux de fil",
+  "ui_feed_signals_help": "Ce que Afficher plus et Pas intéressé disent à vos fils",
+  "ui_feed_signals_intro": "Ils façonnent Accueil et Explorer, surtout selon le sujet de chaque publication. Chacun s'affaiblit de moitié chaque mois et ne compte plus au bout de six. Retirez-en un pour l'arrêter tout de suite.",
+  "ui_feed_signals_empty_title": "Rien pour l'instant",
+  "ui_feed_signals_empty": "Touchez Afficher plus de publications comme celle-ci ou Pas intéressé par ceci sur une publication, et elle apparaîtra ici.",
+  "ui_feed_signal_more": "Afficher plus de ce genre",
+  "ui_feed_signal_less": "Pas intéressé",
+  "ui_feed_signal_fading": "S'estompe",
+  "ui_feed_signal_removed": "Retiré"
 }

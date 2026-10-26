@@ -21,6 +21,7 @@ import 'screens/community_settings_screen.dart';
 import 'screens/new_community_screen.dart';
 import 'screens/thread_screen.dart';
 import 'screens/topic_screen.dart';
+import 'screens/feed_signals_screen.dart';
 import 'screens/muted_screens.dart';
 import 'screens/edit_profile_screen.dart';
 import 'screens/help_screen.dart';
@@ -89,6 +90,7 @@ class Routes {
   static const communityChat = '/community-chat';
   static const drafts = '/composer/drafts';
   static const mutedWords = '/settings/muted-words';
+  static const feedSignals = '/settings/feed-signals';
   static const mutedAccounts = '/settings/muted-accounts';
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
@@ -380,6 +382,9 @@ class Routes {
 
       case mutedWords:
         return _page(const MutedWordsScreen());
+
+      case feedSignals:
+        return _page(const FeedSignalsScreen());
 
       case mutedAccounts:
         return _page(const MutedAccountsScreen());

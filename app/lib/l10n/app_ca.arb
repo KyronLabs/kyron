@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "La teva publicació",
   "ui_standing_your_reply": "La teva resposta",
   "ui_dm_pin_limit": "Pots fixar fins a $count xats. Primer deixa'n de fixar un.",
-  "ui_dm_pinned": "Fixat"
+  "ui_dm_pinned": "Fixat",
+  "ui_undo": "Desfés",
+  "ui_feed_signals": "Els senyals del teu feed",
+  "ui_feed_signals_help": "El que Mostra'n més i No m'interessa diuen als teus feeds",
+  "ui_feed_signals_intro": "Donen forma a Inici i Explora, sobretot segons el tema de cada publicació. Cadascun s'afebleix a la meitat cada mes i deixa de comptar al cap de sis. Elimina'n un per aturar-lo ara.",
+  "ui_feed_signals_empty_title": "Encara no hi ha res",
+  "ui_feed_signals_empty": "Toca Mostra més publicacions com aquesta o No m'interessa en una publicació i apareixerà aquí.",
+  "ui_feed_signal_more": "Mostra'n més com aquesta",
+  "ui_feed_signal_less": "No m'interessa",
+  "ui_feed_signal_fading": "S'esvaeix",
+  "ui_feed_signal_removed": "Eliminat"
 }

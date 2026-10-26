@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Qoraalkaaga",
   "ui_standing_your_reply": "Jawaabtaada",
   "ui_dm_pin_limit": "Waxaad dhejin kartaa ilaa $count sheekeysi. Marka hore mid ka fur.",
-  "ui_dm_pinned": "La dhejiyey"
+  "ui_dm_pinned": "La dhejiyey",
+  "ui_undo": "Ka noqo",
+  "ui_feed_signals": "Calaamadaha quudintaada",
+  "ui_feed_signals_help": "Waxa Muuji wax badan iyo Xiiso uma qabo u sheegayaan quudintaada",
+  "ui_feed_signals_intro": "Kuwani waxay qaabeeyaan Hoyga iyo Sahaminta, inta badan sida waxa qoraal kastaa ku saabsanaa. Mid kastaa bil kasta wuu daciifaa nus, lixda bilood kaddibna lama tiriyo. Ka saar mid si aad hadda u joojiso.",
+  "ui_feed_signals_empty_title": "Weli halkan waxba ma jiraan",
+  "ui_feed_signals_empty": "Ku dhufo Muuji qoraallo badan oo kan oo kale ah ama Xiiso uma qabo kan qoraal, wuuna halkan ka soo muuqan doonaa.",
+  "ui_feed_signal_more": "Muuji wax badan oo kan oo kale ah",
+  "ui_feed_signal_less": "Xiiso uma qabo",
+  "ui_feed_signal_fading": "Wuu daciifayaa",
+  "ui_feed_signal_removed": "Waa la saaray"
 }

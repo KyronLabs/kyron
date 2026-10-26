@@ -11,6 +11,32 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **"Not interested in this" now means posts like this, not this person.**
+  It used to take most of the author out of your feed for good, even if
+  you followed them, and did nothing about what the post was about. Now it
+  shows you fewer posts on the same topics and hashtags from anyone, and
+  only a little less of the author. To see much less of somebody, mute
+  them.
+- **"Show more posts like this" does something you can see**: more posts
+  on the same topics and hashtags, and more from that author.
+- **Both now fade.** Each counts for half as much after a month and stops
+  counting after six. Both also shape Explore, not only Home.
+
+### Added
+
+- **Undo** on the message after "Not interested" or "Show more". Undoing
+  "Not interested" brings the post back.
+- **Settings → Your feed signals** lists everything those two buttons are
+  telling your feeds, how much each still counts, and lets you remove any
+  of them.
+
+### Fixed
+
+- **"Not interested" used to wear off silently** once you had given 200
+  newer signals, while promising to last. It now fades on a schedule the
+  app tells you about.
 
 ## [0.1.15] - 2026-10-25
 ### Fixed

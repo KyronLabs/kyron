@@ -1176,6 +1176,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("กำลังจางลง"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("ไม่สนใจ"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("แสดงแบบนี้เพิ่ม"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("ลบแล้ว"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("สัญญาณฟีดของคุณ"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "แตะ แสดงโพสต์แบบนี้เพิ่ม หรือ ไม่สนใจสิ่งนี้ บนโพสต์ แล้วจะแสดงที่นี่"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีอะไรที่นี่"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "สิ่งที่ แสดงเพิ่ม และ ไม่สนใจ บอกฟีดของคุณ"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "สิ่งเหล่านี้กำหนดหน้าหลักและสำรวจ ส่วนใหญ่ตามเรื่องที่แต่ละโพสต์พูดถึง แต่ละอันจะอ่อนลงครึ่งหนึ่งทุกเดือนและเลิกนับหลังหกเดือน ลบออกเพื่อหยุดทันที"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1648,6 +1664,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("เลิกทำ"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

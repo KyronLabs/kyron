@@ -274,6 +274,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("固定済み"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("いいね"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("弱まっています"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("興味なし"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("このような投稿をもっと"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("削除しました"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("フィードのシグナル"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "投稿で「このような投稿をもっと表示」か「興味なし」をタップすると、ここに表示されます。"),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("まだ何もありません"),
+      "ui_feed_signals_help":
+          MessageLookupByLibrary.simpleMessage("「もっと見る」と「興味なし」がフィードに伝えていること"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "これらはホームと発見を、主に各投稿の内容にもとづいて形づくります。それぞれ毎月半分に弱まり、6か月で数えられなくなります。今すぐ止めるには削除してください。"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("メンバーを追加"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("追加"),
       "ui_group_add_name": MessageLookupByLibrary.simpleMessage("グループ名を追加"),
@@ -576,6 +590,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("あなたの投稿"),
       "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("あなたの返信"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("もう一度試す"),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("元に戻す"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("リポストを取り消す"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("パスワードを更新"),
       "useDifferentAddress":

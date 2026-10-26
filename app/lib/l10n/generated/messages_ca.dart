@@ -1284,6 +1284,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Les publicacions apareixeran aquí a mesura que la gent les escrigui.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("S'esvaeix"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("No m'interessa"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Mostra'n més com aquesta"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Eliminat"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Els senyals del teu feed"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Toca Mostra més publicacions com aquesta o No m'interessa en una publicació i apareixerà aquí."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha res"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "El que Mostra'n més i No m'interessa diuen als teus feeds"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Donen forma a Inici i Explora, sobretot segons el tema de cada publicació. Cadascun s'afebleix a la meitat cada mes i deixa de comptar al cap de sis. Elimina'n un per aturar-lo ara."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Les publicacions que portin un clip apareixeran aquí.",
       ),
@@ -1786,6 +1804,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Dos caràcters o més.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Desfés"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Paraules, o un filtre — un compte, un interval de dates, o el que porta una publicació.",
       ),

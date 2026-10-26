@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Innlegget ditt",
   "ui_standing_your_reply": "Svaret ditt",
   "ui_dm_pin_limit": "Du kan feste opptil $count chatter. Løsne én først.",
-  "ui_dm_pinned": "Festet"
+  "ui_dm_pinned": "Festet",
+  "ui_undo": "Angre",
+  "ui_feed_signals": "Feedsignalene dine",
+  "ui_feed_signals_help": "Hva Vis mer og Ikke interessert forteller feedene dine",
+  "ui_feed_signals_intro": "De former Hjem og Utforsk, mest etter hva hvert innlegg handlet om. Hvert signal svekkes til det halve hver måned og teller ikke etter seks. Fjern ett for å stoppe det nå.",
+  "ui_feed_signals_empty_title": "Ingenting her ennå",
+  "ui_feed_signals_empty": "Trykk på Vis flere innlegg som dette eller Ikke interessert i dette på et innlegg, så vises det her.",
+  "ui_feed_signal_more": "Vis flere som dette",
+  "ui_feed_signal_less": "Ikke interessert",
+  "ui_feed_signal_fading": "Svekkes",
+  "ui_feed_signal_removed": "Fjernet"
 }

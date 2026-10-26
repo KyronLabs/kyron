@@ -1185,6 +1185,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Ahultzen"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ez zait interesatzen"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Erakutsi honelako gehiago"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Kendua"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Zure jarioaren seinaleak"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Sakatu Erakutsi honelako argitalpen gehiago edo Ez zait interesatzen argitalpen batean, eta hemen agertuko da."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago ezer"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Erakutsi gehiago eta Ez zait interesatzen zure jarioei esaten dietena"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Hasiera eta Arakatu moldatzen dituzte, batez ere argitalpen bakoitzaren gaiaren arabera. Bakoitza erdira ahultzen da hilero eta sei hilabeteren ondoren ez da kontatzen. Kendu bat orain gelditzeko."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1672,6 +1688,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Desegin"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

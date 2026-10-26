@@ -1188,6 +1188,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading":
+          MessageLookupByLibrary.simpleMessage("Wuu daciifayaa"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Xiiso uma qabo"),
+      "ui_feed_signal_more": MessageLookupByLibrary.simpleMessage(
+          "Muuji wax badan oo kan oo kale ah"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Waa la saaray"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Calaamadaha quudintaada"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Ku dhufo Muuji qoraallo badan oo kan oo kale ah ama Xiiso uma qabo kan qoraal, wuuna halkan ka soo muuqan doonaa."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Weli halkan waxba ma jiraan"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Waxa Muuji wax badan iyo Xiiso uma qabo u sheegayaan quudintaada"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Kuwani waxay qaabeeyaan Hoyga iyo Sahaminta, inta badan sida waxa qoraal kastaa ku saabsanaa. Mid kastaa bil kasta wuu daciifaa nus, lixda bilood kaddibna lama tiriyo. Ka saar mid si aad hadda u joojiso."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1676,6 +1694,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Ka noqo"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

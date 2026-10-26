@@ -1182,6 +1182,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Vervaagt"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Niet geïnteresseerd"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Meer zoals dit tonen"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Verwijderd"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Je feedsignalen"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tik bij een bericht op Meer berichten zoals dit tonen of Niet geïnteresseerd hierin, en het verschijnt hier."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Nog niets hier"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Wat Meer tonen en Niet geïnteresseerd je feeds vertellen"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Ze bepalen Home en Ontdekken, vooral naar het onderwerp van elk bericht. Elk signaal wordt elke maand half zo sterk en telt na zes niet meer mee. Verwijder er een om het nu te stoppen."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1663,6 +1680,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Ongedaan maken"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

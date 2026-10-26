@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Post gị",
   "ui_standing_your_reply": "Nzaghachi gị",
   "ui_dm_pin_limit": "Ị nwere ike ịpịn ruo nkata $count. Wepụ otu pin mbụ.",
-  "ui_dm_pinned": "Apịnara"
+  "ui_dm_pinned": "Apịnara",
+  "ui_undo": "Mehie",
+  "ui_feed_signals": "Akara nri gị",
+  "ui_feed_signals_help": "Ihe Gosi ndị ọzọ na Ọ masịghị m na-agwa nri gị",
+  "ui_feed_signals_intro": "Ha na-akpụzi Ụlọ na Nyochaa, ọkachasị dịka ihe post ọ bụla gbasara. Nke ọ bụla na-ada ọkara kwa ọnwa ma kwụsị ịgụ mgbe ọnwa isii gachara. Wepụ otu iji kwụsị ya ugbu a.",
+  "ui_feed_signals_empty_title": "Ọ dịbeghị ihe ọ bụla ebe a",
+  "ui_feed_signals_empty": "Pịa Gosi posts ndị ọzọ dị ka nke a ma ọ bụ Ọ masịghị m nke a na post, ọ ga-apụta ebe a.",
+  "ui_feed_signal_more": "Gosi ndị ọzọ dị ka nke a",
+  "ui_feed_signal_less": "Ọ masịghị m",
+  "ui_feed_signal_fading": "Na-ada",
+  "ui_feed_signal_removed": "Ewepụrụ"
 }

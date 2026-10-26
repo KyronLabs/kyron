@@ -1184,6 +1184,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Slabne"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Nezaujíma ma"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Zobraziť viac podobných"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Odstránené"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Signály pre váš kanál"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Ťuknite pri príspevku na Zobraziť viac podobných príspevkov alebo Toto ma nezaujíma a objaví sa tu."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ tu nič nie je"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Čo vašim kanálom hovorí Zobraziť viac a Nezaujíma ma"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Formujú Domov a Preskúmať, hlavne podľa toho, o čom príspevok bol. Každý každý mesiac zoslabne na polovicu a po šiestich prestane platiť. Odstráňte niektorý, ak ho chcete zastaviť hneď."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1671,6 +1688,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Späť"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

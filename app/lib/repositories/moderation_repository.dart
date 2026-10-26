@@ -1,3 +1,4 @@
+import '../models/interest_signal.dart';
 import '../models/profile_summary.dart';
 import '../services/api_client.dart';
 
@@ -125,6 +126,21 @@ class ModerationRepository {
         '/feed/posts/$postId/interest',
         data: {'kind': more ? 'MORE' : 'LESS'},
       );
+
+  /// Takes a "show more" or "not interested" back. Taking back "not
+  /// interested" brings the post back as well.
+  Future<void> clearInterest(String postId) =>
+      _api.dio.delete<void>('/feed/posts/$postId/interest');
+
+  /// Every signal still shaping the reader's feeds, newest first.
+  Future<List<InterestSignal>> interestSignals() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/feed/interest');
+    return [
+      for (final item in (res.data?['items'] as List<dynamic>?) ?? const [])
+        if (item is Map<String, dynamic>)
+          if (InterestSignal.tryFrom(item) case final signal?) signal,
+    ];
+  }
 
   Future<List<String>> mutedWords() async {
     final res = await _api.dio.get<Map<String, dynamic>>('/mutes/words');

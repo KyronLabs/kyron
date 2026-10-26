@@ -1034,5 +1034,15 @@
   "ui_standing_your_post": "Ipowusti yakho",
   "ui_standing_your_reply": "Impendulo yakho",
   "ui_dm_pin_limit": "Ungaqhoboshela iincoko ezifikelela kwi-$count. Qala ukhulule enye.",
-  "ui_dm_pinned": "Iqhoboshelwe"
+  "ui_dm_pinned": "Iqhoboshelwe",
+  "ui_undo": "Rhoxisa",
+  "ui_feed_signals": "Imiqondiso yesondlo sakho",
+  "ui_feed_signals_help": "Oko Bonisa ngakumbi kunye nokuthi Andinamdla kukuxelela izondlo zakho",
+  "ui_feed_signals_intro": "Ezi zibumba iKhaya kunye noPhonononga, ubukhulu becala ngokwento ebethetha ngayo iposti nganye. Nganye iyancipha ngesiqingatha inyanga nganye kwaye ayibalwa emva kweenyanga ezintandathu. Susa enye ukuze uyimise ngoku.",
+  "ui_feed_signals_empty_title": "Akukho nto apha okwangoku",
+  "ui_feed_signals_empty": "Cofa u-Bonisa iiposti ezininzi ezinje okanye u-Andinamdla kule kwiposti, kwaye iya kuvela apha.",
+  "ui_feed_signal_more": "Bonisa ngakumbi ezinje",
+  "ui_feed_signal_less": "Andinamdla",
+  "ui_feed_signal_fading": "Iyancipha",
+  "ui_feed_signal_removed": "Isusiwe"
 }

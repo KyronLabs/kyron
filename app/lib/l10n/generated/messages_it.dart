@@ -1184,6 +1184,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("In calo"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Non mi interessa"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Mostra di più come questo"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("Rimosso"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("I segnali del tuo feed"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Tocca Mostra più post come questo o Non mi interessa su un post e comparirà qui."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Ancora niente qui"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Cosa dicono ai tuoi feed Mostra di più e Non mi interessa"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Danno forma a Home ed Esplora, soprattutto in base all'argomento di ogni post. Ognuno si dimezza ogni mese e smette di contare dopo sei. Rimuovine uno per fermarlo subito."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1671,6 +1687,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Annulla"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),

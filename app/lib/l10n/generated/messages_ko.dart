@@ -274,6 +274,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("고정됨"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("좋아요"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("저장됨"),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("약해지는 중"),
+      "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("관심 없음"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("이런 게시물 더 보기"),
+      "ui_feed_signal_removed": MessageLookupByLibrary.simpleMessage("삭제됨"),
+      "ui_feed_signals": MessageLookupByLibrary.simpleMessage("내 피드 신호"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "게시물에서 이런 게시물 더 보기나 관심 없음을 누르면 여기에 표시됩니다."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("아직 아무것도 없어요"),
+      "ui_feed_signals_help":
+          MessageLookupByLibrary.simpleMessage("더 보기와 관심 없음이 피드에 알려 주는 내용"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "홈과 탐색을, 주로 각 게시물의 주제에 따라 만들어 갑니다. 각 신호는 매달 절반으로 약해지고 6개월이 지나면 더 이상 반영되지 않습니다. 지금 멈추려면 삭제하세요."),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("사람 추가"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("추가"),
       "ui_group_add_name": MessageLookupByLibrary.simpleMessage("그룹 이름 추가"),
@@ -577,6 +591,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("내 게시물"),
       "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("내 답글"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("다시 시도"),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("실행 취소"),
       "undoRepost": MessageLookupByLibrary.simpleMessage("리포스트 취소"),
       "updatePassword": MessageLookupByLibrary.simpleMessage("비밀번호 업데이트"),
       "useDifferentAddress": MessageLookupByLibrary.simpleMessage("다른 주소 사용"),

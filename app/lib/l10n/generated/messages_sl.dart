@@ -1182,6 +1182,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
         "Posts will show up here as people write them.",
       ),
+      "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Slabi"),
+      "ui_feed_signal_less":
+          MessageLookupByLibrary.simpleMessage("Ne zanima me"),
+      "ui_feed_signal_more":
+          MessageLookupByLibrary.simpleMessage("Prikaži več takšnih"),
+      "ui_feed_signal_removed":
+          MessageLookupByLibrary.simpleMessage("Odstranjeno"),
+      "ui_feed_signals":
+          MessageLookupByLibrary.simpleMessage("Signali vašega vira"),
+      "ui_feed_signals_empty": MessageLookupByLibrary.simpleMessage(
+          "Pri objavi tapnite Prikaži več takšnih objav ali Tole me ne zanima in prikazalo se bo tukaj."),
+      "ui_feed_signals_empty_title":
+          MessageLookupByLibrary.simpleMessage("Tu še ni ničesar"),
+      "ui_feed_signals_help": MessageLookupByLibrary.simpleMessage(
+          "Kaj vašim virom sporočata Prikaži več in Ne zanima me"),
+      "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
+          "Oblikujejo Domov in Razišči, predvsem glede na temo vsake objave. Vsak vsak mesec oslabi za polovico in po šestih ne šteje več. Odstranite enega, da ga ustavite zdaj."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
         "Posts carrying a clip will show up here.",
       ),
@@ -1664,6 +1681,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
         "Two characters or more.",
       ),
+      "ui_undo": MessageLookupByLibrary.simpleMessage("Razveljavi"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
         "Words, or a filter — an account, a date range, or what a post carries.",
       ),
