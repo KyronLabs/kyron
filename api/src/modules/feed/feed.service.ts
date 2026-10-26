@@ -4,17 +4,12 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import {
-  AccountStatus,
-  InterestKind,
-  MediaKind,
-  Prisma,
-  ReplyPolicy,
-} from '@prisma/client';
+import { AccountStatus, MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
+import { InterestTaste, TasteSignal } from './interest-taste';
 
 /** Authors whose posts anybody may see: everybody but a banned account. */
 const notBanned = {
@@ -365,12 +360,11 @@ export class FeedService {
   static readonly affinityDays = 30;
   static readonly affinitySample = 200;
 
-  // What a like is worth against the other affinity signals. A "show me more
-  // of this" outweighs it because it was asked for in words; time spent
+  // What a like is worth against the other affinity signal. Time spent
   // reading counts for less, because reading something is not endorsing it --
-  // people read what infuriates them too.
+  // people read what infuriates them too. "Show more" and "not interested"
+  // are not affinity at all any more: see InterestTaste.
   static readonly likeAffinity = 1;
-  static readonly interestAffinity = 2;
   static readonly dwellAffinity = 0.5;
 
   // How long on a post counts as having read it rather than passed over it.
@@ -601,6 +595,7 @@ export class FeedService {
         lastShownAt: shown ? (shownNow ? shown.prevAt : shown.lastAt) : null,
         followed: viewer.followedIds.has(row.authorId),
         topicIds: (row.topics ?? []).map((t) => t.interestId),
+        hashtagIds: (row.hashtags ?? []).map((h) => h.hashtagId),
       };
     });
 
@@ -658,6 +653,7 @@ export class FeedService {
         take: 1,
       },
       topics: { select: { interestId: true } },
+      hashtags: { select: { hashtagId: true } },
       likeCount: true,
       commentCount: true,
       repostCount: true,
@@ -733,15 +729,7 @@ export class FeedService {
         where: { userId: viewerId },
         select: { interestId: true },
       }),
-      // Not time-limited, unlike the rest. Asking to see less of somebody is
-      // a standing instruction, not a mood; expiring it after a month means
-      // quietly putting back what the reader asked to have removed.
-      this.prisma.interestSignal.findMany({
-        where: { userId: viewerId, createdAt: { lt: asOf } },
-        orderBy: { createdAt: 'desc' },
-        take: FeedService.affinitySample,
-        select: { kind: true, post: { select: { authorId: true } } },
-      }),
+      this.tasteSignals(viewerId, asOf),
       // Posts they stayed on. Dwell is the signal that separates a feed
       // somebody reads from one they scroll past, and nothing was collecting
       // it before this.
@@ -762,7 +750,6 @@ export class FeedService {
     ]);
 
     const affinity = new Map<string, number>();
-    const damped = new Map<string, number>();
     const add = (
       target: Map<string, number>,
       author: string | undefined,
@@ -777,19 +764,43 @@ export class FeedService {
     for (const read of reads) {
       add(affinity, read.post?.authorId, FeedService.dwellAffinity);
     }
-    for (const signal of interests) {
-      const target = signal.kind === InterestKind.LESS ? damped : affinity;
-      const weight =
-        signal.kind === InterestKind.LESS ? 1 : FeedService.interestAffinity;
-      add(target, signal.post?.authorId, weight);
-    }
 
     return {
       affinity,
-      damped,
+      taste: InterestTaste.from(interests, asOf),
       followedIds: new Set(follows.map((f) => f.followingId)),
       topicIds: new Set(topics.map((t) => t.interestId)),
     };
+  }
+
+  /**
+   * The reader's "show more" and "not interested" signals still worth
+   * reading at [asOf], newest first, with what each post was about.
+   *
+   * Given before the session began only, as the rest of the ranking is: a
+   * tap on page one hides that post at once, and reshapes the next session
+   * rather than shuffling page two.
+   */
+  private tasteSignals(viewerId: string, asOf: Date): Promise<TasteSignal[]> {
+    return this.prisma.interestSignal.findMany({
+      where: {
+        userId: viewerId,
+        createdAt: { gte: InterestTaste.since(asOf), lt: asOf },
+      },
+      orderBy: { createdAt: 'desc' },
+      take: InterestTaste.sample,
+      select: {
+        kind: true,
+        createdAt: true,
+        post: {
+          select: {
+            authorId: true,
+            topics: { select: { interestId: true } },
+            hashtags: { select: { hashtagId: true } },
+          },
+        },
+      },
+    });
   }
 
   /**
@@ -1298,7 +1309,7 @@ export class FeedService {
       viewerId,
     );
 
-    const [candidates, follows] = await Promise.all([
+    const [candidates, follows, signals] = await Promise.all([
       this.prisma.post.findMany({
         where,
         orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
@@ -1310,20 +1321,35 @@ export class FeedService {
           likeCount: true,
           commentCount: true,
           repostCount: true,
+          topics: { select: { interestId: true } },
+          hashtags: { select: { hashtagId: true } },
         },
       }),
       this.prisma.follow.findMany({
         where: { followerId: viewerId },
         select: { followingId: true },
       }),
+      this.tasteSignals(viewerId, new Date(now)),
     ]);
 
+    // The same "more" and "not interested" as Home: the toast says they
+    // shape what the reader is shown, and Explore is part of that.
+    const taste = InterestTaste.from(signals, new Date(now));
     const followed = new Set(follows.map((row) => row.followingId));
     const ranked = candidates
       .map((post) => ({
         id: post.id,
         followed: followed.has(post.authorId),
-        score: FeedService.exploreScore(post, now),
+        score:
+          FeedService.exploreScore(post, now) *
+          InterestTaste.factor(
+            {
+              authorId: post.authorId,
+              topicIds: (post.topics ?? []).map((t) => t.interestId),
+              hashtagIds: (post.hashtags ?? []).map((h) => h.hashtagId),
+            },
+            taste,
+          ),
       }))
       .sort(
         (a, b) =>

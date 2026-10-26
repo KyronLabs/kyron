@@ -7,6 +7,25 @@ import {
 } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EnforcementService } from './enforcement.service';
+import { InterestTaste } from '../feed/interest-taste';
+
+/** One "show more" or "not interested", as Settings lists it. */
+export interface InterestSignalView {
+  postId: string;
+  kind: InterestKind;
+  givenAt: string;
+  /** How much of it the rankings still read: 1 when new, fading to 0. */
+  strength: number;
+  excerpt: string;
+  author: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    avatarUrl: string | null;
+  };
+  topics: string[];
+  hashtags: string[];
+}
 
 /** Everything one reader has asked not to see, read in a single round trip. */
 export interface FeedFilters {
@@ -224,24 +243,115 @@ export class ModerationService {
   }
 
   /**
-   * "Show more of this" or "show less of this".
+   * "Show more posts like this" or "Not interested in this".
    *
-   * Recorded even though the feed is chronological today. A signal thrown away
-   * is one that cannot inform ranking later, and the alternative -- a button
-   * that does nothing at all -- is worse. "Less" also hides the post that
-   * prompted it, which is the part the reader can see working.
+   * Read by the Home and Explore rankings, mostly as what the post was about
+   * and gently as who wrote it, and fading with age (InterestTaste). Giving
+   * one again renews it: the date it is faded from is the last tap, not the
+   * first. "Not interested" also hides the post that prompted it, which is
+   * the part the reader can see working.
    */
   async setInterest(userId: string, postId: string, kind: InterestKind) {
     await this.prisma.interestSignal.upsert({
       where: { userId_postId: { userId, postId } },
       create: { userId, postId, kind },
-      update: { kind },
+      update: { kind, createdAt: new Date() },
     });
 
     if (kind === InterestKind.LESS) {
       await this.setHidden(userId, postId, true);
     }
     return { kind };
+  }
+
+  /**
+   * Takes a signal back: the toast's Undo, and Settings.
+   *
+   * Undoing "not interested" brings the post back too. It was hidden by
+   * that tap and by nothing else the reader can see, so leaving it hidden
+   * would be undoing half of what they did.
+   */
+  async clearInterest(userId: string, postId: string) {
+    const signal = await this.prisma.interestSignal.findUnique({
+      where: { userId_postId: { userId, postId } },
+      select: { kind: true },
+    });
+    if (!signal) return { cleared: false };
+
+    await this.prisma.interestSignal.deleteMany({ where: { userId, postId } });
+    if (signal.kind === InterestKind.LESS) {
+      await this.setHidden(userId, postId, false);
+    }
+    return { cleared: true };
+  }
+
+  /**
+   * The reader's signals still shaping their feeds, newest first, each with
+   * enough of its post to recognise it and how much is left of it.
+   *
+   * So "not interested" is never a setting nobody can find: everything the
+   * rankings are reading about the reader from these two buttons is here,
+   * and each can be taken back.
+   */
+  async listInterest(userId: string): Promise<InterestSignalView[]> {
+    const now = new Date();
+    const rows = await this.prisma.interestSignal.findMany({
+      where: { userId, createdAt: { gte: InterestTaste.since(now) } },
+      orderBy: { createdAt: 'desc' },
+      take: ModerationService.signalsListed,
+      select: {
+        kind: true,
+        createdAt: true,
+        post: {
+          select: {
+            id: true,
+            content: true,
+            deletedAt: true,
+            author: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                profile: { select: { avatarUrl: true } },
+              },
+            },
+            topics: { select: { interest: { select: { name: true } } } },
+            hashtags: { select: { hashtag: { select: { tag: true } } } },
+          },
+        },
+      },
+    });
+
+    return rows.flatMap((row) => {
+      const post = row.post;
+      if (!post || post.deletedAt) return [];
+      return [
+        {
+          postId: post.id,
+          kind: row.kind,
+          givenAt: row.createdAt.toISOString(),
+          strength: InterestTaste.weight(row.createdAt, now),
+          excerpt: ModerationService.excerpt(post.content),
+          author: {
+            id: post.author.id,
+            name: post.author.name,
+            username: post.author.username,
+            avatarUrl: post.author.profile?.avatarUrl ?? null,
+          },
+          topics: post.topics.map((t) => t.interest.name),
+          hashtags: post.hashtags.map((h) => h.hashtag.tag),
+        },
+      ];
+    });
+  }
+
+  /** How many signals Settings lists. More than anybody taps in a window. */
+  static readonly signalsListed = 200;
+
+  /** The first line or so of a post, to recognise it by. */
+  static excerpt(content: string): string {
+    const flat = content.replace(/\s+/g, ' ').trim();
+    return flat.length <= 140 ? flat : `${flat.slice(0, 139).trimEnd()}…`;
   }
 
   private async setMute(

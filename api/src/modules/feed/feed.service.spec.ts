@@ -1,5 +1,7 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { InterestKind } from '@prisma/client';
+
+import { InterestTaste, TasteSignal } from './interest-taste';
 import { Test } from '@nestjs/testing';
 import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -138,8 +140,8 @@ describe('FeedService', () => {
 
   const interestSignal = {
     findMany: jest.fn<
-      Promise<{ kind: InterestKind; post: { authorId: string } }[]>,
-      [unknown]
+      Promise<TasteSignal[]>,
+      [{ where: { createdAt: { gte: Date; lt: Date } } }]
     >(),
   };
 
@@ -552,6 +554,7 @@ describe('FeedService', () => {
         'authorId',
         'commentCount',
         'createdAt',
+        'hashtags',
         'id',
         'impressions',
         'likeCount',
@@ -1200,31 +1203,44 @@ describe('FeedService', () => {
       expect(candidates[0].seenCount).toBe(0);
     });
 
-    it('damps an author the reader asked to see less of', async () => {
+    it('reads "not interested" as what the post was about, and gently its author', async () => {
+      const day = 86_400_000;
       interestSignal.findMany.mockResolvedValue([
-        { kind: InterestKind.LESS, post: { authorId: 'bore' } },
-        { kind: InterestKind.LESS, post: { authorId: 'bore' } },
+        {
+          kind: InterestKind.LESS,
+          createdAt: new Date(Date.now() - day),
+          post: {
+            authorId: 'friend',
+            topics: [{ interestId: 'football' }],
+            hashtags: [{ hashtagId: 'derby' }],
+          },
+        },
       ]);
       post.findMany.mockResolvedValue([row('p1')]);
 
       const [, viewer] = await rankedWith();
 
-      // The tap was recorded and read by nothing before this: a button that
-      // writes a row and changes no later feed is a button that does not work.
-      expect(viewer.damped.get('bore')).toBe(2);
-      expect(viewer.affinity.has('bore')).toBe(false);
+      // The tap was recorded and read by nothing before the ranking read
+      // it; now it lands on the topic and tag, and only as a nudge on the
+      // friend who wrote it.
+      expect(viewer.taste.topics.get('football')).toBeLessThan(-0.9);
+      expect(viewer.taste.hashtags.get('derby')).toBeLessThan(-0.9);
+      expect(viewer.taste.authors.get('friend')).toBeLessThan(-0.9);
+      expect(viewer.affinity.has('friend')).toBe(false);
     });
 
-    it('lifts an author the reader asked to see more of', async () => {
-      interestSignal.findMany.mockResolvedValue([
-        { kind: InterestKind.MORE, post: { authorId: 'good' } },
-      ]);
+    it('fades a signal with age, and stops reading it', async () => {
+      interestSignal.findMany.mockResolvedValue([]);
       post.findMany.mockResolvedValue([row('p1')]);
 
-      const [, viewer] = await rankedWith();
+      await rankedWith();
 
-      expect(viewer.affinity.get('good')).toBe(FeedService.interestAffinity);
-      expect(viewer.damped.has('good')).toBe(false);
+      // Asked for only inside the window: tastes move, and a tap from last
+      // spring should not still be steering the feed.
+      const where = interestSignal.findMany.mock.calls[0][0].where;
+      const window =
+        where.createdAt.lt.getTime() - where.createdAt.gte.getTime();
+      expect(window).toBe(InterestTaste.windowDays * 86_400_000);
     });
 
     it('counts time spent towards the author, below a like', async () => {
@@ -1257,20 +1273,18 @@ describe('FeedService', () => {
       );
     });
 
-    it('does not expire a standing request to see less of somebody', async () => {
-      // Unlike likes and dwell, which are read over a window. Expiring this
-      // one puts back what the reader asked to have removed.
+    it("reads only the reader's own signals, from before the session", async () => {
       post.findMany.mockResolvedValue([row('p1')]);
 
       await rankedWith();
 
       const [args] = interestSignal.findMany.mock.calls[0] as [
-        { where: { userId: string; createdAt: { gte?: Date; lt: Date } } },
+        { where: { userId: string; createdAt: { gte: Date; lt: Date } } },
       ];
       expect(args.where.userId).toBe(VIEWER);
       // Bounded above by the session's start, so asking for less on page one
-      // does not reorder page two. Never below.
-      expect(args.where.createdAt.gte).toBeUndefined();
+      // does not reorder page two; below by the fade's window.
+      expect(args.where.createdAt.lt).toBeInstanceOf(Date);
     });
 
     it('carries how often each post has been on screen, and when', async () => {

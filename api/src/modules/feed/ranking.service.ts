@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
+import { InterestTaste, Taste } from './interest-taste';
+
 /** What ranking needs to know about one candidate post. */
 export interface RankingCandidate {
   id: string;
@@ -22,6 +24,8 @@ export interface RankingCandidate {
   followed: boolean;
   /** Topics this post is filed under. */
   topicIds: string[];
+  /** Hashtags in it. */
+  hashtagIds?: string[];
 }
 
 /** What the reader brings to the ranking. */
@@ -29,14 +33,12 @@ export interface RankingViewer {
   /** Authors the reader has engaged with, and how strongly. */
   affinity: Map<string, number>;
   /**
-   * Authors the reader has asked to see less of, and how many times.
-   *
-   * Separate from a negative affinity because it is a stated preference
-   * rather than an inferred one, and the two should not cancel out: somebody
-   * who reads an account closely and then asks for less of it has said
-   * something the reading does not contradict.
+   * What the reader has said with "Show more posts like this" and "Not
+   * interested in this", faded by age. Separate from [affinity] because it
+   * is a stated preference rather than an inferred one, and it is about what
+   * a post is about as much as who wrote it -- see InterestTaste.
    */
-  damped: Map<string, number>;
+  taste: Taste;
   /** Topics the reader follows. */
   topicIds: Set<string>;
 }
@@ -104,15 +106,6 @@ export class RankingService {
    * exactly zero can never come back, and a thread somebody is part of should
    * still surface when it moves. */
   static readonly seenFloor = 0.02;
-
-  /** What is left of an author's score per time the reader has asked for less
-   * of them. Compounding for the same reason, and harder: this one was asked
-   * for out loud. */
-  static readonly dampedMultiplier = 0.2;
-
-  /** And the floor under that, so the answer is "much less of this" rather
-   * than a silent block the reader never chose. */
-  static readonly dampedFloor = 0.05;
 
   /** What is left of a score per sitting the post has been on screen. Gentler
    * than opening it: scrolling past is a weaker sign of being done with
@@ -236,17 +229,18 @@ export class RankingService {
     const onTopic = post.topicIds.some((id) => viewer.topicIds.has(id));
     if (onTopic) affinity *= RankingService.topicBoost;
 
-    // "Show me less of this" is the one thing in here the reader said in
-    // words, so it is applied last and it overrides the rest: following
-    // somebody and then asking for less of them is not a contradiction to
-    // split the difference on, it is a correction.
-    const damped = viewer.damped.get(post.authorId) ?? 0;
-    if (damped > 0) {
-      affinity *= Math.max(
-        RankingService.dampedFloor,
-        Math.pow(RankingService.dampedMultiplier, damped),
-      );
-    }
+    // What the reader said in words, applied on top of the rest. It used to
+    // take 80% off an author per "not interested" and override following
+    // them; one tap on one post now lands mostly on what the post was about,
+    // and only gently on who wrote it -- see InterestTaste.
+    affinity *= InterestTaste.factor(
+      {
+        authorId: post.authorId,
+        topicIds: post.topicIds,
+        hashtagIds: post.hashtagIds ?? [],
+      },
+      viewer.taste,
+    );
 
     const base = (0.6 + engagement) * freshness * affinity;
     const seenAdjusted =

@@ -3,6 +3,7 @@ import {
   RankingCandidate,
   RankingViewer,
 } from './ranking.service';
+import { emptyTaste } from './interest-taste';
 
 const NOW = new Date('2026-09-06T12:00:00Z');
 
@@ -22,13 +23,14 @@ function post(
     lastShownAt: over.lastShownAt ?? null,
     followed: over.followed ?? false,
     topicIds: over.topicIds ?? [],
+    hashtagIds: over.hashtagIds ?? [],
   };
 }
 
 /** A reader the ranking knows nothing about. */
 const nobody: RankingViewer = {
   affinity: new Map<string, number>(),
-  damped: new Map<string, number>(),
+  taste: emptyTaste(),
   topicIds: new Set<string>(),
 };
 
@@ -36,7 +38,7 @@ const nobody: RankingViewer = {
 function reader(over: Partial<RankingViewer> = {}): RankingViewer {
   return {
     affinity: over.affinity ?? new Map<string, number>(),
-    damped: over.damped ?? new Map<string, number>(),
+    taste: over.taste ?? emptyTaste(),
     topicIds: over.topicIds ?? new Set<string>(),
   };
 }
@@ -132,37 +134,75 @@ describe('RankingService', () => {
       expect(score(post('a', { seenCount: 50 }))).toBeGreaterThan(0);
     });
 
-    it('shows less of an author the reader asked to see less of', () => {
-      const quieted = reader({ damped: new Map([['bore', 1]]) });
-      const p = post('a', { authorId: 'bore' });
+    // What the reader said with the two buttons, as InterestTaste reads it:
+    // negative for "not interested", positive for "show more", faded.
+    const said = (
+      over: Partial<{
+        authors: [string, number][];
+        topics: [string, number][];
+        hashtags: [string, number][];
+      }>,
+    ) =>
+      reader({
+        taste: {
+          authors: new Map(over.authors ?? []),
+          topics: new Map(over.topics ?? []),
+          hashtags: new Map(over.hashtags ?? []),
+        },
+      });
+
+    it('shows fewer posts about what the reader was not interested in', () => {
+      // From anybody: that is what "like this" means.
+      const p = post('a', { authorId: 'stranger', topicIds: ['football'] });
+      const offTopic = post('a', { authorId: 'stranger' });
+      const quieted = said({ topics: [['football', -1]] });
+
+      expect(score(p, quieted)).toBeLessThan(score(p, nobody) * 0.6);
+      expect(score(offTopic, quieted)).toBe(score(offTopic, nobody));
+    });
+
+    it('reads a hashtag the way it reads a topic', () => {
+      const p = post('a', { hashtagIds: ['spoilers'] });
+      const quieted = said({ hashtags: [['spoilers', -1]] });
 
       expect(score(p, quieted)).toBeLessThan(score(p, nobody));
     });
 
-    it('shows less again each time they ask', () => {
-      const once = reader({ damped: new Map([['bore', 1]]) });
-      const twice = reader({ damped: new Map([['bore', 2]]) });
-      const p = post('a', { authorId: 'bore' });
+    it('does not bury somebody the reader follows over one post', () => {
+      // It used to take 80% off them and override following: one tap on a
+      // friend's post about football all but took the friend away.
+      const friend = post('a', { authorId: 'friend', followed: true });
+      const once = said({ authors: [['friend', -1]] });
+
+      expect(score(friend, once)).toBeGreaterThan(
+        score(post('a'), nobody) * 0.9,
+      );
+    });
+
+    it('shows less again each time they ask, down to a floor', () => {
+      const p = post('a', { topicIds: ['football'] });
+      const once = said({ topics: [['football', -1]] });
+      const twice = said({ topics: [['football', -2]] });
+      const shouted = said({ topics: [['football', -40]] });
 
       expect(score(p, twice)).toBeLessThan(score(p, once));
-    });
-
-    it('lets asking for less outweigh following them', () => {
-      // Following somebody and then asking for less of them is a correction,
-      // not a contradiction to split the difference on.
-      const quieted = reader({ damped: new Map([['bore', 1]]) });
-      const followed = post('a', { authorId: 'bore', followed: true });
-
-      expect(score(followed, quieted)).toBeLessThan(score(post('a'), nobody));
-    });
-
-    it('does not silently block an author it was only asked to quieten', () => {
-      const shouted = reader({ damped: new Map([['bore', 40]]) });
-      const p = post('a', { authorId: 'bore' });
-
-      // Floored, so a good enough post still gets through. Hiding the account
-      // outright is a different button, and the reader did not press it.
+      // Much less football, never none. Muting is a different button.
       expect(score(p, shouted)).toBeGreaterThan(0);
+    });
+
+    it('shows more of what the reader asked for, enough to see', () => {
+      // About x1.22 before, below following and lost under a few likes.
+      const p = post('a', { authorId: 'good', topicIds: ['jazz'] });
+      const more = said({ authors: [['good', 1]], topics: [['jazz', 1]] });
+
+      expect(score(p, more)).toBeGreaterThan(score(p, nobody) * 1.5);
+    });
+
+    it('never lets "more" take the whole feed', () => {
+      const p = post('a', { authorId: 'good', topicIds: ['jazz'] });
+      const lots = said({ authors: [['good', 50]], topics: [['jazz', 50]] });
+
+      expect(score(p, lots)).toBeLessThanOrEqual(score(p, nobody) * 2.4 + 1e-9);
     });
   });
 
