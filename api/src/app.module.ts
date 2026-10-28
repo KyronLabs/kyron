@@ -19,6 +19,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { LinksModule } from './modules/links/links.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
+import { InsightsModule } from './modules/insights/insights.module';
 import { AccountModule } from './modules/account/account.module';
 import { VerificationModule } from './modules/verification/verification.module';
 
@@ -44,6 +45,7 @@ import { VerificationModule } from './modules/verification/verification.module';
     ProfileModule,
     LinksModule,
     FeedbackModule,
+    InsightsModule,
     AccountModule,
     VerificationModule,
   ],
