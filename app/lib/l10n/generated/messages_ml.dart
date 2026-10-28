@@ -331,6 +331,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ അക്കൗണ്ട്"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("കമ്മ്യൂണിറ്റി തുറക്കുക"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് എഴുതുക"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് കാണുക"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("പ്രൊഫൈൽ എഡിറ്റ് ചെയ്യുക"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("അവർ എപ്പോൾ സജീവമാണ്"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ സമയമേഖലയിൽ."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("പ്രായം"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "ജന്മദിനം നൽകിയ, എത്തിയ {known} പേരിൽ നിന്ന്."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("ഓരോ ദിവസവും എത്തിയ ആളുകൾ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("അവരുള്ള കമ്മ്യൂണിറ്റികൾ"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("കഴിഞ്ഞ {days} ദിവസം"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("ഇൻസൈറ്റുകൾ ലോഡ് ചെയ്യാനായില്ല"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("പിന്തുടരുന്നവർ"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "കാണിക്കാൻ മതിയായ വലിയ ഗ്രൂപ്പ് ഇനിയും ഇല്ല."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("എങ്ങനെ വളരാം"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("അവർ പിന്തുടരുന്ന വിഷയങ്ങൾ"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("ലൈക്കുകൾ"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("പുതിയത്"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("പുതിയ പിന്തുടരുന്നവർ"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ഈ കാലയളവിൽ നിങ്ങളുടെ ഒരു പോസ്റ്റും ആരിലും എത്തിയില്ല."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളെ പിന്തുടരാത്തവർ"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron ആരുടെയും രാജ്യം, നഗരം, ലിംഗഭേദം ശേഖരിക്കുന്നില്ല, അതിനാൽ അവയെക്കുറിച്ച് കാണിക്കാൻ ഒന്നുമില്ല."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("തുറക്കലുകൾ"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} എത്തി · {likes} ലൈക്ക് · {replies} മറുപടി"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("എത്തിയ ആളുകൾ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "ഓരോ ആളെയും ഒരിക്കൽ എണ്ണുന്നു: നിങ്ങളുടെ ഒരു പോസ്റ്റ് ആദ്യമായി കാണിക്കപ്പെട്ടു അല്ലെങ്കിൽ അവർ തുറന്നു. പുതിയ പിന്തുടരുന്നവർ ഇപ്പോഴും പിന്തുടരുന്നു; പിന്തുടരൽ നിർത്തിയവരെ എണ്ണുന്നില്ല."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("മറുപടികൾ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("റീപോസ്റ്റുകൾ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("സേവുകൾ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ഈ കാലയളവിൽ {floor} പേർ നിങ്ങളുടെ പോസ്റ്റുകൾ കണ്ടാൽ നിങ്ങളുടെ പ്രേക്ഷകർ ആരെന്ന് കാണിക്കും. അതിൽ കുറവാണെങ്കിൽ അത് ഒരാളെ ചൂണ്ടിക്കാണിച്ചേക്കാം."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("ഇനിയും മതിയായ ആളുകളില്ല"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "അവരിൽ {pct}% ഇതിനകം നിങ്ങളെ പിന്തുടരുന്നു: നിങ്ങളുടെ പോസ്റ്റുകൾ കൂടുതലും പരിചയക്കാരിലെത്തുന്നു."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "അവരിൽ {pct}% ഇനിയും നിങ്ങളെ പിന്തുടരുന്നില്ല: നിങ്ങളുടെ പോസ്റ്റുകൾ കണ്ടെത്തപ്പെടുന്നു."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ {reach} പേരിലെത്തി, മുൻ കാലയളവിനേക്കാൾ {pct}% കുറവ്."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "കഴിഞ്ഞ {days} ദിവസത്തിൽ നിങ്ങൾ {reach} പേരിലെത്തി."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ {reach} പേരിലെത്തി, മുൻ കാലയളവിനോളം."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "കഴിഞ്ഞ {days} ദിവസത്തിൽ പുതിയ ആരും നിങ്ങളുടെ പോസ്റ്റുകൾ കണ്ടില്ല."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ {reach} പേരിലെത്തി, മുൻ കാലയളവിനേക്കാൾ {pct}% കൂടുതൽ."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങൾ {reach} പേരിലെത്തി, മുൻ കാലയളവിന്റെ {times}×."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "മറ്റേതൊരു വിഷയത്തേക്കാളും കൂടുതൽ പേർ {name} പിന്തുടരുന്നു."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("പ്രേക്ഷകർ"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("അവലോകനം"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റ് കണ്ടെത്തുന്നവർ പിന്തുടരുന്നതിന് മുമ്പ് പ്രൊഫൈൽ നോക്കുന്നു. ഒരു മുഖമോ ലോഗോയോ അവിടെ ആരോ ഉണ്ടെന്ന് പറയുന്നു."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("പ്രൊഫൈൽ ചിത്രം ചേർക്കുക"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "എന്തിനെക്കുറിച്ചാണ് പോസ്റ്റ് ചെയ്യുന്നതെന്ന് ഒരു വരിയിൽ പറയൂ, അപരിചിതർക്ക് നിങ്ങളെ പിന്തുടർന്നാൽ എന്ത് കിട്ടുമെന്ന് അറിയാൻ."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("ബയോ എഴുതുക"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ {total} പോസ്റ്റുകളിൽ {without} എണ്ണത്തിന് വിഷയമില്ലായിരുന്നു. വിഷയം പോസ്റ്റിനെ ആ വിഷയത്തിന്റെ ഫീഡിലും പിന്തുടരുന്നവരുടെ മുന്നിലും എത്തിക്കുന്നു."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("പോസ്റ്റുകളിൽ വിഷയങ്ങൾ ചേർക്കൂ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} പേർ നിങ്ങളുടെ പോസ്റ്റുകൾക്ക് മറുപടി നൽകി, നിങ്ങൾ {answered} എണ്ണത്തിന് മറുപടി നൽകി. എഴുതാൻ മാത്രം അവർ ശ്രദ്ധിച്ചു: ഒരു മറുപടി വായനക്കാരനെ സ്ഥിരം സന്ദർശകനാക്കുന്നു."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("മറുപടികൾക്ക് മറുപടി നൽകൂ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പ്രേക്ഷകർ {when} ഏറ്റവും സജീവമാണ്. അതിന് തൊട്ടുമുമ്പ് ഇടുന്ന പോസ്റ്റിന് സ്വീകരിക്കാൻ ആളുകളുണ്ടാകും."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "അവർ സജീവമാകുമ്പോൾ പോസ്റ്റ് ചെയ്യൂ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളെ പിന്തുടരാത്ത {reached} പേർ നിങ്ങളുടെ പോസ്റ്റുകൾ കണ്ടു, {gained} പേർ പിന്തുടർന്നു. നിങ്ങളിൽ നിന്ന് എന്ത് പ്രതീക്ഷിക്കാമെന്ന് ബയോയും പുതിയ പോസ്റ്റുകളും പറയട്ടെ."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "വായനക്കാരെ പിന്തുടരുന്നവരാക്കൂ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ഒരു പോസ്റ്റ് നിങ്ങളുടെ മറ്റു പോസ്റ്റുകൾ സാധാരണ എത്തുന്നതിന്റെ {times}× പേരിലെത്തി. അത് എന്താണ് വ്യത്യസ്തമായി ചെയ്തതെന്ന് നോക്കി അത് കൂടുതൽ ചെയ്യൂ."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("ഫലിച്ചത് കൂടുതൽ ചെയ്യൂ"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റുകൾ കാണുന്ന പലരും {name}-ലാണ്. അവിടെ പോസ്റ്റ് ചെയ്താൽ ബാക്കിയുള്ളവരുടെ മുന്നിലും നിങ്ങൾ എത്തും."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name}-ൽ പോസ്റ്റ് ചെയ്യൂ"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} ദിവസത്തിൽ {posts} തവണ നിങ്ങൾ പോസ്റ്റ് ചെയ്തു. ഓരോ പോസ്റ്റും കണ്ടെത്തപ്പെടാനുള്ള മറ്റൊരു അവസരമാണ്, സ്ഥിരമായ താളം പിന്തുടരുന്നവരുടെ ഫീഡിൽ നിങ്ങളെ നിലനിർത്തുന്നു."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("കൂടുതൽ തവണ പോസ്റ്റ് ചെയ്യൂ"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "കഴിഞ്ഞ {days} ദിവസത്തിൽ നിങ്ങൾ പോസ്റ്റ് ചെയ്തിട്ടില്ല. പോസ്റ്റില്ലാതെ ഒന്നും ആരിലും എത്തില്ല."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("എന്തെങ്കിലും പോസ്റ്റ് ചെയ്യൂ"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ഇൻസൈറ്റുകൾ"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("മികച്ച പോസ്റ്റുകൾ"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "മുമ്പത്തെ {days} ദിവസവുമായി താരതമ്യം"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

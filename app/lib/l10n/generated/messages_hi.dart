@@ -331,6 +331,116 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("आपका खाता"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("समुदाय खोलें"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("पोस्ट लिखें"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("पोस्ट देखें"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("अपनी प्रोफ़ाइल संपादित करें"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("वे कब सक्रिय रहते हैं"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("आपके समय क्षेत्र में।"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("उम्र"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "पहुँचे {known} लोगों में से जिन्होंने जन्मदिन दिया है।"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("हर दिन पहुँचे लोग"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("वे जिन समुदायों में हैं"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("पिछले {days} दिन"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("इनसाइट्स लोड नहीं हो सकीं"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("फ़ॉलोअर"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "दिखाने लायक बड़ा कोई समूह अभी नहीं है।"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("कैसे बढ़ें"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage(
+          "वे जिन विषयों को फ़ॉलो करते हैं"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("नया"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("नए फ़ॉलोअर"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "इस अवधि में आपकी कोई पोस्ट किसी तक नहीं पहुँची।"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("आपको फ़ॉलो नहीं करते"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron किसी का देश, शहर या लिंग इकट्ठा नहीं करता, इसलिए उनके बारे में दिखाने को कुछ नहीं है।"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("खोले गए"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} तक पहुँची · {likes} लाइक · {replies} जवाब"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("पहुँचे लोग"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "हर व्यक्ति एक बार गिना जाता है: आपकी कोई पोस्ट पहली बार उन्हें दिखाई गई या उन्होंने खोली। नए फ़ॉलोअर अब भी आपको फ़ॉलो करते हैं; अनफ़ॉलो नहीं गिने जाते।"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("जवाब"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("रीपोस्ट"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("सेव"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "इस अवधि में {floor} लोगों के आपकी पोस्ट देखने के बाद दिखता है कि आपके दर्शक कौन हैं। इससे कम हों तो यह किसी खास व्यक्ति की ओर इशारा कर सकता है।"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("अभी पर्याप्त लोग नहीं"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "उनमें से {pct}% पहले से आपको फ़ॉलो करते हैं: आपकी पोस्ट ज़्यादातर जानने वालों तक पहुँचती हैं।"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "उनमें से {pct}% अभी आपको फ़ॉलो नहीं करते: आपकी पोस्ट खोजी जा रही हैं।"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "आप {reach} लोगों तक पहुँचे, पिछली अवधि से {pct}% कम।"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "पिछले {days} दिनों में आप {reach} लोगों तक पहुँचे।"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "आप {reach} लोगों तक पहुँचे, लगभग पिछली अवधि जितने।"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "पिछले {days} दिनों में किसी नए व्यक्ति ने आपकी पोस्ट नहीं देखी।"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "आप {reach} लोगों तक पहुँचे, पिछली अवधि से {pct}% ज़्यादा।"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "आप {reach} लोगों तक पहुँचे, पिछली अवधि के {times}× जितने।"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "उनमें से ज़्यादा लोग किसी और विषय की तुलना में {name} को फ़ॉलो करते हैं।"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("दर्शक"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("अवलोकन"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "जो लोग आपकी कोई पोस्ट पाते हैं, वे फ़ॉलो करने से पहले आपकी प्रोफ़ाइल देखते हैं। एक चेहरा या लोगो उन्हें बताता है कि वहाँ कोई है।"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("प्रोफ़ाइल फ़ोटो जोड़ें"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "एक पंक्ति में बताएँ कि आप किस बारे में पोस्ट करते हैं, ताकि अजनबी जान सके कि आपको फ़ॉलो करने से उसे क्या मिलेगा।"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("बायो लिखें"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "आपकी {total} पोस्ट में से {without} का कोई विषय नहीं था। विषय पोस्ट को उस विषय की फ़ीड में और उसे फ़ॉलो करने वालों के सामने रखता है।"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("पोस्ट में विषय जोड़ें"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} लोगों ने आपकी पोस्ट पर जवाब दिया और आपने {answered} का उत्तर दिया। उन्हें लिखने जितनी परवाह थी: एक उत्तर पाठक को नियमित बना देता है।"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("अपने जवाबों का उत्तर दें"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "आपके दर्शक {when} सबसे ज़्यादा सक्रिय रहते हैं। उससे ठीक पहले की पोस्ट को अपनाने वाले लोग मिलते हैं।"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "जब वे सक्रिय हों तब पोस्ट करें"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "आपको फ़ॉलो न करने वाले {reached} लोगों ने आपकी पोस्ट देखीं, और {gained} ने फ़ॉलो किया। आपका बायो और नई पोस्ट बताएँ कि वे आपसे क्या उम्मीद कर सकते हैं।"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("पाठकों को फ़ॉलोअर बनाएँ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "एक पोस्ट आपकी बाकी पोस्ट की सामान्य पहुँच से {times}× ज़्यादा लोगों तक पहुँची। देखें उसने क्या अलग किया, और वही और करें।"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("जो काम आया वह और करें"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "आपकी पोस्ट देखने वाले बहुत से लोग {name} में हैं। वहाँ पोस्ट करने से आप बाकी लोगों के सामने भी आते हैं।"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} में पोस्ट करें"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "आपने {days} दिनों में {posts} बार पोस्ट किया। हर पोस्ट खोजे जाने का एक और मौका है, और नियमित लय आपको फ़ॉलोअर की फ़ीड में बनाए रखती है।"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("ज़्यादा बार पोस्ट करें"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "आपने पिछले {days} दिनों में पोस्ट नहीं किया। बिना पोस्ट के कुछ भी किसी तक नहीं पहुँचता।"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("कुछ पोस्ट करें"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("इनसाइट्स"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("शीर्ष पोस्ट"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "पिछले {days} दिनों की तुलना में"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

@@ -331,6 +331,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Jūsu konts"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Atvērt kopienu"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Rakstīt ierakstu"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Skatīt ierakstu"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Rediģēt profilu"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Kad viņi ir klāt"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Jūsu laika joslā."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Vecumi"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "No {known} sasniegtajiem cilvēkiem, kuri norādījuši dzimšanas dienu."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Sasniegtie cilvēki dienā"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Kopienas, kurās viņi ir"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Pēdējās {days} dienas"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Ieskatus neizdevās ielādēt"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Sekotāji"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Vēl nav pietiekami lielas grupas, ko parādīt."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Kā augt"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Tēmas, kurām viņi seko"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Patīk"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Jauns"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Jauni sekotāji"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Šajā periodā neviens jūsu ieraksts nevienu nesasniedza."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Jums neseko"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron nevāc neviena valsti, pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Atvēršanas"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "sasniegti {reach} · {likes} patīk · {replies} atbildes"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Sasniegtie cilvēki"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Katrs cilvēks tiek skaitīts vienreiz: viņam pirmo reizi parādīta vai viņš pirmo reizi atvēra kādu jūsu ierakstu. Jaunie sekotāji jums joprojām seko; sekošanas pārtraukšana netiek skaitīta."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Atbildes"),
+      "ins_reposts":
+          MessageLookupByLibrary.simpleMessage("Atkārtotas publicēšanas"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Saglabāšanas"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kas ir jūsu auditorija, tiek parādīts, kad šajā periodā jūsu ierakstus redzējuši {floor} cilvēki. Ar mazāku skaitu tas varētu norādīt uz kādu konkrētu."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Vēl nav pietiekami daudz cilvēku"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% no viņiem jums jau seko: jūsu ieraksti galvenokārt sasniedz pazīstamus cilvēkus."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% no viņiem jums vēl neseko: jūsu ierakstus atrod."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Sasniedzāt {reach} cilvēkus, par {pct}% mazāk nekā iepriekšējā periodā."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Pēdējās {days} dienās sasniedzāt {reach} cilvēkus."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Sasniedzāt {reach} cilvēkus, aptuveni tikpat kā iepriekšējā periodā."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Pēdējās {days} dienās neviens jauns jūsu ierakstus neredzēja."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Sasniedzāt {reach} cilvēkus, par {pct}% vairāk nekā iepriekšējā periodā."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Sasniedzāt {reach} cilvēkus, {times}× vairāk nekā iepriekšējā periodā."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Vairāk no viņiem seko tēmai {name} nekā jebkurai citai."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Auditorija"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Pārskats"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Cilvēki, kas atrod kādu jūsu ierakstu, pirms sekošanas apskata jūsu profilu. Seja vai logotips viņiem pasaka, ka tur kāds ir."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Pievienojiet profila attēlu"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Vienā rindā pasakiet, par ko publicējat, lai svešinieks zinātu, ko viņam dos sekot jums."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Uzrakstiet aprakstu"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} no jūsu {total} ierakstiem nebija tēmas. Tēma ieliek ierakstu tēmas plūsmā un to sekotāju priekšā."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Pievienojiet ierakstiem tēmas"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} cilvēki atbildēja uz jūsu ierakstiem, un jūs atbildējāt {answered}. Viņiem rūpēja pietiekami, lai rakstītu: atbilde lasītāju padara par pastāvīgu apmeklētāju."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Atbildiet uz atbildēm"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Jūsu auditorija ir visaktīvākā {when}. Ierakstam, kas publicēts nedaudz pirms tam, būs, kas to sagaida."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Publicējiet, kad viņi ir klāt"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} cilvēki, kas jums neseko, redzēja jūsu ierakstus, un {gained} sāka sekot. Lai jūsu apraksts un jaunākie ieraksti pasaka, ko no jums gaidīt."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Pārvērtiet lasītājus sekotājos"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Viens ieraksts sasniedza {times}× vairāk cilvēku nekā parasti citi. Paskatieties, ko tas darīja citādi, un dariet to vairāk."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Dariet vairāk tā, kas izdevās"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Daudzi, kas redz jūsu ierakstus, ir kopienā {name}. Publicējot tur, jūs nonāksiet arī pārējo priekšā."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Publicējiet kopienā {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} dienās publicējāt {posts} reizes. Katrs ieraksts ir vēl viena iespēja tikt atrastam, un vienmērīgs ritms notur jūs sekotāju plūsmās."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Publicējiet biežāk"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Pēdējās {days} dienās neko neesat publicējis. Bez ieraksta nekas nevienu nesasniedz."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Publicējiet kaut ko"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Ieskati"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Labākie ieraksti"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Salīdzinot ar iepriekšējām {days} dienām"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

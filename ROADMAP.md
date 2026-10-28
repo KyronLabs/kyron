@@ -45,6 +45,7 @@ guessed: `docs/PERFORMANCE.md`.
 | Posts | Text, images, video, polls, voice, link previews, quotes, reposts |
 | Comments | Real threading at depth, connectors, per-comment pages, media in replies |
 | Profiles | Full profile, followers/following, editing, avatar and cover upload |
+| Insights | Your own account's reach against the period before, interactions, new followers, top posts, the audience behind privacy floors, and growth tips from your own numbers. No countries, cities or genders: not collected -- `docs/INSIGHTS.md` |
 | Messages | One-to-one and groups with roles and spectators, community chats in the inbox, view-once attachments, pinned chats, attachments, read state, mute, block, report, delete -- `docs/MESSAGING.md` |
 | Communities | Create, join, post, manage, roles, bans, gallery images |
 | Explore | Trending hashtags, topics, suggested people |

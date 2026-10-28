@@ -331,6 +331,116 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Kontoen din"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Åpne fellesskapet"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Skriv et innlegg"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Se innlegget"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Rediger profilen"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Når de er der"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("I din tidssone."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Aldre"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Av de {known} som ble nådd og har oppgitt bursdag."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Personer nådd per dag"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Fellesskap de er med i"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Siste {days} dager"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke laste innsikt"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Følgere"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Ingen gruppe er stor nok til å vises ennå."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Slik vokser du"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("Emner de følger"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Liker"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Ny"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("Nye følgere"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Ingen av innleggene dine nådde noen i denne perioden."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Følger deg ikke"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron samler ikke inn noens land, by eller kjønn, så det er ingenting å vise for dem."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Åpninger"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} nådd · {likes} liker · {replies} svar"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Personer nådd"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Hver person telles én gang: vist eller åpnet et av innleggene dine for første gang. Nye følgere følger deg fortsatt; avfølginger telles ikke."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Svar"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Repostinger"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Lagringer"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Hvem publikummet ditt er, vises når {floor} personer har sett innleggene dine i perioden. Færre enn det, og det kunne peke på noen."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Ikke nok personer ennå"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % av dem følger deg allerede: innleggene dine når mest folk som kjenner deg."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % av dem følger deg ikke ennå: innleggene dine blir funnet."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Du nådde {reach} personer, {pct} % færre enn perioden før."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Du nådde {reach} personer de siste {days} dagene."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Du nådde {reach} personer, omtrent like mange som perioden før."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Ingen nye har sett innleggene dine de siste {days} dagene."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Du nådde {reach} personer, {pct} % flere enn perioden før."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Du nådde {reach} personer, {times}× så mange som perioden før."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Flere av dem følger {name} enn noe annet emne."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Publikum"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Oversikt"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Folk som finner et av innleggene dine, ser på profilen din før de følger. Et ansikt eller en logo forteller dem at noen er der."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Legg til profilbilde"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Si på én linje hva du legger ut om, så en fremmed vet hva det gir å følge deg."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Skriv en bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} av dine {total} innlegg hadde ikke noe emne. Et emne setter innlegget i emnets feed og foran dem som følger det."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Legg til emner i innleggene"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} personer svarte på innleggene dine, og du svarte {answered}. De brydde seg nok til å skrive: et svar gjør en leser til en stamgjest."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Svar på svarene"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Publikummet ditt er mest aktivt {when}. Et innlegg rett før har folk som tar imot det."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Legg ut når de er der"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} personer som ikke følger deg, så innleggene dine, og {gained} fulgte. La bioen og de nyeste innleggene si hva de kan forvente av deg."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Gjør lesere til følgere"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Ett innlegg nådde {times}× så mange som de andre dine pleier. Se hva det gjorde annerledes, og gjør mer av det."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Gjør mer av det som virket"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Mange av dem som ser innleggene dine, er i {name}. Å legge ut der setter deg foran resten."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Legg ut i {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Du la ut {posts} ganger på {days} dager. Hvert innlegg er en ny sjanse til å bli funnet, og en jevn rytme holder deg i følgernes feeder."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Legg ut oftere"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Du har ikke lagt ut noe de siste {days} dagene. Ingenting når noen uten et innlegg."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Legg ut noe"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Innsikt"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Toppinnlegg"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Sammenlignet med de {days} dagene før"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

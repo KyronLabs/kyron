@@ -331,6 +331,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Ваш аккаунт"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Открыть сообщество"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Написать публикацию"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Открыть публикацию"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Изменить профиль"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Когда они бывают в сети"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("В вашем часовом поясе."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Возраст"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Из {known} охваченных людей, указавших день рождения."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Охваченные люди по дням"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Сообщества, в которых они состоят"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Последние {days} дней"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Не удалось загрузить статистику"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Подписчики"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Пока нет достаточно большой группы, чтобы её показать."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Как расти"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage(
+          "Темы, на которые они подписаны"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Отметки «Нравится»"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Новое"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Новые подписчики"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "За этот период ваши публикации никого не охватили."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Не подписаны на вас"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron не собирает ничьи страну, город или пол, поэтому показать про них нечего."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Открытия"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "охват {reach} · {likes} отметок · {replies} ответов"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Охваченные люди"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Каждый человек считается один раз: ему впервые показали или он впервые открыл одну из ваших публикаций. Новые подписчики всё ещё подписаны на вас; отписки не учитываются."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Ответы"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Репосты"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Сохранения"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Кто ваша аудитория, станет видно, когда {floor} человек увидят ваши публикации за этот период. При меньшем числе это могло бы указать на конкретного человека."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Пока недостаточно людей"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% из них уже подписаны на вас: ваши публикации в основном доходят до тех, кто вас знает."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% из них ещё не подписаны на вас: ваши публикации находят."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Вы охватили {reach} человек — на {pct}% меньше, чем за прошлый период."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "За последние {days} дней вы охватили {reach} человек."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Вы охватили {reach} человек — примерно столько же, сколько за прошлый период."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "За последние {days} дней ваши публикации не увидел никто новый."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Вы охватили {reach} человек — на {pct}% больше, чем за прошлый период."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Вы охватили {reach} человек — в {times}× больше, чем за прошлый период."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Больше всего из них подписаны на тему «{name}»."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Аудитория"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Обзор"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Те, кто находит вашу публикацию, смотрят профиль, прежде чем подписаться. Лицо или логотип говорят им, что здесь кто-то есть."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Добавьте фото профиля"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Скажите в одной строке, о чём вы пишете, чтобы незнакомец знал, что ему даст подписка."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Напишите о себе"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "У {without} из {total} ваших публикаций не было темы. Тема помещает публикацию в ленту этой темы и перед теми, кто на неё подписан."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Добавляйте темы к публикациям"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} человек ответили на ваши публикации, а вы ответили на {answered}. Им было не всё равно настолько, чтобы написать: ответ превращает читателя в постоянного гостя."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Отвечайте на ответы"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Ваша аудитория активнее всего: {when}. У публикации незадолго до этого будет кому её встретить."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Публикуйте, когда они в сети"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} человек, не подписанных на вас, увидели ваши публикации, и {gained} подписались. Пусть описание и свежие публикации говорят, чего от вас ждать."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Превращайте читателей в подписчиков"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Одна публикация охватила в {times}× больше людей, чем обычно ваши другие. Посмотрите, что в ней было иначе, и делайте больше этого."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Делайте больше того, что сработало"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Многие из тех, кто видит ваши публикации, состоят в сообществе {name}. Публикации там покажут вас и остальным."),
+      "ins_tip_post_in_community_t": MessageLookupByLibrary.simpleMessage(
+          "Публикуйте в сообществе {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Вы публиковали {posts} раз за {days} дней. Каждая публикация — ещё один шанс, что вас найдут, а ровный ритм держит вас в лентах подписчиков."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Публикуйте чаще"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Вы ничего не публиковали последние {days} дней. Без публикации ничего ни до кого не доходит."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Опубликуйте что-нибудь"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Статистика"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Лучшие публикации"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "По сравнению с предыдущими {days} днями"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

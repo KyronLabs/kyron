@@ -331,6 +331,118 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នក"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("បើកសហគមន៍"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("សរសេរការបង្ហោះ"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("មើលការបង្ហោះ"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("កែប្រវត្តិរូបរបស់អ្នក"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("ពេលដែលពួកគេនៅ"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("តាមតំបន់ម៉ោងរបស់អ្នក។"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("អាយុ"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "ពីមនុស្ស {known} នាក់ដែលបានឈានដល់ ហើយបានផ្តល់ថ្ងៃកំណើត។"),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("មនុស្សដែលបានឈានដល់ប្រចាំថ្ងៃ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("សហគមន៍ដែលពួកគេនៅ"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} ថ្ងៃចុងក្រោយ"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការយល់ដឹងបានទេ"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("អ្នកតាមដាន"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "មិនទាន់មានក្រុមណាធំគ្រប់គ្រាន់ដើម្បីបង្ហាញទេ។"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("របៀបរីកចម្រើន"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("ប្រធានបទដែលពួកគេតាមដាន"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("ការចូលចិត្ត"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("ថ្មី"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("អ្នកតាមដានថ្មី"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "គ្មានការបង្ហោះណាមួយរបស់អ្នកបានឈានដល់នរណាម្នាក់ក្នុងរយៈពេលនេះទេ។"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("មិនតាមដានអ្នក"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron មិនប្រមូលប្រទេស ទីក្រុង ឬភេទរបស់នរណាម្នាក់ទេ ដូច្នេះគ្មានអ្វីត្រូវបង្ហាញសម្រាប់ពួកវាទេ។"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("ការបើក"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "ឈានដល់ {reach} · ការចូលចិត្ត {likes} · ការឆ្លើយតប {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("មនុស្សដែលបានឈានដល់"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "មនុស្សម្នាក់ៗត្រូវរាប់តែម្តង៖ បានបង្ហាញឬបើកការបង្ហោះមួយរបស់អ្នកជាលើកដំបូង។ អ្នកតាមដានថ្មីនៅតែតាមដានអ្នក ការឈប់តាមដានមិនត្រូវបានរាប់ទេ។"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("ការឆ្លើយតប"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("ការបង្ហោះឡើងវិញ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("ការរក្សាទុក"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ទស្សនិកជនរបស់អ្នកជានរណានឹងបង្ហាញនៅពេលមនុស្ស {floor} នាក់បានឃើញការបង្ហោះរបស់អ្នកក្នុងរយៈពេលនេះ។ បើតិចជាងនេះ វាអាចចង្អុលទៅនរណាម្នាក់។"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានមនុស្សគ្រប់គ្រាន់ទេ"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% ក្នុងចំណោមពួកគេតាមដានអ្នករួចហើយ៖ ការបង្ហោះរបស់អ្នកភាគច្រើនឈានដល់អ្នកដែលស្គាល់អ្នក។"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% ក្នុងចំណោមពួកគេមិនទាន់តាមដានអ្នកទេ៖ ការបង្ហោះរបស់អ្នកកំពុងត្រូវបានរកឃើញ។"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានឈានដល់មនុស្ស {reach} នាក់ តិចជាងរយៈពេលមុន {pct}%។"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានឈានដល់មនុស្ស {reach} នាក់ក្នុង {days} ថ្ងៃចុងក្រោយ។"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានឈានដល់មនុស្ស {reach} នាក់ ប្រហែលស្មើរយៈពេលមុន។"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "គ្មាននរណាថ្មីបានឃើញការបង្ហោះរបស់អ្នកក្នុង {days} ថ្ងៃចុងក្រោយទេ។"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានឈានដល់មនុស្ស {reach} នាក់ ច្រើនជាងរយៈពេលមុន {pct}%។"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានឈានដល់មនុស្ស {reach} នាក់ {times}× នៃរយៈពេលមុន។"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "ពួកគេច្រើនជាងគេតាមដាន {name} ជាងប្រធានបទផ្សេងទៀត។"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ទស្សនិកជន"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("ទិដ្ឋភាពទូទៅ"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "អ្នកដែលរកឃើញការបង្ហោះមួយរបស់អ្នកមើលប្រវត្តិរូបរបស់អ្នកមុនពេលតាមដាន។ មុខ ឬឡូហ្គោប្រាប់ពួកគេថាមាននរណាម្នាក់នៅទីនោះ។"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមរូបប្រវត្តិរូប"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "និយាយក្នុងមួយបន្ទាត់ថាអ្នកបង្ហោះអំពីអ្វី ដើម្បីឱ្យមនុស្សចម្លែកដឹងថាការតាមដានអ្នកផ្តល់អ្វីដល់ពួកគេ។"),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("សរសេរជីវប្រវត្តិ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} ក្នុងចំណោមការបង្ហោះ {total} របស់អ្នកគ្មានប្រធានបទ។ ប្រធានបទដាក់ការបង្ហោះក្នុងព័ត៌មាននៃប្រធានបទនោះ និងនៅមុខអ្នកដែលតាមដានវា។"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមប្រធានបទទៅការបង្ហោះ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "មនុស្ស {received} នាក់បានឆ្លើយតបការបង្ហោះរបស់អ្នក ហើយអ្នកបានឆ្លើយ {answered}។ ពួកគេយកចិត្តទុកដាក់គ្រប់គ្រាន់ដើម្បីសរសេរ៖ ចម្លើយធ្វើឱ្យអ្នកអានក្លាយជាអ្នកមកជាប្រចាំ។"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ឆ្លើយតបការឆ្លើយតបរបស់អ្នក"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "ទស្សនិកជនរបស់អ្នកសកម្មបំផុតនៅ {when}។ ការបង្ហោះមុនពេលនោះបន្តិចមានមនុស្សទទួលវា។"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("បង្ហោះពេលពួកគេនៅ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "មនុស្ស {reached} នាក់ដែលមិនតាមដានអ្នកបានឃើញការបង្ហោះរបស់អ្នក ហើយ {gained} នាក់បានតាមដាន។ ឱ្យជីវប្រវត្តិ និងការបង្ហោះថ្មីៗរបស់អ្នកប្រាប់ពីអ្វីដែលពួកគេអាចរំពឹងពីអ្នក។"),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "ធ្វើឱ្យអ្នកអានក្លាយជាអ្នកតាមដាន"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះមួយបានឈានដល់មនុស្ស {times}× នៃចំនួនដែលការបង្ហោះផ្សេងទៀតរបស់អ្នកធម្មតាឈានដល់។ មើលថាវាធ្វើអ្វីខុសគ្នា ហើយធ្វើបែបនោះបន្ថែម។"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("ធ្វើបន្ថែមនូវអ្វីដែលបានផល"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "មនុស្សជាច្រើនដែលឃើញការបង្ហោះរបស់អ្នកនៅក្នុង {name}។ ការបង្ហោះនៅទីនោះដាក់អ្នកនៅមុខសមាជិកផ្សេងទៀត។"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("បង្ហោះក្នុង {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "អ្នកបានបង្ហោះ {posts} ដងក្នុង {days} ថ្ងៃ។ ការបង្ហោះនីមួយៗជាឱកាសមួយទៀតដើម្បីត្រូវបានរកឃើញ ហើយចង្វាក់ទៀងទាត់រក្សាអ្នកក្នុងព័ត៌មានរបស់អ្នកតាមដាន។"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("បង្ហោះឱ្យបានញឹកញាប់"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "អ្នកមិនបានបង្ហោះក្នុង {days} ថ្ងៃចុងក្រោយទេ។ គ្មានអ្វីឈានដល់នរណាម្នាក់ដោយគ្មានការបង្ហោះទេ។"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("បង្ហោះអ្វីមួយ"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ការយល់ដឹង"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("ការបង្ហោះកំពូល"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("ធៀបនឹង {days} ថ្ងៃមុន"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

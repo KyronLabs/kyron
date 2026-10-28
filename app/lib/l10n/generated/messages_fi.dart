@@ -331,6 +331,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Tilisi"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Avaa yhteisö"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Kirjoita julkaisu"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Katso julkaisu"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Muokkaa profiiliasi"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Milloin he ovat paikalla"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Omalla aikavyöhykkeelläsi."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Iät"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Niistä {known} tavoitetusta, jotka ovat antaneet syntymäpäivän."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Tavoitetut ihmiset päivittäin"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Yhteisöt, joissa he ovat"),
+      "ins_days":
+          MessageLookupByLibrary.simpleMessage("Viimeiset {days} päivää"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Tilastoja ei voitu ladata"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Seuraajat"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Mikään ryhmä ei ole vielä tarpeeksi suuri näytettäväksi."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Miten kasvaa"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Aiheet, joita he seuraavat"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Tykkäykset"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Uusi"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Uudet seuraajat"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Mikään julkaisusi ei tavoittanut ketään tällä jaksolla."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Eivät seuraa sinua"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron ei kerää kenenkään maata, kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Avaukset"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} tavoitettu · {likes} tykkäystä · {replies} vastausta"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Tavoitetut ihmiset"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Jokainen ihminen lasketaan kerran: hänelle näytettiin tai hän avasi jonkin julkaisusi ensimmäistä kertaa. Uudet seuraajat seuraavat sinua yhä; seuraamisen lopetuksia ei lasketa."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Vastaukset"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Jaot"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Tallennukset"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kuka yleisösi on, näytetään, kun {floor} ihmistä on nähnyt julkaisusi tällä jaksolla. Vähemmällä se voisi osoittaa jonkun."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Ihmisiä ei ole vielä tarpeeksi"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % heistä seuraa sinua jo: julkaisusi tavoittavat enimmäkseen sinut tuntevia."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % heistä ei vielä seuraa sinua: julkaisusi löydetään."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Tavoitit {reach} ihmistä, {pct} % vähemmän kuin edellisellä jaksolla."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Tavoitit {reach} ihmistä viimeisten {days} päivän aikana."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Tavoitit {reach} ihmistä, suunnilleen saman verran kuin edellisellä jaksolla."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Kukaan uusi ei nähnyt julkaisujasi viimeisten {days} päivän aikana."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Tavoitit {reach} ihmistä, {pct} % enemmän kuin edellisellä jaksolla."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Tavoitit {reach} ihmistä, {times}× edellisen jakson verran."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Useampi heistä seuraa aihetta {name} kuin mitään muuta aihetta."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Yleisö"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Yleiskatsaus"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Julkaisusi löytäneet katsovat profiiliasi ennen seuraamista. Kasvot tai logo kertovat, että siellä on joku."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Lisää profiilikuva"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Kerro yhdellä rivillä, mistä julkaiset, jotta vieras tietää, mitä seuraaminen hänelle antaa."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Kirjoita esittely"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without}/{total} julkaisustasi oli ilman aihetta. Aihe vie julkaisun aiheen syötteeseen ja sen seuraajien eteen."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Lisää julkaisuihin aiheita"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ihmistä vastasi julkaisuihisi ja sinä vastasit {answered}. He välittivät tarpeeksi kirjoittaakseen: vastaus tekee lukijasta vakiokävijän."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Vastaa vastauksiin"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Yleisösi on aktiivisimmillaan {when}. Juuri ennen sitä tehty julkaisu saa vastaanottajia."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Julkaise, kun he ovat paikalla"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} sinua seuraamatonta näki julkaisusi, ja {gained} alkoi seurata. Anna esittelysi ja uusimpien julkaisujesi kertoa, mitä sinulta voi odottaa."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Tee lukijoista seuraajia"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Yksi julkaisu tavoitti {times}× enemmän ihmisiä kuin muut julkaisusi yleensä. Katso, mitä se teki toisin, ja tee sitä enemmän."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Tee enemmän sitä, mikä toimi"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Moni julkaisujesi näkijä on yhteisössä {name}. Siellä julkaiseminen vie sinut muidenkin eteen."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Julkaise yhteisössä {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Julkaisit {posts} kertaa {days} päivässä. Jokainen julkaisu on uusi mahdollisuus tulla löydetyksi, ja tasainen rytmi pitää sinut seuraajiesi syötteissä."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Julkaise useammin"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Et ole julkaissut viimeisten {days} päivän aikana. Ilman julkaisua mikään ei tavoita ketään."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Julkaise jotain"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Tilastot"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Parhaat julkaisut"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Verrattuna edellisiin {days} päivään"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

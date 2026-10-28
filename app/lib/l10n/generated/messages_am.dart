@@ -305,6 +305,108 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("የእገዛ ማዕከል"),
       "home": MessageLookupByLibrary.simpleMessage("ቤት"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("በአንድ መስመር"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("የእርስዎ መለያ"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("ማህበረሰቡን ይክፈቱ"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("ልጥፍ ይጻፉ"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("ልጥፉን ይመልከቱ"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("መገለጫዎን ያርትዑ"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("መቼ እንደሚገኙ"),
+      "ins_active_note": MessageLookupByLibrary.simpleMessage("በእርስዎ የሰዓት ሰቅ።"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("ዕድሜዎች"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "የልደት ቀን ከሰጡት {known} የደረሱ ሰዎች።"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("በየቀኑ የደረሱ ሰዎች"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("ያሉባቸው ማህበረሰቦች"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("ያለፉት {days} ቀናት"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage("ግንዛቤዎች ሊጫኑ አልቻሉም"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("ተከታዮች"),
+      "ins_group_small":
+          MessageLookupByLibrary.simpleMessage("ለማሳየት በቂ የሆነ ቡድን ገና የለም።"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("እንዴት ማደግ እንደሚቻል"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("የሚከተሏቸው ርዕሶች"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("መውደዶች"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("አዲስ"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("አዲስ ተከታዮች"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "በዚህ ጊዜ ውስጥ ከልጥፎችዎ አንዳቸውም ማንንም አልደረሱም።"),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("የማይከተሉዎት"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron የማንንም አገር፣ ከተማ ወይም ጾታ አይሰበስብም፣ ስለዚህ ለእነሱ የሚታይ ነገር የለም።"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("ክፍቶች"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} ደርሷል · {likes} መውደዶች · {replies} ምላሾች"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("የደረሱ ሰዎች"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "የደረሱ ሰዎች እያንዳንዱን ሰው አንድ ጊዜ ይቆጥራሉ፦ ከልጥፎችዎ አንዱን ለመጀመሪያ ጊዜ የታየለት ወይም የከፈተ። አዲስ ተከታዮች አሁንም ይከተሉዎታል፤ መከተል ያቆሙ አይቆጠሩም።"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("ምላሾች"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("ድጋሚ ልጥፎች"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("የተቀመጡ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ተመልካቾችዎ እነማን እንደሆኑ የሚታየው በዚህ ጊዜ ውስጥ {floor} ሰዎች ልጥፎችዎን ሲያዩ ነው። ከዚያ ያነሰ ከሆነ ወደ አንድ ሰው ሊጠቁም ይችላል።"),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage("ገና በቂ ሰዎች የሉም"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "ከእነሱ {pct}% አስቀድመው ይከተሉዎታል፦ ልጥፎችዎ በአብዛኛው የሚያውቁዎትን ይደርሳሉ።"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "ከእነሱ {pct}% ገና አይከተሉዎትም፦ ልጥፎችዎ እየተገኙ ነው።"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} ሰዎችን ደርሰዋል፣ ካለፈው ጊዜ {pct}% ያነሰ።"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "ባለፉት {days} ቀናት {reach} ሰዎችን ደርሰዋል።"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} ሰዎችን ደርሰዋል፣ ካለፈው ጊዜ ጋር ተመሳሳይ ያህል።"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "ባለፉት {days} ቀናት ማንም አዲስ ሰው ልጥፎችዎን አላየም።"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} ሰዎችን ደርሰዋል፣ ካለፈው ጊዜ {pct}% የበለጠ።"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} ሰዎችን ደርሰዋል፣ ካለፈው ጊዜ {times}× የበለጠ።"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "ከእነሱ ብዙዎቹ ከሌላ ማንኛውም ርዕስ ይልቅ {name}ን ይከተላሉ።"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ተመልካቾች"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("አጠቃላይ"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "ከልጥፎችዎ አንዱን የሚያገኙ ሰዎች ከመከተላቸው በፊት መገለጫዎን ይመለከታሉ። ፊት ወይም አርማ አንድ ሰው እንዳለ ይነግራቸዋል።"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("የመገለጫ ስዕል ያክሉ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "ስለምን እንደሚለጥፉ በአንድ መስመር ይናገሩ፣ እንግዳ እርስዎን መከተል ምን እንደሚሰጠው እንዲያውቅ።"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("ስለራስዎ ይጻፉ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "ከ{total} ልጥፎችዎ {without} ርዕስ አልነበራቸውም። ርዕስ ልጥፍን በዚያ ርዕስ ምግብ ውስጥ እና በሚከተሉት ሰዎች ፊት ያስቀምጣል።"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("በልጥፎችዎ ላይ ርዕሶችን ያክሉ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ሰዎች ለልጥፎችዎ ምላሽ ሰጥተዋል እርስዎም {answered} መልሰዋል። ለመጻፍ በቂ ግድ ሰጥተዋል፦ መልስ አንባቢን ቋሚ ጎብኚ ያደርገዋል።"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ምላሾችዎን ይመልሱ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "ተመልካቾችዎ በጣም ንቁ የሆኑት {when} ላይ ነው። ከዚያ በፊት የተለጠፈ ልጥፍ የሚቀበሉት ሰዎች ይኖሩታል።"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("በሚገኙበት ጊዜ ይለጥፉ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "የማይከተሉዎት {reached} ሰዎች ልጥፎችዎን አይተዋል፣ {gained} ተከተሉ። ከእርስዎ ምን እንደሚጠብቁ የሕይወት ታሪክዎ እና አዳዲስ ልጥፎችዎ ይናገሩ።"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("አንባቢዎችን ተከታዮች ያድርጉ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "አንድ ልጥፍ ሌሎችዎ በተለምዶ ከሚደርሱት {times}× የበለጠ ሰዎችን ደርሷል። ምን በተለየ መንገድ እንዳደረገ ይመልከቱ፣ ያንን የበለጠ ያድርጉ።"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("የሰራውን ተጨማሪ ያድርጉ"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "ልጥፎችዎን ከሚያዩት ሰዎች ብዙዎቹ በ{name} ውስጥ ናቸው። እዚያ መለጠፍ በቀሪዎቹ ፊት ያስቀምጥዎታል።"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("በ{name} ይለጥፉ"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "በ{days} ቀናት ውስጥ {posts} ጊዜ ለጥፈዋል። እያንዳንዱ ልጥፍ ለመገኘት ሌላ ዕድል ነው፣ ቋሚ ምት ደግሞ በተከታዮችዎ ምግብ ውስጥ ያቆይዎታል።"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("በተደጋጋሚ ይለጥፉ"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "ባለፉት {days} ቀናት አልለጠፉም። ያለ ልጥፍ ምንም ማንንም አይደርስም።"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("የሆነ ነገር ይለጥፉ"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ግንዛቤዎች"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("ምርጥ ልጥፎች"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("ከዚያ በፊት ከነበሩት {days} ቀናት ጋር"),
       "interest_add": MessageLookupByLibrary.simpleMessage("ፈለግ ያክሉ"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "ቅደም ተከተል ለማድረግ ይጫኑ እና ያዘዋው",

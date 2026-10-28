@@ -331,6 +331,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Ձեր հաշիվը"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Բացել համայնքը"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Գրել գրառում"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Դիտել գրառումը"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Խմբագրել պրոֆիլը"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Երբ են ակտիվ"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Ձեր ժամային գոտում։"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Տարիքներ"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Հասած {known} մարդկանցից, ովքեր նշել են ծննդյան օրը։"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("Ամեն օր հասած մարդիկ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Համայնքներ, որոնցում կան"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Վերջին {days} օրը"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել վիճակագրությունը"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Հետևորդներ"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Ցույց տալու համար բավարար մեծ խումբ դեռ չկա։"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Ինչպես աճել"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Թեմաներ, որոնց հետևում են"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Հավանումներ"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Նոր"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Նոր հետևորդներ"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Այս ժամանակահատվածում ձեր գրառումներից ոչ մեկը ոչ մեկին չի հասել։"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Ձեզ չեն հետևում"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ը որևէ մեկի երկիրը, քաղաքը կամ սեռը չի հավաքում, ուստի դրանց մասին ցույց տալու բան չկա։"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Բացումներ"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "հասել է {reach} · {likes} հավանում · {replies} պատասխան"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Հասած մարդիկ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Յուրաքանչյուր մարդ հաշվվում է մեկ անգամ՝ առաջին անգամ նրան ցուցադրվել է կամ նա բացել է ձեր գրառումներից մեկը։ Նոր հետևորդները դեռ հետևում են ձեզ, իսկ հետևելը դադարեցնողները չեն հաշվվում։"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Պատասխաններ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Վերահրապարակումներ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Պահպանումներ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Թե ով է ձեր լսարանը, երևում է, երբ {floor} մարդ այս ժամանակահատվածում տեսել է ձեր գրառումները։ Ավելի քիչ լինելու դեպքում դա կարող է մատնանշել կոնկրետ մեկին։"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Դեռ բավարար մարդիկ չկան"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Նրանց {pct}%-ն արդեն հետևում է ձեզ՝ ձեր գրառումները հիմնականում հասնում են ձեզ ճանաչողներին։"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Նրանց {pct}%-ը դեռ չի հետևում ձեզ՝ ձեր գրառումները գտնում են։"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Հասել եք {reach} մարդու՝ նախորդից {pct}%-ով պակաս։"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Վերջին {days} օրում հասել եք {reach} մարդու։"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Հասել եք {reach} մարդու՝ մոտավորապես որքան նախորդ ժամանակահատվածում։"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Վերջին {days} օրում որևէ նոր մարդ չի տեսել ձեր գրառումները։"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Հասել եք {reach} մարդու՝ նախորդից {pct}%-ով ավելի։"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Հասել եք {reach} մարդու՝ նախորդ ժամանակահատվածից {times}× ավելի։"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Նրանցից ավելի շատերն են հետևում {name}-ին, քան որևէ այլ թեմայի։"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Լսարան"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Ամփոփում"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ձեր գրառումը գտնողները հետևելուց առաջ նայում են ձեր պրոֆիլին։ Դեմքը կամ լոգոն ասում է նրանց, որ այնտեղ ինչ-որ մեկը կա։"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Ավելացրեք պրոֆիլի նկար"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Մեկ տողով ասեք, թե ինչի մասին եք գրում, որպեսզի անծանոթը իմանա, թե ինչ կտա ձեզ հետևելը։"),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Գրեք կենսագրություն"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "Ձեր {total} գրառումներից {without}-ը թեմա չուներ։ Թեման գրառումը տեղադրում է այդ թեմայի լրահոսում և դրան հետևողների առջև։"),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Ավելացրեք թեմաներ գրառումներին"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} մարդ պատասխանել է ձեր գրառումներին, իսկ դուք պատասխանել եք {answered}-ին։ Նրանք բավականաչափ հոգ են տարել գրելու համար՝ պատասխանը ընթերցողին դարձնում է մշտական։"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Պատասխանեք պատասխաններին"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Ձեր լսարանն ամենաակտիվն է {when}։ Դրանից քիչ առաջ արված գրառումը կունենա այն ընդունողներ։"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Հրապարակեք, երբ նրանք ակտիվ են"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Ձեզ չհետևող {reached} մարդ տեսել է ձեր գրառումները, և {gained}-ը սկսել է հետևել։ Թող ձեր կենսագրությունն ու նորագույն գրառումները ասեն, թե ինչ կարող են սպասել ձեզնից։"),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Ընթերցողներին դարձրեք հետևորդներ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Մեկ գրառում հասել է {times}× ավելի մարդկանց, քան սովորաբար մյուսները։ Նայեք, թե ինչն էր տարբեր, և ավելի շատ արեք դա։"),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Ավելի շատ արեք այն, ինչ աշխատեց"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Ձեր գրառումները տեսնողներից շատերը {name}-ում են։ Այնտեղ հրապարակելը ձեզ կներկայացնի մնացածին էլ։"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Հրապարակեք {name}-ում"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} օրում հրապարակել եք {posts} անգամ։ Յուրաքանչյուր գրառում գտնվելու ևս մեկ հնարավորություն է, իսկ կայուն ռիթմը ձեզ պահում է հետևորդների լրահոսում։"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Հրապարակեք ավելի հաճախ"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Վերջին {days} օրում չեք հրապարակել։ Առանց գրառման ոչինչ ոչ մեկին չի հասնում։"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Հրապարակեք ինչ-որ բան"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Վիճակագրություն"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Լավագույն գրառումներ"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("Նախորդ {days} օրվա համեմատ"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

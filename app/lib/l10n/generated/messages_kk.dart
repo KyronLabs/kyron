@@ -331,6 +331,119 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Сіздің аккаунтыңыз"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Қауымдастықты ашу"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Жазба жазу"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Жазбаны көру"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Профильді өңдеу"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Олар қашан белсенді"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Сіздің уақыт белдеуіңізде."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Жас"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Туған күнін көрсеткен {known} жеткен адамнан."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Күн сайын жеткен адамдар"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Олар бар қауымдастықтар"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Соңғы {days} күн"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Статистиканы жүктеу мүмкін болмады"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Оқырмандар"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Көрсетуге жететін үлкен топ әзірге жоқ."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Қалай өсуге болады"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Олар бақылайтын тақырыптар"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Ұнатулар"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Жаңа"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Жаңа оқырмандар"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Бұл кезеңде жазбаларыңыздың ешқайсысы ешкімге жетпеді."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Сізге жазылмаған"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron ешкімнің елін, қаласын не жынысын жинамайды, сондықтан олар туралы көрсететін ештеңе жоқ."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ашулар"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} жетті · {likes} ұнату · {replies} жауап"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Жеткен адамдар"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Әр адам бір рет саналады: оған жазбаларыңыздың бірі алғаш рет көрсетілген немесе ол алғаш рет ашқан. Жаңа оқырмандар әлі де жазылулы; жазылудан бас тартқандар саналмайды."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Жауаптар"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Қайта жариялаулар"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Сақтаулар"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Аудиторияңыздың кім екені бұл кезеңде {floor} адам жазбаларыңызды көргенде көрсетіледі. Одан аз болса, бұл нақты бір адамды көрсетіп қоюы мүмкін."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Әзірге адам жеткіліксіз"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Олардың {pct}%-ы сізге жазылып қойған: жазбаларыңыз көбіне таныстарға жетеді."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Олардың {pct}%-ы әзірге сізге жазылмаған: жазбаларыңызды тауып жатыр."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} адамға жеттіңіз, алдыңғы кезеңнен {pct}% аз."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Соңғы {days} күнде {reach} адамға жеттіңіз."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} адамға жеттіңіз, шамамен алдыңғы кезеңдегідей."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Соңғы {days} күнде жазбаларыңызды ешбір жаңа адам көрмеді."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} адамға жеттіңіз, алдыңғы кезеңнен {pct}% көп."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} адамға жеттіңіз, алдыңғы кезеңнен {times}× көп."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Олардың көбі кез келген басқа тақырыпқа қарағанда {name} тақырыбын бақылайды."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Аудитория"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Шолу"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Жазбаңызды тапқандар жазылмас бұрын профиліңізге қарайды. Бет не логотип онда біреу бар екенін айтады."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Профиль суретін қосыңыз"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Не туралы жазатыныңызды бір жолмен айтыңыз, бейтаныс адам сізге жазылу оған не беретінін білсін."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Өзіңіз туралы жазыңыз"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total} жазбаңыздың {without}-ында тақырып болмады. Тақырып жазбаны сол тақырыптың лентасына және оны бақылайтындардың алдына шығарады."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Жазбаларға тақырып қосыңыз"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} адам жазбаларыңызға жауап жазды, сіз {answered} жауап бердіңіз. Олар жазуға жететіндей мән берді: жауап оқырманды тұрақты қонаққа айналдырады."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Жауаптарға жауап беріңіз"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Аудиторияңыз {when} ең белсенді. Одан сәл бұрын жарияланған жазбаны қарсы алатын адамдар болады."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Олар белсенді кезде жариялаңыз"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Сізге жазылмаған {reached} адам жазбаларыңызды көрді, {gained} жазылды. Өзіңіз туралы мәтін мен жаңа жазбаларыңыз сізден не күтуге болатынын айтсын."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Оқырмандарды жазылушыға айналдырыңыз"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Бір жазба басқаларыңыз әдетте жететіннен {times}× көп адамға жетті. Оның нені басқаша жасағанын қарап, соны көбірек жасаңыз."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Нәтиже бергенін көбірек жасаңыз"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Жазбаларыңызды көретіндердің көбі {name} қауымдастығында. Онда жариялау сізді қалғандарының алдына шығарады."),
+      "ins_tip_post_in_community_t": MessageLookupByLibrary.simpleMessage(
+          "{name} қауымдастығында жариялаңыз"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} күнде {posts} рет жарияладыңыз. Әр жазба табылудың тағы бір мүмкіндігі, ал тұрақты ырғақ сізді оқырмандардың лентасында ұстайды."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Жиірек жариялаңыз"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Соңғы {days} күнде жариялаған жоқсыз. Жазбасыз ештеңе ешкімге жетпейді."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Бірдеңе жариялаңыз"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Статистика"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Үздік жазбалар"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Алдыңғы {days} күнмен салыстырғанда"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

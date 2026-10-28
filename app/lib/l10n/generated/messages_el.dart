@@ -350,6 +350,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Κέντρο βοήθειας"),
       "home": MessageLookupByLibrary.simpleMessage("Αρχική"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("Σε μία γραμμή"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Ο λογαριασμός σας"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Ανοίξτε την κοινότητα"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Γράψτε μια ανάρτηση"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Δείτε την ανάρτηση"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Επεξεργαστείτε το προφίλ σας"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Πότε είναι ενεργοί"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Στη ζώνη ώρας σας."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Ηλικίες"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Από τα {known} άτομα που προσεγγίσατε και έδωσαν ημερομηνία γέννησης."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Άτομα που προσεγγίσατε ανά ημέρα"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Κοινότητες στις οποίες ανήκουν"),
+      "ins_days":
+          MessageLookupByLibrary.simpleMessage("Τελευταίες {days} ημέρες"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση των στατιστικών"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Ακόλουθοι"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Καμία ομάδα δεν είναι ακόμα αρκετά μεγάλη για να εμφανιστεί."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Πώς να μεγαλώσετε"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Θέματα που ακολουθούν"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Μου αρέσει"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Νέο"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Νέοι ακόλουθοι"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Καμία ανάρτησή σας δεν προσέγγισε κανέναν σε αυτή την περίοδο."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Δεν σας ακολουθούν"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Το Kyron δεν συλλέγει τη χώρα, την πόλη ή το φύλο κανενός, οπότε δεν υπάρχει τίποτα να εμφανιστεί γι' αυτά."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ανοίγματα"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} προσεγγίσεις · {likes} μου αρέσει · {replies} απαντήσεις"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("Άτομα που προσεγγίσατε"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Κάθε άτομο μετρά μία φορά: του εμφανίστηκε ή άνοιξε για πρώτη φορά μια ανάρτησή σας. Οι νέοι ακόλουθοι σας ακολουθούν ακόμα· οι κατάργηση ακολούθησης δεν μετρά."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Απαντήσεις"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Αναδημοσιεύσεις"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Αποθηκεύσεις"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Το ποιο είναι το κοινό σας εμφανίζεται όταν {floor} άτομα δουν τις αναρτήσεις σας σε αυτή την περίοδο. Με λιγότερα, θα μπορούσε να υποδείξει κάποιον."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Δεν υπάρχουν ακόμα αρκετά άτομα"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Το {pct}% σας ακολουθεί ήδη: οι αναρτήσεις σας φτάνουν κυρίως σε όσους σας ξέρουν."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Το {pct}% δεν σας ακολουθεί ακόμα: οι αναρτήσεις σας ανακαλύπτονται."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Προσεγγίσατε {reach} άτομα, {pct}% λιγότερα από την προηγούμενη περίοδο."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Προσεγγίσατε {reach} άτομα τις τελευταίες {days} ημέρες."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Προσεγγίσατε {reach} άτομα, περίπου όσα και την προηγούμενη περίοδο."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Κανείς νέος δεν είδε τις αναρτήσεις σας τις τελευταίες {days} ημέρες."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Προσεγγίσατε {reach} άτομα, {pct}% περισσότερα από την προηγούμενη περίοδο."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Προσεγγίσατε {reach} άτομα, {times}× περισσότερα από την προηγούμενη περίοδο."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Περισσότεροι από αυτούς ακολουθούν το {name} από οποιοδήποτε άλλο θέμα."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Κοινό"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Επισκόπηση"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Όσοι βρίσκουν μια ανάρτησή σας κοιτάζουν το προφίλ σας πριν ακολουθήσουν. Ένα πρόσωπο ή ένα λογότυπο τους λέει ότι υπάρχει κάποιος."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Προσθέστε φωτογραφία προφίλ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Πείτε σε μία γραμμή για τι δημοσιεύετε, ώστε ένας άγνωστος να ξέρει τι κερδίζει αν σας ακολουθήσει."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Γράψτε ένα βιογραφικό"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} από τις {total} αναρτήσεις σας δεν είχαν θέμα. Ένα θέμα βάζει την ανάρτηση στη ροή του θέματος και μπροστά σε όσους το ακολουθούν."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Προσθέστε θέματα στις αναρτήσεις"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} άτομα απάντησαν στις αναρτήσεις σας και εσείς απαντήσατε σε {answered}. Ενδιαφέρθηκαν αρκετά για να γράψουν: μια απάντηση κάνει έναν αναγνώστη τακτικό."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Απαντήστε στις απαντήσεις"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Το κοινό σας είναι πιο ενεργό {when}. Μια ανάρτηση λίγο πριν βρίσκει ανθρώπους να την υποδεχτούν."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Δημοσιεύετε όταν είναι ενεργοί"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} άτομα που δεν σας ακολουθούν είδαν τις αναρτήσεις σας και {gained} ακολούθησαν. Το βιογραφικό και οι νεότερες αναρτήσεις σας ας λένε τι να περιμένουν από εσάς."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Κάντε τους αναγνώστες ακολούθους"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Μια ανάρτηση προσέγγισε {times}× περισσότερα άτομα από όσα συνήθως οι άλλες σας. Δείτε τι έκανε διαφορετικά και κάντε περισσότερο από αυτό."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Κάντε περισσότερο ό,τι λειτούργησε"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Πολλοί από όσους βλέπουν τις αναρτήσεις σας είναι στο {name}. Αν δημοσιεύσετε εκεί, θα σας δουν και οι υπόλοιποι."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Δημοσιεύστε στο {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Δημοσιεύσατε {posts} φορές σε {days} ημέρες. Κάθε ανάρτηση είναι μια ακόμα ευκαιρία να σας βρουν, και ένας σταθερός ρυθμός σας κρατά στις ροές των ακολούθων σας."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Δημοσιεύετε πιο συχνά"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Δεν έχετε δημοσιεύσει τις τελευταίες {days} ημέρες. Τίποτα δεν φτάνει σε κανέναν χωρίς ανάρτηση."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Δημοσιεύστε κάτι"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Στατιστικά"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Κορυφαίες αναρτήσεις"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Σε σύγκριση με τις {days} προηγούμενες ημέρες"),
       "interest_add": MessageLookupByLibrary.simpleMessage(
         "Προσθέστε ένα ενδιαφέρον",
       ),

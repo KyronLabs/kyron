@@ -331,6 +331,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("သင့်အကောင့်"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းကို ဖွင့်ရန်"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("ပို့စ်ရေးရန်"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်ကို ကြည့်ရန်"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင်ကို ပြင်ရန်"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("သူတို့ ဘယ်အချိန်ရှိသလဲ"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("သင့်အချိန်ဇုန်ဖြင့်။"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("အသက်"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "မွေးနေ့ထည့်ထားသော ရောက်ရှိခဲ့သူ {known} ဦးထဲမှ။"),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("နေ့စဉ် ရောက်ရှိခဲ့သူများ"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "သူတို့ပါဝင်သော အသိုင်းအဝိုင်းများ"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("နောက်ဆုံး {days} ရက်"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "ထိုးထွင်းသိမြင်မှုများကို ဖွင့်၍မရပါ"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("နောက်လိုက်များ"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "ပြသလောက်အောင် ကြီးသောအုပ်စု မရှိသေးပါ။"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("ကြီးထွားနည်း"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("သူတို့လိုက်သော ခေါင်းစဉ်များ"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("နှစ်သက်မှုများ"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("အသစ်"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("နောက်လိုက်အသစ်များ"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ဤကာလအတွင်း သင့်ပို့စ်တစ်ခုမှ မည်သူ့ထံမျှ မရောက်ခဲ့ပါ။"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("သင့်ကို မလိုက်သူများ"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron သည် မည်သူ၏ နိုင်ငံ၊ မြို့ သို့မဟုတ် ကျား/မ ကိုမျှ မစုဆောင်းသဖြင့် ၎င်းတို့အတွက် ပြစရာ မရှိပါ။"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("ဖွင့်ကြည့်မှုများ"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} ရောက် · နှစ်သက်မှု {likes} · ပြန်စာ {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("ရောက်ရှိခဲ့သူများ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "လူတစ်ဦးကို တစ်ကြိမ်သာ ရေတွက်သည်- သင့်ပို့စ်တစ်ခုကို ပထမဆုံးအကြိမ် ပြသခံရသူ သို့မဟုတ် ဖွင့်ကြည့်သူ။ နောက်လိုက်အသစ်များသည် သင့်ကို ဆက်လက်လိုက်နေဆဲဖြစ်ပြီး လိုက်ခြင်းရပ်သူများကို မရေတွက်ပါ။"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("ပြန်စာများ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("ပြန်တင်မှုများ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("သိမ်းဆည်းမှုများ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ဤကာလအတွင်း လူ {floor} ဦး သင့်ပို့စ်များကို မြင်ပြီးမှ သင့်ပရိသတ်မည်သူဖြစ်ကြောင်း ပြသပါမည်။ ထိုထက်နည်းပါက တစ်စုံတစ်ယောက်ကို ညွှန်ပြနိုင်သည်။"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("လူအရေအတွက် မလုံလောက်သေးပါ"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "၎င်းတို့ထဲမှ {pct}% သည် သင့်ကို လိုက်ပြီးသားဖြစ်သည်- သင့်ပို့စ်များသည် အများအားဖြင့် သိကျွမ်းသူများထံ ရောက်သည်။"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "၎င်းတို့ထဲမှ {pct}% သည် သင့်ကို မလိုက်သေးပါ- သင့်ပို့စ်များကို ရှာတွေ့နေကြသည်။"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "လူ {reach} ဦးထံ ရောက်ခဲ့သည်၊ ယခင်ကာလထက် {pct}% လျော့သည်။"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံး {days} ရက်အတွင်း လူ {reach} ဦးထံ ရောက်ခဲ့သည်။"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "လူ {reach} ဦးထံ ရောက်ခဲ့သည်၊ ယခင်ကာလနှင့် ခန့်မှန်းတူသည်။"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံး {days} ရက်အတွင်း မည်သူအသစ်မျှ သင့်ပို့စ်များကို မမြင်ခဲ့ပါ။"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "လူ {reach} ဦးထံ ရောက်ခဲ့သည်၊ ယခင်ကာလထက် {pct}% ပိုသည်။"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "လူ {reach} ဦးထံ ရောက်ခဲ့သည်၊ ယခင်ကာလ၏ {times}×။"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "အခြားခေါင်းစဉ်များထက် {name} ကို ပိုလိုက်ကြသည်။"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ပရိသတ်"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("ခြုံငုံသုံးသပ်ချက်"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပို့စ်ကို တွေ့သူများသည် မလိုက်မီ သင့်ပရိုဖိုင်ကို ကြည့်သည်။ မျက်နှာ သို့မဟုတ် လိုဂိုက ထိုနေရာတွင် တစ်စုံတစ်ယောက်ရှိကြောင်း ပြောပြသည်။"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင်ပုံ ထည့်ပါ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "သင် ဘာအကြောင်းတင်သည်ကို တစ်ကြောင်းတည်းဖြင့် ပြောပါ၊ သူစိမ်းတစ်ဦး သင့်ကိုလိုက်လျှင် ဘာရမည်ကို သိစေရန်။"),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးအကျဉ်း ရေးပါ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပို့စ် {total} ခုထဲမှ {without} ခုတွင် ခေါင်းစဉ်မရှိပါ။ ခေါင်းစဉ်က ပို့စ်ကို ထိုခေါင်းစဉ်၏ ဖိဒ်နှင့် လိုက်သူများရှေ့သို့ ပို့ပေးသည်။"),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "ပို့စ်များတွင် ခေါင်းစဉ်ထည့်ပါ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "လူ {received} ဦး သင့်ပို့စ်များကို ပြန်စာရေးခဲ့ပြီး သင် {answered} ခုကို ဖြေခဲ့သည်။ ရေးလောက်အောင် ဂရုစိုက်ကြသည်- ဖြေကြားချက်က စာဖတ်သူကို ပုံမှန်လာသူ ဖြစ်စေသည်။"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ပြန်စာများကို ဖြေပါ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပရိသတ်သည် {when} တွင် အတက်ကြွဆုံးဖြစ်သည်။ ထိုမတိုင်မီ အနည်းငယ်တင်သော ပို့စ်တွင် ကြိုဆိုမည့်သူများ ရှိမည်။"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("သူတို့ရှိချိန်တွင် တင်ပါ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "သင့်ကို မလိုက်သူ {reached} ဦး သင့်ပို့စ်များကို မြင်ခဲ့ပြီး {gained} ဦး လိုက်ခဲ့သည်။ သင့်ထံမှ ဘာမျှော်လင့်နိုင်သည်ကို ကိုယ်ရေးအကျဉ်းနှင့် နောက်ဆုံးပို့စ်များက ပြောပါစေ။"),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "စာဖတ်သူများကို နောက်လိုက်ဖြစ်စေပါ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ပို့စ်တစ်ခုသည် သင့်အခြားပို့စ်များ ပုံမှန်ရောက်သည်ထက် {times}× လူများထံ ရောက်ခဲ့သည်။ ဘာကွဲပြားစွာ လုပ်ခဲ့သည်ကို ကြည့်ပြီး ထိုအရာကို ပိုလုပ်ပါ။"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("အလုပ်ဖြစ်ခဲ့သည်ကို ပိုလုပ်ပါ"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပို့စ်များကို မြင်သူအများအပြားသည် {name} တွင် ရှိသည်။ ထိုနေရာတွင် တင်ခြင်းက ကျန်သူများရှေ့သို့ပါ ရောက်စေသည်။"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} တွင် တင်ပါ"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} ရက်အတွင်း {posts} ကြိမ် တင်ခဲ့သည်။ ပို့စ်တိုင်းသည် ရှာတွေ့ခံရရန် အခွင့်အလမ်းတစ်ခုဖြစ်ပြီး ပုံမှန်စည်းချက်က နောက်လိုက်များ၏ ဖိဒ်တွင် သင့်ကို ထားရှိပေးသည်။"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("ပိုမကြာခဏ တင်ပါ"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံး {days} ရက်အတွင်း မတင်ခဲ့ပါ။ ပို့စ်မရှိဘဲ မည်သည့်အရာမျှ မည်သူ့ထံ မရောက်ပါ။"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("တစ်ခုခု တင်ပါ"),
+      "ins_title":
+          MessageLookupByLibrary.simpleMessage("ထိုးထွင်းသိမြင်မှုများ"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("ထိပ်တန်းပို့စ်များ"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "ယခင် {days} ရက်နှင့် နှိုင်းယှဉ်လျှင်"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

@@ -68,6 +68,15 @@ class ProfileScreen extends ConsumerWidget {
         systemOverlayStyle: SystemUiOverlayStyle.light,
         leading: const GlassBackButton(),
         actions: [
+          // Your own account's insights, beside sharing it. Nobody else's:
+          // the API only answers about the account asking.
+          if (state.value?.isOwnProfile ?? false)
+            GlassIconButton(
+              key: const ValueKey('profile-insights'),
+              icon: Iconsax.chart_2_copy,
+              tooltip: AppLocalizations.of(context).ui('ins_title', 'Insights'),
+              onPressed: () => Navigator.pushNamed(context, Routes.insights),
+            ),
           if (state.hasValue)
             Padding(
               // The disc's edge where it was: the target around it is wider.

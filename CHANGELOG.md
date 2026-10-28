@@ -11,6 +11,21 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Insights for your account.** The chart button beside Share on your own
+  profile opens them: how many people your posts reached over the last 7, 30
+  or 90 days against the period before, new followers, opens, likes,
+  replies, reposts and saves, a day-by-day chart and your top posts.
+- **Who your audience is**: how many already follow you, their ages, the
+  topics they follow, the communities they are in, and when they are
+  around, in your time zone. Shown only once 20 people have been reached,
+  and never a group smaller than 5, so it cannot point at anybody. Kyron
+  does not collect countries, cities or genders, and the screen says so.
+- **How to grow**: up to four tips worked out from your own numbers --
+  replies you have not answered, posts without topics, a post that did far
+  better than the rest, the community your audience is in -- each with a
+  way to act on it, and none unless it applies to you.
 
 ## [0.1.16] - 2026-10-26
 ### Changed

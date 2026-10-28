@@ -330,6 +330,119 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Asusunka"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Buɗe al'ummar"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Rubuta wani abu"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Duba rubutun"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Gyara bayaninka"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Lokacin da suke nan"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("A yankin lokacinka."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Shekaru"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Daga cikin mutane {known} da aka kai waɗanda suka bayar da ranar haihuwa."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Mutanen da aka kai kowace rana"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Al'ummomin da suke ciki"),
+      "ins_days":
+          MessageLookupByLibrary.simpleMessage("Kwanaki {days} da suka gabata"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Ba a iya loda ƙididdiga ba"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Mabiya"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Babu wata ƙungiya da ta isa a nuna ta tukuna."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Yadda ake girma"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Batutuwan da suke bi"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("So"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Sabo"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Sababbin mabiya"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Babu ɗaya daga cikin rubutunka da ya kai kowa a wannan lokaci."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Ba sa binka"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron ba ya tattara ƙasa, birni ko jinsin kowa, don haka babu abin da za a nuna game da su."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Buɗewa"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "an kai {reach} · so {likes} · amsoshi {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Mutanen da aka kai"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Ana ƙidaya kowane mutum sau ɗaya: an nuna masa ko ya buɗe ɗaya daga cikin rubutunka a karon farko. Sababbin mabiya har yanzu suna binka; ba a ƙidaya daina bi."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Amsoshi"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Sake wallafawa"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Ajiyewa"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Ana nuna su waye masu kallonka da zarar mutane {floor} sun ga rubutunka a wannan lokaci. Ƙasa da haka, zai iya nuna wani takamaimai."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Har yanzu babu isassun mutane"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% daga cikinsu sun riga sun bika: rubutunka galibi suna kai wa waɗanda suka san ka."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% daga cikinsu ba sa binka tukuna: ana gano rubutunka."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Ka kai mutane {reach}, {pct}% ƙasa da lokacin da ya gabata."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Ka kai mutane {reach} a kwanaki {days} da suka gabata."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Ka kai mutane {reach}, kusan daidai da lokacin da ya gabata."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Babu sabon mutum da ya ga rubutunka a kwanaki {days} da suka gabata."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Ka kai mutane {reach}, {pct}% fiye da lokacin da ya gabata."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Ka kai mutane {reach}, sau {times}× na lokacin da ya gabata."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Yawancinsu suna bin {name} fiye da kowane batu."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Masu kallo"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Taƙaitawa"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Mutanen da suka sami ɗaya daga cikin rubutunka suna duba bayaninka kafin su bi ka. Fuska ko tambari yana gaya musu akwai wani a wurin."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Saka hoton bayani"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Faɗi a layi ɗaya abin da kake wallafawa, don baƙo ya san abin da binka zai ba shi."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Rubuta taƙaitaccen bayani"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} daga cikin rubutunka {total} ba su da batu. Batu yana saka rubutu a cikin ciyarwar wannan batun da gaban masu binsa."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Saka batutuwa a rubutunka"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "Mutane {received} sun amsa rubutunka kuma ka amsa {answered}. Sun damu har suka rubuta: amsa tana mai da mai karatu na yau da kullum."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Amsa amsoshinka"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Masu kallonka sun fi aiki a {when}. Rubutun da aka saka kafin haka kaɗan zai sami mutanen da za su tarbe shi."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Wallafa lokacin da suke nan"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Mutane {reached} waɗanda ba sa binka sun ga rubutunka, kuma {gained} sun bi ka. Bari bayaninka da sababbin rubutunka su faɗi abin da za su iya tsammani daga gare ka."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Mai da masu karatu mabiya"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Wani rubutu ya kai mutane sau {times}× na yadda sauran naka ke kaiwa. Duba abin da ya yi daban, ka ƙara yin haka."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Ƙara abin da ya yi aiki"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Yawancin mutanen da ke ganin rubutunka suna cikin {name}. Wallafawa a can yana sanya ka a gaban sauran."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Wallafa a {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Ka wallafa sau {posts} cikin kwanaki {days}. Kowane rubutu wata dama ce ta a same ka, kuma tsayayyen tsari yana riƙe ka a cikin ciyarwar mabiyanka."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Wallafa sau da yawa"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Ba ka wallafa komai ba a kwanaki {days} da suka gabata. Babu abin da ke kai wa kowa ba tare da rubutu ba."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Wallafa wani abu"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Ƙididdiga"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Manyan rubutu"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Idan aka kwatanta da kwanaki {days} kafin haka"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

@@ -331,6 +331,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Ang account mo"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Buksan ang komunidad"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Sumulat ng post"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Tingnan ang post"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("I-edit ang profile mo"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Kailan sila nandiyan"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Sa time zone mo."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Mga edad"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Mula sa {known} taong naabot na nagbigay ng kaarawan."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Mga taong naabot bawat araw"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Mga komunidad na kinabibilangan nila"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Huling {days} araw"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang mga insight"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Mga follower"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Wala pang grupong sapat ang laki para ipakita."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Paano lumago"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Mga paksang sinusundan nila"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Mga like"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Bago"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Mga bagong follower"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Wala sa mga post mo ang nakaabot sa sinuman sa panahong ito."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Hindi ka sinusundan"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Hindi kinokolekta ng Kyron ang bansa, lungsod, o kasarian ng sinuman, kaya walang maipapakita tungkol dito."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Mga pagbukas"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} naabot · {likes} like · {replies} sagot"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Mga taong naabot"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Isang beses lang binibilang ang bawat tao: unang beses na naipakita o nabuksan niya ang isa sa mga post mo. Sinusundan ka pa rin ng mga bagong follower; hindi binibilang ang mga nag-unfollow."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Mga sagot"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Mga repost"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Mga save"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Ipapakita kung sino ang audience mo kapag {floor} tao na ang nakakita ng mga post mo sa panahong ito. Kapag mas kaunti, puwede itong tumuro sa isang tao."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Kulang pa ang mga tao"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% sa kanila ang sumusunod na sa iyo: ang mga post mo ay kadalasang umaabot sa mga kakilala mo."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% sa kanila ang hindi ka pa sinusundan: natutuklasan ang mga post mo."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Nakaabot ka sa {reach} tao, {pct}% mas kaunti sa nakaraang panahon."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Nakaabot ka sa {reach} tao sa huling {days} araw."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Nakaabot ka sa {reach} tao, halos kapareho ng nakaraang panahon."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Walang bagong nakakita ng mga post mo sa huling {days} araw."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Nakaabot ka sa {reach} tao, {pct}% higit sa nakaraang panahon."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Nakaabot ka sa {reach} tao, {times}× ng nakaraang panahon."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Mas marami sa kanila ang sumusunod sa {name} kaysa sa ibang paksa."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Audience"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Pangkalahatang-ideya"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Tinitingnan ng mga nakakita ng post mo ang profile mo bago sila mag-follow. Ang mukha o logo ay nagsasabing may tao roon."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng profile picture"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Sabihin sa isang linya kung tungkol saan ang mga post mo, para malaman ng estranghero kung ano ang makukuha niya sa pag-follow sa iyo."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Sumulat ng bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} sa {total} post mo ang walang paksa. Inilalagay ng paksa ang post sa feed ng paksang iyon at sa harap ng mga sumusunod dito."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Lagyan ng paksa ang mga post"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} tao ang sumagot sa mga post mo at sinagot mo ang {answered}. Sapat ang malasakit nila para magsulat: ginagawang suki ng isang sagot ang mambabasa."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Sagutin ang mga sagot"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Pinakaaktibo ang audience mo sa {when}. May sasalubong sa post na inilagay bago iyon."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Mag-post kapag nandiyan sila"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} taong hindi sumusunod sa iyo ang nakakita ng mga post mo, at {gained} ang nag-follow. Hayaang sabihin ng bio at mga pinakabagong post mo kung ano ang aasahan nila sa iyo."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Gawing follower ang mga mambabasa"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Isang post ang nakaabot sa {times}× ng karaniwang naaabot ng iba mong post. Tingnan kung ano ang ginawa nitong iba, at gawin pa iyon."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Gawin pa ang gumana"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Marami sa mga nakakakita ng post mo ay nasa {name}. Ang pag-post doon ay maglalagay sa iyo sa harap ng iba pa."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Mag-post sa {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Nag-post ka ng {posts} beses sa loob ng {days} araw. Bawat post ay isa pang pagkakataong matagpuan, at pinananatili ka ng tuloy-tuloy na ritmo sa feed ng mga follower mo."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Mag-post nang mas madalas"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Hindi ka nag-post sa huling {days} araw. Walang umaabot sa kahit sino kung walang post."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Mag-post ng kahit ano"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Mga insight"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Mga nangungunang post"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Kumpara sa naunang {days} araw"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",

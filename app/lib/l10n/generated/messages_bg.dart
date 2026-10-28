@@ -337,6 +337,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Център за помощ"),
       "home": MessageLookupByLibrary.simpleMessage("Начало"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("В един ред"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Вашият профил"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Отворете общността"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Напишете публикация"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Вижте публикацията"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Редактирайте профила си"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Кога са активни"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Във вашата часова зона."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Възрасти"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "От {known} достигнати души, посочили рождена дата."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Достигнати хора на ден"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Общности, в които са"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Последните {days} дни"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Статистиката не можа да се зареди"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Последователи"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Все още няма достатъчно голяма група за показване."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Как да растете"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Теми, които следват"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Харесвания"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Ново"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Нови последователи"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Никоя от публикациите ви не е достигнала до никого през този период."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Не ви следват"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron не събира ничия държава, град или пол, така че няма какво да се покаже за тях."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Отваряния"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} достигнати · {likes} харесвания · {replies} отговора"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Достигнати хора"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Всеки човек се брои веднъж: показана му е или е отворил някоя от публикациите ви за първи път. Новите последователи все още ви следват; отписванията не се броят."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Отговори"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Споделяния"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Запазвания"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Коя е аудиторията ви се показва, щом {floor} души видят публикациите ви през този период. При по-малко това може да посочи конкретен човек."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Все още няма достатъчно хора"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% от тях вече ви следват: публикациите ви достигат най-вече до хора, които ви познават."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% от тях още не ви следват: публикациите ви се откриват."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Достигнахте до {reach} души, с {pct}% по-малко от предходния период."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Достигнахте до {reach} души през последните {days} дни."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Достигнахте до {reach} души, колкото и в предходния период."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Никой нов не е видял публикациите ви през последните {days} дни."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Достигнахте до {reach} души, с {pct}% повече от предходния период."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Достигнахте до {reach} души, {times}× повече от предходния период."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Повече от тях следват {name}, отколкото която и да е друга тема."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Аудитория"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Общ преглед"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Хората, открили ваша публикация, поглеждат профила ви, преди да ви последват. Лице или лого им казва, че там има някой."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Добавете профилна снимка"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Кажете с един ред за какво публикувате, за да знае непознатият какво ще получи, ако ви последва."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Напишете биография"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} от {total} публикации нямаха тема. Темата поставя публикацията в емисията на темата и пред хората, които я следват."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Добавяйте теми към публикациите си"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} души отговориха на публикациите ви, а вие отговорихте на {answered}. Те вече са си дали труда да напишат: отговорът превръща читателя в редовен посетител."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Отговаряйте на отговорите"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Аудиторията ви е най-активна в {when}. Публикация малко преди това има кой да я посрещне."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Публикувайте, когато са активни"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} души, които не ви следват, видяха публикациите ви, и {gained} ви последваха. Нека биографията и най-новите ви публикации казват какво могат да очакват от вас."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Превърнете читателите в последователи"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Една публикация достигна до {times}× повече хора от обичайното за другите ви. Вижте какво е направила различно и правете повече от това."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Правете повече от това, което проработи"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Много от хората, които виждат публикациите ви, са в {name}. Публикуването там ви поставя пред останалите от нея."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Публикувайте в {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Публикувахте {posts} пъти за {days} дни. Всяка публикация е още един шанс да ви открият, а постоянният ритъм ви държи в емисиите на последователите ви."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Публикувайте по-често"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Не сте публикували през последните {days} дни. Без публикация нищо не достига до никого."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Публикувайте нещо"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Статистика"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Топ публикации"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("Спрямо предходните {days} дни"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Добави интерес"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Плъзнете, за да пренаредите",

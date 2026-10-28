@@ -330,6 +330,117 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Tài khoản của bạn"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Mở cộng đồng"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Viết bài"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Xem bài viết"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Chỉnh sửa hồ sơ"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Khi nào họ có mặt"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Theo múi giờ của bạn."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Độ tuổi"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Trong số {known} người được tiếp cận đã cung cấp ngày sinh."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Số người tiếp cận mỗi ngày"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Cộng đồng họ tham gia"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} ngày qua"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Không tải được thông tin chi tiết"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Chưa có nhóm nào đủ lớn để hiển thị."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Cách phát triển"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Chủ đề họ theo dõi"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Lượt thích"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Mới"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Người theo dõi mới"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Trong giai đoạn này, không bài viết nào của bạn tiếp cận được ai."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Không theo dõi bạn"),
+      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
+          "Kyron không thu thập quốc gia, thành phố hay giới tính của ai, nên không có gì để hiển thị về những mục đó."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Lượt mở"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "tiếp cận {reach} · {likes} lượt thích · {replies} lượt trả lời"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Số người tiếp cận"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Mỗi người chỉ được tính một lần: lần đầu được hiển thị hoặc lần đầu mở một bài viết của bạn. Người theo dõi mới vẫn đang theo dõi bạn; lượt bỏ theo dõi không được tính."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Lượt trả lời"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Lượt đăng lại"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Lượt lưu"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Khán giả của bạn là ai sẽ hiển thị khi có {floor} người xem bài viết của bạn trong giai đoạn này. Ít hơn thế có thể chỉ ra một người cụ thể."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage("Chưa đủ người"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% trong số họ đã theo dõi bạn: bài viết của bạn chủ yếu đến với người quen."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% trong số họ chưa theo dõi bạn: bài viết của bạn đang được khám phá."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã tiếp cận {reach} người, ít hơn {pct}% so với giai đoạn trước."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã tiếp cận {reach} người trong {days} ngày qua."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã tiếp cận {reach} người, gần bằng giai đoạn trước."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Không có ai mới xem bài viết của bạn trong {days} ngày qua."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã tiếp cận {reach} người, nhiều hơn {pct}% so với giai đoạn trước."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã tiếp cận {reach} người, gấp {times}× giai đoạn trước."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Nhiều người trong số họ theo dõi {name} hơn bất kỳ chủ đề nào khác."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Khán giả"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Tổng quan"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Người tìm thấy bài viết của bạn sẽ xem hồ sơ trước khi theo dõi. Một khuôn mặt hoặc logo cho họ biết có người ở đó."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Thêm ảnh hồ sơ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Nói trong một dòng bạn đăng về điều gì, để người lạ biết theo dõi bạn sẽ được gì."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Viết tiểu sử"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} trong {total} bài viết của bạn không có chủ đề. Chủ đề đưa bài viết vào bảng tin của chủ đề đó và đến trước những người theo dõi nó."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Thêm chủ đề cho bài viết"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} người đã trả lời bài viết của bạn và bạn đã đáp lại {answered}. Họ đủ quan tâm để viết: một lời đáp biến người đọc thành khách quen."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Trả lời các phản hồi"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Khán giả của bạn hoạt động nhiều nhất vào {when}. Bài đăng ngay trước lúc đó sẽ có người đón nhận."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Đăng khi họ có mặt"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} người không theo dõi bạn đã xem bài viết của bạn, và {gained} người đã theo dõi. Hãy để tiểu sử và các bài mới nhất cho họ biết có thể mong đợi gì ở bạn."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Biến người đọc thành người theo dõi"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Một bài viết tiếp cận gấp {times}× số người mà các bài khác của bạn thường đạt. Xem nó đã làm gì khác, và làm thêm điều đó."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Làm thêm điều đã hiệu quả"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Nhiều người xem bài viết của bạn đang ở trong {name}. Đăng ở đó đưa bạn đến trước những người còn lại."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Đăng trong {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã đăng {posts} lần trong {days} ngày. Mỗi bài viết là thêm một cơ hội được tìm thấy, và nhịp đều đặn giữ bạn trong bảng tin của người theo dõi."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Đăng thường xuyên hơn"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Bạn chưa đăng bài trong {days} ngày qua. Không có bài viết thì chẳng gì đến được với ai."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Đăng gì đó"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Thông tin chi tiết"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Bài viết hàng đầu"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("So với {days} ngày trước đó"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
