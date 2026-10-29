@@ -241,6 +241,38 @@ def check_install_guard(name: str) -> list[str]:
     return said
 
 
+# A path to one of this repository's scripts, as a step's `run` names it.
+SCRIPT_PATH = re.compile(r"(?<![\w/.-])((?:\.\./)*scripts/[\w.-]+)")
+
+
+def check_script_paths(name: str) -> list[str]:
+    """That every script a step runs is there, from where the step runs.
+
+    A job's `defaults.run.working-directory` moves every step that does not
+    say otherwise. Both Android jobs run in app/, so the step that first
+    installed the NDK ran `scripts/install-ndk.sh` from there -- looking for
+    app/scripts/install-ndk.sh -- and every development build failed with
+    "No such file or directory". check_ndk could not see it: the step was
+    there, and in the right order. It was run from the wrong place.
+    """
+    root = WORKFLOWS.parents[1]
+    jobs = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))["jobs"]
+    said: list[str] = []
+    for job_name, job in jobs.items():
+        default = ((job.get("defaults") or {}).get("run") or {}).get(
+            "working-directory", "."
+        )
+        for step in job.get("steps") or []:
+            where = step.get("working-directory", default)
+            for script in SCRIPT_PATH.findall(str(step.get("run", ""))):
+                if not (root / where / script).is_file():
+                    said.append(
+                        f"{name}: {job_name!r} step {step.get('name')!r} runs "
+                        f"{script} from {where}/, where there is no such file"
+                    )
+    return said
+
+
 # What installs the NDK, so the build does not have to.
 NDK_INSTALL = "scripts/install-ndk.sh"
 
@@ -443,6 +475,7 @@ def main() -> int:
     for name in PUBLISHING:
         problems += check_install_guard(name)
         problems += check_ndk(name)
+        problems += check_script_paths(name)
         problems += check_bundle(name)
         problems += check_play_upload(name)
 

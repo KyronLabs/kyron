@@ -13,8 +13,11 @@
 # and tried again when a download fails. A corrupt archive costs one retry a
 # few seconds in, not a release.
 #
-# Usage: scripts/install-ndk.sh            (from the repository root)
+# Usage: scripts/install-ndk.sh
 set -euo pipefail
+
+# The paths below are the repository's, wherever this is started from.
+cd "$(dirname "$0")/.."
 
 properties="app/android/gradle.properties"
 version=$(sed -n 's/^kyron\.ndkVersion=//p' "$properties" | tr -d '[:space:]')

@@ -129,7 +129,11 @@ jobs:
       # them, one per version a module named -- and Release 19 failed there on
       # a corrupt download. scripts/install-ndk.sh installs the one version the
       # build uses, and tries again when a download fails.
+      #
+      # From the repository root: this job runs in app/ by default, and the
+      # first version of this step looked for app/scripts/install-ndk.sh.
       - name: Install the NDK
+        working-directory: .
         run: scripts/install-ndk.sh
 
       - name: Set up Flutter
