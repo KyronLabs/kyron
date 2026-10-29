@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "vás zmínil(a)",
   "ui_notif_tab_mentions": "Zmínky",
   "ui_notif_no_mentions": "Zatím žádné zmínky",
-  "ui_notif_no_mentions_detail": "Když někdo napíše vaše @jméno v příspěvku nebo odpovědi, objeví se to tady."
+  "ui_notif_no_mentions_detail": "Když někdo napíše vaše @jméno v příspěvku nebo odpovědi, objeví se to tady.",
+  "ui_share_send_message": "Poslat ve zprávě",
+  "ui_share_send_message_detail": "Lidem na Kyronu",
+  "ui_share_quote": "Citovat"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "mentioned you",
   "ui_notif_tab_mentions": "Mentions",
   "ui_notif_no_mentions": "No mentions yet",
-  "ui_notif_no_mentions_detail": "When somebody writes your @handle in a post or a reply, it shows up here."
+  "ui_notif_no_mentions_detail": "When somebody writes your @handle in a post or a reply, it shows up here.",
+  "ui_share_send_message": "Send in a message",
+  "ui_share_send_message_detail": "To people on Kyron",
+  "ui_share_quote": "Quote"
 }

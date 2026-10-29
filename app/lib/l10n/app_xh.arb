@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ukukhankanyile",
   "ui_notif_tab_mentions": "Ukukhankanywa",
   "ui_notif_no_mentions": "Akukabikho ukukhankanywa",
-  "ui_notif_no_mentions_detail": "Xa umntu ebhala i-@gama lakho kwiposti okanye kwimpendulo, kuya kuvela apha."
+  "ui_notif_no_mentions_detail": "Xa umntu ebhala i-@gama lakho kwiposti okanye kwimpendulo, kuya kuvela apha.",
+  "ui_share_send_message": "Thumela kumyalezo",
+  "ui_share_send_message_detail": "Kubantu abakwiKyron",
+  "ui_share_quote": "Caphula"
 }

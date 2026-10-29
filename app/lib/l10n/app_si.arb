@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ඔබව සඳහන් කළා",
   "ui_notif_tab_mentions": "සඳහන් කිරීම්",
   "ui_notif_no_mentions": "තවම සඳහන් කිරීම් නැත",
-  "ui_notif_no_mentions_detail": "කෙනෙකු පළ කිරීමක හෝ පිළිතුරක ඔබගේ @නාමය ලියූ විට, එය මෙහි පෙන්වයි."
+  "ui_notif_no_mentions_detail": "කෙනෙකු පළ කිරීමක හෝ පිළිතුරක ඔබගේ @නාමය ලියූ විට, එය මෙහි පෙන්වයි.",
+  "ui_share_send_message": "පණිවිඩයකින් යවන්න",
+  "ui_share_send_message_detail": "Kyron හි අයට",
+  "ui_share_quote": "උපුටා දක්වන්න"
 }

@@ -1203,6 +1203,24 @@ void main() {
       );
     });
 
+    testWidgets('stands alone when the message is only its address', (
+      tester,
+    ) async {
+      // A post sent from Share: the card says whose post and how it starts,
+      // and the address under it would only repeat it.
+      await _open(tester, [
+        DirectMessage(
+          id: 'm1',
+          body: page.url,
+          senderId: 'them',
+          createdAt: DateTime(2026),
+          linkCardRaw: page.encode(),
+        ),
+      ]);
+      expect(find.byKey(const ValueKey('link-card-m1')), findsOneWidget);
+      expect(find.text(page.url), findsNothing);
+    });
+
     testWidgets('is made while the link is written, and sent with it', (
       tester,
     ) async {

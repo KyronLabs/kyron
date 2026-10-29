@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "te mencionó",
   "ui_notif_tab_mentions": "Menciones",
   "ui_notif_no_mentions": "Aún no hay menciones",
-  "ui_notif_no_mentions_detail": "Cuando alguien escriba tu @usuario en una publicación o una respuesta, aparecerá aquí."
+  "ui_notif_no_mentions_detail": "Cuando alguien escriba tu @usuario en una publicación o una respuesta, aparecerá aquí.",
+  "ui_share_send_message": "Enviar en un mensaje",
+  "ui_share_send_message_detail": "A personas en Kyron",
+  "ui_share_quote": "Citar"
 }

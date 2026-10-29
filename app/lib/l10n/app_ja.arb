@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "があなたをメンションしました",
   "ui_notif_tab_mentions": "メンション",
   "ui_notif_no_mentions": "まだメンションはありません",
-  "ui_notif_no_mentions_detail": "誰かが投稿や返信であなたの@ユーザー名を書くと、ここに表示されます。"
+  "ui_notif_no_mentions_detail": "誰かが投稿や返信であなたの@ユーザー名を書くと、ここに表示されます。",
+  "ui_share_send_message": "メッセージで送る",
+  "ui_share_send_message_detail": "Kyronのユーザーへ",
+  "ui_share_quote": "引用"
 }

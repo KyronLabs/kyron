@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "از شما نام برد",
   "ui_notif_tab_mentions": "اشاره‌ها",
   "ui_notif_no_mentions": "هنوز اشاره‌ای نیست",
-  "ui_notif_no_mentions_detail": "وقتی کسی @نام‌کاربری شما را در پست یا پاسخی بنویسد، اینجا نشان داده می‌شود."
+  "ui_notif_no_mentions_detail": "وقتی کسی @نام‌کاربری شما را در پست یا پاسخی بنویسد، اینجا نشان داده می‌شود.",
+  "ui_share_send_message": "ارسال در پیام",
+  "ui_share_send_message_detail": "به افراد در Kyron",
+  "ui_share_quote": "نقل‌قول"
 }

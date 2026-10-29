@@ -1728,6 +1728,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote":
+          MessageLookupByLibrary.simpleMessage("उद्धृत गर्नुहोस्"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("सन्देशमा पठाउनुहोस्"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron मा भएका मानिसहरूलाई"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("के बारे थियो"),

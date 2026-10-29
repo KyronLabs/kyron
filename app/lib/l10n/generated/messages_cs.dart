@@ -1781,6 +1781,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Získat pomoc od našeho týmu",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Sdílet"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citovat"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Poslat ve zprávě"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Lidem na Kyronu"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Sdílet tento příspěvek",
       ),

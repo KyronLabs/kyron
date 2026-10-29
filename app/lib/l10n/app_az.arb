@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "sizi qeyd etdi",
   "ui_notif_tab_mentions": "Qeydlər",
   "ui_notif_no_mentions": "Hələ qeyd yoxdur",
-  "ui_notif_no_mentions_detail": "Kimsə paylaşımda və ya cavabda @istifadəçi adınızı yazanda, burada görünür."
+  "ui_notif_no_mentions_detail": "Kimsə paylaşımda və ya cavabda @istifadəçi adınızı yazanda, burada görünür.",
+  "ui_share_send_message": "Mesajla göndər",
+  "ui_share_send_message_detail": "Kyron-dakı insanlara",
+  "ui_share_quote": "Sitat gətir"
 }

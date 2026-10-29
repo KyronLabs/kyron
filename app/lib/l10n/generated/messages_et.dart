@@ -1764,6 +1764,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Saate abi meie meeskonnalt.",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Jaga"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Tsiteeri"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Saada sõnumiga"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Inimestele Kyronis"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Jaga seda postitust",
       ),

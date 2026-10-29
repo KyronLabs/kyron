@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "jūs pieminēja",
   "ui_notif_tab_mentions": "Pieminējumi",
   "ui_notif_no_mentions": "Vēl nav pieminējumu",
-  "ui_notif_no_mentions_detail": "Kad kāds ierakstā vai atbildē uzrakstīs jūsu @lietotājvārdu, tas parādīsies šeit."
+  "ui_notif_no_mentions_detail": "Kad kāds ierakstā vai atbildē uzrakstīs jūsu @lietotājvārdu, tas parādīsies šeit.",
+  "ui_share_send_message": "Sūtīt ziņā",
+  "ui_share_send_message_detail": "Cilvēkiem Kyron",
+  "ui_share_quote": "Citēt"
 }

@@ -1811,6 +1811,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Получете помощ от нашия екип",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Сподели"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Цитирай"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Изпрати в съобщение"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("До хора в Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Сподели тази публикация",
       ),

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "กล่าวถึงคุณ",
   "ui_notif_tab_mentions": "การกล่าวถึง",
   "ui_notif_no_mentions": "ยังไม่มีการกล่าวถึง",
-  "ui_notif_no_mentions_detail": "เมื่อมีคนเขียน @ชื่อผู้ใช้ของคุณในโพสต์หรือการตอบกลับ จะแสดงที่นี่"
+  "ui_notif_no_mentions_detail": "เมื่อมีคนเขียน @ชื่อผู้ใช้ของคุณในโพสต์หรือการตอบกลับ จะแสดงที่นี่",
+  "ui_share_send_message": "ส่งในข้อความ",
+  "ui_share_send_message_detail": "ถึงผู้คนบน Kyron",
+  "ui_share_quote": "อ้างอิง"
 }

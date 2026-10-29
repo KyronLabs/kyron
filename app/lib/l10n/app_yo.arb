@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "dá ọ lórúkọ",
   "ui_notif_tab_mentions": "Àwọn ìdárúkọ",
   "ui_notif_no_mentions": "Kò sí ìdárúkọ síbẹ̀",
-  "ui_notif_no_mentions_detail": "Nígbà tí ẹnìkan bá kọ @orúkọ rẹ nínú ìfiránṣẹ́ tàbí èsì, yóò hàn níbí."
+  "ui_notif_no_mentions_detail": "Nígbà tí ẹnìkan bá kọ @orúkọ rẹ nínú ìfiránṣẹ́ tàbí èsì, yóò hàn níbí.",
+  "ui_share_send_message": "Fi ránṣẹ́ nínú ìfiránṣẹ́ àdáni",
+  "ui_share_send_message_detail": "Sí àwọn ènìyàn lórí Kyron",
+  "ui_share_quote": "Fa ọ̀rọ̀ yọ"
 }

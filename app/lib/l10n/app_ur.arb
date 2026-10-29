@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "نے آپ کا ذکر کیا",
   "ui_notif_tab_mentions": "ذکر",
   "ui_notif_no_mentions": "ابھی کوئی ذکر نہیں",
-  "ui_notif_no_mentions_detail": "جب کوئی کسی پوسٹ یا جواب میں آپ کا @ہینڈل لکھے گا، تو وہ یہاں نظر آئے گا۔"
+  "ui_notif_no_mentions_detail": "جب کوئی کسی پوسٹ یا جواب میں آپ کا @ہینڈل لکھے گا، تو وہ یہاں نظر آئے گا۔",
+  "ui_share_send_message": "پیغام میں بھیجیں",
+  "ui_share_send_message_detail": "Kyron پر لوگوں کو",
+  "ui_share_quote": "اقتباس کریں"
 }

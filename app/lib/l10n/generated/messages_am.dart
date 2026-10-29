@@ -1570,6 +1570,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_settings_team_help":
           MessageLookupByLibrary.simpleMessage("ከቡድናችን ይረዱ"),
       "ui_share": MessageLookupByLibrary.simpleMessage("አጋራ"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("ጥቀስ"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("በመልእክት ላክ"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("በKyron ላሉ ሰዎች"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage("ይህን ጽሑፍ አጋራ"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("ስለ ምን ነበር"),
       "ui_standing_account_banned":

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ви спомена",
   "ui_notif_tab_mentions": "Споменавания",
   "ui_notif_no_mentions": "Още няма споменавания",
-  "ui_notif_no_mentions_detail": "Когато някой напише вашия @профил в публикация или отговор, това се появява тук."
+  "ui_notif_no_mentions_detail": "Когато някой напише вашия @профил в публикация или отговор, това се появява тук.",
+  "ui_share_send_message": "Изпрати в съобщение",
+  "ui_share_send_message_detail": "До хора в Kyron",
+  "ui_share_quote": "Цитирай"
 }

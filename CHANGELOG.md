@@ -13,6 +13,14 @@ section for that version, so what is written here is what people read.
 ## [Unreleased]
 ### Added
 
+- **Send a post to somebody on Kyron.** Share on a post now starts with
+  "Send in a message": pick one or more people -- the ones you talk to, or
+  anybody by searching -- add a line if you like, and Send. It arrives as a
+  card with whose post it is and how it starts, and tapping it opens the
+  post in Kyron. Every way to share used to lead out of the app.
+- **Kyron's own links open in Kyron.** A link to a post, a profile or a
+  community -- in a message, a post or anywhere else -- opens that screen,
+  rather than a web page.
 - **You're told when somebody mentions you.** Writing @yourhandle in a post
   or a reply now sends you a notification -- "Ada mentioned you: …" with
   the words they wrote -- and puts it in Notifications, under a new

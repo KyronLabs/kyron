@@ -1474,6 +1474,10 @@ class _Bubble extends StatelessWidget {
             ? scheme.onPrimary
             : scheme.onSurface;
     final card = hasText && !message.unreadable ? message.linkCard : null;
+    // A message that is only its card's address -- a post sent from Share --
+    // shows the card alone: the address under it says nothing the card does
+    // not, and for a post it is an address that serves nothing on the web.
+    final onlyTheCard = card != null && message.body.trim() == card.url;
     final width = MediaQuery.sizeOf(context).width;
 
     return Container(
@@ -1565,7 +1569,7 @@ class _Bubble extends StatelessWidget {
               radius: 0,
               placeholder: false,
             ),
-          if (hasText)
+          if (hasText && !onlyTheCard)
             Padding(
               padding: card == null
                   ? EdgeInsets.zero

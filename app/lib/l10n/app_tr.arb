@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "senden bahsetti",
   "ui_notif_tab_mentions": "Bahsetmeler",
   "ui_notif_no_mentions": "Henüz bahsetme yok",
-  "ui_notif_no_mentions_detail": "Biri bir gönderide veya yanıtta @kullanıcı adını yazdığında burada görünür."
+  "ui_notif_no_mentions_detail": "Biri bir gönderide veya yanıtta @kullanıcı adını yazdığında burada görünür.",
+  "ui_share_send_message": "Mesajla gönder",
+  "ui_share_send_message_detail": "Kyron'daki kişilere",
+  "ui_share_quote": "Alıntıla"
 }

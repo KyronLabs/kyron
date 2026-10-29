@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "nævnte dig",
   "ui_notif_tab_mentions": "Omtaler",
   "ui_notif_no_mentions": "Ingen omtaler endnu",
-  "ui_notif_no_mentions_detail": "Når nogen skriver dit @brugernavn i et opslag eller et svar, vises det her."
+  "ui_notif_no_mentions_detail": "Når nogen skriver dit @brugernavn i et opslag eller et svar, vises det her.",
+  "ui_share_send_message": "Send i en besked",
+  "ui_share_send_message_detail": "Til folk på Kyron",
+  "ui_share_quote": "Citér"
 }

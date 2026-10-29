@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "te-a menționat",
   "ui_notif_tab_mentions": "Mențiuni",
   "ui_notif_no_mentions": "Încă nu există mențiuni",
-  "ui_notif_no_mentions_detail": "Când cineva îți scrie @numele de utilizator într-o postare sau într-un răspuns, apare aici."
+  "ui_notif_no_mentions_detail": "Când cineva îți scrie @numele de utilizator într-o postare sau într-un răspuns, apare aici.",
+  "ui_share_send_message": "Trimite într-un mesaj",
+  "ui_share_send_message_detail": "Către oameni de pe Kyron",
+  "ui_share_quote": "Citează"
 }
