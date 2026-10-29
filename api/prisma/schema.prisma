@@ -170,7 +170,11 @@ model UserProfile {
   avatarUrl   String?
   coverUrl    String?
   bio         String?
+  // Free text from before the country picker. Kept, but nothing reads it.
   location    String?
+  // ISO 3166-1 alpha-2 (plus XK), picked from a list. Shown on the profile
+  // and under every post, and counted -- above the floors -- in Insights.
+  country     String?   @db.VarChar(2)
   website     String?
   dateOfBirth DateTime? @db.Date
 

@@ -50,6 +50,11 @@ export interface InsightsReport {
     agesKnown: number;
     interests: AudienceGroup[];
     communities: AudienceGroup[];
+    /** Countries with at least [InsightsService.minGroup] people in them,
+     * the five largest, as ISO codes: the app names them in its language. */
+    countries: { code: string; count: number }[];
+    /** How many of the people reached have a country on their profile. */
+    countriesKnown: number;
     /** Sittings on your posts by hour of the week, UTC, Monday 00:00 first. */
     activeHours: number[];
   };
@@ -390,7 +395,7 @@ export class InsightsService {
       WITH ${InsightsService.contacts(userId, since, until)},
       reached AS (SELECT DISTINCT c."viewerId" AS id FROM contacts c)`;
 
-    const [ages, interests, communities, hours] = await Promise.all([
+    const [ages, interests, communities, countries, hours] = await Promise.all([
       this.prisma.$queryRaw<{ age: number; count: bigint }[]>(Prisma.sql`
         ${reached}
         SELECT date_part('year', age(${until}::timestamptz, pr."dateOfBirth"))::int AS age,
@@ -426,6 +431,16 @@ export class InsightsService {
         LIMIT 5
       `,
       ),
+      // Every country, small ones included, so the known total can be
+      // counted from the same rows; the floor is applied below.
+      this.prisma.$queryRaw<{ code: string; count: bigint }[]>(Prisma.sql`
+        ${reached}
+        SELECT pr.country AS code, COUNT(*) AS count
+        FROM reached r JOIN "UserProfile" pr ON pr."userId" = r.id
+        WHERE pr.country IS NOT NULL
+        GROUP BY 1
+        ORDER BY 2 DESC, 1
+      `),
       // When the people reached were last on these posts. Last rather than
       // first: it is when they are around, which is what a best time to
       // post is about.
@@ -478,6 +493,11 @@ export class InsightsService {
       agesKnown,
       interests: interests.map(group),
       communities: communities.map(group),
+      countries: countries
+        .map((r) => ({ code: r.code, count: Number(r.count) }))
+        .filter((c) => c.count >= floor)
+        .slice(0, 5),
+      countriesKnown: countries.reduce((n, r) => n + Number(r.count), 0),
       activeHours,
     };
   }
@@ -488,6 +508,8 @@ export class InsightsService {
       agesKnown: 0,
       interests: [],
       communities: [],
+      countries: [],
+      countriesKnown: 0,
       activeHours: new Array<number>(168).fill(0),
     };
   }

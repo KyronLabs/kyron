@@ -127,11 +127,13 @@ run('Insights, against a real database', () => {
       });
     }
     // Ages: six aged 20, two aged 40. Only 18-24 clears the floor.
+    // Countries: five in Nigeria, two in Ghana. Only Nigeria clears it.
     for (let i = 0; i < 8; i++) {
       await prisma.userProfile.create({
         data: {
           userId: viewers[i],
           dateOfBirth: new Date(i < 6 ? '2006-01-01' : '1986-01-01'),
+          country: i < 5 ? 'NG' : i < 7 ? 'GH' : null,
         },
       });
     }
@@ -192,6 +194,9 @@ run('Insights, against a real database', () => {
     expect(audience.communities).toEqual([]);
     expect(audience.ages).toEqual([{ band: '18-24', count: 6 }]);
     expect(audience.agesKnown).toBe(8);
+    // Two in Ghana are counted as known but not named.
+    expect(audience.countries).toEqual([{ code: 'NG', count: 5 }]);
+    expect(audience.countriesKnown).toBe(7);
     // Thirty sittings, all on one hour two days ago (a Monday, 12:00 UTC).
     expect(audience.activeHours.reduce((a, b) => a + b, 0)).toBe(40);
     expect(audience.activeHours[12]).toBe(30);

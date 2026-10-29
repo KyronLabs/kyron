@@ -1,5 +1,6 @@
 // src/modules/profile/dto/update-profile.dto.ts
-import { IsOptional, IsString, IsArray } from 'class-validator';
+import { IsOptional, IsString, IsArray, IsIn } from 'class-validator';
+import { COUNTRY_CODES } from '../../../common/countries';
 
 export class UpdateProfileDto {
   @IsOptional()
@@ -10,9 +11,22 @@ export class UpdateProfileDto {
   @IsString()
   bio?: string;
 
+  /**
+   * Free text, from app versions before the country picker. Still accepted so
+   * they can save, and still stored, but no longer shown anywhere.
+   */
   @IsOptional()
   @IsString()
   location?: string;
+
+  /**
+   * Where they are, as a code from the list, or null to say nothing. A list
+   * rather than text so it can be counted: "Lagos", "lagos nigeria" and "9ja"
+   * are one place and three strings.
+   */
+  @IsOptional()
+  @IsIn(COUNTRY_CODES)
+  country?: string | null;
 
   @IsOptional()
   @IsString()
