@@ -1120,5 +1120,9 @@
   "follow_author": "Följ {name}",
   "ins_countries": "Länder",
   "ins_countries_note": "Av de {known} nådda personer som har ett land på sin profil.",
-  "ins_not_collected_city": "Länderna är de som folk har valt på sina profiler. Kyron samlar inte in någons stad eller kön, så det finns inget att visa för dem."
+  "ins_not_collected_city": "Länderna är de som folk har valt på sina profiler. Kyron samlar inte in någons stad eller kön, så det finns inget att visa för dem.",
+  "ui_notif_mentioned": "nämnde dig",
+  "ui_notif_tab_mentions": "Omnämnanden",
+  "ui_notif_no_mentions": "Inga omnämnanden ännu",
+  "ui_notif_no_mentions_detail": "När någon skriver ditt @användarnamn i ett inlägg eller ett svar visas det här."
 }

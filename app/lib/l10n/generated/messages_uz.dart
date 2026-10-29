@@ -1480,6 +1480,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("sizga obuna bo‘ldi"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("postingizni yoqtirdi"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("sizni tilga oldi"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Hali eslatmalar yo‘q"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kimdir post yoki javobda @foydalanuvchi nomingizni yozsa, u shu yerda ko‘rinadi."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Eskiroq"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Hamjamiyat chatidagi xabaringiz o‘chirildi"),
@@ -1510,6 +1516,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Obunachilar"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Yoqtirishlar"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Eslatmalar"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Javoblar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Shu hafta"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bugun"),

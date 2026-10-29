@@ -1473,6 +1473,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("tẹ̀lé ọ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("fẹ́ràn ìfiránṣẹ́ rẹ"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("dá ọ lórúkọ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Kò sí ìdárúkọ síbẹ̀"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Nígbà tí ẹnìkan bá kọ @orúkọ rẹ nínú ìfiránṣẹ́ tàbí èsì, yóò hàn níbí."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Àtijọ́"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "A ti yọ ìfiranṣẹ́ rẹ kúrò nínú ìjíròrò àwùjọ"),
@@ -1503,6 +1508,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Àwọn ìtẹ̀lé"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Àwọn ìfẹ́ràn"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìdárúkọ"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Àwọn èsì"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ọ̀sẹ̀ yìí"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Òní"),

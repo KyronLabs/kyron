@@ -1120,5 +1120,9 @@
   "follow_author": "Bi {name}",
   "ins_countries": "Ƙasashe",
   "ins_countries_note": "Daga cikin mutum {known} da aka kai wa waɗanda suke da ƙasa a bayanansu.",
-  "ins_not_collected_city": "Ƙasashen su ne waɗanda mutane suka zaɓa a bayanansu. Kyron ba ya tattara birnin kowa ko jinsinsa, don haka babu abin da za a nuna musu."
+  "ins_not_collected_city": "Ƙasashen su ne waɗanda mutane suka zaɓa a bayanansu. Kyron ba ya tattara birnin kowa ko jinsinsa, don haka babu abin da za a nuna musu.",
+  "ui_notif_mentioned": "ya ambace ka",
+  "ui_notif_tab_mentions": "Ambato",
+  "ui_notif_no_mentions": "Babu ambato tukuna",
+  "ui_notif_no_mentions_detail": "Idan wani ya rubuta @sunanka a rubutu ko amsa, zai bayyana a nan."
 }

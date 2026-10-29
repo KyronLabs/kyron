@@ -1120,5 +1120,9 @@
   "follow_author": "{name} követése",
   "ins_countries": "Országok",
   "ins_countries_note": "Az elért emberek közül {known}, akiknek van ország a profilján.",
-  "ins_not_collected_city": "Az országok azok, amelyeket az emberek a profiljukon választottak. A Kyron senkinek a városát vagy nemét nem gyűjti, így ezekről nincs mit megmutatni."
+  "ins_not_collected_city": "Az országok azok, amelyeket az emberek a profiljukon választottak. A Kyron senkinek a városát vagy nemét nem gyűjti, így ezekről nincs mit megmutatni.",
+  "ui_notif_mentioned": "megemlített",
+  "ui_notif_tab_mentions": "Említések",
+  "ui_notif_no_mentions": "Még nincsenek említések",
+  "ui_notif_no_mentions_detail": "Ha valaki beírja a @felhasználóneved egy bejegyzésbe vagy válaszba, itt jelenik meg."
 }

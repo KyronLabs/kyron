@@ -1468,6 +1468,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vás sleduje"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("dal(a) like vášmu príspevku"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("vás spomenul(a)"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ žiadne zmienky"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Keď niekto napíše vaše @meno v príspevku alebo odpovedi, zobrazí sa to tu."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Staršie"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Vaša správa v komunitnom chate bola odstránená"),
@@ -1497,6 +1503,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Sledovatelia"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lajky"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Zmienky"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odpovede"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Tento týždeň"),

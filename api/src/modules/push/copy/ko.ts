@@ -13,6 +13,8 @@ export const ko: Copy = {
   reposted_quote: '회원님의 게시물을 리포스트했습니다: “{snippet}”',
   replied: '회원님에게 답글을 남겼습니다',
   replied_quote: '답글: “{snippet}”',
+  mentioned: '회원님을 언급했습니다',
+  mentioned_quote: '회원님을 언급했습니다: “{snippet}”',
   group: '그룹',
   new_message: '새 메시지',
   dm_once: '한 번만 볼 수 있는 것을 보냈습니다',

@@ -11,6 +11,14 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **You're told when somebody mentions you.** Writing @yourhandle in a post
+  or a reply now sends you a notification -- "Ada mentioned you: …" with
+  the words they wrote -- and puts it in Notifications, under a new
+  Mentions tab. Before, nothing recorded a mention at all. Not for the
+  writer themselves, nobody blocked either way, and not twice for a reply
+  you are already told about.
 
 ## [0.1.18] - 2026-10-29
 ### Fixed

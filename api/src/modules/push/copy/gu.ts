@@ -13,6 +13,8 @@ export const gu: Copy = {
   reposted_quote: 'તમારી પોસ્ટ ફરી શેર કરી: “{snippet}”',
   replied: 'તમને જવાબ આપ્યો',
   replied_quote: 'જવાબ આપ્યો: “{snippet}”',
+  mentioned: 'તમારો ઉલ્લેખ કર્યો',
+  mentioned_quote: 'તમારો ઉલ્લેખ કર્યો: “{snippet}”',
   group: 'ગ્રુપ',
   new_message: 'નવો મેસેજ',
   dm_once: 'એક વાર જોવા માટે કંઈક મોકલ્યું',

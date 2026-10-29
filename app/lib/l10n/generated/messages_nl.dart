@@ -1467,6 +1467,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("volgt je nu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("vindt je post leuk"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("noemde je"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Nog geen vermeldingen"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Als iemand je @gebruikersnaam in een bericht of reactie schrijft, zie je dat hier."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ouder"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Je bericht in een communitychat is verwijderd"),
@@ -1495,6 +1500,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Alles"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Volgers"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Likes"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Vermeldingen"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Reacties"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Deze week"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Vandaag"),

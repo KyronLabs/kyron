@@ -13,6 +13,8 @@ export const es: Copy = {
   reposted_quote: 'Compartió tu publicación: «{snippet}»',
   replied: 'Te respondió',
   replied_quote: 'Respondió: «{snippet}»',
+  mentioned: 'Te mencionó',
+  mentioned_quote: 'Te mencionó: «{snippet}»',
   group: 'Grupo',
   new_message: 'Mensaje nuevo',
   dm_once: 'Te envió algo para ver una vez',

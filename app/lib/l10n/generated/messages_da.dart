@@ -1493,6 +1493,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("følger dig nu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("synes godt om dit opslag"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("nævnte dig"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Ingen omtaler endnu"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Når nogen skriver dit @brugernavn i et opslag eller et svar, vises det her."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ældre"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Din besked i en communitychat er blevet fjernet"),
@@ -1522,6 +1527,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Følgere"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Omtaler"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Svar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Denne uge"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("I dag"),

@@ -1464,6 +1464,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("sochiri gị"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("masịrị ya post gị"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("kpọtụrụ gị aha"),
+      "ui_notif_no_mentions": MessageLookupByLibrary.simpleMessage(
+          "Enweghị onye kpọtụrụ gị aha ka"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Mgbe mmadụ dere @aha gị n'ihe o zipụtara ma ọ bụ na nzaghachi, ọ ga-egosi ebe a."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ndị ochie"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ewepụrụ ozi gị na mkparịta ụka obodo"),
@@ -1492,6 +1498,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Niile"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Nsochi"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Mmasị"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Nkọwapụta aha"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Nzaghachi"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Izu a"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Taa"),

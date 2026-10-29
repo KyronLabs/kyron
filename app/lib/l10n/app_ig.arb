@@ -1120,5 +1120,9 @@
   "follow_author": "Soro {name}",
   "ins_countries": "Obodo dị iche iche",
   "ins_countries_note": "Site n'ime mmadụ {known} e ruru bụ ndị nwere obodo na profaịlụ ha.",
-  "ins_not_collected_city": "Obodo ndị a bụ ndị mmadụ họọrọ na profaịlụ ha. Kyron anaghị anakọta obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ nweghị ihe a ga-egosi maka ha."
+  "ins_not_collected_city": "Obodo ndị a bụ ndị mmadụ họọrọ na profaịlụ ha. Kyron anaghị anakọta obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ nweghị ihe a ga-egosi maka ha.",
+  "ui_notif_mentioned": "kpọtụrụ gị aha",
+  "ui_notif_tab_mentions": "Nkọwapụta aha",
+  "ui_notif_no_mentions": "Enweghị onye kpọtụrụ gị aha ka",
+  "ui_notif_no_mentions_detail": "Mgbe mmadụ dere @aha gị n'ihe o zipụtara ma ọ bụ na nzaghachi, ọ ga-egosi ebe a."
 }

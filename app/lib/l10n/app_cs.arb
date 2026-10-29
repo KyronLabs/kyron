@@ -1120,5 +1120,9 @@
   "follow_author": "Sledovat {name}",
   "ins_countries": "Země",
   "ins_countries_note": "Z {known} oslovených lidí, kteří mají na profilu zemi.",
-  "ins_not_collected_city": "Země jsou ty, které si lidé zvolili na svých profilech. Kyron nesbírá ničí město ani pohlaví, takže pro ně není co zobrazit."
+  "ins_not_collected_city": "Země jsou ty, které si lidé zvolili na svých profilech. Kyron nesbírá ničí město ani pohlaví, takže pro ně není co zobrazit.",
+  "ui_notif_mentioned": "vás zmínil(a)",
+  "ui_notif_tab_mentions": "Zmínky",
+  "ui_notif_no_mentions": "Zatím žádné zmínky",
+  "ui_notif_no_mentions_detail": "Když někdo napíše vaše @jméno v příspěvku nebo odpovědi, objeví se to tady."
 }

@@ -1620,6 +1620,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("σας ακολουθεί"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
           "έκανε «μου αρέσει» στην ανάρτησή σας"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("σας ανέφερε"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Δεν υπάρχουν ακόμα αναφορές"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Όταν κάποιος γράψει το @όνομά σας σε μια ανάρτηση ή απάντηση, θα εμφανιστεί εδώ."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Παλαιότερα"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Το μήνυμά σας σε συνομιλία κοινότητας αφαιρέθηκε"),
@@ -1649,6 +1654,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Ακόλουθοι"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("«Μου αρέσει»"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Αναφορές"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Απαντήσεις"),
       "ui_notif_this_week":

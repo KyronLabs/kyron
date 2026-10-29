@@ -13,6 +13,8 @@ export const ms: Copy = {
   reposted_quote: 'Menyiarkan semula siaran anda: “{snippet}”',
   replied: 'Membalas anda',
   replied_quote: 'Membalas: “{snippet}”',
+  mentioned: 'Menyebut anda',
+  mentioned_quote: 'Menyebut anda: “{snippet}”',
   group: 'Kumpulan',
   new_message: 'Mesej baharu',
   dm_once: 'Menghantar sesuatu untuk dilihat sekali',

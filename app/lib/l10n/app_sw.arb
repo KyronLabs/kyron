@@ -1120,5 +1120,9 @@
   "follow_author": "Mfuate {name}",
   "ins_countries": "Nchi",
   "ins_countries_note": "Kutoka kwa watu {known} waliofikiwa ambao wana nchi kwenye wasifu wao.",
-  "ins_not_collected_city": "Nchi ni zile ambazo watu walichagua kwenye wasifu wao. Kyron haikusanyi jiji wala jinsia ya mtu yeyote, kwa hivyo hakuna cha kuonyesha kuhusu hayo."
+  "ins_not_collected_city": "Nchi ni zile ambazo watu walichagua kwenye wasifu wao. Kyron haikusanyi jiji wala jinsia ya mtu yeyote, kwa hivyo hakuna cha kuonyesha kuhusu hayo.",
+  "ui_notif_mentioned": "amekutaja",
+  "ui_notif_tab_mentions": "Kutajwa",
+  "ui_notif_no_mentions": "Bado hujatajwa",
+  "ui_notif_no_mentions_detail": "Mtu anapoandika @jina lako kwenye chapisho au jibu, litaonekana hapa."
 }

@@ -13,6 +13,8 @@ export const ka: Copy = {
   reposted_quote: 'გააზიარა თქვენი პოსტი: „{snippet}“',
   replied: 'გიპასუხათ',
   replied_quote: 'უპასუხა: „{snippet}“',
+  mentioned: 'მოგიხსენია',
+  mentioned_quote: 'მოგიხსენია: „{snippet}“',
   group: 'ჯგუფი',
   new_message: 'ახალი შეტყობინება',
   dm_once: 'გამოგიგზავნათ რაღაც ერთჯერადი ნახვისთვის',

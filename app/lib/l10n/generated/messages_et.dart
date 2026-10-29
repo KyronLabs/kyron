@@ -1515,6 +1515,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("jälgib sind nüüd"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
           "märkis sinu postituse meeldivaks"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("mainis sind"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Mainimisi veel pole"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui keegi kirjutab su @kasutajanime postitusse või vastusesse, näed seda siin."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Varasemad"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Sinu sõnum kogukonna vestluses eemaldati"),
@@ -1543,6 +1548,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Kõik"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Jälgijad"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Meeldimised"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Mainimised"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Vastused"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Sel nädalal"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Täna"),

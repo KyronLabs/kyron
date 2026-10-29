@@ -494,6 +494,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("님이 회원님을 팔로우했습니다"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("님이 회원님의 게시물을 좋아합니다"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("님이 회원님을 언급했습니다"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("아직 언급이 없습니다"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "누군가 게시물이나 답글에 회원님의 @사용자 이름을 쓰면 여기에 표시됩니다."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("이전"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("커뮤니티 채팅의 메시지가 삭제되었습니다"),
@@ -522,6 +528,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("전체"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("팔로우"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("좋아요"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("언급"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("답글"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("이번 주"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("오늘"),

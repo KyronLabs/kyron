@@ -13,6 +13,8 @@ export const el: Copy = {
   reposted_quote: 'Αναδημοσίευσε την ανάρτησή σας: «{snippet}»',
   replied: 'Σας απάντησε',
   replied_quote: 'Απάντησε: «{snippet}»',
+  mentioned: 'Σε ανέφερε',
+  mentioned_quote: 'Σε ανέφερε: «{snippet}»',
   group: 'Ομάδα',
   new_message: 'Νέο μήνυμα',
   dm_once: 'Έστειλε κάτι για μία προβολή',

@@ -13,6 +13,8 @@ export const hu: Copy = {
   reposted_quote: 'Megosztotta a bejegyzésedet: „{snippet}”',
   replied: 'Válaszolt neked',
   replied_quote: 'Válaszolt: „{snippet}”',
+  mentioned: 'Megemlített',
+  mentioned_quote: 'Megemlített: „{snippet}”',
   group: 'Csoport',
   new_message: 'Új üzenet',
   dm_once: 'Egyszer megtekinthető üzenetet küldött',

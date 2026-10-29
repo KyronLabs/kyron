@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {
   AppealStatus,
+  Prisma,
   ModerationKind,
   ReportReason,
   ReportStatus,
@@ -13,6 +14,8 @@ export type NotificationKind =
   | 'comment'
   | 'follow'
   | 'repost'
+  /** Somebody wrote @you in a post or a reply. */
+  | 'mention'
   /** Something the team decided about this account, an appeal answered, or
    * a decision reversed. */
   | 'account'
@@ -62,7 +65,7 @@ export interface NotificationItem {
   postId: string | null;
   /** The start of that post, so the row says which one without a fetch. */
   postSnippet: string | null;
-  /** What was written, for a comment. */
+  /** What was written, for a comment or a mention. */
   content: string | null;
   createdAt: Date;
   /** Nothing this new had been seen last time the screen was opened. */
@@ -104,6 +107,8 @@ export class NotificationsService {
       /** Decisions and report outcomes too. Asked for, because an app from
        * before them reads an unknown row as "Someone liked your post". */
       moderation?: boolean;
+      /** Mentions too, asked for for the same reason. */
+      mentions?: boolean;
     } = {},
   ): Promise<{ items: NotificationItem[]; nextCursor: string | null }> {
     const limit = options.limit ?? DEFAULT_LIMIT;
@@ -125,13 +130,16 @@ export class NotificationsService {
     // brought enough rows to fill it alone.
     const when = { gte: since, ...(before ? { lt: before } : {}) };
     const notMine = { userId: { not: userId, notIn: blocked } };
+    const optIn: Partial<Record<NotificationKind, boolean | undefined>> = {
+      account: options.moderation,
+      report: options.moderation,
+      mention: options.mentions,
+    };
     const wanted = (kind: NotificationKind) =>
-      kind === 'account' || kind === 'report'
-        ? options.moderation === true &&
-          (!options.kind || options.kind === kind)
-        : !options.kind || options.kind === kind;
+      (kind in optIn ? optIn[kind] === true : true) &&
+      (!options.kind || options.kind === kind);
 
-    const [likes, comments, reposts, follows] = await Promise.all([
+    const [likes, comments, reposts, follows, mentions] = await Promise.all([
       wanted('like')
         ? this.prisma.postLike.findMany({
             where: { createdAt: when, post: { authorId: userId }, ...notMine },
@@ -196,6 +204,7 @@ export class NotificationsService {
             },
           })
         : [],
+      wanted('mention') ? this.mentionRows(userId, when, blocked, limit) : [],
     ]);
 
     const moderation = await this.moderationRows(userId, when, limit, {
@@ -244,6 +253,17 @@ export class NotificationsService {
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
       })),
+      ...mentions.map((row) => ({
+        id: `mention:${row.id}`,
+        kind: 'mention' as const,
+        actor: this.actor(row.author),
+        postId: row.postId,
+        postSnippet: this.snippet(row.post?.content),
+        // Where they named you: the reply's words, or the post's.
+        content: this.snippet(row.comment?.content ?? row.post?.content),
+        createdAt: row.createdAt,
+        unread: this.isUnread(row.createdAt, seenAt),
+      })),
       ...moderation.map((row) => ({
         ...row,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -265,7 +285,7 @@ export class NotificationsService {
   /** What the tab bar's badge counts. */
   async unreadCount(
     userId: string,
-    options: { moderation?: boolean } = {},
+    options: { moderation?: boolean; mentions?: boolean } = {},
   ): Promise<{ count: number }> {
     const me = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -282,7 +302,7 @@ export class NotificationsService {
     const fresh = { createdAt: { gt: since } };
     const notMine = { userId: { not: userId, notIn: blocked } };
 
-    const [likes, comments, reposts, follows] = await Promise.all([
+    const [likes, comments, reposts, follows, mentions] = await Promise.all([
       this.prisma.postLike.count({ where: { ...fresh, ...mine, ...notMine } }),
       this.prisma.comment.count({
         where: {
@@ -300,6 +320,11 @@ export class NotificationsService {
           followerId: { not: userId, notIn: blocked },
         },
       }),
+      options.mentions
+        ? this.prisma.mention.count({
+            where: { ...fresh, ...this.liveMention(userId, blocked) },
+          })
+        : 0,
     ]);
 
     const moderation = options.moderation
@@ -311,7 +336,47 @@ export class NotificationsService {
         ).length
       : 0;
 
-    return { count: likes + comments + reposts + follows + moderation };
+    return {
+      count: likes + comments + reposts + follows + mentions + moderation,
+    };
+  }
+
+  /**
+   * Where somebody wrote @this-account, newest first.
+   *
+   * Only while what they wrote still stands: a deleted post or reply takes
+   * its mention with it, as a deleted comment takes its row off the screen.
+   */
+  private mentionRows(
+    userId: string,
+    when: { gte?: Date; gt?: Date; lt?: Date },
+    blocked: string[],
+    limit: number,
+  ) {
+    return this.prisma.mention.findMany({
+      where: { createdAt: when, ...this.liveMention(userId, blocked) },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+      select: {
+        id: true,
+        createdAt: true,
+        postId: true,
+        author: { select: this.actorFields },
+        post: { select: { content: true } },
+        comment: { select: { content: true } },
+      },
+    });
+  }
+
+  /** A mention of [userId] that still counts: by somebody not blocked
+   * either way, in a post and reply that are both still there. */
+  private liveMention(userId: string, blocked: string[]) {
+    return {
+      userId,
+      authorId: { not: userId, notIn: blocked },
+      post: { deletedAt: null },
+      OR: [{ commentId: null }, { comment: { deletedAt: null } }],
+    } satisfies Prisma.MentionWhereInput;
   }
 
   /**

@@ -13,6 +13,8 @@ export const pa: Copy = {
   reposted_quote: 'ਤੁਹਾਡੀ ਪੋਸਟ ਮੁੜ ਸਾਂਝੀ ਕੀਤੀ: “{snippet}”',
   replied: 'ਤੁਹਾਨੂੰ ਜਵਾਬ ਦਿੱਤਾ',
   replied_quote: 'ਜਵਾਬ ਦਿੱਤਾ: “{snippet}”',
+  mentioned: 'ਤੁਹਾਡਾ ਜ਼ਿਕਰ ਕੀਤਾ',
+  mentioned_quote: 'ਤੁਹਾਡਾ ਜ਼ਿਕਰ ਕੀਤਾ: “{snippet}”',
   group: 'ਗਰੁੱਪ',
   new_message: 'ਨਵਾਂ ਸੁਨੇਹਾ',
   dm_once: 'ਇੱਕ ਵਾਰ ਦੇਖਣ ਲਈ ਕੁਝ ਭੇਜਿਆ',

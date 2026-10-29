@@ -31,6 +31,7 @@ class NotificationItem extends StatelessWidget {
         NotificationType.comment => Iconsax.message_copy,
         NotificationType.follow => Iconsax.user_add_copy,
         NotificationType.repost => Iconsax.repeat_copy,
+        NotificationType.mention => Iconsax.tag_user_copy,
         NotificationType.account => Iconsax.shield_tick_copy,
         NotificationType.report => Iconsax.flag_copy,
       };

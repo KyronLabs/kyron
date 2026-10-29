@@ -1466,6 +1466,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("սկսեց հետևել ձեզ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("հավանեց ձեր գրառումը"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("նշեց ձեզ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Դեռ նշումներ չկան"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Երբ ինչ-որ մեկը գրառման կամ պատասխանի մեջ գրի ձեր @անունը, այն կհայտնվի այստեղ։"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ավելի հին"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Համայնքի զրույցում ձեր հաղորդագրությունը հեռացվեց"),
@@ -1495,6 +1500,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Հետևորդներ"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Հավանումներ"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Նշումներ"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Պատասխաններ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Այս շաբաթ"),

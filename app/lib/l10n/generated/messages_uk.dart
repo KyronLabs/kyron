@@ -1476,6 +1476,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("підписався(-лася) на вас"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("вподобав(-ла) ваш допис"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("згадав(ла) вас"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Згадок поки немає"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Коли хтось напише ваш @нік у дописі чи відповіді, це з'явиться тут."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Раніше"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ваше повідомлення в чаті спільноти видалено"),
@@ -1505,6 +1511,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Підписники"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Вподобання"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Згадки"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Відповіді"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Цього тижня"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Сьогодні"),

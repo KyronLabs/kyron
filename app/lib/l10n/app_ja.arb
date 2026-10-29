@@ -1120,5 +1120,9 @@
   "follow_author": "{name}さんをフォロー",
   "ins_countries": "国",
   "ins_countries_note": "プロフィールに国を設定している、リーチした{known}人のデータです。",
-  "ins_not_collected_city": "国は各自がプロフィールで選んだものです。Kyronは誰の市区町村や性別も収集しないため、それらについて表示できるものはありません。"
+  "ins_not_collected_city": "国は各自がプロフィールで選んだものです。Kyronは誰の市区町村や性別も収集しないため、それらについて表示できるものはありません。",
+  "ui_notif_mentioned": "があなたをメンションしました",
+  "ui_notif_tab_mentions": "メンション",
+  "ui_notif_no_mentions": "まだメンションはありません",
+  "ui_notif_no_mentions_detail": "誰かが投稿や返信であなたの@ユーザー名を書くと、ここに表示されます。"
 }

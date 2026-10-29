@@ -1120,5 +1120,9 @@
   "follow_author": "Tẹ̀lé {name}",
   "ins_countries": "Àwọn orílẹ̀-èdè",
   "ins_countries_note": "Láti inú ènìyàn {known} tí a dé ọ̀dọ̀ wọn tí wọ́n ní orílẹ̀-èdè lórí profaili wọn.",
-  "ins_not_collected_city": "Àwọn orílẹ̀-èdè náà ni èyí tí àwọn ènìyàn yàn lórí profaili wọn. Kyron kì í gba ìlú tàbí akọ-abo ẹnikẹ́ni, nítorí náà kò sí nǹkan láti fi hàn fún wọn."
+  "ins_not_collected_city": "Àwọn orílẹ̀-èdè náà ni èyí tí àwọn ènìyàn yàn lórí profaili wọn. Kyron kì í gba ìlú tàbí akọ-abo ẹnikẹ́ni, nítorí náà kò sí nǹkan láti fi hàn fún wọn.",
+  "ui_notif_mentioned": "dá ọ lórúkọ",
+  "ui_notif_tab_mentions": "Àwọn ìdárúkọ",
+  "ui_notif_no_mentions": "Kò sí ìdárúkọ síbẹ̀",
+  "ui_notif_no_mentions_detail": "Nígbà tí ẹnìkan bá kọ @orúkọ rẹ nínú ìfiránṣẹ́ tàbí èsì, yóò hàn níbí."
 }

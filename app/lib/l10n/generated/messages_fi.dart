@@ -1472,6 +1472,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("alkoi seurata sinua"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("tykkäsi julkaisustasi"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("mainitsi sinut"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Ei vielä mainintoja"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kun joku kirjoittaa @käyttäjänimesi julkaisuun tai vastaukseen, se näkyy täällä."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Vanhemmat"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Viestisi yhteisökeskustelussa poistettiin"),
@@ -1500,6 +1506,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Kaikki"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Seuraajat"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Tykkäykset"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Maininnat"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Vastaukset"),
       "ui_notif_this_week":

@@ -1460,6 +1460,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("شما را دنبال کرد"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("پست شما را پسندید"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("از شما نام برد"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("هنوز اشاره‌ای نیست"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "وقتی کسی @نام‌کاربری شما را در پست یا پاسخی بنویسد، اینجا نشان داده می‌شود."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("قدیمی‌تر"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "پیام شما در گفتگوی انجمن حذف شد"),
@@ -1489,6 +1495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("دنبال‌کنندگان"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("پسندها"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("اشاره‌ها"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("پاسخ‌ها"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("این هفته"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("امروز"),

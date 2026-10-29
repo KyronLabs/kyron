@@ -1120,5 +1120,9 @@
   "follow_author": "{name} adlı kişiyi takip et",
   "ins_countries": "Ülkeler",
   "ins_countries_note": "Profilinde ülke olan {known} erişilen kişiden.",
-  "ins_not_collected_city": "Ülkeler, insanların profillerinde seçtikleridir. Kyron kimsenin şehrini veya cinsiyetini toplamaz, bu yüzden bunlar için gösterilecek bir şey yok."
+  "ins_not_collected_city": "Ülkeler, insanların profillerinde seçtikleridir. Kyron kimsenin şehrini veya cinsiyetini toplamaz, bu yüzden bunlar için gösterilecek bir şey yok.",
+  "ui_notif_mentioned": "senden bahsetti",
+  "ui_notif_tab_mentions": "Bahsetmeler",
+  "ui_notif_no_mentions": "Henüz bahsetme yok",
+  "ui_notif_no_mentions_detail": "Biri bir gönderide veya yanıtta @kullanıcı adını yazdığında burada görünür."
 }

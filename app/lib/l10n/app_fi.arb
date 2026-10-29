@@ -1120,5 +1120,9 @@
   "follow_author": "Seuraa: {name}",
   "ins_countries": "Maat",
   "ins_countries_note": "Niistä {known} tavoitetusta, joilla on profiilissaan maa.",
-  "ins_not_collected_city": "Maat ovat niitä, jotka ihmiset ovat valinneet profiiliinsa. Kyron ei kerää kenenkään kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää."
+  "ins_not_collected_city": "Maat ovat niitä, jotka ihmiset ovat valinneet profiiliinsa. Kyron ei kerää kenenkään kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää.",
+  "ui_notif_mentioned": "mainitsi sinut",
+  "ui_notif_tab_mentions": "Maininnat",
+  "ui_notif_no_mentions": "Ei vielä mainintoja",
+  "ui_notif_no_mentions_detail": "Kun joku kirjoittaa @käyttäjänimesi julkaisuun tai vastaukseen, se näkyy täällä."
 }

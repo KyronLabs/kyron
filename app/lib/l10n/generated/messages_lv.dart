@@ -1475,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("sāka jums sekot"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
           "atzīmēja ar “patīk” jūsu ierakstu"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("jūs pieminēja"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Vēl nav pieminējumu"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kad kāds ierakstā vai atbildē uzrakstīs jūsu @lietotājvārdu, tas parādīsies šeit."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Vecāki"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Jūsu ziņa kopienas tērzēšanā ir noņemta"),
@@ -1504,6 +1510,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sekotāji"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Patīk atzīmes"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Pieminējumi"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Atbildes"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Šonedēļ"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Šodien"),

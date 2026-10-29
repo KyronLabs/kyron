@@ -16,6 +16,8 @@ String notificationAction(AppLocalizations l10n, NotificationType type) =>
       NotificationType.follow => l10n.ui('ui_notif_followed', 'followed you'),
       NotificationType.repost =>
         l10n.ui('ui_notif_reposted', 'reposted your post'),
+      NotificationType.mention =>
+        l10n.ui('ui_notif_mentioned', 'mentioned you'),
       // Never shown after a name: these rows have none.
       NotificationType.account || NotificationType.report => '',
     };

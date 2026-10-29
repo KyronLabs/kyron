@@ -7,11 +7,11 @@ import type { PushMessage } from './push.service';
 
 /** Something one person did that another hears about. */
 export interface Activity {
-  kind: 'like' | 'comment' | 'repost' | 'follow';
+  kind: 'like' | 'comment' | 'repost' | 'follow' | 'mention';
   actorId: string;
   /** The post it happened to, for everything but a follow. */
   postId?: string;
-  /** What was written, for a reply. */
+  /** What was written, for a reply or a mention. */
   text?: string;
 }
 
@@ -100,7 +100,8 @@ export class ActivityPushService {
 
   /** How many others did the same since the reader last looked: the ones a
    * newer notification replaced on the phone. Not for replies, where each
-   * one's words are the point and a count of them says little. */
+   * one's words are the point and a count of them says little -- nor for
+   * mentions, for the same reason. */
   private others(
     activity: Activity,
     recipientId: string,
@@ -138,13 +139,17 @@ export class ActivityPushService {
           },
         });
       case 'comment':
+      case 'mention':
         return Promise.resolve(0);
     }
   }
 
   /** The reply's words, or the start of the post it was about. */
   private async snippetFor(activity: Activity): Promise<string | null> {
-    if (activity.kind === 'comment') return snippetOf(activity.text);
+    // What they wrote, where they named you: the post's start says less.
+    if (activity.kind === 'comment' || activity.kind === 'mention') {
+      return snippetOf(activity.text);
+    }
     if (!activity.postId) return null;
     const post = await this.prisma.post.findUnique({
       where: { id: activity.postId },
@@ -220,6 +225,11 @@ export function activityCopy(input: {
       return {
         title,
         body: quoted ? say('replied_quote', quoted) : say('replied'),
+      };
+    case 'mention':
+      return {
+        title,
+        body: quoted ? say('mentioned_quote', quoted) : say('mentioned'),
       };
   }
 }

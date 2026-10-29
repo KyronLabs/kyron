@@ -1120,5 +1120,9 @@
   "follow_author": "Sledovať {name}",
   "ins_countries": "Krajiny",
   "ins_countries_note": "Z {known} oslovených ľudí, ktorí majú na profile krajinu.",
-  "ins_not_collected_city": "Krajiny sú tie, ktoré si ľudia zvolili na svojich profiloch. Kyron nezbiera ničie mesto ani pohlavie, takže pre ne nie je čo zobraziť."
+  "ins_not_collected_city": "Krajiny sú tie, ktoré si ľudia zvolili na svojich profiloch. Kyron nezbiera ničie mesto ani pohlavie, takže pre ne nie je čo zobraziť.",
+  "ui_notif_mentioned": "vás spomenul(a)",
+  "ui_notif_tab_mentions": "Zmienky",
+  "ui_notif_no_mentions": "Zatiaľ žiadne zmienky",
+  "ui_notif_no_mentions_detail": "Keď niekto napíše vaše @meno v príspevku alebo odpovedi, zobrazí sa to tu."
 }

@@ -1120,5 +1120,9 @@
   "follow_author": "关注 {name}",
   "ins_countries": "国家/地区",
   "ins_countries_note": "来自在个人资料中填写了国家/地区的 {known} 位触达用户。",
-  "ins_not_collected_city": "国家/地区是用户在个人资料中自行选择的。Kyron 不收集任何人的城市或性别，因此没有相关内容可显示。"
+  "ins_not_collected_city": "国家/地区是用户在个人资料中自行选择的。Kyron 不收集任何人的城市或性别，因此没有相关内容可显示。",
+  "ui_notif_mentioned": "提到了你",
+  "ui_notif_tab_mentions": "提及",
+  "ui_notif_no_mentions": "还没有人提到你",
+  "ui_notif_no_mentions_detail": "当有人在帖子或回复中写下你的 @用户名 时，会显示在这里。"
 }

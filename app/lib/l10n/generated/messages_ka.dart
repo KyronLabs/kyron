@@ -1467,6 +1467,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("გამოგიწერათ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("მოიწონა თქვენი პოსტი"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("მოგიხსენიათ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ჯერ მოხსენიებები არ არის"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "როცა ვინმე პოსტში ან პასუხში თქვენს @სახელს დაწერს, აქ გამოჩნდება."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("უფრო ძველი"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "თქვენი შეტყობინება თემის ჩატში წაიშალა"),
@@ -1496,6 +1501,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("გამომწერები"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("მოწონებები"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("მოხსენიებები"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("პასუხები"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ამ კვირაში"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("დღეს"),

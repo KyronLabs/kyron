@@ -1120,5 +1120,9 @@
   "follow_author": "Sledi {name}",
   "ins_countries": "Države",
   "ins_countries_note": "Od {known} doseženih ljudi, ki imajo na profilu državo.",
-  "ins_not_collected_city": "Države so tiste, ki so jih ljudje izbrali na svojih profilih. Kyron ne zbira nikogaršnjega mesta ali spola, zato zanje ni kaj prikazati."
+  "ins_not_collected_city": "Države so tiste, ki so jih ljudje izbrali na svojih profilih. Kyron ne zbira nikogaršnjega mesta ali spola, zato zanje ni kaj prikazati.",
+  "ui_notif_mentioned": "vas je omenil(a)",
+  "ui_notif_tab_mentions": "Omembe",
+  "ui_notif_no_mentions": "Še ni omemb",
+  "ui_notif_no_mentions_detail": "Ko nekdo v objavi ali odgovoru napiše vaše @uporabniško ime, se to prikaže tukaj."
 }

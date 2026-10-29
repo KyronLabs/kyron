@@ -13,6 +13,8 @@ export const ar: Copy = {
   reposted_quote: 'أعاد نشر منشورك: «{snippet}»',
   replied: 'ردّ عليك',
   replied_quote: 'ردّ: «{snippet}»',
+  mentioned: 'أشار إليك',
+  mentioned_quote: 'أشار إليك: «{snippet}»',
   group: 'مجموعة',
   new_message: 'رسالة جديدة',
   dm_once: 'أرسل شيئًا للعرض مرة واحدة',

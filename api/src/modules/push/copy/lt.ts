@@ -13,6 +13,8 @@ export const lt: Copy = {
   reposted_quote: 'Pasidalino jūsų įrašu: „{snippet}“',
   replied: 'Jums atsakė',
   replied_quote: 'Atsakė: „{snippet}“',
+  mentioned: 'Paminėjo tave',
+  mentioned_quote: 'Paminėjo tave: „{snippet}“',
   group: 'Grupė',
   new_message: 'Nauja žinutė',
   dm_once: 'Atsiuntė kai ką peržiūrėti vieną kartą',

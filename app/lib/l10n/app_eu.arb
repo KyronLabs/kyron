@@ -1120,5 +1120,9 @@
   "follow_author": "Jarraitu {name}",
   "ins_countries": "Herrialdeak",
   "ins_countries_note": "Profilean herrialdea duten {known} pertsona iritsietatik.",
-  "ins_not_collected_city": "Herrialdeak jendeak bere profilean aukeratutakoak dira. Kyronek ez du inoren hiria edo generoa biltzen, beraz, ez dago haiei buruz ezer erakusteko."
+  "ins_not_collected_city": "Herrialdeak jendeak bere profilean aukeratutakoak dira. Kyronek ez du inoren hiria edo generoa biltzen, beraz, ez dago haiei buruz ezer erakusteko.",
+  "ui_notif_mentioned": "aipatu zaitu",
+  "ui_notif_tab_mentions": "Aipamenak",
+  "ui_notif_no_mentions": "Oraindik ez dago aipamenik",
+  "ui_notif_no_mentions_detail": "Norbaitek zure @erabiltzailea argitalpen edo erantzun batean idazten duenean, hemen agertuko da."
 }

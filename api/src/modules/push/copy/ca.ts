@@ -13,6 +13,8 @@ export const ca: Copy = {
   reposted_quote: 'Ha republicat la teva publicació: «{snippet}»',
   replied: "T'ha respost",
   replied_quote: 'Ha respost: «{snippet}»',
+  mentioned: "T'ha esmentat",
+  mentioned_quote: "T'ha esmentat: «{snippet}»",
   group: 'Grup',
   new_message: 'Missatge nou',
   dm_once: "T'ha enviat una cosa per veure una sola vegada",

@@ -1555,6 +1555,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ви последва"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("хареса публикацията ви"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("ви спомена"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Още няма споменавания"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Когато някой напише вашия @профил в публикация или отговор, това се появява тук."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("По-стари"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Съобщението ви в чат на общност е премахнато"),
@@ -1584,6 +1589,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Последователи"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Харесвания"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Споменавания"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Отговори"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Тази седмица"),

@@ -13,6 +13,8 @@ export const gl: Copy = {
   reposted_quote: 'Republicou a túa publicación: «{snippet}»',
   replied: 'Respondeute',
   replied_quote: 'Respondeu: «{snippet}»',
+  mentioned: 'Mencionoute',
+  mentioned_quote: 'Mencionoute: «{snippet}»',
   group: 'Grupo',
   new_message: 'Mensaxe nova',
   dm_once: 'Enviou algo para ver unha soa vez',

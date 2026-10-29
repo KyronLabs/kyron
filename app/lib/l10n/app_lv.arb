@@ -1120,5 +1120,9 @@
   "follow_author": "Sekot {name}",
   "ins_countries": "Valstis",
   "ins_countries_note": "No {known} sasniegtajiem cilvēkiem, kuru profilā ir norādīta valsts.",
-  "ins_not_collected_city": "Valstis ir tās, ko cilvēki izvēlējušies savos profilos. Kyron nevāc neviena pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt."
+  "ins_not_collected_city": "Valstis ir tās, ko cilvēki izvēlējušies savos profilos. Kyron nevāc neviena pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt.",
+  "ui_notif_mentioned": "jūs pieminēja",
+  "ui_notif_tab_mentions": "Pieminējumi",
+  "ui_notif_no_mentions": "Vēl nav pieminējumu",
+  "ui_notif_no_mentions_detail": "Kad kāds ierakstā vai atbildē uzrakstīs jūsu @lietotājvārdu, tas parādīsies šeit."
 }

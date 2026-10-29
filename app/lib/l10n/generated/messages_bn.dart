@@ -1537,6 +1537,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("আপনাকে ফলো করেছেন"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("আপনার পোস্ট পছন্দ করেছেন"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("আপনাকে উল্লেখ করেছেন"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো উল্লেখ নেই"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "কেউ কোনো পোস্ট বা উত্তরে আপনার @হ্যান্ডেল লিখলে, তা এখানে দেখা যাবে।"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("পুরোনো"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "কমিউনিটি চ্যাটে আপনার মেসেজ সরানো হয়েছে"),
@@ -1565,6 +1571,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("সব"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ফলো"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("পছন্দ"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("উল্লেখ"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("উত্তর"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("এই সপ্তাহে"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("আজ"),

@@ -1537,6 +1537,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("sizi izləməyə başladı"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("paylaşımınızı bəyəndi"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("sizi qeyd etdi"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Hələ qeyd yoxdur"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kimsə paylaşımda və ya cavabda @istifadəçi adınızı yazanda, burada görünür."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Daha köhnə"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "İcma söhbətindəki mesajınız silindi"),
@@ -1566,6 +1572,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("İzləyicilər"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Bəyənmələr"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Qeydlər"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Cavablar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Bu həftə"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bu gün"),

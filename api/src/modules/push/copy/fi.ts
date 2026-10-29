@@ -13,6 +13,8 @@ export const fi: Copy = {
   reposted_quote: 'Jakoi julkaisusi: ”{snippet}”',
   replied: 'Vastasi sinulle',
   replied_quote: 'Vastasi: ”{snippet}”',
+  mentioned: 'Mainitsi sinut',
+  mentioned_quote: 'Mainitsi sinut: ”{snippet}”',
   group: 'Ryhmä',
   new_message: 'Uusi viesti',
   dm_once: 'Lähetti jotain kertakatseltavaa',

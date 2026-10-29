@@ -13,6 +13,8 @@ export const vi: Copy = {
   reposted_quote: 'Đã đăng lại bài viết của bạn: “{snippet}”',
   replied: 'Đã trả lời bạn',
   replied_quote: 'Đã trả lời: “{snippet}”',
+  mentioned: 'Đã nhắc đến bạn',
+  mentioned_quote: 'Đã nhắc đến bạn: “{snippet}”',
   group: 'Nhóm',
   new_message: 'Tin nhắn mới',
   dm_once: 'Đã gửi nội dung xem một lần',

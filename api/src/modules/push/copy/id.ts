@@ -13,6 +13,8 @@ export const id: Copy = {
   reposted_quote: 'Memposting ulang postinganmu: “{snippet}”',
   replied: 'Membalasmu',
   replied_quote: 'Membalas: “{snippet}”',
+  mentioned: 'Menyebut kamu',
+  mentioned_quote: 'Menyebut kamu: “{snippet}”',
   group: 'Grup',
   new_message: 'Pesan baru',
   dm_once: 'Mengirim sesuatu untuk dilihat sekali',

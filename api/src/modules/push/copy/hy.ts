@@ -13,6 +13,8 @@ export const hy: Copy = {
   reposted_quote: 'Տարածեց ձեր գրառումը՝ «{snippet}»',
   replied: 'Պատասխանեց ձեզ',
   replied_quote: 'Պատասխանեց՝ «{snippet}»',
+  mentioned: 'Նշեց քեզ',
+  mentioned_quote: 'Նշեց քեզ՝ «{snippet}»',
   group: 'Խումբ',
   new_message: 'Նոր հաղորդագրություն',
   dm_once: 'Ուղարկեց մեկանգամյա դիտման բան',

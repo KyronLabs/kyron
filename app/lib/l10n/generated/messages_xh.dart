@@ -1469,6 +1469,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ukulandele"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ulithandile ipowusti yakho"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ukukhankanyile"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Akukabikho ukukhankanywa"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Xa umntu ebhala i-@gama lakho kwiposti okanye kwimpendulo, kuya kuvela apha."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ezindala"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Umyalezo wakho kwincoko yoluntu ususiwe"),
@@ -1499,6 +1505,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Abalandeli"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Izinto ezithandiweyo"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Ukukhankanywa"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Iimpendulo"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Kule veki"),

@@ -13,6 +13,8 @@ export const sk: Copy = {
   reposted_quote: 'Zdieľal(a) váš príspevok: „{snippet}“',
   replied: 'Odpovedal(a) vám',
   replied_quote: 'Odpoveď: „{snippet}“',
+  mentioned: 'Spomenul(a) ťa',
+  mentioned_quote: 'Spomenul(a) ťa: „{snippet}“',
   group: 'Skupina',
   new_message: 'Nová správa',
   dm_once: 'Poslal(a) niečo na jednorazové zobrazenie',

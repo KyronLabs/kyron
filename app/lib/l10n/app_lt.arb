@@ -1120,5 +1120,9 @@
   "follow_author": "Sekti {name}",
   "ins_countries": "Šalys",
   "ins_countries_note": "Iš {known} pasiektų žmonių, kurių profilyje nurodyta šalis.",
-  "ins_not_collected_city": "Šalys yra tos, kurias žmonės pasirinko savo profiliuose. Kyron nerenka niekieno miesto ar lyties, todėl apie juos nėra ką parodyti."
+  "ins_not_collected_city": "Šalys yra tos, kurias žmonės pasirinko savo profiliuose. Kyron nerenka niekieno miesto ar lyties, todėl apie juos nėra ką parodyti.",
+  "ui_notif_mentioned": "paminėjo jus",
+  "ui_notif_tab_mentions": "Paminėjimai",
+  "ui_notif_no_mentions": "Kol kas paminėjimų nėra",
+  "ui_notif_no_mentions_detail": "Kai kas nors parašys jūsų @vardą įraše ar atsakyme, tai pasirodys čia."
 }

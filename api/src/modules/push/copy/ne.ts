@@ -13,6 +13,8 @@ export const ne: Copy = {
   reposted_quote: 'तपाईंको पोस्ट पुनः सेयर गर्नुभयो: “{snippet}”',
   replied: 'तपाईंलाई जवाफ दिनुभयो',
   replied_quote: 'जवाफ दिनुभयो: “{snippet}”',
+  mentioned: 'तपाईंलाई उल्लेख गर्नुभयो',
+  mentioned_quote: 'तपाईंलाई उल्लेख गर्नुभयो: “{snippet}”',
   group: 'समूह',
   new_message: 'नयाँ सन्देश',
   dm_once: 'एक पटक हेर्नका लागि केही पठाउनुभयो',

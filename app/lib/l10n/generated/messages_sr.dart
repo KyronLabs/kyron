@@ -1464,6 +1464,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("вас прати"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("је лајковао/ла вашу објаву"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("вас је поменуо/ла"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Још нема помињања"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Када неко напише ваше @корисничко име у објави или одговору, појавиће се овде."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Старије"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ваша порука у ћаскању заједнице је уклоњена"),
@@ -1492,6 +1498,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Све"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Пратиоци"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Лајкови"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Помињања"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Одговори"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ове недеље"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Данас"),

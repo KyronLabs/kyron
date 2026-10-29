@@ -1120,5 +1120,9 @@
   "follow_author": "Ikuti {name}",
   "ins_countries": "Negara",
   "ins_countries_note": "Dari {known} orang yang dijangkau yang memiliki negara di profilnya.",
-  "ins_not_collected_city": "Negara-negara ini adalah yang dipilih orang di profil mereka. Kyron tidak mengumpulkan kota atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu."
+  "ins_not_collected_city": "Negara-negara ini adalah yang dipilih orang di profil mereka. Kyron tidak mengumpulkan kota atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu.",
+  "ui_notif_mentioned": "menyebutmu",
+  "ui_notif_tab_mentions": "Sebutan",
+  "ui_notif_no_mentions": "Belum ada sebutan",
+  "ui_notif_no_mentions_detail": "Saat seseorang menulis @nama penggunamu di postingan atau balasan, itu akan muncul di sini."
 }

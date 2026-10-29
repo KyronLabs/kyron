@@ -13,6 +13,8 @@ export const ur: Copy = {
   reposted_quote: 'آپ کی پوسٹ دوبارہ شیئر کی: ”{snippet}“',
   replied: 'آپ کو جواب دیا',
   replied_quote: 'جواب دیا: ”{snippet}“',
+  mentioned: 'آپ کا ذکر کیا',
+  mentioned_quote: 'آپ کا ذکر کیا: ”{snippet}“',
   group: 'گروپ',
   new_message: 'نیا پیغام',
   dm_once: 'ایک بار دیکھنے کے لیے کچھ بھیجا',

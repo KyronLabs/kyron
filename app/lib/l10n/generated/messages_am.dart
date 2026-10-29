@@ -1339,6 +1339,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ጉዳይ \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ተከተለዎት"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("ልጥፍዎን ወደደው"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("ጠቀሰዎት"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ገና ምንም መጠቀስ የለም"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "አንድ ሰው @መለያዎን በልጥፍ ወይም በምላሽ ሲጽፍ፣ እዚህ ይታያል።"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("የቆዩ"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "በማህበረሰብ ውይይት ውስጥ ያለው መልዕክትዎ ተወግዷል"),
@@ -1365,6 +1370,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ሁሉም"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ተከታዮች"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("መውደዶች"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("መጠቀሶች"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("ምላሾች"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("በዚህ ሳምንት"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("ዛሬ"),

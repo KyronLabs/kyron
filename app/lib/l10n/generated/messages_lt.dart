@@ -1477,6 +1477,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("pradėjo jus sekti"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("pamėgo jūsų įrašą"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("paminėjo jus"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Kol kas paminėjimų nėra"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai kas nors parašys jūsų @vardą įraše ar atsakyme, tai pasirodys čia."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Senesni"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Jūsų žinutė bendruomenės pokalbyje pašalinta"),
@@ -1505,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Visi"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sekėjai"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Pamėgimai"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Paminėjimai"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Atsakymai"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Šią savaitę"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Šiandien"),

@@ -1467,6 +1467,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("mengikutimu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("menyukai postinganmu"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("menyebutmu"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Belum ada sebutan"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Saat seseorang menulis @nama penggunamu di postingan atau balasan, itu akan muncul di sini."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Lebih lama"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Pesanmu di obrolan komunitas dihapus"),
@@ -1495,6 +1500,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Semua"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Pengikut"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Suka"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Sebutan"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Balasan"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Minggu ini"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Hari ini"),

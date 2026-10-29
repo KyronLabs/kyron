@@ -1120,5 +1120,9 @@
   "follow_author": "I-follow si {name}",
   "ins_countries": "Mga bansa",
   "ins_countries_note": "Mula sa {known} taong naabot na may bansa sa kanilang profile.",
-  "ins_not_collected_city": "Ang mga bansa ay ang mga pinili ng mga tao sa kanilang profile. Hindi kinokolekta ng Kyron ang lungsod o kasarian ng sinuman, kaya walang maipapakita para sa mga iyon."
+  "ins_not_collected_city": "Ang mga bansa ay ang mga pinili ng mga tao sa kanilang profile. Hindi kinokolekta ng Kyron ang lungsod o kasarian ng sinuman, kaya walang maipapakita para sa mga iyon.",
+  "ui_notif_mentioned": "ay nag-mention sa iyo",
+  "ui_notif_tab_mentions": "Mga mention",
+  "ui_notif_no_mentions": "Wala pang mention",
+  "ui_notif_no_mentions_detail": "Kapag isinulat ng isang tao ang iyong @handle sa isang post o reply, lalabas ito rito."
 }

@@ -13,6 +13,8 @@ export const fa: Copy = {
   reposted_quote: 'پست شما را بازنشر کرد: «{snippet}»',
   replied: 'به شما پاسخ داد',
   replied_quote: 'پاسخ داد: «{snippet}»',
+  mentioned: 'از شما نام برد',
+  mentioned_quote: 'از شما نام برد: «{snippet}»',
   group: 'گروه',
   new_message: 'پیام جدید',
   dm_once: 'چیزی برای یک‌بار دیدن فرستاد',

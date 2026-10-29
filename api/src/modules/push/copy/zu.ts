@@ -13,6 +13,8 @@ export const zu: Copy = {
   reposted_quote: 'Uphinde wathumela okuthunyelwe kwakho: “{snippet}”',
   replied: 'Ukuphendule',
   replied_quote: 'Uphendule: “{snippet}”',
+  mentioned: 'Ukubalulile',
+  mentioned_quote: 'Ukubalulile: “{snippet}”',
   group: 'Iqembu',
   new_message: 'Umlayezo omusha',
   dm_once: 'Uthumele okuthile okubukwa kanye',

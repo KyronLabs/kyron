@@ -1120,5 +1120,9 @@
   "follow_author": "{name} folgen",
   "ins_countries": "Länder",
   "ins_countries_note": "Von den {known} erreichten Personen, die ein Land in ihrem Profil haben.",
-  "ins_not_collected_city": "Die Länder sind die, die Menschen in ihrem Profil gewählt haben. Kyron erfasst von niemandem Stadt oder Geschlecht, daher gibt es dazu nichts anzuzeigen."
+  "ins_not_collected_city": "Die Länder sind die, die Menschen in ihrem Profil gewählt haben. Kyron erfasst von niemandem Stadt oder Geschlecht, daher gibt es dazu nichts anzuzeigen.",
+  "ui_notif_mentioned": "hat dich erwähnt",
+  "ui_notif_tab_mentions": "Erwähnungen",
+  "ui_notif_no_mentions": "Noch keine Erwähnungen",
+  "ui_notif_no_mentions_detail": "Wenn jemand deinen @Namen in einem Beitrag oder einer Antwort schreibt, erscheint das hier."
 }
