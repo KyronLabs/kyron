@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "noemde je",
   "ui_notif_tab_mentions": "Vermeldingen",
   "ui_notif_no_mentions": "Nog geen vermeldingen",
-  "ui_notif_no_mentions_detail": "Als iemand je @gebruikersnaam in een bericht of reactie schrijft, zie je dat hier."
+  "ui_notif_no_mentions_detail": "Als iemand je @gebruikersnaam in een bericht of reactie schrijft, zie je dat hier.",
+  "ui_share_send_message": "Versturen in een bericht",
+  "ui_share_send_message_detail": "Aan mensen op Kyron",
+  "ui_share_quote": "Citeren"
 }

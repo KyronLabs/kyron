@@ -1730,6 +1730,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("மேற்கோள் காட்டு"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("செய்தியில் அனுப்பு"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron இல் உள்ளவர்களுக்கு"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

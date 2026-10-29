@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "mainis sind",
   "ui_notif_tab_mentions": "Mainimised",
   "ui_notif_no_mentions": "Mainimisi veel pole",
-  "ui_notif_no_mentions_detail": "Kui keegi kirjutab su @kasutajanime postitusse või vastusesse, näed seda siin."
+  "ui_notif_no_mentions_detail": "Kui keegi kirjutab su @kasutajanime postitusse või vastusesse, näed seda siin.",
+  "ui_share_send_message": "Saada sõnumiga",
+  "ui_share_send_message_detail": "Inimestele Kyronis",
+  "ui_share_quote": "Tsiteeri"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "сізді атап өтті",
   "ui_notif_tab_mentions": "Аталымдар",
   "ui_notif_no_mentions": "Әзірге аталым жоқ",
-  "ui_notif_no_mentions_detail": "Біреу жазбада не жауапта сіздің @атыңызды жазса, ол осында көрсетіледі."
+  "ui_notif_no_mentions_detail": "Біреу жазбада не жауапта сіздің @атыңызды жазса, ол осында көрсетіледі.",
+  "ui_share_send_message": "Хабарламамен жіберу",
+  "ui_share_send_message_detail": "Kyron-дағы адамдарға",
+  "ui_share_quote": "Дәйексөз келтіру"
 }

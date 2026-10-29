@@ -1788,6 +1788,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "আমাদের টিম থেকে সাহায্য নিন",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("শেয়ার"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("উদ্ধৃত করুন"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("মেসেজে পাঠান"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron-এর মানুষদের কাছে"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "এই পোস্ট শেয়ার করুন",
       ),

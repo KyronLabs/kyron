@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ukubalulile",
   "ui_notif_tab_mentions": "Ukubalulwa",
   "ui_notif_no_mentions": "Akukabikho ukubalulwa",
-  "ui_notif_no_mentions_detail": "Uma umuntu ebhala i-@gama lakho kokuthunyelwe noma empendulweni, kuzovela lapha."
+  "ui_notif_no_mentions_detail": "Uma umuntu ebhala i-@gama lakho kokuthunyelwe noma empendulweni, kuzovela lapha.",
+  "ui_share_send_message": "Thumela ngomlayezo",
+  "ui_share_send_message_detail": "Kubantu abaku-Kyron",
+  "ui_share_quote": "Caphuna"
 }

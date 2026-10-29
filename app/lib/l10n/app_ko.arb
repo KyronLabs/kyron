@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "님이 회원님을 언급했습니다",
   "ui_notif_tab_mentions": "언급",
   "ui_notif_no_mentions": "아직 언급이 없습니다",
-  "ui_notif_no_mentions_detail": "누군가 게시물이나 답글에 회원님의 @사용자 이름을 쓰면 여기에 표시됩니다."
+  "ui_notif_no_mentions_detail": "누군가 게시물이나 답글에 회원님의 @사용자 이름을 쓰면 여기에 표시됩니다.",
+  "ui_share_send_message": "메시지로 보내기",
+  "ui_share_send_message_detail": "Kyron 사용자에게",
+  "ui_share_quote": "인용"
 }

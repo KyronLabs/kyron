@@ -1818,6 +1818,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Hilfe von unserem Team erhalten",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Teilen"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Zitieren"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("In einer Nachricht senden"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("An Leute auf Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Diesen Beitrag teilen",
       ),

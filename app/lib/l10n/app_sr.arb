@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "вас је поменуо/ла",
   "ui_notif_tab_mentions": "Помињања",
   "ui_notif_no_mentions": "Још нема помињања",
-  "ui_notif_no_mentions_detail": "Када неко напише ваше @корисничко име у објави или одговору, појавиће се овде."
+  "ui_notif_no_mentions_detail": "Када неко напише ваше @корисничко име у објави или одговору, појавиће се овде.",
+  "ui_share_send_message": "Пошаљи у поруци",
+  "ui_share_send_message_detail": "Људима на Kyron-у",
+  "ui_share_quote": "Цитирај"
 }

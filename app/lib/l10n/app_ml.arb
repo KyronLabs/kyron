@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "നിങ്ങളെ പരാമർശിച്ചു",
   "ui_notif_tab_mentions": "പരാമർശങ്ങൾ",
   "ui_notif_no_mentions": "ഇതുവരെ പരാമർശങ്ങളില്ല",
-  "ui_notif_no_mentions_detail": "ആരെങ്കിലും ഒരു പോസ്റ്റിലോ മറുപടിയിലോ നിങ്ങളുടെ @ഹാൻഡിൽ എഴുതുമ്പോൾ, അത് ഇവിടെ കാണിക്കും."
+  "ui_notif_no_mentions_detail": "ആരെങ്കിലും ഒരു പോസ്റ്റിലോ മറുപടിയിലോ നിങ്ങളുടെ @ഹാൻഡിൽ എഴുതുമ്പോൾ, അത് ഇവിടെ കാണിക്കും.",
+  "ui_share_send_message": "സന്ദേശത്തിൽ അയയ്ക്കുക",
+  "ui_share_send_message_detail": "Kyron-ലെ ആളുകൾക്ക്",
+  "ui_share_quote": "ഉദ്ധരിക്കുക"
 }

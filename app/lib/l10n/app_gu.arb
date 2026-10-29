@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "એ તમારો ઉલ્લેખ કર્યો",
   "ui_notif_tab_mentions": "ઉલ્લેખો",
   "ui_notif_no_mentions": "હજી સુધી કોઈ ઉલ્લેખ નથી",
-  "ui_notif_no_mentions_detail": "જ્યારે કોઈ પોસ્ટ અથવા જવાબમાં તમારું @હેન્ડલ લખે, ત્યારે તે અહીં દેખાશે."
+  "ui_notif_no_mentions_detail": "જ્યારે કોઈ પોસ્ટ અથવા જવાબમાં તમારું @હેન્ડલ લખે, ત્યારે તે અહીં દેખાશે.",
+  "ui_share_send_message": "મેસેજમાં મોકલો",
+  "ui_share_send_message_detail": "Kyron પરના લોકોને",
+  "ui_share_quote": "ટાંકો"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ने आपका ज़िक्र किया",
   "ui_notif_tab_mentions": "ज़िक्र",
   "ui_notif_no_mentions": "अभी कोई ज़िक्र नहीं",
-  "ui_notif_no_mentions_detail": "जब कोई किसी पोस्ट या जवाब में आपका @हैंडल लिखेगा, तो वह यहाँ दिखेगा।"
+  "ui_notif_no_mentions_detail": "जब कोई किसी पोस्ट या जवाब में आपका @हैंडल लिखेगा, तो वह यहाँ दिखेगा।",
+  "ui_share_send_message": "मैसेज में भेजें",
+  "ui_share_send_message_detail": "Kyron पर लोगों को",
+  "ui_share_quote": "उद्धृत करें"
 }

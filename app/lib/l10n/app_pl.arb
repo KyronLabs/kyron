@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "wspomniał(a) o Tobie",
   "ui_notif_tab_mentions": "Wzmianki",
   "ui_notif_no_mentions": "Na razie brak wzmianek",
-  "ui_notif_no_mentions_detail": "Gdy ktoś napisze Twój @login w poście lub odpowiedzi, zobaczysz to tutaj."
+  "ui_notif_no_mentions_detail": "Gdy ktoś napisze Twój @login w poście lub odpowiedzi, zobaczysz to tutaj.",
+  "ui_share_send_message": "Wyślij w wiadomości",
+  "ui_share_send_message_detail": "Do osób na Kyronie",
+  "ui_share_quote": "Cytuj"
 }

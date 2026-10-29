@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ጠቀሰዎት",
   "ui_notif_tab_mentions": "መጠቀሶች",
   "ui_notif_no_mentions": "ገና ምንም መጠቀስ የለም",
-  "ui_notif_no_mentions_detail": "አንድ ሰው @መለያዎን በልጥፍ ወይም በምላሽ ሲጽፍ፣ እዚህ ይታያል።"
+  "ui_notif_no_mentions_detail": "አንድ ሰው @መለያዎን በልጥፍ ወይም በምላሽ ሲጽፍ፣ እዚህ ይታያል።",
+  "ui_share_send_message": "በመልእክት ላክ",
+  "ui_share_send_message_detail": "በKyron ላሉ ሰዎች",
+  "ui_share_quote": "ጥቀስ"
 }

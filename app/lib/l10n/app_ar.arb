@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "أشار إليك",
   "ui_notif_tab_mentions": "الإشارات",
   "ui_notif_no_mentions": "لا إشارات بعد",
-  "ui_notif_no_mentions_detail": "عندما يكتب أحدهم @اسمك في منشور أو رد، يظهر ذلك هنا."
+  "ui_notif_no_mentions_detail": "عندما يكتب أحدهم @اسمك في منشور أو رد، يظهر ذلك هنا.",
+  "ui_share_send_message": "إرسال في رسالة",
+  "ui_share_send_message_detail": "إلى أشخاص على Kyron",
+  "ui_share_quote": "اقتباس"
 }

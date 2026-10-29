@@ -1878,6 +1878,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Λάβετε βοήθεια από την ομάδα μας",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Κοινοποίηση"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Παράθεση"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Αποστολή σε μήνυμα"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Σε άτομα στο Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Μοιραστείτε αυτή τη δημοσίευση",
       ),

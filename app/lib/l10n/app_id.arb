@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "menyebutmu",
   "ui_notif_tab_mentions": "Sebutan",
   "ui_notif_no_mentions": "Belum ada sebutan",
-  "ui_notif_no_mentions_detail": "Saat seseorang menulis @nama penggunamu di postingan atau balasan, itu akan muncul di sini."
+  "ui_notif_no_mentions_detail": "Saat seseorang menulis @nama penggunamu di postingan atau balasan, itu akan muncul di sini.",
+  "ui_share_send_message": "Kirim lewat pesan",
+  "ui_share_send_message_detail": "Ke orang-orang di Kyron",
+  "ui_share_quote": "Kutip"
 }

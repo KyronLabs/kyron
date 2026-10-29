@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "vous a mentionné",
   "ui_notif_tab_mentions": "Mentions",
   "ui_notif_no_mentions": "Aucune mention pour l'instant",
-  "ui_notif_no_mentions_detail": "Quand quelqu'un écrit votre @pseudo dans une publication ou une réponse, cela apparaît ici."
+  "ui_notif_no_mentions_detail": "Quand quelqu'un écrit votre @pseudo dans une publication ou une réponse, cela apparaît ici.",
+  "ui_share_send_message": "Envoyer dans un message",
+  "ui_share_send_message_detail": "À des personnes sur Kyron",
+  "ui_share_quote": "Citer"
 }

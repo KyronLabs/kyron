@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "kpọtụrụ gị aha",
   "ui_notif_tab_mentions": "Nkọwapụta aha",
   "ui_notif_no_mentions": "Enweghị onye kpọtụrụ gị aha ka",
-  "ui_notif_no_mentions_detail": "Mgbe mmadụ dere @aha gị n'ihe o zipụtara ma ọ bụ na nzaghachi, ọ ga-egosi ebe a."
+  "ui_notif_no_mentions_detail": "Mgbe mmadụ dere @aha gị n'ihe o zipụtara ma ọ bụ na nzaghachi, ọ ga-egosi ebe a.",
+  "ui_share_send_message": "Ziga ya na ozi",
+  "ui_share_send_message_detail": "Nye ndị nọ na Kyron",
+  "ui_share_quote": "Hota"
 }

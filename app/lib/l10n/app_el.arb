@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "σας ανέφερε",
   "ui_notif_tab_mentions": "Αναφορές",
   "ui_notif_no_mentions": "Δεν υπάρχουν ακόμα αναφορές",
-  "ui_notif_no_mentions_detail": "Όταν κάποιος γράψει το @όνομά σας σε μια ανάρτηση ή απάντηση, θα εμφανιστεί εδώ."
+  "ui_notif_no_mentions_detail": "Όταν κάποιος γράψει το @όνομά σας σε μια ανάρτηση ή απάντηση, θα εμφανιστεί εδώ.",
+  "ui_share_send_message": "Αποστολή σε μήνυμα",
+  "ui_share_send_message_detail": "Σε άτομα στο Kyron",
+  "ui_share_quote": "Παράθεση"
 }

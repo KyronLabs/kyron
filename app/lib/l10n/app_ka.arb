@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "მოგიხსენიათ",
   "ui_notif_tab_mentions": "მოხსენიებები",
   "ui_notif_no_mentions": "ჯერ მოხსენიებები არ არის",
-  "ui_notif_no_mentions_detail": "როცა ვინმე პოსტში ან პასუხში თქვენს @სახელს დაწერს, აქ გამოჩნდება."
+  "ui_notif_no_mentions_detail": "როცა ვინმე პოსტში ან პასუხში თქვენს @სახელს დაწერს, აქ გამოჩნდება.",
+  "ui_share_send_message": "გაგზავნა შეტყობინებით",
+  "ui_share_send_message_detail": "Kyron-ის ადამიანებს",
+  "ui_share_quote": "ციტირება"
 }

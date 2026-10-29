@@ -569,6 +569,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("其他"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("垃圾信息"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力或威胁"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("引用"),
+      "ui_share_send_message": MessageLookupByLibrary.simpleMessage("通过私信发送"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("发给 Kyron 上的人"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("涉及的内容"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("你的账号已被永久封禁"),

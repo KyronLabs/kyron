@@ -1773,6 +1773,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Kry hulp van ons span",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Deel"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Haal aan"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Stuur in 'n boodskap"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Aan mense op Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Deel hierdie plasing",
       ),

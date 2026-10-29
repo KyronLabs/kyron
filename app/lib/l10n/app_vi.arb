@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "đã nhắc đến bạn",
   "ui_notif_tab_mentions": "Lượt nhắc",
   "ui_notif_no_mentions": "Chưa có lượt nhắc nào",
-  "ui_notif_no_mentions_detail": "Khi ai đó viết @tên người dùng của bạn trong bài viết hoặc phản hồi, nó sẽ hiện ở đây."
+  "ui_notif_no_mentions_detail": "Khi ai đó viết @tên người dùng của bạn trong bài viết hoặc phản hồi, nó sẽ hiện ở đây.",
+  "ui_share_send_message": "Gửi trong tin nhắn",
+  "ui_share_send_message_detail": "Cho mọi người trên Kyron",
+  "ui_share_quote": "Trích dẫn"
 }

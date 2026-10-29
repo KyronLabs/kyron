@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "আপনাকে উল্লেখ করেছেন",
   "ui_notif_tab_mentions": "উল্লেখ",
   "ui_notif_no_mentions": "এখনও কোনো উল্লেখ নেই",
-  "ui_notif_no_mentions_detail": "কেউ কোনো পোস্ট বা উত্তরে আপনার @হ্যান্ডেল লিখলে, তা এখানে দেখা যাবে।"
+  "ui_notif_no_mentions_detail": "কেউ কোনো পোস্ট বা উত্তরে আপনার @হ্যান্ডেল লিখলে, তা এখানে দেখা যাবে।",
+  "ui_share_send_message": "মেসেজে পাঠান",
+  "ui_share_send_message_detail": "Kyron-এর মানুষদের কাছে",
+  "ui_share_quote": "উদ্ধৃত করুন"
 }

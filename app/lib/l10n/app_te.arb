@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "మిమ్మల్ని ప్రస్తావించారు",
   "ui_notif_tab_mentions": "ప్రస్తావనలు",
   "ui_notif_no_mentions": "ఇంకా ప్రస్తావనలు లేవు",
-  "ui_notif_no_mentions_detail": "ఎవరైనా పోస్ట్‌లో లేదా ప్రత్యుత్తరంలో మీ @హ్యాండిల్‌ను రాస్తే, అది ఇక్కడ కనిపిస్తుంది."
+  "ui_notif_no_mentions_detail": "ఎవరైనా పోస్ట్‌లో లేదా ప్రత్యుత్తరంలో మీ @హ్యాండిల్‌ను రాస్తే, అది ఇక్కడ కనిపిస్తుంది.",
+  "ui_share_send_message": "సందేశంలో పంపు",
+  "ui_share_send_message_detail": "Kyronలోని వ్యక్తులకు",
+  "ui_share_quote": "కోట్ చేయి"
 }

@@ -629,6 +629,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("その他"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("スパム"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力や脅迫"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("引用"),
+      "ui_share_send_message": MessageLookupByLibrary.simpleMessage("メッセージで送る"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyronのユーザーへ"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("対象の内容"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("アカウントが永久に停止されています"),

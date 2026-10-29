@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "यांनी तुमचा उल्लेख केला",
   "ui_notif_tab_mentions": "उल्लेख",
   "ui_notif_no_mentions": "अजून कोणताही उल्लेख नाही",
-  "ui_notif_no_mentions_detail": "कोणी पोस्ट किंवा उत्तरात तुमचे @हँडल लिहिले की ते इथे दिसेल."
+  "ui_notif_no_mentions_detail": "कोणी पोस्ट किंवा उत्तरात तुमचे @हँडल लिहिले की ते इथे दिसेल.",
+  "ui_share_send_message": "मेसेजमध्ये पाठवा",
+  "ui_share_send_message_detail": "Kyron वरील लोकांना",
+  "ui_share_quote": "उद्धृत करा"
 }

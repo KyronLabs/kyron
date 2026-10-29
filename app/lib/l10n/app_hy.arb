@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "նշեց ձեզ",
   "ui_notif_tab_mentions": "Նշումներ",
   "ui_notif_no_mentions": "Դեռ նշումներ չկան",
-  "ui_notif_no_mentions_detail": "Երբ ինչ-որ մեկը գրառման կամ պատասխանի մեջ գրի ձեր @անունը, այն կհայտնվի այստեղ։"
+  "ui_notif_no_mentions_detail": "Երբ ինչ-որ մեկը գրառման կամ պատասխանի մեջ գրի ձեր @անունը, այն կհայտնվի այստեղ։",
+  "ui_share_send_message": "Ուղարկել հաղորդագրությամբ",
+  "ui_share_send_message_detail": "Kyron-ի մարդկանց",
+  "ui_share_quote": "Մեջբերել"
 }

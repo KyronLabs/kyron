@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "提到了你",
   "ui_notif_tab_mentions": "提及",
   "ui_notif_no_mentions": "还没有人提到你",
-  "ui_notif_no_mentions_detail": "当有人在帖子或回复中写下你的 @用户名 时，会显示在这里。"
+  "ui_notif_no_mentions_detail": "当有人在帖子或回复中写下你的 @用户名 时，会显示在这里。",
+  "ui_share_send_message": "通过私信发送",
+  "ui_share_send_message_detail": "发给 Kyron 上的人",
+  "ui_share_quote": "引用"
 }

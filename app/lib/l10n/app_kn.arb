@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ನಿಮ್ಮನ್ನು ಉಲ್ಲೇಖಿಸಿದ್ದಾರೆ",
   "ui_notif_tab_mentions": "ಉಲ್ಲೇಖಗಳು",
   "ui_notif_no_mentions": "ಇನ್ನೂ ಯಾವುದೇ ಉಲ್ಲೇಖಗಳಿಲ್ಲ",
-  "ui_notif_no_mentions_detail": "ಯಾರಾದರೂ ಪೋಸ್ಟ್ ಅಥವಾ ಪ್ರತ್ಯುತ್ತರದಲ್ಲಿ ನಿಮ್ಮ @ಹ್ಯಾಂಡಲ್ ಬರೆದಾಗ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ."
+  "ui_notif_no_mentions_detail": "ಯಾರಾದರೂ ಪೋಸ್ಟ್ ಅಥವಾ ಪ್ರತ್ಯುತ್ತರದಲ್ಲಿ ನಿಮ್ಮ @ಹ್ಯಾಂಡಲ್ ಬರೆದಾಗ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
+  "ui_share_send_message": "ಸಂದೇಶದಲ್ಲಿ ಕಳುಹಿಸಿ",
+  "ui_share_send_message_detail": "Kyron ನಲ್ಲಿರುವ ಜನರಿಗೆ",
+  "ui_share_quote": "ಉಲ್ಲೇಖಿಸಿ"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "amekutaja",
   "ui_notif_tab_mentions": "Kutajwa",
   "ui_notif_no_mentions": "Bado hujatajwa",
-  "ui_notif_no_mentions_detail": "Mtu anapoandika @jina lako kwenye chapisho au jibu, litaonekana hapa."
+  "ui_notif_no_mentions_detail": "Mtu anapoandika @jina lako kwenye chapisho au jibu, litaonekana hapa.",
+  "ui_share_send_message": "Tuma kwa ujumbe",
+  "ui_share_send_message_detail": "Kwa watu walio Kyron",
+  "ui_share_quote": "Nukuu"
 }

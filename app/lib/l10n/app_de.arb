@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "hat dich erwähnt",
   "ui_notif_tab_mentions": "Erwähnungen",
   "ui_notif_no_mentions": "Noch keine Erwähnungen",
-  "ui_notif_no_mentions_detail": "Wenn jemand deinen @Namen in einem Beitrag oder einer Antwort schreibt, erscheint das hier."
+  "ui_notif_no_mentions_detail": "Wenn jemand deinen @Namen in einem Beitrag oder einer Antwort schreibt, erscheint das hier.",
+  "ui_share_send_message": "In einer Nachricht senden",
+  "ui_share_send_message_detail": "An Leute auf Kyron",
+  "ui_share_quote": "Zitieren"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ayaa ku xusay",
   "ui_notif_tab_mentions": "Xusitaan",
   "ui_notif_no_mentions": "Wali xusitaan ma jiraan",
-  "ui_notif_no_mentions_detail": "Marka qof qoro @magacaaga qoraal ama jawaab dhexdeed, halkan ayuu ka muuqan doonaa."
+  "ui_notif_no_mentions_detail": "Marka qof qoro @magacaaga qoraal ama jawaab dhexdeed, halkan ayuu ka muuqan doonaa.",
+  "ui_share_send_message": "Ku dir fariin",
+  "ui_share_send_message_detail": "Dadka ku jira Kyron",
+  "ui_share_quote": "Soo xigasho"
 }

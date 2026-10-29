@@ -733,6 +733,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Violence or threats"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Quote"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Send in a message"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("To people on Kyron"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("What it was about"),
       "ui_standing_account_banned":

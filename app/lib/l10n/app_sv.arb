@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "nämnde dig",
   "ui_notif_tab_mentions": "Omnämnanden",
   "ui_notif_no_mentions": "Inga omnämnanden ännu",
-  "ui_notif_no_mentions_detail": "När någon skriver ditt @användarnamn i ett inlägg eller ett svar visas det här."
+  "ui_notif_no_mentions_detail": "När någon skriver ditt @användarnamn i ett inlägg eller ett svar visas det här.",
+  "ui_share_send_message": "Skicka i ett meddelande",
+  "ui_share_send_message_detail": "Till personer på Kyron",
+  "ui_share_quote": "Citera"
 }

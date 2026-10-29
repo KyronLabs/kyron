@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "ले तपाईंलाई उल्लेख गर्नुभयो",
   "ui_notif_tab_mentions": "उल्लेखहरू",
   "ui_notif_no_mentions": "अहिलेसम्म कुनै उल्लेख छैन",
-  "ui_notif_no_mentions_detail": "कसैले पोस्ट वा जवाफमा तपाईंको @ह्यान्डल लेख्दा, त्यो यहाँ देखिन्छ।"
+  "ui_notif_no_mentions_detail": "कसैले पोस्ट वा जवाफमा तपाईंको @ह्यान्डल लेख्दा, त्यो यहाँ देखिन्छ।",
+  "ui_share_send_message": "सन्देशमा पठाउनुहोस्",
+  "ui_share_send_message_detail": "Kyron मा भएका मानिसहरूलाई",
+  "ui_share_quote": "उद्धृत गर्नुहोस्"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "mainitsi sinut",
   "ui_notif_tab_mentions": "Maininnat",
   "ui_notif_no_mentions": "Ei vielä mainintoja",
-  "ui_notif_no_mentions_detail": "Kun joku kirjoittaa @käyttäjänimesi julkaisuun tai vastaukseen, se näkyy täällä."
+  "ui_notif_no_mentions_detail": "Kun joku kirjoittaa @käyttäjänimesi julkaisuun tai vastaukseen, se näkyy täällä.",
+  "ui_share_send_message": "Lähetä viestissä",
+  "ui_share_send_message_detail": "Ihmisille Kyronissa",
+  "ui_share_quote": "Lainaa"
 }

@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "paminėjo jus",
   "ui_notif_tab_mentions": "Paminėjimai",
   "ui_notif_no_mentions": "Kol kas paminėjimų nėra",
-  "ui_notif_no_mentions_detail": "Kai kas nors parašys jūsų @vardą įraše ar atsakyme, tai pasirodys čia."
+  "ui_notif_no_mentions_detail": "Kai kas nors parašys jūsų @vardą įraše ar atsakyme, tai pasirodys čia.",
+  "ui_share_send_message": "Siųsti žinute",
+  "ui_share_send_message_detail": "Žmonėms Kyron",
+  "ui_share_quote": "Cituoti"
 }

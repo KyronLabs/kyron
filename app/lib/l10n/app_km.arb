@@ -1124,5 +1124,8 @@
   "ui_notif_mentioned": "បានលើកឡើងពីអ្នក",
   "ui_notif_tab_mentions": "ការលើកឡើង",
   "ui_notif_no_mentions": "មិនទាន់មានការលើកឡើងនៅឡើយទេ",
-  "ui_notif_no_mentions_detail": "នៅពេលនរណាម្នាក់សរសេរ @ឈ្មោះរបស់អ្នក ក្នុងការបង្ហោះ ឬការឆ្លើយតប វានឹងបង្ហាញនៅទីនេះ។"
+  "ui_notif_no_mentions_detail": "នៅពេលនរណាម្នាក់សរសេរ @ឈ្មោះរបស់អ្នក ក្នុងការបង្ហោះ ឬការឆ្លើយតប វានឹងបង្ហាញនៅទីនេះ។",
+  "ui_share_send_message": "ផ្ញើក្នុងសារ",
+  "ui_share_send_message_detail": "ទៅកាន់មនុស្សនៅលើ Kyron",
+  "ui_share_quote": "ដកស្រង់"
 }
