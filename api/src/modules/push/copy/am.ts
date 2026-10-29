@@ -13,6 +13,8 @@ export const am: Copy = {
   reposted_quote: 'ልጥፍዎን በድጋሚ ለጠፈ፦ “{snippet}”',
   replied: 'መለሰልዎ',
   replied_quote: 'መለሰ፦ “{snippet}”',
+  mentioned: 'ጠቀሰዎት',
+  mentioned_quote: 'ጠቀሰዎት፦ “{snippet}”',
   group: 'ቡድን',
   new_message: 'አዲስ መልዕክት',
   dm_once: 'አንድ ጊዜ የሚታይ ነገር ላከ',

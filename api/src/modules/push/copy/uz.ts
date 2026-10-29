@@ -13,6 +13,8 @@ export const uz: Copy = {
   reposted_quote: 'Postingizni ulashdi: “{snippet}”',
   replied: 'Sizga javob berdi',
   replied_quote: 'Javob berdi: “{snippet}”',
+  mentioned: 'Sizni tilga oldi',
+  mentioned_quote: 'Sizni tilga oldi: “{snippet}”',
   group: 'Guruh',
   new_message: 'Yangi xabar',
   dm_once: 'Bir marta ko‘rish uchun nimadir yubordi',

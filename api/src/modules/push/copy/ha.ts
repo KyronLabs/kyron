@@ -13,6 +13,8 @@ export const ha: Copy = {
   reposted_quote: 'Ya sake wallafa rubutunka: “{snippet}”',
   replied: 'Ya ba ka amsa',
   replied_quote: 'Ya amsa: “{snippet}”',
+  mentioned: 'Ya ambace ka',
+  mentioned_quote: 'Ya ambace ka: “{snippet}”',
   group: 'Rukuni',
   new_message: 'Sabon saƙo',
   dm_once: 'Ya aiko wani abu na kallo sau ɗaya',

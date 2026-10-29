@@ -36,6 +36,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
     null,
     NotificationType.like,
     NotificationType.comment,
+    NotificationType.mention,
     NotificationType.follow,
   ];
 
@@ -88,6 +89,8 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen>
               AppLocalizations.of(context).ui('ui_notif_tab_likes', 'Likes'),
               AppLocalizations.of(context)
                   .ui('ui_notif_tab_replies', 'Replies'),
+              AppLocalizations.of(context)
+                  .ui('ui_notif_tab_mentions', 'Mentions'),
               AppLocalizations.of(context)
                   .ui('ui_notif_tab_follows', 'Follows'),
             ],
@@ -175,6 +178,15 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
             art: EmptyArt.people,
             title: AppLocalizations.of(context).literalnoNewFollowers,
             detail: AppLocalizations.of(context).notificationFollowersDetail,
+          ),
+        NotificationType.mention => EmptyState(
+            art: EmptyArt.messages,
+            title: AppLocalizations.of(context)
+                .ui('ui_notif_no_mentions', 'No mentions yet'),
+            detail: AppLocalizations.of(context).ui(
+              'ui_notif_no_mentions_detail',
+              'When somebody writes your @handle in a post or a reply, it shows up here.',
+            ),
           ),
         NotificationType.repost => EmptyState(
             art: EmptyArt.posts,

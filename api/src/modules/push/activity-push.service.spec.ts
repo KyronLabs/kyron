@@ -37,6 +37,13 @@ describe('what an activity push says', () => {
     expect(
       copy({ kind: 'repost', actor: 'Ada', others: 0, snippet: null }),
     ).toEqual({ title: 'Ada', body: 'Reposted your post' });
+    // What they wrote where they named you.
+    expect(
+      copy({ kind: 'mention', actor: 'Ada', others: 0, snippet: 'cc @you' }),
+    ).toEqual({ title: 'Ada', body: 'Mentioned you: “cc @you”' });
+    expect(
+      copy({ kind: 'mention', actor: 'Ada', others: 0, snippet: null }),
+    ).toEqual({ title: 'Ada', body: 'Mentioned you' });
   });
 
   it('counts the ones a newer notification replaced', () => {

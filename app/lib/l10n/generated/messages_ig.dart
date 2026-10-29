@@ -249,6 +249,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ọ nweghị obodo dabara na “{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Egosila obodo ọ bụla"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Chọọ obodo"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta. Mgbe ị hụrụ ihe mmadụ zipụtara, a na-agụ obodo gị n'Nghọta ya, naanị n'otu mmadụ ise ma ọ bụ karịa, ọ dịghịkwa mgbe a na-akpọ aha gị."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Site na ntọala ekwentị gị"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Soro {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -330,6 +342,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Akaụntụ gị"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Mepee obodo ahụ"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Dee post"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Hụ post ahụ"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Dezie profaịlụ gị"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Mgbe ha na-anọ"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("N'oge mpaghara gị."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Afọ"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Site na mmadụ {known} e ruru ndị nyere ụbọchị ọmụmụ."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Ndị e ruru kwa ụbọchị"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Obodo ha nọ na ya"),
+      "ins_countries":
+          MessageLookupByLibrary.simpleMessage("Obodo dị iche iche"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Site n'ime mmadụ {known} e ruru bụ ndị nwere obodo na profaịlụ ha."),
+      "ins_days":
+          MessageLookupByLibrary.simpleMessage("Ụbọchị {days} gara aga"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibunye nghọta"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Ndị na-eso"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "O nweghị otu buru ibu nke ga-egosi ugbu a."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Otu esi eto"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Isiokwu ha na-eso"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Mmasị"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Ọhụrụ"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Ndị na-eso ọhụrụ"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị post gị ruru onye ọ bụla n'oge a."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Ha anaghị eso gị"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Obodo ndị a bụ ndị mmadụ họọrọ na profaịlụ ha. Kyron anaghị anakọta obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ nweghị ihe a ga-egosi maka ha."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Mmeghe"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "ruru {reach} · mmasị {likes} · nzaghachi {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Ndị e ruru"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "A na-agụ onye ọ bụla otu ugboro: e gosiri ya ma ọ bụ o meghere otu n'ime post gị na nke mbụ. Ndị na-eso ọhụrụ ka na-eso gị; anaghị agụ ndị kwụsịrị iso."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Nzaghachi"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Mbugharị"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Ndị echekwara"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "A na-egosi ndị bụ ndị na-ekiri gị ozugbo mmadụ {floor} hụrụ post gị n'oge a. Ọ bụrụ na ha erughị, ọ nwere ike igosi otu onye."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Ndị mmadụ ezughị ugbu a"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% n'ime ha na-eso gị ugbua: post gị na-eru karịsịa ndị maara gị."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% n'ime ha anaghị eso gị ugbu a: a na-achọta post gị."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "I ruru mmadụ {reach}, {pct}% erughị oge gara aga."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "I ruru mmadụ {reach} n'ụbọchị {days} gara aga."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "I ruru mmadụ {reach}, ihe dị ka oge gara aga."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị onye ọhụrụ hụrụ post gị n'ụbọchị {days} gara aga."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "I ruru mmadụ {reach}, {pct}% karịa oge gara aga."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "I ruru mmadụ {reach}, okpukpu {times}× nke oge gara aga."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Ọtụtụ n'ime ha na-eso {name} karịa isiokwu ọ bụla ọzọ."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Ndị na-ekiri"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Nchịkọta"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ndị chọtara otu n'ime post gị na-ele profaịlụ gị tupu ha eso gị. Ihu ma ọ bụ akara na-agwa ha na mmadụ nọ ebe ahụ."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Tinye foto profaịlụ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Kwuo n'otu ahịrị ihe ị na-ebipụta gbasara ya, ka onye ọbịa mara ihe iso gị ga-enye ya."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Dee nkọwa gbasara onwe gị"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} n'ime post {total} gị enweghị isiokwu. Isiokwu na-etinye post n'ime nri isiokwu ahụ na n'ihu ndị na-eso ya."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Tinye isiokwu na post gị"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "Mmadụ {received} zara post gị ma ị zaghachiri {answered}. Ọ dị ha mkpa iji dee: nzaghachi na-eme ka onye na-agụ bụrụ onye na-abịa mgbe niile."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Zaghachi nzaghachi gị"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Ndị na-ekiri gị na-arụsi ọrụ ike na {when}. Post e tinyere obere tupu mgbe ahụ ga-enwe ndị ga-anabata ya."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Biputa mgbe ha nọ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Mmadụ {reached} ndị na-anaghị eso gị hụrụ post gị, {gained} soro gị. Mee ka nkọwa gị na post gị kacha ọhụrụ kwuo ihe ha nwere ike ịtụ anya n'aka gị."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Mee ndị na-agụ ka ha bụrụ ndị na-eso"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Otu post ruru mmadụ okpukpu {times}× karịa ka ndị ọzọ gị na-eru. Lee ihe o mere iche, mee karịa nke ahụ."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Mee karịa ihe rụrụ ọrụ"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Ọtụtụ ndị na-ahụ post gị nọ na {name}. Ibipụta ebe ahụ na-etinye gị n'ihu ndị fọdụrụ."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Biputa na {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "I bipụtara ugboro {posts} n'ime ụbọchị {days}. Post ọ bụla bụ ohere ọzọ a ga-esi chọta gị, usoro kwụsiri ike na-edobe gị na nri ndị na-eso gị."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Na-ebipụta ugboro ugboro"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "I bipụtaghị ihe n'ụbọchị {days} gara aga. Ọ dịghị ihe na-eru onye ọ bụla na-enweghị post."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Biputa ihe"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Nghọta"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Post kacha mma"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Ma e jiri ya tụnyere ụbọchị {days} gara aga"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -861,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Obodo"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1333,6 +1464,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("sochiri gị"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("masịrị ya post gị"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("kpọtụrụ gị aha"),
+      "ui_notif_no_mentions": MessageLookupByLibrary.simpleMessage(
+          "Enweghị onye kpọtụrụ gị aha ka"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Mgbe mmadụ dere @aha gị n'ihe o zipụtara ma ọ bụ na nzaghachi, ọ ga-egosi ebe a."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ndị ochie"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ewepụrụ ozi gị na mkparịta ụka obodo"),
@@ -1361,6 +1498,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Niile"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Nsochi"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Mmasị"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Nkọwapụta aha"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Nzaghachi"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Izu a"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Taa"),
@@ -1568,6 +1707,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Hota"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Ziga ya na ozi"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Nye ndị nọ na Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke tage billedet.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Vises på din profil og under dine opslag."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("Intet land matcher “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Vis intet land"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Søg efter lande"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Vises på din profil og under dine opslag. Når du ser nogens opslag, tælles dit land med i deres Indsigt, kun i grupper på fem eller flere og aldrig med navn."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Fra din telefons indstillinger"),
       "create": MessageLookupByLibrary.simpleMessage("Opret"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Opret konto"),
       "createYourAccount":
@@ -307,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Der er endnu ikke blevet postet under #${a0}.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Følg {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Følgere"),
       "following": MessageLookupByLibrary.simpleMessage("Følger"),
       "forgotPassword":
@@ -332,6 +343,119 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Hjælpecenter"),
       "home": MessageLookupByLibrary.simpleMessage("Hjem"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("På én linje"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Din konto"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Åbn fællesskabet"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Skriv et opslag"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Se opslaget"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Rediger din profil"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Hvornår de er der"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("I din tidszone."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Aldre"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Ud af de {known} nåede personer, der har angivet en fødselsdag."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Personer nået pr. dag"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Fællesskaber de er i"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Lande"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Fra de {known} nåede personer, der har et land på deres profil."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Seneste {days} dage"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Indsigt kunne ikke indlæses"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Følgere"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Ingen gruppe er stor nok til at blive vist endnu."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Sådan vokser du"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("Emner de følger"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Ny"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("Nye følgere"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Ingen af dine opslag nåede nogen i denne periode."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Følger dig ikke"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Landene er dem, folk har valgt på deres profiler. Kyron indsamler ingens by eller køn, så der er intet at vise for dem."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Åbninger"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} nået · {likes} synes godt om · {replies} svar"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Personer nået"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Hver person tælles én gang: vist eller åbnede et af dine opslag for første gang. Nye følgere følger dig stadig; stoppede følgere tælles ikke."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Svar"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Reposts"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Gemte"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Hvem dit publikum er, vises, når {floor} personer har set dine opslag i perioden. Færre end det, og det kunne pege på en bestemt person."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Ikke nok personer endnu"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % af dem følger dig allerede: dine opslag når mest folk, der kender dig."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % af dem følger dig ikke endnu: dine opslag bliver fundet."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Du nåede {reach} personer, {pct} % færre end perioden før."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Du nåede {reach} personer de seneste {days} dage."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Du nåede {reach} personer, omtrent lige så mange som perioden før."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Ingen nye har set dine opslag de seneste {days} dage."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Du nåede {reach} personer, {pct} % flere end perioden før."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Du nåede {reach} personer, {times}× så mange som perioden før."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Flere af dem følger {name} end noget andet emne."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Publikum"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Overblik"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Folk, der finder et af dine opslag, ser på din profil, før de følger. Et ansigt eller et logo fortæller dem, at der er nogen."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Tilføj et profilbillede"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Sig på én linje, hvad du slår op om, så en fremmed ved, hvad det giver at følge dig."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Skriv en bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} af dine {total} opslag havde intet emne. Et emne sætter et opslag i emnets feed og foran dem, der følger det."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Tilføj emner til dine opslag"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} personer svarede på dine opslag, og du besvarede {answered}. De gad allerede skrive: et svar gør en læser til en stamgæst."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Besvar dine svar"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Dit publikum er mest aktivt {when}. Et opslag lige før har folk, der tager imod det."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Slå op, når de er der"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} personer, der ikke følger dig, så dine opslag, og {gained} fulgte. Lad din bio og dine nyeste opslag sige, hvad de kan forvente af dig."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Gør læsere til følgere"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Ét opslag nåede {times}× så mange som dine andre plejer. Se, hvad det gjorde anderledes, og gør mere af det."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Gør mere af det, der virkede"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Mange af dem, der ser dine opslag, er i {name}. At slå op der sætter dig foran resten af det."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Slå op i {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Du slog op {posts} gange på {days} dage. Hvert opslag er en ny chance for at blive fundet, og en fast rytme holder dig i dine følgeres feeds."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Slå oftere op"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Du har ikke slået noget op de seneste {days} dage. Intet når nogen uden et opslag."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Slå noget op"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Indsigt"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Top-opslag"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "I forhold til de {days} dage før"),
       "interest_add":
           MessageLookupByLibrary.simpleMessage("Tilføj en interesse"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
@@ -890,6 +1014,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil opdateret"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Land"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Visningsnavn"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Beliggenhed"),
@@ -1368,6 +1493,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("følger dig nu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("synes godt om dit opslag"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("nævnte dig"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Ingen omtaler endnu"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Når nogen skriver dit @brugernavn i et opslag eller et svar, vises det her."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ældre"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Din besked i en communitychat er blevet fjernet"),
@@ -1397,6 +1527,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Følgere"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Synes godt om"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Omtaler"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Svar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Denne uge"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("I dag"),
@@ -1607,6 +1738,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Få hjælp fra vores team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Del"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citér"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Send i en besked"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Til folk på Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Del dette opslag",
       ),

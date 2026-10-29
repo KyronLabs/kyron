@@ -13,6 +13,8 @@ export const te: Copy = {
   reposted_quote: 'మీ పోస్ట్‌ను రీపోస్ట్ చేశారు: “{snippet}”',
   replied: 'మీకు ప్రత్యుత్తరం ఇచ్చారు',
   replied_quote: 'ప్రత్యుత్తరం: “{snippet}”',
+  mentioned: 'మిమ్మల్ని ప్రస్తావించారు',
+  mentioned_quote: 'మిమ్మల్ని ప్రస్తావించారు: “{snippet}”',
   group: 'గ్రూప్',
   new_message: 'కొత్త సందేశం',
   dm_once: 'ఒకసారి చూడటానికి ఏదో పంపారు',

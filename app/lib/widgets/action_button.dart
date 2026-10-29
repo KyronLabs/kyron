@@ -141,11 +141,16 @@ class ActionButton extends StatelessWidget {
             ? scheme.onSurface.withValues(alpha: 0.12)
             : base;
       }),
+      // One device pixel, like every other line in the app. It was a
+      // logical pixel -- three device pixels on most phones -- which drew
+      // "Edit profile" in a ring heavier than the hairlines around it.
+      // A touch darker than before, so the thinner line still reads.
       side: kind == ActionButtonKind.outlined
           ? WidgetStatePropertyAll(
               BorderSide(
+                width: hairlineWidth(context),
                 color: (destructive ? scheme.error : scheme.outline).withValues(
-                  alpha: 0.4,
+                  alpha: 0.55,
                 ),
               ),
             )

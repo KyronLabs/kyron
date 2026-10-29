@@ -13,6 +13,8 @@ export const kk: Copy = {
   reposted_quote: 'Жазбаңызды бөлісті: «{snippet}»',
   replied: 'Сізге жауап берді',
   replied_quote: 'Жауап берді: «{snippet}»',
+  mentioned: 'Сізді атап өтті',
+  mentioned_quote: 'Сізді атап өтті: «{snippet}»',
   group: 'Топ',
   new_message: 'Жаңа хабарлама',
   dm_once: 'Бір рет көруге арналған нәрсе жіберді',

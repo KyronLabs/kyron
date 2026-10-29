@@ -13,6 +13,8 @@ export const sw: Copy = {
   reposted_quote: 'Amechapisha upya chapisho lako: “{snippet}”',
   replied: 'Amekujibu',
   replied_quote: 'Amejibu: “{snippet}”',
+  mentioned: 'Amekutaja',
+  mentioned_quote: 'Amekutaja: “{snippet}”',
   group: 'Kikundi',
   new_message: 'Ujumbe mpya',
   dm_once: 'Ametuma kitu cha kutazamwa mara moja',

@@ -10,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/conversation.dart';
+import '../models/feed_post.dart';
 import '../models/message_link_card.dart';
 import '../models/post_media.dart';
 import '../models/profile_summary.dart';
@@ -19,6 +20,7 @@ import '../providers/messages_provider.dart';
 import '../providers/people_search_provider.dart';
 import '../providers/preferences_provider.dart';
 import '../routes.dart';
+import '../services/kyron_links.dart';
 import '../services/link_card_reader.dart';
 import '../services/share_inbox.dart';
 import '../screens/thread_screen.dart' show ThreadArgs;
@@ -27,8 +29,9 @@ import 'hairline.dart';
 import 'toast.dart';
 import 'app_sheet.dart';
 
-/// What another app shared, and where in Kyron it can go: a new post, or one
-/// or more conversations at once, with a line of one's own beside it.
+/// What another app shared -- or a post on Kyron -- and where in Kyron it can
+/// go: a new post (a quote, for a post), or one or more conversations at
+/// once, with a line of one's own beside it.
 ///
 /// Laid out the way the share sheets people already know are: what is being
 /// shared at the top, a search, then a grid -- a new post first, then the
@@ -37,7 +40,43 @@ import 'app_sheet.dart';
 class ShareIntoKyronSheet extends ConsumerStatefulWidget {
   final SharedContent content;
 
-  const ShareIntoKyronSheet({super.key, required this.content});
+  /// A post on Kyron being sent, rather than something from another app.
+  /// It goes as its link, with a card made here from the post itself: there
+  /// is no page to read one from, and none is needed.
+  final FeedPost? post;
+
+  const ShareIntoKyronSheet({super.key, required this.content, this.post});
+
+  /// Sends a post to people on Kyron.
+  static Future<void> showPost(BuildContext context, FeedPost post) =>
+      showAppSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        builder: (_) => SafeArea(
+          top: false,
+          child: ShareIntoKyronSheet(
+            content: SharedContent(text: KyronLinks.post(post.id)),
+            post: post,
+          ),
+        ),
+      );
+
+  /// The card a sent post shows in the conversation: whose it is and how it
+  /// starts. Sealed with the message, like any other card.
+  static MessageLinkCard cardFor(FeedPost post) {
+    final words = post.content.replaceAll(RegExp(r'\s+'), ' ').trim();
+    return MessageLinkCard(
+      url: KyronLinks.post(post.id),
+      title: post.author.displayName,
+      description: words.isEmpty
+          ? null
+          : words.length <= 200
+              ? words
+              : '${words.substring(0, 200).trimRight()}…',
+      siteName: 'Kyron',
+    );
+  }
 
   static Future<void> show(BuildContext context, SharedContent content) =>
       showAppSheet<void>(
@@ -98,6 +137,8 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
   String get _query => _search.text.trim();
 
   String? get _link {
+    // A post's card is made from the post, not fetched.
+    if (widget.post != null) return null;
     final text = widget.content.text;
     if (text == null || !ref.read(preferencesProvider).linkPreviews) {
       return null;
@@ -129,11 +170,15 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
     });
   }
 
-  /// Hands the share to the post composer instead.
+  /// Hands the share to the post composer instead: a post of one's own, or,
+  /// for a post on Kyron, a quote of it.
   void _post() {
     final navigator = Navigator.of(context);
     navigator.pop();
-    navigator.pushNamed(Routes.composer, arguments: widget.content);
+    navigator.pushNamed(
+      Routes.composer,
+      arguments: widget.post ?? widget.content,
+    );
   }
 
   /// Sends the share to everybody ticked: once each, with the line written
@@ -166,7 +211,9 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
 
       // The card, if it is ready or nearly. A share is not held up for a
       // slow page: it goes without one.
-      MessageLinkCard? card;
+      MessageLinkCard? card = widget.post == null
+          ? null
+          : ShareIntoKyronSheet.cardFor(widget.post!);
       final link = _link;
       if (link != null) {
         try {
@@ -273,7 +320,9 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
                 SpacingTokens.space16,
                 SpacingTokens.space12,
               ),
-              child: _Shared(content: widget.content),
+              child: widget.post == null
+                  ? _Shared(content: widget.content)
+                  : _SharedPost(post: widget.post!),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -305,7 +354,9 @@ class _ShareIntoKyronSheetState extends ConsumerState<ShareIntoKyronSheet> {
                   if (index == 0) {
                     return _Tile(
                       key: const ValueKey('share-post'),
-                      label: l10n.ui('ui_share_post', 'Post'),
+                      label: widget.post == null
+                          ? l10n.ui('ui_share_post', 'Post')
+                          : l10n.ui('ui_share_quote', 'Quote'),
                       onTap: _sending ? null : _post,
                       picture: CircleAvatar(
                         radius: _Tile.radius,
@@ -419,6 +470,88 @@ class _Shared extends StatelessWidget {
                 color: scheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The post being sent, small: whose, and how it starts.
+class _SharedPost extends StatelessWidget {
+  final FeedPost post;
+
+  const _SharedPost({required this.post});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final words = post.content.trim();
+    final picture = post.media.where((m) => m.isVisual).firstOrNull;
+
+    return Container(
+      key: const ValueKey('share-shared-post'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(SpacingTokens.space8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+        border: Border.fromBorderSide(postRule(scheme)),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 16,
+            backgroundColor: scheme.primary.withValues(alpha: 0.15),
+            foregroundImage: post.author.avatarUrl == null
+                ? null
+                : NetworkImage(post.author.avatarUrl!),
+            child: Icon(Iconsax.user_copy, size: 16, color: scheme.primary),
+          ),
+          const SizedBox(width: SpacingTokens.space8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  post.author.displayName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                if (words.isNotEmpty)
+                  Text(
+                    words,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize2,
+                      height: 1.3,
+                      color: scheme.onSurface.withValues(alpha: 0.8),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          if (picture != null) ...[
+            const SizedBox(width: SpacingTokens.space8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(RadiusTokens.radius8),
+              child: Image.network(
+                picture.thumbnailUrl ?? picture.url,
+                width: 44,
+                height: 44,
+                fit: BoxFit.cover,
+                cacheWidth: 132,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 44,
+                  height: 44,
+                  color: scheme.surfaceContainerHighest,
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

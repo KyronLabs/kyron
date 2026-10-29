@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Hakuna nchi inayolingana na “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Usionyeshe nchi"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Tafuta nchi"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako. Unapoona machapisho ya mtu, nchi yako huhesabiwa katika Maarifa yake, kwa makundi ya watu watano au zaidi tu na kamwe si kwa jina."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Kutoka kwenye mipangilio ya simu yako"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Mfuate {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Akaunti yako"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Fungua jumuiya"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Andika chapisho"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Ona chapisho"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Hariri wasifu wako"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Wanapokuwepo"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Kwa saa za eneo lako."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Umri"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Kati ya watu {known} uliowafikia waliotoa siku ya kuzaliwa."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Watu uliowafikia kila siku"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("Jumuiya walimo"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Nchi"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Kutoka kwa watu {known} waliofikiwa ambao wana nchi kwenye wasifu wao."),
+      "ins_days":
+          MessageLookupByLibrary.simpleMessage("Siku {days} zilizopita"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Takwimu hazikuweza kupakiwa"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Wafuasi"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Bado hakuna kundi kubwa vya kutosha kuonyeshwa."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Jinsi ya kukua"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("Mada wanazofuata"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Vipendwa"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Mpya"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Wafuasi wapya"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Hakuna chapisho lako lililomfikia mtu katika kipindi hiki."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Hawakufuati"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Nchi ni zile ambazo watu walichagua kwenye wasifu wao. Kyron haikusanyi jiji wala jinsia ya mtu yeyote, kwa hivyo hakuna cha kuonyesha kuhusu hayo."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Mafunguo"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "wamefikiwa {reach} · vipendwa {likes} · majibu {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Watu uliowafikia"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Kila mtu anahesabiwa mara moja: alionyeshwa au alifungua mojawapo ya machapisho yako kwa mara ya kwanza. Wafuasi wapya bado wanakufuata; walioacha kukufuata hawahesabiwi."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Majibu"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Machapisho upya"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Vilivyohifadhiwa"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Hadhira yako ni nani huonyeshwa watu {floor} wanapokuwa wameona machapisho yako katika kipindi hiki. Chini ya hapo, inaweza kumwonyesha mtu fulani."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Bado hakuna watu wa kutosha"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% yao tayari wanakufuata: machapisho yako mara nyingi huwafikia wanaokujua."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% yao bado hawakufuati: machapisho yako yanagunduliwa."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Uliwafikia watu {reach}, {pct}% chini ya kipindi kilichopita."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Uliwafikia watu {reach} katika siku {days} zilizopita."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Uliwafikia watu {reach}, takriban sawa na kipindi kilichopita."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Hakuna mtu mpya aliyeona machapisho yako katika siku {days} zilizopita."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Uliwafikia watu {reach}, {pct}% zaidi ya kipindi kilichopita."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Uliwafikia watu {reach}, mara {times}× ya kipindi kilichopita."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Wengi wao wanafuata {name} kuliko mada nyingine yoyote."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Hadhira"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Muhtasari"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Watu wanaopata chapisho lako hutazama wasifu wako kabla ya kukufuata. Uso au nembo huwaambia kuna mtu pale."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Ongeza picha ya wasifu"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Sema kwa mstari mmoja unachapisha kuhusu nini, ili mgeni ajue atapata nini kwa kukufuata."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Andika maelezo mafupi"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} kati ya machapisho yako {total} hayakuwa na mada. Mada huweka chapisho kwenye mlisho wa mada hiyo na mbele ya wanaoifuata."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Ongeza mada kwenye machapisho"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "Watu {received} walijibu machapisho yako na ulijibu {answered}. Walijali vya kutosha kuandika: jibu humgeuza msomaji kuwa mgeni wa kawaida."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Jibu majibu yako"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Hadhira yako huwa hai zaidi {when}. Chapisho lililowekwa kabla kidogo lina watu wa kulipokea."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Chapisha wanapokuwepo"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Watu {reached} wasiokufuata waliona machapisho yako, na {gained} walikufuata. Acha maelezo yako mafupi na machapisho yako mapya yaseme wanachoweza kutarajia kutoka kwako."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Geuza wasomaji kuwa wafuasi"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Chapisho moja liliwafikia watu mara {times}× ya wanaofikiwa kwa kawaida na mengine yako. Angalia lilifanya nini tofauti, na ufanye hivyo zaidi."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Fanya zaidi kilichofanikiwa"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Wengi wanaoona machapisho yako wako katika {name}. Kuchapisha huko kunakuweka mbele ya wengine."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Chapisha katika {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Ulichapisha mara {posts} katika siku {days}. Kila chapisho ni nafasi nyingine ya kupatikana, na mdundo thabiti hukuweka kwenye milisho ya wafuasi wako."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Chapisha mara nyingi zaidi"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Hujachapisha katika siku {days} zilizopita. Hakuna kinachomfikia mtu bila chapisho."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Chapisha kitu"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Takwimu"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Machapisho bora"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Ukilinganisha na siku {days} zilizotangulia"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +987,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Nchi"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1335,6 +1461,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("amekufuata"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("amependa chapisho lako"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("amekutaja"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Bado hujatajwa"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Mtu anapoandika @jina lako kwenye chapisho au jibu, litaonekana hapa."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Za zamani"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ujumbe wako kwenye gumzo la jumuiya umeondolewa"),
@@ -1365,6 +1496,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Wanaofuata"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Zilizopendwa"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Kutajwa"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Majibu"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Wiki hii"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Leo"),
@@ -1573,6 +1705,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Nukuu"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Tuma kwa ujumbe"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kwa watu walio Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

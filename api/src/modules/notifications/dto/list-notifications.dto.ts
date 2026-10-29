@@ -6,26 +6,25 @@ export const NOTIFICATION_KINDS = [
   'comment',
   'follow',
   'repost',
+  'mention',
   'account',
   'report',
   'gift',
 ] as const;
 
-/**
- * Rows an app has to ask for, because an app from before them reads an
- * unknown row as "Someone liked your post". Comma-separated:
- * `include=moderation,gifts`.
- */
-export const NOTIFICATION_EXTRAS = ['moderation', 'gifts'] as const;
-export type NotificationExtra = (typeof NOTIFICATION_EXTRAS)[number];
+/** What `include` may ask for. */
+export const INCLUDES = ['moderation', 'mentions', 'gifts'] as const;
+export type Include = (typeof INCLUDES)[number];
 
-const extras = ({ value }: { value: unknown }): unknown =>
-  typeof value === 'string'
+/** "moderation,mentions" -> ['moderation', 'mentions']. */
+function includeList({ value }: { value: unknown }): unknown {
+  return typeof value === 'string'
     ? value
         .split(',')
         .map((part) => part.trim())
         .filter(Boolean)
     : value;
+}
 
 export class ListNotificationsDto {
   /** The timestamp of the last row of the previous page. */
@@ -47,24 +46,27 @@ export class ListNotificationsDto {
   })
   kind?: (typeof NOTIFICATION_KINDS)[number];
 
-  /** "moderation" adds decisions about the account and what came of its
-   * reports; "gifts" adds gifts sent to its posts. */
+  /** Rows an older app would misread, asked for by name, comma-separated:
+   * "moderation" adds decisions about the account and what came of its
+   * reports, "mentions" adds where somebody wrote @you, "gifts" adds gifts
+   * sent to its posts. An app from before any of them reads an unknown row
+   * as a like. */
   @IsOptional()
-  @Transform(extras)
-  @IsIn(NOTIFICATION_EXTRAS, {
+  @Transform(includeList)
+  @IsIn(INCLUDES, {
     each: true,
-    message: `include must list only ${NOTIFICATION_EXTRAS.join(', ')}.`,
+    message: `include must be any of ${INCLUDES.join(', ')}.`,
   })
-  include?: NotificationExtra[];
+  include?: Include[];
 }
 
 /** For the badge: the same opt-in as the list. */
 export class UnreadNotificationsDto {
   @IsOptional()
-  @Transform(extras)
-  @IsIn(NOTIFICATION_EXTRAS, {
+  @Transform(includeList)
+  @IsIn(INCLUDES, {
     each: true,
-    message: `include must list only ${NOTIFICATION_EXTRAS.join(', ')}.`,
+    message: `include must be any of ${INCLUDES.join(', ')}.`,
   })
-  include?: NotificationExtra[];
+  include?: Include[];
 }

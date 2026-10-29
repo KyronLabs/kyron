@@ -42,6 +42,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotSignOut": (Object a0) => "로그아웃할 수 없습니다: ${a0}",
       "couldNotTakePicture":
           MessageLookupByLibrary.simpleMessage("사진을 찍을 수 없습니다."),
+      "country_helper":
+          MessageLookupByLibrary.simpleMessage("프로필과 게시물 아래에 표시됩니다."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("“{query}”와(과) 일치하는 국가가 없습니다."),
+      "country_none": MessageLookupByLibrary.simpleMessage("국가 표시 안 함"),
+      "country_search": MessageLookupByLibrary.simpleMessage("국가 검색"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "프로필과 게시물 아래에 표시됩니다. 다른 사람의 게시물을 보면 회원님의 국가가 그 사람의 인사이트에 집계되며, 5명 이상의 그룹으로만 집계되고 이름은 절대 표시되지 않습니다."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("휴대폰 설정 기준"),
       "create": MessageLookupByLibrary.simpleMessage("만들기"),
       "createAccount": MessageLookupByLibrary.simpleMessage("계정 생성"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("계정을 생성하세요"),
@@ -61,6 +70,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "이 기기에서는 얼굴 추적을 사용할 수 없습니다.",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name}님 팔로우"),
       "followers": MessageLookupByLibrary.simpleMessage("팔로워"),
       "following": MessageLookupByLibrary.simpleMessage("팔로잉"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("비밀번호를 잊으셨나요?"),
@@ -71,6 +81,110 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("도움말 센터"),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("도움말 및 지원"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("한 줄로"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("내 계정"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("커뮤니티 열기"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("게시물 쓰기"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("게시물 보기"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("프로필 수정"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("활동하는 시간"),
+      "ins_active_note": MessageLookupByLibrary.simpleMessage("내 시간대 기준입니다."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("나이"),
+      "ins_ages_note":
+          MessageLookupByLibrary.simpleMessage("생일을 입력한, 도달한 {known}명 기준입니다."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("일별 도달한 사람"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("속한 커뮤니티"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("국가"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "프로필에 국가를 설정한, 도달한 {known}명 기준입니다."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("최근 {days}일"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage("인사이트를 불러오지 못했습니다"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("팔로워"),
+      "ins_group_small":
+          MessageLookupByLibrary.simpleMessage("보여 줄 만큼 큰 그룹이 아직 없습니다."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("성장하는 방법"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("팔로우하는 주제"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("좋아요"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("새로움"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("새 팔로워"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "이 기간에 내 게시물은 아무에게도 도달하지 않았습니다."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("나를 팔로우하지 않는 사람"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "국가는 사람들이 프로필에서 직접 선택한 것입니다. Kyron은 누구의 도시나 성별도 수집하지 않으므로 이에 대해 보여 줄 내용이 없습니다."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("열람"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach}명 도달 · 좋아요 {likes} · 답글 {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("도달한 사람"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "한 사람은 한 번만 셉니다. 내 게시물이 처음으로 보였거나 처음 열어 본 사람입니다. 새 팔로워는 지금도 팔로우 중인 사람이며, 팔로우 취소는 세지 않습니다."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("답글"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("리포스트"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("저장"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "이 기간에 {floor}명이 내 게시물을 보면 오디언스가 어떤 사람인지 보여 드립니다. 그보다 적으면 특정한 사람을 가리킬 수 있습니다."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("아직 사람이 충분하지 않아요"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "그중 {pct}%는 이미 나를 팔로우합니다. 내 게시물은 주로 나를 아는 사람에게 도달합니다."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "그중 {pct}%는 아직 나를 팔로우하지 않습니다. 내 게시물이 발견되고 있어요."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach}명에게 도달했습니다. 이전 기간보다 {pct}% 적습니다."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "최근 {days}일 동안 {reach}명에게 도달했습니다."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach}명에게 도달했습니다. 이전 기간과 비슷합니다."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "최근 {days}일 동안 새로 내 게시물을 본 사람이 없습니다."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach}명에게 도달했습니다. 이전 기간보다 {pct}% 많습니다."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach}명에게 도달했습니다. 이전 기간의 {times}×입니다."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "다른 어떤 주제보다 {name}을(를) 팔로우하는 사람이 많습니다."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("오디언스"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("개요"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "내 게시물을 발견한 사람은 팔로우하기 전에 프로필을 봅니다. 얼굴이나 로고가 있으면 그곳에 누군가 있다는 걸 알 수 있어요."),
+      "ins_tip_add_avatar_t": MessageLookupByLibrary.simpleMessage("프로필 사진 추가"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "무엇에 대해 게시하는지 한 줄로 알려 주세요. 처음 보는 사람이 팔로우하면 무엇을 얻는지 알 수 있습니다."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("소개 작성"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total}개 게시물 중 {without}개에 주제가 없었습니다. 주제를 붙이면 그 주제 피드와 주제를 팔로우하는 사람들 앞에 게시물이 나갑니다."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("게시물에 주제 추가"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received}명이 내 게시물에 답글을 달았고, 나는 {answered}개에 답했습니다. 글을 남길 만큼 관심이 있는 사람들이에요. 답하면 독자가 단골이 됩니다."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("답글에 답하기"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "내 오디언스는 {when}에 가장 활발합니다. 그 직전에 올린 게시물은 맞아 줄 사람이 있습니다."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("사람들이 있을 때 게시하기"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "나를 팔로우하지 않는 {reached}명이 내 게시물을 봤고, {gained}명이 팔로우했습니다. 소개와 최신 게시물에서 나에게 무엇을 기대할 수 있는지 알려 주세요."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("독자를 팔로워로"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "한 게시물이 평소 다른 게시물보다 {times}× 많은 사람에게 도달했습니다. 무엇이 달랐는지 살펴보고 그걸 더 해 보세요."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("잘된 것을 더 하기"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "내 게시물을 보는 사람 중 다수가 {name}에 있습니다. 그곳에 게시하면 나머지 멤버에게도 보입니다."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name}에 게시하기"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days}일 동안 {posts}번 게시했습니다. 게시물마다 발견될 기회가 하나 더 생기고, 꾸준한 리듬은 팔로워의 피드에 나를 남겨 둡니다."),
+      "ins_tip_post_more_t": MessageLookupByLibrary.simpleMessage("더 자주 게시하기"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "최근 {days}일 동안 게시하지 않았습니다. 게시물이 없으면 아무에게도 도달하지 않습니다."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("무언가 게시하세요"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("인사이트"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("인기 게시물"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage("이전 {days}일과 비교"),
       "itDisappearsForBoth":
           MessageLookupByLibrary.simpleMessage("둘 모두에게서 사라집니다."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage("스레드에서 삭제됩니다."),
@@ -110,6 +224,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postTextCopied":
           MessageLookupByLibrary.simpleMessage("게시물 텍스트가 복사되었습니다"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("프로필이 업데이트되었습니다"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("국가"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("푸시 알림"),
       "quote": MessageLookupByLibrary.simpleMessage("인용"),
       "quotePost": MessageLookupByLibrary.simpleMessage("게시물 인용"),
@@ -379,6 +494,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("님이 회원님을 팔로우했습니다"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("님이 회원님의 게시물을 좋아합니다"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("님이 회원님을 언급했습니다"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("아직 언급이 없습니다"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "누군가 게시물이나 답글에 회원님의 @사용자 이름을 쓰면 여기에 표시됩니다."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("이전"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("커뮤니티 채팅의 메시지가 삭제되었습니다"),
@@ -407,6 +528,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("전체"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("팔로우"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("좋아요"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("언급"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("답글"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("이번 주"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("오늘"),
@@ -508,6 +630,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("기타"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("스팸"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("폭력 또는 위협"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("인용"),
+      "ui_share_send_message": MessageLookupByLibrary.simpleMessage("메시지로 보내기"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron 사용자에게"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("관련 내용"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("계정이 영구 정지되었습니다"),

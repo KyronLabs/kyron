@@ -77,8 +77,8 @@ export class EmailService {
   private assertConfigured() {
     if (!this.configured) {
       throw new Error(
-        'SENDGRID_API_KEY is not set, so no mail can be sent. Set it on the ' +
-          'deployment (fly secrets set SENDGRID_API_KEY=...) and restart.',
+        'SENDGRID_API_KEY is not set, so no mail can be sent. Set it in the ' +
+          "Render service's Environment settings and redeploy.",
       );
     }
   }

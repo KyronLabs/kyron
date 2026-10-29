@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Zure profilean eta zure argitalpenen azpian erakusten da."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ez dago «{query}» bilaketarekin bat datorren herrialderik."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Ez erakutsi herrialderik"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Bilatu herrialdeak"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Zure profilean eta zure argitalpenen azpian erakusten da. Norbaiten argitalpenak ikustean, zure herrialdea haren Estatistiketan zenbatzen da, bost edo gehiagoko taldeetan bakarrik eta inoiz ez izenez."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Telefonoaren ezarpenetatik"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Jarraitu {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,126 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Zure kontua"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Ireki komunitatea"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Idatzi argitalpen bat"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Ikusi argitalpena"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Editatu zure profila"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Noiz dauden"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Zure ordu-eremuan."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Adinak"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Urtebetetzea eman duten {known} iritsitako pertsonetatik."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Egunero iritsitako pertsonak"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Zein komunitatetan dauden"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Herrialdeak"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Profilean herrialdea duten {known} pertsona iritsietatik."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Azken {days} egunak"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan dira estatistikak kargatu"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Jarraitzaileak"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez dago erakusteko bezain talde handirik."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Nola hazi"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Jarraitzen dituzten gaiak"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Atsegiteak"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Berria"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Jarraitzaile berriak"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Zure argitalpenetako batek ere ez du inor iritsi aldi honetan."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Ez dizute jarraitzen"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Herrialdeak jendeak bere profilean aukeratutakoak dira. Kyronek ez du inoren hiria edo generoa biltzen, beraz, ez dago haiei buruz ezer erakusteko."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Irekierak"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} iritsita · {likes} atsegite · {replies} erantzun"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Iritsitako pertsonak"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Pertsona bakoitza behin zenbatzen da: zure argitalpenetako bat lehen aldiz erakutsi zitzaion edo ireki zuen. Jarraitzaile berriek oraindik jarraitzen dizute; jarraitzeari uzteak ez dira zenbatzen."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Erantzunak"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Birbidalketak"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Gordetakoak"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Zure audientzia nor den {floor} pertsonak aldi honetan zure argitalpenak ikusi ondoren erakusten da. Gutxiagorekin, norbait seinala lezake."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez dago jende nahikorik"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "% {pct}-k dagoeneko jarraitzen dizu: zure argitalpenak batez ere ezagutzen zaituztenengana iristen dira."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "% {pct}-k oraindik ez dizu jarraitzen: zure argitalpenak aurkitzen ari dira."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} pertsonarengana iritsi zara, aurreko aldian baino % {pct} gutxiago."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Azken {days} egunetan {reach} pertsonarengana iritsi zara."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} pertsonarengana iritsi zara, aurreko aldian beste gutxi gorabehera."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Azken {days} egunetan inor berrik ez ditu zure argitalpenak ikusi."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} pertsonarengana iritsi zara, aurreko aldian baino % {pct} gehiago."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} pertsonarengana iritsi zara, aurreko aldian baino {times}× gehiago."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Haietako gehiagok jarraitzen dute {name} beste edozein gai baino."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Audientzia"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Ikuspegi orokorra"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Zure argitalpen bat aurkitzen dutenek zure profila begiratzen dute jarraitu aurretik. Aurpegi edo logo batek norbait badagoela esaten die."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Gehitu profileko argazkia"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Esan lerro batean zertaz argitaratzen duzun, ezezagun batek jakin dezan zer ematen dion zuri jarraitzeak."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Idatzi biografia"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "Zure {total} argitalpenetatik {without}-k ez zuten gairik. Gai batek argitalpena gai horren jarioan eta jarraitzen diotenen aurrean jartzen du."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Gehitu gaiak zure argitalpenei"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} pertsonak erantzun diete zure argitalpenei eta zuk {answered} erantzun dituzu. Idazteko adina axola zitzaien: erantzun batek irakurle bat ohiko bihurtzen du."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Erantzun zure erantzunei"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Zure audientzia aktiboena {when} da. Hori baino lehentxeago egindako argitalpenak jendea izango du zain."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Argitaratu daudenean"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Jarraitzen ez dizuten {reached} pertsonak ikusi dituzte zure argitalpenak, eta {gained}-k jarraitu dizute. Zure biografiak eta argitalpen berrienek esan dezatela zer espero dezaketen zuregandik."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Bihurtu irakurleak jarraitzaile"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Argitalpen batek zure besteek normalean baino {times}× jende gehiago iritsi zuen. Begiratu zer egin zuen desberdin, eta egin hori gehiago."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Egin gehiago funtzionatu duena"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Zure argitalpenak ikusten dituzten askok {name}-n daude. Han argitaratzeak gainerakoen aurrean jartzen zaitu."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Argitaratu {name}-n"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} egunetan {posts} aldiz argitaratu duzu. Argitalpen bakoitza aurkitua izateko beste aukera bat da, eta erritmo jarraitu batek zure jarraitzaileen jarioetan mantentzen zaitu."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Argitaratu maizago"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Ez duzu argitaratu azken {days} egunetan. Argitalpenik gabe, ezer ez da inorengana iristen."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Argitaratu zerbait"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Estatistikak"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Argitalpen onenak"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Aurreko {days} egunekin alderatuta"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +995,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Herrialdea"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1337,6 +1471,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("jarraitzen hasi zaizu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("atsegin du zure argitalpena"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("aipatu zaitu"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago aipamenik"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Norbaitek zure @erabiltzailea argitalpen edo erantzun batean idazten duenean, hemen agertuko da."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Zaharragoak"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Komunitateko txat bateko zure mezua kendu da"),
@@ -1366,6 +1506,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Jarraipenak"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Atsegiteak"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Aipamenak"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Erantzunak"),
       "ui_notif_this_week":
@@ -1581,6 +1723,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Aipatu"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Bidali mezu batean"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron-eko jendeari"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

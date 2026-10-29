@@ -13,6 +13,8 @@ export const he: Copy = {
   reposted_quote: 'שיתף/ה את הפוסט שלך: ״{snippet}״',
   replied: 'הגיב/ה לך',
   replied_quote: 'הגיב/ה: ״{snippet}״',
+  mentioned: 'הזכיר/ה אותך',
+  mentioned_quote: 'הזכיר/ה אותך: ״{snippet}״',
   group: 'קבוצה',
   new_message: 'הודעה חדשה',
   dm_once: 'שלח/ה משהו לצפייה חד־פעמית',

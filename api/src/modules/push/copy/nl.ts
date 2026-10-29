@@ -13,6 +13,8 @@ export const nl: Copy = {
   reposted_quote: 'Heeft je bericht gedeeld: ‘{snippet}’',
   replied: 'Heeft je geantwoord',
   replied_quote: 'Antwoordde: ‘{snippet}’',
+  mentioned: 'Noemde je',
+  mentioned_quote: 'Noemde je: ‘{snippet}’',
   group: 'Groep',
   new_message: 'Nieuw bericht',
   dm_once: 'Heeft je iets gestuurd om één keer te bekijken',

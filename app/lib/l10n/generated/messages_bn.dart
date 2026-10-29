@@ -255,6 +255,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "এই ছবি তুলা যায়নি।",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "আপনার প্রোফাইলে এবং আপনার পোস্টের নিচে দেখানো হয়।"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}”-এর সাথে কোনো দেশ মেলেনি।"),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("কোনো দেশ দেখাবেন না"),
+      "country_search": MessageLookupByLibrary.simpleMessage("দেশ খুঁজুন"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "আপনার প্রোফাইলে এবং আপনার পোস্টের নিচে দেখানো হয়। আপনি কারও পোস্ট দেখলে, আপনার দেশ তাদের ইনসাইটসে গণনা করা হয়, শুধু পাঁচ বা তার বেশি জনের দলে এবং কখনও নাম দিয়ে নয়।"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("আপনার ফোনের সেটিংস থেকে"),
       "create": MessageLookupByLibrary.simpleMessage("তৈরি করুন"),
       "createAccount":
           MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট তৈরি করুন"),
@@ -314,6 +325,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "#${a0} এর অধীনে এখনো কিছু পোস্ট করা হয়নি।",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name}-কে অনুসরণ করুন"),
       "followers": MessageLookupByLibrary.simpleMessage("অনুসারী"),
       "following": MessageLookupByLibrary.simpleMessage("অনুসরণ"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -343,6 +356,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("সহায়তা কেন্দ্র"),
       "home": MessageLookupByLibrary.simpleMessage("হোম"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("এক লাইনে"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("আপনার অ্যাকাউন্ট"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("কমিউনিটি খুলুন"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("একটি পোস্ট লিখুন"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("পোস্টটি দেখুন"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("আপনার প্রোফাইল সম্পাদনা করুন"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("তাঁরা কখন সক্রিয়"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("আপনার টাইম জোনে।"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("বয়স"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "পৌঁছানো {known} জনের মধ্যে যাঁরা জন্মদিন দিয়েছেন।"),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("প্রতিদিন পৌঁছানো মানুষ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("যে কমিউনিটিতে তাঁরা আছেন"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("দেশ"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "যে {known} জনের কাছে পৌঁছেছেন এবং যাদের প্রোফাইলে দেশ আছে, তাদের থেকে।"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("গত {days} দিন"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("ইনসাইটস লোড করা যায়নি"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("ফলোয়ার"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "দেখানোর মতো যথেষ্ট বড় কোনো দল এখনো নেই।"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("কীভাবে বাড়বেন"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("যে বিষয়গুলো তাঁরা ফলো করেন"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("লাইক"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("নতুন"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("নতুন ফলোয়ার"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "এই সময়ে আপনার কোনো পোস্ট কারো কাছে পৌঁছায়নি।"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("আপনাকে ফলো করেন না"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "দেশগুলো মানুষ নিজেদের প্রোফাইলে বেছে নিয়েছেন। Kyron কারও শহর বা লিঙ্গ সংগ্রহ করে না, তাই সেগুলোর জন্য দেখানোর কিছু নেই।"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("খোলা"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} জনের কাছে পৌঁছেছে · {likes} লাইক · {replies} উত্তর"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("পৌঁছানো মানুষ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "প্রত্যেক মানুষকে একবার গোনা হয়: আপনার কোনো পোস্ট প্রথমবার তাকে দেখানো হয়েছে বা সে খুলেছে। নতুন ফলোয়াররা এখনো আপনাকে ফলো করছেন; আনফলো গোনা হয় না।"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("উত্তর"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("রিপোস্ট"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("সেভ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "এই সময়ে {floor} জন আপনার পোস্ট দেখলে আপনার দর্শক কারা তা দেখানো হয়। এর কম হলে তা কোনো নির্দিষ্ট মানুষকে চিনিয়ে দিতে পারে।"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("এখনো যথেষ্ট মানুষ নেই"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "তাঁদের {pct}% ইতিমধ্যে আপনাকে ফলো করেন: আপনার পোস্ট বেশিরভাগ পরিচিতদের কাছে পৌঁছায়।"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "তাঁদের {pct}% এখনো আপনাকে ফলো করেন না: আপনার পোস্ট খুঁজে পাওয়া যাচ্ছে।"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "আপনি {reach} জনের কাছে পৌঁছেছেন, আগের সময়ের চেয়ে {pct}% কম।"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "গত {days} দিনে আপনি {reach} জনের কাছে পৌঁছেছেন।"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "আপনি {reach} জনের কাছে পৌঁছেছেন, প্রায় আগের সময়ের সমান।"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "গত {days} দিনে নতুন কেউ আপনার পোস্ট দেখেননি।"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "আপনি {reach} জনের কাছে পৌঁছেছেন, আগের সময়ের চেয়ে {pct}% বেশি।"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "আপনি {reach} জনের কাছে পৌঁছেছেন, আগের সময়ের {times}× বেশি।"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "তাঁদের বেশিরভাগ অন্য যেকোনো বিষয়ের চেয়ে {name} বেশি ফলো করেন।"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("দর্শক"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("সংক্ষিপ্ত বিবরণ"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "যাঁরা আপনার কোনো পোস্ট খুঁজে পান তাঁরা ফলো করার আগে আপনার প্রোফাইল দেখেন। একটি মুখ বা লোগো তাঁদের বলে সেখানে কেউ আছেন।"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("প্রোফাইল ছবি যোগ করুন"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "এক লাইনে বলুন আপনি কী নিয়ে পোস্ট করেন, যাতে অচেনা কেউ জানেন আপনাকে ফলো করলে কী পাবেন।"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("বায়ো লিখুন"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "আপনার {total}টি পোস্টের {without}টিতে কোনো বিষয় ছিল না। বিষয় একটি পোস্টকে সেই বিষয়ের ফিডে এবং যাঁরা তা ফলো করেন তাঁদের সামনে রাখে।"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("পোস্টে বিষয় যোগ করুন"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} জন আপনার পোস্টে উত্তর দিয়েছেন আর আপনি {answered}টির জবাব দিয়েছেন। তাঁরা লেখার মতো যত্ন নিয়েছেন: একটি জবাব পাঠককে নিয়মিত করে তোলে।"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("উত্তরের জবাব দিন"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "আপনার দর্শক সবচেয়ে সক্রিয় {when}। ঠিক তার আগে পোস্ট করলে তা গ্রহণ করার মানুষ থাকে।"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "তাঁরা যখন সক্রিয় তখন পোস্ট করুন"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "আপনাকে ফলো করেন না এমন {reached} জন আপনার পোস্ট দেখেছেন, এবং {gained} জন ফলো করেছেন। আপনার বায়ো ও নতুন পোস্ট বলুক তাঁরা আপনার কাছে কী আশা করতে পারেন।"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("পাঠকদের ফলোয়ারে পরিণত করুন"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "একটি পোস্ট আপনার অন্যগুলোর স্বাভাবিকের চেয়ে {times}× বেশি মানুষের কাছে পৌঁছেছে। দেখুন এটি কী আলাদা করেছে, এবং তা আরও করুন।"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("যা কাজ করেছে তা আরও করুন"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "আপনার পোস্ট যাঁরা দেখেন তাঁদের অনেকে {name}-এ আছেন। সেখানে পোস্ট করলে বাকিদের সামনেও আপনি থাকবেন।"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name}-এ পোস্ট করুন"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "আপনি {days} দিনে {posts} বার পোস্ট করেছেন। প্রতিটি পোস্ট খুঁজে পাওয়ার আরেকটি সুযোগ, আর নিয়মিত ছন্দ আপনাকে ফলোয়ারদের ফিডে রাখে।"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("আরও নিয়মিত পোস্ট করুন"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "গত {days} দিনে আপনি পোস্ট করেননি। পোস্ট ছাড়া কিছুই কারো কাছে পৌঁছায় না।"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("কিছু পোস্ট করুন"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ইনসাইটস"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("সেরা পোস্ট"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("আগের {days} দিনের তুলনায়"),
       "interest_add":
           MessageLookupByLibrary.simpleMessage("একটি আগ্রহ যোগ করুন"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
@@ -924,6 +1053,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "প্রোফাইল আপডেট হয়েছে",
       ),
       "profile_bio": MessageLookupByLibrary.simpleMessage("বায়ো"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("দেশ"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("ডিসপ্লে নাম"),
       "profile_location": MessageLookupByLibrary.simpleMessage("অবস্থান"),
@@ -1407,6 +1537,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("আপনাকে ফলো করেছেন"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("আপনার পোস্ট পছন্দ করেছেন"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("আপনাকে উল্লেখ করেছেন"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("এখনও কোনো উল্লেখ নেই"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "কেউ কোনো পোস্ট বা উত্তরে আপনার @হ্যান্ডেল লিখলে, তা এখানে দেখা যাবে।"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("পুরোনো"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "কমিউনিটি চ্যাটে আপনার মেসেজ সরানো হয়েছে"),
@@ -1435,6 +1571,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("সব"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ফলো"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("পছন্দ"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("উল্লেখ"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("উত্তর"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("এই সপ্তাহে"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("আজ"),
@@ -1651,6 +1788,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "আমাদের টিম থেকে সাহায্য নিন",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("শেয়ার"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("উদ্ধৃত করুন"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("মেসেজে পাঠান"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron-এর মানুষদের কাছে"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "এই পোস্ট শেয়ার করুন",
       ),

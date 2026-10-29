@@ -248,6 +248,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "تعذّر التقاط تلك الصورة.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "يظهر في ملفك الشخصي وأسفل منشوراتك."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("لا يوجد بلد يطابق “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("لا تعرض بلدًا"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ابحث عن البلدان"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "يظهر في ملفك الشخصي وأسفل منشوراتك. عندما ترى منشورات شخص ما، يُحتسب بلدك في إحصاءاته، ضمن مجموعات من خمسة أشخاص أو أكثر فقط ودون ذكر اسمك أبدًا."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("من إعدادات هاتفك"),
       "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
       "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
@@ -298,6 +308,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "تتبُّع الوجه غير متاح على هذا الجهاز.",
       ),
       "feedTagDetail": (Object a0) => "لم تُنشر أي مشاركة تحت #${a0} بعد.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("متابعة {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("المتابِعون"),
       "following": MessageLookupByLibrary.simpleMessage("المتابَعون"),
       "forgotPassword":
@@ -325,6 +336,118 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("مركز المساعدة"),
       "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("في سطر واحد"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("حسابك"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("افتح المجتمع"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("اكتب منشورًا"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("اعرض المنشور"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("عدّل ملفك الشخصي"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("متى يكونون متواجدين"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("بحسب منطقتك الزمنية."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("الأعمار"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "من بين {known} شخصًا وصلت إليهم وذكروا تاريخ ميلادهم."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "الأشخاص الذين وصلت إليهم كل يوم"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("المجتمعات التي ينتمون إليها"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("البلدان"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "من بين {known} شخصًا وصلت إليهم ولديهم بلد في ملفهم الشخصي."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("آخر {days} يومًا"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل الإحصاءات"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("المتابعون"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "لا توجد مجموعة كبيرة بما يكفي لعرضها بعد."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("كيف تنمو"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("المواضيع التي يتابعونها"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("جديد"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("متابعون جدد"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "لم يصل أي من منشوراتك إلى أحد في هذه الفترة."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("لا يتابعونك"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "البلدان هي التي اختارها الأشخاص في ملفاتهم الشخصية. لا يجمع Kyron مدينة أحد أو جنسه، لذا لا يوجد ما يُعرض عنهما."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("مرات الفتح"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "وصل إلى {reach} · {likes} إعجابات · {replies} ردود"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("الأشخاص الذين وصلت إليهم"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "يُحسب كل شخص مرة واحدة: عُرض عليه أحد منشوراتك أو فتحه لأول مرة. المتابعون الجدد ما زالوا يتابعونك؛ إلغاء المتابعة لا يُحتسب."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("الردود"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("إعادات النشر"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("الحفظ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "يظهر من هو جمهورك بعد أن يرى {floor} شخصًا منشوراتك في هذه الفترة. أقل من ذلك قد يشير إلى شخص بعينه."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "لا يوجد عدد كافٍ من الأشخاص بعد"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% منهم يتابعونك بالفعل: منشوراتك تصل غالبًا إلى من يعرفونك."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% منهم لا يتابعونك بعد: منشوراتك يُعثر عليها."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "وصلت إلى {reach} شخصًا، بنقص {pct}% عن الفترة السابقة."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "وصلت إلى {reach} شخصًا في آخر {days} يومًا."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "وصلت إلى {reach} شخصًا، تقريبًا مثل الفترة السابقة."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "لم يرَ أي شخص جديد منشوراتك في آخر {days} يومًا."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "وصلت إلى {reach} شخصًا، بزيادة {pct}% عن الفترة السابقة."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "وصلت إلى {reach} شخصًا، أي {times}× ما في الفترة السابقة."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "يتابع عدد منهم {name} أكثر من أي موضوع آخر."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("الجمهور"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("نظرة عامة"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "من يجد أحد منشوراتك ينظر إلى ملفك قبل أن يتابعك. وجه أو شعار يخبره بأن هناك شخصًا ما."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("أضف صورة للملف الشخصي"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "قل في سطر واحد عمّا تنشر، ليعرف الغريب ما الذي تمنحه إياه متابعتك."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("اكتب نبذة"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} من منشوراتك الـ{total} لم يكن لها موضوع. الموضوع يضع المنشور في خلاصة ذلك الموضوع وأمام من يتابعونه."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("أضف مواضيع إلى منشوراتك"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "ردّ {received} شخصًا على منشوراتك وأجبت عن {answered}. لقد اهتموا بما يكفي ليكتبوا: الإجابة تحوّل القارئ إلى زائر دائم."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("أجب عن الردود"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "جمهورك أكثر نشاطًا يوم {when}. المنشور الذي يُنشر قبل ذلك بقليل يجد من يستقبله."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("انشر حين يكونون متواجدين"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "رأى {reached} شخصًا لا يتابعونك منشوراتك، وتابعك {gained}. اجعل نبذتك وأحدث منشوراتك تقول ما الذي يمكنهم توقعه منك."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("حوّل القرّاء إلى متابعين"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "وصل أحد منشوراتك إلى {times}× عدد من تصل إليهم منشوراتك عادةً. انظر ما الذي فعله بشكل مختلف، وافعل المزيد منه."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("افعل المزيد مما نجح"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "كثير ممن يرون منشوراتك هم في {name}. النشر هناك يضعك أمام بقية أعضائه."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("انشر في {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "نشرت {posts} مرات في {days} يومًا. كل منشور فرصة أخرى لأن يُعثر عليك، والإيقاع الثابت يبقيك في خلاصات متابعيك."),
+      "ins_tip_post_more_t": MessageLookupByLibrary.simpleMessage("انشر أكثر"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "لم تنشر في آخر {days} يومًا. لا شيء يصل إلى أحد من دون منشور."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("انشر شيئًا"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("الإحصاءات"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("أفضل المنشورات"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "مقارنةً بالـ{days} يومًا السابقة"),
       "interest_add": MessageLookupByLibrary.simpleMessage("أضف اهتمامًا"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "اسحب لإعادة الترتيب",
@@ -865,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "تم تحديث الملف الشخصي",
       ),
       "profile_bio": MessageLookupByLibrary.simpleMessage("نبذة"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("البلد"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage("اسم العرض"),
       "profile_location": MessageLookupByLibrary.simpleMessage("الموقع"),
       "profile_tap_to_change":
@@ -1331,6 +1455,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("القضية \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("بدأ متابعتك"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("أُعجب بمنشورك"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("أشار إليك"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("لا إشارات بعد"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "عندما يكتب أحدهم @اسمك في منشور أو رد، يظهر ذلك هنا."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("الأقدم"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("أُزيلت رسالتك في دردشة مجتمع"),
@@ -1358,6 +1487,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("الكل"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("المتابعون"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("الإشارات"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("الردود"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("اليوم"),
@@ -1567,6 +1697,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "احصل على مساعدة من فريقنا",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("اقتباس"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("إرسال في رسالة"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("إلى أشخاص على Kyron"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "مشاركة هذه المشاركة",
       ),

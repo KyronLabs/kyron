@@ -13,6 +13,8 @@ export const eu: Copy = {
   reposted_quote: 'Berriro argitaratu du zure argitalpena: «{snippet}»',
   replied: 'Erantzun dizu',
   replied_quote: 'Erantzuna: «{snippet}»',
+  mentioned: 'Aipatu zaitu',
+  mentioned_quote: 'Aipatu zaitu: «{snippet}»',
   group: 'Taldea',
   new_message: 'Mezu berria',
   dm_once: 'Behin ikusteko zerbait bidali du',

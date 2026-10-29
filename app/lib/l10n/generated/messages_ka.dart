@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "ჩანს შენს პროფილზე და შენი პოსტების ქვეშ."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "„{query}“-ს არცერთი ქვეყანა არ ემთხვევა."),
+      "country_none": MessageLookupByLibrary.simpleMessage("არ აჩვენო ქვეყანა"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ქვეყნების ძიება"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "ჩანს შენს პროფილზე და შენი პოსტების ქვეშ. როცა ვინმეს პოსტებს ხედავ, შენი ქვეყანა ითვლება მის ანალიტიკაში, მხოლოდ ხუთი ან მეტი ადამიანის ჯგუფებში და არასდროს სახელით."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("შენი ტელეფონის პარამეტრებიდან"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("გამოიწერე {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("თქვენი ანგარიში"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("საზოგადოების გახსნა"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("დაწერეთ პოსტი"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("პოსტის ნახვა"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("პროფილის რედაქტირება"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("როდის არიან აქტიურები"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("თქვენს დროის სარტყელში."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("ასაკი"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "მიღწეული {known} ადამიანიდან, ვინც დაბადების დღე მიუთითა."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "მიღწეული ადამიანები დღეების მიხედვით"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("საზოგადოებები, სადაც არიან"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("ქვეყნები"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "იმ {known} მიღწეული ადამიანიდან, ვისაც პროფილზე ქვეყანა აქვს."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("ბოლო {days} დღე"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "სტატისტიკის ჩატვირთვა ვერ მოხერხდა"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("გამომწერები"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "საჩვენებლად საკმარისად დიდი ჯგუფი ჯერ არ არის."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("როგორ გაიზარდოთ"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("თემები, რომლებსაც მიჰყვებიან"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("მოწონებები"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("ახალი"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("ახალი გამომწერები"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ამ პერიოდში თქვენი არცერთი პოსტი არავის მიუღწევია."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("არ გამოგიწერენ"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "ქვეყნები ისაა, რაც ადამიანებმა თავიანთ პროფილზე აირჩიეს. Kyron არავის ქალაქს ან სქესს არ აგროვებს, ამიტომ მათთვის საჩვენებელი არაფერია."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("გახსნები"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "მიღწეულია {reach} · {likes} მოწონება · {replies} პასუხი"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("მიღწეული ადამიანები"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "თითოეული ადამიანი ერთხელ ითვლება: მას პირველად ეჩვენა ან პირველად გახსნა თქვენი რომელიმე პოსტი. ახალი გამომწერები ისევ გამოგიწერენ; გამოწერის გაუქმება არ ითვლება."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("პასუხები"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("გაზიარებები"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("შენახვები"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ვინ არის თქვენი აუდიტორია, გამოჩნდება, როცა ამ პერიოდში {floor} ადამიანი ნახავს თქვენს პოსტებს. ნაკლების შემთხვევაში ეს შეიძლება კონკრეტულ ადამიანზე მიუთითებდეს."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "ჯერ საკმარისი ადამიანი არ არის"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "მათი {pct}% უკვე გამოგიწერთ: თქვენი პოსტები ძირითადად ნაცნობებს აღწევს."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "მათი {pct}% ჯერ არ გამოგიწერთ: თქვენს პოსტებს პოულობენ."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} ადამიანს მიაღწიეთ, წინა პერიოდზე {pct}%-ით ნაკლებს."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "ბოლო {days} დღეში {reach} ადამიანს მიაღწიეთ."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} ადამიანს მიაღწიეთ, დაახლოებით იმდენს, რამდენსაც წინა პერიოდში."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "ბოლო {days} დღეში თქვენი პოსტები ახალ არავის უნახავს."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} ადამიანს მიაღწიეთ, წინა პერიოდზე {pct}%-ით მეტს."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} ადამიანს მიაღწიეთ, წინა პერიოდზე {times}×-ით მეტს."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "მათგან უფრო მეტი მიჰყვება {name}-ს, ვიდრე ნებისმიერ სხვა თემას."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("აუდიტორია"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("მიმოხილვა"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "ვინც თქვენს პოსტს იპოვის, გამოწერამდე თქვენს პროფილს ათვალიერებს. სახე ან ლოგო ეუბნება, რომ იქ ვიღაც არის."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("დაამატეთ პროფილის სურათი"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "ერთ ხაზში თქვით, რაზე წერთ, რომ უცნობმა იცოდეს, რას მისცემს თქვენი გამოწერა."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("დაწერეთ ბიოგრაფია"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "თქვენი {total} პოსტიდან {without}-ს თემა არ ჰქონდა. თემა პოსტს ამ თემის ლენტში და მის მიმდევრებთან ათავსებს."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("დაამატეთ თემები პოსტებს"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ადამიანმა უპასუხა თქვენს პოსტებს, თქვენ კი {answered}-ს უპასუხეთ. მათ იმდენად აინტერესებდათ, რომ დაწერეს: პასუხი მკითხველს მუდმივ სტუმრად აქცევს."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("უპასუხეთ პასუხებს"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "თქვენი აუდიტორია ყველაზე აქტიურია {when}. ცოტა ადრე გამოქვეყნებულ პოსტს ექნება, ვინც დახვდება."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "გამოაქვეყნეთ, როცა ისინი აქ არიან"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} ადამიანმა, ვინც არ გამოგიწერთ, ნახა თქვენი პოსტები და {gained} გამოგიწერათ. დაე თქვენმა ბიოგრაფიამ და ახალმა პოსტებმა თქვას, რას შეიძლება ელოდონ თქვენგან."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "აქციეთ მკითხველები გამომწერებად"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ერთმა პოსტმა {times}×-ით მეტ ადამიანს მიაღწია, ვიდრე ჩვეულებრივ სხვებმა. ნახეთ, რა გააკეთა სხვაგვარად, და ეს უფრო ხშირად გააკეთეთ."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "გააკეთეთ მეტი იმისა, რაც გამოვიდა"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "თქვენი პოსტების მნახველთაგან ბევრი {name}-შია. იქ გამოქვეყნება დანარჩენებსაც დაგანახებთ."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("გამოაქვეყნეთ {name}-ში"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} დღეში {posts}-ჯერ გამოაქვეყნეთ. ყოველი პოსტი პოვნის კიდევ ერთი შანსია, ხოლო მუდმივი რიტმი გამომწერების ლენტში გტოვებთ."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("გამოაქვეყნეთ უფრო ხშირად"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "ბოლო {days} დღეში არაფერი გამოგიქვეყნებიათ. პოსტის გარეშე არაფერი აღწევს არავის."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("გამოაქვეყნეთ რამე"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("სტატისტიკა"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("საუკეთესო პოსტები"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("წინა {days} დღესთან შედარებით"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("ქვეყანა"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1337,6 +1467,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("გამოგიწერათ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("მოიწონა თქვენი პოსტი"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("მოგიხსენიათ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ჯერ მოხსენიებები არ არის"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "როცა ვინმე პოსტში ან პასუხში თქვენს @სახელს დაწერს, აქ გამოჩნდება."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("უფრო ძველი"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "თქვენი შეტყობინება თემის ჩატში წაიშალა"),
@@ -1366,6 +1501,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("გამომწერები"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("მოწონებები"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("მოხსენიებები"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("პასუხები"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ამ კვირაში"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("დღეს"),
@@ -1575,6 +1712,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("ციტირება"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("გაგზავნა შეტყობინებით"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron-ის ადამიანებს"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("რას ეხებოდა"),

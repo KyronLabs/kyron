@@ -12,6 +12,65 @@ section for that version, so what is written here is what people read.
 
 ## [Unreleased]
 
+## [0.1.19] - 2026-10-29
+### Added
+
+- **Send a post to somebody on Kyron.** Share on a post now starts with
+  "Send in a message": pick one or more people -- the ones you talk to, or
+  anybody by searching -- add a line if you like, and Send. It arrives as a
+  card with whose post it is and how it starts, and tapping it opens the
+  post in Kyron. Every way to share used to lead out of the app.
+- **Kyron's own links open in Kyron.** A link to a post, a profile or a
+  community -- in a message, a post or anywhere else -- opens that screen,
+  rather than a web page.
+- **You're told when somebody mentions you.** Writing @yourhandle in a post
+  or a reply now sends you a notification -- "Ada mentioned you: …" with
+  the words they wrote -- and puts it in Notifications, under a new
+  Mentions tab. Before, nothing recorded a mention at all. Not for the
+  writer themselves, nobody blocked either way, and not twice for a reply
+  you are already told about.
+
+## [0.1.18] - 2026-10-29
+### Fixed
+
+- **Following somebody from their profile now sticks.** The profile said
+  "Follow" again every time it was reopened or refreshed, although the
+  follow had been saved: the server never looked at who was asking, so it
+  told everybody they followed nobody.
+- **The follow button on a post's picture is a small solid + sitting on the
+  edge of the face**, not a white blob in a ring hanging off its corner.
+- **"Edit profile" and every other outlined button are ringed by a hairline**,
+  one device pixel like the app's other lines, instead of a border three
+  times as heavy.
+
+## [0.1.17] - 2026-10-29
+### Added
+
+- **Insights for your account.** The chart button beside Share on your own
+  profile opens them: how many people your posts reached over the last 7, 30
+  or 90 days against the period before, new followers, opens, likes,
+  replies, reposts and saves, a day-by-day chart and your top posts.
+- **Who your audience is**: how many already follow you, their ages, the
+  topics they follow, the communities they are in, and when they are
+  around, in your time zone, and which countries they are in. Shown only
+  once 20 people have been reached, and never a group smaller than 5, so
+  it cannot point at anybody. Kyron does not collect cities or genders,
+  and the screen says so.
+- **How to grow**: up to four tips worked out from your own numbers --
+  replies you have not answered, posts without topics, a post that did far
+  better than the rest, the community your audience is in -- each with a
+  way to act on it, and none unless it applies to you.
+- **A country on your profile, picked from a list.** Edit profile and
+  sign-up offer every country, named in your own language and searchable
+  in it, in English or by code, with the ones your phone's settings point
+  at first. It shows on your profile and under your posts. Location used to
+  be a box you typed anything into; what people had typed is carried over
+  where it plainly names one country ("Lagos, Nigeria"), and otherwise left
+  for them to pick.
+- **Follow from the post.** A post by somebody you do not follow has a +
+  on their picture. Tap it to follow without leaving the feed; it ticks,
+  and every other post of theirs on screen stops offering.
+
 ## [0.1.16] - 2026-10-26
 ### Changed
 
@@ -2074,7 +2133,10 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.16...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.19...HEAD
+[0.1.19]: https://github.com/KyronLabs/kyron/compare/v0.1.18...v0.1.19
+[0.1.18]: https://github.com/KyronLabs/kyron/compare/v0.1.17...v0.1.18
+[0.1.17]: https://github.com/KyronLabs/kyron/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/KyronLabs/kyron/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/KyronLabs/kyron/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/KyronLabs/kyron/compare/v0.1.13...v0.1.14

@@ -9,14 +9,16 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../models/country.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/profile_provider.dart';
 import '../services/profile_service.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/country_sheet.dart';
 import '../widgets/images_field.dart';
 import '../widgets/kyron_app_bar.dart';
 
-/// Editing your own profile: the name, bio, location, website and the two
+/// Editing your own profile: the name, bio, country, website and the two
 /// images. The "Edit profile" button used to lead nowhere.
 class EditProfileScreen extends ConsumerStatefulWidget {
   const EditProfileScreen({super.key});
@@ -32,10 +34,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
   final _name = TextEditingController();
   final _bio = TextEditingController();
-  final _location = TextEditingController();
   final _website = TextEditingController();
 
   bool _prefilled = false;
+
+  /// Picked from a list, so it is a code and not a controller.
+  String? _country;
   bool _saving = false;
   ImageSlot? _uploading;
 
@@ -43,7 +47,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   void dispose() {
     _name.dispose();
     _bio.dispose();
-    _location.dispose();
     _website.dispose();
     super.dispose();
   }
@@ -85,7 +88,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             _prefilled = true;
             _name.text = user.name ?? '';
             _bio.text = user.bio ?? '';
-            _location.text = user.location ?? '';
+            _country = Countries.isCode(user.country) ? user.country : null;
             _website.text = user.website ?? '';
           }
 
@@ -119,12 +122,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     maxLines: 4,
                   ),
                   const SizedBox(height: SpacingTokens.space16),
-                  _field(
-                    _location,
-                    AppLocalizations.of(context)
-                        .ui('profile_location', 'Location'),
-                    Iconsax.location_copy,
-                    maxLength: 80,
+                  CountryField(
+                    code: _country,
+                    onChanged: (code) => setState(() => _country = code),
                   ),
                   const SizedBox(height: SpacingTokens.space16),
                   _field(
@@ -238,7 +238,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       await _service.updateProfile(
         name: _name.text.trim(),
         bio: _bio.text.trim(),
-        location: _location.text.trim(),
+        country: (code: _country),
         website: _website.text.trim(),
       );
       ref.read(currentUserProvider.notifier).refresh();

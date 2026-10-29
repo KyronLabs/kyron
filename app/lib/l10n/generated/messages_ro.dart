@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Apare pe profilul tău și sub postările tale."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Nicio țară nu se potrivește cu „{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Nu afișa nicio țară"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Caută țări"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Apare pe profilul tău și sub postările tale. Când vezi postările cuiva, țara ta este numărată în Statisticile acelei persoane, doar în grupuri de cinci sau mai mulți și niciodată după nume."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Din setările telefonului tău"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Urmărește-l pe {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,126 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Contul tău"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Deschide comunitatea"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Scrie o postare"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Vezi postarea"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Editează-ți profilul"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Când sunt prin preajmă"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("În fusul tău orar."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Vârste"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Dintre cele {known} persoane atinse care și-au trecut ziua de naștere."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Persoane atinse pe zi"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Comunități din care fac parte"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Țări"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Din cele {known} persoane atinse care au o țară pe profil."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Ultimele {days} zile"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Statisticile nu s-au putut încărca"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Urmăritori"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Încă niciun grup nu e destul de mare ca să fie arătat."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Cum să crești"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Subiecte pe care le urmăresc"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Aprecieri"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nou"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Urmăritori noi"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Niciuna dintre postările tale n-a ajuns la nimeni în această perioadă."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Nu te urmăresc"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Țările sunt cele alese de oameni pe profilurile lor. Kyron nu colectează orașul sau genul nimănui, așa că nu este nimic de afișat pentru ele."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Deschideri"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} atinse · {likes} aprecieri · {replies} răspunsuri"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Persoane atinse"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Fiecare persoană contează o dată: i s-a arătat sau a deschis pentru prima dată una dintre postările tale. Urmăritorii noi încă te urmăresc; dezabonările nu se numără."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Răspunsuri"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Repostări"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Salvări"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Cine e publicul tău apare după ce {floor} persoane ți-au văzut postările în această perioadă. Cu mai puține, ar putea arăta spre cineva."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Încă nu sunt destui oameni"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% dintre ei te urmăresc deja: postările tale ajung mai ales la oameni care te cunosc."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% dintre ei nu te urmăresc încă: postările tale sunt descoperite."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Ai ajuns la {reach} persoane, cu {pct}% mai puține decât în perioada anterioară."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Ai ajuns la {reach} persoane în ultimele {days} zile."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Ai ajuns la {reach} persoane, cam cât în perioada anterioară."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Nimeni nou nu ți-a văzut postările în ultimele {days} zile."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Ai ajuns la {reach} persoane, cu {pct}% mai multe decât în perioada anterioară."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Ai ajuns la {reach} persoane, de {times}× mai multe decât în perioada anterioară."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Mai mulți dintre ei urmăresc {name} decât orice alt subiect."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Public"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Prezentare generală"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Cei care găsesc una dintre postările tale se uită la profil înainte să te urmărească. O față sau un logo le spune că e cineva acolo."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Adaugă o poză de profil"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Spune într-un rând despre ce postezi, ca un necunoscut să știe ce câștigă urmărindu-te."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Scrie o descriere"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} din cele {total} postări ale tale n-au avut subiect. Un subiect pune postarea în fluxul acelui subiect și în fața celor care îl urmăresc."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Adaugă subiecte postărilor"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} persoane au răspuns la postările tale și tu ai răspuns la {answered}. Le-a păsat destul cât să scrie: un răspuns face dintr-un cititor un obișnuit."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Răspunde la răspunsuri"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Publicul tău e cel mai activ {when}. O postare chiar înainte are cine s-o întâmpine."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "Postează când sunt prin preajmă"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} persoane care nu te urmăresc ți-au văzut postările, iar {gained} te-au urmărit. Lasă descrierea și cele mai noi postări să spună la ce se pot aștepta de la tine."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Transformă cititorii în urmăritori"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "O postare a ajuns la de {times}× mai mulți oameni decât de obicei celelalte. Uită-te ce a făcut diferit și fă mai mult din asta."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Fă mai mult din ce a mers"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Mulți dintre cei care îți văd postările sunt în {name}. Să postezi acolo te pune în fața celorlalți."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Postează în {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Ai postat de {posts} ori în {days} zile. Fiecare postare e încă o șansă de a fi găsit, iar un ritm constant te ține în fluxul urmăritorilor."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Postează mai des"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "N-ai postat în ultimele {days} zile. Nimic nu ajunge la nimeni fără o postare."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Postează ceva"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statistici"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Cele mai bune postări"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Față de cele {days} zile dinainte"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +995,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Țară"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1341,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("te urmărește acum"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("a apreciat postarea ta"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("te-a menționat"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Încă nu există mențiuni"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Când cineva îți scrie @numele de utilizator într-o postare sau într-un răspuns, apare aici."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Mai vechi"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Mesajul tău dintr-un chat al comunității a fost eliminat"),
@@ -1370,6 +1510,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Urmăritori"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Aprecieri"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Mențiuni"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Răspunsuri"),
       "ui_notif_this_week":
@@ -1582,6 +1723,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citează"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Trimite într-un mesaj"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Către oameni de pe Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

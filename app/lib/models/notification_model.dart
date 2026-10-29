@@ -4,12 +4,24 @@ import '../repositories/moderation_repository.dart';
 import 'account_standing.dart';
 import 'gift.dart';
 
-/// What somebody did. The screen's tabs narrow to one of the first three.
+/// What somebody did. The screen's tabs narrow to likes, replies, mentions
+/// and follows.
 ///
+/// [mention] is somebody writing your @handle in a post or a reply, and
+/// [gift] somebody sending a gift to one of your posts.
 /// [account] and [report] are Kyron's, not a person's: a decision about this
 /// account, an appeal answered or a decision reversed, and what came of
 /// something this account reported.
-enum NotificationType { like, comment, follow, repost, account, report, gift }
+enum NotificationType {
+  like,
+  comment,
+  follow,
+  repost,
+  mention,
+  account,
+  report,
+  gift,
+}
 
 /// What the team decided, as a row says it. The words are the app's, in the
 /// reader's language; this is only what happened.
@@ -122,7 +134,7 @@ class NotificationModel {
   /// The start of that post, so the row says which one.
   final String? postSnippet;
 
-  /// What was written, for a comment.
+  /// What was written, for a comment or a mention.
   final String? content;
 
   final DateTime timestamp;
@@ -156,6 +168,7 @@ class NotificationModel {
         'comment' => NotificationType.comment,
         'follow' => NotificationType.follow,
         'repost' => NotificationType.repost,
+        'mention' => NotificationType.mention,
         'account' => NotificationType.account,
         'report' => NotificationType.report,
         'gift' => NotificationType.gift,

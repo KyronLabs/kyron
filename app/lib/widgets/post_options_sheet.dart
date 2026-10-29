@@ -5,6 +5,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
+import '../services/kyron_links.dart';
 import '../models/moderation_case.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
@@ -102,7 +103,7 @@ class _OptionsState extends ConsumerState<_Options> {
               onTap: () => _run(
                 () async {
                   await Clipboard.setData(
-                    ClipboardData(text: 'https://kyron.so/post/${_post.id}'),
+                    ClipboardData(text: KyronLinks.post(_post.id)),
                   );
                 },
                 AppLocalizations.of(context)

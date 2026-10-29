@@ -12,6 +12,7 @@ import {
 } from '@nestjs/core';
 
 import { AppModule } from './app.module';
+import { OptionalAuthGuard } from './common/guards/optional-auth.guard';
 import { RESTRICTED_ACCESS } from './common/guards/standing';
 import { PrismaService } from './infrastructure/prisma/prisma.service';
 
@@ -148,8 +149,11 @@ describe('which routes answer without a sign-in', () => {
   });
 
   it('only the ones listed here, each for a reason', () => {
+    // OptionalAuthGuard refuses nobody -- it only reads a session when one
+    // is sent -- so a route behind it alone is as open as one with none.
+    const refusing = (g: string) => g !== OptionalAuthGuard.name;
     const open = all
-      .filter((r) => r.guards.length === 0)
+      .filter((r) => !r.guards.some(refusing))
       .map((r) => r.route)
       .sort();
     expect(open).toEqual([...PUBLIC.keys()].sort());

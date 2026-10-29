@@ -249,6 +249,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ පැතිකඩෙහි සහ ඔබගේ පළ කිරීම් යටතේ පෙන්වයි."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("“{query}” ට ගැළපෙන රටක් නැත."),
+      "country_none": MessageLookupByLibrary.simpleMessage("රටක් පෙන්වන්න එපා"),
+      "country_search": MessageLookupByLibrary.simpleMessage("රටවල් සොයන්න"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ පැතිකඩෙහි සහ ඔබගේ පළ කිරීම් යටතේ පෙන්වයි. ඔබ කෙනෙකුගේ පළ කිරීම් දකින විට, ඔබගේ රට ඔවුන්ගේ තීක්ෂ්ණ බුද්ධියෙහි ගණන් කෙරේ, පස් දෙනෙකු හෝ ඊට වැඩි කණ්ඩායම්වලින් පමණක්, කිසිවිටෙක නමින් නොවේ."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ දුරකථනයේ සැකසීම් වලින්"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +315,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} අනුගමනය කරන්න"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -330,6 +342,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාව විවෘත කරන්න"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("පළ කිරීමක් ලියන්න"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම බලන්න"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("ඔබේ පැතිකඩ සංස්කරණය කරන්න"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("ඔවුන් සිටින්නේ කවදාද"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("ඔබේ වේලා කලාපයෙන්."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("වයස"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "උපන්දිනය ලබා දුන්, ළඟා වූ පුද්ගලයින් {known} දෙනාගෙන්."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("දිනකට ළඟා වූ පුද්ගලයින්"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("ඔවුන් සිටින ප්‍රජාවන්"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("රටවල්"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "ළඟා වූ, පැතිකඩෙහි රටක් ඇති පුද්ගලයින් {known} දෙනාගෙන්."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("පසුගිය දින {days}"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("තොරතුරු පූරණය කළ නොහැකි විය"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("අනුගාමිකයින්"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "පෙන්වීමට තරම් විශාල කණ්ඩායමක් තවම නැත."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("වර්ධනය වන ආකාරය"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("ඔවුන් අනුගමනය කරන මාතෘකා"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("කැමැත්ත"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("නව"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("නව අනුගාමිකයින්"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "මෙම කාලය තුළ ඔබේ කිසිදු පළ කිරීමක් කිසිවෙකුට ළඟා නොවීය."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("ඔබව අනුගමනය නොකරයි"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "රටවල් යනු මිනිසුන් තම පැතිකඩවල තෝරාගත් ඒවාය. Kyron කිසිවෙකුගේ නගරය හෝ ස්ත්‍රී පුරුෂ භාවය එකතු නොකරයි, එබැවින් ඒවා සඳහා පෙන්වීමට කිසිවක් නැත."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("විවෘත කිරීම්"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} ළඟා විය · කැමැත්ත {likes} · පිළිතුරු {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("ළඟා වූ පුද්ගලයින්"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "සෑම පුද්ගලයෙක්ම එක් වරක් ගණන් කෙරේ: ඔබේ පළ කිරීමක් පළමු වරට ඔවුන්ට පෙන්වන ලදී හෝ ඔවුන් විවෘත කළා. නව අනුගාමිකයින් තවමත් ඔබව අනුගමනය කරයි; අනුගමනය නැවැත්වීම් ගණන් නොකෙරේ."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("පිළිතුරු"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("නැවත පළ කිරීම්"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("සුරැකීම්"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "මෙම කාලය තුළ පුද්ගලයින් {floor} දෙනෙකු ඔබේ පළ කිරීම් දුටු පසු ඔබේ ප්‍රේක්ෂකයින් කවුදැයි පෙන්වයි. ඊට අඩු නම්, එය යමෙකු පෙන්වා දිය හැකිය."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("තවම ප්‍රමාණවත් පුද්ගලයින් නැත"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "ඔවුන්ගෙන් {pct}% දැනටමත් ඔබව අනුගමනය කරයි: ඔබේ පළ කිරීම් බොහෝ විට ඔබව දන්නා අයට ළඟා වේ."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "ඔවුන්ගෙන් {pct}% තවම ඔබව අනුගමනය නොකරයි: ඔබේ පළ කිරීම් සොයාගනිමින් පවතී."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පුද්ගලයින් {reach} දෙනෙකුට ළඟා විය, පෙර කාලයට වඩා {pct}% අඩුය."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "පසුගිය දින {days} තුළ ඔබ පුද්ගලයින් {reach} දෙනෙකුට ළඟා විය."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පුද්ගලයින් {reach} දෙනෙකුට ළඟා විය, පෙර කාලයට ආසන්න වශයෙන් සමානය."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "පසුගිය දින {days} තුළ කිසිදු නව අයෙකු ඔබේ පළ කිරීම් දුටුවේ නැත."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පුද්ගලයින් {reach} දෙනෙකුට ළඟා විය, පෙර කාලයට වඩා {pct}% වැඩිය."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පුද්ගලයින් {reach} දෙනෙකුට ළඟා විය, පෙර කාලයේ {times}×."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "වෙනත් ඕනෑම මාතෘකාවකට වඩා වැඩි දෙනෙක් {name} අනුගමනය කරයි."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ප්‍රේක්ෂකයින්"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("දළ විශ්ලේෂණය"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ පළ කිරීමක් සොයාගන්නා අය අනුගමනය කිරීමට පෙර ඔබේ පැතිකඩ බලයි. මුහුණක් හෝ ලාංඡනයක් එහි යමෙකු සිටින බව ඔවුන්ට කියයි."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩ පින්තූරයක් එක් කරන්න"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පළ කරන්නේ කුමක් ගැනදැයි එක් පේළියකින් කියන්න, නාඳුනන අයෙකුට ඔබව අනුගමනය කිරීමෙන් ලැබෙන දේ දැනගැනීමට."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("ජීව දත්ත ලියන්න"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ පළ කිරීම් {total} න් {without} කට මාතෘකාවක් නොතිබුණි. මාතෘකාවක් පළ කිරීම එම මාතෘකාවේ සංග්‍රහයට සහ එය අනුගමනය කරන අය ඉදිරියට ගෙන යයි."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම්වලට මාතෘකා එක් කරන්න"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "පුද්ගලයින් {received} දෙනෙක් ඔබේ පළ කිරීම්වලට පිළිතුරු දුන් අතර ඔබ {answered} කට ප්‍රතිචාර දැක්වූවා. ලිවීමට තරම් ඔවුන් සැලකුවා: ප්‍රතිචාරයක් පාඨකයෙකු නිත්‍ය අයෙකු කරයි."),
+      "ins_tip_answer_comments_t": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ පිළිතුරුවලට ප්‍රතිචාර දක්වන්න"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ ප්‍රේක්ෂකයින් {when} වඩාත්ම ක්‍රියාශීලීය. ඊට මඳක් පෙර පළ කළ පළ කිරීමක් පිළිගැනීමට අය සිටී."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("ඔවුන් සිටින විට පළ කරන්න"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "ඔබව අනුගමනය නොකරන {reached} දෙනෙක් ඔබේ පළ කිරීම් දුටු අතර {gained} දෙනෙක් අනුගමනය කළා. ඔබෙන් බලාපොරොත්තු විය හැකි දේ ඔබේ ජීව දත්ත සහ නවතම පළ කිරීම් කියන්න."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("පාඨකයින් අනුගාමිකයින් කරන්න"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "එක් පළ කිරීමක් ඔබේ අනෙක් ඒවා සාමාන්‍යයෙන් ළඟා වන ප්‍රමාණයට වඩා {times}× පුද්ගලයින්ට ළඟා විය. එය වෙනස් ලෙස කළ දේ බලා, එය තවත් කරන්න."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("සාර්ථක වූ දේ තවත් කරන්න"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ පළ කිරීම් දකින බොහෝ දෙනා {name} හි සිටී. එහි පළ කිරීමෙන් ඉතිරි අය ඉදිරියටද ඔබ යයි."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} හි පළ කරන්න"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "ඔබ දින {days} තුළ {posts} වරක් පළ කළා. සෑම පළ කිරීමක්ම සොයාගැනීමට තවත් අවස්ථාවකි, ස්ථාවර රිද්මයක් ඔබව අනුගාමිකයින්ගේ සංග්‍රහවල තබයි."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("නිතර පළ කරන්න"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "පසුගිය දින {days} තුළ ඔබ පළ කර නැත. පළ කිරීමක් නැතිව කිසිවක් කිසිවෙකුට ළඟා නොවේ."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("යමක් පළ කරන්න"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("තොරතුරු"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("ඉහළම පළ කිරීම්"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("පෙර දින {days} හා සසඳන විට"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -861,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("රට"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1344,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ඔබව අනුගමනය කළා"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ඔබේ පළ කිරීමට කැමති වුණා"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ඔබව සඳහන් කළා"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("තවම සඳහන් කිරීම් නැත"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "කෙනෙකු පළ කිරීමක හෝ පිළිතුරක ඔබගේ @නාමය ලියූ විට, එය මෙහි පෙන්වයි."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("පැරණි"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "ප්‍රජා කතාබහක ඔබේ පණිවිඩය ඉවත් කරන ලදී"),
@@ -1372,6 +1509,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("සියල්ල"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("අනුගමන"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("කැමැත්ත"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("සඳහන් කිරීම්"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("පිළිතුරු"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("මෙම සතිය"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("අද"),
@@ -1580,6 +1719,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("උපුටා දක්වන්න"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("පණිවිඩයකින් යවන්න"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron හි අයට"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("කුමක් ගැනද"),

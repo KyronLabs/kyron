@@ -13,6 +13,8 @@ export const pl: Copy = {
   reposted_quote: 'Udostępnił(a) twój post: „{snippet}”',
   replied: 'Odpowiedział(a) ci',
   replied_quote: 'Odpowiedź: „{snippet}”',
+  mentioned: 'Wspomniał(a) o tobie',
+  mentioned_quote: 'Wspomniał(a) o tobie: „{snippet}”',
   group: 'Grupa',
   new_message: 'Nowa wiadomość',
   dm_once: 'Wysłał(a) coś do jednorazowego wyświetlenia',

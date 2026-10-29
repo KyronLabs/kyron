@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Rodoma tavo profilyje ir po tavo įrašais."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Nė viena šalis neatitinka „{query}“."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Nerodyti šalies"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Ieškoti šalių"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Rodoma tavo profilyje ir po tavo įrašais. Kai matai kieno nors įrašus, tavo šalis įskaičiuojama į jo Įžvalgas, tik grupėmis po penkis ar daugiau ir niekada vardu."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Iš tavo telefono nustatymų"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Sekti {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Jūsų paskyra"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Atidaryti bendruomenę"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Rašyti įrašą"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Žiūrėti įrašą"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Redaguoti profilį"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Kada jie būna"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Jūsų laiko juostoje."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Amžius"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Iš {known} pasiektų žmonių, nurodžiusių gimimo dieną."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Pasiekti žmonės per dieną"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Bendruomenės, kuriose jie yra"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Šalys"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Iš {known} pasiektų žmonių, kurių profilyje nurodyta šalis."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Paskutinės {days} d."),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Nepavyko įkelti įžvalgų"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Sekėjai"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Kol kas nė viena grupė nėra pakankamai didelė, kad būtų parodyta."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Kaip augti"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Temos, kurias jie seka"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Patinka"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nauja"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Nauji sekėjai"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Šiuo laikotarpiu nė vienas jūsų įrašas nieko nepasiekė."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Jūsų neseka"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Šalys yra tos, kurias žmonės pasirinko savo profiliuose. Kyron nerenka niekieno miesto ar lyties, todėl apie juos nėra ką parodyti."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Atidarymai"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "pasiekta {reach} · {likes} patinka · {replies} atsakymai"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Pasiekti žmonės"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Kiekvienas žmogus skaičiuojamas vieną kartą: jam pirmą kartą parodytas arba jis pirmą kartą atidarė kurį nors jūsų įrašą. Nauji sekėjai jus vis dar seka; sekimo atšaukimai neskaičiuojami."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Atsakymai"),
+      "ins_reposts":
+          MessageLookupByLibrary.simpleMessage("Pakartotiniai įrašai"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Išsaugojimai"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kas yra jūsų auditorija, rodoma, kai šiuo laikotarpiu jūsų įrašus pamato {floor} žmonių. Esant mažiau, tai galėtų išduoti konkretų žmogų."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Kol kas per mažai žmonių"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % jų jus jau seka: jūsų įrašai daugiausia pasiekia jus pažįstančius."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % jų jūsų dar neseka: jūsų įrašai randami."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Pasiekėte {reach} žmonių, {pct} % mažiau nei ankstesniu laikotarpiu."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Per paskutines {days} d. pasiekėte {reach} žmonių."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Pasiekėte {reach} žmonių, maždaug tiek pat kaip ankstesniu laikotarpiu."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Per paskutines {days} d. jūsų įrašų nematė niekas naujas."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Pasiekėte {reach} žmonių, {pct} % daugiau nei ankstesniu laikotarpiu."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Pasiekėte {reach} žmonių, {times}× daugiau nei ankstesniu laikotarpiu."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Daugiau jų seka temą {name} nei bet kurią kitą."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Auditorija"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Apžvalga"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Radę jūsų įrašą žmonės prieš sekdami peržiūri jūsų profilį. Veidas ar logotipas pasako, kad ten kažkas yra."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Pridėkite profilio nuotrauką"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Viena eilute pasakykite, apie ką rašote, kad nepažįstamasis žinotų, ką jam duos jus sekti."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Parašykite aprašymą"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} iš {total} jūsų įrašų neturėjo temos. Tema įrašą įdeda į temos sklaidos kanalą ir prieš ją sekančius žmones."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Pridėkite temas prie įrašų"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} žmonių atsakė į jūsų įrašus, o jūs atsakėte {answered}. Jiems rūpėjo tiek, kad parašė: atsakymas skaitytoją paverčia nuolatiniu lankytoju."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Atsakykite į atsakymus"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Jūsų auditorija aktyviausia {when}. Šiek tiek anksčiau paskelbtas įrašas turi kam jį pasitikti."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Skelbkite, kai jie būna"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} jūsų nesekančių žmonių matė jūsų įrašus, o {gained} pradėjo sekti. Tegul aprašymas ir naujausi įrašai pasako, ko iš jūsų galima tikėtis."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Paverskite skaitytojus sekėjais"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Vienas įrašas pasiekė {times}× daugiau žmonių nei paprastai kiti. Pažiūrėkite, ką jis darė kitaip, ir darykite to daugiau."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Darykite daugiau to, kas pavyko"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Daug jūsų įrašus matančių žmonių yra bendruomenėje {name}. Skelbdami ten pasirodysite ir likusiems."),
+      "ins_tip_post_in_community_t": MessageLookupByLibrary.simpleMessage(
+          "Skelbkite bendruomenėje {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Per {days} d. paskelbėte {posts} kartus. Kiekvienas įrašas – dar viena galimybė būti rastam, o pastovus ritmas laiko jus sekėjų sklaidos kanaluose."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Skelbkite dažniau"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Per paskutines {days} d. nieko nepaskelbėte. Be įrašo niekas nieko nepasiekia."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Paskelbkite ką nors"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Įžvalgos"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Geriausi įrašai"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Palyginti su ankstesnėmis {days} d."),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Šalis"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1348,6 +1477,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("pradėjo jus sekti"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("pamėgo jūsų įrašą"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("paminėjo jus"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Kol kas paminėjimų nėra"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai kas nors parašys jūsų @vardą įraše ar atsakyme, tai pasirodys čia."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Senesni"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Jūsų žinutė bendruomenės pokalbyje pašalinta"),
@@ -1376,6 +1511,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Visi"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sekėjai"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Pamėgimai"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Paminėjimai"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Atsakymai"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Šią savaitę"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Šiandien"),
@@ -1583,6 +1720,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Cituoti"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Siųsti žinute"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Žmonėms Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

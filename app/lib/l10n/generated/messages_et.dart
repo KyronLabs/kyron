@@ -248,6 +248,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Seda pilti ei saanud teha.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Näidatakse sinu profiilil ja sinu postituste all."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ükski riik ei vasta päringule „{query}“."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ära näita riiki"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Otsi riike"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Näidatakse sinu profiilil ja sinu postituste all. Kui näed kellegi postitusi, loetakse sinu riik tema Ülevaates kokku, ainult vähemalt viieliikmelistes rühmades ja mitte kunagi nimepidi."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Sinu telefoni seadetest"),
       "create": MessageLookupByLibrary.simpleMessage("Loo"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Loo konto"),
       "createYourAccount":
@@ -308,6 +318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Näojälgimine ei ole sellel seadmel saadaval.",
       ),
       "feedTagDetail": (Object a0) => "Veel ei ole postitusi #${a0} all.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Jälgi kasutajat {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Jälgijad"),
       "following": MessageLookupByLibrary.simpleMessage("Järgitud"),
       "forgotPassword":
@@ -333,6 +345,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Abikeskus"),
       "home": MessageLookupByLibrary.simpleMessage("Avaleht"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("Ühes reas"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Sinu konto"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Ava kogukond"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Kirjuta postitus"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Vaata postitust"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Muuda oma profiili"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Millal nad kohal on"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Sinu ajavööndis."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Vanused"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "{known} inimeselt, kelleni jõudsid ja kes on sünnipäeva märkinud."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Inimesed, kelleni jõudsid, päevade kaupa"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Kogukonnad, kus nad on"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Riigid"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "{known} inimeselt, kelleni jõudsid ja kelle profiilil on riik."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Viimased {days} päeva"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Ülevaateid ei õnnestunud laadida"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Jälgijad"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Ükski grupp pole veel näitamiseks piisavalt suur."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Kuidas kasvada"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Teemad, mida nad jälgivad"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Meeldimised"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Uus"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Uued jälgijad"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Ükski sinu postitus ei jõudnud sel perioodil kellegini."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Ei jälgi sind"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Riigid on need, mille inimesed oma profiilil valisid. Kyron ei kogu kellegi linna ega sugu, seega pole nende kohta midagi näidata."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Avamised"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "jõudis {reach} inimeseni · {likes} meeldimist · {replies} vastust"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("Inimesed, kelleni jõudsid"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Iga inimene loetakse üks kord: talle näidati või ta avas mõne sinu postituse esimest korda. Uued jälgijad jälgivad sind endiselt; jälgimise lõpetamisi ei loeta."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Vastused"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Jagamised"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Salvestused"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kes on sinu publik, näidatakse, kui {floor} inimest on sel perioodil sinu postitusi näinud. Vähemaga võiks see kellelegi osutada."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Inimesi pole veel piisavalt"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% neist jälgib sind juba: sinu postitused jõuavad peamiselt tuttavateni."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% neist ei jälgi sind veel: sinu postitusi leitakse."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Jõudsid {reach} inimeseni, {pct}% vähem kui eelmisel perioodil."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Jõudsid viimase {days} päeva jooksul {reach} inimeseni."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Jõudsid {reach} inimeseni, umbes sama palju kui eelmisel perioodil."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Viimase {days} päeva jooksul ei näinud keegi uus sinu postitusi."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Jõudsid {reach} inimeseni, {pct}% rohkem kui eelmisel perioodil."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Jõudsid {reach} inimeseni, {times}× rohkem kui eelmisel perioodil."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Rohkem neist jälgib teemat {name} kui ühtegi teist teemat."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Publik"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Ülevaade"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Inimesed, kes leiavad sinu postituse, vaatavad enne jälgimist su profiili. Nägu või logo ütleb neile, et seal on keegi."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Lisa profiilipilt"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Ütle ühe reaga, millest sa postitad, et võõras teaks, mida sinu jälgimine talle annab."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Kirjuta tutvustus"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} sinu {total} postitusest polnud teemat. Teema paneb postituse selle teema voogu ja selle jälgijate ette."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Lisa postitustele teemad"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} inimest vastas sinu postitustele ja sina vastasid {answered}. Nad hoolisid piisavalt, et kirjutada: vastus teeb lugejast püsikülastaja."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Vasta oma vastustele"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Sinu publik on kõige aktiivsem {when}. Veidi enne seda tehtud postitusel on inimesi, kes selle vastu võtavad."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Postita, kui nad on kohal"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} inimest, kes sind ei jälgi, nägid sinu postitusi ja {gained} hakkas jälgima. Las su tutvustus ja uusimad postitused ütlevad, mida sinult oodata."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Muuda lugejad jälgijateks"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Üks postitus jõudis {times}× rohkemate inimesteni kui su teised tavaliselt. Vaata, mida see teisiti tegi, ja tee seda rohkem."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Tee rohkem seda, mis töötas"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Paljud, kes sinu postitusi näevad, on kogukonnas {name}. Seal postitamine viib sind ka ülejäänute ette."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Postita kogukonda {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Postitasid {days} päeva jooksul {posts} korda. Iga postitus on uus võimalus leitud saada ning ühtlane rütm hoiab sind jälgijate voogudes."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Postita sagedamini"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Sa pole viimase {days} päeva jooksul postitanud. Ilma postituseta ei jõua miski kellegini."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Postita midagi"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Ülevaated"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Parimad postitused"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Võrreldes eelneva {days} päevaga"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Lisa huvi"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Lohista ümberjärjestamiseks",
@@ -902,6 +1032,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profiil uuendatud"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Tutvustus"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Riik"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Kuvatav nimi"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Asukoht"),
@@ -1384,6 +1515,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("jälgib sind nüüd"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
           "märkis sinu postituse meeldivaks"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("mainis sind"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Mainimisi veel pole"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui keegi kirjutab su @kasutajanime postitusse või vastusesse, näed seda siin."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Varasemad"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Sinu sõnum kogukonna vestluses eemaldati"),
@@ -1412,6 +1548,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Kõik"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Jälgijad"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Meeldimised"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Mainimised"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Vastused"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Sel nädalal"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Täna"),
@@ -1626,6 +1764,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Saate abi meie meeskonnalt.",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Jaga"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Tsiteeri"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Saada sõnumiga"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Inimestele Kyronis"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Jaga seda postitust",
       ),

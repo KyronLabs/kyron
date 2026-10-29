@@ -254,6 +254,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Bu şəkli çəkmək mümkün olmadı.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Profilində və paylaşımlarının altında göstərilir."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” ilə uyğun ölkə yoxdur."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ölkə göstərmə"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Ölkə axtar"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Profilində və paylaşımlarının altında göstərilir. Kiminsə paylaşımlarını görəndə ölkən onun Analitikasında sayılır, yalnız beş və daha çox nəfərlik qruplarda və heç vaxt adla yox."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Telefonunun ayarlarından"),
       "create": MessageLookupByLibrary.simpleMessage("Yarat"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Hesab yaradın"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -315,6 +325,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "#${a0} altında hələ heç nə paylaşılmayıb.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name} izlə"),
       "followers": MessageLookupByLibrary.simpleMessage("İzləyicilər"),
       "following": MessageLookupByLibrary.simpleMessage("İzlədiyiniz"),
       "forgotPassword":
@@ -341,6 +352,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Yardım Mərkəzi"),
       "home": MessageLookupByLibrary.simpleMessage("Ana səhifə"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("Bir sətirdə"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Hesabınız"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("İcmanı açın"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Paylaşım yazın"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Paylaşıma baxın"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Profilinizi redaktə edin"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Nə vaxt aktiv olurlar"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Sizin saat qurşağınızda."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Yaşlar"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Doğum tarixini göstərən {known} çatılan insandan."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Hər gün çatılan insanlar"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Olduqları icmalar"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Ölkələr"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Profilində ölkə olan {known} çatılmış nəfərdən."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Son {days} gün"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Statistika yüklənmədi"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("İzləyicilər"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Göstərmək üçün kifayət qədər böyük qrup hələ yoxdur."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Necə böyümək olar"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("İzlədikləri mövzular"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Bəyənmələr"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Yeni"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Yeni izləyicilər"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Bu dövrdə paylaşımlarınızın heç biri heç kimə çatmayıb."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Sizi izləmir"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Ölkələr insanların profillərində seçdikləridir. Kyron heç kimin şəhərini və ya cinsini toplamır, ona görə də onlar üçün göstəriləcək bir şey yoxdur."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Açılışlar"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} çatılıb · {likes} bəyənmə · {replies} cavab"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Çatılan insanlar"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Çatılan insanlar hər insanı bir dəfə sayır: paylaşımlarınızdan biri ilk dəfə ona göstərilib və ya o açıb. Yeni izləyicilər sizi hələ də izləyir; izləməni dayandıranlar sayılmır."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Cavablar"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Təkrar paylaşımlar"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Yadda saxlamalar"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Auditoriyanızın kim olduğu bu dövrdə {floor} nəfər paylaşımlarınızı görəndən sonra göstərilir. Daha az olarsa, bu kimisə göstərə bilər."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Hələ kifayət qədər insan yoxdur"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Onların {pct}%-i sizi artıq izləyir: paylaşımlarınız əsasən sizi tanıyanlara çatır."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Onların {pct}%-i sizi hələ izləmir: paylaşımlarınız tapılır."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} nəfərə çatdınız, əvvəlki dövrdən {pct}% az."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Son {days} gündə {reach} nəfərə çatdınız."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} nəfərə çatdınız, təxminən əvvəlki dövr qədər."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Son {days} gündə heç bir yeni insan paylaşımlarınızı görməyib."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} nəfərə çatdınız, əvvəlki dövrdən {pct}% çox."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} nəfərə çatdınız, əvvəlki dövrdən {times}× çox."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Onların çoxu başqa mövzulardan çox {name} mövzusunu izləyir."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Auditoriya"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Ümumi baxış"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımlarınızdan birini tapan insanlar izləməzdən əvvəl profilinizə baxır. Üz və ya loqo onlara orada kiminsə olduğunu deyir."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Profil şəkli əlavə edin"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Bir sətirdə nə haqqında paylaşdığınızı deyin ki, yad biri sizi izləməyin ona nə verəcəyini bilsin."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Bio yazın"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total} paylaşımınızdan {without} mövzusuz idi. Mövzu paylaşımı həmin mövzunun lentinə və onu izləyənlərin qarşısına qoyur."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımlarınıza mövzular əlavə edin"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} nəfər paylaşımlarınıza cavab yazıb, siz isə {answered} cavab vermisiniz. Onlar yazacaq qədər maraq göstəriblər: cavab oxucunu daimi ziyarətçiyə çevirir."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Cavablarınıza cavab verin"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Auditoriyanız ən çox {when} aktivdir. Ondan bir az əvvəl paylaşılan paylaşımı qarşılayacaq insanlar olur."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Onlar aktiv olanda paylaşın"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Sizi izləməyən {reached} nəfər paylaşımlarınızı görüb, {gained} nəfər izləyib. Bio və ən yeni paylaşımlarınız sizdən nə gözləyə biləcəklərini desin."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Oxucuları izləyiciyə çevirin"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Bir paylaşım digərlərinizin adətən çatdığından {times}× çox insana çatıb. Onun nəyi fərqli etdiyinə baxın və bunu daha çox edin."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("İşə yarayanı daha çox edin"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımlarınızı görənlərin çoxu {name} icmasındadır. Orada paylaşmaq sizi qalanlarının qarşısına çıxarır."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} icmasında paylaşın"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} gündə {posts} dəfə paylaşdınız. Hər paylaşım tapılmaq üçün daha bir şansdır, sabit ritm isə sizi izləyicilərinizin lentində saxlayır."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Daha tez-tez paylaşın"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Son {days} gündə paylaşım etməmisiniz. Paylaşım olmadan heç nə heç kimə çatmır."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Nəsə paylaşın"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statistika"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Ən yaxşı paylaşımlar"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Əvvəlki {days} günlə müqayisədə"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Maraq əlavə et"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Sıralamaq üçün sürüşdürün",
@@ -925,6 +1052,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil yeniləndi"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Haqqında"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ölkə"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Görünən ad"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Yer"),
@@ -1409,6 +1537,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("sizi izləməyə başladı"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("paylaşımınızı bəyəndi"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("sizi qeyd etdi"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Hələ qeyd yoxdur"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kimsə paylaşımda və ya cavabda @istifadəçi adınızı yazanda, burada görünür."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Daha köhnə"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "İcma söhbətindəki mesajınız silindi"),
@@ -1438,6 +1572,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("İzləyicilər"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Bəyənmələr"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Qeydlər"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Cavablar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Bu həftə"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bu gün"),
@@ -1655,6 +1790,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Komandamızdan kömək alın",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Paylaş"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Sitat gətir"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Mesajla göndər"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron-dakı insanlara"),
       "ui_share_this_post": MessageLookupByLibrary.simpleMessage(
         "Bu paylaşımı paylaş",
       ),

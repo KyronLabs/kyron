@@ -124,6 +124,9 @@ model User {
   // way round, `_count.followers` silently returned the following count.
   following              Follow[]                @relation("follower")
   followers              Follow[]                @relation("following")
+  // Mentions of this account, and the ones it wrote.
+  mentionedIn            Mention[]               @relation("mentioned")
+  mentionsMade           Mention[]               @relation("mentioner")
   likes                  PostLike[]
   commentLikes           CommentLike[]
   saves                  PostSave[]
@@ -173,7 +176,11 @@ model UserProfile {
   avatarUrl   String?
   coverUrl    String?
   bio         String?
+  // Free text from before the country picker. Kept, but nothing reads it.
   location    String?
+  // ISO 3166-1 alpha-2 (plus XK), picked from a list. Shown on the profile
+  // and under every post, and counted -- above the floors -- in Insights.
+  country     String?   @db.VarChar(2)
   website     String?
   dateOfBirth DateTime? @db.Date
 
@@ -252,8 +259,9 @@ model Post {
 
   // SetNull, not Cascade: deleting a quoted post should not delete everyone's
   // commentary on it. The client renders the gap.
-  quotedPost Post?  @relation("PostQuotes", fields: [quotedPostId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  quotedBy   Post[] @relation("PostQuotes")
+  quotedPost Post?     @relation("PostQuotes", fields: [quotedPostId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  quotedBy   Post[]    @relation("PostQuotes")
+  mentions   Mention[]
 
   @@index([authorId])
   @@index([communityId])
@@ -485,12 +493,13 @@ model Comment {
   createdAt DateTime  @default(now()) @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
 
-  post    Post          @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  author  User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  parent  Comment?      @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  replies Comment[]     @relation("CommentReplies")
-  media   Media[]
-  likes   CommentLike[]
+  post     Post          @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  parent   Comment?      @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  replies  Comment[]     @relation("CommentReplies")
+  media    Media[]
+  likes    CommentLike[]
+  mentions Mention[]
 
   @@index([authorId])
   // A post's top-level comments, oldest first -- the order a thread reads in.
@@ -548,11 +557,18 @@ model PostImpression {
   lastAt DateTime  @default(now()) @db.Timestamptz()
   prevAt DateTime? @db.Timestamptz()
 
+  /// When it was first on screen for this reader. What Insights counts reach
+  /// by: lastAt is overwritten, so it cannot say who was reached in a past
+  /// period, and a period that cannot be compared with the last one is a
+  /// number without a meaning.
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   viewer User @relation(fields: [viewerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@id([viewerId, postId])
   @@index([postId])
+  @@index([postId, createdAt])
 }
 
 // ==========================================
@@ -1893,4 +1909,34 @@ model CommunityChatPollVote {
 
   @@id([optionId, userId])
   @@index([pollId, userId])
+}
+
+// ==========================================
+// MENTIONS
+// ==========================================
+// Somebody wrote @handle in a post or a reply. One row per person per post or
+// reply, written when it is created, so the notifications screen can list
+// it like any other activity -- that screen reads the activity tables
+// themselves, and before this nothing recorded who had been mentioned, so
+// nobody was ever told.
+model Mention {
+  id        String   @id @default(uuid()) @db.Uuid
+  /// Who was mentioned.
+  userId    String   @db.Uuid
+  /// Who wrote it.
+  authorId  String   @db.Uuid
+  postId    String   @db.Uuid
+  /// Set when the mention is in a reply rather than in the post itself.
+  commentId String?  @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user    User     @relation("mentioned", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  author  User     @relation("mentioner", fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post    Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // The notifications screen and its badge: one person's, newest first.
+  @@index([userId, createdAt])
+  @@index([postId])
+  @@index([commentId])
 }

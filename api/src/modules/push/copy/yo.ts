@@ -13,6 +13,8 @@ export const yo: Copy = {
   reposted_quote: 'Tún ìfiránṣẹ́ rẹ fi ránṣẹ́: “{snippet}”',
   replied: 'Fèsì sí ọ',
   replied_quote: 'Fèsì: “{snippet}”',
+  mentioned: 'Dá ọ lórúkọ',
+  mentioned_quote: 'Dá ọ lórúkọ: “{snippet}”',
   group: 'Ẹgbẹ́',
   new_message: 'Ìfiranṣẹ́ tuntun',
   dm_once: 'Fi nǹkan ránṣẹ́ tí a ó wò lẹ́ẹ̀kan',

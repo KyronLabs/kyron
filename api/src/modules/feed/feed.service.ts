@@ -10,6 +10,7 @@ import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
 import { InterestTaste, TasteSignal } from './interest-taste';
+import { mentionedHandles } from '../../common/mentions';
 
 /** Authors whose posts anybody may see: everybody but a banned account. */
 const notBanned = {
@@ -28,7 +29,14 @@ export interface FeedPost {
     avatarUrl: string | null;
     /** Somebody on the team checked it is who it says it is. */
     verified: boolean;
+    /** The country on their profile, ISO 3166-1, or null if they gave none. */
+    country: string | null;
   };
+  /**
+   * Whether the reader follows the author, for the follow button on the
+   * author's picture. False on the reader's own posts, which have no button.
+   */
+  followingAuthor: boolean;
   /** How many people have liked it. */
   likes: number;
   /** How many comments and replies it has. */
@@ -348,6 +356,7 @@ export class FeedService {
     });
 
     this.logger.log(`post ${post.id} created by ${authorId}`);
+    await this.tellMentioned(authorId, content, post.id);
     return this.toFeedPost(post);
   }
 
@@ -1762,6 +1771,70 @@ export class FeedService {
     );
   }
 
+  /**
+   * Records who a new post or reply mentions, and tells them.
+   *
+   * Only real, current accounts, never the writer, and nobody blocked either
+   * way: a block means neither side hears from the other. At most
+   * [MAX_MENTIONS] people. A failure here is logged and swallowed -- the post
+   * is already written, and refusing it because a notification could not be
+   * recorded would lose the post for the sake of the bell.
+   */
+  private async tellMentioned(
+    authorId: string,
+    content: string,
+    postId: string,
+    commentId?: string,
+    skip: ReadonlySet<string> = new Set(),
+  ): Promise<void> {
+    const handles = mentionedHandles(content);
+    if (handles.length === 0) return;
+    try {
+      const [people, blocks] = await Promise.all([
+        this.prisma.user.findMany({
+          where: {
+            username: { in: handles },
+            id: { not: authorId },
+            deletedAt: null,
+            status: { notIn: [AccountStatus.BANNED, AccountStatus.DELETED] },
+          },
+          select: { id: true },
+        }),
+        this.prisma.block.findMany({
+          where: { OR: [{ blockerId: authorId }, { blockedId: authorId }] },
+          select: { blockerId: true, blockedId: true },
+        }),
+      ]);
+      const blocked = new Set(
+        blocks.flatMap((b) => [b.blockerId, b.blockedId]),
+      );
+      const told = people
+        .map((p) => p.id)
+        .filter((id) => !skip.has(id) && !blocked.has(id));
+      if (told.length === 0) return;
+
+      await this.prisma.mention.createMany({
+        data: told.map((userId) => ({ userId, authorId, postId, commentId })),
+      });
+      for (const userId of told) {
+        this.delivery.tellActivity(
+          userId,
+          {
+            type: 'notification.new',
+            kind: 'mention',
+            actorId: authorId,
+            postId,
+          },
+          { kind: 'mention', actorId: authorId, postId, text: content },
+        );
+      }
+    } catch (error) {
+      this.logger.error(
+        `could not record mentions in ${commentId ?? postId}: ${String(error)}`,
+      );
+    }
+  }
+
   /** One post on its own, for the screen that shows it with its thread. */
   async getPost(postId: string, viewerId: string): Promise<FeedPost> {
     const post = await this.prisma.post.findFirst({
@@ -1954,6 +2027,7 @@ export class FeedService {
     // The post's author hears about a comment; so does the person being
     // answered, when the reply is under somebody else's comment.
     this.tellAuthor(post.authorId, authorId, 'comment', postId, content);
+    const toldOfReply = new Set([post.authorId]);
     if (threadParentId) {
       const parent = await this.prisma.comment.findUnique({
         where: { id: threadParentId },
@@ -1961,8 +2035,18 @@ export class FeedService {
       });
       if (parent && parent.authorId !== post.authorId) {
         this.tellAuthor(parent.authorId, authorId, 'comment', postId, content);
+        toldOfReply.add(parent.authorId);
       }
     }
+    // Anybody else it names. Not the two above: "@ada" in a reply to Ada is
+    // the reply she has just been told about, and twice is noise.
+    await this.tellMentioned(
+      authorId,
+      content,
+      postId,
+      comment.id,
+      toldOfReply,
+    );
 
     // The post's author is already in hand from the reply check, so a
     // comment they just wrote carries its badge without waiting for a
@@ -2427,7 +2511,18 @@ export class FeedService {
         take: 1,
       },
       topics: { select: { interestId: true } },
-      author: { select: this.authorShape },
+      // With whether this reader follows them: a filtered relation holding
+      // at most one row, for the same reason as the likes below.
+      author: {
+        select: {
+          ...this.authorShape,
+          followers: {
+            where: { followerId: viewerId },
+            select: { id: true },
+            take: 1,
+          },
+        },
+      },
       // Columns, not a relation `_count`: Prisma compiles that into an
       // unfiltered GROUP BY over the whole of PostLike and joins it, so a
       // page of twenty cost 13.5ms against 0.46ms reading these -- and it
@@ -2483,7 +2578,7 @@ export class FeedService {
     name: true,
     username: true,
     verifiedAt: true,
-    profile: { select: { avatarUrl: true } },
+    profile: { select: { avatarUrl: true, country: true } },
   } as const;
 
   private readonly communityShape = {
@@ -2512,6 +2607,7 @@ export class FeedService {
       content: row.content,
       createdAt: row.createdAt,
       author: this.toAuthor(row.author),
+      followingAuthor: (row.author.followers?.length ?? 0) > 0,
       likes: row.likeCount,
       comments: row.commentCount,
       reposts: row.repostCount,
@@ -2545,6 +2641,7 @@ export class FeedService {
       username: author.username,
       avatarUrl: author.profile?.avatarUrl ?? null,
       verified: !!author.verifiedAt,
+      country: author.profile?.country ?? null,
     };
   }
 }
@@ -2574,7 +2671,9 @@ interface AuthorRow {
   name: string | null;
   username: string | null;
   verifiedAt?: Date | null;
-  profile: { avatarUrl: string | null } | null;
+  profile: { avatarUrl: string | null; country?: string | null } | null;
+  /** The reader's follow of them, when read through shapeFor. */
+  followers?: { id: string }[];
 }
 
 /** A row shaped by {@link FeedService.shapeFor}. */

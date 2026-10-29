@@ -13,6 +13,8 @@ export const uk: Copy = {
   reposted_quote: 'Поширив ваш допис: «{snippet}»',
   replied: 'Відповів вам',
   replied_quote: 'Відповідь: «{snippet}»',
+  mentioned: 'Згадав(ла) вас',
+  mentioned_quote: 'Згадав(ла) вас: «{snippet}»',
   group: 'Група',
   new_message: 'Нове повідомлення',
   dm_once: 'Надіслав щось для одноразового перегляду',

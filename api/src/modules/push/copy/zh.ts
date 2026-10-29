@@ -13,6 +13,8 @@ export const zh: Copy = {
   reposted_quote: '转发了你的帖子：“{snippet}”',
   replied: '回复了你',
   replied_quote: '回复：“{snippet}”',
+  mentioned: '提到了你',
+  mentioned_quote: '提到了你：“{snippet}”',
   group: '群组',
   new_message: '新消息',
   dm_once: '发送了仅可查看一次的内容',

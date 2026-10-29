@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "แสดงบนโปรไฟล์และใต้โพสต์ของคุณ"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "ไม่มีประเทศที่ตรงกับ “{query}”"),
+      "country_none": MessageLookupByLibrary.simpleMessage("ไม่แสดงประเทศ"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ค้นหาประเทศ"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "แสดงบนโปรไฟล์และใต้โพสต์ของคุณ เมื่อคุณเห็นโพสต์ของใครสักคน ประเทศของคุณจะถูกนับในข้อมูลเชิงลึกของเขา เฉพาะในกลุ่มตั้งแต่ห้าคนขึ้นไปและไม่ระบุชื่อเด็ดขาด"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("จากการตั้งค่าโทรศัพท์ของคุณ"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("ติดตาม {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("บัญชีของคุณ"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("เปิดชุมชน"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("เขียนโพสต์"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("ดูโพสต์"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("แก้ไขโปรไฟล์"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("พวกเขาอยู่เมื่อไร"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("ตามเขตเวลาของคุณ"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("อายุ"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "จาก {known} คนที่เข้าถึงและระบุวันเกิด"),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("ผู้คนที่เข้าถึงในแต่ละวัน"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("ชุมชนที่พวกเขาอยู่"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("ประเทศ"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "จาก {known} คนที่เข้าถึงซึ่งมีประเทศในโปรไฟล์"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} วันที่ผ่านมา"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("โหลดข้อมูลเชิงลึกไม่ได้"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("ผู้ติดตาม"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "ยังไม่มีกลุ่มใดใหญ่พอที่จะแสดง"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("วิธีเติบโต"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("หัวข้อที่พวกเขาติดตาม"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("ถูกใจ"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("ใหม่"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("ผู้ติดตามใหม่"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ในช่วงนี้ไม่มีโพสต์ใดของคุณเข้าถึงใครเลย"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("ไม่ได้ติดตามคุณ"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "ประเทศเหล่านี้คือที่ผู้คนเลือกไว้ในโปรไฟล์ของตน Kyron ไม่เก็บเมืองหรือเพศของใคร จึงไม่มีอะไรให้แสดงสำหรับข้อมูลเหล่านั้น"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("การเปิด"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "เข้าถึง {reach} · ถูกใจ {likes} · ตอบกลับ {replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("ผู้คนที่เข้าถึง"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "นับแต่ละคนเพียงครั้งเดียว: เห็นหรือเปิดโพสต์ของคุณเป็นครั้งแรก ผู้ติดตามใหม่ยังติดตามคุณอยู่ การเลิกติดตามจะไม่ถูกนับ"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("การตอบกลับ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("การโพสต์ซ้ำ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("การบันทึก"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "จะแสดงว่าผู้ชมของคุณเป็นใครเมื่อมี {floor} คนเห็นโพสต์ของคุณในช่วงนี้ หากน้อยกว่านั้นอาจชี้ไปที่คนใดคนหนึ่งได้"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("ยังมีคนไม่มากพอ"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% ของพวกเขาติดตามคุณอยู่แล้ว: โพสต์ของคุณส่วนใหญ่เข้าถึงคนที่รู้จักคุณ"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% ของพวกเขายังไม่ได้ติดตามคุณ: โพสต์ของคุณกำลังถูกค้นพบ"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "คุณเข้าถึงผู้คน {reach} คน น้อยกว่าช่วงก่อน {pct}%"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "ใน {days} วันที่ผ่านมา คุณเข้าถึงผู้คน {reach} คน"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "คุณเข้าถึงผู้คน {reach} คน ใกล้เคียงกับช่วงก่อน"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "ใน {days} วันที่ผ่านมา ไม่มีใครใหม่เห็นโพสต์ของคุณ"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "คุณเข้าถึงผู้คน {reach} คน มากกว่าช่วงก่อน {pct}%"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "คุณเข้าถึงผู้คน {reach} คน เป็น {times}× ของช่วงก่อน"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "พวกเขาติดตาม {name} มากกว่าหัวข้ออื่นใด"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ผู้ชม"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("ภาพรวม"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "คนที่พบโพสต์ของคุณจะดูโปรไฟล์ก่อนติดตาม ใบหน้าหรือโลโก้บอกพวกเขาว่ามีคนอยู่ตรงนั้น"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("เพิ่มรูปโปรไฟล์"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "บอกในบรรทัดเดียวว่าคุณโพสต์เรื่องอะไร เพื่อให้คนแปลกหน้ารู้ว่าการติดตามคุณจะได้อะไร"),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("เขียนประวัติย่อ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} จาก {total} โพสต์ของคุณไม่มีหัวข้อ หัวข้อจะนำโพสต์ไปอยู่ในฟีดของหัวข้อนั้นและต่อหน้าผู้ที่ติดตาม"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("เพิ่มหัวข้อให้โพสต์"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "มี {received} คนตอบกลับโพสต์ของคุณ และคุณตอบ {answered} รายการ พวกเขาใส่ใจพอที่จะเขียน: การตอบกลับทำให้ผู้อ่านกลายเป็นขาประจำ"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ตอบกลับคำตอบ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "ผู้ชมของคุณใช้งานมากที่สุดใน{when} โพสต์ก่อนเวลานั้นเล็กน้อยจะมีคนรอรับ"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("โพสต์เมื่อพวกเขาอยู่"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "มี {reached} คนที่ไม่ได้ติดตามคุณเห็นโพสต์ของคุณ และ {gained} คนติดตาม ให้ประวัติย่อและโพสต์ล่าสุดบอกว่าพวกเขาคาดหวังอะไรจากคุณได้"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("เปลี่ยนผู้อ่านเป็นผู้ติดตาม"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "โพสต์หนึ่งเข้าถึงผู้คน {times}× ของที่โพสต์อื่นของคุณมักเข้าถึง ดูว่ามันทำอะไรต่างไป แล้วทำแบบนั้นให้มากขึ้น"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("ทำสิ่งที่ได้ผลให้มากขึ้น"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "หลายคนที่เห็นโพสต์ของคุณอยู่ใน {name} การโพสต์ที่นั่นทำให้คุณไปอยู่ต่อหน้าคนที่เหลือ"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("โพสต์ใน {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "คุณโพสต์ {posts} ครั้งใน {days} วัน ทุกโพสต์คืออีกโอกาสที่จะถูกพบ และจังหวะที่สม่ำเสมอทำให้คุณอยู่ในฟีดของผู้ติดตาม"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("โพสต์บ่อยขึ้น"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "คุณไม่ได้โพสต์ใน {days} วันที่ผ่านมา ไม่มีอะไรเข้าถึงใครได้หากไม่มีโพสต์"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("โพสต์อะไรสักอย่าง"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ข้อมูลเชิงลึก"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("โพสต์ยอดนิยม"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("เทียบกับ {days} วันก่อนหน้า"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +987,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("ประเทศ"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1324,6 +1450,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ติดตามคุณ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ถูกใจโพสต์ของคุณ"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("กล่าวถึงคุณ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีการกล่าวถึง"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "เมื่อมีคนเขียน @ชื่อผู้ใช้ของคุณในโพสต์หรือการตอบกลับ จะแสดงที่นี่"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("เก่ากว่า"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("ข้อความของคุณในแชทชุมชนถูกลบ"),
@@ -1352,6 +1483,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ทั้งหมด"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("การติดตาม"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("การถูกใจ"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("การกล่าวถึง"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("การตอบกลับ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("สัปดาห์นี้"),
@@ -1560,6 +1693,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("อ้างอิง"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("ส่งในข้อความ"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("ถึงผู้คนบน Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

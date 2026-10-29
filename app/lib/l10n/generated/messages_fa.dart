@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "در نمایه‌ات و زیر پست‌هایت نشان داده می‌شود."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "هیچ کشوری با «{query}» مطابقت ندارد."),
+      "country_none": MessageLookupByLibrary.simpleMessage("کشوری نشان نده"),
+      "country_search": MessageLookupByLibrary.simpleMessage("جست‌وجوی کشورها"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "در نمایه‌ات و زیر پست‌هایت نشان داده می‌شود. وقتی پست‌های کسی را می‌بینی، کشورت در آمار او شمرده می‌شود، فقط در گروه‌های پنج نفره یا بیشتر و هرگز با نام."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("از تنظیمات گوشی‌ات"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("دنبال کردن {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("حساب شما"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("باز کردن انجمن"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("یک پست بنویسید"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("دیدن پست"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("نمایه خود را ویرایش کنید"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("چه زمانی حضور دارند"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("به وقت منطقه زمانی شما."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("سن‌ها"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "از میان {known} نفری که دیده‌اند و تاریخ تولد داده‌اند."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("افراد دیده‌شده در هر روز"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("انجمن‌هایی که در آن‌ها هستند"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("کشورها"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "از میان {known} نفری که به آن‌ها رسیدی و در نمایه‌شان کشور دارند."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} روز گذشته"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage("آمار بارگیری نشد"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("دنبال‌کنندگان"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "هنوز هیچ گروهی آن‌قدر بزرگ نیست که نشان داده شود."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("چطور رشد کنید"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("موضوعاتی که دنبال می‌کنند"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("پسندها"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("جدید"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("دنبال‌کنندگان جدید"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "هیچ‌یک از پست‌های شما در این دوره به کسی نرسید."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("شما را دنبال نمی‌کنند"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "کشورها همان‌هایی هستند که افراد در نمایه‌شان انتخاب کرده‌اند. Kyron شهر یا جنسیت هیچ‌کس را جمع‌آوری نمی‌کند، پس چیزی برای نمایش آن‌ها وجود ندارد."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("بازشدن‌ها"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} نفر دیده‌اند · {likes} پسند · {replies} پاسخ"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("افراد دیده‌شده"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "هر نفر یک بار شمرده می‌شود: یکی از پست‌های شما برای اولین بار به او نشان داده شده یا آن را باز کرده است. دنبال‌کنندگان جدید هنوز شما را دنبال می‌کنند؛ لغو دنبال کردن شمرده نمی‌شود."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("پاسخ‌ها"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("بازنشرها"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("ذخیره‌ها"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "اینکه مخاطبانتان چه کسانی هستند وقتی نشان داده می‌شود که {floor} نفر در این دوره پست‌های شما را دیده باشند. کمتر از این ممکن است به فرد خاصی اشاره کند."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("هنوز افراد کافی نیستند"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}٪ از آن‌ها از قبل شما را دنبال می‌کنند: پست‌هایتان بیشتر به کسانی می‌رسد که شما را می‌شناسند."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}٪ از آن‌ها هنوز شما را دنبال نمی‌کنند: پست‌هایتان پیدا می‌شوند."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "به {reach} نفر رسیدید، {pct}٪ کمتر از دوره قبل."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "در {days} روز گذشته به {reach} نفر رسیدید."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "به {reach} نفر رسیدید، تقریباً به اندازه دوره قبل."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "در {days} روز گذشته هیچ فرد تازه‌ای پست‌های شما را ندید."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "به {reach} نفر رسیدید، {pct}٪ بیشتر از دوره قبل."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "به {reach} نفر رسیدید، {times}× دوره قبل."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "بیشتر آن‌ها {name} را دنبال می‌کنند تا هر موضوع دیگری."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("مخاطبان"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("نمای کلی"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "کسانی که یکی از پست‌های شما را پیدا می‌کنند، پیش از دنبال کردن به نمایه‌تان نگاه می‌کنند. یک چهره یا لوگو به آن‌ها می‌گوید کسی آنجاست."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("عکس نمایه اضافه کنید"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "در یک خط بگویید درباره چه چیزی پست می‌گذارید تا یک غریبه بداند دنبال کردن شما چه چیزی به او می‌دهد."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("بیوگرافی بنویسید"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} از {total} پست شما موضوعی نداشتند. موضوع، پست را در فید آن موضوع و پیش چشم دنبال‌کنندگانش قرار می‌دهد."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "به پست‌هایتان موضوع اضافه کنید"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} نفر به پست‌های شما پاسخ دادند و شما به {answered} جواب دادید. آن‌ها آن‌قدر اهمیت دادند که بنویسند: یک جواب، خواننده را به همیشگی تبدیل می‌کند."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("به پاسخ‌ها جواب دهید"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "مخاطبان شما {when} از همه فعال‌ترند. پستی که کمی پیش از آن منتشر شود، کسانی را دارد که به استقبالش بروند."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("وقتی حضور دارند پست بگذارید"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} نفر که شما را دنبال نمی‌کنند پست‌هایتان را دیدند و {gained} نفر دنبال کردند. بگذارید بیوگرافی و تازه‌ترین پست‌هایتان بگویند از شما چه انتظاری داشته باشند."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("خوانندگان را دنبال‌کننده کنید"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "یک پست به {times}× افرادی رسید که پست‌های دیگرتان معمولاً می‌رسند. ببینید چه چیزی را متفاوت انجام داد و بیشتر همان را انجام دهید."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "بیشتر همان کاری را بکنید که جواب داد"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "بسیاری از کسانی که پست‌های شما را می‌بینند در {name} هستند. پست گذاشتن در آنجا شما را پیش چشم بقیه هم قرار می‌دهد."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("در {name} پست بگذارید"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "در {days} روز {posts} بار پست گذاشتید. هر پست فرصت دیگری برای دیده شدن است و ریتمی ثابت شما را در فید دنبال‌کنندگانتان نگه می‌دارد."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("بیشتر پست بگذارید"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "در {days} روز گذشته پستی نگذاشته‌اید. بدون پست هیچ چیز به کسی نمی‌رسد."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("چیزی منتشر کنید"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("آمار"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("برترین پست‌ها"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("در مقایسه با {days} روز قبل"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +989,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("کشور"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1332,6 +1460,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("شما را دنبال کرد"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("پست شما را پسندید"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("از شما نام برد"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("هنوز اشاره‌ای نیست"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "وقتی کسی @نام‌کاربری شما را در پست یا پاسخی بنویسد، اینجا نشان داده می‌شود."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("قدیمی‌تر"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "پیام شما در گفتگوی انجمن حذف شد"),
@@ -1361,6 +1495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("دنبال‌کنندگان"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("پسندها"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("اشاره‌ها"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("پاسخ‌ها"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("این هفته"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("امروز"),
@@ -1568,6 +1703,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("نقل‌قول"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("ارسال در پیام"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("به افراد در Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("موضوع چه بود"),

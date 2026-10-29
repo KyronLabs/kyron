@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ 'ਤੇ ਅਤੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਹੇਠਾਂ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ।"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” ਨਾਲ ਕੋਈ ਦੇਸ਼ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।"),
+      "country_none": MessageLookupByLibrary.simpleMessage("ਕੋਈ ਦੇਸ਼ ਨਾ ਦਿਖਾਓ"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ਦੇਸ਼ ਖੋਜੋ"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ 'ਤੇ ਅਤੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਹੇਠਾਂ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ। ਜਦੋਂ ਤੁਸੀਂ ਕਿਸੇ ਦੀਆਂ ਪੋਸਟਾਂ ਦੇਖਦੇ ਹੋ, ਤੁਹਾਡਾ ਦੇਸ਼ ਉਹਨਾਂ ਦੀਆਂ ਇਨਸਾਈਟਸ ਵਿੱਚ ਗਿਣਿਆ ਜਾਂਦਾ ਹੈ, ਸਿਰਫ਼ ਪੰਜ ਜਾਂ ਵੱਧ ਦੇ ਸਮੂਹਾਂ ਵਿੱਚ ਅਤੇ ਕਦੇ ਨਾਂ ਨਾਲ ਨਹੀਂ।"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਫ਼ੋਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਤੋਂ"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} ਨੂੰ ਫਾਲੋ ਕਰੋ"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡਾ ਖਾਤਾ"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("ਭਾਈਚਾਰਾ ਖੋਲ੍ਹੋ"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("ਪੋਸਟ ਲਿਖੋ"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("ਪੋਸਟ ਦੇਖੋ"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("ਆਪਣੀ ਪ੍ਰੋਫਾਈਲ ਸੋਧੋ"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("ਉਹ ਕਦੋਂ ਸਰਗਰਮ ਹੁੰਦੇ ਹਨ"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਡੇ ਸਮਾਂ ਖੇਤਰ ਵਿੱਚ।"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("ਉਮਰ"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "ਜਨਮਦਿਨ ਦੇਣ ਵਾਲੇ, ਪਹੁੰਚੇ {known} ਲੋਕਾਂ ਵਿੱਚੋਂ।"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("ਹਰ ਦਿਨ ਪਹੁੰਚੇ ਲੋਕ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("ਉਹ ਜਿਨ੍ਹਾਂ ਭਾਈਚਾਰਿਆਂ ਵਿੱਚ ਹਨ"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("ਦੇਸ਼"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "ਜਿਨ੍ਹਾਂ ਤੱਕ ਪਹੁੰਚੇ ਅਤੇ ਜਿਨ੍ਹਾਂ ਦੀ ਪ੍ਰੋਫਾਈਲ 'ਤੇ ਦੇਸ਼ ਹੈ, ਉਹਨਾਂ {known} ਲੋਕਾਂ ਵਿੱਚੋਂ।"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("ਪਿਛਲੇ {days} ਦਿਨ"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("ਜਾਣਕਾਰੀ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀ"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("ਫਾਲੋਅਰ"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "ਦਿਖਾਉਣ ਲਈ ਕਾਫ਼ੀ ਵੱਡਾ ਕੋਈ ਸਮੂਹ ਅਜੇ ਨਹੀਂ।"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("ਕਿਵੇਂ ਵਧੀਏ"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage(
+          "ਉਹ ਜਿਨ੍ਹਾਂ ਵਿਸ਼ਿਆਂ ਨੂੰ ਫਾਲੋ ਕਰਦੇ ਹਨ"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("ਪਸੰਦ"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("ਨਵਾਂ"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("ਨਵੇਂ ਫਾਲੋਅਰ"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ਇਸ ਮਿਆਦ ਵਿੱਚ ਤੁਹਾਡੀ ਕੋਈ ਪੋਸਟ ਕਿਸੇ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚੀ।"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("ਤੁਹਾਨੂੰ ਫਾਲੋ ਨਹੀਂ ਕਰਦੇ"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "ਦੇਸ਼ ਉਹ ਹਨ ਜੋ ਲੋਕਾਂ ਨੇ ਆਪਣੀਆਂ ਪ੍ਰੋਫਾਈਲਾਂ 'ਤੇ ਚੁਣੇ ਹਨ। Kyron ਕਿਸੇ ਦਾ ਸ਼ਹਿਰ ਜਾਂ ਲਿੰਗ ਇਕੱਠਾ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਉਹਨਾਂ ਲਈ ਦਿਖਾਉਣ ਨੂੰ ਕੁਝ ਨਹੀਂ ਹੈ।"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("ਖੋਲ੍ਹੇ"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} ਤੱਕ ਪਹੁੰਚੀ · {likes} ਪਸੰਦ · {replies} ਜਵਾਬ"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("ਪਹੁੰਚੇ ਲੋਕ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "ਹਰ ਵਿਅਕਤੀ ਇੱਕ ਵਾਰ ਗਿਣਿਆ ਜਾਂਦਾ ਹੈ: ਤੁਹਾਡੀ ਕੋਈ ਪੋਸਟ ਪਹਿਲੀ ਵਾਰ ਉਸਨੂੰ ਦਿਖਾਈ ਗਈ ਜਾਂ ਉਸਨੇ ਖੋਲ੍ਹੀ। ਨਵੇਂ ਫਾਲੋਅਰ ਅਜੇ ਵੀ ਤੁਹਾਨੂੰ ਫਾਲੋ ਕਰਦੇ ਹਨ; ਅਨਫਾਲੋ ਨਹੀਂ ਗਿਣੇ ਜਾਂਦੇ।"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("ਜਵਾਬ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("ਰੀਪੋਸਟ"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("ਸੇਵ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ਇਸ ਮਿਆਦ ਵਿੱਚ {floor} ਲੋਕਾਂ ਦੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਦੇਖਣ ਤੋਂ ਬਾਅਦ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ ਕਿ ਤੁਹਾਡੇ ਦਰਸ਼ਕ ਕੌਣ ਹਨ। ਇਸ ਤੋਂ ਘੱਟ ਹੋਣ ਤੇ ਇਹ ਕਿਸੇ ਵੱਲ ਇਸ਼ਾਰਾ ਕਰ ਸਕਦਾ ਹੈ।"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("ਅਜੇ ਕਾਫ਼ੀ ਲੋਕ ਨਹੀਂ"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ {pct}% ਪਹਿਲਾਂ ਹੀ ਤੁਹਾਨੂੰ ਫਾਲੋ ਕਰਦੇ ਹਨ: ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਜ਼ਿਆਦਾਤਰ ਜਾਣਕਾਰਾਂ ਤੱਕ ਪਹੁੰਚਦੀਆਂ ਹਨ।"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ {pct}% ਅਜੇ ਤੁਹਾਨੂੰ ਫਾਲੋ ਨਹੀਂ ਕਰਦੇ: ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਲੱਭੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ।"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ {reach} ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੇ, ਪਿਛਲੀ ਮਿਆਦ ਨਾਲੋਂ {pct}% ਘੱਟ।"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "ਪਿਛਲੇ {days} ਦਿਨਾਂ ਵਿੱਚ ਤੁਸੀਂ {reach} ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੇ।"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ {reach} ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੇ, ਲਗਭਗ ਪਿਛਲੀ ਮਿਆਦ ਜਿੰਨੇ।"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "ਪਿਛਲੇ {days} ਦਿਨਾਂ ਵਿੱਚ ਕਿਸੇ ਨਵੇਂ ਵਿਅਕਤੀ ਨੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਨਹੀਂ ਦੇਖੀਆਂ।"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ {reach} ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੇ, ਪਿਛਲੀ ਮਿਆਦ ਨਾਲੋਂ {pct}% ਵੱਧ।"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ {reach} ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੇ, ਪਿਛਲੀ ਮਿਆਦ ਦੇ {times}×।"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "ਕਿਸੇ ਵੀ ਹੋਰ ਵਿਸ਼ੇ ਨਾਲੋਂ ਵੱਧ ਲੋਕ {name} ਨੂੰ ਫਾਲੋ ਕਰਦੇ ਹਨ।"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ਦਰਸ਼ਕ"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("ਸੰਖੇਪ"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "ਜੋ ਲੋਕ ਤੁਹਾਡੀ ਕੋਈ ਪੋਸਟ ਲੱਭਦੇ ਹਨ, ਉਹ ਫਾਲੋ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ ਦੇਖਦੇ ਹਨ। ਚਿਹਰਾ ਜਾਂ ਲੋਗੋ ਉਨ੍ਹਾਂ ਨੂੰ ਦੱਸਦਾ ਹੈ ਕਿ ਉੱਥੇ ਕੋਈ ਹੈ।"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ ਜੋੜੋ"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "ਇੱਕ ਲਾਈਨ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਿਸ ਬਾਰੇ ਪੋਸਟ ਕਰਦੇ ਹੋ, ਤਾਂ ਜੋ ਅਜਨਬੀ ਜਾਣੇ ਕਿ ਤੁਹਾਨੂੰ ਫਾਲੋ ਕਰਕੇ ਉਸਨੂੰ ਕੀ ਮਿਲੇਗਾ।"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("ਬਾਇਓ ਲਿਖੋ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀਆਂ {total} ਪੋਸਟਾਂ ਵਿੱਚੋਂ {without} ਦਾ ਕੋਈ ਵਿਸ਼ਾ ਨਹੀਂ ਸੀ। ਵਿਸ਼ਾ ਪੋਸਟ ਨੂੰ ਉਸ ਵਿਸ਼ੇ ਦੀ ਫੀਡ ਵਿੱਚ ਅਤੇ ਉਸਨੂੰ ਫਾਲੋ ਕਰਨ ਵਾਲਿਆਂ ਦੇ ਸਾਹਮਣੇ ਰੱਖਦਾ ਹੈ।"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("ਪੋਸਟਾਂ ਵਿੱਚ ਵਿਸ਼ੇ ਜੋੜੋ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ਲੋਕਾਂ ਨੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਤੇ ਜਵਾਬ ਦਿੱਤਾ ਅਤੇ ਤੁਸੀਂ {answered} ਦਾ ਉੱਤਰ ਦਿੱਤਾ। ਉਨ੍ਹਾਂ ਨੂੰ ਲਿਖਣ ਜਿੰਨੀ ਪਰਵਾਹ ਸੀ: ਇੱਕ ਉੱਤਰ ਪਾਠਕ ਨੂੰ ਨਿਯਮਿਤ ਬਣਾਉਂਦਾ ਹੈ।"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ਆਪਣੇ ਜਵਾਬਾਂ ਦਾ ਉੱਤਰ ਦਿਓ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੇ ਦਰਸ਼ਕ {when} ਸਭ ਤੋਂ ਵੱਧ ਸਰਗਰਮ ਹੁੰਦੇ ਹਨ। ਉਸ ਤੋਂ ਥੋੜ੍ਹਾ ਪਹਿਲਾਂ ਪਾਈ ਪੋਸਟ ਨੂੰ ਸਵਾਗਤ ਕਰਨ ਵਾਲੇ ਲੋਕ ਮਿਲਦੇ ਹਨ।"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "ਜਦੋਂ ਉਹ ਸਰਗਰਮ ਹੋਣ ਤਾਂ ਪੋਸਟ ਕਰੋ"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਨੂੰ ਫਾਲੋ ਨਾ ਕਰਨ ਵਾਲੇ {reached} ਲੋਕਾਂ ਨੇ ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਦੇਖੀਆਂ, ਅਤੇ {gained} ਨੇ ਫਾਲੋ ਕੀਤਾ। ਤੁਹਾਡਾ ਬਾਇਓ ਅਤੇ ਨਵੀਆਂ ਪੋਸਟਾਂ ਦੱਸਣ ਕਿ ਉਹ ਤੁਹਾਡੇ ਤੋਂ ਕੀ ਉਮੀਦ ਕਰ ਸਕਦੇ ਹਨ।"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("ਪਾਠਕਾਂ ਨੂੰ ਫਾਲੋਅਰ ਬਣਾਓ"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ਇੱਕ ਪੋਸਟ ਤੁਹਾਡੀਆਂ ਹੋਰ ਪੋਸਟਾਂ ਦੀ ਆਮ ਪਹੁੰਚ ਨਾਲੋਂ {times}× ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚੀ। ਦੇਖੋ ਉਸਨੇ ਕੀ ਵੱਖਰਾ ਕੀਤਾ, ਅਤੇ ਉਹ ਹੋਰ ਕਰੋ।"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("ਜੋ ਕੰਮ ਆਇਆ ਉਹ ਹੋਰ ਕਰੋ"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਹਾਡੀਆਂ ਪੋਸਟਾਂ ਦੇਖਣ ਵਾਲੇ ਬਹੁਤ ਸਾਰੇ {name} ਵਿੱਚ ਹਨ। ਉੱਥੇ ਪੋਸਟ ਕਰਨ ਨਾਲ ਤੁਸੀਂ ਬਾਕੀਆਂ ਦੇ ਸਾਹਮਣੇ ਵੀ ਆਉਂਦੇ ਹੋ।"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} ਵਿੱਚ ਪੋਸਟ ਕਰੋ"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "ਤੁਸੀਂ {days} ਦਿਨਾਂ ਵਿੱਚ {posts} ਵਾਰ ਪੋਸਟ ਕੀਤਾ। ਹਰ ਪੋਸਟ ਲੱਭੇ ਜਾਣ ਦਾ ਇੱਕ ਹੋਰ ਮੌਕਾ ਹੈ, ਅਤੇ ਨਿਯਮਿਤ ਲੈਅ ਤੁਹਾਨੂੰ ਫਾਲੋਅਰਾਂ ਦੀ ਫੀਡ ਵਿੱਚ ਰੱਖਦੀ ਹੈ।"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("ਹੋਰ ਵਾਰ ਪੋਸਟ ਕਰੋ"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "ਪਿਛਲੇ {days} ਦਿਨਾਂ ਵਿੱਚ ਤੁਸੀਂ ਪੋਸਟ ਨਹੀਂ ਕੀਤਾ। ਪੋਸਟ ਤੋਂ ਬਿਨਾਂ ਕੁਝ ਵੀ ਕਿਸੇ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚਦਾ।"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("ਕੁਝ ਪੋਸਟ ਕਰੋ"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("ਜਾਣਕਾਰੀ"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("ਸਿਖਰਲੀਆਂ ਪੋਸਟਾਂ"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "ਪਹਿਲਾਂ ਦੇ {days} ਦਿਨਾਂ ਦੇ ਮੁਕਾਬਲੇ"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("ਦੇਸ਼"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1332,6 +1459,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ਨੇ ਤੁਹਾਨੂੰ ਫ਼ਾਲੋ ਕੀਤਾ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ਨੇ ਤੁਹਾਡੀ ਪੋਸਟ ਪਸੰਦ ਕੀਤੀ"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ਨੇ ਤੁਹਾਡਾ ਜ਼ਿਕਰ ਕੀਤਾ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ਹਾਲੇ ਕੋਈ ਜ਼ਿਕਰ ਨਹੀਂ"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "ਜਦੋਂ ਕੋਈ ਪੋਸਟ ਜਾਂ ਜਵਾਬ ਵਿੱਚ ਤੁਹਾਡਾ @ਹੈਂਡਲ ਲਿਖੇਗਾ, ਉਹ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ।"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("ਪੁਰਾਣੇ"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "ਕਮਿਊਨਿਟੀ ਚੈਟ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਹਟਾ ਦਿੱਤਾ ਗਿਆ"),
@@ -1360,6 +1493,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ਸਾਰੇ"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ਫ਼ਾਲੋ"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ਪਸੰਦ"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("ਜ਼ਿਕਰ"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("ਜਵਾਬ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ਇਸ ਹਫ਼ਤੇ"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("ਅੱਜ"),
@@ -1568,6 +1702,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("ਹਵਾਲਾ ਦਿਓ"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("ਸੁਨੇਹੇ ਵਿੱਚ ਭੇਜੋ"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron 'ਤੇ ਲੋਕਾਂ ਨੂੰ"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

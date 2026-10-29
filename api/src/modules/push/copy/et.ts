@@ -13,6 +13,8 @@ export const et: Copy = {
   reposted_quote: 'Jagas sinu postitust: „{snippet}“',
   replied: 'Vastas sulle',
   replied_quote: 'Vastas: „{snippet}“',
+  mentioned: 'Mainis sind',
+  mentioned_quote: 'Mainis sind: „{snippet}“',
   group: 'Grupp',
   new_message: 'Uus sõnum',
   dm_once: 'Saatis midagi ühekordseks vaatamiseks',

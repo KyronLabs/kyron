@@ -24,6 +24,8 @@ export const en = {
   reposted_quote: 'Reposted your post: “{snippet}”',
   replied: 'Replied to you',
   replied_quote: 'Replied: “{snippet}”',
+  mentioned: 'Mentioned you',
+  mentioned_quote: 'Mentioned you: “{snippet}”',
 
   // Direct messages and groups. Never the message itself: it is sealed.
   group: 'Group',

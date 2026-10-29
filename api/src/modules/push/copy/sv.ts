@@ -13,6 +13,8 @@ export const sv: Copy = {
   reposted_quote: 'Delade ditt inlägg: ”{snippet}”',
   replied: 'Svarade dig',
   replied_quote: 'Svarade: ”{snippet}”',
+  mentioned: 'Nämnde dig',
+  mentioned_quote: 'Nämnde dig: ”{snippet}”',
   group: 'Grupp',
   new_message: 'Nytt meddelande',
   dm_once: 'Skickade något att visa en gång',

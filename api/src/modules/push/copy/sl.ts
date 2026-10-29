@@ -13,6 +13,8 @@ export const sl: Copy = {
   reposted_quote: 'Delil je vašo objavo: »{snippet}«',
   replied: 'Odgovoril vam je',
   replied_quote: 'Odgovor: »{snippet}«',
+  mentioned: 'Omenil(a) te je',
+  mentioned_quote: 'Omenil(a) te je: »{snippet}«',
   group: 'Skupina',
   new_message: 'Novo sporočilo',
   dm_once: 'Poslal je nekaj za enkratni ogled',

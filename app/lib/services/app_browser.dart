@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/browser/browser_route.dart';
 import '../widgets/toast.dart';
+import 'kyron_links.dart';
 import 'platform_support.dart';
 
 /// What Kyron should do with a link somebody tapped.
@@ -82,6 +83,8 @@ class AppBrowser {
       Toast.show(context, 'That link is not one this can open.');
       return;
     }
+    // Kyron's own: a screen in this app, not a page.
+    if (KyronLinks.open(context, uri)) return;
 
     switch (destinationOf(uri)) {
       case LinkDestination.inApp:

@@ -91,10 +91,8 @@ Future<void> _card(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
-        _noChats,
-        // A card reads who is signed in, to leave the gift button off your
-        // own posts.
         signedInAs(),
+        _noChats,
         feedRepositoryProvider.overrideWithValue(_Feed()),
         // Tapping the community's name opens its page, which loads it.
         communitiesRepositoryProvider.overrideWithValue(
@@ -428,7 +426,6 @@ void main() {
         ProviderScope(
           overrides: [
             _noChats,
-            signedInAs(),
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),
@@ -621,7 +618,6 @@ void main() {
         ProviderScope(
           overrides: [
             _noChats,
-            signedInAs(),
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),

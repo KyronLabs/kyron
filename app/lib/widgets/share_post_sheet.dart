@@ -8,7 +8,9 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/feed_post.dart';
+import '../services/kyron_links.dart';
 
+import 'share_into_kyron_sheet.dart';
 import 'toast.dart';
 import 'app_sheet.dart';
 
@@ -27,7 +29,7 @@ class SharePostSheet {
   }
 
   /// The post's public address.
-  static String linkTo(FeedPost post) => 'https://kyron.so/post/${post.id}';
+  static String linkTo(FeedPost post) => KyronLinks.post(post.id);
 }
 
 class _Sheet extends StatelessWidget {
@@ -61,6 +63,21 @@ class _Sheet extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
+          ),
+          // First: the people on Kyron. The rows below all lead out of the
+          // app, and a post could not be sent to anybody in it at all.
+          _Item(
+            key: const ValueKey('share-send-in-message'),
+            icon: Iconsax.send_2_copy,
+            label: AppLocalizations.of(context)
+                .ui('ui_share_send_message', 'Send in a message'),
+            subtitle: AppLocalizations.of(context)
+                .ui('ui_share_send_message_detail', 'To people on Kyron'),
+            onTap: () {
+              final navigator = Navigator.of(context);
+              navigator.pop();
+              ShareIntoKyronSheet.showPost(navigator.context, post);
+            },
           ),
           _Item(
             icon: Iconsax.export_1_copy,
@@ -136,6 +153,7 @@ class _Item extends StatelessWidget {
   final VoidCallback onTap;
 
   const _Item({
+    super.key,
     required this.icon,
     required this.label,
     required this.onTap,

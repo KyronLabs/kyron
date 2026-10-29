@@ -13,6 +13,8 @@ export const km: Copy = {
   reposted_quote: 'បានបង្ហោះឡើងវិញនូវការបង្ហោះរបស់អ្នក៖ “{snippet}”',
   replied: 'បានឆ្លើយតបអ្នក',
   replied_quote: 'បានឆ្លើយតប៖ “{snippet}”',
+  mentioned: 'បានលើកឡើងពីអ្នក',
+  mentioned_quote: 'បានលើកឡើងពីអ្នក៖ “{snippet}”',
   group: 'ក្រុម',
   new_message: 'សារថ្មី',
   dm_once: 'បានផ្ញើអ្វីមួយសម្រាប់មើលតែម្ដង',

@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "آپ کی پروفائل پر اور آپ کی پوسٹس کے نیچے دکھایا جاتا ہے۔"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” سے کوئی ملک میل نہیں کھاتا۔"),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("کوئی ملک نہ دکھائیں"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ممالک تلاش کریں"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "آپ کی پروفائل پر اور آپ کی پوسٹس کے نیچے دکھایا جاتا ہے۔ جب آپ کسی کی پوسٹس دیکھتے ہیں تو آپ کا ملک ان کی بصیرتوں میں گنا جاتا ہے، صرف پانچ یا زیادہ کے گروپوں میں اور کبھی نام سے نہیں۔"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("آپ کے فون کی ترتیبات سے"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} کو فالو کریں"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("آپ کا اکاؤنٹ"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("کمیونٹی کھولیں"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("پوسٹ لکھیں"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("پوسٹ دیکھیں"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("اپنی پروفائل میں ترمیم کریں"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("وہ کب موجود ہوتے ہیں"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("آپ کے ٹائم زون میں۔"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("عمریں"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "سالگرہ بتانے والے، پہنچے ہوئے {known} لوگوں میں سے۔"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("ہر دن پہنچے ہوئے لوگ"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("وہ جن کمیونٹیز میں ہیں"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("ممالک"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "ان {known} لوگوں میں سے جن تک پہنچے اور جن کی پروفائل پر ملک ہے۔"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("پچھلے {days} دن"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("بصیرتیں لوڈ نہیں ہو سکیں"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("فالوورز"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "دکھانے کے لائق بڑا کوئی گروپ ابھی نہیں۔"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("کیسے بڑھیں"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage(
+          "وہ جن موضوعات کو فالو کرتے ہیں"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("پسندیدگیاں"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("نیا"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("نئے فالوورز"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "اس عرصے میں آپ کی کوئی پوسٹ کسی تک نہیں پہنچی۔"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("آپ کو فالو نہیں کرتے"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "ممالک وہ ہیں جو لوگوں نے اپنی پروفائل پر چنے ہیں۔ Kyron کسی کا شہر یا جنس جمع نہیں کرتا، اس لیے ان کے لیے دکھانے کو کچھ نہیں ہے۔"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("کھولے گئے"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} تک پہنچی · {likes} پسند · {replies} جواب"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("پہنچے ہوئے لوگ"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "ہر شخص ایک بار گنا جاتا ہے: آپ کی کوئی پوسٹ پہلی بار اسے دکھائی گئی یا اس نے کھولی۔ نئے فالوورز اب بھی آپ کو فالو کرتے ہیں؛ ان فالو نہیں گنے جاتے۔"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("جوابات"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("ری پوسٹس"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("محفوظ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "اس عرصے میں {floor} لوگوں کے آپ کی پوسٹس دیکھنے کے بعد دکھایا جاتا ہے کہ آپ کے ناظرین کون ہیں۔ اس سے کم ہوں تو یہ کسی ایک کی طرف اشارہ کر سکتا ہے۔"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("ابھی کافی لوگ نہیں"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "ان میں سے {pct}% پہلے ہی آپ کو فالو کرتے ہیں: آپ کی پوسٹس زیادہ تر جاننے والوں تک پہنچتی ہیں۔"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "ان میں سے {pct}% ابھی آپ کو فالو نہیں کرتے: آپ کی پوسٹس دریافت ہو رہی ہیں۔"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "آپ {reach} لوگوں تک پہنچے، پچھلے عرصے سے {pct}% کم۔"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "پچھلے {days} دنوں میں آپ {reach} لوگوں تک پہنچے۔"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "آپ {reach} لوگوں تک پہنچے، تقریباً پچھلے عرصے جتنے۔"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "پچھلے {days} دنوں میں کسی نئے شخص نے آپ کی پوسٹس نہیں دیکھیں۔"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "آپ {reach} لوگوں تک پہنچے، پچھلے عرصے سے {pct}% زیادہ۔"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "آپ {reach} لوگوں تک پہنچے، پچھلے عرصے کے {times}×۔"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "کسی بھی دوسرے موضوع سے زیادہ لوگ {name} کو فالو کرتے ہیں۔"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ناظرین"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("جائزہ"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "جو لوگ آپ کی کوئی پوسٹ پاتے ہیں وہ فالو کرنے سے پہلے آپ کی پروفائل دیکھتے ہیں۔ چہرہ یا لوگو بتاتا ہے کہ وہاں کوئی ہے۔"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("پروفائل تصویر شامل کریں"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "ایک سطر میں بتائیں کہ آپ کس بارے میں پوسٹ کرتے ہیں، تاکہ اجنبی جانے کہ آپ کو فالو کرنے سے اسے کیا ملے گا۔"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("بایو لکھیں"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "آپ کی {total} پوسٹس میں سے {without} کا کوئی موضوع نہیں تھا۔ موضوع پوسٹ کو اس موضوع کی فیڈ میں اور اسے فالو کرنے والوں کے سامنے رکھتا ہے۔"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("پوسٹس میں موضوعات شامل کریں"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} لوگوں نے آپ کی پوسٹس پر جواب دیا اور آپ نے {answered} کا جواب دیا۔ انہیں لکھنے جتنی پروا تھی: ایک جواب قاری کو باقاعدہ بنا دیتا ہے۔"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("جوابات کا جواب دیں"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "آپ کے ناظرین {when} سب سے زیادہ فعال ہوتے ہیں۔ اس سے ذرا پہلے کی گئی پوسٹ کو خوش آمدید کہنے والے مل جاتے ہیں۔"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("جب وہ موجود ہوں تب پوسٹ کریں"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "آپ کو فالو نہ کرنے والے {reached} لوگوں نے آپ کی پوسٹس دیکھیں، اور {gained} نے فالو کیا۔ آپ کا بایو اور نئی پوسٹس بتائیں کہ وہ آپ سے کیا توقع رکھ سکتے ہیں۔"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("قارئین کو فالوورز بنائیں"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ایک پوسٹ آپ کی دوسری پوسٹس کی عام پہنچ سے {times}× لوگوں تک پہنچی۔ دیکھیں اس نے کیا مختلف کیا، اور وہی زیادہ کریں۔"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("جو کام آیا وہ زیادہ کریں"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "آپ کی پوسٹس دیکھنے والوں میں سے بہت سے {name} میں ہیں۔ وہاں پوسٹ کرنے سے آپ باقیوں کے سامنے بھی آتے ہیں۔"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} میں پوسٹ کریں"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "آپ نے {days} دنوں میں {posts} بار پوسٹ کیا۔ ہر پوسٹ ڈھونڈے جانے کا ایک اور موقع ہے، اور باقاعدہ ردھم آپ کو فالوورز کی فیڈ میں رکھتا ہے۔"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("زیادہ بار پوسٹ کریں"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "پچھلے {days} دنوں میں آپ نے پوسٹ نہیں کیا۔ پوسٹ کے بغیر کچھ بھی کسی تک نہیں پہنچتا۔"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("کچھ پوسٹ کریں"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("بصیرتیں"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("بہترین پوسٹس"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "پچھلے {days} دنوں کے مقابلے میں"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +989,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("ملک"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1334,6 +1462,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("نے آپ کو فالو کیا"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("نے آپ کی پوسٹ پسند کی"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("نے آپ کا ذکر کیا"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ابھی کوئی ذکر نہیں"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "جب کوئی کسی پوسٹ یا جواب میں آپ کا @ہینڈل لکھے گا، تو وہ یہاں نظر آئے گا۔"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("پرانے"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "کمیونٹی چیٹ میں آپ کا پیغام ہٹا دیا گیا"),
@@ -1362,6 +1496,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("سب"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("فالوورز"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("پسندیدگیاں"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("ذکر"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("جوابات"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("اس ہفتے"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("آج"),
@@ -1571,6 +1706,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("اقتباس کریں"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("پیغام میں بھیجیں"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron پر لوگوں کو"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

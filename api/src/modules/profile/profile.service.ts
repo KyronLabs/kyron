@@ -127,6 +127,7 @@ export class ProfileService {
     coverUrl: true,
     bio: true,
     location: true,
+    country: true,
     website: true,
   } as const;
 
@@ -135,6 +136,7 @@ export class ProfileService {
     coverUrl: null,
     bio: null,
     location: null,
+    country: null,
     website: null,
   };
 
@@ -680,12 +682,14 @@ export class ProfileService {
       name?: string;
       bio?: string;
       location?: string;
+      country?: string | null;
       website?: string;
       coverUrl?: string;
       interests?: string[];
     },
   ) {
-    const { name, bio, location, website, coverUrl, interests } = payload;
+    const { name, bio, location, country, website, coverUrl, interests } =
+      payload;
 
     // A verified account that renames itself loses the badge: the badge says
     // somebody checked the account is who its name says, and a new name is
@@ -709,6 +713,7 @@ export class ProfileService {
       // Update Prisma Profile
       bio !== undefined ||
       location !== undefined ||
+      country !== undefined ||
       website !== undefined ||
       coverUrl !== undefined
         ? this.prisma.userProfile.upsert({
@@ -716,6 +721,8 @@ export class ProfileService {
             update: {
               bio: bio ?? undefined,
               location: location ?? undefined,
+              // Null is an answer here: it clears the country.
+              country,
               website: website ?? undefined,
               coverUrl: coverUrl ?? undefined,
             },
@@ -723,6 +730,7 @@ export class ProfileService {
               userId,
               bio: bio ?? null,
               location: location ?? null,
+              country: country ?? null,
               website: website ?? null,
               coverUrl: coverUrl ?? null,
             },
@@ -794,6 +802,7 @@ export class ProfileService {
             coverUrl: true,
             bio: true,
             location: true,
+            country: true,
             website: true,
           },
         },

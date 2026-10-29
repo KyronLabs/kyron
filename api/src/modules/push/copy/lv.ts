@@ -13,6 +13,8 @@ export const lv: Copy = {
   reposted_quote: 'Kopīgoja tavu ierakstu: “{snippet}”',
   replied: 'Atbildēja tev',
   replied_quote: 'Atbildēja: “{snippet}”',
+  mentioned: 'Pieminēja tevi',
+  mentioned_quote: 'Pieminēja tevi: “{snippet}”',
   group: 'Grupa',
   new_message: 'Jauna ziņa',
   dm_once: 'Nosūtīja kaut ko vienreizējai skatīšanai',

@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको प्रोफाइलमा र तपाईंका पोस्टहरूमुनि देखाइन्छ।"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” सँग मिल्ने कुनै देश छैन।"),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("कुनै देश नदेखाउनुहोस्"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("देशहरू खोज्नुहोस्"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको प्रोफाइलमा र तपाईंका पोस्टहरूमुनि देखाइन्छ। तपाईंले कसैका पोस्टहरू हेर्दा, तपाईंको देश उनको इनसाइट्समा गनिन्छ, पाँच वा बढीका समूहमा मात्र र कहिल्यै नामबाट होइन।"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("तपाईंको फोनको सेटिङबाट"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} लाई फलो गर्नुहोस्"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +345,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("तपाईंको खाता"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("समुदाय खोल्नुहोस्"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("पोस्ट लेख्नुहोस्"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("पोस्ट हेर्नुहोस्"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल सम्पादन गर्नुहोस्"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("उनीहरू कहिले सक्रिय हुन्छन्"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("तपाईंको समय क्षेत्रमा।"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("उमेर"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "जन्मदिन दिएका, पुगेका {known} जनामध्येबाट।"),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("हरेक दिन पुगेका मानिस"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("उनीहरू भएका समुदाय"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("देशहरू"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "पुगेका र प्रोफाइलमा देश भएका {known} जनाबाट।"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("पछिल्ला {days} दिन"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("अन्तर्दृष्टि लोड गर्न सकिएन"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("फलोअर"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "देखाउन पुग्ने ठूलो समूह अझै छैन।"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("कसरी बढ्ने"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("उनीहरूले फलो गर्ने विषय"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("नयाँ"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("नयाँ फलोअर"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "यस अवधिमा तपाईंको कुनै पोस्ट कसैसम्म पुगेन।"),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("तपाईंलाई फलो गर्दैनन्"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "देशहरू मानिसहरूले आफ्नो प्रोफाइलमा रोजेका हुन्। Kyron ले कसैको सहर वा लिङ्ग सङ्कलन गर्दैन, त्यसैले तिनका लागि देखाउने केही छैन।"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("खोलाइ"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} पुग्यो · {likes} लाइक · {replies} जवाफ"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("पुगेका मानिस"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "हरेक व्यक्तिलाई एक पटक गनिन्छ: तपाईंको कुनै पोस्ट पहिलो पटक देखाइयो वा उनीहरूले खोले। नयाँ फलोअरले अझै तपाईंलाई फलो गर्छन्; अनफलो गनिँदैन।"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("जवाफ"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("रिपोस्ट"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("सेभ"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "यस अवधिमा {floor} जनाले तपाईंका पोस्ट हेरेपछि तपाईंका दर्शक को हुन् देखाइन्छ। त्योभन्दा कम भए यसले कसैलाई औंल्याउन सक्छ।"),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("अझै पर्याप्त मानिस छैनन्"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "उनीहरूमध्ये {pct}% ले पहिल्यै तपाईंलाई फलो गर्छन्: तपाईंका पोस्ट प्रायः चिनेकाहरूसम्म पुग्छन्।"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "उनीहरूमध्ये {pct}% ले अझै तपाईंलाई फलो गर्दैनन्: तपाईंका पोस्ट भेटिँदैछन्।"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "तपाईं {reach} जनासम्म पुग्नुभयो, अघिल्लो अवधिभन्दा {pct}% कम।"),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "पछिल्ला {days} दिनमा तपाईं {reach} जनासम्म पुग्नुभयो।"),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "तपाईं {reach} जनासम्म पुग्नुभयो, लगभग अघिल्लो अवधि जति।"),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "पछिल्ला {days} दिनमा कुनै नयाँ व्यक्तिले तपाईंका पोस्ट हेरेनन्।"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "तपाईं {reach} जनासम्म पुग्नुभयो, अघिल्लो अवधिभन्दा {pct}% बढी।"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "तपाईं {reach} जनासम्म पुग्नुभयो, अघिल्लो अवधिको {times}×।"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "अरू कुनै पनि विषयभन्दा धेरैले {name} फलो गर्छन्।"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("दर्शक"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("सिंहावलोकन"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको पोस्ट भेट्टाउनेहरूले फलो गर्नुअघि तपाईंको प्रोफाइल हेर्छन्। अनुहार वा लोगोले त्यहाँ कोही छ भनी बताउँछ।"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल फोटो थप्नुहोस्"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "तपाईं केबारे पोस्ट गर्नुहुन्छ एक लाइनमा भन्नुहोस्, ताकि अपरिचितले तपाईंलाई फलो गर्दा के पाउँछ थाहा पाओस्।"),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("बायो लेख्नुहोस्"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका {total} पोस्टमध्ये {without} मा विषय थिएन। विषयले पोस्टलाई त्यस विषयको फिडमा र फलो गर्नेहरूको अगाडि राख्छ।"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("पोस्टमा विषय थप्नुहोस्"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} जनाले तपाईंका पोस्टमा जवाफ दिए र तपाईंले {answered} को उत्तर दिनुभयो। उनीहरूले लेख्ने जति वास्ता गरे: एउटा उत्तरले पाठकलाई नियमित बनाउँछ।"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("जवाफहरूको उत्तर दिनुहोस्"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका दर्शक {when} सबैभन्दा सक्रिय हुन्छन्। त्यसको केही अघि गरिएको पोस्टलाई स्वागत गर्ने मानिस हुन्छन्।"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "उनीहरू सक्रिय हुँदा पोस्ट गर्नुहोस्"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "तपाईंलाई फलो नगर्ने {reached} जनाले तपाईंका पोस्ट हेरे, र {gained} ले फलो गरे। तपाईंबाट के अपेक्षा गर्न सकिन्छ भनी बायो र नयाँ पोस्टले भनून्।"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("पाठकलाई फलोअर बनाउनुहोस्"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "एउटा पोस्ट तपाईंका अन्य पोस्ट सामान्यतया पुग्नेभन्दा {times}× मानिससम्म पुग्यो। यसले के फरक गर्‍यो हेर्नुहोस्, र त्यही अझ गर्नुहोस्।"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("सफल भएको काम अझ गर्नुहोस्"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका पोस्ट हेर्ने धेरै {name} मा छन्। त्यहाँ पोस्ट गर्दा बाँकीको अगाडि पनि पुग्नुहुन्छ।"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} मा पोस्ट गर्नुहोस्"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "तपाईंले {days} दिनमा {posts} पटक पोस्ट गर्नुभयो। हरेक पोस्ट भेटिने अर्को मौका हो, र नियमित लयले तपाईंलाई फलोअरको फिडमा राख्छ।"),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("धेरै पटक पोस्ट गर्नुहोस्"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "पछिल्ला {days} दिनमा तपाईंले पोस्ट गर्नुभएको छैन। पोस्टबिना केही पनि कसैसम्म पुग्दैन।"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("केही पोस्ट गर्नुहोस्"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("अन्तर्दृष्टि"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("शीर्ष पोस्ट"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("अघिल्ला {days} दिनको तुलनामा"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +993,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("देश"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1348,6 +1480,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ले तपाईंलाई फलो गर्नुभयो"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ले तपाईंको पोस्ट मन पराउनुभयो"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ले तपाईंलाई उल्लेख गर्नुभयो"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("अहिलेसम्म कुनै उल्लेख छैन"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "कसैले पोस्ट वा जवाफमा तपाईंको @ह्यान्डल लेख्दा, त्यो यहाँ देखिन्छ।"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("पुराना"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "समुदाय च्याटमा तपाईंको सन्देश हटाइयो"),
@@ -1376,6 +1514,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("सबै"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("फलो"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("उल्लेखहरू"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("जवाफहरू"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("यो हप्ता"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("आज"),
@@ -1588,6 +1728,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote":
+          MessageLookupByLibrary.simpleMessage("उद्धृत गर्नुहोस्"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("सन्देशमा पठाउनुहोस्"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron मा भएका मानिसहरूलाई"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("के बारे थियो"),

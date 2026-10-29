@@ -36,6 +36,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotOpenGoogleSignIn": (Object a0) => "无法打开 Google 登录。${a0}",
       "couldNotSignOut": (Object a0) => "无法退出：${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage("无法拍摄该照片。"),
+      "country_helper": MessageLookupByLibrary.simpleMessage("显示在你的个人资料和帖子下方。"),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("没有与“{query}”匹配的国家/地区。"),
+      "country_none": MessageLookupByLibrary.simpleMessage("不显示国家/地区"),
+      "country_search": MessageLookupByLibrary.simpleMessage("搜索国家/地区"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "显示在你的个人资料和帖子下方。你看到某人的帖子时，你的国家/地区会计入对方的数据洞察，仅以五人或以上的群组统计，绝不显示你的名字。"),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("来自你手机的设置"),
       "create": MessageLookupByLibrary.simpleMessage("创建"),
       "createAccount": MessageLookupByLibrary.simpleMessage("创建账户"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("创建你的账户"),
@@ -53,6 +61,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "此设备不支持人脸跟踪。",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("关注 {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("粉丝"),
       "following": MessageLookupByLibrary.simpleMessage("关注"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("忘记密码？"),
@@ -61,6 +70,103 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("帮助中心"),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("帮助与支持"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("一句话"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("你的账号"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("打开社区"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("写帖子"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("查看帖子"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("编辑个人资料"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("他们什么时候在"),
+      "ins_active_note": MessageLookupByLibrary.simpleMessage("按你的时区显示。"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("年龄"),
+      "ins_ages_note":
+          MessageLookupByLibrary.simpleMessage("来自填写了生日的 {known} 位被触达者。"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("每日触达人数"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("他们所在的社区"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("国家/地区"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "来自在个人资料中填写了国家/地区的 {known} 位触达用户。"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("过去 {days} 天"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage("无法加载数据洞察"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("关注者"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage("还没有大到可以显示的群体。"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("如何增长"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("他们关注的话题"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("赞"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("新"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("新关注者"),
+      "ins_no_posts_reached":
+          MessageLookupByLibrary.simpleMessage("这段时间里，你的帖子没有触达任何人。"),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("未关注你的人"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "国家/地区是用户在个人资料中自行选择的。Kyron 不收集任何人的城市或性别，因此没有相关内容可显示。"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("打开次数"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "触达 {reach} · {likes} 个赞 · {replies} 条回复"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("触达人数"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "每个人只计算一次：第一次看到或打开你的某条帖子。新关注者是现在仍在关注你的人；取消关注不计入。"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("回复"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("转发"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("收藏"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "这段时间里有 {floor} 人看过你的帖子后，才会显示你的受众是谁。少于这个数，可能会指向某个具体的人。"),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage("人数还不够"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "其中 {pct}% 已经关注你：你的帖子主要触达认识你的人。"),
+      "ins_sum_mostly_strangers":
+          MessageLookupByLibrary.simpleMessage("其中 {pct}% 还没有关注你：你的帖子正在被发现。"),
+      "ins_sum_reach_down_pct":
+          MessageLookupByLibrary.simpleMessage("你触达了 {reach} 人，比上一时段少 {pct}%。"),
+      "ins_sum_reach_first":
+          MessageLookupByLibrary.simpleMessage("过去 {days} 天你触达了 {reach} 人。"),
+      "ins_sum_reach_flat":
+          MessageLookupByLibrary.simpleMessage("你触达了 {reach} 人，与上一时段差不多。"),
+      "ins_sum_reach_none":
+          MessageLookupByLibrary.simpleMessage("过去 {days} 天里，没有新的人看到你的帖子。"),
+      "ins_sum_reach_up_pct":
+          MessageLookupByLibrary.simpleMessage("你触达了 {reach} 人，比上一时段多 {pct}%。"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "你触达了 {reach} 人，是上一时段的 {times}×。"),
+      "ins_sum_top_interest":
+          MessageLookupByLibrary.simpleMessage("他们中关注 {name} 的人比关注其他任何话题的都多。"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("受众"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("概览"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "发现你帖子的人会在关注前先看你的主页。一张脸或一个标志能告诉他们这里有人。"),
+      "ins_tip_add_avatar_t": MessageLookupByLibrary.simpleMessage("添加头像"),
+      "ins_tip_add_bio":
+          MessageLookupByLibrary.simpleMessage("用一句话说明你发什么内容，让陌生人知道关注你能得到什么。"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("写一段简介"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "你的 {total} 条帖子中有 {without} 条没有话题。话题会把帖子放进该话题的信息流，并展示给关注该话题的人。"),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage("给帖子加上话题"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "有 {received} 人回复了你的帖子，你回复了其中 {answered} 条。他们在意到愿意写下来：一句回复能让读者成为常客。"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("回复你的评论"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "你的受众在{when}最活跃。在那之前不久发的帖子会有人接着看。"),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage("在他们在的时候发帖"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} 位未关注你的人看到了你的帖子，其中 {gained} 人关注了你。让你的简介和最新帖子说明大家能从你这里期待什么。"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("把读者变成关注者"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "有一条帖子触达的人数是你其他帖子通常的 {times}×。看看它做了什么不同的事，然后多做一些。"),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage("多做有效的事"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "看到你帖子的人中，很多都在 {name}。在那里发帖能让其余成员也看到你。"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("在 {name} 发帖"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "你在 {days} 天里发了 {posts} 次帖。每条帖子都是被发现的又一次机会，稳定的节奏能让你留在关注者的信息流里。"),
+      "ins_tip_post_more_t": MessageLookupByLibrary.simpleMessage("更频繁地发帖"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "过去 {days} 天你没有发帖。没有帖子，什么都传达不到任何人。"),
+      "ins_tip_post_something_t": MessageLookupByLibrary.simpleMessage("发点什么"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("数据洞察"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("热门帖子"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage("与前 {days} 天相比"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage("你们双方都会看不到。"),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage("它将从讨论串中移除。"),
       "keepEditing": MessageLookupByLibrary.simpleMessage("继续编辑"),
@@ -96,6 +202,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postInCommunity": (Object a0) => "在 ${a0} 中发帖",
       "postTextCopied": MessageLookupByLibrary.simpleMessage("帖子文本已复制"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("个人资料已更新"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("国家/地区"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("推送通知"),
       "quote": MessageLookupByLibrary.simpleMessage("引用"),
       "quotePost": MessageLookupByLibrary.simpleMessage("引用帖子"),
@@ -339,6 +446,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("案件 \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("关注了你"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("赞了你的帖子"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("提到了你"),
+      "ui_notif_no_mentions": MessageLookupByLibrary.simpleMessage("还没有人提到你"),
+      "ui_notif_no_mentions_detail":
+          MessageLookupByLibrary.simpleMessage("当有人在帖子或回复中写下你的 @用户名 时，会显示在这里。"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("更早"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("你在社区聊天中的消息已被移除"),
@@ -363,6 +474,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("全部"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("关注"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("赞"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("提及"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("回复"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("本周"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("今天"),
@@ -457,6 +569,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_something_else": MessageLookupByLibrary.simpleMessage("其他"),
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("垃圾信息"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage("暴力或威胁"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("引用"),
+      "ui_share_send_message": MessageLookupByLibrary.simpleMessage("通过私信发送"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("发给 Kyron 上的人"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("涉及的内容"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("你的账号已被永久封禁"),

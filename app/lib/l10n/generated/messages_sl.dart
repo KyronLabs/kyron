@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Prikazana je na tvojem profilu in pod tvojimi objavami."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Nobena država se ne ujema z »{query}«."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ne prikaži države"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Iskanje držav"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Prikazana je na tvojem profilu in pod tvojimi objavami. Ko vidiš nečije objave, se tvoja država šteje v njegovih Vpogledih, le v skupinah po pet ali več in nikoli po imenu."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Iz nastavitev tvojega telefona"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Sledi {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Vaš račun"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Odpri skupnost"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Napišite objavo"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Ogled objave"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("Uredite profil"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Kdaj so tu"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("V vašem časovnem pasu."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Starost"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Od {known} doseženih oseb, ki so navedle rojstni dan."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Dosežene osebe na dan"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Skupnosti, v katerih so"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Države"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Od {known} doseženih ljudi, ki imajo na profilu državo."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Zadnjih {days} dni"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Statistike ni bilo mogoče naložiti"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Sledilci"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Še nobena skupina ni dovolj velika za prikaz."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Kako rasti"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Teme, ki jim sledijo"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Všečki"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Novo"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Novi sledilci"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Nobena vaša objava v tem obdobju ni dosegla nikogar."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Vam ne sledijo"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Države so tiste, ki so jih ljudje izbrali na svojih profilih. Kyron ne zbira nikogaršnjega mesta ali spola, zato zanje ni kaj prikazati."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Odprtja"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} doseženih · {likes} všečkov · {replies} odgovorov"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Dosežene osebe"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Vsaka oseba se šteje enkrat: prvič ji je bila prikazana ali je prvič odprla katero od vaših objav. Novi sledilci vam še vedno sledijo; prenehanja sledenja se ne štejejo."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Odgovori"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Ponovne objave"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Shranjeno"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kdo je vaše občinstvo, se pokaže, ko vaše objave v tem obdobju vidi {floor} ljudi. Pri manj bi to lahko pokazalo na nekoga."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Še ni dovolj ljudi"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % jih vam že sledi: vaše objave dosegajo predvsem ljudi, ki vas poznajo."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % jih vam še ne sledi: vaše objave se odkrivajo."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Dosegli ste {reach} ljudi, {pct} % manj kot v prejšnjem obdobju."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "V zadnjih {days} dneh ste dosegli {reach} ljudi."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Dosegli ste {reach} ljudi, približno toliko kot v prejšnjem obdobju."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "V zadnjih {days} dneh vaših objav ni videl nihče nov."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Dosegli ste {reach} ljudi, {pct} % več kot v prejšnjem obdobju."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Dosegli ste {reach} ljudi, {times}× več kot v prejšnjem obdobju."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Več jih sledi temi {name} kot kateri koli drugi."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Občinstvo"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Pregled"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ljudje, ki najdejo vašo objavo, si pred sledenjem ogledajo vaš profil. Obraz ali logotip jim pove, da je tam nekdo."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Dodajte profilno sliko"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "V eni vrstici povejte, o čem objavljate, da tujec ve, kaj mu prinese sledenje."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Napišite opis"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} od vaših {total} objav ni imelo teme. Tema postavi objavo v vir te teme in pred ljudi, ki ji sledijo."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Objavam dodajte teme"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ljudi je odgovorilo na vaše objave, vi pa ste odgovorili na {answered}. Dovolj jim je bilo mar, da so napisali: odgovor iz bralca naredi stalnega obiskovalca."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Odgovarjajte na odgovore"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Vaše občinstvo je najbolj dejavno {when}. Objava tik pred tem ima koga, ki jo sprejme."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Objavljajte, ko so tu"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} ljudi, ki vam ne sledijo, je videlo vaše objave, {gained} pa vam je začelo slediti. Naj opis in najnovejše objave povedo, kaj lahko pričakujejo od vas."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Spremenite bralce v sledilce"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Ena objava je dosegla {times}× več ljudi, kot jih običajno dosežejo druge. Poglejte, kaj je naredila drugače, in to delajte več."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Delajte več tega, kar je delovalo"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Veliko ljudi, ki vidijo vaše objave, je v {name}. Objava tam vas pokaže tudi ostalim."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Objavite v {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "V {days} dneh ste objavili {posts}-krat. Vsaka objava je nova priložnost, da vas kdo najde, stalen ritem pa vas ohranja v virih sledilcev."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Objavljajte pogosteje"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "V zadnjih {days} dneh niste nič objavili. Brez objave nič ne doseže nikogar."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Objavite kaj"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statistika"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Najboljše objave"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "V primerjavi s prejšnjimi {days} dnevi"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Država"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1338,6 +1465,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vas spremlja"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("je všečkal(a) vašo objavo"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("vas je omenil(a)"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Še ni omemb"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Ko nekdo v objavi ali odgovoru napiše vaše @uporabniško ime, se to prikaže tukaj."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Starejše"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Vaše sporočilo v klepetu skupnosti je bilo odstranjeno"),
@@ -1366,6 +1499,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Vse"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sledilci"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Všečki"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Omembe"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odgovori"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ta teden"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Danes"),
@@ -1573,6 +1707,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citiraj"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Pošlji v sporočilu"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Ljudem na Kyronu"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

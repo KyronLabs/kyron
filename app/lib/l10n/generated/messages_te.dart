@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "మీ ప్రొఫైల్‌లో మరియు మీ పోస్ట్‌ల కింద చూపబడుతుంది."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}”కి సరిపోయే దేశం లేదు."),
+      "country_none": MessageLookupByLibrary.simpleMessage("దేశాన్ని చూపవద్దు"),
+      "country_search": MessageLookupByLibrary.simpleMessage("దేశాలను వెతకండి"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "మీ ప్రొఫైల్‌లో మరియు మీ పోస్ట్‌ల కింద చూపబడుతుంది. మీరు ఎవరి పోస్ట్‌లైనా చూసినప్పుడు, మీ దేశం వారి ఇన్‌సైట్స్‌లో లెక్కించబడుతుంది, ఐదుగురు లేదా అంతకంటే ఎక్కువ మంది గుంపులలో మాత్రమే, ఎప్పుడూ పేరుతో కాదు."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("మీ ఫోన్ సెట్టింగ్‌ల నుండి"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name}ను అనుసరించండి"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("మీ ఖాతా"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీని తెరవండి"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("పోస్ట్ రాయండి"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను చూడండి"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("మీ ప్రొఫైల్‌ను సవరించండి"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("వారు ఎప్పుడు ఉంటారు"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("మీ టైమ్ జోన్‌లో."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("వయస్సు"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "పుట్టినరోజు ఇచ్చిన, చేరిన {known} మందిలో నుండి."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("ప్రతిరోజూ చేరిన వ్యక్తులు"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("వారున్న కమ్యూనిటీలు"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("దేశాలు"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "చేరుకున్న, ప్రొఫైల్‌లో దేశం ఉన్న {known} మంది నుండి."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("గత {days} రోజులు"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "అంతర్దృష్టులను లోడ్ చేయలేకపోయాం"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("ఫాలోవర్‌లు"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "చూపించేంత పెద్ద సమూహం ఇంకా లేదు."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("ఎలా ఎదగాలి"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("వారు ఫాలో అయ్యే అంశాలు"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("లైక్‌లు"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("కొత్తది"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("కొత్త ఫాలోవర్‌లు"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "ఈ వ్యవధిలో మీ పోస్ట్‌లేవీ ఎవరినీ చేరలేదు."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ఫాలో అవ్వనివారు"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "దేశాలు అంటే వ్యక్తులు తమ ప్రొఫైల్‌లలో ఎంచుకున్నవి. Kyron ఎవరి నగరాన్నీ లింగాన్నీ సేకరించదు, కాబట్టి వాటి కోసం చూపడానికి ఏమీ లేదు."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("తెరవడాలు"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} చేరింది · {likes} లైక్‌లు · {replies} సమాధానాలు"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("చేరిన వ్యక్తులు"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "ప్రతి వ్యక్తిని ఒకసారే లెక్కిస్తాం: మీ పోస్ట్‌లలో ఒకటి మొదటిసారి వారికి చూపబడింది లేదా వారు తెరిచారు. కొత్త ఫాలోవర్‌లు ఇంకా మిమ్మల్ని ఫాలో అవుతున్నారు; అన్‌ఫాలోలు లెక్కించబడవు."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("సమాధానాలు"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("రీపోస్ట్‌లు"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("సేవ్‌లు"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "ఈ వ్యవధిలో {floor} మంది మీ పోస్ట్‌లను చూశాక మీ ప్రేక్షకులు ఎవరో చూపిస్తాం. అంతకంటే తక్కువైతే అది ఎవరినైనా సూచించవచ్చు."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("ఇంకా తగినంత మంది లేరు"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "వారిలో {pct}% ఇప్పటికే మిమ్మల్ని ఫాలో అవుతున్నారు: మీ పోస్ట్‌లు ఎక్కువగా మీకు తెలిసినవారిని చేరుతున్నాయి."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "వారిలో {pct}% ఇంకా మిమ్మల్ని ఫాలో అవ్వడం లేదు: మీ పోస్ట్‌లు కనుగొనబడుతున్నాయి."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "మీరు {reach} మందిని చేరారు, మునుపటి వ్యవధి కంటే {pct}% తక్కువ."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "గత {days} రోజుల్లో మీరు {reach} మందిని చేరారు."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "మీరు {reach} మందిని చేరారు, దాదాపు మునుపటి వ్యవధి అంతే."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "గత {days} రోజుల్లో కొత్తవారెవరూ మీ పోస్ట్‌లను చూడలేదు."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "మీరు {reach} మందిని చేరారు, మునుపటి వ్యవధి కంటే {pct}% ఎక్కువ."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "మీరు {reach} మందిని చేరారు, మునుపటి వ్యవధికి {times}×."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "ఇతర ఏ అంశం కంటే ఎక్కువ మంది {name} ని ఫాలో అవుతారు."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("ప్రేక్షకులు"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("అవలోకనం"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "మీ పోస్ట్‌ను కనుగొన్నవారు ఫాలో అయ్యే ముందు మీ ప్రొఫైల్ చూస్తారు. ముఖం లేదా లోగో అక్కడ ఎవరో ఉన్నారని చెబుతుంది."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ చిత్రం జోడించండి"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "మీరు దేని గురించి పోస్ట్ చేస్తారో ఒక వరుసలో చెప్పండి, అపరిచితులకు మిమ్మల్ని ఫాలో అయితే ఏం దొరుకుతుందో తెలుస్తుంది."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("బయో రాయండి"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "మీ {total} పోస్ట్‌లలో {without} కి అంశం లేదు. అంశం పోస్ట్‌ను ఆ అంశపు ఫీడ్‌లో, దాన్ని ఫాలో అయ్యేవారి ముందు ఉంచుతుంది."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌లకు అంశాలు జోడించండి"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} మంది మీ పోస్ట్‌లకు సమాధానమిచ్చారు, మీరు {answered} కి స్పందించారు. రాసేంత శ్రద్ధ వారికుంది: ఒక స్పందన పాఠకుడిని నిత్య సందర్శకుడిగా మారుస్తుంది."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("సమాధానాలకు స్పందించండి"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "మీ ప్రేక్షకులు {when} అత్యంత చురుకుగా ఉంటారు. దానికి కొద్దిగా ముందు పెట్టిన పోస్ట్‌ను స్వాగతించేవారు ఉంటారు."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("వారున్నప్పుడు పోస్ట్ చేయండి"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "మిమ్మల్ని ఫాలో అవ్వని {reached} మంది మీ పోస్ట్‌లు చూశారు, {gained} మంది ఫాలో అయ్యారు. మీ నుండి ఏమి ఆశించవచ్చో మీ బయో, కొత్త పోస్ట్‌లు చెప్పనివ్వండి."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "పాఠకులను ఫాలోవర్‌లుగా మార్చండి"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ఒక పోస్ట్ మీ ఇతర పోస్ట్‌లు సాధారణంగా చేరే దానికంటే {times}× మందిని చేరింది. అది ఏం భిన్నంగా చేసిందో చూసి, దాన్ని మరింత చేయండి."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("పనిచేసినదాన్ని మరింత చేయండి"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "మీ పోస్ట్‌లు చూసేవారిలో చాలామంది {name} లో ఉన్నారు. అక్కడ పోస్ట్ చేస్తే మిగతావారి ముందుకూ వెళ్తారు."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} లో పోస్ట్ చేయండి"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "మీరు {days} రోజుల్లో {posts} సార్లు పోస్ట్ చేశారు. ప్రతి పోస్ట్ కనుగొనబడేందుకు మరో అవకాశం, స్థిరమైన లయ మిమ్మల్ని ఫాలోవర్‌ల ఫీడ్‌లో ఉంచుతుంది."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("తరచుగా పోస్ట్ చేయండి"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "గత {days} రోజుల్లో మీరు పోస్ట్ చేయలేదు. పోస్ట్ లేకుండా ఏదీ ఎవరినీ చేరదు."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("ఏదైనా పోస్ట్ చేయండి"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("అంతర్దృష్టులు"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("అగ్ర పోస్ట్‌లు"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "మునుపటి {days} రోజులతో పోలిస్తే"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("దేశం"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1344,6 +1473,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ఫాలో అయ్యారు"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌ను ఇష్టపడ్డారు"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ప్రస్తావించారు"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ఇంకా ప్రస్తావనలు లేవు"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "ఎవరైనా పోస్ట్‌లో లేదా ప్రత్యుత్తరంలో మీ @హ్యాండిల్‌ను రాస్తే, అది ఇక్కడ కనిపిస్తుంది."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("పాతవి"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "కమ్యూనిటీ చాట్‌లో మీ సందేశం తీసివేయబడింది"),
@@ -1372,6 +1507,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("అన్నీ"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ఫాలోలు"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ఇష్టాలు"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("ప్రస్తావనలు"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("ప్రత్యుత్తరాలు"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ఈ వారం"),
@@ -1586,6 +1723,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("కోట్ చేయి"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("సందేశంలో పంపు"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyronలోని వ్యక్తులకు"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("దేని గురించి"),

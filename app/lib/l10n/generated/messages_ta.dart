@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும்."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” உடன் பொருந்தும் நாடு இல்லை."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("நாட்டைக் காட்ட வேண்டாம்"),
+      "country_search": MessageLookupByLibrary.simpleMessage("நாடுகளைத் தேடு"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும். நீங்கள் ஒருவரின் இடுகைகளைப் பார்க்கும்போது, உங்கள் நாடு அவரின் நுண்ணறிவுகளில் கணக்கிடப்படும், ஐந்து அல்லது அதற்கு மேற்பட்டோர் குழுக்களில் மட்டும், ஒருபோதும் பெயரால் அல்ல."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் ஃபோனின் அமைப்புகளிலிருந்து"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} ஐப் பின்தொடர்"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,125 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கு"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("சமூகத்தைத் திறங்கள்"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("இடுகை எழுதுங்கள்"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("இடுகையைப் பாருங்கள்"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்தைத் திருத்துங்கள்"),
+      "ins_active": MessageLookupByLibrary.simpleMessage(
+          "அவர்கள் எப்போது இருக்கிறார்கள்"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("உங்கள் நேர மண்டலத்தில்."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("வயது"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "பிறந்தநாளைக் கொடுத்த, அடைந்த {known} பேரிலிருந்து."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("ஒவ்வொரு நாளும் அடைந்த நபர்கள்"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("அவர்கள் உள்ள சமூகங்கள்"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("நாடுகள்"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "சென்றடைந்த, சுயவிவரத்தில் நாடு உள்ள {known} பேரிடமிருந்து."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("கடந்த {days} நாட்கள்"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("நுண்ணறிவுகளை ஏற்ற முடியவில்லை"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("பின்தொடர்பவர்கள்"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "காட்டும் அளவுக்குப் பெரிய குழு இன்னும் இல்லை."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("எப்படி வளர்வது"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage(
+          "அவர்கள் பின்தொடரும் தலைப்புகள்"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("விருப்பங்கள்"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("புதியது"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("புதிய பின்தொடர்பவர்கள்"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "இந்தக் காலத்தில் உங்கள் எந்த இடுகையும் யாரையும் அடையவில்லை."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடராதவர்கள்"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "நாடுகள் என்பவை மக்கள் தங்கள் சுயவிவரங்களில் தேர்ந்தெடுத்தவை. Kyron யாருடைய நகரத்தையும் பாலினத்தையும் சேகரிப்பதில்லை, எனவே அவற்றுக்குக் காட்ட எதுவும் இல்லை."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("திறப்புகள்"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} அடைந்தது · {likes} விருப்பம் · {replies} பதில்"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("அடைந்த நபர்கள்"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "ஒவ்வொருவரும் ஒருமுறை மட்டுமே எண்ணப்படுவர்: உங்கள் இடுகை ஒன்று முதல் முறையாக அவருக்குக் காட்டப்பட்டது அல்லது அவர் திறந்தார். புதிய பின்தொடர்பவர்கள் இன்னும் பின்தொடர்கிறார்கள்; பின்தொடர்வை நிறுத்தியவர்கள் எண்ணப்படுவதில்லை."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("பதில்கள்"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("மறுபதிவுகள்"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("சேமிப்புகள்"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "இந்தக் காலத்தில் {floor} பேர் உங்கள் இடுகைகளைப் பார்த்த பிறகு உங்கள் பார்வையாளர்கள் யார் என்று காட்டப்படும். அதற்குக் குறைவாக இருந்தால் அது ஒருவரைச் சுட்டிக்காட்டக்கூடும்."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("இன்னும் போதுமான நபர்கள் இல்லை"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "அவர்களில் {pct}% ஏற்கனவே உங்களைப் பின்தொடர்கிறார்கள்: உங்கள் இடுகைகள் பெரும்பாலும் தெரிந்தவர்களையே அடைகின்றன."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "அவர்களில் {pct}% இன்னும் உங்களைப் பின்தொடரவில்லை: உங்கள் இடுகைகள் கண்டுபிடிக்கப்படுகின்றன."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} பேரை அடைந்தீர்கள், முந்தைய காலத்தை விட {pct}% குறைவு."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "கடந்த {days} நாட்களில் {reach} பேரை அடைந்தீர்கள்."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} பேரை அடைந்தீர்கள், ஏறக்குறைய முந்தைய காலத்தைப் போலவே."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "கடந்த {days} நாட்களில் புதியவர் யாரும் உங்கள் இடுகைகளைப் பார்க்கவில்லை."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} பேரை அடைந்தீர்கள், முந்தைய காலத்தை விட {pct}% அதிகம்."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} பேரை அடைந்தீர்கள், முந்தைய காலத்தின் {times}×."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "வேறு எந்தத் தலைப்பையும் விட அதிகமானோர் {name} ஐப் பின்தொடர்கிறார்கள்."),
+      "ins_tab_audience":
+          MessageLookupByLibrary.simpleMessage("பார்வையாளர்கள்"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("கண்ணோட்டம்"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகையைக் கண்டவர்கள் பின்தொடரும் முன் உங்கள் சுயவிவரத்தைப் பார்க்கிறார்கள். ஒரு முகம் அல்லது லோகோ அங்கே யாரோ இருப்பதைச் சொல்கிறது."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரப் படம் சேர்க்கவும்"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் எதைப் பற்றி இடுகிறீர்கள் என்பதை ஒரு வரியில் சொல்லுங்கள், புதியவருக்கு உங்களைப் பின்தொடர்ந்தால் என்ன கிடைக்கும் என்று தெரியும்."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரக் குறிப்பு எழுதுங்கள்"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் {total} இடுகைகளில் {without} க்குத் தலைப்பு இல்லை. தலைப்பு இடுகையை அந்தத் தலைப்பின் ஊட்டத்திலும் அதைப் பின்தொடர்பவர்களின் முன்னும் வைக்கும்."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "இடுகைகளில் தலைப்புகளைச் சேர்க்கவும்"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} பேர் உங்கள் இடுகைகளுக்குப் பதிலளித்தனர், நீங்கள் {answered} க்குப் பதிலளித்தீர்கள். எழுதும் அளவுக்கு அவர்கள் அக்கறை கொண்டனர்: ஒரு பதில் வாசகரை வழக்கமானவராக்கும்."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("பதில்களுக்குப் பதிலளியுங்கள்"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் பார்வையாளர்கள் {when} மிகவும் செயலில் இருக்கிறார்கள். அதற்குச் சற்று முன் இடப்படும் இடுகையை வரவேற்க ஆட்கள் இருப்பார்கள்."),
+      "ins_tip_best_time_t": MessageLookupByLibrary.simpleMessage(
+          "அவர்கள் இருக்கும்போது இடுங்கள்"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "உங்களைப் பின்தொடராத {reached} பேர் உங்கள் இடுகைகளைப் பார்த்தனர், {gained} பேர் பின்தொடர்ந்தனர். உங்களிடம் என்ன எதிர்பார்க்கலாம் என்பதை உங்கள் குறிப்பும் புதிய இடுகைகளும் சொல்லட்டும்."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "வாசகர்களைப் பின்தொடர்பவர்களாக்குங்கள்"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ஒரு இடுகை உங்கள் மற்ற இடுகைகள் வழக்கமாக அடைவதை விட {times}× நபர்களை அடைந்தது. அது என்ன வேறுபட்டு செய்தது என்று பார்த்து, அதை இன்னும் செய்யுங்கள்."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "பலனளித்ததை இன்னும் செய்யுங்கள்"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகைகளைப் பார்ப்பவர்களில் பலர் {name} இல் உள்ளனர். அங்கே இட்டால் மீதமுள்ளவர்களின் முன்னும் வருவீர்கள்."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} இல் இடுங்கள்"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} நாட்களில் {posts} முறை இட்டீர்கள். ஒவ்வொரு இடுகையும் கண்டுபிடிக்கப்பட இன்னொரு வாய்ப்பு, சீரான தாளம் உங்களைப் பின்தொடர்பவர்களின் ஊட்டத்தில் வைத்திருக்கும்."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("அடிக்கடி இடுங்கள்"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "கடந்த {days} நாட்களில் நீங்கள் இடவில்லை. இடுகை இல்லாமல் எதுவும் யாரையும் அடையாது."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("ஏதாவது இடுங்கள்"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("நுண்ணறிவுகள்"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("சிறந்த இடுகைகள்"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "முந்தைய {days} நாட்களுடன் ஒப்பிடும்போது"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +994,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("நாடு"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1349,6 +1482,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடர்கிறார்"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("உங்கள் இடுகையை விரும்பினார்"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("உங்களைக் குறிப்பிட்டார்"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("இதுவரை குறிப்பிடல்கள் இல்லை"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "யாராவது ஒரு இடுகையிலோ பதிலிலோ உங்கள் @பயனர்பெயரை எழுதினால், அது இங்கே தோன்றும்."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("பழையவை"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "சமூக அரட்டையில் உங்கள் செய்தி அகற்றப்பட்டது"),
@@ -1379,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("பின்தொடர்தல்கள்"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("விருப்பங்கள்"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("குறிப்பிடல்கள்"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("பதில்கள்"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("இந்த வாரம்"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("இன்று"),
@@ -1589,6 +1730,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("மேற்கோள் காட்டு"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("செய்தியில் அனுப்பு"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron இல் உள்ளவர்களுக்கு"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

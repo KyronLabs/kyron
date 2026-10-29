@@ -13,6 +13,8 @@ export const bn: Copy = {
   reposted_quote: 'আপনার পোস্ট রিপোস্ট করেছেন: “{snippet}”',
   replied: 'আপনাকে উত্তর দিয়েছেন',
   replied_quote: 'উত্তর দিয়েছেন: “{snippet}”',
+  mentioned: 'আপনাকে উল্লেখ করেছেন',
+  mentioned_quote: 'আপনাকে উল্লেখ করেছেন: “{snippet}”',
   group: 'গ্রুপ',
   new_message: 'নতুন মেসেজ',
   dm_once: 'একবার দেখার জন্য কিছু পাঠিয়েছেন',

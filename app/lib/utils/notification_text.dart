@@ -23,6 +23,8 @@ String notificationAction(
       NotificationType.follow => l10n.ui('ui_notif_followed', 'followed you'),
       NotificationType.repost =>
         l10n.ui('ui_notif_reposted', 'reposted your post'),
+      NotificationType.mention =>
+        l10n.ui('ui_notif_mentioned', 'mentioned you'),
       NotificationType.gift => gift == null
           ? l10n.ui('ui_notif_gift', 'sent a gift to your post')
           : l10n

@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Dipaparkan pada profil anda dan di bawah siaran anda."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Tiada negara yang sepadan dengan “{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Jangan paparkan negara"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Cari negara"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Dipaparkan pada profil anda dan di bawah siaran anda. Apabila anda melihat siaran seseorang, negara anda dikira dalam Cerapan mereka, hanya dalam kumpulan lima orang atau lebih dan tidak sekali-kali dengan nama."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Daripada tetapan telefon anda"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Ikuti {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Akaun anda"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Buka komuniti"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Tulis siaran"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Lihat siaran"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Edit profil anda"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Bila mereka ada"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Dalam zon waktu anda."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Umur"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Daripada {known} orang yang dicapai dan memberikan tarikh lahir."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Orang yang dicapai setiap hari"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Komuniti tempat mereka berada"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Negara"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Daripada {known} orang yang dicapai yang mempunyai negara pada profil mereka."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} hari lepas"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Wawasan tidak dapat dimuatkan"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Pengikut"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Belum ada kumpulan yang cukup besar untuk ditunjukkan."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Cara berkembang"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Topik yang mereka ikuti"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Suka"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Baharu"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Pengikut baharu"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Tiada siaran anda yang mencapai sesiapa dalam tempoh ini."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Tidak mengikuti anda"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Negara ialah yang dipilih orang pada profil mereka. Kyron tidak mengumpul bandar atau jantina sesiapa, jadi tiada apa-apa untuk dipaparkan bagi kedua-duanya."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Bukaan"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} dicapai · {likes} suka · {replies} balasan"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Orang yang dicapai"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Setiap orang dikira sekali: ditunjukkan atau membuka salah satu siaran anda buat kali pertama. Pengikut baharu masih mengikuti anda; berhenti mengikut tidak dikira."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Balasan"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Siaran semula"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Simpanan"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Siapa penonton anda ditunjukkan sebaik sahaja {floor} orang melihat siaran anda dalam tempoh ini. Kurang daripada itu, ia boleh menunjuk kepada seseorang."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Belum cukup orang"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% daripada mereka sudah mengikuti anda: siaran anda kebanyakannya sampai kepada orang yang mengenali anda."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% daripada mereka belum mengikuti anda: siaran anda sedang ditemui."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Anda mencapai {reach} orang, {pct}% kurang daripada tempoh sebelumnya."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Anda mencapai {reach} orang dalam {days} hari lepas."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Anda mencapai {reach} orang, lebih kurang sama dengan tempoh sebelumnya."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Tiada orang baharu melihat siaran anda dalam {days} hari lepas."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Anda mencapai {reach} orang, {pct}% lebih daripada tempoh sebelumnya."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Anda mencapai {reach} orang, {times}× tempoh sebelumnya."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Lebih ramai daripada mereka mengikuti {name} berbanding topik lain."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Penonton"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Gambaran keseluruhan"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Orang yang menemui siaran anda melihat profil anda sebelum mengikut. Wajah atau logo memberitahu mereka ada seseorang di situ."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Tambah gambar profil"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Nyatakan dalam satu baris tentang apa yang anda siarkan, supaya orang asing tahu apa yang mereka dapat dengan mengikuti anda."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Tulis bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} daripada {total} siaran anda tiada topik. Topik meletakkan siaran dalam suapan topik itu dan di hadapan orang yang mengikutinya."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Tambah topik pada siaran"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} orang membalas siaran anda dan anda menjawab {answered}. Mereka cukup peduli untuk menulis: jawapan menjadikan pembaca pengunjung tetap."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Jawab balasan anda"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Penonton anda paling aktif pada {when}. Siaran yang dibuat sejurus sebelum itu ada orang untuk menyambutnya."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Siarkan ketika mereka ada"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} orang yang tidak mengikuti anda melihat siaran anda, dan {gained} mengikut. Biarkan bio dan siaran terbaharu anda menyatakan apa yang boleh mereka harapkan daripada anda."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Jadikan pembaca pengikut"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Satu siaran mencapai {times}× lebih ramai orang daripada siaran anda yang lain biasanya. Lihat apa yang dibuatnya secara berbeza, dan buat lebih banyak itu."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Buat lebih banyak yang berkesan"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Ramai yang melihat siaran anda berada dalam {name}. Menyiarkan di sana meletakkan anda di hadapan ahli yang lain."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Siarkan dalam {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Anda menyiarkan {posts} kali dalam {days} hari. Setiap siaran ialah satu lagi peluang untuk ditemui, dan rentak yang tetap mengekalkan anda dalam suapan pengikut."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Siarkan lebih kerap"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Anda tidak menyiarkan apa-apa dalam {days} hari lepas. Tiada apa yang sampai kepada sesiapa tanpa siaran."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Siarkan sesuatu"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Wawasan"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Siaran teratas"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Berbanding {days} hari sebelumnya"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Negara"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1339,6 +1468,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("mengikuti anda"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("menyukai siaran anda"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("menyebut anda"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Belum ada sebutan"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Apabila seseorang menulis @nama pengguna anda dalam siaran atau balasan, ia akan dipaparkan di sini."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Lebih lama"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Mesej anda dalam sembang komuniti telah dialih keluar"),
@@ -1367,6 +1502,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Semua"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Ikutan"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Suka"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Sebutan"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Balasan"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Minggu ini"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Hari ini"),
@@ -1575,6 +1711,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote": MessageLookupByLibrary.simpleMessage("Petik"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Hantar dalam mesej"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kepada orang di Kyron"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

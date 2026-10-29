@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Profilingizda va postlaringiz ostida ko‘rsatiladi."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” ga mos mamlakat yo‘q."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Mamlakat ko‘rsatilmasin"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Mamlakatlarni qidirish"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Profilingizda va postlaringiz ostida ko‘rsatiladi. Kimningdir postlarini ko‘rganingizda, mamlakatingiz uning Tahlillarida hisoblanadi, faqat besh yoki undan ko‘p kishilik guruhlarda va hech qachon ism bilan emas."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Telefoningiz sozlamalaridan"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name}ni kuzatish"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +345,125 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Hisobingiz"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyatni ochish"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Post yozish"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Postni koʻrish"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Profilni tahrirlash"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Ular qachon faol"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Sizning vaqt mintaqangizda."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Yoshlar"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Tugʻilgan kunini koʻrsatgan {known} yetib borilgan odamdan."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Har kuni yetib borilgan odamlar"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Ular aʼzo boʻlgan hamjamiyatlar"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Mamlakatlar"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Profilida mamlakat ko‘rsatilgan, yetib borilgan {known} kishidan."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Oxirgi {days} kun"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Statistikani yuklab boʻlmadi"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Obunachilar"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Koʻrsatish uchun yetarlicha katta guruh hali yoʻq."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Qanday oʻsish mumkin"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Ular kuzatadigan mavzular"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Yoqtirishlar"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Yangi"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Yangi obunachilar"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Bu davrda postlaringizdan hech biri hech kimga yetib bormadi."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Sizga obuna emas"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Mamlakatlar odamlar o‘z profillarida tanlaganlaridir. Kyron hech kimning shahri yoki jinsini to‘plamaydi, shuning uchun ular bo‘yicha ko‘rsatadigan narsa yo‘q."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ochishlar"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} ga yetdi · {likes} yoqtirish · {replies} javob"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("Yetib borilgan odamlar"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Har bir odam bir marta sanaladi: unga postlaringizdan biri birinchi marta koʻrsatilgan yoki u birinchi marta ochgan. Yangi obunachilar hali ham sizga obuna; obunani bekor qilganlar sanalmaydi."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Javoblar"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Qayta joylashlar"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Saqlashlar"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Auditoriyangiz kimligi bu davrda {floor} kishi postlaringizni koʻrganidan keyin koʻrsatiladi. Kamroq boʻlsa, bu kimnidir koʻrsatib qoʻyishi mumkin."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Hali odamlar yetarli emas"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Ularning {pct}% allaqachon sizga obuna: postlaringiz asosan sizni tanigan odamlarga yetadi."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Ularning {pct}% hali sizga obuna emas: postlaringiz topilmoqda."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} kishiga yetib bordingiz, oldingi davrdan {pct}% kam."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Oxirgi {days} kunda {reach} kishiga yetib bordingiz."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} kishiga yetib bordingiz, taxminan oldingi davrdagidek."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Oxirgi {days} kunda postlaringizni hech bir yangi odam koʻrmadi."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} kishiga yetib bordingiz, oldingi davrdan {pct}% koʻp."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} kishiga yetib bordingiz, oldingi davrdan {times}× koʻp."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Ulardan koʻproq qismi boshqa har qanday mavzudan koʻra {name} mavzusini kuzatadi."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Auditoriya"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Umumiy koʻrinish"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Postingizni topganlar obuna boʻlishdan oldin profilingizga qarashadi. Yuz yoki logotip u yerda kimdir borligini aytadi."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Profil rasmini qoʻshing"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Nima haqida joylashingizni bir qatorda ayting, notanish odam sizga obuna boʻlish unga nima berishini bilsin."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Bio yozing"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total} postingizdan {without} tasida mavzu yoʻq edi. Mavzu postni oʻsha mavzu lentasiga va uni kuzatuvchilar oldiga qoʻyadi."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Postlarga mavzu qoʻshing"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} kishi postlaringizga javob yozdi, siz esa {answered} tasiga javob berdingiz. Ular yozish darajasida qiziqishdi: javob oʻquvchini doimiy mehmonga aylantiradi."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Javoblarga javob bering"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Auditoriyangiz eng faol payti {when}. Undan sal oldin joylangan postni kutib oladiganlar boʻladi."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Ular bor paytda joylang"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Sizga obuna boʻlmagan {reached} kishi postlaringizni koʻrdi va {gained} kishi obuna boʻldi. Bio va eng yangi postlaringiz sizdan nimani kutish mumkinligini aytsin."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Oʻquvchilarni obunachiga aylantiring"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Bitta post boshqa postlaringiz odatda yetadiganidan {times}× koʻp odamga yetdi. U nimani boshqacha qilganiga qarang va shuni koʻproq qiling."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Ish bergan narsani koʻproq qiling"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Postlaringizni koʻradiganlarning koʻpi {name} hamjamiyatida. U yerda joylash sizni qolganlar oldiga ham olib chiqadi."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} hamjamiyatida joylang"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} kunda {posts} marta joyladingiz. Har bir post topilishning yana bir imkoniyati, barqaror ritm esa sizni obunachilar lentasida ushlab turadi."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Tez-tez joylang"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Oxirgi {days} kunda hech narsa joylamadingiz. Postsiz hech narsa hech kimga yetmaydi."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Biror narsa joylang"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statistika"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Eng yaxshi postlar"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("Oldingi {days} kunga nisbatan"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +995,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Mamlakat"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
@@ -1346,6 +1480,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("sizga obuna bo‘ldi"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("postingizni yoqtirdi"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("sizni tilga oldi"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Hali eslatmalar yo‘q"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kimdir post yoki javobda @foydalanuvchi nomingizni yozsa, u shu yerda ko‘rinadi."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Eskiroq"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Hamjamiyat chatidagi xabaringiz o‘chirildi"),
@@ -1376,6 +1516,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Obunachilar"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Yoqtirishlar"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Eslatmalar"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Javoblar"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Shu hafta"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Bugun"),
@@ -1588,6 +1730,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Get help from our team",
       ),
       "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_share_quote":
+          MessageLookupByLibrary.simpleMessage("Iqtibos keltirish"),
+      "ui_share_send_message":
+          MessageLookupByLibrary.simpleMessage("Xabarda yuborish"),
+      "ui_share_send_message_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron’dagi odamlarga"),
       "ui_share_this_post":
           MessageLookupByLibrary.simpleMessage("Share this post"),
       "ui_standing_about":

@@ -13,6 +13,8 @@ export const ig: Copy = {
   reposted_quote: 'Bipụtaghachiri post gị: “{snippet}”',
   replied: 'Zaghachiri gị',
   replied_quote: 'Zaghachiri: “{snippet}”',
+  mentioned: 'Kpọtụrụ gị aha',
+  mentioned_quote: 'Kpọtụrụ gị aha: “{snippet}”',
   group: 'Otu',
   new_message: 'Ozi ọhụrụ',
   dm_once: 'Zitere ihe a ga-ele otu ugboro',

@@ -13,6 +13,8 @@ export const my: Copy = {
   reposted_quote: 'သင့်ပို့စ်ကို ပြန်တင်ခဲ့သည်- “{snippet}”',
   replied: 'သင့်ကို ပြန်စာရေးခဲ့သည်',
   replied_quote: 'ပြန်စာ- “{snippet}”',
+  mentioned: 'သင့်ကို ဖော်ပြခဲ့သည်',
+  mentioned_quote: 'သင့်ကို ဖော်ပြခဲ့သည်- “{snippet}”',
   group: 'အဖွဲ့',
   new_message: 'မက်ဆေ့ချ်အသစ်',
   dm_once: 'တစ်ကြိမ်သာကြည့်ရန် တစ်ခုခု ပို့ခဲ့သည်',

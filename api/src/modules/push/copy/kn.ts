@@ -13,6 +13,8 @@ export const kn: Copy = {
   reposted_quote: 'ನಿಮ್ಮ ಪೋಸ್ಟ್ ಮರುಹಂಚಿಕೊಂಡಿದ್ದಾರೆ: “{snippet}”',
   replied: 'ನಿಮಗೆ ಪ್ರತ್ಯುತ್ತರಿಸಿದ್ದಾರೆ',
   replied_quote: 'ಪ್ರತ್ಯುತ್ತರ: “{snippet}”',
+  mentioned: 'ನಿಮ್ಮನ್ನು ಉಲ್ಲೇಖಿಸಿದ್ದಾರೆ',
+  mentioned_quote: 'ನಿಮ್ಮನ್ನು ಉಲ್ಲೇಖಿಸಿದ್ದಾರೆ: “{snippet}”',
   group: 'ಗುಂಪು',
   new_message: 'ಹೊಸ ಸಂದೇಶ',
   dm_once: 'ಒಮ್ಮೆ ನೋಡಲು ಏನನ್ನೋ ಕಳುಹಿಸಿದ್ದಾರೆ',
