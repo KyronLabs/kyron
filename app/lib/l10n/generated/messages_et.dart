@@ -248,6 +248,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Seda pilti ei saanud teha.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Näidatakse sinu profiilil ja sinu postituste all."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ükski riik ei vasta päringule „{query}“."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ära näita riiki"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Otsi riike"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Näidatakse sinu profiilil ja sinu postituste all. Kui näed kellegi postitusi, loetakse sinu riik tema Ülevaates kokku, ainult vähemalt viieliikmelistes rühmades ja mitte kunagi nimepidi."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Sinu telefoni seadetest"),
       "create": MessageLookupByLibrary.simpleMessage("Loo"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Loo konto"),
       "createYourAccount":
@@ -308,6 +318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Näojälgimine ei ole sellel seadmel saadaval.",
       ),
       "feedTagDetail": (Object a0) => "Veel ei ole postitusi #${a0} all.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Jälgi kasutajat {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Jälgijad"),
       "following": MessageLookupByLibrary.simpleMessage("Järgitud"),
       "forgotPassword":
@@ -350,6 +362,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Inimesed, kelleni jõudsid, päevade kaupa"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Kogukonnad, kus nad on"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Riigid"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "{known} inimeselt, kelleni jõudsid ja kelle profiilil on riik."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Viimased {days} päeva"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "Ülevaateid ei õnnestunud laadida"),
@@ -367,8 +382,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ükski sinu postitus ei jõudnud sel perioodil kellegini."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Ei jälgi sind"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron ei kogu kellegi riiki, linna ega sugu, seega pole nende kohta midagi näidata."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Riigid on need, mille inimesed oma profiilil valisid. Kyron ei kogu kellegi linna ega sugu, seega pole nende kohta midagi näidata."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Avamised"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "jõudis {reach} inimeseni · {likes} meeldimist · {replies} vastust"),
@@ -1017,6 +1032,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profiil uuendatud"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Tutvustus"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Riik"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Kuvatav nimi"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Asukoht"),

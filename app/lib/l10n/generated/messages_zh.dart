@@ -36,6 +36,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotOpenGoogleSignIn": (Object a0) => "无法打开 Google 登录。${a0}",
       "couldNotSignOut": (Object a0) => "无法退出：${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage("无法拍摄该照片。"),
+      "country_helper": MessageLookupByLibrary.simpleMessage("显示在你的个人资料和帖子下方。"),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("没有与“{query}”匹配的国家/地区。"),
+      "country_none": MessageLookupByLibrary.simpleMessage("不显示国家/地区"),
+      "country_search": MessageLookupByLibrary.simpleMessage("搜索国家/地区"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "显示在你的个人资料和帖子下方。你看到某人的帖子时，你的国家/地区会计入对方的数据洞察，仅以五人或以上的群组统计，绝不显示你的名字。"),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("来自你手机的设置"),
       "create": MessageLookupByLibrary.simpleMessage("创建"),
       "createAccount": MessageLookupByLibrary.simpleMessage("创建账户"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("创建你的账户"),
@@ -53,6 +61,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "此设备不支持人脸跟踪。",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("关注 {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("粉丝"),
       "following": MessageLookupByLibrary.simpleMessage("关注"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("忘记密码？"),
@@ -73,6 +82,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("来自填写了生日的 {known} 位被触达者。"),
       "ins_chart": MessageLookupByLibrary.simpleMessage("每日触达人数"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("他们所在的社区"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("国家/地区"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "来自在个人资料中填写了国家/地区的 {known} 位触达用户。"),
       "ins_days": MessageLookupByLibrary.simpleMessage("过去 {days} 天"),
       "ins_failed": MessageLookupByLibrary.simpleMessage("无法加载数据洞察"),
       "ins_followers": MessageLookupByLibrary.simpleMessage("关注者"),
@@ -85,8 +97,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached":
           MessageLookupByLibrary.simpleMessage("这段时间里，你的帖子没有触达任何人。"),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("未关注你的人"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron 不收集任何人的国家、城市或性别，因此这些方面没有可显示的内容。"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "国家/地区是用户在个人资料中自行选择的。Kyron 不收集任何人的城市或性别，因此没有相关内容可显示。"),
       "ins_opens": MessageLookupByLibrary.simpleMessage("打开次数"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "触达 {reach} · {likes} 个赞 · {replies} 条回复"),
@@ -190,6 +202,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postInCommunity": (Object a0) => "在 ${a0} 中发帖",
       "postTextCopied": MessageLookupByLibrary.simpleMessage("帖子文本已复制"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("个人资料已更新"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("国家/地区"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("推送通知"),
       "quote": MessageLookupByLibrary.simpleMessage("引用"),
       "quotePost": MessageLookupByLibrary.simpleMessage("引用帖子"),

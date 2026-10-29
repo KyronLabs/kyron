@@ -249,6 +249,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Hiển thị trên trang cá nhân và dưới bài viết của bạn."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Không có quốc gia nào khớp với “{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Không hiển thị quốc gia"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Tìm quốc gia"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Hiển thị trên trang cá nhân và dưới bài viết của bạn. Khi bạn xem bài viết của ai đó, quốc gia của bạn được tính trong Thông tin chi tiết của họ, chỉ theo nhóm từ năm người trở lên và không bao giờ kèm tên."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Từ cài đặt điện thoại của bạn"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Theo dõi {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -346,6 +358,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Số người tiếp cận mỗi ngày"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Cộng đồng họ tham gia"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Quốc gia"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Từ {known} người được tiếp cận có quốc gia trên trang cá nhân."),
       "ins_days": MessageLookupByLibrary.simpleMessage("{days} ngày qua"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "Không tải được thông tin chi tiết"),
@@ -363,8 +378,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Trong giai đoạn này, không bài viết nào của bạn tiếp cận được ai."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Không theo dõi bạn"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron không thu thập quốc gia, thành phố hay giới tính của ai, nên không có gì để hiển thị về những mục đó."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Quốc gia là những gì mọi người tự chọn trên trang cá nhân. Kyron không thu thập thành phố hay giới tính của bất kỳ ai, nên không có gì để hiển thị cho những mục đó."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Lượt mở"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "tiếp cận {reach} · {likes} lượt thích · {replies} lượt trả lời"),
@@ -972,6 +987,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Quốc gia"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

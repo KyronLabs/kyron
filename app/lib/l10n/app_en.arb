@@ -1074,7 +1074,6 @@
   "ins_communities": "Communities they are in",
   "ins_active": "When they are around",
   "ins_active_note": "In your time zone.",
-  "ins_not_collected": "Kyron does not collect anyone's country, city or gender, so there is nothing to show for them.",
   "ins_act_post": "Write a post",
   "ins_act_profile": "Edit your profile",
   "ins_act_post_open": "See the post",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Post in {name}",
   "ins_tip_post_in_community": "Many of the people who see your posts are in {name}. Posting there puts you in front of the rest of it.",
   "ins_tip_best_time_t": "Post when they are around",
-  "ins_tip_best_time": "Your audience is most active on {when}. A post put up just before then has people there to meet it."
+  "ins_tip_best_time": "Your audience is most active on {when}. A post put up just before then has people there to meet it.",
+  "profile_country": "Country",
+  "country_shown": "Shown on your profile and under your posts. When you see someone's posts, your country is counted in their Insights, only in groups of five or more and never by name.",
+  "country_helper": "Shown on your profile and under your posts.",
+  "country_search": "Search countries",
+  "country_suggested": "From your phone's settings",
+  "country_none": "Don't show a country",
+  "country_no_match": "No country matches “{query}”.",
+  "follow_author": "Follow {name}",
+  "ins_countries": "Countries",
+  "ins_countries_note": "From the {known} people reached who have a country on their profile.",
+  "ins_not_collected_city": "Countries are the ones people chose on their profiles. Kyron does not collect anyone's city or gender, so there is nothing to show for them."
 }

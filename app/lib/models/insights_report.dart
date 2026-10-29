@@ -79,6 +79,8 @@ class InsightsReport {
     required this.agesKnown,
     required this.interests,
     required this.communities,
+    this.countries = const [],
+    this.countriesKnown = 0,
     required this.activeHours,
     required this.topPosts,
     required this.summary,
@@ -105,6 +107,13 @@ class InsightsReport {
   final int agesKnown;
   final List<AudienceGroup> interests;
   final List<AudienceGroup> communities;
+
+  /// Countries with enough people in them to show, largest first, as ISO
+  /// codes; the screen names them in the reader's language.
+  final List<({String code, int count})> countries;
+
+  /// How many of the people reached have a country on their profile.
+  final int countriesKnown;
 
   /// 168 counts, by hour of the week in UTC, Monday 00:00 first.
   final List<int> activeHours;
@@ -173,6 +182,12 @@ class InsightsReport {
       agesKnown: _int(audience['agesKnown']),
       interests: groups(audience['interests']),
       communities: groups(audience['communities']),
+      countries: [
+        for (final c in list(audience['countries']))
+          if (c['code'] is String)
+            (code: c['code'] as String, count: _int(c['count'])),
+      ],
+      countriesKnown: _int(audience['countriesKnown']),
       activeHours: hours.length == 168 ? hours : List.filled(168, 0),
       topPosts: [
         for (final p in list(json['topPosts']))

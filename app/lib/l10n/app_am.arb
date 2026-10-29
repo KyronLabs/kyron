@@ -1074,7 +1074,6 @@
   "ins_communities": "ያሉባቸው ማህበረሰቦች",
   "ins_active": "መቼ እንደሚገኙ",
   "ins_active_note": "በእርስዎ የሰዓት ሰቅ።",
-  "ins_not_collected": "Kyron የማንንም አገር፣ ከተማ ወይም ጾታ አይሰበስብም፣ ስለዚህ ለእነሱ የሚታይ ነገር የለም።",
   "ins_act_post": "ልጥፍ ይጻፉ",
   "ins_act_profile": "መገለጫዎን ያርትዑ",
   "ins_act_post_open": "ልጥፉን ይመልከቱ",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "በ{name} ይለጥፉ",
   "ins_tip_post_in_community": "ልጥፎችዎን ከሚያዩት ሰዎች ብዙዎቹ በ{name} ውስጥ ናቸው። እዚያ መለጠፍ በቀሪዎቹ ፊት ያስቀምጥዎታል።",
   "ins_tip_best_time_t": "በሚገኙበት ጊዜ ይለጥፉ",
-  "ins_tip_best_time": "ተመልካቾችዎ በጣም ንቁ የሆኑት {when} ላይ ነው። ከዚያ በፊት የተለጠፈ ልጥፍ የሚቀበሉት ሰዎች ይኖሩታል።"
+  "ins_tip_best_time": "ተመልካቾችዎ በጣም ንቁ የሆኑት {when} ላይ ነው። ከዚያ በፊት የተለጠፈ ልጥፍ የሚቀበሉት ሰዎች ይኖሩታል።",
+  "profile_country": "አገር",
+  "country_shown": "በመገለጫዎ እና ከልጥፎችዎ በታች ይታያል። የአንድን ሰው ልጥፎች ሲያዩ፣ አገርዎ በእነሱ ግንዛቤዎች ውስጥ ይቆጠራል፤ አምስት እና ከዚያ በላይ በሆኑ ቡድኖች ብቻ፣ በስም በፍጹም አይደለም።",
+  "country_helper": "በመገለጫዎ እና ከልጥፎችዎ በታች ይታያል።",
+  "country_search": "አገሮችን ይፈልጉ",
+  "country_suggested": "ከስልክዎ ቅንብሮች",
+  "country_none": "አገር አታሳይ",
+  "country_no_match": "ከ“{query}” ጋር የሚዛመድ አገር የለም።",
+  "follow_author": "{name}ን ይከተሉ",
+  "ins_countries": "አገሮች",
+  "ins_countries_note": "በመገለጫቸው ላይ አገር ካላቸው {known} የደረሱ ሰዎች።",
+  "ins_not_collected_city": "አገሮቹ ሰዎች በመገለጫቸው ላይ የመረጧቸው ናቸው። Kyron የማንንም ከተማ ወይም ጾታ አይሰበስብም፣ ስለዚህ ለእነሱ የሚታይ ነገር የለም።"
 }

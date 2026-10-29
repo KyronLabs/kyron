@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Prikazuje se na tvom profilu i ispod tvojih objava."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Nijedna država ne odgovara upitu „{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Ne prikazuj državu"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Pretraži države"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Prikazuje se na tvom profilu i ispod tvojih objava. Kad vidiš nečije objave, tvoja se država broji u njegovim Uvidima, samo u skupinama od pet ili više i nikad po imenu."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Iz postavki tvog telefona"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Prati {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -348,6 +360,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Dosegnute osobe po danu"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Zajednice u kojima su"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Države"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Od {known} dosegnutih osoba koje imaju državu na profilu."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Posljednjih {days} dana"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
@@ -364,8 +379,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Nijedna tvoja objava nije nikoga dosegla u ovom razdoblju."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Ne prate te"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron ne prikuplja ničiju državu, grad ni spol, pa za njih nema što prikazati."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Države su one koje su ljudi odabrali na svojim profilima. Kyron ne prikuplja ničiji grad ni spol, pa za njih nema što prikazati."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Otvaranja"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} dosegnuto · {likes} sviđanja · {replies} odgovora"),
@@ -973,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Država"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

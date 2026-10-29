@@ -1074,7 +1074,6 @@
   "ins_communities": "Komunity, ve kterých jsou",
   "ins_active": "Kdy jsou aktivní",
   "ins_active_note": "Ve vašem časovém pásmu.",
-  "ins_not_collected": "Kyron nesbírá nikomu zemi, město ani pohlaví, takže pro ně není co ukázat.",
   "ins_act_post": "Napsat příspěvek",
   "ins_act_profile": "Upravit profil",
   "ins_act_post_open": "Zobrazit příspěvek",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Přispějte do {name}",
   "ins_tip_post_in_community": "Mnoho lidí, kteří vidí vaše příspěvky, je v {name}. Příspěvek tam vás ukáže i ostatním.",
   "ins_tip_best_time_t": "Přispívejte, když jsou aktivní",
-  "ins_tip_best_time": "Vaše publikum je nejaktivnější v {when}. Příspěvek zveřejněný těsně předtím na ně narazí."
+  "ins_tip_best_time": "Vaše publikum je nejaktivnější v {when}. Příspěvek zveřejněný těsně předtím na ně narazí.",
+  "profile_country": "Země",
+  "country_shown": "Zobrazuje se na tvém profilu a pod tvými příspěvky. Když vidíš něčí příspěvky, tvá země se započítá do jeho Statistik, jen ve skupinách po pěti a více lidech a nikdy jménem.",
+  "country_helper": "Zobrazuje se na tvém profilu a pod tvými příspěvky.",
+  "country_search": "Hledat země",
+  "country_suggested": "Z nastavení telefonu",
+  "country_none": "Nezobrazovat zemi",
+  "country_no_match": "Žádná země neodpovídá „{query}“.",
+  "follow_author": "Sledovat {name}",
+  "ins_countries": "Země",
+  "ins_countries_note": "Z {known} oslovených lidí, kteří mají na profilu zemi.",
+  "ins_not_collected_city": "Země jsou ty, které si lidé zvolili na svých profilech. Kyron nesbírá ničí město ani pohlaví, takže pro ně není co zobrazit."
 }

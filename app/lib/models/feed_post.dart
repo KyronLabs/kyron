@@ -49,6 +49,11 @@ class FeedPost {
   /// somebody posting to everybody.
   final PostCommunity? community;
 
+  /// Whether you follow the author, as the server last knew. A follow from
+  /// the button on the picture is in [followOverridesProvider] until the list
+  /// is next read; the card reads both.
+  final bool followingAuthor;
+
   const FeedPost({
     required this.id,
     required this.content,
@@ -65,6 +70,7 @@ class FeedPost {
     this.reposted = false,
     this.poll,
     this.community,
+    this.followingAuthor = false,
   });
 
   factory FeedPost.fromJson(Map<String, dynamic> json) => FeedPost(
@@ -93,6 +99,7 @@ class FeedPost {
         community: json['community'] is Map<String, dynamic>
             ? PostCommunity.fromJson(json['community'] as Map<String, dynamic>)
             : null,
+        followingAuthor: json['followingAuthor'] == true,
       );
 
   FeedPost copyWith({
@@ -120,6 +127,7 @@ class FeedPost {
         reposted: reposted ?? this.reposted,
         poll: poll ?? this.poll,
         community: community,
+        followingAuthor: followingAuthor,
       );
 
   /// The first link in the text, or null.
@@ -168,12 +176,16 @@ class FeedAuthor {
   /// Somebody on the Kyron team checked it is who it says it is.
   final bool verified;
 
+  /// The country on their profile, ISO 3166-1, or null.
+  final String? country;
+
   const FeedAuthor({
     required this.id,
     this.name,
     this.username,
     this.avatarUrl,
     this.verified = false,
+    this.country,
   });
 
   factory FeedAuthor.fromJson(Map<String, dynamic> json) => FeedAuthor(
@@ -182,6 +194,7 @@ class FeedAuthor {
         username: json['username'] as String?,
         avatarUrl: json['avatarUrl'] as String?,
         verified: json['verified'] == true,
+        country: json['country'] as String?,
       );
 
   /// What to show above a post.

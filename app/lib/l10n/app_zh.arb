@@ -1074,7 +1074,6 @@
   "ins_communities": "他们所在的社区",
   "ins_active": "他们什么时候在",
   "ins_active_note": "按你的时区显示。",
-  "ins_not_collected": "Kyron 不收集任何人的国家、城市或性别，因此这些方面没有可显示的内容。",
   "ins_act_post": "写帖子",
   "ins_act_profile": "编辑个人资料",
   "ins_act_post_open": "查看帖子",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "在 {name} 发帖",
   "ins_tip_post_in_community": "看到你帖子的人中，很多都在 {name}。在那里发帖能让其余成员也看到你。",
   "ins_tip_best_time_t": "在他们在的时候发帖",
-  "ins_tip_best_time": "你的受众在{when}最活跃。在那之前不久发的帖子会有人接着看。"
+  "ins_tip_best_time": "你的受众在{when}最活跃。在那之前不久发的帖子会有人接着看。",
+  "profile_country": "国家/地区",
+  "country_shown": "显示在你的个人资料和帖子下方。你看到某人的帖子时，你的国家/地区会计入对方的数据洞察，仅以五人或以上的群组统计，绝不显示你的名字。",
+  "country_helper": "显示在你的个人资料和帖子下方。",
+  "country_search": "搜索国家/地区",
+  "country_suggested": "来自你手机的设置",
+  "country_none": "不显示国家/地区",
+  "country_no_match": "没有与“{query}”匹配的国家/地区。",
+  "follow_author": "关注 {name}",
+  "ins_countries": "国家/地区",
+  "ins_countries_note": "来自在个人资料中填写了国家/地区的 {known} 位触达用户。",
+  "ins_not_collected_city": "国家/地区是用户在个人资料中自行选择的。Kyron 不收集任何人的城市或性别，因此没有相关内容可显示。"
 }

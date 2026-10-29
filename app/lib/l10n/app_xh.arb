@@ -1074,7 +1074,6 @@
   "ins_communities": "Uluntu abakulo",
   "ins_active": "Bakhona nini",
   "ins_active_note": "Kummandla wexesha lakho.",
-  "ins_not_collected": "I-Kyron ayiqokeleli ilizwe, isixeko okanye isini sakhe nabani na, ngoko akukho nto inokuboniswa ngazo.",
   "ins_act_post": "Bhala iposti",
   "ins_act_profile": "Hlela iprofayile yakho",
   "ins_act_post_open": "Jonga iposti",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Thumela ku-{name}",
   "ins_tip_post_in_community": "Uninzi lwabantu ababona iiposti zakho bakwi-{name}. Ukuthumela apho kukubeka phambi kwabanye.",
   "ins_tip_best_time_t": "Thumela xa bekhona",
-  "ins_tip_best_time": "Ababukeli bakho basebenza kakhulu ngo-{when}. Iposti ethunyelwe kancinci ngaphambili inabantu bokuyamkela."
+  "ins_tip_best_time": "Ababukeli bakho basebenza kakhulu ngo-{when}. Iposti ethunyelwe kancinci ngaphambili inabantu bokuyamkela.",
+  "profile_country": "Ilizwe",
+  "country_shown": "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho. Xa ubona iiposti zomntu, ilizwe lakho libalwa kwiiNgcaciso zakhe, ngamaqela abantu abahlanu nangaphezulu kuphela, kwaye zange ngegama.",
+  "country_helper": "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho.",
+  "country_search": "Khangela amazwe",
+  "country_suggested": "Kuseto lwefowuni yakho",
+  "country_none": "Musa ukubonisa ilizwe",
+  "country_no_match": "Akukho lizwe lihambelana no-“{query}”.",
+  "follow_author": "Landela u-{name}",
+  "ins_countries": "Amazwe",
+  "ins_countries_note": "Kubantu abangu-{known} abafikelelweyo abanelizwe kwiprofayile yabo.",
+  "ins_not_collected_city": "Amazwe ngawo abantu abawakhethileyo kwiiprofayile zabo. IKyron ayiqokeleli sixeko okanye isini somntu, ngoko akukho nto inokuboniswa ngazo."
 }

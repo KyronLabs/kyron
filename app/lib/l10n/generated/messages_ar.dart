@@ -248,6 +248,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "تعذّر التقاط تلك الصورة.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "يظهر في ملفك الشخصي وأسفل منشوراتك."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("لا يوجد بلد يطابق “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("لا تعرض بلدًا"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ابحث عن البلدان"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "يظهر في ملفك الشخصي وأسفل منشوراتك. عندما ترى منشورات شخص ما، يُحتسب بلدك في إحصاءاته، ضمن مجموعات من خمسة أشخاص أو أكثر فقط ودون ذكر اسمك أبدًا."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("من إعدادات هاتفك"),
       "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
       "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
@@ -298,6 +308,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "تتبُّع الوجه غير متاح على هذا الجهاز.",
       ),
       "feedTagDetail": (Object a0) => "لم تُنشر أي مشاركة تحت #${a0} بعد.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("متابعة {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("المتابِعون"),
       "following": MessageLookupByLibrary.simpleMessage("المتابَعون"),
       "forgotPassword":
@@ -341,6 +352,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "الأشخاص الذين وصلت إليهم كل يوم"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("المجتمعات التي ينتمون إليها"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("البلدان"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "من بين {known} شخصًا وصلت إليهم ولديهم بلد في ملفهم الشخصي."),
       "ins_days": MessageLookupByLibrary.simpleMessage("آخر {days} يومًا"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("تعذّر تحميل الإحصاءات"),
@@ -356,8 +370,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "لم يصل أي من منشوراتك إلى أحد في هذه الفترة."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("لا يتابعونك"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "لا يجمع Kyron بلد أحد أو مدينته أو جنسه، لذا لا يوجد ما يُعرض عنها."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "البلدان هي التي اختارها الأشخاص في ملفاتهم الشخصية. لا يجمع Kyron مدينة أحد أو جنسه، لذا لا يوجد ما يُعرض عنهما."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("مرات الفتح"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "وصل إلى {reach} · {likes} إعجابات · {replies} ردود"),
@@ -974,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "تم تحديث الملف الشخصي",
       ),
       "profile_bio": MessageLookupByLibrary.simpleMessage("نبذة"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("البلد"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage("اسم العرض"),
       "profile_location": MessageLookupByLibrary.simpleMessage("الموقع"),
       "profile_tap_to_change":

@@ -42,6 +42,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotSignOut": (Object a0) => "サインアウトできませんでした: ${a0}",
       "couldNotTakePicture":
           MessageLookupByLibrary.simpleMessage("写真を撮影できませんでした。"),
+      "country_helper":
+          MessageLookupByLibrary.simpleMessage("プロフィールと投稿の下に表示されます。"),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("「{query}」に一致する国はありません。"),
+      "country_none": MessageLookupByLibrary.simpleMessage("国を表示しない"),
+      "country_search": MessageLookupByLibrary.simpleMessage("国を検索"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "プロフィールと投稿の下に表示されます。誰かの投稿を見ると、あなたの国はその人のインサイトで集計されます。5人以上のグループでのみ集計され、名前が出ることはありません。"),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("スマートフォンの設定から"),
       "create": MessageLookupByLibrary.simpleMessage("作成"),
       "createAccount": MessageLookupByLibrary.simpleMessage("アカウントを作成"),
       "createYourAccount":
@@ -64,6 +73,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "このデバイスでは顔追跡機能は利用できません。",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name}さんをフォロー"),
       "followers": MessageLookupByLibrary.simpleMessage("フォロワー"),
       "following": MessageLookupByLibrary.simpleMessage("フォロー中"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("パスワードをお忘れですか？"),
@@ -85,6 +95,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("誕生日を登録している、リーチした{known}人から。"),
       "ins_chart": MessageLookupByLibrary.simpleMessage("日ごとのリーチした人"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("参加しているコミュニティ"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("国"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "プロフィールに国を設定している、リーチした{known}人のデータです。"),
       "ins_days": MessageLookupByLibrary.simpleMessage("過去{days}日間"),
       "ins_failed": MessageLookupByLibrary.simpleMessage("インサイトを読み込めませんでした"),
       "ins_followers": MessageLookupByLibrary.simpleMessage("フォロワー"),
@@ -98,8 +111,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached":
           MessageLookupByLibrary.simpleMessage("この期間、あなたの投稿は誰にも届きませんでした。"),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("フォローしていない人"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyronは誰の国・都市・性別も収集していないため、それらについて表示できるものはありません。"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "国は各自がプロフィールで選んだものです。Kyronは誰の市区町村や性別も収集しないため、それらについて表示できるものはありません。"),
       "ins_opens": MessageLookupByLibrary.simpleMessage("開いた回数"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach}人にリーチ · いいね{likes} · 返信{replies}"),
@@ -211,6 +224,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postInCommunity": (Object a0) => "「${a0}」に投稿する",
       "postTextCopied": MessageLookupByLibrary.simpleMessage("投稿文をコピーしました"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("プロフィールが更新されました"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("国"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("プッシュ通知"),
       "quote": MessageLookupByLibrary.simpleMessage("引用"),
       "quotePost": MessageLookupByLibrary.simpleMessage("投稿を引用"),

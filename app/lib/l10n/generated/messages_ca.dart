@@ -257,6 +257,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "No s'ha pogut fer aquesta foto.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Es mostra al teu perfil i sota les teves publicacions."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Cap país coincideix amb «{query}»."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("No mostris cap país"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Cerca països"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Es mostra al teu perfil i sota les teves publicacions. Quan veus les publicacions d'algú, el teu país es compta a les seves Estadístiques, només en grups de cinc o més i mai pel nom."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "De la configuració del telèfon"),
       "create": MessageLookupByLibrary.simpleMessage("Crea"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Crea un compte"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -321,6 +332,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "No s'ha publicat res sota #${a0} encara.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Segueix {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Seguidors"),
       "following": MessageLookupByLibrary.simpleMessage("Seguint"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -366,6 +378,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Persones assolides cada dia"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Comunitats on són"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Països"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "De les {known} persones assolides que tenen un país al perfil."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Últims {days} dies"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "No s'han pogut carregar les estadístiques"),
@@ -383,8 +398,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Cap de les teves publicacions no ha arribat a ningú en aquest període."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("No et segueixen"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron no recull el país, la ciutat ni el gènere de ningú, així que no hi ha res a mostrar-ne."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Els països són els que la gent ha triat al seu perfil. Kyron no recull la ciutat ni el gènere de ningú, així que no hi ha res a mostrar-ne."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Obertures"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} assolides · {likes} m'agrada · {replies} respostes"),
@@ -1064,6 +1079,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Perfil actualitzat"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Biografia"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("País"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Nom visible"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Ubicació"),

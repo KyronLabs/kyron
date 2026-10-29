@@ -1074,7 +1074,6 @@
   "ins_communities": "Jumuiya walimo",
   "ins_active": "Wanapokuwepo",
   "ins_active_note": "Kwa saa za eneo lako.",
-  "ins_not_collected": "Kyron haikusanyi nchi, mji wala jinsia ya mtu yeyote, kwa hiyo hakuna cha kuonyesha kuhusu hayo.",
   "ins_act_post": "Andika chapisho",
   "ins_act_profile": "Hariri wasifu wako",
   "ins_act_post_open": "Ona chapisho",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Chapisha katika {name}",
   "ins_tip_post_in_community": "Wengi wanaoona machapisho yako wako katika {name}. Kuchapisha huko kunakuweka mbele ya wengine.",
   "ins_tip_best_time_t": "Chapisha wanapokuwepo",
-  "ins_tip_best_time": "Hadhira yako huwa hai zaidi {when}. Chapisho lililowekwa kabla kidogo lina watu wa kulipokea."
+  "ins_tip_best_time": "Hadhira yako huwa hai zaidi {when}. Chapisho lililowekwa kabla kidogo lina watu wa kulipokea.",
+  "profile_country": "Nchi",
+  "country_shown": "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako. Unapoona machapisho ya mtu, nchi yako huhesabiwa katika Maarifa yake, kwa makundi ya watu watano au zaidi tu na kamwe si kwa jina.",
+  "country_helper": "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako.",
+  "country_search": "Tafuta nchi",
+  "country_suggested": "Kutoka kwenye mipangilio ya simu yako",
+  "country_none": "Usionyeshe nchi",
+  "country_no_match": "Hakuna nchi inayolingana na “{query}”.",
+  "follow_author": "Mfuate {name}",
+  "ins_countries": "Nchi",
+  "ins_countries_note": "Kutoka kwa watu {known} waliofikiwa ambao wana nchi kwenye wasifu wao.",
+  "ins_not_collected_city": "Nchi ni zile ambazo watu walichagua kwenye wasifu wao. Kyron haikusanyi jiji wala jinsia ya mtu yeyote, kwa hivyo hakuna cha kuonyesha kuhusu hayo."
 }

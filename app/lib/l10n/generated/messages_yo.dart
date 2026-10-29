@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Kò sí orílẹ̀-èdè tí ó bá “{query}” mu."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Má ṣe fi orílẹ̀-èdè hàn"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Wá àwọn orílẹ̀-èdè"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ. Nígbà tí o bá rí àwọn ìfiránṣẹ́ ẹnìkan, a máa ka orílẹ̀-èdè rẹ nínú Àgbéyẹ̀wò rẹ̀, ní àwùjọ ènìyàn márùn-ún tàbí jù bẹ́ẹ̀ lọ nìkan, a kì í sì í dárúkọ rẹ."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Láti inú ètò fóònù rẹ"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Tẹ̀lé {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +362,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Àwọn ènìyàn tí a dé ọ̀dọ̀ wọn lójoojúmọ́"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Àwọn àwùjọ tí wọ́n wà"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Àwọn orílẹ̀-èdè"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Láti inú ènìyàn {known} tí a dé ọ̀dọ̀ wọn tí wọ́n ní orílẹ̀-èdè lórí profaili wọn."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Ọjọ́ {days} tó kọjá"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("A kò lè gbé ìjìnlẹ̀ òye wọlé"),
@@ -366,8 +382,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kò sí ìkankan nínú àwọn ìfiránṣẹ́ rẹ tó dé ọ̀dọ̀ ẹnikẹ́ni ní àsìkò yìí."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Wọn kò tẹ̀lé ọ"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron kì í gba orílẹ̀-èdè, ìlú tàbí akọ-tàbí-abo ẹnikẹ́ni, nítorí náà kò sí ohun tí a lè fi hàn nípa wọn."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Àwọn orílẹ̀-èdè náà ni èyí tí àwọn ènìyàn yàn lórí profaili wọn. Kyron kì í gba ìlú tàbí akọ-abo ẹnikẹ́ni, nítorí náà kò sí nǹkan láti fi hàn fún wọn."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Ìṣílẹ̀"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "dé ọ̀dọ̀ {reach} · ìfẹ́ràn {likes} · èsì {replies}"),
@@ -978,6 +994,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Orílẹ̀-èdè"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

@@ -249,6 +249,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ọ nweghị obodo dabara na “{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Egosila obodo ọ bụla"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Chọọ obodo"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta. Mgbe ị hụrụ ihe mmadụ zipụtara, a na-agụ obodo gị n'Nghọta ya, naanị n'otu mmadụ ise ma ọ bụ karịa, ọ dịghịkwa mgbe a na-akpọ aha gị."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Site na ntọala ekwentị gị"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Soro {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -347,6 +359,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ndị e ruru kwa ụbọchị"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Obodo ha nọ na ya"),
+      "ins_countries":
+          MessageLookupByLibrary.simpleMessage("Obodo dị iche iche"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Site n'ime mmadụ {known} e ruru bụ ndị nwere obodo na profaịlụ ha."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Ụbọchị {days} gara aga"),
       "ins_failed":
@@ -365,8 +381,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ọ dịghị post gị ruru onye ọ bụla n'oge a."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Ha anaghị eso gị"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron anaghị anakọta obodo, obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ dịghị ihe a ga-egosi maka ha."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Obodo ndị a bụ ndị mmadụ họọrọ na profaịlụ ha. Kyron anaghị anakọta obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ nweghị ihe a ga-egosi maka ha."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Mmeghe"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "ruru {reach} · mmasị {likes} · nzaghachi {replies}"),
@@ -975,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Obodo"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

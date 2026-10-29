@@ -1074,7 +1074,6 @@
   "ins_communities": "Gemeenskappe waarin hulle is",
   "ins_active": "Wanneer hulle rond is",
   "ins_active_note": "In jou tydsone.",
-  "ins_not_collected": "Kyron versamel niemand se land, stad of geslag nie, so daar is niks om daarvoor te wys nie.",
   "ins_act_post": "Skryf 'n plasing",
   "ins_act_profile": "Wysig jou profiel",
   "ins_act_post_open": "Sien die plasing",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Plaas in {name}",
   "ins_tip_post_in_community": "Baie van die mense wat jou plasings sien, is in {name}. Om daar te plaas, sit jou voor die res daarvan.",
   "ins_tip_best_time_t": "Plaas wanneer hulle rond is",
-  "ins_tip_best_time": "Jou gehoor is die aktiefste op {when}. 'n Plasing net voor dan het mense daar om dit te ontmoet."
+  "ins_tip_best_time": "Jou gehoor is die aktiefste op {when}. 'n Plasing net voor dan het mense daar om dit te ontmoet.",
+  "profile_country": "Land",
+  "country_shown": "Gewys op jou profiel en onder jou plasings. Wanneer jy iemand se plasings sien, word jou land in hulle Insigte getel, net in groepe van vyf of meer en nooit by naam nie.",
+  "country_helper": "Gewys op jou profiel en onder jou plasings.",
+  "country_search": "Soek lande",
+  "country_suggested": "Uit jou foon se instellings",
+  "country_none": "Moenie 'n land wys nie",
+  "country_no_match": "Geen land pas by “{query}” nie.",
+  "follow_author": "Volg {name}",
+  "ins_countries": "Lande",
+  "ins_countries_note": "Uit die {known} mense bereik wat 'n land op hulle profiel het.",
+  "ins_not_collected_city": "Lande is dié wat mense op hulle profiele gekies het. Kyron versamel niemand se stad of geslag nie, so daar is niks om daarvoor te wys nie."
 }

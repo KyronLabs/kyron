@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ma jiro dal la mid ah “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ha muujin dal"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Raadi dalal"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada. Markaad aragto qoraallada qof, dalkaaga waxaa lagu tiriyaa Aragtiyadiisa, kaliya kooxo shan qof ama ka badan ah, waligiisna magacaaga lama sheego."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Laga soo qaaday dejinta taleefankaaga"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Raac {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -348,6 +359,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Dadka la gaaray maalin kasta"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Bulshooyinka ay ku jiraan"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Dalal"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Laga soo xusay {known} qof oo la gaaray oo dal ku leh profile-kooda."),
       "ins_days": MessageLookupByLibrary.simpleMessage(
           "{days}-kii maalmood ee la soo dhaafay"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
@@ -365,8 +379,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Qoraalladaada midna cidna ma gaarin muddadan."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Kuma raacaan"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron ma ururiyo dalka, magaalada ama jinsiga cidna, markaa wax laga muujiyo ma jiraan."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Dalalku waa kuwa dadku ku doorteen profile-kooda. Kyron ma ururiyo magaalada ama jinsiga qofna, markaa wax loo muujiyo ma jiraan."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Furitaanno"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "la gaaray {reach} · {likes} jeclaysi · {replies} jawaab"),
@@ -976,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Dal"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

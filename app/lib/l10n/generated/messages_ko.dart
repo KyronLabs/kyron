@@ -42,6 +42,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotSignOut": (Object a0) => "로그아웃할 수 없습니다: ${a0}",
       "couldNotTakePicture":
           MessageLookupByLibrary.simpleMessage("사진을 찍을 수 없습니다."),
+      "country_helper":
+          MessageLookupByLibrary.simpleMessage("프로필과 게시물 아래에 표시됩니다."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("“{query}”와(과) 일치하는 국가가 없습니다."),
+      "country_none": MessageLookupByLibrary.simpleMessage("국가 표시 안 함"),
+      "country_search": MessageLookupByLibrary.simpleMessage("국가 검색"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "프로필과 게시물 아래에 표시됩니다. 다른 사람의 게시물을 보면 회원님의 국가가 그 사람의 인사이트에 집계되며, 5명 이상의 그룹으로만 집계되고 이름은 절대 표시되지 않습니다."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("휴대폰 설정 기준"),
       "create": MessageLookupByLibrary.simpleMessage("만들기"),
       "createAccount": MessageLookupByLibrary.simpleMessage("계정 생성"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage("계정을 생성하세요"),
@@ -61,6 +70,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "이 기기에서는 얼굴 추적을 사용할 수 없습니다.",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name}님 팔로우"),
       "followers": MessageLookupByLibrary.simpleMessage("팔로워"),
       "following": MessageLookupByLibrary.simpleMessage("팔로잉"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("비밀번호를 잊으셨나요?"),
@@ -83,6 +93,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("생일을 입력한, 도달한 {known}명 기준입니다."),
       "ins_chart": MessageLookupByLibrary.simpleMessage("일별 도달한 사람"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("속한 커뮤니티"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("국가"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "프로필에 국가를 설정한, 도달한 {known}명 기준입니다."),
       "ins_days": MessageLookupByLibrary.simpleMessage("최근 {days}일"),
       "ins_failed": MessageLookupByLibrary.simpleMessage("인사이트를 불러오지 못했습니다"),
       "ins_followers": MessageLookupByLibrary.simpleMessage("팔로워"),
@@ -97,8 +110,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "이 기간에 내 게시물은 아무에게도 도달하지 않았습니다."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("나를 팔로우하지 않는 사람"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron은 누구의 국가, 도시, 성별도 수집하지 않으므로 이에 대해 보여 줄 것이 없습니다."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "국가는 사람들이 프로필에서 직접 선택한 것입니다. Kyron은 누구의 도시나 성별도 수집하지 않으므로 이에 대해 보여 줄 내용이 없습니다."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("열람"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach}명 도달 · 좋아요 {likes} · 답글 {replies}"),
@@ -211,6 +224,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postTextCopied":
           MessageLookupByLibrary.simpleMessage("게시물 텍스트가 복사되었습니다"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("프로필이 업데이트되었습니다"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("국가"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("푸시 알림"),
       "quote": MessageLookupByLibrary.simpleMessage("인용"),
       "quotePost": MessageLookupByLibrary.simpleMessage("게시물 인용"),

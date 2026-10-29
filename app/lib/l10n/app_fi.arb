@@ -1074,7 +1074,6 @@
   "ins_communities": "Yhteisöt, joissa he ovat",
   "ins_active": "Milloin he ovat paikalla",
   "ins_active_note": "Omalla aikavyöhykkeelläsi.",
-  "ins_not_collected": "Kyron ei kerää kenenkään maata, kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää.",
   "ins_act_post": "Kirjoita julkaisu",
   "ins_act_profile": "Muokkaa profiiliasi",
   "ins_act_post_open": "Katso julkaisu",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Julkaise yhteisössä {name}",
   "ins_tip_post_in_community": "Moni julkaisujesi näkijä on yhteisössä {name}. Siellä julkaiseminen vie sinut muidenkin eteen.",
   "ins_tip_best_time_t": "Julkaise, kun he ovat paikalla",
-  "ins_tip_best_time": "Yleisösi on aktiivisimmillaan {when}. Juuri ennen sitä tehty julkaisu saa vastaanottajia."
+  "ins_tip_best_time": "Yleisösi on aktiivisimmillaan {when}. Juuri ennen sitä tehty julkaisu saa vastaanottajia.",
+  "profile_country": "Maa",
+  "country_shown": "Näkyy profiilissasi ja julkaisujesi alla. Kun näet jonkun julkaisuja, maasi lasketaan mukaan hänen Tilastoihinsa, vain vähintään viiden hengen ryhminä eikä koskaan nimellä.",
+  "country_helper": "Näkyy profiilissasi ja julkaisujesi alla.",
+  "country_search": "Hae maita",
+  "country_suggested": "Puhelimesi asetuksista",
+  "country_none": "Älä näytä maata",
+  "country_no_match": "Mikään maa ei vastaa hakua ”{query}”.",
+  "follow_author": "Seuraa: {name}",
+  "ins_countries": "Maat",
+  "ins_countries_note": "Niistä {known} tavoitetusta, joilla on profiilissaan maa.",
+  "ins_not_collected_city": "Maat ovat niitä, jotka ihmiset ovat valinneet profiiliinsa. Kyron ei kerää kenenkään kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää."
 }

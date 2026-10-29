@@ -28,6 +28,8 @@ import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'support/signed_in_as.dart';
+
 /// The community page lists its chats; these tests are about the rest of it.
 final _noChats = communityChatsProvider.overrideWith(
   (ref, slug) async => const <CommunityChat>[],
@@ -89,6 +91,7 @@ Future<void> _card(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
+        signedInAs(),
         _noChats,
         feedRepositoryProvider.overrideWithValue(_Feed()),
         // Tapping the community's name opens its page, which loads it.

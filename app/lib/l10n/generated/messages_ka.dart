@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "ჩანს შენს პროფილზე და შენი პოსტების ქვეშ."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "„{query}“-ს არცერთი ქვეყანა არ ემთხვევა."),
+      "country_none": MessageLookupByLibrary.simpleMessage("არ აჩვენო ქვეყანა"),
+      "country_search": MessageLookupByLibrary.simpleMessage("ქვეყნების ძიება"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "ჩანს შენს პროფილზე და შენი პოსტების ქვეშ. როცა ვინმეს პოსტებს ხედავ, შენი ქვეყანა ითვლება მის ანალიტიკაში, მხოლოდ ხუთი ან მეტი ადამიანის ჯგუფებში და არასდროს სახელით."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("შენი ტელეფონის პარამეტრებიდან"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("გამოიწერე {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +360,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "მიღწეული ადამიანები დღეების მიხედვით"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("საზოგადოებები, სადაც არიან"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("ქვეყნები"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "იმ {known} მიღწეული ადამიანიდან, ვისაც პროფილზე ქვეყანა აქვს."),
       "ins_days": MessageLookupByLibrary.simpleMessage("ბოლო {days} დღე"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "სტატისტიკის ჩატვირთვა ვერ მოხერხდა"),
@@ -366,8 +380,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ამ პერიოდში თქვენი არცერთი პოსტი არავის მიუღწევია."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("არ გამოგიწერენ"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron არავის ქვეყანას, ქალაქს ან სქესს არ აგროვებს, ამიტომ მათზე საჩვენებელი არაფერია."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "ქვეყნები ისაა, რაც ადამიანებმა თავიანთ პროფილზე აირჩიეს. Kyron არავის ქალაქს ან სქესს არ აგროვებს, ამიტომ მათთვის საჩვენებელი არაფერია."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("გახსნები"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "მიღწეულია {reach} · {likes} მოწონება · {replies} პასუხი"),
@@ -977,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("ქვეყანა"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

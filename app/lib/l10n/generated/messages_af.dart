@@ -256,6 +256,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Kon daardie foto nie neem nie.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Gewys op jou profiel en onder jou plasings."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Geen land pas by “{query}” nie."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Moenie 'n land wys nie"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Soek lande"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Gewys op jou profiel en onder jou plasings. Wanneer jy iemand se plasings sien, word jou land in hulle Insigte getel, net in groepe van vyf of meer en nooit by naam nie."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Uit jou foon se instellings"),
       "create": MessageLookupByLibrary.simpleMessage("Skep"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Skep rekening"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -314,6 +325,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Gesigopsporing is nie op hierdie toestel beskikbaar nie.",
       ),
       "feedTagDetail": (Object a0) => "Nog niks is onder #${a0} geplaas nie.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Volg {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Volgelinge"),
       "following": MessageLookupByLibrary.simpleMessage("Volgend"),
       "forgotPassword":
@@ -359,6 +371,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_chart": MessageLookupByLibrary.simpleMessage("Mense bereik per dag"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Gemeenskappe waarin hulle is"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Lande"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Uit die {known} mense bereik wat 'n land op hulle profiel het."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Laaste {days} dae"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("Insigte kon nie laai nie"),
@@ -374,8 +389,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Geen van jou plasings het in hierdie tydperk iemand bereik nie."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Volg jou nie"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron versamel niemand se land, stad of geslag nie, so daar is niks om daarvoor te wys nie."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Lande is dié wat mense op hulle profiele gekies het. Kyron versamel niemand se stad of geslag nie, so daar is niks om daarvoor te wys nie."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Oopmaak"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} bereik · {likes} hou van · {replies} antwoorde"),
@@ -1026,6 +1041,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profiel opgedateer"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Land"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Vertoonnaam"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Ligging"),

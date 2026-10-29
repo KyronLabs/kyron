@@ -1074,7 +1074,6 @@
   "ins_communities": "Fællesskaber de er i",
   "ins_active": "Hvornår de er der",
   "ins_active_note": "I din tidszone.",
-  "ins_not_collected": "Kyron indsamler ikke nogens land, by eller køn, så der er intet at vise for dem.",
   "ins_act_post": "Skriv et opslag",
   "ins_act_profile": "Rediger din profil",
   "ins_act_post_open": "Se opslaget",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Slå op i {name}",
   "ins_tip_post_in_community": "Mange af dem, der ser dine opslag, er i {name}. At slå op der sætter dig foran resten af det.",
   "ins_tip_best_time_t": "Slå op, når de er der",
-  "ins_tip_best_time": "Dit publikum er mest aktivt {when}. Et opslag lige før har folk, der tager imod det."
+  "ins_tip_best_time": "Dit publikum er mest aktivt {when}. Et opslag lige før har folk, der tager imod det.",
+  "profile_country": "Land",
+  "country_shown": "Vises på din profil og under dine opslag. Når du ser nogens opslag, tælles dit land med i deres Indsigt, kun i grupper på fem eller flere og aldrig med navn.",
+  "country_helper": "Vises på din profil og under dine opslag.",
+  "country_search": "Søg efter lande",
+  "country_suggested": "Fra din telefons indstillinger",
+  "country_none": "Vis intet land",
+  "country_no_match": "Intet land matcher “{query}”.",
+  "follow_author": "Følg {name}",
+  "ins_countries": "Lande",
+  "ins_countries_note": "Fra de {known} nåede personer, der har et land på deres profil.",
+  "ins_not_collected_city": "Landene er dem, folk har valgt på deres profiler. Kyron indsamler ingens by eller køn, så der er intet at vise for dem."
 }

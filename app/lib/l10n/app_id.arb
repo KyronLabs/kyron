@@ -1074,7 +1074,6 @@
   "ins_communities": "Komunitas tempat mereka berada",
   "ins_active": "Kapan mereka aktif",
   "ins_active_note": "Di zona waktu Anda.",
-  "ins_not_collected": "Kyron tidak mengumpulkan negara, kota, atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu.",
   "ins_act_post": "Tulis postingan",
   "ins_act_profile": "Edit profil Anda",
   "ins_act_post_open": "Lihat postingan",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Posting di {name}",
   "ins_tip_post_in_community": "Banyak orang yang melihat postingan Anda ada di {name}. Memposting di sana menempatkan Anda di depan anggota lainnya.",
   "ins_tip_best_time_t": "Posting saat mereka aktif",
-  "ins_tip_best_time": "Audiens Anda paling aktif pada {when}. Postingan yang dibuat sesaat sebelumnya punya orang yang menyambutnya."
+  "ins_tip_best_time": "Audiens Anda paling aktif pada {when}. Postingan yang dibuat sesaat sebelumnya punya orang yang menyambutnya.",
+  "profile_country": "Negara",
+  "country_shown": "Ditampilkan di profilmu dan di bawah postinganmu. Saat kamu melihat postingan seseorang, negaramu dihitung di Wawasan miliknya, hanya dalam kelompok lima orang atau lebih dan tidak pernah dengan nama.",
+  "country_helper": "Ditampilkan di profilmu dan di bawah postinganmu.",
+  "country_search": "Cari negara",
+  "country_suggested": "Dari pengaturan ponselmu",
+  "country_none": "Jangan tampilkan negara",
+  "country_no_match": "Tidak ada negara yang cocok dengan “{query}”.",
+  "follow_author": "Ikuti {name}",
+  "ins_countries": "Negara",
+  "ins_countries_note": "Dari {known} orang yang dijangkau yang memiliki negara di profilnya.",
+  "ins_not_collected_city": "Negara-negara ini adalah yang dipilih orang di profil mereka. Kyron tidak mengumpulkan kota atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu."
 }

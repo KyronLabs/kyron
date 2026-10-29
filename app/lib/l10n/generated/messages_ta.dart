@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும்."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” உடன் பொருந்தும் நாடு இல்லை."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("நாட்டைக் காட்ட வேண்டாம்"),
+      "country_search": MessageLookupByLibrary.simpleMessage("நாடுகளைத் தேடு"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும். நீங்கள் ஒருவரின் இடுகைகளைப் பார்க்கும்போது, உங்கள் நாடு அவரின் நுண்ணறிவுகளில் கணக்கிடப்படும், ஐந்து அல்லது அதற்கு மேற்பட்டோர் குழுக்களில் மட்டும், ஒருபோதும் பெயரால் அல்ல."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் ஃபோனின் அமைப்புகளிலிருந்து"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} ஐப் பின்தொடர்"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -350,6 +363,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ஒவ்வொரு நாளும் அடைந்த நபர்கள்"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("அவர்கள் உள்ள சமூகங்கள்"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("நாடுகள்"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "சென்றடைந்த, சுயவிவரத்தில் நாடு உள்ள {known} பேரிடமிருந்து."),
       "ins_days": MessageLookupByLibrary.simpleMessage("கடந்த {days} நாட்கள்"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("நுண்ணறிவுகளை ஏற்ற முடியவில்லை"),
@@ -367,8 +383,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "இந்தக் காலத்தில் உங்கள் எந்த இடுகையும் யாரையும் அடையவில்லை."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடராதவர்கள்"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron யாருடைய நாடு, நகரம் அல்லது பாலினத்தையும் சேகரிப்பதில்லை, எனவே அவை பற்றிக் காட்ட எதுவும் இல்லை."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "நாடுகள் என்பவை மக்கள் தங்கள் சுயவிவரங்களில் தேர்ந்தெடுத்தவை. Kyron யாருடைய நகரத்தையும் பாலினத்தையும் சேகரிப்பதில்லை, எனவே அவற்றுக்குக் காட்ட எதுவும் இல்லை."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("திறப்புகள்"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} அடைந்தது · {likes} விருப்பம் · {replies} பதில்"),
@@ -978,6 +994,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("நாடு"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

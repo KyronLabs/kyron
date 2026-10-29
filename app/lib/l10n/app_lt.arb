@@ -1074,7 +1074,6 @@
   "ins_communities": "Bendruomenės, kuriose jie yra",
   "ins_active": "Kada jie būna",
   "ins_active_note": "Jūsų laiko juostoje.",
-  "ins_not_collected": "Kyron nerenka niekieno šalies, miesto ar lyties, todėl apie juos nėra ką parodyti.",
   "ins_act_post": "Rašyti įrašą",
   "ins_act_profile": "Redaguoti profilį",
   "ins_act_post_open": "Žiūrėti įrašą",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Skelbkite bendruomenėje {name}",
   "ins_tip_post_in_community": "Daug jūsų įrašus matančių žmonių yra bendruomenėje {name}. Skelbdami ten pasirodysite ir likusiems.",
   "ins_tip_best_time_t": "Skelbkite, kai jie būna",
-  "ins_tip_best_time": "Jūsų auditorija aktyviausia {when}. Šiek tiek anksčiau paskelbtas įrašas turi kam jį pasitikti."
+  "ins_tip_best_time": "Jūsų auditorija aktyviausia {when}. Šiek tiek anksčiau paskelbtas įrašas turi kam jį pasitikti.",
+  "profile_country": "Šalis",
+  "country_shown": "Rodoma tavo profilyje ir po tavo įrašais. Kai matai kieno nors įrašus, tavo šalis įskaičiuojama į jo Įžvalgas, tik grupėmis po penkis ar daugiau ir niekada vardu.",
+  "country_helper": "Rodoma tavo profilyje ir po tavo įrašais.",
+  "country_search": "Ieškoti šalių",
+  "country_suggested": "Iš tavo telefono nustatymų",
+  "country_none": "Nerodyti šalies",
+  "country_no_match": "Nė viena šalis neatitinka „{query}“.",
+  "follow_author": "Sekti {name}",
+  "ins_countries": "Šalys",
+  "ins_countries_note": "Iš {known} pasiektų žmonių, kurių profilyje nurodyta šalis.",
+  "ins_not_collected_city": "Šalys yra tos, kurias žmonės pasirinko savo profiliuose. Kyron nerenka niekieno miesto ar lyties, todėl apie juos nėra ką parodyti."
 }

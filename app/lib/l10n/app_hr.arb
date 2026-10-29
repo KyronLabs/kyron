@@ -1074,7 +1074,6 @@
   "ins_communities": "Zajednice u kojima su",
   "ins_active": "Kada su aktivni",
   "ins_active_note": "U tvojoj vremenskoj zoni.",
-  "ins_not_collected": "Kyron ne prikuplja ničiju državu, grad ni spol, pa za njih nema što prikazati.",
   "ins_act_post": "Napiši objavu",
   "ins_act_profile": "Uredi profil",
   "ins_act_post_open": "Pogledaj objavu",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Objavi u {name}",
   "ins_tip_post_in_community": "Mnogi koji vide tvoje objave nalaze se u {name}. Objava ondje stavlja te i pred ostale.",
   "ins_tip_best_time_t": "Objavljuj kad su aktivni",
-  "ins_tip_best_time": "Tvoja je publika najaktivnija {when}. Objava malo prije toga ima tko je dočekati."
+  "ins_tip_best_time": "Tvoja je publika najaktivnija {when}. Objava malo prije toga ima tko je dočekati.",
+  "profile_country": "Država",
+  "country_shown": "Prikazuje se na tvom profilu i ispod tvojih objava. Kad vidiš nečije objave, tvoja se država broji u njegovim Uvidima, samo u skupinama od pet ili više i nikad po imenu.",
+  "country_helper": "Prikazuje se na tvom profilu i ispod tvojih objava.",
+  "country_search": "Pretraži države",
+  "country_suggested": "Iz postavki tvog telefona",
+  "country_none": "Ne prikazuj državu",
+  "country_no_match": "Nijedna država ne odgovara upitu „{query}”.",
+  "follow_author": "Prati {name}",
+  "ins_countries": "Države",
+  "ins_countries_note": "Od {known} dosegnutih osoba koje imaju državu na profilu.",
+  "ins_not_collected_city": "Države su one koje su ljudi odabrali na svojim profilima. Kyron ne prikuplja ničiji grad ni spol, pa za njih nema što prikazati."
 }

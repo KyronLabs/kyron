@@ -1074,7 +1074,6 @@
   "ins_communities": "参加しているコミュニティ",
   "ins_active": "アクティブな時間",
   "ins_active_note": "あなたのタイムゾーンで表示。",
-  "ins_not_collected": "Kyronは誰の国・都市・性別も収集していないため、それらについて表示できるものはありません。",
   "ins_act_post": "投稿する",
   "ins_act_profile": "プロフィールを編集",
   "ins_act_post_open": "投稿を見る",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "{name}に投稿",
   "ins_tip_post_in_community": "あなたの投稿を見る人の多くが{name}にいます。そこに投稿すれば、ほかのメンバーにも届きます。",
   "ins_tip_best_time_t": "みんながいる時間に投稿",
-  "ins_tip_best_time": "あなたのオーディエンスが最もアクティブなのは{when}です。その少し前に投稿すれば、見てくれる人がいます。"
+  "ins_tip_best_time": "あなたのオーディエンスが最もアクティブなのは{when}です。その少し前に投稿すれば、見てくれる人がいます。",
+  "profile_country": "国",
+  "country_shown": "プロフィールと投稿の下に表示されます。誰かの投稿を見ると、あなたの国はその人のインサイトで集計されます。5人以上のグループでのみ集計され、名前が出ることはありません。",
+  "country_helper": "プロフィールと投稿の下に表示されます。",
+  "country_search": "国を検索",
+  "country_suggested": "スマートフォンの設定から",
+  "country_none": "国を表示しない",
+  "country_no_match": "「{query}」に一致する国はありません。",
+  "follow_author": "{name}さんをフォロー",
+  "ins_countries": "国",
+  "ins_countries_note": "プロフィールに国を設定している、リーチした{known}人のデータです。",
+  "ins_not_collected_city": "国は各自がプロフィールで選んだものです。Kyronは誰の市区町村や性別も収集しないため、それらについて表示できるものはありません。"
 }

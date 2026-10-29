@@ -13,6 +13,7 @@ import '../providers/insights_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../widgets/country_sheet.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../widgets/section_tabs.dart';
@@ -353,6 +354,33 @@ class _Audience extends StatelessWidget {
             ),
           ],
           const SizedBox(height: SpacingTokens.space24),
+          _Heading(_t(context, 'ins_countries', 'Countries')),
+          if (report.countries.isEmpty)
+            _Quiet(_t(context, 'ins_group_small',
+                'No group is large enough to show yet.'))
+          else
+            for (final country in report.countries)
+              _Bar(
+                labelWidget: CountryLabel(
+                  country.code,
+                  style: const TextStyle(fontSize: TypographyTokens.fontSize2),
+                ),
+                label: country.code,
+                share: report.countriesKnown == 0
+                    ? 0
+                    : country.count / report.countriesKnown,
+              ),
+          // Said every time, as the ages are: a country is something people
+          // choose to give, and "60% Nigeria" of eleven is not of everyone.
+          _Quiet(
+            _t(
+              context,
+              'ins_countries_note',
+              'From the {known} people reached who have a country on their profile.',
+              {'known': report.countriesKnown},
+            ),
+          ),
+          const SizedBox(height: SpacingTokens.space24),
           _Heading(_t(context, 'ins_interests', 'Topics they follow')),
           _Groups(
             groups: report.interests,
@@ -382,8 +410,8 @@ class _Audience extends StatelessWidget {
           child: Text(
             _t(
               context,
-              'ins_not_collected',
-              'Kyron does not collect anyone\'s country, city or gender, so there is nothing to show for them.',
+              'ins_not_collected_city',
+              'Countries are the ones people chose on their profiles. Kyron does not collect anyone\'s city or gender, so there is nothing to show for them.',
             ),
             style: TextStyle(
               fontSize: TypographyTokens.fontSize1,
@@ -903,10 +931,13 @@ class _Count extends StatelessWidget {
 }
 
 class _Bar extends StatelessWidget {
-  const _Bar({required this.label, required this.share});
+  const _Bar({required this.label, required this.share, this.labelWidget});
 
   final String label;
   final double share;
+
+  /// Drawn in place of [label] when the label is more than words: a flag.
+  final Widget? labelWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -921,7 +952,7 @@ class _Bar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label),
+          labelWidget ?? Text(label),
           const SizedBox(height: SpacingTokens.space4),
           Row(
             children: [

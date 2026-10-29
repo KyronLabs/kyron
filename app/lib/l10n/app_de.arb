@@ -1074,7 +1074,6 @@
   "ins_communities": "Communitys, in denen sie sind",
   "ins_active": "Wann sie da sind",
   "ins_active_note": "In deiner Zeitzone.",
-  "ins_not_collected": "Kyron erfasst von niemandem Land, Stadt oder Geschlecht, deshalb gibt es dazu nichts zu zeigen.",
   "ins_act_post": "Beitrag schreiben",
   "ins_act_profile": "Profil bearbeiten",
   "ins_act_post_open": "Beitrag ansehen",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Poste in {name}",
   "ins_tip_post_in_community": "Viele, die deine Beiträge sehen, sind in {name}. Dort zu posten bringt dich vor den Rest davon.",
   "ins_tip_best_time_t": "Poste, wenn sie da sind",
-  "ins_tip_best_time": "Dein Publikum ist {when} am aktivsten. Ein Beitrag kurz davor hat Leute, die ihn empfangen."
+  "ins_tip_best_time": "Dein Publikum ist {when} am aktivsten. Ein Beitrag kurz davor hat Leute, die ihn empfangen.",
+  "profile_country": "Land",
+  "country_shown": "Wird auf deinem Profil und unter deinen Beiträgen angezeigt. Wenn du die Beiträge von jemandem siehst, wird dein Land in dessen Statistiken mitgezählt, nur in Gruppen ab fünf Personen und nie mit Namen.",
+  "country_helper": "Wird auf deinem Profil und unter deinen Beiträgen angezeigt.",
+  "country_search": "Länder suchen",
+  "country_suggested": "Aus den Einstellungen deines Handys",
+  "country_none": "Kein Land anzeigen",
+  "country_no_match": "Kein Land passt zu „{query}“.",
+  "follow_author": "{name} folgen",
+  "ins_countries": "Länder",
+  "ins_countries_note": "Von den {known} erreichten Personen, die ein Land in ihrem Profil haben.",
+  "ins_not_collected_city": "Die Länder sind die, die Menschen in ihrem Profil gewählt haben. Kyron erfasst von niemandem Stadt oder Geschlecht, daher gibt es dazu nichts anzuzeigen."
 }

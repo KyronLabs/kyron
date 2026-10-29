@@ -164,6 +164,20 @@ ranks as of now. A session start in the future is treated as now.
   yet; rows older than a few weeks no longer change a score (the count has
   halved away), so pruning them would be safe.
 
+## What a post says about its author
+
+Besides the name, handle, picture and badge, every post carries:
+
+- **`author.country`**, the ISO code from the author's profile, or null. The
+  app shows it as a flag and a name under the post. It is something the
+  author chose to show; see [INSIGHTS.md](INSIGHTS.md#where-countries-come-from).
+- **`followingAuthor`**, whether the reader follows the author, read in the
+  same query as the like and save flags (a filtered relation holding at most
+  one row, not a query per post). It drives the + on the author's picture.
+  A follow made from that button is kept on the phone
+  (`followOverridesProvider`) until the list is next read, so every post by
+  that author on screen stops offering at once.
+
 ## Testing it
 
 ```sh

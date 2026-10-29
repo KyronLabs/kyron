@@ -1074,7 +1074,6 @@
   "ins_communities": "Mga komunidad na kinabibilangan nila",
   "ins_active": "Kailan sila nandiyan",
   "ins_active_note": "Sa time zone mo.",
-  "ins_not_collected": "Hindi kinokolekta ng Kyron ang bansa, lungsod, o kasarian ng sinuman, kaya walang maipapakita tungkol dito.",
   "ins_act_post": "Sumulat ng post",
   "ins_act_profile": "I-edit ang profile mo",
   "ins_act_post_open": "Tingnan ang post",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Mag-post sa {name}",
   "ins_tip_post_in_community": "Marami sa mga nakakakita ng post mo ay nasa {name}. Ang pag-post doon ay maglalagay sa iyo sa harap ng iba pa.",
   "ins_tip_best_time_t": "Mag-post kapag nandiyan sila",
-  "ins_tip_best_time": "Pinakaaktibo ang audience mo sa {when}. May sasalubong sa post na inilagay bago iyon."
+  "ins_tip_best_time": "Pinakaaktibo ang audience mo sa {when}. May sasalubong sa post na inilagay bago iyon.",
+  "profile_country": "Bansa",
+  "country_shown": "Ipinapakita sa profile mo at sa ilalim ng mga post mo. Kapag nakita mo ang mga post ng isang tao, binibilang ang bansa mo sa kanyang Insights, sa mga grupo lang na lima o higit pa at hindi kailanman sa pangalan.",
+  "country_helper": "Ipinapakita sa profile mo at sa ilalim ng mga post mo.",
+  "country_search": "Maghanap ng bansa",
+  "country_suggested": "Mula sa settings ng phone mo",
+  "country_none": "Huwag magpakita ng bansa",
+  "country_no_match": "Walang bansang tumutugma sa “{query}”.",
+  "follow_author": "I-follow si {name}",
+  "ins_countries": "Mga bansa",
+  "ins_countries_note": "Mula sa {known} taong naabot na may bansa sa kanilang profile.",
+  "ins_not_collected_city": "Ang mga bansa ay ang mga pinili ng mga tao sa kanilang profile. Hindi kinokolekta ng Kyron ang lungsod o kasarian ng sinuman, kaya walang maipapakita para sa mga iyon."
 }

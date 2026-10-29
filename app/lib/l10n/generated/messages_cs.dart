@@ -249,6 +249,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Nepodařilo se pořídit tento snímek.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Zobrazuje se na tvém profilu a pod tvými příspěvky."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Žádná země neodpovídá „{query}“."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Nezobrazovat zemi"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Hledat země"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Zobrazuje se na tvém profilu a pod tvými příspěvky. Když vidíš něčí příspěvky, tvá země se započítá do jeho Statistik, jen ve skupinách po pěti a více lidech a nikdy jménem."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Z nastavení telefonu"),
       "create": MessageLookupByLibrary.simpleMessage("Vytvořit"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Vytvořit účet"),
       "createYourAccount":
@@ -309,6 +319,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Sledování tváře na tomto zařízení není dostupné.",
       ),
       "feedTagDetail": (Object a0) => "Pod #${a0} zatím nebylo nic zveřejněno.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Sledovat {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Sledující"),
       "following": MessageLookupByLibrary.simpleMessage("Sleduje"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -353,6 +364,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_chart": MessageLookupByLibrary.simpleMessage("Oslovení lidé za den"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Komunity, ve kterých jsou"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Země"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Z {known} oslovených lidí, kteří mají na profilu zemi."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Posledních {days} dní"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "Statistiky se nepodařilo načíst"),
@@ -370,8 +384,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Žádný váš příspěvek v tomto období nikoho neoslovil."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Nesledují vás"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron nesbírá nikomu zemi, město ani pohlaví, takže pro ně není co ukázat."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Země jsou ty, které si lidé zvolili na svých profilech. Kyron nesbírá ničí město ani pohlaví, takže pro ně není co zobrazit."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Otevření"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} oslovených · {likes} líbí se · {replies} odpovědí"),
@@ -1027,6 +1041,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil aktualizován"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Země"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage(
         "Zobrazované jméno",
       ),

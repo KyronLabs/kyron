@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Tiek rādīta tavā profilā un zem taviem ierakstiem."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Neviena valsts neatbilst “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Nerādīt valsti"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Meklēt valstis"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Tiek rādīta tavā profilā un zem taviem ierakstiem. Kad redzi kāda ierakstus, tava valsts tiek ieskaitīta viņa Ieskatos, tikai vismaz piecu cilvēku grupās un nekad ar vārdu."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("No tava tālruņa iestatījumiem"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Sekot {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +360,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sasniegtie cilvēki dienā"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Kopienas, kurās viņi ir"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Valstis"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "No {known} sasniegtajiem cilvēkiem, kuru profilā ir norādīta valsts."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Pēdējās {days} dienas"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("Ieskatus neizdevās ielādēt"),
@@ -365,8 +379,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Šajā periodā neviens jūsu ieraksts nevienu nesasniedza."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Jums neseko"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron nevāc neviena valsti, pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Valstis ir tās, ko cilvēki izvēlējušies savos profilos. Kyron nevāc neviena pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Atvēršanas"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "sasniegti {reach} · {likes} patīk · {replies} atbildes"),
@@ -976,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Valsts"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

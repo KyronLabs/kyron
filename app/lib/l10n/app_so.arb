@@ -1074,7 +1074,6 @@
   "ins_communities": "Bulshooyinka ay ku jiraan",
   "ins_active": "Goorta ay joogaan",
   "ins_active_note": "Waqtiga aaggaaga.",
-  "ins_not_collected": "Kyron ma ururiyo dalka, magaalada ama jinsiga cidna, markaa wax laga muujiyo ma jiraan.",
   "ins_act_post": "Qor qoraal",
   "ins_act_profile": "Wax ka beddel boggaaga",
   "ins_act_post_open": "Arag qoraalka",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Ku daabac {name}",
   "ins_tip_post_in_community": "Dad badan oo arka qoraalladaada ayaa ku jira {name}. Halkaas oo aad ku daabacdo waxay ku horgeysaa inta kale.",
   "ins_tip_best_time_t": "Daabac marka ay joogaan",
-  "ins_tip_best_time": "Daawadayaashaadu waxay ugu firfircoon yihiin {when}. Qoraal yar ka hor la dhigo wuxuu helaa dad soo dhaweeya."
+  "ins_tip_best_time": "Daawadayaashaadu waxay ugu firfircoon yihiin {when}. Qoraal yar ka hor la dhigo wuxuu helaa dad soo dhaweeya.",
+  "profile_country": "Dal",
+  "country_shown": "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada. Markaad aragto qoraallada qof, dalkaaga waxaa lagu tiriyaa Aragtiyadiisa, kaliya kooxo shan qof ama ka badan ah, waligiisna magacaaga lama sheego.",
+  "country_helper": "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada.",
+  "country_search": "Raadi dalal",
+  "country_suggested": "Laga soo qaaday dejinta taleefankaaga",
+  "country_none": "Ha muujin dal",
+  "country_no_match": "Ma jiro dal la mid ah “{query}”.",
+  "follow_author": "Raac {name}",
+  "ins_countries": "Dalal",
+  "ins_countries_note": "Laga soo xusay {known} qof oo la gaaray oo dal ku leh profile-kooda.",
+  "ins_not_collected_city": "Dalalku waa kuwa dadku ku doorteen profile-kooda. Kyron ma ururiyo magaalada ama jinsiga qofna, markaa wax loo muujiyo ma jiraan."
 }

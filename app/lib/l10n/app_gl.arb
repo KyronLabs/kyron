@@ -1074,7 +1074,6 @@
   "ins_communities": "Comunidades nas que están",
   "ins_active": "Cando están",
   "ins_active_note": "Na túa zona horaria.",
-  "ins_not_collected": "Kyron non recolle o país, a cidade nin o xénero de ninguén, así que non hai nada que amosar sobre eles.",
   "ins_act_post": "Escribe unha publicación",
   "ins_act_profile": "Edita o teu perfil",
   "ins_act_post_open": "Ver a publicación",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Publica en {name}",
   "ins_tip_post_in_community": "Moitas das persoas que ven as túas publicacións están en {name}. Publicar alí ponte diante do resto.",
   "ins_tip_best_time_t": "Publica cando están",
-  "ins_tip_best_time": "A túa audiencia está máis activa o {when}. Unha publicación feita xusto antes ten xente que a reciba."
+  "ins_tip_best_time": "A túa audiencia está máis activa o {when}. Unha publicación feita xusto antes ten xente que a reciba.",
+  "profile_country": "País",
+  "country_shown": "Móstrase no teu perfil e debaixo das túas publicacións. Cando ves as publicacións de alguén, o teu país cóntase nas súas Estatísticas, só en grupos de cinco ou máis e nunca polo nome.",
+  "country_helper": "Móstrase no teu perfil e debaixo das túas publicacións.",
+  "country_search": "Buscar países",
+  "country_suggested": "Da configuración do teu teléfono",
+  "country_none": "Non mostrar ningún país",
+  "country_no_match": "Ningún país coincide con «{query}».",
+  "follow_author": "Seguir a {name}",
+  "ins_countries": "Países",
+  "ins_countries_note": "Das {known} persoas alcanzadas que teñen un país no seu perfil.",
+  "ins_not_collected_city": "Os países son os que a xente escolleu no seu perfil. Kyron non recolle a cidade nin o xénero de ninguén, así que non hai nada que mostrar sobre eles."
 }

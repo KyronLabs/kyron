@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Näkyy profiilissasi ja julkaisujesi alla."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Mikään maa ei vastaa hakua ”{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Älä näytä maata"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Hae maita"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Näkyy profiilissasi ja julkaisujesi alla. Kun näet jonkun julkaisuja, maasi lasketaan mukaan hänen Tilastoihinsa, vain vähintään viiden hengen ryhminä eikä koskaan nimellä."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Puhelimesi asetuksista"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Seuraa: {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +360,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tavoitetut ihmiset päivittäin"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Yhteisöt, joissa he ovat"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Maat"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Niistä {known} tavoitetusta, joilla on profiilissaan maa."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Viimeiset {days} päivää"),
       "ins_failed":
@@ -367,8 +381,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mikään julkaisusi ei tavoittanut ketään tällä jaksolla."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Eivät seuraa sinua"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron ei kerää kenenkään maata, kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Maat ovat niitä, jotka ihmiset ovat valinneet profiiliinsa. Kyron ei kerää kenenkään kaupunkia tai sukupuolta, joten niistä ei ole mitään näytettävää."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Avaukset"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} tavoitettu · {likes} tykkäystä · {replies} vastausta"),
@@ -978,6 +992,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Maa"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

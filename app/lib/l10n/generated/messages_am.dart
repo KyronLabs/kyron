@@ -239,6 +239,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "ያ ፎቶ ማንበብ አልተቻለም።",
       ),
+      "country_helper":
+          MessageLookupByLibrary.simpleMessage("በመገለጫዎ እና ከልጥፎችዎ በታች ይታያል።"),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("ከ“{query}” ጋር የሚዛመድ አገር የለም።"),
+      "country_none": MessageLookupByLibrary.simpleMessage("አገር አታሳይ"),
+      "country_search": MessageLookupByLibrary.simpleMessage("አገሮችን ይፈልጉ"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "በመገለጫዎ እና ከልጥፎችዎ በታች ይታያል። የአንድን ሰው ልጥፎች ሲያዩ፣ አገርዎ በእነሱ ግንዛቤዎች ውስጥ ይቆጠራል፤ አምስት እና ከዚያ በላይ በሆኑ ቡድኖች ብቻ፣ በስም በፍጹም አይደለም።"),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("ከስልክዎ ቅንብሮች"),
       "create": MessageLookupByLibrary.simpleMessage("ፍጠር"),
       "createAccount": MessageLookupByLibrary.simpleMessage("መለያ ፍጠር"),
       "createYourAccount":
@@ -285,6 +294,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "በዚህ መሣሪያ የፊት መከታተያ አይገኝም።",
       ),
       "feedTagDetail": (Object a0) => "እስካሁን #${a0} በታች ምንም አልተቀረጠም።",
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name}ን ይከተሉ"),
       "followers": MessageLookupByLibrary.simpleMessage("ተከታታዮች"),
       "following": MessageLookupByLibrary.simpleMessage("ታከታይ"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("የይለፍ ቃልዎን ረሳታል?"),
@@ -317,6 +327,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "የልደት ቀን ከሰጡት {known} የደረሱ ሰዎች።"),
       "ins_chart": MessageLookupByLibrary.simpleMessage("በየቀኑ የደረሱ ሰዎች"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("ያሉባቸው ማህበረሰቦች"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("አገሮች"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "በመገለጫቸው ላይ አገር ካላቸው {known} የደረሱ ሰዎች።"),
       "ins_days": MessageLookupByLibrary.simpleMessage("ያለፉት {days} ቀናት"),
       "ins_failed": MessageLookupByLibrary.simpleMessage("ግንዛቤዎች ሊጫኑ አልቻሉም"),
       "ins_followers": MessageLookupByLibrary.simpleMessage("ተከታዮች"),
@@ -330,8 +343,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "በዚህ ጊዜ ውስጥ ከልጥፎችዎ አንዳቸውም ማንንም አልደረሱም።"),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("የማይከተሉዎት"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron የማንንም አገር፣ ከተማ ወይም ጾታ አይሰበስብም፣ ስለዚህ ለእነሱ የሚታይ ነገር የለም።"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "አገሮቹ ሰዎች በመገለጫቸው ላይ የመረጧቸው ናቸው። Kyron የማንንም ከተማ ወይም ጾታ አይሰበስብም፣ ስለዚህ ለእነሱ የሚታይ ነገር የለም።"),
       "ins_opens": MessageLookupByLibrary.simpleMessage("ክፍቶች"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} ደርሷል · {likes} መውደዶች · {replies} ምላሾች"),
@@ -893,6 +906,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("የግላዊነት ፖሊሲ"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("መገለጫው ተዘምኗል"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("ባዮ"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("አገር"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage("የማሳያ ስም"),
       "profile_location": MessageLookupByLibrary.simpleMessage("አካባቢ"),
       "profile_tap_to_change": MessageLookupByLibrary.simpleMessage("ለለወጥ ይጫኑ"),

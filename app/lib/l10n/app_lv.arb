@@ -1074,7 +1074,6 @@
   "ins_communities": "Kopienas, kurās viņi ir",
   "ins_active": "Kad viņi ir klāt",
   "ins_active_note": "Jūsu laika joslā.",
-  "ins_not_collected": "Kyron nevāc neviena valsti, pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt.",
   "ins_act_post": "Rakstīt ierakstu",
   "ins_act_profile": "Rediģēt profilu",
   "ins_act_post_open": "Skatīt ierakstu",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Publicējiet kopienā {name}",
   "ins_tip_post_in_community": "Daudzi, kas redz jūsu ierakstus, ir kopienā {name}. Publicējot tur, jūs nonāksiet arī pārējo priekšā.",
   "ins_tip_best_time_t": "Publicējiet, kad viņi ir klāt",
-  "ins_tip_best_time": "Jūsu auditorija ir visaktīvākā {when}. Ierakstam, kas publicēts nedaudz pirms tam, būs, kas to sagaida."
+  "ins_tip_best_time": "Jūsu auditorija ir visaktīvākā {when}. Ierakstam, kas publicēts nedaudz pirms tam, būs, kas to sagaida.",
+  "profile_country": "Valsts",
+  "country_shown": "Tiek rādīta tavā profilā un zem taviem ierakstiem. Kad redzi kāda ierakstus, tava valsts tiek ieskaitīta viņa Ieskatos, tikai vismaz piecu cilvēku grupās un nekad ar vārdu.",
+  "country_helper": "Tiek rādīta tavā profilā un zem taviem ierakstiem.",
+  "country_search": "Meklēt valstis",
+  "country_suggested": "No tava tālruņa iestatījumiem",
+  "country_none": "Nerādīt valsti",
+  "country_no_match": "Neviena valsts neatbilst “{query}”.",
+  "follow_author": "Sekot {name}",
+  "ins_countries": "Valstis",
+  "ins_countries_note": "No {known} sasniegtajiem cilvēkiem, kuru profilā ir norādīta valsts.",
+  "ins_not_collected_city": "Valstis ir tās, ko cilvēki izvēlējušies savos profilos. Kyron nevāc neviena pilsētu vai dzimumu, tāpēc par tiem nav ko parādīt."
 }

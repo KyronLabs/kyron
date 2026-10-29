@@ -1074,7 +1074,6 @@
   "ins_communities": "Comunități din care fac parte",
   "ins_active": "Când sunt prin preajmă",
   "ins_active_note": "În fusul tău orar.",
-  "ins_not_collected": "Kyron nu colectează țara, orașul sau genul nimănui, deci nu există nimic de arătat despre ele.",
   "ins_act_post": "Scrie o postare",
   "ins_act_profile": "Editează-ți profilul",
   "ins_act_post_open": "Vezi postarea",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Postează în {name}",
   "ins_tip_post_in_community": "Mulți dintre cei care îți văd postările sunt în {name}. Să postezi acolo te pune în fața celorlalți.",
   "ins_tip_best_time_t": "Postează când sunt prin preajmă",
-  "ins_tip_best_time": "Publicul tău e cel mai activ {when}. O postare chiar înainte are cine s-o întâmpine."
+  "ins_tip_best_time": "Publicul tău e cel mai activ {when}. O postare chiar înainte are cine s-o întâmpine.",
+  "profile_country": "Țară",
+  "country_shown": "Apare pe profilul tău și sub postările tale. Când vezi postările cuiva, țara ta este numărată în Statisticile acelei persoane, doar în grupuri de cinci sau mai mulți și niciodată după nume.",
+  "country_helper": "Apare pe profilul tău și sub postările tale.",
+  "country_search": "Caută țări",
+  "country_suggested": "Din setările telefonului tău",
+  "country_none": "Nu afișa nicio țară",
+  "country_no_match": "Nicio țară nu se potrivește cu „{query}”.",
+  "follow_author": "Urmărește-l pe {name}",
+  "ins_countries": "Țări",
+  "ins_countries_note": "Din cele {known} persoane atinse care au o țară pe profil.",
+  "ins_not_collected_city": "Țările sunt cele alese de oameni pe profilurile lor. Kyron nu colectează orașul sau genul nimănui, așa că nu este nimic de afișat pentru ele."
 }

@@ -8,6 +8,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../models/country.dart';
 import '../models/post_media.dart';
 import '../models/profile_model.dart';
 import '../providers/feed_provider.dart';
@@ -18,6 +19,7 @@ import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import '../models/conversation.dart';
 import '../providers/messages_provider.dart';
+import '../widgets/country_sheet.dart';
 import '../widgets/glass_icon_button.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
@@ -586,7 +588,9 @@ class _Header extends ConsumerWidget {
     final scheme = Theme.of(context).colorScheme;
     final handle = profile.handle;
     final bio = profile.bio?.trim();
-    final location = profile.location?.trim();
+    // The country picked from the list. The free-text location it replaced
+    // is not shown: it could say anything, and nobody can edit it any more.
+    final country = Countries.isCode(profile.country) ? profile.country : null;
     final website = profile.website?.trim();
 
     // The avatar and the action buttons live in _CoverAndHeader, which draws
@@ -650,15 +654,21 @@ class _Header extends ConsumerWidget {
               ),
             ),
           ],
-          if ((location != null && location.isNotEmpty) ||
-              (website != null && website.isNotEmpty)) ...[
+          if (country != null || (website != null && website.isNotEmpty)) ...[
             const SizedBox(height: SpacingTokens.space8),
             Wrap(
               spacing: SpacingTokens.space16,
               runSpacing: SpacingTokens.space4,
               children: [
-                if (location != null && location.isNotEmpty)
-                  _Meta(icon: Iconsax.location_copy, text: location),
+                if (country != null)
+                  CountryLabel(
+                    country,
+                    key: const ValueKey('profile-country'),
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize2,
+                      color: scheme.onSurface.withValues(alpha: 0.6),
+                    ),
+                  ),
                 if (website != null && website.isNotEmpty)
                   _Meta(icon: Iconsax.link_copy, text: website),
               ],

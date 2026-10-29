@@ -1074,7 +1074,6 @@
   "ins_communities": "Al'ummomin da suke ciki",
   "ins_active": "Lokacin da suke nan",
   "ins_active_note": "A yankin lokacinka.",
-  "ins_not_collected": "Kyron ba ya tattara ƙasa, birni ko jinsin kowa, don haka babu abin da za a nuna game da su.",
   "ins_act_post": "Rubuta wani abu",
   "ins_act_profile": "Gyara bayaninka",
   "ins_act_post_open": "Duba rubutun",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Wallafa a {name}",
   "ins_tip_post_in_community": "Yawancin mutanen da ke ganin rubutunka suna cikin {name}. Wallafawa a can yana sanya ka a gaban sauran.",
   "ins_tip_best_time_t": "Wallafa lokacin da suke nan",
-  "ins_tip_best_time": "Masu kallonka sun fi aiki a {when}. Rubutun da aka saka kafin haka kaɗan zai sami mutanen da za su tarbe shi."
+  "ins_tip_best_time": "Masu kallonka sun fi aiki a {when}. Rubutun da aka saka kafin haka kaɗan zai sami mutanen da za su tarbe shi.",
+  "profile_country": "Ƙasa",
+  "country_shown": "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka. Idan ka ga rubuce-rubucen wani, ana ƙirga ƙasarka a cikin Bayanansa, a rukunin mutum biyar ko fiye kawai, kuma ba da sunanka ba.",
+  "country_helper": "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka.",
+  "country_search": "Nemi ƙasashe",
+  "country_suggested": "Daga saitunan wayarka",
+  "country_none": "Kada a nuna ƙasa",
+  "country_no_match": "Babu ƙasar da ta dace da “{query}”.",
+  "follow_author": "Bi {name}",
+  "ins_countries": "Ƙasashe",
+  "ins_countries_note": "Daga cikin mutum {known} da aka kai wa waɗanda suke da ƙasa a bayanansu.",
+  "ins_not_collected_city": "Ƙasashen su ne waɗanda mutane suka zaɓa a bayanansu. Kyron ba ya tattara birnin kowa ko jinsinsa, don haka babu abin da za a nuna musu."
 }

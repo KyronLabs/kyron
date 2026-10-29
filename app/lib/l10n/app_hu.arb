@@ -1074,7 +1074,6 @@
   "ins_communities": "Közösségek, amelyekben benne vannak",
   "ins_active": "Mikor vannak jelen",
   "ins_active_note": "A saját időzónádban.",
-  "ins_not_collected": "A Kyron senkinek nem gyűjti az országát, városát vagy nemét, így ezekről nincs mit mutatni.",
   "ins_act_post": "Írj bejegyzést",
   "ins_act_profile": "Profil szerkesztése",
   "ins_act_post_open": "Bejegyzés megtekintése",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Posztolj itt: {name}",
   "ins_tip_post_in_community": "Sokan, akik látják a bejegyzéseidet, benne vannak ebben: {name}. Ha ott posztolsz, a többiek elé is kerülsz.",
   "ins_tip_best_time_t": "Posztolj, amikor jelen vannak",
-  "ins_tip_best_time": "A közönséged {when} a legaktívabb. Egy kicsivel előtte közzétett bejegyzést lesz, aki fogadja."
+  "ins_tip_best_time": "A közönséged {when} a legaktívabb. Egy kicsivel előtte közzétett bejegyzést lesz, aki fogadja.",
+  "profile_country": "Ország",
+  "country_shown": "Megjelenik a profilodon és a bejegyzéseid alatt. Ha látod valaki bejegyzéseit, az országodat beleszámolják az Elemzéseibe, csak legalább ötfős csoportokban, és soha nem a neveddel.",
+  "country_helper": "Megjelenik a profilodon és a bejegyzéseid alatt.",
+  "country_search": "Országok keresése",
+  "country_suggested": "A telefonod beállításaiból",
+  "country_none": "Ne jelenjen meg ország",
+  "country_no_match": "Egy ország sem felel meg ennek: „{query}”.",
+  "follow_author": "{name} követése",
+  "ins_countries": "Országok",
+  "ins_countries_note": "Az elért emberek közül {known}, akiknek van ország a profilján.",
+  "ins_not_collected_city": "Az országok azok, amelyeket az emberek a profiljukon választottak. A Kyron senkinek a városát vagy nemét nem gyűjti, így ezekről nincs mit megmutatni."
 }

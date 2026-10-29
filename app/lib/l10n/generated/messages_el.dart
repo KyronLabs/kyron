@@ -259,6 +259,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η λήψη αυτής της φωτογραφίας.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Εμφανίζεται στο προφίλ σου και κάτω από τις αναρτήσεις σου."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Καμία χώρα δεν ταιριάζει με «{query}»."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Να μην εμφανίζεται χώρα"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Αναζήτηση χωρών"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Εμφανίζεται στο προφίλ σου και κάτω από τις αναρτήσεις σου. Όταν βλέπεις τις αναρτήσεις κάποιου, η χώρα σου μετράει στα Στατιστικά του, μόνο σε ομάδες πέντε ή περισσότερων και ποτέ με όνομα."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Από τις ρυθμίσεις του τηλεφώνου σου"),
       "create": MessageLookupByLibrary.simpleMessage("Δημιουργία"),
       "createAccount": MessageLookupByLibrary.simpleMessage(
         "Δημιουργία λογαριασμού",
@@ -325,6 +336,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Δεν έχει αναρτηθεί τίποτα με #${a0} ακόμα.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Ακολούθησε {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Ακόλουθοι"),
       "following": MessageLookupByLibrary.simpleMessage("Ακολουθούμενοι"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -369,6 +382,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Άτομα που προσεγγίσατε ανά ημέρα"),
       "ins_communities": MessageLookupByLibrary.simpleMessage(
           "Κοινότητες στις οποίες ανήκουν"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Χώρες"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Από τα {known} άτομα που προσέγγισες και έχουν χώρα στο προφίλ τους."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Τελευταίες {days} ημέρες"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
@@ -387,8 +403,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Καμία ανάρτησή σας δεν προσέγγισε κανέναν σε αυτή την περίοδο."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Δεν σας ακολουθούν"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Το Kyron δεν συλλέγει τη χώρα, την πόλη ή το φύλο κανενός, οπότε δεν υπάρχει τίποτα να εμφανιστεί γι' αυτά."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Οι χώρες είναι αυτές που επέλεξαν οι άνθρωποι στα προφίλ τους. Το Kyron δεν συλλέγει την πόλη ή το φύλο κανενός, οπότε δεν υπάρχει κάτι να εμφανιστεί γι' αυτά."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Ανοίγματα"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} προσεγγίσεις · {likes} μου αρέσει · {replies} απαντήσεις"),
@@ -1094,6 +1110,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Το προφίλ ενημερώθηκε",
       ),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Βιογραφικό"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Χώρα"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage(
         "Εμφανιζόμενο όνομα",
       ),

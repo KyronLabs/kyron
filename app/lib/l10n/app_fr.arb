@@ -1074,7 +1074,6 @@
   "ins_communities": "Communautés dont ils font partie",
   "ins_active": "Quand ils sont là",
   "ins_active_note": "Dans votre fuseau horaire.",
-  "ins_not_collected": "Kyron ne collecte le pays, la ville ou le genre de personne, il n'y a donc rien à afficher pour ces données.",
   "ins_act_post": "Écrire une publication",
   "ins_act_profile": "Modifier votre profil",
   "ins_act_post_open": "Voir la publication",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Publiez dans {name}",
   "ins_tip_post_in_community": "Beaucoup de ceux qui voient vos publications sont dans {name}. Y publier vous met devant le reste de ses membres.",
   "ins_tip_best_time_t": "Publiez quand ils sont là",
-  "ins_tip_best_time": "Votre audience est la plus active le {when}. Une publication juste avant trouve du monde pour l'accueillir."
+  "ins_tip_best_time": "Votre audience est la plus active le {when}. Une publication juste avant trouve du monde pour l'accueillir.",
+  "profile_country": "Pays",
+  "country_shown": "Affiché sur ton profil et sous tes publications. Quand tu vois les publications de quelqu'un, ton pays est compté dans ses Statistiques, uniquement par groupes de cinq ou plus et jamais par ton nom.",
+  "country_helper": "Affiché sur ton profil et sous tes publications.",
+  "country_search": "Rechercher un pays",
+  "country_suggested": "D'après les réglages de ton téléphone",
+  "country_none": "N'afficher aucun pays",
+  "country_no_match": "Aucun pays ne correspond à « {query} ».",
+  "follow_author": "Suivre {name}",
+  "ins_countries": "Pays",
+  "ins_countries_note": "Parmi les {known} personnes atteintes qui ont un pays sur leur profil.",
+  "ins_not_collected_city": "Les pays sont ceux que les gens ont choisis sur leur profil. Kyron ne collecte la ville ou le genre de personne, il n'y a donc rien à afficher pour ces données."
 }

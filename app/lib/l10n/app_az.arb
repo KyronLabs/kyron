@@ -1074,7 +1074,6 @@
   "ins_communities": "Olduqları icmalar",
   "ins_active": "Nə vaxt aktiv olurlar",
   "ins_active_note": "Sizin saat qurşağınızda.",
-  "ins_not_collected": "Kyron heç kimin ölkəsini, şəhərini və ya cinsini toplamır, ona görə də bunlar üçün göstəriləcək heç nə yoxdur.",
   "ins_act_post": "Paylaşım yazın",
   "ins_act_profile": "Profilinizi redaktə edin",
   "ins_act_post_open": "Paylaşıma baxın",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "{name} icmasında paylaşın",
   "ins_tip_post_in_community": "Paylaşımlarınızı görənlərin çoxu {name} icmasındadır. Orada paylaşmaq sizi qalanlarının qarşısına çıxarır.",
   "ins_tip_best_time_t": "Onlar aktiv olanda paylaşın",
-  "ins_tip_best_time": "Auditoriyanız ən çox {when} aktivdir. Ondan bir az əvvəl paylaşılan paylaşımı qarşılayacaq insanlar olur."
+  "ins_tip_best_time": "Auditoriyanız ən çox {when} aktivdir. Ondan bir az əvvəl paylaşılan paylaşımı qarşılayacaq insanlar olur.",
+  "profile_country": "Ölkə",
+  "country_shown": "Profilində və paylaşımlarının altında göstərilir. Kiminsə paylaşımlarını görəndə ölkən onun Analitikasında sayılır, yalnız beş və daha çox nəfərlik qruplarda və heç vaxt adla yox.",
+  "country_helper": "Profilində və paylaşımlarının altında göstərilir.",
+  "country_search": "Ölkə axtar",
+  "country_suggested": "Telefonunun ayarlarından",
+  "country_none": "Ölkə göstərmə",
+  "country_no_match": "“{query}” ilə uyğun ölkə yoxdur.",
+  "follow_author": "{name} izlə",
+  "ins_countries": "Ölkələr",
+  "ins_countries_note": "Profilində ölkə olan {known} çatılmış nəfərdən.",
+  "ins_not_collected_city": "Ölkələr insanların profillərində seçdikləridir. Kyron heç kimin şəhərini və ya cinsini toplamır, ona görə də onlar üçün göstəriləcək bir şey yoxdur."
 }

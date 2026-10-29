@@ -48,6 +48,7 @@ class ProfileService {
     required String name,
     String? bio,
     String? location,
+    ({String? code})? country,
     String? website,
     String? coverUrl,
   }) async {
@@ -57,6 +58,8 @@ class ProfileService {
         'name': name,
         'bio': bio,
         if (location != null) 'location': location,
+        // Left out to leave it alone; a null code clears it.
+        if (country != null) 'country': country.code,
         if (website != null) 'website': website,
         if (coverUrl != null) 'coverUrl': coverUrl,
       },

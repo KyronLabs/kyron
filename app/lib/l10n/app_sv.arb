@@ -1074,7 +1074,6 @@
   "ins_communities": "Gemenskaper de är med i",
   "ins_active": "När de är här",
   "ins_active_note": "I din tidszon.",
-  "ins_not_collected": "Kyron samlar inte in någons land, stad eller kön, så det finns inget att visa om dem.",
   "ins_act_post": "Skriv ett inlägg",
   "ins_act_profile": "Redigera profilen",
   "ins_act_post_open": "Visa inlägget",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Lägg upp i {name}",
   "ins_tip_post_in_community": "Många av dem som ser dina inlägg finns i {name}. Att lägga upp där sätter dig framför resten.",
   "ins_tip_best_time_t": "Lägg upp när de är här",
-  "ins_tip_best_time": "Din publik är mest aktiv {when}. Ett inlägg strax innan har folk som tar emot det."
+  "ins_tip_best_time": "Din publik är mest aktiv {when}. Ett inlägg strax innan har folk som tar emot det.",
+  "profile_country": "Land",
+  "country_shown": "Visas på din profil och under dina inlägg. När du ser någons inlägg räknas ditt land med i deras Insikter, bara i grupper om fem eller fler och aldrig med namn.",
+  "country_helper": "Visas på din profil och under dina inlägg.",
+  "country_search": "Sök länder",
+  "country_suggested": "Från telefonens inställningar",
+  "country_none": "Visa inget land",
+  "country_no_match": "Inget land matchar ”{query}”.",
+  "follow_author": "Följ {name}",
+  "ins_countries": "Länder",
+  "ins_countries_note": "Av de {known} nådda personer som har ett land på sin profil.",
+  "ins_not_collected_city": "Länderna är de som folk har valt på sina profiler. Kyron samlar inte in någons stad eller kön, så det finns inget att visa för dem."
 }

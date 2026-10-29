@@ -56,6 +56,12 @@ Map<String, dynamic> _json({
               {'slug': 'cats', 'name': 'Cats of Kyron', 'count': 316},
             ]
           : [],
+      'countries': enough
+          ? [
+              {'code': 'NG', 'count': 30},
+            ]
+          : [],
+      'countriesKnown': enough ? 40 : 0,
       'activeHours': hours,
     },
     'topPosts': [
@@ -190,6 +196,15 @@ void main() {
     expect(find.text('Cats of Kyron · 316'), findsOneWidget);
     expect(find.text('When they are around'), findsOneWidget);
     expect(find.textContaining('does not collect'), findsOneWidget);
+    // Of the forty who gave a country, not of everybody reached.
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('🇳🇬  Nigeria'), findsOneWidget);
+    expect(find.text('75%'), findsOneWidget);
+    expect(find.textContaining('40 people reached who have a country'),
+        findsOneWidget);
   });
 
   testWidgets('a small audience is not described at all', (tester) async {

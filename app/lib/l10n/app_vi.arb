@@ -1074,7 +1074,6 @@
   "ins_communities": "Cộng đồng họ tham gia",
   "ins_active": "Khi nào họ có mặt",
   "ins_active_note": "Theo múi giờ của bạn.",
-  "ins_not_collected": "Kyron không thu thập quốc gia, thành phố hay giới tính của ai, nên không có gì để hiển thị về những mục đó.",
   "ins_act_post": "Viết bài",
   "ins_act_profile": "Chỉnh sửa hồ sơ",
   "ins_act_post_open": "Xem bài viết",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Đăng trong {name}",
   "ins_tip_post_in_community": "Nhiều người xem bài viết của bạn đang ở trong {name}. Đăng ở đó đưa bạn đến trước những người còn lại.",
   "ins_tip_best_time_t": "Đăng khi họ có mặt",
-  "ins_tip_best_time": "Khán giả của bạn hoạt động nhiều nhất vào {when}. Bài đăng ngay trước lúc đó sẽ có người đón nhận."
+  "ins_tip_best_time": "Khán giả của bạn hoạt động nhiều nhất vào {when}. Bài đăng ngay trước lúc đó sẽ có người đón nhận.",
+  "profile_country": "Quốc gia",
+  "country_shown": "Hiển thị trên trang cá nhân và dưới bài viết của bạn. Khi bạn xem bài viết của ai đó, quốc gia của bạn được tính trong Thông tin chi tiết của họ, chỉ theo nhóm từ năm người trở lên và không bao giờ kèm tên.",
+  "country_helper": "Hiển thị trên trang cá nhân và dưới bài viết của bạn.",
+  "country_search": "Tìm quốc gia",
+  "country_suggested": "Từ cài đặt điện thoại của bạn",
+  "country_none": "Không hiển thị quốc gia",
+  "country_no_match": "Không có quốc gia nào khớp với “{query}”.",
+  "follow_author": "Theo dõi {name}",
+  "ins_countries": "Quốc gia",
+  "ins_countries_note": "Từ {known} người được tiếp cận có quốc gia trên trang cá nhân.",
+  "ins_not_collected_city": "Quốc gia là những gì mọi người tự chọn trên trang cá nhân. Kyron không thu thập thành phố hay giới tính của bất kỳ ai, nên không có gì để hiển thị cho những mục đó."
 }

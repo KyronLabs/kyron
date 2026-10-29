@@ -1074,7 +1074,6 @@
   "ins_communities": "Komuniti tempat mereka berada",
   "ins_active": "Bila mereka ada",
   "ins_active_note": "Dalam zon waktu anda.",
-  "ins_not_collected": "Kyron tidak mengumpul negara, bandar atau jantina sesiapa, jadi tiada apa yang boleh ditunjukkan untuknya.",
   "ins_act_post": "Tulis siaran",
   "ins_act_profile": "Edit profil anda",
   "ins_act_post_open": "Lihat siaran",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Siarkan dalam {name}",
   "ins_tip_post_in_community": "Ramai yang melihat siaran anda berada dalam {name}. Menyiarkan di sana meletakkan anda di hadapan ahli yang lain.",
   "ins_tip_best_time_t": "Siarkan ketika mereka ada",
-  "ins_tip_best_time": "Penonton anda paling aktif pada {when}. Siaran yang dibuat sejurus sebelum itu ada orang untuk menyambutnya."
+  "ins_tip_best_time": "Penonton anda paling aktif pada {when}. Siaran yang dibuat sejurus sebelum itu ada orang untuk menyambutnya.",
+  "profile_country": "Negara",
+  "country_shown": "Dipaparkan pada profil anda dan di bawah siaran anda. Apabila anda melihat siaran seseorang, negara anda dikira dalam Cerapan mereka, hanya dalam kumpulan lima orang atau lebih dan tidak sekali-kali dengan nama.",
+  "country_helper": "Dipaparkan pada profil anda dan di bawah siaran anda.",
+  "country_search": "Cari negara",
+  "country_suggested": "Daripada tetapan telefon anda",
+  "country_none": "Jangan paparkan negara",
+  "country_no_match": "Tiada negara yang sepadan dengan “{query}”.",
+  "follow_author": "Ikuti {name}",
+  "ins_countries": "Negara",
+  "ins_countries_note": "Daripada {known} orang yang dicapai yang mempunyai negara pada profil mereka.",
+  "ins_not_collected_city": "Negara ialah yang dipilih orang pada profil mereka. Kyron tidak mengumpul bandar atau jantina sesiapa, jadi tiada apa-apa untuk dipaparkan bagi kedua-duanya."
 }

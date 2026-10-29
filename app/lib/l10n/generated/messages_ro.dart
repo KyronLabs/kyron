@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Apare pe profilul tău și sub postările tale."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Nicio țară nu se potrivește cu „{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Nu afișa nicio țară"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Caută țări"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Apare pe profilul tău și sub postările tale. Când vezi postările cuiva, țara ta este numărată în Statisticile acelei persoane, doar în grupuri de cinci sau mai mulți și niciodată după nume."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Din setările telefonului tău"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Urmărește-l pe {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -350,6 +363,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Persoane atinse pe zi"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Comunități din care fac parte"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Țări"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Din cele {known} persoane atinse care au o țară pe profil."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Ultimele {days} zile"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "Statisticile nu s-au putut încărca"),
@@ -367,8 +383,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Niciuna dintre postările tale n-a ajuns la nimeni în această perioadă."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Nu te urmăresc"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron nu colectează țara, orașul sau genul nimănui, deci nu există nimic de arătat despre ele."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Țările sunt cele alese de oameni pe profilurile lor. Kyron nu colectează orașul sau genul nimănui, așa că nu este nimic de afișat pentru ele."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Deschideri"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} atinse · {likes} aprecieri · {replies} răspunsuri"),
@@ -979,6 +995,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Țară"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

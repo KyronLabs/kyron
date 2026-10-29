@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပရိုဖိုင်နှင့် သင့်ပို့စ်များအောက်တွင် ပြသသည်။"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” နှင့် ကိုက်ညီသော နိုင်ငံ မရှိပါ။"),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("နိုင်ငံ မပြပါနှင့်"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("နိုင်ငံများ ရှာရန်"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "သင့်ပရိုဖိုင်နှင့် သင့်ပို့စ်များအောက်တွင် ပြသသည်။ တစ်စုံတစ်ယောက်၏ ပို့စ်များကို သင်မြင်သောအခါ သင့်နိုင်ငံကို သူတို့၏ အချက်အလက်များတွင် ရေတွက်သည်၊ ငါးဦးနှင့်အထက် အုပ်စုများဖြင့်သာဖြစ်ပြီး အမည်ဖြင့် ဘယ်တော့မှ မဟုတ်ပါ။"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("သင့်ဖုန်း၏ ဆက်တင်များမှ"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} ကို စောင့်ကြည့်ရန်"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -350,6 +364,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("နေ့စဉ် ရောက်ရှိခဲ့သူများ"),
       "ins_communities": MessageLookupByLibrary.simpleMessage(
           "သူတို့ပါဝင်သော အသိုင်းအဝိုင်းများ"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("နိုင်ငံများ"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "ပရိုဖိုင်တွင် နိုင်ငံပါရှိသော ရောက်ရှိခဲ့သည့် လူ {known} ဦးထံမှ။"),
       "ins_days": MessageLookupByLibrary.simpleMessage("နောက်ဆုံး {days} ရက်"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "ထိုးထွင်းသိမြင်မှုများကို ဖွင့်၍မရပါ"),
@@ -367,8 +384,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ဤကာလအတွင်း သင့်ပို့စ်တစ်ခုမှ မည်သူ့ထံမျှ မရောက်ခဲ့ပါ။"),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("သင့်ကို မလိုက်သူများ"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron သည် မည်သူ၏ နိုင်ငံ၊ မြို့ သို့မဟုတ် ကျား/မ ကိုမျှ မစုဆောင်းသဖြင့် ၎င်းတို့အတွက် ပြစရာ မရှိပါ။"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "နိုင်ငံများသည် လူများ ၎င်းတို့၏ ပရိုဖိုင်တွင် ရွေးချယ်ထားသည်များ ဖြစ်သည်။ Kyron သည် မည်သူ၏ မြို့ သို့မဟုတ် လိင်ကိုမျှ မစုဆောင်းသဖြင့် ၎င်းတို့အတွက် ပြစရာ မရှိပါ။"),
       "ins_opens": MessageLookupByLibrary.simpleMessage("ဖွင့်ကြည့်မှုများ"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} ရောက် · နှစ်သက်မှု {likes} · ပြန်စာ {replies}"),
@@ -980,6 +997,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("နိုင်ငံ"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

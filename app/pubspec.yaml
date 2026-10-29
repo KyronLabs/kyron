@@ -99,6 +99,9 @@ flutter:
     # Inter's licence (SIL OFL 1.1), which has to travel with the font. Read
     # at start-up into the app's licences page.
     - assets/fonts/Inter-OFL.txt
+    # Country names, one file per language, from Unicode CLDR. See
+    # scripts/generate-countries.py.
+    - assets/countries/
 
   # The design system's theme asks for "Inter" by name. This block used to sit
   # at the top level of this file, outside `flutter:`, where Flutter does not

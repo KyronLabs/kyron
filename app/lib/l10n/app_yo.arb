@@ -1074,7 +1074,6 @@
   "ins_communities": "Àwọn àwùjọ tí wọ́n wà",
   "ins_active": "Ìgbà tí wọ́n wà níbẹ̀",
   "ins_active_note": "Ní àgbègbè àkókò rẹ.",
-  "ins_not_collected": "Kyron kì í gba orílẹ̀-èdè, ìlú tàbí akọ-tàbí-abo ẹnikẹ́ni, nítorí náà kò sí ohun tí a lè fi hàn nípa wọn.",
   "ins_act_post": "Kọ ìfiránṣẹ́",
   "ins_act_profile": "Ṣàtúnṣe ìwé àkọsílẹ̀ rẹ",
   "ins_act_post_open": "Wo ìfiránṣẹ́ náà",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Fi ránṣẹ́ sí {name}",
   "ins_tip_post_in_community": "Ọ̀pọ̀ nínú àwọn tó ń rí àwọn ìfiránṣẹ́ rẹ wà ní {name}. Fífi ránṣẹ́ síbẹ̀ ń gbé ọ síwájú àwọn yòókù.",
   "ins_tip_best_time_t": "Fi ránṣẹ́ nígbà tí wọ́n wà",
-  "ins_tip_best_time": "Àwọn olùwò rẹ ń ṣiṣẹ́ jù lọ ní {when}. Ìfiránṣẹ́ tí a fi sí díẹ̀ ṣáájú àkókò náà yóò rí àwọn tí yóò gbà á."
+  "ins_tip_best_time": "Àwọn olùwò rẹ ń ṣiṣẹ́ jù lọ ní {when}. Ìfiránṣẹ́ tí a fi sí díẹ̀ ṣáájú àkókò náà yóò rí àwọn tí yóò gbà á.",
+  "profile_country": "Orílẹ̀-èdè",
+  "country_shown": "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ. Nígbà tí o bá rí àwọn ìfiránṣẹ́ ẹnìkan, a máa ka orílẹ̀-èdè rẹ nínú Àgbéyẹ̀wò rẹ̀, ní àwùjọ ènìyàn márùn-ún tàbí jù bẹ́ẹ̀ lọ nìkan, a kì í sì í dárúkọ rẹ.",
+  "country_helper": "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ.",
+  "country_search": "Wá àwọn orílẹ̀-èdè",
+  "country_suggested": "Láti inú ètò fóònù rẹ",
+  "country_none": "Má ṣe fi orílẹ̀-èdè hàn",
+  "country_no_match": "Kò sí orílẹ̀-èdè tí ó bá “{query}” mu.",
+  "follow_author": "Tẹ̀lé {name}",
+  "ins_countries": "Àwọn orílẹ̀-èdè",
+  "ins_countries_note": "Láti inú ènìyàn {known} tí a dé ọ̀dọ̀ wọn tí wọ́n ní orílẹ̀-èdè lórí profaili wọn.",
+  "ins_not_collected_city": "Àwọn orílẹ̀-èdè náà ni èyí tí àwọn ènìyàn yàn lórí profaili wọn. Kyron kì í gba ìlú tàbí akọ-abo ẹnikẹ́ni, nítorí náà kò sí nǹkan láti fi hàn fún wọn."
 }

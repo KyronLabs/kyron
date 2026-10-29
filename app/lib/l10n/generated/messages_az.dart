@@ -254,6 +254,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Bu şəkli çəkmək mümkün olmadı.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Profilində və paylaşımlarının altında göstərilir."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” ilə uyğun ölkə yoxdur."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ölkə göstərmə"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Ölkə axtar"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Profilində və paylaşımlarının altında göstərilir. Kiminsə paylaşımlarını görəndə ölkən onun Analitikasında sayılır, yalnız beş və daha çox nəfərlik qruplarda və heç vaxt adla yox."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Telefonunun ayarlarından"),
       "create": MessageLookupByLibrary.simpleMessage("Yarat"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Hesab yaradın"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -315,6 +325,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "#${a0} altında hələ heç nə paylaşılmayıb.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name} izlə"),
       "followers": MessageLookupByLibrary.simpleMessage("İzləyicilər"),
       "following": MessageLookupByLibrary.simpleMessage("İzlədiyiniz"),
       "forgotPassword":
@@ -359,6 +370,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Hər gün çatılan insanlar"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Olduqları icmalar"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Ölkələr"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Profilində ölkə olan {known} çatılmış nəfərdən."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Son {days} gün"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("Statistika yüklənmədi"),
@@ -375,8 +389,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Bu dövrdə paylaşımlarınızın heç biri heç kimə çatmayıb."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Sizi izləmir"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron heç kimin ölkəsini, şəhərini və ya cinsini toplamır, ona görə də bunlar üçün göstəriləcək heç nə yoxdur."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Ölkələr insanların profillərində seçdikləridir. Kyron heç kimin şəhərini və ya cinsini toplamır, ona görə də onlar üçün göstəriləcək bir şey yoxdur."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Açılışlar"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} çatılıb · {likes} bəyənmə · {replies} cavab"),
@@ -1038,6 +1052,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil yeniləndi"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Haqqında"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ölkə"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Görünən ad"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Yer"),

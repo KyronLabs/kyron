@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Ditampilkan di profilmu dan di bawah postinganmu."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada negara yang cocok dengan “{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Jangan tampilkan negara"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Cari negara"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Ditampilkan di profilmu dan di bawah postinganmu. Saat kamu melihat postingan seseorang, negaramu dihitung di Wawasan miliknya, hanya dalam kelompok lima orang atau lebih dan tidak pernah dengan nama."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Dari pengaturan ponselmu"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Ikuti {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +361,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Orang yang dijangkau per hari"),
       "ins_communities": MessageLookupByLibrary.simpleMessage(
           "Komunitas tempat mereka berada"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Negara"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Dari {known} orang yang dijangkau yang memiliki negara di profilnya."),
       "ins_days": MessageLookupByLibrary.simpleMessage("{days} hari terakhir"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("Wawasan tidak dapat dimuat"),
@@ -366,8 +381,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tidak ada postingan Anda yang menjangkau siapa pun pada periode ini."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Tidak mengikuti Anda"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron tidak mengumpulkan negara, kota, atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Negara-negara ini adalah yang dipilih orang di profil mereka. Kyron tidak mengumpulkan kota atau gender siapa pun, jadi tidak ada yang bisa ditampilkan untuk itu."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Dibuka"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} dijangkau · {likes} suka · {replies} balasan"),
@@ -976,6 +991,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Negara"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

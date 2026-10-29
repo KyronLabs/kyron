@@ -18,6 +18,10 @@ class ProfileModel {
   final String? coverUrl;
   final String? bio;
   final String? location;
+
+  /// ISO 3166-1 code, or null. Shown in place of [location], which was
+  /// free text and is no longer edited.
+  final String? country;
   final String? website;
   final int followers;
   final int following;
@@ -40,6 +44,7 @@ class ProfileModel {
     this.coverUrl,
     this.bio,
     this.location,
+    this.country,
     this.website,
     required this.followers,
     required this.following,
@@ -66,6 +71,7 @@ class ProfileModel {
       coverUrl: profile['coverUrl'] as String?,
       bio: profile['bio'] as String?,
       location: profile['location'] as String?,
+      country: profile['country'] as String?,
       website: profile['website'] as String?,
       followers: _int(stats['followers']),
       following: _int(stats['following']),
@@ -89,6 +95,7 @@ class ProfileModel {
         coverUrl: user.coverUrl,
         bio: user.bio,
         location: user.location,
+        country: user.country,
         website: user.website,
         followers: user.followers,
         following: user.following,
@@ -111,6 +118,7 @@ class ProfileModel {
       coverUrl: coverUrl,
       bio: bio,
       location: location,
+      country: country,
       website: website,
       followers: followers ?? this.followers,
       following: following,

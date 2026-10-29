@@ -1074,7 +1074,6 @@
   "ins_communities": "Obodo ha nọ na ya",
   "ins_active": "Mgbe ha na-anọ",
   "ins_active_note": "N'oge mpaghara gị.",
-  "ins_not_collected": "Kyron anaghị anakọta obodo, obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ dịghị ihe a ga-egosi maka ha.",
   "ins_act_post": "Dee post",
   "ins_act_profile": "Dezie profaịlụ gị",
   "ins_act_post_open": "Hụ post ahụ",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Biputa na {name}",
   "ins_tip_post_in_community": "Ọtụtụ ndị na-ahụ post gị nọ na {name}. Ibipụta ebe ahụ na-etinye gị n'ihu ndị fọdụrụ.",
   "ins_tip_best_time_t": "Biputa mgbe ha nọ",
-  "ins_tip_best_time": "Ndị na-ekiri gị na-arụsi ọrụ ike na {when}. Post e tinyere obere tupu mgbe ahụ ga-enwe ndị ga-anabata ya."
+  "ins_tip_best_time": "Ndị na-ekiri gị na-arụsi ọrụ ike na {when}. Post e tinyere obere tupu mgbe ahụ ga-enwe ndị ga-anabata ya.",
+  "profile_country": "Obodo",
+  "country_shown": "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta. Mgbe ị hụrụ ihe mmadụ zipụtara, a na-agụ obodo gị n'Nghọta ya, naanị n'otu mmadụ ise ma ọ bụ karịa, ọ dịghịkwa mgbe a na-akpọ aha gị.",
+  "country_helper": "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta.",
+  "country_search": "Chọọ obodo",
+  "country_suggested": "Site na ntọala ekwentị gị",
+  "country_none": "Egosila obodo ọ bụla",
+  "country_no_match": "Ọ nweghị obodo dabara na “{query}”.",
+  "follow_author": "Soro {name}",
+  "ins_countries": "Obodo dị iche iche",
+  "ins_countries_note": "Site n'ime mmadụ {known} e ruru bụ ndị nwere obodo na profaịlụ ha.",
+  "ins_not_collected_city": "Obodo ndị a bụ ndị mmadụ họọrọ na profaịlụ ha. Kyron anaghị anakọta obodo mepere emepe ma ọ bụ okike onye ọ bụla, ya mere ọ nweghị ihe a ga-egosi maka ha."
 }

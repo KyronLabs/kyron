@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Hakuna nchi inayolingana na “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Usionyeshe nchi"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Tafuta nchi"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Inaonyeshwa kwenye wasifu wako na chini ya machapisho yako. Unapoona machapisho ya mtu, nchi yako huhesabiwa katika Maarifa yake, kwa makundi ya watu watano au zaidi tu na kamwe si kwa jina."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Kutoka kwenye mipangilio ya simu yako"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Mfuate {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -347,6 +358,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_chart":
           MessageLookupByLibrary.simpleMessage("Watu uliowafikia kila siku"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("Jumuiya walimo"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Nchi"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Kutoka kwa watu {known} waliofikiwa ambao wana nchi kwenye wasifu wao."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Siku {days} zilizopita"),
       "ins_failed":
@@ -363,8 +377,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Hakuna chapisho lako lililomfikia mtu katika kipindi hiki."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Hawakufuati"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron haikusanyi nchi, mji wala jinsia ya mtu yeyote, kwa hiyo hakuna cha kuonyesha kuhusu hayo."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Nchi ni zile ambazo watu walichagua kwenye wasifu wao. Kyron haikusanyi jiji wala jinsia ya mtu yeyote, kwa hivyo hakuna cha kuonyesha kuhusu hayo."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Mafunguo"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "wamefikiwa {reach} · vipendwa {likes} · majibu {replies}"),
@@ -973,6 +987,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Nchi"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

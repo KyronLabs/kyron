@@ -1074,7 +1074,6 @@
   "ins_communities": "Bulundukları topluluklar",
   "ins_active": "Ne zaman buradalar",
   "ins_active_note": "Kendi saat diliminde.",
-  "ins_not_collected": "Kyron kimsenin ülkesini, şehrini ya da cinsiyetini toplamaz, bu yüzden bunlarla ilgili gösterilecek bir şey yok.",
   "ins_act_post": "Gönderi yaz",
   "ins_act_profile": "Profilini düzenle",
   "ins_act_post_open": "Gönderiyi gör",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "{name} topluluğunda paylaş",
   "ins_tip_post_in_community": "Gönderilerini görenlerin çoğu {name} topluluğunda. Orada paylaşmak seni geri kalanların da önüne çıkarır.",
   "ins_tip_best_time_t": "Buradayken paylaş",
-  "ins_tip_best_time": "Kitlen en çok {when} aktif. Hemen öncesinde yapılan bir gönderiyi karşılayacak kişiler olur."
+  "ins_tip_best_time": "Kitlen en çok {when} aktif. Hemen öncesinde yapılan bir gönderiyi karşılayacak kişiler olur.",
+  "profile_country": "Ülke",
+  "country_shown": "Profilinde ve gönderilerinin altında gösterilir. Birinin gönderilerini gördüğünde ülken onun İstatistiklerinde sayılır, yalnızca beş ve daha fazla kişilik gruplarda ve asla adınla değil.",
+  "country_helper": "Profilinde ve gönderilerinin altında gösterilir.",
+  "country_search": "Ülke ara",
+  "country_suggested": "Telefonunun ayarlarından",
+  "country_none": "Ülke gösterme",
+  "country_no_match": "“{query}” ile eşleşen ülke yok.",
+  "follow_author": "{name} adlı kişiyi takip et",
+  "ins_countries": "Ülkeler",
+  "ins_countries_note": "Profilinde ülke olan {known} erişilen kişiden.",
+  "ins_not_collected_city": "Ülkeler, insanların profillerinde seçtikleridir. Kyron kimsenin şehrini veya cinsiyetini toplamaz, bu yüzden bunlar için gösterilecek bir şey yok."
 }

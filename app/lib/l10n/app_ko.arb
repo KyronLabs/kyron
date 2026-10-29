@@ -1074,7 +1074,6 @@
   "ins_communities": "속한 커뮤니티",
   "ins_active": "활동하는 시간",
   "ins_active_note": "내 시간대 기준입니다.",
-  "ins_not_collected": "Kyron은 누구의 국가, 도시, 성별도 수집하지 않으므로 이에 대해 보여 줄 것이 없습니다.",
   "ins_act_post": "게시물 쓰기",
   "ins_act_profile": "프로필 수정",
   "ins_act_post_open": "게시물 보기",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "{name}에 게시하기",
   "ins_tip_post_in_community": "내 게시물을 보는 사람 중 다수가 {name}에 있습니다. 그곳에 게시하면 나머지 멤버에게도 보입니다.",
   "ins_tip_best_time_t": "사람들이 있을 때 게시하기",
-  "ins_tip_best_time": "내 오디언스는 {when}에 가장 활발합니다. 그 직전에 올린 게시물은 맞아 줄 사람이 있습니다."
+  "ins_tip_best_time": "내 오디언스는 {when}에 가장 활발합니다. 그 직전에 올린 게시물은 맞아 줄 사람이 있습니다.",
+  "profile_country": "국가",
+  "country_shown": "프로필과 게시물 아래에 표시됩니다. 다른 사람의 게시물을 보면 회원님의 국가가 그 사람의 인사이트에 집계되며, 5명 이상의 그룹으로만 집계되고 이름은 절대 표시되지 않습니다.",
+  "country_helper": "프로필과 게시물 아래에 표시됩니다.",
+  "country_search": "국가 검색",
+  "country_suggested": "휴대폰 설정 기준",
+  "country_none": "국가 표시 안 함",
+  "country_no_match": "“{query}”와(과) 일치하는 국가가 없습니다.",
+  "follow_author": "{name}님 팔로우",
+  "ins_countries": "국가",
+  "ins_countries_note": "프로필에 국가를 설정한, 도달한 {known}명 기준입니다.",
+  "ins_not_collected_city": "국가는 사람들이 프로필에서 직접 선택한 것입니다. Kyron은 누구의 도시나 성별도 수집하지 않으므로 이에 대해 보여 줄 내용이 없습니다."
 }

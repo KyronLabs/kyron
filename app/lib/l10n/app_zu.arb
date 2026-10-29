@@ -1074,7 +1074,6 @@
   "ins_communities": "Imiphakathi abakuyo",
   "ins_active": "Bakhona nini",
   "ins_active_note": "Endaweni yakho yesikhathi.",
-  "ins_not_collected": "I-Kyron ayiqoqi izwe, idolobha noma ubulili bomuntu, ngakho akukho okungaboniswa ngakho.",
   "ins_act_post": "Bhala okuthunyelwe",
   "ins_act_profile": "Hlela iphrofayela yakho",
   "ins_act_post_open": "Buka okuthunyelwe",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Thumela ku-{name}",
   "ins_tip_post_in_community": "Abaningi ababona okuthunyelwe kwakho baku-{name}. Ukuthumela lapho kukubeka phambi kwabanye.",
   "ins_tip_best_time_t": "Thumela uma bekhona",
-  "ins_tip_best_time": "Izethameli zakho zisebenza kakhulu ngo-{when}. Okuthunyelwe ngaphambi kwalokho kancane kuba nabantu bokukwamukela."
+  "ins_tip_best_time": "Izethameli zakho zisebenza kakhulu ngo-{when}. Okuthunyelwe ngaphambi kwalokho kancane kuba nabantu bokukwamukela.",
+  "profile_country": "Izwe",
+  "country_shown": "Liboniswa kuphrofayela yakho nangaphansi kokuthunyelwe kwakho. Uma ubona okuthunyelwe komuntu, izwe lakho libalwa ku-Ukuqonda kwakhe, ngamaqembu abantu abahlanu noma ngaphezulu kuphela, futhi neze ngegama.",
+  "country_helper": "Liboniswa kuphrofayela yakho nangaphansi kokuthunyelwe kwakho.",
+  "country_search": "Sesha amazwe",
+  "country_suggested": "Kusuka kuzilungiselelo zefoni yakho",
+  "country_none": "Ungabonisi izwe",
+  "country_no_match": "Alikho izwe elifana no-“{query}”.",
+  "follow_author": "Landela u-{name}",
+  "ins_countries": "Amazwe",
+  "ins_countries_note": "Kubantu abangu-{known} abafinyelelwe abanezwe kuphrofayela yabo.",
+  "ins_not_collected_city": "Amazwe yilawo abantu abawakhethe kumaphrofayela abo. I-Kyron ayiqoqi idolobha noma ubulili bomuntu, ngakho akukho okungaboniswa ngakho."
 }

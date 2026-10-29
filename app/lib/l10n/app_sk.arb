@@ -1074,7 +1074,6 @@
   "ins_communities": "Komunity, v ktorých sú",
   "ins_active": "Kedy sú aktívni",
   "ins_active_note": "Vo vašom časovom pásme.",
-  "ins_not_collected": "Kyron nezbiera nikomu krajinu, mesto ani pohlavie, takže pre ne nie je čo ukázať.",
   "ins_act_post": "Napísať príspevok",
   "ins_act_profile": "Upraviť profil",
   "ins_act_post_open": "Zobraziť príspevok",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Prispejte do {name}",
   "ins_tip_post_in_community": "Mnohí ľudia, ktorí vidia vaše príspevky, sú v {name}. Príspevok tam vás ukáže aj ostatným.",
   "ins_tip_best_time_t": "Prispievajte, keď sú aktívni",
-  "ins_tip_best_time": "Vaše publikum je najaktívnejšie v {when}. Príspevok zverejnený tesne predtým na nich narazí."
+  "ins_tip_best_time": "Vaše publikum je najaktívnejšie v {when}. Príspevok zverejnený tesne predtým na nich narazí.",
+  "profile_country": "Krajina",
+  "country_shown": "Zobrazuje sa na tvojom profile a pod tvojimi príspevkami. Keď vidíš niečie príspevky, tvoja krajina sa započíta do jeho Štatistík, len v skupinách po piatich a viac ľuďoch a nikdy menom.",
+  "country_helper": "Zobrazuje sa na tvojom profile a pod tvojimi príspevkami.",
+  "country_search": "Hľadať krajiny",
+  "country_suggested": "Z nastavení telefónu",
+  "country_none": "Nezobrazovať krajinu",
+  "country_no_match": "Žiadna krajina nezodpovedá „{query}“.",
+  "follow_author": "Sledovať {name}",
+  "ins_countries": "Krajiny",
+  "ins_countries_note": "Z {known} oslovených ľudí, ktorí majú na profile krajinu.",
+  "ins_not_collected_city": "Krajiny sú tie, ktoré si ľudia zvolili na svojich profiloch. Kyron nezbiera ničie mesto ani pohlavie, takže pre ne nie je čo zobraziť."
 }

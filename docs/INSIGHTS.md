@@ -45,15 +45,43 @@ What it shows above the floors:
 
 - **Ages**, in bands, from the people reached who gave a birthday -- and it says
   how many that was, since it is rarely everyone.
+- **Countries**, the five largest, from the people reached who have a country
+  on their profile -- and, as with ages, how many that was.
 - **Topics they follow** and **communities they are in**, the five largest.
 - **When they are around**: the three busiest three-hour stretches of the week,
   from when they were last on your posts, turned into your own time zone on the
   phone.
 
-**Countries, cities and genders are not shown, because Kyron does not collect
-them.** Threads shows all three; it knows them from your phone and your
-account. A guess presented as a measurement would be worse than the gap, and
-the screen says so.
+**Cities and genders are not shown, because Kyron does not collect them.**
+Threads shows both; it knows them from your phone and your account. A guess
+presented as a measurement would be worse than the gap, and the screen says
+so.
+
+## Where countries come from
+
+From the country on each person's profile (`UserProfile.country`, an ISO
+3166-1 code, plus XK for Kosovo), picked from a list on Edit profile and at
+sign-up. Not typed: "Lagos", "lagos nigeria" and "9ja" are one place and three
+strings, and only a list can be counted. Not from IP addresses either, which
+is how Meta does it: an address is personal data under the GDPR, it is wrong
+behind every VPN and most mobile carriers, and a country somebody chose is one
+they know is shown.
+
+The cost is coverage. Only the people who picked a country are counted, which
+is why the screen says how many that was, and why sign-up asks rather than
+leaving it to Edit profile. The list's first rows are the countries the phone's
+own settings point at (`en_NG` says Nigeria), as a suggestion, never chosen
+for anybody.
+
+The names come from Unicode CLDR, one file per app language in
+`app/assets/countries/`, written by `scripts/generate-countries.py`. CLDR's
+Igbo names are mostly still English; the rest are native.
+
+What people had typed into the old free-text location was carried over by the
+migration where it plainly names one country -- the whole of it ("Nigeria",
+"UK") or its last part ("Lagos, Nigeria"). "Georgia", "Congo", "Korea",
+"America" and bare two-letter codes are not read: "Atlanta, Georgia" is not in
+the Caucasus. The text is kept in `location`; nothing shows it.
 
 ## Summary and growth tips
 
@@ -99,4 +127,5 @@ MODERATION_TEST_DATABASE_URL=postgresql://... npx jest insights.db
 ```
 
 The database spec checks reach against the period before, the daily line in a
-far time zone, the per-post ranking, and both audience floors.
+far time zone, the per-post ranking, and both audience floors, countries
+included.

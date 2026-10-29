@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Kunne ikke tage billedet.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Vises på din profil og under dine opslag."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("Intet land matcher “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Vis intet land"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Søg efter lande"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Vises på din profil og under dine opslag. Når du ser nogens opslag, tælles dit land med i deres Indsigt, kun i grupper på fem eller flere og aldrig med navn."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Fra din telefons indstillinger"),
       "create": MessageLookupByLibrary.simpleMessage("Opret"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Opret konto"),
       "createYourAccount":
@@ -307,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Der er endnu ikke blevet postet under #${a0}.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Følg {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Følgere"),
       "following": MessageLookupByLibrary.simpleMessage("Følger"),
       "forgotPassword":
@@ -349,6 +360,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Personer nået pr. dag"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Fællesskaber de er i"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Lande"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Fra de {known} nåede personer, der har et land på deres profil."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Seneste {days} dage"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("Indsigt kunne ikke indlæses"),
@@ -364,8 +378,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ingen af dine opslag nåede nogen i denne periode."),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("Følger dig ikke"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron indsamler ikke nogens land, by eller køn, så der er intet at vise for dem."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Landene er dem, folk har valgt på deres profiler. Kyron indsamler ingens by eller køn, så der er intet at vise for dem."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Åbninger"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} nået · {likes} synes godt om · {replies} svar"),
@@ -1000,6 +1014,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil opdateret"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Land"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Visningsnavn"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Beliggenhed"),

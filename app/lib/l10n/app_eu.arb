@@ -1074,7 +1074,6 @@
   "ins_communities": "Zein komunitatetan dauden",
   "ins_active": "Noiz dauden",
   "ins_active_note": "Zure ordu-eremuan.",
-  "ins_not_collected": "Kyron-ek ez du inoren herrialde, hiri edo generorik biltzen, beraz ez dago horien inguruan ezer erakusteko.",
   "ins_act_post": "Idatzi argitalpen bat",
   "ins_act_profile": "Editatu zure profila",
   "ins_act_post_open": "Ikusi argitalpena",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Argitaratu {name}-n",
   "ins_tip_post_in_community": "Zure argitalpenak ikusten dituzten askok {name}-n daude. Han argitaratzeak gainerakoen aurrean jartzen zaitu.",
   "ins_tip_best_time_t": "Argitaratu daudenean",
-  "ins_tip_best_time": "Zure audientzia aktiboena {when} da. Hori baino lehentxeago egindako argitalpenak jendea izango du zain."
+  "ins_tip_best_time": "Zure audientzia aktiboena {when} da. Hori baino lehentxeago egindako argitalpenak jendea izango du zain.",
+  "profile_country": "Herrialdea",
+  "country_shown": "Zure profilean eta zure argitalpenen azpian erakusten da. Norbaiten argitalpenak ikustean, zure herrialdea haren Estatistiketan zenbatzen da, bost edo gehiagoko taldeetan bakarrik eta inoiz ez izenez.",
+  "country_helper": "Zure profilean eta zure argitalpenen azpian erakusten da.",
+  "country_search": "Bilatu herrialdeak",
+  "country_suggested": "Telefonoaren ezarpenetatik",
+  "country_none": "Ez erakutsi herrialderik",
+  "country_no_match": "Ez dago «{query}» bilaketarekin bat datorren herrialderik.",
+  "follow_author": "Jarraitu {name}",
+  "ins_countries": "Herrialdeak",
+  "ins_countries_note": "Profilean herrialdea duten {known} pertsona iritsietatik.",
+  "ins_not_collected_city": "Herrialdeak jendeak bere profilean aukeratutakoak dira. Kyronek ez du inoren hiria edo generoa biltzen, beraz, ez dago haiei buruz ezer erakusteko."
 }

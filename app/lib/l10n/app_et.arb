@@ -1074,7 +1074,6 @@
   "ins_communities": "Kogukonnad, kus nad on",
   "ins_active": "Millal nad kohal on",
   "ins_active_note": "Sinu ajavööndis.",
-  "ins_not_collected": "Kyron ei kogu kellegi riiki, linna ega sugu, seega pole nende kohta midagi näidata.",
   "ins_act_post": "Kirjuta postitus",
   "ins_act_profile": "Muuda oma profiili",
   "ins_act_post_open": "Vaata postitust",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Postita kogukonda {name}",
   "ins_tip_post_in_community": "Paljud, kes sinu postitusi näevad, on kogukonnas {name}. Seal postitamine viib sind ka ülejäänute ette.",
   "ins_tip_best_time_t": "Postita, kui nad on kohal",
-  "ins_tip_best_time": "Sinu publik on kõige aktiivsem {when}. Veidi enne seda tehtud postitusel on inimesi, kes selle vastu võtavad."
+  "ins_tip_best_time": "Sinu publik on kõige aktiivsem {when}. Veidi enne seda tehtud postitusel on inimesi, kes selle vastu võtavad.",
+  "profile_country": "Riik",
+  "country_shown": "Näidatakse sinu profiilil ja sinu postituste all. Kui näed kellegi postitusi, loetakse sinu riik tema Ülevaates kokku, ainult vähemalt viieliikmelistes rühmades ja mitte kunagi nimepidi.",
+  "country_helper": "Näidatakse sinu profiilil ja sinu postituste all.",
+  "country_search": "Otsi riike",
+  "country_suggested": "Sinu telefoni seadetest",
+  "country_none": "Ära näita riiki",
+  "country_no_match": "Ükski riik ei vasta päringule „{query}“.",
+  "follow_author": "Jälgi kasutajat {name}",
+  "ins_countries": "Riigid",
+  "ins_countries_note": "{known} inimeselt, kelleni jõudsid ja kelle profiilil on riik.",
+  "ins_not_collected_city": "Riigid on need, mille inimesed oma profiilil valisid. Kyron ei kogu kellegi linna ega sugu, seega pole nende kohta midagi näidata."
 }

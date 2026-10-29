@@ -249,6 +249,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Babu ƙasar da ta dace da “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Kada a nuna ƙasa"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Nemi ƙasashe"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka. Idan ka ga rubuce-rubucen wani, ana ƙirga ƙasarka a cikin Bayanansa, a rukunin mutum biyar ko fiye kawai, kuma ba da sunanka ba."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Daga saitunan wayarka"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +315,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Bi {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -347,6 +358,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mutanen da aka kai kowace rana"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("Al'ummomin da suke ciki"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Ƙasashe"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Daga cikin mutum {known} da aka kai wa waɗanda suke da ƙasa a bayanansu."),
       "ins_days":
           MessageLookupByLibrary.simpleMessage("Kwanaki {days} da suka gabata"),
       "ins_failed":
@@ -364,8 +378,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Babu ɗaya daga cikin rubutunka da ya kai kowa a wannan lokaci."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Ba sa binka"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron ba ya tattara ƙasa, birni ko jinsin kowa, don haka babu abin da za a nuna game da su."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Ƙasashen su ne waɗanda mutane suka zaɓa a bayanansu. Kyron ba ya tattara birnin kowa ko jinsinsa, don haka babu abin da za a nuna musu."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Buɗewa"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "an kai {reach} · so {likes} · amsoshi {replies}"),
@@ -974,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ƙasa"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

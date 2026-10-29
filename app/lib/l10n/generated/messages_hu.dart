@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Megjelenik a profilodon és a bejegyzéseid alatt."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Egy ország sem felel meg ennek: „{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Ne jelenjen meg ország"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Országok keresése"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Megjelenik a profilodon és a bejegyzéseid alatt. Ha látod valaki bejegyzéseit, az országodat beleszámolják az Elemzéseibe, csak legalább ötfős csoportokban, és soha nem a neveddel."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("A telefonod beállításaiból"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name} követése"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -349,6 +362,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Elért emberek naponta"),
       "ins_communities": MessageLookupByLibrary.simpleMessage(
           "Közösségek, amelyekben benne vannak"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Országok"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Az elért emberek közül {known}, akiknek van ország a profilján."),
       "ins_days": MessageLookupByLibrary.simpleMessage("Elmúlt {days} nap"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült betölteni a statisztikákat"),
@@ -363,8 +379,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Ebben az időszakban egyik bejegyzésed sem ért el senkit."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Nem követnek"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "A Kyron senkinek nem gyűjti az országát, városát vagy nemét, így ezekről nincs mit mutatni."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Az országok azok, amelyeket az emberek a profiljukon választottak. A Kyron senkinek a városát vagy nemét nem gyűjti, így ezekről nincs mit megmutatni."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Megnyitások"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} elért · {likes} kedvelés · {replies} válasz"),
@@ -974,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ország"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

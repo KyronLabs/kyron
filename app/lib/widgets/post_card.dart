@@ -1,12 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
+import '../models/country.dart';
 import '../models/feed_post.dart';
+import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
+import '../providers/follow_provider.dart';
 import '../routes.dart';
 import 'community_avatar.dart';
+import 'country_sheet.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
@@ -85,11 +93,15 @@ class PostCard extends ConsumerWidget {
               // the author in front of the community's picture, so a post
               // from a place reads as from that place at a glance. Two
               // targets, as it is two things.
+              //
+              // The follow button rides on the plain picture only. On a
+              // community post there are two faces, and a "+" on either
+              // reads as joining the community.
               community == null
-                  ? GestureDetector(
-                      onTap: () => openAuthor(context, post.author),
-                      child: PostAvatar(author: post.author),
-                    )
+                  // Keyed by the post: its state is "followed from here",
+                  // which must not carry over to the next post a recycled
+                  // row is given.
+                  ? _AvatarWithFollow(key: ValueKey(post.id), post: post)
                   : StackedPostAvatar(
                       community: community,
                       author: PostAvatar(author: post.author, radius: 11),
@@ -199,6 +211,23 @@ class PostCard extends ConsumerWidget {
                       const SizedBox(height: SpacingTokens.space8),
                       QuotedPostCard(post: post.quotedPost!),
                     ],
+                    // Where the author is, from the list on their profile:
+                    // under the post, so it is there for whoever wants it
+                    // and out of the way of the name and the words.
+                    if (Countries.isCode(post.author.country))
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: SpacingTokens.space8,
+                        ),
+                        child: CountryLabel(
+                          post.author.country!,
+                          key: ValueKey('post-country-${post.id}'),
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize1,
+                            color: scheme.onSurface.withValues(alpha: 0.5),
+                          ),
+                        ),
+                      ),
                     const SizedBox(height: SpacingTokens.space8),
                     _Actions(post: post, source: source),
                   ],
@@ -292,6 +321,121 @@ class PostAvatar extends StatelessWidget {
       foregroundImage:
           author.avatarUrl == null ? null : NetworkImage(author.avatarUrl!),
       child: Icon(Iconsax.user_copy, color: scheme.primary, size: radius),
+    );
+  }
+}
+
+/// The author's picture, with a follow button on it while you do not follow
+/// them.
+///
+/// The picture opens their profile; the button follows them without leaving
+/// the feed. Once followed it turns to a tick for a moment and then goes:
+/// a button that stayed would be offering to do what is already done, and
+/// unfollowing belongs on the profile, where it is deliberate.
+class _AvatarWithFollow extends ConsumerStatefulWidget {
+  const _AvatarWithFollow({super.key, required this.post});
+
+  final FeedPost post;
+
+  /// The button, and how far it hangs past the picture's edge.
+  static const double badge = 16;
+  static const double overhang = 3;
+
+  @override
+  ConsumerState<_AvatarWithFollow> createState() => _AvatarWithFollowState();
+}
+
+class _AvatarWithFollowState extends ConsumerState<_AvatarWithFollow> {
+  /// Followed from this card, so the tick shows before the button goes.
+  bool _justFollowed = false;
+  bool _gone = false;
+
+  Future<void> _follow() async {
+    final author = widget.post.author;
+    unawaited(HapticFeedback.selectionClick());
+    setState(() => _justFollowed = true);
+    final error =
+        await ref.read(followOverridesProvider.notifier).follow(author.id);
+    if (!mounted) return;
+    if (error != null) {
+      setState(() => _justFollowed = false);
+      Toast.show(context, error);
+      return;
+    }
+    await Future<void>.delayed(const Duration(milliseconds: 900));
+    if (mounted) setState(() => _gone = true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final post = widget.post;
+    final scheme = Theme.of(context).colorScheme;
+    final me = ref.watch(currentUserProvider.select((s) => s.value?.id));
+    final following = ref.watch(
+          followOverridesProvider.select((m) => m[post.author.id]),
+        ) ??
+        post.followingAuthor;
+    // Not on your own posts, and not while who you are is still loading:
+    // a "+" on your own face, even for a moment, is offering to follow
+    // yourself.
+    final offer = me != null && me != post.author.id && !following;
+    final showing = (offer || _justFollowed) && !_gone;
+
+    const size = _AvatarWithFollow.badge;
+    const overhang = _AvatarWithFollow.overhang;
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        GestureDetector(
+          onTap: () => openAuthor(context, post.author),
+          child: PostAvatar(author: post.author),
+        ),
+        if (showing)
+          Positioned(
+            right: -overhang - 6,
+            bottom: -overhang - 6,
+            child: Semantics(
+              button: true,
+              label: AppLocalizations.of(context)
+                  .ui('follow_author', 'Follow {name}')
+                  .replaceAll('{name}', post.author.displayName),
+              excludeSemantics: true,
+              child: GestureDetector(
+                key: ValueKey('post-follow-${post.id}'),
+                // Six pixels of reach around a sixteen-pixel button: the
+                // circle is what is drawn, not what a thumb has to hit.
+                behavior: HitTestBehavior.opaque,
+                onTap: _justFollowed ? null : _follow,
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 180),
+                    width: size,
+                    height: size,
+                    decoration: BoxDecoration(
+                      color: _justFollowed ? scheme.primary : scheme.onSurface,
+                      shape: BoxShape.circle,
+                      // Cut out of the picture by a ring of the page behind
+                      // it, so it reads as on top of the face, not part of it.
+                      border: Border.all(color: scheme.surface, width: 2),
+                    ),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 180),
+                      child: Icon(
+                        _justFollowed ? Iconsax.tick_circle : Iconsax.add,
+                        key: ValueKey(_justFollowed),
+                        size: _justFollowed ? 12 : 11,
+                        color:
+                            _justFollowed ? scheme.onPrimary : scheme.surface,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

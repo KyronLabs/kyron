@@ -1074,7 +1074,6 @@
   "ins_communities": "Ular aʼzo boʻlgan hamjamiyatlar",
   "ins_active": "Ular qachon faol",
   "ins_active_note": "Sizning vaqt mintaqangizda.",
-  "ins_not_collected": "Kyron hech kimning mamlakati, shahri yoki jinsini yigʻmaydi, shuning uchun ular haqida koʻrsatadigan narsa yoʻq.",
   "ins_act_post": "Post yozish",
   "ins_act_profile": "Profilni tahrirlash",
   "ins_act_post_open": "Postni koʻrish",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "{name} hamjamiyatida joylang",
   "ins_tip_post_in_community": "Postlaringizni koʻradiganlarning koʻpi {name} hamjamiyatida. U yerda joylash sizni qolganlar oldiga ham olib chiqadi.",
   "ins_tip_best_time_t": "Ular bor paytda joylang",
-  "ins_tip_best_time": "Auditoriyangiz eng faol payti {when}. Undan sal oldin joylangan postni kutib oladiganlar boʻladi."
+  "ins_tip_best_time": "Auditoriyangiz eng faol payti {when}. Undan sal oldin joylangan postni kutib oladiganlar boʻladi.",
+  "profile_country": "Mamlakat",
+  "country_shown": "Profilingizda va postlaringiz ostida ko‘rsatiladi. Kimningdir postlarini ko‘rganingizda, mamlakatingiz uning Tahlillarida hisoblanadi, faqat besh yoki undan ko‘p kishilik guruhlarda va hech qachon ism bilan emas.",
+  "country_helper": "Profilingizda va postlaringiz ostida ko‘rsatiladi.",
+  "country_search": "Mamlakatlarni qidirish",
+  "country_suggested": "Telefoningiz sozlamalaridan",
+  "country_none": "Mamlakat ko‘rsatilmasin",
+  "country_no_match": "“{query}” ga mos mamlakat yo‘q.",
+  "follow_author": "{name}ni kuzatish",
+  "ins_countries": "Mamlakatlar",
+  "ins_countries_note": "Profilida mamlakat ko‘rsatilgan, yetib borilgan {known} kishidan.",
+  "ins_not_collected_city": "Mamlakatlar odamlar o‘z profillarida tanlaganlaridir. Kyron hech kimning shahri yoki jinsini to‘plamaydi, shuning uchun ular bo‘yicha ko‘rsatadigan narsa yo‘q."
 }

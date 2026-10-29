@@ -1074,7 +1074,6 @@
   "ins_communities": "Community's waarin ze zitten",
   "ins_active": "Wanneer ze er zijn",
   "ins_active_note": "In jouw tijdzone.",
-  "ins_not_collected": "Kyron verzamelt van niemand het land, de stad of het geslacht, dus daarover valt niets te tonen.",
   "ins_act_post": "Schrijf een bericht",
   "ins_act_profile": "Je profiel bewerken",
   "ins_act_post_open": "Bericht bekijken",
@@ -1110,5 +1109,16 @@
   "ins_tip_post_in_community_t": "Post in {name}",
   "ins_tip_post_in_community": "Veel mensen die je berichten zien, zitten in {name}. Daar posten zet je voor de rest ervan.",
   "ins_tip_best_time_t": "Post wanneer ze er zijn",
-  "ins_tip_best_time": "Je publiek is het actiefst op {when}. Een bericht vlak daarvoor heeft mensen die het opvangen."
+  "ins_tip_best_time": "Je publiek is het actiefst op {when}. Een bericht vlak daarvoor heeft mensen die het opvangen.",
+  "profile_country": "Land",
+  "country_shown": "Zichtbaar op je profiel en onder je berichten. Als je iemands berichten ziet, telt je land mee in diens Inzichten, alleen in groepen van vijf of meer en nooit bij naam.",
+  "country_helper": "Zichtbaar op je profiel en onder je berichten.",
+  "country_search": "Landen zoeken",
+  "country_suggested": "Uit de instellingen van je telefoon",
+  "country_none": "Geen land tonen",
+  "country_no_match": "Geen land komt overeen met ‘{query}’.",
+  "follow_author": "{name} volgen",
+  "ins_countries": "Landen",
+  "ins_countries_note": "Van de {known} bereikte mensen die een land op hun profiel hebben.",
+  "ins_not_collected_city": "De landen zijn die mensen op hun profiel hebben gekozen. Kyron verzamelt van niemand de stad of het geslacht, dus daarvoor valt niets te tonen."
 }

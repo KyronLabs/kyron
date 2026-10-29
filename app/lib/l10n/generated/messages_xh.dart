@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Akukho lizwe lihambelana no-“{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Musa ukubonisa ilizwe"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Khangela amazwe"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho. Xa ubona iiposti zomntu, ilizwe lakho libalwa kwiiNgcaciso zakhe, ngamaqela abantu abahlanu nangaphezulu kuphela, kwaye zange ngegama."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Kuseto lwefowuni yakho"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Landela u-{name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -346,6 +358,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_chart":
           MessageLookupByLibrary.simpleMessage("Abantu abafikelelweyo ngosuku"),
       "ins_communities": MessageLookupByLibrary.simpleMessage("Uluntu abakulo"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Amazwe"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Kubantu abangu-{known} abafikelelweyo abanelizwe kwiprofayile yabo."),
       "ins_days": MessageLookupByLibrary.simpleMessage(
           "Iintsuku ezi-{days} ezidlulileyo"),
       "ins_failed": MessageLookupByLibrary.simpleMessage(
@@ -363,8 +378,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
           "Akukho posti yakho efikelele nabani na kweli xesha."),
       "ins_non_followers": MessageLookupByLibrary.simpleMessage("Abakulandeli"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "I-Kyron ayiqokeleli ilizwe, isixeko okanye isini sakhe nabani na, ngoko akukho nto inokuboniswa ngazo."),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Amazwe ngawo abantu abawakhethileyo kwiiprofayile zabo. IKyron ayiqokeleli sixeko okanye isini somntu, ngoko akukho nto inokuboniswa ngazo."),
       "ins_opens": MessageLookupByLibrary.simpleMessage("Ukuvulwa"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "ifikelele ku-{reach} · {likes} ukuthandwa · {replies} iimpendulo"),
@@ -977,6 +992,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ilizwe"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

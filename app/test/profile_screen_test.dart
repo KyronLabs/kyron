@@ -8,6 +8,8 @@ import 'package:kyron_app/providers/profile_provider.dart';
 import 'package:kyron_app/screens/profile_screen.dart';
 import 'package:kyron_app/widgets/action_button.dart';
 
+import 'support/signed_in_as.dart';
+
 const _me = ProfileModel(
   id: 'u1',
   name: 'Epigone',
@@ -48,6 +50,7 @@ FeedPost _post(String id) => FeedPost(
 
 Widget _app(FeedState seed) => ProviderScope(
       overrides: [
+        signedInAs(),
         profileProvider.overrideWith(
           (ref, username) => _StubProfile(ref, username),
         ),

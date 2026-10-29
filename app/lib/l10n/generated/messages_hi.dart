@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "आपकी प्रोफ़ाइल पर और आपकी पोस्ट के नीचे दिखता है।"),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” से कोई देश मेल नहीं खाता।"),
+      "country_none": MessageLookupByLibrary.simpleMessage("कोई देश न दिखाएँ"),
+      "country_search": MessageLookupByLibrary.simpleMessage("देश खोजें"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "आपकी प्रोफ़ाइल पर और आपकी पोस्ट के नीचे दिखता है। जब आप किसी की पोस्ट देखते हैं, तो आपका देश उनकी इनसाइट्स में गिना जाता है, सिर्फ़ पाँच या उससे ज़्यादा के समूहों में और कभी नाम से नहीं।"),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("आपके फ़ोन की सेटिंग से"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} को फ़ॉलो करें"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -347,6 +359,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_chart": MessageLookupByLibrary.simpleMessage("हर दिन पहुँचे लोग"),
       "ins_communities":
           MessageLookupByLibrary.simpleMessage("वे जिन समुदायों में हैं"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("देश"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "उन {known} लोगों में से जिन तक आप पहुँचे और जिनकी प्रोफ़ाइल पर देश है।"),
       "ins_days": MessageLookupByLibrary.simpleMessage("पिछले {days} दिन"),
       "ins_failed":
           MessageLookupByLibrary.simpleMessage("इनसाइट्स लोड नहीं हो सकीं"),
@@ -363,8 +378,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "इस अवधि में आपकी कोई पोस्ट किसी तक नहीं पहुँची।"),
       "ins_non_followers":
           MessageLookupByLibrary.simpleMessage("आपको फ़ॉलो नहीं करते"),
-      "ins_not_collected": MessageLookupByLibrary.simpleMessage(
-          "Kyron किसी का देश, शहर या लिंग इकट्ठा नहीं करता, इसलिए उनके बारे में दिखाने को कुछ नहीं है।"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "देश वे हैं जो लोगों ने अपनी प्रोफ़ाइल पर चुने हैं। Kyron किसी का शहर या लिंग इकट्ठा नहीं करता, इसलिए उनके लिए दिखाने को कुछ नहीं है।"),
       "ins_opens": MessageLookupByLibrary.simpleMessage("खोले गए"),
       "ins_post_line": MessageLookupByLibrary.simpleMessage(
           "{reach} तक पहुँची · {likes} लाइक · {replies} जवाब"),
@@ -972,6 +987,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("देश"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
