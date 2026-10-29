@@ -4,9 +4,11 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/feed_post.dart';
+import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
 import '../routes.dart';
 import 'community_avatar.dart';
+import 'gift_sheet.dart';
 import 'link_preview_card.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
@@ -305,6 +307,9 @@ class _Actions extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(postListProvider(source).notifier);
+    final me = ref.watch(currentUserProvider).asData?.value;
+    // Your own post has no gift button: the server refuses those.
+    final mine = me != null && me.id == post.author.id;
 
     return PostActionsRow(
       post: post,
@@ -318,6 +323,13 @@ class _Actions extends ConsumerWidget {
       onLike: () => report(context, notifier.toggleLike(post.id)),
       onSave: () => report(context, notifier.toggleSave(post.id)),
       onShare: () => SharePostSheet.show(context, post),
+      onGift: mine
+          ? null
+          : () => GiftSheet.open(
+                context,
+                post,
+                onSent: (gifts) => notifier.giftsChanged(post.id, gifts),
+              ),
     );
   }
 }

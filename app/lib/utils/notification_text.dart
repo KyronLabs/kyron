@@ -3,12 +3,19 @@ import 'package:intl/intl.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/account_standing.dart';
+import '../models/gift.dart';
 import '../models/notification_model.dart';
 import '../repositories/moderation_repository.dart';
 import 'local_date.dart';
 
 /// What a person did, after their name: "liked your post".
-String notificationAction(AppLocalizations l10n, NotificationType type) =>
+///
+/// [gift] names which one, for a gift row: "sent a 🔥 Fire to your post".
+String notificationAction(
+  AppLocalizations l10n,
+  NotificationType type, {
+  GiftNote? gift,
+}) =>
     switch (type) {
       NotificationType.like => l10n.ui('ui_notif_liked', 'liked your post'),
       NotificationType.comment =>
@@ -16,6 +23,11 @@ String notificationAction(AppLocalizations l10n, NotificationType type) =>
       NotificationType.follow => l10n.ui('ui_notif_followed', 'followed you'),
       NotificationType.repost =>
         l10n.ui('ui_notif_reposted', 'reposted your post'),
+      NotificationType.gift => gift == null
+          ? l10n.ui('ui_notif_gift', 'sent a gift to your post')
+          : l10n
+              .ui('ui_notif_gift_named', r'sent a $gift to your post')
+              .replaceAll(r'$gift', '${gift.emoji} ${gift.name}'),
       // Never shown after a name: these rows have none.
       NotificationType.account || NotificationType.report => '',
     };

@@ -28,6 +28,8 @@ import 'package:kyron_app/widgets/community_chats_section.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'support/signed_in_as.dart';
+
 /// The community page lists its chats; these tests are about the rest of it.
 final _noChats = communityChatsProvider.overrideWith(
   (ref, slug) async => const <CommunityChat>[],
@@ -90,6 +92,9 @@ Future<void> _card(
     ProviderScope(
       overrides: [
         _noChats,
+        // A card reads who is signed in, to leave the gift button off your
+        // own posts.
+        signedInAs(),
         feedRepositoryProvider.overrideWithValue(_Feed()),
         // Tapping the community's name opens its page, which loads it.
         communitiesRepositoryProvider.overrideWithValue(
@@ -423,6 +428,7 @@ void main() {
         ProviderScope(
           overrides: [
             _noChats,
+            signedInAs(),
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),
@@ -615,6 +621,7 @@ void main() {
         ProviderScope(
           overrides: [
             _noChats,
+            signedInAs(),
             communitiesRepositoryProvider.overrideWithValue(
               _OneCommunity(community),
             ),

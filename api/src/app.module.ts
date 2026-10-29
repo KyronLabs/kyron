@@ -21,6 +21,7 @@ import { LinksModule } from './modules/links/links.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { AccountModule } from './modules/account/account.module';
 import { VerificationModule } from './modules/verification/verification.module';
+import { GiftsModule } from './modules/gifts/gifts.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { VerificationModule } from './modules/verification/verification.module';
     FeedbackModule,
     AccountModule,
     VerificationModule,
+    GiftsModule,
   ],
   controllers: [],
   providers: [],

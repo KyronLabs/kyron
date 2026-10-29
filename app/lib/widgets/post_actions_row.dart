@@ -30,6 +30,10 @@ class PostActionsRow extends StatelessWidget {
   final VoidCallback onSave;
   final VoidCallback onShare;
 
+  /// Opens the gift sheet. Null leaves the button out, for a surface that has
+  /// nowhere to put what a gift sends back.
+  final VoidCallback? onGift;
+
   /// Draw the counts beside the icons. False on a post's own screen, where
   /// they are already spelled out in full above the row.
   final bool showCounts;
@@ -42,6 +46,7 @@ class PostActionsRow extends StatelessWidget {
     required this.onLike,
     required this.onSave,
     required this.onShare,
+    this.onGift,
     this.showCounts = true,
   });
 
@@ -85,6 +90,19 @@ class PostActionsRow extends StatelessWidget {
           burst: true,
           onTap: onLike,
         ),
+        if (onGift != null) ...[
+          const SizedBox(width: SpacingTokens.space20),
+          // Never "active": the row fills an icon for what *you* did, and the
+          // post does not say whether you have sent it a gift.
+          PostAction(
+            icon: Iconsax.gift_copy,
+            label:
+                showCounts && post.gifts > 0 ? formatCount(post.gifts) : null,
+            tooltip:
+                AppLocalizations.of(context).ui('ui_gift_title', 'Send a gift'),
+            onTap: onGift!,
+          ),
+        ],
         const Spacer(),
         PostAction(
           icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,

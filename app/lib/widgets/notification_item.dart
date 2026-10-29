@@ -33,11 +33,13 @@ class NotificationItem extends StatelessWidget {
         NotificationType.repost => Iconsax.repeat_copy,
         NotificationType.account => Iconsax.shield_tick_copy,
         NotificationType.report => Iconsax.flag_copy,
+        NotificationType.gift => Iconsax.gift_copy,
       };
 
   Color _badgeColor(ColorScheme scheme) => switch (notification.type) {
         NotificationType.like => const Color(0xFFE0245E),
         NotificationType.repost => const Color(0xFF17BF63),
+        NotificationType.gift => const Color(0xFFFFB800),
         _ => scheme.primary,
       };
 
@@ -121,7 +123,7 @@ class NotificationItem extends StatelessWidget {
                           ),
                         TextSpan(
                           text:
-                              ' ${notificationAction(l10n, notification.type)}',
+                              ' ${notificationAction(l10n, notification.type, gift: notification.gift)}',
                         ),
                       ],
                     ),

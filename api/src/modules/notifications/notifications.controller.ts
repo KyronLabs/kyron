@@ -19,7 +19,8 @@ export class NotificationsController {
       limit: query.limit,
       cursor: query.cursor,
       kind: query.kind,
-      moderation: query.include === 'moderation',
+      moderation: query.include?.includes('moderation') ?? false,
+      gifts: query.include?.includes('gifts') ?? false,
     });
   }
 
@@ -27,7 +28,8 @@ export class NotificationsController {
   @Get('unread')
   unread(@Req() req: AuthRequest, @Query() query: UnreadNotificationsDto) {
     return this.svc.unreadCount(req.user.id, {
-      moderation: query.include === 'moderation',
+      moderation: query.include?.includes('moderation') ?? false,
+      gifts: query.include?.includes('gifts') ?? false,
     });
   }
 

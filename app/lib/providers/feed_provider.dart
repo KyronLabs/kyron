@@ -239,6 +239,13 @@ class PostListNotifier extends StateNotifier<FeedState> {
     state = state.copyWith(posts: posts);
   }
 
+  /// What the gift sheet says a post's count is now. Nothing to predict and
+  /// nothing to roll back: the sheet only answers once the gift has gone.
+  void giftsChanged(String postId, int gifts) {
+    final post = _find(postId);
+    if (post != null) _replace(post.copyWith(gifts: gifts));
+  }
+
   /// Drops a post from this list.
   ///
   /// For hiding, muting and blocking: an action whose whole point is "stop

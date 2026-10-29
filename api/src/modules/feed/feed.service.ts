@@ -35,6 +35,8 @@ export interface FeedPost {
   comments: number;
   /** Plain reposts. Quotes are posts of their own and counted as such. */
   reposts: number;
+  /** Gifts it has been sent. Shown, never ranked on: see Post.giftCount. */
+  gifts: number;
   /** Whether the reader has. Saves are private, so there is no count. */
   likedByViewer: boolean;
   savedByViewer: boolean;
@@ -2433,6 +2435,7 @@ export class FeedService {
       likeCount: true,
       commentCount: true,
       repostCount: true,
+      giftCount: true,
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
@@ -2512,6 +2515,7 @@ export class FeedService {
       likes: row.likeCount,
       comments: row.commentCount,
       reposts: row.repostCount,
+      gifts: row.giftCount,
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
       repostedByViewer: row.reposts.length > 0,
@@ -2592,6 +2596,7 @@ interface PostRow {
   likeCount: number;
   commentCount: number;
   repostCount: number;
+  giftCount: number;
   likes: { id: string }[];
   saves: { id: string }[];
   reposts: { id: string }[];

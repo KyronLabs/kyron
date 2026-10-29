@@ -24,6 +24,9 @@ class FeedPost {
   /// Plain reposts. A quote is a post of its own and counted as one.
   final int reposts;
 
+  /// Gifts it has been sent.
+  final int gifts;
+
   /// Attachments, in the order the author put them.
   final List<PostMedia> media;
 
@@ -57,6 +60,7 @@ class FeedPost {
     this.likes = 0,
     this.comments = 0,
     this.reposts = 0,
+    this.gifts = 0,
     this.media = const [],
     this.quotedPost,
     this.replyPolicy = ReplyPolicy.everyone,
@@ -79,6 +83,7 @@ class FeedPost {
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         comments: (json['comments'] as num?)?.toInt() ?? 0,
         reposts: (json['reposts'] as num?)?.toInt() ?? 0,
+        gifts: (json['gifts'] as num?)?.toInt() ?? 0,
         media: PostMedia.listFrom(json['media']),
         quotedPost: json['quotedPost'] is Map<String, dynamic>
             ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
@@ -99,6 +104,7 @@ class FeedPost {
     int? likes,
     int? comments,
     int? reposts,
+    int? gifts,
     bool? liked,
     bool? saved,
     bool? reposted,
@@ -112,6 +118,7 @@ class FeedPost {
         likes: likes ?? this.likes,
         comments: comments ?? this.comments,
         reposts: reposts ?? this.reposts,
+        gifts: gifts ?? this.gifts,
         media: media,
         quotedPost: quotedPost,
         replyPolicy: replyPolicy,

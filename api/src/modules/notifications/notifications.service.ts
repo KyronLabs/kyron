@@ -7,6 +7,7 @@ import {
   ReportTarget,
 } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { giftType } from '../gifts/gift-catalogue';
 
 export type NotificationKind =
   | 'like'
@@ -17,7 +18,9 @@ export type NotificationKind =
    * a decision reversed. */
   | 'account'
   /** What came of something this account reported. */
-  | 'report';
+  | 'report'
+  /** Somebody sent a gift to one of this account's posts. */
+  | 'gift';
 
 /** The words of an account row are the app's, in the reader's language:
  * this says what happened, not how to say it. */
@@ -69,6 +72,9 @@ export interface NotificationItem {
   unread: boolean;
   account?: AccountNotice;
   report?: ReportOutcome;
+  /** Which gift, for a gift row: named here so the app need not keep its
+   * own copy of the catalogue. */
+  gift?: { type: string; coins: number; name: string; emoji: string };
 }
 
 const DEFAULT_LIMIT = 30;
@@ -104,6 +110,8 @@ export class NotificationsService {
       /** Decisions and report outcomes too. Asked for, because an app from
        * before them reads an unknown row as "Someone liked your post". */
       moderation?: boolean;
+      /** Gifts too, asked for for the same reason. */
+      gifts?: boolean;
     } = {},
   ): Promise<{ items: NotificationItem[]; nextCursor: string | null }> {
     const limit = options.limit ?? DEFAULT_LIMIT;
@@ -129,9 +137,11 @@ export class NotificationsService {
       kind === 'account' || kind === 'report'
         ? options.moderation === true &&
           (!options.kind || options.kind === kind)
-        : !options.kind || options.kind === kind;
+        : kind === 'gift'
+          ? options.gifts === true && (!options.kind || options.kind === kind)
+          : !options.kind || options.kind === kind;
 
-    const [likes, comments, reposts, follows] = await Promise.all([
+    const [likes, comments, reposts, follows, gifts] = await Promise.all([
       wanted('like')
         ? this.prisma.postLike.findMany({
             where: { createdAt: when, post: { authorId: userId }, ...notMine },
@@ -196,6 +206,27 @@ export class NotificationsService {
             },
           })
         : [],
+      wanted('gift')
+        ? this.prisma.gift.findMany({
+            where: {
+              createdAt: when,
+              recipientId: userId,
+              // Null once the sender deleted their account: nobody to name.
+              senderId: { not: null, notIn: [userId, ...blocked] },
+            },
+            orderBy: { createdAt: 'desc' },
+            take: limit,
+            select: {
+              id: true,
+              createdAt: true,
+              postId: true,
+              type: true,
+              coins: true,
+              sender: { select: this.actorFields },
+              post: { select: { content: true } },
+            },
+          })
+        : [],
     ]);
 
     const moderation = await this.moderationRows(userId, when, limit, {
@@ -244,6 +275,30 @@ export class NotificationsService {
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
       })),
+      ...gifts.flatMap((row) =>
+        row.sender
+          ? [
+              {
+                id: `gift:${row.id}`,
+                kind: 'gift' as const,
+                actor: this.actor(row.sender),
+                postId: row.postId,
+                postSnippet: this.snippet(row.post?.content),
+                content: null,
+                createdAt: row.createdAt,
+                unread: this.isUnread(row.createdAt, seenAt),
+                gift: {
+                  type: row.type,
+                  coins: row.coins,
+                  // A gift since dropped from the catalogue still says what
+                  // it was, if not by its own name.
+                  name: giftType(row.type)?.name ?? 'Gift',
+                  emoji: giftType(row.type)?.emoji ?? '🎁',
+                },
+              },
+            ]
+          : [],
+      ),
       ...moderation.map((row) => ({
         ...row,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -265,7 +320,7 @@ export class NotificationsService {
   /** What the tab bar's badge counts. */
   async unreadCount(
     userId: string,
-    options: { moderation?: boolean } = {},
+    options: { moderation?: boolean; gifts?: boolean } = {},
   ): Promise<{ count: number }> {
     const me = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -302,6 +357,16 @@ export class NotificationsService {
       }),
     ]);
 
+    const gifts = options.gifts
+      ? await this.prisma.gift.count({
+          where: {
+            ...fresh,
+            recipientId: userId,
+            senderId: { not: null, notIn: [userId, ...blocked] },
+          },
+        })
+      : 0;
+
     const moderation = options.moderation
       ? (
           await this.moderationRows(userId, { gt: since }, 50, {
@@ -311,7 +376,9 @@ export class NotificationsService {
         ).length
       : 0;
 
-    return { count: likes + comments + reposts + follows + moderation };
+    return {
+      count: likes + comments + reposts + follows + gifts + moderation,
+    };
   }
 
   /**

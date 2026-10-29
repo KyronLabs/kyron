@@ -25,6 +25,7 @@ import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
 import '../models/post_media.dart' show MediaKind;
 import '../widgets/gif_picker_sheet.dart';
+import '../widgets/gift_sheet.dart';
 import '../widgets/reply_bar.dart';
 import '../widgets/post_options_sheet.dart';
 import '../widgets/post_text.dart';
@@ -444,6 +445,8 @@ class _Post extends ConsumerWidget {
     final handle = post.author.handle;
     final community = post.community;
     final visual = post.media.where((m) => m.isVisual).toList();
+    final me = ref.watch(currentUserProvider).asData?.value;
+    final mine = me != null && me.id == post.author.id;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -555,7 +558,10 @@ class _Post extends ConsumerWidget {
 
           // Counts spelled out, which is what the room on this screen is for:
           // "1 like" rather than a bare 1 beside a heart, and never "1 likes".
-          if (post.likes > 0 || post.reposts > 0 || post.comments > 0) ...[
+          if (post.likes > 0 ||
+              post.reposts > 0 ||
+              post.comments > 0 ||
+              post.gifts > 0) ...[
             const _Hairline(),
             Wrap(
               spacing: SpacingTokens.space16,
@@ -569,6 +575,8 @@ class _Post extends ConsumerWidget {
                   _Tally(
                     text: countLabel(post.comments, 'reply', plural: 'replies'),
                   ),
+                if (post.gifts > 0)
+                  _Tally(text: countLabel(post.gifts, 'gift')),
               ],
             ),
           ],
@@ -589,6 +597,13 @@ class _Post extends ConsumerWidget {
             onLike: () => report(context, notifier.toggleLike()),
             onSave: () => report(context, notifier.toggleSave()),
             onShare: () => SharePostSheet.show(context, post),
+            onGift: mine
+                ? null
+                : () => GiftSheet.open(
+                      context,
+                      post,
+                      onSent: notifier.giftsChanged,
+                    ),
           ),
         ],
       ),
