@@ -63,6 +63,11 @@ class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
         // one being read may be the reader's own. Without this it would offer
         // to follow you and hide your own Likes tab.
         final me = _ref.read(currentUserProvider).asData?.value;
+        // The server's answer is the latest there is: the + on their posts
+        // follows it, whatever those posts were loaded saying.
+        _ref
+            .read(followOverridesProvider.notifier)
+            .record(profile.id, profile.isFollowing);
         state = AsyncData(
           me != null && me.id == profile.id
               ? profile.copyWith(isOwnProfile: true)

@@ -11,6 +11,17 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Fixed
+
+- **Following somebody from their profile now sticks.** The profile said
+  "Follow" again every time it was reopened or refreshed, although the
+  follow had been saved: the server never looked at who was asking, so it
+  told everybody they followed nobody.
+- **The follow button on a post's picture is a small solid + sitting on the
+  edge of the face**, not a white blob in a ring hanging off its corner.
+- **"Edit profile" and every other outlined button are ringed by a hairline**,
+  one device pixel like the app's other lines, instead of a border three
+  times as heavy.
 
 ## [0.1.17] - 2026-10-29
 ### Added

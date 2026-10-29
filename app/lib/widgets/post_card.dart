@@ -309,7 +309,14 @@ class PostAvatar extends StatelessWidget {
   final FeedAuthor author;
   final double radius;
 
-  const PostAvatar({super.key, required this.author, this.radius = 16});
+  /// The size beside a post, which the follow button is placed against.
+  static const double defaultRadius = 16;
+
+  const PostAvatar({
+    super.key,
+    required this.author,
+    this.radius = defaultRadius,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -337,9 +344,14 @@ class _AvatarWithFollow extends ConsumerStatefulWidget {
 
   final FeedPost post;
 
-  /// The button, and how far it hangs past the picture's edge.
+  /// The button: a disc this wide, ring included, centred on the picture's
+  /// edge at its lower right -- on the circle, not on the corner of the box
+  /// around it, which leaves it floating off the face.
   static const double badge = 16;
-  static const double overhang = 3;
+  static const double ring = 1.5;
+
+  /// Reach around the disc, for a thumb.
+  static const double reach = 6;
 
   @override
   ConsumerState<_AvatarWithFollow> createState() => _AvatarWithFollowState();
@@ -382,7 +394,11 @@ class _AvatarWithFollowState extends ConsumerState<_AvatarWithFollow> {
     final showing = (offer || _justFollowed) && !_gone;
 
     const size = _AvatarWithFollow.badge;
-    const overhang = _AvatarWithFollow.overhang;
+    const reach = _AvatarWithFollow.reach;
+    // Where the edge of the picture crosses its 45-degree line.
+    const radius = PostAvatar.defaultRadius;
+    const edge = radius + radius * 0.7071;
+    const at = edge - size / 2 - reach;
 
     return Stack(
       clipBehavior: Clip.none,
@@ -393,8 +409,8 @@ class _AvatarWithFollowState extends ConsumerState<_AvatarWithFollow> {
         ),
         if (showing)
           Positioned(
-            right: -overhang - 6,
-            bottom: -overhang - 6,
+            left: at,
+            top: at,
             child: Semantics(
               button: true,
               label: AppLocalizations.of(context)
@@ -403,31 +419,35 @@ class _AvatarWithFollowState extends ConsumerState<_AvatarWithFollow> {
               excludeSemantics: true,
               child: GestureDetector(
                 key: ValueKey('post-follow-${post.id}'),
-                // Six pixels of reach around a sixteen-pixel button: the
-                // circle is what is drawn, not what a thumb has to hit.
+                // Reach around a sixteen-pixel disc: the disc is what is
+                // drawn, not what a thumb has to hit.
                 behavior: HitTestBehavior.opaque,
                 onTap: _justFollowed ? null : _follow,
                 child: Padding(
-                  padding: const EdgeInsets.all(6),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 180),
+                  padding: const EdgeInsets.all(reach),
+                  child: Container(
                     width: size,
                     height: size,
                     decoration: BoxDecoration(
-                      color: _justFollowed ? scheme.primary : scheme.onSurface,
+                      color: scheme.onSurface,
                       shape: BoxShape.circle,
-                      // Cut out of the picture by a ring of the page behind
-                      // it, so it reads as on top of the face, not part of it.
-                      border: Border.all(color: scheme.surface, width: 2),
+                      // A ring of the page behind it, so it sits on the face
+                      // rather than in it.
+                      border: Border.all(
+                        color: scheme.surface,
+                        width: _AvatarWithFollow.ring,
+                      ),
                     ),
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 180),
-                      child: Icon(
-                        _justFollowed ? Iconsax.tick_circle : Iconsax.add,
-                        key: ValueKey(_justFollowed),
-                        size: _justFollowed ? 12 : 11,
-                        color:
-                            _justFollowed ? scheme.onPrimary : scheme.surface,
+                      child: CustomPaint(
+                        key: ValueKey(
+                          _justFollowed ? 'follow-done' : 'follow-plus',
+                        ),
+                        painter: _FollowGlyph(
+                          done: _justFollowed,
+                          color: scheme.surface,
+                        ),
                       ),
                     ),
                   ),
@@ -438,6 +458,51 @@ class _AvatarWithFollowState extends ConsumerState<_AvatarWithFollow> {
       ],
     );
   }
+}
+
+/// A plus, or once followed a tick, drawn as two or three strokes.
+///
+/// Drawn rather than taken from the icon font: Iconsax's add is a filled
+/// circle with the plus cut out of it, so at this size, on a disc, it read
+/// as a white blob in a black ring -- and its strokes are too thin to hold
+/// up at seven pixels anyway.
+class _FollowGlyph extends CustomPainter {
+  const _FollowGlyph({required this.done, required this.color});
+
+  final bool done;
+  final Color color;
+
+  /// Half the plus's arm, and the stroke, in pixels.
+  static const double arm = 3.5;
+  static const double stroke = 1.6;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final c = size.center(Offset.zero);
+    final pen = Paint()
+      ..color = color
+      ..strokeWidth = stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..style = PaintingStyle.stroke;
+    if (done) {
+      canvas.drawPath(
+        Path()
+          ..moveTo(c.dx - 3, c.dy + 0.2)
+          ..lineTo(c.dx - 0.9, c.dy + 2.2)
+          ..lineTo(c.dx + 3, c.dy - 2),
+        pen,
+      );
+    } else {
+      canvas
+        ..drawLine(c.translate(-arm, 0), c.translate(arm, 0), pen)
+        ..drawLine(c.translate(0, -arm), c.translate(0, arm), pen);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_FollowGlyph old) =>
+      old.done != done || old.color != color;
 }
 
 class _Actions extends ConsumerWidget {

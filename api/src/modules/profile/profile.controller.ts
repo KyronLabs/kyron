@@ -18,6 +18,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { AuthGuard } from '../../common/guards/auth.guard';
+import { OptionalAuthGuard } from '../../common/guards/optional-auth.guard';
 import { ProfileService } from './profile.service';
 import { SearchProfilesDto } from './dto/search-profiles.dto';
 import { ListFollowsDto } from './dto/list-follows.dto';
@@ -273,6 +274,7 @@ export class ProfileController {
   // found" for an account named "interests" or "suggested". Any new
   // fixed-name route belongs above this one.
   @Get(':username')
+  @UseGuards(OptionalAuthGuard)
   async getPublicProfile(
     @Param('username') username: string,
     @Req() req: OptionalAuthRequest,
