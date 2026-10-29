@@ -1466,6 +1466,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vas prati"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("je lajkao/la vašu objavu"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("vas je spomenuo/la"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Još nema spominjanja"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kad netko napiše vaše @korisničko ime u objavi ili odgovoru, pojavit će se ovdje."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Starije"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Vaša poruka u chatu zajednice je uklonjena"),
@@ -1495,6 +1501,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Pratitelji"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lajkovi"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Spominjanja"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odgovori"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Ovaj tjedan"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Danas"),

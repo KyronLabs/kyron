@@ -1120,5 +1120,9 @@
   "follow_author": "Ikuti {name}",
   "ins_countries": "Negara",
   "ins_countries_note": "Daripada {known} orang yang dicapai yang mempunyai negara pada profil mereka.",
-  "ins_not_collected_city": "Negara ialah yang dipilih orang pada profil mereka. Kyron tidak mengumpul bandar atau jantina sesiapa, jadi tiada apa-apa untuk dipaparkan bagi kedua-duanya."
+  "ins_not_collected_city": "Negara ialah yang dipilih orang pada profil mereka. Kyron tidak mengumpul bandar atau jantina sesiapa, jadi tiada apa-apa untuk dipaparkan bagi kedua-duanya.",
+  "ui_notif_mentioned": "menyebut anda",
+  "ui_notif_tab_mentions": "Sebutan",
+  "ui_notif_no_mentions": "Belum ada sebutan",
+  "ui_notif_no_mentions_detail": "Apabila seseorang menulis @nama pengguna anda dalam siaran atau balasan, ia akan dipaparkan di sini."
 }

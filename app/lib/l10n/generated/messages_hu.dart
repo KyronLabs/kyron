@@ -1475,6 +1475,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("követ téged"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("kedvelte a bejegyzésedet"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("megemlített"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek említések"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Ha valaki beírja a @felhasználóneved egy bejegyzésbe vagy válaszba, itt jelenik meg."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Régebbiek"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Az üzenetedet eltávolítottuk egy közösségi csevegésből"),
@@ -1503,6 +1508,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Összes"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Követők"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Kedvelések"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Említések"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Válaszok"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Ezen a héten"),

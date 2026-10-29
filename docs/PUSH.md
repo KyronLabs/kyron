@@ -36,7 +36,7 @@ while it is in front.
 | The token itself | `FirebasePushTokens` in `lib/services/firebase_push.dart` |
 
 Every path that produces a notification already calls through `DeliveryService`:
-a like, a repost, a comment, a reply, a follow, and a direct message.
+a like, a repost, a comment, a reply, a follow, a mention, and a direct message.
 
 The registrar starts on sign-in and on every launch with a session — a token
 can rotate while the app is closed, and a server holding the old one pushes
@@ -49,7 +49,8 @@ permanent on both platforms.
 
 ## What a push says
 
-A like, a reply, a repost or a follow is pushed the way Threads pushes it:
+A like, a reply, a repost, a follow or a mention is pushed the way Threads
+pushes it:
 who did it is the title, what they did is the body, and their picture rides
 along.
 
@@ -59,6 +60,15 @@ along.
 | Reply | Ada Obi | Replied: “what they wrote…” |
 | Repost | Ada Obi | Reposted your post: “first few words…” |
 | Follow | Ada Obi | Followed you |
+| Mention | Ada Obi | Mentioned you: “what they wrote…” |
+
+A mention is somebody writing `@handle` in a new post or reply. It is recorded
+in `Mention` (one row per person per post or reply, at most 20 people) and
+read back into Notifications under its own tab. The writer, anybody blocked
+either way, and the people a reply already notifies (the post's author and
+whoever it answers) are not told of it as a mention too. Apps ask for these
+rows with `include=moderation,mentions`; an older app, which would read an
+unknown row as a like, does not get them.
 
 - **The name** is the display name, else the @handle. When whoever did it
   is gone, banned, or blocked by or blocking the reader, no push goes at

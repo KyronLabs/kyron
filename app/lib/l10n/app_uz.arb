@@ -1120,5 +1120,9 @@
   "follow_author": "{name}ni kuzatish",
   "ins_countries": "Mamlakatlar",
   "ins_countries_note": "Profilida mamlakat ko‘rsatilgan, yetib borilgan {known} kishidan.",
-  "ins_not_collected_city": "Mamlakatlar odamlar o‘z profillarida tanlaganlaridir. Kyron hech kimning shahri yoki jinsini to‘plamaydi, shuning uchun ular bo‘yicha ko‘rsatadigan narsa yo‘q."
+  "ins_not_collected_city": "Mamlakatlar odamlar o‘z profillarida tanlaganlaridir. Kyron hech kimning shahri yoki jinsini to‘plamaydi, shuning uchun ular bo‘yicha ko‘rsatadigan narsa yo‘q.",
+  "ui_notif_mentioned": "sizni tilga oldi",
+  "ui_notif_tab_mentions": "Eslatmalar",
+  "ui_notif_no_mentions": "Hali eslatmalar yo‘q",
+  "ui_notif_no_mentions_detail": "Kimdir post yoki javobda @foydalanuvchi nomingizni yozsa, u shu yerda ko‘rinadi."
 }

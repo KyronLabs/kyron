@@ -1120,5 +1120,9 @@
   "follow_author": "Segueix {name}",
   "ins_countries": "Països",
   "ins_countries_note": "De les {known} persones assolides que tenen un país al perfil.",
-  "ins_not_collected_city": "Els països són els que la gent ha triat al seu perfil. Kyron no recull la ciutat ni el gènere de ningú, així que no hi ha res a mostrar-ne."
+  "ins_not_collected_city": "Els països són els que la gent ha triat al seu perfil. Kyron no recull la ciutat ni el gènere de ningú, així que no hi ha res a mostrar-ne.",
+  "ui_notif_mentioned": "t'ha esmentat",
+  "ui_notif_tab_mentions": "Mencions",
+  "ui_notif_no_mentions": "Encara no hi ha mencions",
+  "ui_notif_no_mentions_detail": "Quan algú escrigui el teu @nom d'usuari en una publicació o una resposta, apareixerà aquí."
 }

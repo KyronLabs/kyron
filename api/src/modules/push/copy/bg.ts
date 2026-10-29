@@ -13,6 +13,8 @@ export const bg: Copy = {
   reposted_quote: 'Сподели публикацията ти: „{snippet}“',
   replied: 'Отговори ти',
   replied_quote: 'Отговори: „{snippet}“',
+  mentioned: 'Спомена те',
+  mentioned_quote: 'Спомена те: „{snippet}“',
   group: 'Група',
   new_message: 'Ново съобщение',
   dm_once: 'Изпрати нещо за еднократно гледане',

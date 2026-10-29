@@ -1482,6 +1482,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடர்கிறார்"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("உங்கள் இடுகையை விரும்பினார்"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("உங்களைக் குறிப்பிட்டார்"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("இதுவரை குறிப்பிடல்கள் இல்லை"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "யாராவது ஒரு இடுகையிலோ பதிலிலோ உங்கள் @பயனர்பெயரை எழுதினால், அது இங்கே தோன்றும்."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("பழையவை"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "சமூக அரட்டையில் உங்கள் செய்தி அகற்றப்பட்டது"),
@@ -1512,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("பின்தொடர்தல்கள்"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("விருப்பங்கள்"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("குறிப்பிடல்கள்"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("பதில்கள்"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("இந்த வாரம்"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("இன்று"),

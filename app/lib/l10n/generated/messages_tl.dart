@@ -1474,6 +1474,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ay nag-follow sa iyo"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ay nag-like sa post mo"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ay nag-mention sa iyo"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Wala pang mention"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Kapag isinulat ng isang tao ang iyong @handle sa isang post o reply, lalabas ito rito."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Mas luma"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Inalis ang mensahe mo sa isang community chat"),
@@ -1503,6 +1509,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Mga follow"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Mga like"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Mga mention"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Mga reply"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Ngayong linggo"),

@@ -13,6 +13,8 @@ export const mr: Copy = {
   reposted_quote: 'तुमची पोस्ट पुन्हा शेअर केली: “{snippet}”',
   replied: 'तुम्हाला उत्तर दिले',
   replied_quote: 'उत्तर दिले: “{snippet}”',
+  mentioned: 'तुमचा उल्लेख केला',
+  mentioned_quote: 'तुमचा उल्लेख केला: “{snippet}”',
   group: 'ग्रुप',
   new_message: 'नवीन संदेश',
   dm_once: 'एकदाच पाहण्यासाठी काहीतरी पाठवले',

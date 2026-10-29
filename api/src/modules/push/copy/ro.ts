@@ -13,6 +13,8 @@ export const ro: Copy = {
   reposted_quote: 'Ți-a redistribuit postarea: „{snippet}”',
   replied: 'Ți-a răspuns',
   replied_quote: 'A răspuns: „{snippet}”',
+  mentioned: 'Te-a menționat',
+  mentioned_quote: 'Te-a menționat: „{snippet}”',
   group: 'Grup',
   new_message: 'Mesaj nou',
   dm_once: 'Ți-a trimis ceva de văzut o singură dată',

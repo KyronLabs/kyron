@@ -13,6 +13,8 @@ export const so: Copy = {
   reposted_quote: 'Dib ayuu u daabacay qoraalkaaga: “{snippet}”',
   replied: 'Wuu kaa jawaabay',
   replied_quote: 'Wuu jawaabay: “{snippet}”',
+  mentioned: 'Wuu ku xusay',
+  mentioned_quote: 'Wuu ku xusay: “{snippet}”',
   group: 'Koox',
   new_message: 'Fariin cusub',
   dm_once: 'Wuxuu soo diray wax hal mar la arko',

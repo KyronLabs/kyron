@@ -1453,6 +1453,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("התחיל/ה לעקוב אחריך"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("אהב/ה את הפוסט שלך"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("הזכיר/ה אותך"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("אין עדיין אזכורים"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "כשמישהו כותב את @שם המשתמש שלך בפוסט או בתגובה, זה יופיע כאן."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("ישנות יותר"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "ההודעה שלך בצ׳אט של קהילה הוסרה"),
@@ -1481,6 +1487,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("הכול"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("עוקבים"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("לייקים"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("אזכורים"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("תגובות"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("השבוע"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("היום"),

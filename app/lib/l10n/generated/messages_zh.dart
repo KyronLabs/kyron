@@ -446,6 +446,10 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("案件 \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("关注了你"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("赞了你的帖子"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("提到了你"),
+      "ui_notif_no_mentions": MessageLookupByLibrary.simpleMessage("还没有人提到你"),
+      "ui_notif_no_mentions_detail":
+          MessageLookupByLibrary.simpleMessage("当有人在帖子或回复中写下你的 @用户名 时，会显示在这里。"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("更早"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("你在社区聊天中的消息已被移除"),
@@ -470,6 +474,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("全部"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("关注"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("赞"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("提及"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("回复"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("本周"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("今天"),

@@ -1462,6 +1462,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("نے آپ کو فالو کیا"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("نے آپ کی پوسٹ پسند کی"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("نے آپ کا ذکر کیا"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ابھی کوئی ذکر نہیں"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "جب کوئی کسی پوسٹ یا جواب میں آپ کا @ہینڈل لکھے گا، تو وہ یہاں نظر آئے گا۔"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("پرانے"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "کمیونٹی چیٹ میں آپ کا پیغام ہٹا دیا گیا"),
@@ -1490,6 +1496,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("سب"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("فالوورز"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("پسندیدگیاں"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("ذکر"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("جوابات"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("اس ہفتے"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("آج"),

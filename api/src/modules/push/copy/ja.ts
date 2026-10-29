@@ -13,6 +13,8 @@ export const ja: Copy = {
   reposted_quote: 'あなたの投稿を再投稿しました：「{snippet}」',
   replied: 'あなたに返信しました',
   replied_quote: '返信：「{snippet}」',
+  mentioned: 'あなたをメンションしました',
+  mentioned_quote: 'あなたをメンションしました：「{snippet}」',
   group: 'グループ',
   new_message: '新しいメッセージ',
   dm_once: '1回だけ表示できるものを送信しました',

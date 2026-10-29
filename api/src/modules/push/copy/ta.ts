@@ -13,6 +13,8 @@ export const ta: Copy = {
   reposted_quote: 'உங்கள் இடுகையை மறுபகிர்வு செய்தார்: “{snippet}”',
   replied: 'உங்களுக்குப் பதிலளித்தார்',
   replied_quote: 'பதிலளித்தார்: “{snippet}”',
+  mentioned: 'உங்களைக் குறிப்பிட்டார்',
+  mentioned_quote: 'உங்களைக் குறிப்பிட்டார்: “{snippet}”',
   group: 'குழு',
   new_message: 'புதிய செய்தி',
   dm_once: 'ஒருமுறை பார்க்க ஒன்றை அனுப்பினார்',

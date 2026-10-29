@@ -1464,6 +1464,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Shari'a \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ya bi ka"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("ya so rubutunka"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ya ambace ka"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Babu ambato tukuna"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Idan wani ya rubuta @sunanka a rubutu ko amsa, zai bayyana a nan."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Tsofaffi"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "An cire saƙonka a hirar al'umma"),
@@ -1492,6 +1498,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Duka"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Masu bi"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Abubuwan so"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Ambato"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Amsoshi"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Wannan makon"),

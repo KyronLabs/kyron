@@ -1120,5 +1120,9 @@
   "follow_author": "Suivre {name}",
   "ins_countries": "Pays",
   "ins_countries_note": "Parmi les {known} personnes atteintes qui ont un pays sur leur profil.",
-  "ins_not_collected_city": "Les pays sont ceux que les gens ont choisis sur leur profil. Kyron ne collecte la ville ou le genre de personne, il n'y a donc rien à afficher pour ces données."
+  "ins_not_collected_city": "Les pays sont ceux que les gens ont choisis sur leur profil. Kyron ne collecte la ville ou le genre de personne, il n'y a donc rien à afficher pour ces données.",
+  "ui_notif_mentioned": "vous a mentionné",
+  "ui_notif_tab_mentions": "Mentions",
+  "ui_notif_no_mentions": "Aucune mention pour l'instant",
+  "ui_notif_no_mentions_detail": "Quand quelqu'un écrit votre @pseudo dans une publication ou une réponse, cela apparaît ici."
 }

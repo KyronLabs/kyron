@@ -1480,6 +1480,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("က သင့်ကို ဖော်လိုလုပ်ခဲ့သည်"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("က သင့်ပို့စ်ကို ကြိုက်ခဲ့သည်"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("က သင့်ကို ဖော်ပြခဲ့သည်"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ဖော်ပြချက် မရှိသေးပါ"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "တစ်စုံတစ်ယောက်က ပို့စ် သို့မဟုတ် ပြန်စာတွင် သင့် @အမည်ကို ရေးသောအခါ ဤနေရာတွင် ပေါ်လာမည်။"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("ယခင်က"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "အသိုင်းအဝိုင်း ချက်တ်ထဲရှိ သင့်မက်ဆေ့ချ်ကို ဖယ်ရှားလိုက်ပါပြီ"),
@@ -1510,6 +1516,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ဖော်လိုများ"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("ကြိုက်နှစ်သက်မှုများ"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("ဖော်ပြချက်များ"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("ပြန်စာများ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ဤအပတ်"),

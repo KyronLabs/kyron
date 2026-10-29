@@ -1484,6 +1484,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("നിങ്ങളെ ഫോളോ ചെയ്തു"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage(
           "നിങ്ങളുടെ പോസ്റ്റ് ലൈക്ക് ചെയ്തു"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളെ പരാമർശിച്ചു"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ഇതുവരെ പരാമർശങ്ങളില്ല"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "ആരെങ്കിലും ഒരു പോസ്റ്റിലോ മറുപടിയിലോ നിങ്ങളുടെ @ഹാൻഡിൽ എഴുതുമ്പോൾ, അത് ഇവിടെ കാണിക്കും."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("പഴയവ"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "കമ്മ്യൂണിറ്റി ചാറ്റിലെ നിങ്ങളുടെ സന്ദേശം നീക്കം ചെയ്തു"),
@@ -1512,6 +1518,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("എല്ലാം"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ഫോളോകൾ"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ലൈക്കുകൾ"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("പരാമർശങ്ങൾ"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("മറുപടികൾ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ഈ ആഴ്ച"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("ഇന്ന്"),

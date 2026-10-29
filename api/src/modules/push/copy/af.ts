@@ -13,6 +13,8 @@ export const af: Copy = {
   reposted_quote: 'Het jou plasing herplaas: “{snippet}”',
   replied: 'Het jou geantwoord',
   replied_quote: 'Het geantwoord: “{snippet}”',
+  mentioned: 'Het jou genoem',
+  mentioned_quote: 'Het jou genoem: “{snippet}”',
   group: 'Groep',
   new_message: 'Nuwe boodskap',
   dm_once: 'Het iets gestuur om een keer te bekyk',

@@ -1475,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ayaa ku raacay"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ayaa jeclaaday qoraalkaaga"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ayaa ku xusay"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Wali xusitaan ma jiraan"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Marka qof qoro @magacaaga qoraal ama jawaab dhexdeed, halkan ayuu ka muuqan doonaa."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Kuwii hore"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Fariintaadii sheekaysiga bulshada waa la saaray"),
@@ -1505,6 +1511,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Raacitaanno"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Jeclaanshaha"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Xusitaan"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Jawaabaha"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Toddobaadkan"),

@@ -1474,6 +1474,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("подписался(-ась) на вас"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("оценил(а) вашу публикацию"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("упомянул(а) вас"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Упоминаний пока нет"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Когда кто-то напишет ваш @ник в публикации или ответе, это появится здесь."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ранее"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ваше сообщение в чате сообщества удалено"),
@@ -1504,6 +1510,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Подписчики"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Отметки «Нравится»"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Упоминания"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Ответы"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("На этой неделе"),

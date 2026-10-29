@@ -1458,6 +1458,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("यांनी तुम्हाला फॉलो केले"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("यांना तुमची पोस्ट आवडली"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("यांनी तुमचा उल्लेख केला"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("अजून कोणताही उल्लेख नाही"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "कोणी पोस्ट किंवा उत्तरात तुमचे @हँडल लिहिले की ते इथे दिसेल."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("जुने"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "कम्युनिटी चॅटमधील तुमचा संदेश काढून टाकला"),
@@ -1486,6 +1492,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("सर्व"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("फॉलो"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("उल्लेख"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("उत्तरे"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("या आठवड्यात"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("आज"),

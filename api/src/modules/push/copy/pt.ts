@@ -13,6 +13,8 @@ export const pt: Copy = {
   reposted_quote: 'Repostou sua publicação: “{snippet}”',
   replied: 'Respondeu a você',
   replied_quote: 'Respondeu: “{snippet}”',
+  mentioned: 'Mencionou você',
+  mentioned_quote: 'Mencionou você: “{snippet}”',
   group: 'Grupo',
   new_message: 'Nova mensagem',
   dm_once: 'Enviou algo para ver uma vez',

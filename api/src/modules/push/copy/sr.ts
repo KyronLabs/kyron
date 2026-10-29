@@ -13,6 +13,8 @@ export const sr: Copy = {
   reposted_quote: 'Поделио је вашу објаву: „{snippet}“',
   replied: 'Одговорио вам је',
   replied_quote: 'Одговор: „{snippet}“',
+  mentioned: 'Поменуо/ла те је',
+  mentioned_quote: 'Поменуо/ла те је: „{snippet}“',
   group: 'Група',
   new_message: 'Нова порука',
   dm_once: 'Послао је нешто за једнократни преглед',

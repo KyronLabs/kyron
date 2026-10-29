@@ -13,6 +13,8 @@ export const xh: Copy = {
   reposted_quote: 'Uphinde wapapasha ipowusti yakho: “{snippet}”',
   replied: 'Ukuphendule',
   replied_quote: 'Uphendule: “{snippet}”',
+  mentioned: 'Ukukhankanyile',
+  mentioned_quote: 'Ukukhankanyile: “{snippet}”',
   group: 'Iqela',
   new_message: 'Umyalezo omtsha',
   dm_once: 'Uthumele into ebonwa kanye kuphela',

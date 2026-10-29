@@ -578,6 +578,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Case \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("followed you"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("liked your post"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("mentioned you"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("No mentions yet"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "When somebody writes your @handle in a post or a reply, it shows up here."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Older"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Your message in a community chat was removed"),
@@ -606,6 +612,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("All"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Follows"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Likes"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Mentions"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Replies"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("This week"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Today"),

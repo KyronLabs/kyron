@@ -1120,5 +1120,9 @@
   "follow_author": "Jälgi kasutajat {name}",
   "ins_countries": "Riigid",
   "ins_countries_note": "{known} inimeselt, kelleni jõudsid ja kelle profiilil on riik.",
-  "ins_not_collected_city": "Riigid on need, mille inimesed oma profiilil valisid. Kyron ei kogu kellegi linna ega sugu, seega pole nende kohta midagi näidata."
+  "ins_not_collected_city": "Riigid on need, mille inimesed oma profiilil valisid. Kyron ei kogu kellegi linna ega sugu, seega pole nende kohta midagi näidata.",
+  "ui_notif_mentioned": "mainis sind",
+  "ui_notif_tab_mentions": "Mainimised",
+  "ui_notif_no_mentions": "Mainimisi veel pole",
+  "ui_notif_no_mentions_detail": "Kui keegi kirjutab su @kasutajanime postitusse või vastusesse, näed seda siin."
 }

@@ -1120,5 +1120,9 @@
   "follow_author": "{name} izlə",
   "ins_countries": "Ölkələr",
   "ins_countries_note": "Profilində ölkə olan {known} çatılmış nəfərdən.",
-  "ins_not_collected_city": "Ölkələr insanların profillərində seçdikləridir. Kyron heç kimin şəhərini və ya cinsini toplamır, ona görə də onlar üçün göstəriləcək bir şey yoxdur."
+  "ins_not_collected_city": "Ölkələr insanların profillərində seçdikləridir. Kyron heç kimin şəhərini və ya cinsini toplamır, ona görə də onlar üçün göstəriləcək bir şey yoxdur.",
+  "ui_notif_mentioned": "sizi qeyd etdi",
+  "ui_notif_tab_mentions": "Qeydlər",
+  "ui_notif_no_mentions": "Hələ qeyd yoxdur",
+  "ui_notif_no_mentions_detail": "Kimsə paylaşımda və ya cavabda @istifadəçi adınızı yazanda, burada görünür."
 }

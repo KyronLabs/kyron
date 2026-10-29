@@ -1455,6 +1455,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("القضية \$number · \$rule"),
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("بدأ متابعتك"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("أُعجب بمنشورك"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("أشار إليك"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("لا إشارات بعد"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "عندما يكتب أحدهم @اسمك في منشور أو رد، يظهر ذلك هنا."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("الأقدم"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("أُزيلت رسالتك في دردشة مجتمع"),
@@ -1482,6 +1487,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("الكل"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("المتابعون"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("الإشارات"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("الردود"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("اليوم"),

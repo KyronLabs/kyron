@@ -1468,6 +1468,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("đã theo dõi bạn"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("đã thích bài viết của bạn"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("đã nhắc đến bạn"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Chưa có lượt nhắc nào"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Khi ai đó viết @tên người dùng của bạn trong bài viết hoặc phản hồi, nó sẽ hiện ở đây."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Cũ hơn"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Tin nhắn của bạn trong cuộc trò chuyện cộng đồng đã bị gỡ"),
@@ -1496,6 +1502,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Tất cả"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Theo dõi"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lượt thích"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Lượt nhắc"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Phản hồi"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Tuần này"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Hôm nay"),

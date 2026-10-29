@@ -1475,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ඔබව අනුගමනය කළා"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ඔබේ පළ කිරීමට කැමති වුණා"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ඔබව සඳහන් කළා"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("තවම සඳහන් කිරීම් නැත"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "කෙනෙකු පළ කිරීමක හෝ පිළිතුරක ඔබගේ @නාමය ලියූ විට, එය මෙහි පෙන්වයි."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("පැරණි"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "ප්‍රජා කතාබහක ඔබේ පණිවිඩය ඉවත් කරන ලදී"),
@@ -1503,6 +1509,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("සියල්ල"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("අනුගමන"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("කැමැත්ත"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("සඳහන් කිරීම්"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("පිළිතුරු"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("මෙම සතිය"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("අද"),

@@ -13,6 +13,8 @@ export const tl: Copy = {
   reposted_quote: 'Nag-repost ng post mo: “{snippet}”',
   replied: 'Nag-reply sa iyo',
   replied_quote: 'Nag-reply: “{snippet}”',
+  mentioned: 'Binanggit ka',
+  mentioned_quote: 'Binanggit ka-reply: “{snippet}”',
   group: 'Grupo',
   new_message: 'Bagong mensahe',
   dm_once: 'Nagpadala ng isang bagay na makikita nang isang beses',

@@ -1468,6 +1468,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮನ್ನು ಫಾಲೋ ಮಾಡಿದ್ದಾರೆ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಪೋಸ್ಟ್ ಇಷ್ಟಪಟ್ಟಿದ್ದಾರೆ"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮನ್ನು ಉಲ್ಲೇಖಿಸಿದ್ದಾರೆ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನೂ ಯಾವುದೇ ಉಲ್ಲೇಖಗಳಿಲ್ಲ"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "ಯಾರಾದರೂ ಪೋಸ್ಟ್ ಅಥವಾ ಪ್ರತ್ಯುತ್ತರದಲ್ಲಿ ನಿಮ್ಮ @ಹ್ಯಾಂಡಲ್ ಬರೆದಾಗ, ಅದು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("ಹಳೆಯವು"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "ಸಮುದಾಯ ಚಾಟ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"),
@@ -1496,6 +1502,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ಎಲ್ಲವೂ"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ಫಾಲೋಗಳು"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ಇಷ್ಟಗಳು"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("ಉಲ್ಲೇಖಗಳು"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("ಪ್ರತ್ಯುತ್ತರಗಳು"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ಈ ವಾರ"),

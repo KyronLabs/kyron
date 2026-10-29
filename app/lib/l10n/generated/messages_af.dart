@@ -1525,6 +1525,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("het jou gevolg"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("hou van jou plasing"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("het jou genoem"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Nog geen noemings nie"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Wanneer iemand jou @handvatsel in 'n plasing of 'n antwoord skryf, wys dit hier."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ouer"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Jou boodskap in 'n gemeenskapklets is verwyder"),
@@ -1553,6 +1559,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Alles"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Volgers"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Laaiks"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Noemings"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Antwoorde"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Hierdie week"),

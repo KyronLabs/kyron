@@ -1120,5 +1120,9 @@
   "follow_author": "Følg {name}",
   "ins_countries": "Land",
   "ins_countries_note": "Av de {known} nådde personene som har et land på profilen sin.",
-  "ins_not_collected_city": "Landene er dem folk har valgt på profilene sine. Kyron samler ikke inn noens by eller kjønn, så det er ingenting å vise for dem."
+  "ins_not_collected_city": "Landene er dem folk har valgt på profilene sine. Kyron samler ikke inn noens by eller kjønn, så det er ingenting å vise for dem.",
+  "ui_notif_mentioned": "nevnte deg",
+  "ui_notif_tab_mentions": "Omtaler",
+  "ui_notif_no_mentions": "Ingen omtaler ennå",
+  "ui_notif_no_mentions_detail": "Når noen skriver @brukernavnet ditt i et innlegg eller et svar, vises det her."
 }

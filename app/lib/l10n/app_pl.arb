@@ -1120,5 +1120,9 @@
   "follow_author": "Obserwuj: {name}",
   "ins_countries": "Kraje",
   "ins_countries_note": "Spośród {known} osób, do których dotarłeś i które mają kraj na profilu.",
-  "ins_not_collected_city": "Kraje to te, które ludzie wybrali na swoich profilach. Kyron nie zbiera niczyjego miasta ani płci, więc nie ma tu nic do pokazania."
+  "ins_not_collected_city": "Kraje to te, które ludzie wybrali na swoich profilach. Kyron nie zbiera niczyjego miasta ani płci, więc nie ma tu nic do pokazania.",
+  "ui_notif_mentioned": "wspomniał(a) o Tobie",
+  "ui_notif_tab_mentions": "Wzmianki",
+  "ui_notif_no_mentions": "Na razie brak wzmianek",
+  "ui_notif_no_mentions_detail": "Gdy ktoś napisze Twój @login w poście lub odpowiedzi, zobaczysz to tutaj."
 }

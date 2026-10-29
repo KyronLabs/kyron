@@ -1120,5 +1120,9 @@
   "follow_author": "{name}님 팔로우",
   "ins_countries": "국가",
   "ins_countries_note": "프로필에 국가를 설정한, 도달한 {known}명 기준입니다.",
-  "ins_not_collected_city": "국가는 사람들이 프로필에서 직접 선택한 것입니다. Kyron은 누구의 도시나 성별도 수집하지 않으므로 이에 대해 보여 줄 내용이 없습니다."
+  "ins_not_collected_city": "국가는 사람들이 프로필에서 직접 선택한 것입니다. Kyron은 누구의 도시나 성별도 수집하지 않으므로 이에 대해 보여 줄 내용이 없습니다.",
+  "ui_notif_mentioned": "님이 회원님을 언급했습니다",
+  "ui_notif_tab_mentions": "언급",
+  "ui_notif_no_mentions": "아직 언급이 없습니다",
+  "ui_notif_no_mentions_detail": "누군가 게시물이나 답글에 회원님의 @사용자 이름을 쓰면 여기에 표시됩니다."
 }

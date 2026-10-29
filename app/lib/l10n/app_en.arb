@@ -1120,5 +1120,9 @@
   "follow_author": "Follow {name}",
   "ins_countries": "Countries",
   "ins_countries_note": "From the {known} people reached who have a country on their profile.",
-  "ins_not_collected_city": "Countries are the ones people chose on their profiles. Kyron does not collect anyone's city or gender, so there is nothing to show for them."
+  "ins_not_collected_city": "Countries are the ones people chose on their profiles. Kyron does not collect anyone's city or gender, so there is nothing to show for them.",
+  "ui_notif_mentioned": "mentioned you",
+  "ui_notif_tab_mentions": "Mentions",
+  "ui_notif_no_mentions": "No mentions yet",
+  "ui_notif_no_mentions_detail": "When somebody writes your @handle in a post or a reply, it shows up here."
 }

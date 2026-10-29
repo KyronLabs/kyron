@@ -1475,6 +1475,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("te urmărește acum"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("a apreciat postarea ta"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("te-a menționat"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Încă nu există mențiuni"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Când cineva îți scrie @numele de utilizator într-o postare sau într-un răspuns, apare aici."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Mai vechi"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Mesajul tău dintr-un chat al comunității a fost eliminat"),
@@ -1504,6 +1510,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Urmăritori"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Aprecieri"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Mențiuni"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Răspunsuri"),
       "ui_notif_this_week":

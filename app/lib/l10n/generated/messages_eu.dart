@@ -1471,6 +1471,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("jarraitzen hasi zaizu"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("atsegin du zure argitalpena"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("aipatu zaitu"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago aipamenik"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Norbaitek zure @erabiltzailea argitalpen edo erantzun batean idazten duenean, hemen agertuko da."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Zaharragoak"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Komunitateko txat bateko zure mezua kendu da"),
@@ -1500,6 +1506,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Jarraipenak"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Atsegiteak"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Aipamenak"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("Erantzunak"),
       "ui_notif_this_week":

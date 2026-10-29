@@ -1120,5 +1120,9 @@
   "follow_author": "Landela u-{name}",
   "ins_countries": "Amazwe",
   "ins_countries_note": "Kubantu abangu-{known} abafinyelelwe abanezwe kuphrofayela yabo.",
-  "ins_not_collected_city": "Amazwe yilawo abantu abawakhethe kumaphrofayela abo. I-Kyron ayiqoqi idolobha noma ubulili bomuntu, ngakho akukho okungaboniswa ngakho."
+  "ins_not_collected_city": "Amazwe yilawo abantu abawakhethe kumaphrofayela abo. I-Kyron ayiqoqi idolobha noma ubulili bomuntu, ngakho akukho okungaboniswa ngakho.",
+  "ui_notif_mentioned": "ukubalulile",
+  "ui_notif_tab_mentions": "Ukubalulwa",
+  "ui_notif_no_mentions": "Akukabikho ukubalulwa",
+  "ui_notif_no_mentions_detail": "Uma umuntu ebhala i-@gama lakho kokuthunyelwe noma empendulweni, kuzovela lapha."
 }

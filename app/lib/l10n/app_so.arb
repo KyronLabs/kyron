@@ -1120,5 +1120,9 @@
   "follow_author": "Raac {name}",
   "ins_countries": "Dalal",
   "ins_countries_note": "Laga soo xusay {known} qof oo la gaaray oo dal ku leh profile-kooda.",
-  "ins_not_collected_city": "Dalalku waa kuwa dadku ku doorteen profile-kooda. Kyron ma ururiyo magaalada ama jinsiga qofna, markaa wax loo muujiyo ma jiraan."
+  "ins_not_collected_city": "Dalalku waa kuwa dadku ku doorteen profile-kooda. Kyron ma ururiyo magaalada ama jinsiga qofna, markaa wax loo muujiyo ma jiraan.",
+  "ui_notif_mentioned": "ayaa ku xusay",
+  "ui_notif_tab_mentions": "Xusitaan",
+  "ui_notif_no_mentions": "Wali xusitaan ma jiraan",
+  "ui_notif_no_mentions_detail": "Marka qof qoro @magacaaga qoraal ama jawaab dhexdeed, halkan ayuu ka muuqan doonaa."
 }

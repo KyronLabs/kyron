@@ -1450,6 +1450,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("ติดตามคุณ"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ถูกใจโพสต์ของคุณ"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("กล่าวถึงคุณ"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ยังไม่มีการกล่าวถึง"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "เมื่อมีคนเขียน @ชื่อผู้ใช้ของคุณในโพสต์หรือการตอบกลับ จะแสดงที่นี่"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("เก่ากว่า"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("ข้อความของคุณในแชทชุมชนถูกลบ"),
@@ -1478,6 +1483,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ทั้งหมด"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("การติดตาม"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("การถูกใจ"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("การกล่าวถึง"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("การตอบกลับ"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("สัปดาห์นี้"),

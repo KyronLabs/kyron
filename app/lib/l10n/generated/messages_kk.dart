@@ -1462,6 +1462,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("сізге жазылды"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("жазбаңызды ұнатты"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("сізді атап өтті"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Әзірге аталым жоқ"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Біреу жазбада не жауапта сіздің @атыңызды жазса, ол осында көрсетіледі."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Ескілері"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Қауымдастық чатындағы хабарламаңыз жойылды"),
@@ -1491,6 +1497,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_follows":
           MessageLookupByLibrary.simpleMessage("Жазылушылар"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Ұнатулар"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("Аталымдар"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Жауаптар"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Осы аптада"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Бүгін"),

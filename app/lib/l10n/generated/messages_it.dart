@@ -1469,6 +1469,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ha iniziato a seguirti"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("ha messo mi piace al tuo post"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("ti ha menzionato"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Ancora nessuna menzione"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Quando qualcuno scrive il tuo @nome utente in un post o in una risposta, comparirà qui."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Meno recenti"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Il tuo messaggio in una chat della community è stato rimosso"),
@@ -1497,6 +1503,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Tutte"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Follower"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Mi piace"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Menzioni"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Risposte"),
       "ui_notif_this_week":
           MessageLookupByLibrary.simpleMessage("Questa settimana"),

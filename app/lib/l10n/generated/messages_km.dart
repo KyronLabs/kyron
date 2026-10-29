@@ -1462,6 +1462,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("បានតាមដានអ្នក"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("បានចូលចិត្តការបង្ហោះរបស់អ្នក"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("បានលើកឡើងពីអ្នក"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការលើកឡើងនៅឡើយទេ"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "នៅពេលនរណាម្នាក់សរសេរ @ឈ្មោះរបស់អ្នក ក្នុងការបង្ហោះ ឬការឆ្លើយតប វានឹងបង្ហាញនៅទីនេះ។"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("ចាស់ជាង"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "សាររបស់អ្នកក្នុងការជជែកសហគមន៍ត្រូវបានដកចេញ"),
@@ -1490,6 +1496,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("ទាំងអស់"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ការតាមដាន"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ការចូលចិត្ត"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("ការលើកឡើង"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("ការឆ្លើយតប"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("សប្ដាហ៍នេះ"),

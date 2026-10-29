@@ -1120,5 +1120,9 @@
   "follow_author": "{name} volgen",
   "ins_countries": "Landen",
   "ins_countries_note": "Van de {known} bereikte mensen die een land op hun profiel hebben.",
-  "ins_not_collected_city": "De landen zijn die mensen op hun profiel hebben gekozen. Kyron verzamelt van niemand de stad of het geslacht, dus daarvoor valt niets te tonen."
+  "ins_not_collected_city": "De landen zijn die mensen op hun profiel hebben gekozen. Kyron verzamelt van niemand de stad of het geslacht, dus daarvoor valt niets te tonen.",
+  "ui_notif_mentioned": "noemde je",
+  "ui_notif_tab_mentions": "Vermeldingen",
+  "ui_notif_no_mentions": "Nog geen vermeldingen",
+  "ui_notif_no_mentions_detail": "Als iemand je @gebruikersnaam in een bericht of reactie schrijft, zie je dat hier."
 }

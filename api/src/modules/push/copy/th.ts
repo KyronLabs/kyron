@@ -13,6 +13,8 @@ export const th: Copy = {
   reposted_quote: 'รีโพสต์โพสต์ของคุณ: “{snippet}”',
   replied: 'ตอบกลับคุณ',
   replied_quote: 'ตอบกลับ: “{snippet}”',
+  mentioned: 'กล่าวถึงคุณ',
+  mentioned_quote: 'กล่าวถึงคุณ: “{snippet}”',
   group: 'กลุ่ม',
   new_message: 'ข้อความใหม่',
   dm_once: 'ส่งบางอย่างที่ดูได้ครั้งเดียว',

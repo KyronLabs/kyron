@@ -492,6 +492,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed":
           MessageLookupByLibrary.simpleMessage("があなたをフォローしました"),
       "ui_notif_liked": MessageLookupByLibrary.simpleMessage("があなたの投稿にいいねしました"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("があなたをメンションしました"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("まだメンションはありません"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "誰かが投稿や返信であなたの@ユーザー名を書くと、ここに表示されます。"),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("それ以前"),
       "ui_notif_removed_message":
           MessageLookupByLibrary.simpleMessage("コミュニティチャットのメッセージが削除されました"),
@@ -520,6 +526,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("すべて"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("フォロー"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("いいね"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("メンション"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("返信"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("今週"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("今日"),

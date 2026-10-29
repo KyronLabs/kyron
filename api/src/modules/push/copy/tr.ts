@@ -13,6 +13,8 @@ export const tr: Copy = {
   reposted_quote: 'Gönderini yeniden paylaştı: “{snippet}”',
   replied: 'Sana yanıt verdi',
   replied_quote: 'Yanıt verdi: “{snippet}”',
+  mentioned: 'Senden bahsetti',
+  mentioned_quote: 'Senden bahsetti: “{snippet}”',
   group: 'Grup',
   new_message: 'Yeni mesaj',
   dm_once: 'Bir kez görüntülenecek bir şey gönderdi',

@@ -13,6 +13,8 @@ export const si: Copy = {
   reposted_quote: 'ඔබේ පළ කිරීම නැවත බෙදා ගත්තා: “{snippet}”',
   replied: 'ඔබට පිළිතුරු දුන්නා',
   replied_quote: 'පිළිතුරු දුන්නා: “{snippet}”',
+  mentioned: 'ඔබව සඳහන් කළා',
+  mentioned_quote: 'ඔබව සඳහන් කළා: “{snippet}”',
   group: 'කණ්ඩායම',
   new_message: 'නව පණිවිඩය',
   dm_once: 'එක් වරක් බැලීමට යමක් එවූවා',

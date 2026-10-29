@@ -1461,6 +1461,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("amekufuata"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("amependa chapisho lako"),
+      "ui_notif_mentioned": MessageLookupByLibrary.simpleMessage("amekutaja"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Bado hujatajwa"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Mtu anapoandika @jina lako kwenye chapisho au jibu, litaonekana hapa."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Za zamani"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Ujumbe wako kwenye gumzo la jumuiya umeondolewa"),
@@ -1491,6 +1496,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Wanaofuata"),
       "ui_notif_tab_likes":
           MessageLookupByLibrary.simpleMessage("Zilizopendwa"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Kutajwa"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Majibu"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Wiki hii"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Leo"),

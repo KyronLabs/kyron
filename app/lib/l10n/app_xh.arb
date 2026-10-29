@@ -1120,5 +1120,9 @@
   "follow_author": "Landela u-{name}",
   "ins_countries": "Amazwe",
   "ins_countries_note": "Kubantu abangu-{known} abafikelelweyo abanelizwe kwiprofayile yabo.",
-  "ins_not_collected_city": "Amazwe ngawo abantu abawakhethileyo kwiiprofayile zabo. IKyron ayiqokeleli sixeko okanye isini somntu, ngoko akukho nto inokuboniswa ngazo."
+  "ins_not_collected_city": "Amazwe ngawo abantu abawakhethileyo kwiiprofayile zabo. IKyron ayiqokeleli sixeko okanye isini somntu, ngoko akukho nto inokuboniswa ngazo.",
+  "ui_notif_mentioned": "ukukhankanyile",
+  "ui_notif_tab_mentions": "Ukukhankanywa",
+  "ui_notif_no_mentions": "Akukabikho ukukhankanywa",
+  "ui_notif_no_mentions_detail": "Xa umntu ebhala i-@gama lakho kwiposti okanye kwimpendulo, kuya kuvela apha."
 }

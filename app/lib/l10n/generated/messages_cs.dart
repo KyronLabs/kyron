@@ -1531,6 +1531,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_followed": MessageLookupByLibrary.simpleMessage("vás sleduje"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("dal(a) like vašemu příspěvku"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("vás zmínil(a)"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("Zatím žádné zmínky"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "Když někdo napíše vaše @jméno v příspěvku nebo odpovědi, objeví se to tady."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("Starší"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "Vaše zpráva v komunitním chatu byla odstraněna"),
@@ -1559,6 +1565,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("Vše"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("Sledující"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("Lajky"),
+      "ui_notif_tab_mentions": MessageLookupByLibrary.simpleMessage("Zmínky"),
       "ui_notif_tab_replies": MessageLookupByLibrary.simpleMessage("Odpovědi"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("Tento týden"),
       "ui_notif_today": MessageLookupByLibrary.simpleMessage("Dnes"),

@@ -1120,5 +1120,9 @@
   "follow_author": "Theo dõi {name}",
   "ins_countries": "Quốc gia",
   "ins_countries_note": "Từ {known} người được tiếp cận có quốc gia trên trang cá nhân.",
-  "ins_not_collected_city": "Quốc gia là những gì mọi người tự chọn trên trang cá nhân. Kyron không thu thập thành phố hay giới tính của bất kỳ ai, nên không có gì để hiển thị cho những mục đó."
+  "ins_not_collected_city": "Quốc gia là những gì mọi người tự chọn trên trang cá nhân. Kyron không thu thập thành phố hay giới tính của bất kỳ ai, nên không có gì để hiển thị cho những mục đó.",
+  "ui_notif_mentioned": "đã nhắc đến bạn",
+  "ui_notif_tab_mentions": "Lượt nhắc",
+  "ui_notif_no_mentions": "Chưa có lượt nhắc nào",
+  "ui_notif_no_mentions_detail": "Khi ai đó viết @tên người dùng của bạn trong bài viết hoặc phản hồi, nó sẽ hiện ở đây."
 }

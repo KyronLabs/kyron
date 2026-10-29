@@ -1120,5 +1120,9 @@
   "follow_author": "Seguir {name}",
   "ins_countries": "Países",
   "ins_countries_note": "Das {known} pessoas alcançadas que têm um país no perfil.",
-  "ins_not_collected_city": "Os países são os que as pessoas escolheram no perfil. O Kyron não recolhe a cidade nem o género de ninguém, por isso não há nada a mostrar sobre eles."
+  "ins_not_collected_city": "Os países são os que as pessoas escolheram no perfil. O Kyron não recolhe a cidade nem o género de ninguém, por isso não há nada a mostrar sobre eles.",
+  "ui_notif_mentioned": "mencionou você",
+  "ui_notif_tab_mentions": "Menções",
+  "ui_notif_no_mentions": "Nenhuma menção ainda",
+  "ui_notif_no_mentions_detail": "Quando alguém escrever seu @usuário em uma publicação ou resposta, isso aparecerá aqui."
 }

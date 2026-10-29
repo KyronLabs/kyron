@@ -13,6 +13,8 @@ export const az: Copy = {
   reposted_quote: 'Paylaşımınızı yenidən paylaşdı: “{snippet}”',
   replied: 'Sizə cavab verdi',
   replied_quote: 'Cavab verdi: “{snippet}”',
+  mentioned: 'Səni qeyd etdi',
+  mentioned_quote: 'Səni qeyd etdi: “{snippet}”',
   group: 'Qrup',
   new_message: 'Yeni mesaj',
   dm_once: 'Bir dəfə baxmaq üçün nəsə göndərdi',

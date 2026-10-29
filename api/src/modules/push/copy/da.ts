@@ -13,6 +13,8 @@ export const da: Copy = {
   reposted_quote: 'Delte dit opslag: »{snippet}«',
   replied: 'Svarede dig',
   replied_quote: 'Svarede: »{snippet}«',
+  mentioned: 'Nævnte dig',
+  mentioned_quote: 'Nævnte dig: »{snippet}«',
   group: 'Gruppe',
   new_message: 'Ny besked',
   dm_once: 'Sendte noget, der kan ses én gang',

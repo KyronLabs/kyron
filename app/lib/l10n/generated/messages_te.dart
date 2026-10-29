@@ -1473,6 +1473,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ఫాలో అయ్యారు"),
       "ui_notif_liked":
           MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌ను ఇష్టపడ్డారు"),
+      "ui_notif_mentioned":
+          MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ప్రస్తావించారు"),
+      "ui_notif_no_mentions":
+          MessageLookupByLibrary.simpleMessage("ఇంకా ప్రస్తావనలు లేవు"),
+      "ui_notif_no_mentions_detail": MessageLookupByLibrary.simpleMessage(
+          "ఎవరైనా పోస్ట్‌లో లేదా ప్రత్యుత్తరంలో మీ @హ్యాండిల్‌ను రాస్తే, అది ఇక్కడ కనిపిస్తుంది."),
       "ui_notif_older": MessageLookupByLibrary.simpleMessage("పాతవి"),
       "ui_notif_removed_message": MessageLookupByLibrary.simpleMessage(
           "కమ్యూనిటీ చాట్‌లో మీ సందేశం తీసివేయబడింది"),
@@ -1501,6 +1507,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_notif_tab_all": MessageLookupByLibrary.simpleMessage("అన్నీ"),
       "ui_notif_tab_follows": MessageLookupByLibrary.simpleMessage("ఫాలోలు"),
       "ui_notif_tab_likes": MessageLookupByLibrary.simpleMessage("ఇష్టాలు"),
+      "ui_notif_tab_mentions":
+          MessageLookupByLibrary.simpleMessage("ప్రస్తావనలు"),
       "ui_notif_tab_replies":
           MessageLookupByLibrary.simpleMessage("ప్రత్యుత్తరాలు"),
       "ui_notif_this_week": MessageLookupByLibrary.simpleMessage("ఈ వారం"),

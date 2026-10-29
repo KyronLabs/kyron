@@ -13,6 +13,8 @@ export const ml: Copy = {
   reposted_quote: 'നിങ്ങളുടെ പോസ്റ്റ് റീപോസ്റ്റ് ചെയ്തു: “{snippet}”',
   replied: 'നിങ്ങൾക്ക് മറുപടി നൽകി',
   replied_quote: 'മറുപടി: “{snippet}”',
+  mentioned: 'നിങ്ങളെ പരാമർശിച്ചു',
+  mentioned_quote: 'നിങ്ങളെ പരാമർശിച്ചു: “{snippet}”',
   group: 'ഗ്രൂപ്പ്',
   new_message: 'പുതിയ സന്ദേശം',
   dm_once: 'ഒരിക്കൽ കാണാൻ എന്തോ അയച്ചു',
