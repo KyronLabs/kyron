@@ -256,6 +256,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Kon daardie foto nie neem nie.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Gewys op jou profiel en onder jou plasings."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Geen land pas by “{query}” nie."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Moenie 'n land wys nie"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Soek lande"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Gewys op jou profiel en onder jou plasings. Wanneer jy iemand se plasings sien, word jou land in hulle Insigte getel, net in groepe van vyf of meer en nooit by naam nie."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Uit jou foon se instellings"),
       "create": MessageLookupByLibrary.simpleMessage("Skep"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Skep rekening"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -314,6 +325,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Gesigopsporing is nie op hierdie toestel beskikbaar nie.",
       ),
       "feedTagDetail": (Object a0) => "Nog niks is onder #${a0} geplaas nie.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Volg {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Volgelinge"),
       "following": MessageLookupByLibrary.simpleMessage("Volgend"),
       "forgotPassword":
@@ -341,6 +353,120 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Hulpsentrum"),
       "home": MessageLookupByLibrary.simpleMessage("Tuis"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In een reël"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Jou rekening"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Maak die gemeenskap oop"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Skryf 'n plasing"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Sien die plasing"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Wysig jou profiel"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Wanneer hulle rond is"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("In jou tydsone."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Ouderdomme"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Uit die {known} mense bereik wat 'n verjaarsdag gegee het."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("Mense bereik per dag"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Gemeenskappe waarin hulle is"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Lande"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Uit die {known} mense bereik wat 'n land op hulle profiel het."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Laaste {days} dae"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("Insigte kon nie laai nie"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Volgers"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Geen groep is nog groot genoeg om te wys nie."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Hoe om te groei"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Onderwerpe wat hulle volg"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Hou van"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nuut"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("Nuwe volgers"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Geen van jou plasings het in hierdie tydperk iemand bereik nie."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Volg jou nie"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Lande is dié wat mense op hulle profiele gekies het. Kyron versamel niemand se stad of geslag nie, so daar is niks om daarvoor te wys nie."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Oopmaak"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} bereik · {likes} hou van · {replies} antwoorde"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Mense bereik"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Mense bereik tel elke persoon een keer: gewys of wat een van jou plasings vir die eerste keer oopmaak. Nuwe volgers volg jou steeds; ontvolgings word nie getel nie."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Antwoorde"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Herplasings"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Gestoor"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Wie jou gehoor is, wys sodra {floor} mense jou plasings in hierdie tydperk gesien het. Minder as dit, en dit kan na iemand wys."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Nog nie genoeg mense nie"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% van hulle volg jou reeds: jou plasings bereik meestal mense wat jou ken."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% van hulle volg jou nog nie: jou plasings word gevind."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Jy het {reach} mense bereik, {pct}% minder as die vorige tydperk."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Jy het {reach} mense in die laaste {days} dae bereik."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Jy het {reach} mense bereik, omtrent soveel as die vorige tydperk."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Niemand nuut het jou plasings in die laaste {days} dae gesien nie."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Jy het {reach} mense bereik, {pct}% meer as die vorige tydperk."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Jy het {reach} mense bereik, {times}× soveel as die vorige tydperk."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Meer van hulle volg {name} as enige ander onderwerp."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Gehoor"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Oorsig"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Mense wat een van jou plasings vind, kyk na jou profiel voordat hulle volg. 'n Gesig of 'n logo sê vir hulle iemand is daar."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Voeg 'n profielfoto by"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Sê in een reël waaroor jy plaas, sodat 'n vreemdeling weet wat dit hulle gee om jou te volg."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Skryf 'n bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} van jou {total} plasings het geen onderwerp gehad nie. 'n Onderwerp sit 'n plasing in daardie onderwerp se voer en voor die mense wat dit volg."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Voeg onderwerpe by jou plasings"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} mense het op jou plasings geantwoord en jy het {answered} beantwoord. Hulle het reeds genoeg omgegee om te skryf: 'n antwoord maak van 'n leser 'n gereelde."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Beantwoord jou antwoorde"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Jou gehoor is die aktiefste op {when}. 'n Plasing net voor dan het mense daar om dit te ontmoet."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Plaas wanneer hulle rond is"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} mense wat jou nie volg nie het jou plasings gesien, en {gained} het gevolg. Laat jou bio en nuutste plasings sê wat hulle van jou kan verwag."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Maak lesers volgers"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Een plasing het {times}× soveel mense bereik as wat jou ander gewoonlik doen. Kyk wat dit anders gedoen het, en doen meer daarvan."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Doen meer van wat gewerk het"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Baie van die mense wat jou plasings sien, is in {name}. Om daar te plaas, sit jou voor die res daarvan."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Plaas in {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Jy het {posts} keer in {days} dae geplaas. Elke plasing is nog 'n kans om gevind te word, en 'n vaste ritme hou jou in jou volgers se voere."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Plaas meer gereeld"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Jy het nie in die laaste {days} dae geplaas nie. Niks bereik iemand sonder 'n plasing nie."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Plaas iets"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Insigte"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Top-plasings"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Teenoor die {days} dae daarvoor"),
       "interest_add": MessageLookupByLibrary.simpleMessage(
         "Voeg 'n belangstelling by",
       ),
@@ -915,6 +1041,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profiel opgedateer"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Land"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Vertoonnaam"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Ligging"),

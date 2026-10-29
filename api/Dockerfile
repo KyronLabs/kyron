@@ -4,8 +4,6 @@
 ARG NODE_VERSION=22.21.1
 FROM node:${NODE_VERSION}-slim AS base
 
-LABEL fly_launch_runtime="NestJS/Prisma"
-
 # NestJS/Prisma app lives here
 WORKDIR /app
 

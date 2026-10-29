@@ -11,6 +11,32 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Insights for your account.** The chart button beside Share on your own
+  profile opens them: how many people your posts reached over the last 7, 30
+  or 90 days against the period before, new followers, opens, likes,
+  replies, reposts and saves, a day-by-day chart and your top posts.
+- **Who your audience is**: how many already follow you, their ages, the
+  topics they follow, the communities they are in, and when they are
+  around, in your time zone, and which countries they are in. Shown only
+  once 20 people have been reached, and never a group smaller than 5, so
+  it cannot point at anybody. Kyron does not collect cities or genders,
+  and the screen says so.
+- **How to grow**: up to four tips worked out from your own numbers --
+  replies you have not answered, posts without topics, a post that did far
+  better than the rest, the community your audience is in -- each with a
+  way to act on it, and none unless it applies to you.
+- **A country on your profile, picked from a list.** Edit profile and
+  sign-up offer every country, named in your own language and searchable
+  in it, in English or by code, with the ones your phone's settings point
+  at first. It shows on your profile and under your posts. Location used to
+  be a box you typed anything into; what people had typed is carried over
+  where it plainly names one country ("Lagos, Nigeria"), and otherwise left
+  for them to pick.
+- **Follow from the post.** A post by somebody you do not follow has a +
+  on their picture. Tap it to follow without leaving the feed; it ticks,
+  and every other post of theirs on screen stops offering.
 
 ## [0.1.16] - 2026-10-26
 ### Changed

@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Zobrazuje sa na tvojom profile a pod tvojimi príspevkami."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Žiadna krajina nezodpovedá „{query}“."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Nezobrazovať krajinu"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Hľadať krajiny"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Zobrazuje sa na tvojom profile a pod tvojimi príspevkami. Keď vidíš niečie príspevky, tvoja krajina sa započíta do jeho Štatistík, len v skupinách po piatich a viac ľuďoch a nikdy menom."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Z nastavení telefónu"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Sledovať {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,122 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Váš účet"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Otvoriť komunitu"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Napísať príspevok"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Zobraziť príspevok"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("Upraviť profil"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Kedy sú aktívni"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Vo vašom časovom pásme."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Vek"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Z {known} oslovených ľudí, ktorí uviedli dátum narodenia."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Oslovení ľudia za deň"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Komunity, v ktorých sú"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Krajiny"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Z {known} oslovených ľudí, ktorí majú na profile krajinu."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Posledných {days} dní"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Štatistiky sa nepodarilo načítať"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Sledovatelia"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Zatiaľ žiadna skupina nie je dosť veľká, aby sa dala ukázať."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Ako rásť"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Témy, ktoré sledujú"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Páči sa mi"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nové"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Noví sledovatelia"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Žiadny váš príspevok v tomto období nikoho neoslovil."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Nesledujú vás"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Krajiny sú tie, ktoré si ľudia zvolili na svojich profiloch. Kyron nezbiera ničie mesto ani pohlavie, takže pre ne nie je čo zobraziť."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Otvorenia"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} oslovených · {likes} páči sa · {replies} odpovedí"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Oslovení ľudia"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Každý človek sa počíta raz: prvýkrát sa mu zobrazil alebo otvoril niektorý váš príspevok. Noví sledovatelia vás stále sledujú; zrušené sledovania sa nepočítajú."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Odpovede"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Zdieľania"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Uloženia"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Kto je vaše publikum, sa ukáže, keď vaše príspevky v tomto období uvidí {floor} ľudí. Pri menšom počte by to mohlo ukázať na konkrétneho človeka."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Zatiaľ málo ľudí"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % z nich vás už sleduje: vaše príspevky oslovujú hlavne ľudí, ktorí vás poznajú."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % z nich vás zatiaľ nesleduje: vaše príspevky sa nachádzajú."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Oslovili ste {reach} ľudí, o {pct} % menej ako v predchádzajúcom období."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Za posledných {days} dní ste oslovili {reach} ľudí."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Oslovili ste {reach} ľudí, približne rovnako ako v predchádzajúcom období."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Za posledných {days} dní vaše príspevky nevidel nikto nový."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Oslovili ste {reach} ľudí, o {pct} % viac ako v predchádzajúcom období."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Oslovili ste {reach} ľudí, {times}× viac ako v predchádzajúcom období."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Viac z nich sleduje {name} ako akúkoľvek inú tému."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Publikum"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Prehľad"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ľudia, ktorí nájdu váš príspevok, sa pred sledovaním pozrú na váš profil. Tvár alebo logo im povie, že tam niekto je."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Pridajte profilovú fotku"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Povedzte jedným riadkom, o čom píšete, aby cudzí človek vedel, čo mu sledovanie prinesie."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("Napíšte bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} z vašich {total} príspevkov nemalo tému. Téma dá príspevok do kanála témy a pred ľudí, ktorí ju sledujú."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Pridávajte k príspevkom témy"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ľudí odpovedalo na vaše príspevky a vy ste odpovedali {answered}. Záležalo im natoľko, že napísali: odpoveď urobí z čitateľa stáleho návštevníka."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Odpovedajte na odpovede"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Vaše publikum je najaktívnejšie v {when}. Príspevok zverejnený tesne predtým na nich narazí."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Prispievajte, keď sú aktívni"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} ľudí, ktorí vás nesledujú, videlo vaše príspevky a {gained} vás začalo sledovať. Nech bio a najnovšie príspevky hovoria, čo od vás môžu čakať."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Urobte z čitateľov sledovateľov"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Jeden príspevok oslovil {times}× viac ľudí, ako zvyčajne oslovujú ostatné. Pozrite sa, čo urobil inak, a robte toho viac."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Robte viac toho, čo fungovalo"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Mnohí ľudia, ktorí vidia vaše príspevky, sú v {name}. Príspevok tam vás ukáže aj ostatným."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Prispejte do {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Za {days} dní ste prispeli {posts}-krát. Každý príspevok je ďalšia šanca, že vás niekto nájde, a pravidelný rytmus vás drží v kanáloch sledovateľov."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Prispievajte častejšie"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Za posledných {days} dní ste nič nezverejnili. Bez príspevku sa k nikomu nič nedostane."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Niečo zverejnite"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Štatistiky"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Najlepšie príspevky"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Oproti predchádzajúcim {days} dňom"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Krajina"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

@@ -84,6 +84,17 @@ void main() {
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
 
+      // Below the fields, so scrolled to on a short screen.
+      await tester.scrollUntilVisible(
+        find.text('Continue'),
+        200,
+        scrollable: find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
       final button = find.widgetWithText(InkWell, 'Continue');
       expect(button, findsWidgets, reason: 'the button has to be on screen');
 

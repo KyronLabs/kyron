@@ -250,6 +250,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Ma jiro dal la mid ah “{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("Ha muujin dal"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Raadi dalal"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu muujiyaa profile-kaaga iyo hoostaada qoraalladaada. Markaad aragto qoraallada qof, dalkaaga waxaa lagu tiriyaa Aragtiyadiisa, kaliya kooxo shan qof ama ka badan ah, waligiisna magacaaga lama sheego."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "Laga soo qaaday dejinta taleefankaaga"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +316,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Raac {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +342,123 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Akoonkaaga"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Fur bulshada"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Qor qoraal"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Arag qoraalka"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Wax ka beddel boggaaga"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Goorta ay joogaan"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Waqtiga aaggaaga."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Da'da"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Dadka la gaaray ee {known} ah ee bixiyay dhalashadooda."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Dadka la gaaray maalin kasta"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Bulshooyinka ay ku jiraan"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Dalal"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Laga soo xusay {known} qof oo la gaaray oo dal ku leh profile-kooda."),
+      "ins_days": MessageLookupByLibrary.simpleMessage(
+          "{days}-kii maalmood ee la soo dhaafay"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Xog-ogaalka lama soo dejin karin"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Kuwa ku raaca"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Weli ma jiro koox ku filan in la muujiyo."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Sida loo koro"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Mawduucyada ay raacaan"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Jeclaysi"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Cusub"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Kuwa ku raaca oo cusub"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Qoraalladaada midna cidna ma gaarin muddadan."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Kuma raacaan"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Dalalku waa kuwa dadku ku doorteen profile-kooda. Kyron ma ururiyo magaalada ama jinsiga qofna, markaa wax loo muujiyo ma jiraan."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Furitaanno"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "la gaaray {reach} · {likes} jeclaysi · {replies} jawaab"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Dadka la gaaray"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Qof kasta hal mar ayaa la tiriyaa: markii ugu horreysay ayaa loo tusay ama furay mid ka mid ah qoraalladaada. Kuwa ku raaca oo cusubi weli way ku raacaan; joojinta raacitaanka lama tiriyo."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Jawaabo"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Dib-u-daabacaad"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Kaydin"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Cidda daawadayaashaadu yihiin waxa la muujiyaa marka {floor} qof ay arkaan qoraalladaada muddadan. Wax ka yar, waxay tilmaami kartaa qof gaar ah."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Weli dad ku filan ma jiraan"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% iyaga ka mid ah horey ayay kuu raaceen: qoraalladaadu inta badan waxay gaaraan kuwa ku yaqaan."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% iyaga ka mid ah weli kuma raacaan: qoraalladaada waa la helayaa."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Waxaad gaartay {reach} qof, {pct}% ka yar muddadii hore."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Waxaad gaartay {reach} qof {days}-kii maalmood ee la soo dhaafay."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Waxaad gaartay {reach} qof, qiyaas ahaan sidii muddadii hore."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Qof cusub ma arkin qoraalladaada {days}-kii maalmood ee la soo dhaafay."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Waxaad gaartay {reach} qof, {pct}% ka badan muddadii hore."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Waxaad gaartay {reach} qof, {times}× muddadii hore."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Inbadan oo iyaga ka mid ah waxay raacaan {name} intii mawduuc kale."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Daawadayaasha"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Guudmar"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Dadka hela mid ka mid ah qoraalladaada waxay eegaan boggaaga ka hor intaanay ku raacin. Waji ama astaan ayaa u sheegaya in qof halkaas joogo."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Ku dar sawir bog"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Hal sadar ku sheeg waxa aad ka daabacdo, si qof shisheeye u ogaado waxa ku raacitaankaagu siin doono."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Qor taariikh kooban"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} ka mid ah {total} qoraaladaada ma lahayn mawduuc. Mawduucu wuxuu qoraalka geliyaa quudinta mawduucaas iyo hortooda kuwa raaca."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Mawduucyo ku dar qoraalladaada"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} qof ayaa ka jawaabay qoraalladaada, adiguna waxaad u jawaabtay {answered}. Way daneeyeen ilaa ay qoraan: jawaabi waxay akhriste ka dhigtaa mid joogto ah."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Ka jawaab jawaabahaaga"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Daawadayaashaadu waxay ugu firfircoon yihiin {when}. Qoraal yar ka hor la dhigo wuxuu helaa dad soo dhaweeya."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Daabac marka ay joogaan"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} qof oo aan ku raacin ayaa arkay qoraalladaada, {gained} ayaa ku raacay. Taariikhdaada kooban iyo qoraalladaada ugu cusub ha sheegaan waxa ay kaa filan karaan."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Akhristayaasha ka dhig kuwa ku raaca"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Hal qoraal ayaa gaaray {times}× dadka ay caadi ahaan gaaraan kuwaaga kale. Eeg waxa uu si kale u sameeyay, oo intaas badso."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Wax badan ka samee wixii shaqeeyay"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Dad badan oo arka qoraalladaada ayaa ku jira {name}. Halkaas oo aad ku daabacdo waxay ku horgeysaa inta kale."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Ku daabac {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Waxaad daabacday {posts} jeer {days} maalmood gudahood. Qoraal kastaa waa fursad kale oo lagu helo, laxan joogto ahina wuxuu kugu hayaa quudinta kuwa ku raaca."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Si joogto ah u daabac"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Wax ma aadan daabicin {days}-kii maalmood ee la soo dhaafay. Qoraal la'aan waxba cidna ma gaaraan."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Wax daabac"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Xog-ogaal"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Qoraallada ugu fiican"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Marka la barbardhigo {days}-kii maalmood ee ka horreeyay"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Dal"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

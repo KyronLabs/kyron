@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Kò sí orílẹ̀-èdè tí ó bá “{query}” mu."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Má ṣe fi orílẹ̀-èdè hàn"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Wá àwọn orílẹ̀-èdè"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "A máa ń fi hàn lórí profaili rẹ àti lábẹ́ àwọn ìfiránṣẹ́ rẹ. Nígbà tí o bá rí àwọn ìfiránṣẹ́ ẹnìkan, a máa ka orílẹ̀-èdè rẹ nínú Àgbéyẹ̀wò rẹ̀, ní àwùjọ ènìyàn márùn-ún tàbí jù bẹ́ẹ̀ lọ nìkan, a kì í sì í dárúkọ rẹ."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Láti inú ètò fóònù rẹ"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Tẹ̀lé {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,125 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Àkáǹtì rẹ"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Ṣí àwùjọ náà"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Kọ ìfiránṣẹ́"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Wo ìfiránṣẹ́ náà"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe ìwé àkọsílẹ̀ rẹ"),
+      "ins_active":
+          MessageLookupByLibrary.simpleMessage("Ìgbà tí wọ́n wà níbẹ̀"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Ní àgbègbè àkókò rẹ."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Ọjọ́ orí"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Láti inú ènìyàn {known} tí a dé ọ̀dọ̀ wọn tí wọ́n fún wa ní ọjọ́ ìbí wọn."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ènìyàn tí a dé ọ̀dọ̀ wọn lójoojúmọ́"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Àwọn àwùjọ tí wọ́n wà"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Àwọn orílẹ̀-èdè"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Láti inú ènìyàn {known} tí a dé ọ̀dọ̀ wọn tí wọ́n ní orílẹ̀-èdè lórí profaili wọn."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Ọjọ́ {days} tó kọjá"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("A kò lè gbé ìjìnlẹ̀ òye wọlé"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Àwọn olùtẹ̀lé"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Kò tíì sí ẹgbẹ́ tó tóbi tó láti fi hàn."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Bí o ṣe lè dàgbà"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Àwọn kókó tí wọ́n ń tẹ̀lé"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Ìfẹ́ràn"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Tuntun"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Àwọn olùtẹ̀lé tuntun"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ìkankan nínú àwọn ìfiránṣẹ́ rẹ tó dé ọ̀dọ̀ ẹnikẹ́ni ní àsìkò yìí."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Wọn kò tẹ̀lé ọ"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Àwọn orílẹ̀-èdè náà ni èyí tí àwọn ènìyàn yàn lórí profaili wọn. Kyron kì í gba ìlú tàbí akọ-abo ẹnikẹ́ni, nítorí náà kò sí nǹkan láti fi hàn fún wọn."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ìṣílẹ̀"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "dé ọ̀dọ̀ {reach} · ìfẹ́ràn {likes} · èsì {replies}"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("Àwọn ènìyàn tí a dé ọ̀dọ̀ wọn"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "A ka ènìyàn kọ̀ọ̀kan lẹ́ẹ̀kan: a fi ọ̀kan nínú àwọn ìfiránṣẹ́ rẹ hàn án tàbí ó ṣí i fún ìgbà àkọ́kọ́. Àwọn olùtẹ̀lé tuntun ṣì ń tẹ̀lé ọ; a kì í ka àwọn tó dẹ́kun títẹ̀lé."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Àwọn èsì"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Àtúnfiránṣẹ́"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Ìfipamọ́"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Ẹni tí àwọn olùwò rẹ jẹ́ yóò hàn nígbà tí ènìyàn {floor} bá ti rí àwọn ìfiránṣẹ́ rẹ ní àsìkò yìí. Bí wọ́n bá kéré sí bẹ́ẹ̀, ó lè tọ́ka sí ẹnìkan."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Àwọn ènìyàn kò tíì tó"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% nínú wọn ti ń tẹ̀lé ọ tẹ́lẹ̀: àwọn ìfiránṣẹ́ rẹ ń dé ọ̀dọ̀ àwọn tó mọ̀ ọ́ jù lọ."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% nínú wọn kò tíì tẹ̀lé ọ: àwọn ènìyàn ń rí àwọn ìfiránṣẹ́ rẹ."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "O dé ọ̀dọ̀ ènìyàn {reach}, {pct}% kéré sí àsìkò tó kọjá."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "O dé ọ̀dọ̀ ènìyàn {reach} ní ọjọ́ {days} tó kọjá."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "O dé ọ̀dọ̀ ènìyàn {reach}, bí i ti àsìkò tó kọjá."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ẹni tuntun tó rí àwọn ìfiránṣẹ́ rẹ ní ọjọ́ {days} tó kọjá."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "O dé ọ̀dọ̀ ènìyàn {reach}, {pct}% ju àsìkò tó kọjá lọ."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "O dé ọ̀dọ̀ ènìyàn {reach}, ìlọ́po {times}× ti àsìkò tó kọjá."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Púpọ̀ nínú wọn ń tẹ̀lé {name} ju kókó mìíràn lọ."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Àwọn olùwò"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Àkópọ̀"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Àwọn tó rí ọ̀kan nínú àwọn ìfiránṣẹ́ rẹ máa ń wo ìwé àkọsílẹ̀ rẹ kí wọ́n tó tẹ̀lé ọ. Ojú tàbí àmì-ìdámọ̀ fi hàn pé ẹnìkan wà níbẹ̀."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Ṣàfikún àwòrán ìwé àkọsílẹ̀"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Sọ ní ìlà kan ohun tí o máa ń fi ránṣẹ́ nípa rẹ̀, kí àjèjì lè mọ ohun tí títẹ̀lé ọ yóò fún un."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Kọ nípa ara rẹ"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} nínú àwọn ìfiránṣẹ́ rẹ {total} kò ní kókó. Kókó ń fi ìfiránṣẹ́ sínú ìfúnni kókó náà àti síwájú àwọn tó ń tẹ̀lé e."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Ṣàfikún kókó sí àwọn ìfiránṣẹ́ rẹ"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "Ènìyàn {received} dáhùn sí àwọn ìfiránṣẹ́ rẹ, o sì dáhùn {answered}. Wọ́n bìkítà tó láti kọ: ìdáhùn kan ń sọ olùkàwé di olùbẹ̀wò déédé."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Dáhùn àwọn èsì rẹ"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Àwọn olùwò rẹ ń ṣiṣẹ́ jù lọ ní {when}. Ìfiránṣẹ́ tí a fi sí díẹ̀ ṣáájú àkókò náà yóò rí àwọn tí yóò gbà á."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́ nígbà tí wọ́n wà"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Ènìyàn {reached} tí kò tẹ̀lé ọ rí àwọn ìfiránṣẹ́ rẹ, {gained} sì tẹ̀lé ọ. Jẹ́ kí àpèjúwe rẹ àti àwọn ìfiránṣẹ́ tuntun rẹ sọ ohun tí wọ́n lè retí lọ́dọ̀ rẹ."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Sọ àwọn olùkàwé di olùtẹ̀lé"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Ìfiránṣẹ́ kan dé ọ̀dọ̀ ènìyàn ìlọ́po {times}× ju bí àwọn mìíràn rẹ ṣe máa ń dé. Wo ohun tó ṣe yàtọ̀, kí o sì ṣe é sí i."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Ṣe ohun tó ṣiṣẹ́ sí i"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Ọ̀pọ̀ nínú àwọn tó ń rí àwọn ìfiránṣẹ́ rẹ wà ní {name}. Fífi ránṣẹ́ síbẹ̀ ń gbé ọ síwájú àwọn yòókù."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́ sí {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "O fi ránṣẹ́ ní ìgbà {posts} láàárín ọjọ́ {days}. Ìfiránṣẹ́ kọ̀ọ̀kan jẹ́ àǹfààní mìíràn láti rí ọ, ìlù tó dúró ṣinṣin sì ń mú ọ wà nínú ìfúnni àwọn olùtẹ̀lé rẹ."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Máa fi ránṣẹ́ léraléra"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "O kò fi nǹkan ránṣẹ́ ní ọjọ́ {days} tó kọjá. Kò sí ohun tó ń dé ọ̀dọ̀ ẹnikẹ́ni láìsí ìfiránṣẹ́."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Fi nǹkan ránṣẹ́"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Ìjìnlẹ̀ òye"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́ tó ga jù"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Ní ìfiwéra pẹ̀lú ọjọ́ {days} tó ṣáájú"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +994,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Orílẹ̀-èdè"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

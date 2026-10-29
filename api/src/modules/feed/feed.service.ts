@@ -28,7 +28,14 @@ export interface FeedPost {
     avatarUrl: string | null;
     /** Somebody on the team checked it is who it says it is. */
     verified: boolean;
+    /** The country on their profile, ISO 3166-1, or null if they gave none. */
+    country: string | null;
   };
+  /**
+   * Whether the reader follows the author, for the follow button on the
+   * author's picture. False on the reader's own posts, which have no button.
+   */
+  followingAuthor: boolean;
   /** How many people have liked it. */
   likes: number;
   /** How many comments and replies it has. */
@@ -2425,7 +2432,18 @@ export class FeedService {
         take: 1,
       },
       topics: { select: { interestId: true } },
-      author: { select: this.authorShape },
+      // With whether this reader follows them: a filtered relation holding
+      // at most one row, for the same reason as the likes below.
+      author: {
+        select: {
+          ...this.authorShape,
+          followers: {
+            where: { followerId: viewerId },
+            select: { id: true },
+            take: 1,
+          },
+        },
+      },
       // Columns, not a relation `_count`: Prisma compiles that into an
       // unfiltered GROUP BY over the whole of PostLike and joins it, so a
       // page of twenty cost 13.5ms against 0.46ms reading these -- and it
@@ -2480,7 +2498,7 @@ export class FeedService {
     name: true,
     username: true,
     verifiedAt: true,
-    profile: { select: { avatarUrl: true } },
+    profile: { select: { avatarUrl: true, country: true } },
   } as const;
 
   private readonly communityShape = {
@@ -2509,6 +2527,7 @@ export class FeedService {
       content: row.content,
       createdAt: row.createdAt,
       author: this.toAuthor(row.author),
+      followingAuthor: (row.author.followers?.length ?? 0) > 0,
       likes: row.likeCount,
       comments: row.commentCount,
       reposts: row.repostCount,
@@ -2541,6 +2560,7 @@ export class FeedService {
       username: author.username,
       avatarUrl: author.profile?.avatarUrl ?? null,
       verified: !!author.verifiedAt,
+      country: author.profile?.country ?? null,
     };
   }
 }
@@ -2570,7 +2590,9 @@ interface AuthorRow {
   name: string | null;
   username: string | null;
   verifiedAt?: Date | null;
-  profile: { avatarUrl: string | null } | null;
+  profile: { avatarUrl: string | null; country?: string | null } | null;
+  /** The reader's follow of them, when read through shapeFor. */
+  followers?: { id: string }[];
 }
 
 /** A row shaped by {@link FeedService.shapeFor}. */

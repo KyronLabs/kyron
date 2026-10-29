@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Affiché sur ton profil et sous tes publications."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Aucun pays ne correspond à « {query} »."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("N'afficher aucun pays"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Rechercher un pays"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Affiché sur ton profil et sous tes publications. Quand tu vois les publications de quelqu'un, ton pays est compté dans ses Statistiques, uniquement par groupes de cinq ou plus et jamais par ton nom."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "D'après les réglages de ton téléphone"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Suivre {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,125 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Votre compte"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Ouvrir la communauté"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Écrire une publication"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Voir la publication"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Modifier votre profil"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Quand ils sont là"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Dans votre fuseau horaire."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Âges"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Parmi les {known} personnes touchées qui ont indiqué un anniversaire."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Personnes touchées par jour"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Communautés dont ils font partie"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Pays"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Parmi les {known} personnes atteintes qui ont un pays sur leur profil."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} derniers jours"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossible de charger les statistiques"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Abonnés"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Aucun groupe n'est encore assez grand pour être affiché."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Comment grandir"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Sujets qu'ils suivent"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("J'aime"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nouveau"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Nouveaux abonnés"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Aucune de vos publications n'a touché personne sur cette période."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Ne vous suivent pas"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Les pays sont ceux que les gens ont choisis sur leur profil. Kyron ne collecte la ville ou le genre de personne, il n'y a donc rien à afficher pour ces données."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ouvertures"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} touchées · {likes} j'aime · {replies} réponses"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Personnes touchées"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Chaque personne compte une seule fois : on lui a montré ou elle a ouvert l'une de vos publications pour la première fois. Les nouveaux abonnés vous suivent toujours ; les désabonnements ne sont pas comptés."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Réponses"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Republications"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Enregistrements"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Qui est votre audience s'affiche quand {floor} personnes ont vu vos publications sur cette période. En dessous, cela pourrait désigner quelqu'un."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Pas encore assez de monde"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % d'entre elles vous suivent déjà : vos publications touchent surtout des gens qui vous connaissent."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct} % d'entre elles ne vous suivent pas encore : vos publications sont découvertes."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Vous avez touché {reach} personnes, {pct} % de moins que la période précédente."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Vous avez touché {reach} personnes ces {days} derniers jours."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Vous avez touché {reach} personnes, à peu près autant que la période précédente."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Personne de nouveau n'a vu vos publications ces {days} derniers jours."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Vous avez touché {reach} personnes, {pct} % de plus que la période précédente."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Vous avez touché {reach} personnes, {times}× plus que la période précédente."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Elles sont plus nombreuses à suivre {name} que tout autre sujet."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Audience"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Aperçu"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ceux qui trouvent l'une de vos publications regardent votre profil avant de s'abonner. Un visage ou un logo leur dit que quelqu'un est là."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Ajoutez une photo de profil"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Dites en une ligne de quoi vous parlez, pour qu'un inconnu sache ce que vous suivre lui apportera."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Écrivez une bio"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} de vos {total} publications n'avaient pas de sujet. Un sujet place la publication dans le fil de ce sujet et devant ceux qui le suivent."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Ajoutez des sujets à vos publications"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} personnes ont répondu à vos publications et vous en avez répondu {answered}. Elles se sont déjà donné la peine d'écrire : une réponse fait d'un lecteur un habitué."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Répondez à vos réponses"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Votre audience est la plus active le {when}. Une publication juste avant trouve du monde pour l'accueillir."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Publiez quand ils sont là"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} personnes qui ne vous suivent pas ont vu vos publications, et {gained} se sont abonnées. Que votre bio et vos dernières publications disent à quoi s'attendre avec vous."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Transformez les lecteurs en abonnés"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Une publication a touché {times}× plus de monde que vos autres d'habitude. Regardez ce qu'elle a fait différemment, et faites-en plus."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Faites plus de ce qui a marché"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Beaucoup de ceux qui voient vos publications sont dans {name}. Y publier vous met devant le reste de ses membres."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Publiez dans {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Vous avez publié {posts} fois en {days} jours. Chaque publication est une chance de plus d'être trouvé, et un rythme régulier vous garde dans le fil de vos abonnés."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Publiez plus souvent"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Vous n'avez rien publié ces {days} derniers jours. Rien n'atteint personne sans publication."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Publiez quelque chose"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statistiques"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Meilleures publications"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Par rapport aux {days} jours précédents"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +994,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Pays"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

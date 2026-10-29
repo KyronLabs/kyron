@@ -22,6 +22,7 @@ import 'screens/new_community_screen.dart';
 import 'screens/thread_screen.dart';
 import 'screens/topic_screen.dart';
 import 'screens/feed_signals_screen.dart';
+import 'screens/insights_screen.dart';
 import 'screens/muted_screens.dart';
 import 'screens/edit_profile_screen.dart';
 import 'screens/help_screen.dart';
@@ -76,6 +77,7 @@ class Routes {
   /// One comment and the conversation under it.
   static const comment = '/comment';
   static const postAnalytics = '/post/analytics';
+  static const insights = '/insights';
   static const hashtag = '/tag';
   static const topic = '/topic';
   static const thread = '/thread';
@@ -214,6 +216,9 @@ class Routes {
               ? PostDetailScreen(postId: id)
               : const _UnknownRoute(name: postDetail),
         );
+
+      case insights:
+        return _page(const InsightsScreen());
 
       case postAnalytics:
         final id = settings.arguments;

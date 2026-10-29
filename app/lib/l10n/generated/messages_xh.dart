@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Akukho lizwe lihambelana no-“{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Musa ukubonisa ilizwe"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Khangela amazwe"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Liboniswa kwiprofayile yakho naphantsi kweeposti zakho. Xa ubona iiposti zomntu, ilizwe lakho libalwa kwiiNgcaciso zakhe, ngamaqela abantu abahlanu nangaphezulu kuphela, kwaye zange ngegama."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("Kuseto lwefowuni yakho"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Landela u-{name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +343,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("Iakhawunti yakho"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("Vula uluntu"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Bhala iposti"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("Jonga iposti"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Hlela iprofayile yakho"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Bakhona nini"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("Kummandla wexesha lakho."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Iminyaka"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Kubantu abangu-{known} abafikelelweyo abanike usuku lokuzalwa."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Abantu abafikelelweyo ngosuku"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("Uluntu abakulo"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Amazwe"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Kubantu abangu-{known} abafikelelweyo abanelizwe kwiprofayile yabo."),
+      "ins_days": MessageLookupByLibrary.simpleMessage(
+          "Iintsuku ezi-{days} ezidlulileyo"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Iinkcukacha azikwazanga kulayishwa"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Abalandeli"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Akukabikho qela likhulu ngokwaneleyo ukuba libonakaliswe."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Indlela yokukhula"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Izihloko abazilandelayo"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Ukuthandwa"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Okutsha"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Abalandeli abatsha"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Akukho posti yakho efikelele nabani na kweli xesha."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Abakulandeli"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Amazwe ngawo abantu abawakhethileyo kwiiprofayile zabo. IKyron ayiqokeleli sixeko okanye isini somntu, ngoko akukho nto inokuboniswa ngazo."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Ukuvulwa"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "ifikelele ku-{reach} · {likes} ukuthandwa · {replies} iimpendulo"),
+      "ins_reach":
+          MessageLookupByLibrary.simpleMessage("Abantu abafikelelweyo"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Umntu ngamnye ubalwa kanye: ubonisiwe okanye uvule enye yeeposti zakho okokuqala. Abalandeli abatsha basakulandela; abayeke ukulandela ababalwa."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Iimpendulo"),
+      "ins_reposts":
+          MessageLookupByLibrary.simpleMessage("Ukuthunyelwa kwakhona"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Okugciniweyo"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Ukuba ngoobani ababukeli bakho kubonakala xa abantu abangu-{floor} sele bezibonile iiposti zakho kweli xesha. Ukuba bambalwa, kunokukhomba umntu othile."),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage(
+          "Abantu abakabaninzi ngokwaneleyo"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "Ama-{pct}% abo sele ekulandela: iiposti zakho zifikelela ikakhulu kwabakwaziyo."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "Ama-{pct}% abo akakakulandeli: iiposti zakho ziyafunyanwa."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Ufikelele kubantu abangu-{reach}, {pct}% ngaphantsi kwexesha elidlulileyo."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Ufikelele kubantu abangu-{reach} kwiintsuku ezi-{days} ezidlulileyo."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Ufikelele kubantu abangu-{reach}, phantse njengexesha elidlulileyo."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Akukho mntu mtsha uzibonileyo iiposti zakho kwiintsuku ezi-{days} ezidlulileyo."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Ufikelele kubantu abangu-{reach}, {pct}% ngaphezu kwexesha elidlulileyo."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Ufikelele kubantu abangu-{reach}, {times}× kwexesha elidlulileyo."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Uninzi lwabo lulandela u-{name} kunaso nasiphi na esinye isihloko."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Ababukeli"),
+      "ins_tab_overview":
+          MessageLookupByLibrary.simpleMessage("Isishwankathelo"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Abantu abafumana enye yeeposti zakho bajonga iprofayile yakho phambi kokuba bakulandele. Ubuso okanye ilogo ibaxelela ukuba kukho umntu apho."),
+      "ins_tip_add_avatar_t": MessageLookupByLibrary.simpleMessage(
+          "Yongeza umfanekiso weprofayile"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Yitsho ngomgca omnye ukuba uthumela ngantoni, ukuze umntu ongaziwayo azi ukuba ukukulandela kuya kumnika ntoni."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Bhala ingcaciso ngawe"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "Ezi-{without} kwiiposti zakho ezi-{total} bezingenasihloko. Isihloko sibeka iposti kwisondlo saloo sihloko naphambi kwabo basilandelayo."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Yongeza izihloko kwiiposti"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "Abantu abangu-{received} baphendule iiposti zakho kwaye uphendule ezi-{answered}. Bakhathala ngokwaneleyo ukuba babhale: impendulo yenza umfundi abe ngumntu ohlala ebuya."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Phendula iimpendulo zakho"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Ababukeli bakho basebenza kakhulu ngo-{when}. Iposti ethunyelwe kancinci ngaphambili inabantu bokuyamkela."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Thumela xa bekhona"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "Abantu abangu-{reached} abangakulandeliyo bazibonile iiposti zakho, kwaye abangu-{gained} bakulandele. Mayithi ingcaciso yakho neeposti zakho ezintsha ukuba banokulindela ntoni kuwe."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Guqula abafundi babe ngabalandeli"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Iposti enye ifikelele kubantu abaphindwe ka-{times}× kunezinye zakho ngesiqhelo. Jonga ukuba yenze ntoni ngokwahlukileyo, wenze oko ngakumbi."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Yenza ngakumbi into esebenzileyo"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Uninzi lwabantu ababona iiposti zakho bakwi-{name}. Ukuthumela apho kukubeka phambi kwabanye."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Thumela ku-{name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Uthumele amaxesha angu-{posts} kwiintsuku ezi-{days}. Iposti nganye lithuba elinye lokufunyanwa, kwaye isingqi esizinzileyo sikugcina kwizondlo zabalandeli bakho."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Thumela rhoqo"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Awuthumelanga nto kwiintsuku ezi-{days} ezidlulileyo. Akukho nto ifikelela nabani na ngaphandle kweposti."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Thumela into"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Iinkcukacha"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Iiposti eziphambili"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Xa kuthelekiswa neentsuku ezi-{days} ezingaphambili"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +992,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ilizwe"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

@@ -42,6 +42,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotSignOut": (Object a0) => "サインアウトできませんでした: ${a0}",
       "couldNotTakePicture":
           MessageLookupByLibrary.simpleMessage("写真を撮影できませんでした。"),
+      "country_helper":
+          MessageLookupByLibrary.simpleMessage("プロフィールと投稿の下に表示されます。"),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("「{query}」に一致する国はありません。"),
+      "country_none": MessageLookupByLibrary.simpleMessage("国を表示しない"),
+      "country_search": MessageLookupByLibrary.simpleMessage("国を検索"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "プロフィールと投稿の下に表示されます。誰かの投稿を見ると、あなたの国はその人のインサイトで集計されます。5人以上のグループでのみ集計され、名前が出ることはありません。"),
+      "country_suggested": MessageLookupByLibrary.simpleMessage("スマートフォンの設定から"),
       "create": MessageLookupByLibrary.simpleMessage("作成"),
       "createAccount": MessageLookupByLibrary.simpleMessage("アカウントを作成"),
       "createYourAccount":
@@ -64,6 +73,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
         "このデバイスでは顔追跡機能は利用できません。",
       ),
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name}さんをフォロー"),
       "followers": MessageLookupByLibrary.simpleMessage("フォロワー"),
       "following": MessageLookupByLibrary.simpleMessage("フォロー中"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage("パスワードをお忘れですか？"),
@@ -73,6 +83,109 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("ヘルプセンター"),
       "helpAndSupport": MessageLookupByLibrary.simpleMessage("ヘルプ＆サポート"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("一行で"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("あなたのアカウント"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("コミュニティを開く"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("投稿する"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("投稿を見る"),
+      "ins_act_profile": MessageLookupByLibrary.simpleMessage("プロフィールを編集"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("アクティブな時間"),
+      "ins_active_note": MessageLookupByLibrary.simpleMessage("あなたのタイムゾーンで表示。"),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("年齢"),
+      "ins_ages_note":
+          MessageLookupByLibrary.simpleMessage("誕生日を登録している、リーチした{known}人から。"),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("日ごとのリーチした人"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage("参加しているコミュニティ"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("国"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "プロフィールに国を設定している、リーチした{known}人のデータです。"),
+      "ins_days": MessageLookupByLibrary.simpleMessage("過去{days}日間"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage("インサイトを読み込めませんでした"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("フォロワー"),
+      "ins_group_small":
+          MessageLookupByLibrary.simpleMessage("表示できるほど大きなグループはまだありません。"),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("伸ばすには"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("フォローしているトピック"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("いいね"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("新規"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("新しいフォロワー"),
+      "ins_no_posts_reached":
+          MessageLookupByLibrary.simpleMessage("この期間、あなたの投稿は誰にも届きませんでした。"),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("フォローしていない人"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "国は各自がプロフィールで選んだものです。Kyronは誰の市区町村や性別も収集しないため、それらについて表示できるものはありません。"),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("開いた回数"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach}人にリーチ · いいね{likes} · 返信{replies}"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("リーチした人"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "一人につき一度だけ数えます。あなたの投稿が初めて表示された、または初めて開いた人です。新しいフォロワーは今もフォロー中の人で、フォロー解除は数えていません。"),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("返信"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("リポスト"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("保存"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "この期間に{floor}人があなたの投稿を見ると、オーディエンスがどんな人か表示されます。それより少ないと、特定の誰かを指してしまうおそれがあります。"),
+      "ins_small_title": MessageLookupByLibrary.simpleMessage("まだ人数が足りません"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "そのうち{pct}%はすでにフォロワーです。投稿は主にあなたを知っている人に届いています。"),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "そのうち{pct}%はまだあなたをフォローしていません。投稿が見つけられています。"),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach}人にリーチしました。前の期間より{pct}%少ない数です。"),
+      "ins_sum_reach_first":
+          MessageLookupByLibrary.simpleMessage("過去{days}日間で{reach}人にリーチしました。"),
+      "ins_sum_reach_flat":
+          MessageLookupByLibrary.simpleMessage("{reach}人にリーチしました。前の期間とほぼ同じです。"),
+      "ins_sum_reach_none":
+          MessageLookupByLibrary.simpleMessage("過去{days}日間、新しく投稿を見た人はいません。"),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach}人にリーチしました。前の期間より{pct}%多い数です。"),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach}人にリーチしました。前の期間の{times}×です。"),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "ほかのどのトピックよりも多くの人が{name}をフォローしています。"),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("オーディエンス"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("概要"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "投稿を見つけた人は、フォローする前にプロフィールを見ます。顔やロゴがあれば、そこに誰かいるとわかります。"),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("プロフィール写真を追加"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "何について投稿しているかを一行で書きましょう。初めての人が、フォローすると何が得られるかわかります。"),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("自己紹介を書く"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total}件の投稿のうち{without}件にトピックがありませんでした。トピックを付けると、そのトピックのフィードやフォローしている人の前に投稿が出ます。"),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("投稿にトピックを付ける"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received}人があなたの投稿に返信し、あなたは{answered}件に応えました。書いてくれるほど関心がある人たちです。応えれば常連になってくれます。"),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("返信に応えましょう"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "あなたのオーディエンスが最もアクティブなのは{when}です。その少し前に投稿すれば、見てくれる人がいます。"),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("みんながいる時間に投稿"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "フォローしていない{reached}人があなたの投稿を見て、{gained}人がフォローしました。自己紹介と最新の投稿で、あなたに何を期待できるか伝えましょう。"),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("読者をフォロワーに"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "ある投稿は、いつもの投稿の{times}×の人に届きました。何が違ったのかを見て、それをもっと続けましょう。"),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("うまくいったことをもっと"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "あなたの投稿を見る人の多くが{name}にいます。そこに投稿すれば、ほかのメンバーにも届きます。"),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name}に投稿"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days}日間で{posts}回投稿しました。投稿のたびに見つけてもらえるチャンスが増え、一定のペースがフォロワーのフィードにあなたを残します。"),
+      "ins_tip_post_more_t": MessageLookupByLibrary.simpleMessage("もっと頻繁に投稿"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "過去{days}日間、投稿していません。投稿がなければ誰にも届きません。"),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("何か投稿しましょう"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("インサイト"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("人気の投稿"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage("前の{days}日間と比べて"),
       "itDisappearsForBoth":
           MessageLookupByLibrary.simpleMessage("両者の画面から消えます。"),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage("スレッドから削除されます。"),
@@ -111,6 +224,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "postInCommunity": (Object a0) => "「${a0}」に投稿する",
       "postTextCopied": MessageLookupByLibrary.simpleMessage("投稿文をコピーしました"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("プロフィールが更新されました"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("国"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage("プッシュ通知"),
       "quote": MessageLookupByLibrary.simpleMessage("引用"),
       "quotePost": MessageLookupByLibrary.simpleMessage("投稿を引用"),

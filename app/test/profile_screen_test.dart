@@ -8,6 +8,8 @@ import 'package:kyron_app/providers/profile_provider.dart';
 import 'package:kyron_app/screens/profile_screen.dart';
 import 'package:kyron_app/widgets/action_button.dart';
 
+import 'support/signed_in_as.dart';
+
 const _me = ProfileModel(
   id: 'u1',
   name: 'Epigone',
@@ -48,6 +50,7 @@ FeedPost _post(String id) => FeedPost(
 
 Widget _app(FeedState seed) => ProviderScope(
       overrides: [
+        signedInAs(),
         profileProvider.overrideWith(
           (ref, username) => _StubProfile(ref, username),
         ),
@@ -198,6 +201,42 @@ void main() {
           beside,
         );
       }
+    });
+  }
+
+  for (final own in [true, false]) {
+    testWidgets(
+        'Insights sits beside Share on your own profile, and only yours '
+        '(${own ? 'own' : "somebody else's"})', (tester) async {
+      final profile = ProfileModel(
+        id: 'u1',
+        name: 'Epigone',
+        username: 'epigone',
+        followers: 1,
+        following: 0,
+        posts: 0,
+        isOwnProfile: own,
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            profileProvider.overrideWith(
+              (ref, username) => _StubProfile(ref, username, profile),
+            ),
+            postListProvider.overrideWith(
+              (ref, source) => _StubPosts(ref, source, const FeedState()),
+            ),
+          ],
+          child: const MaterialApp(home: ProfileScreen()),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 3));
+
+      expect(
+        find.byKey(const ValueKey('profile-insights')),
+        own ? findsOneWidget : findsNothing,
+      );
     });
   }
 }

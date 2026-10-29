@@ -126,10 +126,9 @@ placeholder for a service that has not been written.
 The API and the static web build both run on Render (`render.yaml`) — the API
 is what `app/lib/services/api_client.dart` points at, and `/health` on it is
 the quickest way to see which Supabase project a deployment is verifying
-against. `api/fly.toml` is left over from an earlier Fly.io deployment that no
-longer answers; it is what `docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md`
-still reason about when they say "one process". More in
-[`ARCHITECTURE.md`](ARCHITECTURE.md).
+against. The API runs as a single instance, which is what
+`docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md` mean when they say "one
+process". More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ---
 

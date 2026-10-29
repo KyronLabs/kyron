@@ -2,6 +2,9 @@ class OnboardingModel {
   // STEP 1  –  mandatory
   String displayName = '';
   String bio = '';
+
+  /// ISO 3166-1 code from the country sheet, or null if they skipped it.
+  String? country;
   String? localAvatarPath; // gallery file
   String? localCoverPath; // gallery file
 

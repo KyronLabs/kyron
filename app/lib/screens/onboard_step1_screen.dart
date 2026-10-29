@@ -19,6 +19,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../utils/api_error_message.dart';
 import '../widgets/app_button.dart';
 import '../widgets/action_sheet.dart';
+import '../widgets/country_sheet.dart';
 import '../widgets/images_field.dart';
 import '../widgets/gradient_scaffold.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -143,6 +144,9 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
           // it -- saving nothing, and liable to roll a different cover than
           // the one previewed.
           coverUrl: widget.model.remoteCoverUrl,
+          country: widget.model.country == null
+              ? null
+              : (code: widget.model.country),
         );
       } catch (e) {
         debugPrint('step1: updateProfile failed: $e');
@@ -242,6 +246,14 @@ class _OnboardStep1ScreenState extends State<OnboardStep1Screen> {
               Iconsax.note_text_copy,
               maxLength: 160,
               maxLines: 4,
+            ),
+            const SizedBox(height: SpacingTokens.space16),
+            // Asked here as well as on Edit profile: a field nobody is shown
+            // is a field nobody fills, and Insights can only count the
+            // countries people gave.
+            CountryField(
+              code: widget.model.country,
+              onChanged: (code) => setState(() => widget.model.country = code),
             ),
             const SizedBox(height: SpacingTokens.space32),
             AppButton(

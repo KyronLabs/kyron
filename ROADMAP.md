@@ -45,6 +45,7 @@ guessed: `docs/PERFORMANCE.md`.
 | Posts | Text, images, video, polls, voice, link previews, quotes, reposts |
 | Comments | Real threading at depth, connectors, per-comment pages, media in replies |
 | Profiles | Full profile, followers/following, editing, avatar and cover upload |
+| Insights | Your own account's reach against the period before, interactions, new followers, top posts, the audience behind privacy floors, and growth tips from your own numbers. No countries, cities or genders: not collected -- `docs/INSIGHTS.md` |
 | Messages | One-to-one and groups with roles and spectators, community chats in the inbox, view-once attachments, pinned chats, attachments, read state, mute, block, report, delete -- `docs/MESSAGING.md` |
 | Communities | Create, join, post, manage, roles, bans, gallery images |
 | Explore | Trending hashtags, topics, suggested people |
@@ -192,11 +193,11 @@ in `docs/IDENTITY.md`.
 
 9. **Use Redis or remove it.** Still open, and now written down rather than
    left implicit -- see the one-instance section of `docs/OBSERVABILITY.md`.
-   The honest position: `fly.toml` runs a single machine that stops when idle,
-   so nothing needs Redis today, and three things break the moment there are
-   two machines -- the rate limiter counts per process, the realtime service
+   The honest position: the API runs as a single Render instance, so nothing
+   needs Redis today, and three things break the moment there are two
+   instances -- the rate limiter counts per process, the realtime service
    holds its sockets in a `Map`, and the metrics below describe whichever
-   machine was scraped. `ioredis` and `bullmq` stay installed against that day;
+   instance was scraped. `ioredis` and `bullmq` stay installed against that day;
    `REDIS_HOST` is the shape of the answer, not the answer.
 10. ~~**Observability.**~~ Built. Every request now carries an id -- generated,
     or taken from an incoming `x-request-id` so it survives a proxy hop, and

@@ -257,6 +257,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "No s'ha pogut fer aquesta foto.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Es mostra al teu perfil i sota les teves publicacions."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Cap país coincideix amb «{query}»."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("No mostris cap país"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Cerca països"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Es mostra al teu perfil i sota les teves publicacions. Quan veus les publicacions d'algú, el teu país es compta a les seves Estadístiques, només en grups de cinc o més i mai pel nom."),
+      "country_suggested": MessageLookupByLibrary.simpleMessage(
+          "De la configuració del telèfon"),
       "create": MessageLookupByLibrary.simpleMessage("Crea"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Crea un compte"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -321,6 +332,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "No s'ha publicat res sota #${a0} encara.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("Segueix {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Seguidors"),
       "following": MessageLookupByLibrary.simpleMessage("Seguint"),
       "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -347,6 +359,125 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Centre d'ajuda"),
       "home": MessageLookupByLibrary.simpleMessage("Inici"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("En una línia"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("El teu compte"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Obre la comunitat"),
+      "ins_act_post":
+          MessageLookupByLibrary.simpleMessage("Escriu una publicació"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Mira la publicació"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Edita el teu perfil"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Quan hi són"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("En la teva zona horària."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Edats"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "De les {known} persones assolides que han indicat un aniversari."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Persones assolides cada dia"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Comunitats on són"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Països"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "De les {known} persones assolides que tenen un país al perfil."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Últims {days} dies"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'han pogut carregar les estadístiques"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Seguidors"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Encara no hi ha cap grup prou gran per mostrar-lo."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Com créixer"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Temes que segueixen"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("M'agrada"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Nou"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Seguidors nous"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Cap de les teves publicacions no ha arribat a ningú en aquest període."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("No et segueixen"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Els països són els que la gent ha triat al seu perfil. Kyron no recull la ciutat ni el gènere de ningú, així que no hi ha res a mostrar-ne."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Obertures"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} assolides · {likes} m'agrada · {replies} respostes"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Persones assolides"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Cada persona compta una sola vegada: se li ha mostrat o ha obert per primer cop una de les teves publicacions. Els seguidors nous encara et segueixen; deixar de seguir no es compta."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Respostes"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Republicacions"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Desats"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Qui és la teva audiència es mostra quan {floor} persones han vist les teves publicacions en aquest període. Amb menys, podria assenyalar algú."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Encara no hi ha prou gent"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "El {pct}% ja et segueix: les teves publicacions arriben sobretot a gent que et coneix."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "El {pct}% encara no et segueix: les teves publicacions es troben."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Has arribat a {reach} persones, un {pct}% menys que el període anterior."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Has arribat a {reach} persones els últims {days} dies."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Has arribat a {reach} persones, gairebé com el període anterior."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Ningú nou no ha vist les teves publicacions els últims {days} dies."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Has arribat a {reach} persones, un {pct}% més que el període anterior."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Has arribat a {reach} persones, {times}× més que el període anterior."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "N'hi ha més que segueixen {name} que cap altre tema."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Audiència"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Resum"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Qui troba una de les teves publicacions mira el teu perfil abans de seguir-te. Una cara o un logotip li diu que hi ha algú."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Afegeix una foto de perfil"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Digues en una línia de què publiques, perquè un desconegut sàpiga què li aporta seguir-te."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Escriu una biografia"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{without} de les teves {total} publicacions no tenien tema. Un tema posa la publicació al feed d'aquell tema i davant de qui el segueix."),
+      "ins_tip_add_topics_t": MessageLookupByLibrary.simpleMessage(
+          "Afegeix temes a les publicacions"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} persones han respost les teves publicacions i n'has contestat {answered}. Ja s'hi han interessat prou per escriure: una resposta converteix un lector en habitual."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Respon les respostes"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "La teva audiència és més activa {when}. Una publicació feta just abans té gent que la rebi."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Publica quan hi són"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} persones que no et segueixen han vist les teves publicacions, i {gained} t'han seguit. Fes que la teva biografia i les publicacions més noves diguin què poden esperar de tu."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Converteix lectors en seguidors"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Una publicació ha arribat a {times}× més gent que les altres normalment. Mira què ha fet diferent i fes-ne més."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("Fes més del que ha funcionat"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Moltes de les persones que veuen les teves publicacions són a {name}. Publicar-hi et posa davant de la resta."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Publica a {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Has publicat {posts} vegades en {days} dies. Cada publicació és una altra oportunitat de ser trobat, i un ritme constant et manté als feeds dels teus seguidors."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Publica més sovint"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "No has publicat els últims {days} dies. Res no arriba a ningú sense una publicació."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Publica alguna cosa"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Estadístiques"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Publicacions destacades"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Respecte als {days} dies anteriors"),
       "interest_add":
           MessageLookupByLibrary.simpleMessage("Afegeix un interès"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
@@ -948,6 +1079,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Perfil actualitzat"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Biografia"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("País"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Nom visible"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Ubicació"),

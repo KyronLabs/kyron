@@ -170,7 +170,11 @@ model UserProfile {
   avatarUrl   String?
   coverUrl    String?
   bio         String?
+  // Free text from before the country picker. Kept, but nothing reads it.
   location    String?
+  // ISO 3166-1 alpha-2 (plus XK), picked from a list. Shown on the profile
+  // and under every post, and counted -- above the floors -- in Insights.
+  country     String?   @db.VarChar(2)
   website     String?
   dateOfBirth DateTime? @db.Date
 
@@ -540,11 +544,18 @@ model PostImpression {
   lastAt DateTime  @default(now()) @db.Timestamptz()
   prevAt DateTime? @db.Timestamptz()
 
+  /// When it was first on screen for this reader. What Insights counts reach
+  /// by: lastAt is overwritten, so it cannot say who was reached in a past
+  /// period, and a period that cannot be compared with the last one is a
+  /// number without a meaning.
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   viewer User @relation(fields: [viewerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@id([viewerId, postId])
   @@index([postId])
+  @@index([postId, createdAt])
 }
 
 // ==========================================

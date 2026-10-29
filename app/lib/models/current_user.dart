@@ -15,6 +15,9 @@ class CurrentUser {
   final String? coverUrl;
   final String? bio;
   final String? location;
+
+  /// ISO 3166-1 code picked on Edit profile, or null.
+  final String? country;
   final String? website;
   final int followers;
   final int following;
@@ -36,6 +39,7 @@ class CurrentUser {
     this.coverUrl,
     this.bio,
     this.location,
+    this.country,
     this.website,
     required this.followers,
     required this.following,
@@ -61,6 +65,7 @@ class CurrentUser {
       coverUrl: profile['coverUrl'] as String?,
       bio: profile['bio'] as String?,
       location: profile['location'] as String?,
+      country: profile['country'] as String?,
       website: profile['website'] as String?,
       followers: _int(stats['followers']),
       following: _int(stats['following']),
@@ -106,6 +111,7 @@ class CurrentUser {
         'coverUrl': coverUrl,
         'bio': bio,
         'location': location,
+        'country': country,
         'website': website,
       },
       'stats': {'followers': followers, 'following': following, 'posts': posts},

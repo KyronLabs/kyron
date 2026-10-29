@@ -250,6 +250,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Megjelenik a profilodon és a bejegyzéseid alatt."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Egy ország sem felel meg ennek: „{query}”."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Ne jelenjen meg ország"),
+      "country_search":
+          MessageLookupByLibrary.simpleMessage("Országok keresése"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Megjelenik a profilodon és a bejegyzéseid alatt. Ha látod valaki bejegyzéseit, az országodat beleszámolják az Elemzéseibe, csak legalább ötfős csoportokban, és soha nem a neveddel."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("A telefonod beállításaiból"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +318,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author": MessageLookupByLibrary.simpleMessage("{name} követése"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("A fiókod"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Közösség megnyitása"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Írj bejegyzést"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés megtekintése"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Profil szerkesztése"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Mikor vannak jelen"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("A saját időzónádban."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Életkorok"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "Az elért emberek közül {known}, akik megadták a születésnapjukat."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Elért emberek naponta"),
+      "ins_communities": MessageLookupByLibrary.simpleMessage(
+          "Közösségek, amelyekben benne vannak"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Országok"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "Az elért emberek közül {known}, akiknek van ország a profilján."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Elmúlt {days} nap"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni a statisztikákat"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Követők"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Még nincs akkora csoport, amelyet meg lehetne mutatni."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Hogyan növekedj"),
+      "ins_interests": MessageLookupByLibrary.simpleMessage("Követett témák"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Kedvelések"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Új"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("Új követők"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "Ebben az időszakban egyik bejegyzésed sem ért el senkit."),
+      "ins_non_followers": MessageLookupByLibrary.simpleMessage("Nem követnek"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Az országok azok, amelyeket az emberek a profiljukon választottak. A Kyron senkinek a városát vagy nemét nem gyűjti, így ezekről nincs mit megmutatni."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Megnyitások"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} elért · {likes} kedvelés · {replies} válasz"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Elért emberek"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Mindenki egyszer számít: először mutatták meg neki vagy nyitotta meg valamelyik bejegyzésedet. Az új követők még követnek; a követés visszavonásait nem számoljuk."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Válaszok"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Újramegosztások"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Mentések"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Hogy kik a közönséged, akkor látszik, ha {floor} ember látta a bejegyzéseidet ebben az időszakban. Kevesebbnél ez valakire rámutathatna."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Még nincs elég ember"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}%-uk már követ: a bejegyzéseid főleg az ismerőseidhez jutnak el."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}%-uk még nem követ: a bejegyzéseidre rátalálnak."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} embert értél el, {pct}%-kal kevesebbet, mint az előző időszakban."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "Az elmúlt {days} napban {reach} embert értél el."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "{reach} embert értél el, nagyjából annyit, mint az előző időszakban."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "Az elmúlt {days} napban senki új nem látta a bejegyzéseidet."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "{reach} embert értél el, {pct}%-kal többet, mint az előző időszakban."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "{reach} embert értél el, {times}× annyit, mint az előző időszakban."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Közülük többen követik ezt: {name}, mint bármely más témát."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Közönség"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Áttekintés"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Akik rátalálnak egy bejegyzésedre, követés előtt megnézik a profilodat. Egy arc vagy logó jelzi, hogy valaki ott van."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Adj meg profilképet"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Mondd el egy sorban, miről posztolsz, hogy egy idegen tudja, mit kap, ha követ."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Írj bemutatkozást"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "{total} bejegyzésedből {without} témát nem kapott. A téma a bejegyzést a téma hírfolyamába és a követői elé teszi."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Adj témákat a bejegyzéseidhez"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} ember válaszolt a bejegyzéseidre, te pedig {answered} válaszra feleltél. Elég fontos volt nekik, hogy írjanak: egy válasz törzsolvasót csinál az olvasóból."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Válaszolj a válaszokra"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "A közönséged {when} a legaktívabb. Egy kicsivel előtte közzétett bejegyzést lesz, aki fogadja."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Posztolj, amikor jelen vannak"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} ember, aki nem követ, látta a bejegyzéseidet, és {gained} követni kezdett. A bemutatkozásod és legújabb bejegyzéseid mondják el, mire számíthatnak tőled."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("Csinálj követőt az olvasókból"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Egy bejegyzésed {times}× annyi embert ért el, mint a többi általában. Nézd meg, mit csinált másképp, és csináld azt többet."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Csináld többet azt, ami bevált"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Sokan, akik látják a bejegyzéseidet, benne vannak ebben: {name}. Ha ott posztolsz, a többiek elé is kerülsz."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Posztolj itt: {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "{days} nap alatt {posts}-szor posztoltál. Minden bejegyzés újabb esély arra, hogy rád találjanak, az egyenletes ritmus pedig a követőid hírfolyamában tart."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Posztolj gyakrabban"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "Az elmúlt {days} napban nem tettél közzé semmit. Bejegyzés nélkül semmi sem jut el senkihez."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Ossz meg valamit"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Statisztikák"),
+      "ins_top_posts":
+          MessageLookupByLibrary.simpleMessage("Legjobb bejegyzések"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("Az előző {days} naphoz képest"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +990,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Ország"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

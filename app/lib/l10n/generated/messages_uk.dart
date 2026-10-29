@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "Показується у твоєму профілі та під твоїми дописами."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "Немає країн, що відповідають «{query}»."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("Не показувати країну"),
+      "country_search": MessageLookupByLibrary.simpleMessage("Пошук країн"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "Показується у твоєму профілі та під твоїми дописами. Коли ти бачиш чиїсь дописи, твоя країна враховується в його Статистиці, лише в групах від п'яти осіб і ніколи за іменем."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("З налаштувань телефона"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("Стежити за {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,124 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account":
+          MessageLookupByLibrary.simpleMessage("Ваш обліковий запис"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("Відкрити спільноту"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("Написати допис"),
+      "ins_act_post_open":
+          MessageLookupByLibrary.simpleMessage("Переглянути допис"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("Редагувати профіль"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("Коли вони тут"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("У вашому часовому поясі."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("Вік"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "З {known} охоплених людей, які вказали день народження."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("Охоплені люди за днями"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("Спільноти, у яких вони є"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("Країни"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "З {known} охоплених людей, які вказали країну в профілі."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("Останні {days} днів"),
+      "ins_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити статистику"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("Підписники"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "Поки немає достатньо великої групи, щоб її показати."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("Як рости"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("Теми, за якими вони стежать"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("Вподобання"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("Нове"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("Нові підписники"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "За цей період жоден ваш допис нікого не охопив."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("Не стежать за вами"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "Країни — ті, що люди обрали у своїх профілях. Kyron не збирає нічиє місто чи стать, тож показувати щодо них нічого."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("Відкриття"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "охоплення {reach} · {likes} вподобань · {replies} відповідей"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("Охоплені люди"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "Кожну людину враховано один раз: їй уперше показали або вона вперше відкрила один із ваших дописів. Нові підписники досі стежать за вами; відписки не враховуються."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("Відповіді"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("Репости"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("Збереження"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "Хто ваша аудиторія, буде видно, коли {floor} людей побачать ваші дописи за цей період. Якщо менше, це могло б вказати на конкретну людину."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("Поки замало людей"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% із них уже стежать за вами: ваші дописи здебільшого доходять до тих, хто вас знає."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% із них ще не стежать за вами: ваші дописи знаходять."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "Ви охопили {reach} людей — на {pct}% менше, ніж за попередній період."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "За останні {days} днів ви охопили {reach} людей."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "Ви охопили {reach} людей — приблизно стільки ж, як за попередній період."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "За останні {days} днів ваші дописи не побачив ніхто новий."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "Ви охопили {reach} людей — на {pct}% більше, ніж за попередній період."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "Ви охопили {reach} людей — у {times}× більше, ніж за попередній період."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "Найбільше з них стежать за темою «{name}»."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("Аудиторія"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("Огляд"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "Ті, хто знаходить ваш допис, дивляться профіль, перш ніж підписатися. Обличчя чи логотип кажуть їм, що тут хтось є."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("Додайте фото профілю"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "Скажіть одним рядком, про що ви пишете, щоб незнайомець знав, що йому дасть підписка."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("Напишіть про себе"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "У {without} із {total} ваших дописів не було теми. Тема ставить допис у стрічку цієї теми і перед тими, хто за нею стежить."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("Додавайте теми до дописів"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} людей відповіли на ваші дописи, а ви відповіли на {answered}. Їм було не байдуже настільки, щоб написати: відповідь перетворює читача на постійного гостя."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("Відповідайте на відповіді"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "Ваша аудиторія найактивніша: {when}. Допис трохи раніше матиме кому його зустріти."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("Публікуйте, коли вони тут"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} людей, які за вами не стежать, побачили ваші дописи, і {gained} підписалися. Нехай опис і найновіші дописи кажуть, чого від вас чекати."),
+      "ins_tip_convert_strangers_t": MessageLookupByLibrary.simpleMessage(
+          "Перетворюйте читачів на підписників"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "Один допис охопив у {times}× більше людей, ніж зазвичай інші ваші. Подивіться, що в ньому було інакше, і робіть більше цього."),
+      "ins_tip_more_like_top_t": MessageLookupByLibrary.simpleMessage(
+          "Робіть більше того, що спрацювало"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "Багато хто з тих, хто бачить ваші дописи, є у спільноті {name}. Дописи там покажуть вас і решті."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("Публікуйте в спільноті {name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "Ви публікували {posts} разів за {days} днів. Кожен допис — ще один шанс, що вас знайдуть, а рівний ритм тримає вас у стрічках підписників."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("Публікуйте частіше"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "За останні {days} днів ви нічого не публікували. Без допису ніщо ні до кого не доходить."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("Опублікуйте щось"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("Статистика"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("Найкращі дописи"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "Порівняно з попередніми {days} днями"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +993,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("Країна"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

@@ -249,6 +249,16 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "מוצגת בפרופיל שלך ומתחת לפוסטים שלך."),
+      "country_no_match":
+          MessageLookupByLibrary.simpleMessage("אין מדינה שתואמת ל„{query}”."),
+      "country_none": MessageLookupByLibrary.simpleMessage("לא להציג מדינה"),
+      "country_search": MessageLookupByLibrary.simpleMessage("חיפוש מדינות"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "מוצגת בפרופיל שלך ומתחת לפוסטים שלך. כשאתה רואה פוסטים של מישהו, המדינה שלך נספרת בתובנות שלו, רק בקבוצות של חמישה ומעלה ואף פעם לא בשם."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("מההגדרות של הטלפון שלך"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -305,6 +315,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("לעקוב אחרי {name}"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -330,6 +342,121 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("החשבון שלך"),
+      "ins_act_community":
+          MessageLookupByLibrary.simpleMessage("פתח את הקהילה"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("כתוב פוסט"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("צפה בפוסט"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("ערוך את הפרופיל שלך"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("מתי הם בסביבה"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("באזור הזמן שלך."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("גילים"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "מתוך {known} האנשים שהגעת אליהם ומסרו תאריך לידה."),
+      "ins_chart":
+          MessageLookupByLibrary.simpleMessage("אנשים שהגעת אליהם בכל יום"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("קהילות שהם חברים בהן"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("מדינות"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "מתוך {known} האנשים שהגעת אליהם ויש להם מדינה בפרופיל."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("{days} הימים האחרונים"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן היה לטעון את התובנות"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("עוקבים"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "אין עדיין קבוצה גדולה מספיק כדי להציג אותה."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("איך לצמוח"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("נושאים שהם עוקבים אחריהם"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("לייקים"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("חדש"),
+      "ins_new_followers": MessageLookupByLibrary.simpleMessage("עוקבים חדשים"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "אף אחד מהפוסטים שלך לא הגיע לאיש בתקופה הזו."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("לא עוקבים אחריך"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "המדינות הן אלה שאנשים בחרו בפרופילים שלהם. Kyron לא אוסף את העיר או המגדר של אף אחד, כך שאין מה להציג עבורם."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("פתיחות"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "הגיע ל־{reach} · {likes} לייקים · {replies} תגובות"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("אנשים שהגעת אליהם"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "כל אדם נספר פעם אחת: הוצג לו או שפתח לראשונה אחד מהפוסטים שלך. עוקבים חדשים עדיין עוקבים אחריך; הפסקות מעקב לא נספרות."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("תגובות"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("שיתופים מחדש"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("שמירות"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "מי הקהל שלך מוצג אחרי ש־{floor} אנשים ראו את הפוסטים שלך בתקופה הזו. בפחות מזה, זה עלול להצביע על מישהו."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("עדיין אין מספיק אנשים"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% מהם כבר עוקבים אחריך: הפוסטים שלך מגיעים בעיקר לאנשים שמכירים אותך."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "{pct}% מהם עדיין לא עוקבים אחריך: מוצאים את הפוסטים שלך."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "הגעת ל־{reach} אנשים, {pct}% פחות מהתקופה הקודמת."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "הגעת ל־{reach} אנשים ב־{days} הימים האחרונים."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "הגעת ל־{reach} אנשים, בערך כמו בתקופה הקודמת."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "אף אחד חדש לא ראה את הפוסטים שלך ב־{days} הימים האחרונים."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "הגעת ל־{reach} אנשים, {pct}% יותר מהתקופה הקודמת."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "הגעת ל־{reach} אנשים, פי {times}× מהתקופה הקודמת."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "יותר מהם עוקבים אחרי {name} מאשר אחרי כל נושא אחר."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("קהל"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("סקירה"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "מי שמוצא אחד מהפוסטים שלך מסתכל בפרופיל שלך לפני שהוא עוקב. פנים או לוגו אומרים לו שיש שם מישהו."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("הוסף תמונת פרופיל"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "אמור בשורה אחת על מה אתה מפרסם, כדי שזר יידע מה ייתן לו לעקוב אחריך."),
+      "ins_tip_add_bio_t":
+          MessageLookupByLibrary.simpleMessage("כתוב ביוגרפיה"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "ל־{without} מתוך {total} הפוסטים שלך לא היה נושא. נושא מכניס פוסט לפיד של הנושא ומציב אותו מול מי שעוקב אחריו."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("הוסף נושאים לפוסטים"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} אנשים הגיבו לפוסטים שלך ועניתָ ל־{answered}. אכפת להם מספיק כדי לכתוב: תשובה הופכת קורא לקבוע."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("ענה לתגובות"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "הקהל שלך פעיל ביותר ב{when}. פוסט שמתפרסם קצת לפני כן מוצא אנשים שיקבלו אותו."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("פרסם כשהם בסביבה"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "{reached} אנשים שלא עוקבים אחריך ראו את הפוסטים שלך, ו־{gained} התחילו לעקוב. שהביוגרפיה והפוסטים החדשים שלך יגידו למה הם יכולים לצפות ממך."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("הפוך קוראים לעוקבים"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "פוסט אחד הגיע לפי {times}× יותר אנשים ממה שהאחרים שלך מגיעים בדרך כלל. בדוק מה הוא עשה אחרת, ועשה מזה יותר."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("עשה יותר ממה שעבד"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "רבים מהאנשים שרואים את הפוסטים שלך נמצאים ב־{name}. פרסום שם מציב אותך מול שאר החברים."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("פרסם ב־{name}"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "פרסמת {posts} פעמים ב־{days} ימים. כל פוסט הוא עוד הזדמנות להימצא, וקצב קבוע שומר אותך בפידים של העוקבים שלך."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("פרסם לעתים קרובות יותר"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "לא פרסמת ב־{days} הימים האחרונים. שום דבר לא מגיע לאיש בלי פוסט."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("פרסם משהו"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("תובנות"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("הפוסטים המובילים"),
+      "ins_vs_before":
+          MessageLookupByLibrary.simpleMessage("לעומת {days} הימים הקודמים"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -861,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("מדינה"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

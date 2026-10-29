@@ -250,6 +250,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
         "Could not take that picture.",
       ),
+      "country_helper": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या प्रोफाइलवर आणि तुमच्या पोस्टखाली दाखवला जातो."),
+      "country_no_match": MessageLookupByLibrary.simpleMessage(
+          "“{query}” शी जुळणारा देश नाही."),
+      "country_none":
+          MessageLookupByLibrary.simpleMessage("कोणताही देश दाखवू नका"),
+      "country_search": MessageLookupByLibrary.simpleMessage("देश शोधा"),
+      "country_shown": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या प्रोफाइलवर आणि तुमच्या पोस्टखाली दाखवला जातो. तुम्ही कोणाच्या पोस्ट पाहता तेव्हा, तुमचा देश त्यांच्या इनसाइट्समध्ये मोजला जातो, फक्त पाच किंवा अधिकांच्या गटांत आणि कधीही नावाने नाही."),
+      "country_suggested":
+          MessageLookupByLibrary.simpleMessage("तुमच्या फोनच्या सेटिंग्जमधून"),
       "create": MessageLookupByLibrary.simpleMessage("Create"),
       "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
       "createYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +317,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "feedTagDetail": (Object a0) =>
           "Nothing has been posted under #${a0} yet.",
+      "follow_author":
+          MessageLookupByLibrary.simpleMessage("{name} यांना फॉलो करा"),
       "followers": MessageLookupByLibrary.simpleMessage("Followers"),
       "following": MessageLookupByLibrary.simpleMessage("Following"),
       "forgotPassword":
@@ -331,6 +344,119 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
       "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "ins_account": MessageLookupByLibrary.simpleMessage("तुमचे खाते"),
+      "ins_act_community": MessageLookupByLibrary.simpleMessage("समुदाय उघडा"),
+      "ins_act_post": MessageLookupByLibrary.simpleMessage("पोस्ट लिहा"),
+      "ins_act_post_open": MessageLookupByLibrary.simpleMessage("पोस्ट पहा"),
+      "ins_act_profile":
+          MessageLookupByLibrary.simpleMessage("तुमचे प्रोफाइल संपादित करा"),
+      "ins_active": MessageLookupByLibrary.simpleMessage("ते कधी सक्रिय असतात"),
+      "ins_active_note":
+          MessageLookupByLibrary.simpleMessage("तुमच्या टाइम झोनमध्ये."),
+      "ins_ages": MessageLookupByLibrary.simpleMessage("वय"),
+      "ins_ages_note": MessageLookupByLibrary.simpleMessage(
+          "वाढदिवस दिलेल्या, पोहोचलेल्या {known} लोकांपैकी."),
+      "ins_chart": MessageLookupByLibrary.simpleMessage("दररोज पोहोचलेले लोक"),
+      "ins_communities":
+          MessageLookupByLibrary.simpleMessage("ते असलेले समुदाय"),
+      "ins_countries": MessageLookupByLibrary.simpleMessage("देश"),
+      "ins_countries_note": MessageLookupByLibrary.simpleMessage(
+          "ज्यांच्यापर्यंत पोहोचलात आणि ज्यांच्या प्रोफाइलवर देश आहे अशा {known} लोकांमधून."),
+      "ins_days": MessageLookupByLibrary.simpleMessage("मागील {days} दिवस"),
+      "ins_failed":
+          MessageLookupByLibrary.simpleMessage("इनसाइट्स लोड करता आल्या नाहीत"),
+      "ins_followers": MessageLookupByLibrary.simpleMessage("फॉलोअर्स"),
+      "ins_group_small": MessageLookupByLibrary.simpleMessage(
+          "दाखवण्याइतका मोठा कोणताही गट अजून नाही."),
+      "ins_grow": MessageLookupByLibrary.simpleMessage("कसे वाढावे"),
+      "ins_interests":
+          MessageLookupByLibrary.simpleMessage("ते फॉलो करत असलेले विषय"),
+      "ins_likes": MessageLookupByLibrary.simpleMessage("लाइक्स"),
+      "ins_new": MessageLookupByLibrary.simpleMessage("नवीन"),
+      "ins_new_followers":
+          MessageLookupByLibrary.simpleMessage("नवीन फॉलोअर्स"),
+      "ins_no_posts_reached": MessageLookupByLibrary.simpleMessage(
+          "या कालावधीत तुमची कोणतीही पोस्ट कोणापर्यंत पोहोचली नाही."),
+      "ins_non_followers":
+          MessageLookupByLibrary.simpleMessage("तुम्हाला फॉलो करत नाहीत"),
+      "ins_not_collected_city": MessageLookupByLibrary.simpleMessage(
+          "देश हे लोकांनी आपल्या प्रोफाइलवर निवडलेले आहेत. Kyron कोणाचेही शहर किंवा लिंग गोळा करत नाही, त्यामुळे त्यांच्यासाठी दाखवण्यासारखे काही नाही."),
+      "ins_opens": MessageLookupByLibrary.simpleMessage("उघडणे"),
+      "ins_post_line": MessageLookupByLibrary.simpleMessage(
+          "{reach} पर्यंत पोहोचली · {likes} लाइक · {replies} उत्तरे"),
+      "ins_reach": MessageLookupByLibrary.simpleMessage("पोहोचलेले लोक"),
+      "ins_reach_note": MessageLookupByLibrary.simpleMessage(
+          "प्रत्येक व्यक्ती एकदाच मोजली जाते: तुमची एखादी पोस्ट त्यांना पहिल्यांदा दाखवली गेली किंवा त्यांनी उघडली. नवीन फॉलोअर्स अजूनही तुम्हाला फॉलो करतात; अनफॉलो मोजले जात नाहीत."),
+      "ins_replies": MessageLookupByLibrary.simpleMessage("उत्तरे"),
+      "ins_reposts": MessageLookupByLibrary.simpleMessage("रीपोस्ट"),
+      "ins_saves": MessageLookupByLibrary.simpleMessage("सेव्ह"),
+      "ins_small": MessageLookupByLibrary.simpleMessage(
+          "या कालावधीत {floor} लोकांनी तुमच्या पोस्ट पाहिल्यानंतर तुमचे प्रेक्षक कोण आहेत ते दिसते. त्यापेक्षा कमी असल्यास ते एखाद्या व्यक्तीकडे बोट दाखवू शकते."),
+      "ins_small_title":
+          MessageLookupByLibrary.simpleMessage("अजून पुरेसे लोक नाहीत"),
+      "ins_sum_mostly_followers": MessageLookupByLibrary.simpleMessage(
+          "त्यांपैकी {pct}% आधीच तुम्हाला फॉलो करतात: तुमच्या पोस्ट मुख्यतः ओळखीच्यांपर्यंत पोहोचतात."),
+      "ins_sum_mostly_strangers": MessageLookupByLibrary.simpleMessage(
+          "त्यांपैकी {pct}% अजून तुम्हाला फॉलो करत नाहीत: तुमच्या पोस्ट शोधल्या जात आहेत."),
+      "ins_sum_reach_down_pct": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {reach} लोकांपर्यंत पोहोचलात, मागील कालावधीपेक्षा {pct}% कमी."),
+      "ins_sum_reach_first": MessageLookupByLibrary.simpleMessage(
+          "मागील {days} दिवसांत तुम्ही {reach} लोकांपर्यंत पोहोचलात."),
+      "ins_sum_reach_flat": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {reach} लोकांपर्यंत पोहोचलात, साधारण मागील कालावधीइतके."),
+      "ins_sum_reach_none": MessageLookupByLibrary.simpleMessage(
+          "मागील {days} दिवसांत कोणत्याही नवीन व्यक्तीने तुमच्या पोस्ट पाहिल्या नाहीत."),
+      "ins_sum_reach_up_pct": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {reach} लोकांपर्यंत पोहोचलात, मागील कालावधीपेक्षा {pct}% जास्त."),
+      "ins_sum_reach_up_times": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {reach} लोकांपर्यंत पोहोचलात, मागील कालावधीच्या {times}×."),
+      "ins_sum_top_interest": MessageLookupByLibrary.simpleMessage(
+          "इतर कोणत्याही विषयापेक्षा जास्त जण {name} फॉलो करतात."),
+      "ins_tab_audience": MessageLookupByLibrary.simpleMessage("प्रेक्षक"),
+      "ins_tab_overview": MessageLookupByLibrary.simpleMessage("आढावा"),
+      "ins_tip_add_avatar": MessageLookupByLibrary.simpleMessage(
+          "तुमची पोस्ट सापडलेले लोक फॉलो करण्याआधी तुमचे प्रोफाइल पाहतात. चेहरा किंवा लोगो त्यांना सांगतो की तिथे कोणीतरी आहे."),
+      "ins_tip_add_avatar_t":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल फोटो जोडा"),
+      "ins_tip_add_bio": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही कशाबद्दल पोस्ट करता ते एका ओळीत सांगा, म्हणजे अनोळखी व्यक्तीला कळेल की तुम्हाला फॉलो केल्याने काय मिळेल."),
+      "ins_tip_add_bio_t": MessageLookupByLibrary.simpleMessage("बायो लिहा"),
+      "ins_tip_add_topics": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या {total} पोस्टपैकी {without} ना विषय नव्हता. विषय पोस्टला त्या विषयाच्या फीडमध्ये आणि तो फॉलो करणाऱ्यांसमोर ठेवतो."),
+      "ins_tip_add_topics_t":
+          MessageLookupByLibrary.simpleMessage("पोस्टमध्ये विषय जोडा"),
+      "ins_tip_answer_comments": MessageLookupByLibrary.simpleMessage(
+          "{received} लोकांनी तुमच्या पोस्टवर उत्तर दिले आणि तुम्ही {answered} ला प्रतिसाद दिला. लिहिण्याइतकी त्यांना काळजी होती: एक प्रतिसाद वाचकाला नियमित बनवतो."),
+      "ins_tip_answer_comments_t":
+          MessageLookupByLibrary.simpleMessage("उत्तरांना प्रतिसाद द्या"),
+      "ins_tip_best_time": MessageLookupByLibrary.simpleMessage(
+          "तुमचे प्रेक्षक {when} सर्वाधिक सक्रिय असतात. त्याच्या थोडे आधी केलेल्या पोस्टला स्वागत करणारे लोक मिळतात."),
+      "ins_tip_best_time_t":
+          MessageLookupByLibrary.simpleMessage("ते सक्रिय असताना पोस्ट करा"),
+      "ins_tip_convert_strangers": MessageLookupByLibrary.simpleMessage(
+          "तुम्हाला फॉलो न करणाऱ्या {reached} लोकांनी तुमच्या पोस्ट पाहिल्या, आणि {gained} जणांनी फॉलो केले. तुमचा बायो आणि नवीन पोस्ट सांगू द्या की ते तुमच्याकडून काय अपेक्षा ठेवू शकतात."),
+      "ins_tip_convert_strangers_t":
+          MessageLookupByLibrary.simpleMessage("वाचकांना फॉलोअर बनवा"),
+      "ins_tip_more_like_top": MessageLookupByLibrary.simpleMessage(
+          "एका पोस्टने तुमच्या इतर पोस्ट सहसा पोहोचतात त्याच्या {times}× लोकांपर्यंत पोहोचली. तिने काय वेगळे केले ते पहा, आणि ते अधिक करा."),
+      "ins_tip_more_like_top_t":
+          MessageLookupByLibrary.simpleMessage("जे यशस्वी झाले ते अधिक करा"),
+      "ins_tip_post_in_community": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या पोस्ट पाहणारे अनेक जण {name} मध्ये आहेत. तिथे पोस्ट केल्याने तुम्ही उरलेल्यांसमोरही येता."),
+      "ins_tip_post_in_community_t":
+          MessageLookupByLibrary.simpleMessage("{name} मध्ये पोस्ट करा"),
+      "ins_tip_post_more": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {days} दिवसांत {posts} वेळा पोस्ट केले. प्रत्येक पोस्ट सापडण्याची आणखी एक संधी आहे, आणि नियमित लय तुम्हाला फॉलोअर्सच्या फीडमध्ये ठेवते."),
+      "ins_tip_post_more_t":
+          MessageLookupByLibrary.simpleMessage("अधिक वेळा पोस्ट करा"),
+      "ins_tip_post_something": MessageLookupByLibrary.simpleMessage(
+          "मागील {days} दिवसांत तुम्ही पोस्ट केलेले नाही. पोस्टशिवाय काहीही कोणापर्यंत पोहोचत नाही."),
+      "ins_tip_post_something_t":
+          MessageLookupByLibrary.simpleMessage("काहीतरी पोस्ट करा"),
+      "ins_title": MessageLookupByLibrary.simpleMessage("इनसाइट्स"),
+      "ins_top_posts": MessageLookupByLibrary.simpleMessage("सर्वोत्तम पोस्ट"),
+      "ins_vs_before": MessageLookupByLibrary.simpleMessage(
+          "आधीच्या {days} दिवसांच्या तुलनेत"),
       "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
         "Drag to reorder",
@@ -862,6 +988,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
       "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_country": MessageLookupByLibrary.simpleMessage("देश"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),

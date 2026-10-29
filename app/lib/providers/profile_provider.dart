@@ -7,6 +7,7 @@ import '../services/app_log.dart';
 import '../utils/api_error_message.dart';
 import 'api_client_provider.dart';
 import 'current_user_provider.dart';
+import 'follow_provider.dart';
 
 final profileRepositoryProvider = Provider<ProfileRepository>(
   (ref) => ProfileRepository(ref.read(apiClientProvider)),
@@ -103,6 +104,11 @@ class ProfileNotifier extends StateNotifier<AsyncValue<ProfileModel>> {
       }
       // Your own following count moved too.
       _ref.read(currentUserProvider.notifier).refresh();
+      // And the follow button on their posts, wherever they are on screen.
+      _ref.read(followOverridesProvider.notifier).record(
+            current.id,
+            !wasFollowing,
+          );
       return null;
     } catch (e) {
       state = AsyncData(current);
