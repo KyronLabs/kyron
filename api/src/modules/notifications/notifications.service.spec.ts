@@ -16,9 +16,12 @@ interface Rows {
   comments?: unknown[];
   reposts?: unknown[];
   follows?: unknown[];
+  gifts?: unknown[];
   blocks?: { blockerId: string; blockedId: string }[];
   seenAt?: Date | null;
-  counts?: Partial<Record<'like' | 'comment' | 'repost' | 'follow', number>>;
+  counts?: Partial<
+    Record<'like' | 'comment' | 'repost' | 'follow' | 'gift', number>
+  >;
 }
 
 function serviceWith(rows: Rows = {}) {
@@ -56,6 +59,10 @@ function serviceWith(rows: Rows = {}) {
     follow: {
       findMany: jest.fn(capture('follow', rows.follows ?? [])),
       count: jest.fn().mockResolvedValue(rows.counts?.follow ?? 0),
+    },
+    gift: {
+      findMany: jest.fn(capture('gift', rows.gifts ?? [])),
+      count: jest.fn().mockResolvedValue(rows.counts?.gift ?? 0),
     },
   };
 
@@ -248,6 +255,71 @@ describe('NotificationsService', () => {
     expect(prisma.user.update).toHaveBeenCalledWith({
       where: { id: ME },
       data: { notificationsSeenAt: seenAt },
+    });
+  });
+
+  describe('gifts', () => {
+    const gift = {
+      id: 'g1',
+      createdAt: at(2),
+      postId: 'p1',
+      type: 'fire',
+      coins: 5,
+      sender: actor('cy'),
+      post: { content: 'a post' },
+    };
+
+    it('leaves them out for an app that did not ask, which would call them likes', async () => {
+      const { svc, prisma } = serviceWith({
+        gifts: [gift],
+        counts: { gift: 3 },
+      });
+
+      const { items } = await svc.list(ME);
+      const { count } = await svc.unreadCount(ME);
+
+      expect(items).toHaveLength(0);
+      expect(count).toBe(0);
+      expect(prisma.gift.findMany).not.toHaveBeenCalled();
+      expect(prisma.gift.count).not.toHaveBeenCalled();
+    });
+
+    it('lists them, naming the gift, for an app that asked', async () => {
+      const { svc } = serviceWith({ gifts: [gift] });
+
+      const { items } = await svc.list(ME, { gifts: true });
+
+      expect(items).toEqual([
+        expect.objectContaining({
+          id: 'gift:g1',
+          kind: 'gift',
+          postId: 'p1',
+          postSnippet: 'a post',
+          gift: { type: 'fire', coins: 5, name: 'Fire', emoji: '🔥' },
+        }),
+      ]);
+      expect(items[0].actor?.id).toBe('cy');
+    });
+
+    it('counts them on the badge for an app that asked', async () => {
+      const { svc } = serviceWith({ counts: { like: 1, gift: 2 } });
+
+      expect(await svc.unreadCount(ME, { gifts: true })).toEqual({ count: 3 });
+    });
+
+    it('leaves out a gift whose sender has since gone, and anybody blocked', async () => {
+      const { svc, where } = serviceWith({
+        gifts: [{ ...gift, sender: null }],
+        blocks: [{ blockerId: ME, blockedId: 'dee' }],
+      });
+
+      const { items } = await svc.list(ME, { gifts: true });
+
+      expect(items).toHaveLength(0);
+      expect(where.gift).toMatchObject({
+        recipientId: ME,
+        senderId: { not: null, notIn: [ME, 'dee'] },
+      });
     });
   });
 });

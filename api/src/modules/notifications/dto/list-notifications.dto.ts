@@ -9,10 +9,11 @@ export const NOTIFICATION_KINDS = [
   'mention',
   'account',
   'report',
+  'gift',
 ] as const;
 
 /** What `include` may ask for. */
-export const INCLUDES = ['moderation', 'mentions'] as const;
+export const INCLUDES = ['moderation', 'mentions', 'gifts'] as const;
 export type Include = (typeof INCLUDES)[number];
 
 /** "moderation,mentions" -> ['moderation', 'mentions']. */
@@ -47,8 +48,9 @@ export class ListNotificationsDto {
 
   /** Rows an older app would misread, asked for by name, comma-separated:
    * "moderation" adds decisions about the account and what came of its
-   * reports, "mentions" adds where somebody wrote @you. An app from before
-   * either reads an unknown row as a like. */
+   * reports, "mentions" adds where somebody wrote @you, "gifts" adds gifts
+   * sent to its posts. An app from before any of them reads an unknown row
+   * as a like. */
   @IsOptional()
   @Transform(includeList)
   @IsIn(INCLUDES, {

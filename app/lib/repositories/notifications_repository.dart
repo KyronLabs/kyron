@@ -8,7 +8,7 @@ class NotificationsRepository {
   NotificationsRepository(this._api);
 
   /// The rows this app knows how to show, beyond the original four.
-  static const include = 'moderation,mentions';
+  static const include = 'moderation,mentions,gifts';
 
   /// What other people did, newest first.
   Future<NotificationPage> list({

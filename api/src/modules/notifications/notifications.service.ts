@@ -8,6 +8,7 @@ import {
   ReportTarget,
 } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { giftType } from '../gifts/gift-catalogue';
 
 export type NotificationKind =
   | 'like'
@@ -20,7 +21,9 @@ export type NotificationKind =
    * a decision reversed. */
   | 'account'
   /** What came of something this account reported. */
-  | 'report';
+  | 'report'
+  /** Somebody sent a gift to one of this account's posts. */
+  | 'gift';
 
 /** The words of an account row are the app's, in the reader's language:
  * this says what happened, not how to say it. */
@@ -72,6 +75,9 @@ export interface NotificationItem {
   unread: boolean;
   account?: AccountNotice;
   report?: ReportOutcome;
+  /** Which gift, for a gift row: named here so the app need not keep its
+   * own copy of the catalogue. */
+  gift?: { type: string; coins: number; name: string; emoji: string };
 }
 
 const DEFAULT_LIMIT = 30;
@@ -109,6 +115,8 @@ export class NotificationsService {
       moderation?: boolean;
       /** Mentions too, asked for for the same reason. */
       mentions?: boolean;
+      /** Gifts too, asked for for the same reason. */
+      gifts?: boolean;
     } = {},
   ): Promise<{ items: NotificationItem[]; nextCursor: string | null }> {
     const limit = options.limit ?? DEFAULT_LIMIT;
@@ -134,78 +142,109 @@ export class NotificationsService {
       account: options.moderation,
       report: options.moderation,
       mention: options.mentions,
+      gift: options.gifts,
     };
     const wanted = (kind: NotificationKind) =>
       (kind in optIn ? optIn[kind] === true : true) &&
       (!options.kind || options.kind === kind);
 
-    const [likes, comments, reposts, follows, mentions] = await Promise.all([
-      wanted('like')
-        ? this.prisma.postLike.findMany({
-            where: { createdAt: when, post: { authorId: userId }, ...notMine },
-            orderBy: { createdAt: 'desc' },
-            take: limit,
-            select: {
-              id: true,
-              createdAt: true,
-              postId: true,
-              user: { select: this.actorFields },
-              post: { select: { content: true } },
-            },
-          })
-        : [],
-      wanted('comment')
-        ? this.prisma.comment.findMany({
-            where: {
-              createdAt: when,
-              deletedAt: null,
-              post: { authorId: userId },
-              authorId: { not: userId, notIn: blocked },
-            },
-            orderBy: { createdAt: 'desc' },
-            take: limit,
-            select: {
-              id: true,
-              createdAt: true,
-              postId: true,
-              content: true,
-              author: { select: this.actorFields },
-              post: { select: { content: true } },
-            },
-          })
-        : [],
-      wanted('repost')
-        ? this.prisma.repost.findMany({
-            where: { createdAt: when, post: { authorId: userId }, ...notMine },
-            orderBy: { createdAt: 'desc' },
-            take: limit,
-            select: {
-              id: true,
-              createdAt: true,
-              postId: true,
-              user: { select: this.actorFields },
-              post: { select: { content: true } },
-            },
-          })
-        : [],
-      wanted('follow')
-        ? this.prisma.follow.findMany({
-            where: {
-              createdAt: when,
-              followingId: userId,
-              followerId: { not: userId, notIn: blocked },
-            },
-            orderBy: { createdAt: 'desc' },
-            take: limit,
-            select: {
-              id: true,
-              createdAt: true,
-              follower: { select: this.actorFields },
-            },
-          })
-        : [],
-      wanted('mention') ? this.mentionRows(userId, when, blocked, limit) : [],
-    ]);
+    const [likes, comments, reposts, follows, mentions, gifts] =
+      await Promise.all([
+        wanted('like')
+          ? this.prisma.postLike.findMany({
+              where: {
+                createdAt: when,
+                post: { authorId: userId },
+                ...notMine,
+              },
+              orderBy: { createdAt: 'desc' },
+              take: limit,
+              select: {
+                id: true,
+                createdAt: true,
+                postId: true,
+                user: { select: this.actorFields },
+                post: { select: { content: true } },
+              },
+            })
+          : [],
+        wanted('comment')
+          ? this.prisma.comment.findMany({
+              where: {
+                createdAt: when,
+                deletedAt: null,
+                post: { authorId: userId },
+                authorId: { not: userId, notIn: blocked },
+              },
+              orderBy: { createdAt: 'desc' },
+              take: limit,
+              select: {
+                id: true,
+                createdAt: true,
+                postId: true,
+                content: true,
+                author: { select: this.actorFields },
+                post: { select: { content: true } },
+              },
+            })
+          : [],
+        wanted('repost')
+          ? this.prisma.repost.findMany({
+              where: {
+                createdAt: when,
+                post: { authorId: userId },
+                ...notMine,
+              },
+              orderBy: { createdAt: 'desc' },
+              take: limit,
+              select: {
+                id: true,
+                createdAt: true,
+                postId: true,
+                user: { select: this.actorFields },
+                post: { select: { content: true } },
+              },
+            })
+          : [],
+        wanted('follow')
+          ? this.prisma.follow.findMany({
+              where: {
+                createdAt: when,
+                followingId: userId,
+                followerId: { not: userId, notIn: blocked },
+              },
+              orderBy: { createdAt: 'desc' },
+              take: limit,
+              select: {
+                id: true,
+                createdAt: true,
+                follower: { select: this.actorFields },
+              },
+            })
+          : [],
+        wanted('mention') ? this.mentionRows(userId, when, blocked, limit) : [],
+        wanted('gift')
+          ? this.prisma.gift.findMany({
+              where: {
+                createdAt: when,
+                recipientId: userId,
+                // Null once the sender deleted their account: nobody to name.
+                senderId: { not: null, notIn: [userId, ...blocked] },
+              },
+              orderBy: { createdAt: 'desc' },
+              take: limit,
+              select: {
+                id: true,
+                createdAt: true,
+                postId: true,
+                type: true,
+                coins: true,
+                sender: { select: this.actorFields },
+                post: { select: { content: true } },
+              },
+            })
+          : [],
+      ]);
 
     const moderation = await this.moderationRows(userId, when, limit, {
       account: wanted('account'),
@@ -264,6 +303,30 @@ export class NotificationsService {
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
       })),
+      ...gifts.flatMap((row) =>
+        row.sender
+          ? [
+              {
+                id: `gift:${row.id}`,
+                kind: 'gift' as const,
+                actor: this.actor(row.sender),
+                postId: row.postId,
+                postSnippet: this.snippet(row.post?.content),
+                content: null,
+                createdAt: row.createdAt,
+                unread: this.isUnread(row.createdAt, seenAt),
+                gift: {
+                  type: row.type,
+                  coins: row.coins,
+                  // A gift since dropped from the catalogue still says what
+                  // it was, if not by its own name.
+                  name: giftType(row.type)?.name ?? 'Gift',
+                  emoji: giftType(row.type)?.emoji ?? '🎁',
+                },
+              },
+            ]
+          : [],
+      ),
       ...moderation.map((row) => ({
         ...row,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -285,7 +348,7 @@ export class NotificationsService {
   /** What the tab bar's badge counts. */
   async unreadCount(
     userId: string,
-    options: { moderation?: boolean; mentions?: boolean } = {},
+    options: { moderation?: boolean; mentions?: boolean; gifts?: boolean } = {},
   ): Promise<{ count: number }> {
     const me = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -302,30 +365,42 @@ export class NotificationsService {
     const fresh = { createdAt: { gt: since } };
     const notMine = { userId: { not: userId, notIn: blocked } };
 
-    const [likes, comments, reposts, follows, mentions] = await Promise.all([
-      this.prisma.postLike.count({ where: { ...fresh, ...mine, ...notMine } }),
-      this.prisma.comment.count({
-        where: {
-          ...fresh,
-          ...mine,
-          deletedAt: null,
-          authorId: { not: userId, notIn: blocked },
-        },
-      }),
-      this.prisma.repost.count({ where: { ...fresh, ...mine, ...notMine } }),
-      this.prisma.follow.count({
-        where: {
-          ...fresh,
-          followingId: userId,
-          followerId: { not: userId, notIn: blocked },
-        },
-      }),
-      options.mentions
-        ? this.prisma.mention.count({
-            where: { ...fresh, ...this.liveMention(userId, blocked) },
-          })
-        : 0,
-    ]);
+    const [likes, comments, reposts, follows, mentions, gifts] =
+      await Promise.all([
+        this.prisma.postLike.count({
+          where: { ...fresh, ...mine, ...notMine },
+        }),
+        this.prisma.comment.count({
+          where: {
+            ...fresh,
+            ...mine,
+            deletedAt: null,
+            authorId: { not: userId, notIn: blocked },
+          },
+        }),
+        this.prisma.repost.count({ where: { ...fresh, ...mine, ...notMine } }),
+        this.prisma.follow.count({
+          where: {
+            ...fresh,
+            followingId: userId,
+            followerId: { not: userId, notIn: blocked },
+          },
+        }),
+        options.mentions
+          ? this.prisma.mention.count({
+              where: { ...fresh, ...this.liveMention(userId, blocked) },
+            })
+          : 0,
+        options.gifts
+          ? this.prisma.gift.count({
+              where: {
+                ...fresh,
+                recipientId: userId,
+                senderId: { not: null, notIn: [userId, ...blocked] },
+              },
+            })
+          : 0,
+      ]);
 
     const moderation = options.moderation
       ? (
@@ -337,7 +412,8 @@ export class NotificationsService {
       : 0;
 
     return {
-      count: likes + comments + reposts + follows + mentions + moderation,
+      count:
+        likes + comments + reposts + follows + mentions + gifts + moderation,
     };
   }
 

@@ -2,11 +2,13 @@ import 'package:intl/intl.dart';
 
 import '../repositories/moderation_repository.dart';
 import 'account_standing.dart';
+import 'gift.dart';
 
 /// What somebody did. The screen's tabs narrow to likes, replies, mentions
 /// and follows.
 ///
-/// [mention] is somebody writing your @handle in a post or a reply.
+/// [mention] is somebody writing your @handle in a post or a reply, and
+/// [gift] somebody sending a gift to one of your posts.
 /// [account] and [report] are Kyron's, not a person's: a decision about this
 /// account, an appeal answered or a decision reversed, and what came of
 /// something this account reported.
@@ -18,6 +20,7 @@ enum NotificationType {
   mention,
   account,
   report,
+  gift,
 }
 
 /// What the team decided, as a row says it. The words are the app's, in the
@@ -140,6 +143,9 @@ class NotificationModel {
   final AccountNoticeRow? account;
   final ReportOutcomeRow? report;
 
+  /// Which gift, for a [NotificationType.gift] row.
+  final GiftNote? gift;
+
   const NotificationModel({
     required this.id,
     required this.type,
@@ -151,6 +157,7 @@ class NotificationModel {
     this.content,
     this.account,
     this.report,
+    this.gift,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) {
@@ -164,6 +171,7 @@ class NotificationModel {
         'mention' => NotificationType.mention,
         'account' => NotificationType.account,
         'report' => NotificationType.report,
+        'gift' => NotificationType.gift,
         _ => NotificationType.like,
       },
       actor: json['actor'] is Map<String, dynamic>
@@ -174,6 +182,9 @@ class NotificationModel {
           : null,
       report: json['report'] is Map<String, dynamic>
           ? ReportOutcomeRow.fromJson(json['report'] as Map<String, dynamic>)
+          : null,
+      gift: json['gift'] is Map<String, dynamic>
+          ? GiftNote.fromJson(json['gift'] as Map<String, dynamic>)
           : null,
       postId: json['postId'] as String?,
       postSnippet: json['postSnippet'] as String?,

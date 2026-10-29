@@ -157,6 +157,9 @@ model User {
   reportsResolved        Report[]                @relation("ReportResolver")
   verificationRequests   VerificationRequest[]   @relation("VerificationApplicant")
   verificationsReviewed  VerificationRequest[]   @relation("VerificationReviewer")
+  giftsSent              Gift[]                  @relation("GiftSender")
+  giftsReceived          Gift[]                  @relation("GiftRecipient")
+  coinEntries            CoinEntry[]
 
   @@index([email])
   @@index([status])
@@ -228,6 +231,10 @@ model Post {
   likeCount    Int @default(0)
   commentCount Int @default(0)
   repostCount  Int @default(0)
+  /// Gifts sent to it, maintained by GiftsService. Shown on the post and
+  /// deliberately not read by ranking: a feed that money can move is not the
+  /// feed the README describes.
+  giftCount    Int @default(0)
 
   author      User             @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   likes       PostLike[]
@@ -248,6 +255,7 @@ model Post {
   mutes       Mute[]
   signals     InterestSignal[]
   poll        Poll?
+  gifts       Gift[]
 
   // SetNull, not Cascade: deleting a quoted post should not delete everyone's
   // commentary on it. The client renders the gap.
@@ -1019,6 +1027,80 @@ model BannedIdentity {
   createdAt DateTime @default(now()) @db.Timestamptz()
 
   @@index([actionId])
+}
+
+// ==========================================
+// 11b. GIFTS (TEST COINS)
+// ==========================================
+
+/// Which side of a wallet an entry moves.
+///
+/// Coins are what an account spends; earnings are what its posts were given.
+/// The two never mix -- a gift received cannot be spent again -- because
+/// once coins are bought with money, earnings are what a creator is owed and
+/// coins are what a buyer prepaid, and those are different obligations.
+enum CoinKind {
+  /// Test coins handed out by the weekly refill. Positive.
+  GRANT
+  /// Coins spent on a gift. Negative.
+  SPEND
+  /// What a post's author received for a gift. Positive.
+  EARN
+}
+
+/// One movement in somebody's wallet. Append-only: a balance is a sum of
+/// these, and nothing ever edits one in place, so every number on a wallet
+/// screen can be traced to the rows that make it.
+model CoinEntry {
+  id     String   @id @default(uuid()) @db.Uuid
+  userId String   @db.Uuid
+  kind   CoinKind
+  amount Int
+  /// Unique, so the same event can never be recorded twice: a refill is
+  /// `grant:<user>:<week>`, a gift's two sides are `gift:<id>:spend` and
+  /// `gift:<id>:earn`.
+  key    String   @unique
+  giftId String?  @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user User  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // SetNull: an entry leaves the ledger only with its own account.
+  gift Gift? @relation(fields: [giftId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([userId, kind])
+}
+
+/// A gift one account sent to another's post.
+model Gift {
+  id          String  @id @default(uuid()) @db.Uuid
+  /// Null once the sender has deleted their account. The gift stays, because
+  /// the recipient's earnings are made of it and are not the sender's to take
+  /// back by leaving.
+  senderId    String? @db.Uuid
+  recipientId String  @db.Uuid
+  postId      String  @db.Uuid
+  /// A key from GIFT_CATALOGUE. A string rather than an enum so the
+  /// catalogue can change without a migration.
+  type        String
+  /// What it cost when sent, kept so a later price change does not rewrite
+  /// history.
+  coins       Int
+  /// Chosen by the app for each tap, so a retried request is the same gift
+  /// rather than a second one.
+  requestId   String  @db.Uuid
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  sender    User?       @relation("GiftSender", fields: [senderId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  recipient User        @relation("GiftRecipient", fields: [recipientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post      Post        @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  entries   CoinEntry[]
+
+  @@unique([senderId, requestId])
+  @@index([postId, type])
+  // The notifications list reads a recipient's gifts newest first.
+  @@index([recipientId, createdAt(sort: Desc)])
 }
 
 // ==========================================

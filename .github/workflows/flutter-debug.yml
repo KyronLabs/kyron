@@ -105,6 +105,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      # Before anything Gradle runs, and in its own step. Left to the build,
+      # the NDK was downloaded twelve minutes into `flutter build` -- two of
+      # them, one per version a module named -- and Release 19 failed there on
+      # a corrupt download. scripts/install-ndk.sh installs the one version the
+      # build uses, and tries again when a download fails.
+      - name: Install the NDK
+        run: scripts/install-ndk.sh
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:

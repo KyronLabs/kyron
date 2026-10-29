@@ -196,6 +196,7 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
         // Not tabs of their own: they are under All.
         NotificationType.account ||
         NotificationType.report ||
+        NotificationType.gift ||
         null =>
           EmptyState(
             art: EmptyArt.caughtUp,

@@ -21,6 +21,7 @@ export class NotificationsController {
       kind: query.kind,
       moderation: query.include?.includes('moderation'),
       mentions: query.include?.includes('mentions'),
+      gifts: query.include?.includes('gifts'),
     });
   }
 
@@ -30,6 +31,7 @@ export class NotificationsController {
     return this.svc.unreadCount(req.user.id, {
       moderation: query.include?.includes('moderation'),
       mentions: query.include?.includes('mentions'),
+      gifts: query.include?.includes('gifts'),
     });
   }
 

@@ -11,6 +11,24 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **Gifts on posts, with test coins.** A gift button sits beside the like
+  on anybody else's post: Spark, Fire, Gem or Crown, for 1, 5, 20 or 50
+  coins. The post shows how many it has been given, and its author sees
+  each one in Notifications. A test version: every wallet is refilled to 100
+  coins on Monday, coins cannot be bought, earnings cannot be withdrawn, and
+  the gift sheet says so every time it opens. Gifts do not move a post in
+  the feed.
+
+### Fixed
+
+- **A release build no longer downloads two NDKs halfway through.** The
+  face-tracking plugin named its own NDK (26.3) while the app builds with
+  28.2, so every Android build fetched both, twelve minutes in -- and
+  Release 19 failed when one arrived corrupt. Every plugin is now built with
+  the app's NDK, which CI installs in its own step before the build, and
+  tries again if a download fails.
 
 ## [0.1.19] - 2026-10-29
 ### Added

@@ -98,7 +98,9 @@ val kyronDroppedAbis =
 android {
     namespace = "so.kyron.app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // gradle.properties, not flutter.ndkVersion: CI installs this exact one
+    // before the build, and every plugin is built with it too.
+    ndkVersion = providers.gradleProperty("kyron.ndkVersion").get()
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
