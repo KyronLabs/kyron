@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.17] - 2026-10-29
 ### Added
 
 - **Insights for your account.** The chart button beside Share on your own
@@ -2100,7 +2102,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.16...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.17...HEAD
+[0.1.17]: https://github.com/KyronLabs/kyron/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/KyronLabs/kyron/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/KyronLabs/kyron/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/KyronLabs/kyron/compare/v0.1.13...v0.1.14
