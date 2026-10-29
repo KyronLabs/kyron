@@ -241,6 +241,38 @@ def check_install_guard(name: str) -> list[str]:
     return said
 
 
+# What installs the NDK, so the build does not have to.
+NDK_INSTALL = "scripts/install-ndk.sh"
+
+
+def check_ndk(name: str) -> list[str]:
+    """That the Android job installs the NDK before anything builds.
+
+    Left to Gradle, the NDK is downloaded inside `flutter build`, one per
+    version any module names, and a corrupt download fails the build with no
+    second try. Release 19 failed exactly so, twelve minutes in. The install
+    has to come first to be any use: after the first build, Gradle has already
+    fetched it the fragile way.
+    """
+    jobs = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))["jobs"]
+    steps = (jobs.get("android") or {}).get("steps") or []
+
+    installs = [i for i, step in enumerate(steps) if NDK_INSTALL in str(step.get("run", ""))]
+    builds = [i for i, step in enumerate(steps) if "flutter build" in str(step.get("run", ""))]
+    if not installs:
+        return [
+            f"{name}: the 'android' job never runs {NDK_INSTALL}, so Gradle "
+            f"downloads the NDK in the middle of the build and a corrupt "
+            f"download fails the release"
+        ]
+    if builds and min(installs) > min(builds):
+        return [
+            f"{name}: {NDK_INSTALL} runs after the first `flutter build`, by "
+            f"which point Gradle has already downloaded the NDK itself"
+        ]
+    return []
+
+
 # What stands between a bundle and Play refusing it.
 BUNDLE_CHECK = "scripts/check-aab.sh"
 
@@ -410,6 +442,7 @@ def main() -> int:
 
     for name in PUBLISHING:
         problems += check_install_guard(name)
+        problems += check_ndk(name)
         problems += check_bundle(name)
         problems += check_play_upload(name)
 
