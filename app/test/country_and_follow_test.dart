@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_app/models/country.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
@@ -14,6 +13,8 @@ import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/repositories/profile_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/widgets/country_sheet.dart';
+import 'package:kyron_app/widgets/action_button.dart';
+import 'package:kyron_app/widgets/hairline.dart';
 import 'package:kyron_app/widgets/post_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -248,7 +249,7 @@ void main() {
       expect(profiles.followed, ['u1']);
       // The one tapped says it worked before it goes; the author's other
       // post simply stops offering, and somebody else's still offers.
-      expect(find.byIcon(Iconsax.tick_circle), findsOneWidget);
+      expect(find.byKey(const ValueKey('follow-done')), findsOneWidget);
       expect(find.byKey(const ValueKey('post-follow-p2')), findsNothing);
       expect(find.byKey(const ValueKey('post-follow-p3')), findsOneWidget);
 
@@ -265,9 +266,26 @@ void main() {
       await tester.pump();
       await tester.pump();
       expect(find.byKey(const ValueKey('post-follow-p1')), findsOneWidget);
-      expect(find.byIcon(Iconsax.add), findsOneWidget);
+      expect(find.byKey(const ValueKey('follow-plus')), findsOneWidget);
       // Let the toast run out.
       await tester.pump(const Duration(seconds: 6));
+    });
+
+    testWidgets('sits on the edge of the picture, not off its corner', (
+      tester,
+    ) async {
+      // It hung off the box around the picture, which on a round face is
+      // empty space, and read as stuck on rather than part of the avatar.
+      await _cards(tester, [_post('p1')]);
+      final face = tester.getRect(find.byType(PostAvatar));
+      final disc = tester.getRect(find.byKey(const ValueKey('follow-plus')));
+      final r = face.width / 2;
+      final fromCentre = (disc.center - face.center).distance;
+      expect(fromCentre, closeTo(r, 1));
+      expect(disc.center.dx, greaterThan(face.center.dx));
+      expect(disc.center.dy, greaterThan(face.center.dy));
+      // Small beside a 32-pixel face, as on Threads.
+      expect(disc.width, lessThanOrEqualTo(16));
     });
 
     test('a follow from the profile reaches the posts', () {
@@ -276,5 +294,30 @@ void main() {
       container.read(followOverridesProvider.notifier).record('u1', true);
       expect(container.read(followOverridesProvider), {'u1': true});
     });
+  });
+
+  testWidgets('an outlined button is ringed by one device pixel', (
+    tester,
+  ) async {
+    // "Edit profile" was ringed by a logical pixel -- three device pixels
+    // on most phones -- heavier than every other line around it.
+    late double expected;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (context) {
+            expected = hairlineWidth(context);
+            return ActionButton(
+              label: 'Edit profile',
+              kind: ActionButtonKind.outlined,
+              onPressed: () {},
+            );
+          },
+        ),
+      ),
+    );
+    final button = tester.widget<TextButton>(find.byType(TextButton));
+    final side = button.style!.side!.resolve({})!;
+    expect(side.width, expected);
   });
 }
