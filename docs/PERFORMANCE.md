@@ -164,7 +164,7 @@ whether the Supabase mirror tables exist. No user waits on it.
 ## What this does not measure
 
 - **No network.** Client, API and database share a machine. Add real latency
-  between the app and Fly, and between Fly and Supabase, for anything resembling
+  between the app and Render, and between Render and Supabase, for anything resembling
   a production number.
 - **Reads only.** Posting and uploading are not exercised, and media upload is
   not in this table. It used to be the one request known to be long, because a
@@ -172,7 +172,7 @@ whether the Supabase mirror tables exist. No user waits on it.
   which 4771ms was ffmpeg. The re-encode is queued now and the same upload
   measures 388ms — see [MEDIA_JOBS.md](MEDIA_JOBS.md). Still not in this table,
   because the load driver does not upload.
-- **One process.** Which is what `fly.toml` runs; see the one-instance section
+- **One process.** Which is what Render runs; see the one-instance section
   of [OBSERVABILITY.md](OBSERVABILITY.md).
 - **One reader.** Every request authenticates as the same account, so caches and
   query plans are warmer than real traffic would leave them.

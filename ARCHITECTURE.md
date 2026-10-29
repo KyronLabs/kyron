@@ -120,8 +120,7 @@ ceiling enforced past the client. See [`ROADMAP.md`](ROADMAP.md).
 
 | Target | What runs there |
 |:--|:--|
-| Fly.io (`api/fly.toml`) | The API. `api/scripts/start.sh` runs `prisma migrate deploy` on every boot |
-| Render (`render.yaml`) | The static marketing site and the committed Flutter web build |
+| Render (`render.yaml`) | The API, as one Docker service (`api/Dockerfile`); `api/scripts/start.sh` runs `prisma migrate deploy` on every boot. And the static marketing site with the committed Flutter web build |
 | Supabase | Postgres, Auth and Storage |
 
 Redis appears in `docker-compose.yml` and in the API's config, and nothing in

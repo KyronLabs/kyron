@@ -84,8 +84,8 @@ differing byte. Route names and traffic shape are more than a stranger needs.
 - **No error reporting service.** Failures are counted and logged. Nothing pages
   anybody, and nothing groups a new exception as new.
 - **Nothing survives a restart.** Counters are in memory and per process, which
-  is what a scrape is for. A machine that restarts starts from zero, and Fly
-  stops this one when it is idle.
+  is what a scrape is for. An instance that restarts -- every deploy is one --
+  starts from zero.
 - **No database, queue or cache metrics.** Query timing, connection pool state
   and Supabase latency are all invisible.
 - **No client-side anything.** Crashes and slow frames in the app are not here.
@@ -94,8 +94,8 @@ differing byte. Route names and traffic shape are more than a stranger needs.
 
 ## The one-instance assumption
 
-Several things here are per process, and that is correct today: `fly.toml` runs
-a single machine that stops when idle. It stops being correct at instance two,
+Several things here are per process, and that is correct today: the API runs as
+a single Render instance. It stops being correct at instance two,
 and three separate things break at once — the rate limiter allows N per
 instance rather than N in total, the realtime service holds its sockets in a
 `Map` so a message from one instance never reaches a reader connected to

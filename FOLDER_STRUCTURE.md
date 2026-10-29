@@ -31,7 +31,6 @@ kyron/                          # repository root
 │   │   ├── infrastructure/     # Prisma and Supabase clients
 │   │   ├── config/             # environment, validated at boot
 │   │   └── common/             # guards, filters, shared DTOs
-│   ├── fly.toml                # deploy target
 │   └── package.json            # npm, not pnpm
 │
 ├── supabase/
