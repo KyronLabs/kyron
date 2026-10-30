@@ -99,6 +99,18 @@ flutter:
     # Inter's licence (SIL OFL 1.1), which has to travel with the font. Read
     # at start-up into the app's licences page.
     - assets/fonts/Inter-OFL.txt
+    # The gifts' artwork and the coin, cut out by tools/cut_gift_art.py.
+    # Each by name, so the folder's README.md -- where each came from -- is
+    # not shipped in the app with them.
+    - assets/gifts/coin.png
+    - assets/gifts/spark.png
+    - assets/gifts/rose.png
+    - assets/gifts/fire.png
+    - assets/gifts/star.png
+    - assets/gifts/gem.png
+    - assets/gifts/cake.png
+    - assets/gifts/crown.png
+    - assets/gifts/rocket.png
     # Country names, one file per language, from Unicode CLDR. See
     # scripts/generate-countries.py.
     - assets/countries/

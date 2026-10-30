@@ -11,6 +11,16 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **Gifts look like gifts.** The emoji are replaced by eight pictures made
+  for Kyron -- Spark, Rose, Fire, Star, Gem, Cake, Crown and Rocket -- in a
+  grid of four, each with its price under it beside a coin. What you have
+  left sits in the sheet's top corner. When a gift goes it pops up large for
+  a moment before the sheet closes. Rose, Star, Cake and Rocket are new; the
+  four there were keep their prices.
+- **The gift sheet opens sooner.** Holding the heart now takes a little
+  under half the time it did.
 
 ## [0.1.21] - 2026-10-30
 ### Changed

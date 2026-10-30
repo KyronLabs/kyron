@@ -3,6 +3,7 @@ import '../l10n/app_localizations.dart';
 // lib/widgets/post_actions_row.dart
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -332,12 +333,36 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
     // Outside the InkWell rather than its own onLongPress, which would fire
     // the platform's long-press feedback on top of [_held]'s. A tap still
     // reaches the InkWell: it ends before the long press can claim it.
+    //
+    // A recognizer of its own, because a GestureDetector's long press waits
+    // the platform's 500ms and that felt like a wait. See [holdToGift].
     return Semantics(
       onLongPressHint: widget.longPressHint,
-      child: GestureDetector(onLongPress: _held, child: button),
+      onLongPress: _held,
+      child: RawGestureDetector(
+        // The Semantics above gives the long press and says what it does;
+        // the detector's own annotation would replace that hint with none.
+        excludeFromSemantics: true,
+        gestures: {
+          LongPressGestureRecognizer:
+              GestureRecognizerFactoryWithHandlers<LongPressGestureRecognizer>(
+            () => LongPressGestureRecognizer(duration: holdToGift),
+            (recognizer) => recognizer.onLongPress = _held,
+          ),
+        },
+        child: button,
+      ),
     );
   }
 }
+
+/// How long the heart is held before the gift sheet opens.
+///
+/// Shorter than the platform's 500ms long press: held that long, the heart
+/// sat still for half a second and read as nothing happening. Not much
+/// shorter, because the heart is also tapped quickly and often, and a hold
+/// that fires too soon turns a slow like into a gift sheet.
+const holdToGift = Duration(milliseconds: 350);
 
 /// How far into its lift a long-pressed icon is, for t from 0 to 1: up
 /// quickly, a moment at the top, and back down. Zero at both ends, so the
