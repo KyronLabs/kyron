@@ -12,6 +12,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/feed_post.dart';
 import '../utils/format_count.dart';
 
+import 'gift_sheet.dart';
 import 'like_burst.dart';
 import 'post_action_colors.dart';
 
@@ -35,7 +36,9 @@ class PostActionsRow extends StatelessWidget {
   /// button: the row stays the five actions it always was, and a gift is the
   /// like you hold. Null leaves the heart as a like and nothing more -- on
   /// your own post, say, where there is nobody to give to.
-  final VoidCallback? onGift;
+  ///
+  /// Given the heart's own context, so whatever is sent can fly back to it.
+  final void Function(BuildContext heart)? onGift;
 
   /// Draw the counts beside the icons. False on a post's own screen, where
   /// they are already spelled out in full above the row.
@@ -85,7 +88,17 @@ class PostActionsRow extends StatelessWidget {
         ),
         const SizedBox(width: SpacingTokens.space20),
         PostAction(
+          // Keyed by post, so a list that reuses this row for another post
+          // starts it afresh rather than playing a landing for a gift that
+          // never flew.
+          key: ValueKey('like-${post.id}'),
           icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
+          // Once you have sent the post a gift, the heart is that gift. A tap
+          // is still a like; the count beside it is still the likes.
+          art: post.viewerGift == null
+              ? null
+              : GiftArt(type: post.viewerGift!, size: 21),
+          artKey: post.viewerGift,
           label: showCounts && post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
           activeColor: PostActionColors.like,
@@ -137,8 +150,16 @@ class PostAction extends StatefulWidget {
   /// that matters.
   final bool burst;
 
-  /// What holding it does, if anything: the like's gift sheet.
-  final VoidCallback? onLongPress;
+  /// What holding it does, if anything: the like's gift sheet. Given this
+  /// button's context, so the sheet knows where it was opened from.
+  final void Function(BuildContext context)? onLongPress;
+
+  /// Drawn in place of [icon]: the gift you sent, on the like.
+  final Widget? art;
+
+  /// What [art] is, so a change of it can be told apart from a rebuild.
+  /// Becoming something new plays the landing: a punch and a gold burst.
+  final String? artKey;
 
   /// What a screen reader says holding it does. The gesture is invisible, so
   /// without this it is unreachable for anybody not looking at the screen.
@@ -155,6 +176,8 @@ class PostAction extends StatefulWidget {
     this.burst = false,
     this.onLongPress,
     this.longPressHint,
+    this.art,
+    this.artKey,
   });
 
   @override
@@ -172,6 +195,13 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
   /// Whether the run in progress is a celebration or just a press.
   bool _celebrating = false;
 
+  /// Whether the celebration in progress is a gift landing, in gold, rather
+  /// than a like.
+  bool _landing = false;
+
+  /// The burst's gold: the coin's, so a gift's arrival reads as a gift's.
+  static const _gold = Color(0xFFF2B233);
+
   /// The lift a long press gives: the icon rises a little, swells, and
   /// settles back as the sheet comes up. Its own controller, so holding a
   /// heart that is mid-burst does not cut the burst short.
@@ -180,8 +210,23 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
     duration: const Duration(milliseconds: 320),
   );
 
+  /// On the icon, so a long press can hand over where the icon itself is --
+  /// not the button with its count -- for a gift to fly to.
+  final _iconKey = GlobalKey();
+
   /// How far past the icon the burst is allowed to spill, each side.
   static const double _reach = 15;
+
+  @override
+  void didUpdateWidget(PostAction oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final art = widget.artKey;
+    if (art != null && art != oldWidget.artKey) {
+      _celebrating = true;
+      _landing = true;
+      _play.forward(from: 0);
+    }
+  }
 
   @override
   void dispose() {
@@ -200,6 +245,7 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
     // arrives from the notifier a frame later, and waiting for it puts the
     // animation behind the finger.
     _celebrating = widget.burst && !widget.active;
+    _landing = false;
     _play.forward(from: 0);
 
     widget.onTap();
@@ -213,7 +259,7 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
     // by default, which is why this is not left to the InkWell.
     unawaited(HapticFeedback.lightImpact());
     _lift.forward(from: 0);
-    onLongPress();
+    onLongPress(_iconKey.currentContext ?? context);
   }
 
   @override
@@ -270,8 +316,10 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                             child: CustomPaint(
                               painter: LikeBurstPainter(
                                 t: t,
-                                colour:
-                                    widget.activeColor ?? PostActionColors.like,
+                                colour: _landing
+                                    ? _gold
+                                    : widget.activeColor ??
+                                        PostActionColors.like,
                               ),
                             ),
                           ),
@@ -292,7 +340,11 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                       ),
                     );
                   },
-                  child: Icon(widget.icon, size: 17, color: colour),
+                  child: KeyedSubtree(
+                    key: _iconKey,
+                    child: widget.art ??
+                        Icon(widget.icon, size: 17, color: colour),
+                  ),
                 ),
               ),
               if (widget.label != null) ...[

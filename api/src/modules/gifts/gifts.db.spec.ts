@@ -3,6 +3,10 @@ import { randomUUID } from 'node:crypto';
 import { PrismaClient } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { FeedService } from '../feed/feed.service';
+import { RankingService } from '../feed/ranking.service';
+import type { EnforcementService } from '../moderation/enforcement.service';
+import { ModerationService } from '../moderation/moderation.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { RecordingDelivery } from '../push/delivery.test-double';
 import { GiftsService } from './gifts.service';
@@ -176,6 +180,28 @@ run('gifts, against a real database', () => {
     expect(
       (await notifications.unreadCount(ada, { gifts: true })).count,
     ).toBeGreaterThanOrEqual(6);
+  });
+
+  it("tells each reader which gift they last sent a post, and nobody else's", async () => {
+    const feed = new FeedService(
+      prisma as PrismaService,
+      new ModerationService(
+        prisma as PrismaService,
+        {} as unknown as EnforcementService,
+      ),
+      new RankingService(),
+      delivery,
+    );
+    const [last] = await prisma.gift.findMany({
+      where: { postId: post, senderId: ben },
+      orderBy: { createdAt: 'desc' },
+      take: 1,
+    });
+
+    expect((await feed.getPost(post, ben)).viewerGift).toBe(last.type);
+    expect((await feed.getPost(post, cy)).viewerGift).toBe('gem');
+    // The author has given it nothing; Cy's and Ben's gifts are theirs.
+    expect((await feed.getPost(post, ada)).viewerGift).toBeNull();
   });
 
   it("keeps the author's earnings when a sender deletes their account", async () => {

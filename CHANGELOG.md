@@ -11,6 +11,25 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **A gift you send lands on the post.** Press Send and the gift springs up
+  in the sheet with a burst of sparkles, then flies out, shrinks onto the
+  heart and becomes it: from then on that post's heart is the gift you
+  sent, on every screen and after a restart. A tap is still a like, and the
+  number beside it is still the likes. With reduced motion on, the heart
+  simply changes.
+- **The gifts move.** In the sheet a Spark twinkles, a Rose sways, Fire
+  flickers, a Star turns, a Gem catches the light, a Cake bobs, a Crown
+  tilts and a Rocket hovers -- for a few seconds, then they rest. Picking
+  one plays it again. Gifts you cannot afford stay still.
+- **No emoji for gifts, anywhere.** The Send button reads "Send Fire" with
+  the coin and the price, a gift notification shows the gift's picture on
+  the sender's avatar and at the end of the row, and its words say "sent a
+  Fire to your post". A gift this app has no picture for yet shows a
+  wrapped present.
+- **Soft haptics where they mean something:** a tick as you pick a gift, a
+  light knock as it is sent, and a tick as it lands on the heart.
 
 ## [0.1.22] - 2026-10-30
 ### Changed

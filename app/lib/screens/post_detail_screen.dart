@@ -599,10 +599,11 @@ class _Post extends ConsumerWidget {
             onShare: () => SharePostSheet.show(context, post),
             onGift: mine
                 ? null
-                : () => GiftSheet.open(
-                      context,
+                : (heart) => GiftSheet.open(
+                      heart,
                       post,
-                      onSent: notifier.giftsChanged,
+                      onSent: (sent) =>
+                          notifier.giftsChanged(sent.gifts, type: sent.type),
                     ),
           ),
         ],

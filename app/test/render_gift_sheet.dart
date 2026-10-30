@@ -29,6 +29,16 @@ class _Gifts extends GiftsRepository {
   _Gifts() : super(ApiClient());
 
   @override
+  Future<SentGift> send(String postId, String type,
+          {required String requestId}) async =>
+      SentGift(
+        giftId: 'g',
+        type: type,
+        gifts: 1,
+        wallet: const GiftWallet(coins: 88, earned: 0, weeklyCoins: 100),
+      );
+
+  @override
   Future<GiftSheetData> sheet() async => GiftSheetData(
         catalogue: const [
           GiftType(type: 'spark', name: 'Spark', emoji: '✨', coins: 1),
@@ -73,14 +83,14 @@ void main() {
       author: FeedAuthor.fromJson(const {'id': 'ada', 'name': 'Ada'}),
     );
 
-    Future<void> shoot(String name) async {
-      await tester.pumpAndSettle();
+    Future<void> shoot(String name, {bool settle = true}) async {
+      if (settle) await tester.pumpAndSettle();
       await tester.runAsync(() async {
         for (final element in find.byType(Image).evaluate()) {
           await precacheImage((element.widget as Image).image, element);
         }
       });
-      await tester.pumpAndSettle();
+      if (settle) await tester.pumpAndSettle();
       final boundary = tester.renderObject<RenderRepaintBoundary>(
         find.byType(RepaintBoundary).first,
       );
@@ -122,6 +132,14 @@ void main() {
       await shoot('gift-sheet-${dark ? 'dark' : 'light'}');
       await tester.tap(find.byType(GiftArt).at(2));
       await shoot('gift-sheet-picked-${dark ? 'dark' : 'light'}');
+      if (!dark) {
+        await tester.tap(find.text('Send Fire'));
+        await tester.pump();
+        for (final ms in [120, 200, 300]) {
+          await tester.pump(Duration(milliseconds: ms));
+          await shoot('gift-sent-$ms', settle: false);
+        }
+      }
     }
     exit(0);
   });
