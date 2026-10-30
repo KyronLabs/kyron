@@ -2,7 +2,13 @@ import { BadRequestException, NotFoundException } from '@nestjs/common';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RecordingDelivery } from '../push/delivery.test-double';
-import { nextRefill, weekStart } from './gift-catalogue';
+import {
+  GIFT_CATALOGUE,
+  WEEKLY_COINS,
+  giftType,
+  nextRefill,
+  weekStart,
+} from './gift-catalogue';
 import { GiftsService } from './gifts.service';
 
 /**
@@ -85,5 +91,31 @@ describe('the weekly refill', () => {
   it('counts the first instant of Monday as the new week', () => {
     const monday = new Date('2026-11-02T00:00:00Z');
     expect(weekStart(monday).toISOString()).toBe('2026-11-02T00:00:00.000Z');
+  });
+});
+
+describe('the catalogue', () => {
+  it('is in price order, which is the order the sheet shows', () => {
+    const prices = GIFT_CATALOGUE.map((gift) => gift.coins);
+    expect(prices).toEqual([...prices].sort((a, b) => a - b));
+  });
+
+  it('keeps the gifts that have already been sent, at their prices', () => {
+    // Gift.type and Gift.coins on rows already written name these.
+    const shipped = { spark: 1, fire: 5, gem: 20, crown: 50 };
+    for (const [type, coins] of Object.entries(shipped)) {
+      expect(giftType(type)?.coins).toBe(coins);
+    }
+  });
+
+  it('has nothing a week of coins cannot buy', () => {
+    for (const gift of GIFT_CATALOGUE) {
+      expect(gift.coins).toBeLessThanOrEqual(WEEKLY_COINS);
+    }
+  });
+
+  it('names every gift once', () => {
+    const types = GIFT_CATALOGUE.map((gift) => gift.type);
+    expect(new Set(types).size).toBe(types.length);
   });
 });

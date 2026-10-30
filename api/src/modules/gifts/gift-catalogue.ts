@@ -13,11 +13,23 @@ export interface GiftType {
   coins: number;
 }
 
+// In price order, which is the order the sheet shows them: two rows of four.
+// Spark, Fire, Gem and Crown keep the keys and prices they shipped with, so
+// every gift already sent still names one of these. The dearest is a week's
+// refill (WEEKLY_COINS): one gift a week can be the big one.
+//
+// The emoji is a fallback only. The app draws each gift from
+// app/assets/gifts/<type>.png and shows the emoji for a type it has no
+// picture for -- a gift added here before the app that draws it.
 export const GIFT_CATALOGUE: readonly GiftType[] = [
   { type: 'spark', name: 'Spark', emoji: '✨', coins: 1 },
+  { type: 'rose', name: 'Rose', emoji: '🌹', coins: 3 },
   { type: 'fire', name: 'Fire', emoji: '🔥', coins: 5 },
+  { type: 'star', name: 'Star', emoji: '⭐', coins: 10 },
   { type: 'gem', name: 'Gem', emoji: '💎', coins: 20 },
+  { type: 'cake', name: 'Cake', emoji: '🎂', coins: 30 },
   { type: 'crown', name: 'Crown', emoji: '👑', coins: 50 },
+  { type: 'rocket', name: 'Rocket', emoji: '🚀', coins: 100 },
 ];
 
 export const GIFT_TYPES = GIFT_CATALOGUE.map((gift) => gift.type);

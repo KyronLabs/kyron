@@ -331,11 +331,58 @@ void main() {
   });
 
   group('the sheet', () {
+    /// A gift's tile, found by its picture: the tiles carry no names.
+    Finder tile(String type) => find.byWidgetPredicate(
+          (widget) => widget is GiftArt && widget.type == type,
+        );
+
+    /// Lets the sent gift's moment play out and the sheet close.
+    Future<void> afterSending(WidgetTester tester) async {
+      await tester.pump(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+    }
+
     testWidgets('says the coins are test coins, every time', (tester) async {
       await _openSheet(tester);
 
-      expect(find.textContaining('You have 30 coins'), findsOneWidget);
       expect(find.textContaining('no cash value'), findsOneWidget);
+    });
+
+    testWidgets('shows the balance in its top right corner', (tester) async {
+      await _openSheet(tester);
+
+      final title = tester.getTopLeft(find.text('Send a gift'));
+      final balance = tester.getTopRight(find.text('30'));
+      expect(balance.dx, greaterThan(title.dx + 200));
+      expect((balance.dy - title.dy).abs(), lessThan(16));
+      expect(find.byType(CoinIcon), findsWidgets);
+    });
+
+    testWidgets('puts each price, with the coin, under its gift', (
+      tester,
+    ) async {
+      await _openSheet(tester);
+
+      for (final (type, price) in [('spark', '1'), ('fire', '5')]) {
+        final art = tester.getCenter(tile(type));
+        final label = tester.getCenter(find.text(price));
+        expect(label.dy, greaterThan(art.dy));
+        expect((label.dx - art.dx).abs(), lessThan(16));
+      }
+    });
+
+    testWidgets('draws every gift from its artwork, four to a row', (
+      tester,
+    ) async {
+      await _openSheet(tester);
+
+      expect(tile('spark'), findsOneWidget);
+      expect(find.text('✨'), findsNothing);
+      final rows = {
+        for (final type in ['spark', 'fire', 'crown'])
+          tester.getCenter(tile(type)).dy.round(),
+      };
+      expect(rows, hasLength(1));
     });
 
     testWidgets('sends nothing until a gift is picked and Send is pressed', (
@@ -346,7 +393,7 @@ void main() {
       final send = find.widgetWithText(FilledButton, 'Pick a gift');
       expect(tester.widget<FilledButton>(send).onPressed, isNull);
 
-      await tester.tap(find.text('Fire'));
+      await tester.tap(tile('fire'));
       await tester.pump();
       expect(repo.sends, isEmpty);
       expect(find.text('Send 🔥 Fire · 5 coins'), findsOneWidget);
@@ -355,7 +402,7 @@ void main() {
     testWidgets('will not send what the wallet cannot cover', (tester) async {
       final (repo, _) = await _openSheet(tester);
 
-      await tester.tap(find.text('Crown'));
+      await tester.tap(tile('crown'));
       await tester.pump();
 
       final button = find.widgetWithText(FilledButton, 'Not enough coins');
@@ -363,14 +410,20 @@ void main() {
       expect(repo.sends, isEmpty);
     });
 
-    testWidgets('closes with what was sent', (tester) async {
+    testWidgets('shows the gift going, then closes with what was sent', (
+      tester,
+    ) async {
       final (repo, answers) = await _openSheet(tester);
 
-      await tester.tap(find.text('Fire'));
+      await tester.tap(tile('fire'));
       await tester.pump();
       await tester.tap(find.text('Send 🔥 Fire · 5 coins'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 300));
 
+      expect(find.text('Fire sent'), findsOneWidget);
+      expect(answers, isEmpty);
+
+      await afterSending(tester);
       expect(repo.sends, hasLength(1));
       expect(answers.single?.gifts, 4);
       expect(find.text('Send a gift'), findsNothing);
@@ -381,17 +434,18 @@ void main() {
         (tester) async {
       final (repo, answers) = await _openSheet(tester, failures: 1);
 
-      await tester.tap(find.text('Fire'));
+      await tester.tap(tile('fire'));
       await tester.pump();
       await tester.tap(find.text('Send 🔥 Fire · 5 coins'));
       await tester.pumpAndSettle();
 
       // Still open, saying why, and nothing answered yet.
       expect(find.text('Send a gift'), findsOneWidget);
+      expect(find.text('Fire sent'), findsNothing);
       expect(answers, isEmpty);
 
       await tester.tap(find.text('Send 🔥 Fire · 5 coins'));
-      await tester.pumpAndSettle();
+      await afterSending(tester);
 
       expect(repo.sends, hasLength(2));
       expect(repo.sends[1], repo.sends[0]);
@@ -401,18 +455,84 @@ void main() {
     testWidgets('makes a new request for a different gift', (tester) async {
       final (repo, _) = await _openSheet(tester, failures: 1);
 
-      await tester.tap(find.text('Fire'));
+      await tester.tap(tile('fire'));
       await tester.pump();
       await tester.tap(find.text('Send 🔥 Fire · 5 coins'));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Spark'));
+      await tester.tap(tile('spark'));
       await tester.pump();
       await tester.tap(find.text('Send ✨ Spark · 1 coin'));
-      await tester.pumpAndSettle();
+      await afterSending(tester);
 
       expect(repo.sends, hasLength(2));
       expect(repo.sends[1], isNot(repo.sends[0]));
+    });
+  });
+
+  group('the artwork', () {
+    test('is in the bundle for every gift the app says it draws', () async {
+      TestWidgetsFlutterBinding.ensureInitialized();
+      for (final type in [...GiftArt.drawn, 'coin']) {
+        final bytes = await rootBundle.load(GiftArt.pathFor(type));
+        expect(bytes.lengthInBytes, greaterThan(1000), reason: type);
+      }
+    });
+
+    testWidgets('falls back to the emoji for a gift this app predates', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: GiftArt(type: 'unicorn', emoji: '🦄', size: 48),
+        ),
+      );
+      expect(find.text('🦄'), findsOneWidget);
+      expect(find.byType(Image), findsNothing);
+    });
+  });
+
+  group('how long the heart is held', () {
+    Widget row(VoidCallback onGift) => MaterialApp(
+          home: Scaffold(
+            body: PostActionsRow(
+              post: _post,
+              onReply: () {},
+              onRepost: () {},
+              onLike: () {},
+              onSave: () {},
+              onShare: () {},
+              onGift: onGift,
+            ),
+          ),
+        );
+
+    Future<void> hold(WidgetTester tester, Duration duration) async {
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.byIcon(Iconsax.heart_copy)),
+      );
+      await tester.pump(duration);
+      await gesture.up();
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('opens the gifts sooner than the platform long press', (
+      tester,
+    ) async {
+      var opened = 0;
+      await tester.pumpWidget(row(() => opened++));
+
+      // Under the platform's 500ms, past this one's 350.
+      await hold(tester, const Duration(milliseconds: 400));
+      expect(opened, 1);
+    });
+
+    testWidgets('does not open on a slow tap', (tester) async {
+      var opened = 0;
+      await tester.pumpWidget(row(() => opened++));
+
+      await hold(tester, const Duration(milliseconds: 250));
+      expect(opened, 0);
     });
   });
 }
