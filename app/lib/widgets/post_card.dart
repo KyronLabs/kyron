@@ -516,7 +516,8 @@ class _Actions extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(postListProvider(source).notifier);
     final me = ref.watch(currentUserProvider).asData?.value;
-    // Your own post has no gift button: the server refuses those.
+    // Holding the heart on your own post only likes it: the server refuses a
+    // gift to yourself, so there is no sheet to open.
     final mine = me != null && me.id == post.author.id;
 
     return PostActionsRow(
