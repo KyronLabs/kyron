@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.22] - 2026-10-30
 ### Changed
 
 - **Gifts look like gifts.** The emoji are replaced by eight pictures made
@@ -2172,7 +2174,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.21...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.22...HEAD
+[0.1.22]: https://github.com/KyronLabs/kyron/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/KyronLabs/kyron/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/KyronLabs/kyron/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/KyronLabs/kyron/compare/v0.1.18...v0.1.19
