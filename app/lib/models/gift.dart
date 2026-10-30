@@ -83,6 +83,9 @@ class GiftSheetData {
 /// What sending one answers with.
 class SentGift {
   final String giftId;
+
+  /// Which gift it was, by catalogue type.
+  final String type;
   final GiftWallet wallet;
 
   /// The post's gift count after this one.
@@ -90,12 +93,14 @@ class SentGift {
 
   const SentGift({
     required this.giftId,
+    this.type = '',
     required this.wallet,
     required this.gifts,
   });
 
   factory SentGift.fromJson(Map<String, dynamic> json) => SentGift(
         giftId: (json['gift'] as Map<String, dynamic>?)?['id'] as String? ?? '',
+        type: (json['gift'] as Map<String, dynamic>?)?['type'] as String? ?? '',
         wallet: GiftWallet.fromJson(
           (json['wallet'] as Map<String, dynamic>?) ?? const {},
         ),

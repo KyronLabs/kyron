@@ -6,6 +6,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../l10n/app_localizations.dart';
 import '../models/notification_model.dart';
 import '../utils/notification_text.dart';
+import 'gift_sheet.dart';
 import 'verified_badge.dart';
 
 /// One thing somebody did, as a row.
@@ -51,6 +52,8 @@ class NotificationItem extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final actor = notification.actor ?? const NotificationActor(id: '');
     final snippet = notification.content ?? notification.postSnippet;
+    final gift =
+        notification.type == NotificationType.gift ? notification.gift : null;
 
     return InkWell(
       onTap: onTap,
@@ -84,15 +87,17 @@ class NotificationItem extends StatelessWidget {
                 Positioned(
                   right: -2,
                   bottom: -2,
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: _badgeColor(scheme),
-                      shape: BoxShape.circle,
-                      border: Border.all(color: scheme.surface, width: 2),
-                    ),
-                    child: Icon(_badge, size: 10, color: Colors.white),
-                  ),
+                  child: gift != null
+                      ? _GiftBadge(type: gift.type)
+                      : Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: _badgeColor(scheme),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: scheme.surface, width: 2),
+                          ),
+                          child: Icon(_badge, size: 10, color: Colors.white),
+                        ),
                 ),
               ],
             ),
@@ -151,6 +156,12 @@ class NotificationItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: SpacingTokens.space8),
+            // The gift itself at the end of the row, as it was sent: the
+            // words name it, the picture is what it was.
+            if (gift != null) ...[
+              GiftArt(type: gift.type, size: 32),
+              const SizedBox(width: SpacingTokens.space8),
+            ],
             Text(
               notification.displayTimestamp,
               style: TextStyle(
@@ -161,6 +172,27 @@ class NotificationItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// A gift row's badge: the gift's own picture on the avatar, where the other
+/// rows have an icon on a colour.
+class _GiftBadge extends StatelessWidget {
+  final String type;
+
+  const _GiftBadge({required this.type});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(2),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        shape: BoxShape.circle,
+      ),
+      child: GiftArt(type: type, size: 16),
     );
   }
 }

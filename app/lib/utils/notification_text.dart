@@ -10,7 +10,7 @@ import 'local_date.dart';
 
 /// What a person did, after their name: "liked your post".
 ///
-/// [gift] names which one, for a gift row: "sent a 🔥 Fire to your post".
+/// [gift] names which one, for a gift row: "sent a Fire to your post".
 String notificationAction(
   AppLocalizations l10n,
   NotificationType type, {
@@ -29,7 +29,7 @@ String notificationAction(
           ? l10n.ui('ui_notif_gift', 'sent a gift to your post')
           : l10n
               .ui('ui_notif_gift_named', r'sent a $gift to your post')
-              .replaceAll(r'$gift', '${gift.emoji} ${gift.name}'),
+              .replaceAll(r'$gift', gift.name),
       // Never shown after a name: these rows have none.
       NotificationType.account || NotificationType.report => '',
     };

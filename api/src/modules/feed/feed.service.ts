@@ -45,6 +45,10 @@ export interface FeedPost {
   reposts: number;
   /** Gifts it has been sent. Shown, never ranked on: see Post.giftCount. */
   gifts: number;
+  /** The gift the reader last sent it, by catalogue type, or null. The app
+   * draws it in place of the heart, so a post you gave something to says so
+   * where you gave it. */
+  viewerGift: string | null;
   /** Whether the reader has. Saves are private, so there is no count. */
   likedByViewer: boolean;
   savedByViewer: boolean;
@@ -2534,6 +2538,14 @@ export class FeedService {
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
+      // The reader's own latest gift, one row per post: read by postId, the
+      // first column of Gift's (postId, type) index.
+      gifts: {
+        where: { senderId: viewerId },
+        orderBy: { createdAt: 'desc' },
+        select: { type: true },
+        take: 1,
+      },
       media: { select: this.mediaShape, orderBy: { position: 'asc' } },
       community: { select: this.communityShape },
       // One level. A quote of a quote of a quote would otherwise walk the
@@ -2612,6 +2624,7 @@ export class FeedService {
       comments: row.commentCount,
       reposts: row.repostCount,
       gifts: row.giftCount,
+      viewerGift: row.gifts?.[0]?.type ?? null,
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
       repostedByViewer: row.reposts.length > 0,
@@ -2696,6 +2709,9 @@ interface PostRow {
   commentCount: number;
   repostCount: number;
   giftCount: number;
+  /** The reader's latest gift. Optional: rows built for other shapes, and
+   * older fixtures, do not carry it. */
+  gifts?: { type: string }[];
   likes: { id: string }[];
   saves: { id: string }[];
   reposts: { id: string }[];

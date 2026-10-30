@@ -239,11 +239,19 @@ class PostListNotifier extends StateNotifier<FeedState> {
     state = state.copyWith(posts: posts);
   }
 
-  /// What the gift sheet says a post's count is now. Nothing to predict and
+  /// What the gift sheet says a post's count is now, and [type], the gift
+  /// the reader just sent it, which the heart becomes. Nothing to predict and
   /// nothing to roll back: the sheet only answers once the gift has gone.
-  void giftsChanged(String postId, int gifts) {
+  void giftsChanged(String postId, int gifts, {String? type}) {
     final post = _find(postId);
-    if (post != null) _replace(post.copyWith(gifts: gifts));
+    if (post != null) {
+      _replace(
+        post.copyWith(
+          gifts: gifts,
+          viewerGift: type == null || type.isEmpty ? null : type,
+        ),
+      );
+    }
   }
 
   /// Drops a post from this list.

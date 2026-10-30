@@ -27,6 +27,10 @@ class FeedPost {
   /// Gifts it has been sent.
   final int gifts;
 
+  /// The gift you last sent it, by catalogue type, or null if you have not.
+  /// Drawn in place of the heart.
+  final String? viewerGift;
+
   /// Attachments, in the order the author put them.
   final List<PostMedia> media;
 
@@ -66,6 +70,7 @@ class FeedPost {
     this.comments = 0,
     this.reposts = 0,
     this.gifts = 0,
+    this.viewerGift,
     this.media = const [],
     this.quotedPost,
     this.replyPolicy = ReplyPolicy.everyone,
@@ -90,6 +95,7 @@ class FeedPost {
         comments: (json['comments'] as num?)?.toInt() ?? 0,
         reposts: (json['reposts'] as num?)?.toInt() ?? 0,
         gifts: (json['gifts'] as num?)?.toInt() ?? 0,
+        viewerGift: json['viewerGift'] as String?,
         media: PostMedia.listFrom(json['media']),
         quotedPost: json['quotedPost'] is Map<String, dynamic>
             ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
@@ -112,6 +118,7 @@ class FeedPost {
     int? comments,
     int? reposts,
     int? gifts,
+    String? viewerGift,
     bool? liked,
     bool? saved,
     bool? reposted,
@@ -126,6 +133,7 @@ class FeedPost {
         comments: comments ?? this.comments,
         reposts: reposts ?? this.reposts,
         gifts: gifts ?? this.gifts,
+        viewerGift: viewerGift ?? this.viewerGift,
         media: media,
         quotedPost: quotedPost,
         replyPolicy: replyPolicy,

@@ -1,5 +1,9 @@
 // lib/widgets/gift_sheet.dart
+import 'dart:async';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:intl/intl.dart';
@@ -13,6 +17,7 @@ import '../repositories/gifts_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import 'app_sheet.dart';
+import 'gift_motion.dart';
 
 /// Choosing a gift for a post and sending it.
 ///
@@ -20,25 +25,67 @@ import 'app_sheet.dart';
 /// tap spends is a grid where a scroll that lands on a tile spends.
 abstract final class GiftSheet {
   /// Answers with what was sent, or null if nothing was.
-  static Future<SentGift?> show(BuildContext context, FeedPost post) {
-    return showAppSheet<SentGift>(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => _Sheet(post: post),
+  static Future<SentGift?> show(BuildContext context, FeedPost post) async =>
+      (await _show(context, post))?.sent;
+
+  static Future<_Outcome?> _show(BuildContext context, FeedPost post) =>
+      showAppSheet<_Outcome>(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => _Sheet(post: post),
+      );
+
+  /// The sheet, opened from the heart: whatever is sent flies out of the
+  /// sheet, shrinks onto [heart] and becomes it. [onSent] is called as it
+  /// lands, which is what turns the heart into the gift -- so the change
+  /// arrives with the gift rather than ahead of it.
+  ///
+  /// No toast, and no flight with animations turned off: the heart simply
+  /// changes.
+  static Future<void> open(
+    BuildContext heart,
+    FeedPost post, {
+    required void Function(SentGift sent) onSent,
+  }) async {
+    final outcome = await _show(heart, post);
+    if (outcome == null) return;
+    // Scrolled away or closed while the sheet was up: nothing to fly to.
+    if (!heart.mounted) {
+      onSent(outcome.sent);
+      return;
+    }
+    final from = outcome.from;
+    final box = heart.findRenderObject();
+    if (from == null ||
+        box is! RenderBox ||
+        !box.attached ||
+        MediaQuery.disableAnimationsOf(heart)) {
+      onSent(outcome.sent);
+      return;
+    }
+    GiftFlight.fly(
+      heart,
+      art: GiftArt(type: outcome.gift.type, size: from.width),
+      from: from,
+      to: box.localToGlobal(box.size.center(Offset.zero)),
+      landingSize: 21,
+      onArrive: () {
+        // The softest tick there is, as it lands: felt, not announced.
+        unawaited(HapticFeedback.selectionClick());
+        onSent(outcome.sent);
+      },
     );
   }
+}
 
-  /// The sheet, for an engagement row: [onSent] gets the post's new gift
-  /// count. The sheet itself shows the gift going, so there is no toast
-  /// after it to say so twice.
-  static Future<void> open(
-    BuildContext context,
-    FeedPost post, {
-    required void Function(int gifts) onSent,
-  }) async {
-    final sent = await show(context, post);
-    if (sent != null) onSent(sent.gifts);
-  }
+/// What the sheet closes with: what was sent, and where on screen it was
+/// when the sheet let go of it, so its flight can start from there.
+class _Outcome {
+  final SentGift sent;
+  final GiftType gift;
+  final Rect? from;
+
+  const _Outcome({required this.sent, required this.gift, this.from});
 }
 
 class _Sheet extends ConsumerStatefulWidget {
@@ -66,9 +113,16 @@ class _SheetState extends ConsumerState<_Sheet> {
   /// closes. Null until then.
   GiftType? _sent;
 
-  /// How long the sent gift is held on screen: long enough to register as
-  /// "it went", short enough that nobody waits for it.
-  static const _celebration = Duration(milliseconds: 650);
+  /// Set as the sheet lets go of the sent gift: its picture here hides, and
+  /// the one flying to the heart takes over from the same spot.
+  bool _launched = false;
+
+  /// Where the sent gift's picture is, to measure it before it flies.
+  final _sentArt = GlobalKey();
+
+  /// How long the sent gift is held on screen: long enough for its burst to
+  /// play and register as "it went", short enough that nobody waits for it.
+  static const _celebration = Duration(milliseconds: 900);
 
   @override
   void didChangeDependencies() {
@@ -84,6 +138,8 @@ class _SheetState extends ConsumerState<_Sheet> {
     if (_sending) return;
     setState(() {
       if (_picked?.type != gift.type) {
+        // A tick as the choice moves, like a picker passing a notch.
+        unawaited(HapticFeedback.selectionClick());
         _picked = gift;
         _requestId = GiftsRepository.newRequestId();
       }
@@ -104,9 +160,17 @@ class _SheetState extends ConsumerState<_Sheet> {
           .read(giftsRepositoryProvider)
           .send(widget.post.id, gift.type, requestId: requestId);
       if (!mounted) return;
+      // One soft knock as it goes: the moment the coins are spent.
+      unawaited(HapticFeedback.lightImpact());
       setState(() => _sent = gift);
       await Future<void>.delayed(_celebration);
-      if (mounted) Navigator.pop(context, sent);
+      if (!mounted) return;
+      final box = _sentArt.currentContext?.findRenderObject();
+      final from = box is RenderBox && box.attached
+          ? box.localToGlobal(Offset.zero) & box.size
+          : null;
+      setState(() => _launched = true);
+      Navigator.pop(context, _Outcome(sent: sent, gift: gift, from: from));
     } catch (e) {
       if (!mounted) return;
       setState(() {
@@ -221,24 +285,12 @@ class _SheetState extends ConsumerState<_Sheet> {
                           dimension: 18,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : Text(
-                          picked == null
-                              ? l10n.ui('ui_gift_pick', 'Pick a gift')
-                              : affordable
-                                  ? l10n
-                                      .ui('ui_gift_send',
-                                          r'Send $gift · $coins')
-                                      .replaceAll(
-                                        r'$gift',
-                                        '${picked.emoji} ${picked.name}',
-                                      )
-                                      .replaceAll(
-                                        r'$coins',
-                                        coinLabel(l10n, picked.coins),
-                                      )
-                                  : l10n.ui(
-                                      'ui_gift_not_enough', 'Not enough coins'),
-                        ),
+                      : picked == null
+                          ? Text(l10n.ui('ui_gift_pick', 'Pick a gift'))
+                          : affordable
+                              ? _SendLabel(gift: picked)
+                              : Text(l10n.ui(
+                                  'ui_gift_not_enough', 'Not enough coins')),
                 ),
               ],
             );
@@ -253,7 +305,8 @@ class _SheetState extends ConsumerState<_Sheet> {
                   opacity: sent == null ? 1 : 0.15,
                   child: IgnorePointer(ignoring: sent != null, child: body),
                 ),
-                if (sent != null) _Sent(gift: sent),
+                if (sent != null)
+                  _Sent(gift: sent, artKey: _sentArt, launched: _launched),
               ],
             );
           },
@@ -281,21 +334,16 @@ String coinLabel(AppLocalizations l10n, int coins) => coins == 1
     ? l10n.ui('ui_gift_one_coin', '1 coin')
     : l10n.ui('ui_gift_coins', r'$count coins').replaceAll(r'$count', '$coins');
 
-/// A gift's picture: its artwork when the app has it, its emoji when not.
+/// A gift's picture: its artwork, always -- never an emoji.
 ///
 /// The catalogue is the server's, so a gift can arrive here before the app
-/// that draws it. It shows its emoji then, rather than a gap.
+/// that draws it. It shows a wrapped present then, in the coin's gold,
+/// rather than a gap or a glyph that looks different on every phone.
 class GiftArt extends StatelessWidget {
   final String type;
-  final String emoji;
   final double size;
 
-  const GiftArt({
-    super.key,
-    required this.type,
-    required this.emoji,
-    required this.size,
-  });
+  const GiftArt({super.key, required this.type, required this.size});
 
   /// The gifts this build has artwork for, in assets/gifts/.
   static const drawn = {
@@ -315,7 +363,9 @@ class GiftArt extends StatelessWidget {
   Widget build(BuildContext context) {
     final fallback = SizedBox.square(
       dimension: size,
-      child: FittedBox(child: Text(emoji)),
+      child: FittedBox(
+        child: Icon(Iconsax.gift, color: const Color(0xFFF2B233), size: size),
+      ),
     );
     if (!drawn.contains(type)) return fallback;
     return Image.asset(
@@ -447,7 +497,12 @@ class _Tile extends StatelessWidget {
                   scale: picked ? 1.12 : 1,
                   duration: MotionTokens.fast,
                   curve: Curves.easeOutBack,
-                  child: GiftArt(type: gift.type, emoji: gift.emoji, size: 48),
+                  child: GiftMotion(
+                    type: gift.type,
+                    playing: affordable,
+                    picked: picked,
+                    child: GiftArt(type: gift.type, size: 48),
+                  ),
                 ),
                 const SizedBox(height: SpacingTokens.space8),
                 _Price(coins: gift.coins),
@@ -488,40 +543,150 @@ class _Price extends StatelessWidget {
   }
 }
 
-/// The gift that just went, springing up in the middle of the sheet.
-class _Sent extends StatelessWidget {
+/// The send button's words once a gift is picked: "Send Fire", the coin
+/// and the price. The picture says which gift; the button says what it costs.
+class _SendLabel extends StatelessWidget {
   final GiftType gift;
 
-  const _Sent({required this.gift});
+  const _SendLabel({required this.gift});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Semantics(
+      label:
+          '${l10n.ui('ui_gift_send_named', r'Send $gift').replaceAll(r'$gift', gift.name)}, '
+          '${coinLabel(l10n, gift.coins)}',
+      excludeSemantics: true,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            l10n
+                .ui('ui_gift_send_named', r'Send $gift')
+                .replaceAll(r'$gift', gift.name),
+          ),
+          const SizedBox(width: SpacingTokens.space8),
+          const CoinIcon(size: 16),
+          const SizedBox(width: 3),
+          Text(
+            formatCount(gift.coins),
+            style: const TextStyle(
+              fontFeatures: [FontFeature.tabularFigures()],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The gift that just went, in the middle of the sheet: it springs up with a
+/// wobble, throws out sparkles over a glow, and holds for a beat before it
+/// flies to the heart.
+class _Sent extends StatefulWidget {
+  final GiftType gift;
+
+  /// On the picture, so the sheet can say where its flight starts.
+  final Key artKey;
+
+  /// Whether it has left: the flying copy has taken over, so this one hides.
+  final bool launched;
+
+  const _Sent({
+    required this.gift,
+    required this.artKey,
+    required this.launched,
+  });
+
+  @override
+  State<_Sent> createState() => _SentState();
+}
+
+class _SentState extends State<_Sent> with SingleTickerProviderStateMixin {
+  late final AnimationController _t = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  );
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _t.value = 1;
+    } else if (!_t.isAnimating && _t.value == 0) {
+      _t.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _t.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: 1),
-      duration: const Duration(milliseconds: 420),
-      curve: Curves.easeOutBack,
-      builder: (context, t, child) => Opacity(
-        opacity: t.clamp(0.0, 1.0),
-        child: Transform.scale(scale: 0.6 + 0.4 * t, child: child),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GiftArt(type: gift.type, emoji: gift.emoji, size: 112),
-          const SizedBox(height: SpacingTokens.space12),
-          Text(
+    const art = 112.0;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AnimatedBuilder(
+          animation: _t,
+          builder: (context, child) {
+            final t = _t.value;
+            // In with a spring over the first half; a wobble that dies away.
+            final rise = Curves.elasticOut.transform((t / 0.55).clamp(0, 1));
+            final wobble = 0.22 * math.sin(t * 3 * math.pi) * (1 - t);
+            return SizedBox.square(
+              dimension: art * 2,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (t > 0 && t < 1)
+                    Positioned.fill(
+                      child: IgnorePointer(
+                        child: CustomPaint(painter: GiftBurstPainter(t: t)),
+                      ),
+                    ),
+                  Opacity(
+                    opacity: widget.launched ? 0 : 1,
+                    child: Transform.rotate(
+                      angle: wobble,
+                      child: Transform.scale(
+                        scale: 0.35 + 0.65 * rise,
+                        child: child,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+          child: KeyedSubtree(
+            key: widget.artKey,
+            child: GiftArt(type: widget.gift.type, size: art),
+          ),
+        ),
+        FadeTransition(
+          opacity: CurvedAnimation(
+            parent: _t,
+            curve: const Interval(0.25, 0.6, curve: Curves.easeOut),
+          ),
+          child: Text(
             AppLocalizations.of(context)
                 .ui('ui_gift_sent_named', r'$gift sent')
-                .replaceAll(r'$gift', gift.name),
+                .replaceAll(r'$gift', widget.gift.name),
             style: TextStyle(
               fontSize: TypographyTokens.fontSize5,
               fontWeight: FontWeight.w700,
               color: scheme.onSurface,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

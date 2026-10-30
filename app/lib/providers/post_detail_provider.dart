@@ -516,13 +516,18 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
   }
 
   /// What the gift sheet says the post's count is now, here and in the feed.
-  void giftsChanged(int gifts) {
+  void giftsChanged(int gifts, {String? type}) {
     final post = state.post;
     if (post == null) return;
-    state = state.copyWith(post: post.copyWith(gifts: gifts));
+    state = state.copyWith(
+      post: post.copyWith(
+        gifts: gifts,
+        viewerGift: type == null || type.isEmpty ? null : type,
+      ),
+    );
     _ref
         .read(postListProvider(PostListSource.recent).notifier)
-        .giftsChanged(post.id, gifts);
+        .giftsChanged(post.id, gifts, type: type);
   }
 
   /// Takes the post as the server just returned it -- after a poll vote, say.
