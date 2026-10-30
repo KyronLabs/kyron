@@ -11,6 +11,13 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **Gifts open from the heart.** The gift button is gone and a post's row
+  is the five actions it was before. Hold the heart instead: it lifts a
+  little, the phone gives a light tap, and the gift sheet opens with what
+  each gift costs and how many coins you have. A tap is still a like, and
+  holding the heart on your own post does nothing new.
 
 ## [0.1.20] - 2026-10-30
 ### Added

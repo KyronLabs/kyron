@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/gift.dart';
@@ -166,14 +168,19 @@ void main() {
     });
   });
 
-  group('the gift button', () {
-    Widget row({VoidCallback? onGift, bool showCounts = true}) => MaterialApp(
+  group('holding the heart', () {
+    Widget row({
+      VoidCallback? onGift,
+      VoidCallback? onLike,
+      bool showCounts = true,
+    }) =>
+        MaterialApp(
           home: Scaffold(
             body: PostActionsRow(
               post: _post,
               onReply: () {},
               onRepost: () {},
-              onLike: () {},
+              onLike: onLike ?? () {},
               onSave: () {},
               onShare: () {},
               onGift: onGift,
@@ -182,19 +189,144 @@ void main() {
           ),
         );
 
-    testWidgets('shows the count and opens on a tap', (tester) async {
-      var opened = 0;
-      await tester.pumpWidget(row(onGift: () => opened++));
+    final heart = find.byIcon(Iconsax.heart_copy);
 
-      expect(find.byTooltip('Send a gift'), findsOneWidget);
-      expect(find.text('3'), findsOneWidget);
-      await tester.tap(find.byTooltip('Send a gift'));
-      expect(opened, 1);
+    /// Every haptic the platform was asked for, by type.
+    List<String> haptics(WidgetTester tester) {
+      final calls = <String>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (call) async {
+          if (call.method == 'HapticFeedback.vibrate') {
+            calls.add('${call.arguments}');
+          }
+          return null;
+        },
+      );
+      return calls;
+    }
+
+    testWidgets('leaves the row as it was: five actions, no gift button', (
+      tester,
+    ) async {
+      await tester.pumpWidget(row(onGift: () {}));
+
+      expect(find.byIcon(Iconsax.gift_copy), findsNothing);
+      expect(find.byIcon(Iconsax.gift), findsNothing);
+      expect(find.byType(PostAction), findsNWidgets(5));
+      // The post's three gifts are not drawn as a count on the card.
+      expect(find.text('3'), findsNothing);
     });
 
-    testWidgets('is not there where gifts cannot be sent', (tester) async {
-      await tester.pumpWidget(row());
-      expect(find.byTooltip('Send a gift'), findsNothing);
+    testWidgets('opens the gifts, with a light tap of haptics, and no like', (
+      tester,
+    ) async {
+      final felt = haptics(tester);
+      var gifts = 0;
+      var likes = 0;
+      await tester.pumpWidget(
+        row(onGift: () => gifts++, onLike: () => likes++),
+      );
+
+      await tester.longPress(heart);
+      await tester.pumpAndSettle();
+
+      expect(gifts, 1);
+      expect(likes, 0);
+      expect(felt, ['HapticFeedbackType.lightImpact']);
+    });
+
+    testWidgets('does not pop up the Like tooltip over the sheet', (
+      tester,
+    ) async {
+      await tester.pumpWidget(row(onGift: () {}));
+
+      await tester.longPress(heart);
+      await tester.pump(const Duration(milliseconds: 100));
+
+      expect(find.text('Like'), findsNothing);
+    });
+
+    testWidgets('still likes on a tap, with the tick a tap always had', (
+      tester,
+    ) async {
+      final felt = haptics(tester);
+      var gifts = 0;
+      var likes = 0;
+      await tester.pumpWidget(
+        row(onGift: () => gifts++, onLike: () => likes++),
+      );
+
+      await tester.tap(heart);
+      await tester.pumpAndSettle();
+
+      expect(likes, 1);
+      expect(gifts, 0);
+      expect(felt, ['HapticFeedbackType.selectionClick']);
+    });
+
+    testWidgets('lifts the heart and sets it back exactly where it was', (
+      tester,
+    ) async {
+      await tester.pumpWidget(row(onGift: () {}));
+      double scale() {
+        final transforms = tester.widgetList<Transform>(
+          find.ancestor(of: heart, matching: find.byType(Transform)),
+        );
+        return transforms
+            .map((t) => t.transform.getMaxScaleOnAxis())
+            .reduce((a, b) => a * b);
+      }
+
+      expect(scale(), 1);
+      await tester.longPress(heart);
+      // longPress has already held for the gesture's timeout; this is
+      // partway into the lift that follows.
+      await tester.pump(const Duration(milliseconds: 120));
+      expect(scale(), greaterThan(1.1));
+      await tester.pumpAndSettle();
+      expect(scale(), 1);
+    });
+
+    test('the lift starts and ends at rest, and peaks in between', () {
+      expect(liftCurve(0), 0);
+      expect(liftCurve(1), 0);
+      expect(liftCurve(0.4), 1);
+      for (var t = 0.0; t <= 1; t += 0.05) {
+        expect(liftCurve(t), inInclusiveRange(0, 1));
+      }
+    });
+
+    testWidgets('tells a screen reader that holding sends a gift', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await tester.pumpWidget(row(onGift: () {}));
+
+      expect(
+        tester.getSemantics(find.byTooltip('Like')),
+        matchesSemantics(
+          isFocusable: true,
+          hasTapAction: true,
+          hasLongPressAction: true,
+          hasFocusAction: true,
+          onLongPressHint: 'Send a gift',
+          tooltip: 'Like',
+        ),
+      );
+      semantics.dispose();
+    });
+
+    testWidgets('is only a like where gifts cannot be sent', (tester) async {
+      var likes = 0;
+      await tester.pumpWidget(row(onLike: () => likes++));
+
+      await tester.longPress(heart);
+      await tester.pumpAndSettle();
+
+      // No sheet to open, so the long press is the tooltip's again.
+      expect(find.text('Like'), findsOneWidget);
+      expect(likes, 0);
     });
   });
 

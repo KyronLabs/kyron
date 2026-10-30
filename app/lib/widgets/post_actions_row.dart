@@ -30,8 +30,10 @@ class PostActionsRow extends StatelessWidget {
   final VoidCallback onSave;
   final VoidCallback onShare;
 
-  /// Opens the gift sheet. Null leaves the button out, for a surface that has
-  /// nowhere to put what a gift sends back.
+  /// Opens the gift sheet, from a long press on the heart. There is no gift
+  /// button: the row stays the five actions it always was, and a gift is the
+  /// like you hold. Null leaves the heart as a like and nothing more -- on
+  /// your own post, say, where there is nobody to give to.
   final VoidCallback? onGift;
 
   /// Draw the counts beside the icons. False on a post's own screen, where
@@ -89,20 +91,10 @@ class PostActionsRow extends StatelessWidget {
           tooltip: post.liked ? 'Unlike' : 'Like',
           burst: true,
           onTap: onLike,
+          onLongPress: onGift,
+          longPressHint:
+              AppLocalizations.of(context).ui('ui_gift_title', 'Send a gift'),
         ),
-        if (onGift != null) ...[
-          const SizedBox(width: SpacingTokens.space20),
-          // Never "active": the row fills an icon for what *you* did, and the
-          // post does not say whether you have sent it a gift.
-          PostAction(
-            icon: Iconsax.gift_copy,
-            label:
-                showCounts && post.gifts > 0 ? formatCount(post.gifts) : null,
-            tooltip:
-                AppLocalizations.of(context).ui('ui_gift_title', 'Send a gift'),
-            onTap: onGift!,
-          ),
-        ],
         const Spacer(),
         PostAction(
           icon: post.saved ? Iconsax.archive_tick : Iconsax.archive_add_copy,
@@ -144,6 +136,13 @@ class PostAction extends StatefulWidget {
   /// that matters.
   final bool burst;
 
+  /// What holding it does, if anything: the like's gift sheet.
+  final VoidCallback? onLongPress;
+
+  /// What a screen reader says holding it does. The gesture is invisible, so
+  /// without this it is unreachable for anybody not looking at the screen.
+  final String? longPressHint;
+
   const PostAction({
     super.key,
     required this.icon,
@@ -153,14 +152,15 @@ class PostAction extends StatefulWidget {
     required this.tooltip,
     required this.onTap,
     this.burst = false,
+    this.onLongPress,
+    this.longPressHint,
   });
 
   @override
   State<PostAction> createState() => _PostActionState();
 }
 
-class _PostActionState extends State<PostAction>
-    with SingleTickerProviderStateMixin {
+class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
   late final AnimationController _play = AnimationController(
     vsync: this,
     // Long enough for the sparks to travel and go, short enough that a second
@@ -171,12 +171,21 @@ class _PostActionState extends State<PostAction>
   /// Whether the run in progress is a celebration or just a press.
   bool _celebrating = false;
 
+  /// The lift a long press gives: the icon rises a little, swells, and
+  /// settles back as the sheet comes up. Its own controller, so holding a
+  /// heart that is mid-burst does not cut the burst short.
+  late final AnimationController _lift = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 320),
+  );
+
   /// How far past the icon the burst is allowed to spill, each side.
   static const double _reach = 15;
 
   @override
   void dispose() {
     _play.dispose();
+    _lift.dispose();
     super.dispose();
   }
 
@@ -195,6 +204,17 @@ class _PostActionState extends State<PostAction>
     widget.onTap();
   }
 
+  void _held() {
+    final onLongPress = widget.onLongPress;
+    if (onLongPress == null) return;
+    // One step above a tap's tick, so holding reads as something different
+    // from pressing -- and well short of the buzz Android gives a long press
+    // by default, which is why this is not left to the InkWell.
+    unawaited(HapticFeedback.lightImpact());
+    _lift.forward(from: 0);
+    onLongPress();
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -202,8 +222,14 @@ class _PostActionState extends State<PostAction>
         ? (widget.activeColor ?? scheme.primary)
         : scheme.onSurface.withValues(alpha: 0.55);
 
-    return Tooltip(
+    final holdable = widget.onLongPress != null;
+
+    // On a touch screen a tooltip opens on a long press. On the heart that
+    // press is the gift sheet, and a "Like" bubble arriving with it is noise;
+    // a mouse still gets the tooltip on hover.
+    final button = Tooltip(
       message: widget.tooltip,
+      triggerMode: holdable ? TooltipTriggerMode.manual : null,
       child: InkWell(
         onTap: _tapped,
         borderRadius: BorderRadius.circular(RadiusTokens.radiusSm),
@@ -253,7 +279,20 @@ class _PostActionState extends State<PostAction>
                     ],
                   );
                 },
-                child: Icon(widget.icon, size: 17, color: colour),
+                child: AnimatedBuilder(
+                  animation: _lift,
+                  builder: (context, child) {
+                    final t = _lift.value;
+                    return Transform.translate(
+                      offset: Offset(0, -2.5 * liftCurve(t)),
+                      child: Transform.scale(
+                        scale: 1 + 0.18 * liftCurve(t),
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: Icon(widget.icon, size: 17, color: colour),
+                ),
               ),
               if (widget.label != null) ...[
                 const SizedBox(width: SpacingTokens.space4),
@@ -287,7 +326,27 @@ class _PostActionState extends State<PostAction>
         ),
       ),
     );
+
+    if (!holdable) return button;
+
+    // Outside the InkWell rather than its own onLongPress, which would fire
+    // the platform's long-press feedback on top of [_held]'s. A tap still
+    // reaches the InkWell: it ends before the long press can claim it.
+    return Semantics(
+      onLongPressHint: widget.longPressHint,
+      child: GestureDetector(onLongPress: _held, child: button),
+    );
   }
+}
+
+/// How far into its lift a long-pressed icon is, for t from 0 to 1: up
+/// quickly, a moment at the top, and back down. Zero at both ends, so the
+/// icon is exactly where it was once the lift is done.
+double liftCurve(double t) {
+  if (t <= 0 || t >= 1) return 0;
+  if (t < 0.35) return Curves.easeOutCubic.transform(t / 0.35);
+  if (t < 0.5) return 1;
+  return 1 - Curves.easeInOutCubic.transform((t - 0.5) / 0.5);
 }
 
 /// A count as a sentence: "1 like", "12 likes", "1.2K likes".
