@@ -77,6 +77,10 @@ dependencies:
   crypto: ^3.0.7
   gal: ^2.3.3
   image: ^4.5.4
+  # Puts a lens into a recorded video (services/lens_video.dart). The "min"
+  # build on purpose: it is LGPL, where the builds carrying x264 are GPL and
+  # cannot ship in an MIT app. Encoding uses the phone's hardware encoder.
+  ffmpeg_kit_flutter_new_min: ^3.6.7
 
 dev_dependencies:
   flutter_test:

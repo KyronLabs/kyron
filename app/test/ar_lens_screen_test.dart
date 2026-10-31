@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/lens.dart';
@@ -93,26 +94,21 @@ void main() {
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
-    /// The ring around a tile, which is the whole visible signal.
-    Color ringOf(String label) {
-      final box = tester.widget<AnimatedContainer>(
-        find.descendant(
-          of: find.bySemanticsLabel(label),
-          matching: find.byType(AnimatedContainer),
-        ),
-      );
-      return (box.decoration! as BoxDecoration).border!.top.color;
-    }
+    /// Whether a tile says it is the one on. The shutter's ring is what
+    /// shows it, and that ring is drawn round the middle of the strip.
+    Matcher chosen(bool on) => containsSemantics(isSelected: on);
+    SemanticsNode tile(String label) =>
+        tester.getSemantics(find.bySemanticsLabel(label));
 
-    expect(ringOf('None'), Colors.white);
-    expect(ringOf('Specs, face lens'), Colors.white24);
+    expect(tile('None'), chosen(true));
+    expect(tile('Specs, face lens'), chosen(false));
 
     await tester.tap(find.bySemanticsLabel('Specs, face lens'));
     // Past the strip's slide to the middle and the tile's transition.
     await tester.pumpAndSettle();
 
-    expect(ringOf('Specs, face lens'), Colors.white);
-    expect(ringOf('None'), Colors.white24);
+    expect(tile('Specs, face lens'), chosen(true));
+    expect(tile('None'), chosen(false));
     // And the name over the shutter follows the selection.
     expect(find.text('Specs'), findsOneWidget);
     expect(find.text('None'), findsNothing);
@@ -139,20 +135,47 @@ void main() {
     }
   });
 
-  testWidgets('video mode takes the lens off and says so', (tester) async {
+  testWidgets('a swipe that starts on the shutter moves the strip', (
+    tester,
+  ) async {
+    // The shutter used to be a button over the strip, and the strip never
+    // saw a finger that landed on it.
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
-    await tester.tap(find.text('Video'));
+    final shutter = tester.getCenter(find.bySemanticsLabel('Take a picture'));
+    await tester.dragFrom(shutter, const Offset(-150, 0));
+    await tester.pumpAndSettle();
+
+    expect(find.text('None'), findsNothing);
+  });
+
+  testWidgets('pressing the shutter does not change the lens', (
+    tester,
+  ) async {
+    await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
+
+    await tester.tap(find.bySemanticsLabel('Take a picture'));
+    await tester.pumpAndSettle();
+    expect(find.text('None'), findsOneWidget);
+  });
+
+  testWidgets('video mode keeps the lens on', (tester) async {
+    await tester.pumpWidget(screen(const [], temp));
+    await tester.pump();
+
+    await tester.tap(find.bySemanticsLabel('Specs, face lens'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Video'));
+    await tester.pumpAndSettle();
 
     expect(find.bySemanticsLabel('Record a video'), findsOneWidget);
-    expect(find.text('Lenses are for photos, for now'), findsOneWidget);
+    expect(find.text('Specs'), findsOneWidget);
 
     await tester.tap(find.text('Photo'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pumpAndSettle();
     expect(find.bySemanticsLabel('Take a picture'), findsOneWidget);
+    expect(find.text('Specs'), findsOneWidget);
   });
 }

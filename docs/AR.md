@@ -192,32 +192,71 @@ the exposure meter and skin sampling.
 ## The screen
 
 Laid out the way Snapchat, TikTok and RedNote lay out a camera, because that is
-the layout people already know. The picture fills the screen with no title bar,
-and the controls float on it.
+the layout people already know. There is no title bar. The picture is a card
+with rounded corners and the controls float on it; the shutter and the strip
+sit on a black floor underneath, as tight as they go.
 
 - **The lenses run through the shutter**, on both sides of it. Swiping changes
   lens as it goes, every tile snaps to the middle, and tapping a tile slides it
-  there.
+  there. **The shutter is drawn, not a button.** Every touch goes to the strip,
+  and the strip's middle tile is the button. That is what lets a swipe that
+  starts on the shutter move the strip. When it was a button laid on top, the
+  strip never saw a finger that landed on it.
+- **The ring is the selection.** It sits a hairline outside the middle tile:
+  white for photo, red for video, with a red arc running round it while
+  recording.
 - **The front camera opens first.** Double-tap the picture to flip. The flash
   button appears on the back camera.
 - **Photo and Video** sit under the shutter. In Video, tap to start and stop or
-  hold to record. Recordings stop at 60 seconds.
-- **Capture opens the composer** with the photo or video attached. The screen
-  used to attach the file and pop back to the feed, so the picture sat in the
-  composer's state unseen.
-- **The saved photo is what was on screen.** It is cropped to the part of the
-  frame the cover-fit preview showed. On Android, front-camera photos are also
+  hold to record. Recordings stop at 60 seconds, and the strip is locked while
+  recording so each clip has one lens.
+- **Capture opens the composer** with the photo or video attached.
+- **What is saved is what was on screen.** It is cropped to the part of the
+  frame the card showed. On Android, front-camera photos and videos are also
   mirrored back, because the platform returns them the way the sensor saw them.
 
-## What it is still not
+## Lenses on video
 
-**Lenses on video.** Video records the camera as it is, so Video mode takes
-the lens off and says *"Lenses are for photos, for now"*. Baking a lens into
-video needs a frame pipeline and an encoder on the native side. On Android
-that is Media3 Transformer with an RGB matrix and a per-frame overlay, driven
-by face poses recorded with timestamps. The app has neither yet. A recording
-that came back without the glasses someone was wearing in the viewfinder would
-be the screen lying.
+The camera records the picture as it is. The lens is put in afterwards
+(`LensVideoBaker`), from the poses recorded alongside the clip:
+
+1. While recording, the frames that track the face come from the recording
+   itself (`startVideoRecording(onAvailable:)`). Each one adds the landmarks,
+   and the skin reading for a fill, to a `LensVideoTimeline`. That is about 15
+   samples a second, plus every moment a face arrives or leaves.
+2. After the clip stops, each sample is drawn as a transparent PNG with the
+   same painters the preview uses (glasses, pictures, a fill's skin). Effects
+   also get a matching mask, white wherever the picture is blurred.
+3. FFmpeg puts it together: colour matrix, then blur through the mask, then
+   the drawings, then crop and mirror. The concat demuxer times each picture
+   to its sample. Audio is copied, not re-encoded.
+
+It is two steps rather than one live composite because the preview is the
+camera's own texture on the GPU. Getting it back out frame by frame to encode
+is the slow way round.
+
+**The FFmpeg build is `ffmpeg_kit_flutter_new_min`, the LGPL one.** The GPL
+builds carry x264, and GPL code cannot ship in an MIT app. Without x264,
+encoding uses the phone's own hardware encoder (`h264_mediacodec` on Android,
+`h264_videotoolbox` on iOS). If that refuses, it falls back to MPEG-4 Part 2,
+which every build has, so no recording is lost to an encoder that rejects a
+size.
+
+**What is checked:** `test/lens_video_test.dart` runs the exact arguments
+through a desktop ffmpeg on a clip it generates, then reads the pixels back.
+It checks that glasses darken the eyes and leave the corners alone, that mono
+grades every frame, that frost smears the edges and lifts the tone, that
+mirror and crop are right, and that the audio survives. It is skipped where
+there is no ffmpeg. **What is not checked here:** the plugin call on a phone,
+and whether a given phone's hardware encoder accepts the stream. That is what
+the fallback is for.
+
+**Cost.** Putting a lens in takes time after a clip stops. Pictures are drawn
+at three-quarters of the frame and masks at three-eighths, so it is a few
+seconds for a typical clip; a "Adding your lens…" overlay covers the wait.
+The plugin also adds the FFmpeg libraries to the app's size.
+
+## What it is still not
 
 **Glasses from the catalogue.** See above: a format decision first.
 
