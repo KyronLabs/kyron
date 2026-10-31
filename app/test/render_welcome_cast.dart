@@ -61,14 +61,10 @@ void main() {
     }
     await tester.pump(RoosterArt.flipping);
     await shoot('3-cat');
-    // On round to the butterfly, and catch its wings mid-beat.
-    for (var i = 0; i < 2; i++) {
-      await tester.pump(RoosterArt.visiting);
-      await tester.pump(RoosterArt.flipping);
-      await tester.pump(const Duration(milliseconds: 50));
-    }
-    await tester.pump(const Duration(milliseconds: 600));
-    await shoot('4-butterfly-flap');
+    // And the next flip, cat to watermelon.
+    await tester.pump(RoosterArt.visiting);
+    await tester.pump(const Duration(milliseconds: 750));
+    await shoot('4-cat-to-watermelon');
     await tester.pumpWidget(const SizedBox());
     exit(0);
   });

@@ -32,6 +32,16 @@ the section; GitHub does not show it:
   moved to the top right of the header -- on your own posts, last on the
   right, after Post analytics.
 
+### Fixed
+
+- **The welcome picture's visitors are drawn the way the rooster is.** They
+  were rows of separate rounded buttons in muddy colours, and a pale streak
+  trailed off the bottom of the cat. Now each is a mosaic run through a
+  median, as the rooster is -- neighbouring colours run together into soft
+  shapes -- in brighter colour, and the cat and the fawn are cut off by the
+  bottom of the frame at full width, like the rooster. The butterfly's wings
+  no longer beat.
+
 ## [0.1.25] - 2026-10-31
 ### Added
 

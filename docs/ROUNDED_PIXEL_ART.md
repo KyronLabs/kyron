@@ -221,7 +221,7 @@ the next of the cast (section 9), and round again.
 |:--|:--|:--|
 | Arriving | 1.4 s | each square grows from 55% to full size and fades in over 45% of the arrival, `easeOutCubic`, starting later the further it is from the eye |
 | Settling | last 15% of the arrival | the exact picture fades in over the tiles, so the soft outline the tiles cut off comes in without a jump |
-| Holding | 4.2 s the rooster, 3 s each visitor | a timer, not an animation, so nothing repaints while it stands still -- except the butterfly, whose wings beat |
+| Holding | 4.2 s the rooster, 3 s each visitor | a timer, not an animation, so nothing repaints while it stands still |
 | Flipping | 1.5 s | each tile turns about its vertical axis over 24% of the flip, `easeInOutCubic`, in a wave out from the incoming picture's eye, scaled so it takes the whole flip to cross what a phone shows, with 10% jitter so it ripples rather than marching in rings |
 
 What makes the flip read as cards rather than as squares changing colour:
@@ -242,11 +242,6 @@ The tiles are drawn as a mask (rounded squares, corner radius 36% of a
 square, 6% oversize so tiles that have landed meet with no seam) and the
 picture is drawn through it (`BlendMode.srcIn`), so every tile shows exactly
 the art's own pixels.
-
-**The butterfly's wings** beat four times in its 3-second hold, eased in and
-out so they start and end open. A beat squeezes the picture to 58% of its
-width about the body's column (`flapsAbout`), quicker down than up, with a
-3-pixel lift on each downstroke.
 
 **Only two pictures are decoded at a time:** the one showing and the next.
 Each is six megabytes decoded; ten on a sign-in screen would be most of a
@@ -281,16 +276,28 @@ art for this app; confirm its rights the same way before a public release.
 ## 8. Why the rooster is an image and not code
 
 The first version drew the squares from their sampled colours with rounded
-rectangles. Every model tried -- blurred, overlapped, fused with a median --
-came out noisier than the art, because the art's fusing is irregular in ways
-a rule does not reproduce: the step-4 picture above is close, but it is
-visibly not the original. So the art ships as itself, pixel for pixel, and
-the code only animates it: the grid it measures is used to cut the tiles
-the picture arrives through, never to redraw it.
+rectangles, and it came out visibly not the original: a grid of separate
+buttons where the art has soft shapes that run into each other. So the art
+ships as itself, pixel for pixel, and the code only animates it: the grid it
+measures is used to cut the tiles the picture arrives through, never to
+redraw it.
 
-The script exists for the next picture, where there is no finished art to
-ship -- and where close to the rooster, and consistent with it, is exactly
-what is wanted.
+**What the rooster actually is**, measured later for the cast (section 9):
+a mosaic -- each square one flat colour -- run through a **median filter
+about 0.6 of a square wide**. A median is the whole look:
+
+- a square's free corners round off, because at a corner most of the window
+  is ground;
+- neighbours of similar colour fuse into one soft shape, because the median
+  across them is their shared colour;
+- where four squares meet, the colour most of them share takes the corner,
+  which is why the rooster's junctions are never a blend.
+
+Rebuilt that way from its own square colours, the rooster comes back within
+2.2 of 255 per channel on average (`scripts/welcome_cast.py --check`).
+Rounded tiles with their corner gaps filled -- `rounded_pixels.py`'s method --
+come back at 3.5, and look it. Use `welcome_cast.py`'s method for anything
+that has to sit beside the rooster.
 
 ## 9. The cast
 
@@ -298,9 +305,11 @@ The rooster hands over to nine others, in this order: cat, watermelon,
 butterfly, strawberry, fawn, mushroom, coconut, apple, broccoli. Animals
 between the produce, so two of a kind never follow each other.
 
-**Made with `scripts/welcome_cast.py`**, not `rounded_pixels.py`. A tile can
-only flip into the square in the same place, so every member is drawn on
-**the rooster's exact grid** -- 20 x 25 squares of 56.2 x 55.7 pixels from
+**Made with `scripts/welcome_cast.py`**, not `rounded_pixels.py`, for two
+reasons. It draws the way the rooster is drawn -- a mosaic through a median
+(section 8) -- where the first cast was rounded tiles and read as a grid of
+buttons beside it. And a tile can only flip into the square in the same
+place, so every member is drawn on **the rooster's exact grid** -- 20 x 25 squares of 56.2 x 55.7 pixels from
 (-10.04, 14.9), in a 1121 x 1403 canvas -- rather than on a grid of its own.
 The script's `CAST` table says where each one sits, in squares, and prints
 the Dart for `app/lib/widgets/welcome_cast.dart`.
@@ -314,9 +323,20 @@ Placement rules the script enforces or follows:
 - **Inside the first 18 rows,** which a phone always shows, unless the
   subject is cropped by the frame. The script refuses anything else.
 - **Animals are portraits, cropped like the rooster:** facing into the left,
-  anchored to the right, cut by the bottom. Their photographs end at the
-  chest, so the last rows of pixels are carried down to the foot of the
-  grid; a bust that stops in mid-air would show on a tall enough screen.
+  anchored to the right, and running off the foot of the frame at full
+  width, cut at the shoulders. Their photographs have to be framed for it --
+  head to chest at least, the body carrying on past the bottom edge. The
+  first fawn ended at its chin, and two ways of making it reach went wrong:
+  carrying its last rows down left a pale stalk trailing to the foot (it
+  shipped, in 0.1.25); drawing it big enough to reach cut its ear off. The
+  fawn was generated again, taller. A test now holds every cropped subject's
+  bottom row to at least three quarters of its width at row 17.
+- **Colour brought halfway to the rooster's:** its squares are on average
+  70% saturated, with the darkest twentieth at 15% brightness. A catalogue
+  photograph averages out greyer and flatter, so each subject's own share of
+  every square (not the ground in an outline square) is moved half of the
+  way there. All the way crushed a tabby's stripes and a leaf's shadows to
+  black blots.
 - **Produce is whole,** centred a little right of middle, so it sits where
   the rooster's head was.
 - **Where a flip starts:** an animal's eye (the darkest square in the upper
@@ -324,7 +344,8 @@ Placement rules the script enforces or follows:
 
 ### Where the pictures came from
 
-Every source photograph was **generated for Kyron** on 31 October 2026 with
+Every source photograph was **generated for Kyron** on 31 October 2026 (the
+fawn twice: see above) with
 Figma's image generation (`generate_image`, model `gpt-image-2.5-flare`), in
 the Figma file "Kyron welcome — rounded pixel subjects" on Kyron's own team.
 The prompts asked for each subject as a studio photograph on a plain white
