@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../l10n/app_localizations.dart';
 
 // lib/screens/post_detail_screen.dart
@@ -12,6 +14,8 @@ import '../models/feed_post.dart';
 import '../models/post_comment.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/feed_provider.dart';
+import '../widgets/post_action_colors.dart';
+import '../providers/follow_provider.dart';
 import '../providers/post_detail_provider.dart';
 import '../routes.dart';
 import '../utils/format_count.dart';
@@ -118,6 +122,8 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
         title: Text(AppLocalizations.of(context).post),
+        // The menu is always the last thing on the right, where a reader
+        // looks for it; your own post's analytics sit just inside it.
         actions: [
           if (mine)
             IconButton(
@@ -129,6 +135,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                 arguments: post.id,
               ),
             ),
+          if (post != null) _Overflow(post: post),
         ],
       ),
       body: SafeArea(
@@ -506,7 +513,9 @@ class _Post extends ConsumerWidget {
                   ),
                 ),
               ),
-              _Overflow(post: post),
+              // Where the menu used to be: the one thing you might want to do
+              // about the person rather than the post. Not on your own.
+              if (!mine && me != null) _FollowAuthor(post: post),
             ],
           ),
           const SizedBox(height: SpacingTokens.space12),
@@ -683,7 +692,7 @@ class _Tally extends StatelessWidget {
   }
 }
 
-/// The overflow menu, top right of the post.
+/// The post's menu, in the header's top right corner.
 class _Overflow extends ConsumerWidget {
   final FeedPost post;
 
@@ -691,20 +700,136 @@ class _Overflow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final scheme = Theme.of(context).colorScheme;
-
     return IconButton(
-      icon: Icon(
-        Iconsax.more_copy,
-        size: 18,
-        color: scheme.onSurface.withValues(alpha: 0.6),
-      ),
-      tooltip: 'More',
+      key: const ValueKey('post-detail-menu'),
+      icon: const Icon(Iconsax.more_copy, size: 20),
+      tooltip: AppLocalizations.of(context).ui('ui_more', 'More'),
       onPressed: () => PostOptionsSheet.show(
         context,
         ref,
         post: post,
         source: PostListSource.recent,
+      ),
+    );
+  }
+}
+
+/// Follow, beside the author of somebody else's post.
+///
+/// Red with white words, the one solid colour in the header, because it is
+/// the one thing in it that asks for something. Not shown at all if you
+/// already follow them: a "Following" on every post of everybody you follow
+/// is a label, not a button. Once you press it, it says so -- "Following",
+/// with a tick, quiet -- for as long as you are on the post, so the press
+/// visibly did something. Unfollowing is on their profile.
+class _FollowAuthor extends ConsumerStatefulWidget {
+  final FeedPost post;
+
+  const _FollowAuthor({required this.post});
+
+  @override
+  ConsumerState<_FollowAuthor> createState() => _FollowAuthorState();
+}
+
+class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
+  /// Pressed here, on this visit: show the quiet "Following" rather than
+  /// nothing.
+  bool _pressed = false;
+
+  Future<void> _follow() async {
+    unawaited(HapticFeedback.selectionClick());
+    setState(() => _pressed = true);
+    final error = await ref
+        .read(followOverridesProvider.notifier)
+        .follow(widget.post.author.id);
+    if (!mounted || error == null) return;
+    setState(() => _pressed = false);
+    Toast.show(context, error);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final author = widget.post.author;
+    final following = ref.watch(
+          followOverridesProvider.select((m) => m[author.id]),
+        ) ??
+        widget.post.followingAuthor;
+    if (following && !_pressed) return const SizedBox.shrink();
+
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    final done = following;
+
+    return Semantics(
+      button: !done,
+      label: done
+          ? l10n.ui('ui_following', 'Following')
+          : l10n
+              .ui('follow_author', 'Follow {name}')
+              .replaceAll('{name}', author.displayName),
+      excludeSemantics: true,
+      child: GestureDetector(
+        key: const ValueKey('post-detail-follow'),
+        behavior: HitTestBehavior.opaque,
+        onTap: done ? null : _follow,
+        // A touch target taller than the pill it draws.
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+          child: AnimatedContainer(
+            duration: MotionTokens.fast,
+            curve: Curves.easeOutCubic,
+            height: 32,
+            padding:
+                const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+            decoration: BoxDecoration(
+              color: done
+                  ? scheme.onSurface.withValues(alpha: 0.08)
+                  : PostActionColors.like,
+              borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+            ),
+            alignment: Alignment.center,
+            child: AnimatedSwitcher(
+              duration: MotionTokens.fast,
+              transitionBuilder: (child, animation) => FadeTransition(
+                opacity: animation,
+                child: ScaleTransition(
+                  scale: Tween(begin: 0.85, end: 1.0).animate(animation),
+                  child: child,
+                ),
+              ),
+              child: done
+                  ? Row(
+                      key: const ValueKey('following'),
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Iconsax.tick_circle_copy,
+                          size: 14,
+                          color: scheme.onSurface.withValues(alpha: 0.7),
+                        ),
+                        const SizedBox(width: SpacingTokens.space4),
+                        Text(
+                          l10n.ui('ui_following', 'Following'),
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize2,
+                            fontWeight: FontWeight.w600,
+                            color: scheme.onSurface.withValues(alpha: 0.7),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      l10n.ui('ui_follow', 'Follow'),
+                      key: const ValueKey('follow'),
+                      style: const TextStyle(
+                        fontSize: TypographyTokens.fontSize2,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+            ),
+          ),
+        ),
       ),
     );
   }
