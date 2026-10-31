@@ -724,6 +724,17 @@ void main() {
         final below = who.squares.skip(18).join().contains('#');
         final cropped = who.squares.last.contains('#');
         expect(!below || cropped, isTrue, reason: who.name);
+        // And cropped means cut by the frame, at full width -- not a stalk
+        // of pale squares trailing down to it. That is what the first cat
+        // was: its bottom row a third the width of its shoulders.
+        if (cropped) {
+          int width(String row) => '#'.allMatches(row).length;
+          expect(
+            width(who.squares.last),
+            greaterThanOrEqualTo((width(who.squares[17]) * 0.75).floor()),
+            reason: '${who.name} runs off the foot of the frame at full width',
+          );
+        }
       }
     });
 
@@ -800,15 +811,12 @@ void main() {
       await tester.pumpWidget(const SizedBox());
     });
 
-    testWidgets('beats the butterfly\'s wings while it holds', (tester) async {
+    testWidgets('holds every visitor still: nothing moves between flips', (
+      tester,
+    ) async {
       await pumpArt(tester);
-      expect(
-        RoosterArt.cast.where((who) => who.flapsAbout != null),
-        isNotEmpty,
-      );
-      // A flip animates for 1.5 seconds and every other hold is a timer, so
-      // only wings keep the picture moving longer than a flip lasts. Round
-      // the cast past the butterfly, looking for that.
+      // A flip animates for 1.5 seconds and every hold is a timer, so
+      // nothing in the loop keeps the picture moving longer than a flip.
       var streak = Duration.zero;
       var longest = Duration.zero;
       const step = Duration(milliseconds: 100);
@@ -817,7 +825,7 @@ void main() {
         streak = tester.hasRunningAnimations ? streak + step : Duration.zero;
         if (streak > longest) longest = streak;
       }
-      expect(longest, greaterThan(RoosterArt.flipping + RoosterArt.arriving));
+      expect(longest, lessThanOrEqualTo(RoosterArt.flipping + step * 2));
 
       await tester.pumpWidget(const SizedBox());
     });
