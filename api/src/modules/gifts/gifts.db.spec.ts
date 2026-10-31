@@ -204,6 +204,39 @@ run('gifts, against a real database', () => {
     expect((await feed.getPost(post, ada)).viewerGift).toBeNull();
   });
 
+  it("shows the post's picture on its notification, and none for words alone", async () => {
+    const notifications = new NotificationsService(prisma as PrismaService);
+    const pictured = (
+      await prisma.post.create({
+        data: {
+          authorId: ada,
+          content: 'A kingfisher',
+          media: {
+            create: [
+              {
+                kind: 'IMAGE',
+                url: 'https://cdn.test/second.jpg',
+                position: 1,
+              },
+              { kind: 'IMAGE', url: 'https://cdn.test/first.jpg', position: 0 },
+            ],
+          },
+        },
+      })
+    ).id;
+    await gifts.send(ben, pictured, gift('rose'), NEXT_TUESDAY);
+
+    const rows = (await notifications.list(ada, { gifts: true })).items;
+    const onPicture = rows.find(
+      (row) => row.kind === 'gift' && row.postId === pictured,
+    );
+    // The first picture by its position, not the first one stored.
+    expect(onPicture?.postImage).toBe('https://cdn.test/first.jpg');
+    expect(
+      rows.find((row) => row.kind === 'gift' && row.postId === post)?.postImage,
+    ).toBeNull();
+  });
+
   it("keeps the author's earnings when a sender deletes their account", async () => {
     const before = (await gifts.wallet(ada, NEXT_TUESDAY)).earned;
     await prisma.user.delete({ where: { id: cy } });
@@ -220,6 +253,7 @@ run('gifts, against a real database', () => {
       .filter((row) => row.kind === 'gift')
       .map((row) => row.actor?.id);
     expect(senders).not.toContain(cy);
-    expect(senders).toHaveLength(3);
+    // Ben's three on the first post, and his Rose on the pictured one.
+    expect(senders).toHaveLength(4);
   });
 });

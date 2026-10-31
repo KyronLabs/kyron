@@ -134,6 +134,10 @@ class NotificationModel {
   /// The start of that post, so the row says which one.
   final String? postSnippet;
 
+  /// The post's first picture, shown at the end of the row. Null for a post
+  /// of words alone, and from a server older than it.
+  final String? postImage;
+
   /// What was written, for a comment or a mention.
   final String? content;
 
@@ -154,6 +158,7 @@ class NotificationModel {
     this.actor,
     this.postId,
     this.postSnippet,
+    this.postImage,
     this.content,
     this.account,
     this.report,
@@ -188,6 +193,9 @@ class NotificationModel {
           : null,
       postId: json['postId'] as String?,
       postSnippet: json['postSnippet'] as String?,
+      postImage: (json['postImage'] as String?)?.trim().isEmpty ?? true
+          ? null
+          : json['postImage'] as String,
       content: json['content'] as String?,
       timestamp: (at ?? DateTime.now()).toLocal(),
       isRead: json['unread'] != true,

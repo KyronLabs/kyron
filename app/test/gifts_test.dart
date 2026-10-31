@@ -849,4 +849,103 @@ void main() {
       expect(find.textContaining('sent a Fire to your post'), findsOneWidget);
     });
   });
+
+  group('a notification about a post with a picture', () {
+    Future<void> pumpRow(WidgetTester tester, Map<String, dynamic> json) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: NotificationItem(
+              notification: NotificationModel.fromJson(json),
+              onTap: () {},
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+    }
+
+    const base = {
+      'createdAt': '2026-10-31T10:00:00Z',
+      'postId': 'p1',
+      'postSnippet': 'A kingfisher',
+      'actor': {'id': 'ben', 'name': 'Ben'},
+    };
+    Finder picture() => find.byWidgetPredicate(
+          (w) =>
+              w is Image &&
+              w.image is ResizeImage &&
+              (w.image as ResizeImage).imageProvider is NetworkImage,
+        );
+
+    testWidgets('shows it at the far right, rounded, with the gift on it', (
+      tester,
+    ) async {
+      await pumpRow(tester, {
+        ...base,
+        'id': 'gift:g1',
+        'kind': 'gift',
+        'postImage': 'https://cdn.test/kingfisher.jpg',
+        'gift': {'type': 'fire', 'coins': 5, 'name': 'Fire'},
+      });
+
+      expect(picture(), findsOneWidget);
+      final rounded = tester.widget<ClipRRect>(
+        find.ancestor(of: picture(), matching: find.byType(ClipRRect)),
+      );
+      expect(rounded.borderRadius, isNot(BorderRadius.zero));
+      // Last in the row: right of the time.
+      expect(
+        tester.getCenter(picture()).dx,
+        greaterThan(
+          tester
+              .getCenter(
+                find.text(
+                  NotificationModel.fromJson(const {
+                    ...base,
+                    'id': 'x',
+                    'kind': 'gift',
+                  }).displayTimestamp,
+                ),
+              )
+              .dx,
+        ),
+      );
+      // The gift sits on the picture's corner, not in a place of its own.
+      final gifts = find.byWidgetPredicate(
+        (w) => w is GiftArt && w.type == 'fire',
+      );
+      final onPicture = tester.getRect(gifts.last);
+      final pictureRect = tester.getRect(picture());
+      expect(pictureRect.contains(onPicture.topLeft), isTrue);
+    });
+
+    testWidgets('shows only the picture for a like', (tester) async {
+      await pumpRow(tester, {
+        ...base,
+        'id': 'like:l1',
+        'kind': 'like',
+        'postImage': 'https://cdn.test/kingfisher.jpg',
+      });
+
+      expect(picture(), findsOneWidget);
+      expect(find.byType(GiftArt), findsNothing);
+    });
+
+    testWidgets('shows the gift alone on a post of words', (tester) async {
+      await pumpRow(tester, {
+        ...base,
+        'id': 'gift:g2',
+        'kind': 'gift',
+        'gift': {'type': 'rose', 'coins': 3, 'name': 'Rose'},
+      });
+
+      expect(picture(), findsNothing);
+      // On the avatar, and at the end of the row.
+      expect(
+        find.byWidgetPredicate((w) => w is GiftArt && w.type == 'rose'),
+        findsNWidgets(2),
+      );
+    });
+  });
 }
