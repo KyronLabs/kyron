@@ -209,7 +209,10 @@ void main() {
     });
 
     test('a colour lens still needs no face', () {
-      expect(Lens.builtIn.every((lens) => !lens.needsFace), isTrue);
+      // The built-in glasses do need one; what this guards is that a lens
+      // which is only a colour matrix never starts face tracking.
+      final colour = Lens.builtIn.where((lens) => lens.glasses == null);
+      expect(colour.every((lens) => !lens.needsFace), isTrue);
     });
 
     test('a lens may tint and attach at once', () {

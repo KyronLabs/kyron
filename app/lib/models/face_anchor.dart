@@ -11,7 +11,15 @@ class FacePoint {
   final double x;
   final double y;
 
-  const FacePoint(this.x, this.y);
+  /// Depth, in the same units as [x] -- normalised to the frame's width --
+  /// with negative towards the camera. The nose tip is the most negative
+  /// point on a face looking straight at the lens.
+  ///
+  /// Zero when the source has no depth, which flattens everything built on it
+  /// to the old 2D behaviour rather than breaking it. See [HeadPose].
+  final double z;
+
+  const FacePoint(this.x, this.y, [this.z = 0]);
 }
 
 /// Where on a face an attachment sits.

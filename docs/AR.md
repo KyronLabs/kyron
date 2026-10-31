@@ -12,7 +12,8 @@ here, because the phrase promises more than what is built.
 A lens is a **colour transform**. Each is a 4×5 colour matrix, applied to the
 live preview and baked into the file that gets attached to the post.
 
-Seven ship with the app -- None, Mono, Warm, Cool, Faded, Punch, Noir -- and the
+Seven colour lenses ship with the app -- None, Mono, Warm, Cool, Faded, Punch,
+Noir -- alongside four pairs of 3D glasses (below), and the
 camera adds whatever else the published catalogue carries. A lens is twenty
 numbers, so a new one is a line of JSON rather than a release:
 [LENS_FORMAT.md](LENS_FORMAT.md). The bundled seven cannot be replaced or
@@ -138,24 +139,97 @@ Until then: the model is what it is, the exposure is fixed, and the thresholds
 are set for recall rather than for a false-positive rate that does not matter
 in a camera toy.
 
+## Glasses in three dimensions
+
+The built-in Specs, Aviator, Shades and Cat-eye are not pictures. Each is a
+frame described by a style and three colours (`GlassesModel`), built as
+geometry in pupil-gaps and drawn by `GlassesPainter` against the head's full
+pose: yaw, pitch and roll.
+
+The pose (`HeadPose`) comes from the landmarks' own depth. MediaPipe reports a
+`z` for every point. Outer eye corners give the axis across the face, brow to
+chin gives the axis down it, and their cross product gives the direction the
+face points. It is plain arithmetic, so it is tested against the real detection
+in `test/face-detection.json`, turned ±40° in code. The tracker's native
+`estimateGeometry` would do the same job, but it could only be checked on a
+phone.
+
+What makes a pair read as worn rather than stuck on:
+
+- a soft shadow on the face under the frame;
+- perspective, so the near lens is larger than the far one;
+- a reflection band that slides across the lenses as the head turns;
+- shaded rims (a lit edge on acetate, a brushed gradient on metal);
+- arms that run back to the ears, **depth-tested point by point** against the
+  face mesh. The near arm shows along the side of a turned head; the far one
+  goes behind it. Clipping to the face's outline was tried first. It hid the
+  near arm exactly where it should show.
+
+They are built-in only. The wire format does not carry a model yet:
+`format-vectors.json`, which the app and the catalogue both run, refuses
+schema 4, and that is a format decision for kyron-lenses rather than one to
+slip in here. `specs` shares its id with the flat catalogue lens. The app
+prefers its own copy, so new builds draw the 3D pair and older ones keep the
+picture.
+
+## Where things land, and why it used to be off
+
+On Android the camera streams landscape frames from a sensor mounted on its
+side. The tracker is told the rotation and returns landmarks normalised to the
+**upright** picture. The screen multiplied those by the **raw** landscape size,
+which stretched x by the long side and y by the short one. The result:
+
+- the head's tilt came out about half what it was;
+- the pupil gap grew as the head leaned;
+- frost and fill were drawn as skewed boxes near the face rather than on it;
+- the preview and the saved photo disagreed, because the photo is portrait and
+  was right.
+
+`SkinSampler.uprightSize` and `SkinSampler.upright` fix both halves: the size
+everything is normalised to, and reading raw pixels at upright coordinates for
+the exposure meter and skin sampling.
+
+## The screen
+
+Laid out the way Snapchat, TikTok and RedNote lay out a camera, because that is
+the layout people already know. The picture fills the screen with no title bar,
+and the controls float on it.
+
+- **The lenses run through the shutter**, on both sides of it. Swiping changes
+  lens as it goes, every tile snaps to the middle, and tapping a tile slides it
+  there.
+- **The front camera opens first.** Double-tap the picture to flip. The flash
+  button appears on the back camera.
+- **Photo and Video** sit under the shutter. In Video, tap to start and stop or
+  hold to record. Recordings stop at 60 seconds.
+- **Capture opens the composer** with the photo or video attached. The screen
+  used to attach the file and pop back to the feed, so the picture sat in the
+  composer's state unseen.
+- **The saved photo is what was on screen.** It is cropped to the part of the
+  frame the cover-fit preview showed. On Android, front-camera photos are also
+  mirrored back, because the platform returns them the way the sensor saw them.
+
 ## What it is still not
 
-**Flat pictures, not objects.** An attachment is a sprite placed and rotated in
-two dimensions. A head turning to the side is exactly where that stops being
-convincing, and where a real mesh becomes necessary.
+**Lenses on video.** Video records the camera as it is, so Video mode takes
+the lens off and says *"Lenses are for photos, for now"*. Baking a lens into
+video needs a frame pipeline and an encoder on the native side. On Android
+that is Media3 Transformer with an RGB matrix and a per-frame overlay, driven
+by face poses recorded with timestamps. The app has neither yet. A recording
+that came back without the glasses someone was wearing in the viewfinder would
+be the screen lying.
+
+**Glasses from the catalogue.** See above: a format decision first.
 
 **No expression.** The tracker reports 52 blendshapes — `jawOpen`,
 `mouthSmileLeft` — and nothing consumes them yet.
 
-**No occlusion.** Glasses arms draw over the head rather than disappearing
-behind it, which is the single biggest difference between "stuck on" and
-"there".
+**Occlusion by the face mesh only.** The arms hide behind the face and the
+far side of the head. Hair and ears are not in the mesh, so the hook behind
+the ear is simply never drawn.
 
 **No planes or markers.** Nothing is placed in the room. This is face tracking,
 not world tracking.
-
-**No video.** Stills only. The shutter takes a photograph; there is no record
-button.
 
 **No warping.** Nothing moves a pixel to a different place -- no bulge, no
 stretch, no swapped faces. Schema 3 brought blur, but as two named effects over
@@ -270,3 +344,6 @@ plainly instead of the Play Store hiding Kyron from that device.
 
 iOS carries `NSCameraUsageDescription`; a build that touches the camera without
 one is rejected.
+
+The microphone is asked for only on switching to Video. A photo never needs
+it, so the camera opens without audio until a recording is wanted.

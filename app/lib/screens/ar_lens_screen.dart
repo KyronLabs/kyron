@@ -1,51 +1,66 @@
-import '../l10n/app_localizations.dart';
-
 // lib/screens/ar_lens_screen.dart
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
+import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/face_anchor.dart';
+import '../models/glasses_model.dart';
+import '../models/head_pose.dart';
 import '../models/lens.dart';
 import '../models/lens_effect.dart';
 import '../models/post_media.dart';
 import '../providers/composer_provider.dart';
+import '../routes.dart';
 import '../services/app_log.dart';
 import '../services/attachment_images.dart';
 import '../services/exposure_meter.dart';
 import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
+import '../services/platform_support.dart';
 import '../services/skin_sampler.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/face_attachment_painter.dart';
 import '../widgets/face_reticle.dart';
+import '../widgets/glasses_painter.dart';
 import '../widgets/lens_effect_layer.dart';
-import '../services/platform_support.dart';
-import '../widgets/kyron_app_bar.dart';
+
+/// Photo or video. One shutter, two jobs.
+enum CaptureMode { photo, video }
 
 /// The camera, with a lens over it.
 ///
-/// This replaces `ComingSoonScreen.arLens()`, which said lenses were not built
-/// and kept the camera closed -- which was honest at the time.
+/// Laid out the way every camera people already use is laid out -- Snapchat,
+/// TikTok, RedNote -- because that is a vocabulary somebody arrives knowing:
+/// the picture is the whole screen, the controls float on it, and the lenses
+/// run through the shutter. Swipe and the lens under the shutter is the lens
+/// on your face; press it and that is the picture.
 ///
-/// A lens is any of three things: a colour transform over the whole frame,
-/// pictures hung on a tracked face, and effects that change the face itself.
-/// All three are applied to the live preview and baked into the saved file by
-/// the same code, so the picture taken is the picture seen -- which is the one
-/// thing this screen must never get wrong.
+/// A lens is a colour transform over the whole frame, pictures hung on a
+/// tracked face, effects that change the face itself, or glasses built in
+/// three dimensions and turned with the head. All of them are applied to the
+/// live preview and baked into the saved file by the same code, so the
+/// picture taken is the picture seen -- which is the one thing this screen
+/// must never get wrong. That includes the crop and the mirror: the saved
+/// photograph is exactly the part of the frame that was on screen, the right
+/// way round for the person who was looking at it.
 ///
-/// See docs/LENS_FORMAT.md for what a lens may contain, and docs/AR.md for
-/// what the tracking does and does not do.
+/// Video records the camera as it is. Baking a lens into video needs an
+/// encoder this app does not have yet, and a recording that came back
+/// without the glasses somebody was wearing in the viewfinder would be the
+/// screen lying. So video mode takes the lens off, and says so. See
+/// docs/AR.md.
 class ArLensScreen extends ConsumerStatefulWidget {
   const ArLensScreen({
     super.key,
@@ -72,6 +87,39 @@ class ArLensScreen extends ConsumerStatefulWidget {
   /// The pictures a lens hangs on a face.
   final AttachmentImages? pictures;
 
+  /// The longest recording, as on every short-video app.
+  static const maxRecording = Duration(seconds: 60);
+
+  /// Which camera to open first: the front one.
+  ///
+  /// A lens camera is a selfie camera. It used to open on whichever camera
+  /// the platform listed first -- the back one, on every Android phone -- so
+  /// the first thing anybody saw was their floor, and the first thing they
+  /// did was hunt for the flip button.
+  static int initialCamera(List<CameraDescription> cameras) {
+    final front = cameras.indexWhere(
+      (camera) => camera.lensDirection == CameraLensDirection.front,
+    );
+    return front < 0 ? 0 : front;
+  }
+
+  /// The middle of [photo] with the same shape as [viewport] -- what a cover
+  /// fit showed of it.
+  static Rect visibleCrop(Size photo, Size viewport) {
+    if (photo.isEmpty || viewport.isEmpty) return Offset.zero & photo;
+    final want = viewport.width / viewport.height;
+    final have = photo.width / photo.height;
+    // Within a percent is the same shape; cropping a few pixels off is a
+    // re-encode for nothing.
+    if ((want - have).abs() / want < 0.01) return Offset.zero & photo;
+    if (have > want) {
+      final width = photo.height * want;
+      return Rect.fromLTWH((photo.width - width) / 2, 0, width, photo.height);
+    }
+    final height = photo.width / want;
+    return Rect.fromLTWH(0, (photo.height - height) / 2, photo.width, height);
+  }
+
   @override
   ConsumerState<ArLensScreen> createState() => _ArLensScreenState();
 }
@@ -80,7 +128,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     with WidgetsBindingObserver {
   CameraController? _controller;
   List<CameraDescription> _cameras = const [];
-  int _cameraIndex = 0;
+  int? _cameraIndex;
 
   late final LensCatalogue _catalogue = widget.catalogue ?? LensCatalogue();
   late final FaceTracker _tracker = widget.tracker ?? FaceTracker();
@@ -97,6 +145,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// Where the face is right now, or null when there is not one.
   FaceAnchor? _face;
 
+  /// Which way the head is facing, for lenses built in three dimensions.
+  HeadPose? _pose;
+
   /// The whole mesh behind [_face]. Attachments only need an anchor, but an
   /// effect is a region cut out of a face and a region needs the point cloud.
   List<FacePoint>? _landmarks;
@@ -105,9 +156,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// face has been seen, and a fill draws nothing without it.
   Color? _skin;
 
-  /// The size of the frames the tracker is reading, which is what the
-  /// landmarks are normalised against.
+  /// The size of the frames the tracker is reading, *upright* -- which is
+  /// what the landmarks are normalised against. See [SkinSampler.uprightSize].
   Size _frame = Size.zero;
+
+  /// The shape of the screen the preview is drawn into, so the saved photo
+  /// can be cropped to exactly what was visible.
+  Size _viewport = Size.zero;
 
   /// Whether frames are being fed to the tracker. Only true while a lens
   /// actually needs a face: tracking a face for a colour filter is battery
@@ -118,9 +173,26 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// never waits on a disk read.
   List<Lens> _lenses = Lens.builtIn;
   Lens _lens = Lens.builtIn.first;
+
+  /// The lens chosen in photo mode, restored on the way back from video.
+  Lens _photoLens = Lens.builtIn.first;
+
+  /// The lens whose pictures are on their way, so the shutter can say so.
+  String? _fetching;
+
+  CaptureMode _mode = CaptureMode.photo;
+  FlashMode _flash = FlashMode.off;
+
   bool _opening = true;
   bool _capturing = false;
   String? _problem;
+
+  bool _recording = false;
+  final _recorded = Stopwatch();
+  Timer? _recordTicker;
+
+  /// The white blink when a photo is taken.
+  bool _blink = false;
 
   @override
   void initState() {
@@ -162,9 +234,6 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// they are not looking at.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // Back with no camera: the one let go below. This used to return early
-    // whenever there was no controller -- which, after letting it go, was
-    // always -- so the camera never came back and the viewfinder spun.
     // Not while one is already opening: the permission prompt steps the app
     // back and forward again in the middle of the first open.
     if (state == AppLifecycleState.resumed) {
@@ -177,11 +246,10 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
     if (state == AppLifecycleState.inactive) {
       _controller = null;
-      // The frames stop with the controller. Left true, the flag said a
-      // stream was running on a controller that no longer existed, so the
-      // camera came back with a face lens chosen and nothing tracking it --
-      // until a colour lens was picked, which is the one path that cleared it.
+      // The frames stop with the controller, and so does a recording: there
+      // is no picking one back up on a camera that was let go.
       _streaming = false;
+      _endRecordingState();
       controller.dispose();
       if (mounted) setState(() {});
     }
@@ -216,10 +284,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         return;
       }
 
+      final index = _cameraIndex ??= ArLensScreen.initialCamera(found);
       final controller = CameraController(
-        found[_cameraIndex % found.length],
+        found[index % found.length],
         ResolutionPreset.high,
-        enableAudio: false,
+        // Only when recording. Asking for the microphone to take a photo is
+        // a permission prompt nobody has a reason to accept.
+        enableAudio: _mode == CaptureMode.video,
         // What the face graph reads without a conversion pass. Asking the
         // camera for the right arrangement is free; converting every frame is
         // not.
@@ -234,6 +305,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       }
 
       await _meterOnTheMiddle(controller);
+      await _applyFlash(controller);
 
       setState(() {
         _cameras = found;
@@ -242,8 +314,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       });
       // A face lens chosen before the camera was ready, or still chosen when
       // it comes back from the background or a flip, is tracked on this
-      // controller. Only picking a lens used to start tracking, and picking
-      // one before there was a controller started nothing at all.
+      // controller.
       if (_lens.needsFace) await _startTracking();
     } on CameraException catch (error) {
       AppLog.instance.error('ar', 'Camera would not open: ${error.code}');
@@ -252,7 +323,8 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         _opening = false;
         // Named, because the two are fixed in different places: one in the
         // system settings and one not at all.
-        _problem = error.code == 'CameraAccessDenied'
+        _problem = error.code == 'CameraAccessDenied' ||
+                error.code == 'AudioAccessDenied'
             ? 'Kyron does not have permission to use the camera. You can '
                 'grant it in your device settings.'
             : 'The camera would not open.';
@@ -267,11 +339,23 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
-  /// Picks a lens, and starts or stops face tracking to match.
-  ///
-  /// Tracking runs only while something needs it. A colour filter does not,
-  /// and inference on every frame for a lens that ignores the answer is
-  /// somebody's battery spent on nothing.
+  /// Lets the camera go and opens it again: after a flip, or a change of mode
+  /// that needs the microphone.
+  Future<void> _reopen() async {
+    final controller = _controller;
+    _controller = null;
+    // Its frames end with it; [_open] starts them again on the new camera.
+    _streaming = false;
+    setState(() {
+      _opening = true;
+      _face = null;
+      _pose = null;
+      _landmarks = null;
+    });
+    await controller?.dispose();
+    await _open();
+  }
+
   /// Points the camera's exposure and focus at the middle of the frame.
   ///
   /// Somebody holding a phone at arm's length has their head there, and left
@@ -301,12 +385,41 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
+  bool get _front =>
+      _controller?.description.lensDirection == CameraLensDirection.front;
+
+  /// The flash, as chosen, on the camera that is open. A front camera has no
+  /// flash to fire, so it is always off there.
+  Future<void> _applyFlash(CameraController controller) async {
+    final front =
+        controller.description.lensDirection == CameraLensDirection.front;
+    try {
+      await controller.setFlashMode(front ? FlashMode.off : _flash);
+    } on CameraException catch (error) {
+      AppLog.instance.error('ar', 'Could not set the flash: ${error.code}');
+    }
+  }
+
+  Future<void> _toggleFlash() async {
+    final controller = _controller;
+    if (controller == null) return;
+    HapticFeedback.selectionClick();
+    setState(() {
+      _flash = switch (_flash) {
+        FlashMode.off =>
+          _mode == CaptureMode.video ? FlashMode.torch : FlashMode.always,
+        _ => FlashMode.off,
+      };
+    });
+    await _applyFlash(controller);
+  }
+
   /// Opens the camera up until the face is exposed, frame by frame.
   ///
-  /// [region] is where to look: the face when there is one, and the middle of
-  /// the frame before there is. The reading is taken from the frame the
-  /// tracker just saw rather than from a preview widget, so what is metered is
-  /// exactly what the detector was given.
+  /// [region] is where to look, in the upright picture: the face when there
+  /// is one, and the middle of the frame before there is. The reading is
+  /// taken from the frame the tracker just saw rather than from a preview
+  /// widget, so what is metered is exactly what the detector was given.
   void _meterOnTheFace(CameraImage frame, Rect region) {
     final controller = _controller;
     if (controller == null || _adjustingExposure) return;
@@ -314,7 +427,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final (min, max) = _exposureRange;
     if (!(max > min)) return;
 
-    final read = SkinSampler.forCameraImage(frame);
+    final read = _reader(frame);
     if (read == null) return;
     final luma = ExposureMeter.luma(read: read, region: region);
     if (luma == null) return;
@@ -336,6 +449,20 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }).whenComplete(() => _adjustingExposure = false);
   }
 
+  int get _rotation => _controller?.description.sensorOrientation ?? 0;
+
+  /// The frame's pixels, addressed the way the landmarks are: upright.
+  ReadPixel? _reader(CameraImage frame) {
+    final raw = SkinSampler.forCameraImage(frame);
+    if (raw == null) return null;
+    return SkinSampler.upright(
+      raw,
+      width: frame.width,
+      height: frame.height,
+      rotationDegrees: _rotation,
+    );
+  }
+
   /// Fetches the artwork for the lenses in the strip, so each tile can show
   /// the picture it hangs rather than a placeholder.
   ///
@@ -355,19 +482,41 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
+  /// Picks a lens, and starts or stops face tracking to match.
+  ///
+  /// Tracking runs only while something needs it. A colour filter does not,
+  /// and inference on every frame for a lens that ignores the answer is
+  /// somebody's battery spent on nothing.
   Future<void> _choose(Lens lens) async {
-    setState(() => _lens = lens);
+    if (lens.id == _lens.id) return;
+    setState(() {
+      _lens = lens;
+      _photoLens = lens;
+    });
 
     if (!lens.needsFace) {
       await _stopTracking();
       return;
     }
 
-    // Fetch first: a lens whose pictures have not arrived would otherwise
-    // track a face and draw nothing on it.
-    if (await _pictures.load(lens) && mounted) setState(() {});
+    if (lens.attachments.isNotEmpty) {
+      // Fetch first: a lens whose pictures have not arrived would otherwise
+      // track a face and draw nothing on it. The shutter spins meanwhile,
+      // rather than the lens looking as though it did nothing.
+      setState(() => _fetching = lens.id);
+      final arrived = await _pictures.load(lens);
+      if (!mounted) return;
+      setState(() {
+        if (_fetching == lens.id) _fetching = null;
+      });
+      if (!arrived && _pictures.ready(lens).isEmpty) {
+        // ignore: use_build_context_synchronously
+        _say(AppLocalizations.of(context)
+            .ui('ar_lens_not_loaded', 'That lens could not be loaded.'));
+      }
+    }
     // Something else was picked while the pictures were arriving.
-    if (!mounted || !_lens.needsFace) return;
+    if (!mounted || _lens.id != lens.id) return;
     await _startTracking();
   }
 
@@ -391,11 +540,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     if (!await _tracker.open()) {
       if (!mounted) return;
       // Said out loud rather than left as a lens that quietly does nothing.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).faceTrackingUnavailable),
-        ),
-      );
+      _say(AppLocalizations.of(context).faceTrackingUnavailable);
       return;
     }
 
@@ -420,7 +565,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       // Already stopped, or the camera went away underneath. Either way there
       // is nothing left to stop.
     }
-    if (mounted) setState(() => _face = null);
+    if (mounted) setState(_lost);
   }
 
   /// One camera frame.
@@ -430,11 +575,15 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   void _onFrame(CameraImage frame) {
     if (!_streaming || !mounted) return;
 
-    final points = _tracker.track(
-      frame,
-      rotationDegrees: _controller?.description.sensorOrientation ?? 0,
+    final rotation = _rotation;
+    final points = _tracker.track(frame, rotationDegrees: rotation);
+    // Upright: the tracker turned the frame before it looked, and its
+    // landmarks are normalised to the turned picture. See
+    // SkinSampler.uprightSize for what using the raw size did.
+    final size = SkinSampler.uprightSize(
+      Size(frame.width.toDouble(), frame.height.toDouble()),
+      rotation,
     );
-    final size = Size(frame.width.toDouble(), frame.height.toDouble());
 
     if (points == null) {
       // Metered on the middle of the frame *because* there is no face: an
@@ -445,9 +594,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       return;
     }
 
-    // Attachments hang off whatever the lens asked for. An effects-only lens
-    // has nothing to ask, and the eyes are the right default: the gap between
-    // the pupils is the unit every region and every blur is stated in.
+    // Attachments hang off whatever the lens asked for. Anything else is
+    // measured from the eyes: the gap between the pupils is the unit every
+    // region, every blur and every pair of glasses is stated in.
     final anchor = FaceAnchor.resolve(
       _lens.attachments.isEmpty
           ? FaceAnchorPoint.eyes
@@ -468,9 +617,11 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final skin = _lens.effects.any((effect) => effect is FillEffect)
         ? _readSkin(frame, points, size)
         : null;
+    final pose = _lens.glasses == null ? null : HeadPose.resolve(points, size);
 
     setState(() {
       _face = anchor;
+      _pose = pose;
       _landmarks = points;
       _frame = size;
       if (skin != null) _skin = _settle(_skin, skin);
@@ -479,6 +630,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   void _lost() {
     _face = null;
+    _pose = null;
     _landmarks = null;
     // Dropped with the face rather than kept: the next face through the
     // viewfinder is somebody else, and easing their fill out of the last
@@ -488,7 +640,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// The skin colour in this frame, or null when it cannot be read.
   Color? _readSkin(CameraImage frame, List<FacePoint> points, Size size) {
-    final read = SkinSampler.forCameraImage(frame);
+    final read = _reader(frame);
     if (read == null) return null;
     final eyes = FaceAnchor.resolve(FaceAnchorPoint.eyes, points, size);
     if (eyes == null) return null;
@@ -504,70 +656,218 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       from == null ? to : Color.lerp(from, to, 0.25)!;
 
   Future<void> _flip() async {
-    if (_cameras.length < 2) return;
-    final controller = _controller;
-    _controller = null;
-    // Its frames end with it; [_open] starts them again on the new camera.
-    _streaming = false;
-    setState(() => _opening = true);
-    await controller?.dispose();
-    _cameraIndex = (_cameraIndex + 1) % _cameras.length;
+    if (_cameras.length < 2 || _opening || _recording) return;
+    HapticFeedback.selectionClick();
+    _cameraIndex = ((_cameraIndex ?? 0) + 1) % _cameras.length;
     // The two cameras have their own exposure. Carrying the front camera's
     // compensation over to the back one exposes for a scene that is no longer
     // in front of the lens.
     _exposure.reset();
-    await _open();
+    await _reopen();
   }
+
+  /// Photo or video.
+  ///
+  /// Video takes the lens off -- see the class comment -- and opens the
+  /// camera again with the microphone, which a photo never asks for. Coming
+  /// back puts the lens back.
+  Future<void> _setMode(CaptureMode mode) async {
+    if (mode == _mode || _recording || _capturing) return;
+    HapticFeedback.selectionClick();
+    final restore = _photoLens;
+    setState(() {
+      _mode = mode;
+      if (_flash != FlashMode.off) _flash = FlashMode.off;
+    });
+    if (mode == CaptureMode.video) {
+      await _stopTracking();
+      setState(() => _lens = Lens.builtIn.first);
+    } else {
+      setState(() => _lens = restore);
+    }
+    if (_controller != null || _opening) await _reopen();
+  }
+
+  // -------------------------------------------------------------------------
+  // Capture
+  // -------------------------------------------------------------------------
+
+  bool get _ready =>
+      _controller != null && _problem == null && !_opening && !_capturing;
+
+  void _onShutterTap() {
+    if (!_ready) return;
+    if (_mode == CaptureMode.photo) {
+      _capture();
+    } else if (_recording) {
+      _stopRecording();
+    } else {
+      _startRecording();
+    }
+  }
+
+  void _onShutterHold() {
+    if (!_ready || _mode != CaptureMode.video || _recording) return;
+    _heldToRecord = true;
+    _startRecording();
+  }
+
+  void _onShutterRelease() {
+    if (!_heldToRecord) return;
+    _heldToRecord = false;
+    if (_recording) _stopRecording();
+  }
+
+  /// Whether the recording running was started by holding the shutter, in
+  /// which case letting go ends it.
+  bool _heldToRecord = false;
 
   /// Takes the picture, bakes the lens into it, and hands it to the composer.
   Future<void> _capture() async {
     final controller = _controller;
     if (controller == null || _capturing) return;
 
-    setState(() => _capturing = true);
+    HapticFeedback.mediumImpact();
+    setState(() {
+      _capturing = true;
+      _blink = true;
+    });
+    Timer(const Duration(milliseconds: 90), () {
+      if (mounted) setState(() => _blink = false);
+    });
+
     try {
       final shot = await controller.takePicture();
       final baked = await _bake(shot);
-
-      ref.read(composerProvider.notifier).attachFile(baked, MediaKind.image);
       if (!mounted) return;
-      Navigator.pop(context, baked);
+      _toComposer(baked, MediaKind.image);
     } catch (error) {
       AppLog.instance.error('ar', 'Could not take the picture: $error');
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).couldNotTakePicture),
-        ),
-      );
+      _say(AppLocalizations.of(context).couldNotTakePicture);
     } finally {
       if (mounted) setState(() => _capturing = false);
     }
   }
 
-  /// Writes the captured frame back out with the lens applied.
+  Future<void> _startRecording() async {
+    final controller = _controller;
+    if (controller == null || _recording) return;
+    HapticFeedback.mediumImpact();
+    try {
+      await controller.startVideoRecording();
+      if (!mounted) return;
+      setState(() => _recording = true);
+      _recorded
+        ..reset()
+        ..start();
+      _recordTicker = Timer.periodic(const Duration(milliseconds: 100), (_) {
+        if (!mounted) return;
+        if (_recorded.elapsed >= ArLensScreen.maxRecording) {
+          _stopRecording();
+        } else {
+          setState(() {});
+        }
+      });
+    } catch (error) {
+      AppLog.instance.error('ar', 'Could not start recording: $error');
+      _heldToRecord = false;
+      if (!mounted) return;
+      _say(AppLocalizations.of(context)
+          .ui('ar_could_not_record', 'The video could not be recorded.'));
+    }
+  }
+
+  Future<void> _stopRecording() async {
+    final controller = _controller;
+    if (controller == null || !_recording) return;
+    _endRecordingState();
+    setState(() => _capturing = true);
+    try {
+      final file = await controller.stopVideoRecording();
+      if (!mounted) return;
+      _toComposer(file.path, MediaKind.video);
+    } catch (error) {
+      AppLog.instance.error('ar', 'Could not finish recording: $error');
+      if (!mounted) return;
+      _say(AppLocalizations.of(context)
+          .ui('ar_could_not_record', 'The video could not be recorded.'));
+    } finally {
+      if (mounted) setState(() => _capturing = false);
+    }
+  }
+
+  void _endRecordingState() {
+    _recordTicker?.cancel();
+    _recordTicker = null;
+    _recorded.stop();
+    _recording = false;
+  }
+
+  /// Attaches what was captured and opens the composer on it.
   ///
-  /// The preview and the file go through the same [Lens.matrix]; without this
-  /// the photograph would come back plain and the viewfinder would have been
-  /// lying.
+  /// This used to attach the file and pop -- back to wherever the camera was
+  /// opened from, which is the home feed. The picture was in the composer's
+  /// state, invisibly, until somebody happened to open it. A camera opened
+  /// from "create" ends in the thing being created.
+  void _toComposer(String path, MediaKind kind) {
+    final composer = ref.read(composerProvider);
+    if (!composer.canAddMedia) {
+      _say(AppLocalizations.of(context).ui(
+        'ar_composer_full',
+        'Your post already has as many attachments as it can take.',
+      ));
+    } else {
+      // Not awaited: it uploads in the background and the composer shows its
+      // progress, which is the composer's job and not this screen's.
+      unawaited(ref.read(composerProvider.notifier).attachFile(path, kind));
+    }
+    Navigator.of(context).pushReplacementNamed(Routes.composer);
+  }
+
+  void _say(String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  /// Writes the captured frame back out with the lens applied, cropped and
+  /// turned the way the viewfinder showed it.
+  ///
+  /// The preview and the file go through the same [Lens.matrix], the same
+  /// painters and the same pose; without this the photograph would come back
+  /// plain and the viewfinder would have been lying.
   Future<String> _bake(XFile shot) async {
     final attachments = _pictures.ready(_lens);
     final effects = _lens.effects;
-    if (_lens.filter == null && attachments.isEmpty && effects.isEmpty) {
-      return shot.path;
-    }
+    final glasses = _lens.glasses;
 
     final bytes = await shot.readAsBytes();
     final decoded = await _decode(bytes);
+    final photoSize = Size(
+      decoded.width.toDouble(),
+      decoded.height.toDouble(),
+    );
+    final crop = ArLensScreen.visibleCrop(photoSize, _viewport);
+    // Android hands back the front camera's photo the way the sensor saw it
+    // -- the other way round from the mirror somebody was looking at. Turned
+    // back here so the saved picture is the one on screen.
+    final mirror = _front && Platform.isAndroid;
+
+    final unchanged =
+        !_lens.changesPicture && !mirror && crop == Offset.zero & photoSize;
+    if (unchanged) return shot.path;
+
     final filtered = await widget.renderer.apply(decoded, _lens);
-    // Effects first, attachments over them -- the order the preview stacks
-    // them in, because it is the same picture.
+    // Effects first, then glasses and attachments over them -- the order the
+    // preview stacks them in, because it is the same picture.
     final changed =
         effects.isEmpty ? filtered : await _drawEffects(filtered, effects);
-    final drawn = attachments.isEmpty
-        ? changed
-        : await _drawAttachments(changed, attachments);
-    final png = await widget.renderer.encode(drawn);
+    final worn = glasses == null ? changed : await _drawGlasses(changed);
+    final drawn =
+        attachments.isEmpty ? worn : await _drawAttachments(worn, attachments);
+    final framed = await _frameAs(drawn, crop: crop, mirror: mirror);
+    final png = await widget.renderer.encode(framed);
 
     final directory = await getTemporaryDirectory();
     final path = p.join(
@@ -576,6 +876,42 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
     await File(path).writeAsBytes(png, flush: true);
     return path;
+  }
+
+  /// [photo] cut down to [crop] and flipped when [mirror] is set.
+  Future<ui.Image> _frameAs(
+    ui.Image photo, {
+    required Rect crop,
+    required bool mirror,
+  }) async {
+    final whole = Rect.fromLTWH(
+      0,
+      0,
+      photo.width.toDouble(),
+      photo.height.toDouble(),
+    );
+    if (crop == whole && !mirror) return photo;
+
+    final width = crop.width.round();
+    final height = crop.height.round();
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
+    if (mirror) {
+      canvas.translate(width.toDouble(), 0);
+      canvas.scale(-1, 1);
+    }
+    canvas.drawImageRect(
+      photo,
+      crop,
+      Rect.fromLTWH(0, 0, width.toDouble(), height.toDouble()),
+      ui.Paint()..filterQuality = ui.FilterQuality.high,
+    );
+    final picture = recorder.endRecording();
+    try {
+      return await picture.toImage(width, height);
+    } finally {
+      picture.dispose();
+    }
   }
 
   /// The effects, drawn into the captured still.
@@ -603,25 +939,38 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     // reading when the pixels cannot be had.
     final skin = await _skinIn(photo, points, size) ?? _skin;
 
-    final recorder = ui.PictureRecorder();
-    final canvas = ui.Canvas(recorder);
-    canvas.drawImage(photo, ui.Offset.zero, ui.Paint());
-    const LensEffectBaker().paint(
-      canvas,
-      photo,
-      effects,
-      landmarks: points,
-      face: face,
-      frame: size,
-      skin: skin,
-    );
+    return _paintOver(photo, (canvas) {
+      const LensEffectBaker().paint(
+        canvas,
+        photo,
+        effects,
+        landmarks: points,
+        face: face,
+        frame: size,
+        skin: skin,
+      );
+    });
+  }
 
-    final picture = recorder.endRecording();
-    try {
-      return await picture.toImage(photo.width, photo.height);
-    } finally {
-      picture.dispose();
-    }
+  /// The glasses, drawn into the captured still from the same landmarks the
+  /// preview drew them from, resolved at the photograph's own size.
+  Future<ui.Image> _drawGlasses(ui.Image photo) async {
+    final points = _landmarks;
+    final model = _lens.glasses;
+    if (points == null || model == null) return photo;
+
+    final size = Size(photo.width.toDouble(), photo.height.toDouble());
+    final pose = HeadPose.resolve(points, size);
+    if (pose == null) return photo;
+
+    return _paintOver(photo, (canvas) {
+      GlassesPainter.paintGlasses(
+        canvas,
+        model,
+        pose,
+        face: _outline(points, size),
+      );
+    });
   }
 
   /// The skin colour in the photograph itself.
@@ -640,13 +989,9 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
   }
 
-  /// The attachments, drawn onto the captured still.
-  ///
-  /// The same painter the preview uses, against a face found in the photograph
-  /// itself rather than the last preview frame. That costs one more inference
-  /// per shutter press and is worth it: the preview's last frame is from
-  /// before the shutter, and a head that moved in between would leave the
-  /// glasses somewhere the eyes are not.
+  /// The attachments, drawn onto the captured still, with the same painter
+  /// the preview uses and the last face the preview saw, rescaled to the
+  /// photograph.
   Future<ui.Image> _drawAttachments(
     ui.Image photo,
     List<ResolvedAttachment> attachments,
@@ -660,14 +1005,23 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       _frame.height <= 0 ? 1 : size.height / _frame.height,
     );
 
+    return _paintOver(photo, (canvas) {
+      FaceAttachmentPainter(
+        attachments: attachments,
+        face: _scaled(face, scale),
+      ).paint(canvas, size);
+    });
+  }
+
+  /// [photo], with [draw] painted over it, as a new image the same size.
+  Future<ui.Image> _paintOver(
+    ui.Image photo,
+    void Function(ui.Canvas canvas) draw,
+  ) async {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
     canvas.drawImage(photo, ui.Offset.zero, ui.Paint());
-    FaceAttachmentPainter(
-      attachments: attachments,
-      face: _scaled(face, scale),
-    ).paint(canvas, size);
-
+    draw(canvas);
     final picture = recorder.endRecording();
     try {
       return await picture.toImage(photo.width, photo.height);
@@ -682,71 +1036,117 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     return frame.image;
   }
 
+  /// Every landmark at [size], with depth: the surface the arms of a pair
+  /// of glasses are hidden behind. Depth is normalised to the width.
+  static List<Vec3> _outline(List<FacePoint> points, Size size) => [
+        for (final point in points)
+          Vec3(
+            point.x * size.width,
+            point.y * size.height,
+            point.z * size.width,
+          ),
+      ];
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _streaming = false;
+    _endRecordingState();
     _tracker.dispose();
     _pictures.dispose();
     _controller?.dispose();
     super.dispose();
   }
 
+  // -------------------------------------------------------------------------
+  // Layout
+  // -------------------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final canFlip = _cameras.length > 1;
+    final hasFlash = _controller != null && !_front && _problem == null;
+
     // The whole screen under the dark theme, whatever the phone is set to.
     // A viewfinder is a black surface either way, and everything drawn over
-    // it -- the bar, the strip, the shutter -- belongs to the camera rather
-    // than to the app around it.
-    return Theme(
-      data: KyronTheme.darkTheme,
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: KyronAppBar(
+    // it belongs to the camera rather than to the app around it.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.black,
+      ),
+      child: Theme(
+        data: KyronTheme.darkTheme,
+        child: Scaffold(
           backgroundColor: Colors.black,
-          // Spelled out rather than left to `foregroundColor`, which does not
-          // win: the design system's AppBarTheme sets titleTextStyle and
-          // iconTheme, and a theme's own colours beat the widget's
-          // foregroundColor. Under the light theme that put near-black text
-          // and a near-black back arrow on this black bar, and the top of the
-          // screen was simply blank.
-          //
-          // The theme's own style with the colour changed, not a fresh one:
-          // a TextStyle written out here *replaces* the design system's
-          // rather than merging with it, and takes the type family down with
-          // it. That is how the sign-in screen's legal line ended up in
-          // whatever font the platform happened to hand back.
-          titleTextStyle: KyronTheme.darkTheme.appBarTheme.titleTextStyle
-              ?.copyWith(color: Colors.white),
-          iconTheme: const IconThemeData(color: Colors.white),
-          actionsIconTheme: const IconThemeData(color: Colors.white),
-          leading: IconButton(
-            icon: const Icon(Iconsax.arrow_left_copy),
-            onPressed: () => Navigator.pop(context),
-            tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-          ),
-          title: Text(AppLocalizations.of(context).arLens),
-          actions: [
-            if (_cameras.length > 1)
-              IconButton(
-                icon: const Icon(Iconsax.refresh_copy),
-                onPressed: _opening ? null : _flip,
-                tooltip: AppLocalizations.of(context).literalswitchCamera,
-              ),
-          ],
-        ),
-        body: SafeArea(
-          child: Column(
+          body: Stack(
+            fit: StackFit.expand,
             children: [
-              Expanded(child: _viewfinder()),
-              _LensStrip(
-                lenses: _lenses,
-                selected: _lens,
-                onChanged: _choose,
-                camera: _problem == null ? _controller : null,
-                pictures: _pictures,
+              // Double-tap anywhere on the picture flips the camera, as it
+              // does in every camera app with a selfie side.
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onDoubleTap: canFlip ? _flip : null,
+                child: _viewfinder(),
               ),
-              _shutter(),
+              // Shades top and bottom, so white controls read over a white
+              // ceiling or a white pillow.
+              const _Scrim(top: true),
+              const _Scrim(top: false),
+              IgnorePointer(
+                child: AnimatedOpacity(
+                  opacity: _blink ? 0.85 : 0,
+                  duration: Duration(milliseconds: _blink ? 30 : 220),
+                  child: const ColoredBox(color: Colors.white),
+                ),
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpacingTokens.space12,
+                    vertical: SpacingTokens.space8,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _GlassButton(
+                        icon: Iconsax.close_circle_copy,
+                        tooltip: MaterialLocalizations.of(context)
+                            .closeButtonTooltip,
+                        onPressed: () => Navigator.maybePop(context),
+                      ),
+                      const Spacer(),
+                      if (_recording) _RecordingTime(_recorded.elapsed),
+                      const Spacer(),
+                      Column(
+                        children: [
+                          if (canFlip)
+                            _GlassButton(
+                              icon: Iconsax.refresh_copy,
+                              tooltip: l10n.literalswitchCamera,
+                              onPressed: _opening || _recording ? null : _flip,
+                            ),
+                          if (hasFlash) ...[
+                            const SizedBox(height: SpacingTokens.space12),
+                            _GlassButton(
+                              icon: _flash == FlashMode.off
+                                  ? Iconsax.flash_slash_copy
+                                  : Iconsax.flash_1,
+                              tooltip: l10n.ui('ar_flash', 'Flash'),
+                              onPressed: _toggleFlash,
+                            ),
+                          ],
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SafeArea(top: false, child: _controls()),
+              ),
             ],
           ),
         ),
@@ -754,25 +1154,144 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     );
   }
 
+  Widget _controls() {
+    final l10n = AppLocalizations.of(context);
+    final photo = _mode == CaptureMode.photo;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // The chosen lens's name, which changes as the strip is swiped. Out
+        // of the accessibility tree: the tile already announces itself as
+        // selected, and read out this would say every name twice.
+        ExcludeSemantics(
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 180),
+            transitionBuilder: (child, animation) => FadeTransition(
+              opacity: animation,
+              child: SlideTransition(
+                position: Tween(
+                  begin: const Offset(0, 0.3),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+            ),
+            child: Text(
+              photo
+                  ? _lens.name
+                  : l10n.ui(
+                      'ar_video_plain',
+                      'Lenses are for photos, for now',
+                    ),
+              key: ValueKey(photo ? _lens.id : 'video'),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: TypographyTokens.fontSize2,
+                fontWeight: FontWeight.w600,
+                shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: SpacingTokens.space12),
+        SizedBox(
+          height: _Shutter.size,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Hidden rather than removed in video mode, so swiping back to
+              // photo finds the strip where it was left.
+              AnimatedOpacity(
+                opacity: photo ? 1 : 0,
+                duration: const Duration(milliseconds: 200),
+                child: IgnorePointer(
+                  ignoring: !photo,
+                  child: _LensCarousel(
+                    lenses: _lenses,
+                    selected: _lens,
+                    onChanged: _choose,
+                    camera: _problem == null ? _controller : null,
+                    pictures: _pictures,
+                  ),
+                ),
+              ),
+              _Shutter(
+                mode: _mode,
+                enabled: _ready || _recording,
+                busy: _capturing || _fetching == _lens.id,
+                recording: _recording,
+                progress: _recording
+                    ? _recorded.elapsed.inMilliseconds /
+                        ArLensScreen.maxRecording.inMilliseconds
+                    : 0,
+                label: photo
+                    ? l10n.literaltakeAPicture
+                    : l10n.ui('ar_record_video', 'Record a video'),
+                onTap: _onShutterTap,
+                onHold: _onShutterHold,
+                onRelease: _onShutterRelease,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: SpacingTokens.space12),
+        _ModeSwitch(
+          mode: _mode,
+          enabled: !_recording && !_capturing,
+          onChanged: _setMode,
+        ),
+        const SizedBox(height: SpacingTokens.space8),
+      ],
+    );
+  }
+
   Widget _viewfinder() {
     if (_problem != null) {
-      return Center(
-        child: EmptyState(
-          art: EmptyArt.lens,
-          title: AppLocalizations.of(context).literaltheCameraIsClosed,
-          detail: _problem!,
-          action: 'Try again',
-          onAction: _open,
+      return SafeArea(
+        child: Center(
+          child: EmptyState(
+            art: EmptyArt.lens,
+            title: AppLocalizations.of(context).literaltheCameraIsClosed,
+            detail: _problem!,
+            action: 'Try again',
+            onAction: _open,
+          ),
         ),
       );
     }
 
     final controller = _controller;
-    if (_opening || controller == null || !controller.value.isInitialized) {
-      return Center(child: CircularProgressIndicator(color: Colors.white));
-    }
+    final live =
+        !_opening && controller != null && controller.value.isInitialized;
 
-    // The same filter the file gets. One definition, two places it is drawn.
+    return LayoutBuilder(
+      builder: (context, box) {
+        _viewport = box.biggest;
+        // Cross-faded rather than swapped: a camera that opens with a hard
+        // cut from black, or from a spinner, is the "ugly" in how it loads.
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 320),
+          switchInCurve: Curves.easeOut,
+          child: live
+              ? KeyedSubtree(
+                  key: ValueKey(controller),
+                  child: _preview(controller),
+                )
+              : const _Warming(),
+        );
+      },
+    );
+  }
+
+  /// The preview and everything drawn on it, filling the screen.
+  ///
+  /// Everything is laid out in one box the shape of the camera's frame and
+  /// then scaled to cover the screen as a unit. The lens layers therefore sit
+  /// in the same coordinates as the picture under them whatever the screen's
+  /// shape -- which is what lets the preview fill a tall phone edge to edge
+  /// instead of sitting letterboxed in the middle of it.
+  Widget _preview(CameraController controller) {
     final preview = CameraPreview(controller);
     final filter = _lens.filter;
     final tinted = filter == null
@@ -781,20 +1300,28 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
     final front =
         controller.description.lensDirection == CameraLensDirection.front;
+    // The camera's aspect ratio is landscape; the phone is held upright.
+    final ratio = controller.value.aspectRatio;
+    const width = 1000.0;
 
-    return Center(
-      child: AspectRatio(
-        aspectRatio: 1 / controller.value.aspectRatio,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            tinted,
-            // Under the attachments on purpose: glasses go on a frosted
-            // face, not behind the frost.
-            if (_lens.effects.isNotEmpty) _effects(front),
-            if (_lens.needsFace) _attachments(front),
-            if (_lens.needsFace && _face == null) const FaceReticle(),
-          ],
+    return ClipRect(
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: width,
+          height: width * ratio,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              tinted,
+              // Under the glasses and attachments on purpose: glasses go on
+              // a frosted face, not behind the frost.
+              if (_lens.effects.isNotEmpty) _effects(front),
+              if (_lens.glasses != null) _glasses(front),
+              if (_lens.attachments.isNotEmpty) _attachments(front),
+              if (_lens.needsFace && _face == null) const FaceReticle(),
+            ],
+          ),
         ),
       ),
     );
@@ -817,20 +1344,32 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   }
 
   /// The face measured from the eyes, which is what every effect is scaled
-  /// against. Cheap enough to work out on demand -- it is a subtraction, an
-  /// atan2 and a distance -- so it is not another field to keep in step.
+  /// against.
   FaceAnchor? get _eyes {
     final points = _landmarks;
     if (points == null || _frame.isEmpty) return null;
     return FaceAnchor.resolve(FaceAnchorPoint.eyes, points, _frame);
   }
 
+  Widget _glasses(bool mirrored) {
+    final pose = _pose;
+    final points = _landmarks;
+    final model = _lens.glasses;
+    if (pose == null || points == null || model == null || _frame.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return CustomPaint(
+      painter: GlassesPainter(
+        model: model,
+        pose: pose,
+        face: _outline(points, _frame),
+        mirrored: mirrored,
+        frame: _frame,
+      ),
+    );
+  }
+
   /// The attachments, over the preview, at the size the preview is drawn.
-  ///
-  /// The landmarks are normalised to the camera frame, so they map onto
-  /// whatever box the preview occupies -- which is why the anchor is resolved
-  /// against [_frame] and then rescaled here rather than being computed in
-  /// screen pixels somewhere further up.
   Widget _attachments(bool mirrored) {
     final face = _face;
     if (face == null || _frame.isEmpty) return const SizedBox.shrink();
@@ -859,40 +1398,42 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   static FaceAnchor _scaled(FaceAnchor face, Size scale) => FaceAnchor(
         centre:
             Offset(face.centre.dx * scale.width, face.centre.dy * scale.height),
-        // One number for a measurement that has two axes: a preview stretched
-        // unevenly would make the choice matter, and the preview is drawn at
-        // the camera's own aspect ratio precisely so it is not.
+        // One number for a measurement that has two axes. With the frame
+        // upright the two factors agree; they did not when it was not.
         interpupillary: face.interpupillary * scale.width,
         rollDegrees: face.rollDegrees,
       );
+}
 
-  Widget _shutter() {
-    final ready = _controller != null && _problem == null && !_opening;
+// ---------------------------------------------------------------------------
+// Chrome
+// ---------------------------------------------------------------------------
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space20),
-      child: Semantics(
-        button: true,
-        label: AppLocalizations.of(context).literaltakeAPicture,
-        child: GestureDetector(
-          onTap: ready && !_capturing ? _capture : null,
-          child: Container(
-            width: 74,
-            height: 74,
+/// A soft shade over one edge of the picture.
+class _Scrim extends StatelessWidget {
+  final bool top;
+
+  const _Scrim({required this.top});
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: Align(
+        alignment: top ? Alignment.topCenter : Alignment.bottomCenter,
+        child: FractionallySizedBox(
+          heightFactor: top ? 0.18 : 0.32,
+          widthFactor: 1,
+          child: DecoratedBox(
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white.withValues(alpha: ready ? 1 : 0.35),
-              border: Border.all(color: Colors.white24, width: 4),
+              gradient: LinearGradient(
+                begin: top ? Alignment.topCenter : Alignment.bottomCenter,
+                end: top ? Alignment.bottomCenter : Alignment.topCenter,
+                colors: [
+                  Colors.black.withValues(alpha: top ? 0.45 : 0.55),
+                  Colors.black.withValues(alpha: 0),
+                ],
+              ),
             ),
-            child: _capturing
-                ? const Padding(
-                    padding: EdgeInsets.all(20),
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3,
-                      color: Colors.black54,
-                    ),
-                  )
-                : null,
           ),
         ),
       ),
@@ -900,34 +1441,381 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   }
 }
 
-/// The lenses, as a row of squircles you scroll.
+/// What is on screen while the camera opens: a dark field breathing gently,
+/// rather than a spinner in the middle of a black page.
+class _Warming extends StatefulWidget {
+  const _Warming();
+
+  @override
+  State<_Warming> createState() => _WarmingState();
+}
+
+class _WarmingState extends State<_Warming>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1400),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _pulse.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _pulse,
+      builder: (context, _) {
+        final t = Curves.easeInOut.transform(_pulse.value);
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: const Alignment(0, -0.2),
+              radius: 0.9 + 0.1 * t,
+              colors: [
+                Color.lerp(
+                  const Color(0xFF1C1C22),
+                  const Color(0xFF26262E),
+                  t,
+                )!,
+                Colors.black,
+              ],
+            ),
+          ),
+          child: const SizedBox.expand(),
+        );
+      },
+    );
+  }
+}
+
+/// A round, translucent control floating on the picture.
+class _GlassButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback? onPressed;
+
+  const _GlassButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child: Semantics(
+        button: true,
+        label: tooltip,
+        excludeSemantics: true,
+        child: GestureDetector(
+          onTap: onPressed,
+          child: ClipOval(
+            child: BackdropFilter(
+              filter: ui.ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+              child: Container(
+                width: 42,
+                height: 42,
+                color: Colors.black.withValues(alpha: 0.28),
+                child: Icon(
+                  icon,
+                  size: 22,
+                  color: Colors.white.withValues(
+                    alpha: onPressed == null ? 0.4 : 1,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// How long the recording has run, in a red pill at the top.
+class _RecordingTime extends StatelessWidget {
+  final Duration elapsed;
+
+  const _RecordingTime(this.elapsed);
+
+  @override
+  Widget build(BuildContext context) {
+    final seconds = elapsed.inSeconds;
+    final text =
+        '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
+    return Container(
+      margin: const EdgeInsets.only(top: SpacingTokens.space8),
+      padding: const EdgeInsets.symmetric(
+        horizontal: SpacingTokens.space12,
+        vertical: SpacingTokens.space4,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE5253A),
+        borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontFeatures: [ui.FontFeature.tabularFigures()],
+        ),
+      ),
+    );
+  }
+}
+
+/// Photo or video, as two words under the shutter.
+class _ModeSwitch extends StatelessWidget {
+  final CaptureMode mode;
+  final bool enabled;
+  final ValueChanged<CaptureMode> onChanged;
+
+  const _ModeSwitch({
+    required this.mode,
+    required this.enabled,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    Widget option(CaptureMode value, String label) {
+      final chosen = value == mode;
+      return Semantics(
+        button: true,
+        selected: chosen,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: enabled ? () => onChanged(value) : null,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space12,
+              vertical: SpacingTokens.space4,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 160),
+                  style: TextStyle(
+                    color: chosen ? Colors.white : Colors.white60,
+                    fontSize: TypographyTokens.fontSize2,
+                    fontWeight: chosen ? FontWeight.w700 : FontWeight.w500,
+                    shadows: const [
+                      Shadow(blurRadius: 6, color: Colors.black54),
+                    ],
+                  ),
+                  child: Text(label),
+                ),
+                const SizedBox(height: SpacingTokens.space4),
+                AnimatedOpacity(
+                  opacity: chosen ? 1 : 0,
+                  duration: const Duration(milliseconds: 160),
+                  child: Container(
+                    width: 4,
+                    height: 4,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        option(CaptureMode.photo, l10n.ui('ar_mode_photo', 'Photo')),
+        option(CaptureMode.video, l10n.ui('ar_mode_video', 'Video')),
+      ],
+    );
+  }
+}
+
+/// The shutter: a ring the lens strip runs through.
 ///
-/// Each tile shows the lens *doing its own job*, on what the camera is
-/// pointing at right now: the colour matrix is applied to a live thumbnail of
-/// the preview, a frost effect blurs and lifts that thumbnail the way it will
-/// blur and lift a face, and a lens that hangs pictures on a face shows the
-/// picture it hangs. The name of the chosen one sits above the row.
+/// In photo mode the middle is open, so the lens tile under it shows through
+/// -- the ring is around the lens that will be in the picture. In video mode
+/// it is a red button; while recording it fills red around the edge as the
+/// clock runs down.
+class _Shutter extends StatefulWidget {
+  final CaptureMode mode;
+  final bool enabled;
+  final bool busy;
+  final bool recording;
+  final double progress;
+  final String label;
+  final VoidCallback onTap;
+  final VoidCallback onHold;
+  final VoidCallback onRelease;
+
+  const _Shutter({
+    required this.mode,
+    required this.enabled,
+    required this.busy,
+    required this.recording,
+    required this.progress,
+    required this.label,
+    required this.onTap,
+    required this.onHold,
+    required this.onRelease,
+  });
+
+  static const double size = 86;
+
+  @override
+  State<_Shutter> createState() => _ShutterState();
+}
+
+class _ShutterState extends State<_Shutter> {
+  bool _down = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final video = widget.mode == CaptureMode.video;
+    final recording = widget.recording;
+
+    return Semantics(
+      button: true,
+      label: widget.label,
+      enabled: widget.enabled,
+      excludeSemantics: true,
+      child: GestureDetector(
+        onTapDown: (_) => setState(() => _down = true),
+        onTapCancel: () => setState(() => _down = false),
+        onTapUp: (_) => setState(() => _down = false),
+        onTap: widget.enabled ? widget.onTap : null,
+        onLongPressStart: (_) => widget.onHold(),
+        onLongPressEnd: (_) {
+          setState(() => _down = false);
+          widget.onRelease();
+        },
+        child: AnimatedScale(
+          scale: recording ? 1.18 : (_down ? 0.92 : 1),
+          duration: const Duration(milliseconds: 140),
+          curve: Curves.easeOut,
+          child: SizedBox.square(
+            dimension: _Shutter.size,
+            child: CustomPaint(
+              painter: _ShutterPainter(
+                video: video,
+                recording: recording,
+                progress: widget.progress,
+                enabled: widget.enabled,
+              ),
+              child: Center(
+                child: widget.busy
+                    ? const SizedBox.square(
+                        dimension: _Shutter.size - 10,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 3,
+                          color: Colors.white,
+                        ),
+                      )
+                    : AnimatedContainer(
+                        duration: const Duration(milliseconds: 180),
+                        width: video ? (recording ? 28 : 62) : 0,
+                        height: video ? (recording ? 28 : 62) : 0,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE5253A),
+                          borderRadius: BorderRadius.circular(
+                            recording ? 7 : 31,
+                          ),
+                        ),
+                      ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ShutterPainter extends CustomPainter {
+  final bool video;
+  final bool recording;
+  final double progress;
+  final bool enabled;
+
+  const _ShutterPainter({
+    required this.video,
+    required this.recording,
+    required this.progress,
+    required this.enabled,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const stroke = 5.0;
+    final rect = (Offset.zero & size).deflate(stroke / 2);
+    canvas.drawOval(
+      rect,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..color = Colors.white.withValues(alpha: enabled ? 1 : 0.4),
+    );
+    if (recording && progress > 0) {
+      canvas.drawArc(
+        rect,
+        -math.pi / 2,
+        2 * math.pi * progress.clamp(0.0, 1.0),
+        false,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = stroke
+          ..strokeCap = StrokeCap.round
+          ..color = const Color(0xFFE5253A),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_ShutterPainter old) =>
+      old.video != video ||
+      old.recording != recording ||
+      old.progress != progress ||
+      old.enabled != enabled;
+}
+
+// ---------------------------------------------------------------------------
+// The lens strip
+// ---------------------------------------------------------------------------
+
+/// The lenses, as a row of circles that scrolls through the shutter.
 ///
-/// The row was a line of pills reading "None", "Mono", "Sunset". A name is
-/// not a preview -- nobody knows what Sunset does to their face until they
-/// tap it, and there is no reason to make them find out one at a time when
-/// the camera is already running and every one of these is a filter over the
-/// same frame.
-class _LensStrip extends StatelessWidget {
+/// The one under the shutter is the one on your face: swiping changes lens
+/// as it goes, every tile snaps to the middle, and tapping a tile brings it
+/// there. Lenses sit on both sides of the shutter rather than in a shelf
+/// above it, which is how every camera people already use does it, and
+/// which puts the lens and the button that takes the picture under one
+/// thumb.
+class _LensCarousel extends StatefulWidget {
   final List<Lens> lenses;
   final Lens selected;
   final ValueChanged<Lens> onChanged;
 
   /// The running camera. Null when it has not opened or cannot, in which case
-  /// every tile falls back to a colour chart -- which still shows what a
+  /// colour tiles fall back to a colour chart -- which still shows what a
   /// matrix does, and does not pretend to be a photograph of anything.
   final CameraController? camera;
 
   /// The decoded artwork, so a lens that hangs a picture on a face can show
-  /// that picture rather than a word.
+  /// that picture.
   final AttachmentImages pictures;
 
-  const _LensStrip({
+  const _LensCarousel({
     required this.lenses,
     required this.selected,
     required this.onChanged,
@@ -935,62 +1823,110 @@ class _LensStrip extends StatelessWidget {
     required this.pictures,
   });
 
-  /// Big enough to read a face in, small enough that a dozen of them fit.
-  static const double _tile = 58;
+  /// A tile, and the room either side of it.
+  static const double tile = 58;
+  static const double pitch = 72;
+
+  @override
+  State<_LensCarousel> createState() => _LensCarouselState();
+}
+
+class _LensCarouselState extends State<_LensCarousel> {
+  PageController? _pages;
+  double _width = 0;
+
+  int get _index {
+    final i = widget.lenses.indexWhere((l) => l.id == widget.selected.id);
+    return i < 0 ? 0 : i;
+  }
+
+  PageController _controllerFor(double width) {
+    if (_pages == null || width != _width) {
+      final page = _pages?.hasClients == true
+          ? (_pages!.page ?? _index.toDouble()).round()
+          : _index;
+      _pages?.dispose();
+      _width = width;
+      _pages = PageController(
+        initialPage: page,
+        viewportFraction: (_LensCarousel.pitch / width).clamp(0.05, 1.0),
+      );
+    }
+    return _pages!;
+  }
+
+  @override
+  void didUpdateWidget(_LensCarousel old) {
+    super.didUpdateWidget(old);
+    // Chosen from outside -- the catalogue dropped the lens that was on, or
+    // video mode took it off -- so the strip follows.
+    final pages = _pages;
+    if (pages != null &&
+        pages.hasClients &&
+        old.selected.id != widget.selected.id &&
+        (pages.page ?? 0).round() != _index) {
+      pages.jumpToPage(_index);
+    }
+  }
+
+  @override
+  void dispose() {
+    _pages?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
-          // Kept out of the accessibility tree on purpose: it repeats the
-          // name of the tile that is already announcing itself as selected,
-          // and read out it would say every lens's name twice as the row is
-          // swiped.
-          child: ExcludeSemantics(
-            child: Text(
-              selected.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: TypographyTokens.fontSize2,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: _tile + SpacingTokens.space8,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(
-              horizontal: SpacingTokens.space16,
-            ),
-            itemCount: lenses.length,
-            separatorBuilder: (_, __) =>
-                const SizedBox(width: SpacingTokens.space8),
-            itemBuilder: (context, index) {
-              final lens = lenses[index];
-              return Center(
+    return LayoutBuilder(
+      builder: (context, box) {
+        final pages = _controllerFor(box.maxWidth);
+        return PageView.builder(
+          controller: pages,
+          itemCount: widget.lenses.length,
+          onPageChanged: (index) {
+            HapticFeedback.selectionClick();
+            widget.onChanged(widget.lenses[index]);
+          },
+          itemBuilder: (context, index) {
+            final lens = widget.lenses[index];
+            return Center(
+              child: AnimatedBuilder(
+                animation: pages,
+                builder: (context, child) {
+                  // Tiles shrink and dim as they move away from the shutter,
+                  // so the one in the middle reads as the one that is on.
+                  final page = pages.hasClients && pages.position.haveDimensions
+                      ? pages.page ?? _index.toDouble()
+                      : _index.toDouble();
+                  final distance = (page - index).abs().clamp(0.0, 3.0);
+                  final scale = 1 - 0.12 * math.min(1.0, distance);
+                  return Opacity(
+                    opacity: 1 - 0.12 * math.min(2.0, distance),
+                    child: Transform.scale(scale: scale, child: child),
+                  );
+                },
                 child: _LensTile(
                   lens: lens,
-                  chosen: lens.id == selected.id,
-                  size: _tile,
-                  camera: camera,
-                  pictures: pictures,
-                  onTap: () => onChanged(lens),
+                  chosen: lens.id == widget.selected.id,
+                  size: _LensCarousel.tile,
+                  camera: widget.camera,
+                  pictures: widget.pictures,
+                  onTap: () => pages.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 260),
+                    curve: Curves.easeOutCubic,
+                  ),
                 ),
-              );
-            },
-          ),
-        ),
-      ],
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
 
-/// One lens, as a squircle showing what it does.
+/// One lens, as a circle showing what it does.
 class _LensTile extends StatelessWidget {
   final Lens lens;
   final bool chosen;
@@ -1010,17 +1946,11 @@ class _LensTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A squircle, not a rounded rectangle: ContinuousRectangleBorder carries
-    // the corner's curvature into the straight edges instead of meeting them
-    // at a tangent, which is the difference somebody means by the word.
-    final shape = const ContinuousRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(RadiusTokens.radius20)),
-    );
-
     return Semantics(
       button: true,
       selected: chosen,
       label: lens.needsFace ? '${lens.name}, face lens' : lens.name,
+      excludeSemantics: true,
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
@@ -1028,48 +1958,59 @@ class _LensTile extends StatelessWidget {
           curve: Curves.easeOut,
           width: size,
           height: size,
-          decoration: ShapeDecoration(
-            shape: shape.copyWith(
-              side: BorderSide(
-                color: chosen ? Colors.white : Colors.white24,
-                width: chosen ? 2.5 : 1,
-              ),
-            ),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
             color: Colors.black,
-          ),
-          child: ClipPath(
-            clipper: ShapeBorderClipper(shape: shape),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                _preview(),
-                // The one thing a picture cannot say about itself: this lens
-                // needs a face, so pointed at a wall it will do nothing.
-                if (lens.needsFace)
-                  const Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: EdgeInsets.all(SpacingTokens.space2),
-                      child: Icon(
-                        Iconsax.scan_copy,
-                        size: 11,
-                        color: Colors.white70,
-                        shadows: [Shadow(blurRadius: 3)],
-                      ),
-                    ),
-                  ),
-              ],
+            border: Border.all(
+              color: chosen ? Colors.white : Colors.white24,
+              width: chosen ? 2 : 1,
             ),
+            boxShadow: const [
+              BoxShadow(blurRadius: 8, color: Colors.black38),
+            ],
           ),
+          child: ClipOval(child: _preview()),
         ),
       ),
     );
   }
 
-  /// The lens, applied to whatever the tile has to apply it to.
   Widget _preview() {
-    Widget base = _base();
+    if (lens.id == Lens.builtIn.first.id) return const _NoneGlyph();
 
+    final glasses = lens.glasses;
+    if (glasses != null) {
+      return DecoratedBox(
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            center: Alignment(-0.3, -0.4),
+            colors: [Color(0xFF3A3F4B), Color(0xFF15171C)],
+          ),
+        ),
+        child: CustomPaint(
+          painter: _GlassesThumbnail(glasses),
+          child: const SizedBox.expand(),
+        ),
+      );
+    }
+
+    if (lens.attachments.isNotEmpty) {
+      final artwork = pictures.ready(lens);
+      if (artwork.isEmpty) return const _Shimmer();
+      return DecoratedBox(
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            colors: [Color(0xFF3A3F4B), Color(0xFF15171C)],
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(size * 0.12),
+          child: RawImage(image: artwork.first.image, fit: BoxFit.contain),
+        ),
+      );
+    }
+
+    Widget base = _base();
     final filter = lens.filter;
     if (filter != null) {
       base = ColorFiltered(colorFilter: filter, child: base);
@@ -1077,44 +2018,6 @@ class _LensTile extends StatelessWidget {
 
     final frost = lens.effects.whereType<FrostEffect>().firstOrNull;
     if (frost != null) base = _frosted(frost, base);
-
-    final artwork = pictures.ready(lens);
-    if (artwork.isNotEmpty) {
-      base = Stack(
-        fit: StackFit.expand,
-        children: [
-          base,
-          // The first attachment, at roughly the share of a face it will
-          // cover: a width is in pupil-gaps, and a face fills about two
-          // thirds of a frame this size.
-          Center(
-            child: FractionalTranslation(
-              translation: const Offset(0, 0.1),
-              child: SizedBox(
-                width: (size * 0.22 * artwork.first.attachment.width).clamp(
-                  size * 0.2,
-                  size * 0.9,
-                ),
-                child: RawImage(
-                  image: artwork.first.image,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    } else if (lens.attachments.isNotEmpty) {
-      // Its pictures have not arrived. Say the lens is a sticker lens rather
-      // than showing an unfiltered thumbnail that claims it does nothing.
-      base = Stack(
-        fit: StackFit.expand,
-        children: [
-          base,
-          Center(child: Icon(Iconsax.gallery, size: 18, color: Colors.white70)),
-        ],
-      );
-    }
 
     if (lens.effects.any((effect) => effect is FillEffect)) {
       // A fill takes skin sampled from the face and paints a region of that
@@ -1124,22 +2027,13 @@ class _LensTile extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           base,
-          const Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: EdgeInsets.all(SpacingTokens.space2),
-              child: Icon(
-                Iconsax.brush_2,
-                size: 11,
-                color: Colors.white70,
-                shadows: [Shadow(blurRadius: 3)],
-              ),
-            ),
+          const ColoredBox(color: Color(0x55000000)),
+          const Center(
+            child: Icon(Iconsax.magicpen, size: 20, color: Colors.white),
           ),
         ],
       );
     }
-
     return base;
   }
 
@@ -1149,10 +2043,6 @@ class _LensTile extends StatelessWidget {
     if (controller == null || !controller.value.isInitialized) {
       return const _ColourChart();
     }
-
-    // The preview is drawn at the camera's own aspect ratio and cropped to
-    // the square, the same way the viewfinder above draws it -- so the tile
-    // is a thumbnail of the viewfinder and not a differently stretched one.
     return FittedBox(
       fit: BoxFit.cover,
       clipBehavior: Clip.hardEdge,
@@ -1167,10 +2057,7 @@ class _LensTile extends StatelessWidget {
   /// Frost, in miniature: the same blur, desaturation and lift it will put on
   /// a face, applied to the whole tile instead of to a tracked region.
   Widget _frosted(FrostEffect frost, Widget child) {
-    // `blur` is in pupil-gaps, like everything else in the format. A face in
-    // a tile this size has its pupils about a fifth of the tile apart.
     final sigma = (frost.blur * size * 0.2).clamp(0.5, 12.0);
-
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -1203,13 +2090,116 @@ class _LensTile extends StatelessWidget {
   }
 }
 
-/// What a tile shows when there is no camera to show.
+/// A pair of glasses in a tile, a little turned so it reads as solid.
+class _GlassesThumbnail extends CustomPainter {
+  final GlassesModel model;
+
+  const _GlassesThumbnail(this.model);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final pose = HeadPose.facing(
+      Offset(size.width / 2, size.height * 0.52),
+      size.width * 0.3,
+      yaw: 16,
+    );
+    GlassesPainter.paintGlasses(canvas, model, pose);
+  }
+
+  @override
+  bool shouldRepaint(_GlassesThumbnail old) => old.model != model;
+}
+
+/// "No lens": an empty circle with a stroke through it.
+class _NoneGlyph extends StatelessWidget {
+  const _NoneGlyph();
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _NonePainter(),
+      child: const SizedBox.expand(),
+    );
+  }
+}
+
+class _NonePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.drawRect(
+      Offset.zero & size,
+      Paint()..color = const Color(0xFF1E2026),
+    );
+    final r = size.shortestSide * 0.22;
+    final c = size.center(Offset.zero);
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2
+      ..color = Colors.white70;
+    canvas.drawCircle(c, r, paint);
+    canvas.drawLine(
+      c + Offset(-r * 0.7, r * 0.7),
+      c + Offset(r * 0.7, -r * 0.7),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_NonePainter old) => false;
+}
+
+/// A tile whose picture has not arrived: a light sweeping across it, rather
+/// than a placeholder icon that looks like the lens itself.
+class _Shimmer extends StatefulWidget {
+  const _Shimmer();
+
+  @override
+  State<_Shimmer> createState() => _ShimmerState();
+}
+
+class _ShimmerState extends State<_Shimmer>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _sweep = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  )..repeat();
+
+  @override
+  void dispose() {
+    _sweep.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _sweep,
+      builder: (context, _) {
+        final x = -1.5 + 3 * _sweep.value;
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(x - 0.6, -0.3),
+              end: Alignment(x + 0.6, 0.3),
+              colors: const [
+                Color(0xFF22242B),
+                Color(0xFF3A3D47),
+                Color(0xFF22242B),
+              ],
+            ),
+          ),
+          child: const SizedBox.expand(),
+        );
+      },
+    );
+  }
+}
+
+/// What a colour tile shows when there is no camera to show.
 ///
 /// A ramp through the colours a matrix is judged on -- a skin tone, a sky, a
 /// leaf, a highlight and a shadow -- so a filter over it says truthfully what
-/// that filter does. Deliberately a chart rather than a photograph: there is
-/// no stand-in face in this app, and a stock one would be a picture of
-/// somebody who is not holding the phone.
+/// that filter does.
 class _ColourChart extends StatelessWidget {
   const _ColourChart();
 

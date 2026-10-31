@@ -1,6 +1,7 @@
 // lib/models/lens.dart
 import 'dart:ui';
 
+import 'glasses_model.dart';
 import 'lens_attachment.dart';
 import 'lens_effect.dart';
 
@@ -43,6 +44,15 @@ class Lens {
   /// frosting everything but the eyes.
   final List<LensEffect> effects;
 
+  /// A pair of glasses built in three dimensions and turned with the head.
+  ///
+  /// Built-in lenses only, for now. The wire format does not carry it:
+  /// format-vectors.json, which this app and the catalogue both run, refuses
+  /// schema 4, and a model a published file could describe is a format
+  /// decision to make in kyron-lenses first rather than one to slip in here.
+  /// See docs/AR.md.
+  final GlassesModel? glasses;
+
   const Lens({
     required this.id,
     required this.name,
@@ -50,10 +60,16 @@ class Lens {
     this.author,
     this.attachments = const [],
     this.effects = const [],
+    this.glasses,
   });
 
   /// Whether this one needs a face before it can do anything.
-  bool get needsFace => attachments.isNotEmpty || effects.isNotEmpty;
+  bool get needsFace =>
+      attachments.isNotEmpty || effects.isNotEmpty || glasses != null;
+
+  /// Whether this one changes the picture at all. "None" is the only one
+  /// that does not.
+  bool get changesPicture => matrix != null || needsFace;
 
   /// What to wrap a preview or a still in. Null when the lens changes nothing.
   ColorFilter? get filter =>
@@ -222,8 +238,60 @@ class Lens {
 
   /// Bundled, so the camera has lenses with no network and on first launch.
   /// The catalogue adds to these; it never replaces them.
+  ///
+  /// Face lenses first, after None: they are what somebody opens a lens
+  /// camera for, and the colour grades are a swipe further along.
   static const builtIn = <Lens>[
     Lens(id: 'none', name: 'None'),
+    // Glasses in three dimensions. 'specs' shares its id with the flat
+    // catalogue lens it replaces: the app always prefers its own copy, so a
+    // build with this one draws these and an older build keeps the picture.
+    Lens(
+      id: 'specs',
+      name: 'Specs',
+      author: 'Kyron',
+      glasses: GlassesModel(
+        style: GlassesStyle.round,
+        frame: Color(0xFFD9A93A),
+        tint: Color(0xFF16141A),
+        tintOpacity: 0.78,
+        metal: true,
+      ),
+    ),
+    Lens(
+      id: 'aviator',
+      name: 'Aviator',
+      author: 'Kyron',
+      glasses: GlassesModel(
+        style: GlassesStyle.aviator,
+        frame: Color(0xFFC9CDD2),
+        tint: Color(0xFF2E4A3A),
+        tintOpacity: 0.72,
+        metal: true,
+      ),
+    ),
+    Lens(
+      id: 'shades',
+      name: 'Shades',
+      author: 'Kyron',
+      glasses: GlassesModel(
+        style: GlassesStyle.square,
+        frame: Color(0xFF1B1B1E),
+        tint: Color(0xFF0B0B0D),
+        tintOpacity: 0.86,
+      ),
+    ),
+    Lens(
+      id: 'cateye',
+      name: 'Cat-eye',
+      author: 'Kyron',
+      glasses: GlassesModel(
+        style: GlassesStyle.catEye,
+        frame: Color(0xFFB0233A),
+        tint: Color(0xFF5A2A1E),
+        tintOpacity: 0.45,
+      ),
+    ),
     Lens(id: 'mono', name: 'Mono', matrix: _mono),
     Lens(id: 'warm', name: 'Warm', matrix: _warm),
     Lens(id: 'cool', name: 'Cool', matrix: _cool),
