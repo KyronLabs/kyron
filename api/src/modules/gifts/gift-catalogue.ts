@@ -18,9 +18,11 @@ export interface GiftType {
 // every gift already sent still names one of these. The dearest is a week's
 // refill (WEEKLY_COINS): one gift a week can be the big one.
 //
-// The emoji is a fallback only. The app draws each gift from
-// app/assets/gifts/<type>.png and shows the emoji for a type it has no
-// picture for -- a gift added here before the app that draws it.
+// The app draws each gift from app/assets/gifts/<type>.png, and a gold
+// present icon for a type it has no picture for -- a gift added here before
+// the app that draws it. It never shows the emoji: that is sent only for app
+// builds before v0.1.22, which fell back to it, and can go once those are
+// no longer supported.
 export const GIFT_CATALOGUE: readonly GiftType[] = [
   { type: 'spark', name: 'Spark', emoji: '✨', coins: 1 },
   { type: 'rose', name: 'Rose', emoji: '🌹', coins: 3 },
