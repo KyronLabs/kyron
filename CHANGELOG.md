@@ -20,6 +20,14 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Notifications show the post's picture.** A like, reply, repost,
+  mention or gift on a post with a photo, GIF or video now ends with that
+  picture, small and rounded -- and a gift sits on its corner. A gift on a
+  post of words alone still shows the gift by itself.
+- **A leaner Follow button** on a post's own page: shorter, tighter, in
+  smaller type, with the same room to tap.
 
 ## [0.1.26] - 2026-10-31
 ### Changed

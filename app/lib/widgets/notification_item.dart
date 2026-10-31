@@ -156,18 +156,88 @@ class NotificationItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: SpacingTokens.space8),
-            // The gift itself at the end of the row, as it was sent: the
-            // words name it, the picture is what it was.
-            if (gift != null) ...[
-              GiftArt(type: gift.type, size: 32),
-              const SizedBox(width: SpacingTokens.space8),
-            ],
             Text(
               notification.displayTimestamp,
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize1,
                 color: scheme.onSurface.withValues(alpha: 0.5),
               ),
+            ),
+            // At the very end, what it was about: the post's picture, with
+            // the gift on its corner if it was given one -- or, on a post of
+            // words alone, the gift by itself.
+            if (notification.postImage != null) ...[
+              const SizedBox(width: SpacingTokens.space12),
+              _PostPicture(url: notification.postImage!, gift: gift?.type),
+            ] else if (gift != null) ...[
+              const SizedBox(width: SpacingTokens.space8),
+              GiftArt(type: gift.type, size: 32),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The post a row is about, by its picture: a small rounded square at the
+/// end of the row, with the gift it was given sitting on its corner.
+class _PostPicture extends StatelessWidget {
+  final String url;
+  final String? gift;
+
+  const _PostPicture({required this.url, this.gift});
+
+  /// The square's side, and how far the gift hangs off its corner.
+  static const side = 44.0;
+  static const overhang = 8.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+    final placeholder = ColoredBox(
+      color: scheme.onSurface.withValues(alpha: 0.06),
+      child: const SizedBox.expand(),
+    );
+
+    final picture = ClipRRect(
+      borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+      child: SizedBox.square(
+        dimension: side,
+        child: Image(
+          // Decoded at the size it is drawn: a feed's worth of full-size
+          // photographs for 44-point squares is how a list runs out of
+          // memory.
+          image: ResizeImage(
+            NetworkImage(url),
+            width: (side * dpr).round(),
+            policy: ResizeImagePolicy.fit,
+          ),
+          fit: BoxFit.cover,
+          // A square of the page's own tint while it loads or if it cannot,
+          // so the row keeps its shape either way.
+          frameBuilder: (context, child, frame, synchronous) =>
+              frame == null && !synchronous ? placeholder : child,
+          errorBuilder: (_, __, ___) => placeholder,
+        ),
+      ),
+    );
+
+    if (gift == null) return ExcludeSemantics(child: picture);
+    return ExcludeSemantics(
+      // The square alone takes the room, so every row's picture lines up
+      // whether or not a gift hangs off it.
+      child: SizedBox.square(
+        dimension: side,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            picture,
+            Positioned(
+              right: -overhang,
+              bottom: -overhang,
+              child: GiftArt(type: gift!, size: 26),
             ),
           ],
         ),

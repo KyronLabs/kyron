@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {
   AppealStatus,
+  MediaKind,
   Prisma,
   ModerationKind,
   ReportReason,
@@ -68,6 +69,9 @@ export interface NotificationItem {
   postId: string | null;
   /** The start of that post, so the row says which one without a fetch. */
   postSnippet: string | null;
+  /** The post's first picture -- a photo, a GIF, or a video's still -- so
+   * the row can show it at its end. Null for a post of words alone. */
+  postImage: string | null;
   /** What was written, for a comment or a mention. */
   content: string | null;
   createdAt: Date;
@@ -164,7 +168,7 @@ export class NotificationsService {
                 createdAt: true,
                 postId: true,
                 user: { select: this.actorFields },
-                post: { select: { content: true } },
+                post: { select: this.postFields },
               },
             })
           : [],
@@ -184,7 +188,7 @@ export class NotificationsService {
                 postId: true,
                 content: true,
                 author: { select: this.actorFields },
-                post: { select: { content: true } },
+                post: { select: this.postFields },
               },
             })
           : [],
@@ -202,7 +206,7 @@ export class NotificationsService {
                 createdAt: true,
                 postId: true,
                 user: { select: this.actorFields },
-                post: { select: { content: true } },
+                post: { select: this.postFields },
               },
             })
           : [],
@@ -240,7 +244,7 @@ export class NotificationsService {
                 type: true,
                 coins: true,
                 sender: { select: this.actorFields },
-                post: { select: { content: true } },
+                post: { select: this.postFields },
               },
             })
           : [],
@@ -258,6 +262,7 @@ export class NotificationsService {
         actor: this.actor(row.user),
         postId: row.postId,
         postSnippet: this.snippet(row.post?.content),
+        postImage: this.picture(row.post),
         content: null,
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -268,6 +273,7 @@ export class NotificationsService {
         actor: this.actor(row.author),
         postId: row.postId,
         postSnippet: this.snippet(row.post?.content),
+        postImage: this.picture(row.post),
         content: this.snippet(row.content),
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -278,6 +284,7 @@ export class NotificationsService {
         actor: this.actor(row.user),
         postId: row.postId,
         postSnippet: this.snippet(row.post?.content),
+        postImage: this.picture(row.post),
         content: null,
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -288,6 +295,7 @@ export class NotificationsService {
         actor: this.actor(row.follower),
         postId: null,
         postSnippet: null,
+        postImage: null,
         content: null,
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
@@ -298,6 +306,7 @@ export class NotificationsService {
         actor: this.actor(row.author),
         postId: row.postId,
         postSnippet: this.snippet(row.post?.content),
+        postImage: this.picture(row.post),
         // Where they named you: the reply's words, or the post's.
         content: this.snippet(row.comment?.content ?? row.post?.content),
         createdAt: row.createdAt,
@@ -312,6 +321,7 @@ export class NotificationsService {
                 actor: this.actor(row.sender),
                 postId: row.postId,
                 postSnippet: this.snippet(row.post?.content),
+                postImage: this.picture(row.post),
                 content: null,
                 createdAt: row.createdAt,
                 unread: this.isUnread(row.createdAt, seenAt),
@@ -438,7 +448,7 @@ export class NotificationsService {
         createdAt: true,
         postId: true,
         author: { select: this.actorFields },
-        post: { select: { content: true } },
+        post: { select: this.postFields },
         comment: { select: { content: true } },
       },
     });
@@ -561,6 +571,7 @@ export class NotificationsService {
         id: `account:decision:${a.id}`,
         kind: 'account' as const,
         postSnippet: this.snippet(readable(a.snapshot)),
+        postImage: null,
         createdAt: a.createdAt,
         account: notice(a, 'decision'),
       })),
@@ -569,6 +580,7 @@ export class NotificationsService {
         id: `account:appeal:${ap.id}`,
         kind: 'account' as const,
         postSnippet: null,
+        postImage: null,
         createdAt: ap.decidedAt!,
         account: {
           ...notice(
@@ -583,6 +595,7 @@ export class NotificationsService {
         id: `account:reversal:${a.id}`,
         kind: 'account' as const,
         postSnippet: null,
+        postImage: null,
         createdAt: a.reversedAt!,
         account: notice(a, 'reversal'),
       })),
@@ -591,6 +604,7 @@ export class NotificationsService {
         id: `report:${r.id}`,
         kind: 'report' as const,
         postSnippet: this.snippet(readable(r.snapshot)),
+        postImage: null,
         createdAt: r.resolvedAt!,
         report: {
           outcome:
@@ -640,6 +654,39 @@ export class NotificationsService {
 
   private isUnread(at: Date, seenAt: Date | null): boolean {
     return seenAt === null || at.getTime() > seenAt.getTime();
+  }
+
+  /** What is read of a post for its row: its words, and its first picture. */
+  private readonly postFields = {
+    content: true,
+    media: {
+      where: {
+        kind: { in: [MediaKind.IMAGE, MediaKind.GIF, MediaKind.VIDEO] },
+      },
+      orderBy: { position: 'asc' as const },
+      take: 1,
+      select: { url: true, thumbnailUrl: true, kind: true },
+    },
+  };
+
+  /** A post's first picture, as a row shows it: a video by its still, and
+   * nothing for one without (a row cannot play it). */
+  private picture(
+    post:
+      | {
+          media?: {
+            url: string;
+            thumbnailUrl: string | null;
+            kind: MediaKind;
+          }[];
+        }
+      | null
+      | undefined,
+  ): string | null {
+    const first = post?.media?.[0];
+    if (!first) return null;
+    if (first.kind === MediaKind.VIDEO) return first.thumbnailUrl || null;
+    return first.thumbnailUrl || first.url || null;
   }
 
   private snippet(text: string | null | undefined): string | null {
