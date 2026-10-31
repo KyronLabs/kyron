@@ -213,24 +213,48 @@ come from the script's JSON:
 
 ### The animation
 
-The squares arrive from the focal square outward, hold, leave the way they
-came, and arrive again.
+The rooster arrives once, from its eye outward. After that the picture never
+empties: it holds, and then every tile turns over like a card and its back is
+the next of the cast (section 9), and round again.
 
 | | | |
 |:--|:--|:--|
 | Arriving | 1.4 s | each square grows from 55% to full size and fades in over 45% of the arrival, `easeOutCubic`, starting later the further it is from the eye |
 | Settling | last 15% of the arrival | the exact picture fades in over the tiles, so the soft outline the tiles cut off comes in without a jump |
-| Holding | 4.2 s | a timer, not an animation, so nothing repaints while it stands still |
-| Leaving | 1.1 s | the arrival played backwards: the picture gives way to tiles, the edges go first, the eye last |
-| Resting | 0.3 s | the empty ground, one breath |
+| Holding | 4.2 s the rooster, 3 s each visitor | a timer, not an animation, so nothing repaints while it stands still -- except the butterfly, whose wings beat |
+| Flipping | 1.5 s | each tile turns about its vertical axis over 24% of the flip, `easeInOutCubic`, in a wave out from the incoming picture's eye, scaled so it takes the whole flip to cross what a phone shows, with 10% jitter so it ripples rather than marching in rings |
+
+What makes the flip read as cards rather than as squares changing colour:
+
+- **The front narrows to an edge and the back widens out of it** (`|cos|` of
+  the turn), and the switch is at edge-on.
+- **A card lifts 16% as it turns** and comes back down flat.
+- **It darkens as it goes edge-on**, up to 32% of a warm near-black, as if
+  light fell across it.
+- **Only turning cards are rounded.** A card lying flat, waiting or done, is
+  drawn square, so the picture between them stays whole. Rounded corners
+  there left a white cross at every corner for the whole flip.
+- **The exact pictures at either end:** the outgoing one gives way to tiles
+  over the first 8%, and the incoming one fades in over its tiles in the last
+  14%, so neither halo is cut off with a jump.
 
 The tiles are drawn as a mask (rounded squares, corner radius 36% of a
 square, 6% oversize so tiles that have landed meet with no seam) and the
 picture is drawn through it (`BlendMode.srcIn`), so every tile shows exactly
 the art's own pixels.
 
+**The butterfly's wings** beat four times in its 3-second hold, eased in and
+out so they start and end open. A beat squeezes the picture to 58% of its
+width about the body's column (`flapsAbout`), quicker down than up, with a
+3-pixel lift on each downstroke.
+
+**Only two pictures are decoded at a time:** the one showing and the next.
+Each is six megabytes decoded; ten on a sign-in screen would be most of a
+phone's image cache. The one that has left is evicted from the cache.
+
 Nothing moves for anybody whose phone asks for less motion
-(`MediaQuery.disableAnimationsOf`): the picture is just there, and stays.
+(`MediaQuery.disableAnimationsOf`): the rooster is just there, and stays, and
+the cast never visits.
 
 ---
 
@@ -267,3 +291,56 @@ the picture arrives through, never to redraw it.
 The script exists for the next picture, where there is no finished art to
 ship -- and where close to the rooster, and consistent with it, is exactly
 what is wanted.
+
+## 9. The cast
+
+The rooster hands over to nine others, in this order: cat, watermelon,
+butterfly, strawberry, fawn, mushroom, coconut, apple, broccoli. Animals
+between the produce, so two of a kind never follow each other.
+
+**Made with `scripts/welcome_cast.py`**, not `rounded_pixels.py`. A tile can
+only flip into the square in the same place, so every member is drawn on
+**the rooster's exact grid** -- 20 x 25 squares of 56.2 x 55.7 pixels from
+(-10.04, 14.9), in a 1121 x 1403 canvas -- rather than on a grid of its own.
+The script's `CAST` table says where each one sits, in squares, and prints
+the Dart for `app/lib/widgets/welcome_cast.dart`.
+
+```bash
+python3 scripts/welcome_cast.py SOURCE_DIR app/lib/assets/cast > cast.txt
+```
+
+Placement rules the script enforces or follows:
+
+- **Inside the first 18 rows,** which a phone always shows, unless the
+  subject is cropped by the frame. The script refuses anything else.
+- **Animals are portraits, cropped like the rooster:** facing into the left,
+  anchored to the right, cut by the bottom. Their photographs end at the
+  chest, so the last rows of pixels are carried down to the foot of the
+  grid; a bust that stops in mid-air would show on a tall enough screen.
+- **Produce is whole,** centred a little right of middle, so it sits where
+  the rooster's head was.
+- **Where a flip starts:** an animal's eye (the darkest square in the upper
+  half), or the middle of anything without one.
+
+### Where the pictures came from
+
+Every source photograph was **generated for Kyron** on 31 October 2026 with
+Figma's image generation (`generate_image`, model `gpt-image-2.5-flare`), in
+the Figma file "Kyron welcome — rounded pixel subjects" on Kyron's own team.
+The prompts asked for each subject as a studio photograph on a plain white
+backdrop, animals facing left.
+
+Reference images were supplied for what to show: a grumpy tabby, a fawn, a
+split coconut, a watermelon, a porcini, apples, a strawberry, broccoli and a
+monarch. **They were not used as sources.** Several carry stock-site
+watermarks (Vecteezy, Pngtree), and section 7 applies: a pixelated copy of
+somebody's photograph is still their photograph.
+
+The same caveat as the gift artwork: AI-generated images may not be
+protected by copyright, so Kyron can use these but may not be able to stop
+others using them.
+
+Not in the cast: **a pile of apples with one cut open.** The cut flesh is as
+pale as the ground, so in squares it came out as a red smudge with a hole in
+it (section 3, "colour that is not the ground's"). The single apple says the
+same thing and reads at a glance.

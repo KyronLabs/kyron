@@ -11,6 +11,23 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Added
+
+- **The welcome picture has company.** After the rooster, every rounded
+  tile turns over like a card -- a wave out from the next one's eye, each
+  card lifting and shading as it goes edge-on -- and its back is a cat. Then
+  a watermelon, a butterfly whose wings beat, a strawberry, a fawn, a
+  mushroom, a coconut, an apple and broccoli, and round to the rooster again.
+  All of them are pictures made for Kyron. With reduced motion on, the
+  rooster stays still and nobody visits.
+
+### Fixed
+
+- **A long link in a post no longer fills the post.** It is shown as its
+  address without `https://`, `www.`, tracking parameters or the part after
+  `#`, and anything still over 40 characters ends in an ellipsis. Tapping it
+  opens the whole link, and copying the post copies it whole. A full stop
+  after a link is no longer part of it.
 
 ## [0.1.24] - 2026-10-31
 ### Fixed

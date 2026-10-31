@@ -6,26 +6,38 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'welcome_cast.dart';
+
+export 'welcome_cast.dart' show CastMember, welcomeCast;
+
 /// The picture across the top of the welcome screen: a rooster in big,
-/// rounded pixels, looking left, cropped at the shoulder.
+/// rounded pixels, looking left, cropped at the shoulder -- and then the rest
+/// of the cast, one after another, each turning up tile by tile out of the
+/// last.
 ///
-/// The artwork itself, pixel for pixel, rather than a drawing of it. Its look
-/// is a mosaic run through a median filter -- similar neighbours fuse, odd
-/// ones round off against them -- and every attempt to rebuild that from the
-/// colours with rounded rectangles came out noisier than the original. The
-/// colours are the artwork's, including the off-white it is painted on, and
-/// the same in both themes: this is a picture, not a surface.
+/// The rooster is the artwork itself, pixel for pixel, rather than a drawing
+/// of it. Its look is a mosaic run through a median filter -- similar
+/// neighbours fuse, odd ones round off against them -- and every attempt to
+/// rebuild that from the colours with rounded rectangles came out noisier
+/// than the original. The colours are the artwork's, including the off-white
+/// it is painted on, and the same in both themes: this is a picture, not a
+/// surface.
 ///
-/// What is drawn is a loop. The squares come in from the eye outward, each
-/// a rounded tile of the picture growing into place, and the whole settles
-/// into the exact image. It holds there, long enough to be a picture rather
-/// than a screensaver; then the squares go back the way they came, from the
-/// edges in, the eye last, and after a breath the bird arrives again. The
-/// return is the arrival played backwards, so there is no frame anywhere in
-/// the loop that jumps.
+/// What is drawn is a loop:
 ///
-/// docs/ROUNDED_PIXEL_ART.md is how the picture was made and how to make
-/// another one like it.
+/// 1. **The arrival.** The rooster's squares come in from its eye outward,
+///    each a rounded tile of the picture growing into place, and the whole
+///    settles into the exact image.
+/// 2. **A hold**, long enough to be a picture rather than a screensaver.
+/// 3. **A flip.** Every tile turns over like a card, in a wave out from the
+///    next picture's eye, and its back is that picture: a cat, a watermelon,
+///    a butterfly (whose wings then beat), and the rest of [welcomeCast].
+///    Each one is drawn on the rooster's exact grid, so a tile always turns
+///    into the square in the same place.
+/// 4. Hold, flip, and so on round the cast back to the rooster.
+///
+/// docs/ROUNDED_PIXEL_ART.md is how the pictures were made, and how to add
+/// another.
 class RoosterArt extends StatefulWidget {
   const RoosterArt({super.key});
 
@@ -43,7 +55,7 @@ class RoosterArt extends StatefulWidget {
   static const pitch = Size(56.2, 55.7);
   static const gridOrigin = Offset(-10.04, 14.9);
 
-  /// Which squares hold part of the bird, row by row.
+  /// Which squares hold the bird, row by row.
   static const squares = <String>[
     '.......##.##........',
     '.....########.......',
@@ -75,13 +87,28 @@ class RoosterArt extends StatefulWidget {
   /// The eye: where the squares arrive from.
   static const eye = (row: 8, column: 8);
 
+  /// The rooster as a member of its own cast, first in the loop.
+  static const member = CastMember(
+    name: 'rooster',
+    asset: asset,
+    eye: eye,
+    squares: squares,
+  );
+
+  /// Everyone, in order: the rooster, then [welcomeCast], then round again.
+  static const cast = [member, ...welcomeCast];
+
   /// How long each part of the loop takes. The arrival is the part people
-  /// liked, so it keeps its pace; leaving is a little quicker, because
-  /// nobody is waiting for it.
+  /// liked first, so it keeps its pace. The rooster holds a little longer
+  /// than the others: it is who the screen is, and they are visiting.
   static const arriving = Duration(milliseconds: 1400);
   static const holding = Duration(milliseconds: 4200);
-  static const leaving = Duration(milliseconds: 1100);
-  static const resting = Duration(milliseconds: 300);
+  static const visiting = Duration(milliseconds: 3000);
+  static const flipping = Duration(milliseconds: 1500);
+
+  /// How long a picture stays before the next flips in.
+  static Duration holdFor(CastMember who) =>
+      identical(who, member) ? holding : visiting;
 
   /// How far down the artwork the frame always reaches: to the foot of the
   /// eighteenth row of squares, where the wattles end. A row boundary rather
@@ -133,74 +160,143 @@ class RoosterArt extends StatefulWidget {
   State<RoosterArt> createState() => _RoosterArtState();
 }
 
-class _RoosterArtState extends State<RoosterArt>
-    with SingleTickerProviderStateMixin {
-  /// 0 is no squares, 1 the exact picture. Forwards is the arrival and
-  /// backwards the leaving, so the two are the same motion.
+class _RoosterArtState extends State<RoosterArt> with TickerProviderStateMixin {
+  /// 0 is no squares, 1 the exact rooster. Only ever played once: after it,
+  /// the loop is holds and flips.
   late final AnimationController _arrival = AnimationController(
     vsync: this,
     duration: RoosterArt.arriving,
-    reverseDuration: RoosterArt.leaving,
-  )..addStatusListener(_next);
+  )..addStatusListener((status) {
+      if (status == AnimationStatus.completed) _hold();
+    });
 
-  /// The hold, and the breath between leaving and arriving again. A timer
-  /// rather than a longer animation, so the picture is not repainted sixty
-  /// times a second for the four seconds it is standing still.
+  /// One picture turning, tile by tile, into the next.
+  late final AnimationController _flip = AnimationController(
+    vsync: this,
+    duration: RoosterArt.flipping,
+  )..addStatusListener((status) {
+      if (status == AnimationStatus.completed) _landed();
+    });
+
+  /// A butterfly's wings, beating for as long as it holds. Its own
+  /// animation, because a hold is otherwise a timer and nothing repaints.
+  late final AnimationController _flap = AnimationController(
+    vsync: this,
+    duration: RoosterArt.visiting,
+  )..addStatusListener((status) {
+      if (status == AnimationStatus.completed) _turn();
+    });
+
+  /// Which of [RoosterArt.cast] is showing, and which flips in next.
+  int _now = 0;
+  int get _next => (_now + 1) % RoosterArt.cast.length;
+
+  /// The hold. A timer rather than a longer animation, so the picture is not
+  /// repainted sixty times a second while it stands still.
   Timer? _pause;
 
-  ImageStream? _stream;
-  late final ImageStreamListener _listener = ImageStreamListener(_loaded);
-  ui.Image? _image;
+  /// Decoded pictures, by cast index. Only the one showing and the one about
+  /// to flip in are kept: each is six megabytes decoded, and ten of them on
+  /// a sign-in screen would be most of a phone's image cache.
+  final _images = <int, ui.Image>{};
+  final _streams = <int, (ImageStream, ImageStreamListener)>{};
+
+  /// Set while a hold has run out but the next picture has not decoded.
+  bool _waitingForNext = false;
+
+  bool get _still => MediaQuery.disableAnimationsOf(context);
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final stream = const AssetImage(RoosterArt.asset)
-        .resolve(createLocalImageConfiguration(context));
-    if (stream.key == _stream?.key) return;
-    _stream?.removeListener(_listener);
-    _stream = stream..addListener(_listener);
+    _load(_now);
   }
 
-  bool get _still => MediaQuery.disableAnimationsOf(context);
+  void _load(int index) {
+    if (_streams.containsKey(index)) return;
+    final stream = AssetImage(RoosterArt.cast[index].asset)
+        .resolve(createLocalImageConfiguration(context));
+    late final ImageStreamListener listener;
+    listener = ImageStreamListener((info, _) {
+      if (!mounted) return;
+      final first = index == 0 && _images.isEmpty && _arrival.value == 0;
+      setState(() => _images[index] = info.image);
+      if (first) _begin();
+      if (index == _next && _waitingForNext) {
+        _waitingForNext = false;
+        _turn();
+      }
+    });
+    stream.addListener(listener);
+    _streams[index] = (stream, listener);
+  }
 
-  void _loaded(ImageInfo info, bool synchronousCall) {
-    if (!mounted) return;
-    final first = _image == null;
-    setState(() => _image = info.image);
-    if (!first) return;
+  /// Lets go of a picture nobody is about to see again for a while, and of
+  /// its place in the image cache.
+  void _drop(int index) {
+    final held = _streams.remove(index);
+    _images.remove(index);
+    if (held == null) return;
+    held.$1.removeListener(held.$2);
+    final config = createLocalImageConfiguration(context);
+    AssetImage(RoosterArt.cast[index].asset)
+        .obtainKey(config)
+        .then((key) => PaintingBinding.instance.imageCache.evict(key));
+  }
+
+  void _begin() {
     // Not before the picture is here: arriving over nothing would be the
-    // animation playing to an empty frame. All at once, and then still, for
-    // anybody who has asked their phone not to animate.
+    // animation playing to an empty frame. All at once, and then still -- the
+    // rooster, no cast -- for anybody who has asked their phone not to
+    // animate.
     if (_still) {
       _arrival.value = 1;
-    } else {
-      _arrival.forward();
+      return;
     }
+    _arrival.forward();
   }
 
-  void _next(AnimationStatus status) {
-    _pause?.cancel();
-    switch (status) {
-      case AnimationStatus.completed:
-        _pause = Timer(RoosterArt.holding, () {
-          if (mounted && !_still) _arrival.reverse();
-        });
-      case AnimationStatus.dismissed:
-        _pause = Timer(RoosterArt.resting, () {
-          if (mounted) _arrival.forward();
-        });
-      case AnimationStatus.forward:
-      case AnimationStatus.reverse:
-        break;
+  void _hold() {
+    if (!mounted || _still) return;
+    _load(_next);
+    final who = RoosterArt.cast[_now];
+    if (who.flapsAbout != null) {
+      _flap.forward(from: 0);
+      return;
     }
+    _pause?.cancel();
+    _pause = Timer(RoosterArt.holdFor(who), _turn);
+  }
+
+  void _turn() {
+    if (!mounted || _still) return;
+    if (!_images.containsKey(_next)) {
+      // Still decoding: wait for it rather than flip into an empty frame.
+      _waitingForNext = true;
+      _load(_next);
+      return;
+    }
+    _flip.forward(from: 0);
+  }
+
+  void _landed() {
+    if (!mounted) return;
+    final gone = _now;
+    setState(() => _now = _next);
+    _flip.value = 0;
+    if (gone != _now) _drop(gone);
+    _hold();
   }
 
   @override
   void dispose() {
     _pause?.cancel();
-    _stream?.removeListener(_listener);
+    for (final held in _streams.values) {
+      held.$1.removeListener(held.$2);
+    }
     _arrival.dispose();
+    _flip.dispose();
+    _flap.dispose();
     super.dispose();
   }
 
@@ -217,9 +313,14 @@ class _RoosterArtState extends State<RoosterArt>
       child: ExcludeSemantics(
         child: RepaintBoundary(
           child: CustomPaint(
-            painter: _RoosterPainter(
-              image: _image,
+            painter: _CastPainter(
+              now: RoosterArt.cast[_now],
+              next: RoosterArt.cast[_next],
+              nowImage: _images[_now],
+              nextImage: _images[_next],
               arrival: _arrival,
+              flip: _flip,
+              flap: _flap,
               topInset: MediaQuery.paddingOf(context).top,
             ),
             child: const SizedBox.expand(),
@@ -230,16 +331,26 @@ class _RoosterArtState extends State<RoosterArt>
   }
 }
 
-class _RoosterPainter extends CustomPainter {
-  final ui.Image? image;
+class _CastPainter extends CustomPainter {
+  final CastMember now;
+  final CastMember next;
+  final ui.Image? nowImage;
+  final ui.Image? nextImage;
   final Animation<double> arrival;
+  final Animation<double> flip;
+  final Animation<double> flap;
   final double topInset;
 
-  _RoosterPainter({
-    required this.image,
+  _CastPainter({
+    required this.now,
+    required this.next,
+    required this.nowImage,
+    required this.nextImage,
     required this.arrival,
+    required this.flip,
+    required this.flap,
     required this.topInset,
-  }) : super(repaint: arrival);
+  }) : super(repaint: Listenable.merge([arrival, flip, flap]));
 
   /// Each square's tile: its corner radius, and a little bleed so tiles that
   /// have landed meet with no seam between them.
@@ -254,99 +365,307 @@ class _RoosterPainter extends CustomPainter {
   /// exact picture, outline and all.
   static const _settle = 0.15;
 
-  static final List<({int row, int column, double at})> _tiles = () {
-    final far = math.sqrt(
-      math.pow(RoosterArt.squares.length, 2) +
-          math.pow(RoosterArt.squares.first.length, 2),
-    );
-    return [
-      for (var r = 0; r < RoosterArt.squares.length; r++)
-        for (var c = 0; c < RoosterArt.squares[r].length; c++)
-          if (RoosterArt.squares[r][c] == '#')
-            (
-              row: r,
-              column: c,
-              at: math.sqrt(
-                    math.pow(r - RoosterArt.eye.row, 2) +
-                        math.pow(c - RoosterArt.eye.column, 2),
-                  ) /
-                  far,
-            ),
-    ];
-  }();
+  /// Of the whole flip, how long any one tile takes to turn over. The rest
+  /// is the wave crossing the picture.
+  static const _turning = 0.24;
+
+  /// The flip's first and last moments, over which the exact pictures give
+  /// way to tiles and back: a tile cuts off the soft halo around it, and
+  /// cutting it all at once would be a visible jump.
+  static const _into = 0.08;
+  static const _outOf = 0.14;
+
+  static final _far = math.sqrt(
+    math.pow(RoosterArt.squares.length, 2) +
+        math.pow(RoosterArt.squares.first.length, 2),
+  );
+
+  /// How far [row], [column] is from [who]'s eye, 0 to 1.
+  static double _distance(CastMember who, int row, int column) =>
+      math.sqrt(
+        math.pow(row - who.eye.row, 2) + math.pow(column - who.eye.column, 2),
+      ) /
+      _far;
+
+  /// How far [row], [column] is from [who]'s eye, as a share of the way to
+  /// the farthest corner a phone shows (the first 18 rows): so the wave
+  /// takes the whole flip to cross what is on screen, wherever the eye is.
+  static double _reach(CastMember who, int row, int column) {
+    double from(int r, int c) => math.sqrt(
+          math.pow(r - who.eye.row, 2) + math.pow(c - who.eye.column, 2),
+        );
+    final columns = RoosterArt.squares.first.length - 1;
+    final farthest = [
+      from(0, 0),
+      from(0, columns),
+      from(17, 0),
+      from(17, columns),
+    ].reduce(math.max);
+    return from(row, column) / farthest;
+  }
+
+  /// A little disorder in the wave, the same every time for each square, so
+  /// it ripples rather than marching in rings.
+  static double _jitter(int row, int column) {
+    final h = math.sin(row * 12.9898 + column * 78.233) * 43758.5453;
+    return h - h.floorToDouble();
+  }
+
+  static bool _holds(CastMember who, int row, int column) =>
+      who.squares[row][column] == '#';
 
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawRect(Offset.zero & size, Paint()..color = RoosterArt.ground);
-    final picture = image;
-    if (picture == null) return;
-
     final (:scale, :origin) = RoosterArt.layout(size, topInset);
     if (scale <= 0) return;
     final where = origin & (RoosterArt.imageSize * scale);
-    final source =
-        Offset.zero & Size(picture.width.toDouble(), picture.height.toDouble());
-    final quality = Paint()..filterQuality = FilterQuality.high;
+    final pitch = RoosterArt.pitch * scale;
+    Offset centreOf(int row, int column) =>
+        origin +
+        RoosterArt.gridOrigin * scale +
+        Offset((column + 0.5) * pitch.width, (row + 0.5) * pitch.height);
 
-    final t = arrival.value;
-    if (t >= 1) {
-      canvas.drawImageRect(picture, source, where, quality);
+    final t = flip.value;
+    if (t > 0 && t < 1 && nowImage != null && nextImage != null) {
+      _paintFlip(canvas, where, pitch, centreOf, t);
       return;
     }
 
+    final picture = nowImage;
+    if (picture == null) return;
+    if (arrival.value < 1 && identical(now, RoosterArt.member)) {
+      _paintArrival(canvas, picture, where, pitch, centreOf);
+      return;
+    }
+    _paintExact(canvas, picture, where, scale, origin);
+  }
+
+  void _paintExact(
+    Canvas canvas,
+    ui.Image picture,
+    Rect where,
+    double scale,
+    Offset origin,
+  ) {
+    final pivot = now.flapsAbout;
+    final f = flap.value;
+    if (pivot == null || f <= 0 || f >= 1) {
+      _draw(canvas, picture, where, 1);
+      return;
+    }
+    // Four beats, eased in and out of the hold so the wings start and end
+    // open. A beat closes them to 58% of their span and opens them again,
+    // quicker down than up, the way a wing pushes and recovers.
+    final envelope = math.min(1.0, math.min(f, 1 - f) * 10);
+    final beat = (f * 4) % 1;
+    final down = beat < 0.4
+        ? Curves.easeIn.transform(beat / 0.4)
+        : 1 - Curves.easeOut.transform((beat - 0.4) / 0.6);
+    final span = 1 - 0.42 * down * envelope;
+    final x = origin.dx +
+        (RoosterArt.gridOrigin.dx + pivot * RoosterArt.pitch.width) * scale;
+    canvas.save();
+    // And a little lift on each downstroke.
+    canvas.translate(x, -3 * down * envelope);
+    canvas.scale(span, 1);
+    canvas.translate(-x, 0);
+    _draw(canvas, picture, where, 1);
+    canvas.restore();
+  }
+
+  void _paintArrival(
+    Canvas canvas,
+    ui.Image picture,
+    Rect where,
+    Size pitch,
+    Offset Function(int, int) centreOf,
+  ) {
+    final t = arrival.value;
     // The tiles: rounded squares of the picture, each growing into place
     // from the eye outward. Drawn as a mask, and the picture through it.
     canvas.saveLayer(where, Paint());
     final tile = Paint()..isAntiAlias = true;
-    final pitch = RoosterArt.pitch * scale;
-    for (final square in _tiles) {
-      final local = ((t - square.at * (1 - _landing - _settle)) / _landing)
-          .clamp(0.0, 1.0);
-      if (local <= 0) continue;
-      final grown = Curves.easeOutCubic.transform(local);
-      final centre = origin +
-          RoosterArt.gridOrigin * scale +
-          Offset(
-            (square.column + 0.5) * pitch.width,
-            (square.row + 0.5) * pitch.height,
-          );
-      final side = (0.55 + 0.45 * grown) * _bleed;
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          Rect.fromCenter(
-            center: centre,
-            width: pitch.width * side,
-            height: pitch.height * side,
-          ),
-          Radius.circular(_round * pitch.width * side),
-        ),
-        tile..color = Color.fromRGBO(0, 0, 0, grown),
-      );
+    for (var r = 0; r < now.squares.length; r++) {
+      for (var c = 0; c < now.squares[r].length; c++) {
+        if (!_holds(now, r, c)) continue;
+        final at = _distance(now, r, c);
+        final local =
+            ((t - at * (1 - _landing - _settle)) / _landing).clamp(0.0, 1.0);
+        if (local <= 0) continue;
+        final grown = Curves.easeOutCubic.transform(local);
+        final side = (0.55 + 0.45 * grown) * _bleed;
+        canvas.drawRRect(
+          _tile(centreOf(r, c), pitch, side, side),
+          tile..color = Color.fromRGBO(0, 0, 0, grown),
+        );
+      }
     }
-    canvas.drawImageRect(
-      picture,
-      source,
-      where,
-      Paint()
-        ..filterQuality = FilterQuality.high
-        ..blendMode = BlendMode.srcIn,
-    );
+    _draw(canvas, picture, where, 1, blend: BlendMode.srcIn);
     canvas.restore();
 
     // And the exact picture over the tiles at the end, so the soft outline
     // the tiles cut off comes in rather than appearing with a jump.
     final settle = ((t - (1 - _settle)) / _settle).clamp(0.0, 1.0);
-    if (settle > 0) {
-      canvas.drawImageRect(
-        picture,
-        source,
-        where,
-        quality..color = Color.fromRGBO(0, 0, 0, settle),
-      );
+    if (settle > 0) _draw(canvas, picture, where, settle);
+  }
+
+  void _paintFlip(
+    Canvas canvas,
+    Rect where,
+    Size pitch,
+    Offset Function(int, int) centreOf,
+    double t,
+  ) {
+    // Each tile turns about its own vertical axis: its front narrows to an
+    // edge, and its back -- the next picture's square -- widens out of it.
+    // Cards lift a little as they turn and shade as they go edge-on, which
+    // is what makes a row of squares read as things turning over rather
+    // than as squares changing colour.
+    final fronts = <({
+      Offset centre,
+      double width,
+      double lift,
+      double shade,
+      bool flat
+    })>[];
+    final backs = <({
+      Offset centre,
+      double width,
+      double lift,
+      double shade,
+      bool flat
+    })>[];
+    for (var r = 0; r < RoosterArt.squares.length; r++) {
+      for (var c = 0; c < RoosterArt.squares[r].length; c++) {
+        final was = _holds(now, r, c);
+        final will = _holds(next, r, c);
+        if (!was && !will) continue;
+        final at =
+            math.min(1.0, _reach(next, r, c)) * 0.9 + 0.1 * _jitter(r, c);
+        final local = ((t - at * (1 - _turning)) / _turning).clamp(0.0, 1.0);
+        final angle = Curves.easeInOutCubic.transform(local) * math.pi;
+        final lift = 1 + 0.16 * math.sin(angle);
+        final shade = math.sin(angle);
+        final card = (
+          centre: centreOf(r, c),
+          width: math.cos(angle).abs(),
+          lift: lift,
+          shade: shade,
+          // Lying flat, not turning: drawn square, so tiles that have not
+          // moved yet or have finished meet edge to edge, as the picture
+          // does. Rounded corners there left a white cross at every corner
+          // for the whole flip.
+          flat: local <= 0 || local >= 1,
+        );
+        if (angle < math.pi / 2) {
+          if (was) fronts.add(card);
+        } else if (will) {
+          backs.add(card);
+        }
+      }
     }
+
+    void side(
+      ui.Image picture,
+      List<
+              ({
+                Offset centre,
+                double width,
+                double lift,
+                double shade,
+                bool flat
+              })>
+          cards,
+    ) {
+      if (cards.isEmpty) return;
+      canvas.saveLayer(where, Paint());
+      final mask = Paint()..isAntiAlias = true;
+      for (final card in cards) {
+        if (card.flat) {
+          canvas.drawRect(
+            Rect.fromCenter(
+              center: card.centre,
+              width: pitch.width + 1,
+              height: pitch.height + 1,
+            ),
+            mask,
+          );
+          continue;
+        }
+        canvas.drawRRect(
+          _tile(
+            card.centre,
+            pitch,
+            _bleed * card.lift * card.width,
+            _bleed * card.lift,
+          ),
+          mask,
+        );
+      }
+      _draw(canvas, picture, where, 1, blend: BlendMode.srcIn);
+      // Edge-on is darker: light falls across a card that is turning away.
+      final shading = Paint()..blendMode = BlendMode.srcATop;
+      for (final card in cards) {
+        if (card.shade <= 0.01) continue;
+        canvas.drawRRect(
+          _tile(
+            card.centre,
+            pitch,
+            _bleed * card.lift * card.width,
+            _bleed * card.lift,
+          ),
+          shading..color = Color.fromRGBO(20, 12, 8, 0.32 * card.shade),
+        );
+      }
+      canvas.restore();
+    }
+
+    side(nowImage!, fronts);
+    side(nextImage!, backs);
+
+    // The exact pictures at either end, so neither the outgoing halo nor the
+    // incoming one is cut off with a jump.
+    final leaving = 1 - (t / _into).clamp(0.0, 1.0);
+    if (leaving > 0) _draw(canvas, nowImage!, where, leaving);
+    final settling = ((t - (1 - _outOf)) / _outOf).clamp(0.0, 1.0);
+    if (settling > 0) _draw(canvas, nextImage!, where, settling);
+  }
+
+  RRect _tile(Offset centre, Size pitch, double across, double down) {
+    final width = pitch.width * across;
+    final height = pitch.height * down;
+    return RRect.fromRectAndRadius(
+      Rect.fromCenter(center: centre, width: width, height: height),
+      Radius.elliptical(
+        math.min(_round * pitch.width * down, width / 2),
+        _round * pitch.height * down,
+      ),
+    );
+  }
+
+  void _draw(
+    Canvas canvas,
+    ui.Image picture,
+    Rect where,
+    double opacity, {
+    BlendMode blend = BlendMode.srcOver,
+  }) {
+    canvas.drawImageRect(
+      picture,
+      Offset.zero & Size(picture.width.toDouble(), picture.height.toDouble()),
+      where,
+      Paint()
+        ..filterQuality = FilterQuality.high
+        ..blendMode = blend
+        ..color = Color.fromRGBO(0, 0, 0, opacity),
+    );
   }
 
   @override
-  bool shouldRepaint(_RoosterPainter old) =>
-      old.image != image || old.topInset != topInset || old.arrival != arrival;
+  bool shouldRepaint(_CastPainter old) =>
+      old.nowImage != nowImage ||
+      old.nextImage != nextImage ||
+      old.now != now ||
+      old.topInset != topInset;
 }

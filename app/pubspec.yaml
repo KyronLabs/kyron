@@ -93,6 +93,16 @@ flutter:
     - lib/assets/google.svg
     - lib/assets/google_g.svg
     - lib/assets/rooster.webp
+    # The rest of the welcome picture's cast, by scripts/welcome_cast.py.
+    - lib/assets/cast/cat.webp
+    - lib/assets/cast/watermelon.webp
+    - lib/assets/cast/butterfly.webp
+    - lib/assets/cast/strawberry.webp
+    - lib/assets/cast/fawn.webp
+    - lib/assets/cast/mushroom.webp
+    - lib/assets/cast/coconut.webp
+    - lib/assets/cast/apple.webp
+    - lib/assets/cast/broccoli.webp
     - lib/l10n/app_en.arb
     - lib/l10n/app_es.arb
     - lib/l10n/app_zh.arb
