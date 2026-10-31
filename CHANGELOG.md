@@ -11,6 +11,8 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+
+## [0.1.24] - 2026-10-31
 ### Fixed
 
 - **No gold flash on the heart with reduced motion.** With animations
@@ -2201,7 +2203,8 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.23...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.24...HEAD
+[0.1.24]: https://github.com/KyronLabs/kyron/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/KyronLabs/kyron/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/KyronLabs/kyron/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/KyronLabs/kyron/compare/v0.1.20...v0.1.21
