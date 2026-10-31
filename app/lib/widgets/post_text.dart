@@ -5,7 +5,8 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../routes.dart';
 import 'post_action_colors.dart';
 import '../services/app_browser.dart';
-import '../l10n/app_localizations.dart';
+import '../utils/display_url.dart';
+import 'create_post/url_preview.dart' show trimTrailingPunctuation;
 
 /// A post's text, with its hashtags, mentions and links picked out.
 ///
@@ -125,7 +126,16 @@ class _PostTextState extends State<PostText> {
         );
       }
 
-      final text = match.group(0)!;
+      var text = match.group(0)!;
+      // A link's closing full stop or bracket belongs to the sentence: left
+      // in, it was part of what was opened, and of what is shortened below.
+      var after = '';
+      final link = text.startsWith('http');
+      if (link) {
+        final trimmed = trimTrailingPunctuation(text);
+        after = text.substring(trimmed.length);
+        text = trimmed;
+      }
       final recognizer = TapGestureRecognizer()
         ..onTap = () => _open(context, text);
       _recognizers.add(recognizer);
@@ -136,7 +146,8 @@ class _PostTextState extends State<PostText> {
 
       spans.add(
         TextSpan(
-          text: text,
+          // A link is shown short and opened whole: see displayUrl.
+          text: link ? displayUrl(text) : text,
           style: highlighted
               // Dark text on the highlighter, not the accent colour: blue on
               // yellow is unreadable, and the point is to be spotted.
@@ -149,6 +160,7 @@ class _PostTextState extends State<PostText> {
           recognizer: recognizer,
         ),
       );
+      if (after.isNotEmpty) spans.add(TextSpan(text: after, style: base));
       last = match.end;
     }
 

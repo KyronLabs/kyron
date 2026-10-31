@@ -698,6 +698,35 @@ void main() {
       );
     });
 
+    test('draws every one of the cast on the rooster\'s own grid', () async {
+      final pubspec = File('pubspec.yaml').readAsStringSync();
+      expect(RoosterArt.cast.first, same(RoosterArt.member));
+      expect(RoosterArt.cast.map((who) => who.name).toSet(),
+          hasLength(RoosterArt.cast.length));
+      for (final who in welcomeCast) {
+        // The same size as the rooster, so a tile turns into the square in
+        // the same place.
+        final file = File(who.asset);
+        expect(file.existsSync(), isTrue, reason: who.name);
+        expect(pubspec, contains(who.asset), reason: who.name);
+        final codec = await ui.instantiateImageCodec(file.readAsBytesSync());
+        final frame = await codec.getNextFrame();
+        expect(frame.image.width, RoosterArt.imageSize.width);
+        expect(frame.image.height, RoosterArt.imageSize.height);
+        frame.image.dispose();
+
+        expect(who.squares, hasLength(25), reason: who.name);
+        expect(who.squares.every((row) => row.length == 20), isTrue);
+        expect(who.squares[who.eye.row][who.eye.column], '#',
+            reason: '${who.name} flips in from a square it is in');
+        // Inside the 18 rows a phone always shows, unless it is cropped by
+        // the frame like the rooster.
+        final below = who.squares.skip(18).join().contains('#');
+        final cropped = who.squares.last.contains('#');
+        expect(!below || cropped, isTrue, reason: who.name);
+      }
+    });
+
     test('fills a phone from the right, the head clear of the status bar', () {
       final (:scale, :origin) = RoosterArt.layout(const Size(390, 380), 47);
 
@@ -734,16 +763,19 @@ void main() {
         ),
       );
       // The picture decodes off the test clock.
+      // The whole cast, so a flip is never waiting on one to decode.
       await tester.runAsync(() async {
-        await precacheImage(
-          const AssetImage(RoosterArt.asset),
-          tester.element(find.byType(RoosterArt)),
-        );
+        for (final who in RoosterArt.cast) {
+          await precacheImage(
+            AssetImage(who.asset),
+            tester.element(find.byType(RoosterArt)),
+          );
+        }
       });
       await tester.pump();
     }
 
-    testWidgets('arrives, holds, leaves the way it came, and comes back', (
+    testWidgets('arrives, holds, and flips into each of the cast in turn', (
       tester,
     ) async {
       await pumpArt(tester);
@@ -755,19 +787,38 @@ void main() {
       await tester.pump(const Duration(milliseconds: 100));
       expect(tester.hasRunningAnimations, isFalse, reason: 'holding');
 
+      // Then the rooster turns over, tile by tile, into the cat.
       await tester.pump(RoosterArt.holding);
       await tester.pump(const Duration(milliseconds: 100));
-      expect(tester.hasRunningAnimations, isTrue, reason: 'leaving');
+      expect(tester.hasRunningAnimations, isTrue, reason: 'flipping');
 
-      await tester.pump(RoosterArt.leaving);
+      await tester.pump(RoosterArt.flipping);
       await tester.pump(const Duration(milliseconds: 50));
-      expect(tester.hasRunningAnimations, isFalse, reason: 'resting');
-
-      await tester.pump(RoosterArt.resting);
-      await tester.pump(const Duration(milliseconds: 50));
-      expect(tester.hasRunningAnimations, isTrue, reason: 'arriving again');
+      expect(tester.hasRunningAnimations, isFalse, reason: 'the cat holds');
 
       // Gone with the screen, timers and all.
+      await tester.pumpWidget(const SizedBox());
+    });
+
+    testWidgets('beats the butterfly\'s wings while it holds', (tester) async {
+      await pumpArt(tester);
+      expect(
+        RoosterArt.cast.where((who) => who.flapsAbout != null),
+        isNotEmpty,
+      );
+      // A flip animates for 1.5 seconds and every other hold is a timer, so
+      // only wings keep the picture moving longer than a flip lasts. Round
+      // the cast past the butterfly, looking for that.
+      var streak = Duration.zero;
+      var longest = Duration.zero;
+      const step = Duration(milliseconds: 100);
+      for (var i = 0; i < 260; i++) {
+        await tester.pump(step);
+        streak = tester.hasRunningAnimations ? streak + step : Duration.zero;
+        if (streak > longest) longest = streak;
+      }
+      expect(longest, greaterThan(RoosterArt.flipping + RoosterArt.arriving));
+
       await tester.pumpWidget(const SizedBox());
     });
 
@@ -777,8 +828,8 @@ void main() {
       await pumpArt(tester, still: true);
       expect(tester.hasRunningAnimations, isFalse);
 
-      // No loop either.
-      await tester.pump(RoosterArt.holding + RoosterArt.resting);
+      // No loop either: the rooster, and nobody else.
+      await tester.pump(RoosterArt.holding + RoosterArt.flipping);
       await tester.pump(const Duration(milliseconds: 100));
       expect(tester.hasRunningAnimations, isFalse);
     });

@@ -79,7 +79,7 @@ String? firstLinkIn(String text) {
   };
   if (match == null) return null;
 
-  final raw = _trimTrailing(match.group(0)!);
+  final raw = trimTrailingPunctuation(match.group(0)!);
   if (raw.isEmpty) return null;
 
   if (match == explicit) {
@@ -110,7 +110,7 @@ final _bare = RegExp(
 const _notALink = {'e.g', 'i.e', 'etc', 'vs', 'a.m', 'p.m', 'u.s', 'u.k'};
 
 /// Trailing punctuation belongs to the sentence, not the address.
-String _trimTrailing(String url) {
+String trimTrailingPunctuation(String url) {
   var trimmed = url.replaceAll(RegExp(r'[.,;:!?]+$'), '');
   // A closing bracket is only part of the address if the address opened one --
   // Wikipedia URLs do, "(see example.com)" does not.
