@@ -11,6 +11,13 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Changed
+
+- **Follow from a post's own page.** Somebody else's post has a red Follow
+  button beside its author, where the post's menu was; once pressed it says
+  Following. It is not shown for people you already follow. The menu has
+  moved to the top right of the header -- on your own posts, last on the
+  right, after Post analytics.
 
 ## [0.1.25] - 2026-10-31
 ### Added
