@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.26] - 2026-10-31
 ### Changed
 
 - **Clean release notes in Google Play.** "What's new" showed the
@@ -2252,7 +2254,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.25...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.26...HEAD
+[0.1.26]: https://github.com/KyronLabs/kyron/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/KyronLabs/kyron/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/KyronLabs/kyron/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/KyronLabs/kyron/compare/v0.1.22...v0.1.23
