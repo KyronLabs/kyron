@@ -86,7 +86,10 @@ class FaceTracker {
         return null;
       }
       return [
-        for (final point in result.landmarks) FacePoint(point.x, point.y),
+        // Depth kept: it is what turns a sticker that only tilts into
+        // glasses that turn with the head. See HeadPose.
+        for (final point in result.landmarks)
+          FacePoint(point.x, point.y, point.z),
       ];
     } catch (error) {
       AppLog.instance.error('ar', 'A frame could not be tracked: $error');

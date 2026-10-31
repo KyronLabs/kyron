@@ -47,18 +47,23 @@ void main() {
     expect(find.text('Try again'), findsOneWidget);
   });
 
-  testWidgets('offers every lens, with none selected first', (tester) async {
+  testWidgets('offers the lenses, with none selected first', (tester) async {
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
-    // The strip is tiles now, not names -- each one showing what its lens
-    // does -- so the name of every lens is in its label rather than on it,
-    // and only the chosen one is written out above the row.
-    for (final lens in Lens.builtIn) {
+    // The strip scrolls through the shutter, so only the lenses near it are
+    // built at once. The first few are enough to show the order and labels.
+    for (final lens in Lens.builtIn.take(4)) {
       final label = lens.needsFace ? '${lens.name}, face lens' : lens.name;
       expect(find.bySemanticsLabel(label), findsOneWidget, reason: lens.id);
     }
     expect(find.text(Lens.builtIn.first.name), findsOneWidget);
+  });
+
+  testWidgets('glasses are in the strip, as face lenses', (tester) async {
+    await tester.pumpWidget(screen(const [], temp));
+    await tester.pump();
+    expect(find.bySemanticsLabel('Specs, face lens'), findsOneWidget);
   });
 
   testWidgets('keeps the shutter inert while there is no camera', (
@@ -84,47 +89,38 @@ void main() {
     expect(find.byTooltip('Switch camera'), findsNothing);
   });
 
-  testWidgets('changing the lens changes what is selected', (tester) async {
+  testWidgets('swiping to a lens, or tapping it, puts it on', (tester) async {
     await tester.pumpWidget(screen(const [], temp));
     await tester.pump();
 
     /// The ring around a tile, which is the whole visible signal.
-    BorderSide ringOf(String label) {
+    Color ringOf(String label) {
       final box = tester.widget<AnimatedContainer>(
         find.descendant(
           of: find.bySemanticsLabel(label),
           matching: find.byType(AnimatedContainer),
         ),
       );
-      final shape = (box.decoration! as ShapeDecoration).shape
-          as ContinuousRectangleBorder;
-      return shape.side;
+      return (box.decoration! as BoxDecoration).border!.top.color;
     }
 
-    expect(ringOf('None').color, Colors.white);
-    expect(ringOf('Mono').color, Colors.white24);
+    expect(ringOf('None'), Colors.white);
+    expect(ringOf('Specs, face lens'), Colors.white24);
 
-    await tester.tap(find.bySemanticsLabel('Mono'));
-    // Past the tile's 180ms transition. A single pump lands mid-animation and
-    // reads the colour it is on its way *from*.
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 250));
+    await tester.tap(find.bySemanticsLabel('Specs, face lens'));
+    // Past the strip's slide to the middle and the tile's transition.
+    await tester.pumpAndSettle();
 
-    expect(ringOf('Mono').color, Colors.white);
-    expect(ringOf('None').color, Colors.white24);
-    // And the name above the row follows the selection.
-    expect(find.text('Mono'), findsOneWidget);
+    expect(ringOf('Specs, face lens'), Colors.white);
+    expect(ringOf('None'), Colors.white24);
+    // And the name over the shutter follows the selection.
+    expect(find.text('Specs'), findsOneWidget);
     expect(find.text('None'), findsNothing);
   });
 
-  testWidgets('writes the top bar in white, under either theme', (
+  testWidgets('has no title bar: the picture is the whole screen', (
     tester,
   ) async {
-    // The bar sits on black. The design system's AppBarTheme sets
-    // titleTextStyle and iconTheme, and a theme's colours beat the widget's
-    // foregroundColor -- so under the light theme this screen drew near-black
-    // text and a near-black back arrow on a black bar, and the top of the
-    // screen was blank.
     for (final theme in [KyronTheme.lightTheme, KyronTheme.darkTheme]) {
       await tester.pumpWidget(
         ProviderScope(
@@ -136,19 +132,27 @@ void main() {
       );
       await tester.pump();
 
-      // What actually gets painted, first: an AppBar that sets only
-      // foregroundColor leaves titleTextStyle null and the theme's near-black
-      // wins, which is the bug and is invisible to any check of the widget's
-      // own fields.
-      final title = tester.widget<Text>(find.text('AR Lens'));
-      final painted = DefaultTextStyle.of(tester.element(find.text('AR Lens')))
-          .style
-          .merge(title.style);
-      expect(painted.color, Colors.white, reason: '$theme');
-
-      final bar = tester.widget<AppBar>(find.byType(AppBar));
-      expect(bar.iconTheme?.color, Colors.white);
-      expect(bar.actionsIconTheme?.color, Colors.white);
+      expect(find.byType(AppBar), findsNothing);
+      expect(find.text('AR Lens'), findsNothing);
+      // The way out is still there, floating on the picture.
+      expect(find.byTooltip('Close'), findsOneWidget);
     }
+  });
+
+  testWidgets('video mode takes the lens off and says so', (tester) async {
+    await tester.pumpWidget(screen(const [], temp));
+    await tester.pump();
+
+    await tester.tap(find.text('Video'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.bySemanticsLabel('Record a video'), findsOneWidget);
+    expect(find.text('Lenses are for photos, for now'), findsOneWidget);
+
+    await tester.tap(find.text('Photo'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.bySemanticsLabel('Take a picture'), findsOneWidget);
   });
 }

@@ -99,6 +99,39 @@ class SkinSampler {
     return Color.fromARGB(255, r ~/ count, g ~/ count, b ~/ count);
   }
 
+  /// The size of a frame once it is turned upright.
+  ///
+  /// A phone's sensor is mounted on its side, so the frames it streams are
+  /// landscape while the person holding it is portrait. The tracker is told
+  /// the rotation and answers in the *upright* picture -- so the size its
+  /// landmarks are normalised to is this, not the raw buffer's. Using the raw
+  /// size stretched every placement on Android: x by the long side and y by
+  /// the short one, which squashed the head's tilt, inflated the pupil gap as
+  /// the head leaned, and drew the frost and the fill as skewed boxes
+  /// somewhere near the face rather than on it.
+  static Size uprightSize(Size raw, int rotationDegrees) =>
+      rotationDegrees % 180 == 90 ? raw.flipped : raw;
+
+  /// [raw], read in upright coordinates.
+  ///
+  /// Everything upstream -- anchors, regions, the exposure window -- is in
+  /// the upright picture, and the raw buffer is still on its side. The
+  /// rotation is clockwise, the way Android states a sensor's orientation and
+  /// the way the tracker applies it.
+  static ReadPixel upright(
+    ReadPixel raw, {
+    required int width,
+    required int height,
+    required int rotationDegrees,
+  }) {
+    return switch (rotationDegrees % 360) {
+      90 => (x, y) => raw(y, height - 1 - x),
+      180 => (x, y) => raw(width - 1 - x, height - 1 - y),
+      270 => (x, y) => raw(width - 1 - y, x),
+      _ => raw,
+    };
+  }
+
   /// A reader over a camera frame.
   ///
   /// The two platforms hand over pixels in two arrangements -- the same split

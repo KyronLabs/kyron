@@ -96,6 +96,10 @@ class FaceRegion {
     return _hullOf(below);
   }
 
+  /// The convex outline of any set of points, as a path. Null for fewer than
+  /// three. Used to hide what is behind a face.
+  static Path? hullPath(List<Offset> points) => _hullOf(points);
+
   static Path? _hullOf(List<Offset> points) {
     final hull = convexHull(points);
     if (hull.length < 3) return null;
