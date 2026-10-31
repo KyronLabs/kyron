@@ -410,13 +410,15 @@ jobs:
           name: android
           path: incoming
 
-      # This version's changelog section; play-upload.py cuts it to Play's
-      # 500 characters.
+      # This version's changelog section as plain text, within Play's 500
+      # characters: Play shows notes as written, so the Markdown the GitHub
+      # release renders arrived as hashes and asterisks. Or the section's own
+      # <!-- What's new --> note, where it has one. See scripts/changelog.py.
       - name: Write the release notes
         if: steps.ready.outputs.send == 'yes'
         env:
           VERSION: ${{ needs.checks.outputs.version }}
-        run: python3 scripts/changelog.py show "$VERSION" > play-notes.txt
+        run: python3 scripts/changelog.py store "$VERSION" > play-notes.txt
 
       - name: Send it to the testing track
         if: steps.ready.outputs.send == 'yes'
