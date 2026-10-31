@@ -194,7 +194,11 @@ jobs:
       # Both would fail at the worst moment -- mid-release -- if a heading were
       # malformed, so it is checked on every change instead.
       - name: Parse CHANGELOG.md
-        run: python3 scripts/changelog.py unreleased
+        run: |
+          python3 scripts/changelog.py unreleased
+          # And what Play will say for it, so a What's new note too long for
+          # the store fails here rather than at the upload.
+          python3 scripts/changelog.py store Unreleased
 
       # Same reasoning, one level up. A release is meant to carry Windows and
       # Android together, which is two build jobs, one build number and a
@@ -227,3 +231,8 @@ jobs:
       # only.
       - name: Check the Play upload
         run: python3 scripts/test_play_upload.py
+
+      # And what Play's "What's new" says: the changelog turned into plain
+      # text, within 500 characters, for every release there has been.
+      - name: Check the store notes
+        run: python3 scripts/test_changelog.py

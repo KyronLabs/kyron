@@ -10,9 +10,22 @@ _Create Versioned Release_ workflow, which refuses to cut a release while that
 section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
+Google Play's "What's new" is the same section as plain text -- the bold
+headlines and the sentence after each, as much as fits in 500 characters
+(`scripts/changelog.py store`). To say something else there, put a note in
+the section; GitHub does not show it:
+
+    <!-- What's new
+    The rooster has company on the welcome screen.
+    -->
+
 ## [Unreleased]
 ### Changed
 
+- **Clean release notes in Google Play.** "What's new" showed the
+  changelog as it is written, hashes, asterisks and broken lines included.
+  It is now plain text -- New, Improved and Fixed, one line per change --
+  cut to fit Play's 500 characters, or a note written just for the store.
 - **Follow from a post's own page.** Somebody else's post has a red Follow
   button beside its author, where the post's menu was; once pressed it says
   Following. It is not shown for people you already follow. The menu has
