@@ -2,9 +2,10 @@
 
 The pictures the gift sheet shows for each gift, and the coin beside every
 price. One PNG per gift, named for its `type` in the API's catalogue
-(`api/src/modules/gifts/gift-catalogue.ts`). A gift with no file here falls
-back to its emoji, so a gift added on the server shows something on an app
-that predates it.
+(`api/src/modules/gifts/gift-catalogue.ts`). A gift with no file here is
+drawn as a gold present icon, never an emoji, so a gift added on the server
+shows something on an app that predates it. To add a picture, also list it
+in `pubspec.yaml` and in `GiftArt.drawn` (`lib/widgets/gift_sheet.dart`).
 
 ## Where they came from
 

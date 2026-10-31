@@ -669,6 +669,31 @@ void main() {
       expect(art('rose'), findsOneWidget);
     });
 
+    testWidgets('changes without a landing when motion is off', (
+      tester,
+    ) async {
+      // Through the platform, as the phone's setting arrives: MaterialApp
+      // builds its MediaQuery from it.
+      tester.platformDispatcher.accessibilityFeaturesTestValue =
+          const FakeAccessibilityFeatures(disableAnimations: true);
+      addTearDown(
+          tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
+      await tester.pumpWidget(row(_post));
+      await tester.pumpWidget(row(_post.copyWith(viewerGift: 'rose')));
+      // Flutter already shortens a controller to 5% of its length with
+      // animations off, so the burst would be a 31ms flash: look inside it.
+      await tester.pump(const Duration(milliseconds: 10));
+
+      expect(art('rose'), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (w) => w is CustomPaint && w.painter is LikeBurstPainter,
+        ),
+        findsNothing,
+      );
+      expect(tester.binding.hasScheduledFrame, isFalse);
+    });
+
     testWidgets('does not land again on a rebuild with the same gift', (
       tester,
     ) async {

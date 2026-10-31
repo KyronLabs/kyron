@@ -17,8 +17,9 @@ and three things decide whether that looks right:
   it ("decontaminated") before its alpha is applied.
 
 Then it is cropped to the object, centred on a square with a little room,
-and written at 256px: the sheet draws a gift at about 56 logical pixels, so
-this is enough for a 4x screen and small enough to ship eight of.
+and written at 256px: the sheet draws a gift at 48 logical pixels, and at
+112 as it is sent, so this is enough for a 4x screen at tile size and small
+enough to ship nine of.
 
 Usage:
     python3 tools/cut_gift_art.py SOURCE.png OUT.png [--size 256]

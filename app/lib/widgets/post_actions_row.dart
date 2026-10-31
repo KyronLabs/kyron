@@ -221,7 +221,11 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
   void didUpdateWidget(PostAction oldWidget) {
     super.didUpdateWidget(oldWidget);
     final art = widget.artKey;
-    if (art != null && art != oldWidget.artKey) {
+    // With animations turned off the gift simply takes the heart's place, as
+    // it arrived there without a flight.
+    if (art != null &&
+        art != oldWidget.artKey &&
+        !MediaQuery.disableAnimationsOf(context)) {
       _celebrating = true;
       _landing = true;
       _play.forward(from: 0);

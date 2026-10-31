@@ -11,6 +11,12 @@ section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
 ## [Unreleased]
+### Fixed
+
+- **No gold flash on the heart with reduced motion.** With animations
+  turned off, a gift you send already skipped its flight, but the heart
+  still flashed a gold burst as it changed. Now the gift simply takes the
+  heart's place.
 
 ## [0.1.23] - 2026-10-30
 ### Changed
