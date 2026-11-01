@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.28] - 2026-11-01
 ### Added
 
 - **Glasses in 3D.** Specs, Aviator, Shades and Cat-eye turn with your
@@ -2294,7 +2296,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.27...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.28...HEAD
+[0.1.28]: https://github.com/KyronLabs/kyron/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/KyronLabs/kyron/compare/v0.1.26...v0.1.27
 [0.1.26]: https://github.com/KyronLabs/kyron/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/KyronLabs/kyron/compare/v0.1.24...v0.1.25
