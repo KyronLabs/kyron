@@ -772,15 +772,16 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
         key: const ValueKey('post-detail-follow'),
         behavior: HitTestBehavior.opaque,
         onTap: done ? null : _follow,
-        // A touch target taller than the pill it draws.
+        // A lean pill, and a touch target taller than it: what is drawn and
+        // what a thumb has to hit are different sizes.
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
           child: AnimatedContainer(
             duration: MotionTokens.fast,
             curve: Curves.easeOutCubic,
-            height: 32,
+            height: 24,
             padding:
-                const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+                const EdgeInsets.symmetric(horizontal: SpacingTokens.space12),
             decoration: BoxDecoration(
               color: done
                   ? scheme.onSurface.withValues(alpha: 0.08)
@@ -804,14 +805,14 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
                       children: [
                         Icon(
                           Iconsax.tick_circle_copy,
-                          size: 14,
+                          size: 12,
                           color: scheme.onSurface.withValues(alpha: 0.7),
                         ),
                         const SizedBox(width: SpacingTokens.space4),
                         Text(
                           l10n.ui('ui_following', 'Following'),
                           style: TextStyle(
-                            fontSize: TypographyTokens.fontSize2,
+                            fontSize: TypographyTokens.fontSize1,
                             fontWeight: FontWeight.w600,
                             color: scheme.onSurface.withValues(alpha: 0.7),
                           ),
@@ -822,7 +823,7 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
                       l10n.ui('ui_follow', 'Follow'),
                       key: const ValueKey('follow'),
                       style: const TextStyle(
-                        fontSize: TypographyTokens.fontSize2,
+                        fontSize: TypographyTokens.fontSize1,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),

@@ -10,14 +10,49 @@ _Create Versioned Release_ workflow, which refuses to cut a release while that
 section is empty. The versioned release's notes on GitHub are this file's
 section for that version, so what is written here is what people read.
 
+Google Play's "What's new" is the same section as plain text -- the bold
+headlines and the sentence after each, as much as fits in 500 characters
+(`scripts/changelog.py store`). To say something else there, put a note in
+the section; GitHub does not show it:
+
+    <!-- What's new
+    The rooster has company on the welcome screen.
+    -->
+
 ## [Unreleased]
+
+## [0.1.27] - 2026-10-31
 ### Changed
 
+- **Notifications show the post's picture.** A like, reply, repost,
+  mention or gift on a post with a photo, GIF or video now ends with that
+  picture, small and rounded -- and a gift sits on its corner. A gift on a
+  post of words alone still shows the gift by itself.
+- **A leaner Follow button** on a post's own page: shorter, tighter, in
+  smaller type, with the same room to tap.
+
+## [0.1.26] - 2026-10-31
+### Changed
+
+- **Clean release notes in Google Play.** "What's new" showed the
+  changelog as it is written, hashes, asterisks and broken lines included.
+  It is now plain text -- New, Improved and Fixed, one line per change --
+  cut to fit Play's 500 characters, or a note written just for the store.
 - **Follow from a post's own page.** Somebody else's post has a red Follow
   button beside its author, where the post's menu was; once pressed it says
   Following. It is not shown for people you already follow. The menu has
   moved to the top right of the header -- on your own posts, last on the
   right, after Post analytics.
+
+### Fixed
+
+- **The welcome picture's visitors are drawn the way the rooster is.** They
+  were rows of separate rounded buttons in muddy colours, and a pale streak
+  trailed off the bottom of the cat. Now each is a mosaic run through a
+  median, as the rooster is -- neighbouring colours run together into soft
+  shapes -- in brighter colour, and the cat and the fawn are cut off by the
+  bottom of the frame at full width, like the rooster. The butterfly's wings
+  no longer beat.
 
 ## [0.1.25] - 2026-10-31
 ### Added
@@ -2229,7 +2264,9 @@ section for that version, so what is written here is what people read.
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.25...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.27...HEAD
+[0.1.27]: https://github.com/KyronLabs/kyron/compare/v0.1.26...v0.1.27
+[0.1.26]: https://github.com/KyronLabs/kyron/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/KyronLabs/kyron/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/KyronLabs/kyron/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/KyronLabs/kyron/compare/v0.1.22...v0.1.23

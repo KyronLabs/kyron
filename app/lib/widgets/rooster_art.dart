@@ -31,7 +31,7 @@ export 'welcome_cast.dart' show CastMember, welcomeCast;
 /// 2. **A hold**, long enough to be a picture rather than a screensaver.
 /// 3. **A flip.** Every tile turns over like a card, in a wave out from the
 ///    next picture's eye, and its back is that picture: a cat, a watermelon,
-///    a butterfly (whose wings then beat), and the rest of [welcomeCast].
+///    a butterfly, and the rest of [welcomeCast].
 ///    Each one is drawn on the rooster's exact grid, so a tile always turns
 ///    into the square in the same place.
 /// 4. Hold, flip, and so on round the cast back to the rooster.
@@ -178,15 +178,6 @@ class _RoosterArtState extends State<RoosterArt> with TickerProviderStateMixin {
       if (status == AnimationStatus.completed) _landed();
     });
 
-  /// A butterfly's wings, beating for as long as it holds. Its own
-  /// animation, because a hold is otherwise a timer and nothing repaints.
-  late final AnimationController _flap = AnimationController(
-    vsync: this,
-    duration: RoosterArt.visiting,
-  )..addStatusListener((status) {
-      if (status == AnimationStatus.completed) _turn();
-    });
-
   /// Which of [RoosterArt.cast] is showing, and which flips in next.
   int _now = 0;
   int get _next => (_now + 1) % RoosterArt.cast.length;
@@ -259,13 +250,8 @@ class _RoosterArtState extends State<RoosterArt> with TickerProviderStateMixin {
   void _hold() {
     if (!mounted || _still) return;
     _load(_next);
-    final who = RoosterArt.cast[_now];
-    if (who.flapsAbout != null) {
-      _flap.forward(from: 0);
-      return;
-    }
     _pause?.cancel();
-    _pause = Timer(RoosterArt.holdFor(who), _turn);
+    _pause = Timer(RoosterArt.holdFor(RoosterArt.cast[_now]), _turn);
   }
 
   void _turn() {
@@ -296,7 +282,6 @@ class _RoosterArtState extends State<RoosterArt> with TickerProviderStateMixin {
     }
     _arrival.dispose();
     _flip.dispose();
-    _flap.dispose();
     super.dispose();
   }
 
@@ -320,7 +305,6 @@ class _RoosterArtState extends State<RoosterArt> with TickerProviderStateMixin {
               nextImage: _images[_next],
               arrival: _arrival,
               flip: _flip,
-              flap: _flap,
               topInset: MediaQuery.paddingOf(context).top,
             ),
             child: const SizedBox.expand(),
@@ -338,7 +322,6 @@ class _CastPainter extends CustomPainter {
   final ui.Image? nextImage;
   final Animation<double> arrival;
   final Animation<double> flip;
-  final Animation<double> flap;
   final double topInset;
 
   _CastPainter({
@@ -348,9 +331,8 @@ class _CastPainter extends CustomPainter {
     required this.nextImage,
     required this.arrival,
     required this.flip,
-    required this.flap,
     required this.topInset,
-  }) : super(repaint: Listenable.merge([arrival, flip, flap]));
+  }) : super(repaint: Listenable.merge([arrival, flip]));
 
   /// Each square's tile: its corner radius, and a little bleed so tiles that
   /// have landed meet with no seam between them.
@@ -438,40 +420,7 @@ class _CastPainter extends CustomPainter {
       _paintArrival(canvas, picture, where, pitch, centreOf);
       return;
     }
-    _paintExact(canvas, picture, where, scale, origin);
-  }
-
-  void _paintExact(
-    Canvas canvas,
-    ui.Image picture,
-    Rect where,
-    double scale,
-    Offset origin,
-  ) {
-    final pivot = now.flapsAbout;
-    final f = flap.value;
-    if (pivot == null || f <= 0 || f >= 1) {
-      _draw(canvas, picture, where, 1);
-      return;
-    }
-    // Four beats, eased in and out of the hold so the wings start and end
-    // open. A beat closes them to 58% of their span and opens them again,
-    // quicker down than up, the way a wing pushes and recovers.
-    final envelope = math.min(1.0, math.min(f, 1 - f) * 10);
-    final beat = (f * 4) % 1;
-    final down = beat < 0.4
-        ? Curves.easeIn.transform(beat / 0.4)
-        : 1 - Curves.easeOut.transform((beat - 0.4) / 0.6);
-    final span = 1 - 0.42 * down * envelope;
-    final x = origin.dx +
-        (RoosterArt.gridOrigin.dx + pivot * RoosterArt.pitch.width) * scale;
-    canvas.save();
-    // And a little lift on each downstroke.
-    canvas.translate(x, -3 * down * envelope);
-    canvas.scale(span, 1);
-    canvas.translate(-x, 0);
     _draw(canvas, picture, where, 1);
-    canvas.restore();
   }
 
   void _paintArrival(
