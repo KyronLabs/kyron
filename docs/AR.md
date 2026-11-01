@@ -217,44 +217,59 @@ sit on a black floor underneath, as tight as they go.
 
 ## Lenses on video
 
-The camera records the picture as it is. The lens is put in afterwards
-(`LensVideoBaker`), from the poses recorded alongside the clip:
+The camera records the picture as it is. The lens is put in afterwards,
+from the poses recorded alongside the clip:
 
 1. While recording, the frames that track the face come from the recording
-   itself (`startVideoRecording(onAvailable:)`). Each one adds the landmarks,
-   and the skin reading for a fill, to a `LensVideoTimeline`. That is about 15
-   samples a second, plus every moment a face arrives or leaves.
-2. After the clip stops, each sample is drawn as a transparent PNG with the
-   same painters the preview uses (glasses, pictures, a fill's skin). Effects
-   also get a matching mask, white wherever the picture is blurred.
-3. FFmpeg puts it together: colour matrix, then blur through the mask, then
-   the drawings, then crop and mirror. The concat demuxer times each picture
-   to its sample. Audio is copied, not re-encoded.
+   itself (`startVideoRecording(onAvailable:)`). Each one adds the
+   landmarks, and the skin reading for a fill, to a `LensVideoTimeline`.
+   That is about 15 samples a second, plus every moment a face arrives or
+   leaves.
+2. When the clip stops, `LensVideoBaker` draws each sample as a transparent
+   PNG with the preview's own painters: glasses, pictures, a fill's skin.
+   Effects also get a mask, white wherever the picture is blurred.
+3. On Android, `LensVideo.kt` hands the clip to **Media3 Transformer** with a
+   single shader. The shader applies the colour matrix, blurs and washes
+   wherever the mask is white, and lays the drawing over the top. Media3's
+   own `Crop` and a mirror follow. Audio passes through untouched. The
+   whole job runs on the GPU and the phone's own H.264 encoder.
 
-It is two steps rather than one live composite because the preview is the
-camera's own texture on the GPU. Getting it back out frame by frame to encode
-is the slow way round.
+**Why not FFmpeg.** An earlier version used FFmpegKit, the LGPL "min" build.
+It worked, but it added about 15 MB to every APK and failed the size budget
+in `scripts/check-apks.sh`. Media3 is AndroidX, and the app already ships
+1.9.2 for `video_player`; Transformer and the effect library add little on
+top. The shader is the only new code that runs.
 
-**The FFmpeg build is `ffmpeg_kit_flutter_new_min`, the LGPL one.** The GPL
-builds carry x264, and GPL code cannot ship in an MIT app. Without x264,
-encoding uses the phone's own hardware encoder (`h264_mediacodec` on Android,
-`h264_videotoolbox` on iOS). If that refuses, it falls back to MPEG-4 Part 2,
-which every build has, so no recording is lost to an encoder that rejects a
-size.
+**What is checked, and how:**
 
-**What is checked:** `test/lens_video_test.dart` runs the exact arguments
-through a desktop ffmpeg on a clip it generates, then reads the pixels back.
-It checks that glasses darken the eyes and leave the corners alone, that mono
-grades every frame, that frost smears the edges and lifts the tone, that
-mirror and crop are right, and that the audio survives. It is skipped where
-there is no ffmpeg. **What is not checked here:** the plugin call on a phone,
-and whether a given phone's hardware encoder accepts the stream. That is what
-the fallback is for.
+- `test/lens_video_test.dart` checks the job the camera sends: that the
+  pictures land on the eyes, that they are blank when the face is gone, the
+  frost mask, the blur and wash numbers, crop and mirror, and that a lens
+  which changes nothing skips the bake.
+- `tools/lens_shader_check.mjs` runs the shader from `LensVideo.kt`,
+  unchanged, in headless Chromium's WebGL. WebGL 1 is the same GLSL ES 1.00.
+  It runs against those jobs and reads the pixels back: glasses darken the
+  eye, the frame is not flipped, frost smears the edges but leaves the eyes
+  sharp and lifts the tone, and mono matches Flutter's grey.
+
+  The check reproduces Media3's texture conventions: frames have their
+  origin at the bottom left, and bitmaps are uploaded with their first row
+  at the bottom and alpha premultiplied, the same flip Media3's own
+  `BitmapOverlay` applies.
+
+**What is not checked here:** that Media3 drives the program as described,
+and the encoder on any given phone. Those need a device.
+
+**If a bake fails,** the clip is posted as filmed, with a note saying the
+lens could not be added. Losing the recording would be the worse failure.
+iOS has no implementation yet. It keeps the plain clip and says so; the
+same job maps onto AVFoundation with Core Image filters.
 
 **Cost.** Putting a lens in takes time after a clip stops. Pictures are drawn
-at three-quarters of the frame and masks at three-eighths, so it is a few
-seconds for a typical clip; a "Adding your lens…" overlay covers the wait.
-The plugin also adds the FFmpeg libraries to the app's size.
+at three-quarters of the frame and masks at three-eighths, and then the
+whole clip is re-encoded. How long that takes on a real phone has not been
+measured yet. An "Adding your lens…"
+overlay covers the wait.
 
 ## What it is still not
 

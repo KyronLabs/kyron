@@ -150,14 +150,6 @@ android {
         jniLibs {
             // Empty for the universal APK, which drops nothing.
             excludes += kyronDroppedAbis.map { "lib/$it/**" }
-            // FFmpegKit ships 32-bit ARM twice: plain, and a `_neon` copy of
-            // every library, 14 MB more. Its loader tries the NEON copy and,
-            // when that fails to load, catches the error and loads the plain
-            // one -- so the plain set alone works on every 32-bit phone, at
-            // the cost of NEON speed in the filters. Encoding is the phone's
-            // hardware encoder either way. (NativeLoader.loadFFmpegKit in
-            // com.antonkarpenko:ffmpeg-kit-min, read from its bytecode.)
-            excludes += "lib/armeabi-v7a/*_neon.so"
         }
     }
 }
@@ -195,4 +187,13 @@ dependencies {
     // named here rather than left to whichever version the plugins happen to
     // pull in.
     implementation("androidx.activity:activity-ktx:1.10.1")
+
+    // Lenses on video (LensVideo.kt): Transformer re-encodes a recording with
+    // a shader over every frame, on the GPU and the phone's own encoder. The
+    // same Media3 version video_player_android already ships, so the player
+    // and its decoders are not carried twice.
+    val media3 = "1.9.2"
+    implementation("androidx.media3:media3-transformer:$media3")
+    implementation("androidx.media3:media3-effect:$media3")
+    implementation("androidx.media3:media3-common:$media3")
 }

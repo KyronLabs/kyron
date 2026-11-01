@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
 
 import '../models/face_anchor.dart';
@@ -14,6 +15,7 @@ import '../models/lens_effect.dart';
 import '../widgets/face_attachment_painter.dart';
 import '../widgets/glasses_painter.dart';
 import '../widgets/lens_effect_layer.dart';
+import 'app_log.dart';
 
 /// Where the face was at one moment of a recording.
 class LensVideoFrame {
@@ -62,183 +64,88 @@ class LensVideoTimeline {
   void clear() => _frames.clear();
 }
 
-/// The FFmpeg command that bakes a lens into a recording.
+/// Sends a bake to the platform, and says where the result is.
 ///
-/// Pure, so it is tested by running it: test/lens_video_test.dart feeds the
-/// same arguments to a desktop ffmpeg and checks the pixels that come out.
-/// The phone runs them through FFmpegKit, the same program.
-///
-/// Inputs, in order: the recording; then, when the lens has effects, a mask
-/// sequence (white where the picture is blurred); then, when it draws
-/// anything, an overlay sequence (glasses, pictures, a fill's skin). The
-/// order the graph stacks them is the order the preview does: colour, then
-/// effects, then what is drawn on top.
-class LensVideoPlan {
-  const LensVideoPlan._();
-
-  /// The filter graph, ending in `[out]`.
-  ///
-  /// [crop] is the visible part of the frame as fractions of it, and
-  /// [blurRadius] the blur as a fraction of the frame's width.
-  static String filter({
-    required List<double>? matrix,
-    required bool masked,
-    required bool overlaid,
-    required double blurRadius,
-    double desaturate = 0,
-    double lift = 0,
-    Rect crop = const Rect.fromLTWH(0, 0, 1, 1),
-    bool mirror = false,
-  }) {
-    final chains = <String>[];
-    var current = '0:v';
-
-    if (matrix != null) {
-      chains.add('[$current]format=rgb24,${_mixer(matrix)}[graded]');
-      current = 'graded';
-    }
-
-    if (masked) {
-      final wash = desaturate > 0 || lift > 0
-          ? ',${_mixer(_washMatrix(desaturate, lift))}'
-          : '';
-      chains
-        ..add('[$current]format=rgb24,split[sharp][soft]')
-        ..add(
-          '[soft]boxblur=luma_radius=${_n(blurRadius)}*w:luma_power=2$wash'
-          ',format=rgba[blurred]',
-        )
-        ..add('[1:v][sharp]scale2ref[mask][base]')
-        ..add('[mask]format=gray[maskg]')
-        ..add('[blurred][maskg]alphamerge[cut]')
-        ..add('[base][cut]overlay=format=auto:shortest=1[fx]');
-      current = 'fx';
-    }
-
-    if (overlaid) {
-      final index = masked ? 2 : 1;
-      chains
-        ..add('[$index:v][$current]scale2ref[art][under]')
-        ..add('[under][art]overlay=format=auto:shortest=1[drawn]');
-      current = 'drawn';
-    }
-
-    final finish = <String>[];
-    final whole = crop == const Rect.fromLTWH(0, 0, 1, 1);
-    if (!whole) {
-      finish.add(
-        'crop=w=iw*${_n(crop.width)}:h=ih*${_n(crop.height)}'
-        ':x=iw*${_n(crop.left)}:y=ih*${_n(crop.top)}',
-      );
-    }
-    if (mirror) finish.add('hflip');
-    // Encoders want even sides and 4:2:0.
-    finish
-      ..add('scale=trunc(iw/2)*2:trunc(ih/2)*2')
-      ..add('format=yuv420p');
-    chains.add('[$current]${finish.join(',')}[out]');
-
-    return chains.join(';');
-  }
-
-  /// The whole command line, less the program name.
-  static List<String> arguments({
-    required String input,
-    required String output,
-    required String filter,
-    String? masks,
-    String? overlays,
-    required List<String> encoder,
-  }) =>
-      [
-        '-y',
-        '-i',
-        input,
-        if (masks != null) ...['-f', 'concat', '-safe', '0', '-i', masks],
-        if (overlays != null) ...[
-          '-f', 'concat', '-safe', '0', '-i', overlays, //
-        ],
-        '-filter_complex',
-        filter,
-        '-map',
-        '[out]',
-        '-map',
-        '0:a?',
-        ...encoder,
-        '-c:a',
-        'copy',
-        '-movflags',
-        '+faststart',
-        output,
-      ];
-
-  /// A Flutter colour matrix as `colorchannelmixer`, which has no offsets --
-  /// so the offsets follow as a `lutrgb`. The two clip at different points
-  /// only for values already at the ends of the range.
-  static String _mixer(List<double> m) {
-    final mix = 'colorchannelmixer='
-        'rr=${_n(m[0])}:rg=${_n(m[1])}:rb=${_n(m[2])}:'
-        'gr=${_n(m[5])}:gg=${_n(m[6])}:gb=${_n(m[7])}:'
-        'br=${_n(m[10])}:bg=${_n(m[11])}:bb=${_n(m[12])}';
-    final offsets = [m[4], m[9], m[14]];
-    if (offsets.every((o) => o == 0)) return mix;
-    String channel(String c, double o) => "$c='clipval+${_n(o)}'";
-    return '$mix,lutrgb=${channel('r', offsets[0])}:'
-        '${channel('g', offsets[1])}:${channel('b', offsets[2])}';
-  }
-
-  /// Frost's wash as a matrix: the same numbers [LensEffectLayer] uses.
-  static List<double> _washMatrix(double desaturate, double lift) {
-    const lr = 0.2126, lg = 0.7152, lb = 0.0722;
-    final keep = 1 - desaturate;
-    final scale = 1 - lift;
-    final offset = 255 * lift;
-    double diag(double luma) => (keep + desaturate * luma) * scale;
-    double off(double luma) => desaturate * luma * scale;
-    return [
-      diag(lr), off(lg), off(lb), 0, offset, //
-      off(lr), diag(lg), off(lb), 0, offset, //
-      off(lr), off(lg), diag(lb), 0, offset, //
-      0, 0, 0, 1, 0, //
-    ];
-  }
-
-  static String _n(double v) {
-    final s = v.toStringAsFixed(5);
-    return s.contains('.')
-        ? s.replaceFirst(RegExp(r'0+$'), '').replaceFirst(RegExp(r'\.$'), '')
-        : s;
-  }
-}
-
-/// Runs an FFmpeg command and says whether it worked.
-typedef RunFfmpeg = Future<bool> Function(List<String> arguments);
+/// Answers null when it could not: the caller keeps the plain recording and
+/// says the lens was not added, rather than losing the clip.
+typedef RunLensVideo = Future<String?> Function(Map<String, Object?> job);
 
 /// Bakes a lens into a recording.
 ///
 /// The camera records the picture as it is; what was drawn over the
 /// viewfinder is drawn again afterwards, from the poses recorded alongside,
-/// and laid into the video by FFmpeg. Two steps rather than one live
-/// composite because the live preview is the camera's own texture on the GPU,
-/// and getting it back out frame by frame to encode is the slow way round.
+/// one picture per moment. The platform lays those into the video -- on
+/// Android, Media3 Transformer and one shader (android/.../LensVideo.kt), on
+/// the GPU and the phone's own encoder.
+///
+/// What this hands over is a plain description, so it is tested here without
+/// a phone: the colour matrix, the blur, the crop and the mirror as numbers,
+/// and the pictures as files each with the time it takes over.
 class LensVideoBaker {
-  LensVideoBaker({required this.run, required this.encoders});
+  LensVideoBaker({required this.run});
 
-  final RunFfmpeg run;
-
-  /// Encoder arguments to try in order. The phone's hardware encoder first;
-  /// a software one after it, because a hardware encoder that refuses a
-  /// size is a recording lost.
-  final List<List<String>> encoders;
+  final RunLensVideo run;
 
   /// The overlay sequence is drawn at this share of the frame, and the masks
   /// at half that. Glasses edges stay crisp at three quarters; a mask is
-  /// feathered anyway.
+  /// feathered anyway. The shader samples them in 0..1, so any size lines up.
   static const overlayScale = 0.75;
   static const maskScale = 0.375;
 
+  /// The platform channel the app bakes through.
+  static const channel = MethodChannel('so.kyron.app/lens_video');
+
+  /// [run] for the app: the channel, on a platform that answers it.
+  static Future<String?> viaChannel(Map<String, Object?> job) async {
+    try {
+      return await channel.invokeMethod<String>('bake', job);
+    } on PlatformException catch (error) {
+      AppLog.instance.error('ar', 'Lens video: ${error.code} ${error.message}');
+      return null;
+    } on MissingPluginException {
+      return null;
+    }
+  }
+
   /// Returns the path of the baked video, or [input] when nothing changes.
+  /// Throws when the platform could not bake it.
   Future<String> bake({
+    required String input,
+    required String output,
+    required Lens lens,
+    required List<LensVideoFrame> timeline,
+    required Size frame,
+    required Directory work,
+    List<ResolvedAttachment> attachments = const [],
+    Rect crop = const Rect.fromLTWH(0, 0, 1, 1),
+    bool mirror = false,
+  }) async {
+    final job = await describe(
+      input: input,
+      output: output,
+      lens: lens,
+      timeline: timeline,
+      frame: frame,
+      work: work,
+      attachments: attachments,
+      crop: crop,
+      mirror: mirror,
+    );
+    if (job == null) return input;
+    final baked = await run(job);
+    if (baked == null) {
+      throw StateError('The lens could not be applied to the video.');
+    }
+    return baked;
+  }
+
+  /// What [bake] sends, or null when the lens changes nothing.
+  ///
+  /// `matrix` and `wash` are Flutter's 4x5 colour matrices, offsets in
+  /// 0-255. `blur` is the spread as a share of the frame's width. `crop` is
+  /// left, top, width, height as fractions. `overlays` and `masks` are
+  /// `{at: microseconds, path}`, sorted, each on screen until the next.
+  Future<Map<String, Object?>?> describe({
     required String input,
     required String output,
     required Lens lens,
@@ -258,75 +165,73 @@ class LensVideoBaker {
 
     final whole = crop == const Rect.fromLTWH(0, 0, 1, 1);
     if (lens.matrix == null && !masked && !overlaid && whole && !mirror) {
-      return input;
+      return null;
     }
 
     await work.create(recursive: true);
 
-    String? masks;
-    if (masked) {
-      masks = await _sequence(
-        work,
-        'mask',
-        timeline,
-        frame * maskScale,
-        maskScale,
-        blank: Colors.black,
-        draw: (canvas, f, sample) =>
-            _mask(canvas, f, sample.landmarks!, effects),
-      );
-    }
+    final masks = masked
+        ? await _sequence(
+            work,
+            'mask',
+            timeline,
+            frame * maskScale,
+            maskScale,
+            blank: Colors.black,
+            draw: (canvas, f, sample) =>
+                _mask(canvas, f, sample.landmarks!, effects),
+          )
+        : const <Map<String, Object?>>[];
 
-    String? overlays;
-    if (overlaid) {
-      overlays = await _sequence(
-        work,
-        'art',
-        timeline,
-        frame * overlayScale,
-        overlayScale,
-        blank: Colors.transparent,
-        draw: (canvas, f, sample) =>
-            _art(canvas, f, sample, lens, attachments, fills),
-      );
-    }
+    final overlays = overlaid
+        ? await _sequence(
+            work,
+            'art',
+            timeline,
+            frame * overlayScale,
+            overlayScale,
+            blank: Colors.transparent,
+            draw: (canvas, f, sample) =>
+                _art(canvas, f, sample, lens, attachments, fills),
+          )
+        : const <Map<String, Object?>>[];
 
     final frost = effects.whereType<FrostEffect>().firstOrNull;
-    final graph = LensVideoPlan.filter(
-      matrix: lens.matrix,
-      masked: masked,
-      overlaid: overlaid,
-      blurRadius: _blurRadius(timeline, frame, effects),
-      desaturate: frost?.desaturate ?? 0,
-      lift: frost?.lift ?? 0,
-      crop: crop,
-      mirror: mirror,
-    );
-
-    for (final encoder in encoders) {
-      final ok = await run(
-        LensVideoPlan.arguments(
-          input: input,
-          output: output,
-          filter: graph,
-          masks: masks,
-          overlays: overlays,
-          encoder: encoder,
-        ),
-      );
-      if (ok && File(output).existsSync() && File(output).lengthSync() > 0) {
-        return output;
-      }
-    }
-    throw StateError('The lens could not be applied to the video.');
+    return {
+      'input': input,
+      'output': output,
+      'matrix': lens.matrix,
+      'overlays': overlays,
+      'masks': masks,
+      'blur': masked ? _blurSpread(timeline, frame, effects) : 0.0,
+      'wash': frost == null ? null : washMatrix(frost.desaturate, frost.lift),
+      'crop': [crop.left, crop.top, crop.width, crop.height],
+      'mirror': mirror,
+    };
   }
 
-  /// Draws one picture per sample, and the concat list that times them.
+  /// Frost's wash as a matrix: the same numbers [LensEffectLayer] uses.
+  static List<double> washMatrix(double desaturate, double lift) {
+    const lr = 0.2126, lg = 0.7152, lb = 0.0722;
+    final keep = 1 - desaturate;
+    final scale = 1 - lift;
+    final offset = 255 * lift;
+    double diag(double luma) => (keep + desaturate * luma) * scale;
+    double off(double luma) => desaturate * luma * scale;
+    return [
+      diag(lr), off(lg), off(lb), 0, offset, //
+      off(lr), diag(lg), off(lb), 0, offset, //
+      off(lr), off(lg), diag(lb), 0, offset, //
+      0, 0, 0, 1, 0, //
+    ];
+  }
+
+  /// Draws one picture per sample, each with the time it takes over.
   ///
-  /// A frame with no face gets the blank picture, written once and listed as
-  /// often as it is needed. The last entry runs for an hour: the overlay ends
-  /// with the video (`shortest=1`), never before it.
-  Future<String> _sequence(
+  /// A moment with no face gets the blank picture, written once and listed
+  /// as often as it is needed -- so the lens leaves the video when the face
+  /// does, as it left the viewfinder.
+  Future<List<Map<String, Object?>>> _sequence(
     Directory work,
     String name,
     List<LensVideoFrame> timeline,
@@ -345,23 +250,14 @@ class LensVideoBaker {
       canvas.drawColor(blank, BlendMode.src);
     });
 
-    final lines = <String>['ffconcat version 1.0'];
-    void entry(String file, Duration duration) {
-      lines
-        ..add("file '${file.replaceAll("'", r"'\''")}'")
-        ..add('duration ${(duration.inMicroseconds / 1e6).toStringAsFixed(4)}');
-    }
-
+    final entries = <Map<String, Object?>>[];
     // Nothing before the first sample: the face had not been found yet.
-    if (timeline.first.at > Duration.zero) entry(empty, timeline.first.at);
-
-    String last = empty;
+    if (timeline.first.at > Duration.zero) {
+      entries.add({'at': 0, 'path': empty});
+    }
     for (var i = 0; i < timeline.length; i++) {
       final sample = timeline[i];
-      final next = i + 1 < timeline.length
-          ? timeline[i + 1].at
-          : sample.at + const Duration(hours: 1);
-      String file = empty;
+      var file = empty;
       if (sample.landmarks != null) {
         file = p.join(work.path, '$name-${i.toString().padLeft(5, '0')}.png');
         await _write(file, width, height, (canvas) {
@@ -370,16 +266,9 @@ class LensVideoBaker {
           draw(canvas, frame, sample);
         });
       }
-      entry(file, next - sample.at);
-      last = file;
+      entries.add({'at': sample.at.inMicroseconds, 'path': file});
     }
-    // The concat demuxer drops the last entry's duration unless the file is
-    // listed once more after it.
-    lines.add("file '${last.replaceAll("'", r"'\''")}'");
-
-    final list = p.join(work.path, '$name.txt');
-    await File(list).writeAsString('${lines.join('\n')}\n');
-    return list;
+    return entries;
   }
 
   static Future<void> _write(
@@ -494,10 +383,11 @@ class LensVideoBaker {
     }
   }
 
-  /// The blur, as a share of the frame's width: the strongest effect's, at
-  /// the median face size through the clip. One number for the whole video,
-  /// because a blur that breathed as somebody leaned in would be visible.
-  static double _blurRadius(
+  /// The blur's spread (one standard deviation), as a share of the frame's
+  /// width: the strongest effect's, at the median face size through the
+  /// clip. One number for the whole video, because a blur that breathed as
+  /// somebody leaned in would be visible.
+  static double _blurSpread(
     List<LensVideoFrame> timeline,
     Size frame,
     List<LensEffect> effects,
@@ -520,7 +410,6 @@ class LensVideoBaker {
           },
         )
         .reduce(math.max);
-    // Two box passes of radius r have a spread of about 0.82 r.
-    return (sigma * 1.22 / frame.width).clamp(0.001, 0.2);
+    return (sigma / frame.width).clamp(0.001, 0.2);
   }
 }

@@ -7,8 +7,6 @@ import 'dart:ui' as ui;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ffmpeg_kit_flutter_new_min/ffmpeg_kit.dart';
-import 'package:ffmpeg_kit_flutter_new_min/return_code.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -867,11 +865,14 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
             );
           }();
 
+    // The lens is laid in by the platform: Media3 on Android. Anywhere else
+    // the clip is kept as recorded, and that is said rather than hidden.
+    if (!Platform.isAndroid) {
+      if (lens.changesPicture && mounted) _lensLeftOut();
+      return recorded;
+    }
     try {
-      return await LensVideoBaker(
-        run: _runFfmpeg,
-        encoders: _videoEncoders,
-      ).bake(
+      return await LensVideoBaker(run: LensVideoBaker.viaChannel).bake(
         input: recorded,
         output: p.join(directory.path, 'lens_$stamp.mp4'),
         lens: lens,
@@ -880,8 +881,14 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         work: work,
         attachments: _pictures.ready(lens),
         crop: visible,
-        mirror: _front && Platform.isAndroid,
+        mirror: _front,
       );
+    } catch (error) {
+      // The recording itself is fine. Losing it because the lens could not
+      // be laid in would be the worse failure of the two.
+      AppLog.instance.error('ar', 'Could not add the lens to a video: $error');
+      if (mounted) _lensLeftOut();
+      return recorded;
     } finally {
       if (work.existsSync()) {
         unawaited(work.delete(recursive: true).catchError((_) => work));
@@ -889,29 +896,11 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
-  /// The phone's hardware encoder, then a software one that every FFmpeg
-  /// build has, so a device whose encoder refuses still gets its video.
-  static List<List<String>> get _videoEncoders => [
-        if (Platform.isAndroid)
-          ['-c:v', 'h264_mediacodec', '-b:v', '8M']
-        else if (Platform.isIOS)
-          ['-c:v', 'h264_videotoolbox', '-b:v', '8M'],
-        ['-c:v', 'mpeg4', '-q:v', '3'],
-      ];
-
-  static Future<bool> _runFfmpeg(List<String> arguments) async {
-    final session = await FFmpegKit.executeWithArguments(arguments);
-    final code = await session.getReturnCode();
-    if (!ReturnCode.isSuccess(code)) {
-      final logs = await session.getLogsAsString();
-      AppLog.instance.error(
-        'ar',
-        'FFmpeg failed (${code?.getValue()}): '
-            '${logs.length > 600 ? logs.substring(logs.length - 600) : logs}',
-      );
-      return false;
-    }
-    return true;
+  void _lensLeftOut() {
+    _say(AppLocalizations.of(context).ui(
+      'ar_lens_left_out',
+      'The lens could not be added to this video, so it is posted as filmed.',
+    ));
   }
 
   void _endRecordingState() {

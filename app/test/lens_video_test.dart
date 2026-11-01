@@ -6,24 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image/image.dart' as img;
 import 'package:kyron_app/models/face_anchor.dart';
+import 'package:kyron_app/models/face_region.dart';
 import 'package:kyron_app/models/lens.dart';
 import 'package:kyron_app/models/lens_effect.dart';
-import 'package:kyron_app/models/face_region.dart';
 import 'package:kyron_app/services/lens_video.dart';
 
-/// The video half of "the picture taken is the picture seen", checked by
-/// running the command: the arguments the phone hands FFmpegKit, handed to a
-/// desktop ffmpeg instead, on a clip made here, with the pixels that come out
-/// read back.
+/// What the camera hands the platform to put a lens into a video.
 ///
-/// Skipped where there is no ffmpeg, rather than passing by checking nothing.
-bool get hasFfmpeg {
-  try {
-    return Process.runSync('ffmpeg', ['-version']).exitCode == 0;
-  } catch (_) {
-    return false;
-  }
-}
+/// The platform half (Media3 and one shader, LensVideo.kt) needs a phone. Its
+/// shader is checked separately by tools/lens_shader_check.mjs, which runs it
+/// in a browser's WebGL against the job this file describes. This checks the
+/// job itself: the numbers, and the pictures drawn into it.
 
 /// The detection in test/face-detection.json is of an 820x1024 picture.
 const frame = Size(820, 1024);
@@ -41,77 +34,11 @@ List<FacePoint> fixture() {
   ];
 }
 
-Future<bool> desktop(List<String> args) async {
-  final result = await Process.run('ffmpeg', ['-loglevel', 'error', ...args]);
-  if (result.exitCode != 0) stderr.writeln(result.stderr);
-  return result.exitCode == 0;
-}
-
-/// A clip with something to see in it: left half orange, right half blue,
-/// with a tone so the audio has to survive too.
-Future<String> clip(Directory dir) async {
-  final path = '${dir.path}/raw.mp4';
-  final result = await Process.run('ffmpeg', [
-    '-loglevel',
-    'error',
-    '-y',
-    '-f',
-    'lavfi',
-    '-i',
-    'color=c=0xE08030:s=410x1024:d=2,format=yuv420p[l];'
-        'color=c=0x3060E0:s=410x1024:d=2,format=yuv420p[r];'
-        '[l][r]hstack',
-    '-f',
-    'lavfi',
-    '-i',
-    'sine=frequency=440:duration=2',
-    '-shortest',
-    '-c:v',
-    'mpeg4',
-    '-q:v',
-    '2',
-    '-c:a',
-    'aac',
-    path,
-  ]);
-  expect(result.exitCode, 0, reason: '${result.stderr}');
-  return path;
-}
-
-img.Image still(String video, Directory dir, {double at = 1}) {
-  final png = '${dir.path}/still-${DateTime.now().microsecondsSinceEpoch}.png';
-  final result = Process.runSync('ffmpeg', [
-    '-loglevel',
-    'error',
-    '-y',
-    '-ss',
-    '$at',
-    '-i',
-    video,
-    '-frames:v',
-    '1',
-    png,
-  ]);
-  expect(result.exitCode, 0, reason: '${result.stderr}');
-  return img.decodePng(File(png).readAsBytesSync())!;
-}
-
-bool hasAudio(String video) {
-  final result = Process.runSync('ffprobe', [
-    '-v',
-    'error',
-    '-select_streams',
-    'a',
-    '-show_entries',
-    'stream=codec_type',
-    '-of',
-    'csv=p=0',
-    video,
-  ]);
-  return (result.stdout as String).contains('audio');
-}
-
-const encoder = ['-c:v', 'mpeg4', '-q:v', '2'];
+const frosted = Lens(
+  id: 'frosted',
+  name: 'Frosted',
+  effects: [FrostEffect(reveal: FaceRegionKind.eyes)],
+);
 
 void main() {
   final points = fixture();
@@ -120,124 +47,130 @@ void main() {
   setUp(() => dir = Directory.systemTemp.createTempSync('lens-video'));
   tearDown(() => dir.deleteSync(recursive: true));
 
-  LensVideoTimeline faceThroughout() => LensVideoTimeline()
-    ..add(LensVideoFrame(Duration.zero, points))
-    ..add(LensVideoFrame(const Duration(milliseconds: 700), points));
+  List<LensVideoFrame> faceThroughout() => (LensVideoTimeline()
+        ..add(LensVideoFrame(Duration.zero, points))
+        ..add(LensVideoFrame(const Duration(milliseconds: 700), points)))
+      .frames;
 
-  Future<String> bake(
+  Future<Map<String, Object?>?> describe(
     Lens lens, {
     List<LensVideoFrame>? timeline,
     bool mirror = false,
     Rect crop = const Rect.fromLTWH(0, 0, 1, 1),
-  }) async {
-    final input = await clip(dir);
-    return LensVideoBaker(run: desktop, encoders: [encoder]).bake(
-      input: input,
-      output: '${dir.path}/out.mp4',
-      lens: lens,
-      timeline: timeline ?? faceThroughout().frames,
-      frame: frame,
-      work: Directory('${dir.path}/work'),
-      mirror: mirror,
-      crop: crop,
-    );
-  }
-
-  /// Where the left lens of a pair of glasses sits on this face, in pixels.
-  Offset leftEye() {
-    final p = points[FaceAnchor.leftIris];
-    return Offset(p.x * frame.width, p.y * frame.height);
-  }
-
-  testWidgets('glasses are baked over the eyes', (tester) async {
-    await tester.runAsync(() async {
-      final specs = Lens.builtIn.firstWhere((l) => l.id == 'specs');
-      final out = await bake(specs);
-      final before = still('${dir.path}/raw.mp4', dir);
-      final after = still(out, dir);
-
-      final eye = leftEye();
-      final was = before.getPixel(eye.dx.round(), eye.dy.round());
-      final now = after.getPixel(eye.dx.round(), eye.dy.round());
-      // A dark tinted lens over orange: much darker than it was.
-      expect(now.luminance, lessThan(was.luminance * 0.6));
-
-      // And nowhere near the face, nothing changed.
-      final corner = after.getPixel(20, 1000);
-      final cornerWas = before.getPixel(20, 1000);
-      expect((corner.r - cornerWas.r).abs(), lessThan(12));
-      expect(hasAudio(out), isTrue);
-    });
-  }, skip: !hasFfmpeg);
-
-  testWidgets('a colour lens grades every frame', (tester) async {
-    await tester.runAsync(() async {
-      final mono = Lens.builtIn.firstWhere((l) => l.id == 'mono');
-      final out = await bake(mono, timeline: const []);
-      final pixel = still(out, dir).getPixel(100, 500);
-      expect((pixel.r - pixel.g).abs(), lessThan(8));
-      expect((pixel.g - pixel.b).abs(), lessThan(8));
-    });
-  }, skip: !hasFfmpeg);
-
-  testWidgets('frost blurs everything but the eyes', (tester) async {
-    await tester.runAsync(() async {
-      const frosted = Lens(
-        id: 'frosted',
-        name: 'Frosted',
-        effects: [
-          FrostEffect(
-            blur: 0.16,
-            desaturate: 0.3,
-            lift: 0.16,
-            reveal: FaceRegionKind.eyes,
-            feather: 0.05,
-          ),
-        ],
+  }) =>
+      LensVideoBaker(run: (_) async => null).describe(
+        input: 'in.mp4',
+        output: 'out.mp4',
+        lens: lens,
+        timeline: timeline ?? faceThroughout(),
+        frame: frame,
+        work: Directory('${dir.path}/work'),
+        mirror: mirror,
+        crop: crop,
       );
-      final out = await bake(frosted);
-      final before = still('${dir.path}/raw.mp4', dir);
-      final after = still(out, dir);
 
-      // The seam between orange and blue, well away from the eyes, is
-      // smeared by the blur.
-      final seamY = 950;
-      final left = after.getPixel(400, seamY),
-          right = after.getPixel(420, seamY);
-      final wasLeft = before.getPixel(400, seamY);
-      final wasRight = before.getPixel(420, seamY);
-      final sharp = (wasLeft.r - wasRight.r).abs();
-      final soft = (left.r - right.r).abs();
-      expect(soft, lessThan(sharp * 0.6));
+  List<Map> entries(Map<String, Object?> job, String key) =>
+      (job[key]! as List).cast<Map>();
 
-      // And lifted towards white.
-      expect(after.getPixel(100, 950).luminance,
-          greaterThan(before.getPixel(100, 950).luminance));
+  img.Image picture(Map entry) =>
+      img.decodePng(File(entry['path'] as String).readAsBytesSync())!;
+
+  testWidgets('glasses are drawn over the eyes, for each moment', (t) async {
+    await t.runAsync(() async {
+      final specs = Lens.builtIn.firstWhere((l) => l.id == 'specs');
+      final job = (await describe(specs))!;
+
+      final art = entries(job, 'overlays');
+      expect(art.map((e) => e['at']), [0, 700000]);
+      expect(entries(job, 'masks'), isEmpty);
+      expect(job['matrix'], isNull);
+
+      final drawn = picture(art.first);
+      // Drawn at three quarters of the frame; the shader samples it in 0..1.
+      expect(drawn.width, (frame.width * LensVideoBaker.overlayScale).round());
+      final iris = points[FaceAnchor.leftIris];
+      final eye = drawn.getPixel(
+        (iris.x * drawn.width).round(),
+        (iris.y * drawn.height).round(),
+      );
+      expect(eye.a, greaterThan(150), reason: 'a tinted lens over the eye');
+      expect(drawn.getPixel(10, drawn.height - 10).a, 0);
     });
-  }, skip: !hasFfmpeg);
+  });
 
-  testWidgets('mirrored and cropped to what was on screen', (tester) async {
-    await tester.runAsync(() async {
-      final out = await bake(
+  testWidgets('the lens leaves when the face does', (t) async {
+    await t.runAsync(() async {
+      final specs = Lens.builtIn.firstWhere((l) => l.id == 'specs');
+      final timeline = (LensVideoTimeline()
+            ..add(LensVideoFrame(const Duration(milliseconds: 300), points))
+            ..add(LensVideoFrame(const Duration(milliseconds: 900), null)))
+          .frames;
+      final art =
+          entries((await describe(specs, timeline: timeline))!, 'overlays');
+
+      // Blank until the face was found, drawn, then blank again.
+      expect(art.map((e) => e['at']), [0, 300000, 900000]);
+      expect(art.first['path'], art.last['path']);
+      expect(picture(art.first).getPixel(400, 300).a, 0);
+      expect(art[1]['path'], isNot(art.first['path']));
+    });
+  });
+
+  testWidgets('frost masks everything but the eyes and washes it', (t) async {
+    await t.runAsync(() async {
+      final job = (await describe(frosted))!;
+      final masks = entries(job, 'masks');
+      expect(masks, hasLength(2));
+      expect(entries(job, 'overlays'), isEmpty);
+
+      final mask = picture(masks.first);
+      final iris = points[FaceAnchor.leftIris];
+      final eye = mask.getPixel(
+        (iris.x * mask.width).round(),
+        (iris.y * mask.height).round(),
+      );
+      expect(eye.r, lessThan(40), reason: 'the eyes stay sharp');
+      expect(mask.getPixel(5, mask.height - 5).r, greaterThan(215));
+
+      // A spread in proportion to the face, and the wash Flutter applies.
+      final blur = job['blur']! as double;
+      expect(blur, greaterThan(0.005));
+      expect(blur, lessThan(0.1));
+      expect(job['wash'], LensVideoBaker.washMatrix(0.3, 0.16));
+    });
+  });
+
+  testWidgets('a colour lens is its matrix and nothing drawn', (t) async {
+    await t.runAsync(() async {
+      final mono = Lens.builtIn.firstWhere((l) => l.id == 'mono');
+      final job = (await describe(mono, timeline: const []))!;
+      expect(job['matrix'], mono.matrix);
+      expect(entries(job, 'overlays'), isEmpty);
+      expect(entries(job, 'masks'), isEmpty);
+      expect(job['blur'], 0.0);
+    });
+  });
+
+  testWidgets('crop and mirror are passed as they were seen', (t) async {
+    await t.runAsync(() async {
+      final job = (await describe(
         Lens.builtIn.first,
         timeline: const [],
         mirror: true,
         crop: const Rect.fromLTWH(0.1, 0, 0.8, 1),
-      );
-      final after = still(out, dir);
-      expect(after.width, closeTo(820 * 0.8, 2));
-      expect(after.height, 1024);
-      // Orange was on the left; mirrored, it is on the right.
-      final leftSide = after.getPixel(30, 500);
-      expect(leftSide.b, greaterThan(leftSide.r));
+      ))!;
+      expect(job['crop'], [0.1, 0.0, 0.8, 1.0]);
+      expect(job['mirror'], isTrue);
     });
-  }, skip: !hasFfmpeg);
+  });
 
   test('a lens that changes nothing leaves the file alone', () async {
     var ran = false;
     final out = await LensVideoBaker(
-      run: (_) async => ran = true,
-      encoders: [encoder],
+      run: (_) async {
+        ran = true;
+        return 'baked.mp4';
+      },
     ).bake(
       input: 'in.mp4',
       output: 'out.mp4',
@@ -250,51 +183,54 @@ void main() {
     expect(ran, isFalse);
   });
 
+  test('a platform that cannot bake is an error the caller sees', () async {
+    final mono = Lens.builtIn.firstWhere((l) => l.id == 'mono');
+    expect(
+      LensVideoBaker(run: (_) async => null).bake(
+        input: 'in.mp4',
+        output: 'out.mp4',
+        lens: mono,
+        timeline: const [],
+        frame: frame,
+        work: Directory.systemTemp,
+      ),
+      throwsStateError,
+    );
+  });
+
   test('the timeline thins samples but never a face arriving or leaving', () {
-    final timeline = LensVideoTimeline();
-    final face = points;
-    timeline
-      ..add(LensVideoFrame(Duration.zero, face))
-      ..add(LensVideoFrame(const Duration(milliseconds: 20), face))
+    final timeline = LensVideoTimeline()
+      ..add(LensVideoFrame(Duration.zero, points))
+      ..add(LensVideoFrame(const Duration(milliseconds: 20), points))
       ..add(LensVideoFrame(const Duration(milliseconds: 30), null))
-      ..add(LensVideoFrame(const Duration(milliseconds: 40), face))
-      ..add(LensVideoFrame(const Duration(milliseconds: 200), face));
+      ..add(LensVideoFrame(const Duration(milliseconds: 40), points))
+      ..add(LensVideoFrame(const Duration(milliseconds: 200), points));
     expect(
       timeline.frames.map((f) => f.at.inMilliseconds),
       [0, 30, 40, 200],
     );
   });
 
-  test('falls back to the next encoder when the first refuses', () async {
-    final tried = <String>[];
-    final baker = LensVideoBaker(
-      run: (args) async {
-        final codec = args[args.indexOf('-c:v') + 1];
-        tried.add(codec);
-        if (codec == 'second') {
-          File(args.last).writeAsStringSync('video');
-          return true;
-        }
-        return false;
-      },
-      encoders: [
-        ['-c:v', 'first'],
-        ['-c:v', 'second'],
-      ],
-    );
-    final mono = Lens.builtIn.firstWhere((l) => l.id == 'mono');
-    final out = '${Directory.systemTemp.path}/fallback.mp4';
-    expect(
-      await baker.bake(
-        input: 'in.mp4',
-        output: out,
-        lens: mono,
-        timeline: const [],
-        frame: frame,
-        work: Directory.systemTemp,
-      ),
-      out,
-    );
-    expect(tried, ['first', 'second']);
+  testWidgets('writes the job the shader check reads', (t) async {
+    // tools/lens_shader_check.mjs runs the Android shader against this.
+    const out = String.fromEnvironment('lensJob');
+    if (out.isEmpty) return;
+    await t.runAsync(() async {
+      for (final lens in [
+        Lens.builtIn.firstWhere((l) => l.id == 'specs'),
+        frosted,
+        Lens.builtIn.firstWhere((l) => l.id == 'mono'),
+      ]) {
+        final job = (await LensVideoBaker(run: (_) async => null).describe(
+          input: 'in.mp4',
+          output: 'out.mp4',
+          lens: lens,
+          timeline: faceThroughout(),
+          frame: frame,
+          work: Directory('$out/${lens.id}'),
+        ))!;
+        File('$out/${lens.id}.json').writeAsStringSync(jsonEncode(job));
+      }
+    });
   });
 }
