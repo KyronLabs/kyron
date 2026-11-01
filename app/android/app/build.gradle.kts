@@ -150,6 +150,14 @@ android {
         jniLibs {
             // Empty for the universal APK, which drops nothing.
             excludes += kyronDroppedAbis.map { "lib/$it/**" }
+            // FFmpegKit ships 32-bit ARM twice: plain, and a `_neon` copy of
+            // every library, 14 MB more. Its loader tries the NEON copy and,
+            // when that fails to load, catches the error and loads the plain
+            // one -- so the plain set alone works on every 32-bit phone, at
+            // the cost of NEON speed in the filters. Encoding is the phone's
+            // hardware encoder either way. (NativeLoader.loadFFmpegKit in
+            // com.antonkarpenko:ffmpeg-kit-min, read from its bytecode.)
+            excludes += "lib/armeabi-v7a/*_neon.so"
         }
     }
 }
