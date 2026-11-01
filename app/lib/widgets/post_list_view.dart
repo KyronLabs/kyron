@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../l10n/app_localizations.dart';
 import '../providers/feed_provider.dart';
 import '../services/impression_reporter.dart';
 import '../routes.dart';
@@ -227,10 +228,15 @@ class _PostListViewState extends ConsumerState<PostListView> {
     // Builder, not a list of everything: the feed this replaces constructed
     // every post up front whether or not any were on screen.
     return SliverList.builder(
-      // One extra slot for the paging spinner at the tail.
-      itemCount: state.posts.length + (state.isLoadingMore ? 1 : 0),
+      // One extra slot at the tail: the paging spinner, or why the rest of
+      // the list did not come.
+      itemCount: state.posts.length +
+          (state.isLoadingMore || state.loadMoreFailed ? 1 : 0),
       itemBuilder: (context, index) {
         if (index >= state.posts.length) {
+          if (state.loadMoreFailed) {
+            return _MoreFailed(onRetry: _notifier.retryMore);
+          }
           return const Padding(
             padding: EdgeInsets.all(SpacingTokens.space16),
             child: Center(child: CircularProgressIndicator()),
@@ -254,6 +260,44 @@ class _PostListViewState extends ConsumerState<PostListView> {
           child: card,
         );
       },
+    );
+  }
+}
+
+/// The foot of a list whose next page did not load: said, with a way to ask
+/// again, so it is never mistaken for the end.
+class _MoreFailed extends StatelessWidget {
+  final VoidCallback onRetry;
+
+  const _MoreFailed({required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: SpacingTokens.space16,
+        vertical: SpacingTokens.space20,
+      ),
+      child: Column(
+        children: [
+          Text(
+            l10n.ui('ui_feed_more_failed', "Couldn't load more posts."),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize2,
+              color: scheme.onSurface.withValues(alpha: 0.6),
+            ),
+          ),
+          const SizedBox(height: SpacingTokens.space8),
+          OutlinedButton(
+            key: const ValueKey('feed-more-retry'),
+            onPressed: onRetry,
+            child: Text(l10n.ui('ui_retry', 'Try again')),
+          ),
+        ],
+      ),
     );
   }
 }
