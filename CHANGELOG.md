@@ -20,6 +20,16 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **For You goes past twenty posts again.** Every page after the first was
+  being refused by the server, so the feed showed twenty posts and then
+  nothing until it was refreshed. The same was true of every list that pages
+  -- Following, Videos, a profile, a hashtag. It had been broken since
+  20 October.
+- **A list that cannot load more now says so.** Where the next page fails,
+  the foot of the list reads "Couldn't load more posts" with Try again,
+  instead of looking like the end.
 
 ## [0.1.27] - 2026-10-31
 ### Changed
