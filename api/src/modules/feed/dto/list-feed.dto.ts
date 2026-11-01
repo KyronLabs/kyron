@@ -13,12 +13,20 @@ import {
  *
  * The chronological lists page by the id of the last row they returned. The
  * ranked feed cannot: it recomputes an order per request, so an id names a
- * position that may not exist next time. Its cursor carries the session seed
- * and an offset instead -- `r<seed>-<offset>` -- and both shapes come through
- * this one field.
+ * position that may not exist next time. Its cursor carries the session seed,
+ * an offset and the moment the session began --
+ * `r<seed>-<offset>-<session start in ms>` -- and both shapes come through
+ * this one field. The two-part `r<seed>-<offset>` from before the session
+ * start was carried is still accepted from older clients.
+ *
+ * This pattern once lagged the cursor the feed writes: the session start was
+ * added to the cursor and not here, so every For You page after the first
+ * was refused as "not from a previous page", and the app -- which keeps what
+ * it has when a later page fails -- showed twenty posts and stopped.
+ * feed.cursor.spec.ts now hands the feed's own cursors to this class.
  */
-const CURSOR =
-  /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|r\d{1,10}-\d{1,7})$/i;
+export const CURSOR =
+  /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|r\d{1,10}-\d{1,7}(?:-\d{1,15})?)$/i;
 
 export class ListFeedDto {
   /** Omit for the first page. */

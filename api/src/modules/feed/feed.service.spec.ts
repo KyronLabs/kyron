@@ -1,8 +1,11 @@
+import { plainToInstance } from 'class-transformer';
+import { validate } from 'class-validator';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { InterestKind } from '@prisma/client';
 
 import { InterestTaste, TasteSignal } from './interest-taste';
 import { Test } from '@nestjs/testing';
+import { ListFeedDto } from './dto/list-feed.dto';
 import { FeedService } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
@@ -448,6 +451,20 @@ describe('FeedService', () => {
       expect(page.nextCursor).toMatch(/^r\d+-2-\d+$/);
     });
 
+    it('writes a cursor the feed endpoint accepts back', async () => {
+      // The shape test above passed for eleven days while the endpoint's own
+      // validation refused this exact cursor, and For You stopped at twenty
+      // posts. So: the cursor this writes, through the class that guards it.
+      post.findMany.mockResolvedValue([row('a'), row('b'), row('c')]);
+      const page = await (await service()).listRecent(VIEWER, 2);
+
+      const query = plainToInstance(ListFeedDto, {
+        cursor: page.nextCursor,
+        limit: '2',
+      });
+      expect(await validate(query)).toEqual([]);
+    });
+
     it('reports no cursor once the pool is exhausted', async () => {
       post.findMany.mockResolvedValue([row('a'), row('b')]);
       const page = await (await service()).listRecent(VIEWER, 2);
@@ -788,6 +805,11 @@ describe('FeedService', () => {
       const first = await (await service()).listExplore(VIEWER, 2);
       expect(first.items.map((p) => p.id)).toEqual(['p0', 'p1']);
       expect(first.nextCursor).toMatch(/^r\d+-2$/);
+      expect(
+        await validate(
+          plainToInstance(ListFeedDto, { cursor: first.nextCursor }),
+        ),
+      ).toEqual([]);
 
       post.findMany
         .mockResolvedValueOnce(pool)

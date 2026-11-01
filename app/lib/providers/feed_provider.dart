@@ -101,12 +101,22 @@ class FeedState {
   /// Null once every page has been read.
   final String? nextCursor;
 
+  /// The last page after the first failed. The list says so at its foot, with
+  /// a way to try again, and stops asking on its own until then.
+  ///
+  /// Before this a failed page was silent, and a feed whose second page
+  /// failed every time looked exactly like a feed with twenty posts in it --
+  /// which is how For You stopped at twenty for eleven days without anybody
+  /// being able to tell it was broken.
+  final bool loadMoreFailed;
+
   const FeedState({
     this.posts = const [],
     this.isLoadingFirstPage = false,
     this.isLoadingMore = false,
     this.error,
     this.nextCursor,
+    this.loadMoreFailed = false,
   });
 
   bool get hasMore => nextCursor != null;
@@ -121,6 +131,7 @@ class FeedState {
     bool? isLoadingMore,
     String? error,
     String? nextCursor,
+    bool? loadMoreFailed,
     bool clearError = false,
     bool clearCursor = false,
   }) {
@@ -130,6 +141,7 @@ class FeedState {
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
       error: clearError ? null : (error ?? this.error),
       nextCursor: clearCursor ? null : (nextCursor ?? this.nextCursor),
+      loadMoreFailed: loadMoreFailed ?? this.loadMoreFailed,
     );
   }
 }
@@ -200,10 +212,15 @@ class PostListNotifier extends StateNotifier<FeedState> {
   }
 
   /// Appends the next page. Safe to call repeatedly while scrolling: it is a
-  /// no-op while one is in flight or once the end is reached.
+  /// no-op while one is in flight, once the end is reached, and after a
+  /// failure until [retryMore] -- scrolling at the foot of a list whose next
+  /// page keeps failing would otherwise send a request on every frame.
   Future<void> loadMore() async {
     final cursor = state.nextCursor;
-    if (cursor == null || state.isLoadingMore || state.isLoadingFirstPage) {
+    if (cursor == null ||
+        state.isLoadingMore ||
+        state.isLoadingFirstPage ||
+        state.loadMoreFailed) {
       return;
     }
 
@@ -217,11 +234,17 @@ class PostListNotifier extends StateNotifier<FeedState> {
         clearCursor: page.nextCursor == null,
       );
     } catch (_) {
-      // A failed page is not a failed list: keep what is on screen and stop
-      // paging rather than replacing everything with an error. Pulling to
-      // refresh recovers.
-      state = state.copyWith(isLoadingMore: false);
+      // A failed page is not a failed list: keep what is on screen and say
+      // at its foot that the rest did not come, rather than replacing
+      // everything with an error.
+      state = state.copyWith(isLoadingMore: false, loadMoreFailed: true);
     }
+  }
+
+  /// Asks again for the page that failed: the foot of the list's Try again.
+  Future<void> retryMore() {
+    state = state.copyWith(loadMoreFailed: false);
+    return loadMore();
   }
 
   /// Puts a newly written post at the top without a round trip for the page.
