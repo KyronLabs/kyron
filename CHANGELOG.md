@@ -20,6 +20,22 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Glasses in 3D.** Specs, Aviator, Shades and Cat-eye turn with your
+  head, with lenses that catch the light, a shadow on your face and arms
+  that run back to your ears and go behind your head as you turn.
+- **Lenses on video.** Switch the camera to Video, tap or hold the shutter,
+  and the lens is in the recording -- glasses, colour, frost and all.
+
+### Changed
+
+- **A new lens camera.** The picture is a rounded card with no title bar,
+  the front camera opens first, and the lenses scroll through a compact
+  shutter -- swipe from anywhere on the strip, including the shutter. A
+  photo or video goes straight to the composer instead of back to the feed,
+  and what is saved is exactly what was on screen.
+
 ### Fixed
 
 - **For You goes past twenty posts again.** Every page after the first was
@@ -30,6 +46,10 @@ the section; GitHub does not show it:
 - **A list that cannot load more now says so.** Where the next page fails,
   the foot of the list reads "Couldn't load more posts" with Try again,
   instead of looking like the end.
+
+- **Lenses land on your face.** On Android, glasses tilted too little and
+  frost and fill were drawn as slanted boxes beside the face; the preview
+  and the saved picture now agree.
 
 ## [0.1.27] - 2026-10-31
 ### Changed

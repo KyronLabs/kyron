@@ -28,6 +28,7 @@ import '../services/exposure_meter.dart';
 import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
+import '../services/lens_video.dart';
 import '../services/platform_support.dart';
 import '../services/skin_sampler.dart';
 import '../widgets/empty_state.dart';
@@ -86,6 +87,9 @@ class ArLensScreen extends ConsumerStatefulWidget {
 
   /// The pictures a lens hangs on a face.
   final AttachmentImages? pictures;
+
+  /// The viewfinder card's corners.
+  static const double cornerRadius = 22;
 
   /// The longest recording, as on every short-video app.
   static const maxRecording = Duration(seconds: 60);
@@ -173,9 +177,6 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// never waits on a disk read.
   List<Lens> _lenses = Lens.builtIn;
   Lens _lens = Lens.builtIn.first;
-
-  /// The lens chosen in photo mode, restored on the way back from video.
-  Lens _photoLens = Lens.builtIn.first;
 
   /// The lens whose pictures are on their way, so the shutter can say so.
   String? _fetching;
@@ -489,10 +490,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   /// somebody's battery spent on nothing.
   Future<void> _choose(Lens lens) async {
     if (lens.id == _lens.id) return;
-    setState(() {
-      _lens = lens;
-      _photoLens = lens;
-    });
+    setState(() => _lens = lens);
 
     if (!lens.needsFace) {
       await _stopTracking();
@@ -585,7 +583,12 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       rotation,
     );
 
+    // Kept even without a face: a recording that never found one still
+    // needs to know the shape of what it recorded.
+    _frame = size;
+
     if (points == null) {
+      _note(null);
       // Metered on the middle of the frame *because* there is no face: an
       // underexposed one is the likeliest reason there is no face, and waiting
       // for a detection before fixing the exposure would wait forever.
@@ -605,6 +608,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       size,
     );
     if (anchor == null) {
+      _note(null);
       if (_face != null) setState(_lost);
       return;
     }
@@ -626,6 +630,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       _frame = size;
       if (skin != null) _skin = _settle(_skin, skin);
     });
+    _note(points);
+  }
+
+  /// Adds this frame to the recording's timeline, when one is running.
+  void _note(List<FacePoint>? points) {
+    if (!_recording) return;
+    _timeline.add(LensVideoFrame(_recorded.elapsed, points, skin: _skin));
   }
 
   void _lost() {
@@ -668,23 +679,15 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// Photo or video.
   ///
-  /// Video takes the lens off -- see the class comment -- and opens the
-  /// camera again with the microphone, which a photo never asks for. Coming
-  /// back puts the lens back.
+  /// The lens stays on either way. Video opens the camera again with the
+  /// microphone, which a photo never asks for.
   Future<void> _setMode(CaptureMode mode) async {
     if (mode == _mode || _recording || _capturing) return;
     HapticFeedback.selectionClick();
-    final restore = _photoLens;
     setState(() {
       _mode = mode;
       if (_flash != FlashMode.off) _flash = FlashMode.off;
     });
-    if (mode == CaptureMode.video) {
-      await _stopTracking();
-      setState(() => _lens = Lens.builtIn.first);
-    } else {
-      setState(() => _lens = restore);
-    }
     if (_controller != null || _opening) await _reopen();
   }
 
@@ -696,11 +699,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       _controller != null && _problem == null && !_opening && !_capturing;
 
   void _onShutterTap() {
+    if (_mode == CaptureMode.video && _recording) {
+      _stopRecording();
+      return;
+    }
     if (!_ready) return;
     if (_mode == CaptureMode.photo) {
       _capture();
-    } else if (_recording) {
-      _stopRecording();
     } else {
       _startRecording();
     }
@@ -750,13 +755,40 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
+  /// Where the face was through the recording running now. See
+  /// [LensVideoTimeline].
+  final _timeline = LensVideoTimeline();
+
+  /// The lens the recording was started with. The strip is locked while
+  /// recording, so this is the lens throughout -- one lens per clip.
+  Lens? _recordingLens;
+
   Future<void> _startRecording() async {
     final controller = _controller;
     if (controller == null || _recording) return;
     HapticFeedback.mediumImpact();
+
+    final lens = _lens;
+    _timeline.clear();
     try {
-      await controller.startVideoRecording();
+      // The frames that track the face are handed over by the recording
+      // itself: the camera will not run a plain image stream and a recording
+      // at once, so the stream is stopped and taken up again inside it.
+      final track = lens.needsFace;
+      if (_streaming) {
+        _streaming = false;
+        await controller.stopImageStream();
+      }
+      if (track && !await _tracker.open()) {
+        if (!mounted) return;
+        _say(AppLocalizations.of(context).faceTrackingUnavailable);
+      }
+      await controller.startVideoRecording(
+        onAvailable: track && _tracker.isReady ? _onFrame : null,
+      );
+      _streaming = track && _tracker.isReady;
       if (!mounted) return;
+      _recordingLens = lens;
       setState(() => _recording = true);
       _recorded
         ..reset()
@@ -775,6 +807,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
       if (!mounted) return;
       _say(AppLocalizations.of(context)
           .ui('ar_could_not_record', 'The video could not be recorded.'));
+      if (_lens.needsFace) unawaited(_startTracking());
     }
   }
 
@@ -782,19 +815,92 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     final controller = _controller;
     if (controller == null || !_recording) return;
     _endRecordingState();
+    // The recording's frames end with it.
+    _streaming = false;
     setState(() => _capturing = true);
     try {
       final file = await controller.stopVideoRecording();
       if (!mounted) return;
-      _toComposer(file.path, MediaKind.video);
+      setState(() => _applying = true);
+      final baked = await _bakeVideo(file.path);
+      if (!mounted) return;
+      _toComposer(baked, MediaKind.video);
     } catch (error) {
       AppLog.instance.error('ar', 'Could not finish recording: $error');
       if (!mounted) return;
       _say(AppLocalizations.of(context)
           .ui('ar_could_not_record', 'The video could not be recorded.'));
+      if (_lens.needsFace) unawaited(_startTracking());
     } finally {
-      if (mounted) setState(() => _capturing = false);
+      if (mounted) {
+        setState(() {
+          _capturing = false;
+          _applying = false;
+        });
+      }
     }
+  }
+
+  /// True while a finished recording has its lens put in.
+  bool _applying = false;
+
+  /// The recording with its lens in it, cropped and turned as the
+  /// viewfinder showed it -- the same promise the still keeps.
+  Future<String> _bakeVideo(String recorded) async {
+    final lens = _recordingLens ?? _lens;
+    final directory = await getTemporaryDirectory();
+    final stamp = DateTime.now().millisecondsSinceEpoch;
+    final work = Directory(p.join(directory.path, 'lens_video_$stamp'));
+
+    final frame = _frame;
+    final visible = frame.isEmpty
+        ? const Rect.fromLTWH(0, 0, 1, 1)
+        : () {
+            final crop = ArLensScreen.visibleCrop(frame, _viewport);
+            return Rect.fromLTWH(
+              crop.left / frame.width,
+              crop.top / frame.height,
+              crop.width / frame.width,
+              crop.height / frame.height,
+            );
+          }();
+
+    // The lens is laid in by the platform: Media3 on Android. Anywhere else
+    // the clip is kept as recorded, and that is said rather than hidden.
+    if (!Platform.isAndroid) {
+      if (lens.changesPicture && mounted) _lensLeftOut();
+      return recorded;
+    }
+    try {
+      return await LensVideoBaker(run: LensVideoBaker.viaChannel).bake(
+        input: recorded,
+        output: p.join(directory.path, 'lens_$stamp.mp4'),
+        lens: lens,
+        timeline: _timeline.frames,
+        frame: frame,
+        work: work,
+        attachments: _pictures.ready(lens),
+        crop: visible,
+        mirror: _front,
+      );
+    } catch (error) {
+      // The recording itself is fine. Losing it because the lens could not
+      // be laid in would be the worse failure of the two.
+      AppLog.instance.error('ar', 'Could not add the lens to a video: $error');
+      if (mounted) _lensLeftOut();
+      return recorded;
+    } finally {
+      if (work.existsSync()) {
+        unawaited(work.delete(recursive: true).catchError((_) => work));
+      }
+    }
+  }
+
+  void _lensLeftOut() {
+    _say(AppLocalizations.of(context).ui(
+      'ar_lens_left_out',
+      'The lens could not be added to this video, so it is posted as filmed.',
+    ));
   }
 
   void _endRecordingState() {
@@ -1080,182 +1186,218 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         data: KyronTheme.darkTheme,
         child: Scaffold(
           backgroundColor: Colors.black,
-          body: Stack(
-            fit: StackFit.expand,
-            children: [
-              // Double-tap anywhere on the picture flips the camera, as it
-              // does in every camera app with a selfie side.
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onDoubleTap: canFlip ? _flip : null,
-                child: _viewfinder(),
-              ),
-              // Shades top and bottom, so white controls read over a white
-              // ceiling or a white pillow.
-              const _Scrim(top: true),
-              const _Scrim(top: false),
-              IgnorePointer(
-                child: AnimatedOpacity(
-                  opacity: _blink ? 0.85 : 0,
-                  duration: Duration(milliseconds: _blink ? 30 : 220),
-                  child: const ColoredBox(color: Colors.white),
-                ),
-              ),
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: SpacingTokens.space12,
-                    vertical: SpacingTokens.space8,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _GlassButton(
-                        icon: Iconsax.close_circle_copy,
-                        tooltip: MaterialLocalizations.of(context)
-                            .closeButtonTooltip,
-                        onPressed: () => Navigator.maybePop(context),
-                      ),
-                      const Spacer(),
-                      if (_recording) _RecordingTime(_recorded.elapsed),
-                      const Spacer(),
-                      Column(
+          body: SafeArea(
+            child: Column(
+              children: [
+                // The picture, as a card with rounded corners rather than
+                // edge to edge: the controls get their own black floor
+                // underneath instead of sitting on somebody's chin.
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      SpacingTokens.space8,
+                      SpacingTokens.space4,
+                      SpacingTokens.space8,
+                      0,
+                    ),
+                    child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(ArLensScreen.cornerRadius),
+                      child: Stack(
+                        fit: StackFit.expand,
                         children: [
-                          if (canFlip)
-                            _GlassButton(
-                              icon: Iconsax.refresh_copy,
-                              tooltip: l10n.literalswitchCamera,
-                              onPressed: _opening || _recording ? null : _flip,
+                          // Double-tap the picture to flip the camera, as in
+                          // every camera app with a selfie side.
+                          GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onDoubleTap: canFlip ? _flip : null,
+                            child: _viewfinder(),
+                          ),
+                          const _Scrim(top: true),
+                          const _Scrim(top: false),
+                          IgnorePointer(
+                            child: AnimatedOpacity(
+                              opacity: _blink ? 0.85 : 0,
+                              duration:
+                                  Duration(milliseconds: _blink ? 30 : 220),
+                              child: const ColoredBox(color: Colors.white),
                             ),
-                          if (hasFlash) ...[
-                            const SizedBox(height: SpacingTokens.space12),
-                            _GlassButton(
-                              icon: _flash == FlashMode.off
-                                  ? Iconsax.flash_slash_copy
-                                  : Iconsax.flash_1,
-                              tooltip: l10n.ui('ar_flash', 'Flash'),
-                              onPressed: _toggleFlash,
+                          ),
+                          if (_applying)
+                            _Applying(
+                              l10n.ui('ar_applying_lens', 'Adding your lens…'),
                             ),
-                          ],
+                          Positioned(
+                            top: SpacingTokens.space12,
+                            left: SpacingTokens.space12,
+                            right: SpacingTokens.space12,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _GlassButton(
+                                  icon: Iconsax.close_circle_copy,
+                                  tooltip: MaterialLocalizations.of(context)
+                                      .closeButtonTooltip,
+                                  onPressed: () => Navigator.maybePop(context),
+                                ),
+                                const Spacer(),
+                                if (_recording)
+                                  _RecordingTime(_recorded.elapsed),
+                                const Spacer(),
+                                Column(
+                                  children: [
+                                    if (canFlip)
+                                      _GlassButton(
+                                        icon: Iconsax.refresh_copy,
+                                        tooltip: l10n.literalswitchCamera,
+                                        onPressed: _opening || _recording
+                                            ? null
+                                            : _flip,
+                                      ),
+                                    if (hasFlash) ...[
+                                      const SizedBox(
+                                        height: SpacingTokens.space12,
+                                      ),
+                                      _GlassButton(
+                                        icon: _flash == FlashMode.off
+                                            ? Iconsax.flash_slash_copy
+                                            : Iconsax.flash_1,
+                                        tooltip: l10n.ui('ar_flash', 'Flash'),
+                                        onPressed: _toggleFlash,
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          // The chosen lens's name, low on the picture, as it
+                          // changes with the strip. Out of the accessibility
+                          // tree: the tile already announces itself as
+                          // selected, and read out this would say every name
+                          // twice.
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: SpacingTokens.space12,
+                            child: ExcludeSemantics(child: _lensName()),
+                          ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SafeArea(top: false, child: _controls()),
-              ),
-            ],
+                _controls(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
+  Widget _lensName() {
+    return Center(
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 180),
+        transitionBuilder: (child, animation) => FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween(
+              begin: const Offset(0, 0.3),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          ),
+        ),
+        child: Text(
+          _lens.name,
+          key: ValueKey(_lens.id),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: TypographyTokens.fontSize2,
+            fontWeight: FontWeight.w600,
+            shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// The strip with the shutter in it, and photo or video under it. As
+  /// tight as it can be: the strip is exactly as tall as the shutter, and the
+  /// shutter is a ring just outside the tile it sits on.
   Widget _controls() {
     final l10n = AppLocalizations.of(context);
     final photo = _mode == CaptureMode.photo;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // The chosen lens's name, which changes as the strip is swiped. Out
-        // of the accessibility tree: the tile already announces itself as
-        // selected, and read out this would say every name twice.
-        ExcludeSemantics(
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 180),
-            transitionBuilder: (child, animation) => FadeTransition(
-              opacity: animation,
-              child: SlideTransition(
-                position: Tween(
-                  begin: const Offset(0, 0.3),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: child,
-              ),
-            ),
-            child: Text(
-              photo
-                  ? _lens.name
-                  : l10n.ui(
-                      'ar_video_plain',
-                      'Lenses are for photos, for now',
-                    ),
-              key: ValueKey(photo ? _lens.id : 'video'),
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: TypographyTokens.fontSize2,
-                fontWeight: FontWeight.w600,
-                shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: SpacingTokens.space12),
-        SizedBox(
-          height: _Shutter.size,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // Hidden rather than removed in video mode, so swiping back to
-              // photo finds the strip where it was left.
-              AnimatedOpacity(
-                opacity: photo ? 1 : 0,
-                duration: const Duration(milliseconds: 200),
-                child: IgnorePointer(
-                  ignoring: !photo,
-                  child: _LensCarousel(
-                    lenses: _lenses,
-                    selected: _lens,
-                    onChanged: _choose,
-                    camera: _problem == null ? _controller : null,
-                    pictures: _pictures,
+    return Padding(
+      padding: const EdgeInsets.only(top: SpacingTokens.space12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: _Shutter.size,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                _LensCarousel(
+                  lenses: _lenses,
+                  selected: _lens,
+                  onChanged: _choose,
+                  camera: _problem == null ? _controller : null,
+                  pictures: _pictures,
+                  // One lens per clip: the strip holds still while recording.
+                  locked: _recording || _capturing,
+                  onCentreTap: _onShutterTap,
+                  onCentreHold: _onShutterHold,
+                  onCentreRelease: _onShutterRelease,
+                ),
+                // Drawn over the strip but never in its way: every touch,
+                // including a swipe that starts on the shutter, goes to the
+                // strip, and the strip's middle tile is the button.
+                IgnorePointer(
+                  child: _Shutter(
+                    mode: _mode,
+                    enabled: _ready || _recording,
+                    busy: (_capturing && !_recording) || _fetching == _lens.id,
+                    recording: _recording,
+                    progress: _recording
+                        ? _recorded.elapsed.inMilliseconds /
+                            ArLensScreen.maxRecording.inMilliseconds
+                        : 0,
+                    label: photo
+                        ? l10n.literaltakeAPicture
+                        : l10n.ui('ar_record_video', 'Record a video'),
+                    onTap: _onShutterTap,
                   ),
                 ),
-              ),
-              _Shutter(
-                mode: _mode,
-                enabled: _ready || _recording,
-                busy: _capturing || _fetching == _lens.id,
-                recording: _recording,
-                progress: _recording
-                    ? _recorded.elapsed.inMilliseconds /
-                        ArLensScreen.maxRecording.inMilliseconds
-                    : 0,
-                label: photo
-                    ? l10n.literaltakeAPicture
-                    : l10n.ui('ar_record_video', 'Record a video'),
-                onTap: _onShutterTap,
-                onHold: _onShutterHold,
-                onRelease: _onShutterRelease,
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: SpacingTokens.space12),
-        _ModeSwitch(
-          mode: _mode,
-          enabled: !_recording && !_capturing,
-          onChanged: _setMode,
-        ),
-        const SizedBox(height: SpacingTokens.space8),
-      ],
+          _ModeSwitch(
+            mode: _mode,
+            enabled: !_recording && !_capturing,
+            onChanged: _setMode,
+          ),
+        ],
+      ),
     );
   }
 
   Widget _viewfinder() {
     if (_problem != null) {
-      return SafeArea(
+      return ColoredBox(
+        color: const Color(0xFF111114),
         child: Center(
-          child: EmptyState(
-            art: EmptyArt.lens,
-            title: AppLocalizations.of(context).literaltheCameraIsClosed,
-            detail: _problem!,
-            action: 'Try again',
-            onAction: _open,
+          child: SingleChildScrollView(
+            child: EmptyState(
+              art: EmptyArt.lens,
+              title: AppLocalizations.of(context).literaltheCameraIsClosed,
+              detail: _problem!,
+              action: 'Try again',
+              onAction: _open,
+            ),
           ),
         ),
       );
@@ -1421,7 +1563,7 @@ class _Scrim extends StatelessWidget {
       child: Align(
         alignment: top ? Alignment.topCenter : Alignment.bottomCenter,
         child: FractionallySizedBox(
-          heightFactor: top ? 0.18 : 0.32,
+          heightFactor: top ? 0.16 : 0.2,
           widthFactor: 1,
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -1642,13 +1784,17 @@ class _ModeSwitch extends StatelessWidget {
   }
 }
 
-/// The shutter: a ring the lens strip runs through.
+/// The shutter: a ring just outside the lens tile in the middle of the strip.
 ///
-/// In photo mode the middle is open, so the lens tile under it shows through
-/// -- the ring is around the lens that will be in the picture. In video mode
-/// it is a red button; while recording it fills red around the edge as the
-/// clock runs down.
-class _Shutter extends StatefulWidget {
+/// Drawing only. Every touch goes to the strip underneath, whose middle tile
+/// is the button -- which is what lets a swipe that starts on the shutter
+/// move the strip, as it does in every camera people already use. This used
+/// to be a button laid over the strip, and the strip never saw a finger that
+/// landed on it.
+///
+/// White for a photo, red for video. While recording it swells a little and
+/// a red arc runs round it as the clock runs down.
+class _Shutter extends StatelessWidget {
   final CaptureMode mode;
   final bool enabled;
   final bool busy;
@@ -1656,8 +1802,6 @@ class _Shutter extends StatefulWidget {
   final double progress;
   final String label;
   final VoidCallback onTap;
-  final VoidCallback onHold;
-  final VoidCallback onRelease;
 
   const _Shutter({
     required this.mode,
@@ -1667,74 +1811,43 @@ class _Shutter extends StatefulWidget {
     required this.progress,
     required this.label,
     required this.onTap,
-    required this.onHold,
-    required this.onRelease,
   });
 
-  static const double size = 86;
-
-  @override
-  State<_Shutter> createState() => _ShutterState();
-}
-
-class _ShutterState extends State<_Shutter> {
-  bool _down = false;
+  /// The tile, a hairline of space, and the ring. Nothing more.
+  static const double stroke = 4;
+  static const double gap = 3;
+  static const double size = _LensCarousel.tile + 2 * (gap + stroke);
 
   @override
   Widget build(BuildContext context) {
-    final video = widget.mode == CaptureMode.video;
-    final recording = widget.recording;
-
+    // The semantics live here, outside the pointer-blind drawing, so a
+    // screen reader can still press it.
     return Semantics(
       button: true,
-      label: widget.label,
-      enabled: widget.enabled,
+      label: label,
+      enabled: enabled,
+      onTap: enabled ? onTap : null,
       excludeSemantics: true,
-      child: GestureDetector(
-        onTapDown: (_) => setState(() => _down = true),
-        onTapCancel: () => setState(() => _down = false),
-        onTapUp: (_) => setState(() => _down = false),
-        onTap: widget.enabled ? widget.onTap : null,
-        onLongPressStart: (_) => widget.onHold(),
-        onLongPressEnd: (_) {
-          setState(() => _down = false);
-          widget.onRelease();
-        },
+      child: IgnorePointer(
         child: AnimatedScale(
-          scale: recording ? 1.18 : (_down ? 0.92 : 1),
-          duration: const Duration(milliseconds: 140),
+          scale: recording ? 1.12 : 1,
+          duration: const Duration(milliseconds: 160),
           curve: Curves.easeOut,
           child: SizedBox.square(
-            dimension: _Shutter.size,
-            child: CustomPaint(
-              painter: _ShutterPainter(
-                video: video,
-                recording: recording,
-                progress: widget.progress,
-                enabled: widget.enabled,
-              ),
-              child: Center(
-                child: widget.busy
-                    ? const SizedBox.square(
-                        dimension: _Shutter.size - 10,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                          color: Colors.white,
-                        ),
-                      )
-                    : AnimatedContainer(
-                        duration: const Duration(milliseconds: 180),
-                        width: video ? (recording ? 28 : 62) : 0,
-                        height: video ? (recording ? 28 : 62) : 0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFE5253A),
-                          borderRadius: BorderRadius.circular(
-                            recording ? 7 : 31,
-                          ),
-                        ),
-                      ),
-              ),
-            ),
+            dimension: size,
+            child: busy
+                ? const CircularProgressIndicator(
+                    strokeWidth: stroke,
+                    color: Colors.white,
+                  )
+                : CustomPaint(
+                    painter: _ShutterPainter(
+                      video: mode == CaptureMode.video,
+                      recording: recording,
+                      progress: progress,
+                      enabled: enabled,
+                    ),
+                  ),
           ),
         ),
       ),
@@ -1755,16 +1868,21 @@ class _ShutterPainter extends CustomPainter {
     required this.enabled,
   });
 
+  static const _red = Color(0xFFE5253A);
+
   @override
   void paint(Canvas canvas, Size size) {
-    const stroke = 5.0;
+    const stroke = _Shutter.stroke;
     final rect = (Offset.zero & size).deflate(stroke / 2);
+    final ring = recording
+        ? Colors.white.withValues(alpha: 0.35)
+        : (video ? _red : Colors.white);
     canvas.drawOval(
       rect,
       Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = stroke
-        ..color = Colors.white.withValues(alpha: enabled ? 1 : 0.4),
+        ..color = ring.withValues(alpha: enabled ? ring.a : 0.4),
     );
     if (recording && progress > 0) {
       canvas.drawArc(
@@ -1776,7 +1894,7 @@ class _ShutterPainter extends CustomPainter {
           ..style = PaintingStyle.stroke
           ..strokeWidth = stroke
           ..strokeCap = StrokeCap.round
-          ..color = const Color(0xFFE5253A),
+          ..color = _red,
       );
     }
   }
@@ -1789,6 +1907,42 @@ class _ShutterPainter extends CustomPainter {
       old.enabled != enabled;
 }
 
+/// Over the picture while a recording has its lens put in.
+class _Applying extends StatelessWidget {
+  final String label;
+
+  const _Applying(this.label);
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Colors.black.withValues(alpha: 0.45),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox.square(
+              dimension: 36,
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: SpacingTokens.space12),
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 // ---------------------------------------------------------------------------
 // The lens strip
 // ---------------------------------------------------------------------------
@@ -1797,23 +1951,25 @@ class _ShutterPainter extends CustomPainter {
 ///
 /// The one under the shutter is the one on your face: swiping changes lens
 /// as it goes, every tile snaps to the middle, and tapping a tile brings it
-/// there. Lenses sit on both sides of the shutter rather than in a shelf
-/// above it, which is how every camera people already use does it, and
-/// which puts the lens and the button that takes the picture under one
-/// thumb.
+/// there. Tapping the one already in the middle is pressing the shutter, and
+/// holding it in video mode records -- the strip is the button.
 class _LensCarousel extends StatefulWidget {
   final List<Lens> lenses;
   final Lens selected;
   final ValueChanged<Lens> onChanged;
 
   /// The running camera. Null when it has not opened or cannot, in which case
-  /// colour tiles fall back to a colour chart -- which still shows what a
-  /// matrix does, and does not pretend to be a photograph of anything.
+  /// colour tiles fall back to a colour chart.
   final CameraController? camera;
 
-  /// The decoded artwork, so a lens that hangs a picture on a face can show
-  /// that picture.
   final AttachmentImages pictures;
+
+  /// Held still -- while recording, so a clip is one lens throughout.
+  final bool locked;
+
+  final VoidCallback onCentreTap;
+  final VoidCallback onCentreHold;
+  final VoidCallback onCentreRelease;
 
   const _LensCarousel({
     required this.lenses,
@@ -1821,11 +1977,15 @@ class _LensCarousel extends StatefulWidget {
     required this.onChanged,
     required this.camera,
     required this.pictures,
+    required this.locked,
+    required this.onCentreTap,
+    required this.onCentreHold,
+    required this.onCentreRelease,
   });
 
   /// A tile, and the room either side of it.
   static const double tile = 58;
-  static const double pitch = 72;
+  static const double pitch = 70;
 
   @override
   State<_LensCarousel> createState() => _LensCarouselState();
@@ -1858,8 +2018,8 @@ class _LensCarouselState extends State<_LensCarousel> {
   @override
   void didUpdateWidget(_LensCarousel old) {
     super.didUpdateWidget(old);
-    // Chosen from outside -- the catalogue dropped the lens that was on, or
-    // video mode took it off -- so the strip follows.
+    // Chosen from outside -- the catalogue dropped the lens that was on -- so
+    // the strip follows.
     final pages = _pages;
     if (pages != null &&
         pages.hasClients &&
@@ -1882,6 +2042,9 @@ class _LensCarouselState extends State<_LensCarousel> {
         final pages = _controllerFor(box.maxWidth);
         return PageView.builder(
           controller: pages,
+          physics: widget.locked
+              ? const NeverScrollableScrollPhysics()
+              : const PageScrollPhysics(),
           itemCount: widget.lenses.length,
           onPageChanged: (index) {
             HapticFeedback.selectionClick();
@@ -1889,32 +2052,47 @@ class _LensCarouselState extends State<_LensCarousel> {
           },
           itemBuilder: (context, index) {
             final lens = widget.lenses[index];
-            return Center(
-              child: AnimatedBuilder(
-                animation: pages,
-                builder: (context, child) {
-                  // Tiles shrink and dim as they move away from the shutter,
-                  // so the one in the middle reads as the one that is on.
-                  final page = pages.hasClients && pages.position.haveDimensions
-                      ? pages.page ?? _index.toDouble()
-                      : _index.toDouble();
-                  final distance = (page - index).abs().clamp(0.0, 3.0);
-                  final scale = 1 - 0.12 * math.min(1.0, distance);
-                  return Opacity(
-                    opacity: 1 - 0.12 * math.min(2.0, distance),
-                    child: Transform.scale(scale: scale, child: child),
-                  );
-                },
-                child: _LensTile(
-                  lens: lens,
-                  chosen: lens.id == widget.selected.id,
-                  size: _LensCarousel.tile,
-                  camera: widget.camera,
-                  pictures: widget.pictures,
-                  onTap: () => pages.animateToPage(
+            final centre = lens.id == widget.selected.id;
+            // The whole slot, not just the circle, so a finger that lands on
+            // the ring around the middle tile still presses the shutter.
+            return GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                if (centre) {
+                  widget.onCentreTap();
+                } else if (!widget.locked) {
+                  pages.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 260),
                     curve: Curves.easeOutCubic,
+                  );
+                }
+              },
+              onLongPressStart: centre ? (_) => widget.onCentreHold() : null,
+              onLongPressEnd: centre ? (_) => widget.onCentreRelease() : null,
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: pages,
+                  builder: (context, child) {
+                    // Tiles shrink and dim as they move away from the
+                    // shutter, so the one in the middle reads as the one on.
+                    final page =
+                        pages.hasClients && pages.position.haveDimensions
+                            ? pages.page ?? _index.toDouble()
+                            : _index.toDouble();
+                    final distance = (page - index).abs().clamp(0.0, 3.0);
+                    final scale = 1 - 0.14 * math.min(1.0, distance);
+                    return Opacity(
+                      opacity: 1 - 0.12 * math.min(2.0, distance),
+                      child: Transform.scale(scale: scale, child: child),
+                    );
+                  },
+                  child: _LensTile(
+                    lens: lens,
+                    chosen: centre,
+                    size: _LensCarousel.tile,
+                    camera: widget.camera,
+                    pictures: widget.pictures,
                   ),
                 ),
               ),
@@ -1933,7 +2111,6 @@ class _LensTile extends StatelessWidget {
   final double size;
   final CameraController? camera;
   final AttachmentImages pictures;
-  final VoidCallback onTap;
 
   const _LensTile({
     required this.lens,
@@ -1941,7 +2118,6 @@ class _LensTile extends StatelessWidget {
     required this.size,
     required this.camera,
     required this.pictures,
-    required this.onTap,
   });
 
   @override
@@ -1951,26 +2127,24 @@ class _LensTile extends StatelessWidget {
       selected: chosen,
       label: lens.needsFace ? '${lens.name}, face lens' : lens.name,
       excludeSemantics: true,
-      child: GestureDetector(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          curve: Curves.easeOut,
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.black,
-            border: Border.all(
-              color: chosen ? Colors.white : Colors.white24,
-              width: chosen ? 2 : 1,
-            ),
-            boxShadow: const [
-              BoxShadow(blurRadius: 8, color: Colors.black38),
-            ],
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.black,
+          // The shutter's ring marks the chosen tile; a border of its own
+          // inside it made two rings.
+          border: Border.all(
+            color: chosen ? Colors.transparent : Colors.white24,
           ),
-          child: ClipOval(child: _preview()),
+          boxShadow: const [
+            BoxShadow(blurRadius: 8, color: Colors.black38),
+          ],
         ),
+        child: ClipOval(child: _preview()),
       ),
     );
   }

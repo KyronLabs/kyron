@@ -192,32 +192,86 @@ the exposure meter and skin sampling.
 ## The screen
 
 Laid out the way Snapchat, TikTok and RedNote lay out a camera, because that is
-the layout people already know. The picture fills the screen with no title bar,
-and the controls float on it.
+the layout people already know. There is no title bar. The picture is a card
+with rounded corners and the controls float on it; the shutter and the strip
+sit on a black floor underneath, as tight as they go.
 
 - **The lenses run through the shutter**, on both sides of it. Swiping changes
   lens as it goes, every tile snaps to the middle, and tapping a tile slides it
-  there.
+  there. **The shutter is drawn, not a button.** Every touch goes to the strip,
+  and the strip's middle tile is the button. That is what lets a swipe that
+  starts on the shutter move the strip. When it was a button laid on top, the
+  strip never saw a finger that landed on it.
+- **The ring is the selection.** It sits a hairline outside the middle tile:
+  white for photo, red for video, with a red arc running round it while
+  recording.
 - **The front camera opens first.** Double-tap the picture to flip. The flash
   button appears on the back camera.
 - **Photo and Video** sit under the shutter. In Video, tap to start and stop or
-  hold to record. Recordings stop at 60 seconds.
-- **Capture opens the composer** with the photo or video attached. The screen
-  used to attach the file and pop back to the feed, so the picture sat in the
-  composer's state unseen.
-- **The saved photo is what was on screen.** It is cropped to the part of the
-  frame the cover-fit preview showed. On Android, front-camera photos are also
+  hold to record. Recordings stop at 60 seconds, and the strip is locked while
+  recording so each clip has one lens.
+- **Capture opens the composer** with the photo or video attached.
+- **What is saved is what was on screen.** It is cropped to the part of the
+  frame the card showed. On Android, front-camera photos and videos are also
   mirrored back, because the platform returns them the way the sensor saw them.
 
-## What it is still not
+## Lenses on video
 
-**Lenses on video.** Video records the camera as it is, so Video mode takes
-the lens off and says *"Lenses are for photos, for now"*. Baking a lens into
-video needs a frame pipeline and an encoder on the native side. On Android
-that is Media3 Transformer with an RGB matrix and a per-frame overlay, driven
-by face poses recorded with timestamps. The app has neither yet. A recording
-that came back without the glasses someone was wearing in the viewfinder would
-be the screen lying.
+The camera records the picture as it is. The lens is put in afterwards,
+from the poses recorded alongside the clip:
+
+1. While recording, the frames that track the face come from the recording
+   itself (`startVideoRecording(onAvailable:)`). Each one adds the
+   landmarks, and the skin reading for a fill, to a `LensVideoTimeline`.
+   That is about 15 samples a second, plus every moment a face arrives or
+   leaves.
+2. When the clip stops, `LensVideoBaker` draws each sample as a transparent
+   PNG with the preview's own painters: glasses, pictures, a fill's skin.
+   Effects also get a mask, white wherever the picture is blurred.
+3. On Android, `LensVideo.kt` hands the clip to **Media3 Transformer** with a
+   single shader. The shader applies the colour matrix, blurs and washes
+   wherever the mask is white, and lays the drawing over the top. Media3's
+   own `Crop` and a mirror follow. Audio passes through untouched. The
+   whole job runs on the GPU and the phone's own H.264 encoder.
+
+**Why not FFmpeg.** An earlier version used FFmpegKit, the LGPL "min" build.
+It worked, but it added about 15 MB to every APK and failed the size budget
+in `scripts/check-apks.sh`. Media3 is AndroidX, and the app already ships
+1.9.2 for `video_player`; Transformer and the effect library add little on
+top. The shader is the only new code that runs.
+
+**What is checked, and how:**
+
+- `test/lens_video_test.dart` checks the job the camera sends: that the
+  pictures land on the eyes, that they are blank when the face is gone, the
+  frost mask, the blur and wash numbers, crop and mirror, and that a lens
+  which changes nothing skips the bake.
+- `tools/lens_shader_check.mjs` runs the shader from `LensVideo.kt`,
+  unchanged, in headless Chromium's WebGL. WebGL 1 is the same GLSL ES 1.00.
+  It runs against those jobs and reads the pixels back: glasses darken the
+  eye, the frame is not flipped, frost smears the edges but leaves the eyes
+  sharp and lifts the tone, and mono matches Flutter's grey.
+
+  The check reproduces Media3's texture conventions: frames have their
+  origin at the bottom left, and bitmaps are uploaded with their first row
+  at the bottom and alpha premultiplied, the same flip Media3's own
+  `BitmapOverlay` applies.
+
+**What is not checked here:** that Media3 drives the program as described,
+and the encoder on any given phone. Those need a device.
+
+**If a bake fails,** the clip is posted as filmed, with a note saying the
+lens could not be added. Losing the recording would be the worse failure.
+iOS has no implementation yet. It keeps the plain clip and says so; the
+same job maps onto AVFoundation with Core Image filters.
+
+**Cost.** Putting a lens in takes time after a clip stops. Pictures are drawn
+at three-quarters of the frame and masks at three-eighths, and then the
+whole clip is re-encoded. How long that takes on a real phone has not been
+measured yet. An "Adding your lens…"
+overlay covers the wait.
+
+## What it is still not
 
 **Glasses from the catalogue.** See above: a format decision first.
 

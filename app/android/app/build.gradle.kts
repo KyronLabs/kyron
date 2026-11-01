@@ -187,4 +187,13 @@ dependencies {
     // named here rather than left to whichever version the plugins happen to
     // pull in.
     implementation("androidx.activity:activity-ktx:1.10.1")
+
+    // Lenses on video (LensVideo.kt): Transformer re-encodes a recording with
+    // a shader over every frame, on the GPU and the phone's own encoder. The
+    // same Media3 version video_player_android already ships, so the player
+    // and its decoders are not carried twice.
+    val media3 = "1.9.2"
+    implementation("androidx.media3:media3-transformer:$media3")
+    implementation("androidx.media3:media3-effect:$media3")
+    implementation("androidx.media3:media3-common:$media3")
 }
