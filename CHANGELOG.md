@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.31] - 2026-11-03
 ### Fixed
 
 - **Lens videos stay upright, for real this time.** Starting a recording
@@ -2330,7 +2332,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.30...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.31...HEAD
+[0.1.31]: https://github.com/KyronLabs/kyron/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/KyronLabs/kyron/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/KyronLabs/kyron/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/KyronLabs/kyron/compare/v0.1.27...v0.1.28
