@@ -9,6 +9,7 @@ import '../models/post_comment.dart';
 import '../providers/feed_provider.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import '../widgets/gift_sheet.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../l10n/app_localizations.dart';
 
@@ -91,55 +92,68 @@ class _Report extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(SpacingTokens.space20),
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: _Tile(
-                icon: Iconsax.eye_copy,
-                value: formatCount(report.views),
-                label: AppLocalizations.of(context)
-                    .ui('analytics_viewers', 'Viewers'),
-                // Said plainly, because "views" usually means opens and this
-                // does not: the same person refreshing is still one viewer.
-                note: AppLocalizations.of(context).ui(
-                  'analytics_distinct_people_not_opens',
-                  'Distinct people, not opens',
+        // Equal heights: the Viewers tile carries a note and the others do
+        // not, and two tiles of different heights side by side looked like a
+        // layout that had slipped.
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _Tile(
+                  icon: Iconsax.eye_copy,
+                  value: formatCount(report.views),
+                  label: AppLocalizations.of(context)
+                      .ui('analytics_viewers', 'Viewers'),
+                  // Said plainly, because "views" usually means opens and this
+                  // does not: the same person refreshing is still one viewer.
+                  note: AppLocalizations.of(context).ui(
+                    'analytics_distinct_people_not_opens',
+                    'Distinct people, not opens',
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: _Tile(
-                icon: Iconsax.heart_copy,
-                value: formatCount(report.likes),
-                label:
-                    AppLocalizations.of(context).ui('analytics_likes', 'Likes'),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: _Tile(
+                  icon: Iconsax.heart_copy,
+                  value: formatCount(report.likes),
+                  label: AppLocalizations.of(context)
+                      .ui('analytics_likes', 'Likes'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(height: SpacingTokens.space12),
-        Row(
-          children: [
-            Expanded(
-              child: _Tile(
-                icon: Iconsax.message_text_copy,
-                value: formatCount(report.comments),
-                label: AppLocalizations.of(context)
-                    .ui('analytics_comments', 'Comments'),
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _Tile(
+                  icon: Iconsax.message_text_copy,
+                  value: formatCount(report.comments),
+                  label: AppLocalizations.of(context)
+                      .ui('analytics_comments', 'Comments'),
+                ),
               ),
-            ),
-            const SizedBox(width: SpacingTokens.space12),
-            Expanded(
-              child: _Tile(
-                icon: Iconsax.archive_add_copy,
-                value: formatCount(report.saves),
-                label:
-                    AppLocalizations.of(context).ui('analytics_saves', 'Saves'),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(
+                child: _Tile(
+                  icon: Iconsax.archive_add_copy,
+                  value: formatCount(report.saves),
+                  label: AppLocalizations.of(context)
+                      .ui('analytics_saves', 'Saves'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+        const SizedBox(height: SpacingTokens.space24),
+        _Heading(AppLocalizations.of(context).ui('analytics_gifts', 'GIFTS')),
+        const SizedBox(height: SpacingTokens.space12),
+        _Gifts(report: report),
         const SizedBox(height: SpacingTokens.space20),
         _Row(
           label: AppLocalizations.of(context)
@@ -157,15 +171,9 @@ class _Report extends StatelessWidget {
           value: _stamp(report.createdAt),
         ),
         const SizedBox(height: SpacingTokens.space24),
-        Text(
+        _Heading(
           AppLocalizations.of(context)
               .ui('analytics_viewers_per_day', 'VIEWERS PER DAY'),
-          style: TextStyle(
-            fontSize: TypographyTokens.fontSize1,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.8,
-            color: scheme.onSurface.withValues(alpha: .5),
-          ),
         ),
         const SizedBox(height: SpacingTokens.space12),
         if (report.timeline.isEmpty)
@@ -198,6 +206,185 @@ class _Report extends StatelessWidget {
       'Dec',
     ];
     return '${at.day} ${months[at.month - 1]} ${at.year}';
+  }
+}
+
+/// A small capitalised section label.
+class _Heading extends StatelessWidget {
+  final String text;
+
+  const _Heading(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: TypographyTokens.fontSize1,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.8,
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
+      ),
+    );
+  }
+}
+
+/// What the post was given: how many gifts, what they carried and from how
+/// many people, then each kind with its own picture.
+///
+/// The post page has said "5 gifts" since gifts arrived; this is the only
+/// place its author could not see them, which is the one place they were
+/// looking for what their post earned.
+class _Gifts extends StatelessWidget {
+  final PostAnalytics report;
+
+  const _Gifts({required this.report});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
+
+    if (report.gifts == 0) {
+      return Text(
+        l10n.ui(
+          'analytics_no_gifts_yet',
+          'Nobody has sent this post a gift yet.',
+        ),
+        style: TextStyle(color: scheme.onSurface.withValues(alpha: .6)),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(SpacingTokens.space16),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusMd),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: _Figure(
+                  value: formatCount(report.gifts),
+                  label: report.gifts == 1
+                      ? l10n.ui('analytics_gift', 'Gift')
+                      : l10n.ui('analytics_gifts_label', 'Gifts'),
+                ),
+              ),
+              Expanded(
+                child: _Figure(
+                  value: formatCount(report.giftCoins),
+                  label: l10n.ui('analytics_coins', 'Coins'),
+                  leading: const CoinIcon(size: 20),
+                ),
+              ),
+              Expanded(
+                child: _Figure(
+                  value: formatCount(report.gifters),
+                  label: report.gifters == 1
+                      ? l10n.ui('analytics_sender', 'Sender')
+                      : l10n.ui('analytics_senders', 'Senders'),
+                ),
+              ),
+            ],
+          ),
+          if (report.giftsByType.isNotEmpty) ...[
+            const SizedBox(height: SpacingTokens.space12),
+            Divider(height: 1, color: scheme.onSurface.withValues(alpha: .08)),
+            const SizedBox(height: SpacingTokens.space4),
+            for (final kind in report.giftsByType)
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+                child: Row(
+                  children: [
+                    GiftArt(type: kind.type, size: 32),
+                    const SizedBox(width: SpacingTokens.space12),
+                    Expanded(
+                      child: Text(
+                        kind.name,
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Text(
+                      '×${formatCount(kind.count)}',
+                      style: TextStyle(
+                        color: scheme.onSurface.withValues(alpha: .6),
+                      ),
+                    ),
+                    const SizedBox(width: SpacingTokens.space16),
+                    const CoinIcon(size: 16),
+                    const SizedBox(width: SpacingTokens.space4),
+                    SizedBox(
+                      width: 44,
+                      child: Text(
+                        formatCount(kind.coins),
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+          const SizedBox(height: SpacingTokens.space4),
+          Text(
+            l10n.ui(
+              'analytics_test_coins',
+              'Test coins: they cannot be withdrawn yet.',
+            ),
+            style: TextStyle(
+              fontSize: TypographyTokens.fontSize1,
+              color: scheme.onSurface.withValues(alpha: .45),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Figure extends StatelessWidget {
+  final String value;
+  final String label;
+  final Widget? leading;
+
+  const _Figure({required this.value, required this.label, this.leading});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (leading != null) ...[
+              leading!,
+              const SizedBox(width: SpacingTokens.space4),
+            ],
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize6,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: TypographyTokens.fontSize2,
+            color: scheme.onSurface.withValues(alpha: .7),
+          ),
+        ),
+      ],
+    );
   }
 }
 

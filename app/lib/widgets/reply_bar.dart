@@ -10,9 +10,10 @@ import 'media_tray.dart';
 
 /// The box a reply is written in, at the foot of a post or a comment.
 ///
-/// Built the way the chat composer is: a hairline above, a field one line of
-/// text tall in a pill, the picture and clip buttons inside it while it is
-/// empty, and Send at the end. Both reply screens used to draw their own: two
+/// Laid out as people expect a reply box to be: add a photo or clip on the
+/// left, the field in a pill with GIF at its end, and a round Send beside
+/// it with room between them. It was a pill with the gallery and a smiley
+/// crammed inside its end and a bare arrow hard against the screen edge. Both reply screens used to draw their own: two
 /// full-size icon buttons in front of a form field that took the theme's
 /// filled box, its 44-point floor and its blue focus ring -- a form control
 /// with a toolbar bolted to it, for a box that usually holds a sentence.
@@ -78,7 +79,6 @@ class ReplyBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context);
-    final typing = controller.text.trim().isNotEmpty;
 
     // A small, tight button: the field is one line of text tall, and a
     // standard 48-point button beside it would set the height of the bar.
@@ -87,6 +87,7 @@ class ReplyBar extends StatelessWidget {
       required String tooltip,
       required VoidCallback? onPressed,
       double size = 20,
+      double width = 32,
       Color? color,
     }) =>
         IconButton(
@@ -102,8 +103,8 @@ class ReplyBar extends StatelessWidget {
           style: const ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-          constraints: const BoxConstraints.tightFor(
-            width: 32,
+          constraints: BoxConstraints.tightFor(
+            width: width,
             height: fieldHeight,
           ),
         );
@@ -114,9 +115,9 @@ class ReplyBar extends StatelessWidget {
         border: Border(top: postRule(scheme)),
       ),
       padding: const EdgeInsets.fromLTRB(
+        SpacingTokens.space8,
+        SpacingTokens.space8,
         SpacingTokens.space12,
-        SpacingTokens.space8,
-        SpacingTokens.space8,
         SpacingTokens.space8,
       ),
       child: Column(
@@ -174,16 +175,25 @@ class ReplyBar extends StatelessWidget {
               ),
             ),
           Row(
-            // Send stays on the last line as the field grows.
+            // The buttons stay on the last line as the field grows.
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              // Photos and clips, outside the box: a thing you add to the
+              // reply, not a thing you type into it.
+              button(
+                icon: Iconsax.gallery_add_copy,
+                tooltip: l10n.ui('ui_add_photo_or_clip', 'Add a photo or clip'),
+                onPressed: canAttach ? onAddMedia : null,
+                size: 22,
+                width: 40,
+              ),
+              const SizedBox(width: SpacingTokens.space4),
               Expanded(
                 child: Container(
                   constraints: const BoxConstraints(minHeight: fieldHeight),
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: SpacingTokens.space16,
-                    right:
-                        typing ? SpacingTokens.space16 : SpacingTokens.space4,
+                    right: SpacingTokens.space4,
                   ),
                   decoration: BoxDecoration(
                     color: scheme.surfaceContainer,
@@ -228,53 +238,137 @@ class ReplyBar extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // The gallery and a GIF a tap away while the box is
-                      // empty, tight together at its end; they step aside
-                      // once something is being written, which is when the
-                      // room matters more. One gallery button picks photos
-                      // and clips both, which is what left room for GIF
-                      // without the box growing a third button.
-                      if (!typing) ...[
-                        button(
-                          icon: Iconsax.gallery_copy,
-                          tooltip: l10n.ui(
-                            'ui_add_photo_or_clip',
-                            'Add a photo or clip',
-                          ),
-                          onPressed: canAttach ? onAddMedia : null,
-                        ),
-                        button(
-                          icon: Iconsax.emoji_happy_copy,
-                          tooltip: l10n.literaladdAGif,
-                          onPressed: canAttach ? onAddGif : null,
-                        ),
-                      ],
+                      // GIF inside the box, at its end, and there whether or
+                      // not something is being written: a GIF goes with
+                      // words as often as instead of them. A word rather
+                      // than the smiley it was, which read as emoji.
+                      _GifButton(
+                        tooltip: l10n.literaladdAGif,
+                        onPressed: canAttach ? onAddGif : null,
+                      ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(width: SpacingTokens.space4),
-              sending
-                  ? const SizedBox(
-                      width: 36,
-                      height: fieldHeight,
-                      child: Center(
-                        child: SizedBox.square(
-                          dimension: 18,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        ),
-                      ),
-                    )
-                  : button(
-                      icon: Iconsax.send_1,
-                      tooltip: l10n.send,
-                      onPressed: canSend ? onSend : null,
-                      size: 22,
-                      color: scheme.primary,
-                    ),
+              const SizedBox(width: SpacingTokens.space8),
+              _SendButton(
+                sending: sending,
+                tooltip: l10n.send,
+                onPressed: canSend ? onSend : null,
+              ),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// "GIF", as a small outlined label: what it adds, said in its own name.
+class _GifButton extends StatelessWidget {
+  final String tooltip;
+  final VoidCallback? onPressed;
+
+  const _GifButton({required this.tooltip, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final colour = scheme.onSurface.withValues(
+      alpha: onPressed == null ? 0.3 : 0.7,
+    );
+    return Tooltip(
+      message: tooltip,
+      child: Semantics(
+        button: true,
+        enabled: onPressed != null,
+        label: tooltip,
+        excludeSemantics: true,
+        child: InkResponse(
+          onTap: onPressed,
+          radius: 22,
+          child: SizedBox(
+            width: 40,
+            height: ReplyBar.fieldHeight,
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                decoration: BoxDecoration(
+                  border: Border.all(color: colour, width: 1.5),
+                  borderRadius: BorderRadius.circular(RadiusTokens.radius4),
+                ),
+                child: Text(
+                  'GIF',
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.5,
+                    color: colour,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Send, as a filled round button beside the field: plainly a button, and
+/// plainly off until there is something to send.
+class _SendButton extends StatelessWidget {
+  final bool sending;
+  final String tooltip;
+  final VoidCallback? onPressed;
+
+  const _SendButton({
+    required this.sending,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  static const double size = ReplyBar.fieldHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final on = onPressed != null && !sending;
+    return Tooltip(
+      message: tooltip,
+      child: Semantics(
+        button: true,
+        enabled: on,
+        label: tooltip,
+        excludeSemantics: true,
+        child: Material(
+          color: on ? scheme.primary : scheme.surfaceContainerHigh,
+          shape: const CircleBorder(),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: on ? onPressed : null,
+            child: SizedBox.square(
+              dimension: size,
+              child: Center(
+                child: sending
+                    ? SizedBox.square(
+                        dimension: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: scheme.onSurface.withValues(alpha: 0.6),
+                        ),
+                      )
+                    : Icon(
+                        Iconsax.send_1,
+                        size: 20,
+                        color: on
+                            ? scheme.onPrimary
+                            : scheme.onSurface.withValues(alpha: 0.35),
+                      ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -199,6 +199,11 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // Upright while the camera is open, whichever way the phone is held. A
+    // selfie camera is used lying down, and everything here -- the tracker's
+    // rotation, the crop to the card, the strip under the thumb -- is laid
+    // out for portrait. Given back on the way out.
+    SystemChrome.setPreferredOrientations(const [DeviceOrientation.portraitUp]);
     _open();
     _loadLenses();
   }
@@ -305,6 +310,8 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         return;
       }
 
+      await _lockUpright(controller);
+
       await _meterOnTheMiddle(controller);
       await _applyFlash(controller);
 
@@ -383,6 +390,22 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     } on CameraException catch (error) {
       AppLog.instance.error('ar', 'Could not meter the camera: ${error.code}');
       _exposureRange = (0, 0);
+    }
+  }
+
+  /// Photos and recordings come out portrait, however the phone is held.
+  ///
+  /// Without this, starting a recording turned the picture on its side.
+  /// CameraPreview turns the preview to the orientation the recording was
+  /// started in, and that is the phone's *physical* orientation -- landscape
+  /// for somebody lying on their side -- even with the screen held upright.
+  /// The lens is drawn outside that turn, so the glasses stayed level while
+  /// the face under them went sideways.
+  Future<void> _lockUpright(CameraController controller) async {
+    try {
+      await controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
+    } on CameraException catch (error) {
+      AppLog.instance.error('ar', 'Could not lock orientation: ${error.code}');
     }
   }
 
@@ -1156,6 +1179,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    SystemChrome.setPreferredOrientations(const []);
     _streaming = false;
     _endRecordingState();
     _tracker.dispose();
