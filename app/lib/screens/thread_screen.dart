@@ -14,6 +14,7 @@ import '../models/conversation.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/messages_provider.dart';
 import '../routes.dart';
+import '../widgets/composer_line.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/action_button.dart';
 import '../widgets/chat_wallpaper_view.dart';
@@ -1865,6 +1866,9 @@ class _Composer extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final typing = controller.text.trim().isNotEmpty;
     final keyboardUp = MediaQuery.viewInsetsOf(context).bottom > 0;
+    // The field's one-line height, which every button matches so that all of
+    // them sit on the same centre line as the words. See composerLineHeight.
+    final line = composerLineHeight(context, lineHeight: 1.3);
 
     // A small, tight button: the field is one line of text tall, and a
     // standard 48-point button beside it would set the height of the bar.
@@ -1882,7 +1886,10 @@ class _Composer extends StatelessWidget {
           tooltip: tooltip,
           icon: Icon(icon, size: size),
           color: color,
-          visualDensity: VisualDensity.compact,
+          // Standard density, not compact: compact takes eight points off
+          // the size below, which left these buttons 32 points tall beside a
+          // 40-point field -- bottom-aligned, four points below its middle.
+          visualDensity: VisualDensity.standard,
           padding: EdgeInsets.zero,
           // Without this the button reserves a 48-point target around its
           // own box, and two of them side by side sat that far apart: the
@@ -1890,7 +1897,7 @@ class _Composer extends StatelessWidget {
           style: const ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-          constraints: const BoxConstraints.tightFor(width: 36, height: 40),
+          constraints: BoxConstraints.tightFor(width: 36, height: line),
         );
 
     return Container(
@@ -1973,7 +1980,7 @@ class _Composer extends StatelessWidget {
               const SizedBox(width: SpacingTokens.space8),
               Expanded(
                 child: Container(
-                  constraints: const BoxConstraints(minHeight: 40),
+                  constraints: BoxConstraints(minHeight: line),
                   padding: EdgeInsets.only(
                     left: SpacingTokens.space16,
                     right:

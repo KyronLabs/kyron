@@ -123,6 +123,25 @@ void main() {
       expect(find.byTooltip('Add a GIF'), findsOneWidget);
     });
 
+    for (final scale in [1.0, 1.4]) {
+      testWidgets('every button shares the box\'s centre line, text x$scale', (
+        tester,
+      ) async {
+        tester.platformDispatcher.textScaleFactorTestValue = scale;
+        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+        await _pump(tester, _bar(TextEditingController()));
+
+        final box = tester.getCenter(find.byType(TextField)).dy;
+        for (final tooltip in ['Add a photo or clip', 'Add a GIF', 'Send']) {
+          expect(
+            tester.getCenter(find.byTooltip(tooltip)).dy,
+            closeTo(box, 1.0),
+            reason: tooltip,
+          );
+        }
+      });
+    }
+
     testWidgets('Send is plainly off until there is something to send', (
       tester,
     ) async {

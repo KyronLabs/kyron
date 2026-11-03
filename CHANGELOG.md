@@ -20,6 +20,12 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **The message box lines up.** The +, the microphone and the photo and
+  GIF buttons sat a little below the middle of the box, more so with larger
+  text. They now share its centre line, in messages, community chats and
+  replies.
 
 ## [0.1.29] - 2026-11-03
 ### Added

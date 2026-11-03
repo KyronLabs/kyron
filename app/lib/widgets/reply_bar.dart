@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/post_media.dart';
+import 'composer_line.dart';
 import 'hairline.dart';
 import 'media_tray.dart';
 
@@ -80,6 +81,12 @@ class ReplyBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context);
+    // The field's one-line height, which every button matches so that all of
+    // them sit on the same centre line as the words. See composerLineHeight.
+    final line = composerLineHeight(
+      context,
+      lineHeight: TypographyTokens.lineHeightSnug,
+    );
 
     // A small, tight button: the field is one line of text tall, and a
     // standard 48-point button beside it would set the height of the bar.
@@ -96,7 +103,10 @@ class ReplyBar extends StatelessWidget {
           tooltip: tooltip,
           icon: Icon(icon, size: size),
           color: color,
-          visualDensity: VisualDensity.compact,
+          // Standard density, not compact: compact takes eight points off
+          // the size below, which left these buttons 32 points tall beside a
+          // 40-point field -- bottom-aligned, four points below its middle.
+          visualDensity: VisualDensity.standard,
           padding: EdgeInsets.zero,
           // Without this the button reserves a 48-point target around its
           // own box, and two of them side by side sat that far apart: the
@@ -104,10 +114,7 @@ class ReplyBar extends StatelessWidget {
           style: const ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-          constraints: BoxConstraints.tightFor(
-            width: width,
-            height: fieldHeight,
-          ),
+          constraints: BoxConstraints.tightFor(width: width, height: line),
         );
 
     return Container(
@@ -191,7 +198,7 @@ class ReplyBar extends StatelessWidget {
               const SizedBox(width: SpacingTokens.space4),
               Expanded(
                 child: Container(
-                  constraints: const BoxConstraints(minHeight: fieldHeight),
+                  constraints: BoxConstraints(minHeight: line),
                   padding: const EdgeInsets.only(
                     left: SpacingTokens.space16,
                     right: SpacingTokens.space4,
@@ -253,6 +260,7 @@ class ReplyBar extends StatelessWidget {
               ),
               const SizedBox(width: SpacingTokens.space8),
               _SendButton(
+                size: line,
                 sending: sending,
                 tooltip: l10n.send,
                 onPressed: canSend ? onSend : null,
@@ -268,17 +276,18 @@ class ReplyBar extends StatelessWidget {
 /// Send, as a filled round button beside the field: plainly a button, and
 /// plainly off until there is something to send.
 class _SendButton extends StatelessWidget {
+  /// The field's one-line height, so Send is centred on it.
+  final double size;
   final bool sending;
   final String tooltip;
   final VoidCallback? onPressed;
 
   const _SendButton({
+    required this.size,
     required this.sending,
     required this.tooltip,
     required this.onPressed,
   });
-
-  static const double size = ReplyBar.fieldHeight;
 
   @override
   Widget build(BuildContext context) {

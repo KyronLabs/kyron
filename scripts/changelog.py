@@ -15,6 +15,14 @@ last debug build, which is usually nothing.
                                   store's "What's new", within 500 characters
     changelog.py release <version> stamp Unreleased as <version>, dated today
 
+## When nothing was written
+
+A release with nothing under Unreleased is not refused. It says
+"Bug fixes and performance improvements." -- on GitHub, in Play's What's new,
+and in this file once stamped -- which is what a store shows for a release
+of small fixes anyway. Write entries whenever there is something a person
+would notice; the default is for when there is not.
+
 ## What's new, in a store
 
 A store shows its notes as they are written, so the Markdown that reads well
@@ -63,6 +71,16 @@ STORE_LIMIT = 500
 # A hand-written store note: <!-- What's new ... -->.
 STORE_NOTE = re.compile(r"<!--\s*What's new\s*\n(.*?)-->", re.DOTALL | re.IGNORECASE)
 
+# What a release says when nothing was written under Unreleased.
+DEFAULT_SENTENCE = "Bug fixes and performance improvements."
+DEFAULT_NOTES = (
+    "### Changed\n\n"
+    f"- {DEFAULT_SENTENCE}\n\n"
+    "<!-- What's new\n"
+    f"{DEFAULT_SENTENCE}\n"
+    "-->"
+)
+
 # What each Keep a Changelog heading is called in a store, where "Changed"
 # reads as a warning rather than as something better.
 STORE_HEADINGS = {
@@ -97,6 +115,11 @@ def is_empty(body: str | None) -> bool:
     if body is None:
         return True
     return not any(line.lstrip().startswith("-") for line in body.splitlines())
+
+
+def or_default(body: str | None) -> str:
+    """The section, or the default notes when nothing is listed in it."""
+    return DEFAULT_NOTES if is_empty(body) else body.strip()
 
 
 def fit(body: str, version: str, limit: int) -> str:
@@ -245,7 +268,7 @@ def store(version: str) -> int:
         print(f"CHANGELOG.md has no section for {version}", file=sys.stderr)
         return 1
     try:
-        print(store_notes(body))
+        print(store_notes(or_default(body)))
     except ValueError as error:
         print(error, file=sys.stderr)
         return 1
@@ -259,6 +282,7 @@ def show(version: str, limit: int | None = None) -> int:
     if body is None:
         print(f"CHANGELOG.md has no section for {version}", file=sys.stderr)
         return 1
+    body = or_default(body)
     print(body if limit is None else fit(body, version, limit))
     return 0
 
@@ -266,10 +290,11 @@ def show(version: str, limit: int | None = None) -> int:
 def unreleased() -> int:
     content = CHANGELOG.read_text(encoding="utf-8")
     body = body_of(content, "Unreleased")
-    if is_empty(body):
-        print("CHANGELOG.md has nothing under Unreleased.", file=sys.stderr)
+    if body is None:
+        print("CHANGELOG.md has no Unreleased section.", file=sys.stderr)
         return 1
-    print(body)
+    # Nothing written is not an error: see "When nothing was written".
+    print(or_default(body))
     return 0
 
 
@@ -291,10 +316,9 @@ def release(version: str) -> int:
             end = other.start()
             break
 
-    if is_empty(content[match.end() : end]):
-        # Cutting a release with no notes is how a changelog stops being read.
-        print("CHANGELOG.md has nothing under Unreleased.", file=sys.stderr)
-        return 1
+    # Nothing written: the release says the default, in this file too, so
+    # the stamped section is what GitHub and Play showed.
+    filler = f"\n\n{DEFAULT_NOTES}" if is_empty(content[match.end() : end]) else ""
 
     previous = next(
         (name for name, _, _ in sections(content) if name.lower() != "unreleased"),
@@ -304,6 +328,7 @@ def release(version: str) -> int:
     stamped = (
         f"## [Unreleased]\n\n"
         f"## [{version}] - {date.today().isoformat()}"
+        f"{filler}"
     )
     content = content[: match.start()] + stamped + content[match.end() :]
 

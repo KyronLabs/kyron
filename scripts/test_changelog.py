@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for scripts/changelog.py's store notes. Standard library only.
+"""Tests for scripts/changelog.py. Standard library only.
 
     python3 scripts/test_changelog.py
 """
@@ -99,6 +99,70 @@ Thanks for testing.
             notes = changelog.store_notes(body)
             self.assertLessEqual(len(notes), changelog.STORE_LIMIT, name)
             self.assertNotIn("**", notes, name)
+
+
+class NothingWritten(unittest.TestCase):
+    """A release with nothing under Unreleased says the default, not fails."""
+
+    EMPTY = (
+        "# Changelog\n\n## [Unreleased]\n\n## [0.1.0] - 2026-01-01\n"
+        "### Fixed\n\n- **A thing.** It works.\n\n"
+        "[Unreleased]: https://example.com/compare/v0.1.0...HEAD\n"
+    )
+
+    def setUp(self):
+        import tempfile
+        self.dir = tempfile.TemporaryDirectory()
+        self.path = Path(self.dir.name) / "CHANGELOG.md"
+        self.real = changelog.CHANGELOG
+        changelog.CHANGELOG = self.path
+
+    def tearDown(self):
+        changelog.CHANGELOG = self.real
+        self.dir.cleanup()
+
+    def run_quietly(self, fn, *args):
+        import contextlib
+        import io
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            code = fn(*args)
+        return code, out.getvalue()
+
+    def test_unreleased_and_the_store_say_the_default(self):
+        self.path.write_text(self.EMPTY, encoding="utf-8")
+        code, out = self.run_quietly(changelog.unreleased)
+        self.assertEqual(code, 0)
+        self.assertIn("- Bug fixes and performance improvements.", out)
+        code, out = self.run_quietly(changelog.store, "Unreleased")
+        self.assertEqual(code, 0)
+        self.assertEqual(out.strip(), "Bug fixes and performance improvements.")
+
+    def test_release_stamps_the_default_into_the_file(self):
+        self.path.write_text(self.EMPTY, encoding="utf-8")
+        code, _ = self.run_quietly(changelog.release, "0.2.0")
+        self.assertEqual(code, 0)
+        content = self.path.read_text(encoding="utf-8")
+        body = changelog.body_of(content, "0.2.0")
+        self.assertIn("- Bug fixes and performance improvements.", body)
+        # Unreleased is empty again, ready for the next release.
+        self.assertTrue(changelog.is_empty(changelog.body_of(content, "Unreleased")))
+        # And GitHub's release page shows it too.
+        code, out = self.run_quietly(changelog.show, "0.2.0")
+        self.assertIn("Bug fixes and performance improvements.", out)
+
+    def test_written_notes_are_kept_as_written(self):
+        self.path.write_text(
+            self.EMPTY.replace(
+                "## [Unreleased]\n",
+                "## [Unreleased]\n### Added\n\n- **Gifts.** In analytics.\n",
+            ),
+            encoding="utf-8",
+        )
+        self.run_quietly(changelog.release, "0.2.0")
+        body = changelog.body_of(self.path.read_text(encoding="utf-8"), "0.2.0")
+        self.assertIn("**Gifts.**", body)
+        self.assertNotIn("Bug fixes and performance", body)
 
 
 if __name__ == "__main__":
