@@ -1374,6 +1374,18 @@ describe('FeedService', () => {
   });
 
   describe('analytics', () => {
+    /** A post nobody has sent a gift. */
+    const noGifts = () => ({
+      groupBy: jest.fn(() => Promise.resolve([])),
+    });
+
+    const author = () =>
+      post.findFirst.mockResolvedValue({
+        id: 'p1',
+        authorId: VIEWER,
+        createdAt: new Date('2026-08-30T00:00:00Z'),
+      });
+
     it('answers 404 to anyone but the author', async () => {
       // Forbidden would confirm the post exists to someone with no business
       // knowing its reach.
@@ -1404,7 +1416,9 @@ describe('FeedService', () => {
         { createdAt: new Date('2026-08-31T07:00:00Z') },
       ]);
 
-      const report = await (await service()).analytics('p1', VIEWER);
+      const report = await (
+        await service({ gift: noGifts() })
+      ).analytics('p1', VIEWER);
 
       expect(report.views).toBe(3);
       expect(report.comments).toBe(2);
@@ -1412,6 +1426,56 @@ describe('FeedService', () => {
         { date: '2026-08-30', views: 2 },
         { date: '2026-08-31', views: 1 },
       ]);
+      expect(report.gifts).toBe(0);
+      expect(report.giftCoins).toBe(0);
+      expect(report.giftsByType).toEqual([]);
+    });
+
+    it('reports gifts: how many, what they carried, from how many people', async () => {
+      author();
+      for (const counter of [postView, postLike, postSave, comment]) {
+        counter.count.mockResolvedValue(0);
+      }
+      postView.findMany.mockResolvedValue([]);
+      const groupBy = jest.fn((args: { by: string[] }) =>
+        Promise.resolve(
+          args.by[0] === 'type'
+            ? [
+                { type: 'rose', _count: { _all: 3 }, _sum: { coins: 9 } },
+                { type: 'rocket', _count: { _all: 1 }, _sum: { coins: 100 } },
+                { type: 'retired', _count: { _all: 1 }, _sum: { coins: 4 } },
+              ]
+            : [{ senderId: 'a' }, { senderId: 'b' }],
+        ),
+      );
+
+      const report = await (
+        await service({ gift: { groupBy } })
+      ).analytics('p1', VIEWER);
+
+      expect(report.gifts).toBe(5);
+      expect(report.giftCoins).toBe(113);
+      expect(report.gifters).toBe(2);
+      // The most valuable first, named from the catalogue; a kind no longer
+      // in it keeps its key rather than vanishing from the author's history.
+      expect(report.giftsByType.map((g) => g.type)).toEqual([
+        'rocket',
+        'rose',
+        'retired',
+      ]);
+      expect(report.giftsByType[0]).toMatchObject({
+        name: 'Rocket',
+        count: 1,
+        coins: 100,
+      });
+      expect(report.giftsByType[2].name).toBe('retired');
+      // A sender who deleted their account is not a person to count.
+      expect(groupBy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          by: ['senderId'],
+          where: { postId: 'p1', senderId: { not: null } },
+        }),
+      );
     });
   });
 

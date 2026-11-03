@@ -39,16 +39,22 @@ Future<void> _pump(WidgetTester tester, Widget child) async {
   await tester.pump();
 }
 
-Widget _bar(TextEditingController controller, {String? replyingTo}) => Scaffold(
+Widget _bar(
+  TextEditingController controller, {
+  String? replyingTo,
+  bool canSend = true,
+  VoidCallback? onSend,
+}) =>
+    Scaffold(
       body: Align(
         alignment: Alignment.bottomCenter,
         child: ReplyBar(
           controller: controller,
           focus: FocusNode(),
           hintText: 'Add a comment',
-          canSend: false,
+          canSend: canSend,
           sending: false,
-          onSend: () {},
+          onSend: onSend ?? () {},
           canAttach: true,
           onAddMedia: () {},
           onAddGif: () {},
@@ -90,25 +96,50 @@ void main() {
       expect(decoration.enabledBorder, InputBorder.none);
     });
 
-    testWidgets('keeps the gallery and a GIF inside the box until you type', (
+    testWidgets('puts media first, GIF in the box, and Send beside it', (
       tester,
     ) async {
       final controller = TextEditingController();
       await _pump(tester, _bar(controller));
 
-      // One gallery button for photos and clips both, and a GIF beside it,
-      // packed together: no gap between them wider than the buttons' own.
       final gallery = tester.getRect(find.byTooltip('Add a photo or clip'));
       final gif = tester.getRect(find.byTooltip('Add a GIF'));
-      expect(gif.left - gallery.right, lessThanOrEqualTo(0.5));
-      expect(gallery.width, lessThanOrEqualTo(32));
+      final send = tester.getRect(find.byTooltip('Send'));
+      final field = tester.getRect(find.byType(TextField));
+
+      // Media, then the words, then GIF at the end of the box, then Send.
+      expect(gallery.right, lessThanOrEqualTo(field.left));
+      expect(gif.left, greaterThanOrEqualTo(field.right - 0.5));
+      expect(send.left, greaterThan(gif.right));
+      // Send is beside the box with room to breathe, not hard against it.
+      expect(send.left - gif.right, greaterThanOrEqualTo(8));
 
       controller.text = 'nice';
       await _pump(tester, _bar(controller));
 
-      // Out of the way once there are words, when the room matters more.
-      expect(find.byTooltip('Add a photo or clip'), findsNothing);
-      expect(find.byTooltip('Add a GIF'), findsNothing);
+      // Everything stays put while writing: a GIF goes with words as often
+      // as instead of them.
+      expect(find.byTooltip('Add a photo or clip'), findsOneWidget);
+      expect(find.byTooltip('Add a GIF'), findsOneWidget);
+    });
+
+    testWidgets('Send is plainly off until there is something to send', (
+      tester,
+    ) async {
+      var sent = 0;
+      await _pump(
+        tester,
+        _bar(TextEditingController(), canSend: false, onSend: () => sent++),
+      );
+      await tester.tap(find.byTooltip('Send'));
+      expect(sent, 0);
+
+      await _pump(
+        tester,
+        _bar(TextEditingController(text: 'hi'), onSend: () => sent++),
+      );
+      await tester.tap(find.byTooltip('Send'));
+      expect(sent, 1);
     });
 
     testWidgets('says who is being answered in a line, not a toolbar', (

@@ -167,6 +167,31 @@ class CommentPage {
 }
 
 /// How a post is doing, as its author sees it.
+/// One kind of gift a post was sent: how many, and what they carried.
+class GiftTally {
+  final String type;
+  final String name;
+  final String emoji;
+  final int count;
+  final int coins;
+
+  const GiftTally({
+    required this.type,
+    required this.name,
+    required this.emoji,
+    required this.count,
+    required this.coins,
+  });
+
+  factory GiftTally.fromJson(Map<String, dynamic> json) => GiftTally(
+        type: json['type'] as String? ?? '',
+        name: json['name'] as String? ?? 'Gift',
+        emoji: json['emoji'] as String? ?? '🎁',
+        count: (json['count'] as num?)?.toInt() ?? 0,
+        coins: (json['coins'] as num?)?.toInt() ?? 0,
+      );
+}
+
 class PostAnalytics {
   /// Distinct people who opened it. Counted once each, not once per open, and
   /// never counting the author.
@@ -175,6 +200,15 @@ class PostAnalytics {
   final int saves;
   final int comments;
   final DateTime createdAt;
+
+  /// Gifts it was sent, the coins they carried, and how many people sent
+  /// them.
+  final int gifts;
+  final int giftCoins;
+  final int gifters;
+
+  /// Each kind of gift it was sent, the most valuable share first.
+  final List<GiftTally> giftsByType;
 
   /// Views per day since it was posted, oldest first.
   final List<DailyViews> timeline;
@@ -186,6 +220,10 @@ class PostAnalytics {
     required this.comments,
     required this.createdAt,
     required this.timeline,
+    this.gifts = 0,
+    this.giftCoins = 0,
+    this.gifters = 0,
+    this.giftsByType = const [],
   });
 
   /// Everyone who did something with it, over everyone who saw it.
@@ -202,6 +240,16 @@ class PostAnalytics {
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         saves: (json['saves'] as num?)?.toInt() ?? 0,
         comments: (json['comments'] as num?)?.toInt() ?? 0,
+        // Absent from a server older than gifts in analytics: zero, which is
+        // what an older server knew of them.
+        gifts: (json['gifts'] as num?)?.toInt() ?? 0,
+        giftCoins: (json['giftCoins'] as num?)?.toInt() ?? 0,
+        gifters: (json['gifters'] as num?)?.toInt() ?? 0,
+        giftsByType: ((json['giftsByType'] as List<dynamic>?) ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(GiftTally.fromJson)
+            .where((tally) => tally.type.isNotEmpty)
+            .toList(),
         createdAt:
             DateTime.tryParse(json['createdAt'] as String? ?? '')?.toLocal() ??
                 DateTime.now(),

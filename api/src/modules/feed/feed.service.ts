@@ -9,6 +9,7 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
+import { giftType } from '../gifts/gift-catalogue';
 import { InterestTaste, TasteSignal } from './interest-taste';
 import { mentionedHandles } from '../../common/mentions';
 
@@ -212,6 +213,19 @@ export interface PostAnalytics {
   likes: number;
   saves: number;
   comments: number;
+  /** Gifts it was sent, and the coins they carried to its author. */
+  gifts: number;
+  giftCoins: number;
+  /** Distinct people who sent one. A deleted sender is not counted. */
+  gifters: number;
+  /** Each kind of gift it was sent, the most valuable share first. */
+  giftsByType: {
+    type: string;
+    name: string;
+    emoji: string;
+    count: number;
+    coins: number;
+  }[];
   /** Views per day since it was posted, oldest first. */
   timeline: { date: string; views: number }[];
 }
@@ -2106,17 +2120,46 @@ export class FeedService {
       throw new NotFoundException('Post not found.');
     }
 
-    const [views, likes, saves, comments, rows] = await Promise.all([
-      this.prisma.postView.count({ where: { postId } }),
-      this.prisma.postLike.count({ where: { postId } }),
-      this.prisma.postSave.count({ where: { postId } }),
-      this.prisma.comment.count({ where: { postId, deletedAt: null } }),
-      this.prisma.postView.findMany({
-        where: { postId },
-        select: { createdAt: true },
-        orderBy: { createdAt: 'asc' },
-      }),
-    ]);
+    const [views, likes, saves, comments, rows, giftKinds, senders] =
+      await Promise.all([
+        this.prisma.postView.count({ where: { postId } }),
+        this.prisma.postLike.count({ where: { postId } }),
+        this.prisma.postSave.count({ where: { postId } }),
+        this.prisma.comment.count({ where: { postId, deletedAt: null } }),
+        this.prisma.postView.findMany({
+          where: { postId },
+          select: { createdAt: true },
+          orderBy: { createdAt: 'asc' },
+        }),
+        // Summed from the gifts themselves rather than read off
+        // Post.giftCount: the coins are only on the rows, and a count and a
+        // sum taken in two places can disagree.
+        this.prisma.gift.groupBy({
+          by: ['type'],
+          where: { postId },
+          _count: { _all: true },
+          _sum: { coins: true },
+        }),
+        this.prisma.gift.groupBy({
+          by: ['senderId'],
+          where: { postId, senderId: { not: null } },
+        }),
+      ]);
+
+    // Named from the catalogue as it is now; a type since retired keeps its
+    // key as its name rather than vanishing from the author's history.
+    const giftsByType = giftKinds
+      .map((kind) => {
+        const known = giftType(kind.type);
+        return {
+          type: kind.type,
+          name: known?.name ?? kind.type,
+          emoji: known?.emoji ?? '🎁',
+          count: kind._count._all,
+          coins: kind._sum.coins ?? 0,
+        };
+      })
+      .sort((a, b) => b.coins - a.coins || b.count - a.count);
 
     // Grouped here rather than in SQL: a post's view rows are bounded by the
     // number of people who have seen it, and a groupBy on a date expression is
@@ -2134,6 +2177,10 @@ export class FeedService {
       likes,
       saves,
       comments,
+      gifts: giftsByType.reduce((sum, kind) => sum + kind.count, 0),
+      giftCoins: giftsByType.reduce((sum, kind) => sum + kind.coins, 0),
+      gifters: senders.length,
+      giftsByType,
       timeline: [...byDay.entries()].map(([date, count]) => ({
         date,
         views: count,

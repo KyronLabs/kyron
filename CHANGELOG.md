@@ -20,6 +20,23 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Gifts in post analytics.** A post's analytics now show the gifts it was
+  sent: how many, the coins they carried and how many people sent them,
+  then each kind with its own picture, most valuable first.
+
+### Changed
+
+- **A roomier reply box.** Add a photo or clip sits on the left, GIF at the
+  end of the box, and a round Send button beside it -- blue once there is
+  something to send.
+
+### Fixed
+
+- **Video no longer turns sideways when recording starts.** Recording
+  while lying on your side turned the picture 90 degrees under the lens.
+  The lens camera now stays upright, and so do its photos and videos.
 
 ## [0.1.28] - 2026-11-01
 ### Added
