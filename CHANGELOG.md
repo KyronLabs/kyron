@@ -20,6 +20,13 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **Lens videos stay upright, for real this time.** Starting a recording
+  with a lens turned the picture on its side while the lens stayed level.
+  The camera was being asked for one stream more than a phone can run, and
+  the one it merged them into came out rotated. A lens recording now uses
+  one stream fewer.
 
 ## [0.1.30] - 2026-11-03
 ### Fixed

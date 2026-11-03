@@ -234,6 +234,17 @@ from the poses recorded alongside the clip:
    own `Crop` and a mirror follow. Audio passes through untouched. The
    whole job runs on the GPU and the phone's own H.264 encoder.
 
+**Why the preview turned sideways when recording started.** The camera
+plugin binds three CameraX streams when it opens: preview, still photo, and
+the frames the face is tracked in. A lens recording keeps the frames and adds
+video, which makes four. No phone runs four camera streams at once, so CameraX
+merges preview and video into one shared stream that arrives already rotated.
+The plugin ignores CameraX's transformation info and rotates the preview
+anyway, so the picture went on its side while the lens stayed level.
+`LensCameraX` (`lib/services/lens_camera.dart`) releases the still-photo
+stream before a lens recording, which brings it back to three. The plugin binds
+the still stream again by itself the next time a photo is taken.
+
 **Why not FFmpeg.** An earlier version used FFmpegKit, the LGPL "min" build.
 It worked, but it added about 15 MB to every APK and failed the size budget
 in `scripts/check-apks.sh`. Media3 is AndroidX, and the app already ships
