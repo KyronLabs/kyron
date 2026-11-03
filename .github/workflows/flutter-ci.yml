@@ -190,9 +190,10 @@ jobs:
         uses: actions/checkout@v4
 
       # The release workflow reads the published notes out of this file, and
-      # the release-cutting workflow refuses to tag while Unreleased is empty.
-      # Both would fail at the worst moment -- mid-release -- if a heading were
-      # malformed, so it is checked on every change instead.
+      # would fail at the worst moment -- mid-release -- if a heading were
+      # malformed, so it is checked on every change instead. Nothing written
+      # under Unreleased is fine: the release says "Bug fixes and performance
+      # improvements." (scripts/changelog.py, "When nothing was written").
       - name: Parse CHANGELOG.md
         run: |
           python3 scripts/changelog.py unreleased

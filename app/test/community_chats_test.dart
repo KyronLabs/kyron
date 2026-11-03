@@ -456,6 +456,25 @@ void main() {
       expect(find.byKey(const ValueKey('cchat-box')), findsNothing);
     });
 
+    for (final scale in [1.0, 1.4]) {
+      testWidgets('every button shares the box\'s centre line, text x$scale',
+          (tester) async {
+        tester.platformDispatcher.textScaleFactorTestValue = scale;
+        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+        await _open(tester, _Repo(_chat()));
+
+        final box =
+            tester.getCenter(find.byKey(const ValueKey('cchat-box'))).dy;
+        for (final key in ['cchat-attach', 'cchat-voice']) {
+          expect(
+            tester.getCenter(find.byKey(ValueKey(key))).dy,
+            closeTo(box, 1.0),
+            reason: key,
+          );
+        }
+      });
+    }
+
     testWidgets('sends, and says so when a message did not go', (tester) async {
       final repo = _Repo(_chat());
       await _open(tester, repo);

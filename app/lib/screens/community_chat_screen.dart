@@ -20,6 +20,7 @@ import '../repositories/moderation_repository.dart' show ReportTarget;
 import '../utils/conversation_text.dart' show mediaPreview;
 import '../utils/local_date.dart';
 import '../utils/media_basket.dart' show MediaBasket, mediaKindOf;
+import '../widgets/composer_line.dart';
 import '../widgets/action_button.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/create_post/voice_recorder_sheet.dart';
@@ -640,6 +641,7 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
   Widget _footer(CommunityChat chat) {
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
+    final line = composerLineHeight(context, lineHeight: 1.3);
     final bar = BoxDecoration(
       color: scheme.surface,
       border: Border(
@@ -777,17 +779,28 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
               ),
             ),
           Row(
+            // The buttons stay on the last line as the field grows, and are
+            // the field's one-line height so they share its centre line --
+            // standard 48-point buttons beside a 40-point field sat the
+            // field above them. See composerLineHeight.
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               if (editing == null)
                 IconButton(
                   key: const ValueKey('cchat-attach'),
+                  constraints: BoxConstraints.tightFor(width: 44, height: line),
+                  padding: EdgeInsets.zero,
+                  style: const ButtonStyle(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   tooltip: l10n.ui('ui_cchat_attach', 'Add a photo or a poll'),
                   icon: const Icon(Iconsax.add_circle_copy),
                   onPressed: () => _attach(chat),
                 ),
               Expanded(
                 child: Container(
+                  constraints: BoxConstraints(minHeight: line),
+                  alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.symmetric(
                     horizontal: SpacingTokens.space16,
                   ),
@@ -803,6 +816,10 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
                     maxLines: 5,
                     maxLength: 2000,
                     textCapitalization: TextCapitalization.sentences,
+                    style: const TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                      height: 1.3,
+                    ),
                     decoration: InputDecoration(
                       hintText: l10n.message,
                       counterText: '',
@@ -812,6 +829,7 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                      constraints: const BoxConstraints(),
                     ),
                   ),
                 ),
@@ -822,6 +840,11 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
               if (!canSend && editing == null)
                 IconButton(
                   key: const ValueKey('cchat-voice'),
+                  constraints: BoxConstraints.tightFor(width: 44, height: line),
+                  padding: EdgeInsets.zero,
+                  style: const ButtonStyle(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   tooltip: l10n.ui('ui_cchat_voice', 'Record a voice note'),
                   onPressed: _recordVoice,
                   icon: const Icon(Iconsax.microphone_2_copy),
@@ -830,6 +853,11 @@ class _CommunityChatScreenState extends ConsumerState<CommunityChatScreen> {
               else
                 IconButton(
                   key: const ValueKey('cchat-send'),
+                  constraints: BoxConstraints.tightFor(width: 44, height: line),
+                  padding: EdgeInsets.zero,
+                  style: const ButtonStyle(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   tooltip: editing == null ? l10n.send : l10n.save,
                   onPressed: canSend ? _send : null,
                   icon: Icon(

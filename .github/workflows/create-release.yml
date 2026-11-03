@@ -40,11 +40,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      # First, so a release with nothing written about it fails before the
-      # version has been bumped and committed. The release workflow reads this
-      # same file for the published notes, so an empty section would have
-      # produced a release whose description was blank.
-      - name: Require notes under Unreleased
+      # First, so a malformed changelog fails before the version has been
+      # bumped and committed. A release with nothing written under Unreleased
+      # is not refused: it says "Bug fixes and performance improvements."
+      # (scripts/changelog.py, "When nothing was written").
+      - name: Read the notes under Unreleased
         run: python3 scripts/changelog.py unreleased
 
       # The same JDK the release build signs with; the check below reads the

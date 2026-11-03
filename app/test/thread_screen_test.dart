@@ -408,6 +408,32 @@ void main() {
     expect(repo.bodies, ['same']);
   });
 
+  for (final scale in [1.0, 1.4]) {
+    testWidgets('every button shares the box\'s centre line, text x$scale',
+        (tester) async {
+      // At a larger text size the one-line box grew past the buttons' fixed
+      // 40 points, and with everything aligned to the bottom the +, the
+      // microphone and the photo and GIF buttons sat below the middle of
+      // the box and of the words in it.
+      tester.platformDispatcher.textScaleFactorTestValue = scale;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      await _open(tester, [
+        _msg('m1', 'made it home', 'them', DateTime(2026, 1, 1, 9)),
+      ]);
+
+      final box = tester.getCenter(find.byType(TextField)).dy;
+      for (final button in [
+        find.byTooltip('Add to message'),
+        find.byTooltip('Add a photo'),
+        find.byTooltip('Add a GIF'),
+        find.byKey(const ValueKey('composer-voice')),
+      ]) {
+        expect(tester.getCenter(button).dy, closeTo(box, 1.0),
+            reason: '$button');
+      }
+    });
+  }
+
   testWidgets('the box is one line tall until there is more to say',
       (tester) async {
     await _open(tester, [
