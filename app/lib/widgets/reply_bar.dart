@@ -11,9 +11,10 @@ import 'media_tray.dart';
 /// The box a reply is written in, at the foot of a post or a comment.
 ///
 /// Laid out as people expect a reply box to be: add a photo or clip on the
-/// left, the field in a pill with GIF at its end, and a round Send beside
-/// it with room between them. It was a pill with the gallery and a smiley
-/// crammed inside its end and a bare arrow hard against the screen edge. Both reply screens used to draw their own: two
+/// left, the field in a pill with the GIF button at its end, and a round
+/// Send beside it with room between them. It was a pill with the gallery
+/// and GIF crammed inside its end and a bare arrow hard against the screen
+/// edge. Both reply screens used to draw their own: two
 /// full-size icon buttons in front of a form field that took the theme's
 /// filled box, its 44-point floor and its blue focus ring -- a form control
 /// with a toolbar bolted to it, for a box that usually holds a sentence.
@@ -240,9 +241,9 @@ class ReplyBar extends StatelessWidget {
                       ),
                       // GIF inside the box, at its end, and there whether or
                       // not something is being written: a GIF goes with
-                      // words as often as instead of them. A word rather
-                      // than the smiley it was, which read as emoji.
-                      _GifButton(
+                      // words as often as instead of them.
+                      button(
+                        icon: Iconsax.emoji_happy_copy,
                         tooltip: l10n.literaladdAGif,
                         onPressed: canAttach ? onAddGif : null,
                       ),
@@ -259,57 +260,6 @@ class ReplyBar extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// "GIF", as a small outlined label: what it adds, said in its own name.
-class _GifButton extends StatelessWidget {
-  final String tooltip;
-  final VoidCallback? onPressed;
-
-  const _GifButton({required this.tooltip, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final colour = scheme.onSurface.withValues(
-      alpha: onPressed == null ? 0.3 : 0.7,
-    );
-    return Tooltip(
-      message: tooltip,
-      child: Semantics(
-        button: true,
-        enabled: onPressed != null,
-        label: tooltip,
-        excludeSemantics: true,
-        child: InkResponse(
-          onTap: onPressed,
-          radius: 22,
-          child: SizedBox(
-            width: 40,
-            height: ReplyBar.fieldHeight,
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                decoration: BoxDecoration(
-                  border: Border.all(color: colour, width: 1.5),
-                  borderRadius: BorderRadius.circular(RadiusTokens.radius4),
-                ),
-                child: Text(
-                  'GIF',
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize1,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.5,
-                    color: colour,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }
