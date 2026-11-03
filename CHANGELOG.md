@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.30] - 2026-11-03
 ### Fixed
 
 - **The message box lines up.** The +, the microphone and the photo and
@@ -2321,7 +2323,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.29...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.30...HEAD
+[0.1.30]: https://github.com/KyronLabs/kyron/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/KyronLabs/kyron/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/KyronLabs/kyron/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/KyronLabs/kyron/compare/v0.1.26...v0.1.27
