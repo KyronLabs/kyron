@@ -5,18 +5,80 @@ import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/utils/thread_layout.dart';
 import 'package:kyron_app/widgets/thread.dart';
 
-PostComment c(String id, {String? parent}) => PostComment(
+PostComment c(String id, {String? parent, int replies = 0}) => PostComment(
       id: id,
       content: id,
       createdAt: DateTime(2026),
       author: const FeedAuthor(id: 'a', name: 'A', username: 'a'),
       parentId: parent,
+      replies: replies,
     );
 
 /// Everything, so the layout reflects the tree rather than the fold rule.
 const all = 1 << 30;
 
 void main() {
+  group('capBranches: a conversation on the post page is a preview', () {
+    List<String> ids(CappedThread t) => t.comments.map((x) => x.id).toList();
+
+    test('shows the first three replies, depth first, then a way to the rest',
+        () {
+      final t = capBranches([
+        c('a', replies: 3),
+        c('b', parent: 'a', replies: 2),
+        c('c', parent: 'a'),
+        c('d', parent: 'a'),
+        c('b1', parent: 'b'),
+        c('b2', parent: 'b'),
+      ]);
+
+      // b, then what answers b, before a's next reply: the order the thread
+      // reads in. d and b2 are past the three.
+      expect(ids(t), ['a', 'b', 'b1', 'b2', 'more:a']);
+      expect(t.full, {'a'});
+      // The stand-in is the conversation's last reply, so its rail ends there.
+      final layout = buildThreadLayout(t.comments, collapseAfter: all);
+      expect(layout.rows.last.comment.id, 'more:a');
+      expect(layout.rows.last.depth, 1);
+      expect(layout.rows.last.isLastChild, isTrue);
+    });
+
+    test('a conversation that fits has no stand-in', () {
+      final t = capBranches([
+        c('a', replies: 2),
+        c('b', parent: 'a'),
+        c('c', parent: 'a'),
+        c('z'),
+      ]);
+      expect(ids(t), ['a', 'b', 'c', 'z']);
+      expect(t.full, isEmpty);
+      expect(t.branchOf['c'], 'a');
+    });
+
+    test('at the limit, a reply with folded answers still sends you on', () {
+      final t = capBranches([
+        c('a', replies: 3),
+        c('b', parent: 'a'),
+        c('c', parent: 'a'),
+        c('d', parent: 'a', replies: 4),
+      ]);
+      expect(ids(t).last, 'more:a');
+      expect(t.full, {'a'});
+    });
+
+    test('more answers on the server than were loaded send you on too', () {
+      final t = capBranches([c('a', replies: 9), c('b', parent: 'a')]);
+      expect(ids(t), ['a', 'b', 'more:a']);
+      // Room left, so b may still unfold its own answers here.
+      expect(t.full, isEmpty);
+    });
+
+    test('a comment not yet opened is left to its own "show replies"', () {
+      final t = capBranches([c('a', replies: 12)]);
+      expect(ids(t), ['a']);
+    });
+  });
+
   group('buildThreadLayout', () {
     test('depth follows the parent chain', () {
       final layout = buildThreadLayout([

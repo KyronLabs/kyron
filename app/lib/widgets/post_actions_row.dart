@@ -176,6 +176,11 @@ class PostAction extends StatefulWidget {
   /// under the post in the hierarchy and should not out-shout it.
   final double iconSize;
 
+  /// The count's size beside it. A comment's is a step up from a post's
+  /// row: there the counts are also spelled out above, and here they are the
+  /// only place they are shown.
+  final double labelSize;
+
   const PostAction({
     super.key,
     required this.icon,
@@ -191,6 +196,7 @@ class PostAction extends StatefulWidget {
     this.artKey,
     this.topper,
     this.iconSize = 17,
+    this.labelSize = TypographyTokens.fontSize1,
   });
 
   @override
@@ -408,7 +414,7 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                     widget.label!,
                     key: ValueKey(widget.label),
                     style: TextStyle(
-                      fontSize: TypographyTokens.fontSize1,
+                      fontSize: widget.labelSize,
                       color: colour,
                     ),
                   ),

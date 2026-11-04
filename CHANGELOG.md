@@ -20,6 +20,18 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Comments breathe.** A reply's face sits under the words it answers,
+  replies to replies line up beneath it, and there is room between what was
+  said and its buttons, which are a little larger.
+- **A conversation on a post shows three replies**, then "View more
+  replies", which opens the whole of it on its own page.
+- **The bar hands over to the author as you scroll**: "Post" fades away to
+  the left, their face zooms in and their name slides in from the right --
+  following your finger, and back again as you scroll up. The title sits
+  closer to the back arrow.
+
 
 ## [0.1.34] - 2026-11-04
 ### Added

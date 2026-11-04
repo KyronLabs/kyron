@@ -212,3 +212,110 @@ List<PostComment> assembleThread({
 /// there would double up with it.
 bool endsBranch(List<ThreadRow> rows, int index) =>
     index + 1 < rows.length && rows[index + 1].depth == 0;
+
+/// The id the post page gives the "View more replies" row it adds to a
+/// conversation, followed by that conversation's top-level comment id.
+const moreRepliesPrefix = 'more:';
+
+/// What the post page shows of each conversation: the comment and its first
+/// [maxReplies] replies, in thread order -- no more.
+///
+/// A post's page is where the conversations are browsed, not read to the
+/// end. Unfolding every branch of every reply there put a single exchange of
+/// a dozen turns between the reader and the next comment, and nested so deep
+/// the words were a few letters wide. The whole of a conversation lives on
+/// its comment's own page; here it is a preview.
+class CappedThread {
+  /// The comments to lay out, in thread order, with one stand-in at the end
+  /// of each conversation that has more than is shown: a reply to its
+  /// top-level comment whose id starts with [moreRepliesPrefix].
+  final List<PostComment> comments;
+
+  /// Conversations with no room left, by top-level comment id. A reply in
+  /// one of these does not unfold its own answers here: the "View more
+  /// replies" row is the way to them.
+  final Set<String> full;
+
+  /// Each comment's conversation, by comment id: its top-level comment's id.
+  final Map<String, String> branchOf;
+
+  const CappedThread({
+    required this.comments,
+    required this.full,
+    required this.branchOf,
+  });
+}
+
+/// Cuts each conversation in [flat] to its top-level comment and the first
+/// [maxReplies] replies under it, depth first, as [buildThreadLayout] walks
+/// them.
+///
+/// A conversation gets its "View more replies" stand-in when anything in it
+/// is not on screen: a loaded reply cut by the limit, a reply whose own
+/// answers are folded once the limit is reached, or replies to the
+/// top-level comment the server has and the page has not loaded.
+CappedThread capBranches(List<PostComment> flat, {int maxReplies = 3}) {
+  final ids = {for (final c in flat) c.id};
+  final byParent = <String?, List<PostComment>>{};
+  for (final comment in flat) {
+    // The same promotion [buildThreadLayout] makes, so both agree on what
+    // is at the top.
+    final parentId = comment.parentId;
+    final parent =
+        (parentId != null && parentId != comment.id && ids.contains(parentId))
+            ? parentId
+            : null;
+    byParent.putIfAbsent(parent, () => []).add(comment);
+  }
+
+  final out = <PostComment>[];
+  final full = <String>{};
+  final branchOf = <String, String>{};
+  final walked = <String>{};
+
+  for (final top in byParent[null] ?? const <PostComment>[]) {
+    out.add(top);
+    branchOf[top.id] = top.id;
+    final kept = <PostComment>[];
+    var cut = false;
+
+    void walk(PostComment parent) {
+      if (!walked.add(parent.id)) return;
+      for (final reply in byParent[parent.id] ?? const <PostComment>[]) {
+        if (kept.length >= maxReplies) {
+          cut = true;
+          return;
+        }
+        kept.add(reply);
+        out.add(reply);
+        branchOf[reply.id] = top.id;
+        walk(reply);
+      }
+    }
+
+    walk(top);
+
+    final loaded = (byParent[top.id] ?? const []).length;
+    // Opened, and the server has more answers to it than came back.
+    var more = loaded > 0 && top.replies > loaded;
+    if (kept.length >= maxReplies) {
+      full.add(top.id);
+      // A shown reply with answers of its own still folded: there is no
+      // room to open them here.
+      more = more ||
+          kept.any((r) => r.replies > (byParent[r.id] ?? const []).length);
+    }
+    if (cut || more) {
+      out.add(
+        PostComment(
+          id: '$moreRepliesPrefix${top.id}',
+          content: '',
+          createdAt: top.createdAt,
+          author: top.author,
+          parentId: top.id,
+        ),
+      );
+    }
+  }
+  return CappedThread(comments: out, full: full, branchOf: branchOf);
+}
