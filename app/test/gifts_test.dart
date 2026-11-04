@@ -521,6 +521,32 @@ void main() {
     });
 
     testWidgets(
+        'closed by hand while it celebrates: the screen under it stays, and '
+        'the gift still counts', (tester) async {
+      // Closing the sheet in the beat after Send used to leave it still
+      // sliding away when it closed itself -- which closed the screen under
+      // it instead, and with nothing under that the app went black.
+      final (repo, answers) = await _openSheet(tester);
+
+      await tester.tap(tile('fire'));
+      await tester.pump();
+      await tester.tap(find.text('Send Fire'));
+      // Sent, and celebrating.
+      await tester.pump(const Duration(milliseconds: 800));
+      expect(find.text('Fire sent'), findsOneWidget);
+
+      // Back, so the sheet is still on its way out when the celebration
+      // ends.
+      await tester.binding.handlePopRoute();
+      await tester.pump(const Duration(milliseconds: 150));
+      await tester.pumpAndSettle();
+
+      expect(find.text('open'), findsOneWidget);
+      expect(repo.sends, hasLength(1));
+      expect(answers.single?.gifts, 4);
+    });
+
+    testWidgets(
         'retries a failed send as the same request, never a second gift',
         (tester) async {
       final (repo, answers) = await _openSheet(tester, failures: 1);
