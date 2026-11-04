@@ -30,13 +30,12 @@ import 'hairline.dart';
 class ThreadGeometry {
   ThreadGeometry._();
 
-  /// How far each nesting level indents. Also how far an elbow travels
-  /// sideways, so the curve keeps its proportions at any depth.
-  ///
-  /// 24 with the 28-point avatar: the elbow still crosses a clear gap (24 -
-  /// 14 = 10) before it reaches the face, and five levels of a thread now
-  /// leave the words 232 points on a 360-point phone rather than 204.
-  static const double indent = 24;
+  /// How far a reply indents: exactly an avatar and its gutter, so a reply's
+  /// face sits under its parent's words and every row in a branch shares one
+  /// text edge -- the column a reader's eye runs down. At 24 a reply sat
+  /// between the two, under nothing in particular, and the thread read as
+  /// shuffled rather than nested.
+  static const double indent = avatar + gutter;
 
   /// Rail thickness. A hair: at 2 the rails were the heaviest thing on the
   /// page, competing with the text they are only there to organise. The rows
@@ -46,11 +45,14 @@ class ThreadGeometry {
 
   /// Radius of the elbow's corner, about half the indent, which is what makes
   /// the turn read as a quarter circle rather than a clipped corner.
-  static const double corner = 10;
+  static const double corner = 12;
 
-  /// Deepest level that still indents. Past this replies keep threading but
-  /// stop marching rightward, or a long argument runs out of screen.
-  static const int maxIndent = 4;
+  /// Deepest level that still indents: one. A reply to a reply sits under it
+  /// at the same indent, joined by a straight rail, as a conversation reads --
+  /// each answer under the one it answers -- rather than marching right one
+  /// step per turn until a long exchange is a column of words a few letters
+  /// wide.
+  static const int maxIndent = 1;
 
   /// The avatar size every rail column is measured from.
   ///
@@ -184,13 +186,18 @@ class ThreadConnectorPlan {
     // Index 0 is never drawn: a later sibling of a top-level comment has no
     // elbow at all, because top-level comments are separate conversations.
     //
-    // De-duplicated and kept left of this row's avatar: past maxIndent several
-    // levels resolve to one column, and the deepest would be painted over the
-    // avatar, repeatedly.
+    // De-duplicated: past maxIndent several levels resolve to one column, and
+    // the same line would be stroked over itself once per level.
+    final ownColumn = centreOf(depth);
     final rails = <double>{
       for (var level = 1; level < depth; level++)
         if (level < ancestorRails.length && ancestorRails[level])
-          if (centreOf(level - 1) < ownLeft) centreOf(level - 1),
+          // Left of this row's avatar, or straight down its own column --
+          // past the cap that is where an ancestor's later sibling hangs,
+          // and the rail runs behind the face, which covers it. Anything
+          // else would cross the row's words.
+          if (centreOf(level - 1) < ownLeft || centreOf(level - 1) == ownColumn)
+            centreOf(level - 1),
     }.toList();
 
     ThreadElbow? elbow;
@@ -448,7 +455,9 @@ class ThreadDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Padding(
-        padding: EdgeInsets.symmetric(vertical: 4),
+        // Room either side, so the line reads as the gap between two
+        // conversations rather than the underline of the one above.
+        padding: EdgeInsets.symmetric(vertical: SpacingTokens.space8),
         child: RuleLine(),
       );
 }

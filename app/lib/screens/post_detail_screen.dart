@@ -72,9 +72,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   /// it has scrolled out from under it.
   final _header = GlobalKey();
 
-  /// Whether the bar is showing who wrote the post, which it does once their
-  /// header has gone past the top of the screen.
-  bool _authorInBar = false;
+  /// How far the bar has gone from "Post" to the author, 0 to 1, following
+  /// the scroll. A notifier rather than state, so a scroll rebuilds the
+  /// bar's title and nothing else.
+  final _bar = ValueNotifier<double>(0);
 
   /// The comment being replied to, or null to comment on the post itself.
   PostComment? _replyingTo;
@@ -92,19 +93,28 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     _scroll.addListener(_onScroll);
   }
 
-  /// Swaps "Post" in the bar for the author once their header is gone, and
-  /// back once it returns.
+  /// Moves the bar from "Post" to the author as their header goes under it,
+  /// and back as it returns -- by the scroll itself, not on a timer, so the
+  /// change follows the finger, stops where it stops, and runs backwards
+  /// when the reader does.
   ///
-  /// Measured off the header itself rather than a guessed offset: a
-  /// community post's header is taller -- the community line and the stacked
-  /// avatars -- and a fixed number brought the name into the bar while the
-  /// real one was still on screen, so it showed twice.
+  /// It plays across the second half of the header leaving: begun once the
+  /// face is mostly gone, finished as the handle's line clears the bar, so
+  /// the name is never in both places and never in neither. Measured off the
+  /// header itself rather than a guessed offset, because a community post's
+  /// header is taller.
   void _onScroll() {
+    if (!_scroll.hasClients) return;
     final box = _header.currentContext?.findRenderObject() as RenderBox?;
+    final height = box?.size.height ?? 48;
     // The header sits under the post's top padding.
-    final bottom = SpacingTokens.space12 + (box?.size.height ?? 48);
-    final show = _scroll.hasClients && _scroll.offset > bottom;
-    if (show != _authorInBar) setState(() => _authorInBar = show);
+    const top = SpacingTokens.space12;
+    final start = top + height * 0.4;
+    final end = top + height;
+    var t = ((_scroll.offset - start) / (end - start)).clamp(0.0, 1.0);
+    // With motion turned down there is no in-between: one, or the other.
+    if (MediaQuery.disableAnimationsOf(context)) t = t < 0.5 ? 0 : 1;
+    _bar.value = t;
   }
 
   /// Ends the read when the app goes away, and starts a new one when it
@@ -129,6 +139,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     _controller.dispose();
     _focus.dispose();
     _scroll.dispose();
+    _bar.dispose();
     super.dispose();
   }
 
@@ -146,36 +157,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
+        // Close to the back button: the bar's default 16 after a 56-point
+        // slot left the title floating halfway across, apart from the arrow
+        // it belongs to. The slot is the button's own 48 now, and the title
+        // starts where it ends: 12 points past the arrow itself.
+        leadingWidth: 48,
+        titleSpacing: 0,
         // Who wrote it, once the header that says so has scrolled away: a
         // long thread otherwise leaves the reader with no idea whose post
-        // they are answering. Rises into place, the way the header left.
-        title: AnimatedSwitcher(
-          duration: MotionTokens.fast,
-          switchInCurve: Curves.easeOutCubic,
-          switchOutCurve: Curves.easeInCubic,
-          transitionBuilder: (child, animation) => FadeTransition(
-            opacity: animation,
-            child: SlideTransition(
-              position: Tween(
-                begin: const Offset(0, 0.35),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            ),
+        // they are answering.
+        title: ValueListenableBuilder<double>(
+          valueListenable: _bar,
+          builder: (context, t, _) => _BarTitle(
+            t: t,
+            title: AppLocalizations.of(context).post,
+            author: post?.author,
           ),
-          layoutBuilder: (current, previous) => Stack(
-            alignment: Alignment.centerLeft,
-            children: [...previous, if (current != null) current],
-          ),
-          child: _authorInBar && post != null
-              ? _BarAuthor(
-                  key: const ValueKey('post-detail-bar-author'),
-                  author: post.author,
-                )
-              : Text(
-                  AppLocalizations.of(context).post,
-                  key: const ValueKey('post-detail-bar-title'),
-                ),
         ),
         // The menu is always the last thing on the right, where a reader
         // looks for it; your own post's analytics sit just inside it.
@@ -235,7 +232,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
 
     // Once for the build, not once per row: this was rebuilding the whole
     // thread for every comment drawn.
-    final rows = _thread(state).rows;
+    final capped = _capped(state);
+    final rows = buildThreadLayout(
+      capped.comments,
+      collapseAfter: 1 << 30,
+    ).rows;
 
     return RefreshIndicator(
       onRefresh: _notifier.load,
@@ -275,6 +276,57 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
 
           final row = rows[rowIndex];
           final comment = row.comment;
+
+          // The end of a conversation with more than the page shows: one
+          // row, in the thread, that opens the conversation's own page.
+          if (comment.id.startsWith(moreRepliesPrefix)) {
+            final topId = comment.id.substring(moreRepliesPrefix.length);
+            // The faces of the people who answered, as "Show N replies"
+            // carries: the elbow turns into them rather than into an empty
+            // slot.
+            final faces = capped.comments
+                .firstWhere(
+                  (c) => c.id == topId,
+                  orElse: () => comment,
+                )
+                .replyFaces;
+            final marker = ThreadMoreReplies(
+              faces: faces,
+              count: 0,
+              label: AppLocalizations.of(context)
+                  .ui('ui_view_more_replies', 'View more replies'),
+              onTap: () => Navigator.pushNamed(
+                context,
+                Routes.comment,
+                arguments: topId,
+              ),
+            );
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SpacingTokens.space16,
+                  ),
+                  child: ThreadItem(
+                    depth: row.depth,
+                    ancestorRails: row.ancestorRails,
+                    hasChildrenBelow: false,
+                    isLastChild: true,
+                    avatarSize: ThreadMoreReplies.faceSize,
+                    avatarWidth: ThreadMoreReplies.widthFor(
+                      faces.take(3).length,
+                    ),
+                    topGap: SpacingTokens.space8,
+                    avatar: marker.leading(context),
+                    child: marker,
+                  ),
+                ),
+                if (endsBranch(rows, rowIndex)) const ThreadDivider(),
+              ],
+            );
+          }
+
           final expanded = state.expanded.contains(comment.id);
           // Replies are fetched only when asked for, so an unexpanded comment
           // simply has no children in the flat list. The affordance is driven
@@ -287,7 +339,11 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           // spinner beside its faces. Taking it away and putting nothing in
           // its place reads as the branch having been deleted.
           final fetching = state.loadingReplies.contains(comment.id);
-          final foldedReplies = comment.replies > 0 && !expanded;
+          // Not in a conversation already showing all it has room for: its
+          // "View more replies" row is the way on from there.
+          final foldedReplies = comment.replies > 0 &&
+              !expanded &&
+              !capped.full.contains(capped.branchOf[comment.id]);
 
           // A hairline closes a top-level comment together with everything
           // hanging off it. The rule is [endsBranch], so it can be tested.
@@ -441,14 +497,20 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   ///
   /// The assembly is [assembleThread]: a pure function, so the rule that a
   /// run only enters once its parent has can be tested.
-  ThreadLayout _thread(PostDetailState state) => buildThreadLayout(
+  ///
+  /// Then cut to a preview: each conversation shows its first three replies
+  /// and a way to the rest ([capBranches]).
+  CappedThread _capped(PostDetailState state) => capBranches(
         assembleThread(
           comments: state.comments,
           replies: state.replies,
           expanded: state.expanded,
         ),
-        collapseAfter: 1 << 30,
+        maxReplies: maxRepliesShown,
       );
+
+  /// How many replies a conversation shows on the post's page.
+  static const maxRepliesShown = 3;
 
   void _openComment(PostComment comment) =>
       Navigator.pushNamed(context, Routes.comment, arguments: comment.id);
@@ -945,14 +1007,110 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
   }
 }
 
+/// The bar's title, from "Post" to the author at [t] (0 to 1).
+///
+/// Three moves, overlapped so they read as one: "Post" fades away to the
+/// left; the author's face zooms up from small, settling with the slightest
+/// overshoot; and their name and handle slide in from the right into the
+/// space "Post" left. Each runs on its own stretch of [t], so at no point is
+/// the bar showing two titles at full strength.
+class _BarTitle extends StatelessWidget {
+  final double t;
+  final String title;
+  final FeedAuthor? author;
+
+  const _BarTitle({required this.t, required this.title, this.author});
+
+  /// How far "Post" travels out, and how far the name travels in.
+  static const double _out = 40;
+  static const double _in = 32;
+
+  static double _span(double t, double from, double to, Curve curve) =>
+      curve.transform(((t - from) / (to - from)).clamp(0.0, 1.0));
+
+  @override
+  Widget build(BuildContext context) {
+    // "Post" is gone before the face is more than a dot: they share the
+    // same spot, and overlapping they read as a smudge, not a hand-over.
+    final leaving = _span(t, 0, 0.35, Curves.easeIn);
+    // Faded out ahead of its travel, so nothing of it is left at the edge.
+    final fading = _span(t, 0, 0.25, Curves.easeOut);
+    final face = _span(t, 0.25, 0.75, Curves.easeOutBack);
+    final faceFade = _span(t, 0.25, 0.5, Curves.easeOut);
+    final words = _span(t, 0.4, 1, Curves.easeOutCubic);
+    final who = author;
+
+    // Clipped at the bar's title area, so "Post" leaving to the left goes
+    // under the edge rather than across the back arrow.
+    return ClipRect(
+      clipper: const _LeftEdge(),
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          if (t < 1)
+            Opacity(
+              key: const ValueKey('post-detail-bar-title'),
+              opacity: 1 - fading,
+              child: Transform.translate(
+                offset: Offset(-_out * leaving, 0),
+                child: Text(title),
+              ),
+            ),
+          if (t > 0 && who != null)
+            // Only once it is mostly there: a tap on a half-faded name should
+            // not open a profile the reader cannot yet read.
+            IgnorePointer(
+              key: const ValueKey('post-detail-bar-author'),
+              ignoring: t < 0.6,
+              child: _BarAuthor(
+                author: who,
+                faceScale: 0.4 + 0.6 * face,
+                faceOpacity: faceFade,
+                wordsOpacity: words,
+                wordsShift: _in * (1 - words),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Clips at the left edge only: what slides in from the right must not be
+/// cut off by its own box on the way. A few points short of the edge, so the
+/// face's overshoot as it settles is not shaved flat; "Post" has faded to
+/// nothing by the time it travels that far.
+class _LeftEdge extends CustomClipper<Rect> {
+  const _LeftEdge();
+
+  @override
+  Rect getClip(Size size) =>
+      Rect.fromLTRB(-6, -size.height, size.width + 400, size.height * 2);
+
+  @override
+  bool shouldReclip(_LeftEdge oldClipper) => false;
+}
+
 /// The author, small, in the bar: what the header said, once it has gone.
 ///
 /// The name over the handle at the bar's two sizes, beside a face a little
-/// smaller than the back button's target, so the bar keeps its height.
+/// smaller than the back button's target, so the bar keeps its height. The
+/// name gives way first on a narrow phone, cut short rather than pushing the
+/// bar's buttons off.
 class _BarAuthor extends StatelessWidget {
   final FeedAuthor author;
+  final double faceScale;
+  final double faceOpacity;
+  final double wordsOpacity;
+  final double wordsShift;
 
-  const _BarAuthor({super.key, required this.author});
+  const _BarAuthor({
+    required this.author,
+    this.faceScale = 1,
+    this.faceOpacity = 1,
+    this.wordsOpacity = 1,
+    this.wordsShift = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -968,35 +1126,47 @@ class _BarAuthor extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            PostAvatar(author: author, radius: 15),
+            Opacity(
+              opacity: faceOpacity,
+              child: Transform.scale(
+                scale: faceScale,
+                child: PostAvatar(author: author, radius: 15),
+              ),
+            ),
             const SizedBox(width: SpacingTokens.space8),
             Flexible(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  NameWithBadge(
-                    name: author.displayName,
-                    verified: author.verified,
-                    style: TextStyle(
-                      fontSize: TypographyTokens.fontSize3,
-                      fontWeight: FontWeight.w600,
-                      height: 1.2,
-                      color: scheme.onSurface,
-                    ),
-                  ),
-                  if (handle != null)
-                    Text(
-                      handle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: TypographyTokens.fontSize1,
-                        height: 1.2,
-                        color: scheme.onSurface.withValues(alpha: 0.55),
+              child: Opacity(
+                opacity: wordsOpacity,
+                child: Transform.translate(
+                  offset: Offset(wordsShift, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      NameWithBadge(
+                        name: author.displayName,
+                        verified: author.verified,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize3,
+                          fontWeight: FontWeight.w600,
+                          height: 1.2,
+                          color: scheme.onSurface,
+                        ),
                       ),
-                    ),
-                ],
+                      if (handle != null)
+                        Text(
+                          handle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: TypographyTokens.fontSize1,
+                            height: 1.2,
+                            color: scheme.onSurface.withValues(alpha: 0.55),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

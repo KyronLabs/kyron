@@ -90,7 +90,8 @@ class _Repo extends FeedRepository {
             liked: true,
             authorLike: true,
             saved: true,
-            gifted: ['crown', 'rose'])),
+            gifted: ['crown', 'rose'],
+            faces: [_who('weaver', 'Weaver'), _who('ada', 'Ada')])),
         PostComment.fromJson(_c('c7', 'nice shot man',
             who: 'reacce',
             name: 'Reacce',
@@ -211,7 +212,20 @@ void main() {
       if (!dark) {
         tester.view.physicalSize = const Size(360, 720);
         await tester.pump();
-        await tester.drag(find.byType(ListView), const Offset(0, -160));
+        final list = tester.state<ScrollableState>(
+          find
+              .descendant(
+                of: find.byType(ListView),
+                matching: find.byType(Scrollable),
+              )
+              .first,
+        );
+        // Through the bar's change, a step at a time.
+        for (final (i, y) in [32.0, 40.0, 48.0].indexed) {
+          list.position.jumpTo(y);
+          await shoot('post-bar-$i');
+        }
+        list.position.jumpTo(160);
         await shoot('post-scrolled');
         tester.view.physicalSize = const Size(360, 1400);
       }

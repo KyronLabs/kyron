@@ -225,6 +225,68 @@ void main() {
       expect(inBar, findsNothing);
     });
 
+    testWidgets('the bar follows the scroll, partway as well as all the way', (
+      tester,
+    ) async {
+      final long = FeedPost(
+        id: 'p1',
+        content:
+            List.filled(60, 'A long walk along the harbour wall.').join(' '),
+        createdAt: DateTime(2026, 10, 30),
+        author: const FeedAuthor(id: 'ada', username: 'ada', name: 'Ada'),
+      );
+      await _page(tester, long);
+      final title = find.byKey(const ValueKey('post-detail-bar-title'));
+      final author = find.byKey(const ValueKey('post-detail-bar-author'));
+      final list = tester.state<ScrollableState>(
+        find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      final header = tester.getSize(find.text('Ada').first);
+
+      // Halfway through the header leaving: "Post" on its way out to the
+      // left, the author on the way in, and neither at full strength.
+      // Just past where the change starts -- 40% of the header gone, under
+      // its 12 of padding -- while "Post" is still fading.
+      final headerRow = tester.getSize(
+        find
+            .ancestor(of: find.text('Ada').first, matching: find.byType(Row))
+            .last,
+      );
+      list.position.jumpTo(
+        SpacingTokens.space12 + headerRow.height * 0.4 + 2,
+      );
+      await tester.pump();
+      expect(title, findsOneWidget);
+      expect(author, findsOneWidget);
+      final post = tester.widget<Opacity>(title).opacity;
+      expect(post, inExclusiveRange(0, 1));
+      expect(tester.getTopLeft(find.text('Post')).dx, lessThan(56));
+      // Taps wait until the name is mostly there.
+      expect(tester.widget<IgnorePointer>(author).ignoring, isTrue);
+
+      // And all the way back, by the scroll alone.
+      list.position.jumpTo(0);
+      await tester.pump();
+      expect(author, findsNothing);
+      expect(tester.widget<Opacity>(title).opacity, 1);
+      expect(header.height, greaterThan(0));
+    });
+
+    testWidgets('the title sits beside the back button, not across the bar', (
+      tester,
+    ) async {
+      await _page(tester, _post());
+      // From the arrow you see, not the button around it.
+      final arrow = tester.getRect(find.byIcon(Iconsax.arrow_left_copy));
+      final post = tester.getRect(find.text('Post'));
+      expect(post.left - arrow.right, lessThanOrEqualTo(SpacingTokens.space16));
+    });
+
     testWidgets(
         'a broken line between the counts and the buttons, solid around them',
         (tester) async {

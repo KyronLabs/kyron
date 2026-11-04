@@ -70,14 +70,16 @@ class CommentTile extends StatelessWidget {
   /// wandered from row to row. In slots they line up. A least width, not a
   /// fixed one: a count too long for it at a large text size pushes the next
   /// button along rather than being cut off.
-  static const double slot = 56;
+  static const double slot = 60;
 
   /// A link to this comment's own page, which is what sharing one means.
   static String linkTo(PostComment comment) =>
       'https://kyron.so/c/${comment.id}';
 
-  /// A step under the post's 17: the comment sits beneath it.
-  static const double _iconSize = 16;
+  /// The post's own size. At 16 under 15-point words the buttons read as
+  /// footnotes; the hierarchy comes from the post's bigger words and face,
+  /// not from shrinking what a reader taps.
+  static const double _iconSize = 17;
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +91,18 @@ class CommentTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _Header(comment: comment, onAction: onAction),
+        // A breath between the name and the words, as a post has: run
+        // together, the name read as the first word of the reply.
+        const SizedBox(height: SpacingTokens.space2),
         if (comment.content.trim().isNotEmpty)
           PostText(
             content: comment.content,
-            style: TextStyle(fontSize: isRoot ? 16 : 14, height: 1.35),
+            style: TextStyle(
+              fontSize: isRoot
+                  ? TypographyTokens.fontSize4
+                  : TypographyTokens.fontSize3,
+              height: 1.4,
+            ),
           ),
         // Split the same way a post's are: a recording is a player, not a
         // picture, and putting one through the grid draws an empty tile.
@@ -102,7 +112,10 @@ class CommentTile extends StatelessWidget {
           const SizedBox(height: SpacingTokens.space8),
           MediaGrid(media: visual, radius: RadiusTokens.radiusSm),
         ],
-        const SizedBox(height: SpacingTokens.space2),
+        // Room between what was said and what can be done about it. At 2
+        // the buttons sat on the last line of the reply like an underline,
+        // and a thread read as one block of text and glyphs.
+        const SizedBox(height: SpacingTokens.space8),
         // Moved left by the buttons' own padding, so the heart's edge sits
         // on the text's edge above it -- and the share icon, at the far
         // end, lands in the column of the menu dots in the header.
@@ -121,6 +134,7 @@ class CommentTile extends StatelessWidget {
                   child: PostAction(
                     icon: comment.liked ? Iconsax.heart : Iconsax.heart_copy,
                     iconSize: _iconSize,
+                    labelSize: TypographyTokens.fontSize2,
                     label:
                         comment.likes > 0 ? formatCount(comment.likes) : null,
                     active: comment.liked,
@@ -146,6 +160,7 @@ class CommentTile extends StatelessWidget {
                   child: PostAction(
                     icon: Iconsax.message_copy,
                     iconSize: _iconSize,
+                    labelSize: TypographyTokens.fontSize2,
                     label: comment.replies > 0
                         ? formatCount(comment.replies)
                         : null,
@@ -462,6 +477,10 @@ class ThreadMoreReplies extends StatelessWidget {
   final bool busy;
   final VoidCallback onTap;
 
+  /// Said in place of "Show N replies": the post page's "View more replies",
+  /// which opens a conversation's own page rather than unfolding here.
+  final String? label;
+
   /// Diameter of one face. Smaller than a comment's avatar: this row is a
   /// signpost, not a voice in the conversation.
   static const double faceSize = 20;
@@ -475,6 +494,7 @@ class ThreadMoreReplies extends StatelessWidget {
     required this.count,
     required this.onTap,
     this.busy = false,
+    this.label,
   });
 
   /// How wide the spinner is, and the gap before it.
@@ -507,9 +527,10 @@ class ThreadMoreReplies extends StatelessWidget {
             // spinner loses the one thing the row was saying, and a reader who
             // tapped it already knows something is happening.
             Text(
-              count == 1
-                  ? 'Show 1 reply'
-                  : 'Show ${formatCount(count)} replies',
+              label ??
+                  (count == 1
+                      ? 'Show 1 reply'
+                      : 'Show ${formatCount(count)} replies'),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize1,
                 fontWeight: FontWeight.w600,
