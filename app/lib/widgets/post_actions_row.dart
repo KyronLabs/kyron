@@ -99,8 +99,8 @@ class PostActionsRow extends StatelessWidget {
               ? null
               : GiftArt(type: post.viewerGift!, size: 21),
           artKey: post.viewerGift,
-          // What the post has been given, by anyone: a tiny stack on the
-          // heart, the most valuable on top.
+          // What the post has been given, by anyone: a tiny row on the
+          // heart, the most valuable first.
           topper: post.topGifts.isEmpty ? null : GiftStack(post.topGifts),
           label: showCounts && post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
@@ -343,11 +343,13 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                         // out of hit testing, so it never takes a tap.
                         Positioned.fill(
                           child: IgnorePointer(
-                            // Unbounded, so a stack taller than the icon is
-                            // its own height rather than squeezed into the
-                            // icon's -- squeezed, its last gift sat on the
-                            // heart.
+                            // Its own size, neither squeezed into the
+                            // icon's box nor stretched to it: stretched, the
+                            // row was as wide as the icon and its gifts sat
+                            // off to the left of the heart's centre.
                             child: OverflowBox(
+                              minWidth: 0,
+                              minHeight: 0,
                               maxWidth: double.infinity,
                               maxHeight: double.infinity,
                               alignment: Alignment.topCenter,
@@ -469,8 +471,11 @@ String countLabel(int value, String singular, {String? plural}) {
   return '${formatCount(value)} $word';
 }
 
-/// The gifts a post has been given, stacked on its heart: each one tiny and
-/// overlapping the one under it, the most valuable on top.
+/// The gifts a post has been given, in a row on its heart: each one tiny and
+/// overlapping the next, the most valuable first and in front.
+///
+/// A row, not a tower: three gifts piled upwards stood twice as tall above
+/// the heart and ran into what sits above the action row.
 ///
 /// Tiny on purpose. It says "people gave this something" at a glance without
 /// competing with the heart or the count beside it, which are the likes.
@@ -480,7 +485,7 @@ class GiftStack extends StatelessWidget {
 
   const GiftStack(this.types, {super.key});
 
-  /// Each gift's size, and how much of the one below each covers.
+  /// Each gift's size, and how far along each one starts from the last.
   static const double size = 11;
   static const double step = 6;
 
@@ -491,17 +496,17 @@ class GiftStack extends StatelessWidget {
     return Semantics(
       label: 'Gifted: ${names.join(', ')}',
       child: SizedBox(
-        width: size,
-        height: size + step * (shown.length - 1),
+        width: size + step * (shown.length - 1),
+        height: size,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            // The cheapest first, so the most valuable is drawn last: on top,
-            // both in the stack and in paint.
+            // The cheapest first, so the most valuable is drawn last: first
+            // in the row, and in front of the one it overlaps.
             for (var i = shown.length - 1; i >= 0; i--)
               Positioned(
-                left: 0,
-                top: step * i,
+                left: step * i,
+                top: 0,
                 child: GiftArt(type: shown[i], size: size),
               ),
           ],

@@ -20,6 +20,11 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Gifts on the heart sit in a row.** The tiny gifts on a post's heart now
+  line up side by side, the most valuable first, instead of piling upwards
+  into whatever sits above them.
 
 ## [0.1.32] - 2026-11-04
 ### Added

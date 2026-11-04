@@ -50,7 +50,7 @@ void main() {
     expect(withGift(['gem'], 'gem'), ['gem']);
   });
 
-  testWidgets('stacks the gifts on the heart, the most valuable on top', (
+  testWidgets('lines the gifts up on the heart, the most valuable first', (
     tester,
   ) async {
     await tester.pumpWidget(_row(_post(['rocket', 'gem', 'rose'])));
@@ -66,11 +66,16 @@ void main() {
     final rose = tester.getRect(
       find.byWidgetPredicate((w) => w is GiftArt && w.type == 'rose'),
     );
-    expect(rocket.top, lessThan(rose.top));
-    // Tiny, and above the heart rather than beside it.
+    // Side by side, most valuable first: one gift tall, never a tower.
+    expect(rocket.left, lessThan(rose.left));
+    expect(rocket.top, rose.top);
+    expect(tester.getSize(find.byType(GiftStack)).height, GiftStack.size);
+    // Tiny, and above the heart, centred on it.
     expect(rocket.width, GiftStack.size);
     final heart = tester.getRect(find.byIcon(Iconsax.heart_copy));
     expect(rose.bottom, closeTo(heart.top, 0.5));
+    final stack = tester.getRect(find.byType(GiftStack));
+    expect(stack.center.dx, closeTo(heart.center.dx, 0.5));
     expect(find.bySemanticsLabel(RegExp('Gifted: Rocket, Gem, Rose')),
         findsOneWidget);
   });
