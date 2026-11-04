@@ -28,12 +28,21 @@ abstract final class GiftSheet {
   static Future<SentGift?> show(BuildContext context, FeedPost post) async =>
       (await _show(context, post))?.sent;
 
-  static Future<_Outcome?> _show(BuildContext context, FeedPost post) =>
-      showAppSheet<_Outcome>(
-        context: context,
-        isScrollControlled: true,
-        builder: (context) => _Sheet(post: post),
-      );
+  /// What the sheet closed with -- or, when it was closed by hand after a
+  /// gift had already gone, that gift, with nowhere to fly from.
+  ///
+  /// A gift is sent the moment Send succeeds and the sheet then celebrates
+  /// for a beat before closing itself. Swiping it away in that beat used to
+  /// lose the result: the coins were spent and the heart never changed.
+  static Future<_Outcome?> _show(BuildContext context, FeedPost post) async {
+    final delivered = _Delivered();
+    final closedWith = await showAppSheet<_Outcome>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => _Sheet(post: post, delivered: delivered),
+    );
+    return closedWith ?? delivered.outcome;
+  }
 
   /// The sheet, opened from the heart: whatever is sent flies out of the
   /// sheet, shrinks onto [heart] and becomes it. [onSent] is called as it
@@ -88,10 +97,17 @@ class _Outcome {
   const _Outcome({required this.sent, required this.gift, this.from});
 }
 
+/// Where the sheet leaves what it sent, the moment it is sent -- read when the
+/// sheet was closed some other way than by sending.
+class _Delivered {
+  _Outcome? outcome;
+}
+
 class _Sheet extends ConsumerStatefulWidget {
   final FeedPost post;
+  final _Delivered delivered;
 
-  const _Sheet({required this.post});
+  const _Sheet({required this.post, required this.delivered});
 
   @override
   ConsumerState<_Sheet> createState() => _SheetState();
@@ -159,12 +175,18 @@ class _SheetState extends ConsumerState<_Sheet> {
       final sent = await ref
           .read(giftsRepositoryProvider)
           .send(widget.post.id, gift.type, requestId: requestId);
+      // Kept before anything else can happen, so a sheet closed during the
+      // celebration still reports the gift it sent.
+      widget.delivered.outcome = _Outcome(sent: sent, gift: gift);
       if (!mounted) return;
       // One soft knock as it goes: the moment the coins are spent.
       unawaited(HapticFeedback.lightImpact());
       setState(() => _sent = gift);
       await Future<void>.delayed(_celebration);
-      if (!mounted) return;
+      // Closed by hand during the celebration. Still mounted while it slides
+      // away, and popping now would close whatever is under it instead --
+      // the post, or the last screen there is, which leaves the app black.
+      if (!mounted || ModalRoute.of(context)?.isCurrent != true) return;
       final box = _sentArt.currentContext?.findRenderObject();
       final from = box is RenderBox && box.attached
           ? box.localToGlobal(Offset.zero) & box.size

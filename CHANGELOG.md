@@ -20,6 +20,15 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **Closing the gift sheet mid-celebration no longer blacks out the app.**
+  Swiping the sheet away just after sending closed the screen under it too.
+  The screen now stays, and the gift still counts on the heart.
+- **The lens camera is no longer dark while recording.** The last release's
+  attempt at keeping lens videos upright darkened the picture instead, and
+  has been undone. Lens videos can still turn sideways on some phones; a
+  proper fix is on its way.
 
 ## [0.1.31] - 2026-11-03
 ### Fixed

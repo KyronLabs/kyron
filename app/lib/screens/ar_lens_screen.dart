@@ -26,7 +26,6 @@ import '../services/app_log.dart';
 import '../services/attachment_images.dart';
 import '../services/exposure_meter.dart';
 import '../services/face_tracker.dart';
-import '../services/lens_camera.dart';
 import '../services/lens_catalogue.dart';
 import '../services/lens_renderer.dart';
 import '../services/lens_video.dart';
@@ -205,9 +204,6 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     // rotation, the crop to the card, the strip under the thumb -- is laid
     // out for portrait. Given back on the way out.
     SystemChrome.setPreferredOrientations(const [DeviceOrientation.portraitUp]);
-    // Before the camera opens: what keeps a lens recording upright. See
-    // LensCameraX.
-    if (widget.cameras == null) LensCameraX.install();
     _open();
     _loadLenses();
   }
@@ -399,9 +395,12 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// Photos and recordings come out portrait, however the phone is held.
   ///
-  /// This sets which way up the saved file is. It does not stop the preview
-  /// turning on its side when a lens recording starts -- that was CameraX
-  /// merging streams, and LensCameraX is what deals with it.
+  /// Without this, starting a recording turned the picture on its side.
+  /// CameraPreview turns the preview to the orientation the recording was
+  /// started in, and that is the phone's *physical* orientation -- landscape
+  /// for somebody lying on their side -- even with the screen held upright.
+  /// The lens is drawn outside that turn, so the glasses stayed level while
+  /// the face under them went sideways.
   Future<void> _lockUpright(CameraController controller) async {
     try {
       await controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
