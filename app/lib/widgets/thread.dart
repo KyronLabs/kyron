@@ -449,6 +449,6 @@ class ThreadDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Padding(
         padding: EdgeInsets.symmetric(vertical: 4),
-        child: Hairline(),
+        child: RuleLine(),
       );
 }

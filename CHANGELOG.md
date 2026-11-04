@@ -33,9 +33,10 @@ the section; GitHub does not show it:
 ### Changed
 
 - **A cleaner post page.** Smaller faces in the comments, a Follow button
-  that reads as one, a dotted line between a post's counts and its buttons
-  and a solid one closing them, and a comment's buttons that line up from
-  row to row, with share at the far end where a post has it.
+  that reads as one, the reply box's light hairline throughout -- broken
+  between a post's counts and its buttons, whole around them -- and a
+  comment's buttons that line up from row to row, with share at the far end
+  where a post has it.
 - **Attach in a reply opens the usual sheet**: a photo, the camera or a
   clip, as in messages.
 - **Gifts crown the heart.** The tiny gifts on a post's heart now sit on

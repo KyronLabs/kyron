@@ -37,72 +37,89 @@ class Hairline extends StatelessWidget {
 BorderSide postRule(ColorScheme scheme) =>
     BorderSide(color: scheme.outline.withValues(alpha: 0.15), width: 0.5);
 
-/// The dotted line: a division inside one thing, where [Hairline] is the
+/// The rule: the line that sits above the reply box, between posts, and
+/// around every card drawn inside a post. Half a point, in `outline` at 15%.
+///
+/// This is Kyron's hairline (the design system's
+/// frontend/components/dividers.md writes it down): light enough to sit
+/// under the content rather than on it. [Hairline] above is the older,
+/// heavier line some headers still draw; on a post's own page it read as a
+/// bar, not a hairline.
+class RuleLine extends StatelessWidget {
+  const RuleLine({super.key});
+
+  /// The rule's weight, as [postRule] draws it.
+  static const double weight = 0.5;
+
+  static Color colourOf(ColorScheme scheme) =>
+      scheme.outline.withValues(alpha: 0.15);
+
+  @override
+  Widget build(BuildContext context) => Container(
+        height: weight,
+        color: colourOf(Theme.of(context).colorScheme),
+      );
+}
+
+/// The broken rule: a division inside one thing, where [RuleLine] is the
 /// boundary between two.
 ///
 /// A solid line says "something else starts here" -- a header and what it
 /// heads, one post and the next, the end of a block. Inside a block that is
 /// the wrong thing to say: a post's spelled-out counts and its row of
 /// actions are one block about the same post, and a second solid rule
-/// between them cut the post into three slabs. Dots keep the two apart
-/// without ending anything.
+/// between them cut the post into three slabs. Broken, the same line keeps
+/// the two apart without ending anything.
 ///
 /// The rule, kept in the design system (frontend/components/dividers.md):
-/// solid closes, dotted divides. A dotted line always has a solid one above
-/// and below it somewhere, closing the block it sits in; a dotted line at a
-/// block's edge is a solid line drawn wrong.
+/// solid closes, broken divides. A broken line always has a solid one above
+/// and below it somewhere, closing the block it sits in.
 ///
-/// Round dots, not dashes: at this weight a dash reads as a broken solid
-/// line. Each dot is a full point across -- a device-pixel dot vanishes on a
-/// 3x screen -- and they sit further apart than they are wide, so the line is
-/// lighter than the solid one rather than heavier.
-class DottedHairline extends StatelessWidget {
-  const DottedHairline({super.key});
+/// The same weight and colour as [RuleLine], only broken: it is the same
+/// line saying less, not a different line. Dashes longer than the gaps
+/// between them, so it still reads as a line rather than a row of specks.
+class BrokenRuleLine extends StatelessWidget {
+  const BrokenRuleLine({super.key});
 
-  /// Each dot's width, and the distance from one dot's centre to the next.
-  static const double dot = 1;
-  static const double pitch = 4;
+  /// Each dash, and the gap after it.
+  static const double dash = 4;
+  static const double gap = 3;
 
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return SizedBox(
-      height: dot,
-      width: double.infinity,
-      child: CustomPaint(
-        painter: _Dots(
-          // Darker than the solid line's 0.22: dots cover a quarter of the
-          // length, and at the same alpha they all but disappear.
-          color: scheme.outline.withValues(alpha: 0.5),
+  Widget build(BuildContext context) => SizedBox(
+        height: RuleLine.weight,
+        width: double.infinity,
+        child: CustomPaint(
+          painter:
+              _Dashes(color: RuleLine.colourOf(Theme.of(context).colorScheme)),
         ),
-      ),
-    );
-  }
+      );
 }
 
-class _Dots extends CustomPainter {
+class _Dashes extends CustomPainter {
   final Color color;
 
-  const _Dots({required this.color});
+  const _Dashes({required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..color = color;
-    const r = DottedHairline.dot / 2;
-    final count = (size.width / DottedHairline.pitch).floor();
+    const pitch = BrokenRuleLine.dash + BrokenRuleLine.gap;
+    // Whole dashes only, centred, so the line starts and ends the same
+    // distance in from both edges rather than on a stub at the right.
+    final count = ((size.width + BrokenRuleLine.gap) / pitch).floor();
     if (count <= 0) return;
-    // Centred, so the line starts and ends the same distance in from both
-    // edges rather than ending on a part-dot at the right.
-    final start = (size.width - (count - 1) * DottedHairline.pitch) / 2;
+    final used = count * pitch - BrokenRuleLine.gap;
+    var x = (size.width - used) / 2;
     for (var i = 0; i < count; i++) {
-      canvas.drawCircle(
-        Offset(start + i * DottedHairline.pitch, size.height / 2),
-        r,
+      canvas.drawRect(
+        Rect.fromLTWH(x, 0, BrokenRuleLine.dash, size.height),
         paint,
       );
+      x += pitch;
     }
   }
 
   @override
-  bool shouldRepaint(_Dots old) => old.color != color;
+  bool shouldRepaint(_Dashes old) => old.color != color;
 }

@@ -226,7 +226,7 @@ void main() {
     });
 
     testWidgets(
-        'dots between the counts and the buttons, solid lines around them',
+        'a broken line between the counts and the buttons, solid around them',
         (tester) async {
       await _page(
         tester,
@@ -239,7 +239,7 @@ void main() {
         ),
       );
 
-      final dots = find.byType(DottedHairline);
+      final dots = find.byType(BrokenRuleLine);
       expect(dots, findsOneWidget);
       final counts = tester.getRect(find.textContaining('like'));
       final heart = tester.getRect(find.byIcon(Iconsax.heart_copy).first);
@@ -247,18 +247,21 @@ void main() {
       expect(line.top, greaterThan(counts.bottom));
       expect(line.bottom, lessThan(heart.top));
       // A solid line above the counts and one under the buttons.
-      final solid = find.byType(Hairline).evaluate().map(
+      final solid = find.byType(RuleLine).evaluate().map(
             (e) => tester.getRect(find.byWidget(e.widget)),
           );
       expect(solid.where((r) => r.bottom < counts.top), isNotEmpty);
       expect(solid.where((r) => r.top > heart.bottom), isNotEmpty);
+      // The reply box's own line: half a point, not a heavier bar.
+      expect(tester.getSize(find.byType(RuleLine).first).height, 0.5);
+      expect(tester.getSize(dots).height, 0.5);
     });
 
     testWidgets('with no counts, the buttons have solid lines only', (
       tester,
     ) async {
       await _page(tester, _post());
-      expect(find.byType(DottedHairline), findsNothing);
+      expect(find.byType(BrokenRuleLine), findsNothing);
     });
 
     testWidgets('Follow is a 30-point pill with 13-point words', (

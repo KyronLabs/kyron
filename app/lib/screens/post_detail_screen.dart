@@ -674,10 +674,10 @@ class _Post extends ConsumerWidget {
             ),
           ],
 
-          // Dotted under the counts: the counts and the buttons are one
+          // Broken under the counts: the counts and the buttons are one
           // block about this post. Solid when there are no counts, because
           // then this is the line that ends the post's body.
-          if (tallied) const _Rule.dotted() else const _Rule.solid(),
+          if (tallied) const _Rule.broken() else const _Rule.solid(),
           // The same row as the card, from the same widget -- so the two
           // cannot drift apart again. Counts are off here because they are
           // spelled out above.
@@ -707,7 +707,7 @@ class _Post extends ConsumerWidget {
           // rather than underlining it.
           const Padding(
             padding: EdgeInsets.only(top: SpacingTokens.space8),
-            child: Hairline(),
+            child: RuleLine(),
           ),
         ],
       ),
@@ -741,19 +741,19 @@ class _Post extends ConsumerWidget {
 /// A rule across the post, with the room it needs above and below.
 ///
 /// Solid where something ends -- the post's words and pictures, then the
-/// block of its counts and actions -- and dotted inside that block, between
+/// block of its counts and actions -- and broken inside that block, between
 /// the counts and the row of buttons, which are two halves of one thing.
-/// See [DottedHairline] for the rule.
+/// See [BrokenRuleLine] for the rule.
 class _Rule extends StatelessWidget {
-  final bool dotted;
+  final bool broken;
 
-  const _Rule.solid() : dotted = false;
-  const _Rule.dotted() : dotted = true;
+  const _Rule.solid() : broken = false;
+  const _Rule.broken() : broken = true;
 
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
-        child: dotted ? const DottedHairline() : const Hairline(),
+        child: broken ? const BrokenRuleLine() : const RuleLine(),
       );
 }
 
