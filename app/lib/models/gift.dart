@@ -138,11 +138,16 @@ class GiftNote {
   final String emoji;
   final int coins;
 
+  /// Sent to the reader's reply rather than their post: the row then says
+  /// "to your comment", and quotes it.
+  final bool onComment;
+
   const GiftNote({
     required this.type,
     required this.name,
     required this.emoji,
     required this.coins,
+    this.onComment = false,
   });
 
   factory GiftNote.fromJson(Map<String, dynamic> json) => GiftNote(
@@ -150,5 +155,6 @@ class GiftNote {
         name: json['name'] as String? ?? 'Gift',
         emoji: json['emoji'] as String? ?? '🎁',
         coins: (json['coins'] as num?)?.toInt() ?? 0,
+        onComment: json['onComment'] == true,
       );
 }

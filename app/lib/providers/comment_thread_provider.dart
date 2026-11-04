@@ -2,6 +2,7 @@
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../models/feed_post.dart' show FeedAuthor;
+import '../models/gift.dart' show withGift;
 import '../models/post_comment.dart';
 import '../repositories/feed_repository.dart';
 import '../utils/api_error_message.dart';
@@ -107,6 +108,36 @@ class CommentThreadNotifier extends StateNotifier<CommentThreadState> {
       _replace(comment);
       return describeApiError(error, sessionIsLive: true);
     }
+  }
+
+  /// Saves a comment, or lets it go, at once; put back if refused.
+  Future<String?> toggleSave(PostComment comment) async {
+    final wanted = !comment.saved;
+    _replace(comment.copyWith(saved: wanted));
+    try {
+      await _repo.setCommentSaved(comment.id, wanted);
+      return null;
+    } catch (error) {
+      _replace(comment.copyWith(saved: !wanted));
+      return describeApiError(error, sessionIsLive: true);
+    }
+  }
+
+  /// A gift the reader just sent [comment]: the server's count, and its kind
+  /// on the crown.
+  void giftsChanged(PostComment sent, int gifts, {String? type}) {
+    // As it is now, not as it was when the sheet opened: a like in between
+    // would otherwise be undone by this.
+    final comment = state.root?.id == sent.id
+        ? state.root!
+        : state.replies.firstWhere((r) => r.id == sent.id, orElse: () => sent);
+    _replace(
+      comment.copyWith(
+        gifts: gifts,
+        topGifts:
+            type == null ? comment.topGifts : withGift(comment.topGifts, type),
+      ),
+    );
   }
 
   Future<String?> delete(PostComment comment) async {

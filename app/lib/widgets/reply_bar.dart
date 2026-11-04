@@ -5,6 +5,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/post_media.dart';
+import 'action_sheet.dart';
 import 'composer_line.dart';
 import 'hairline.dart';
 import 'media_tray.dart';
@@ -331,4 +332,35 @@ class _SendButton extends StatelessWidget {
       ),
     );
   }
+}
+
+/// What the attach button beside a reply box offers.
+enum ReplyAttachment { photo, camera, video }
+
+/// The sheet the attach button opens: the same one the messages screen
+/// opens from its own, rather than dropping straight into the system's
+/// picker -- which looks like a different app and has no camera in it. The
+/// GIF has its own button inside the box, so it is not offered twice.
+Future<ReplyAttachment?> pickReplyAttachment(BuildContext context) {
+  final l10n = AppLocalizations.of(context);
+  return ActionSheet.show<ReplyAttachment>(
+    context,
+    actions: [
+      SheetAction(
+        value: ReplyAttachment.photo,
+        label: l10n.literaladdAPhoto,
+        icon: Iconsax.gallery_copy,
+      ),
+      SheetAction(
+        value: ReplyAttachment.camera,
+        label: l10n.ui('ui_dm_take_photo', 'Take a photo'),
+        icon: Iconsax.camera_copy,
+      ),
+      SheetAction(
+        value: ReplyAttachment.video,
+        label: l10n.literaladdAClip,
+        icon: Iconsax.video_copy,
+      ),
+    ],
+  );
 }

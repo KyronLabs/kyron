@@ -11,7 +11,9 @@ import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/repositories/profile_repository.dart';
 import 'package:kyron_app/screens/post_detail_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
+import 'package:kyron_app/widgets/hairline.dart';
 import 'package:kyron_app/widgets/post_action_colors.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'support/signed_in_as.dart';
@@ -190,6 +192,89 @@ void main() {
         (tester.getCenter(menu).dy - tester.getCenter(analytics).dy).abs(),
         lessThan(1),
       );
+    });
+  });
+
+  group('the page around the post', () {
+    testWidgets("puts the author in the bar once their header is gone", (
+      tester,
+    ) async {
+      final long = FeedPost(
+        id: 'p1',
+        content:
+            List.filled(60, 'A long walk along the harbour wall.').join(' '),
+        createdAt: DateTime(2026, 10, 30),
+        author: const FeedAuthor(id: 'ada', username: 'ada', name: 'Ada'),
+        likes: 3,
+      );
+      await _page(tester, long);
+      final inBar = find.byKey(const ValueKey('post-detail-bar-author'));
+      expect(inBar, findsNothing);
+
+      await tester.drag(find.byType(ListView), const Offset(0, -300));
+      await tester.pumpAndSettle();
+      expect(inBar, findsOneWidget);
+      expect(
+        find.descendant(of: inBar, matching: find.text('@ada')),
+        findsOneWidget,
+      );
+
+      // And gives the bar back once the header returns.
+      await tester.drag(find.byType(ListView), const Offset(0, 600));
+      await tester.pumpAndSettle();
+      expect(inBar, findsNothing);
+    });
+
+    testWidgets(
+        'dots between the counts and the buttons, solid lines around them',
+        (tester) async {
+      await _page(
+        tester,
+        FeedPost(
+          id: 'p1',
+          content: 'Autumn colours',
+          createdAt: DateTime(2026, 10, 30),
+          author: const FeedAuthor(id: 'ada', username: 'ada', name: 'Ada'),
+          likes: 2,
+        ),
+      );
+
+      final dots = find.byType(DottedHairline);
+      expect(dots, findsOneWidget);
+      final counts = tester.getRect(find.textContaining('like'));
+      final heart = tester.getRect(find.byIcon(Iconsax.heart_copy).first);
+      final line = tester.getRect(dots);
+      expect(line.top, greaterThan(counts.bottom));
+      expect(line.bottom, lessThan(heart.top));
+      // A solid line above the counts and one under the buttons.
+      final solid = find.byType(Hairline).evaluate().map(
+            (e) => tester.getRect(find.byWidget(e.widget)),
+          );
+      expect(solid.where((r) => r.bottom < counts.top), isNotEmpty);
+      expect(solid.where((r) => r.top > heart.bottom), isNotEmpty);
+    });
+
+    testWidgets('with no counts, the buttons have solid lines only', (
+      tester,
+    ) async {
+      await _page(tester, _post());
+      expect(find.byType(DottedHairline), findsNothing);
+    });
+
+    testWidgets('Follow is a 30-point pill with 13-point words', (
+      tester,
+    ) async {
+      await _page(tester, _post());
+
+      final pill = find.descendant(
+        of: follow,
+        matching: find.byType(AnimatedContainer),
+      );
+      expect(tester.getSize(pill).height, 30);
+      final words = tester.widget<Text>(
+        find.descendant(of: follow, matching: find.text('Follow')),
+      );
+      expect(words.style?.fontSize, TypographyTokens.fontSize2);
     });
   });
 }

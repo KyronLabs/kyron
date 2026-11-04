@@ -32,7 +32,11 @@ class ThreadGeometry {
 
   /// How far each nesting level indents. Also how far an elbow travels
   /// sideways, so the curve keeps its proportions at any depth.
-  static const double indent = 28;
+  ///
+  /// 24 with the 28-point avatar: the elbow still crosses a clear gap (24 -
+  /// 14 = 10) before it reaches the face, and five levels of a thread now
+  /// leave the words 232 points on a 360-point phone rather than 204.
+  static const double indent = 24;
 
   /// Rail thickness. A hair: at 2 the rails were the heaviest thing on the
   /// page, competing with the text they are only there to organise. The rows
@@ -42,7 +46,7 @@ class ThreadGeometry {
 
   /// Radius of the elbow's corner, about half the indent, which is what makes
   /// the turn read as a quarter circle rather than a clipped corner.
-  static const double corner = 11;
+  static const double corner = 10;
 
   /// Deepest level that still indents. Past this replies keep threading but
   /// stop marching rightward, or a long argument runs out of screen.
@@ -55,7 +59,11 @@ class ThreadGeometry {
   /// -- still has to put its rails in the same columns as the rows above and
   /// below it. Measuring from that row's own size drew them several points to
   /// the left: a line beside the thread rather than a continuation of it.
-  static const double avatar = 34;
+  ///
+  /// 28: at 34 a reply's face was over twice the height of its name, and
+  /// in a deep thread the faces were what the eye landed on rather than the
+  /// words.
+  static const double avatar = 28;
 
   /// Between the avatar column and the body.
   ///
@@ -136,12 +144,22 @@ class ThreadConnectorPlan {
   /// Where that rail starts: just under the avatar, not at its centre.
   final double ownRailTop;
 
+  /// Past the indent cap a reply sits in its parent's column, with no gap
+  /// for an elbow to cross: the parent's rail runs straight down into the
+  /// top of this row's leading element instead. Null everywhere else.
+  final double? leadInX;
+
+  /// Where that lead-in stops: the top of the leading element.
+  final double leadInBottom;
+
   const ThreadConnectorPlan({
     required this.railXs,
     required this.elbow,
     required this.parentRailBelowX,
     required this.ownRailX,
     required this.ownRailTop,
+    this.leadInX,
+    this.leadInBottom = 0,
   });
 
   static ThreadConnectorPlan forRow({
@@ -177,6 +195,7 @@ class ThreadConnectorPlan {
 
     ThreadElbow? elbow;
     double? parentBelow;
+    double? leadIn;
     if (depth > 0) {
       final parentX = centreOf(depth - 1);
       // Past the indent cap the parent sits in the same column as the child,
@@ -197,6 +216,11 @@ class ThreadConnectorPlan {
           radius: radius,
         );
         if (!isLastChild) parentBelow = parentX;
+      } else {
+        // The rail arrives from above in this very column. A middle child
+        // still lets it carry on past; the last one is where it ends.
+        leadIn = parentX;
+        if (!isLastChild) parentBelow = parentX;
       }
     }
 
@@ -206,6 +230,8 @@ class ThreadConnectorPlan {
       parentRailBelowX: parentBelow,
       ownRailX: hasChildrenBelow ? centreOf(depth) : null,
       ownRailTop: topGap + avatarSize + 4,
+      leadInX: leadIn,
+      leadInBottom: topGap,
     );
   }
 }
@@ -255,16 +281,28 @@ class ThreadConnectorPainter extends CustomPainter {
       ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = ThreadGeometry.thickness
-      ..strokeCap = StrokeCap.round;
+      // Butt, not round: every rail runs the full height of its row, and a
+      // round cap pokes half the thickness past each end -- into the row
+      // above and the row below, where the next row's cap lands on it. At
+      // a translucent colour every seam came out as a darker dot.
+      ..strokeCap = StrokeCap.butt;
 
     final p = plan;
 
+    // Everything in one path, stroked once. Where two pieces overlap -- the
+    // elbow's vertical and the parent's rail carrying on past it, which share
+    // a column -- a translucent line drawn twice is twice as dark, and the
+    // junction showed as a heavier stub on a line meant to be one weight.
+    // One stroke paints each pixel once.
+    final path = Path();
     for (final x in p.railXs) {
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);
+      path
+        ..moveTo(x, 0)
+        ..lineTo(x, size.height);
     }
 
     final elbow = p.elbow;
-    if (elbow != null) canvas.drawPath(elbow.toPath(), paint);
+    if (elbow != null) path.addPath(elbow.toPath(), Offset.zero);
 
     final below = p.parentRailBelowX;
     if (below != null) {
@@ -272,19 +310,27 @@ class ThreadConnectorPainter extends CustomPainter {
       // parent has another answer still to come, so it runs straight past the
       // row -- and by the height of the turn the elbow's arc has curved out of
       // this column, leaving a notch the size of the corner radius in a line
-      // meant to be unbroken. Overlapping the elbow's vertical costs nothing:
-      // same colour, same column.
-      canvas.drawLine(Offset(below, 0), Offset(below, size.height), paint);
+      // meant to be unbroken.
+      path
+        ..moveTo(below, 0)
+        ..lineTo(below, size.height);
+    }
+
+    final lead = p.leadInX;
+    if (lead != null && p.leadInBottom > 0) {
+      path
+        ..moveTo(lead, 0)
+        ..lineTo(lead, p.leadInBottom);
     }
 
     final own = p.ownRailX;
     if (own != null) {
-      canvas.drawLine(
-        Offset(own, p.ownRailTop),
-        Offset(own, size.height),
-        paint,
-      );
+      path
+        ..moveTo(own, p.ownRailTop)
+        ..lineTo(own, size.height);
     }
+
+    canvas.drawPath(path, paint);
   }
 
   @override
@@ -346,7 +392,15 @@ class ThreadItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final indent = ThreadGeometry.indentFor(depth);
+    // Past the indent cap there is no elbow, only the rail coming straight
+    // down the column -- so a leading element narrower than an avatar (the
+    // faces of a folded branch) is moved in to sit centred on that rail,
+    // rather than starting at the column's left edge and hanging off it.
+    final capped = depth > ThreadGeometry.maxIndent;
+    final inset = capped && avatarSize < ThreadGeometry.avatar
+        ? (ThreadGeometry.avatar - avatarSize) / 2
+        : 0.0;
+    final indent = ThreadGeometry.indentFor(depth) + inset;
 
     return IntrinsicHeight(
       child: Stack(

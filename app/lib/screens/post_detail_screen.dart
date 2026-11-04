@@ -39,6 +39,7 @@ import '../widgets/share_post_sheet.dart';
 import '../widgets/voice_post_player.dart';
 import '../widgets/toast.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/hairline.dart';
 import '../utils/thread_layout.dart';
 import '../widgets/comment_tile.dart';
 import '../widgets/thread.dart';
@@ -67,6 +68,14 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   final _focus = FocusNode();
   final _scroll = ScrollController();
 
+  /// The post's own header -- avatar, name, handle -- so the bar knows when
+  /// it has scrolled out from under it.
+  final _header = GlobalKey();
+
+  /// Whether the bar is showing who wrote the post, which it does once their
+  /// header has gone past the top of the screen.
+  bool _authorInBar = false;
+
   /// The comment being replied to, or null to comment on the post itself.
   PostComment? _replyingTo;
 
@@ -80,6 +89,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     _notifier = ref.read(postDetailProvider(widget.postId).notifier);
     WidgetsBinding.instance.addObserver(this);
     _notifier.enter();
+    _scroll.addListener(_onScroll);
+  }
+
+  /// Swaps "Post" in the bar for the author once their header is gone, and
+  /// back once it returns.
+  ///
+  /// Measured off the header itself rather than a guessed offset: a
+  /// community post's header is taller -- the community line and the stacked
+  /// avatars -- and a fixed number brought the name into the bar while the
+  /// real one was still on screen, so it showed twice.
+  void _onScroll() {
+    final box = _header.currentContext?.findRenderObject() as RenderBox?;
+    // The header sits under the post's top padding.
+    final bottom = SpacingTokens.space12 + (box?.size.height ?? 48);
+    final show = _scroll.hasClients && _scroll.offset > bottom;
+    if (show != _authorInBar) setState(() => _authorInBar = show);
   }
 
   /// Ends the read when the app goes away, and starts a new one when it
@@ -121,7 +146,37 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: Text(AppLocalizations.of(context).post),
+        // Who wrote it, once the header that says so has scrolled away: a
+        // long thread otherwise leaves the reader with no idea whose post
+        // they are answering. Rises into place, the way the header left.
+        title: AnimatedSwitcher(
+          duration: MotionTokens.fast,
+          switchInCurve: Curves.easeOutCubic,
+          switchOutCurve: Curves.easeInCubic,
+          transitionBuilder: (child, animation) => FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: Tween(
+                begin: const Offset(0, 0.35),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+          ),
+          layoutBuilder: (current, previous) => Stack(
+            alignment: Alignment.centerLeft,
+            children: [...previous, if (current != null) current],
+          ),
+          child: _authorInBar && post != null
+              ? _BarAuthor(
+                  key: const ValueKey('post-detail-bar-author'),
+                  author: post.author,
+                )
+              : Text(
+                  AppLocalizations.of(context).post,
+                  key: const ValueKey('post-detail-bar-title'),
+                ),
+        ),
         // The menu is always the last thing on the right, where a reader
         // looks for it; your own post's analytics sit just inside it.
         actions: [
@@ -197,6 +252,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
         itemBuilder: (context, index) {
           if (index == 0) {
             return _Post(
+              headerKey: _header,
               post: post,
               notifier: _notifier,
               onReply: () => _replyTo(null),
@@ -264,6 +320,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                         onOpen: () => _openComment(comment),
                         onReply: () => _replyTo(comment),
                         onLike: () => _likeComment(comment),
+                        onSave: () => report(
+                          context,
+                          _notifier.toggleCommentSave(comment),
+                        ),
+                        onGift: comment.mine
+                            ? null
+                            : (heart) => GiftSheet.openFor(
+                                  heart,
+                                  GiftTarget.comment(comment.id),
+                                  onSent: (sent) =>
+                                      _notifier.commentGiftsChanged(
+                                    comment.id,
+                                    sent.gifts,
+                                    type: sent.type,
+                                  ),
+                                ),
                         onAction: (action) => _commentAction(action, comment),
                       ),
                     ),
@@ -344,7 +416,13 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   }
 
   Future<void> _attachFromGallery() async {
-    final message = await _notifier.attachFromGallery();
+    final choice = await pickReplyAttachment(context);
+    if (choice == null || !mounted) return;
+    final message = switch (choice) {
+      ReplyAttachment.photo => await _notifier.attach(video: false),
+      ReplyAttachment.camera => await _notifier.capture(),
+      ReplyAttachment.video => await _notifier.attach(video: true),
+    };
     if (message != null && mounted) Toast.show(context, message);
   }
 
@@ -434,6 +512,9 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
 
 class _Post extends ConsumerWidget {
   final FeedPost post;
+
+  /// On the author's header row, for the bar to measure.
+  final Key headerKey;
   final PostDetailNotifier notifier;
 
   /// Puts the cursor in the box at the bottom of this screen. Reply is the one
@@ -441,6 +522,7 @@ class _Post extends ConsumerWidget {
   final VoidCallback onReply;
 
   const _Post({
+    required this.headerKey,
     required this.post,
     required this.notifier,
     required this.onReply,
@@ -454,6 +536,10 @@ class _Post extends ConsumerWidget {
     final visual = post.media.where((m) => m.isVisual).toList();
     final me = ref.watch(currentUserProvider).asData?.value;
     final mine = me != null && me.id == post.author.id;
+    final tallied = post.likes > 0 ||
+        post.reposts > 0 ||
+        post.comments > 0 ||
+        post.gifts > 0;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -466,6 +552,7 @@ class _Post extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            key: headerKey,
             children: [
               // The same header a community post has in a feed: the author
               // in front of the community's picture, and the community named
@@ -567,11 +654,8 @@ class _Post extends ConsumerWidget {
 
           // Counts spelled out, which is what the room on this screen is for:
           // "1 like" rather than a bare 1 beside a heart, and never "1 likes".
-          if (post.likes > 0 ||
-              post.reposts > 0 ||
-              post.comments > 0 ||
-              post.gifts > 0) ...[
-            const _Hairline(),
+          if (tallied) ...[
+            const _Rule.solid(),
             Wrap(
               spacing: SpacingTokens.space16,
               runSpacing: SpacingTokens.space4,
@@ -590,7 +674,10 @@ class _Post extends ConsumerWidget {
             ),
           ],
 
-          const _Hairline(),
+          // Dotted under the counts: the counts and the buttons are one
+          // block about this post. Solid when there are no counts, because
+          // then this is the line that ends the post's body.
+          if (tallied) const _Rule.dotted() else const _Rule.solid(),
           // The same row as the card, from the same widget -- so the two
           // cannot drift apart again. Counts are off here because they are
           // spelled out above.
@@ -614,6 +701,13 @@ class _Post extends ConsumerWidget {
                       onSent: (sent) =>
                           notifier.giftsChanged(sent.gifts, type: sent.type),
                     ),
+          ),
+          // The end of the post: what follows is the conversation about it.
+          // A little room first, so the line closes the row of buttons
+          // rather than underlining it.
+          const Padding(
+            padding: EdgeInsets.only(top: SpacingTokens.space8),
+            child: Hairline(),
           ),
         ],
       ),
@@ -644,22 +738,23 @@ class _Post extends ConsumerWidget {
   }
 }
 
-/// The separator this screen uses, matching the one between posts in a feed:
-/// a half-pixel hairline the full width of the content, not a Material
-/// Divider with its own inset and its own idea of how much space to take.
-class _Hairline extends StatelessWidget {
-  const _Hairline();
+/// A rule across the post, with the room it needs above and below.
+///
+/// Solid where something ends -- the post's words and pictures, then the
+/// block of its counts and actions -- and dotted inside that block, between
+/// the counts and the row of buttons, which are two halves of one thing.
+/// See [DottedHairline] for the rule.
+class _Rule extends StatelessWidget {
+  final bool dotted;
+
+  const _Rule.solid() : dotted = false;
+  const _Rule.dotted() : dotted = true;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
-      child: Container(
-        height: 0.5,
-        color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.15),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
+        child: dotted ? const DottedHairline() : const Hairline(),
+      );
 }
 
 /// One spelled-out count under a post.
@@ -671,8 +766,10 @@ class _Tally extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return RichText(
-      text: TextSpan(
+    // Text.rich, not RichText: RichText starts from no style at all, so the
+    // counts were drawn in the platform's font rather than the app's Inter.
+    return Text.rich(
+      TextSpan(
         style: TextStyle(
           fontSize: TypographyTokens.fontSize2,
           color: scheme.onSurface.withValues(alpha: 0.6),
@@ -732,6 +829,16 @@ class _FollowAuthor extends ConsumerStatefulWidget {
 }
 
 class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
+  /// The design system's Small button (frontend/components/buttons.md): its
+  /// 13.1-point words and 8 of padding over and under them make a 30-point
+  /// pill, and the 8 around it here make the 46-point target past its
+  /// 40-point least. It was the Tiny button's words -- 11.3 on a 24-point
+  /// pill -- which beside a 15-point name and a 40-point avatar read as a
+  /// label stuck on the row rather than a button. The words are set at
+  /// height 1, so the pill centres the letters themselves rather than a line
+  /// box with Inter's extra room under it.
+  static const double _height = 30;
+
   /// Pressed here, on this visit: show the quiet "Following" rather than
   /// nothing.
   bool _pressed = false;
@@ -775,13 +882,13 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
         // A lean pill, and a touch target taller than it: what is drawn and
         // what a thumb has to hit are different sizes.
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space12),
+          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space8),
           child: AnimatedContainer(
             duration: MotionTokens.fast,
             curve: Curves.easeOutCubic,
-            height: 24,
+            height: _height,
             padding:
-                const EdgeInsets.symmetric(horizontal: SpacingTokens.space12),
+                const EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
             decoration: BoxDecoration(
               color: done
                   ? scheme.onSurface.withValues(alpha: 0.08)
@@ -805,14 +912,15 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
                       children: [
                         Icon(
                           Iconsax.tick_circle_copy,
-                          size: 12,
+                          size: 14,
                           color: scheme.onSurface.withValues(alpha: 0.7),
                         ),
                         const SizedBox(width: SpacingTokens.space4),
                         Text(
                           l10n.ui('ui_following', 'Following'),
                           style: TextStyle(
-                            fontSize: TypographyTokens.fontSize1,
+                            fontSize: TypographyTokens.fontSize2,
+                            height: 1,
                             fontWeight: FontWeight.w600,
                             color: scheme.onSurface.withValues(alpha: 0.7),
                           ),
@@ -823,13 +931,75 @@ class _FollowAuthorState extends ConsumerState<_FollowAuthor> {
                       l10n.ui('ui_follow', 'Follow'),
                       key: const ValueKey('follow'),
                       style: const TextStyle(
-                        fontSize: TypographyTokens.fontSize1,
+                        fontSize: TypographyTokens.fontSize2,
+                        height: 1,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
                     ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The author, small, in the bar: what the header said, once it has gone.
+///
+/// The name over the handle at the bar's two sizes, beside a face a little
+/// smaller than the back button's target, so the bar keeps its height.
+class _BarAuthor extends StatelessWidget {
+  final FeedAuthor author;
+
+  const _BarAuthor({super.key, required this.author});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final handle = author.handle;
+
+    return Semantics(
+      button: true,
+      label: author.displayName,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => openAuthor(context, author),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            PostAvatar(author: author, radius: 15),
+            const SizedBox(width: SpacingTokens.space8),
+            Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  NameWithBadge(
+                    name: author.displayName,
+                    verified: author.verified,
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize3,
+                      fontWeight: FontWeight.w600,
+                      height: 1.2,
+                      color: scheme.onSurface,
+                    ),
+                  ),
+                  if (handle != null)
+                    Text(
+                      handle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: TypographyTokens.fontSize1,
+                        height: 1.2,
+                        color: scheme.onSurface.withValues(alpha: 0.55),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

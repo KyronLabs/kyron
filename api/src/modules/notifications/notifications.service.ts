@@ -81,7 +81,14 @@ export interface NotificationItem {
   report?: ReportOutcome;
   /** Which gift, for a gift row: named here so the app need not keep its
    * own copy of the catalogue. */
-  gift?: { type: string; coins: number; name: string; emoji: string };
+  gift?: {
+    type: string;
+    coins: number;
+    name: string;
+    emoji: string;
+    /** Sent to the reader's reply, which [content] then quotes. */
+    onComment: boolean;
+  };
 }
 
 const DEFAULT_LIMIT = 30;
@@ -245,6 +252,8 @@ export class NotificationsService {
                 coins: true,
                 sender: { select: this.actorFields },
                 post: { select: this.postFields },
+                // Set when it went to the reader's reply rather than a post.
+                comment: { select: { content: true } },
               },
             })
           : [],
@@ -322,12 +331,15 @@ export class NotificationsService {
                 postId: row.postId,
                 postSnippet: this.snippet(row.post?.content),
                 postImage: this.picture(row.post),
-                content: null,
+                // The reply it was sent to, in its own words: "to your post"
+                // would point at a post that is somebody else's.
+                content: row.comment ? this.snippet(row.comment.content) : null,
                 createdAt: row.createdAt,
                 unread: this.isUnread(row.createdAt, seenAt),
                 gift: {
                   type: row.type,
                   coins: row.coins,
+                  onComment: !!row.comment,
                   // A gift since dropped from the catalogue still says what
                   // it was, if not by its own name.
                   name: giftType(row.type)?.name ?? 'Gift',

@@ -20,11 +20,36 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Save a comment.** Comments have a save button beside share, and Saved
+  now has a Comments tab, each one saying whose post it answers.
+- **Gift a comment.** Hold a comment's heart to send its author a gift, as
+  on a post. Its gifts sit on its heart, and its author is told it was
+  their comment.
+- **Who wrote it, in the bar.** Scroll past a post's header and its
+  author's face, name and handle stay at the top.
+
 ### Changed
 
+- **A cleaner post page.** Smaller faces in the comments, a Follow button
+  that reads as one, a dotted line between a post's counts and its buttons
+  and a solid one closing them, and a comment's buttons that line up from
+  row to row, with share at the far end where a post has it.
+- **Attach in a reply opens the usual sheet**: a photo, the camera or a
+  clip, as in messages.
 - **Gifts crown the heart.** The tiny gifts on a post's heart now sit on
   it like a crown -- the most valuable in the middle, the next two either
   side -- overlapping cleanly, instead of a row floating above it.
+
+### Fixed
+
+- **A liked comment is the same red as a liked post**, not a pink of its
+  own.
+- **Deep threads join up.** Past the deepest indent a reply's line now runs
+  into it and on to the next one, the faces of a folded branch sit on their
+  line, and where two lines meet they no longer draw a darker patch.
+- **A post's counts are in the app's own font.**
 
 ## [0.1.33] - 2026-11-04
 ### Changed

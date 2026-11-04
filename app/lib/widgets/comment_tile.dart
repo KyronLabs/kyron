@@ -15,6 +15,7 @@ import '../utils/format_count.dart';
 import 'media_grid.dart';
 import 'post_card.dart' show PostAvatar, age, openAuthor;
 import 'post_action_colors.dart';
+import 'post_actions_row.dart' show GiftStack, PostAction;
 import 'post_text.dart';
 import 'toast.dart';
 import 'thread.dart' show ThreadGeometry;
@@ -41,6 +42,13 @@ class CommentTile extends StatelessWidget {
   final VoidCallback onLike;
   final void Function(CommentAction) onAction;
 
+  /// Keeps it in the reader's saved list, or lets it go.
+  final VoidCallback onSave;
+
+  /// Holding the heart: the gift sheet, opened from [heart]. Null on the
+  /// reader's own comment, which the server will not let them gift.
+  final void Function(BuildContext heart)? onGift;
+
   /// Larger type and no tap target, for the comment a thread page is about.
   final bool isRoot;
 
@@ -50,17 +58,31 @@ class CommentTile extends StatelessWidget {
     required this.onReply,
     required this.onLike,
     required this.onAction,
+    required this.onSave,
+    this.onGift,
     this.onOpen,
     this.isRoot = false,
   });
+
+  /// The width each of the two counted actions is given, whatever its count
+  /// says. With the gap taken from the count instead, "12" pushed the reply
+  /// button further right than "1" did, and down a thread the buttons
+  /// wandered from row to row. In slots they line up. A least width, not a
+  /// fixed one: a count too long for it at a large text size pushes the next
+  /// button along rather than being cut off.
+  static const double slot = 56;
 
   /// A link to this comment's own page, which is what sharing one means.
   static String linkTo(PostComment comment) =>
       'https://kyron.so/c/${comment.id}';
 
+  /// A step under the post's 17: the comment sits beneath it.
+  static const double _iconSize = 16;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     final visual = comment.media.where((m) => m.isVisual).toList();
 
     final body = Column(
@@ -81,36 +103,87 @@ class CommentTile extends StatelessWidget {
           MediaGrid(media: visual, radius: RadiusTokens.radiusSm),
         ],
         const SizedBox(height: SpacingTokens.space2),
-        Row(
-          children: [
-            _Action(
-              icon: comment.liked ? Iconsax.heart : Iconsax.heart_copy,
-              label: AppLocalizations.of(context).ui('ui_like', 'Like'),
-              count: comment.likes,
-              tint: comment.liked ? const Color(0xFFE0245E) : null,
-              onTap: () {
-                HapticFeedback.selectionClick();
-                onLike();
-              },
-            ),
-            const SizedBox(width: SpacingTokens.space20),
-            _Action(
-              icon: Iconsax.message_copy,
-              label: AppLocalizations.of(context).reply,
-              count: comment.replies,
-              onTap: onReply,
-            ),
-            const SizedBox(width: SpacingTokens.space20),
-            // No repost beside these. A comment cannot be reposted -- there is
-            // no endpoint and no model for it -- and a glyph that only ever
-            // does nothing is worse than a row of three.
-            _Action(
-              icon: Iconsax.send_2_copy,
-              label: AppLocalizations.of(context).ui('ui_share', 'Share'),
-              count: 0,
-              onTap: () => Share.share(linkTo(comment)),
-            ),
-          ],
+        // Moved left by the buttons' own padding, so the heart's edge sits
+        // on the text's edge above it -- and the share icon, at the far
+        // end, lands in the column of the menu dots in the header.
+        Transform.translate(
+          offset: const Offset(-SpacingTokens.space4, 0),
+          child: Row(
+            children: [
+              ConstrainedBox(
+                constraints: const BoxConstraints(minWidth: slot),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: 1,
+                  // The post's own heart, so a comment's like is the same
+                  // red, throws the same burst, and holds for a gift the
+                  // same way -- not a lookalike drifting from it.
+                  child: PostAction(
+                    icon: comment.liked ? Iconsax.heart : Iconsax.heart_copy,
+                    iconSize: _iconSize,
+                    label:
+                        comment.likes > 0 ? formatCount(comment.likes) : null,
+                    active: comment.liked,
+                    activeColor: PostActionColors.like,
+                    tooltip: l10n.ui('ui_like', 'Like'),
+                    burst: true,
+                    onTap: onLike,
+                    onLongPress: onGift,
+                    longPressHint: onGift == null
+                        ? null
+                        : l10n.ui('ui_gift_title', 'Send a gift'),
+                    topper: comment.topGifts.isEmpty
+                        ? null
+                        : GiftStack(comment.topGifts),
+                  ),
+                ),
+              ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(minWidth: slot),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: 1,
+                  child: PostAction(
+                    icon: Iconsax.message_copy,
+                    iconSize: _iconSize,
+                    label: comment.replies > 0
+                        ? formatCount(comment.replies)
+                        : null,
+                    tooltip: l10n.reply,
+                    onTap: onReply,
+                  ),
+                ),
+              ),
+              // No repost. A comment cannot be reposted -- there is no
+              // endpoint and no model for it -- and a glyph that only ever
+              // does nothing is worse than a shorter row.
+              const Spacer(),
+              // Keeping and passing on, together at the far end, as a post
+              // has them: what you do with it, apart from what you say to it.
+              PostAction(
+                icon: comment.saved
+                    ? Iconsax.archive_tick
+                    : Iconsax.archive_add_copy,
+                iconSize: _iconSize,
+                active: comment.saved,
+                activeColor: PostActionColors.save,
+                tooltip:
+                    comment.saved ? l10n.literalremoveFromSaved : l10n.save,
+                onTap: onSave,
+              ),
+              const SizedBox(width: SpacingTokens.space8),
+              PostAction(
+                icon: Iconsax.export_1_copy,
+                iconSize: _iconSize,
+                tooltip: l10n.ui('ui_share', 'Share'),
+                onTap: () => Share.share(linkTo(comment)),
+              ),
+              // The menu above is a 40-point button -- Material's least --
+              // so its dots are centred 20 in from the edge. This puts the
+              // share icon's centre there too: one column down the right.
+              const SizedBox(width: SpacingTokens.space4),
+            ],
+          ),
         ),
       ],
     );
@@ -239,11 +312,12 @@ class AuthorLikedBadge extends StatelessWidget {
 
   const AuthorLikedBadge({super.key, required this.author});
 
-  static const double size = 20;
+  /// 16: at 20 the author's face was nearly the size of the comment's own
+  /// name and pulled the eye off it. This is a footnote, not a voice.
+  static const double size = 16;
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final label = AppLocalizations.of(context)
         .ui('ui_liked_by_author', 'Liked by the author');
 
@@ -261,17 +335,17 @@ class AuthorLikedBadge extends StatelessWidget {
               // The heart on the face's lower corner, ringed in the page's
               // colour so the two read as stacked rather than overlapping.
               Positioned(
-                right: -3,
-                bottom: -3,
+                right: -2.5,
+                bottom: -2.5,
                 child: Container(
-                  padding: const EdgeInsets.all(1.5),
+                  padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    color: scheme.surface,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
                     Iconsax.heart,
-                    size: 10,
+                    size: 8,
                     color: PostActionColors.like,
                   ),
                 ),
@@ -339,7 +413,8 @@ class _Overflow extends StatelessWidget {
       padding: EdgeInsets.zero,
       visualDensity: VisualDensity.compact,
       // As tall as the line it ends, wider than it is tall so it is still an
-      // easy target from the side a thumb comes from.
+      // easy target from the side a thumb comes from. Material makes it 40
+      // across whatever this asks; the share icon below is lined up on that.
       constraints: const BoxConstraints(
         minWidth: 32,
         minHeight: _Header.height,
@@ -355,63 +430,16 @@ class _Overflow extends StatelessWidget {
   }
 }
 
-/// One action under a comment: a glyph, and its count when there is one.
-class _Action extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final int count;
-  final Color? tint;
-  final VoidCallback onTap;
-
-  const _Action({
-    required this.icon,
-    required this.label,
-    required this.count,
-    required this.onTap,
-    this.tint,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final colour = tint ?? scheme.onSurface.withValues(alpha: 0.5);
-
-    return Semantics(
-      button: true,
-      label: count == 0 ? label : '$label, $count',
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space8),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 16, color: colour),
-              if (count > 0) ...[
-                const SizedBox(width: SpacingTokens.space4),
-                Text(
-                  formatCount(count),
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize1,
-                    color: colour,
-                  ),
-                ),
-              ],
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 /// The avatar a thread row puts in its leading slot.
 class CommentAvatar extends StatelessWidget {
   final PostComment comment;
   final double size;
 
-  const CommentAvatar({super.key, required this.comment, this.size = 34});
+  const CommentAvatar({
+    super.key,
+    required this.comment,
+    this.size = ThreadGeometry.avatar,
+  });
 
   @override
   Widget build(BuildContext context) => GestureDetector(

@@ -31,7 +31,7 @@ export interface Wallet {
 export interface SentGift {
   gift: { id: string; type: string; coins: number; createdAt: Date };
   wallet: Wallet;
-  /** The post's gift count after this one. */
+  /** The gift count, after this one, of what it was sent to. */
   gifts: number;
 }
 
@@ -79,15 +79,13 @@ export class GiftsService {
     });
   }
 
+  /** A gift to a post. */
   async send(
     senderId: string,
     postId: string,
     input: { type: string; requestId: string },
     now = new Date(),
   ): Promise<SentGift> {
-    const kind = giftType(input.type);
-    if (!kind) throw new BadRequestException('There is no such gift.');
-
     const post = await this.prisma.post.findFirst({
       where: {
         id: postId,
@@ -97,12 +95,78 @@ export class GiftsService {
       select: { authorId: true },
     });
     if (!post) throw new NotFoundException('Post not found.');
-    if (post.authorId === senderId) {
-      throw new BadRequestException("You can't send a gift to your own post.");
+    return this.sendTo(
+      senderId,
+      { postId, commentId: null, recipientId: post.authorId, what: 'post' },
+      input,
+      now,
+    );
+  }
+
+  /**
+   * A gift to a comment: to whoever wrote it, not to the post's author.
+   *
+   * The same ledger, the same idempotency and the same wallet lock as a gift
+   * to a post. The row keeps the post it was written under, so a post's page
+   * can find it, but it counts on the comment -- Comment.giftCount -- and
+   * never on the post.
+   */
+  async sendToComment(
+    senderId: string,
+    commentId: string,
+    input: { type: string; requestId: string },
+    now = new Date(),
+  ): Promise<SentGift> {
+    const comment = await this.prisma.comment.findFirst({
+      where: {
+        id: commentId,
+        deletedAt: null,
+        author: { status: { not: AccountStatus.BANNED } },
+        post: {
+          deletedAt: null,
+          author: { status: { not: AccountStatus.BANNED } },
+        },
+      },
+      select: { authorId: true, postId: true },
+    });
+    if (!comment) throw new NotFoundException('Comment not found.');
+    return this.sendTo(
+      senderId,
+      {
+        postId: comment.postId,
+        commentId,
+        recipientId: comment.authorId,
+        what: 'comment',
+      },
+      input,
+      now,
+    );
+  }
+
+  private async sendTo(
+    senderId: string,
+    target: {
+      postId: string;
+      commentId: string | null;
+      recipientId: string;
+      what: 'post' | 'comment';
+    },
+    input: { type: string; requestId: string },
+    now: Date,
+  ): Promise<SentGift> {
+    const kind = giftType(input.type);
+    if (!kind) throw new BadRequestException('There is no such gift.');
+
+    const { postId, commentId, recipientId, what } = target;
+    const missing = what === 'post' ? 'Post not found.' : 'Comment not found.';
+    if (recipientId === senderId) {
+      throw new BadRequestException(
+        `You can't send a gift to your own ${what}.`,
+      );
     }
-    // NotFound, as the feed answers: a block does not confirm the post exists.
-    if (await this.blockedEitherWay(senderId, post.authorId)) {
-      throw new NotFoundException('Post not found.');
+    // NotFound, as the feed answers: a block does not confirm it exists.
+    if (await this.blockedEitherWay(senderId, recipientId)) {
+      throw new NotFoundException(missing);
     }
 
     const { result, created } = await this.prisma.$transaction(async (tx) => {
@@ -116,7 +180,11 @@ export class GiftsService {
         },
       });
       if (earlier) {
-        if (earlier.postId !== postId || earlier.type !== kind.type) {
+        if (
+          earlier.postId !== postId ||
+          earlier.commentId !== commentId ||
+          earlier.type !== kind.type
+        ) {
           throw new ConflictException(
             'That request was already used for a different gift.',
           );
@@ -139,8 +207,9 @@ export class GiftsService {
       const gift = await tx.gift.create({
         data: {
           senderId,
-          recipientId: post.authorId,
+          recipientId,
           postId,
+          commentId,
           type: kind.type,
           coins: kind.coins,
           requestId: input.requestId,
@@ -156,7 +225,7 @@ export class GiftsService {
             giftId: gift.id,
           },
           {
-            userId: post.authorId,
+            userId: recipientId,
             kind: CoinKind.EARN,
             amount: kind.coins,
             key: `gift:${gift.id}:earn`,
@@ -166,15 +235,27 @@ export class GiftsService {
       });
       // One statement, so two gifts of new kinds arriving at once both land:
       // a read-then-write would lose one of them.
-      await tx.$executeRaw`
-        UPDATE "Post"
-        SET "giftCount" = "giftCount" + 1,
-            "giftTypes" = CASE
-              WHEN ${kind.type} = ANY("giftTypes") THEN "giftTypes"
-              ELSE array_append("giftTypes", ${kind.type}::text)
-            END
-        WHERE id = ${postId}::uuid
-      `;
+      if (commentId === null) {
+        await tx.$executeRaw`
+          UPDATE "Post"
+          SET "giftCount" = "giftCount" + 1,
+              "giftTypes" = CASE
+                WHEN ${kind.type} = ANY("giftTypes") THEN "giftTypes"
+                ELSE array_append("giftTypes", ${kind.type}::text)
+              END
+          WHERE id = ${postId}::uuid
+        `;
+      } else {
+        await tx.$executeRaw`
+          UPDATE "Comment"
+          SET "giftCount" = "giftCount" + 1,
+              "giftTypes" = CASE
+                WHEN ${kind.type} = ANY("giftTypes") THEN "giftTypes"
+                ELSE array_append("giftTypes", ${kind.type}::text)
+              END
+          WHERE id = ${commentId}::uuid
+        `;
+      }
       return {
         result: await this.answer(tx, gift, senderId, now),
         created: true,
@@ -184,11 +265,12 @@ export class GiftsService {
     // Over the socket only. A push needs its words in every language the
     // push catalogue carries (push/copy), which a test version does not.
     if (created) {
-      this.delivery.tell(post.authorId, {
+      this.delivery.tell(recipientId, {
         type: 'notification.new',
         kind: 'gift',
         actorId: senderId,
         postId,
+        ...(commentId === null ? {} : { commentId }),
       });
     }
     return result;
@@ -214,7 +296,8 @@ export class GiftsService {
 
     const counts = await this.prisma.gift.groupBy({
       by: ['type'],
-      where: { postId },
+      // The post's own gifts: those sent to its replies are theirs.
+      where: { postId, commentId: null },
       _count: { _all: true },
     });
     const byType = GIFT_CATALOGUE.map((kind) => ({
@@ -232,14 +315,22 @@ export class GiftsService {
       coins: number;
       createdAt: Date;
       postId: string;
+      commentId: string | null;
     },
     senderId: string,
     now: Date,
   ): Promise<SentGift> {
-    const post = await tx.post.findUnique({
-      where: { id: gift.postId },
-      select: { giftCount: true },
-    });
+    // The count of whatever the gift went to.
+    const target =
+      gift.commentId === null
+        ? await tx.post.findUnique({
+            where: { id: gift.postId },
+            select: { giftCount: true },
+          })
+        : await tx.comment.findUnique({
+            where: { id: gift.commentId },
+            select: { giftCount: true },
+          });
     return {
       gift: {
         id: gift.id,
@@ -248,7 +339,7 @@ export class GiftsService {
         createdAt: gift.createdAt,
       },
       wallet: await this.balances(tx, senderId, now),
-      gifts: post?.giftCount ?? 0,
+      gifts: target?.giftCount ?? 0,
     };
   }
 

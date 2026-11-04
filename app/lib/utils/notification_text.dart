@@ -25,11 +25,15 @@ String notificationAction(
         l10n.ui('ui_notif_reposted', 'reposted your post'),
       NotificationType.mention =>
         l10n.ui('ui_notif_mentioned', 'mentioned you'),
-      NotificationType.gift => gift == null
-          ? l10n.ui('ui_notif_gift', 'sent a gift to your post')
-          : l10n
+      NotificationType.gift => switch (gift) {
+          null => l10n.ui('ui_notif_gift', 'sent a gift to your post'),
+          GiftNote(onComment: true) => l10n
+              .ui('ui_notif_gift_comment', r'sent a $gift to your comment')
+              .replaceAll(r'$gift', gift.name),
+          _ => l10n
               .ui('ui_notif_gift_named', r'sent a $gift to your post')
               .replaceAll(r'$gift', gift.name),
+        },
       // Never shown after a name: these rows have none.
       NotificationType.account || NotificationType.report => '',
     };

@@ -288,4 +288,143 @@ run('gifts, against a real database', () => {
     // Ben's three on the first post, and his Rose on the pictured one.
     expect(senders).toHaveLength(4);
   });
+
+  describe('to a comment', () => {
+    const feed = () =>
+      new FeedService(
+        prisma as PrismaService,
+        new ModerationService(
+          prisma as PrismaService,
+          {} as unknown as EnforcementService,
+        ),
+        new RankingService(),
+        delivery,
+      );
+
+    it("pays the comment's author, counts on the comment, and leaves the post's gifts alone", async () => {
+      // Ben's reply under Ada's post; Ada sends it a gift.
+      const reply = (
+        await prisma.comment.create({
+          data: { postId: post, authorId: ben, content: 'Lovely light' },
+        })
+      ).id;
+      const postBefore = await prisma.post.findUniqueOrThrow({
+        where: { id: post },
+        select: { giftCount: true, giftTypes: true },
+      });
+      const earnedBefore = (await gifts.wallet(ben, NEXT_TUESDAY)).earned;
+      const summaryBefore = await gifts.summary(post, ada);
+
+      const sent = await gifts.sendToComment(
+        ada,
+        reply,
+        gift('gem'),
+        NEXT_TUESDAY,
+      );
+
+      expect(sent.gifts).toBe(1);
+      expect((await gifts.wallet(ben, NEXT_TUESDAY)).earned).toBe(
+        earnedBefore + 20,
+      );
+      expect(
+        await prisma.comment.findUniqueOrThrow({
+          where: { id: reply },
+          select: { giftCount: true, giftTypes: true },
+        }),
+      ).toEqual({ giftCount: 1, giftTypes: ['gem'] });
+      // The post is exactly as it was: count, kinds, and its own summary.
+      expect(
+        await prisma.post.findUniqueOrThrow({
+          where: { id: post },
+          select: { giftCount: true, giftTypes: true },
+        }),
+      ).toEqual(postBefore);
+      expect(await gifts.summary(post, ada)).toEqual(summaryBefore);
+      expect(delivery.ofType('notification.new')).toContainEqual({
+        type: 'notification.new',
+        kind: 'gift',
+        actorId: ada,
+        postId: post,
+        commentId: reply,
+      });
+
+      // The thread shows it on the reply, and the reply's author is told
+      // it was their reply.
+      const page = await feed().listComments(post, ada);
+      expect(page.items.find((c) => c.id === reply)).toMatchObject({
+        gifts: 1,
+        topGifts: ['gem'],
+      });
+      const rows = await new NotificationsService(prisma as PrismaService).list(
+        ben,
+        { gifts: true },
+      );
+      expect(rows.items.find((row) => row.kind === 'gift')).toMatchObject({
+        content: 'Lovely light',
+        gift: { type: 'gem', onComment: true },
+      });
+    });
+
+    it('refuses a gift to your own comment, and a retry is the same gift', async () => {
+      const mine = (
+        await prisma.comment.create({
+          data: { postId: post, authorId: ben, content: 'Mine' },
+        })
+      ).id;
+      await expect(
+        gifts.sendToComment(ben, mine, gift('spark'), NEXT_TUESDAY),
+      ).rejects.toThrow('own comment');
+
+      const requestId = randomUUID();
+      const once = await gifts.sendToComment(
+        ada,
+        mine,
+        gift('spark', requestId),
+        NEXT_TUESDAY,
+      );
+      const twice = await gifts.sendToComment(
+        ada,
+        mine,
+        gift('spark', requestId),
+        NEXT_TUESDAY,
+      );
+      expect(twice.gift.id).toBe(once.gift.id);
+      // The same request id may not move to another reply instead.
+      const other = (
+        await prisma.comment.create({
+          data: { postId: post, authorId: ben, content: 'Another' },
+        })
+      ).id;
+      await expect(
+        gifts.sendToComment(ada, other, gift('spark', requestId), NEXT_TUESDAY),
+      ).rejects.toThrow('already used for a different gift');
+    });
+
+    it('saves a comment for its reader only, and lists it with its post', async () => {
+      const reply = (
+        await prisma.comment.create({
+          data: { postId: post, authorId: ben, content: 'Keep this one' },
+        })
+      ).id;
+      const service = feed();
+
+      await service.setCommentSaved(ada, reply, true);
+      await service.setCommentSaved(ada, reply, true);
+
+      const saved = await service.listSavedComments(ada);
+      expect(saved.items.map((c) => c.id)).toEqual([reply]);
+      expect(saved.items[0]).toMatchObject({
+        saved: true,
+        postId: post,
+        onPost: { id: post, author: { id: ada } },
+      });
+      // Saves are private: Ben sees his reply unsaved, and has no list.
+      const asBen = await service.listComments(post, ben);
+      expect(asBen.items.find((c) => c.id === reply)?.saved).toBe(false);
+      expect((await service.listSavedComments(ben)).items).toEqual([]);
+
+      await service.setCommentSaved(ada, reply, false);
+      expect((await service.listSavedComments(ada)).items).toEqual([]);
+    });
+  });
 });

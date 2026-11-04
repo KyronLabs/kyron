@@ -138,6 +138,12 @@ export class FeedController {
     return this.svc.listSaved(req.user.id, query.limit, query.cursor);
   }
 
+  /** Your saved comments, each with the post it answers. Yours only. */
+  @Get('saved/comments')
+  savedComments(@Req() req: AuthRequest, @Query() query: ListFeedDto) {
+    return this.svc.listSavedComments(req.user.id, query.limit, query.cursor);
+  }
+
   /** One post on its own, for the screen that shows it with its thread. */
   @Get('posts/:id')
   post(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
@@ -201,6 +207,19 @@ export class FeedController {
     @Param('id', ParseUUIDPipe) id: string,
   ) {
     return this.svc.setCommentLike(req.user.id, id, false);
+  }
+
+  @Put('comments/:id/save')
+  saveComment(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.setCommentSaved(req.user.id, id, true);
+  }
+
+  @Delete('comments/:id/save')
+  unsaveComment(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return this.svc.setCommentSaved(req.user.id, id, false);
   }
 
   @Delete('comments/:id')

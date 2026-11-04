@@ -130,6 +130,7 @@ model User {
   likes                  PostLike[]
   commentLikes           CommentLike[]
   saves                  PostSave[]
+  commentSaves           CommentSave[]
   comments               Comment[]
   views                  PostView[]
   impressions            PostImpression[]
@@ -477,6 +478,22 @@ model PostSave {
   @@index([userId, createdAt(sort: Desc)])
 }
 
+/// A comment the reader kept, as PostSave is for a post. Private: only ever
+/// listed for the person who saved it.
+model CommentSave {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  commentId String   @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz()
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comment Comment @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([userId, commentId])
+  @@index([commentId])
+  @@index([userId, createdAt(sort: Desc)])
+}
+
 // ==========================================
 // 11c. COMMENTS
 // ==========================================
@@ -505,6 +522,13 @@ model Comment {
   media    Media[]
   likes    CommentLike[]
   mentions Mention[]
+  saves    CommentSave[]
+  gifts    Gift[]
+
+  /// What it has been sent, as Post.giftCount and Post.giftTypes are for a
+  /// post: kept on the row so a thread does not group gifts per read.
+  giftCount Int      @default(0)
+  giftTypes String[] @default([])
 
   @@index([authorId])
   // A post's top-level comments, oldest first -- the order a thread reads in.
@@ -1085,6 +1109,11 @@ model Gift {
   senderId    String? @db.Uuid
   recipientId String  @db.Uuid
   postId      String  @db.Uuid
+  /// Set when the gift went to a comment rather than to the post itself.
+  /// postId is still the post it was written under, so a post's page can
+  /// find it -- but every count of a post's own gifts reads `commentId:
+  /// null`, or a reply's gifts would be added to the post they answered.
+  commentId   String? @db.Uuid
   /// A key from GIFT_CATALOGUE. A string rather than an enum so the
   /// catalogue can change without a migration.
   type        String
@@ -1100,10 +1129,12 @@ model Gift {
   sender    User?       @relation("GiftSender", fields: [senderId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   recipient User        @relation("GiftRecipient", fields: [recipientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   post      Post        @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  comment   Comment?    @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   entries   CoinEntry[]
 
   @@unique([senderId, requestId])
   @@index([postId, type])
+  @@index([commentId, type])
   // The notifications list reads a recipient's gifts newest first.
   @@index([recipientId, createdAt(sort: Desc)])
 }

@@ -30,6 +30,19 @@ class GiftsRepository {
     return SentGift.fromJson(res.data ?? const {});
   }
 
+  /// A gift to a comment, paid to whoever wrote it.
+  Future<SentGift> sendToComment(
+    String commentId,
+    String type, {
+    required String requestId,
+  }) async {
+    final res = await _api.dio.post<Map<String, dynamic>>(
+      '/feed/comments/$commentId/gifts',
+      data: {'type': type, 'requestId': requestId},
+    );
+    return SentGift.fromJson(res.data ?? const {});
+  }
+
   /// A random version 4 UUID, which is what the server accepts as a request
   /// id. From the platform's secure source: a predictable one would let
   /// somebody guess another account's next request.

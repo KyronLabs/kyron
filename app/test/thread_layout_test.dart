@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/post_comment.dart';
@@ -160,6 +161,62 @@ void main() {
       for (final x in p.railXs) {
         expect(x, lessThan(ThreadGeometry.indentFor(ThreadGeometry.maxIndent)));
       }
+    });
+
+    test('past the cap the parent rail runs on into the reply, and on past it',
+        () {
+      // There is no elbow there, so this is all that joins a reply to the
+      // comment above it. A middle child let the rail stop at its own top,
+      // and the next sibling hung from nothing.
+      const depth = ThreadGeometry.maxIndent + 1;
+      final column = ThreadGeometry.columnFor(depth - 1);
+
+      final middle = plan(depth: depth, last: false);
+      expect(middle.elbow, isNull);
+      expect(middle.leadInX, column);
+      expect(middle.parentRailBelowX, column);
+
+      final last = plan(depth: depth);
+      expect(last.leadInX, column);
+      expect(last.parentRailBelowX, isNull);
+
+      // Inside the cap there is an elbow, and nothing else to join them.
+      expect(plan(depth: 1).leadInX, isNull);
+    });
+
+    testWidgets(
+        "past the cap a folded branch's faces sit centred on the rail above",
+        (tester) async {
+      // At the cap the rail comes straight down the column. Faces narrower
+      // than an avatar that start at the column's left edge hang off it.
+      const depth = ThreadGeometry.maxIndent + 1;
+      const face = 20.0;
+      await tester.pumpWidget(
+        const Directionality(
+          textDirection: TextDirection.ltr,
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 300,
+              child: ThreadItem(
+                depth: depth,
+                ancestorRails: [],
+                hasChildrenBelow: false,
+                isLastChild: true,
+                avatarSize: face,
+                avatar: SizedBox.square(
+                  key: ValueKey('face'),
+                  dimension: face,
+                ),
+                child: SizedBox(height: face),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      final centre = tester.getCenter(find.byKey(const ValueKey('face')));
+      expect(centre.dx, ThreadGeometry.columnFor(depth - 1));
     });
 
     test('the corner never exceeds the space it has to turn in', () {

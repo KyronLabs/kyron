@@ -341,6 +341,25 @@ class FeedRepository {
     return (res.data?['likes'] as num?)?.toInt() ?? 0;
   }
 
+  /// Keeps a comment for later, or lets it go. Private to the reader.
+  Future<void> setCommentSaved(String commentId, bool saved) async {
+    if (saved) {
+      await _api.dio.put<void>('/feed/comments/$commentId/save');
+    } else {
+      await _api.dio.delete<void>('/feed/comments/$commentId/save');
+    }
+  }
+
+  /// The reader's saved comments, newest save first, each saying whose post
+  /// it answers.
+  Future<CommentPage> savedComments({String? cursor, int limit = 20}) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/saved/comments',
+      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
+    );
+    return CommentPage.fromJson(res.data ?? const {});
+  }
+
   Future<PostComment> addComment(
     String postId,
     String content, {
