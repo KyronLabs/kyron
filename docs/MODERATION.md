@@ -181,24 +181,24 @@ Kyron's software cannot do these, and they are not optional:
 - **Read the queue.** A notification arrives for each report and appeal, but
   nothing escalates if nobody acts. Decide how often someone checks, and
   keep to it.
-- **Watch abuse@spidroid.com and privacy@spidroid.com.** The privacy policy
-  and the app both name them.
+- **Watch spidroidtechnologiesinc@gmail.com.** The terms, the privacy
+  policy, the child safety and account deletion pages and the app's Contact
+  support all send people there, sorted by subject: Abuse, Privacy, Appeal,
+  Security, Copyright, Dispute, My data, Kyron child safety, Delete my Kyron
+  account. The terms promise a reply within 30 days and most appeals within
+  72 hours.
 
-## The published terms need updating
+## The published terms
 
-The terms at kyron-terms-and-privacy.onrender.com (not in this repository)
-say appeals go to abuse@spidroid.com **within 30 days**. The app now offers
-appeals in Settings → Account status for **180 days**. Update the terms to
-say so, and to describe:
-
-- the decisions (removal, warning, suspension, ban) and what a suspension
-  allows;
-- that a new account at a banned address starts banned;
-- that decisions are kept after an account is deleted, without its content
-  (also the privacy policy);
-- that community chats are not end-to-end encrypted: what is said in them is
-  stored readable, and the community's moderators and Kyron's team can read
-  it (the privacy policy). Direct messages and groups still are.
+The terms and privacy policy are in
+[KyronLabs/Kyron_Terms_and_Privacy](https://github.com/KyronLabs/Kyron_Terms_and_Privacy),
+served at kyron-terms-and-privacy.onrender.com. Since 4 November 2026 they
+describe what this document does: the four decisions and what a suspension
+and a ban allow, appeals in the app for **180 days**, that a new account at a
+banned address starts banned, that decisions outlive a deleted account but
+its words do not, and that community chats are not end-to-end encrypted.
+Change them together with this file: the published pages are what an account
+holder is held to.
 
 ## Known limits
 

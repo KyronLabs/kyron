@@ -716,8 +716,21 @@ class SettingsContactSupportScreen extends StatelessWidget {
   ///
   /// Plenty of phones have no mail app set up, and an address that nothing
   /// happens on reads as a broken button.
-  static Future<void> _write(BuildContext context, String address) async {
-    final opened = await AppBrowser.leave(Uri(scheme: 'mailto', path: address));
+  static Future<void> _write(
+    BuildContext context,
+    String address, {
+    String? subject,
+  }) async {
+    final opened = await AppBrowser.leave(
+      Uri(
+        scheme: 'mailto',
+        path: address,
+        // Encoded by hand: Uri's queryParameters writes a space as "+",
+        // which some mail apps put in the subject as a plus sign.
+        query:
+            subject == null ? null : 'subject=${Uri.encodeComponent(subject)}',
+      ),
+    );
     if (opened || !context.mounted) return;
     await Clipboard.setData(ClipboardData(text: address));
     if (context.mounted) {
@@ -817,14 +830,22 @@ class SettingsContactSupportScreen extends StatelessWidget {
             title: 'Safety and abuse',
             detail: SupportLinks.abuse,
             leaves: true,
-            onTap: () => _write(context, SupportLinks.abuse),
+            onTap: () => _write(
+              context,
+              SupportLinks.abuse,
+              subject: SupportLinks.abuseSubject,
+            ),
           ),
           row(
             icon: Iconsax.lock_copy,
             title: 'Privacy and your data',
             detail: SupportLinks.privacy,
             leaves: true,
-            onTap: () => _write(context, SupportLinks.privacy),
+            onTap: () => _write(
+              context,
+              SupportLinks.privacy,
+              subject: SupportLinks.privacySubject,
+            ),
           ),
           const SizedBox(height: SpacingTokens.space12),
           const _Note(
