@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.35] - 2026-11-04
 ### Changed
 
 - **Comments breathe.** A reply's face sits under the words it answers,
@@ -2405,7 +2407,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.34...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.35...HEAD
+[0.1.35]: https://github.com/KyronLabs/kyron/compare/v0.1.34...v0.1.35
 [0.1.34]: https://github.com/KyronLabs/kyron/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/KyronLabs/kyron/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/KyronLabs/kyron/compare/v0.1.31...v0.1.32
