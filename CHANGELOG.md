@@ -22,9 +22,9 @@ the section; GitHub does not show it:
 ## [Unreleased]
 ### Changed
 
-- **Gifts on the heart sit in a row.** The tiny gifts on a post's heart now
-  line up side by side, the most valuable first, instead of piling upwards
-  into whatever sits above them.
+- **Gifts crown the heart.** The tiny gifts on a post's heart now sit on
+  it like a crown -- the most valuable in the middle, the next two either
+  side -- instead of piling up into whatever sits above them.
 
 ## [0.1.32] - 2026-11-04
 ### Added
