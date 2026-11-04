@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.32] - 2026-11-04
 ### Added
 
 - **Gifts show on the heart.** A post that has been sent gifts carries a
@@ -2351,7 +2353,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.31...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.32...HEAD
+[0.1.32]: https://github.com/KyronLabs/kyron/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/KyronLabs/kyron/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/KyronLabs/kyron/compare/v0.1.29...v0.1.30
 [0.1.29]: https://github.com/KyronLabs/kyron/compare/v0.1.28...v0.1.29
