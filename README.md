@@ -302,6 +302,6 @@ Kyron is MIT-licensed and open to contributions.
 
 <div align="center">
 
-*Kyron is built by [KyronLabs](https://github.com/KyronLabs), a subsidiary of [Spidroid Technologies Inc.](https://spidroid.com)*
+*Kyron is built by [KyronLabs](https://github.com/KyronLabs), a division of [Spidroid Technologies](https://spidroid.com)*
 
 </div>

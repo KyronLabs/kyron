@@ -20,17 +20,24 @@ class LegalLinks {
 
 /// Where to write, outside the app.
 ///
-/// The addresses the published privacy policy names, so the app and the
-/// policy never disagree. There used to be a Help Centre at help.kyron.so and
-/// a support@kyron.so here: Kyron does not own kyron.so, so the one never
-/// loaded and mail to the other went to whoever registers the name.
-/// Everything else goes through the app, to the team's private inbox.
+/// The address the published terms and privacy policy name, so the app and
+/// the policy never disagree. There used to be a Help Centre at help.kyron.so
+/// and a support@kyron.so here: Kyron does not own kyron.so, so the one never
+/// loaded and mail to the other went to whoever registers the name. Then
+/// abuse@ and privacy@spidroid.com, which the published pages no longer name.
+///
+/// One inbox, read by the person who runs Kyron. The subject line is what
+/// sorts it -- the same subjects the published pages ask for.
 class SupportLinks {
   const SupportLinks._();
 
+  static const email = 'spidroidtechnologiesinc@gmail.com';
+
   /// Harassment, threats, illegal content: what cannot wait for a report.
-  static const abuse = 'abuse@spidroid.com';
+  static const abuse = email;
+  static const abuseSubject = 'Abuse';
 
   /// Questions about what is kept about somebody, and requests to see it.
-  static const privacy = 'privacy@spidroid.com';
+  static const privacy = email;
+  static const privacySubject = 'Privacy';
 }

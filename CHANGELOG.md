@@ -20,6 +20,12 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Contact support writes to the inbox the published pages name.** Safety
+  and abuse, and Privacy and your data, now open a mail to
+  spidroidtechnologiesinc@gmail.com with the subject filled in, instead of
+  the @spidroid.com addresses the terms and privacy policy no longer use.
 
 ## [0.1.35] - 2026-11-04
 ### Changed

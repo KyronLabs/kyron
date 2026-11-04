@@ -77,8 +77,8 @@ void main() {
     expect(words, isNot(contains('open an issue')));
     expect(words, isNot(contains('kyron.so')));
     // The two the published privacy policy names, and nothing else.
-    expect(words, contains('abuse@spidroid.com'));
-    expect(words, contains('privacy@spidroid.com'));
+    expect(words, contains('spidroidtechnologiesinc@gmail.com'));
+    expect(words, isNot(contains('@spidroid.com')));
   });
 
   testWidgets('asking a question opens the form on a question', (
@@ -118,7 +118,8 @@ void main() {
     await _tap(tester, 'Safety and abuse');
     await tester.pumpAndSettle();
 
-    expect(phone.opened, ['mailto:abuse@spidroid.com']);
+    expect(phone.opened,
+        ['mailto:spidroidtechnologiesinc@gmail.com?subject=Abuse']);
     expect(phone.clipboard, isNull);
   });
 
@@ -134,10 +135,11 @@ void main() {
     await tester.pump();
     await tester.pump();
 
-    expect(phone.opened, ['mailto:privacy@spidroid.com']);
-    expect(phone.clipboard, 'privacy@spidroid.com');
-    expect(
-        find.textContaining('privacy@spidroid.com is copied'), findsOneWidget);
+    expect(phone.opened,
+        ['mailto:spidroidtechnologiesinc@gmail.com?subject=Privacy']);
+    expect(phone.clipboard, 'spidroidtechnologiesinc@gmail.com');
+    expect(find.textContaining('spidroidtechnologiesinc@gmail.com is copied'),
+        findsOneWidget);
     await tester.pump(const Duration(seconds: 6));
   });
 }
