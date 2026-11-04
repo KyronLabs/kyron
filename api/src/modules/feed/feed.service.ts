@@ -192,6 +192,13 @@ export interface FeedComment {
   likes: number;
   /** Whether the reader is one of them. */
   liked: boolean;
+  /** Whether the reader saved it. Saves are private: never anyone else's. */
+  saved: boolean;
+  /** The post it was written under. */
+  postId: string;
+  /** Gifts sent to it, and up to three of their kinds, best first. */
+  gifts: number;
+  topGifts: string[];
   /**
    * The post's author, when they liked this comment; null otherwise.
    *
@@ -2153,15 +2160,17 @@ export class FeedService {
         // Summed from the gifts themselves rather than read off
         // Post.giftCount: the coins are only on the rows, and a count and a
         // sum taken in two places can disagree.
+        // The post's own: a gift sent to one of its replies is the
+        // reply's, and its author's, not the post's.
         this.prisma.gift.groupBy({
           by: ['type'],
-          where: { postId },
+          where: { postId, commentId: null },
           _count: { _all: true },
           _sum: { coins: true },
         }),
         this.prisma.gift.groupBy({
           by: ['senderId'],
-          where: { postId, senderId: { not: null } },
+          where: { postId, commentId: null, senderId: { not: null } },
         }),
       ]);
 
@@ -2311,6 +2320,9 @@ export class FeedService {
       createdAt: true,
       parentId: true,
       authorId: true,
+      postId: true,
+      giftCount: true,
+      giftTypes: true,
       author: { select: this.authorShape },
       _count: { select: { replies: true, likes: true } },
       media: { select: this.mediaShape, orderBy: { position: 'asc' } },
@@ -2329,6 +2341,7 @@ export class FeedService {
     return {
       ...this.commentShape,
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
+      saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
     } as const;
   }
 
@@ -2358,6 +2371,10 @@ export class FeedService {
       byAuthor: postAuthorId !== null && row.authorId === postAuthorId,
       likes: row._count.likes ?? 0,
       liked: (row.likes?.length ?? 0) > 0,
+      saved: (row.saves?.length ?? 0) > 0,
+      postId: row.postId,
+      gifts: row.giftCount ?? 0,
+      topGifts: topGifts(row.giftTypes ?? []),
       authorLike: authorLikes.liked.has(row.id) ? authorLikes.author : null,
     };
   }
@@ -2520,6 +2537,106 @@ export class FeedService {
 
     const likes = await this.prisma.commentLike.count({ where: { commentId } });
     return { id: commentId, likes, liked };
+  }
+
+  /** Saves a comment, or takes the save back. Idempotent either way. */
+  async setCommentSaved(viewerId: string, commentId: string, saved: boolean) {
+    const comment = await this.prisma.comment.findFirst({
+      where: { id: commentId, deletedAt: null },
+      select: { id: true },
+    });
+    if (!comment) throw new NotFoundException('That comment does not exist.');
+
+    if (saved) {
+      await this.prisma.commentSave.createMany({
+        data: [{ userId: viewerId, commentId }],
+        skipDuplicates: true,
+      });
+    } else {
+      await this.prisma.commentSave.deleteMany({
+        where: { userId: viewerId, commentId },
+      });
+    }
+    return { id: commentId, saved };
+  }
+
+  /**
+   * The reader's saved comments, newest save first, each with the post it
+   * answers -- so the list can say what it was a reply to.
+   *
+   * Paged on the save, as saved posts are: the cursor is a CommentSave id.
+   * A comment deleted since, or under a post deleted since, leaves the list,
+   * as does anything by a banned account.
+   */
+  async listSavedComments(
+    viewerId: string,
+    limit = DEFAULT_LIMIT,
+    cursor?: string,
+  ): Promise<{
+    items: (FeedComment & {
+      onPost: { id: string; author: FeedComment['author'] };
+    })[];
+    nextCursor: string | null;
+  }> {
+    if (cursor) {
+      const anchor = await this.prisma.commentSave.findUnique({
+        where: { id: cursor },
+        select: { id: true },
+      });
+      if (!anchor) throw new NotFoundException('That page no longer exists.');
+    }
+
+    const rows = await this.prisma.commentSave.findMany({
+      where: {
+        userId: viewerId,
+        comment: {
+          deletedAt: null,
+          author: notBanned,
+          post: { deletedAt: null, author: notBanned },
+        },
+      },
+      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      take: limit + 1,
+      cursor: cursor ? { id: cursor } : undefined,
+      skip: cursor ? 1 : 0,
+      select: {
+        id: true,
+        comment: {
+          select: {
+            ...this.commentShapeFor(viewerId),
+            post: {
+              select: {
+                id: true,
+                authorId: true,
+                author: { select: this.authorShape },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const hasMore = rows.length > limit;
+    const page = hasMore ? rows.slice(0, limit) : rows;
+    return {
+      items: page.map(({ comment }) => {
+        const author = comment.post.author;
+        return {
+          ...this.toFeedComment(comment, viewerId, [], comment.post.authorId),
+          onPost: {
+            id: comment.post.id,
+            author: {
+              id: author.id,
+              name: author.name,
+              username: author.username,
+              avatarUrl: author.profile?.avatarUrl ?? null,
+              verified: !!author.verifiedAt,
+            },
+          },
+        };
+      }),
+      nextCursor: hasMore ? page[page.length - 1].id : null,
+    };
   }
 
   /**
@@ -2743,8 +2860,12 @@ interface CommentRow {
   };
   _count: { replies: number; likes?: number };
   media: FeedMedia[];
+  postId: string;
+  giftCount?: number;
+  giftTypes?: string[];
   /** Present only when the row was read through commentShapeFor. */
   likes?: { id: string }[];
+  saves?: { id: string }[];
 }
 
 interface AuthorRow {

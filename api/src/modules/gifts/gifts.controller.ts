@@ -41,4 +41,13 @@ export class GiftsController {
   ) {
     return this.svc.send(req.user.id, id, body);
   }
+
+  @Post('feed/comments/:id/gifts')
+  sendToComment(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: SendGiftDto,
+  ) {
+    return this.svc.sendToComment(req.user.id, id, body);
+  }
 }

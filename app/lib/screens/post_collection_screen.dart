@@ -7,6 +7,8 @@ import '../providers/feed_provider.dart';
 import '../widgets/post_list_view.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/saved_comments_list.dart';
+import '../widgets/section_tabs.dart';
 import '../l10n/app_localizations.dart';
 
 /// Your saved posts, or your liked posts.
@@ -75,6 +77,23 @@ class PostCollectionScreen extends StatelessWidget {
             'ui_could_not_load_saved_posts', 'Could not load your saved posts')
         : l10n.ui(
             'ui_could_not_load_liked_posts', 'Could not load your liked posts');
+    final posts = PostListView(
+      source: source,
+      errorTitle: localizedError,
+      emptyTitle: localizedEmptyTitle,
+      emptyDetail: localizedEmptyDetail,
+      emptyArt: emptyArt,
+      padding: const EdgeInsets.only(
+        top: SpacingTokens.space8,
+        bottom: SpacingTokens.space40,
+      ),
+    );
+    if (source == PostListSource.saved) {
+      return _SavedTabs(
+        title: l10n.ui('ui_saved', 'Saved'),
+        posts: posts,
+      );
+    }
     return Scaffold(
       appBar: KyronAppBar(
         leading: IconButton(
@@ -84,17 +103,57 @@ class PostCollectionScreen extends StatelessWidget {
         ),
         title: Text(localizedTitle),
       ),
+      body: SafeArea(child: posts),
+    );
+  }
+}
+
+/// Saved, in two: the posts kept, and the comments kept. A comment saved
+/// from under somebody's post has to be findable again, and a list of
+/// posts is not where anyone would look for it.
+class _SavedTabs extends StatefulWidget {
+  final String title;
+  final Widget posts;
+
+  const _SavedTabs({required this.title, required this.posts});
+
+  @override
+  State<_SavedTabs> createState() => _SavedTabsState();
+}
+
+class _SavedTabsState extends State<_SavedTabs>
+    with SingleTickerProviderStateMixin {
+  late final _tabs = TabController(length: 2, vsync: this);
+
+  @override
+  void dispose() {
+    _tabs.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Scaffold(
+      appBar: KyronAppBar(
+        leading: IconButton(
+          icon: const Icon(Iconsax.arrow_left_copy),
+          onPressed: () => Navigator.pop(context),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+        ),
+        title: Text(widget.title),
+        bottom: SectionTabs(
+          controller: _tabs,
+          labels: [
+            l10n.ui('ui_saved_tab_posts', 'Posts'),
+            l10n.ui('ui_saved_tab_comments', 'Comments'),
+          ],
+        ),
+      ),
       body: SafeArea(
-        child: PostListView(
-          source: source,
-          errorTitle: localizedError,
-          emptyTitle: localizedEmptyTitle,
-          emptyDetail: localizedEmptyDetail,
-          emptyArt: emptyArt,
-          padding: const EdgeInsets.only(
-            top: SpacingTokens.space8,
-            bottom: SpacingTokens.space40,
-          ),
+        child: TabBarView(
+          controller: _tabs,
+          children: [widget.posts, const SavedCommentsList()],
         ),
       ),
     );

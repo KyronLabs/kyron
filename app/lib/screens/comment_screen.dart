@@ -21,6 +21,7 @@ import '../widgets/comment_tile.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/jump_to_end.dart';
 import '../widgets/gif_picker_sheet.dart';
+import '../widgets/gift_sheet.dart';
 import '../widgets/reply_bar.dart';
 import '../widgets/thread.dart';
 import '../widgets/toast.dart';
@@ -69,7 +70,13 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
   }
 
   Future<void> _attachFromGallery() async {
-    final message = await _media.attachFromGallery();
+    final choice = await pickReplyAttachment(context);
+    if (choice == null || !mounted) return;
+    final message = switch (choice) {
+      ReplyAttachment.photo => await _media.attach(video: false),
+      ReplyAttachment.camera => await _media.capture(),
+      ReplyAttachment.video => await _media.attach(video: true),
+    };
     if (message != null && mounted) Toast.show(context, message);
   }
 
@@ -275,6 +282,23 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
               onOpen: isRoot ? null : () => _open(comment),
               onReply: () => _replyTo(comment),
               onLike: () => _like(comment),
+              onSave: () async {
+                final error = await _notifier.toggleSave(comment);
+                if (error != null && context.mounted) {
+                  Toast.show(context, error);
+                }
+              },
+              onGift: comment.mine
+                  ? null
+                  : (heart) => GiftSheet.openFor(
+                        heart,
+                        GiftTarget.comment(comment.id),
+                        onSent: (sent) => _notifier.giftsChanged(
+                          comment,
+                          sent.gifts,
+                          type: sent.type,
+                        ),
+                      ),
               onAction: (action) => _act(action, comment),
             ),
           );

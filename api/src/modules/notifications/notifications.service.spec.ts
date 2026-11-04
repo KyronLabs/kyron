@@ -295,10 +295,32 @@ describe('NotificationsService', () => {
           kind: 'gift',
           postId: 'p1',
           postSnippet: 'a post',
-          gift: { type: 'fire', coins: 5, name: 'Fire', emoji: '🔥' },
+          gift: {
+            type: 'fire',
+            coins: 5,
+            name: 'Fire',
+            emoji: '🔥',
+            onComment: false,
+          },
+          content: null,
         }),
       ]);
       expect(items[0].actor?.id).toBe('cy');
+    });
+
+    it('says when a gift went to your reply, and quotes the reply', async () => {
+      const { svc } = serviceWith({
+        gifts: [{ ...gift, comment: { content: 'thanks all' } }],
+      });
+
+      const { items } = await svc.list(ME, { gifts: true });
+
+      expect(items[0]).toMatchObject({
+        kind: 'gift',
+        postId: 'p1',
+        content: 'thanks all',
+        gift: { onComment: true },
+      });
     });
 
     it('counts them on the badge for an app that asked', async () => {

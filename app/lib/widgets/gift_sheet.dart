@@ -23,10 +23,22 @@ import 'gift_motion.dart';
 ///
 /// Two steps on purpose: a tap picks, and the button sends. A grid where a
 /// tap spends is a grid where a scroll that lands on a tile spends.
+/// What a gift goes to: a post, or one comment under it.
+///
+/// Only the id travels: the sheet needs nothing else about either, and the
+/// server works out who is paid -- the post's author, or the comment's.
+class GiftTarget {
+  final String id;
+  final bool isComment;
+
+  const GiftTarget.post(this.id) : isComment = false;
+  const GiftTarget.comment(this.id) : isComment = true;
+}
+
 abstract final class GiftSheet {
   /// Answers with what was sent, or null if nothing was.
   static Future<SentGift?> show(BuildContext context, FeedPost post) async =>
-      (await _show(context, post))?.sent;
+      (await _show(context, GiftTarget.post(post.id)))?.sent;
 
   /// What the sheet closed with -- or, when it was closed by hand after a
   /// gift had already gone, that gift, with nowhere to fly from.
@@ -34,12 +46,15 @@ abstract final class GiftSheet {
   /// A gift is sent the moment Send succeeds and the sheet then celebrates
   /// for a beat before closing itself. Swiping it away in that beat used to
   /// lose the result: the coins were spent and the heart never changed.
-  static Future<_Outcome?> _show(BuildContext context, FeedPost post) async {
+  static Future<_Outcome?> _show(
+    BuildContext context,
+    GiftTarget target,
+  ) async {
     final delivered = _Delivered();
     final closedWith = await showAppSheet<_Outcome>(
       context: context,
       isScrollControlled: true,
-      builder: (context) => _Sheet(post: post, delivered: delivered),
+      builder: (context) => _Sheet(target: target, delivered: delivered),
     );
     return closedWith ?? delivered.outcome;
   }
@@ -55,8 +70,17 @@ abstract final class GiftSheet {
     BuildContext heart,
     FeedPost post, {
     required void Function(SentGift sent) onSent,
+  }) =>
+      openFor(heart, GiftTarget.post(post.id), onSent: onSent);
+
+  /// [open], for whatever [target] is: a comment's heart opens the same
+  /// sheet, and the gift flies to that heart instead.
+  static Future<void> openFor(
+    BuildContext heart,
+    GiftTarget target, {
+    required void Function(SentGift sent) onSent,
   }) async {
-    final outcome = await _show(heart, post);
+    final outcome = await _show(heart, target);
     if (outcome == null) return;
     // Scrolled away or closed while the sheet was up: nothing to fly to.
     if (!heart.mounted) {
@@ -104,10 +128,10 @@ class _Delivered {
 }
 
 class _Sheet extends ConsumerStatefulWidget {
-  final FeedPost post;
+  final GiftTarget target;
   final _Delivered delivered;
 
-  const _Sheet({required this.post, required this.delivered});
+  const _Sheet({required this.target, required this.delivered});
 
   @override
   ConsumerState<_Sheet> createState() => _SheetState();
@@ -172,9 +196,12 @@ class _SheetState extends ConsumerState<_Sheet> {
       _error = null;
     });
     try {
-      final sent = await ref
-          .read(giftsRepositoryProvider)
-          .send(widget.post.id, gift.type, requestId: requestId);
+      final gifts = ref.read(giftsRepositoryProvider);
+      final target = widget.target;
+      final sent = target.isComment
+          ? await gifts.sendToComment(target.id, gift.type,
+              requestId: requestId)
+          : await gifts.send(target.id, gift.type, requestId: requestId);
       // Kept before anything else can happen, so a sheet closed during the
       // celebration still reports the gift it sent.
       widget.delivered.outcome = _Outcome(sent: sent, gift: gift);

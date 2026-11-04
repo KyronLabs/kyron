@@ -172,6 +172,10 @@ class PostAction extends StatefulWidget {
   /// the icon and the place a tap lands are exactly as they are without it.
   final Widget? topper;
 
+  /// The glyph's size: 17 on a post, a step down on a comment, which sits
+  /// under the post in the hierarchy and should not out-shout it.
+  final double iconSize;
+
   const PostAction({
     super.key,
     required this.icon,
@@ -186,6 +190,7 @@ class PostAction extends StatefulWidget {
     this.art,
     this.artKey,
     this.topper,
+    this.iconSize = 17,
   });
 
   @override
@@ -378,7 +383,7 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                   child: KeyedSubtree(
                     key: _iconKey,
                     child: widget.art ??
-                        Icon(widget.icon, size: 17, color: colour),
+                        Icon(widget.icon, size: widget.iconSize, color: colour),
                   ),
                 ),
               ),

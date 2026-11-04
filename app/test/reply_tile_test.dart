@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/post_comment.dart';
 import 'package:kyron_app/utils/format_count.dart';
 import 'package:kyron_app/widgets/comment_tile.dart';
+import 'package:kyron_app/widgets/post_action_colors.dart';
+import 'package:kyron_app/widgets/post_actions_row.dart' show GiftStack;
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 const _author = FeedAuthor(
@@ -12,15 +15,33 @@ const _author = FeedAuthor(
   name: 'Willow',
 );
 
-PostComment _reply({FeedAuthor? authorLike}) => PostComment(
+PostComment _reply({
+  FeedAuthor? authorLike,
+  int likes = 0,
+  int replies = 0,
+  bool liked = false,
+  bool saved = false,
+  List<String> topGifts = const [],
+}) =>
+    PostComment(
       id: 'c1',
       content: 'mmmn',
       createdAt: DateTime(2026, 3, 4),
       author: const FeedAuthor(id: 'u2', username: 'archieee'),
       authorLike: authorLike,
+      likes: likes,
+      replies: replies,
+      liked: liked,
+      saved: saved,
+      topGifts: topGifts,
     );
 
-Future<void> _pump(WidgetTester tester, PostComment comment) =>
+Future<void> _pump(
+  WidgetTester tester,
+  PostComment comment, {
+  VoidCallback? onSave,
+  void Function(BuildContext heart)? onGift,
+}) =>
     tester.pumpWidget(
       MaterialApp(
         theme: KyronTheme.lightTheme,
@@ -30,6 +51,8 @@ Future<void> _pump(WidgetTester tester, PostComment comment) =>
             onReply: () {},
             onLike: () {},
             onAction: (_) {},
+            onSave: onSave ?? () {},
+            onGift: onGift,
           ),
         ),
       ),
@@ -100,6 +123,85 @@ void main() {
         PostComment.fromJson(const {'id': 'c2', 'authorLike': null}).authorLike,
         isNull,
       );
+    });
+  });
+
+  group('the row under a reply', () {
+    testWidgets('likes in the same red as a post, not a pink of its own',
+        (tester) async {
+      await _pump(tester, _reply(liked: true, likes: 3));
+
+      final heart = tester.widget<Icon>(find.byIcon(Iconsax.heart));
+      expect(heart.color, PostActionColors.like);
+    });
+
+    testWidgets('keeps its buttons in the same place whatever the counts say',
+        (tester) async {
+      Future<double> replyX(PostComment c) async {
+        await _pump(tester, c);
+        return tester.getRect(find.byIcon(Iconsax.message_copy)).left;
+      }
+
+      final none = await replyX(_reply());
+      final many = await replyX(_reply(likes: 12));
+      expect(many, none);
+    });
+
+    testWidgets('puts save and share at the far end, share under the menu dots',
+        (tester) async {
+      var saved = 0;
+      await _pump(tester, _reply(), onSave: () => saved++);
+
+      final save = tester.getRect(find.byIcon(Iconsax.archive_add_copy));
+      final share = tester.getRect(find.byIcon(Iconsax.export_1_copy));
+      final menu = tester.getRect(find.byIcon(Iconsax.more_copy));
+      final reply = tester.getRect(find.byIcon(Iconsax.message_copy));
+      expect(save.left, greaterThan(reply.right + 100));
+      expect(share.left, greaterThan(save.right));
+      expect(share.center.dx, closeTo(menu.center.dx, 0.5));
+
+      await tester.tap(find.byIcon(Iconsax.archive_add_copy));
+      expect(saved, 1);
+    });
+
+    testWidgets('shows a saved reply as saved', (tester) async {
+      await _pump(tester, _reply(saved: true));
+      expect(find.byIcon(Iconsax.archive_tick), findsOneWidget);
+    });
+
+    testWidgets('holding the heart opens the gift sheet', (tester) async {
+      var held = 0;
+      await _pump(tester, _reply(), onGift: (_) => held++);
+
+      await tester.longPress(find.byIcon(Iconsax.heart_copy));
+      expect(held, 1);
+    });
+
+    testWidgets("wears the reply's gifts on its heart", (tester) async {
+      await _pump(tester, _reply(topGifts: const ['crown', 'rose']));
+      expect(find.byType(GiftStack), findsOneWidget);
+
+      await _pump(tester, _reply());
+      expect(find.byType(GiftStack), findsNothing);
+    });
+
+    test('reads saves and gifts from the server', () {
+      final c = PostComment.fromJson(const {
+        'id': 'c1',
+        'saved': true,
+        'postId': 'p9',
+        'gifts': 4,
+        'topGifts': ['gem', 'rose', 'spark', 'fire'],
+        'onPost': {
+          'id': 'p9',
+          'author': {'id': 'w', 'username': 'weaver'},
+        },
+      });
+      expect(c.saved, isTrue);
+      expect(c.postId, 'p9');
+      expect(c.gifts, 4);
+      expect(c.topGifts, ['gem', 'rose', 'spark']);
+      expect(c.onPostBy?.handle, '@weaver');
     });
   });
 

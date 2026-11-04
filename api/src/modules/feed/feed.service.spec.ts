@@ -1473,7 +1473,14 @@ describe('FeedService', () => {
       expect(groupBy).toHaveBeenCalledWith(
         expect.objectContaining({
           by: ['senderId'],
-          where: { postId: 'p1', senderId: { not: null } },
+          where: { postId: 'p1', commentId: null, senderId: { not: null } },
+        }),
+      );
+      // The post's own gifts only: one sent to a reply is the reply's.
+      expect(groupBy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          by: ['type'],
+          where: { postId: 'p1', commentId: null },
         }),
       );
     });

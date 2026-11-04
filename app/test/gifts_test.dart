@@ -165,6 +165,20 @@ void main() {
       );
     });
 
+    test('says when it went to your comment rather than your post', () {
+      final note = GiftNote.fromJson(const {
+        'type': 'gem',
+        'name': 'Gem',
+        'emoji': '💎',
+        'coins': 20,
+        'onComment': true,
+      });
+      expect(
+        notificationAction(l10n, NotificationType.gift, gift: note),
+        'sent a Gem to your comment',
+      );
+    });
+
     test('still makes sense without one', () {
       expect(
         notificationAction(l10n, NotificationType.gift),

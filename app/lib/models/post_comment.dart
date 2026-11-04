@@ -42,6 +42,21 @@ class PostComment {
   /// person whose post it is says the most.
   final FeedAuthor? authorLike;
 
+  /// Whether you saved it. Private: nobody else ever sees this.
+  final bool saved;
+
+  /// The post it was written under. Empty from an older server.
+  final String postId;
+
+  /// Gifts sent to it, and up to three of their kinds, best first -- drawn
+  /// on its heart as a post's are.
+  final int gifts;
+  final List<String> topGifts;
+
+  /// Who wrote the post it answers. Only on a saved comment, whose list has
+  /// no post in hand to say what it was a reply to.
+  final FeedAuthor? onPostBy;
+
   const PostComment({
     required this.id,
     required this.content,
@@ -56,6 +71,11 @@ class PostComment {
     this.likes = 0,
     this.liked = false,
     this.authorLike,
+    this.saved = false,
+    this.postId = '',
+    this.gifts = 0,
+    this.topGifts = const [],
+    this.onPostBy,
   });
 
   bool get isReply => parentId != null;
@@ -83,6 +103,23 @@ class PostComment {
         authorLike: json['authorLike'] is Map<String, dynamic>
             ? FeedAuthor.fromJson(json['authorLike'] as Map<String, dynamic>)
             : null,
+        saved: json['saved'] == true,
+        postId: json['postId'] as String? ??
+            (json['onPost'] as Map<String, dynamic>?)?['id'] as String? ??
+            '',
+        gifts: (json['gifts'] as num?)?.toInt() ?? 0,
+        topGifts: ((json['topGifts'] as List<dynamic>?) ?? const [])
+            .whereType<String>()
+            .where((t) => t.isNotEmpty)
+            .take(3)
+            .toList(),
+        onPostBy: (json['onPost'] as Map<String, dynamic>?)?['author']
+                is Map<String, dynamic>
+            ? FeedAuthor.fromJson(
+                (json['onPost'] as Map<String, dynamic>)['author']
+                    as Map<String, dynamic>,
+              )
+            : null,
       );
 
   /// [authorLike] replaces the author's like when given; [clearAuthorLike]
@@ -93,6 +130,9 @@ class PostComment {
     bool? liked,
     FeedAuthor? authorLike,
     bool clearAuthorLike = false,
+    bool? saved,
+    int? gifts,
+    List<String>? topGifts,
   }) =>
       PostComment(
         id: id,
@@ -108,6 +148,11 @@ class PostComment {
         likes: likes ?? this.likes,
         liked: liked ?? this.liked,
         authorLike: clearAuthorLike ? null : (authorLike ?? this.authorLike),
+        saved: saved ?? this.saved,
+        postId: postId,
+        gifts: gifts ?? this.gifts,
+        topGifts: topGifts ?? this.topGifts,
+        onPostBy: onPostBy,
       );
 
   /// This comment with the reader's like set to [wanted]. When the reader is
