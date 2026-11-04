@@ -34,8 +34,11 @@ the section; GitHub does not show it:
   The screen now stays, and the gift still counts on the heart.
 - **The lens camera is no longer dark while recording.** The last release's
   attempt at keeping lens videos upright darkened the picture instead, and
-  has been undone. Lens videos can still turn sideways on some phones; a
-  proper fix is on its way.
+  has been undone.
+- **Lens videos stay upright.** A video with a face lens is now recorded
+  from the same frames the face is tracked in, instead of by the camera,
+  which on many phones turned the picture on its side the moment recording
+  started. The lens also lines up with the video frame by frame.
 
 ## [0.1.31] - 2026-11-03
 ### Fixed
