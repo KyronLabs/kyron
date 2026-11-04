@@ -66,12 +66,6 @@ dependencies:
   web_socket_channel: ^3.0.3
   cryptography: ^2.9.0
   camera: ^0.12.0+1
-  # Named rather than left to `camera`'s choice, because the app subclasses
-  # it: see services/lens_camera.dart for why a lens recording needs one
-  # stream fewer than the plugin binds. Pinned to the version that subclass
-  # was written against; read it again before moving this.
-  camera_android_camerax: 0.7.2
-  camera_platform_interface: ^2.13.0
   mediapipe_face_mesh: ^2.9.0
   # Push notifications. The server half has been finished since the
   # notifications work; these are what finally supply a device token to send
