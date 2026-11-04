@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/legacy.dart';
 
 import 'package:image_picker/image_picker.dart';
 
+import '../models/gift.dart';
 import '../models/feed_post.dart';
 import '../models/post_comment.dart';
 import '../models/post_media.dart';
@@ -523,6 +524,8 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
       post: post.copyWith(
         gifts: gifts,
         viewerGift: type == null || type.isEmpty ? null : type,
+        topGifts:
+            type == null || type.isEmpty ? null : withGift(post.topGifts, type),
       ),
     );
     _ref

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
+import '../models/gift.dart';
 import '../models/feed_post.dart';
 import '../repositories/feed_repository.dart';
 import '../services/impression_reporter.dart';
@@ -272,6 +273,9 @@ class PostListNotifier extends StateNotifier<FeedState> {
         post.copyWith(
           gifts: gifts,
           viewerGift: type == null || type.isEmpty ? null : type,
+          topGifts: type == null || type.isEmpty
+              ? null
+              : withGift(post.topGifts, type),
         ),
       );
     }

@@ -20,6 +20,13 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Gifts show on the heart.** A post that has been sent gifts carries a
+  tiny stack of them on its heart -- the most valuable on top, three at
+  most -- so anyone can see it was given something. The like count is
+  untouched.
+
 ### Fixed
 
 - **Closing the gift sheet mid-celebration no longer blacks out the app.**

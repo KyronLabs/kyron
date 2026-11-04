@@ -6,7 +6,7 @@ import { InterestKind } from '@prisma/client';
 import { InterestTaste, TasteSignal } from './interest-taste';
 import { Test } from '@nestjs/testing';
 import { ListFeedDto } from './dto/list-feed.dto';
-import { FeedService } from './feed.service';
+import { FeedService, topGifts } from './feed.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { MediaService } from '../media/media.service';
@@ -1476,6 +1476,24 @@ describe('FeedService', () => {
           where: { postId: 'p1', senderId: { not: null } },
         }),
       );
+    });
+  });
+
+  describe('topGifts', () => {
+    it('stacks the most valuable first, three at most, each once', () => {
+      expect(topGifts(['spark', 'rose', 'rocket', 'rose', 'gem'])).toEqual([
+        'rocket',
+        'gem',
+        'rose',
+      ]);
+    });
+
+    it('puts a kind no longer sold last rather than dropping it', () => {
+      expect(topGifts(['retired', 'spark'])).toEqual(['spark', 'retired']);
+    });
+
+    it('is empty for a post nobody has given anything', () => {
+      expect(topGifts([])).toEqual([]);
     });
   });
 

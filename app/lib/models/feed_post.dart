@@ -31,6 +31,10 @@ class FeedPost {
   /// Drawn in place of the heart.
   final String? viewerGift;
 
+  /// The kinds of gift it has been given by anyone, most valuable first, at
+  /// most three. Stacked, tiny, on its heart.
+  final List<String> topGifts;
+
   /// Attachments, in the order the author put them.
   final List<PostMedia> media;
 
@@ -71,6 +75,7 @@ class FeedPost {
     this.reposts = 0,
     this.gifts = 0,
     this.viewerGift,
+    this.topGifts = const [],
     this.media = const [],
     this.quotedPost,
     this.replyPolicy = ReplyPolicy.everyone,
@@ -96,6 +101,11 @@ class FeedPost {
         reposts: (json['reposts'] as num?)?.toInt() ?? 0,
         gifts: (json['gifts'] as num?)?.toInt() ?? 0,
         viewerGift: json['viewerGift'] as String?,
+        topGifts: (json['topGifts'] as List<dynamic>? ?? const [])
+            .whereType<String>()
+            .where((type) => type.isNotEmpty)
+            .take(3)
+            .toList(),
         media: PostMedia.listFrom(json['media']),
         quotedPost: json['quotedPost'] is Map<String, dynamic>
             ? QuotedPost.fromJson(json['quotedPost'] as Map<String, dynamic>)
@@ -119,6 +129,7 @@ class FeedPost {
     int? reposts,
     int? gifts,
     String? viewerGift,
+    List<String>? topGifts,
     bool? liked,
     bool? saved,
     bool? reposted,
@@ -134,6 +145,7 @@ class FeedPost {
         reposts: reposts ?? this.reposts,
         gifts: gifts ?? this.gifts,
         viewerGift: viewerGift ?? this.viewerGift,
+        topGifts: topGifts ?? this.topGifts,
         media: media,
         quotedPost: quotedPost,
         replyPolicy: replyPolicy,

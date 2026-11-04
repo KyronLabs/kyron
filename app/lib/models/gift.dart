@@ -1,5 +1,28 @@
 // lib/models/gift.dart
 
+/// The gift types from least to most valuable, as the catalogue prices them.
+///
+/// Only for ordering the stack on a post's heart when this reader adds to it,
+/// before the server has said; the server's order wins on the next read.
+const giftRank = [
+  'spark',
+  'rose',
+  'fire',
+  'star',
+  'gem',
+  'cake',
+  'crown',
+  'rocket',
+];
+
+/// [types] with [type] added, most valuable first, three at most.
+List<String> withGift(List<String> types, String type) {
+  int rank(String t) => giftRank.indexOf(t);
+  final all = {...types, type}.toList()
+    ..sort((a, b) => rank(b).compareTo(rank(a)));
+  return all.take(3).toList();
+}
+
 /// One gift a reader can send, as GET /gifts lists it.
 ///
 /// The catalogue is the server's: names and prices come from there, so a

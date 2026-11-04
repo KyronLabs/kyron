@@ -99,6 +99,9 @@ class PostActionsRow extends StatelessWidget {
               ? null
               : GiftArt(type: post.viewerGift!, size: 21),
           artKey: post.viewerGift,
+          // What the post has been given, by anyone: a tiny stack on the
+          // heart, the most valuable on top.
+          topper: post.topGifts.isEmpty ? null : GiftStack(post.topGifts),
           label: showCounts && post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
           activeColor: PostActionColors.like,
@@ -165,6 +168,10 @@ class PostAction extends StatefulWidget {
   /// without this it is unreachable for anybody not looking at the screen.
   final String? longPressHint;
 
+  /// Drawn just above the icon, taking no room: the row, the count beside
+  /// the icon and the place a tap lands are exactly as they are without it.
+  final Widget? topper;
+
   const PostAction({
     super.key,
     required this.icon,
@@ -178,6 +185,7 @@ class PostAction extends StatefulWidget {
     this.longPressHint,
     this.art,
     this.artKey,
+    this.topper,
   });
 
   @override
@@ -329,6 +337,27 @@ class _PostActionState extends State<PostAction> with TickerProviderStateMixin {
                           ),
                         ),
                       Transform.scale(scale: scale, child: child),
+                      if (widget.topper != null)
+                        // Its bottom on the icon's top. Outside the icon's
+                        // box, which the Stack above lets it paint into, and
+                        // out of hit testing, so it never takes a tap.
+                        Positioned.fill(
+                          child: IgnorePointer(
+                            // Unbounded, so a stack taller than the icon is
+                            // its own height rather than squeezed into the
+                            // icon's -- squeezed, its last gift sat on the
+                            // heart.
+                            child: OverflowBox(
+                              maxWidth: double.infinity,
+                              maxHeight: double.infinity,
+                              alignment: Alignment.topCenter,
+                              child: FractionalTranslation(
+                                translation: const Offset(0, -1),
+                                child: widget.topper,
+                              ),
+                            ),
+                          ),
+                        ),
                     ],
                   );
                 },
@@ -438,4 +467,46 @@ double liftCurve(double t) {
 String countLabel(int value, String singular, {String? plural}) {
   final word = value == 1 ? singular : (plural ?? '${singular}s');
   return '${formatCount(value)} $word';
+}
+
+/// The gifts a post has been given, stacked on its heart: each one tiny and
+/// overlapping the one under it, the most valuable on top.
+///
+/// Tiny on purpose. It says "people gave this something" at a glance without
+/// competing with the heart or the count beside it, which are the likes.
+class GiftStack extends StatelessWidget {
+  /// Most valuable first, as the API sends them.
+  final List<String> types;
+
+  const GiftStack(this.types, {super.key});
+
+  /// Each gift's size, and how much of the one below each covers.
+  static const double size = 11;
+  static const double step = 6;
+
+  @override
+  Widget build(BuildContext context) {
+    final shown = types.take(3).toList();
+    final names = shown.map((t) => t[0].toUpperCase() + t.substring(1));
+    return Semantics(
+      label: 'Gifted: ${names.join(', ')}',
+      child: SizedBox(
+        width: size,
+        height: size + step * (shown.length - 1),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            // The cheapest first, so the most valuable is drawn last: on top,
+            // both in the stack and in paint.
+            for (var i = shown.length - 1; i >= 0; i--)
+              Positioned(
+                left: 0,
+                top: step * i,
+                child: GiftArt(type: shown[i], size: size),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 }

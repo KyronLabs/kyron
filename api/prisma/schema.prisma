@@ -235,6 +235,11 @@ model Post {
   /// deliberately not read by ranking: a feed that money can move is not the
   /// feed the README describes.
   giftCount    Int @default(0)
+  /// Each kind of gift it has been sent, once each, in the order they first
+  /// arrived. Maintained by GiftsService with giftCount, so a feed page can
+  /// draw a post's gifts without a query per post. Never shrinks: a gift is
+  /// never taken back.
+  giftTypes    String[] @default([])
 
   author      User             @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   likes       PostLike[]
