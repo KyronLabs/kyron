@@ -99,8 +99,8 @@ class PostActionsRow extends StatelessWidget {
               ? null
               : GiftArt(type: post.viewerGift!, size: 21),
           artKey: post.viewerGift,
-          // What the post has been given, by anyone: a tiny row on the
-          // heart, the most valuable first.
+          // What the post has been given, by anyone: a tiny crown on the
+          // heart, the most valuable in the middle.
           topper: post.topGifts.isEmpty ? null : GiftStack(post.topGifts),
           label: showCounts && post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
@@ -471,44 +471,106 @@ String countLabel(int value, String singular, {String? plural}) {
   return '${formatCount(value)} $word';
 }
 
-/// The gifts a post has been given, in a row on its heart: each one tiny and
-/// overlapping the next, the most valuable first and in front.
+/// The gifts a post has been given, worn on its heart like a crown.
 ///
-/// A row, not a tower: three gifts piled upwards stood twice as tall above
-/// the heart and ran into what sits above the action row.
+/// The most valuable sits in the notch at the top of the heart, in front and
+/// a little raised; the next two, smaller, rest on its lobes behind it,
+/// tipped outwards. Each is cut out of what is behind it by a thin outline in
+/// the page's colour, the way a sticker is, so three gifts overlapping each
+/// other and the heart's line still read as three things at 11 points.
 ///
-/// Tiny on purpose. It says "people gave this something" at a glance without
-/// competing with the heart or the count beside it, which are the likes.
+/// Low on purpose. A tower of three, or a row floating over the icon, stood
+/// in the 8 points between the row and the words above it; worn on the
+/// heart, the crown rises only [rise] above the icon's top.
+///
+/// Tiny on purpose, too: it says "people gave this something" at a glance
+/// without competing with the heart or the count beside it, which are the
+/// likes.
 class GiftStack extends StatelessWidget {
   /// Most valuable first, as the API sends them.
   final List<String> types;
 
   const GiftStack(this.types, {super.key});
 
-  /// Each gift's size, and how far along each one starts from the last.
+  /// The crown's gift, and the two beside it.
   static const double size = 11;
-  static const double step = 6;
+  static const double sideSize = 7.5;
+
+  /// How far the crown reaches above the icon's top: the rest of it sits
+  /// down on the heart.
+  static const double rise = 8.5;
+
+  /// The outline that cuts each gift out of what is behind it.
+  static const double cut = 0.9;
+
+  /// Where each gift sits, from the crown's centre: across, down, its tilt
+  /// in turns, and its size. The second gift takes the left lobe.
+  static const _slots = [
+    (dx: 0.0, dy: 0.0, turn: 0.0, size: size),
+    (dx: -6.5, dy: 1.6, turn: -0.045, size: sideSize),
+    (dx: 6.5, dy: 1.6, turn: 0.045, size: sideSize),
+  ];
+
+  /// With two gifts there is no middle: the best on the left, in front,
+  /// leaning in on the second.
+  static const _pair = [
+    (dx: -2.5, dy: 0.0, turn: -0.02, size: size),
+    (dx: 5.0, dy: 1.6, turn: 0.045, size: sideSize),
+  ];
+
+  static const double width = size + 2 * (6.5 + sideSize / 2 - size / 2) + 2;
+  static const double height = size + 2;
 
   @override
   Widget build(BuildContext context) {
     final shown = types.take(3).toList();
     final names = shown.map((t) => t[0].toUpperCase() + t.substring(1));
+    final slots = shown.length == 2 ? _pair : _slots;
+    final page = Theme.of(context).scaffoldBackgroundColor;
     return Semantics(
       label: 'Gifted: ${names.join(', ')}',
+      // Paint only: the box above the icon stays [rise] tall, and the crown
+      // is drawn down onto the heart from there.
       child: SizedBox(
-        width: size + step * (shown.length - 1),
-        height: size,
+        width: width,
+        height: rise,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            // The cheapest first, so the most valuable is drawn last: first
-            // in the row, and in front of the one it overlaps.
+            // The least valuable first, so the best is drawn last: in front.
             for (var i = shown.length - 1; i >= 0; i--)
-              Positioned(
-                left: step * i,
-                top: 0,
-                child: GiftArt(type: shown[i], size: size),
-              ),
+              _gift(shown[i], slots[i], page),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _gift(
+    String type,
+    ({double dx, double dy, double turn, double size}) slot,
+    Color page,
+  ) {
+    final box = slot.size + 2 * cut;
+    return Positioned(
+      left: width / 2 + slot.dx - box / 2,
+      // The crown's top at the box's top; the side gifts lower, on the lobes.
+      top: (size - slot.size) / 2 + slot.dy - cut,
+      width: box,
+      height: box,
+      child: RotationTransition(
+        turns: AlwaysStoppedAnimation(slot.turn),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // The cut: the gift's own shape, a little bigger, in the page's
+            // colour -- it follows the art, where a disc would read as a
+            // badge.
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(page, BlendMode.srcIn),
+              child: GiftArt(type: type, size: box),
+            ),
+            GiftArt(type: type, size: slot.size),
           ],
         ),
       ),

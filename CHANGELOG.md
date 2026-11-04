@@ -20,6 +20,11 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Gifts crown the heart.** The tiny gifts on a post's heart now sit on
+  it like a crown -- the most valuable in the middle, the next two either
+  side -- overlapping cleanly, instead of a row floating above it.
 
 ## [0.1.33] - 2026-11-04
 ### Changed
