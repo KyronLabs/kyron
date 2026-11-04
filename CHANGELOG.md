@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.34] - 2026-11-04
 ### Added
 
 - **Save a comment.** Comments have a save button beside share, and Saved
@@ -2391,7 +2393,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.33...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.34...HEAD
+[0.1.34]: https://github.com/KyronLabs/kyron/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/KyronLabs/kyron/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/KyronLabs/kyron/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/KyronLabs/kyron/compare/v0.1.30...v0.1.31
