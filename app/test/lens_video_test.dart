@@ -164,6 +164,25 @@ void main() {
     });
   });
 
+  testWidgets('a video recorded from frames is always baked, with its sound',
+      (t) async {
+    // It has no sound of its own, so skipping the bake for a lens that drew
+    // nothing would post it silent.
+    await t.runAsync(() async {
+      final job = (await LensVideoBaker(run: (_) async => null).describe(
+        input: 'frames.mp4',
+        output: 'out.mp4',
+        lens: Lens.builtIn.first,
+        timeline: const [],
+        frame: frame,
+        work: Directory('${dir.path}/work'),
+        audio: 'sound.m4a',
+      ))!;
+      expect(job['audio'], 'sound.m4a');
+      expect(job['input'], 'frames.mp4');
+    });
+  });
+
   test('a lens that changes nothing leaves the file alone', () async {
     var ran = false;
     final out = await LensVideoBaker(

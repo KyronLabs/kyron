@@ -204,6 +204,38 @@ run('gifts, against a real database', () => {
     expect((await feed.getPost(post, ada)).viewerGift).toBeNull();
   });
 
+  it('keeps each kind it was sent once, and stacks the best on top', async () => {
+    // spark, fire, gem and crown by now, some of them twice.
+    const row = await prisma.post.findUniqueOrThrow({
+      where: { id: post },
+      select: { giftTypes: true, giftCount: true },
+    });
+    expect([...row.giftTypes].sort()).toEqual([
+      'crown',
+      'fire',
+      'gem',
+      'spark',
+    ]);
+    expect(row.giftCount).toBe(6);
+
+    const feed = new FeedService(
+      prisma as PrismaService,
+      new ModerationService(
+        prisma as PrismaService,
+        {} as unknown as EnforcementService,
+      ),
+      new RankingService(),
+      delivery,
+    );
+    // Everyone sees the stack, not only those who gave: most valuable first,
+    // three at most.
+    expect((await feed.getPost(post, ada)).topGifts).toEqual([
+      'crown',
+      'gem',
+      'fire',
+    ]);
+  });
+
   it("shows the post's picture on its notification, and none for words alone", async () => {
     const notifications = new NotificationsService(prisma as PrismaService);
     const pictured = (

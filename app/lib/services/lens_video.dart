@@ -119,6 +119,7 @@ class LensVideoBaker {
     List<ResolvedAttachment> attachments = const [],
     Rect crop = const Rect.fromLTWH(0, 0, 1, 1),
     bool mirror = false,
+    String? audio,
   }) async {
     final job = await describe(
       input: input,
@@ -130,6 +131,7 @@ class LensVideoBaker {
       attachments: attachments,
       crop: crop,
       mirror: mirror,
+      audio: audio,
     );
     if (job == null) return input;
     final baked = await run(job);
@@ -143,7 +145,8 @@ class LensVideoBaker {
   ///
   /// `matrix` and `wash` are Flutter's 4x5 colour matrices, offsets in
   /// 0-255. `blur` is the spread as a share of the frame's width. `crop` is
-  /// left, top, width, height as fractions. `overlays` and `masks` are
+  /// left, top, width, height as fractions. `audio` is a separate sound file
+  /// to lay in, or null when the input has its own. `overlays` and `masks` are
   /// `{at: microseconds, path}`, sorted, each on screen until the next.
   Future<Map<String, Object?>?> describe({
     required String input,
@@ -155,6 +158,7 @@ class LensVideoBaker {
     List<ResolvedAttachment> attachments = const [],
     Rect crop = const Rect.fromLTWH(0, 0, 1, 1),
     bool mirror = false,
+    String? audio,
   }) async {
     final effects = lens.effects;
     final fills = effects.whereType<FillEffect>().toList();
@@ -164,7 +168,15 @@ class LensVideoBaker {
         !frame.isEmpty && timeline.isNotEmpty && (draws || fills.isNotEmpty);
 
     final whole = crop == const Rect.fromLTWH(0, 0, 1, 1);
-    if (lens.matrix == null && !masked && !overlaid && whole && !mirror) {
+    // A separate sound file means a video recorded from the tracking frames,
+    // which has none of its own: it is baked whatever else, or it would be
+    // posted silent.
+    if (lens.matrix == null &&
+        !masked &&
+        !overlaid &&
+        whole &&
+        !mirror &&
+        audio == null) {
       return null;
     }
 
@@ -207,6 +219,7 @@ class LensVideoBaker {
       'wash': frost == null ? null : washMatrix(frost.desaturate, frost.lift),
       'crop': [crop.left, crop.top, crop.width, crop.height],
       'mirror': mirror,
+      'audio': audio,
     };
   }
 

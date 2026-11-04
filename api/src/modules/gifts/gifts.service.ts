@@ -164,10 +164,17 @@ export class GiftsService {
           },
         ],
       });
-      await tx.post.update({
-        where: { id: postId },
-        data: { giftCount: { increment: 1 } },
-      });
+      // One statement, so two gifts of new kinds arriving at once both land:
+      // a read-then-write would lose one of them.
+      await tx.$executeRaw`
+        UPDATE "Post"
+        SET "giftCount" = "giftCount" + 1,
+            "giftTypes" = CASE
+              WHEN ${kind.type} = ANY("giftTypes") THEN "giftTypes"
+              ELSE array_append("giftTypes", ${kind.type}::text)
+            END
+        WHERE id = ${postId}::uuid
+      `;
       return {
         result: await this.answer(tx, gift, senderId, now),
         created: true,

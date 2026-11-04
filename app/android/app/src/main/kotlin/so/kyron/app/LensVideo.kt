@@ -22,6 +22,7 @@ import androidx.media3.effect.GlShaderProgram
 import androidx.media3.effect.ScaleAndRotateTransformation
 import androidx.media3.transformer.Composition
 import androidx.media3.transformer.EditedMediaItem
+import androidx.media3.transformer.EditedMediaItemSequence
 import androidx.media3.transformer.Effects
 import androidx.media3.transformer.ExportException
 import androidx.media3.transformer.ExportResult
@@ -83,6 +84,12 @@ class LensVideo(private val context: Context, messenger: BinaryMessenger) {
         /** The visible part of the frame, as fractions of it. */
         val crop: FloatArray,
         val mirror: Boolean,
+        /**
+         * The sound, recorded on its own, for a video recorded from the
+         * tracking frames (LensRecorder.kt), which has none. Null when the
+         * input carries its own.
+         */
+        val audio: String?,
     ) {
         companion object {
             fun from(args: Map<*, *>): Job {
@@ -106,6 +113,7 @@ class LensVideo(private val context: Context, messenger: BinaryMessenger) {
                     crop = floats("crop")?.also { require(it.size == 4) }
                         ?: floatArrayOf(0f, 0f, 1f, 1f),
                     mirror = args["mirror"] == true,
+                    audio = args["audio"] as? String,
                 )
             }
         }
@@ -130,9 +138,23 @@ class LensVideo(private val context: Context, messenger: BinaryMessenger) {
             effects += ScaleAndRotateTransformation.Builder().setScale(-1f, 1f).build()
         }
 
-        val item = EditedMediaItem.Builder(MediaItem.fromUri(android.net.Uri.fromFile(File(job.input))))
+        val video = EditedMediaItem.Builder(MediaItem.fromUri(android.net.Uri.fromFile(File(job.input))))
             .setEffects(Effects(emptyList(), effects))
             .build()
+        // A video recorded from the tracking frames has no sound of its own:
+        // it is laid in from the recording made alongside, as a second,
+        // audio-only sequence of the same composition.
+        val audio = job.audio?.let {
+            EditedMediaItem.Builder(MediaItem.fromUri(android.net.Uri.fromFile(File(it))))
+                .setRemoveVideo(true)
+                .build()
+        }
+        val composition = Composition.Builder(
+            buildList {
+                add(EditedMediaItemSequence.withVideoFrom(listOf(video)))
+                if (audio != null) add(EditedMediaItemSequence.withAudioFrom(listOf(audio)))
+            },
+        ).build()
 
         // Transformer wants the thread it was built on to have a Looper, and
         // calls back on it. The main thread has one, and the work itself runs
@@ -167,7 +189,7 @@ class LensVideo(private val context: Context, messenger: BinaryMessenger) {
                         }
                     })
                     .build()
-                    .start(item, job.output)
+                    .start(composition, job.output)
             } catch (error: Exception) {
                 answer { result.error("export-failed", error.message, null) }
             }

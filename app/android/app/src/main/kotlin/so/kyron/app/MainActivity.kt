@@ -90,6 +90,8 @@ class MainActivity : FlutterFragmentActivity() {
         super.configureFlutterEngine(flutterEngine)
         // Lenses on video: see LensVideo and lib/services/lens_video.dart.
         LensVideo(applicationContext, flutterEngine.dartExecutor.binaryMessenger)
+        // A lens video's frames, encoded as they are tracked: see LensRecorder.
+        LensRecorder(flutterEngine.dartExecutor.binaryMessenger)
         channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).apply {
             setMethodCallHandler { call, result ->
                 when (call.method) {

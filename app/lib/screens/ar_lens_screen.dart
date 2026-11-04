@@ -12,6 +12,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/face_anchor.dart';
@@ -27,6 +28,7 @@ import '../services/attachment_images.dart';
 import '../services/exposure_meter.dart';
 import '../services/face_tracker.dart';
 import '../services/lens_catalogue.dart';
+import '../services/lens_recorder.dart';
 import '../services/lens_renderer.dart';
 import '../services/lens_video.dart';
 import '../services/platform_support.dart';
@@ -596,6 +598,23 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   void _onFrame(CameraImage frame) {
     if (!_streaming || !mounted) return;
 
+    // Recording from these frames: each goes to the encoder first, stamped
+    // with the clock the lens timeline is, so the lens lands on the frame it
+    // was tracked in.
+    final frames = _frames;
+    if (_recording && frames != null) {
+      final plane = frame.planes.first;
+      frames.add(
+        RecorderFrame(
+          bytes: plane.bytes,
+          width: frame.width,
+          height: frame.height,
+          stride: plane.bytesPerRow,
+        ),
+        _recorded.elapsed,
+      );
+    }
+
     final rotation = _rotation;
     final points = _tracker.track(frame, rotationDegrees: rotation);
     // Upright: the tracker turned the frame before it looked, and its
@@ -793,6 +812,13 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
     final lens = _lens;
     _timeline.clear();
+
+    // A face lens on Android is recorded from the tracking frames, not by the
+    // camera. See LensFrameRecorder for why.
+    if (lens.needsFace && Platform.isAndroid && await _recordFromFrames(lens)) {
+      return;
+    }
+
     try {
       // The frames that track the face are handed over by the recording
       // itself: the camera will not run a plain image stream and a recording
@@ -834,7 +860,117 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
     }
   }
 
+  /// The frames of the recording running now, when it is being recorded
+  /// from them; null for a recording the camera makes.
+  LensFrameRecorder? _frames;
+
+  /// Its sound, recorded alongside.
+  AudioRecorder? _sound;
+  String? _soundPath;
+
+  /// Starts a recording from the tracking frames: the image stream that is
+  /// already running keeps running, and nothing new is asked of the camera.
+  ///
+  /// False when the tracker cannot run, in which case the camera records
+  /// the clip itself and the lens is left out, as said.
+  Future<bool> _recordFromFrames(Lens lens) async {
+    if (!_tracker.isReady && !await _tracker.open()) return false;
+    if (!_streaming) await _startTracking();
+    if (!_streaming || !mounted) return false;
+
+    final directory = await getTemporaryDirectory();
+    final stamp = DateTime.now().millisecondsSinceEpoch;
+    final frames = LensFrameRecorder()
+      ..begin(
+        path: p.join(directory.path, 'lens_frames_$stamp.mp4'),
+        rotationDegrees: _rotation,
+      );
+
+    // The sound, if the microphone is ours to use. A video without it is
+    // still a video; one refused for want of a microphone is not.
+    final sound = AudioRecorder();
+    String? soundPath;
+    try {
+      if (await sound.hasPermission()) {
+        soundPath = p.join(directory.path, 'lens_sound_$stamp.m4a');
+        await sound.start(
+          const RecordConfig(numChannels: 1),
+          path: soundPath,
+        );
+      }
+    } catch (error) {
+      AppLog.instance.error('ar', 'Could not record the sound: $error');
+      soundPath = null;
+    }
+    if (!mounted) {
+      await frames.cancel();
+      await sound.dispose();
+      return true;
+    }
+
+    HapticFeedback.mediumImpact();
+    _frames = frames;
+    _sound = sound;
+    _soundPath = soundPath;
+    _recordingLens = lens;
+    setState(() => _recording = true);
+    _recorded
+      ..reset()
+      ..start();
+    _recordTicker = Timer.periodic(const Duration(milliseconds: 100), (_) {
+      if (!mounted) return;
+      if (_recorded.elapsed >= ArLensScreen.maxRecording) {
+        _stopRecording();
+      } else {
+        setState(() {});
+      }
+    });
+    return true;
+  }
+
+  /// Ends a recording made from the tracking frames, and bakes it with its
+  /// sound. The image stream keeps running: the lens is still on.
+  Future<void> _stopFrameRecording(LensFrameRecorder frames) async {
+    _frames = null;
+    final sound = _sound;
+    final soundPath = _soundPath;
+    _sound = null;
+    _soundPath = null;
+    _endRecordingState();
+    setState(() => _capturing = true);
+    try {
+      final video = await frames.finish();
+      String? recordedSound;
+      try {
+        recordedSound = await sound?.stop() ?? soundPath;
+      } catch (error) {
+        AppLog.instance.error('ar', 'Could not finish the sound: $error');
+      }
+      await sound?.dispose();
+      if (video == null) throw StateError('No frames were recorded.');
+      if (!mounted) return;
+      setState(() => _applying = true);
+      final baked = await _bakeVideo(video, sound: recordedSound);
+      if (!mounted) return;
+      _toComposer(baked, MediaKind.video);
+    } catch (error) {
+      AppLog.instance.error('ar', 'Could not finish recording: $error');
+      if (!mounted) return;
+      _say(AppLocalizations.of(context)
+          .ui('ar_could_not_record', 'The video could not be recorded.'));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _capturing = false;
+          _applying = false;
+        });
+      }
+    }
+  }
+
   Future<void> _stopRecording() async {
+    final frames = _frames;
+    if (frames != null && _recording) return _stopFrameRecording(frames);
     final controller = _controller;
     if (controller == null || !_recording) return;
     _endRecordingState();
@@ -869,7 +1005,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
 
   /// The recording with its lens in it, cropped and turned as the
   /// viewfinder showed it -- the same promise the still keeps.
-  Future<String> _bakeVideo(String recorded) async {
+  Future<String> _bakeVideo(String recorded, {String? sound}) async {
     final lens = _recordingLens ?? _lens;
     final directory = await getTemporaryDirectory();
     final stamp = DateTime.now().millisecondsSinceEpoch;
@@ -905,6 +1041,7 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
         attachments: _pictures.ready(lens),
         crop: visible,
         mirror: _front,
+        audio: sound,
       );
     } catch (error) {
       // The recording itself is fine. Losing it because the lens could not
@@ -1179,6 +1316,10 @@ class _ArLensScreenState extends ConsumerState<ArLensScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    final frames = _frames;
+    if (frames != null) unawaited(frames.cancel());
+    final sound = _sound;
+    if (sound != null) unawaited(sound.dispose());
     SystemChrome.setPreferredOrientations(const []);
     _streaming = false;
     _endRecordingState();

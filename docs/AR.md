@@ -217,21 +217,47 @@ sit on a black floor underneath, as tight as they go.
 
 ## Lenses on video
 
-The camera records the picture as it is. The lens is put in afterwards,
-from the poses recorded alongside the clip:
+The lens is put in after the clip stops, from the poses recorded alongside
+it:
 
-1. While recording, the frames that track the face come from the recording
-   itself (`startVideoRecording(onAvailable:)`). Each one adds the
-   landmarks, and the skin reading for a fill, to a `LensVideoTimeline`.
-   That is about 15 samples a second, plus every moment a face arrives or
-   leaves.
+1. **A face lens on Android is recorded from the tracking frames, not by the
+   camera.** The image stream that tracks the face before recording keeps
+   running, and `LensFrameRecorder` hands each frame to the phone's
+   hardware H.264 encoder (`LensRecorder.kt`). The sound is recorded
+   alongside with the `record` package. The camera's own recording is not
+   used, for a reason found the hard way:
+
+   *Why.* Recording video while also streaming the frames needs CameraX to
+   run video and image analysis at once. Many phones can't, and CameraX then
+   merges the preview and video into one shared stream that arrives already
+   rotated. The camera plugin never reads CameraX's transformation info, so
+   it turns the preview on its side the moment recording starts, while the
+   lens drawn over it stays level. Dropping the still-photo stream (#146)
+   didn't help: on the reporting phone even three streams were merged, and
+   the preview went dark too. Preview plus frames, which is what the screen
+   runs before recording, works on every phone, so a lens recording keeps
+   exactly that.
+
+   Each frame is stamped with the same clock as the lens timeline, so the
+   lens lands on the frame it was tracked in. While the encoder is busy,
+   frames are dropped rather than queued. The file carries the sensor's
+   rotation as a hint, as the camera's own recordings do.
+
+   Plain and colour-only recordings need no frames, so the camera records
+   them itself.
+
+   While recording, each tracked frame adds its landmarks, and the skin
+   reading for a fill, to a `LensVideoTimeline`. That is about 15 samples a
+   second, plus every moment a face arrives or leaves.
 2. When the clip stops, `LensVideoBaker` draws each sample as a transparent
    PNG with the preview's own painters: glasses, pictures, a fill's skin.
    Effects also get a mask, white wherever the picture is blurred.
 3. On Android, `LensVideo.kt` hands the clip to **Media3 Transformer** with a
    single shader. The shader applies the colour matrix, blurs and washes
    wherever the mask is white, and lays the drawing over the top. Media3's
-   own `Crop` and a mirror follow. Audio passes through untouched. The
+   own `Crop` and a mirror follow. Audio passes through untouched, or, for a
+   clip recorded from the frames, is laid in from the separate recording as
+   a second, audio-only sequence of the same composition. The
    whole job runs on the GPU and the phone's own H.264 encoder.
 
 **Why not FFmpeg.** An earlier version used FFmpegKit, the LGPL "min" build.

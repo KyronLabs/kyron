@@ -10,6 +10,21 @@ import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
 import { giftType } from '../gifts/gift-catalogue';
+
+/** How many gifts a post stacks over its heart. */
+export const GIFT_STACK = 3;
+
+/**
+ * A post's gift kinds as the heart stacks them: the most valuable first, at
+ * most [GIFT_STACK]. A kind no longer in the catalogue goes last rather than
+ * vanishing.
+ */
+export function topGifts(types: readonly string[]): string[] {
+  const coins = (type: string) => giftType(type)?.coins ?? -1;
+  return [...new Set(types)]
+    .sort((a, b) => coins(b) - coins(a))
+    .slice(0, GIFT_STACK);
+}
 import { InterestTaste, TasteSignal } from './interest-taste';
 import { mentionedHandles } from '../../common/mentions';
 
@@ -50,6 +65,10 @@ export interface FeedPost {
    * draws it in place of the heart, so a post you gave something to says so
    * where you gave it. */
   viewerGift: string | null;
+  /** The kinds of gift it has been sent, most valuable first, at most
+   * three: what the app stacks over the heart so anyone can see a post was
+   * given something. Kinds, not senders -- who gave what is the author's. */
+  topGifts: string[];
   /** Whether the reader has. Saves are private, so there is no count. */
   likedByViewer: boolean;
   savedByViewer: boolean;
@@ -2582,6 +2601,7 @@ export class FeedService {
       commentCount: true,
       repostCount: true,
       giftCount: true,
+      giftTypes: true,
       likes: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       saves: { where: { userId: viewerId }, select: { id: true }, take: 1 },
       reposts: { where: { userId: viewerId }, select: { id: true }, take: 1 },
@@ -2672,6 +2692,7 @@ export class FeedService {
       reposts: row.repostCount,
       gifts: row.giftCount,
       viewerGift: row.gifts?.[0]?.type ?? null,
+      topGifts: topGifts(row.giftTypes ?? []),
       likedByViewer: row.likes.length > 0,
       savedByViewer: row.saves.length > 0,
       repostedByViewer: row.reposts.length > 0,
@@ -2756,6 +2777,7 @@ interface PostRow {
   commentCount: number;
   repostCount: number;
   giftCount: number;
+  giftTypes?: string[];
   /** The reader's latest gift. Optional: rows built for other shapes, and
    * older fixtures, do not carry it. */
   gifts?: { type: string }[];
