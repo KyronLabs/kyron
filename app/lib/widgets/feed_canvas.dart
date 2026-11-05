@@ -26,7 +26,16 @@ class FeedCanvas extends ConsumerWidget {
   /// a drag, and the content stopped tracking the finger.
   final double topInset;
 
-  const FeedCanvas({super.key, this.scrollController, this.topInset = 0});
+  /// The home screen's own pull to refresh, when it has one: physics that
+  /// hand a pull at the top to it. Null keeps the platform's indicator.
+  final ScrollPhysics? pullPhysics;
+
+  const FeedCanvas({
+    super.key,
+    this.scrollController,
+    this.topInset = 0,
+    this.pullPhysics,
+  });
 
   /// Height of the fade under the tab strip, in logical pixels.
   ///
@@ -82,6 +91,8 @@ class FeedCanvas extends ConsumerWidget {
       // the refresh indicator needs the same number, and adding it here alone
       // is what left the spinner drawing behind the top bar.
       topInset: topInset,
+      platformRefresh: pullPhysics == null,
+      physics: pullPhysics,
       padding: EdgeInsets.only(
         top: SpacingTokens.space8,
         bottom: MediaQuery.of(context).padding.bottom + 80,

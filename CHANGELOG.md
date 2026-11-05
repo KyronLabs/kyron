@@ -21,6 +21,28 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+<!-- What's new
+Pull down on your feed and the Kyron leaf sways while maple leaves fall as it refreshes. Tap the logo to jump back to the top and refresh.
+-->
+
+### Added
+
+- **Pull to refresh, with falling leaves.** Pull the home feed down and the
+  list follows your finger, with resistance. The Kyron leaf winds up as you
+  pull, and a light tick tells you that letting go will refresh. While the
+  feed reloads, the leaf sways like a leaf on a branch and maple leaves fall
+  through the feed. Pushing back up closes the gap before the list scrolls.
+  The avatar, search and bell stay where they are. With reduced motion,
+  there are no leaves and no swaying, just a thin loading bar.
+- **Tap the logo to go back to the top and refresh.** A soft vibration, then
+  the feed scrolls back to the top and refreshes the selected tab and the
+  notification count.
+
+### Fixed
+
+- A gift notification test used a fixed date, so a week later it failed
+  for a reason that had nothing to do with gifts.
+
 ## [0.1.36] - 2026-11-05
 ### Changed
 
