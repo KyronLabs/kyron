@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.36] - 2026-11-05
 ### Changed
 
 - **Contact support writes to the inbox the published pages name.** Safety
@@ -2413,7 +2415,8 @@ the section; GitHub does not show it:
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.35...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.36...HEAD
+[0.1.36]: https://github.com/KyronLabs/kyron/compare/v0.1.35...v0.1.36
 [0.1.35]: https://github.com/KyronLabs/kyron/compare/v0.1.34...v0.1.35
 [0.1.34]: https://github.com/KyronLabs/kyron/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/KyronLabs/kyron/compare/v0.1.32...v0.1.33
