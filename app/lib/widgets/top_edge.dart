@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../providers/notifications_provider.dart';
 import 'account_avatar.dart';
@@ -15,12 +14,17 @@ class TopEdge extends StatelessWidget {
   final VoidCallback? onSearchTap;
   final VoidCallback? onNotificationTap;
 
+  /// Wraps the mark, and only the mark: the home screen's refresh animates
+  /// it while the avatar, search and bell beside it stay where they are.
+  final Widget Function(Widget logo)? logoBuilder;
+
   const TopEdge({
     super.key,
     this.onProfileTap,
     this.onLogoTap,
     this.onSearchTap,
     this.onNotificationTap,
+    this.logoBuilder,
   });
 
   @override
@@ -45,18 +49,25 @@ class TopEdge extends StatelessWidget {
           ),
 
           /// CENTER – LOGO
-          GestureDetector(
-            onTap: onLogoTap,
-            behavior: HitTestBehavior.opaque,
-            // AppLogo, which draws the mark in its own colours. This used
-            // to be a bare SvgPicture under a `ColorFilter.mode(scheme
-            // .primary, srcIn)`, which flattened a leaf that runs teal into
-            // green down to one flat #4C8FFF -- so the mark at the top of the
-            // home screen was a solid blue shape with none of Kyron's colours
-            // left in it. The path was a parameter with exactly one caller
-            // passing exactly the file AppLogo already names, so it has gone
-            // with it.
-            child: const AppLogo(size: 32),
+          Semantics(
+            button: onLogoTap != null,
+            label: onLogoTap == null ? null : 'Back to top and refresh',
+            excludeSemantics: true,
+            child: GestureDetector(
+              key: const ValueKey('home-logo'),
+              onTap: onLogoTap,
+              behavior: HitTestBehavior.opaque,
+              // AppLogo, which draws the mark in its own colours. This used
+              // to be a bare SvgPicture under a `ColorFilter.mode(scheme
+              // .primary, srcIn)`, which flattened a leaf that runs teal into
+              // green down to one flat #4C8FFF -- so the mark at the top of the
+              // home screen was a solid blue shape with none of Kyron's colours
+              // left in it. The path was a parameter with exactly one caller
+              // passing exactly the file AppLogo already names, so it has gone
+              // with it.
+              child: logoBuilder?.call(const AppLogo(size: 32)) ??
+                  const AppLogo(size: 32),
+            ),
           ),
 
           /// RIGHT – SEARCH + NOTIFICATIONS

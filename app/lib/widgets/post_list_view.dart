@@ -64,6 +64,16 @@ class PostListView extends ConsumerStatefulWidget {
   /// apart, which is how the spinner got lost in the first place.
   final double topInset;
 
+  /// Whether the list brings its own pull to refresh, the platform's.
+  ///
+  /// Off on the home feed, which has one of its own (see feed_refresh.dart)
+  /// and hands it in through [physics].
+  final bool platformRefresh;
+
+  /// Replaces the list's scroll physics. Kept always-scrollable either way,
+  /// so a list too short to scroll can still be pulled.
+  final ScrollPhysics? physics;
+
   const PostListView({
     super.key,
     required this.source,
@@ -78,6 +88,8 @@ class PostListView extends ConsumerStatefulWidget {
     this.asTiles = false,
     this.highlightTag,
     this.emptyRefresh = true,
+    this.platformRefresh = true,
+    this.physics,
   });
 
   @override
@@ -156,32 +168,35 @@ class _PostListViewState extends ConsumerState<PostListView> {
     final measure = widget.asTiles ? _tileWidth : Layout.readingWidth;
     final gutter = Layout.gutter(width, measure);
 
+    final list = CustomScrollView(
+      controller: _controller,
+      // The platform's own, through AlwaysScrollable so pulling to refresh
+      // still works on a list too short to scroll. Bouncing was iOS physics
+      // on an Android build: a flick carried further than the finger and
+      // came back, which reads as the list arguing with you.
+      physics: widget.physics?.applyTo(const AlwaysScrollableScrollPhysics()) ??
+          const AlwaysScrollableScrollPhysics(),
+      slivers: [
+        ...widget.headerSlivers,
+        SliverPadding(
+          // The gutter is added to whatever the screen already asked for,
+          // so a screen with its own margins keeps them.
+          padding: widget.padding.copyWith(
+            top: widget.padding.top + widget.topInset,
+            left: widget.padding.left + gutter,
+            right: widget.padding.right + gutter,
+          ),
+          sliver: _content(state),
+        ),
+      ],
+    );
+    if (!widget.platformRefresh) return list;
     return RefreshIndicator(
       // Measured: with a 124px bar over the list and no offset, the spinner
       // settles at y=84 -- inside the bar, invisible. This puts it below.
       edgeOffset: widget.topInset,
       onRefresh: _notifier.refresh,
-      child: CustomScrollView(
-        controller: _controller,
-        // The platform's own, through AlwaysScrollable so pulling to refresh
-        // still works on a list too short to scroll. Bouncing was iOS physics
-        // on an Android build: a flick carried further than the finger and
-        // came back, which reads as the list arguing with you.
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          ...widget.headerSlivers,
-          SliverPadding(
-            // The gutter is added to whatever the screen already asked for,
-            // so a screen with its own margins keeps them.
-            padding: widget.padding.copyWith(
-              top: widget.padding.top + widget.topInset,
-              left: widget.padding.left + gutter,
-              right: widget.padding.right + gutter,
-            ),
-            sliver: _content(state),
-          ),
-        ],
-      ),
+      child: list,
     );
   }
 

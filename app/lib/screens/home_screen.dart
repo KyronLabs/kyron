@@ -1,15 +1,19 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:kyron_design_system/kyron_design_system.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/feed_provider.dart';
+import '../providers/notifications_provider.dart';
 import '../widgets/top_edge.dart';
 import '../widgets/interest_tabs.dart';
 import '../widgets/feed_canvas.dart';
+import '../widgets/feed_refresh.dart';
 import '../widgets/app_drawer.dart';
 import '../routes.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   final GlobalKey<AppDrawerState> drawerKey;
   final Function(double scrollProgress) onScrollProgress;
 
@@ -20,12 +24,19 @@ class HomeScreen extends StatefulWidget {
   });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends ConsumerState<HomeScreen>
+    with TickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
+
+  late final FeedRefreshController _refresh = FeedRefreshController(
+    vsync: this,
+    onRefresh: _reload,
+  );
+  late final FeedPullPhysics _pullPhysics =
+      FeedPullPhysics(controller: _refresh);
 
   late AnimationController _topEdgeAnimController;
   double _lastScrollOffset = 0.0;
@@ -46,7 +57,21 @@ class _HomeScreenState extends State<HomeScreen>
       value: 0.0, // Start fully visible
     );
 
+    // The bottom bar follows the top one, whichever moved it: a scroll, or
+    // the logo bringing it back.
+    _topEdgeAnimController.addListener(
+      () => widget.onScrollProgress(_topEdgeAnimController.value),
+    );
+
     _scrollController.addListener(_handleScrollLive);
+  }
+
+  /// Everything the home screen shows that can be out of date: the selected
+  /// tab's posts and the bell's count.
+  Future<void> _reload() async {
+    final tab = ref.read(selectedFeedTabProvider);
+    ref.invalidate(unreadNotificationsProvider);
+    await ref.read(postListProvider(feedSourceForTab(tab)).notifier).refresh();
   }
 
   void _handleScrollLive() {
@@ -87,19 +112,45 @@ class _HomeScreenState extends State<HomeScreen>
         _lastScrollOffset = offset;
       }
     }
-
-    // Notify parent for bottom nav animation
-    widget.onScrollProgress(_topEdgeAnimController.value);
   }
 
-  void _scrollToTop() {
+  /// The logo: a soft tap felt under the thumb, back to the top, and a
+  /// fresh feed.
+  ///
+  /// The tap comes first, before anything moves, so it reads as the logo
+  /// answering rather than as a side effect of the scroll. The refresh waits
+  /// for the top: leaves falling over a list still racing past would be two
+  /// things at once, and neither would land.
+  Future<void> _logoTapped() async {
+    if (_refresh.busy) return;
+    HapticFeedback.lightImpact();
+    _topEdgeAnimController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOutCubic,
+    );
     if (_scrollController.hasClients) {
-      _scrollController.animateTo(
-        0,
-        duration: MotionTokens.normal,
-        curve: Curves.easeOut,
-      );
+      final position = _scrollController.position;
+      var offset = position.pixels;
+      // From a long way down, cut most of the distance first. Animating
+      // through fifty posts is a blur that takes a second and shows nothing,
+      // and it builds every one of them on the way.
+      final far = position.viewportDimension * 2.5;
+      if (offset > far) {
+        _scrollController.jumpTo(far);
+        offset = far;
+      }
+      if (offset > 0) {
+        final ms = (260 + offset * 0.12).clamp(260, 620).round();
+        await _scrollController.animateTo(
+          0,
+          duration: Duration(milliseconds: ms),
+          curve: Curves.easeOutCubic,
+        );
+      }
     }
+    if (!mounted) return;
+    await _refresh.refresh();
   }
 
   @override
@@ -107,6 +158,7 @@ class _HomeScreenState extends State<HomeScreen>
     _scrollController.removeListener(_handleScrollLive);
     _scrollController.dispose();
     _topEdgeAnimController.dispose();
+    _refresh.dispose();
     super.dispose();
   }
 
@@ -121,6 +173,9 @@ class _HomeScreenState extends State<HomeScreen>
     final statusBarHeight = MediaQuery.of(context).padding.top;
     const topEdgeContentHeight = _topEdgeContentHeight;
     final scheme = Theme.of(context).colorScheme;
+    final still = MediaQuery.disableAnimationsOf(context);
+    _refresh.reduceMotion = still;
+    final chromeHeight = statusBarHeight + topEdgeContentHeight + _tabsHeight;
 
     return Stack(
       children: [
@@ -140,10 +195,29 @@ class _HomeScreenState extends State<HomeScreen>
         // the scrollable, so it costs nothing to keep at the open height.
         // Once the bar has hidden, the reader has scrolled past that space
         // anyway.
+        //
+        // A pull moves the whole list down by the refresh's extent, opening a
+        // gap under the tabs for the leaves to fall through.
         Positioned.fill(
-          child: FeedCanvas(
-            scrollController: _scrollController,
-            topInset: statusBarHeight + topEdgeContentHeight + _tabsHeight,
+          child: NotificationListener<OverscrollIndicatorNotification>(
+            // The pull is the top's overscroll; Android's stretch on top of
+            // it would be two answers to one gesture. The foot keeps its own.
+            onNotification: (n) {
+              if (n.leading) n.disallowIndicator();
+              return false;
+            },
+            child: AnimatedBuilder(
+              animation: _refresh,
+              builder: (context, child) => Transform.translate(
+                offset: Offset(0, _refresh.extent),
+                child: child,
+              ),
+              child: FeedCanvas(
+                scrollController: _scrollController,
+                topInset: chromeHeight,
+                pullPhysics: _pullPhysics,
+              ),
+            ),
           ),
         ),
 
@@ -183,7 +257,9 @@ class _HomeScreenState extends State<HomeScreen>
               onProfileTap: () {
                 widget.drawerKey.currentState?.toggleDrawer();
               },
-              onLogoTap: _scrollToTop,
+              onLogoTap: _logoTapped,
+              logoBuilder: (logo) =>
+                  RefreshLogo(controller: _refresh, child: logo),
               onSearchTap: () => Navigator.pushNamed(context, Routes.search),
               onNotificationTap: () =>
                   Navigator.pushNamed(context, Routes.notifications),
@@ -250,6 +326,38 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
         ),
+
+        // The leaves, over everything but the status bar: the logo sheds
+        // them, so they begin in the top bar and fall through the feed.
+        // With reduced motion there are none, and a thin bar under the tabs
+        // says the feed is loading instead.
+        if (!still)
+          Positioned.fill(
+            child: FallingLeaves(
+              controller: _refresh,
+              origin: Offset(
+                MediaQuery.sizeOf(context).width / 2,
+                statusBarHeight + topEdgeContentHeight / 2,
+              ),
+              top: statusBarHeight,
+            ),
+          )
+        else
+          Positioned(
+            top: chromeHeight,
+            left: 0,
+            right: 0,
+            child: AnimatedBuilder(
+              animation: _refresh,
+              builder: (context, _) =>
+                  _refresh.phase == FeedRefreshPhase.refreshing
+                      ? const LinearProgressIndicator(
+                          key: ValueKey('home-refresh-bar'),
+                          minHeight: 2,
+                        )
+                      : const SizedBox.shrink(),
+            ),
+          ),
 
         // STICKY Status Bar Overlay - always on top
         Positioned(

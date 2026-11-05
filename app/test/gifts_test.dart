@@ -138,10 +138,17 @@ void main() {
     });
 
     test('a gift row says which gift', () {
-      final row = NotificationModel.fromJson(const {
+      // An hour ago, not a fixed date: a week on, the row's time switches to
+      // a formatted date, which needs locale data this test does not load --
+      // and this test started failing for a reason that had nothing to do
+      // with gifts.
+      final row = NotificationModel.fromJson({
         'id': 'gift:g1',
         'kind': 'gift',
-        'createdAt': '2026-10-29T10:00:00Z',
+        'createdAt': DateTime.now()
+            .subtract(const Duration(hours: 1))
+            .toUtc()
+            .toIso8601String(),
         'postId': 'p1',
         'gift': {'type': 'fire', 'coins': 5, 'name': 'Fire', 'emoji': '🔥'},
       });
@@ -862,10 +869,17 @@ void main() {
     testWidgets('shows the gift itself, not an icon or an emoji', (
       tester,
     ) async {
-      final row = NotificationModel.fromJson(const {
+      // An hour ago, not a fixed date: a week on, the row's time switches to
+      // a formatted date, which needs locale data this test does not load --
+      // and this test started failing for a reason that had nothing to do
+      // with gifts.
+      final row = NotificationModel.fromJson({
         'id': 'gift:g1',
         'kind': 'gift',
-        'createdAt': '2026-10-29T10:00:00Z',
+        'createdAt': DateTime.now()
+            .subtract(const Duration(hours: 1))
+            .toUtc()
+            .toIso8601String(),
         'postId': 'p1',
         'actor': {'id': 'ben', 'name': 'Ben'},
         'gift': {'type': 'fire', 'coins': 5, 'name': 'Fire', 'emoji': '🔥'},
