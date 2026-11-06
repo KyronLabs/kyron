@@ -19,7 +19,7 @@ function name(value: string): string {
 
 /**
  * Read-only, signed-out views of posts, profiles and communities, for the
- * pages a shared link opens (kyron-web).
+ * pages a shared link opens (kyron-links).
  *
  * No guard, on purpose: these are what a stranger with the link may see, and
  * PublicService decides that field by field. Every response may be cached

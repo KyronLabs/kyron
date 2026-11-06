@@ -6,7 +6,7 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 /**
  * What anybody on the internet may read about Kyron, without signing in.
  *
- * This is the read side of kyron-web: the pages a shared link opens for
+ * This is the read side of kyron-links: the pages a shared link opens for
  * somebody who does not have the app, and the cards WhatsApp, X and iMessage
  * draw from them. It is deliberately smaller than what the app reads. Every
  * field here is one a stranger with the link may see, and it is a list of

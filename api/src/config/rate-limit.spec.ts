@@ -41,7 +41,7 @@ describe('reading the rate limit', () => {
   });
 });
 
-describe("kyron-web's bucket", () => {
+describe("kyron-links's bucket", () => {
   const secret = 'k'.repeat(40);
 
   it('is given for the right key, on the public routes', () => {

@@ -114,7 +114,7 @@ async function bootstrap() {
       ip: string;
       url?: string;
     }) => {
-      // kyron-web, fetching for every visitor of every shared link from one
+      // kyron-links, fetching for every visitor of every shared link from one
       // address: its own bucket (src/config/rate-limit.ts).
       if (isPagesService(request.url, request.headers['x-kyron-pages-key'])) {
         return PAGES_BUCKET;

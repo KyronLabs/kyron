@@ -35,7 +35,7 @@ const PUBLIC = new Map<string, string>([
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],
-  // What a shared link shows somebody without the app (kyron-web). Each
+  // What a shared link shows somebody without the app (kyron-links). Each
   // selects its fields one by one -- PublicService -- and none reads a
   // session.
   ['GET /public/posts/:id', 'a shared post: live, by a visible account'],
