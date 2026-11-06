@@ -72,3 +72,70 @@ jobs:
       # the known remainder.
       - name: Lint
         run: npm run lint
+
+  database-tests:
+    name: Database tests against Postgres
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+
+    # The *.db.spec files skip themselves unless a database is given, so until
+    # this job they ran nowhere: a broken lock, refill or visibility rule would
+    # have passed CI. Postgres 16, like Supabase's.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: kyron
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: kyron_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U kyron"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      DATABASE_URL: postgresql://kyron@localhost:5432/kyron_test
+      MODERATION_TEST_DATABASE_URL: postgresql://kyron@localhost:5432/kyron_test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: api/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npm run prisma:generate
+
+      # The migrations grant and revoke on Supabase's roles and call its auth
+      # helpers. A bare Postgres has neither, so they are stood in for here:
+      # the grants then apply to roles nothing uses, which is all a test needs.
+      - name: Stand in for Supabase's roles
+        run: |
+          for role in anon authenticated service_role authenticator supabase_admin; do
+            psql "$DATABASE_URL" -qc "create role $role"
+          done
+          psql "$DATABASE_URL" -q <<'SQL'
+          create schema auth;
+          create function auth.uid() returns uuid language sql as 'select null::uuid';
+          create function auth.role() returns text language sql as 'select null::text';
+          create schema extensions;
+          SQL
+
+      - name: Apply migrations
+        run: npx prisma migrate deploy
+
+      - name: Database tests
+        run: npx jest db.spec

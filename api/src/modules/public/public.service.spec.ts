@@ -36,6 +36,29 @@ function postRow(over: Record<string, unknown> = {}) {
     },
     community: null,
     media: [],
+    poll: null,
+    quotedPost: null,
+    ...over,
+  };
+}
+
+const visibleAuthor = {
+  name: 'Ben',
+  username: 'ben',
+  verifiedAt: null,
+  profile: { avatarUrl: null },
+  status: AccountStatus.ACTIVE,
+  deletedAt: null,
+};
+
+function quotedRow(over: Record<string, unknown> = {}) {
+  return {
+    id: 'q1',
+    content: 'The original.',
+    createdAt: new Date('2026-11-01T00:00:00Z'),
+    deletedAt: null,
+    author: visibleAuthor,
+    media: [],
     ...over,
   };
 }
@@ -44,6 +67,8 @@ function setup(rows: {
   post?: unknown;
   user?: unknown;
   community?: unknown;
+  comment?: unknown;
+  recent?: unknown[];
   counts?: number[];
 }) {
   const counts = [...(rows.counts ?? [5, 7, 9])];
@@ -51,7 +76,9 @@ function setup(rows: {
     post: {
       findFirst: jest.fn().mockResolvedValue(rows.post ?? null),
       count: jest.fn(() => Promise.resolve(counts.pop() ?? 0)),
+      findMany: jest.fn().mockResolvedValue(rows.recent ?? []),
     },
+    comment: { findFirst: jest.fn().mockResolvedValue(rows.comment ?? null) },
     user: { findFirst: jest.fn().mockResolvedValue(rows.user ?? null) },
     follow: { count: jest.fn(() => Promise.resolve(counts.shift() ?? 0)) },
     community: {
@@ -86,7 +113,7 @@ describe('a public post', () => {
 
     const { select } = argsOf(prisma.post.findFirst);
     expect(select.media.where).toEqual({ privatePath: null, commentId: null });
-    expect(select.media.take).toBe(PublicService.maxMedia);
+    expect(select.media.take).toBe(PublicService.maxAttachments);
   });
 
   it('is said not to exist when the query finds nothing', async () => {
@@ -122,6 +149,9 @@ describe('a public post', () => {
         'hasVoice',
         'id',
         'media',
+        'mediaCount',
+        'poll',
+        'quoted',
         'stats',
       ].sort(),
     );
@@ -134,6 +164,82 @@ describe('a public post', () => {
     expect(post.createdAt).toBe('2026-11-05T08:00:00.000Z');
     expect(post.stats).toEqual({ likes: 12, comments: 3, reposts: 1 });
     expect(post.media).toHaveLength(1);
+  });
+
+  it('shows four pictures and says how many there are in all', async () => {
+    const picture = {
+      kind: MediaKind.IMAGE,
+      url: 'https://cdn/a.jpg',
+      thumbnailUrl: null,
+      width: null,
+      height: null,
+      alt: null,
+    };
+    const { service } = setup({
+      post: postRow({
+        media: Array.from({ length: 8 }, () => picture),
+      }),
+    });
+    const post = await service.post(POST_ID);
+    expect(post.media).toHaveLength(PublicService.maxMedia);
+    expect(post.mediaCount).toBe(8);
+  });
+
+  it('shows a poll as counts per option, and nothing about who voted', async () => {
+    const { prisma, service } = setup({
+      post: postRow({
+        poll: {
+          closesAt: new Date('2026-12-01T00:00:00Z'),
+          options: [
+            { text: 'Yes', _count: { votes: 3 } },
+            { text: 'No', _count: { votes: 1 } },
+          ],
+        },
+      }),
+    });
+    const post = await service.post(POST_ID);
+    expect(post.poll).toEqual({
+      options: [
+        { text: 'Yes', votes: 3 },
+        { text: 'No', votes: 1 },
+      ],
+      totalVotes: 4,
+      closesAt: '2026-12-01T00:00:00.000Z',
+    });
+    const { select } = argsOf(prisma.post.findFirst);
+    expect(JSON.stringify(select.poll)).not.toContain('voterId');
+    expect(JSON.stringify(select.poll)).not.toContain('userId');
+  });
+
+  it('shows the post it quotes, without that author’s account state', async () => {
+    const { service } = setup({ post: postRow({ quotedPost: quotedRow() }) });
+    const post = await service.post(POST_ID);
+    expect(post.quoted).toEqual({
+      id: 'q1',
+      content: 'The original.',
+      createdAt: '2026-11-01T00:00:00.000Z',
+      author: {
+        name: 'Ben',
+        username: 'ben',
+        verified: false,
+        avatarUrl: null,
+      },
+      media: [],
+    });
+  });
+
+  it('leaves out a quoted post that is deleted, or by an account that is gone', async () => {
+    for (const quoted of [
+      quotedRow({ deletedAt: new Date() }),
+      quotedRow({ author: { ...visibleAuthor, status: AccountStatus.BANNED } }),
+      quotedRow({
+        author: { ...visibleAuthor, status: AccountStatus.DELETED },
+      }),
+      quotedRow({ author: { ...visibleAuthor, deletedAt: new Date() } }),
+    ]) {
+      const { service } = setup({ post: postRow({ quotedPost: quoted }) });
+      expect((await service.post(POST_ID)).quoted).toBeNull();
+    }
   });
 
   it('says a voice note is there without publishing its file', async () => {
@@ -173,6 +279,58 @@ describe('a public post', () => {
       name: 'Sailing',
       slug: 'sailing',
     });
+  });
+});
+
+describe('a public comment', () => {
+  const comment = {
+    id: 'c1',
+    content: 'Lovely.',
+    createdAt: new Date('2026-11-05T09:00:00Z'),
+    author: visibleAuthor,
+    media: [],
+    _count: { likes: 2, replies: 1 },
+    post: postRow(),
+  };
+
+  it('is only shown on a live post, by visible accounts on both', async () => {
+    const { prisma, service } = setup({ comment });
+    await service.comment(POST_ID);
+
+    const live = {
+      status: { notIn: [AccountStatus.BANNED, AccountStatus.DELETED] },
+      deletedAt: null,
+    };
+    expect(argsOf(prisma.comment.findFirst).where).toEqual({
+      id: POST_ID,
+      deletedAt: null,
+      author: live,
+      post: { deletedAt: null, author: live },
+    });
+  });
+
+  it('never selects a private attachment', async () => {
+    const { prisma, service } = setup({ comment });
+    await service.comment(POST_ID);
+    expect(argsOf(prisma.comment.findFirst).select.media.where).toEqual({
+      privatePath: null,
+      kind: { not: MediaKind.VOICE },
+    });
+  });
+
+  it('comes with the post it answers', async () => {
+    const { service } = setup({ comment });
+    const result = await service.comment(POST_ID);
+    expect(result.post.id).toBe(POST_ID);
+    expect(result.stats).toEqual({ likes: 2, replies: 1 });
+    expect(result.author).not.toHaveProperty('status');
+  });
+
+  it('is said not to exist when it, its post or an author is gone', async () => {
+    const { service } = setup({});
+    await expect(service.comment(POST_ID)).rejects.toBeInstanceOf(
+      NotFoundException,
+    );
   });
 });
 
@@ -225,6 +383,19 @@ describe('a public profile', () => {
     expect(profile.bio).toBe('Sails.');
   });
 
+  it('lists its latest posts, live ones only', async () => {
+    const { prisma, service } = setup({ user, recent: [postRow()] });
+    const profile = await service.profile('ada');
+
+    expect(profile.recent).toHaveLength(1);
+    expect(profile.recent[0]).not.toHaveProperty('poll');
+    const args = (
+      prisma.post.findMany.mock.calls[0] as [Query & { take: number }]
+    )[0];
+    expect(args.where).toEqual({ authorId: POST_ID, deletedAt: null });
+    expect(args.take).toBe(PublicService.recentPosts);
+  });
+
   it('is said not to exist for a banned, deleted or unknown account', async () => {
     const { service } = setup({});
     await expect(service.profile('ghost')).rejects.toBeInstanceOf(
@@ -255,6 +426,18 @@ describe('a public community', () => {
     });
     expect(community.members).toBe(42);
     expect(community).not.toHaveProperty('_count');
+    expect(community.recent).toEqual([]);
+
+    // Its posts: live, and only by accounts still visible.
+    const posts = argsOf(prisma.post.findMany);
+    expect(posts.where).toEqual({
+      communityId: POST_ID,
+      deletedAt: null,
+      author: {
+        status: { notIn: [AccountStatus.BANNED, AccountStatus.DELETED] },
+        deletedAt: null,
+      },
+    });
   });
 });
 
