@@ -113,10 +113,10 @@ class CommentTile extends StatelessWidget {
           const SizedBox(height: SpacingTokens.space8),
           MediaGrid(media: visual, radius: RadiusTokens.radiusSm),
         ],
-        // Room between what was said and what can be done about it. At 2
-        // the buttons sat on the last line of the reply like an underline,
-        // and a thread read as one block of text and glyphs.
-        const SizedBox(height: SpacingTokens.space8),
+        // Room between what was said and what can be done about it -- 16,
+        // and the buttons' own 4 on top: what Threads leaves. At 8 the
+        // buttons still sat on the last line of the reply like an underline.
+        const SizedBox(height: SpacingTokens.space16),
         // Moved left by the buttons' own padding, so the heart's edge sits
         // on the text's edge above it -- and the share icon, at the far
         // end, lands in the column of the menu dots in the header.

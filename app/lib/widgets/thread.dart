@@ -43,10 +43,9 @@ class ThreadGeometry {
   /// thin line to be confused with.
   static const double thickness = 1;
 
-  /// Radius of the elbow's turn: the whole way across to the reply, so the
-  /// rail sweeps round in one quarter circle rather than dropping straight
-  /// and snapping sideways at the bottom. At 12 the turn was a tight corner
-  /// at the end of a long vertical, which is what read as abrupt.
+  /// How far across the elbow's turn reaches: the whole way to the reply, so
+  /// the line sweeps round in one move rather than dropping straight and
+  /// snapping sideways at the bottom. See [ThreadElbow.toPath] for its shape.
   static const double corner = indent - avatar / 2 - elbowGap;
 
   /// How far short of the reply's face the elbow stops, so the line arrives
@@ -54,9 +53,7 @@ class ThreadGeometry {
   static const double elbowGap = SpacingTokens.space4;
 
   /// The room above each row of a thread, from the buttons of the one before.
-  /// At 12 a thread's rows stood shoulder to shoulder, and a reply's name sat
-  /// close enough under the last one's buttons to be read as a caption.
-  static const double rowGap = SpacingTokens.space20;
+  static const double rowGap = SpacingTokens.space12;
 
   /// Deepest level that still indents: one. A reply to a reply sits under it
   /// at the same indent, joined by a straight rail, as a conversation reads --
@@ -101,24 +98,48 @@ class ThreadElbow {
   final double x;
   final double turnY;
   final double endX;
+
+  /// How far across the turn reaches before the line runs straight on.
   final double radius;
+
+  /// How far above [turnY] the turn begins. Taller than [radius]: the line
+  /// leaves the rail high and bends gradually, rather than dropping straight
+  /// and turning in a tight corner at the bottom.
+  final double sweep;
 
   const ThreadElbow({
     required this.x,
     required this.turnY,
     required this.endX,
     required this.radius,
-  });
+    double? sweep,
+  }) : sweep = sweep ?? radius;
 
+  /// The rail, then one Bézier sweep into the reply.
+  ///
+  /// A cubic with short handles rather than a circular arc. An arc bends at
+  /// one constant rate from the instant it leaves the straight rail, and
+  /// that sudden start is what read as a sharp turn even at a generous
+  /// radius; a curve pulled towards the corner -- a quarter circle's handles
+  /// are 0.55 of the way, a quadratic's 0.67 -- still hugs it, and at a third
+  /// it flattens into a diagonal. At 0.45 the line cuts across the corner in
+  /// one long, even sweep that is still a curve: vertical where it leaves
+  /// the rail, level where it meets the face.
   Path toPath() => Path()
     ..moveTo(x, 0)
-    ..lineTo(x, turnY - radius)
-    ..arcToPoint(
-      Offset(x + radius, turnY),
-      radius: Radius.circular(radius),
-      clockwise: false,
+    ..lineTo(x, turnY - sweep)
+    ..cubicTo(
+      x,
+      turnY - sweep * (1 - handle),
+      x + radius * (1 - handle),
+      turnY,
+      x + radius,
+      turnY,
     )
     ..lineTo(endX, turnY);
+
+  /// How far each control point reaches along its side of the corner.
+  static const double handle = 0.45;
 
   @override
   bool operator ==(Object other) =>
@@ -126,10 +147,11 @@ class ThreadElbow {
       other.x == x &&
       other.turnY == turnY &&
       other.endX == endX &&
-      other.radius == radius;
+      other.radius == radius &&
+      other.sweep == sweep;
 
   @override
-  int get hashCode => Object.hash(x, turnY, endX, radius);
+  int get hashCode => Object.hash(x, turnY, endX, radius, sweep);
 }
 
 /// Everything drawn in one row's connector strip, worked out before anything
@@ -232,6 +254,9 @@ class ThreadConnectorPlan {
           turnY: turnY,
           endX: ownLeft - ThreadGeometry.elbowGap,
           radius: radius,
+          // The whole height above the face: the turn starts at the top of
+          // the row, where the rail comes in, and has all of it to bend in.
+          sweep: turnY,
         );
         if (!isLastChild) parentBelow = parentX;
       } else {

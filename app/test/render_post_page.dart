@@ -101,7 +101,7 @@ class _Repo extends FeedRepository {
               _who('ada', 'Ada'),
             ])),
         PostComment.fromJson(
-            _c('c8', 'incredible', who: 'yun', name: 'Yunnieee')),
+            _c('c8', 'Arabian ❤️❤️', who: 'yun', name: 'Yunnieee')),
       ]);
 
   static final _replies = {

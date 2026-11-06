@@ -20,6 +20,20 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **A red heart is red.** ❤️ -- and ☀️, ⚠️ and a few others -- came out as
+  flat black shapes: the app's own font has a black-and-white drawing of
+  them, and that won over the phone's emoji. They are the phone's emoji
+  again, in posts, comments, messages and every text box.
+- **Wide photos are shown whole**, short rather than cut at the ends.
+
+### Changed
+
+- **More room between a comment's words and its buttons**, and the line into
+  a reply is one long, gentle sweep rather than a turn.
+- **A broken hairline above a profile's tabs.**
+
 
 ## [0.1.38] - 2026-11-06
 ### Added

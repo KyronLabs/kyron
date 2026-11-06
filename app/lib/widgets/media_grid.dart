@@ -85,12 +85,12 @@ class MediaGrid extends StatelessWidget {
     );
   }
 
-  /// The tallest and widest a photograph on its own is drawn: from 3:4
-  /// portrait to 2:1 landscape. Past those it is cropped at the middle, as
-  /// every feed does, or one panorama is a ribbon and one tall screenshot is
-  /// the whole screen.
-  static const double tallest = 3 / 4;
-  static const double widest = 2;
+  /// The tallest a photograph on its own is drawn: 3:5. A wide one is never
+  /// cut -- a strip of a page with a quotation on it is short, not cropped,
+  /// as Threads draws it; at 2:1 the ends of its lines went. Only a very tall
+  /// one is cropped, at the middle, or one screenshot is the whole screen.
+  static const double tallest = 3 / 5;
+  static const double widest = double.infinity;
 
   static double fit(double ratio) => ratio.clamp(tallest, widest).toDouble();
 

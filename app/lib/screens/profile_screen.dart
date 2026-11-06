@@ -347,9 +347,10 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
     required this.background,
   });
 
-  /// A chip's height with room either side of it, and the rule.
-  static const double _height =
-      ActionButton.compactHeight + 2 * SpacingTokens.space8 + RuleLine.weight;
+  /// A chip's height with room either side of it, and the two rules.
+  static const double _height = ActionButton.compactHeight +
+      2 * SpacingTokens.space8 +
+      2 * RuleLine.weight;
 
   @override
   double get minExtent => _height;
@@ -363,6 +364,13 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
       color: background,
       child: Column(
         children: [
+          // Broken above: the profile and its posts are one page, and the
+          // strip divides it rather than ending anything. Solid below, where
+          // the list of posts begins.
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: SpacingTokens.space16),
+            child: BrokenRuleLine(),
+          ),
           const SizedBox(height: SpacingTokens.space8),
           ListChipRow(
             children: [
