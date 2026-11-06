@@ -12,7 +12,12 @@ import multipart from '@fastify/multipart';
 import { MediaService } from './modules/media/media.service';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { readRateLimit } from './config/rate-limit';
+import {
+  isPagesService,
+  limitFor,
+  PAGES_BUCKET,
+  readRateLimit,
+} from './config/rate-limit';
 import { randomUUID } from 'node:crypto';
 import { MetricsService } from './infrastructure/observability/metrics.service';
 import { installRequestLogging } from './infrastructure/observability/request-log';
@@ -89,7 +94,11 @@ async function bootstrap() {
     // Read and validated in one place. Passing `config.get<number>(...)`
     // straight through handed the plugin a string, which it ignored in favour
     // of its own default of 1000 -- see src/config/rate-limit.ts.
-    max: readRateLimit(),
+    // Read once, at boot, so a bad value still refuses to start.
+    max: (
+      (base: number) => (_request: unknown, key: string) =>
+        limitFor(key, base)
+    )(readRateLimit()),
     timeWindow: 60 * 1000,
     // Per account when there is one, per address otherwise.
     //
@@ -103,7 +112,13 @@ async function bootstrap() {
     keyGenerator: (request: {
       headers: Record<string, string | string[] | undefined>;
       ip: string;
+      url?: string;
     }) => {
+      // kyron-links, fetching for every visitor of every shared link from one
+      // address: its own bucket (src/config/rate-limit.ts).
+      if (isPagesService(request.url, request.headers['x-kyron-pages-key'])) {
+        return PAGES_BUCKET;
+      }
       const header = request.headers.authorization;
       const bearer =
         typeof header === 'string' && header.startsWith('Bearer ')
