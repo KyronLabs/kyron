@@ -112,8 +112,9 @@ void main() {
   test('a photograph on its own keeps its shape, within reason', () {
     // A 900 x 1100 quotation is drawn whole, not cut to 4:3.
     expect(MediaGrid.fit(900 / 1100), closeTo(0.818, 0.001));
-    // Past 3:4 portrait or 2:1 landscape it is cropped at the middle.
+    // A wide strip is never cut: it is drawn short instead.
+    expect(MediaGrid.fit(2.8), 2.8);
+    // Only past 3:5 portrait is it cropped, at the middle.
     expect(MediaGrid.fit(9 / 21), MediaGrid.tallest);
-    expect(MediaGrid.fit(4), MediaGrid.widest);
   });
 }
