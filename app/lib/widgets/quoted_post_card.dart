@@ -85,6 +85,9 @@ class QuotedPostCard extends StatelessWidget {
                   height: 1.3,
                 ),
                 maxLines: 6,
+                // A preview inside the post that quotes it: pressing it opens
+                // the quoted post, which is where its words can be chosen.
+                selectable: false,
               ),
             ],
             if (post.media.isNotEmpty) ...[

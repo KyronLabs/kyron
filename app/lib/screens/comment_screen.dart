@@ -274,7 +274,7 @@ class _CommentScreenState extends ConsumerState<CommentScreen> {
             isLastChild: row.isLastChild,
             // The first row starts at the list's own top padding; every other
             // one carries its own gap so the rails stay unbroken across it.
-            topGap: index == 0 ? 0 : SpacingTokens.space12,
+            topGap: index == 0 ? 0 : ThreadGeometry.rowGap,
             avatar: CommentAvatar(comment: comment),
             child: CommentTile(
               comment: comment,

@@ -7,6 +7,8 @@ import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/providers/profile_provider.dart';
 import 'package:kyron_app/screens/profile_screen.dart';
 import 'package:kyron_app/widgets/action_button.dart';
+import 'package:kyron_app/widgets/hairline.dart';
+import 'package:kyron_app/widgets/list_controls.dart';
 
 import 'support/signed_in_as.dart';
 
@@ -239,4 +241,31 @@ void main() {
       );
     });
   }
+
+  testWidgets('the tabs are the messages list\'s pills, on a rule', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_app(FeedState(posts: [_post('p1')])));
+    await tester.pump();
+
+    ListChip chip(String name) =>
+        tester.widget<ListChip>(find.byKey(ValueKey('profile-tab-$name')));
+    expect(chip('posts').selected, isTrue);
+    expect(chip('media').selected, isFalse);
+
+    await tester.tap(find.byKey(const ValueKey('profile-tab-media')));
+    await tester.pump();
+    expect(chip('media').selected, isTrue);
+    expect(chip('posts').selected, isFalse);
+
+    // The strip ends in the rule, under the pills.
+    final media =
+        tester.getRect(find.byKey(const ValueKey('profile-tab-media')));
+    final rules = find.byType(RuleLine).evaluate().map(
+          (e) => tester.getRect(find.byWidget(e.widget)),
+        );
+    expect(rules.any((r) => r.top >= media.bottom && r.top - media.bottom < 12),
+        isTrue);
+    await tester.pump(const Duration(seconds: 3));
+  });
 }

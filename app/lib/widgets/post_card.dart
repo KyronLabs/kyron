@@ -180,6 +180,13 @@ class PostCard extends ConsumerWidget {
                         child: PostText(
                           content: post.content,
                           highlightTag: highlightTag,
+                          // The card's own tap, which the selectable words
+                          // would otherwise keep to themselves.
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            Routes.postDetail,
+                            arguments: post.id,
+                          ),
                         ),
                       ),
                     // Voice is a player, not a picture, so it does not go

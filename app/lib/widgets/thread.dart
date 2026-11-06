@@ -43,9 +43,20 @@ class ThreadGeometry {
   /// thin line to be confused with.
   static const double thickness = 1;
 
-  /// Radius of the elbow's corner, about half the indent, which is what makes
-  /// the turn read as a quarter circle rather than a clipped corner.
-  static const double corner = 12;
+  /// Radius of the elbow's turn: the whole way across to the reply, so the
+  /// rail sweeps round in one quarter circle rather than dropping straight
+  /// and snapping sideways at the bottom. At 12 the turn was a tight corner
+  /// at the end of a long vertical, which is what read as abrupt.
+  static const double corner = indent - avatar / 2 - elbowGap;
+
+  /// How far short of the reply's face the elbow stops, so the line arrives
+  /// at the face rather than running into it.
+  static const double elbowGap = SpacingTokens.space4;
+
+  /// The room above each row of a thread, from the buttons of the one before.
+  /// At 12 a thread's rows stood shoulder to shoulder, and a reply's name sat
+  /// close enough under the last one's buttons to be read as a caption.
+  static const double rowGap = SpacingTokens.space20;
 
   /// Deepest level that still indents: one. A reply to a reply sits under it
   /// at the same indent, joined by a straight rail, as a conversation reads --
@@ -213,13 +224,13 @@ class ThreadConnectorPlan {
       if (ownLeft > parentX) {
         // Never let the corner exceed the space available, or the arc inverts.
         final radius = ThreadGeometry.corner
-            .clamp(0.0, ownLeft - parentX)
+            .clamp(0.0, ownLeft - ThreadGeometry.elbowGap - parentX)
             .clamp(0.0, turnY)
             .toDouble();
         elbow = ThreadElbow(
           x: parentX,
           turnY: turnY,
-          endX: ownLeft,
+          endX: ownLeft - ThreadGeometry.elbowGap,
           radius: radius,
         );
         if (!isLastChild) parentBelow = parentX;

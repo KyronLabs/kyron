@@ -4,6 +4,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../models/post_media.dart';
 import '../utils/decode_size.dart';
+import 'hairline.dart';
 import 'inline_video.dart';
 import 'media_viewer.dart';
 
@@ -64,12 +65,34 @@ class MediaGrid extends StatelessWidget {
     //
     // Videos get the wider bounds, because a 9:16 clip is normal and a 9:16
     // photograph usually is not.
-    final ratio = item.isVideo
-        ? SizedInlineVideo.ratioFor(item)
-        : (item.aspectRatio ?? 4 / 3).clamp(0.6, 2.0);
+    if (item.isVideo) {
+      return AspectRatio(
+        aspectRatio: SizedInlineVideo.ratioFor(item),
+        child: _tile(context, 0),
+      );
+    }
 
-    return AspectRatio(aspectRatio: ratio, child: _tile(context, 0));
+    // A photograph on its own is shown whole, in its own shape, as it was
+    // taken. Without recorded dimensions it used to go into a 4:3 box with
+    // its edges cut off -- a picture of a quotation lost the ends of its
+    // lines -- so its shape is now read from the picture itself once it
+    // loads. The pair, the three and the count are left as they are: a grid
+    // is a grid.
+    return _OwnShape(
+      media: item,
+      radius: radius,
+      tile: _tile(context, 0),
+    );
   }
+
+  /// The tallest and widest a photograph on its own is drawn: from 3:4
+  /// portrait to 2:1 landscape. Past those it is cropped at the middle, as
+  /// every feed does, or one panorama is a ribbon and one tall screenshot is
+  /// the whole screen.
+  static const double tallest = 3 / 4;
+  static const double widest = 2;
+
+  static double fit(double ratio) => ratio.clamp(tallest, widest).toDouble();
 
   Widget _row(BuildContext context, List<int> indices) {
     return AspectRatio(
@@ -221,6 +244,110 @@ class _Badge extends StatelessWidget {
           fontSize: TypographyTokens.fontSize0,
           fontWeight: FontWeight.w700,
         ),
+      ),
+    );
+  }
+}
+
+/// One photograph, at the shape it really is.
+///
+/// The recorded shape when the server measured it -- every upload is now --
+/// and otherwise the picture's own, read once it has loaded. Until then it
+/// holds a 4:3 placeholder, the shape most phone photographs are, so the
+/// change when the real one arrives is usually small.
+///
+/// Edged with the rule, the hairline the rest of a post is drawn with: a
+/// picture with a white background -- a screenshot, a quotation on paper --
+/// otherwise has no edge at all against a white page.
+class _OwnShape extends StatefulWidget {
+  final PostMedia media;
+  final Widget tile;
+
+  /// The grid's rounding, which the edge follows.
+  final double radius;
+
+  const _OwnShape({
+    required this.media,
+    required this.tile,
+    required this.radius,
+  });
+
+  @override
+  State<_OwnShape> createState() => _OwnShapeState();
+}
+
+class _OwnShapeState extends State<_OwnShape> {
+  double? _read;
+  ImageStream? _stream;
+  ImageStreamListener? _listener;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (widget.media.aspectRatio == null && _stream == null) _measure();
+  }
+
+  @override
+  void didUpdateWidget(_OwnShape old) {
+    super.didUpdateWidget(old);
+    if (old.media.url != widget.media.url) {
+      _stop();
+      _read = null;
+      if (widget.media.aspectRatio == null) _measure();
+    }
+  }
+
+  void _measure() {
+    final stream = NetworkImage(widget.media.url)
+        .resolve(createLocalImageConfiguration(context));
+    final listener = ImageStreamListener(
+      (info, _) {
+        final w = info.image.width;
+        final h = info.image.height;
+        if (!mounted || w == 0 || h == 0) return;
+        setState(() => _read = w / h);
+        _stop();
+      },
+      onError: (_, __) => _stop(),
+    );
+    stream.addListener(listener);
+    _stream = stream;
+    _listener = listener;
+  }
+
+  void _stop() {
+    final listener = _listener;
+    if (listener != null) _stream?.removeListener(listener);
+    _listener = null;
+  }
+
+  @override
+  void dispose() {
+    _stop();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final ratio = MediaGrid.fit(widget.media.aspectRatio ?? _read ?? 4 / 3);
+    return AspectRatio(
+      aspectRatio: ratio,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          widget.tile,
+          // Over the picture, so it is drawn on its edge rather than outside
+          // it, and out of the way of the tap that opens the viewer.
+          IgnorePointer(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.fromBorderSide(postRule(scheme)),
+                borderRadius: BorderRadius.circular(widget.radius),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
