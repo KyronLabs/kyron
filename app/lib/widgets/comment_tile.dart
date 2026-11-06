@@ -97,6 +97,7 @@ class CommentTile extends StatelessWidget {
         if (comment.content.trim().isNotEmpty)
           PostText(
             content: comment.content,
+            onTap: onOpen,
             style: TextStyle(
               fontSize: isRoot
                   ? TypographyTokens.fontSize4

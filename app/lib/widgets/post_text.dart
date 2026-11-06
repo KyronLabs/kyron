@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../routes.dart';
+import '../utils/emoji_only.dart';
+import 'selection_menu.dart';
 import 'post_action_colors.dart';
 import '../services/app_browser.dart';
 import '../utils/display_url.dart';
@@ -27,13 +29,36 @@ class PostText extends StatefulWidget {
   /// gets a highlighter behind it.
   final String? highlightTag;
 
+  /// Whether a long press selects the words, with a menu to copy them,
+  /// search for them or select the lot. On, wherever a post, comment or reply
+  /// is read; off only where the text is a preview inside something else
+  /// that is itself the thing to press.
+  final bool selectable;
+
+  /// What a tap on the words does: open the post or comment they belong to.
+  ///
+  /// Given here rather than left to a tap handler around the text, because a
+  /// selectable text answers its own taps -- one around it never hears them.
+  final VoidCallback? onTap;
+
   const PostText({
     super.key,
     required this.content,
     this.style,
     this.maxLines,
     this.highlightTag,
+    this.selectable = true,
+    this.onTap,
   });
+
+  /// How large a post of nothing but [count] emoji draws them.
+  ///
+  /// Smaller than a chat's: a message of one emoji is the whole bubble, but a
+  /// post sits in a feed between other posts, and at the chat's 60 points one
+  /// 😂 out-shouted the photographs around it. Still unmistakably a post made
+  /// of emoji -- two and a half times the words, and more for one alone.
+  static double jumboSize(int count) =>
+      count == 1 ? TypographyTokens.fontSize9 : TypographyTokens.fontSize8;
 
   @override
   State<PostText> createState() => _PostTextState();
@@ -94,13 +119,77 @@ class _PostTextState extends State<PostText> {
     }
     _recognizers.clear();
 
-    return Text.rich(
-      TextSpan(children: _spans(context, base, scheme)),
-      maxLines: widget.maxLines,
-      overflow:
-          widget.maxLines == null ? TextOverflow.clip : TextOverflow.ellipsis,
+    // A few emoji and nothing else are a reaction, drawn large -- the rule
+    // the chat already uses (utils/emoji_only.dart), at a feed's size.
+    final jumbo = jumboEmojiCount(widget.content);
+    final Widget text = jumbo != null
+        ? Text(
+            widget.content.trim(),
+            style: base.copyWith(
+              fontSize: PostText.jumboSize(jumbo),
+              height: 1.2,
+              letterSpacing: 2,
+            ),
+          )
+        : Text.rich(
+            TextSpan(children: _spans(context, base, scheme)),
+            maxLines: widget.maxLines,
+            overflow: widget.maxLines == null
+                ? TextOverflow.clip
+                : TextOverflow.ellipsis,
+          );
+    if (!widget.selectable) {
+      return widget.onTap == null
+          ? text
+          : GestureDetector(onTap: widget.onTap, child: text);
+    }
+
+    // The accent, lightly, behind what is chosen, and the accent on its
+    // handles: the theme's default was a grey wash that vanished on black.
+    return Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: scheme.primary.withValues(alpha: 0.22),
+          selectionHandleColor: scheme.primary,
+        ),
+      ),
+      child: SelectionArea(
+        key: _area,
+        onSelectionChanged: (content) => _selected = content?.plainText,
+        contextMenuBuilder: (menuContext, state) => SelectionMenu.forRegion(
+          menuContext,
+          state,
+          selected: _selected,
+          onSearch: (query) =>
+              Navigator.pushNamed(context, Routes.search, arguments: query),
+        ),
+        // Inside the selection area, so this tap is the one that wins: a
+        // tap on a tag or a link still goes to the tag, and a tap anywhere
+        // else opens what the words belong to -- or, with words chosen,
+        // lets them go.
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: _tapped,
+          child: text,
+        ),
+      ),
     );
   }
+
+  final _area = GlobalKey<SelectionAreaState>();
+
+  void _tapped() {
+    if (_selected?.isNotEmpty ?? false) {
+      _area.currentState?.selectableRegion.clearSelection();
+      ContextMenuController.removeAny();
+      _selected = null;
+      return;
+    }
+    widget.onTap?.call();
+  }
+
+  /// What is selected now, for the menu's Search.
+  String? _selected;
 
   List<InlineSpan> _spans(
     BuildContext context,

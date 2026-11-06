@@ -178,7 +178,11 @@ void main() {
       final elbow = plan(depth: 1).elbow!;
 
       expect(elbow.x, ThreadGeometry.columnFor(0));
-      expect(elbow.endX, ThreadGeometry.indentFor(1));
+      // Just short of the reply's face, so it arrives at it.
+      expect(
+        elbow.endX,
+        ThreadGeometry.indentFor(1) - ThreadGeometry.elbowGap,
+      );
       expect(elbow.turnY, ThreadGeometry.avatar / 2);
     });
 

@@ -21,6 +21,8 @@ import '../models/conversation.dart';
 import '../providers/messages_provider.dart';
 import '../widgets/country_sheet.dart';
 import '../widgets/glass_icon_button.dart';
+import '../widgets/hairline.dart';
+import '../widgets/list_controls.dart';
 import '../widgets/action_button.dart';
 import '../widgets/post_card.dart';
 import '../widgets/media_tile_grid.dart';
@@ -323,6 +325,15 @@ class _LoadedState extends ConsumerState<_Loaded> {
 }
 
 /// The tab strip, pinned under the header once it reaches the top.
+///
+/// The same pills the messages list filters with, so a profile's Posts and
+/// Media are chosen the way a reader already chooses Groups and Hidden: the
+/// one in force filled, the rest outlined in the rule. They replace a row of
+/// words with an underline that took the accent colour -- the only blue on
+/// the strip, which read as a link rather than as where you are.
+///
+/// The rule along the bottom is full width and solid: the strip ends here and
+/// the posts begin.
 class _TabStrip extends SliverPersistentHeaderDelegate {
   final List<ProfileTab> tabs;
   final ProfileTab selected;
@@ -336,7 +347,9 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
     required this.background,
   });
 
-  static const double _height = 46;
+  /// A chip's height with room either side of it, and the rule.
+  static const double _height =
+      ActionButton.compactHeight + 2 * SpacingTokens.space8 + RuleLine.weight;
 
   @override
   double get minExtent => _height;
@@ -346,59 +359,26 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlaps) {
-    final scheme = Theme.of(context).colorScheme;
-
     return Material(
       color: background,
       child: Column(
         children: [
-          Expanded(
-            child: Row(
-              children: [
-                for (final tab in tabs)
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => onSelect(tab),
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Center(
-                            child: Text(
-                              tab.label,
-                              style: TextStyle(
-                                fontSize: TypographyTokens.fontSize2,
-                                fontWeight: tab == selected
-                                    ? FontWeight.w700
-                                    : FontWeight.w500,
-                                color: tab == selected
-                                    ? scheme.onSurface
-                                    : scheme.onSurface.withValues(alpha: 0.6),
-                              ),
-                            ),
-                          ),
-                          if (tab == selected)
-                            Container(
-                              height: 3,
-                              width: 32,
-                              decoration: BoxDecoration(
-                                color: scheme.primary,
-                                borderRadius: const BorderRadius.vertical(
-                                  top: Radius.circular(3),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
+          const SizedBox(height: SpacingTokens.space8),
+          ListChipRow(
+            children: [
+              for (final (i, tab) in tabs.indexed) ...[
+                if (i > 0) const SizedBox(width: SpacingTokens.space8),
+                ListChip(
+                  key: ValueKey('profile-tab-${tab.name}'),
+                  selected: tab == selected,
+                  onTap: () => onSelect(tab),
+                  label: tab.label,
+                ),
               ],
-            ),
+            ],
           ),
-          Divider(
-            height: 1,
-            thickness: 0.5,
-            color: scheme.outline.withValues(alpha: 0.2),
-          ),
+          const SizedBox(height: SpacingTokens.space8),
+          const RuleLine(),
         ],
       ),
     );

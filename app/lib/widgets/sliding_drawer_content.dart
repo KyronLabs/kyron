@@ -10,6 +10,7 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../models/current_user.dart';
 import '../providers/current_user_provider.dart';
 import '../routes.dart';
+import '../screens/profile_screen.dart' show FollowListArgs;
 import 'stamp.dart';
 import 'verified_badge.dart';
 import '../services/app_info.dart';
@@ -137,13 +138,26 @@ class SlidingDrawerContent extends ConsumerWidget {
           // Followers and following. Both arrive in the same /profile/me
           // response the avatar above comes from; the client used to read the
           // follower count and drop the other.
+          //
+          // Each opens its list -- the same pages the profile's counts open.
+          // A count that cannot be pressed reads as a button that is broken.
           Row(
             children: [
-              _stat(context, user.followers,
-                  AppLocalizations.of(context).followers),
+              _stat(
+                context,
+                user.followers,
+                AppLocalizations.of(context).followers,
+                key: const ValueKey('drawer-followers'),
+                onTap: () => _follows(context, user, followers: true),
+              ),
               const SizedBox(width: SpacingTokens.space16),
-              _stat(context, user.following,
-                  AppLocalizations.of(context).following),
+              _stat(
+                context,
+                user.following,
+                AppLocalizations.of(context).following,
+                key: const ValueKey('drawer-following'),
+                onTap: () => _follows(context, user, followers: false),
+              ),
             ],
           ),
 
@@ -187,10 +201,32 @@ class SlidingDrawerContent extends ConsumerWidget {
     );
   }
 
-  Widget _stat(BuildContext context, int value, String label) {
+  /// The people following [user], or those they follow: closes the drawer
+  /// first, as every other item here does.
+  void _follows(BuildContext context, CurrentUser user,
+      {required bool followers}) {
+    onCloseDrawer();
+    Navigator.pushNamed(
+      context,
+      followers ? Routes.followers : Routes.following,
+      arguments: FollowListArgs(
+        userId: user.id,
+        title: user.displayName,
+        followers: followers,
+      ),
+    );
+  }
+
+  Widget _stat(
+    BuildContext context,
+    int value,
+    String label, {
+    Key? key,
+    VoidCallback? onTap,
+  }) {
     final scheme = Theme.of(context).colorScheme;
 
-    return Row(
+    final row = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
@@ -210,6 +246,20 @@ class SlidingDrawerContent extends ConsumerWidget {
           ),
         ),
       ],
+    );
+    if (onTap == null) return row;
+    return Semantics(
+      button: true,
+      child: GestureDetector(
+        key: key,
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        // Taller than the words, so a thumb need not land on them exactly.
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: SpacingTokens.space4),
+          child: row,
+        ),
+      ),
     );
   }
 

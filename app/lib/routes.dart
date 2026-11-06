@@ -187,7 +187,11 @@ class Routes {
         return _page(const EditProfileScreen());
 
       case search:
-        return _page(const SearchScreen());
+        // A query to start from: the words chosen in a post's text menu.
+        final query = settings.arguments;
+        return _page(
+          SearchScreen(initialQuery: query is String ? query : null),
+        );
 
       case savedPosts:
         return _page(const PostCollectionScreen.saved());

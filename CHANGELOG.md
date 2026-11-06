@@ -20,6 +20,25 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Choose the words in a post.** Hold a post's, comment's or reply's text
+  to select it, with Copy, Search and Select all -- black on white in the
+  light theme, white on black in the dark. Search looks for the words on
+  Kyron.
+- **Emoji on their own are big** in posts, comments and replies, as they
+  are in messages.
+- **Your followers and following open from the side menu.**
+
+### Changed
+
+- **A photo on its own is shown whole**, in its own shape, edged with a
+  hairline, instead of cut to fit a box. Two or more are laid out as before.
+- **Threads curve gently** into each reply, and replies have more room
+  between them.
+- **A profile's Posts, Media and Likes are pills**, as in messages, over a
+  hairline.
+
 
 ## [0.1.37] - 2026-11-05
 <!-- What's new

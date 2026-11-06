@@ -746,6 +746,8 @@ class _Caption extends StatelessWidget {
                 PostText(
                   content: caption,
                   maxLines: 3,
+                  // Over the video, where a long press is the video's.
+                  selectable: false,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: TypographyTokens.fontSize2,

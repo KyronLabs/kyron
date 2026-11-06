@@ -17,7 +17,11 @@ import '../widgets/kyron_app_bar.dart';
 
 /// Finding people and posts.
 class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key});
+  /// Searched for as the screen opens, with the keyboard left down: the
+  /// reader chose these words already, in a post.
+  final String? initialQuery;
+
+  const SearchScreen({super.key, this.initialQuery});
 
   @override
   ConsumerState<SearchScreen> createState() => _SearchScreenState();
@@ -30,6 +34,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   void initState() {
     super.initState();
+    final query = widget.initialQuery?.trim();
+    if (query != null && query.isNotEmpty) {
+      _controller.text = query;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) ref.read(searchProvider.notifier).query(query);
+      });
+      return;
+    }
     // The screen exists to be typed into, so it opens with the keyboard up.
     WidgetsBinding.instance.addPostFrameCallback((_) => _focus.requestFocus());
   }

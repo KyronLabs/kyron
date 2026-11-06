@@ -369,7 +369,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
                       // button that opens it, or the two read as unrelated.
                       hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
                       isLastChild: row.isLastChild,
-                      topGap: SpacingTokens.space12,
+                      topGap: ThreadGeometry.rowGap,
                       avatar: CommentAvatar(comment: comment),
                       child: CommentTile(
                         comment: comment,
