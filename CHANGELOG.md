@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.39] - 2026-11-06
 ### Fixed
 
 - **A red heart is red.** ❤️ -- and ☀️, ⚠️ and a few others -- came out as
@@ -2473,7 +2475,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.38...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.39...HEAD
+[0.1.39]: https://github.com/KyronLabs/kyron/compare/v0.1.38...v0.1.39
 [0.1.38]: https://github.com/KyronLabs/kyron/compare/v0.1.37...v0.1.38
 [0.1.37]: https://github.com/KyronLabs/kyron/compare/v0.1.36...v0.1.37
 [0.1.36]: https://github.com/KyronLabs/kyron/compare/v0.1.35...v0.1.36
