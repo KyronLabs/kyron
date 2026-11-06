@@ -35,6 +35,12 @@ const PUBLIC = new Map<string, string>([
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],
+  // What a shared link shows somebody without the app (kyron-web). Each
+  // selects its fields one by one -- PublicService -- and none reads a
+  // session.
+  ['GET /public/posts/:id', 'a shared post: live, by a visible account'],
+  ['GET /public/profiles/:handle', 'a shared profile: no email, no birthday'],
+  ['GET /public/communities/:slug', 'a shared community: live ones only'],
   // The pre-Supabase sign-in. Nothing it issues is accepted by AuthGuard any
   // more, but the routes still answer.
   ['POST /auth/register', 'legacy sign-up'],

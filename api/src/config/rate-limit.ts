@@ -1,3 +1,5 @@
+import { timingSafeEqual } from 'node:crypto';
+
 /**
  * Single source of truth for how many requests a minute one caller may make.
  *
@@ -31,3 +33,40 @@ export function readRateLimit(raw = process.env.RATE_LIMIT_MAX): number {
 
 /** What a deployment gets for leaving it unset. Per caller, per minute. */
 export const DEFAULT_RATE_LIMIT = 100;
+
+/**
+ * The bucket for kyron-web, the server that renders shared links for people
+ * without the app.
+ *
+ * Every page it serves is fetched from here from one address, so in the
+ * per-address bucket the whole internet's link previews would share 100
+ * requests a minute between them. It identifies itself with a shared secret
+ * (PUBLIC_PAGES_KEY, set on both services) and gets a bucket of its own,
+ * larger but still finite: it caches, and a flood that gets past its cache
+ * should still meet a ceiling here.
+ *
+ * Unset, nothing matches and kyron-web is limited like anybody else.
+ */
+export const PAGES_BUCKET = 'service:pages';
+export const PAGES_RATE_LIMIT = 3000;
+
+export function isPagesService(
+  url: string | undefined,
+  header: string | string[] | undefined,
+  secret = process.env.PUBLIC_PAGES_KEY,
+): boolean {
+  // Only for what kyron-web reads. A leaked key buys a bigger bucket for the
+  // public pages and nothing else.
+  if (!url?.startsWith('/public/')) return false;
+  if (!secret || secret.length < 32 || typeof header !== 'string') return false;
+  const a = Buffer.from(header);
+  const b = Buffer.from(secret);
+  // Compared in constant time, so the answer's timing says nothing about how
+  // much of a guess was right.
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+
+/** How many requests a minute the bucket [key] may make. */
+export function limitFor(key: string, base = readRateLimit()): number {
+  return key === PAGES_BUCKET ? PAGES_RATE_LIMIT : base;
+}

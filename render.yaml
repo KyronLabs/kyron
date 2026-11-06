@@ -64,3 +64,7 @@ services:
       # See docs/PUSH.md.
       - key: FCM_SERVICE_ACCOUNT_JSON
         sync: false
+      # Shared with kyron-web, which renders shared links: its own rate-limit
+      # bucket on /public/*. See api/.env.example.
+      - key: PUBLIC_PAGES_KEY
+        sync: false

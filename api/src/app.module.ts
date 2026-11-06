@@ -23,6 +23,7 @@ import { InsightsModule } from './modules/insights/insights.module';
 import { AccountModule } from './modules/account/account.module';
 import { VerificationModule } from './modules/verification/verification.module';
 import { GiftsModule } from './modules/gifts/gifts.module';
+import { PublicModule } from './modules/public/public.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { GiftsModule } from './modules/gifts/gifts.module';
     AccountModule,
     VerificationModule,
     GiftsModule,
+    PublicModule,
   ],
   controllers: [],
   providers: [],
