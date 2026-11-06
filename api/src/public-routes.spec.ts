@@ -39,6 +39,7 @@ const PUBLIC = new Map<string, string>([
   // selects its fields one by one -- PublicService -- and none reads a
   // session.
   ['GET /public/posts/:id', 'a shared post: live, by a visible account'],
+  ['GET /public/comments/:id', 'a shared comment, on a live post'],
   ['GET /public/profiles/:handle', 'a shared profile: no email, no birthday'],
   ['GET /public/communities/:slug', 'a shared community: live ones only'],
   // The pre-Supabase sign-in. Nothing it issues is accepted by AuthGuard any

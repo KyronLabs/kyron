@@ -35,6 +35,12 @@ export class PublicController {
     return this.svc.post(id);
   }
 
+  @Get('comments/:id')
+  @Header('Cache-Control', 'public, max-age=60')
+  comment(@Param('id', ParseUUIDPipe) id: string) {
+    return this.svc.comment(id);
+  }
+
   @Get('profiles/:handle')
   @Header('Cache-Control', 'public, max-age=60')
   profile(@Param('handle') handle: string) {
