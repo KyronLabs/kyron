@@ -1,6 +1,7 @@
 import '../l10n/app_localizations.dart';
 
 // lib/widgets/comment_tile.dart
+import '../services/kyron_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -73,8 +74,7 @@ class CommentTile extends StatelessWidget {
   static const double slot = 60;
 
   /// A link to this comment's own page, which is what sharing one means.
-  static String linkTo(PostComment comment) =>
-      'https://kyron.so/c/${comment.id}';
+  static String linkTo(PostComment comment) => KyronLinks.comment(comment.id);
 
   /// The post's own size. At 16 under 15-point words the buttons read as
   /// footnotes; the hierarchy comes from the post's bigger words and face,

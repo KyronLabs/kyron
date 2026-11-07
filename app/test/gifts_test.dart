@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:kyron_app/l10n/app_localizations.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/gift.dart';
@@ -108,6 +109,13 @@ Future<(_Gifts, List<SentGift?>)> _openSheet(
 }
 
 void main() {
+  // The app's Material localizations load the date data before anything is
+  // drawn; these tests mount a notification row on its own, without them.
+  // Loaded here so a notification over a week old -- shown as "29 Oct" --
+  // renders as it does in the app, instead of throwing once a fixed date in
+  // this file is a week behind the clock.
+  setUpAll(() => initializeDateFormatting());
+
   group('reading what the server sends', () {
     test('a post says which gift you sent it, if any', () {
       expect(

@@ -20,6 +20,12 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **A shared comment opens the comment.** Comment links used the address
+  communities use, so tapping one opened an empty community page. They now
+  have an address of their own, and links already sent still open the
+  comment.
 
 ## [0.1.39] - 2026-11-06
 ### Fixed
