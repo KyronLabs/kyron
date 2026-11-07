@@ -7,6 +7,8 @@ import 'package:kyron_app/providers/feed_provider.dart';
 import 'package:kyron_app/repositories/feed_repository.dart';
 import 'package:kyron_app/screens/post_detail_screen.dart';
 import 'package:kyron_app/services/api_client.dart';
+import 'package:kyron_app/widgets/edit_post_sheet.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'support/signed_in_as.dart';
@@ -113,5 +115,42 @@ void main() {
   testWidgets('an older post is not offered for editing', (tester) async {
     await _open(tester, _mine(age: const Duration(minutes: 30)));
     expect(find.byKey(const ValueKey('post-option-edit')), findsNothing);
+  });
+
+  // Under the app's own theme, whose buttons are full width: in that theme a
+  // plain FilledButton in the sheet's heading took the whole row, stood the
+  // title on end one letter per line and pushed Save off the sheet.
+  testWidgets('the sheet\'s heading reads across, with Save beside it',
+      (tester) async {
+    tester.view.devicePixelRatio = 1;
+    tester.view.physicalSize = const Size(360, 640);
+    addTearDown(tester.view.reset);
+    final post = _mine(age: const Duration(minutes: 1));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [feedRepositoryProvider.overrideWithValue(_Repo(post))],
+        child: MaterialApp(
+          theme: KyronTheme.lightTheme,
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () => EditPostSheet.show(context, post),
+                child: const Text('open'),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pump(const Duration(seconds: 1));
+
+    final title = tester.getSize(find.text('Edit post'));
+    expect(title.height, lessThan(40), reason: 'one line, not a column');
+    expect(title.width, greaterThan(60));
+    final save = tester.getRect(find.byKey(const ValueKey('edit-post-save')));
+    expect(save.right, lessThanOrEqualTo(360));
+    expect(save.width, lessThan(120), reason: 'a button, not the whole row');
+    expect(tester.takeException(), isNull);
   });
 }
