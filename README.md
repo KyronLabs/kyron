@@ -130,6 +130,16 @@ against. The API runs as a single instance, which is what
 `docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md` mean when they say "one
 process". More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
+**Migrations apply themselves on deploy.** A merge to `main` redeploys the API,
+and [`api/scripts/start.sh`](api/scripts/start.sh) runs `prisma migrate deploy`
+before the server starts, so there is nothing to apply by hand. If a migration
+fails or takes longer than `MIGRATE_TIMEOUT` (180s), the server starts anyway
+on the old schema: the deploy looks green, and only the routes that need the
+new tables or columns fail. `GET /health` says whether the database is
+reachable, not whether it is up to date, so the place to check is the
+`[start]` lines in the deploy log on Render, or the newest row in
+`_prisma_migrations`.
+
 ---
 
 ## ◈ The other repositories
