@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.40] - 2026-11-07
 ### Added
 
 - **Edit a post.** For 15 minutes after posting, your post's menu has Edit
@@ -2509,7 +2511,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.39...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.40...HEAD
+[0.1.40]: https://github.com/KyronLabs/kyron/compare/v0.1.39...v0.1.40
 [0.1.39]: https://github.com/KyronLabs/kyron/compare/v0.1.38...v0.1.39
 [0.1.38]: https://github.com/KyronLabs/kyron/compare/v0.1.37...v0.1.38
 [0.1.37]: https://github.com/KyronLabs/kyron/compare/v0.1.36...v0.1.37
