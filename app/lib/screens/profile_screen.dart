@@ -1,6 +1,7 @@
 import '../l10n/app_localizations.dart';
 
 // lib/screens/profile_screen.dart
+import '../services/kyron_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -105,9 +106,7 @@ class ProfileScreen extends ConsumerWidget {
 /// Hands the profile's public address to the system share sheet.
 Future<void> shareProfile(ProfileModel profile) async {
   final handle = profile.username?.trim();
-  final url = handle == null || handle.isEmpty
-      ? 'https://kyron.so/u/${profile.id}'
-      : 'https://kyron.so/@$handle';
+  final url = KyronLinks.profile(handle: handle, id: profile.id);
   await Share.share(url, subject: '${profile.displayName} on Kyron');
 }
 

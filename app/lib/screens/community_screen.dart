@@ -1,6 +1,7 @@
 import '../l10n/app_localizations.dart';
 
 // lib/screens/community_screen.dart
+import '../services/kyron_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -201,7 +202,7 @@ class CommunityScreen extends ConsumerWidget {
     Community community,
     CommunityNotifier notifier,
   ) async {
-    final url = 'https://kyron.so/c/${community.slug}';
+    final url = KyronLinks.community(community.slug);
     final moderator = community.role?.canModerate ?? false;
 
     final chosen = await ActionSheet.show<String>(
