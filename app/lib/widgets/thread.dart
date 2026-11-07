@@ -489,11 +489,20 @@ class ThreadItem extends StatelessWidget {
 class ThreadDivider extends StatelessWidget {
   const ThreadDivider({super.key});
 
+  /// The space the line leaves above itself, and below.
+  ///
+  /// Uneven on purpose, so what the eye sees is even. Above the line sit the
+  /// last row's buttons, whose own padding adds 4 below their glyphs; below
+  /// it the next conversation's [ThreadGeometry.rowGap] adds 12 before its
+  /// face. 12 above and 4 below put the line 16 from the glyphs over it and
+  /// 16 from the face under it: in the middle, which is where a line between
+  /// two things belongs.
+  static const double above = SpacingTokens.space12;
+  static const double below = SpacingTokens.space4;
+
   @override
   Widget build(BuildContext context) => const Padding(
-        // Room either side, so the line reads as the gap between two
-        // conversations rather than the underline of the one above.
-        padding: EdgeInsets.symmetric(vertical: SpacingTokens.space8),
+        padding: EdgeInsets.only(top: above, bottom: below),
         child: RuleLine(),
       );
 }
