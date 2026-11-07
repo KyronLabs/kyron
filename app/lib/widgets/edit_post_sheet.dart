@@ -10,6 +10,7 @@ import '../l10n/app_localizations.dart';
 import '../models/feed_post.dart';
 import '../providers/feed_provider.dart' show feedRepositoryProvider;
 import '../utils/api_error_message.dart';
+import 'action_button.dart';
 import 'app_sheet.dart';
 import 'hairline.dart';
 
@@ -117,7 +118,7 @@ class _SheetState extends ConsumerState<_Sheet> {
               padding: const EdgeInsets.fromLTRB(
                 SpacingTokens.space16,
                 SpacingTokens.space8,
-                SpacingTokens.space8,
+                SpacingTokens.space16,
                 SpacingTokens.space8,
               ),
               child: Row(
@@ -148,15 +149,17 @@ class _SheetState extends ConsumerState<_Sheet> {
                       ],
                     ),
                   ),
-                  FilledButton(
+                  const SizedBox(width: SpacingTokens.space12),
+                  // ActionButton, not a bare FilledButton: the design system's
+                  // button theme is full width (`Size.fromHeight`), and in this
+                  // row it took every pixel, left the title one letter wide
+                  // and pushed itself off the sheet.
+                  ActionButton(
                     key: const ValueKey('edit-post-save'),
+                    label: l10n.ui('ui_save', 'Save'),
+                    compact: true,
+                    busy: _saving,
                     onPressed: _changed && _valid && !_saving ? _save : null,
-                    child: _saving
-                        ? const SizedBox.square(
-                            dimension: 16,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : Text(l10n.ui('ui_save', 'Save')),
                   ),
                 ],
               ),
