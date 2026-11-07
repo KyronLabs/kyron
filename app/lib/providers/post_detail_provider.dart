@@ -38,6 +38,13 @@ class PostDetailState {
   final String? error;
   final String? nextCursor;
 
+  /// How the comments are ordered: Top unless the reader chose Recent.
+  final CommentSort sort;
+
+  /// The comments are being fetched again in a new order. The ones on screen
+  /// stay until they arrive, faded, rather than the thread blanking out.
+  final bool isSorting;
+
   const PostDetailState({
     this.post,
     this.comments = const [],
@@ -49,6 +56,8 @@ class PostDetailState {
     this.media = const [],
     this.error,
     this.nextCursor,
+    this.sort = CommentSort.top,
+    this.isSorting = false,
   });
 
   bool get hasMore => nextCursor != null;
@@ -77,8 +86,12 @@ class PostDetailState {
     String? nextCursor,
     bool clearError = false,
     bool clearCursor = false,
+    CommentSort? sort,
+    bool? isSorting,
   }) {
     return PostDetailState(
+      sort: sort ?? this.sort,
+      isSorting: isSorting ?? this.isSorting,
       post: post ?? this.post,
       comments: comments ?? this.comments,
       replies: replies ?? this.replies,
@@ -130,7 +143,7 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
       // screen for a whole round trip.
       final results = await Future.wait([
         _repo.byId(_postId),
-        _repo.comments(_postId),
+        _repo.comments(_postId, sort: state.sort),
       ]);
 
       final post = results[0] as FeedPost;
@@ -141,12 +154,38 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
         comments: page.items,
         nextCursor: page.nextCursor,
         isLoading: false,
+        sort: state.sort,
       );
     } catch (e) {
       state = PostDetailState(
         isLoading: false,
         error: describeApiError(e, sessionIsLive: true),
+        sort: state.sort,
       );
+    }
+  }
+
+  /// Orders the comments by [sort], fetching them again in that order.
+  ///
+  /// The server does the ordering, not this list: Top over the comments
+  /// already loaded would be the top of the first twenty, not of the post.
+  /// Opened replies are kept -- they are keyed by their comment, which is
+  /// still the same comment wherever it now sits.
+  Future<void> setSort(CommentSort sort) async {
+    if (sort == state.sort) return;
+    state = state.copyWith(sort: sort, isSorting: true);
+    try {
+      final page = await _repo.comments(_postId, sort: sort);
+      // Asked for something else meanwhile: that answer wins.
+      if (state.sort != sort) return;
+      state = state.copyWith(
+        comments: page.items,
+        nextCursor: page.nextCursor,
+        clearCursor: page.nextCursor == null,
+        isSorting: false,
+      );
+    } catch (_) {
+      if (state.sort == sort) state = state.copyWith(isSorting: false);
     }
   }
 
@@ -188,7 +227,10 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
     if (cursor == null || state.isLoading) return;
 
     try {
-      final page = await _repo.comments(_postId, cursor: cursor);
+      final sort = state.sort;
+      final page = await _repo.comments(_postId, cursor: cursor, sort: sort);
+      // A page of the old order, landing after the order changed.
+      if (state.sort != sort) return;
       state = state.copyWith(
         comments: [...state.comments, ...page.items],
         nextCursor: page.nextCursor,
@@ -454,9 +496,11 @@ class PostDetailNotifier extends StateNotifier<PostDetailState> {
       );
 
       if (parentId == null) {
-        // Oldest first, so a new comment goes at the end of the thread.
+        // At the top, in either order: under Recent that is where the
+        // newest belongs, and under Top the reader has just written it and
+        // expects to see it -- not to hunt for it among the most liked.
         state = state.copyWith(
-          comments: [...state.comments, created],
+          comments: [created, ...state.comments],
           isSending: false,
           media: const [],
         );

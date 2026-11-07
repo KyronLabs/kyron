@@ -20,12 +20,34 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **Edit a post.** For 15 minutes after posting, your post's menu has Edit
+  post: change the words, and the post says "Edited". Hashtags follow the
+  new words, and anyone newly mentioned is told -- nobody twice.
+- **Sort comments.** Top or Recent, from the end of the comments heading.
+  Top puts the most liked first, Recent the newest; your own new comment
+  always lands at the top.
+
+### Changed
+
+- **Videos play like TikTok.** A tap pauses once it is clear it is not a
+  double tap; a double tap likes without stopping the clip, and more taps are
+  more hearts. The videos page opens with the sound on, and the mute button
+  is gone.
+- **The bar on a post's page changes at its own pace** -- the same calm
+  change however fast the scroll -- and turns round smoothly if you scroll
+  back halfway.
+
 ### Fixed
 
 - **A shared comment opens the comment.** Comment links used the address
   communities use, so tapping one opened an empty community page. They now
   have an address of their own, and links already sent still open the
   comment.
+- **Scrolling the feed while a post is deleted no longer errors.** Counting
+  what you have seen could trip over a post removed at the same moment; that
+  post is now simply skipped.
 
 ## [0.1.39] - 2026-11-06
 ### Fixed

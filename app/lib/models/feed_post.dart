@@ -15,6 +15,17 @@ class FeedPost {
   final DateTime createdAt;
   final FeedAuthor author;
 
+  /// When its words were last changed by its author; null if never. Shown
+  /// as "Edited", so a reply to the first version is not left looking wrong.
+  final DateTime? editedAt;
+
+  /// How long after posting its words can still be changed. The server's
+  /// rule (FeedService.editWindowMs), mirrored to know when to offer it.
+  static const editWindow = Duration(minutes: 15);
+
+  /// Whether [now] is still inside the window for changing its words.
+  bool canEditAt(DateTime now) => now.difference(createdAt) < editWindow;
+
   /// How many people have liked it.
   final int likes;
 
@@ -70,6 +81,7 @@ class FeedPost {
     required this.content,
     required this.createdAt,
     required this.author,
+    this.editedAt,
     this.likes = 0,
     this.comments = 0,
     this.reposts = 0,
@@ -96,6 +108,8 @@ class FeedPost {
         author: FeedAuthor.fromJson(
           (json['author'] as Map<String, dynamic>?) ?? const {},
         ),
+        editedAt:
+            DateTime.tryParse(json['editedAt'] as String? ?? '')?.toLocal(),
         likes: (json['likes'] as num?)?.toInt() ?? 0,
         comments: (json['comments'] as num?)?.toInt() ?? 0,
         reposts: (json['reposts'] as num?)?.toInt() ?? 0,
@@ -140,6 +154,7 @@ class FeedPost {
         content: content,
         createdAt: createdAt,
         author: author,
+        editedAt: editedAt,
         likes: likes ?? this.likes,
         comments: comments ?? this.comments,
         reposts: reposts ?? this.reposts,

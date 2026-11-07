@@ -73,6 +73,31 @@ run('For You, against a real database', () => {
     await prisma?.$disconnect();
   });
 
+  it('skips a post deleted while its impression is being written', async () => {
+    // Deterministically, what CI met by chance: another connection deletes
+    // the post and has not committed when the impression is written. The
+    // insert sees the post, waits on the delete, and the delete commits --
+    // the impression must quietly not be written, not fail the batch.
+    const gone = await prisma.post.create({
+      data: { authorId: authors[0], content: 'about to go' },
+    });
+    const other = new PrismaClient({ datasources: { db: { url } } });
+    try {
+      let writing: Promise<void> | undefined;
+      await other.$transaction(async (tx) => {
+        await tx.$executeRaw`DELETE FROM "Post" WHERE id = ${gone.id}::uuid`;
+        writing = feed.recordImpressions(reader, [gone.id, posts[2]]);
+        await new Promise((resolve) => setTimeout(resolve, 400));
+      });
+      await expect(writing).resolves.toBeUndefined();
+      expect(await row(gone.id)).toBeNull();
+      // And the rest of the batch still lands.
+      expect(await row(posts[2])).not.toBeNull();
+    } finally {
+      await other.$disconnect();
+    }
+  });
+
   it('notes what was on screen, once per sitting', async () => {
     await feed.recordImpressions(reader, [posts[0], posts[0], posts[1]]);
     await feed.recordImpressions(reader, [posts[0]]);

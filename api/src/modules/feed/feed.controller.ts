@@ -16,6 +16,8 @@ import { FeedService } from './feed.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { ReplyPolicyDto } from './dto/reply-policy.dto';
+import { EditPostDto } from './dto/edit-post.dto';
+import { ListCommentsDto } from './dto/list-comments.dto';
 import { ListFeedDto } from './dto/list-feed.dto';
 import { SearchPostsDto } from './dto/search-posts.dto';
 import { VotePollDto } from './dto/vote-poll.dto';
@@ -154,9 +156,15 @@ export class FeedController {
   comments(
     @Req() req: AuthRequest,
     @Param('id', ParseUUIDPipe) id: string,
-    @Query() query: ListFeedDto,
+    @Query() query: ListCommentsDto,
   ) {
-    return this.svc.listComments(id, req.user.id, query.limit, query.cursor);
+    return this.svc.listComments(
+      id,
+      req.user.id,
+      query.limit,
+      query.cursor,
+      query.sort ?? 'top',
+    );
   }
 
   @Post('posts/:id/comments')
@@ -335,6 +343,16 @@ export class FeedController {
     @Body() dto: ReplyPolicyDto,
   ) {
     return this.svc.setReplyPolicy(req.user.id, id, dto.replyPolicy);
+  }
+
+  /** New words for your own post, in the minutes after it went out. */
+  @Patch('posts/:id')
+  edit(
+    @Req() req: AuthRequest,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: EditPostDto,
+  ) {
+    return this.svc.editPost(req.user.id, id, dto);
   }
 
   @Delete('posts/:id')

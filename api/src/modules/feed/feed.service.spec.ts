@@ -1008,7 +1008,7 @@ describe('FeedService', () => {
   });
 
   describe('listComments', () => {
-    it('reads a thread oldest first, top level only', async () => {
+    it('reads the top comments first, top level only', async () => {
       post.findFirst.mockResolvedValue({ id: 'p1' });
       comment.findMany.mockResolvedValue([]);
       await (await service()).listComments('p1', VIEWER, 20);
@@ -1022,9 +1022,44 @@ describe('FeedService', () => {
             // Nor anything by a banned account.
             author: { status: { not: 'BANNED' } },
           },
-          // A conversation reads in the order it happened, unlike every other
-          // list here.
-          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          // The most liked, then the most answered, then the first there.
+          orderBy: [
+            { likes: { _count: 'desc' } },
+            { replies: { _count: 'desc' } },
+            { createdAt: 'asc' },
+            { id: 'asc' },
+          ],
+          skip: 0,
+        }),
+      );
+    });
+
+    it('pages top comments by position, since likes move them', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.findMany.mockResolvedValue(
+        ['c1', 'c2', 'c3'].map((id) => commentRow(id)),
+      );
+      const first = await (await service()).listComments('p1', VIEWER, 2);
+      expect(first.nextCursor).toBe('t2');
+
+      comment.findMany.mockResolvedValue([commentRow('c3')]);
+      await (await service()).listComments('p1', VIEWER, 2, 't2');
+      // The page itself; the reply faces read after it are another query.
+      expect(comment.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({ skip: 2, cursor: undefined, take: 3 }),
+      );
+    });
+
+    it('reads recent comments newest first', async () => {
+      post.findFirst.mockResolvedValue({ id: 'p1' });
+      comment.findMany.mockResolvedValue([]);
+      await (
+        await service()
+      ).listComments('p1', VIEWER, 20, undefined, 'recent');
+
+      expect(comment.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
         }),
       );
     });

@@ -180,6 +180,7 @@ class _SlowFeed extends FeedRepository {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async =>
       CommentPage(items: [_comment('c1', replies: 2)]);
 
@@ -284,6 +285,7 @@ class _CountingFeed extends FeedRepository {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async =>
       const CommentPage(items: []);
 
@@ -432,6 +434,7 @@ class _HeldLike extends FeedRepository {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async =>
       const CommentPage(items: []);
 

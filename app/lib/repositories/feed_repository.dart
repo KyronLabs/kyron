@@ -284,6 +284,16 @@ class FeedRepository {
 
   Future<void> delete(String postId) => _api.dio.delete('/feed/posts/$postId');
 
+  /// New words for your own post, inside the minutes after it went out.
+  /// Answers with the post as it now is.
+  Future<FeedPost> edit(String postId, String content) async {
+    final res = await _api.dio.patch<Map<String, dynamic>>(
+      '/feed/posts/$postId',
+      data: {'content': content},
+    );
+    return FeedPost.fromJson(res.data ?? const {});
+  }
+
   /// Changes who may reply, after the post has gone out.
   Future<void> setReplyPolicy(String postId, ReplyPolicy policy) =>
       _api.dio.patch<void>(
@@ -301,10 +311,15 @@ class FeedRepository {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async {
     final res = await _api.dio.get<Map<String, dynamic>>(
       '/feed/posts/$postId/comments',
-      queryParameters: {'limit': limit, if (cursor != null) 'cursor': cursor},
+      queryParameters: {
+        'limit': limit,
+        'sort': sort.wire,
+        if (cursor != null) 'cursor': cursor,
+      },
     );
     return CommentPage.fromJson(res.data ?? const {});
   }

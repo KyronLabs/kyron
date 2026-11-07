@@ -206,6 +206,9 @@ model Post {
   // deleting the row outright would silently shift every page after it.
   deletedAt DateTime? @db.Timestamptz()
   createdAt DateTime  @default(now()) @db.Timestamptz()
+  /// When its words were last changed, inside the window after posting that
+  /// allows it (FeedService.editWindowMs). Shown as "Edited".
+  editedAt  DateTime? @db.Timestamptz()
   updatedAt DateTime  @updatedAt @db.Timestamptz()
 
   // Who may reply. The composer offers this and the server enforces it; a

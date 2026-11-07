@@ -28,7 +28,9 @@ class _Repo extends FeedRepository {
 
   @override
   Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
+          {String? cursor,
+          int limit = 20,
+          CommentSort sort = CommentSort.top}) async =>
       CommentPage(items: [
         for (final id in ['c1', 'c2'])
           PostComment.fromJson({
