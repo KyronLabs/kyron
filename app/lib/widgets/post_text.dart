@@ -8,7 +8,8 @@ import 'selection_menu.dart';
 import 'post_action_colors.dart';
 import '../services/app_browser.dart';
 import '../utils/display_url.dart';
-import 'create_post/url_preview.dart' show trimTrailingPunctuation;
+import 'create_post/url_preview.dart'
+    show isLinkableHost, trimTrailingPunctuation;
 
 /// A post's text, with its hashtags, mentions and links picked out.
 ///
@@ -76,7 +77,12 @@ class PostText extends StatefulWidget {
   static final RegExp pattern = RegExp(
     r'(?<![\w#])#[\p{L}\p{N}_]{1,50}'
     r'|(?<![\w@])@[A-Za-z0-9_]{1,30}'
-    r'|https?://[^\s]+',
+    r'|https?://[^\s]+'
+    // A bare host -- "kubernetes.io", "edx.org/learn/devops" -- checked
+    // against real top-level domains before it is drawn as a link
+    // (isLinkableHost), so "Node.js" stays a word.
+    r'|(?<![\w@./-])(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+'
+    r'[A-Za-z]{2,24}(?:/[^\s<>"]*)?',
     unicode: true,
   );
 
@@ -219,14 +225,24 @@ class _PostTextState extends State<PostText> {
       // A link's closing full stop or bracket belongs to the sentence: left
       // in, it was part of what was opened, and of what is shortened below.
       var after = '';
-      final link = text.startsWith('http');
+      final bare = !text.startsWith('#') &&
+          !text.startsWith('@') &&
+          !text.toLowerCase().startsWith('http');
+      if (bare && !isLinkableHost(trimTrailingPunctuation(text))) {
+        // Looked like a host and is not one: words, as written.
+        spans.add(TextSpan(text: text, style: base));
+        last = match.end;
+        continue;
+      }
+      final link = bare || text.startsWith('http');
       if (link) {
         final trimmed = trimTrailingPunctuation(text);
         after = text.substring(trimmed.length);
         text = trimmed;
       }
+      final target = bare ? 'https://$text' : text;
       final recognizer = TapGestureRecognizer()
-        ..onTap = () => _open(context, text);
+        ..onTap = () => _open(context, target);
       _recognizers.add(recognizer);
 
       final highlighted = widget.highlightTag != null &&
@@ -235,8 +251,9 @@ class _PostTextState extends State<PostText> {
 
       spans.add(
         TextSpan(
-          // A link is shown short and opened whole: see displayUrl.
-          text: link ? displayUrl(text) : text,
+          // A link is shown short and opened whole: see displayUrl. A bare
+          // host is shown exactly as it was written.
+          text: link && !bare ? displayUrl(text) : text,
           style: highlighted
               // Dark text on the highlighter, not the accent colour: blue on
               // yellow is unreadable, and the point is to be spotted.

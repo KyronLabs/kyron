@@ -35,12 +35,18 @@ the section; GitHub does not show it:
   them, and that won over the phone's emoji. They are the phone's emoji
   again, in posts, comments, messages and every text box.
 - **Wide photos are shown whole**, short rather than cut at the ends.
+- **"kubernetes.io" is a link.** A web address written without "https://"
+  -- which is how people write them -- was plain text you could not tap.
+  It is a link now, in posts, comments and replies; file names like
+  "Node.js" and "README.md" stay words.
 
 ### Changed
 
 - **More room between a comment's words and its buttons**, and the line into
   a reply is one long, gentle sweep rather than a turn.
 - **A broken hairline above a profile's tabs.**
+- **The line between two conversations sits in the middle**, as far from
+  the buttons above it as from the face below.
 
 
 ## [0.1.38] - 2026-11-06
