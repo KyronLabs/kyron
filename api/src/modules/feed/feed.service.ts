@@ -872,6 +872,13 @@ export class FeedService {
    * stood before this session touched it. Ids that name no post are skipped
    * rather than failing the batch: a post deleted while it was on screen is
    * normal.
+   *
+   * Including one deleted while this very statement runs. The posts are
+   * read FOR KEY SHARE -- the lock the foreign key takes anyway -- so a post
+   * whose delete is in flight is waited for and then skipped. Without it the
+   * select saw the post, the delete committed, and the foreign key check
+   * failed the whole batch: an account deleted mid-scroll took every
+   * impression on the screen down with it.
    */
   async recordImpressions(viewerId: string, postIds: string[]): Promise<void> {
     const ids = [...new Set(postIds)];
@@ -881,6 +888,7 @@ export class FeedService {
       SELECT ${viewerId}::uuid, p.id, 1, now()
       FROM "Post" p
       WHERE p.id = ANY(${ids}::uuid[])
+      FOR KEY SHARE
       ON CONFLICT ("viewerId", "postId") DO UPDATE
         SET "count" = "PostImpression"."count" + 1,
             "prevAt" = "PostImpression"."lastAt",

@@ -45,6 +45,9 @@ the section; GitHub does not show it:
   communities use, so tapping one opened an empty community page. They now
   have an address of their own, and links already sent still open the
   comment.
+- **Scrolling the feed while a post is deleted no longer errors.** Counting
+  what you have seen could trip over a post removed at the same moment; that
+  post is now simply skipped.
 
 ## [0.1.39] - 2026-11-06
 ### Fixed
