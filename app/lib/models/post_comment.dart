@@ -3,6 +3,15 @@
 import 'feed_post.dart';
 import 'post_media.dart';
 
+/// How a post's comments are ordered: the most liked first, or the newest.
+enum CommentSort {
+  top,
+  recent;
+
+  /// As the API names it.
+  String get wire => name;
+}
+
 /// One comment on a post, or one reply to a comment.
 class PostComment {
   final String id;

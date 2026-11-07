@@ -277,32 +277,50 @@ void main() {
   });
 
   group('tapping', () {
-    testWidgets('stops it on the tap, not once the double-tap window is out', (
+    testWidgets('pauses once it is clear the tap is not a like', (
       tester,
     ) async {
       await _pump(tester, [_clip('a')], startOn: 'a');
 
       await tester.tap(find.byType(PageView));
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 100));
+      // Still waiting to see if a second tap follows: a like must not stop it.
+      expect(_isPaused(), isFalse);
 
-      // A pause that lands a third of a second late is a pause that feels
-      // broken, so it happens now and a second tap undoes it.
+      await tester.pump(const Duration(milliseconds: 200));
       expect(_isPaused(), isTrue);
     });
 
-    testWidgets('twice likes it, and leaves playback where it was', (
-      tester,
-    ) async {
+    testWidgets('twice likes it, and never stops it', (tester) async {
       final feed = await _pump(tester, [_clip('a', likes: 4)], startOn: 'a');
 
       await tester.tap(find.byType(PageView));
       await tester.pump(const Duration(milliseconds: 40));
+      expect(_isPaused(), isFalse);
       await tester.tap(find.byType(PageView));
+      for (var i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+        expect(_isPaused(), isFalse, reason: 'a like plays straight through');
+      }
       await tester.pumpAndSettle();
 
       expect(feed.liking, [true]);
       expect(find.text('5'), findsOneWidget);
-      expect(_isPaused(), isFalse, reason: 'the pause was undone by the like');
+      expect(_isPaused(), isFalse);
+    });
+
+    testWidgets('taps that keep coming are more hearts, not a pause', (
+      tester,
+    ) async {
+      final feed = await _pump(tester, [_clip('a', likes: 4)], startOn: 'a');
+      for (var i = 0; i < 4; i++) {
+        await tester.tap(find.byType(PageView));
+        await tester.pump(const Duration(milliseconds: 120));
+      }
+      await tester.pumpAndSettle();
+      expect(_isPaused(), isFalse);
+      // One like, however many hearts.
+      expect(feed.liking, [true]);
     });
 
     testWidgets('twice on something already liked does not take it back', (
@@ -323,6 +341,17 @@ void main() {
       expect(feed.liking, isEmpty);
       expect(find.text('4'), findsOneWidget);
     });
+  });
+
+  testWidgets('opens with the sound on, and has no mute button', (
+    tester,
+  ) async {
+    await _pump(tester, [_clip('a')], startOn: 'a');
+    final volumes = (VideoPlayerPlatform.instance as FakeVideoPlatform).volumes;
+    expect(volumes.values, isNotEmpty);
+    expect(volumes.values.last, 1);
+    expect(find.byIcon(Iconsax.volume_slash), findsNothing);
+    expect(find.byIcon(Iconsax.volume_high), findsNothing);
   });
 
   group('how the clip is fitted', () {
@@ -364,7 +393,7 @@ void main() {
 
       // Well above the middle, where a 16:9 clip on a phone is not.
       await tester.tapAt(const Offset(180, 120));
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
       expect(_isPaused(), isTrue);
     });
   });

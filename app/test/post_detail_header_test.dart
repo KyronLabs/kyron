@@ -33,6 +33,7 @@ class _OnePost extends FeedRepository {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async =>
       const CommentPage(items: []);
 
@@ -225,7 +226,7 @@ void main() {
       expect(inBar, findsNothing);
     });
 
-    testWidgets('the bar follows the scroll, partway as well as all the way', (
+    testWidgets('the bar changes at its own pace, however hard the scroll', (
       tester,
     ) async {
       final long = FeedPost(
@@ -246,35 +247,65 @@ void main() {
             )
             .first,
       );
-      final header = tester.getSize(find.text('Ada').first);
 
-      // Halfway through the header leaving: "Post" on its way out to the
-      // left, the author on the way in, and neither at full strength.
-      // Just past where the change starts -- 40% of the header gone, under
-      // its 12 of padding -- while "Post" is still fading.
-      final headerRow = tester.getSize(
-        find
-            .ancestor(of: find.text('Ada').first, matching: find.byType(Row))
-            .last,
-      );
-      list.position.jumpTo(
-        SpacingTokens.space12 + headerRow.height * 0.4 + 2,
-      );
+      // As abrupt as a scroll gets: straight past the header in one frame.
+      list.position.jumpTo(600);
       await tester.pump();
+      await tester.pump(const Duration(milliseconds: 60));
+      // Not slammed in: the change has only begun, on its own clock.
       expect(title, findsOneWidget);
-      expect(author, findsOneWidget);
-      final post = tester.widget<Opacity>(title).opacity;
-      expect(post, inExclusiveRange(0, 1));
-      expect(tester.getTopLeft(find.text('Post')).dx, lessThan(56));
-      // Taps wait until the name is mostly there.
-      expect(tester.widget<IgnorePointer>(author).ignoring, isTrue);
+      expect(tester.widget<Opacity>(title).opacity, greaterThan(0));
 
-      // And all the way back, by the scroll alone.
+      await tester.pumpAndSettle();
+      expect(author, findsOneWidget);
+      expect(title, findsNothing);
+      expect(tester.widget<IgnorePointer>(author).ignoring, isFalse);
+
+      // Back again: it runs back, from where it is, to "Post".
       list.position.jumpTo(0);
       await tester.pump();
+      await tester.pump(const Duration(milliseconds: 60));
+      expect(author, findsOneWidget, reason: 'on its way out, not gone');
+      await tester.pumpAndSettle();
       expect(author, findsNothing);
       expect(tester.widget<Opacity>(title).opacity, 1);
-      expect(header.height, greaterThan(0));
+    });
+
+    testWidgets('changing direction mid-change turns it round smoothly', (
+      tester,
+    ) async {
+      final long = FeedPost(
+        id: 'p1',
+        content:
+            List.filled(60, 'A long walk along the harbour wall.').join(' '),
+        createdAt: DateTime(2026, 10, 30),
+        author: const FeedAuthor(id: 'ada', username: 'ada', name: 'Ada'),
+      );
+      await _page(tester, long);
+      final title = find.byKey(const ValueKey('post-detail-bar-title'));
+      final list = tester.state<ScrollableState>(
+        find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+
+      list.position.jumpTo(600);
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 80));
+      final partway = tester.widget<Opacity>(title).opacity;
+      list.position.jumpTo(0);
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 16));
+      // No jump back to the start: it carries on from where it was.
+      expect(
+        tester.widget<Opacity>(title).opacity,
+        closeTo(partway, 0.25),
+      );
+      await tester.pumpAndSettle();
+      expect(tester.widget<Opacity>(title).opacity, 1);
     });
 
     testWidgets('the title sits beside the back button, not across the bar', (

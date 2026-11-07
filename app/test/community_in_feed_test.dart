@@ -124,6 +124,7 @@ class _OnePost extends _Feed {
     String postId, {
     String? cursor,
     int limit = 20,
+    CommentSort sort = CommentSort.top,
   }) async =>
       const CommentPage(items: []);
 

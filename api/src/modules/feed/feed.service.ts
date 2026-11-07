@@ -1,11 +1,13 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { AccountStatus, MediaKind, Prisma, ReplyPolicy } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import type { CommentSort } from './dto/list-comments.dto';
 import { DeliveryService } from '../push/delivery.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { RankingService } from './ranking.service';
@@ -38,6 +40,8 @@ export interface FeedPost {
   id: string;
   content: string;
   createdAt: Date;
+  /** When its words were last changed; null if never. */
+  editedAt: Date | null;
   author: {
     id: string;
     name: string | null;
@@ -1947,11 +1951,23 @@ export class FeedService {
    * Oldest first, unlike every other list here: a thread is a conversation and
    * reads in the order it happened. The cursor is therefore ascending too.
    */
+  /**
+   * A post's top-level comments: the most liked first (top), or the newest
+   * first (recent).
+   *
+   * Top orders by likes, then by how much conversation a comment started,
+   * then oldest first -- so of two equally liked comments the one that was
+   * there first, and has had longer to be liked, does not lose its place to
+   * a newcomer. Recent is newest first, which is what "recent" means; the
+   * oldest-first order this list used to have is still how replies under a
+   * comment read, because a reply answers what came before it.
+   */
   async listComments(
     postId: string,
     viewerId: string,
     limit = DEFAULT_LIMIT,
     cursor?: string,
+    sort: CommentSort = 'top',
   ): Promise<CommentPage> {
     const post = await this.requireVisiblePost(postId);
     return this.commentPage(
@@ -1960,6 +1976,7 @@ export class FeedService {
       limit,
       cursor,
       post.authorId,
+      sort === 'top' ? 'top' : 'newest',
     );
   }
 
@@ -2226,8 +2243,16 @@ export class FeedService {
     limit: number,
     cursor?: string,
     postAuthorId: string | null = null,
+    order: 'oldest' | 'newest' | 'top' = 'oldest',
   ): Promise<CommentPage> {
-    if (cursor) {
+    // Top pages by position (see ListCommentsDto); the others by the last
+    // row's id. A cursor of the other kind is a stale page.
+    const offset =
+      order === 'top' && cursor ? /^t(\d+)$/.exec(cursor)?.[1] : undefined;
+    if (cursor && order === 'top' && offset === undefined) {
+      throw new NotFoundException('That page no longer exists.');
+    }
+    if (cursor && order !== 'top') {
       const anchor = await this.prisma.comment.findUnique({
         where: { id: cursor },
         select: { id: true },
@@ -2235,13 +2260,26 @@ export class FeedService {
       if (!anchor) throw new NotFoundException('That page no longer exists.');
     }
 
+    const orderBy: Prisma.CommentOrderByWithRelationInput[] =
+      order === 'top'
+        ? [
+            { likes: { _count: 'desc' } },
+            { replies: { _count: 'desc' } },
+            { createdAt: 'asc' },
+            { id: 'asc' },
+          ]
+        : order === 'newest'
+          ? [{ createdAt: 'desc' }, { id: 'desc' }]
+          : [{ createdAt: 'asc' }, { id: 'asc' }];
+    const skipped = offset === undefined ? 0 : Number(offset);
+
     const rows = await this.prisma.comment.findMany({
       // A banned account's replies go with its posts.
       where: { ...where, author: notBanned },
-      orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+      orderBy,
       take: limit + 1,
-      cursor: cursor ? { id: cursor } : undefined,
-      skip: cursor ? 1 : 0,
+      cursor: cursor && order !== 'top' ? { id: cursor } : undefined,
+      skip: order === 'top' ? skipped : cursor ? 1 : 0,
       select: this.commentShapeFor(viewerId),
     });
 
@@ -2263,7 +2301,11 @@ export class FeedService {
           authorLikes,
         ),
       ),
-      nextCursor: hasMore ? page[page.length - 1].id : null,
+      nextCursor: !hasMore
+        ? null
+        : order === 'top'
+          ? `t${skipped + page.length}`
+          : page[page.length - 1].id,
     };
   }
 
@@ -2659,6 +2701,106 @@ export class FeedService {
     return { replyPolicy };
   }
 
+  /**
+   * How long after posting its words can be changed: long enough to catch a
+   * typo, short enough that a post cannot be quietly turned into something
+   * else once people have liked, shared or answered what it said.
+   */
+  static readonly editWindowMs = 15 * 60_000;
+
+  /**
+   * New words for a post, by its author, inside [editWindowMs].
+   *
+   * The hashtags are filed again from the new words, and anyone newly named
+   * is told -- but nobody already named is told twice, and somebody the
+   * edit no longer names drops out of the post's mentions. Attachments, the
+   * poll and topics are left alone: what can be changed is what was
+   * written. Another account's post, or one that is gone, is "not found",
+   * as deletePost answers.
+   */
+  async editPost(
+    authorId: string,
+    postId: string,
+    input: { content: string },
+    now = new Date(),
+  ): Promise<FeedPost> {
+    const post = await this.prisma.post.findFirst({
+      where: { id: postId, authorId, deletedAt: null },
+      select: {
+        id: true,
+        createdAt: true,
+        content: true,
+        _count: { select: { media: true } },
+        poll: { select: { id: true } },
+      },
+    });
+    if (!post) throw new NotFoundException('Post not found.');
+    if (now.getTime() - post.createdAt.getTime() > FeedService.editWindowMs) {
+      throw new ForbiddenException(
+        'A post can only be edited in the first 15 minutes.',
+      );
+    }
+
+    const content = input.content.trim();
+    if (!content && post._count.media === 0) {
+      throw new BadRequestException(
+        'A post needs some words or an attachment.',
+      );
+    }
+    if (post.poll && !content) {
+      throw new BadRequestException('A poll needs a question.');
+    }
+    if (content === post.content) {
+      return this.getPost(postId, authorId);
+    }
+
+    const hashtags = await this.hashtagLinks(content);
+    const named = await this.prisma.mention.findMany({
+      where: { postId, commentId: null },
+      select: { userId: true, user: { select: { username: true } } },
+    });
+    const stillNamed = new Set(mentionedHandles(content));
+
+    await this.prisma.$transaction([
+      this.prisma.postHashtag.deleteMany({ where: { postId } }),
+      this.prisma.post.update({
+        where: { id: postId },
+        data: {
+          content,
+          editedAt: now,
+          hashtags: { create: hashtags },
+        },
+      }),
+      // Named before and not any more: their mention goes, so it does not
+      // sit in their notifications pointing at words that are not there.
+      this.prisma.mention.deleteMany({
+        where: {
+          postId,
+          commentId: null,
+          userId: {
+            in: named
+              .filter(
+                (m) =>
+                  !m.user.username ||
+                  !stillNamed.has(m.user.username.toLowerCase()),
+              )
+              .map((m) => m.userId),
+          },
+        },
+      }),
+    ]);
+
+    this.logger.log(`post ${postId} edited by ${authorId}`);
+    await this.tellMentioned(
+      authorId,
+      content,
+      postId,
+      undefined,
+      new Set(named.map((m) => m.userId)),
+    );
+    return this.getPost(postId, authorId);
+  }
+
   /** Soft delete, and only by the author. */
   async deletePost(authorId: string, postId: string): Promise<void> {
     const { count } = await this.prisma.post.updateMany({
@@ -2683,6 +2825,7 @@ export class FeedService {
       id: true,
       content: true,
       createdAt: true,
+      editedAt: true,
       replyPolicy: true,
       // Ranking needs these three and the shape is read everywhere, so they
       // are here rather than in a second query per page.
@@ -2802,6 +2945,7 @@ export class FeedService {
       id: row.id,
       content: row.content,
       createdAt: row.createdAt,
+      editedAt: row.editedAt ?? null,
       author: this.toAuthor(row.author),
       followingAuthor: (row.author.followers?.length ?? 0) > 0,
       likes: row.likeCount,
@@ -2891,6 +3035,7 @@ interface PostRow {
   id: string;
   content: string;
   createdAt: Date;
+  editedAt?: Date | null;
   replyPolicy: ReplyPolicy;
   poll: PollRow | null;
   author: AuthorRow;

@@ -63,7 +63,7 @@ class PostDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver, SingleTickerProviderStateMixin {
   final _controller = TextEditingController();
   final _focus = FocusNode();
   final _scroll = ScrollController();
@@ -72,10 +72,22 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
   /// it has scrolled out from under it.
   final _header = GlobalKey();
 
-  /// How far the bar has gone from "Post" to the author, 0 to 1, following
-  /// the scroll. A notifier rather than state, so a scroll rebuilds the
-  /// bar's title and nothing else.
-  final _bar = ValueNotifier<double>(0);
+  /// How far the bar has gone from "Post" to the author, 0 to 1.
+  ///
+  /// At its own pace, not the finger's. Scrubbed by the scroll, the change
+  /// ran as fast as the reader flicked -- a hard fling slammed the name in --
+  /// and stopped half-made when they stopped, a half-faded "Post" under a
+  /// half-grown face. Now crossing the line starts a short, eased change
+  /// that always plays the same; crossing back runs it back from wherever
+  /// it has got to, so it still answers at once, without ever jumping.
+  late final AnimationController _bar = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 420),
+    reverseDuration: const Duration(milliseconds: 300),
+  );
+
+  /// Which way the bar is headed: to the author, or back to "Post".
+  bool _barToAuthor = false;
 
   /// The comment being replied to, or null to comment on the post itself.
   PostComment? _replyingTo;
@@ -93,28 +105,33 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
     _scroll.addListener(_onScroll);
   }
 
-  /// Moves the bar from "Post" to the author as their header goes under it,
-  /// and back as it returns -- by the scroll itself, not on a timer, so the
-  /// change follows the finger, stops where it stops, and runs backwards
-  /// when the reader does.
+  /// Sends the bar to the author once their header has mostly gone under
+  /// it, and back once it has mostly returned.
   ///
-  /// It plays across the second half of the header leaving: begun once the
-  /// face is mostly gone, finished as the handle's line clears the bar, so
-  /// the name is never in both places and never in neither. Measured off the
-  /// header itself rather than a guessed offset, because a community post's
-  /// header is taller.
+  /// Two lines a little apart rather than one, so a reader resting on the
+  /// boundary does not set the bar flickering between the two. Measured off
+  /// the header itself rather than a guessed offset, because a community
+  /// post's header is taller.
   void _onScroll() {
     if (!_scroll.hasClients) return;
     final box = _header.currentContext?.findRenderObject() as RenderBox?;
     final height = box?.size.height ?? 48;
     // The header sits under the post's top padding.
     const top = SpacingTokens.space12;
-    final start = top + height * 0.4;
-    final end = top + height;
-    var t = ((_scroll.offset - start) / (end - start)).clamp(0.0, 1.0);
+    final offset = _scroll.offset;
+    final toAuthor = _barToAuthor
+        ? offset > top + height * 0.5
+        : offset > top + height * 0.75;
+    if (toAuthor == _barToAuthor) return;
+    _barToAuthor = toAuthor;
     // With motion turned down there is no in-between: one, or the other.
-    if (MediaQuery.disableAnimationsOf(context)) t = t < 0.5 ? 0 : 1;
-    _bar.value = t;
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _bar.value = toAuthor ? 1 : 0;
+    } else if (toAuthor) {
+      _bar.forward();
+    } else {
+      _bar.reverse();
+    }
   }
 
   /// Ends the read when the app goes away, and starts a new one when it
@@ -166,10 +183,10 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
         // Who wrote it, once the header that says so has scrolled away: a
         // long thread otherwise leaves the reader with no idea whose post
         // they are answering.
-        title: ValueListenableBuilder<double>(
-          valueListenable: _bar,
-          builder: (context, t, _) => _BarTitle(
-            t: t,
+        title: AnimatedBuilder(
+          animation: _bar,
+          builder: (context, _) => _BarTitle(
+            t: _bar.value,
             title: AppLocalizations.of(context).post,
             author: post?.author,
           ),
@@ -251,192 +268,217 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen>
             ? 3
             : rows.length + 2 + (state.hasMore ? 1 : 0),
         itemBuilder: (context, index) {
-          if (index == 0) {
-            return _Post(
-              headerKey: _header,
-              post: post,
-              notifier: _notifier,
-              onReply: () => _replyTo(null),
-            );
-          }
-          if (index == 1) return _ThreadHeading(count: post.comments);
-          if (state.comments.isEmpty) {
-            return EmptyState(
-              compact: true,
-              art: EmptyArt.messages,
-              title: AppLocalizations.of(context).literalnoRepliesYet,
-              detail: 'Be the first to say something.',
-            );
-          }
-
-          final rowIndex = index - 2;
-          if (rowIndex >= rows.length) {
-            return _MoreButton(onTap: _notifier.loadMore);
-          }
-
-          final row = rows[rowIndex];
-          final comment = row.comment;
-
-          // The end of a conversation with more than the page shows: one
-          // row, in the thread, that opens the conversation's own page.
-          if (comment.id.startsWith(moreRepliesPrefix)) {
-            final topId = comment.id.substring(moreRepliesPrefix.length);
-            // The faces of the people who answered, as "Show N replies"
-            // carries: the elbow turns into them rather than into an empty
-            // slot.
-            final faces = capped.comments
-                .firstWhere(
-                  (c) => c.id == topId,
-                  orElse: () => comment,
-                )
-                .replyFaces;
-            final marker = ThreadMoreReplies(
-              faces: faces,
-              count: 0,
-              label: AppLocalizations.of(context)
-                  .ui('ui_view_more_replies', 'View more replies'),
-              onTap: () => Navigator.pushNamed(
-                context,
-                Routes.comment,
-                arguments: topId,
-              ),
-            );
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: SpacingTokens.space16,
-                  ),
-                  child: ThreadItem(
-                    depth: row.depth,
-                    ancestorRails: row.ancestorRails,
-                    hasChildrenBelow: false,
-                    isLastChild: true,
-                    avatarSize: ThreadMoreReplies.faceSize,
-                    avatarWidth: ThreadMoreReplies.widthFor(
-                      faces.take(3).length,
-                    ),
-                    topGap: SpacingTokens.space8,
-                    avatar: marker.leading(context),
-                    child: marker,
-                  ),
-                ),
-                if (endsBranch(rows, rowIndex)) const ThreadDivider(),
-              ],
-            );
-          }
-
-          final expanded = state.expanded.contains(comment.id);
-          // Replies are fetched only when asked for, so an unexpanded comment
-          // simply has no children in the flat list. The affordance is driven
-          // by the count the server sent, not by what happens to be loaded.
-          //
-          // At every depth, not just the top: a reply now keeps the parent it
-          // was written under, so a nested comment has answers of its own and
-          // gating this on depth 0 hid them behind nothing at all.
-          // The row stays put while its replies are on their way, carrying a
-          // spinner beside its faces. Taking it away and putting nothing in
-          // its place reads as the branch having been deleted.
-          final fetching = state.loadingReplies.contains(comment.id);
-          // Not in a conversation already showing all it has room for: its
-          // "View more replies" row is the way on from there.
-          final foldedReplies = comment.replies > 0 &&
-              !expanded &&
-              !capped.full.contains(capped.branchOf[comment.id]);
-
-          // A hairline closes a top-level comment together with everything
-          // hanging off it. The rule is [endsBranch], so it can be tested.
-          final closesBranch = endsBranch(rows, rowIndex);
-
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // The rows carry the same inset as the post and the heading
-              // above them. Without it a comment began at the very edge of
-              // the screen while everything else on the page was indented.
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: SpacingTokens.space16,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ThreadItem(
-                      depth: row.depth,
-                      ancestorRails: row.ancestorRails,
-                      // The rail under a folded comment has to reach the
-                      // button that opens it, or the two read as unrelated.
-                      hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
-                      isLastChild: row.isLastChild,
-                      topGap: ThreadGeometry.rowGap,
-                      avatar: CommentAvatar(comment: comment),
-                      child: CommentTile(
-                        comment: comment,
-                        onOpen: () => _openComment(comment),
-                        onReply: () => _replyTo(comment),
-                        onLike: () => _likeComment(comment),
-                        onSave: () => report(
-                          context,
-                          _notifier.toggleCommentSave(comment),
-                        ),
-                        onGift: comment.mine
-                            ? null
-                            : (heart) => GiftSheet.openFor(
-                                  heart,
-                                  GiftTarget.comment(comment.id),
-                                  onSent: (sent) =>
-                                      _notifier.commentGiftsChanged(
-                                    comment.id,
-                                    sent.gifts,
-                                    type: sent.type,
-                                  ),
-                                ),
-                        onAction: (action) => _commentAction(action, comment),
-                      ),
-                    ),
-                    // A row of the thread rather than a button beside it, so
-                    // the rail from the comment above runs down into it
-                    // instead of stopping at a band of padding the strip
-                    // never covers.
-                    if (foldedReplies)
-                      Builder(
-                        builder: (context) {
-                          final marker = ThreadMoreReplies(
-                            faces: comment.replyFaces,
-                            count: comment.replies,
-                            busy: fetching,
-                            onTap: () => _notifier.toggleReplies(comment.id),
-                          );
-                          return ThreadItem(
-                            depth: row.depth + 1,
-                            ancestorRails: [
-                              ...row.ancestorRails,
-                              !row.isLastChild,
-                            ],
-                            hasChildrenBelow: false,
-                            isLastChild: true,
-                            avatarSize: ThreadMoreReplies.faceSize,
-                            avatarWidth: ThreadMoreReplies.widthFor(
-                              comment.replyFaces.length,
-                              busy: fetching,
-                            ),
-                            avatar: marker.leading(context),
-                            child: marker,
-                          );
-                        },
-                      ),
-                  ],
-                ),
-              ),
-              // Outside the inset, because a rule that stops short of both
-              // edges reads as part of the comment above it rather than as
-              // the boundary between two conversations.
-              if (closesBranch) const ThreadDivider(),
-            ],
-          );
+          final row = _row(context, state, rows, capped, index);
+          // Faded while the comments come back in a new order: still there,
+          // and visibly about to change.
+          return index < 2
+              ? row
+              : AnimatedOpacity(
+                  opacity: state.isSorting ? 0.4 : 1,
+                  duration: MotionTokens.fast,
+                  child: row,
+                );
         },
       ),
+    );
+  }
+
+  Widget _row(
+    BuildContext context,
+    PostDetailState state,
+    List<ThreadRow> rows,
+    CappedThread capped,
+    int index,
+  ) {
+    final post = state.post!;
+    if (index == 0) {
+      return _Post(
+        headerKey: _header,
+        post: post,
+        notifier: _notifier,
+        onReply: () => _replyTo(null),
+      );
+    }
+    if (index == 1) {
+      return _ThreadHeading(
+        count: post.comments,
+        sort: state.sort,
+        onSort: _notifier.setSort,
+      );
+    }
+    if (state.comments.isEmpty) {
+      return EmptyState(
+        compact: true,
+        art: EmptyArt.messages,
+        title: AppLocalizations.of(context).literalnoRepliesYet,
+        detail: 'Be the first to say something.',
+      );
+    }
+
+    final rowIndex = index - 2;
+    if (rowIndex >= rows.length) {
+      return _MoreButton(onTap: _notifier.loadMore);
+    }
+
+    final row = rows[rowIndex];
+    final comment = row.comment;
+
+    // The end of a conversation with more than the page shows: one
+    // row, in the thread, that opens the conversation's own page.
+    if (comment.id.startsWith(moreRepliesPrefix)) {
+      final topId = comment.id.substring(moreRepliesPrefix.length);
+      // The faces of the people who answered, as "Show N replies"
+      // carries: the elbow turns into them rather than into an empty
+      // slot.
+      final faces = capped.comments
+          .firstWhere(
+            (c) => c.id == topId,
+            orElse: () => comment,
+          )
+          .replyFaces;
+      final marker = ThreadMoreReplies(
+        faces: faces,
+        count: 0,
+        label: AppLocalizations.of(context)
+            .ui('ui_view_more_replies', 'View more replies'),
+        onTap: () => Navigator.pushNamed(
+          context,
+          Routes.comment,
+          arguments: topId,
+        ),
+      );
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space16,
+            ),
+            child: ThreadItem(
+              depth: row.depth,
+              ancestorRails: row.ancestorRails,
+              hasChildrenBelow: false,
+              isLastChild: true,
+              avatarSize: ThreadMoreReplies.faceSize,
+              avatarWidth: ThreadMoreReplies.widthFor(
+                faces.take(3).length,
+              ),
+              topGap: SpacingTokens.space8,
+              avatar: marker.leading(context),
+              child: marker,
+            ),
+          ),
+          if (endsBranch(rows, rowIndex)) const ThreadDivider(),
+        ],
+      );
+    }
+
+    final expanded = state.expanded.contains(comment.id);
+    // Replies are fetched only when asked for, so an unexpanded comment
+    // simply has no children in the flat list. The affordance is driven
+    // by the count the server sent, not by what happens to be loaded.
+    //
+    // At every depth, not just the top: a reply now keeps the parent it
+    // was written under, so a nested comment has answers of its own and
+    // gating this on depth 0 hid them behind nothing at all.
+    // The row stays put while its replies are on their way, carrying a
+    // spinner beside its faces. Taking it away and putting nothing in
+    // its place reads as the branch having been deleted.
+    final fetching = state.loadingReplies.contains(comment.id);
+    // Not in a conversation already showing all it has room for: its
+    // "View more replies" row is the way on from there.
+    final foldedReplies = comment.replies > 0 &&
+        !expanded &&
+        !capped.full.contains(capped.branchOf[comment.id]);
+
+    // A hairline closes a top-level comment together with everything
+    // hanging off it. The rule is [endsBranch], so it can be tested.
+    final closesBranch = endsBranch(rows, rowIndex);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // The rows carry the same inset as the post and the heading
+        // above them. Without it a comment began at the very edge of
+        // the screen while everything else on the page was indented.
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space16,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ThreadItem(
+                depth: row.depth,
+                ancestorRails: row.ancestorRails,
+                // The rail under a folded comment has to reach the
+                // button that opens it, or the two read as unrelated.
+                hasChildrenBelow: row.hasChildrenBelow || foldedReplies,
+                isLastChild: row.isLastChild,
+                topGap: ThreadGeometry.rowGap,
+                avatar: CommentAvatar(comment: comment),
+                child: CommentTile(
+                  comment: comment,
+                  onOpen: () => _openComment(comment),
+                  onReply: () => _replyTo(comment),
+                  onLike: () => _likeComment(comment),
+                  onSave: () => report(
+                    context,
+                    _notifier.toggleCommentSave(comment),
+                  ),
+                  onGift: comment.mine
+                      ? null
+                      : (heart) => GiftSheet.openFor(
+                            heart,
+                            GiftTarget.comment(comment.id),
+                            onSent: (sent) => _notifier.commentGiftsChanged(
+                              comment.id,
+                              sent.gifts,
+                              type: sent.type,
+                            ),
+                          ),
+                  onAction: (action) => _commentAction(action, comment),
+                ),
+              ),
+              // A row of the thread rather than a button beside it, so
+              // the rail from the comment above runs down into it
+              // instead of stopping at a band of padding the strip
+              // never covers.
+              if (foldedReplies)
+                Builder(
+                  builder: (context) {
+                    final marker = ThreadMoreReplies(
+                      faces: comment.replyFaces,
+                      count: comment.replies,
+                      busy: fetching,
+                      onTap: () => _notifier.toggleReplies(comment.id),
+                    );
+                    return ThreadItem(
+                      depth: row.depth + 1,
+                      ancestorRails: [
+                        ...row.ancestorRails,
+                        !row.isLastChild,
+                      ],
+                      hasChildrenBelow: false,
+                      isLastChild: true,
+                      avatarSize: ThreadMoreReplies.faceSize,
+                      avatarWidth: ThreadMoreReplies.widthFor(
+                        comment.replyFaces.length,
+                        busy: fetching,
+                      ),
+                      avatar: marker.leading(context),
+                      child: marker,
+                    );
+                  },
+                ),
+            ],
+          ),
+        ),
+        // Outside the inset, because a rule that stops short of both
+        // edges reads as part of the comment above it rather than as
+        // the boundary between two conversations.
+        if (closesBranch) const ThreadDivider(),
+      ],
     );
   }
 
@@ -707,7 +749,10 @@ class _Post extends ConsumerWidget {
 
           const SizedBox(height: SpacingTokens.space12),
           Text(
-            _stamp(post.createdAt),
+            post.editedAt == null
+                ? _stamp(post.createdAt)
+                : '${_stamp(post.createdAt)} \u00b7 '
+                    '${AppLocalizations.of(context).ui('ui_edited', 'Edited')}',
             style: TextStyle(
               fontSize: TypographyTokens.fontSize2,
               color: scheme.onSurface.withValues(alpha: 0.5),
@@ -1178,8 +1223,14 @@ class _BarAuthor extends StatelessWidget {
 
 class _ThreadHeading extends StatelessWidget {
   final int count;
+  final CommentSort sort;
+  final ValueChanged<CommentSort> onSort;
 
-  const _ThreadHeading({required this.count});
+  const _ThreadHeading({
+    required this.count,
+    required this.sort,
+    required this.onSort,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1189,24 +1240,185 @@ class _ThreadHeading extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(
         SpacingTokens.space16,
         SpacingTokens.space8,
-        SpacingTokens.space16,
+        // The menu's own padding brings it to the content edge.
+        SpacingTokens.space8,
         SpacingTokens.space4,
       ),
-      child: Text(
-        count == 0
-            ? 'No comments yet'
-            : count == 1
-                ? '1 comment'
-                : '${formatCount(count)} comments',
-        style: TextStyle(
-          fontSize: TypographyTokens.fontSize1,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.6,
-          color: scheme.onSurface.withValues(alpha: 0.5),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              count == 0
+                  ? 'No comments yet'
+                  : count == 1
+                      ? '1 comment'
+                      : '${formatCount(count)} comments',
+              style: TextStyle(
+                fontSize: TypographyTokens.fontSize1,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.6,
+                color: scheme.onSurface.withValues(alpha: 0.5),
+              ),
+            ),
+          ),
+          // Only where there is an order to choose: one comment is the same
+          // in both.
+          if (count > 1) _SortButton(sort: sort, onSort: onSort),
+        ],
+      ),
+    );
+  }
+}
+
+/// "Top" or "Recent", at the far end of the comments heading, opening the
+/// choice of the two under it.
+class _SortButton extends StatelessWidget {
+  final CommentSort sort;
+  final ValueChanged<CommentSort> onSort;
+
+  const _SortButton({required this.sort, required this.onSort});
+
+  static String labelOf(BuildContext context, CommentSort sort) {
+    final l10n = AppLocalizations.of(context);
+    return switch (sort) {
+      CommentSort.top => l10n.ui('ui_sort_top', 'Top'),
+      CommentSort.recent => l10n.ui('ui_sort_recent', 'Recent'),
+    };
+  }
+
+  Future<void> _open(BuildContext context) async {
+    final box = context.findRenderObject() as RenderBox?;
+    final overlay =
+        Overlay.of(context).context.findRenderObject() as RenderBox?;
+    if (box == null || overlay == null) return;
+    // Under the button, its right edge on the button's.
+    final corner = box.localToGlobal(
+      box.size.bottomRight(Offset.zero),
+      ancestor: overlay,
+    );
+    final scheme = Theme.of(context).colorScheme;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+
+    final picked = await showMenu<CommentSort>(
+      context: context,
+      position: RelativeRect.fromLTRB(
+        corner.dx - 180,
+        corner.dy + SpacingTokens.space4,
+        overlay.size.width - corner.dx,
+        0,
+      ),
+      color: scheme.surface,
+      elevation: dark ? 0 : 8,
+      shadowColor: const Color(0x40000000),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+        // On black, the rule is the only edge a menu has.
+        side: dark ? postRule(scheme) : BorderSide.none,
+      ),
+      constraints: const BoxConstraints(minWidth: 180, maxWidth: 180),
+      items: [
+        for (final option in CommentSort.values)
+          PopupMenuItem<CommentSort>(
+            key: ValueKey('comment-sort-${option.name}'),
+            value: option,
+            height: 52,
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space20,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    labelOf(context, option),
+                    style: TextStyle(
+                      fontSize: TypographyTokens.fontSize4,
+                      color: scheme.onSurface,
+                    ),
+                  ),
+                ),
+                if (option == sort)
+                  CustomPaint(
+                    size: const Size.square(18),
+                    painter: _Tick(color: scheme.onSurface),
+                  ),
+              ],
+            ),
+          ),
+      ],
+    );
+    if (picked != null) onSort(picked);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Semantics(
+      button: true,
+      label: AppLocalizations.of(context)
+          .ui('ui_sort_comments', 'Sort comments: \$order')
+          .replaceAll(r'$order', labelOf(context, sort)),
+      excludeSemantics: true,
+      child: InkWell(
+        key: const ValueKey('comment-sort'),
+        onTap: () => _open(context),
+        borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space8,
+            vertical: SpacingTokens.space4,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                labelOf(context, sort),
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize2,
+                  fontWeight: FontWeight.w700,
+                  color: scheme.onSurface,
+                ),
+              ),
+              const SizedBox(width: SpacingTokens.space2),
+              Icon(
+                Iconsax.arrow_down_1_copy,
+                size: 14,
+                color: scheme.onSurface.withValues(alpha: 0.55),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+/// A plain tick, as the menu in force draws it: two strokes, round ends.
+class _Tick extends CustomPainter {
+  final Color color;
+
+  const _Tick({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final pen = Paint()
+      ..color = color
+      ..strokeWidth = 1.8
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..style = PaintingStyle.stroke;
+    final w = size.width;
+    final h = size.height;
+    canvas.drawPath(
+      Path()
+        ..moveTo(w * 0.12, h * 0.52)
+        ..lineTo(w * 0.4, h * 0.78)
+        ..lineTo(w * 0.9, h * 0.22),
+      pen,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_Tick old) => old.color != color;
 }
 
 class _MoreButton extends StatelessWidget {

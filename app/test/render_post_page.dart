@@ -82,7 +82,9 @@ class _Repo extends FeedRepository {
 
   @override
   Future<CommentPage> comments(String postId,
-          {String? cursor, int limit = 20}) async =>
+          {String? cursor,
+          int limit = 20,
+          CommentSort sort = CommentSort.top}) async =>
       CommentPage(items: [
         PostComment.fromJson(_c('c1', 'Great shot!',
             replies: 1,
@@ -209,6 +211,14 @@ void main() {
         await tester.pump(const Duration(milliseconds: 50));
       }
       await shoot('post-${dark ? 'dark' : 'light'}');
+      if (!dark) {
+        await tester.tap(find.byKey(const ValueKey('comment-sort')));
+        await shoot('post-sort-menu');
+        Navigator.of(
+                tester.element(find.byKey(const ValueKey('comment-sort-top'))))
+            .pop();
+        await tester.pump(const Duration(milliseconds: 400));
+      }
       if (!dark) {
         tester.view.physicalSize = const Size(360, 720);
         await tester.pump();

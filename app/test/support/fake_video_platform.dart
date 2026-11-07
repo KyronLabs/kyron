@@ -67,7 +67,12 @@ class FakeVideoPlatform extends VideoPlayerPlatform
   Future<void> setLooping(int playerId, bool looping) async {}
 
   @override
-  Future<void> setVolume(int playerId, double volume) async {}
+  Future<void> setVolume(int playerId, double volume) async {
+    volumes[playerId] = volume;
+  }
+
+  /// The last volume each player was set to.
+  final volumes = <int, double>{};
 
   @override
   Future<void> setPlaybackSpeed(int playerId, double speed) async {}

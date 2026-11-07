@@ -3,7 +3,6 @@ import '../l10n/app_localizations.dart';
 // lib/screens/video_feed_screen.dart
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +13,6 @@ import 'package:video_player/video_player.dart';
 import '../models/feed_post.dart';
 import '../models/post_media.dart';
 import '../providers/feed_provider.dart';
-import '../providers/video_settings_provider.dart';
 import '../routes.dart';
 import '../services/app_log.dart';
 import '../services/video_pool.dart';
@@ -146,10 +144,6 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<bool>(videoMutedProvider, (_, next) {
-      _controller?.setVolume(next ? 0 : 1);
-    });
-
     final state = ref.watch(postListProvider(widget.args.source));
     final clips = _clipsIn(state);
 
@@ -283,7 +277,10 @@ class _VideoFeedScreenState extends ConsumerState<VideoFeedScreen>
       return;
     }
 
-    await controller.setVolume(ref.read(videoMutedProvider) ? 0 : 1);
+    // Sound on: a page of clips is opened to watch them, sound and all, as
+    // TikTok opens. The feed's own small players keep their mute; this page
+    // has no button for it.
+    await controller.setVolume(1);
     await controller.setLooping(true);
     if (!mounted || _openFor != wanted) {
       VideoPool.instance.release(this);
@@ -462,51 +459,67 @@ class _PageState extends ConsumerState<_Page>
     duration: const Duration(milliseconds: 700),
   );
 
-  /// Open for as long as a second tap would still count as a double tap.
+  /// A tap waiting to find out whether it is the first of two.
   Timer? _window;
 
-  /// What playback was doing before the first of those two taps.
-  bool? _playingBeforeTap;
+  /// Set by a double tap and kept while taps keep coming: every tap in the
+  /// run is another heart, none of them a pause -- as TikTok does it.
+  bool _liking = false;
+  Timer? _likingEnds;
+
+  /// How long a tap waits for a second before it pauses. Shorter than the
+  /// platform's 300: TikTok's pause lands at about a quarter of a second,
+  /// late enough to tell a like from a pause, soon enough to feel like the
+  /// tap did it.
+  static const _pauseAfter = Duration(milliseconds: 240);
+
+  /// How long after the last tap of a like a new tap still means "like".
+  static const _likingFor = Duration(milliseconds: 600);
 
   @override
   void dispose() {
     _window?.cancel();
+    _likingEnds?.cancel();
     _burst.dispose();
     super.dispose();
   }
 
-  /// A tap plays or pauses. Two taps like.
+  /// A tap plays or pauses; two taps like -- and a like never pauses.
   ///
-  /// The pause happens on the first tap rather than after the double-tap
-  /// window has closed -- a pause that lands a third of a second late is a
-  /// pause that feels broken -- and the second tap puts playback back exactly
-  /// where it found it. So a double tap only ever likes.
+  /// The way TikTok does it. A tap waits a quarter of a second to see
+  /// whether a second follows; only if none does is it a pause. Two taps are
+  /// a like and nothing else: the clip plays straight through it, with no
+  /// stop and start. Taps that keep coming after that are more hearts.
+  ///
+  /// This used to pause on the first tap and resume on the second, so the
+  /// pause felt instant -- and every like stuttered the clip, stopping it for
+  /// a beat before it played on.
   void _onTap() {
+    if (_liking) {
+      _like();
+      return;
+    }
     final open = _window;
     if (open != null) {
       open.cancel();
       _window = null;
-      final before = _playingBeforeTap;
-      _playingBeforeTap = null;
-      if (before != null) widget.onSetPlaying(before);
       _like();
       return;
     }
-
-    final controller = widget.controller;
-    if (controller != null && controller.value.isInitialized) {
-      final playing = controller.value.isPlaying;
-      _playingBeforeTap = playing;
-      unawaited(HapticFeedback.selectionClick());
-      widget.onSetPlaying(!playing);
-    }
-    _window = Timer(kDoubleTapTimeout, () {
+    _window = Timer(_pauseAfter, () {
       _window = null;
-      _playingBeforeTap = null;
+      if (!mounted) return;
+      final controller = widget.controller;
+      if (controller == null || !controller.value.isInitialized) return;
+      unawaited(HapticFeedback.selectionClick());
+      widget.onSetPlaying(!controller.value.isPlaying);
     });
   }
 
   void _like() {
+    _liking = true;
+    _likingEnds?.cancel();
+    _likingEnds = Timer(_likingFor, () => _liking = false);
     unawaited(HapticFeedback.mediumImpact());
     _burst.forward(from: 0);
     // Only ever a like. Taking one back is something you mean to do, and a
@@ -773,7 +786,6 @@ class _Rail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(postListProvider(source).notifier);
-    final muted = ref.watch(videoMutedProvider);
 
     final buttons = <Widget>[
       _RailButton(
@@ -813,13 +825,6 @@ class _Rail extends ConsumerWidget {
         icon: Iconsax.export_1_copy,
         tooltip: 'Share',
         onTap: () => SharePostSheet.show(context, post),
-      ),
-      _RailButton(
-        icon: muted ? Iconsax.volume_slash : Iconsax.volume_high,
-        tooltip: muted
-            ? AppLocalizations.of(context).literalturnSoundOn
-            : AppLocalizations.of(context).literalturnSoundOff,
-        onTap: ref.read(videoMutedProvider.notifier).toggle,
       ),
       _RailButton(
         icon: Iconsax.more_copy,

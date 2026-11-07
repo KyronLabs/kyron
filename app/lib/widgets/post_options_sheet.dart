@@ -22,6 +22,8 @@ import 'toast.dart';
 
 import '../l10n/app_localizations.dart';
 import 'app_sheet.dart';
+import 'edit_post_sheet.dart';
+import '../providers/post_detail_provider.dart' show postDetailProvider;
 
 /// The menu behind a post's overflow button.
 ///
@@ -179,6 +181,20 @@ class _OptionsState extends ConsumerState<_Options> {
             // it was doing, and no way to delete it.
             if (mine) ...[
               _divider(scheme),
+              // Only while the window is open: an item that then says "too
+              // late" is a door painted on a wall.
+              if (_post.canEditAt(DateTime.now()))
+                _Item(
+                  key: const ValueKey('post-option-edit'),
+                  icon: Iconsax.edit_2_copy,
+                  label: AppLocalizations.of(context)
+                      .ui('ui_edit_post', 'Edit post'),
+                  subtitle: AppLocalizations.of(context).ui(
+                    'ui_edit_post_detail',
+                    'For 15 minutes after posting',
+                  ),
+                  onTap: _edit,
+                ),
               _Item(
                 icon: Iconsax.chart_2_copy,
                 label: AppLocalizations.of(context).postAnalytics,
@@ -299,6 +315,29 @@ class _OptionsState extends ConsumerState<_Options> {
 
   /// Closes the sheet, then opens something else. Done in this order so the
   /// sheet is not still animating shut underneath the next screen.
+  /// Closes this menu and opens the editor, and puts the post it comes back
+  /// with wherever it is shown: this list, and its own page if that is open.
+  ///
+  /// What is needed afterwards is taken before the menu goes, because by the
+  /// time the editor answers this sheet's own context and ref are gone.
+  Future<void> _edit() async {
+    final host = Navigator.of(context).context;
+    final container = ProviderScope.containerOf(context);
+    final source = widget.source;
+    final overlay = Toast.anchor(context);
+    final done = AppLocalizations.of(context).ui('ui_post_edited', 'Edited');
+    Navigator.pop(context);
+
+    final updated = await EditPostSheet.show(host, _post);
+    if (updated == null) return;
+    container.read(postListProvider(source).notifier).replace(updated);
+    final page = postDetailProvider(updated.id);
+    if (container.exists(page)) {
+      container.read(page.notifier).replacePost(updated);
+    }
+    Toast.showOn(overlay, done);
+  }
+
   Future<void> _replace(Future<void> Function() open) async {
     Navigator.pop(context);
     await open();
@@ -455,6 +494,7 @@ class _Item extends StatelessWidget {
   final VoidCallback onTap;
 
   const _Item({
+    super.key,
     required this.icon,
     required this.label,
     this.subtitle,

@@ -162,7 +162,13 @@ class PostCard extends ConsumerWidget {
                           ],
                           const SizedBox(width: SpacingTokens.space4),
                           Text(
-                            '· ${age(post.createdAt)}',
+                            // "Edited" beside the time, quietly, so a
+                            // reply to the first version is not left
+                            // looking wrong.
+                            post.editedAt == null
+                                ? '· ${age(post.createdAt)}'
+                                : '· ${age(post.createdAt)} · '
+                                    '${AppLocalizations.of(context).ui('ui_edited', 'Edited')}',
                             style: TextStyle(
                               fontSize: TypographyTokens.fontSize2,
                               color: scheme.onSurface.withValues(alpha: 0.45),
