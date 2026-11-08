@@ -76,7 +76,7 @@ void main() {
     final posts = [
       _post(
         'p1',
-        "The older I get, the more I see why it's important to only keep "
+        "@shards The older I get, the more I see why it's important to keep "
             'people around who have the same morals, manners, and sense of '
             "consideration as you. It's not being picky, it's protecting "
             'your peace.',
@@ -121,7 +121,7 @@ void main() {
       ),
       _post(
         'p4',
-        'Read more from this investigation: bbc.in/3X8RB3q',
+        'Read more from this investigation, via @bbcnews: bbc.in/3X8RB3q',
         gifts: 1500,
         top: const ['rocket', 'crown', 'fire'],
       ),

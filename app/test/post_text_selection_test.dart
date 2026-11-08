@@ -70,6 +70,36 @@ void main() {
     expect(find.text('Select all'), findsNothing);
   });
 
+  for (final dark in [false, true]) {
+    testWidgets(
+        'a mention is gold, a tag stays blue (${dark ? 'dark' : 'light'})',
+        (tester) async {
+      await tester.pumpWidget(
+        _host(const PostText(content: 'Thanks @shards for #kudu'), dark: dark),
+      );
+      final rich = tester.widget<RichText>(
+        find.byWidgetPredicate(
+          (w) => w is RichText && w.text.toPlainText().contains('@shards'),
+        ),
+      );
+      Color? colourOf(String word) {
+        Color? found;
+        rich.text.visitChildren((span) {
+          if (span is TextSpan && span.text == word) found = span.style?.color;
+          return found == null;
+        });
+        return found;
+      }
+
+      final theme = dark ? KyronTheme.darkTheme : KyronTheme.lightTheme;
+      expect(
+        colourOf('@shards'),
+        PostText.mentionColourOf(theme.brightness),
+      );
+      expect(colourOf('#kudu'), theme.colorScheme.primary);
+    });
+  }
+
   test('black on white in the light, white on black in the dark', () {
     final light = SelectionMenu.coloursOf(Brightness.light);
     final dark = SelectionMenu.coloursOf(Brightness.dark);

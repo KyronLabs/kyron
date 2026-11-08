@@ -27,6 +27,9 @@ the section; GitHub does not show it:
   the post, on words, photos, voice notes and links alike, and never over
   any of them. Tap it to send one. The heart is a heart again: it no longer
   turns into your gift or wears the others as a crown.
+- **Mentions are gold.** An @name in a post is a deep gold on white and a
+  bright yellow on black, so a post is no longer all one blue: tags and
+  links are places to go, a mention is someone.
 
 ### Fixed
 

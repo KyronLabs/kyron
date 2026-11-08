@@ -18,6 +18,15 @@ import 'create_post/url_preview.dart'
 /// server stores what was written, and how it is drawn is the client's
 /// business.
 class PostText extends StatefulWidget {
+  /// A mention's colour. Yellow as far as each page allows and still reads
+  /// as text: a true yellow on black (12.6:1), and on white a deep gold
+  /// (4.65:1, over the 4.5:1 that body text needs) -- any brighter yellow
+  /// on white is a smudge.
+  static Color mentionColourOf(Brightness brightness) =>
+      brightness == Brightness.dark
+          ? const Color(0xFFFFC93C)
+          : const Color(0xFF9C6B00);
+
   final String content;
   final TextStyle? style;
   final int? maxLines;
@@ -223,6 +232,11 @@ class _PostTextState extends State<PostText> {
       color: scheme.primary,
       fontWeight: FontWeight.w600,
     );
+    // People in gold, so a post is not all one blue: tags and links are
+    // places to go, a mention is someone.
+    final mentionStyle = linkStyle.copyWith(
+      color: PostText.mentionColourOf(Theme.of(context).brightness),
+    );
 
     var last = 0;
     for (final match in PostText.pattern.allMatches(widget.content)) {
@@ -276,7 +290,9 @@ class _PostTextState extends State<PostText> {
                   backgroundColor: PostActionColors.highlight,
                   fontWeight: FontWeight.w700,
                 )
-              : linkStyle,
+              : text.startsWith('@')
+                  ? mentionStyle
+                  : linkStyle,
           recognizer: recognizer,
         ),
       );
