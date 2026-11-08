@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/feed_post.dart';
 import 'gift_sheet.dart' show GiftArt;
 
@@ -63,7 +64,11 @@ class GiftPill extends StatelessWidget {
 
     return Semantics(
       button: onTap != null,
-      label: '$count ${count == 1 ? 'gift' : 'gifts'}',
+      label: count == 1
+          ? AppLocalizations.of(context).ui('ui_gifts_count_one', '1 gift')
+          : AppLocalizations.of(context)
+              .ui('ui_gifts_count', r'$count gifts')
+              .replaceAll(r'$count', '$count'),
       excludeSemantics: true,
       child: GestureDetector(
         onTap: onTap,

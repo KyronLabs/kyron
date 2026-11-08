@@ -35,6 +35,11 @@ the section; GitHub does not show it:
 
 - **Select all goes once everything is selected**, instead of staying in the
   menu doing nothing.
+- **Recent screens speak your language.** Editing a post, sorting
+  comments, the gift sheet, gift notifications, saved comments, the text
+  menu, the AR lens camera and a post's gift analytics were English in
+  every language. They are now in all 68 of the app's languages, and an
+  empty tag page no longer shows "$tab" where the tag's name should be.
 - **The comment sort menu has an edge in the light theme.** It was white on
   white with only a faint shadow; it now has a fine line round it.
 
