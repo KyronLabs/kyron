@@ -20,6 +20,20 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Gifts have a place of their own.** What a post has been given -- its
+  best gifts and how many -- is a small pill on the bottom-right corner of
+  the post, on words, photos, voice notes and links alike, and never over
+  any of them. Tap it to send one. The heart is a heart again: it no longer
+  turns into your gift or wears the others as a crown.
+
+### Fixed
+
+- **Select all goes once everything is selected**, instead of staying in the
+  menu doing nothing.
+- **The comment sort menu has an edge in the light theme.** It was white on
+  white with only a faint shadow; it now has a fine line round it.
 
 ## [0.1.41] - 2026-11-08
 

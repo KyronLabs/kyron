@@ -22,12 +22,15 @@ class SelectionMenu extends StatelessWidget {
 
   /// The menu for selected text in [state], with Search added when there is
   /// anything to search for. [selected] is the text, as the selection area
-  /// last reported it; [onSearch] is what Search does with it.
+  /// last reported it; [onSearch] is what Search does with it. [everything]
+  /// says the selection already covers all of the text, and takes Select all
+  /// away.
   static Widget forRegion(
     BuildContext context,
     SelectableRegionState state, {
     required String? selected,
     required void Function(String text) onSearch,
+    bool everything = false,
   }) {
     final l10n = AppLocalizations.of(context);
     final given = state.contextMenuButtonItems;
@@ -58,7 +61,7 @@ class SelectionMenu extends StatelessWidget {
             onSearch(query);
           },
         ),
-      if (all != null)
+      if (all != null && !everything)
         SelectionMenuItem(
           label: l10n.ui('ui_select_all', 'Select all'),
           onPressed: all.onPressed ?? () {},

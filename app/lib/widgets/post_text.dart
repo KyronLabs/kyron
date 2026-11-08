@@ -128,6 +128,12 @@ class _PostTextState extends State<PostText> {
     // A few emoji and nothing else are a reaction, drawn large -- the rule
     // the chat already uses (utils/emoji_only.dart), at a feed's size.
     final jumbo = jumboEmojiCount(widget.content);
+    final spans = jumbo != null ? null : _spans(context, base, scheme);
+    // Everything there is to select, as the selection reports it -- the
+    // words as drawn, so a shortened link counts as its short form.
+    _whole = spans == null
+        ? widget.content.trim()
+        : TextSpan(children: spans).toPlainText();
     final Widget text = jumbo != null
         ? Text(
             widget.content.trim(),
@@ -138,7 +144,7 @@ class _PostTextState extends State<PostText> {
             ),
           )
         : Text.rich(
-            TextSpan(children: _spans(context, base, scheme)),
+            TextSpan(children: spans),
             maxLines: widget.maxLines,
             overflow: widget.maxLines == null
                 ? TextOverflow.clip
@@ -166,6 +172,11 @@ class _PostTextState extends State<PostText> {
           menuContext,
           state,
           selected: _selected,
+          // Select all once everything is selected is a button that does
+          // nothing, so it goes.
+          everything: _selected != null &&
+              _selected!.trim().isNotEmpty &&
+              _selected!.trim() == _whole.trim(),
           onSearch: (query) =>
               Navigator.pushNamed(context, Routes.search, arguments: query),
         ),
@@ -196,6 +207,9 @@ class _PostTextState extends State<PostText> {
 
   /// What is selected now, for the menu's Search.
   String? _selected;
+
+  /// All of the words, as drawn.
+  String _whole = '';
 
   List<InlineSpan> _spans(
     BuildContext context,

@@ -17,6 +17,7 @@ import 'community_avatar.dart';
 import 'country_sheet.dart';
 import 'gift_sheet.dart';
 import 'link_preview_card.dart';
+import 'gift_pill.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
 import 'post_actions_row.dart';
@@ -177,73 +178,94 @@ class PostCard extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    if (post.content.trim().isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: SpacingTokens.space2,
-                          bottom: SpacingTokens.space4,
-                        ),
-                        child: PostText(
-                          content: post.content,
-                          highlightTag: highlightTag,
-                          // The card's own tap, which the selectable words
-                          // would otherwise keep to themselves.
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            Routes.postDetail,
-                            arguments: post.id,
-                          ),
-                        ),
+                    // The gifts hang off the content's bottom-right corner;
+                    // see GiftPillHost.
+                    GiftPillHost(
+                      types: post.topGifts,
+                      count: post.gifts,
+                      yours: post.viewerGift != null,
+                      endsInText: GiftPillHost.endsInWords(post),
+                      onTap: _gifting(ref, post, source),
+                      content: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (post.content.trim().isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: SpacingTokens.space2,
+                                bottom: SpacingTokens.space4,
+                              ),
+                              child: PostText(
+                                content: post.content,
+                                highlightTag: highlightTag,
+                                // The card's own tap, which the selectable words
+                                // would otherwise keep to themselves.
+                                onTap: () => Navigator.pushNamed(
+                                  context,
+                                  Routes.postDetail,
+                                  arguments: post.id,
+                                ),
+                              ),
+                            ),
+                          // Voice is a player, not a picture, so it does not go
+                          // through the grid -- a grid tile has no room for a
+                          // waveform and no way to play anything.
+                          for (final voice
+                              in post.media.where((m) => m.isVoice))
+                            VoicePostPlayer(media: voice),
+                          if (post.media.any((m) => m.isVisual)) ...[
+                            const SizedBox(height: SpacingTokens.space8),
+                            MediaGrid(
+                              media:
+                                  post.media.where((m) => m.isVisual).toList(),
+                            ),
+                          ],
+                          if (post.poll != null)
+                            PollCard(
+                              postId: post.id,
+                              poll: post.poll!,
+                              onVoted: (updated) => ref
+                                  .read(postListProvider(source).notifier)
+                                  .replace(updated),
+                            ),
+                          // Only when there is nothing else competing for the
+                          // space: a post with its own pictures does not also need a
+                          // thumbnail of the page it links to.
+                          if (post.media.isEmpty &&
+                              post.quotedPost == null &&
+                              post.firstLink != null)
+                            LinkPreviewCard(url: post.firstLink!),
+                          if (post.quotedPost != null) ...[
+                            const SizedBox(height: SpacingTokens.space8),
+                            QuotedPostCard(post: post.quotedPost!),
+                          ],
+                        ],
                       ),
-                    // Voice is a player, not a picture, so it does not go
-                    // through the grid -- a grid tile has no room for a
-                    // waveform and no way to play anything.
-                    for (final voice in post.media.where((m) => m.isVoice))
-                      VoicePostPlayer(media: voice),
-                    if (post.media.any((m) => m.isVisual)) ...[
-                      const SizedBox(height: SpacingTokens.space8),
-                      MediaGrid(
-                        media: post.media.where((m) => m.isVisual).toList(),
+                      footer: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Where the author is, from the list on their profile:
+                          // under the post, so it is there for whoever wants it
+                          // and out of the way of the name and the words.
+                          if (Countries.isCode(post.author.country))
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: SpacingTokens.space8,
+                              ),
+                              child: CountryLabel(
+                                post.author.country!,
+                                key: ValueKey('post-country-${post.id}'),
+                                style: TextStyle(
+                                  fontSize: TypographyTokens.fontSize1,
+                                  color:
+                                      scheme.onSurface.withValues(alpha: 0.5),
+                                ),
+                              ),
+                            ),
+                          _Actions(post: post, source: source),
+                        ],
                       ),
-                    ],
-                    if (post.poll != null)
-                      PollCard(
-                        postId: post.id,
-                        poll: post.poll!,
-                        onVoted: (updated) => ref
-                            .read(postListProvider(source).notifier)
-                            .replace(updated),
-                      ),
-                    // Only when there is nothing else competing for the
-                    // space: a post with its own pictures does not also need a
-                    // thumbnail of the page it links to.
-                    if (post.media.isEmpty &&
-                        post.quotedPost == null &&
-                        post.firstLink != null)
-                      LinkPreviewCard(url: post.firstLink!),
-                    if (post.quotedPost != null) ...[
-                      const SizedBox(height: SpacingTokens.space8),
-                      QuotedPostCard(post: post.quotedPost!),
-                    ],
-                    // Where the author is, from the list on their profile:
-                    // under the post, so it is there for whoever wants it
-                    // and out of the way of the name and the words.
-                    if (Countries.isCode(post.author.country))
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: SpacingTokens.space8,
-                        ),
-                        child: CountryLabel(
-                          post.author.country!,
-                          key: ValueKey('post-country-${post.id}'),
-                          style: TextStyle(
-                            fontSize: TypographyTokens.fontSize1,
-                            color: scheme.onSurface.withValues(alpha: 0.5),
-                          ),
-                        ),
-                      ),
-                    const SizedBox(height: SpacingTokens.space8),
-                    _Actions(post: post, source: source),
+                    ),
                   ],
                 ),
               ),
@@ -528,10 +550,8 @@ class _Actions extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(postListProvider(source).notifier);
-    final me = ref.watch(currentUserProvider).asData?.value;
-    // Holding the heart on your own post only likes it: the server refuses a
-    // gift to yourself, so there is no sheet to open.
-    final mine = me != null && me.id == post.author.id;
+    // Holding the heart on your own post only likes it.
+    final gift = _gifting(ref, post, source);
 
     return PostActionsRow(
       post: post,
@@ -545,16 +565,31 @@ class _Actions extends ConsumerWidget {
       onLike: () => report(context, notifier.toggleLike(post.id)),
       onSave: () => report(context, notifier.toggleSave(post.id)),
       onShare: () => SharePostSheet.show(context, post),
-      onGift: mine
+      // Held from the heart, the gift still flies to the pill.
+      onGift: gift == null
           ? null
-          : (heart) => GiftSheet.open(
-                heart,
-                post,
-                onSent: (sent) =>
-                    notifier.giftsChanged(post.id, sent.gifts, type: sent.type),
-              ),
+          : (heart) => gift(GiftPillHost.anchorOf(heart) ?? heart),
     );
   }
+}
+
+/// Opening the gift sheet for [post], with the gift flying to [anchor] once
+/// sent -- or null on your own post: the server refuses a gift to yourself,
+/// so there is no sheet to open.
+void Function(BuildContext anchor)? _gifting(
+  WidgetRef ref,
+  FeedPost post,
+  PostListSource source,
+) {
+  final me = ref.watch(currentUserProvider).asData?.value;
+  if (me != null && me.id == post.author.id) return null;
+  final notifier = ref.read(postListProvider(source).notifier);
+  return (anchor) => GiftSheet.open(
+        anchor,
+        post,
+        onSent: (sent) =>
+            notifier.giftsChanged(post.id, sent.gifts, type: sent.type),
+      );
 }
 
 class _OverflowButton extends ConsumerWidget {

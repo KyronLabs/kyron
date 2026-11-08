@@ -53,6 +53,23 @@ void main() {
     expect(find.textContaining('route /search'), findsOneWidget);
   });
 
+  testWidgets('once everything is selected, Select all goes', (tester) async {
+    await tester.pumpWidget(
+      _host(
+        const PostText(content: 'Read more at kubernetes.io and #k8s today'),
+      ),
+    );
+    await tester.longPress(find.textContaining('Read more'));
+    await tester.pumpAndSettle();
+    expect(find.text('Select all'), findsOneWidget);
+
+    await tester.tap(find.text('Select all'));
+    await tester.pumpAndSettle();
+    expect(find.byType(SelectionMenu), findsOneWidget);
+    expect(find.text('Copy'), findsOneWidget);
+    expect(find.text('Select all'), findsNothing);
+  });
+
   test('black on white in the light, white on black in the dark', () {
     final light = SelectionMenu.coloursOf(Brightness.light);
     final dark = SelectionMenu.coloursOf(Brightness.dark);
