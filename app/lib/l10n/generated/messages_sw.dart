@@ -2144,6 +2144,88 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akaunti hii imefutwa, kwa hivyo ujumbe hauwezi kutumwa hapa tena."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ulijisajili kwa Google? Tumia «Sign in with Google» badala yake."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Lenzi hiyo haikuweza kupakiwa."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Video haikuweza kurekodiwa."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Lenzi haikuweza kuongezwa kwenye video hii, kwa hiyo inachapishwa kama ilivyorekodiwa."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Chapisho lako tayari lina viambatisho vingi kadri linavyoweza kubeba."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Inaongeza lenzi yako…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Mweko"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Rekodi video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Picha"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Kuingia kwa Google kumeghairiwa."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ZAWADI"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Hakuna aliyetuma zawadi kwenye chapisho hili bado."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Zawadi"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Zawadi"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Sarafu"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Mtumaji"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Watumaji"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Sarafu za majaribio: haziwezi kutolewa bado."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Zilizohifadhiwa"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Machapisho"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Maoni"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Tazama majibu zaidi"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Imehaririwa"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Zaidi"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Unaowafuata"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Bora"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Za karibuni"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Panga maoni: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "ametuma zawadi kwenye chapisho lako"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "ametuma \$gift kwenye maoni yako"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "ametuma \$gift kwenye chapisho lako"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Tuma zawadi"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Hariri chapisho"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kulihariri kwa dakika \$n zaidi"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Hifadhi"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Hakuna kilichochapishwa chini ya #\$tab bado."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Chagua zawadi"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Sarafu hazitoshi"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Sarafu za majaribio: haziwezi kununuliwa na hazina thamani ya pesa."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Zinajazwa tena \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("Sarafu 1"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Sarafu \$count"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Una \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Tuma \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift imetumwa"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Jaribu tena"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Kwa dakika 15 baada ya kuchapisha"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Imehaririwa"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kupakia maoni uliyohifadhi"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Hakuna maoni yaliyohifadhiwa"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Gusa aikoni ya kumbukumbu chini ya maoni ili kuyaweka hapa. Ni wewe tu unayeona unachohifadhi."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Unamjibu \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Nakili"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Tafuta"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Chagua zote"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Zawadi \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Zawadi 1"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kupakia machapisho zaidi."),
     };
 
 final messageLookup = MessageLookup();

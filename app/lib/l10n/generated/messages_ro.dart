@@ -2171,6 +2171,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Acest cont a fost șters, așa că nu mai pot fi trimise mesaje aici."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Te-ai înregistrat cu Google? Folosește în schimb „Sign in with Google”."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Acel filtru nu a putut fi încărcat."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Videoclipul nu a putut fi înregistrat."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Filtrul nu a putut fi adăugat la acest videoclip, așa că este publicat așa cum a fost filmat."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Postarea ta are deja numărul maxim de atașamente."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Se adaugă filtrul…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Bliț"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Înregistrează un videoclip"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Fotografie"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Conectarea cu Google a fost anulată."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("CADOURI"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Nimeni nu a trimis încă un cadou acestei postări."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Cadou"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Cadouri"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Monede"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Expeditor"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Expeditori"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Monede de test: încă nu pot fi retrase."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Salvate"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Postări"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Comentarii"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Vezi mai multe răspunsuri"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Editat"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Mai mult"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Urmăresc"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recente"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Sortează comentariile: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "a trimis un cadou postării tale"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "a trimis un \$gift comentariului tău"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "a trimis un \$gift postării tale"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Trimite un cadou"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Editează postarea"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("O mai poți edita \$n min"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Salvează"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a postat încă nimic sub #\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Alege un cadou"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Monede insuficiente"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Monede de test: nu pot fi cumpărate și nu au valoare bănească."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Se reîncarcă pe \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 monedă"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count monede"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Ai \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Trimite \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift trimis"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Timp de 15 minute după publicare"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Editată"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Comentariile salvate nu au putut fi încărcate"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Niciun comentariu salvat"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Atinge pictograma arhivă de sub un comentariu pentru a-l păstra aici. Doar tu vezi ce salvezi."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Răspuns pentru \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Copiază"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Caută"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Selectează tot"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count cadouri"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 cadou"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu s-au putut încărca mai multe postări."),
     };
 
 final messageLookup = MessageLookup();

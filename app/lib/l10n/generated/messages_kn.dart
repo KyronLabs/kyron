@@ -2158,6 +2158,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ಈ ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ, ಹಾಗಾಗಿ ಇಲ್ಲಿ ಇನ್ನು ಸಂದೇಶ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google ಮೂಲಕ ಸೈನ್ ಅಪ್ ಮಾಡಿದ್ದೀರಾ? ಬದಲಿಗೆ «Sign in with Google» ಬಳಸಿ."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "ಆ ಲೆನ್ಸ್ ಅನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "ವೀಡಿಯೊವನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "ಈ ವೀಡಿಯೊಗೆ ಲೆನ್ಸ್ ಸೇರಿಸಲಾಗಲಿಲ್ಲ, ಹೀಗಾಗಿ ಚಿತ್ರೀಕರಿಸಿದಂತೆಯೇ ಪೋಸ್ಟ್ ಆಗುತ್ತದೆ."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಪೋಸ್ಟ್‌ನಲ್ಲಿ ಈಗಾಗಲೇ ಗರಿಷ್ಠ ಲಗತ್ತುಗಳಿವೆ."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಲೆನ್ಸ್ ಸೇರಿಸಲಾಗುತ್ತಿದೆ…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("ಫ್ಲ್ಯಾಶ್"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("ವೀಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಿ"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("ಫೋಟೋ"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("ವೀಡಿಯೊ"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google ಸೈನ್-ಇನ್ ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ಉಡುಗೊರೆಗಳು"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಪೋಸ್ಟ್‌ಗೆ ಇನ್ನೂ ಯಾರೂ ಉಡುಗೊರೆ ಕಳುಹಿಸಿಲ್ಲ."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("ಉಡುಗೊರೆ"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("ಉಡುಗೊರೆಗಳು"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("ನಾಣ್ಯಗಳು"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಿದವರು"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("ಕಳುಹಿಸಿದವರು"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "ಪರೀಕ್ಷಾ ನಾಣ್ಯಗಳು: ಇವುಗಳನ್ನು ಇನ್ನೂ ಹಿಂಪಡೆಯಲಾಗುವುದಿಲ್ಲ."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("ಉಳಿಸಿದವು"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("ಪೋಸ್ಟ್‌ಗಳು"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("ಕಾಮೆಂಟ್‌ಗಳು"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("ಇನ್ನಷ್ಟು ಉತ್ತರಗಳನ್ನು ನೋಡಿ"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("ಎಡಿಟ್ ಮಾಡಲಾಗಿದೆ"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("ಇನ್ನಷ್ಟು"),
+      "ui_following":
+          MessageLookupByLibrary.simpleMessage("ಫಾಲೋ ಮಾಡುತ್ತಿರುವವರು"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("ಟಾಪ್"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("ಇತ್ತೀಚಿನವು"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "ಕಾಮೆಂಟ್‌ಗಳನ್ನು ವಿಂಗಡಿಸಿ: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಪೋಸ್ಟ್‌ಗೆ ಉಡುಗೊರೆ ಕಳುಹಿಸಿದ್ದಾರೆ"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಕಾಮೆಂಟ್‌ಗೆ \$gift ಕಳುಹಿಸಿದ್ದಾರೆ"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ಪೋಸ್ಟ್‌ಗೆ \$gift ಕಳುಹಿಸಿದ್ದಾರೆ"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("ಉಡುಗೊರೆ ಕಳುಹಿಸಿ"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("ಪೋಸ್ಟ್ ಎಡಿಟ್ ಮಾಡಿ"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಇದನ್ನು ಇನ್ನೂ \$n ನಿಮಿಷ ಎಡಿಟ್ ಮಾಡಬಹುದು"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("ಉಳಿಸಿ"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab ಅಡಿಯಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಪೋಸ್ಟ್ ಆಗಿಲ್ಲ."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("ಉಡುಗೊರೆಯನ್ನು ಆರಿಸಿ"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("ಸಾಕಷ್ಟು ನಾಣ್ಯಗಳಿಲ್ಲ"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "ಪರೀಕ್ಷಾ ನಾಣ್ಯಗಳು: ಇವುಗಳನ್ನು ಖರೀದಿಸಲಾಗುವುದಿಲ್ಲ ಮತ್ತು ನಗದು ಮೌಲ್ಯವಿಲ್ಲ."),
+      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage(
+          "\$date ರಂದು ಮರುಪೂರಣಗೊಳ್ಳುತ್ತವೆ."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 ನಾಣ್ಯ"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count ನಾಣ್ಯಗಳು"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("ನಿಮ್ಮ ಬಳಿ \$coins ಇವೆ"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift ಕಳುಹಿಸಿ"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift ಕಳುಹಿಸಲಾಗಿದೆ"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "ಪೋಸ್ಟ್ ಮಾಡಿದ ನಂತರ 15 ನಿಮಿಷಗಳವರೆಗೆ"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("ಎಡಿಟ್ ಮಾಡಲಾಗಿದೆ"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "ನೀವು ಉಳಿಸಿದ ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("ಉಳಿಸಿದ ಕಾಮೆಂಟ್‌ಗಳಿಲ್ಲ"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "ಕಾಮೆಂಟ್ ಅನ್ನು ಇಲ್ಲಿ ಇರಿಸಲು ಅದರ ಕೆಳಗಿನ ಆರ್ಕೈವ್ ಐಕಾನ್ ಟ್ಯಾಪ್ ಮಾಡಿ. ನೀವು ಉಳಿಸಿದ್ದನ್ನು ನೀವು ಮಾತ್ರ ನೋಡಬಹುದು."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name ಅವರಿಗೆ ಉತ್ತರ"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("ನಕಲಿಸಿ"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("ಹುಡುಕಿ"),
+      "ui_select_all":
+          MessageLookupByLibrary.simpleMessage("ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count ಉಡುಗೊರೆಗಳು"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 ಉಡುಗೊರೆ"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "ಇನ್ನಷ್ಟು ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."),
     };
 
 final messageLookup = MessageLookup();

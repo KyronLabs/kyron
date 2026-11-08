@@ -65,8 +65,12 @@ class FeedCanvas extends ConsumerWidget {
             'Posts carrying a clip will show up here.'),
         'For You' => l10n.ui('ui_feed_for_you_detail',
             'Posts will show up here as people write them.'),
-        _ => l10n.ui(
-            'ui_feed_tag_detail', 'Nothing has been posted under #$tab yet.'),
+        // Raw, and filled in after the lookup: interpolated first, the
+        // translation was looked up and then showed a literal "$tab".
+        _ => l10n
+            .ui('ui_feed_tag_detail',
+                r'Nothing has been posted under #$tab yet.')
+            .replaceAll(r'$tab', tab),
       };
 
   @override

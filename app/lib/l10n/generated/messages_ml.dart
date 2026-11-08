@@ -2182,6 +2182,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ഈ അക്കൗണ്ട് ഇല്ലാതാക്കിയതിനാൽ ഇവിടേക്ക് ഇനി സന്ദേശങ്ങൾ അയയ്ക്കാനാകില്ല."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google ഉപയോഗിച്ചാണോ സൈൻ അപ്പ് ചെയ്തത്? പകരം «Sign in with Google» ഉപയോഗിക്കുക."),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("ആ ലെൻസ് ലോഡ് ചെയ്യാനായില്ല."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "വീഡിയോ റെക്കോർഡ് ചെയ്യാനായില്ല."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "ഈ വീഡിയോയിൽ ലെൻസ് ചേർക്കാനായില്ല, അതിനാൽ ചിത്രീകരിച്ചതുപോലെ പോസ്റ്റ് ചെയ്യും."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റിൽ ഇതിനകം പരമാവധി അറ്റാച്ച്‌മെന്റുകളുണ്ട്."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങളുടെ ലെൻസ് ചേർക്കുന്നു…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("ഫ്ലാഷ്"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("വീഡിയോ റെക്കോർഡ് ചെയ്യുക"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("ഫോട്ടോ"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("വീഡിയോ"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google സൈൻ-ഇൻ റദ്ദാക്കി."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("സമ്മാനങ്ങൾ"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "ഈ പോസ്റ്റിന് ഇതുവരെ ആരും സമ്മാനം അയച്ചിട്ടില്ല."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("സമ്മാനം"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("സമ്മാനങ്ങൾ"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("നാണയങ്ങൾ"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("അയച്ചയാൾ"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("അയച്ചവർ"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "ടെസ്റ്റ് നാണയങ്ങൾ: ഇവ ഇതുവരെ പിൻവലിക്കാനാവില്ല."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("സംരക്ഷിച്ചവ"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("പോസ്റ്റുകൾ"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("കമന്റുകൾ"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("കൂടുതൽ മറുപടികൾ കാണുക"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("എഡിറ്റ് ചെയ്തത്"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("കൂടുതൽ"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("ഫോളോ ചെയ്യുന്നവ"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("മികച്ചവ"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("പുതിയവ"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "കമന്റുകൾ ക്രമീകരിക്കുക: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റിന് ഒരു സമ്മാനം അയച്ചു"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ കമന്റിന് \$gift അയച്ചു"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ പോസ്റ്റിന് \$gift അയച്ചു"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("സമ്മാനം അയയ്ക്കുക"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("പോസ്റ്റ് എഡിറ്റ് ചെയ്യുക"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "ഇനി \$n മിനിറ്റ് കൂടി എഡിറ്റ് ചെയ്യാം"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("സംരക്ഷിക്കുക"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab എന്നതിൽ ഇതുവരെ ഒന്നും പോസ്റ്റ് ചെയ്തിട്ടില്ല."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("ഒരു സമ്മാനം തിരഞ്ഞെടുക്കുക"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("ആവശ്യത്തിന് നാണയങ്ങളില്ല"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "ടെസ്റ്റ് നാണയങ്ങൾ: ഇവ വാങ്ങാനാവില്ല, പണമൂല്യവുമില്ല."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date-ന് വീണ്ടും നിറയും."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 നാണയം"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count നാണയങ്ങൾ"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("നിങ്ങൾക്ക് \$coins ഉണ്ട്"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift അയയ്ക്കുക"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift അയച്ചു"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("വീണ്ടും ശ്രമിക്കുക"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "പോസ്റ്റ് ചെയ്ത് 15 മിനിറ്റ് വരെ"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("എഡിറ്റ് ചെയ്തു"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "സംരക്ഷിച്ച കമന്റുകൾ ലോഡ് ചെയ്യാനായില്ല"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("സംരക്ഷിച്ച കമന്റുകളൊന്നുമില്ല"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "ഒരു കമന്റ് ഇവിടെ സൂക്ഷിക്കാൻ അതിനു താഴെയുള്ള ആർക്കൈവ് ഐക്കണിൽ ടാപ്പ് ചെയ്യുക. നിങ്ങൾ സംരക്ഷിക്കുന്നത് നിങ്ങൾക്ക് മാത്രമേ കാണാനാകൂ."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name-ന് മറുപടി"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("പകർത്തുക"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("തിരയുക"),
+      "ui_select_all":
+          MessageLookupByLibrary.simpleMessage("എല്ലാം തിരഞ്ഞെടുക്കുക"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count സമ്മാനങ്ങൾ"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 സമ്മാനം"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "കൂടുതൽ പോസ്റ്റുകൾ ലോഡ് ചെയ്യാനായില്ല."),
     };
 
 final messageLookup = MessageLookup();

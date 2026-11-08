@@ -2174,6 +2174,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Denne konto er slettet, så der kan ikke længere sendes beskeder her."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Oprettet med Google? Brug “Log ind med Google” i stedet."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Den linse kunne ikke indlæses."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Videoen kunne ikke optages."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Linsen kunne ikke tilføjes til videoen, så den slås op, som den blev filmet."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Dit opslag har allerede så mange vedhæftninger, som det kan rumme."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Tilføjer din linse…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Blitz"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Optag en video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Login med Google blev annulleret."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("GAVER"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Ingen har sendt dette opslag en gave endnu."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Gave"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Gaver"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mønter"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Afsender"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Afsendere"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Testmønter: de kan ikke hæves endnu."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Gemt"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Opslag"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Kommentarer"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Se flere svar"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Redigeret"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Mere"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Følger"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Nyeste"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sortér kommentarer: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("sendte en gave til dit opslag"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "sendte en \$gift til din kommentar"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "sendte en \$gift til dit opslag"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Send en gave"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Rediger opslag"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Du kan redigere det i \$n min mere"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Gem"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Der er ikke slået noget op under #\$tab endnu."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Vælg en gave"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Ikke nok mønter"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Testmønter: de kan ikke købes og har ingen kontantværdi."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Fyldes op \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 mønt"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count mønter"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Du har \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Send \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift sendt"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Prøv igen"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("I 15 minutter efter opslaget"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Redigeret"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Dine gemte kommentarer kunne ikke indlæses"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Ingen gemte kommentarer"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tryk på arkivikonet under en kommentar for at gemme den her. Kun du kan se, hvad du gemmer."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Svarer \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopiér"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Søg"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Vælg alt"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count gaver"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 gave"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke indlæse flere opslag."),
     };
 
 final messageLookup = MessageLookup();

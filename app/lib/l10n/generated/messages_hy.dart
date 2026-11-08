@@ -2154,6 +2154,94 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Այս հաշիվը ջնջվել է, ուստի այստեղ այլևս հնարավոր չէ հաղորդագրություններ ուղարկել։"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Գրանցվե՞լ եք Google-ով։ Փոխարենը օգտագործեք «Sign in with Google»։"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Այս ոսպնյակը չհաջողվեց բեռնել։"),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Տեսանյութը չհաջողվեց ձայնագրել։"),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Ոսպնյակը չհաջողվեց ավելացնել այս տեսանյութին, ուստի այն կհրապարակվի այնպես, ինչպես նկարահանվել է։"),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Ձեր գրառումն արդեն ունի կցորդների առավելագույն քանակը։"),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Ոսպնյակն ավելացվում է…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Լուսաթարթիչ"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Տեսանյութ ձայնագրել"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Լուսանկար"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Տեսանյութ"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google-ով մուտքը չեղարկվեց։"),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ՆՎԵՐՆԵՐ"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Այս գրառմանը դեռ ոչ ոք նվեր չի ուղարկել։"),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Նվեր"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Նվերներ"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Մետաղադրամներ"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Ուղարկող"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Ուղարկողներ"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Փորձնական մետաղադրամներ. դրանք դեռ հնարավոր չէ կանխիկացնել։"),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Պահված"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Գրառումներ"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Մեկնաբանություններ"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Տեսնել ավելի շատ պատասխաններ"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Խմբագրված"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Ավելին"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Հետևում եմ"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Լավագույն"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Վերջին"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Դասավորել մեկնաբանությունները՝ \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("նվեր ուղարկեց ձեր գրառմանը"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "\$gift ուղարկեց ձեր մեկնաբանությանը"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("\$gift ուղարկեց ձեր գրառմանը"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Ուղարկել նվեր"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Խմբագրել գրառումը"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Կարող եք խմբագրել այն ևս \$n րոպե"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Պահել"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab-ի ներքո դեռ ոչինչ չի հրապարակվել։"),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Ընտրեք նվեր"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Մետաղադրամները բավարար չեն"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Փորձնական մետաղադրամներ. դրանք հնարավոր չէ գնել, և դրանք դրամական արժեք չունեն։"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Կլրացվի \$date։"),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 մետաղադրամ"),
+      "ui_gift_coins":
+          MessageLookupByLibrary.simpleMessage("\$count մետաղադրամ"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Դուք ունեք \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Ուղարկել \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift ուղարկվեց"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Կրկին փորձել"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("Հրապարակելուց հետո 15 րոպե"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Խմբագրվեց"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել ձեր պահված մեկնաբանությունները"),
+      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Պահված մեկնաբանություններ չկան"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Հպեք մեկնաբանության տակ գտնվող արխիվի պատկերակին՝ այն այստեղ պահելու համար։ Ձեր պահածը տեսնում եք միայն դուք։"),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Պատասխան \$name-ին"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Պատճենել"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Որոնել"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Ընտրել բոլորը"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count նվեր"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 նվեր"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել ավելի շատ գրառումներ։"),
     };
 
 final messageLookup = MessageLookup();

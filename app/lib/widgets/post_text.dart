@@ -18,6 +18,15 @@ import 'create_post/url_preview.dart'
 /// server stores what was written, and how it is drawn is the client's
 /// business.
 class PostText extends StatefulWidget {
+  /// A mention's colour. Yellow as far as each page allows and still reads
+  /// as text: a true yellow on black (12.6:1), and on white a deep gold
+  /// (4.65:1, over the 4.5:1 that body text needs) -- any brighter yellow
+  /// on white is a smudge.
+  static Color mentionColourOf(Brightness brightness) =>
+      brightness == Brightness.dark
+          ? const Color(0xFFFFC93C)
+          : const Color(0xFF9C6B00);
+
   final String content;
   final TextStyle? style;
   final int? maxLines;
@@ -128,6 +137,12 @@ class _PostTextState extends State<PostText> {
     // A few emoji and nothing else are a reaction, drawn large -- the rule
     // the chat already uses (utils/emoji_only.dart), at a feed's size.
     final jumbo = jumboEmojiCount(widget.content);
+    final spans = jumbo != null ? null : _spans(context, base, scheme);
+    // Everything there is to select, as the selection reports it -- the
+    // words as drawn, so a shortened link counts as its short form.
+    _whole = spans == null
+        ? widget.content.trim()
+        : TextSpan(children: spans).toPlainText();
     final Widget text = jumbo != null
         ? Text(
             widget.content.trim(),
@@ -138,7 +153,7 @@ class _PostTextState extends State<PostText> {
             ),
           )
         : Text.rich(
-            TextSpan(children: _spans(context, base, scheme)),
+            TextSpan(children: spans),
             maxLines: widget.maxLines,
             overflow: widget.maxLines == null
                 ? TextOverflow.clip
@@ -166,6 +181,11 @@ class _PostTextState extends State<PostText> {
           menuContext,
           state,
           selected: _selected,
+          // Select all once everything is selected is a button that does
+          // nothing, so it goes.
+          everything: _selected != null &&
+              _selected!.trim().isNotEmpty &&
+              _selected!.trim() == _whole.trim(),
           onSearch: (query) =>
               Navigator.pushNamed(context, Routes.search, arguments: query),
         ),
@@ -197,6 +217,9 @@ class _PostTextState extends State<PostText> {
   /// What is selected now, for the menu's Search.
   String? _selected;
 
+  /// All of the words, as drawn.
+  String _whole = '';
+
   List<InlineSpan> _spans(
     BuildContext context,
     TextStyle base,
@@ -208,6 +231,11 @@ class _PostTextState extends State<PostText> {
     final linkStyle = base.copyWith(
       color: scheme.primary,
       fontWeight: FontWeight.w600,
+    );
+    // People in gold, so a post is not all one blue: tags and links are
+    // places to go, a mention is someone.
+    final mentionStyle = linkStyle.copyWith(
+      color: PostText.mentionColourOf(Theme.of(context).brightness),
     );
 
     var last = 0;
@@ -262,7 +290,9 @@ class _PostTextState extends State<PostText> {
                   backgroundColor: PostActionColors.highlight,
                   fontWeight: FontWeight.w700,
                 )
-              : linkStyle,
+              : text.startsWith('@')
+                  ? mentionStyle
+                  : linkStyle,
           recognizer: recognizer,
         ),
       );

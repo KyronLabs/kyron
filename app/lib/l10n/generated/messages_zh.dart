@@ -1663,6 +1663,77 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("此账号已删除，因此无法再在这里发送消息。"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "是用 Google 注册的吗？请改用“使用 Google 登录”。"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("无法加载该滤镜。"),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("无法录制视频。"),
+      "ar_lens_left_out":
+          MessageLookupByLibrary.simpleMessage("无法将滤镜添加到此视频，因此将按原样发布。"),
+      "ar_composer_full":
+          MessageLookupByLibrary.simpleMessage("你的帖子已达到附件数量上限。"),
+      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("正在添加滤镜…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("闪光灯"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("录制视频"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("照片"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("视频"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("已取消 Google 登录。"),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("礼物"),
+      "analytics_no_gifts_yet":
+          MessageLookupByLibrary.simpleMessage("还没有人给这条帖子送礼物。"),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("礼物"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("礼物"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("金币"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("赠送者"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("赠送者"),
+      "analytics_test_coins":
+          MessageLookupByLibrary.simpleMessage("测试金币：暂时无法提现。"),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("已收藏"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("帖子"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("评论"),
+      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("查看更多回复"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("已编辑"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("更多"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("关注中"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("热门"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("最新"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("评论排序：\$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("给你的帖子送了一份礼物"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("给你的评论送了 \$gift"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("给你的帖子送了 \$gift"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("送礼物"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("编辑帖子"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("你还可以编辑 \$n 分钟"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("保存"),
+      "ui_feed_tag_detail":
+          MessageLookupByLibrary.simpleMessage("#\$tab 下还没有任何帖子。"),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("选择一份礼物"),
+      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("金币不足"),
+      "ui_gift_test_notice":
+          MessageLookupByLibrary.simpleMessage("测试金币：无法购买，也没有现金价值。"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("将于 \$date 补充。"),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 枚金币"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count 枚金币"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("你有 \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("赠送 \$gift"),
+      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("已送出 \$gift"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("重试"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("发布后 15 分钟内"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("已编辑"),
+      "ui_could_not_load_saved_comments":
+          MessageLookupByLibrary.simpleMessage("无法加载你收藏的评论"),
+      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("没有收藏的评论"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "点按评论下方的存档图标即可将其保存在这里。只有你能看到你收藏的内容。"),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("回复 \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("复制"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("搜索"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("全选"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count 份礼物"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 份礼物"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("无法加载更多帖子。"),
     };
 
 final messageLookup = MessageLookup();

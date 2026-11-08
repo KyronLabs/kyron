@@ -2154,6 +2154,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ta račun je izbrisan, zato sem ni več mogoče pošiljati sporočil."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ste se registrirali z Googlom? Namesto tega uporabite »Sign in with Google«."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Tega filtra ni bilo mogoče naložiti."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Videa ni bilo mogoče posneti."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Filtra ni bilo mogoče dodati temu videu, zato je objavljen tak, kot je bil posnet."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Vaša objava že ima največje število prilog."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Dodajanje filtra …"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Bliskavica"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Posnemi video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Fotografija"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Prijava z Googlom je bila preklicana."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("DARILA"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Tej objavi še nihče ni poslal darila."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Darilo"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Darila"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Kovanci"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Pošiljatelj"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Pošiljatelji"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Testni kovanci: še jih ni mogoče dvigniti."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Shranjeno"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Objave"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Komentarji"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Prikaži več odgovorov"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Urejeno"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Več"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Sledim"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Najboljše"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Najnovejše"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Razvrsti komentarje: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "je poslal(a) darilo vaši objavi"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "je poslal(a) \$gift vašemu komentarju"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "je poslal(a) \$gift vaši objavi"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Pošlji darilo"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Uredi objavo"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("Urejate jo lahko še \$n min"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Shrani"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Pod #\$tab še ni ničesar objavljenega."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Izberite darilo"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Premalo kovancev"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Testni kovanci: ni jih mogoče kupiti in nimajo denarne vrednosti."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Napolni se \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 kovanec"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Kovanci: \$count"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Imate \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Pošlji \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift poslano"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Poskusi znova"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("15 minut po objavi"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Urejeno"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Shranjenih komentarjev ni bilo mogoče naložiti"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Ni shranjenih komentarjev"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tapnite ikono arhiva pod komentarjem, da ga shranite sem. Kar shranite, vidite samo vi."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Odgovor za \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopiraj"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Iskanje"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Izberi vse"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Darila: \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 darilo"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Več objav ni bilo mogoče naložiti."),
     };
 
 final messageLookup = MessageLookup();

@@ -2137,6 +2137,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "E hichapụla akaụntụ a, ya mere a gaghị enwe ike izite ozi ebe a ọzọ."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ị debanyere aha na Google? Jiri «Sign in with Google» kama."),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibunye lens ahụ."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike idekọ vidiyo ahụ."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike itinye lens na vidiyo a, ya mere a ga-ebipụta ya dịka e sere ya."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Ihe ị biputere enweelarị ọtụtụ mgbakwunye dịka o nwere ike iburu."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Na-etinye lens gị…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Ọkụ foto"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Dekọọ vidiyo"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Vidiyo"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Akagbuola ịbanye site na Google."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ONYINYE"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịbeghị onye zitere ihe a e biputere onyinye."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Onyinye"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Onyinye"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mkpụrụ ego"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Onye zitere"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Ndị zitere"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Mkpụrụ ego nnwale: a pụghị ịwepụta ha ugbu a."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Echekwara"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Ihe e biputere"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Nkọwa"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Hụ azịza ndị ọzọ"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Edeziri"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Ọzọ"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Ndị ị na-eso"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Kacha mma"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Nke ọhụrụ"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Hazie nkọwa: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("zitere ihe i biputere onyinye"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("zitere nkọwa gị \$gift"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("zitere ihe i biputere \$gift"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Zipu onyinye"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Dezie ihe e biputere"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Ị ka nwere ike idezi ya maka nkeji \$n ọzọ"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Chekwaa"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịbeghị ihe e biputere n'okpuru #\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Họrọ onyinye"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Mkpụrụ ego ezughị"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Mkpụrụ ego nnwale: a pụghị ịzụta ha, ha enweghịkwa uru ego."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("A ga-ejuputa ya na \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("Mkpụrụ ego 1"),
+      "ui_gift_coins":
+          MessageLookupByLibrary.simpleMessage("Mkpụrụ ego \$count"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Ị nwere \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Zipu \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("Ezigala \$gift"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("Maka nkeji 15 mgbe e biputere"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Edeziri"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ibunye nkọwa ị chekwara"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Enweghị nkọwa echekwara"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Pịa akara ebe nchekwa dị n'okpuru nkọwa iji debe ya ebe a. Ọ bụ naanị gị na-ahụ ihe ị chekwara."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Na-aza \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Detuo"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Chọọ"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Họrọ ha niile"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Onyinye \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Onyinye 1"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ibunye ihe ndị ọzọ e biputere."),
     };
 
 final messageLookup = MessageLookup();

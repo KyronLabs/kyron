@@ -20,6 +20,28 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Gifts have a place of their own.** What a post has been given -- its
+  best gifts and how many -- is a small pill on the bottom-right corner of
+  the post, on words, photos, voice notes and links alike, and never over
+  any of them. Tap it to send one. The heart is a heart again: it no longer
+  turns into your gift or wears the others as a crown.
+- **Mentions are gold.** An @name in a post is a deep gold on white and a
+  bright yellow on black, so a post is no longer all one blue: tags and
+  links are places to go, a mention is someone.
+
+### Fixed
+
+- **Select all goes once everything is selected**, instead of staying in the
+  menu doing nothing.
+- **Recent screens speak your language.** Editing a post, sorting
+  comments, the gift sheet, gift notifications, saved comments, the text
+  menu, the AR lens camera and a post's gift analytics were English in
+  every language. They are now in all 68 of the app's languages, and an
+  empty tag page no longer shows "$tab" where the tag's name should be.
+- **The comment sort menu has an edge in the light theme.** It was white on
+  white with only a faint shadow; it now has a fine line round it.
 
 ## [0.1.41] - 2026-11-08
 

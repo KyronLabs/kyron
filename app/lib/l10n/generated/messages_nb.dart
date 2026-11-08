@@ -2143,6 +2143,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Denne kontoen er slettet, så det kan ikke lenger sendes meldinger hit."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Registrert med Google? Bruk «Sign in with Google» i stedet."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Den linsen kunne ikke lastes inn."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Videoen kunne ikke tas opp."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Linsen kunne ikke legges til i videoen, så den publiseres slik den ble filmet."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Innlegget ditt har allerede så mange vedlegg som det kan ha."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Legger til linsen din…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Blits"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Ta opp en video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Bilde"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Pålogging med Google ble avbrutt."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("GAVER"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Ingen har sendt dette innlegget en gave ennå."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Gave"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Gaver"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mynter"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Avsender"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Avsendere"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Testmynter: de kan ikke tas ut ennå."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Lagret"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Innlegg"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Kommentarer"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Se flere svar"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Redigert"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Mer"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Følger"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Topp"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Nyeste"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sorter kommentarer: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "sendte en gave til innlegget ditt"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "sendte en \$gift til kommentaren din"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "sendte en \$gift til innlegget ditt"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Send en gave"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Rediger innlegg"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Du kan redigere det i \$n min til"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Lagre"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Ingenting er publisert under #\$tab ennå."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Velg en gave"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Ikke nok mynter"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Testmynter: de kan ikke kjøpes og har ingen pengeverdi."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Fylles på \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 mynt"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count mynter"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Du har \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Send \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift sendt"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Prøv igjen"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "I 15 minutter etter publisering"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Redigert"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke laste inn de lagrede kommentarene dine"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Ingen lagrede kommentarer"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Trykk på arkivikonet under en kommentar for å beholde den her. Bare du ser det du lagrer."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Svarer \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopier"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Søk"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Merk alt"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count gaver"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 gave"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke laste inn flere innlegg."),
     };
 
 final messageLookup = MessageLookup();

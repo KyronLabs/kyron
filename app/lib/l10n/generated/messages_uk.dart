@@ -2168,6 +2168,95 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Цей обліковий запис видалено, тому сюди більше не можна надсилати повідомлення."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Реєструвалися через Google? Скористайтеся «Sign in with Google»."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити цей фільтр."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Не вдалося записати відео."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося додати фільтр до цього відео, тому його опубліковано без змін."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "У вашому дописі вже максимальна кількість вкладень."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Додаємо ваш фільтр…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Спалах"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Записати відео"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Фото"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Відео"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Вхід через Google скасовано."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ПОДАРУНКИ"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Цьому допису ще ніхто не надіслав подарунок."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Подарунок"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Подарунки"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Монети"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Відправник"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Відправники"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Тестові монети: їх поки не можна вивести."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Збережене"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Дописи"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Коментарі"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Переглянути більше відповідей"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Змінено"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Більше"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Відстежувані"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Найкращі"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Нові"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Сортувати коментарі: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "надсилає подарунок вашому допису"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "надсилає \$gift вашому коментарю"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("надсилає \$gift вашому допису"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("Надіслати подарунок"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Редагувати допис"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Ви можете редагувати його ще \$n хв"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Зберегти"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Під #\$tab ще нічого не опубліковано."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("Виберіть подарунок"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Недостатньо монет"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Тестові монети: їх не можна купити, і вони не мають грошової вартості."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Поповнення: \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 монета"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Монети: \$count"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("У вас \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Надіслати \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift надіслано"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Протягом 15 хвилин після публікації"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Змінено"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити збережені коментарі"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Немає збережених коментарів"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Торкніться значка архіву під коментарем, щоб зберегти його тут. Те, що ви зберігаєте, бачите лише ви."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Відповідь для \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Копіювати"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Пошук"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Вибрати все"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("Подарунки: \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 подарунок"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити більше дописів."),
     };
 
 final messageLookup = MessageLookup();

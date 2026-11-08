@@ -93,15 +93,8 @@ class PostActionsRow extends StatelessWidget {
           // never flew.
           key: ValueKey('like-${post.id}'),
           icon: post.liked ? Iconsax.heart : Iconsax.heart_copy,
-          // Once you have sent the post a gift, the heart is that gift. A tap
-          // is still a like; the count beside it is still the likes.
-          art: post.viewerGift == null
-              ? null
-              : GiftArt(type: post.viewerGift!, size: 21),
-          artKey: post.viewerGift,
-          // What the post has been given, by anyone: a tiny crown on the
-          // heart, the most valuable in the middle.
-          topper: post.topGifts.isEmpty ? null : GiftStack(post.topGifts),
+          // Only the likes. What the post has been given has its own place:
+          // the GiftPill on the post.
           label: showCounts && post.likes > 0 ? formatCount(post.likes) : null,
           active: post.liked,
           activeColor: PostActionColors.like,

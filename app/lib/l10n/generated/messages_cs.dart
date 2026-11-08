@@ -2218,6 +2218,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tento účet byl smazán, takže sem už nelze posílat zprávy."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Registrovali jste se přes Google? Použijte raději „Přihlásit se přes Google“."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Tento filtr se nepodařilo načíst."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Video se nepodařilo nahrát."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Filtr se k tomuto videu nepodařilo přidat, takže se zveřejní tak, jak bylo natočeno."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Váš příspěvek už má maximální počet příloh."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Přidávání filtru…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Blesk"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Natočit video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Fotka"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Přihlášení přes Google bylo zrušeno."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("DÁRKY"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Tomuto příspěvku zatím nikdo neposlal dárek."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Dárek"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Dárky"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mince"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Odesílatel"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Odesílatelé"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Testovací mince: zatím je nelze vybrat."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Uložené"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Příspěvky"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Komentáře"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Zobrazit další odpovědi"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Upraveno"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Více"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Sledované"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Nejlepší"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Nejnovější"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Řadit komentáře: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "poslal(a) dárek k vašemu příspěvku"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "poslal(a) \$gift k vašemu komentáři"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "poslal(a) \$gift k vašemu příspěvku"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Poslat dárek"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Upravit příspěvek"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Můžete ho upravovat ještě \$n min"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Uložit"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Pod #\$tab zatím nikdo nic nezveřejnil."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Vyberte dárek"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Nedostatek mincí"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Testovací mince: nelze je koupit a nemají peněžní hodnotu."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Doplní se \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 mince"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Mince: \$count"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Máte \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Poslat \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift odesláno"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("15 minut po zveřejnění"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Upraveno"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Uložené komentáře se nepodařilo načíst"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Žádné uložené komentáře"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Klepnutím na ikonu archivu pod komentářem si ho uložíte sem. Co ukládáte, vidíte jen vy."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Odpověď pro \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopírovat"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Hledat"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Vybrat vše"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Dárky: \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 dárek"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Další příspěvky se nepodařilo načíst."),
     };
 
 final messageLookup = MessageLookup();

@@ -2160,6 +2160,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Questo account è stato eliminato, quindi non è più possibile inviare messaggi qui."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ti sei registrato con Google? Usa invece «Sign in with Google»."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare quella lente."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Impossibile registrare il video."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Non è stato possibile aggiungere la lente a questo video, quindi viene pubblicato così come è stato girato."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Il tuo post ha già il numero massimo di allegati."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Aggiunta della lente…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Flash"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Registra un video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "L'accesso con Google è stato annullato."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("REGALI"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Nessuno ha ancora inviato un regalo a questo post."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Regalo"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Regali"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Monete"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Mittente"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Mittenti"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Monete di prova: non possono ancora essere prelevate."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Salvati"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Post"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Commenti"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Mostra altre risposte"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Modificato"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Altro"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Seguiti"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Più rilevanti"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recenti"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Ordina commenti: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "ha inviato un regalo al tuo post"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "ha inviato un \$gift al tuo commento"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "ha inviato un \$gift al tuo post"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Invia un regalo"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Modifica post"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Puoi modificarlo ancora per \$n min"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Salva"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Non è ancora stato pubblicato nulla in #\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Scegli un regalo"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Monete insufficienti"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Monete di prova: non si possono acquistare e non hanno valore in denaro."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Si ricarica il \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 moneta"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count monete"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Hai \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Invia \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift inviato"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Riprova"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Per 15 minuti dopo la pubblicazione"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Modificato"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare i commenti salvati"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Nessun commento salvato"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tocca l'icona dell'archivio sotto un commento per conservarlo qui. Solo tu vedi ciò che salvi."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("In risposta a \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Copia"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Cerca"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Seleziona tutto"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count regali"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 regalo"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare altri post."),
     };
 
 final messageLookup = MessageLookup();

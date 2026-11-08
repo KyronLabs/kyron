@@ -29,6 +29,7 @@ import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
 import '../models/post_media.dart' show MediaKind;
 import '../widgets/gif_picker_sheet.dart';
+import '../widgets/gift_pill.dart';
 import '../widgets/gift_sheet.dart';
 import '../widgets/reply_bar.dart';
 import '../widgets/post_options_sheet.dart';
@@ -640,6 +641,16 @@ class _Post extends ConsumerWidget {
     final visual = post.media.where((m) => m.isVisual).toList();
     final me = ref.watch(currentUserProvider).asData?.value;
     final mine = me != null && me.id == post.author.id;
+    // Opening the gift sheet, with the gift flying to `anchor`: the pill's
+    // spot. Not on your own post, which cannot be given anything.
+    final void Function(BuildContext anchor)? gift = mine
+        ? null
+        : (anchor) => GiftSheet.open(
+              anchor,
+              post,
+              onSent: (sent) =>
+                  notifier.giftsChanged(sent.gifts, type: sent.type),
+            );
     final tallied = post.likes > 0 ||
         post.reposts > 0 ||
         post.comments > 0 ||
@@ -711,110 +722,125 @@ class _Post extends ConsumerWidget {
           ),
           const SizedBox(height: SpacingTokens.space12),
 
-          // Bigger than in the feed: on a screen showing one post, the post is
-          // the content rather than one row of a list.
-          if (post.content.trim().isNotEmpty)
-            PostText(
-              content: post.content,
-              style: const TextStyle(
-                fontSize: TypographyTokens.fontSize4,
-                height: 1.4,
-              ),
-            ),
-
-          // Everything a card shows, in the order a card shows it. This screen
-          // used to hand the whole media list to the grid -- so a voice post
-          // was a tile with nothing in it -- and drew neither a poll nor a
-          // link preview at all.
-          for (final voice in post.media.where((m) => m.isVoice))
-            VoicePostPlayer(media: voice),
-          if (visual.isNotEmpty) ...[
-            const SizedBox(height: SpacingTokens.space12),
-            MediaGrid(media: visual),
-          ],
-          if (post.poll != null)
-            PollCard(
-              postId: post.id,
-              poll: post.poll!,
-              onVoted: notifier.replacePost,
-            ),
-          if (post.media.isEmpty &&
-              post.quotedPost == null &&
-              post.firstLink != null)
-            LinkPreviewCard(url: post.firstLink!),
-          if (post.quotedPost != null) ...[
-            const SizedBox(height: SpacingTokens.space12),
-            QuotedPostCard(post: post.quotedPost!),
-          ],
-
-          const SizedBox(height: SpacingTokens.space12),
-          Text(
-            post.editedAt == null
-                ? _stamp(post.createdAt)
-                : '${_stamp(post.createdAt)} \u00b7 '
-                    '${AppLocalizations.of(context).ui('ui_edited', 'Edited')}',
-            style: TextStyle(
-              fontSize: TypographyTokens.fontSize2,
-              color: scheme.onSurface.withValues(alpha: 0.5),
-            ),
-          ),
-
-          // Counts spelled out, which is what the room on this screen is for:
-          // "1 like" rather than a bare 1 beside a heart, and never "1 likes".
-          if (tallied) ...[
-            const _Rule.solid(),
-            Wrap(
-              spacing: SpacingTokens.space16,
-              runSpacing: SpacingTokens.space4,
+          // The gifts hang off the content's bottom-right corner, as on a
+          // card; see GiftPillHost.
+          GiftPillHost(
+            types: post.topGifts,
+            count: post.gifts,
+            yours: post.viewerGift != null,
+            endsInText: GiftPillHost.endsInWords(post),
+            gap: SpacingTokens.space12,
+            onTap: gift,
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (post.reposts > 0)
-                  _Tally(text: countLabel(post.reposts, 'repost')),
-                if (post.likes > 0)
-                  _Tally(text: countLabel(post.likes, 'like')),
-                if (post.comments > 0)
-                  _Tally(
-                    text: countLabel(post.comments, 'reply', plural: 'replies'),
+                // Bigger than in the feed: on a screen showing one post, the post is
+                // the content rather than one row of a list.
+                if (post.content.trim().isNotEmpty)
+                  PostText(
+                    content: post.content,
+                    style: const TextStyle(
+                      fontSize: TypographyTokens.fontSize4,
+                      height: 1.4,
+                    ),
                   ),
-                if (post.gifts > 0)
-                  _Tally(text: countLabel(post.gifts, 'gift')),
+
+                // Everything a card shows, in the order a card shows it. This screen
+                // used to hand the whole media list to the grid -- so a voice post
+                // was a tile with nothing in it -- and drew neither a poll nor a
+                // link preview at all.
+                for (final voice in post.media.where((m) => m.isVoice))
+                  VoicePostPlayer(media: voice),
+                if (visual.isNotEmpty) ...[
+                  const SizedBox(height: SpacingTokens.space12),
+                  MediaGrid(media: visual),
+                ],
+                if (post.poll != null)
+                  PollCard(
+                    postId: post.id,
+                    poll: post.poll!,
+                    onVoted: notifier.replacePost,
+                  ),
+                if (post.media.isEmpty &&
+                    post.quotedPost == null &&
+                    post.firstLink != null)
+                  LinkPreviewCard(url: post.firstLink!),
+                if (post.quotedPost != null) ...[
+                  const SizedBox(height: SpacingTokens.space12),
+                  QuotedPostCard(post: post.quotedPost!),
+                ],
               ],
             ),
-          ],
+            footer: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  post.editedAt == null
+                      ? _stamp(post.createdAt)
+                      : '${_stamp(post.createdAt)} \u00b7 '
+                          '${AppLocalizations.of(context).ui('ui_edited', 'Edited')}',
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize2,
+                    color: scheme.onSurface.withValues(alpha: 0.5),
+                  ),
+                ),
 
-          // Broken under the counts: the counts and the buttons are one
-          // block about this post. Solid when there are no counts, because
-          // then this is the line that ends the post's body.
-          if (tallied) const _Rule.broken() else const _Rule.solid(),
-          // The same row as the card, from the same widget -- so the two
-          // cannot drift apart again. Counts are off here because they are
-          // spelled out above.
-          PostActionsRow(
-            post: post,
-            showCounts: false,
-            onReply: onReply,
-            onRepost: () => RepostSheet.show(
-              context,
-              post: post,
-              onRepost: notifier.toggleRepost,
+                // Counts spelled out, which is what the room on this screen is for:
+                // "1 like" rather than a bare 1 beside a heart, and never "1 likes".
+                if (tallied) ...[
+                  const _Rule.solid(),
+                  Wrap(
+                    spacing: SpacingTokens.space16,
+                    runSpacing: SpacingTokens.space4,
+                    children: [
+                      if (post.reposts > 0)
+                        _Tally(text: countLabel(post.reposts, 'repost')),
+                      if (post.likes > 0)
+                        _Tally(text: countLabel(post.likes, 'like')),
+                      if (post.comments > 0)
+                        _Tally(
+                          text: countLabel(post.comments, 'reply',
+                              plural: 'replies'),
+                        ),
+                      if (post.gifts > 0)
+                        _Tally(text: countLabel(post.gifts, 'gift')),
+                    ],
+                  ),
+                ],
+
+                // Broken under the counts: the counts and the buttons are one
+                // block about this post. Solid when there are no counts, because
+                // then this is the line that ends the post's body.
+                if (tallied) const _Rule.broken() else const _Rule.solid(),
+                // The same row as the card, from the same widget -- so the two
+                // cannot drift apart again. Counts are off here because they are
+                // spelled out above.
+                PostActionsRow(
+                  post: post,
+                  showCounts: false,
+                  onReply: onReply,
+                  onRepost: () => RepostSheet.show(
+                    context,
+                    post: post,
+                    onRepost: notifier.toggleRepost,
+                  ),
+                  onLike: () => report(context, notifier.toggleLike()),
+                  onSave: () => report(context, notifier.toggleSave()),
+                  onShare: () => SharePostSheet.show(context, post),
+                  // Held from the heart, the gift still flies to the pill.
+                  onGift: gift == null
+                      ? null
+                      : (heart) => gift(GiftPillHost.anchorOf(heart) ?? heart),
+                ),
+                // The end of the post: what follows is the conversation about it.
+                // A little room first, so the line closes the row of buttons
+                // rather than underlining it.
+                const Padding(
+                  padding: EdgeInsets.only(top: SpacingTokens.space8),
+                  child: RuleLine(),
+                ),
+              ],
             ),
-            onLike: () => report(context, notifier.toggleLike()),
-            onSave: () => report(context, notifier.toggleSave()),
-            onShare: () => SharePostSheet.show(context, post),
-            onGift: mine
-                ? null
-                : (heart) => GiftSheet.open(
-                      heart,
-                      post,
-                      onSent: (sent) =>
-                          notifier.giftsChanged(sent.gifts, type: sent.type),
-                    ),
-          ),
-          // The end of the post: what follows is the conversation about it.
-          // A little room first, so the line closes the row of buttons
-          // rather than underlining it.
-          const Padding(
-            padding: EdgeInsets.only(top: SpacingTokens.space8),
-            child: RuleLine(),
           ),
         ],
       ),
@@ -1308,12 +1334,16 @@ class _SortButton extends StatelessWidget {
         0,
       ),
       color: scheme.surface,
-      elevation: dark ? 0 : 8,
-      shadowColor: const Color(0x40000000),
+      // A line round it, in both themes, and no shadow. A white menu on a
+      // white page had only its shadow for an edge, and it blended in; the
+      // line is an edge that is there on every screen.
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(RadiusTokens.radius20),
-        // On black, the rule is the only edge a menu has.
-        side: dark ? postRule(scheme) : BorderSide.none,
+        side: BorderSide(
+          color: scheme.outline.withValues(alpha: dark ? 0.15 : 0.3),
+          width: 0.5,
+        ),
       ),
       constraints: const BoxConstraints(minWidth: 180, maxWidth: 180),
       items: [

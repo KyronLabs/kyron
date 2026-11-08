@@ -2166,6 +2166,96 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ఈ ఖాతా తొలగించబడింది, కాబట్టి ఇకపై ఇక్కడ సందేశాలు పంపలేరు."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google తో సైన్ అప్ చేశారా? బదులుగా «Sign in with Google» ఉపయోగించండి."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "ఆ లెన్స్‌ను లోడ్ చేయలేకపోయాము."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "వీడియోను రికార్డ్ చేయలేకపోయాము."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "ఈ వీడియోకు లెన్స్‌ను జోడించలేకపోయాము, కాబట్టి తీసినట్లుగానే పోస్ట్ అవుతుంది."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "మీ పోస్ట్‌లో ఇప్పటికే గరిష్ఠ జోడింపులు ఉన్నాయి."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("మీ లెన్స్‌ను జోడిస్తోంది…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("ఫ్లాష్"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("వీడియో రికార్డ్ చేయండి"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("ఫోటో"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("వీడియో"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google సైన్-ఇన్ రద్దు చేయబడింది."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("బహుమతులు"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "ఈ పోస్ట్‌కు ఇంకా ఎవరూ బహుమతి పంపలేదు."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("బహుమతి"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("బహుమతులు"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("నాణేలు"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("పంపినవారు"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("పంపినవారు"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "పరీక్ష నాణేలు: వీటిని ఇంకా ఉపసంహరించలేరు."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("సేవ్ చేసినవి"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("పోస్ట్‌లు"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("వ్యాఖ్యలు"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("మరిన్ని ప్రత్యుత్తరాలు చూడండి"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("సవరించబడింది"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("మరిన్ని"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("ఫాలో అవుతున్నవారు"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("టాప్"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("ఇటీవలివి"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "వ్యాఖ్యలను క్రమబద్ధీకరించండి: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌కు బహుమతి పంపారు"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("మీ వ్యాఖ్యకు \$gift పంపారు"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("మీ పోస్ట్‌కు \$gift పంపారు"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("బహుమతి పంపండి"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను సవరించండి"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "మీరు దీన్ని ఇంకా \$n నిమిషాలు సవరించవచ్చు"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("సేవ్ చేయండి"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab కింద ఇంకా ఏమీ పోస్ట్ చేయలేదు."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("బహుమతిని ఎంచుకోండి"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("తగినన్ని నాణేలు లేవు"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "పరీక్ష నాణేలు: వీటిని కొనలేరు, వీటికి నగదు విలువ లేదు."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date న మళ్లీ నిండుతాయి."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 నాణెం"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count నాణేలు"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("మీ వద్ద \$coins ఉన్నాయి"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift పంపండి"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift పంపబడింది"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించండి"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "పోస్ట్ చేసిన తర్వాత 15 నిమిషాల వరకు"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("సవరించబడింది"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "మీరు సేవ్ చేసిన వ్యాఖ్యలను లోడ్ చేయలేకపోయాము"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("సేవ్ చేసిన వ్యాఖ్యలు లేవు"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "వ్యాఖ్యను ఇక్కడ ఉంచుకోవడానికి దాని కింద ఉన్న ఆర్కైవ్ చిహ్నాన్ని నొక్కండి. మీరు సేవ్ చేసేది మీకు మాత్రమే కనిపిస్తుంది."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name కు ప్రత్యుత్తరం"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("కాపీ చేయండి"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("వెతకండి"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("అన్నీ ఎంచుకోండి"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count బహుమతులు"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 బహుమతి"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "మరిన్ని పోస్ట్‌లను లోడ్ చేయలేకపోయాము."),
     };
 
 final messageLookup = MessageLookup();

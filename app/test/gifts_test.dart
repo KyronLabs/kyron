@@ -16,8 +16,8 @@ import 'package:kyron_app/repositories/gifts_repository.dart';
 import 'package:kyron_app/services/api_client.dart';
 import 'package:kyron_app/utils/notification_text.dart';
 import 'package:kyron_app/widgets/gift_motion.dart';
+import 'package:kyron_app/widgets/gift_pill.dart';
 import 'package:kyron_app/widgets/gift_sheet.dart';
-import 'package:kyron_app/widgets/like_burst.dart';
 import 'package:kyron_app/widgets/notification_item.dart';
 import 'package:kyron_app/widgets/post_actions_row.dart';
 
@@ -681,10 +681,14 @@ void main() {
   });
 
   group('the heart, once a gift is sent', () {
-    Widget row(FeedPost post) => MaterialApp(
+    testWidgets('is still a heart: the gift is on the pill, not the heart', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
           home: Scaffold(
             body: PostActionsRow(
-              post: post,
+              post: _post.copyWith(viewerGift: 'fire', topGifts: ['fire']),
               onReply: () {},
               onRepost: () {},
               onLike: () {},
@@ -693,82 +697,18 @@ void main() {
               onGift: (_) {},
             ),
           ),
-        );
-
-    Finder art(String type) => find.byWidgetPredicate(
-          (w) => w is GiftArt && w.type == type,
-        );
-
-    testWidgets('is the gift you sent', (tester) async {
-      await tester.pumpWidget(row(_post.copyWith(viewerGift: 'fire')));
-
-      expect(art('fire'), findsOneWidget);
-      expect(find.byIcon(Iconsax.heart_copy), findsNothing);
-    });
-
-    testWidgets('lands with a gold burst when it changes', (tester) async {
-      await tester.pumpWidget(row(_post));
-      await tester.pumpWidget(row(_post.copyWith(viewerGift: 'rose')));
-      await tester.pump(const Duration(milliseconds: 120));
-
-      final burst = tester.widget<CustomPaint>(
-        find.byWidgetPredicate(
-          (w) => w is CustomPaint && w.painter is LikeBurstPainter,
         ),
       );
-      expect(
-        (burst.painter! as LikeBurstPainter).colour,
-        const Color(0xFFF2B233),
-      );
-      await tester.pumpAndSettle();
-      expect(art('rose'), findsOneWidget);
-    });
 
-    testWidgets('changes without a landing when motion is off', (
-      tester,
-    ) async {
-      // Through the platform, as the phone's setting arrives: MaterialApp
-      // builds its MediaQuery from it.
-      tester.platformDispatcher.accessibilityFeaturesTestValue =
-          const FakeAccessibilityFeatures(disableAnimations: true);
-      addTearDown(
-          tester.platformDispatcher.clearAccessibilityFeaturesTestValue);
-      await tester.pumpWidget(row(_post));
-      await tester.pumpWidget(row(_post.copyWith(viewerGift: 'rose')));
-      // Flutter already shortens a controller to 5% of its length with
-      // animations off, so the burst would be a 31ms flash: look inside it.
-      await tester.pump(const Duration(milliseconds: 10));
-
-      expect(art('rose'), findsOneWidget);
-      expect(
-        find.byWidgetPredicate(
-          (w) => w is CustomPaint && w.painter is LikeBurstPainter,
-        ),
-        findsNothing,
-      );
-      expect(tester.binding.hasScheduledFrame, isFalse);
-    });
-
-    testWidgets('does not land again on a rebuild with the same gift', (
-      tester,
-    ) async {
-      await tester.pumpWidget(row(_post.copyWith(viewerGift: 'rose')));
-      await tester.pumpWidget(
-        row(_post.copyWith(viewerGift: 'rose', likes: 9)),
-      );
-      await tester.pump(const Duration(milliseconds: 120));
-
-      expect(
-        find.byWidgetPredicate(
-          (w) => w is CustomPaint && w.painter is LikeBurstPainter,
-        ),
-        findsNothing,
-      );
+      expect(find.byIcon(Iconsax.heart_copy), findsOneWidget);
+      expect(find.byType(GiftArt), findsNothing);
+      expect(find.byType(GiftStack), findsNothing);
     });
   });
 
   group('sending from the heart', () {
-    /// A post row that changes as the feed would when a gift lands.
+    /// A post -- its words, the pill, the row -- that changes as the feed
+    /// would when a gift lands.
     Future<(List<String> felt, ValueNotifier<FeedPost> post)> pumpFeed(
       WidgetTester tester, {
       bool still = false,
@@ -797,22 +737,34 @@ void main() {
                 alignment: Alignment.topCenter,
                 child: ValueListenableBuilder<FeedPost>(
                   valueListenable: post,
-                  builder: (context, value, _) => PostActionsRow(
-                    post: value,
-                    onReply: () {},
-                    onRepost: () {},
-                    onLike: () {},
-                    onSave: () {},
-                    onShare: () {},
-                    onGift: (heart) => GiftSheet.open(
-                      heart,
-                      value,
-                      onSent: (sent) => post.value = post.value.copyWith(
-                        gifts: sent.gifts,
-                        viewerGift: sent.type,
+                  builder: (context, value, _) {
+                    void gift(BuildContext anchor) => GiftSheet.open(
+                          anchor,
+                          value,
+                          onSent: (sent) => post.value = post.value.copyWith(
+                            gifts: sent.gifts,
+                            viewerGift: sent.type,
+                            topGifts: withGift(post.value.topGifts, sent.type),
+                          ),
+                        );
+                    return GiftPillHost(
+                      types: value.topGifts,
+                      count: value.topGifts.isEmpty ? 0 : value.gifts,
+                      yours: value.viewerGift != null,
+                      onTap: gift,
+                      content: Text(value.content),
+                      footer: PostActionsRow(
+                        post: value,
+                        onReply: () {},
+                        onRepost: () {},
+                        onLike: () {},
+                        onSave: () {},
+                        onShare: () {},
+                        onGift: (heart) =>
+                            gift(GiftPillHost.anchorOf(heart) ?? heart),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -833,7 +785,7 @@ void main() {
       await tester.pump();
     }
 
-    testWidgets('flies the gift to the heart, and the heart becomes it', (
+    testWidgets('flies the gift to the pill, and the pill counts it', (
       tester,
     ) async {
       final (felt, post) = await pumpFeed(tester);
@@ -842,14 +794,18 @@ void main() {
       // The celebration, then the sheet lets go of it.
       await tester.pump(const Duration(milliseconds: 950));
       await tester.pump(const Duration(milliseconds: 200));
-      // In flight: the heart is still a heart.
+      // In flight: nothing has changed yet, and it is flying to the pill's
+      // spot, not the heart.
       expect(post.value.viewerGift, isNull);
-      expect(find.byIcon(Iconsax.heart_copy), findsOneWidget);
+      expect(find.byKey(const ValueKey('gift-pill')), findsNothing);
 
       await tester.pumpAndSettle();
       expect(post.value.viewerGift, 'fire');
       expect(post.value.gifts, 4);
-      expect(find.byIcon(Iconsax.heart_copy), findsNothing);
+      expect(find.byKey(const ValueKey('gift-pill')), findsOneWidget);
+      expect(find.text('4'), findsOneWidget);
+      // The heart is a heart throughout.
+      expect(find.byIcon(Iconsax.heart_copy), findsOneWidget);
       expect(find.text('Send a gift'), findsNothing);
       // Hold, pick, sent, landed: soft each time, and never a buzz.
       expect(felt, [
@@ -860,7 +816,18 @@ void main() {
       ]);
     });
 
-    testWidgets('changes the heart without a flight when motion is off', (
+    testWidgets('a tap on the pill opens the gifts too', (tester) async {
+      final (_, post) = await pumpFeed(tester);
+      await send(tester, 'spark');
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(const ValueKey('gift-pill')));
+      await tester.pumpAndSettle();
+      expect(find.text('Pick a gift'), findsOneWidget);
+      expect(post.value.gifts, 4);
+    });
+
+    testWidgets('changes without a flight when motion is off', (
       tester,
     ) async {
       final (_, post) = await pumpFeed(tester, still: true);

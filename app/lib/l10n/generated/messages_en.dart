@@ -2419,6 +2419,89 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "This account has been deleted, so messages can no longer be sent here."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Signed up with Google? Use Sign in with Google instead."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "That lens could not be loaded."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "The video could not be recorded."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "The lens could not be added to this video, so it is posted as filmed."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Your post already has as many attachments as it can take."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Adding your lens…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Flash"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Record a video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Photo"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google sign-in was cancelled."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("GIFTS"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Nobody has sent this post a gift yet."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Gift"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Gifts"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Coins"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Sender"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Senders"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Test coins: they cannot be withdrawn yet."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Saved"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Posts"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("View more replies"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Edited"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("More"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Following"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recent"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sort comments: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("sent a gift to your post"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("sent a \$gift to your comment"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("sent a \$gift to your post"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Send a gift"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "You can edit it for \$n more min"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Save"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Nothing has been posted under #\$tab yet."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Pick a gift"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Not enough coins"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Test coins: they cannot be bought and have no cash value."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Refills \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 coin"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count coins"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("You have \$coins"),
+      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Send \$gift"),
+      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift sent"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Try again"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("For 15 minutes after posting"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Edited"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Could not load your saved comments"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("No saved comments"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tap the archive icon under a comment to keep it here. Only you can see what you save."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Replying to \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Copy"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Search"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Select all"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count gifts"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 gift"),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("Couldn't load more posts."),
     };
 
 final messageLookup = MessageLookup();

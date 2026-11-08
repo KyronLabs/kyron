@@ -2161,6 +2161,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Esta conta eliminouse, así que xa non se poden enviar mensaxes aquí."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Rexistrácheste con Google? Usa «Sign in with Google»."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Non se puido cargar ese filtro."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Non se puido gravar o vídeo."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Non se puido engadir o filtro a este vídeo, así que publícase tal como se gravou."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "A túa publicación xa ten todos os anexos que admite."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Engadindo o teu filtro…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Flash"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Gravar un vídeo"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Vídeo"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Cancelouse o inicio de sesión con Google."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("AGASALLOS"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Aínda ninguén enviou un agasallo a esta publicación."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Agasallo"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Agasallos"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Moedas"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Remitente"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Remitentes"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Moedas de proba: aínda non se poden retirar."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Gardado"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Publicacións"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Comentarios"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Ver máis respostas"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Editado"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Máis"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Seguindo"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Destacados"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recentes"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Ordenar comentarios: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "enviou un agasallo á túa publicación"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "enviou un \$gift ao teu comentario"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "enviou un \$gift á túa publicación"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("Enviar un agasallo"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Editar publicación"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("Podes editala \$n min máis"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Gardar"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Aínda non se publicou nada en #\$tab."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("Escolle un agasallo"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Non tes moedas abondo"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Moedas de proba: non se poden mercar e non teñen valor monetario."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Recárgase o \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 moeda"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count moedas"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Tes \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Enviar \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift enviado"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Tentar de novo"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Durante 15 minutos despois de publicar"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Editada"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Non se puideron cargar os teus comentarios gardados"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Non hai comentarios gardados"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Toca a icona de arquivo debaixo dun comentario para gardalo aquí. Só ti ves o que gardas."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("En resposta a \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Copiar"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Buscar"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Seleccionar todo"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count agasallos"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 agasallo"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Non se puideron cargar máis publicacións."),
     };
 
 final messageLookup = MessageLookup();

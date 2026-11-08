@@ -2148,6 +2148,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akun ini telah dihapus, jadi pesan tidak bisa lagi dikirim ke sini."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Daftar dengan Google? Gunakan “Sign in with Google” sebagai gantinya."),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("Lensa itu tidak dapat dimuat."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Video tidak dapat direkam."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Lensa tidak dapat ditambahkan ke video ini, jadi video diposting seperti saat direkam."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Postinganmu sudah memiliki lampiran sebanyak yang bisa dimuat."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Menambahkan lensamu…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Lampu kilat"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Rekam video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Masuk dengan Google dibatalkan."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("HADIAH"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Belum ada yang mengirim hadiah ke postingan ini."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Hadiah"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Hadiah"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Koin"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Pengirim"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Pengirim"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Koin uji coba: belum dapat ditarik."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Disimpan"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Postingan"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Komentar"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Lihat balasan lainnya"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Diedit"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Lainnya"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Mengikuti"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Teratas"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Terbaru"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Urutkan komentar: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "mengirim hadiah ke postinganmu"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("mengirim \$gift ke komentarmu"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "mengirim \$gift ke postinganmu"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Kirim hadiah"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Edit postingan"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Kamu dapat mengeditnya \$n menit lagi"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Simpan"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Belum ada yang diposting di #\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Pilih hadiah"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Koin tidak cukup"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Koin uji coba: tidak dapat dibeli dan tidak memiliki nilai uang."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Diisi ulang pada \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 koin"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count koin"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Kamu punya \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Kirim \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift terkirim"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Coba lagi"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Selama 15 menit setelah diposting"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Diedit"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat memuat komentar yang kamu simpan"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Tidak ada komentar tersimpan"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Ketuk ikon arsip di bawah komentar untuk menyimpannya di sini. Hanya kamu yang bisa melihat yang kamu simpan."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Membalas \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Salin"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Cari"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Pilih semua"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count hadiah"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hadiah"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat memuat postingan lainnya."),
     };
 
 final messageLookup = MessageLookup();

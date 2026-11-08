@@ -2163,6 +2163,96 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Na-delete na ang account na ito, kaya hindi na makakapagpadala ng mensahe rito."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Nag-sign up gamit ang Google? Gamitin na lang ang “Sign in with Google”."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Hindi ma-load ang lens na iyon."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-record ang video."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Hindi maidagdag ang lens sa video na ito, kaya ipo-post ito kung paano kinunan."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Nasa pinakamaraming attachment na ang post mo."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Idinadagdag ang lens mo…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Flash"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Mag-record ng video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Larawan"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Kinansela ang pag-sign in sa Google."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("MGA REGALO"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Wala pang nagpadala ng regalo sa post na ito."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Regalo"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Mga regalo"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mga coin"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Nagpadala"),
+      "analytics_senders":
+          MessageLookupByLibrary.simpleMessage("Mga nagpadala"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Mga test coin: hindi pa maaaring i-withdraw."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Naka-save"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Mga post"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Mga komento"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Tingnan ang iba pang sagot"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Na-edit"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Iba pa"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Sinusundan"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Nangunguna"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Pinakabago"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Ayusin ang mga komento: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "nagpadala ng regalo sa post mo"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "nagpadala ng \$gift sa komento mo"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "nagpadala ng \$gift sa post mo"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("Magpadala ng regalo"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("I-edit ang post"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Maaari mo itong i-edit nang \$n min pa"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("I-save"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Wala pang nai-post sa ilalim ng #\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Pumili ng regalo"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Kulang ang coin"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Mga test coin: hindi mabibili at walang halagang pera."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Mapupunan sa \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 coin"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count coin"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Mayroon kang \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Ipadala ang \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("Naipadala ang \$gift"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Subukang muli"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Sa loob ng 15 minuto pagkatapos mag-post"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Na-edit"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Hindi ma-load ang mga na-save mong komento"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Walang naka-save na komento"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "I-tap ang archive icon sa ilalim ng komento para itago ito rito. Ikaw lang ang nakakakita ng sine-save mo."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Sumasagot kay \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopyahin"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Hanapin"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Piliin lahat"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count regalo"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 regalo"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ma-load ang iba pang post."),
     };
 
 final messageLookup = MessageLookup();

@@ -2142,6 +2142,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Det här kontot har raderats, så det går inte längre att skicka meddelanden hit."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Registrerad med Google? Använd ”Sign in with Google” i stället."),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("Den linsen kunde inte laddas."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Videon kunde inte spelas in."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Linsen kunde inte läggas till i videon, så den publiceras som den filmades."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Ditt inlägg har redan så många bilagor som det rymmer."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Lägger till din lins…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Blixt"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Spela in en video"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Inloggningen med Google avbröts."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("GÅVOR"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Ingen har skickat en gåva till det här inlägget än."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Gåva"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Gåvor"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Mynt"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Avsändare"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Avsändare"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Testmynt: de kan inte tas ut än."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Sparat"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Inlägg"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Kommentarer"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Visa fler svar"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Redigerad"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Mer"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Följer"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Topp"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Senaste"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sortera kommentarer: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "skickade en gåva till ditt inlägg"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "skickade en \$gift till din kommentar"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "skickade en \$gift till ditt inlägg"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Skicka en gåva"),
+      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Redigera inlägg"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Du kan redigera det i \$n min till"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Spara"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Inget har publicerats under #\$tab än."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Välj en gåva"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Inte tillräckligt med mynt"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Testmynt: de kan inte köpas och har inget penningvärde."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Fylls på \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 mynt"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count mynt"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Du har \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Skicka \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift skickad"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Försök igen"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "I 15 minuter efter publicering"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Redigerat"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Dina sparade kommentarer kunde inte laddas"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Inga sparade kommentarer"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tryck på arkivikonen under en kommentar för att spara den här. Bara du ser det du sparar."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Svarar \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopiera"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Sök"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Markera allt"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count gåvor"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 gåva"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Det gick inte att läsa in fler inlägg."),
     };
 
 final messageLookup = MessageLookup();

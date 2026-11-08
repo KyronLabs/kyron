@@ -30,6 +30,22 @@ Widget _row(FeedPost post) => MaterialApp(
       ),
     );
 
+/// A comment's heart, which still wears the crown: a post's gifts moved to
+/// the GiftPill, a comment's did not.
+Widget _heart(List<String> gifts) => MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: PostAction(
+            icon: Iconsax.heart_copy,
+            label: '12',
+            tooltip: 'Like',
+            onTap: () {},
+            topper: gifts.isEmpty ? null : GiftStack(gifts),
+          ),
+        ),
+      ),
+    );
+
 void main() {
   test('reads the stack from the API, three at most', () {
     final post = FeedPost.fromJson(const {
@@ -50,10 +66,11 @@ void main() {
     expect(withGift(['gem'], 'gem'), ['gem']);
   });
 
-  testWidgets('crowns the heart: the most valuable in the middle, in front', (
+  testWidgets(
+      'crowns a comment\'s heart: the most valuable in the middle, in front', (
     tester,
   ) async {
-    await tester.pumpWidget(_row(_post(['rocket', 'gem', 'rose'])));
+    await tester.pumpWidget(_heart(['rocket', 'gem', 'rose']));
 
     // Each gift is drawn twice -- itself, and its cut-out outline behind it
     // in the page's colour -- so the gift is the one at its own size.
@@ -96,7 +113,7 @@ void main() {
   testWidgets('two gifts lean on each other, the best in front', (
     tester,
   ) async {
-    await tester.pumpWidget(_row(_post(['crown', 'rose'])));
+    await tester.pumpWidget(_heart(['crown', 'rose']));
     final crown = tester.getRect(find.byWidgetPredicate(
         (w) => w is GiftArt && w.type == 'crown' && w.size == GiftStack.size));
     final rose = tester.getRect(find.byWidgetPredicate((w) =>
@@ -105,7 +122,7 @@ void main() {
     expect(rose.width, lessThan(crown.width));
   });
 
-  testWidgets('moves nothing in the row: the count stays where it was', (
+  testWidgets('a post\'s heart wears no crown: its gifts are on the pill', (
     tester,
   ) async {
     await tester.pumpWidget(_row(_post(const [])));
@@ -113,12 +130,9 @@ void main() {
     final plainRow = tester.getSize(find.byType(PostActionsRow));
 
     await tester.pumpWidget(_row(_post(['rocket', 'gem', 'rose'])));
+    expect(find.byType(GiftStack), findsNothing);
+    expect(find.byType(GiftArt), findsNothing);
     expect(tester.getRect(find.text('12')), plain);
     expect(tester.getSize(find.byType(PostActionsRow)), plainRow);
-  });
-
-  testWidgets('a post with no gifts has no stack', (tester) async {
-    await tester.pumpWidget(_row(_post(const [])));
-    expect(find.byType(GiftStack), findsNothing);
   });
 }

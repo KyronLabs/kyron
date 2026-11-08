@@ -2170,6 +2170,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Le akhawunti isusiwe, ngakho imilayezo ayisakwazi ukuthunyelwa lapha."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ubhalise nge-Google? Sebenzisa u-“Sign in with Google” esikhundleni salokho."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Lelo lensi alikwazanga ukulayishwa."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Ividiyo ayikwazanga ukurekhodwa."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Ilensi ayikwazanga ukwengezwa kule vidiyo, ngakho ithunyelwa njengoba ithathiwe."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Okuthunyelwe kwakho sekunokunamathiselwe okuningi ngangokunokwenzeka."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Yengeza ilensi yakho…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Ifulethi"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Rekhoda ividiyo"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Isithombe"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Ividiyo"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Ukungena nge-Google kukhanseliwe."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("IZIPHO"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Akekho osethumele isipho kulokhu okuthunyelwe."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Isipho"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Izipho"),
+      "analytics_coins":
+          MessageLookupByLibrary.simpleMessage("Izinhlamvu zemali"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Umthumeli"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Abathumeli"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Izinhlamvu zemali zokuhlola: azikwazi ukukhishwa okwamanje."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Okulondoloziwe"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Okuthunyelwe"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Amazwana"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Bona izimpendulo eziningi"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Kuhleliwe"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Okuningi"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Obalandelayo"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Phezulu"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Okwakamuva"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Hlunga amazwana: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "uthumele isipho kokuthunyelwe kwakho"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "uthumele i-\$gift kumazwana akho"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "uthumele i-\$gift kokuthunyelwe kwakho"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Thumela isipho"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Hlela okuthunyelwe"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Usengakuhlela imizuzu engu-\$n"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Londoloza"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Akukakathunyelwa lutho ngaphansi kwe-#\$tab."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Khetha isipho"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Izinhlamvu zemali azanele"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Izinhlamvu zemali zokuhlola: azinakuthengwa futhi azinalo inani lemali."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Zigcwaliswa ngo-\$date."),
+      "ui_gift_one_coin":
+          MessageLookupByLibrary.simpleMessage("Uhlamvu lwemali olu-1"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage(
+          "Izinhlamvu zemali ezingu-\$count"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Unezi-\$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Thumela i-\$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("I-\$gift ithunyelwe"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Zama futhi"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Imizuzu engu-15 ngemva kokuthumela"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Kuhleliwe"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Akukwazanga ukulayisha amazwana akho alondoloziwe"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Awekho amazwana alondoloziwe"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Thepha isithonjana sengobo yomlando ngaphansi kwamazwana ukuze uwagcine lapha. Nguwe kuphela obona okulondolozayo."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Uphendula u-\$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Kopisha"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Sesha"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Khetha konke"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("Izipho ezingu-\$count"),
+      "ui_gifts_count_one":
+          MessageLookupByLibrary.simpleMessage("Isipho esi-1"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Akukwazanga ukulayisha okunye okuthunyelwe."),
     };
 
 final messageLookup = MessageLookup();

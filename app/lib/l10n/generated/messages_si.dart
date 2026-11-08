@@ -2160,6 +2160,93 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "මෙම ගිණුම මකා දමා ඇති බැවින් මෙතැනට තවදුරටත් පණිවිඩ යැවිය නොහැක."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google සමඟ ලියාපදිංචි වූවාද? ඒ වෙනුවට «Sign in with Google» භාවිත කරන්න."),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("එම කාචය පූරණය කළ නොහැකි විය."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("වීඩියෝව පටිගත කළ නොහැකි විය."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "මෙම වීඩියෝවට කාචය එක් කළ නොහැකි වූ බැවින්, එය රූගත කළ ආකාරයටම පළ වේ."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ පළ කිරීමේ දැනටමත් උපරිම ඇමුණුම් ඇත."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("ඔබේ කාචය එක් කරමින්…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("ෆ්ලෑෂ්"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("වීඩියෝවක් පටිගත කරන්න"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("ඡායාරූපය"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("වීඩියෝව"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google පුරනය වීම අවලංගු කරන ලදී."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("තෑගි"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "තවම කිසිවෙක් මෙම පළ කිරීමට තෑග්ගක් යවා නැත."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("තෑග්ග"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("තෑගි"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("කාසි"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("යවන්නා"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("යවන්නන්"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "පරීක්ෂණ කාසි: ඒවා තවම ආපසු ගත නොහැක."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("සුරැකි"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("පළ කිරීම්"),
+      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("අදහස්"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("තවත් පිළිතුරු බලන්න"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("සංස්කරණය කළ"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("තවත්"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("අනුගමනය කරන"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("ඉහළම"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("මෑත"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("අදහස් පෙළගස්වන්න: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("ඔබේ පළ කිරීමට තෑග්ගක් යැව්වා"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("ඔබේ අදහසට \$gift යැව්වා"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("ඔබේ පළ කිරීමට \$gift යැව්වා"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("තෑග්ගක් යවන්න"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම සංස්කරණය කරන්න"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "ඔබට එය තවත් මිනිත්තු \$n ක් සංස්කරණය කළ හැක"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("සුරකින්න"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab යටතේ තවම කිසිවක් පළ කර නැත."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("තෑග්ගක් තෝරන්න"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("ප්‍රමාණවත් කාසි නැත"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "පරීක්ෂණ කාසි: ඒවා මිලදී ගත නොහැකි අතර මුදල් වටිනාකමක් නැත."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date දින නැවත පිරේ."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("කාසි 1"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("කාසි \$count"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("ඔබ සතුව \$coins ඇත"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift යවන්න"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift යැව්වා"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "පළ කිරීමෙන් පසු මිනිත්තු 15ක් තුළ"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("සංස්කරණය කළා"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ සුරැකි අදහස් පූරණය කළ නොහැකි විය"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("සුරැකි අදහස් නැත"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "අදහසක් මෙහි තබා ගැනීමට එයට පහළින් ඇති සංරක්ෂණ නිරූපකය තට්ටු කරන්න. ඔබ සුරකින දේ දකින්නේ ඔබ පමණි."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name ට පිළිතුරු දෙමින්"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("පිටපත් කරන්න"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("සොයන්න"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("සියල්ල තෝරන්න"),
+      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("තෑගි \$count"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("තෑගි 1"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "තවත් පළ කිරීම් පූරණය කළ නොහැකි විය."),
     };
 
 final messageLookup = MessageLookup();

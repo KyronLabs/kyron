@@ -2262,6 +2262,93 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Този профил е изтрит, така че вече не могат да се изпращат съобщения тук."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Регистрирахте се с Google? Използвайте „Влез с Google“."),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Този филтър не можа да се зареди."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Видеото не можа да бъде записано."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Филтърът не можа да се добави към това видео, затова то се публикува както е заснето."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Публикацията ви вече има максималния брой прикачени файлове."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Добавяне на филтъра…"),
+      "ar_flash": MessageLookupByLibrary.simpleMessage("Светкавица"),
+      "ar_record_video": MessageLookupByLibrary.simpleMessage("Запиши видео"),
+      "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Снимка"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Видео"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Влизането с Google беше отказано."),
+      "analytics_gifts": MessageLookupByLibrary.simpleMessage("ПОДАРЪЦИ"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Още никой не е изпратил подарък на тази публикация."),
+      "analytics_gift": MessageLookupByLibrary.simpleMessage("Подарък"),
+      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Подаръци"),
+      "analytics_coins": MessageLookupByLibrary.simpleMessage("Монети"),
+      "analytics_sender": MessageLookupByLibrary.simpleMessage("Подател"),
+      "analytics_senders": MessageLookupByLibrary.simpleMessage("Податели"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Тестови монети: все още не могат да се изтеглят."),
+      "ui_saved": MessageLookupByLibrary.simpleMessage("Запазени"),
+      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Публикации"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Коментари"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Вижте още отговори"),
+      "ui_edited": MessageLookupByLibrary.simpleMessage("Редактирано"),
+      "ui_more": MessageLookupByLibrary.simpleMessage("Още"),
+      "ui_following": MessageLookupByLibrary.simpleMessage("Следвани"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Най-добри"),
+      "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Най-нови"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Подреждане на коментарите: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "изпрати подарък на публикацията ви"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "изпрати \$gift на коментара ви"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "изпрати \$gift на публикацията ви"),
+      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Изпрати подарък"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Редактиране на публикацията"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Можете да я редактирате още \$n мин"),
+      "ui_save": MessageLookupByLibrary.simpleMessage("Запази"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Под #\$tab все още няма публикации."),
+      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Изберете подарък"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Нямате достатъчно монети"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Тестови монети: не могат да се купуват и нямат парична стойност."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Зарежда се отново на \$date."),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 монета"),
+      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count монети"),
+      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Имате \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Изпрати \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift е изпратен"),
+      "ui_retry": MessageLookupByLibrary.simpleMessage("Опитай отново"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("15 минути след публикуване"),
+      "ui_post_edited": MessageLookupByLibrary.simpleMessage("Редактирано"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Запазените ви коментари не можаха да се заредят"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Няма запазени коментари"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Докоснете иконата за архив под коментар, за да го запазите тук. Само вие виждате какво запазвате."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Отговор на \$name"),
+      "ui_copy": MessageLookupByLibrary.simpleMessage("Копирай"),
+      "ui_search": MessageLookupByLibrary.simpleMessage("Търсене"),
+      "ui_select_all": MessageLookupByLibrary.simpleMessage("Избери всичко"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count подаръка"),
+      "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 подарък"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Не можаха да се заредят още публикации."),
     };
 
 final messageLookup = MessageLookup();
