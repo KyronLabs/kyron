@@ -2140,64 +2140,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Бұл аккаунт жойылды, сондықтан бұл жерге енді хабар жіберу мүмкін емес."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google арқылы тіркелдіңіз бе? Оның орнына «Sign in with Google» түймесін пайдаланыңыз."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Бұл линзаны жүктеу мүмкін болмады."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Бейнені жазу мүмкін болмады."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Линзаны бұл бейнеге қосу мүмкін болмады, сондықтан ол түсірілген күйінде жарияланады."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Жазбаңызда тіркемелердің ең көп саны бар."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Линза қосылуда…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Бұл линзаны жүктеу мүмкін болмады."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Бейнені жазу мүмкін болмады."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Линзаны бұл бейнеге қосу мүмкін болмады, сондықтан ол түсірілген күйінде жарияланады."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Жазбаңызда тіркемелердің ең көп саны бар."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Линза қосылуда…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Жарқылдақ"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Бейне жазу"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Фото"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Бейне"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google арқылы кіру тоқтатылды."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google арқылы кіру тоқтатылды."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("СЫЙЛЫҚТАР"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Бұл жазбаға әлі ешкім сыйлық жібермеді."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Бұл жазбаға әлі ешкім сыйлық жібермеді."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Сыйлық"),
-      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Сыйлықтар"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Сыйлықтар"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Тиындар"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Жіберуші"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Жіберушілер"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Сынақ тиындары: оларды әлі шығаруға болмайды."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Сынақ тиындары: оларды әлі шығаруға болмайды."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Сақталғандар"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Жазбалар"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Пікірлер"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Тағы жауаптарды көру"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Тағы жауаптарды көру"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Өңделген"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Тағы"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Жазылымдар"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Үздік"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Жаңа"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Пікірлерді сұрыптау: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("жазбаңызға сыйлық жіберді"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("пікіріңізге \$gift жіберді"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("жазбаңызға \$gift жіберді"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Пікірлерді сұрыптау: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("жазбаңызға сыйлық жіберді"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("пікіріңізге \$gift жіберді"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("жазбаңызға \$gift жіберді"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Сыйлық жіберу"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("Жазбаны өңдеу"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Оны тағы \$n мин өңдей аласыз"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("Оны тағы \$n мин өңдей аласыз"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Сақтау"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("#\$tab астында әлі ештеңе жарияланбаған."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab астында әлі ештеңе жарияланбаған."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Сыйлық таңдаңыз"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Тиын жеткіліксіз"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Сынақ тиындары: оларды сатып алуға болмайды және ақшалай құны жоқ."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date толтырылады."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Тиын жеткіліксіз"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Сынақ тиындары: оларды сатып алуға болмайды және ақшалай құны жоқ."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date толтырылады."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 тиын"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count тиын"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Сізде \$coins бар"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift жіберу"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift жіберілді"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Сізде \$coins бар"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift жіберу"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift жіберілді"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Қайталау"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Жариялағаннан кейін 15 минут бойы"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Жариялағаннан кейін 15 минут бойы"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Өңделді"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Сақталған пікірлеріңізді жүктеу мүмкін болмады"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Сақталған пікірлер жоқ"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Пікірді осында сақтау үшін астындағы мұрағат белгішесін түртіңіз. Сақтағаныңызды тек сіз көресіз."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name пайдаланушысына жауап"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Сақталған пікірлеріңізді жүктеу мүмкін болмады"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Сақталған пікірлер жоқ"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Пікірді осында сақтау үшін астындағы мұрағат белгішесін түртіңіз. Сақтағаныңызды тек сіз көресіз."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name пайдаланушысына жауап"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Көшіру"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Іздеу"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Барлығын таңдау"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count сыйлық"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 сыйлық"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Қосымша жазбаларды жүктеу мүмкін болмады."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Қосымша жазбаларды жүктеу мүмкін болмады."),
     };
 
 final messageLookup = MessageLookup();

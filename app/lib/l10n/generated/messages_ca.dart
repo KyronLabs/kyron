@@ -2286,64 +2286,94 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Aquest compte s'ha suprimit, així que ja no s'hi poden enviar missatges."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "T'has registrat amb Google? Fes servir «Inicia sessió amb Google»."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("No s'ha pogut carregar aquest filtre."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("No s'ha pogut gravar el vídeo."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("No s'ha pogut afegir el filtre a aquest vídeo, així que es publica tal com s'ha gravat."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("La teva publicació ja té tots els fitxers adjunts que admet."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("S'està afegint el filtre…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut carregar aquest filtre."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut gravar el vídeo."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut afegir el filtre a aquest vídeo, així que es publica tal com s'ha gravat."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "La teva publicació ja té tots els fitxers adjunts que admet."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("S'està afegint el filtre…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Flaix"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Grava un vídeo"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Vídeo"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("S'ha cancel·lat l'inici de sessió amb Google."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "S'ha cancel·lat l'inici de sessió amb Google."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("REGALS"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Encara ningú no ha enviat cap regal a aquesta publicació."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Encara ningú no ha enviat cap regal a aquesta publicació."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Regal"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Regals"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Monedes"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Remitent"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Remitents"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Monedes de prova: encara no es poden retirar."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Monedes de prova: encara no es poden retirar."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Desat"),
-      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Publicacions"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Comentaris"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Mostra més respostes"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Publicacions"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Comentaris"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Mostra més respostes"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Editat"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Més"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Seguint"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Destacats"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recents"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Ordena els comentaris: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("ha enviat un regal a la teva publicació"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("ha enviat un \$gift al teu comentari"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("ha enviat un \$gift a la teva publicació"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Ordena els comentaris: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "ha enviat un regal a la teva publicació"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "ha enviat un \$gift al teu comentari"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "ha enviat un \$gift a la teva publicació"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Envia un regal"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Edita la publicació"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("La pots editar \$n min més"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Edita la publicació"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("La pots editar \$n min més"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Desa"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Encara no s'ha publicat res a #\$tab."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Encara no s'ha publicat res a #\$tab."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Tria un regal"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("No tens prou monedes"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Monedes de prova: no es poden comprar i no tenen valor monetari."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Es recarrega el \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("No tens prou monedes"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Monedes de prova: no es poden comprar i no tenen valor monetari."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Es recarrega el \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 moneda"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count monedes"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Tens \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Envia \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift enviat"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Envia \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift enviat"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Torna-ho a provar"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Durant 15 minuts després de publicar"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Durant 15 minuts després de publicar"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Editada"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("No s'han pogut carregar els comentaris desats"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("No hi ha comentaris desats"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Toca la icona d'arxiu sota un comentari per guardar-lo aquí. Només tu veus el que deses."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("En resposta a \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "No s'han pogut carregar els comentaris desats"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("No hi ha comentaris desats"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Toca la icona d'arxiu sota un comentari per guardar-lo aquí. Només tu veus el que deses."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("En resposta a \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Copia"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Cerca"),
-      "ui_select_all": MessageLookupByLibrary.simpleMessage("Selecciona-ho tot"),
+      "ui_select_all":
+          MessageLookupByLibrary.simpleMessage("Selecciona-ho tot"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count regals"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 regal"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("No s'han pogut carregar més publicacions."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'han pogut carregar més publicacions."),
     };
 
 final messageLookup = MessageLookup();

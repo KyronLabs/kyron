@@ -1969,64 +1969,85 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ይህ መለያ ተሰርዟል፣ ስለዚህ ከአሁን በኋላ እዚህ መልእክት መላክ አይቻልም።"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "በGoogle ተመዝግበዋል? በምትኩ «በGoogle ይግቡ»ን ይጠቀሙ።"),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("ያንን ሌንስ መጫን አልተቻለም።"),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("ቪዲዮውን መቅዳት አልተቻለም።"),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("ሌንሱን ወደዚህ ቪዲዮ ማከል አልተቻለም፤ ስለዚህ እንደተቀረጸ ይለጠፋል።"),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("ልጥፍዎ የሚችለውን ያህል አባሪዎች አሉት።"),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("ሌንስዎ እየታከለ ነው…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("ያንን ሌንስ መጫን አልተቻለም።"),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("ቪዲዮውን መቅዳት አልተቻለም።"),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "ሌንሱን ወደዚህ ቪዲዮ ማከል አልተቻለም፤ ስለዚህ እንደተቀረጸ ይለጠፋል።"),
+      "ar_composer_full":
+          MessageLookupByLibrary.simpleMessage("ልጥፍዎ የሚችለውን ያህል አባሪዎች አሉት።"),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("ሌንስዎ እየታከለ ነው…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("ፍላሽ"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("ቪዲዮ ይቅረጹ"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("ፎቶ"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("ቪዲዮ"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("በGoogle መግባት ተሰርዟል።"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("በGoogle መግባት ተሰርዟል።"),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("ስጦታዎች"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("እስካሁን ማንም ለዚህ ልጥፍ ስጦታ አልላከም።"),
+      "analytics_no_gifts_yet":
+          MessageLookupByLibrary.simpleMessage("እስካሁን ማንም ለዚህ ልጥፍ ስጦታ አልላከም።"),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("ስጦታ"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("ስጦታዎች"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("ሳንቲሞች"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("ላኪ"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("ላኪዎች"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("የሙከራ ሳንቲሞች፦ እስካሁን ወጪ ማድረግ አይቻልም።"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "የሙከራ ሳንቲሞች፦ እስካሁን ወጪ ማድረግ አይቻልም።"),
       "ui_saved": MessageLookupByLibrary.simpleMessage("የተቀመጡ"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("ልጥፎች"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("አስተያየቶች"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("ተጨማሪ ምላሾችን ይመልከቱ"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("ተጨማሪ ምላሾችን ይመልከቱ"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("ተስተካክሏል"),
       "ui_more": MessageLookupByLibrary.simpleMessage("ተጨማሪ"),
       "ui_following": MessageLookupByLibrary.simpleMessage("የሚከተሏቸው"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("ምርጥ"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("የቅርብ ጊዜ"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("አስተያየቶችን ደርድር፦ \$order"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("አስተያየቶችን ደርድር፦ \$order"),
       "ui_notif_gift": MessageLookupByLibrary.simpleMessage("ለልጥፍዎ ስጦታ ላከ"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("ለአስተያየትዎ \$gift ላከ"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("ለልጥፍዎ \$gift ላከ"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("ለአስተያየትዎ \$gift ላከ"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("ለልጥፍዎ \$gift ላከ"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("ስጦታ ይላኩ"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("ልጥፍ አስተካክል"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("ለተጨማሪ \$n ደቂቃ ማስተካከል ይችላሉ"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("ለተጨማሪ \$n ደቂቃ ማስተካከል ይችላሉ"),
       "ui_save": MessageLookupByLibrary.simpleMessage("አስቀምጥ"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("በ#\$tab ስር እስካሁን ምንም አልተለጠፈም።"),
+      "ui_feed_tag_detail":
+          MessageLookupByLibrary.simpleMessage("በ#\$tab ስር እስካሁን ምንም አልተለጠፈም።"),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("ስጦታ ይምረጡ"),
       "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("በቂ ሳንቲም የለም"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("የሙከራ ሳንቲሞች፦ መግዛት አይቻልም፣ የገንዘብ ዋጋም የላቸውም።"),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("በ\$date ይሞላል።"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "የሙከራ ሳንቲሞች፦ መግዛት አይቻልም፣ የገንዘብ ዋጋም የላቸውም።"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("በ\$date ይሞላል።"),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 ሳንቲም"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count ሳንቲሞች"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("\$coins አለዎት"),
       "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift ይላኩ"),
       "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift ተልኳል"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("እንደገና ይሞክሩ"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("ከተለጠፈ በኋላ ለ15 ደቂቃ"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("ከተለጠፈ በኋላ ለ15 ደቂቃ"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("ተስተካክሏል"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("የተቀመጡ አስተያየቶችዎን መጫን አልተቻለም"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("የተቀመጡ አስተያየቶች የሉም"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("አስተያየትን እዚህ ለማስቀመጥ ከሥሩ ያለውን የማህደር አዶ ይንኩ። ያስቀመጡትን የሚያዩት እርስዎ ብቻ ነዎት።"),
+      "ui_could_not_load_saved_comments":
+          MessageLookupByLibrary.simpleMessage("የተቀመጡ አስተያየቶችዎን መጫን አልተቻለም"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("የተቀመጡ አስተያየቶች የሉም"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "አስተያየትን እዚህ ለማስቀመጥ ከሥሩ ያለውን የማህደር አዶ ይንኩ። ያስቀመጡትን የሚያዩት እርስዎ ብቻ ነዎት።"),
       "ui_replying_to": MessageLookupByLibrary.simpleMessage("ለ\$name ምላሽ"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("ቅዳ"),
       "ui_search": MessageLookupByLibrary.simpleMessage("ፈልግ"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("ሁሉንም ምረጥ"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count ስጦታዎች"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 ስጦታ"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("ተጨማሪ ልጥፎችን መጫን አልተቻለም።"),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("ተጨማሪ ልጥፎችን መጫን አልተቻለም።"),
     };
 
 final messageLookup = MessageLookup();

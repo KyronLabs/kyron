@@ -2231,64 +2231,93 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bu hesab silinib, ona görə də artıq bura mesaj göndərmək mümkün deyil."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google ilə qeydiyyatdan keçmisiniz? Əvəzində «Google ilə daxil ol» seçin."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Bu linza yüklənmədi."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Video yazıla bilmədi."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Linza bu videoya əlavə edilə bilmədi, ona görə də çəkildiyi kimi paylaşılır."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Paylaşımınızda artıq maksimum sayda əlavə var."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Linzanız əlavə edilir…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("Bu linza yüklənmədi."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Video yazıla bilmədi."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Linza bu videoya əlavə edilə bilmədi, ona görə də çəkildiyi kimi paylaşılır."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımınızda artıq maksimum sayda əlavə var."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Linzanız əlavə edilir…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Fləş"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Video yaz"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google ilə giriş ləğv edildi."),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google ilə giriş ləğv edildi."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("HƏDİYYƏLƏR"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Bu paylaşıma hələ heç kim hədiyyə göndərməyib."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Bu paylaşıma hələ heç kim hədiyyə göndərməyib."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Hədiyyə"),
-      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Hədiyyələr"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Hədiyyələr"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Sikkələr"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Göndərən"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Göndərənlər"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Test sikkələri: hələ çıxarıla bilməz."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Test sikkələri: hələ çıxarıla bilməz."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Saxlanılanlar"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Paylaşımlar"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Şərhlər"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Daha çox cavab göstər"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Daha çox cavab göstər"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Redaktə edilib"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Daha çox"),
       "ui_following": MessageLookupByLibrary.simpleMessage("İzlənilənlər"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Ən yaxşı"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Ən yeni"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Şərhləri sırala: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("paylaşımınıza hədiyyə göndərdi"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("şərhinizə \$gift göndərdi"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("paylaşımınıza \$gift göndərdi"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Şərhləri sırala: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "paylaşımınıza hədiyyə göndərdi"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("şərhinizə \$gift göndərdi"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("paylaşımınıza \$gift göndərdi"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Hədiyyə göndər"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Paylaşımı redaktə et"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Onu daha \$n dəq redaktə edə bilərsiniz"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Paylaşımı redaktə et"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Onu daha \$n dəq redaktə edə bilərsiniz"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Yadda saxla"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("#\$tab altında hələ heç nə paylaşılmayıb."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab altında hələ heç nə paylaşılmayıb."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Hədiyyə seçin"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Kifayət qədər sikkə yoxdur"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Test sikkələri: alına bilməz və pul dəyəri yoxdur."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date tarixində yenilənir."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Kifayət qədər sikkə yoxdur"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Test sikkələri: alına bilməz və pul dəyəri yoxdur."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date tarixində yenilənir."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 sikkə"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count sikkə"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("\$coins sikkəniz var"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift göndər"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift göndərildi"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("\$coins sikkəniz var"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift göndər"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift göndərildi"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Yenidən cəhd edin"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Paylaşımdan sonra 15 dəqiqə ərzində"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Paylaşımdan sonra 15 dəqiqə ərzində"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Redaktə edildi"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Saxlanılmış şərhləriniz yüklənmədi"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Saxlanılmış şərh yoxdur"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Şərhi burada saxlamaq üçün altındakı arxiv ikonasına toxunun. Saxladıqlarınızı yalnız siz görürsünüz."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name adlı istifadəçiyə cavab"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Saxlanılmış şərhləriniz yüklənmədi"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Saxlanılmış şərh yoxdur"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Şərhi burada saxlamaq üçün altındakı arxiv ikonasına toxunun. Saxladıqlarınızı yalnız siz görürsünüz."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage(
+          "\$name adlı istifadəçiyə cavab"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Kopyala"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Axtar"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Hamısını seç"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count hədiyyə"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hədiyyə"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Daha çox paylaşım yüklənmədi."),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("Daha çox paylaşım yüklənmədi."),
     };
 
 final messageLookup = MessageLookup();

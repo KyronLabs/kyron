@@ -2154,64 +2154,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tài khoản này đã bị xóa nên không thể gửi tin nhắn ở đây nữa."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Đã đăng ký bằng Google? Hãy dùng “Sign in with Google”."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Không thể tải ống kính đó."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Không thể quay video."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Không thể thêm ống kính vào video này, nên video được đăng như khi quay."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Bài đăng của bạn đã có số tệp đính kèm tối đa."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Đang thêm ống kính…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("Không thể tải ống kính đó."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Không thể quay video."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Không thể thêm ống kính vào video này, nên video được đăng như khi quay."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Bài đăng của bạn đã có số tệp đính kèm tối đa."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Đang thêm ống kính…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Đèn flash"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Quay video"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Ảnh"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Đã hủy đăng nhập bằng Google."),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Đã hủy đăng nhập bằng Google."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("QUÀ TẶNG"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Chưa ai gửi quà cho bài đăng này."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Chưa ai gửi quà cho bài đăng này."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Quà"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Quà tặng"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Xu"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Người gửi"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Người gửi"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Xu thử nghiệm: chưa thể rút."),
+      "analytics_test_coins":
+          MessageLookupByLibrary.simpleMessage("Xu thử nghiệm: chưa thể rút."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Đã lưu"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Bài đăng"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Bình luận"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Xem thêm câu trả lời"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Bình luận"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Xem thêm câu trả lời"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Đã chỉnh sửa"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Thêm"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Đang theo dõi"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Hàng đầu"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Mới nhất"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Sắp xếp bình luận: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("đã gửi quà cho bài đăng của bạn"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("đã gửi \$gift cho bình luận của bạn"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("đã gửi \$gift cho bài đăng của bạn"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sắp xếp bình luận: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "đã gửi quà cho bài đăng của bạn"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "đã gửi \$gift cho bình luận của bạn"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "đã gửi \$gift cho bài đăng của bạn"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Gửi quà"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Chỉnh sửa bài đăng"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Bạn có thể chỉnh sửa trong \$n phút nữa"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Chỉnh sửa bài đăng"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể chỉnh sửa trong \$n phút nữa"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Lưu"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Chưa có gì được đăng trong #\$tab."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Chưa có gì được đăng trong #\$tab."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Chọn một món quà"),
       "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Không đủ xu"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Xu thử nghiệm: không thể mua và không có giá trị tiền mặt."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Nạp lại vào \$date."),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Xu thử nghiệm: không thể mua và không có giá trị tiền mặt."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Nạp lại vào \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 xu"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count xu"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Bạn có \$coins"),
       "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Gửi \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("Đã gửi \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("Đã gửi \$gift"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Thử lại"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Trong 15 phút sau khi đăng"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("Trong 15 phút sau khi đăng"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Đã chỉnh sửa"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Không thể tải các bình luận đã lưu"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Không có bình luận đã lưu"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Nhấn biểu tượng lưu trữ dưới một bình luận để giữ nó ở đây. Chỉ bạn thấy những gì bạn lưu."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Đang trả lời \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Không thể tải các bình luận đã lưu"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Không có bình luận đã lưu"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Nhấn biểu tượng lưu trữ dưới một bình luận để giữ nó ở đây. Chỉ bạn thấy những gì bạn lưu."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Đang trả lời \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Sao chép"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Chọn tất cả"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count món quà"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 món quà"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Không thể tải thêm bài đăng."),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("Không thể tải thêm bài đăng."),
     };
 
 final messageLookup = MessageLookup();

@@ -2166,64 +2166,94 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Этот аккаунт удалён, поэтому сюда больше нельзя отправлять сообщения."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Регистрировались через Google? Используйте «Sign in with Google»."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Не удалось загрузить эту маску."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Не удалось записать видео."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Не удалось добавить маску к этому видео, поэтому оно публикуется в исходном виде."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("В вашей публикации уже максимальное число вложений."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Добавляем маску…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Не удалось загрузить эту маску."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Не удалось записать видео."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Не удалось добавить маску к этому видео, поэтому оно публикуется в исходном виде."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "В вашей публикации уже максимальное число вложений."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Добавляем маску…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Вспышка"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Записать видео"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Фото"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Видео"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Вход через Google отменён."),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Вход через Google отменён."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("ПОДАРКИ"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Этой публикации ещё никто не отправлял подарков."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Этой публикации ещё никто не отправлял подарков."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Подарок"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Подарки"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Монеты"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Отправитель"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Отправители"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Тестовые монеты: их пока нельзя вывести."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Тестовые монеты: их пока нельзя вывести."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Сохранённое"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Публикации"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Показать ещё ответы"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Комментарии"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Показать ещё ответы"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Изменено"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Ещё"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Подписки"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Лучшие"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Новые"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Сортировать комментарии: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("отправляет подарок вашей публикации"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("отправляет \$gift вашему комментарию"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("отправляет \$gift вашей публикации"),
-      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Отправить подарок"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Редактировать публикацию"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Можно редактировать ещё \$n мин"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Сортировать комментарии: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "отправляет подарок вашей публикации"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "отправляет \$gift вашему комментарию"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "отправляет \$gift вашей публикации"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("Отправить подарок"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Редактировать публикацию"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Можно редактировать ещё \$n мин"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Сохранить"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("В #\$tab пока ничего не опубликовано."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "В #\$tab пока ничего не опубликовано."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Выберите подарок"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Недостаточно монет"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Тестовые монеты: их нельзя купить, и они не имеют денежной ценности."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Пополнение: \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Недостаточно монет"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Тестовые монеты: их нельзя купить, и они не имеют денежной ценности."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Пополнение: \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 монета"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Монеты: \$count"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("У вас \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Отправить \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift отправлен"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Отправить \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift отправлен"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Повторить"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("В течение 15 минут после публикации"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "В течение 15 минут после публикации"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Изменено"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Не удалось загрузить сохранённые комментарии"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Нет сохранённых комментариев"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Нажмите на значок архива под комментарием, чтобы сохранить его здесь. Сохранённое видите только вы."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Ответ для \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Не удалось загрузить сохранённые комментарии"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Нет сохранённых комментариев"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Нажмите на значок архива под комментарием, чтобы сохранить его здесь. Сохранённое видите только вы."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Ответ для \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Копировать"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Поиск"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Выбрать всё"),
-      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Подарки: \$count"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("Подарки: \$count"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 подарок"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Не удалось загрузить больше публикаций."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Не удалось загрузить больше публикаций."),
     };
 
 final messageLookup = MessageLookup();

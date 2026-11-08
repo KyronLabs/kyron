@@ -2150,64 +2150,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Овај налог је избрисан, па се овде више не могу слати поруке."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Регистровали сте се преко Google-а? Уместо тога користите „Sign in with Google”."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Тај филтер није могуће учитати."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Видео није могуће снимити."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Филтер није могуће додати овом видеу, па се објављује онако како је снимљен."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Ваша објава већ има највећи број прилога."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Додавање филтера…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Тај филтер није могуће учитати."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Видео није могуће снимити."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Филтер није могуће додати овом видеу, па се објављује онако како је снимљен."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Ваша објава већ има највећи број прилога."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Додавање филтера…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Блиц"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Сними видео"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Фотографија"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Видео"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Пријава преко Google-а је отказана."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Пријава преко Google-а је отказана."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("ПОКЛОНИ"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Још нико није послао поклон овој објави."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Још нико није послао поклон овој објави."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Поклон"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Поклони"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Новчићи"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Пошиљалац"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Пошиљаоци"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Тест новчићи: још се не могу исплатити."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Тест новчићи: још се не могу исплатити."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Сачувано"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Објаве"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Коментари"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Прикажи још одговора"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Коментари"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Прикажи још одговора"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Измењено"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Још"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Пратим"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Најбоље"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Најновије"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Сортирај коментаре: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("је послао/ла поклон вашој објави"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("је послао/ла \$gift вашем коментару"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("је послао/ла \$gift вашој објави"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Сортирај коментаре: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "је послао/ла поклон вашој објави"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "је послао/ла \$gift вашем коментару"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "је послао/ла \$gift вашој објави"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Пошаљи поклон"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("Измени објаву"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Можете је мењати још \$n мин"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("Можете је мењати још \$n мин"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Сачувај"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Под #\$tab још ништа није објављено."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Под #\$tab још ништа није објављено."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Изаберите поклон"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Нема довољно новчића"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Тест новчићи: не могу се купити и немају новчану вредност."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Допуњује се \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Нема довољно новчића"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Тест новчићи: не могу се купити и немају новчану вредност."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Допуњује се \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 новчић"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Новчићи: \$count"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Имате \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Пошаљи \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift послато"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Пошаљи \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift послато"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Покушај поново"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("15 минута након објављивања"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("15 минута након објављивања"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Измењено"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Сачувани коментари нису могли да се учитају"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Нема сачуваних коментара"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Додирните икону архиве испод коментара да бисте га задржали овде. Само ви видите шта чувате."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Одговор за \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Сачувани коментари нису могли да се учитају"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Нема сачуваних коментара"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Додирните икону архиве испод коментара да бисте га задржали овде. Само ви видите шта чувате."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Одговор за \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Копирај"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Претражи"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Изабери све"),
-      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Поклони: \$count"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("Поклони: \$count"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 поклон"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Није могуће учитати још објава."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће учитати још објава."),
     };
 
 final messageLookup = MessageLookup();

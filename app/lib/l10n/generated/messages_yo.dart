@@ -2159,64 +2159,95 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A ti pa àkáǹtì yìí rẹ́, nítorí náà a kò lè fi ìfiránṣẹ́ ránṣẹ́ síbí mọ́."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ṣé o forúkọsílẹ̀ pẹ̀lú Google? Lo «Sign in with Google» dípò rẹ̀."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("A kò lè gbé lẹ́ńsì yẹn wá."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("A kò lè ká fídíò náà sílẹ̀."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("A kò lè fi lẹ́ńsì kún fídíò yìí, nítorí náà a ó fi í síta bí a ti yà á."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Ìfiránṣẹ́ rẹ ti ní àwọn àfikún tó pọ̀ jù tí ó lè gbà."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("À ń fi lẹ́ńsì rẹ kún un…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("A kò lè gbé lẹ́ńsì yẹn wá."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("A kò lè ká fídíò náà sílẹ̀."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "A kò lè fi lẹ́ńsì kún fídíò yìí, nítorí náà a ó fi í síta bí a ti yà á."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Ìfiránṣẹ́ rẹ ti ní àwọn àfikún tó pọ̀ jù tí ó lè gbà."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("À ń fi lẹ́ńsì rẹ kún un…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Fìlàṣì"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Ká fídíò sílẹ̀"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Fọ́tò"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Fídíò"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("A ti fagi lé wíwọlé pẹ̀lú Google."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "A ti fagi lé wíwọlé pẹ̀lú Google."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("Ẹ̀BÙN"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Kò tíì sí ẹni tó fi ẹ̀bùn ránṣẹ́ sí ìfiránṣẹ́ yìí."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Kò tíì sí ẹni tó fi ẹ̀bùn ránṣẹ́ sí ìfiránṣẹ́ yìí."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Ẹ̀bùn"),
-      "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Àwọn ẹ̀bùn"),
+      "analytics_gifts_label":
+          MessageLookupByLibrary.simpleMessage("Àwọn ẹ̀bùn"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Ẹyọ owó"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Olùfiránṣẹ́"),
-      "analytics_senders": MessageLookupByLibrary.simpleMessage("Àwọn olùfiránṣẹ́"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Ẹyọ owó ìdánwò: a kò lè gbà wọ́n jáde síbẹ̀."),
+      "analytics_senders":
+          MessageLookupByLibrary.simpleMessage("Àwọn olùfiránṣẹ́"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Ẹyọ owó ìdánwò: a kò lè gbà wọ́n jáde síbẹ̀."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Tí a fi pamọ́"),
-      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Àwọn àsọyé"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Wo àwọn ìdáhùn sí i"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Àwọn ìfiránṣẹ́"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Àwọn àsọyé"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Wo àwọn ìdáhùn sí i"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Ti ṣàtúnṣe"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Sí i"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Tí ò ń tẹ̀lé"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Àwọn tó gbajúmọ̀"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Tuntun"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Tò àwọn àsọyé: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("fi ẹ̀bùn ránṣẹ́ sí ìfiránṣẹ́ rẹ"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("fi \$gift ránṣẹ́ sí àsọyé rẹ"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("fi \$gift ránṣẹ́ sí ìfiránṣẹ́ rẹ"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Tò àwọn àsọyé: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "fi ẹ̀bùn ránṣẹ́ sí ìfiránṣẹ́ rẹ"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("fi \$gift ránṣẹ́ sí àsọyé rẹ"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "fi \$gift ránṣẹ́ sí ìfiránṣẹ́ rẹ"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Fi ẹ̀bùn ránṣẹ́"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe ìfiránṣẹ́"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("O lè ṣàtúnṣe rẹ̀ fún ìṣẹ́jú \$n sí i"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "O lè ṣàtúnṣe rẹ̀ fún ìṣẹ́jú \$n sí i"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Fi pamọ́"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Kò tíì sí ohun tí a fi síta lábẹ́ #\$tab."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Kò tíì sí ohun tí a fi síta lábẹ́ #\$tab."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Yan ẹ̀bùn kan"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Ẹyọ owó kò tó"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Ẹyọ owó ìdánwò: a kò lè rà wọ́n, wọn kò sì ní iye owó."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Yóò kún padà ní \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Ẹyọ owó kò tó"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Ẹyọ owó ìdánwò: a kò lè rà wọ́n, wọn kò sì ní iye owó."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Yóò kún padà ní \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("Ẹyọ owó 1"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Ẹyọ owó \$count"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("O ní \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Fi \$gift ránṣẹ́"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("A ti fi \$gift ránṣẹ́"),
-      "ui_retry": MessageLookupByLibrary.simpleMessage("Gbìyànjú lẹ́ẹ̀kan sí i"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Fún ìṣẹ́jú 15 lẹ́yìn tí o fi síta"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Fi \$gift ránṣẹ́"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("A ti fi \$gift ránṣẹ́"),
+      "ui_retry":
+          MessageLookupByLibrary.simpleMessage("Gbìyànjú lẹ́ẹ̀kan sí i"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Fún ìṣẹ́jú 15 lẹ́yìn tí o fi síta"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Ti ṣàtúnṣe"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("A kò lè gbé àwọn àsọyé tí o fi pamọ́ wá"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Kò sí àsọyé tí a fi pamọ́"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Tẹ àmì ìpamọ́ lábẹ́ àsọyé kan láti pa á mọ́ síbí. Ìwọ nìkan ló ń rí ohun tí o fi pamọ́."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Ń dá \$name lóhùn"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "A kò lè gbé àwọn àsọyé tí o fi pamọ́ wá"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Kò sí àsọyé tí a fi pamọ́"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Tẹ àmì ìpamọ́ lábẹ́ àsọyé kan láti pa á mọ́ síbí. Ìwọ nìkan ló ń rí ohun tí o fi pamọ́."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Ń dá \$name lóhùn"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Ṣàdàkọ"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Wá"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Yan gbogbo rẹ̀"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Ẹ̀bùn \$count"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Ẹ̀bùn 1"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("A kò lè gbé àwọn ìfiránṣẹ́ míì wá."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè gbé àwọn ìfiránṣẹ́ míì wá."),
     };
 
 final messageLookup = MessageLookup();

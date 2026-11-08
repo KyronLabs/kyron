@@ -2142,64 +2142,90 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "គណនីនេះត្រូវបានលុបហើយ ដូច្នេះមិនអាចផ្ញើសារមកទីនេះទៀតបានទេ។"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "បានចុះឈ្មោះដោយ Google មែនទេ? សូមប្រើ «Sign in with Google» ជំនួសវិញ។"),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកកញ្ចក់នោះបានទេ។"),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("មិនអាចថតវីដេអូបានទេ។"),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("មិនអាចបន្ថែមកញ្ចក់ទៅវីដេអូនេះបានទេ ដូច្នេះវានឹងត្រូវបង្ហោះដូចដែលបានថត។"),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("ការបង្ហោះរបស់អ្នកមានឯកសារភ្ជាប់ដល់ចំនួនអតិបរមាហើយ។"),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("កំពុងបន្ថែមកញ្ចក់របស់អ្នក…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកកញ្ចក់នោះបានទេ។"),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("មិនអាចថតវីដេអូបានទេ។"),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចបន្ថែមកញ្ចក់ទៅវីដេអូនេះបានទេ ដូច្នេះវានឹងត្រូវបង្ហោះដូចដែលបានថត។"),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះរបស់អ្នកមានឯកសារភ្ជាប់ដល់ចំនួនអតិបរមាហើយ។"),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("កំពុងបន្ថែមកញ្ចក់របស់អ្នក…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("ពន្លឺភ្លឹប"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("ថតវីដេអូ"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("រូបថត"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("វីដេអូ"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("ការចូលដោយ Google ត្រូវបានបោះបង់។"),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "ការចូលដោយ Google ត្រូវបានបោះបង់។"),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("អំណោយ"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("មិនទាន់មាននរណាផ្ញើអំណោយទៅការបង្ហោះនេះនៅឡើយទេ។"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "មិនទាន់មាននរណាផ្ញើអំណោយទៅការបង្ហោះនេះនៅឡើយទេ។"),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("អំណោយ"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("អំណោយ"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("កាក់"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("អ្នកផ្ញើ"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("អ្នកផ្ញើ"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("កាក់សាកល្បង៖ មិនទាន់អាចដកបានទេ។"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "កាក់សាកល្បង៖ មិនទាន់អាចដកបានទេ។"),
       "ui_saved": MessageLookupByLibrary.simpleMessage("បានរក្សាទុក"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("ការបង្ហោះ"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("មតិ"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("មើលការឆ្លើយតបបន្ថែម"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("មើលការឆ្លើយតបបន្ថែម"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("បានកែ"),
       "ui_more": MessageLookupByLibrary.simpleMessage("ច្រើនទៀត"),
       "ui_following": MessageLookupByLibrary.simpleMessage("កំពុងតាមដាន"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("កំពូល"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("ថ្មីៗ"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("តម្រៀបមតិ៖ \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("បានផ្ញើអំណោយទៅការបង្ហោះរបស់អ្នក"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("បានផ្ញើ \$gift ទៅមតិរបស់អ្នក"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("បានផ្ញើ \$gift ទៅការបង្ហោះរបស់អ្នក"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("តម្រៀបមតិ៖ \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើអំណោយទៅការបង្ហោះរបស់អ្នក"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("បានផ្ញើ \$gift ទៅមតិរបស់អ្នក"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ \$gift ទៅការបង្ហោះរបស់អ្នក"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("ផ្ញើអំណោយ"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("កែការបង្ហោះ"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("អ្នកអាចកែវាបានប្រហែល \$n នាទីទៀត"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "អ្នកអាចកែវាបានប្រហែល \$n នាទីទៀត"),
       "ui_save": MessageLookupByLibrary.simpleMessage("រក្សាទុក"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្វីបង្ហោះក្រោម #\$tab នៅឡើយទេ។"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "មិនទាន់មានអ្វីបង្ហោះក្រោម #\$tab នៅឡើយទេ។"),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("ជ្រើសរើសអំណោយ"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("កាក់មិនគ្រប់គ្រាន់"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("កាក់សាកល្បង៖ មិនអាចទិញបាន ហើយគ្មានតម្លៃជាសាច់ប្រាក់។"),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("បំពេញឡើងវិញនៅ \$date។"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("កាក់មិនគ្រប់គ្រាន់"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "កាក់សាកល្បង៖ មិនអាចទិញបាន ហើយគ្មានតម្លៃជាសាច់ប្រាក់។"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("បំពេញឡើងវិញនៅ \$date។"),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 កាក់"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count កាក់"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("អ្នកមាន \$coins"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("អ្នកមាន \$coins"),
       "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("ផ្ញើ \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("បានផ្ញើ \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("បានផ្ញើ \$gift"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("រយៈពេល 15 នាទីបន្ទាប់ពីបង្ហោះ"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("រយៈពេល 15 នាទីបន្ទាប់ពីបង្ហោះ"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("បានកែ"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកមតិដែលអ្នកបានរក្សាទុកបានទេ"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("គ្មានមតិដែលបានរក្សាទុក"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("ចុចរូបតំណាងបណ្ណសារនៅក្រោមមតិ ដើម្បីរក្សាវានៅទីនេះ។ មានតែអ្នកទេដែលឃើញអ្វីដែលអ្នករក្សាទុក។"),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("ឆ្លើយតបទៅ \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ទុកមតិដែលអ្នកបានរក្សាទុកបានទេ"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("គ្មានមតិដែលបានរក្សាទុក"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "ចុចរូបតំណាងបណ្ណសារនៅក្រោមមតិ ដើម្បីរក្សាវានៅទីនេះ។ មានតែអ្នកទេដែលឃើញអ្វីដែលអ្នករក្សាទុក។"),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("ឆ្លើយតបទៅ \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("ចម្លង"),
       "ui_search": MessageLookupByLibrary.simpleMessage("ស្វែងរក"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("ជ្រើសរើសទាំងអស់"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("អំណោយ \$count"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("អំណោយ 1"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការបង្ហោះបន្ថែមបានទេ។"),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ទុកការបង្ហោះបន្ថែមបានទេ។"),
     };
 
 final messageLookup = MessageLookup();

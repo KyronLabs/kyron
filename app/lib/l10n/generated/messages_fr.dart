@@ -2175,64 +2175,98 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ce compte a été supprimé : il n'est plus possible d'envoyer des messages ici."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Inscrit avec Google ? Utilisez plutôt « Sign in with Google »."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Ce filtre n'a pas pu être chargé."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("La vidéo n'a pas pu être enregistrée."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Le filtre n'a pas pu être ajouté à cette vidéo : elle est publiée telle qu'elle a été filmée."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Votre publication contient déjà autant de pièces jointes que possible."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Ajout de votre filtre…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Ce filtre n'a pas pu être chargé."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "La vidéo n'a pas pu être enregistrée."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Le filtre n'a pas pu être ajouté à cette vidéo : elle est publiée telle qu'elle a été filmée."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Votre publication contient déjà autant de pièces jointes que possible."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Ajout de votre filtre…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Flash"),
-      "ar_record_video": MessageLookupByLibrary.simpleMessage("Enregistrer une vidéo"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Enregistrer une vidéo"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Photo"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Vidéo"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("La connexion avec Google a été annulée."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "La connexion avec Google a été annulée."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("CADEAUX"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Personne n'a encore envoyé de cadeau à cette publication."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Personne n'a encore envoyé de cadeau à cette publication."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Cadeau"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Cadeaux"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Pièces"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Expéditeur"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Expéditeurs"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Pièces de test : elles ne peuvent pas encore être retirées."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Pièces de test : elles ne peuvent pas encore être retirées."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Enregistrés"),
-      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Publications"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Commentaires"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Voir plus de réponses"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Publications"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Commentaires"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Voir plus de réponses"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Modifié"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Plus"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Abonnements"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Récents"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Trier les commentaires : \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("a envoyé un cadeau à votre publication"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("a envoyé un \$gift à votre commentaire"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("a envoyé un \$gift à votre publication"),
-      "ui_gift_title": MessageLookupByLibrary.simpleMessage("Envoyer un cadeau"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Modifier la publication"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Vous pouvez la modifier encore \$n min"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Trier les commentaires : \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "a envoyé un cadeau à votre publication"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "a envoyé un \$gift à votre commentaire"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "a envoyé un \$gift à votre publication"),
+      "ui_gift_title":
+          MessageLookupByLibrary.simpleMessage("Envoyer un cadeau"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Modifier la publication"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Vous pouvez la modifier encore \$n min"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Enregistrer"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Rien n'a encore été publié sous #\$tab."),
-      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Choisissez un cadeau"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Pas assez de pièces"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Pièces de test : elles ne peuvent pas être achetées et n'ont aucune valeur monétaire."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Recharge le \$date."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Rien n'a encore été publié sous #\$tab."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("Choisissez un cadeau"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Pas assez de pièces"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Pièces de test : elles ne peuvent pas être achetées et n'ont aucune valeur monétaire."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Recharge le \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 pièce"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count pièces"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Vous avez \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Envoyer \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift envoyé"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Vous avez \$coins"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Envoyer \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift envoyé"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Réessayer"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Pendant 15 minutes après la publication"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Pendant 15 minutes après la publication"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Modifiée"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Impossible de charger vos commentaires enregistrés"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Aucun commentaire enregistré"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Touchez l'icône d'archive sous un commentaire pour le garder ici. Vous seul voyez ce que vous enregistrez."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("En réponse à \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Impossible de charger vos commentaires enregistrés"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Aucun commentaire enregistré"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Touchez l'icône d'archive sous un commentaire pour le garder ici. Vous seul voyez ce que vous enregistrez."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("En réponse à \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Copier"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Rechercher"),
-      "ui_select_all": MessageLookupByLibrary.simpleMessage("Tout sélectionner"),
+      "ui_select_all":
+          MessageLookupByLibrary.simpleMessage("Tout sélectionner"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count cadeaux"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 cadeau"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Impossible de charger plus de publications."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossible de charger plus de publications."),
     };
 
 final messageLookup = MessageLookup();

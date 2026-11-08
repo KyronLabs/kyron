@@ -2168,64 +2168,95 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akoonkan waa la tirtiray, sidaa darteed fariimo halkan looma diri karo mar dambe."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Ma ku diiwaangashantay Google? Halkii isticmaal «Sign in with Google»."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Muraayaddaas lama soo shubi karo."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Fiidiyaha lama duubi karo."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Muraayadda laguma dari karo fiidiyahan, sidaa darteed waxaa loo dhajinayaa sidii loo duubay."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Qoraalkaagu wuxuu horey u leeyahay inta ugu badan ee lifaaqyo ah."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Waxaa lagu darayaa muraayaddaada…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Muraayaddaas lama soo shubi karo."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Fiidiyaha lama duubi karo."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Muraayadda laguma dari karo fiidiyahan, sidaa darteed waxaa loo dhajinayaa sidii loo duubay."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Qoraalkaagu wuxuu horey u leeyahay inta ugu badan ee lifaaqyo ah."),
+      "ar_applying_lens": MessageLookupByLibrary.simpleMessage(
+          "Waxaa lagu darayaa muraayaddaada…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Iftiin"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Duub fiidiyow"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Sawir"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Fiidiyow"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Galitaanka Google waa la joojiyay."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Galitaanka Google waa la joojiyay."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("HADIYADO"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Qofna weli hadiyad uma dirin qoraalkan."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Qofna weli hadiyad uma dirin qoraalkan."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Hadiyad"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Hadiyado"),
-      "analytics_coins": MessageLookupByLibrary.simpleMessage("Lacag qadaadiic"),
+      "analytics_coins":
+          MessageLookupByLibrary.simpleMessage("Lacag qadaadiic"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Diraha"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Dirayaasha"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Qadaadiicda tijaabada: weli lama bixin karo."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Qadaadiicda tijaabada: weli lama bixin karo."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("La keydiyay"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Qoraallo"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Faallooyin"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Arag jawaabo kale"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Faallooyin"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Arag jawaabo kale"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Waa la beddelay"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Wax kale"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Kuwa aad raacdo"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Ugu sarreeya"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Ugu dambeeyay"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Kala soocid faallooyinka: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("hadiyad u diray qoraalkaaga"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("\$gift u diray faalladaada"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("\$gift u diray qoraalkaaga"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "Kala soocid faallooyinka: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("hadiyad u diray qoraalkaaga"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("\$gift u diray faalladaada"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("\$gift u diray qoraalkaaga"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Dir hadiyad"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Wax ka beddel qoraalka"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Waxaad wax ka beddeli kartaa \$n daqiiqo oo kale"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Wax ka beddel qoraalka"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Waxaad wax ka beddeli kartaa \$n daqiiqo oo kale"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Keydi"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Weli waxba lagama dhajin #\$tab."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Weli waxba lagama dhajin #\$tab."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Dooro hadiyad"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Qadaadiic kuguma filna"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Qadaadiicda tijaabada: lama iibsan karo, qiimo lacageedna ma leh."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Waa la buuxinayaa \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Qadaadiic kuguma filna"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Qadaadiicda tijaabada: lama iibsan karo, qiimo lacageedna ma leh."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Waa la buuxinayaa \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 qadaadiic"),
-      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count qadaadiic"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Waxaad haysataa \$coins"),
+      "ui_gift_coins":
+          MessageLookupByLibrary.simpleMessage("\$count qadaadiic"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("Waxaad haysataa \$coins"),
       "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Dir \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift waa la diray"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift waa la diray"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Isku day mar kale"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Muddo 15 daqiiqo ah kadib dhajinta"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Muddo 15 daqiiqo ah kadib dhajinta"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Waa la beddelay"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Faallooyinkaaga la keydiyay lama soo shubi karo"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Ma jiraan faallooyin la keydiyay"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Taabo calaamadda kaydka ee hoos timaada faallada si aad halkan ugu hayso. Adiga keliya ayaa arka waxaad keydiso."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Ka jawaabaya \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Faallooyinkaaga la keydiyay lama soo shubi karo"),
+      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Ma jiraan faallooyin la keydiyay"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Taabo calaamadda kaydka ee hoos timaada faallada si aad halkan ugu hayso. Adiga keliya ayaa arka waxaad keydiso."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Ka jawaabaya \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Koobiyee"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Raadi"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Dooro dhammaan"),
-      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count hadiyadood"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count hadiyadood"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hadiyad"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Qoraallo kale lama soo shubi karo."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Qoraallo kale lama soo shubi karo."),
     };
 
 final messageLookup = MessageLookup();

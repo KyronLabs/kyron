@@ -1827,24 +1827,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "このアカウントは削除されたため、ここにはメッセージを送信できなくなりました。"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Googleで登録しましたか？代わりに「Googleでサインイン」を使ってください。"),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("そのレンズを読み込めませんでした。"),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("動画を録画できませんでした。"),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("この動画にレンズを追加できなかったため、撮影したままの状態で投稿されます。"),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("投稿に追加できる添付ファイルの上限に達しています。"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("そのレンズを読み込めませんでした。"),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("動画を録画できませんでした。"),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "この動画にレンズを追加できなかったため、撮影したままの状態で投稿されます。"),
+      "ar_composer_full":
+          MessageLookupByLibrary.simpleMessage("投稿に追加できる添付ファイルの上限に達しています。"),
       "ar_applying_lens": MessageLookupByLibrary.simpleMessage("レンズを追加しています…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("フラッシュ"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("動画を録画"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("写真"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("動画"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google でのログインがキャンセルされました。"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google でのログインがキャンセルされました。"),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("ギフト"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("この投稿にはまだ誰もギフトを贈っていません。"),
+      "analytics_no_gifts_yet":
+          MessageLookupByLibrary.simpleMessage("この投稿にはまだ誰もギフトを贈っていません。"),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("ギフト"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("ギフト"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("コイン"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("送り主"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("送り主"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("テストコイン：まだ引き出せません。"),
+      "analytics_test_coins":
+          MessageLookupByLibrary.simpleMessage("テストコイン：まだ引き出せません。"),
       "ui_saved": MessageLookupByLibrary.simpleMessage("保存済み"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("投稿"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("コメント"),
@@ -1854,37 +1861,50 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_following": MessageLookupByLibrary.simpleMessage("フォロー中"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("トップ"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("新着"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("コメントの並べ替え：\$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("があなたの投稿にギフトを贈りました"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("があなたのコメントに \$gift を贈りました"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("があなたの投稿に \$gift を贈りました"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("コメントの並べ替え：\$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("があなたの投稿にギフトを贈りました"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("があなたのコメントに \$gift を贈りました"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("があなたの投稿に \$gift を贈りました"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("ギフトを贈る"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("投稿を編集"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("あと \$n 分間編集できます"),
+      "ui_edit_post_left":
+          MessageLookupByLibrary.simpleMessage("あと \$n 分間編集できます"),
       "ui_save": MessageLookupByLibrary.simpleMessage("保存"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("#\$tab にはまだ投稿がありません。"),
+      "ui_feed_tag_detail":
+          MessageLookupByLibrary.simpleMessage("#\$tab にはまだ投稿がありません。"),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("ギフトを選んでください"),
       "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("コインが足りません"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("テストコイン：購入できず、換金価値もありません。"),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date に補充されます。"),
+      "ui_gift_test_notice":
+          MessageLookupByLibrary.simpleMessage("テストコイン：購入できず、換金価値もありません。"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date に補充されます。"),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 コイン"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count コイン"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("\$coins 持っています"),
       "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift を贈る"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift を贈りました"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift を贈りました"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("再試行"),
       "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("投稿後 15 分間"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("編集しました"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("保存したコメントを読み込めませんでした"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("保存したコメントはありません"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("コメントの下にあるアーカイブアイコンをタップすると、ここに保存できます。保存した内容はあなたにしか見えません。"),
+      "ui_could_not_load_saved_comments":
+          MessageLookupByLibrary.simpleMessage("保存したコメントを読み込めませんでした"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("保存したコメントはありません"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "コメントの下にあるアーカイブアイコンをタップすると、ここに保存できます。保存した内容はあなたにしか見えません。"),
       "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name さんへの返信"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("コピー"),
       "ui_search": MessageLookupByLibrary.simpleMessage("検索"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("すべて選択"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("ギフト \$count 件"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("ギフト 1 件"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("これ以上の投稿を読み込めませんでした。"),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("これ以上の投稿を読み込めませんでした。"),
     };
 
 final messageLookup = MessageLookup();

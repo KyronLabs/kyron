@@ -2166,64 +2166,95 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kontu hau ezabatu egin da, beraz, ezin da hona mezurik bidali."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google-ekin erregistratu zinen? Erabili «Sign in with Google»."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Ezin izan da iragazki hori kargatu."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Ezin izan da bideoa grabatu."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Ezin izan zaio iragazkia bideo honi gehitu; beraz, grabatu zen bezala argitaratuko da."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Zure argitalpenak gehienezko eranskin kopurua du dagoeneko."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Iragazkia gehitzen…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da iragazki hori kargatu."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Ezin izan da bideoa grabatu."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan zaio iragazkia bideo honi gehitu; beraz, grabatu zen bezala argitaratuko da."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Zure argitalpenak gehienezko eranskin kopurua du dagoeneko."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Iragazkia gehitzen…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Flasha"),
-      "ar_record_video": MessageLookupByLibrary.simpleMessage("Grabatu bideo bat"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("Grabatu bideo bat"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Argazkia"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Bideoa"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google bidezko saioa hastea bertan behera utzi da."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google bidezko saioa hastea bertan behera utzi da."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("OPARIAK"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Inork ez dio oraindik oparirik bidali argitalpen honi."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Inork ez dio oraindik oparirik bidali argitalpen honi."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Oparia"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Opariak"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Txanponak"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Igorlea"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Igorleak"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Proba-txanponak: oraindik ezin dira atera."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Proba-txanponak: oraindik ezin dira atera."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Gordeta"),
-      "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Argitalpenak"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Iruzkinak"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Ikusi erantzun gehiago"),
+      "ui_saved_tab_posts":
+          MessageLookupByLibrary.simpleMessage("Argitalpenak"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Iruzkinak"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Ikusi erantzun gehiago"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Editatuta"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Gehiago"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Jarraitzen"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Onenak"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Berrienak"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Ordenatu iruzkinak: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("opari bat bidali dio zure argitalpenari"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("\$gift bat bidali dio zure iruzkinari"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("\$gift bat bidali dio zure argitalpenari"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Ordenatu iruzkinak: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "opari bat bidali dio zure argitalpenari"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "\$gift bat bidali dio zure iruzkinari"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "\$gift bat bidali dio zure argitalpenari"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Bidali opari bat"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Editatu argitalpena"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Beste \$n minutuz edita dezakezu"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Editatu argitalpena"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Beste \$n minutuz edita dezakezu"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Gorde"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Oraindik ez da ezer argitaratu #\$tab etiketan."),
-      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Aukeratu opari bat"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Ez duzu txanpon nahikorik"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Proba-txanponak: ezin dira erosi eta ez dute diru-baliorik."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date egunean betetzen da."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez da ezer argitaratu #\$tab etiketan."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("Aukeratu opari bat"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Ez duzu txanpon nahikorik"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Proba-txanponak: ezin dira erosi eta ez dute diru-baliorik."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date egunean betetzen da."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("Txanpon 1"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count txanpon"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("\$coins dituzu"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Bidali \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift bidalita"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Bidali \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift bidalita"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Argitaratu eta 15 minutuz"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("Argitaratu eta 15 minutuz"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Editatuta"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Ezin izan dira gordetako iruzkinak kargatu"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Ez dago gordetako iruzkinik"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Sakatu iruzkin baten azpiko artxibo-ikonoa hemen gordetzeko. Gordetzen duzuna zuk bakarrik ikusten duzu."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name erabiltzaileari erantzuten"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan dira gordetako iruzkinak kargatu"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Ez dago gordetako iruzkinik"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Sakatu iruzkin baten azpiko artxibo-ikonoa hemen gordetzeko. Gordetzen duzuna zuk bakarrik ikusten duzu."),
+      "ui_replying_to": MessageLookupByLibrary.simpleMessage(
+          "\$name erabiltzaileari erantzuten"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Kopiatu"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Bilatu"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Hautatu guztiak"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count opari"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Opari 1"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Ezin izan da argitalpen gehiago kargatu."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da argitalpen gehiago kargatu."),
     };
 
 final messageLookup = MessageLookup();

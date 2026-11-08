@@ -2171,64 +2171,94 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "यो खाता मेटाइएको छ, त्यसैले यहाँ अब सन्देश पठाउन सकिँदैन।"),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google बाट साइन अप गर्नुभएको हो? बरु «Sign in with Google» प्रयोग गर्नुहोस्।"),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("त्यो लेन्स लोड हुन सकेन।"),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("भिडियो रेकर्ड हुन सकेन।"),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("यो भिडियोमा लेन्स थप्न सकिएन, त्यसैले यो खिचिएजस्तै पोस्ट हुन्छ।"),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("तपाईंको पोस्टमा पहिले नै अधिकतम संलग्नकहरू छन्।"),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("तपाईंको लेन्स थपिँदै…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("त्यो लेन्स लोड हुन सकेन।"),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("भिडियो रेकर्ड हुन सकेन।"),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "यो भिडियोमा लेन्स थप्न सकिएन, त्यसैले यो खिचिएजस्तै पोस्ट हुन्छ।"),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "तपाईंको पोस्टमा पहिले नै अधिकतम संलग्नकहरू छन्।"),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("तपाईंको लेन्स थपिँदै…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("फ्ल्यास"),
-      "ar_record_video": MessageLookupByLibrary.simpleMessage("भिडियो रेकर्ड गर्नुहोस्"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("भिडियो रेकर्ड गर्नुहोस्"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("फोटो"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("भिडियो"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google साइन-इन रद्द गरियो।"),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("Google साइन-इन रद्द गरियो।"),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("उपहारहरू"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("अहिलेसम्म कसैले यो पोस्टलाई उपहार पठाएको छैन।"),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "अहिलेसम्म कसैले यो पोस्टलाई उपहार पठाएको छैन।"),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("उपहार"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("उपहारहरू"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("सिक्काहरू"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("पठाउने"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("पठाउनेहरू"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("परीक्षण सिक्का: यिनलाई अझै निकाल्न सकिँदैन।"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "परीक्षण सिक्का: यिनलाई अझै निकाल्न सकिँदैन।"),
       "ui_saved": MessageLookupByLibrary.simpleMessage("सुरक्षित गरिएका"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("पोस्टहरू"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("टिप्पणीहरू"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("थप जवाफहरू हेर्नुहोस्"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("टिप्पणीहरू"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("थप जवाफहरू हेर्नुहोस्"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("सम्पादित"),
       "ui_more": MessageLookupByLibrary.simpleMessage("थप"),
       "ui_following": MessageLookupByLibrary.simpleMessage("फलो गर्दै"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("शीर्ष"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("हालैका"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("टिप्पणीहरू क्रमबद्ध गर्नुहोस्: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("ले तपाईंको पोस्टलाई उपहार पठायो"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("ले तपाईंको टिप्पणीलाई \$gift पठायो"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("ले तपाईंको पोस्टलाई \$gift पठायो"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "टिप्पणीहरू क्रमबद्ध गर्नुहोस्: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "ले तपाईंको पोस्टलाई उपहार पठायो"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "ले तपाईंको टिप्पणीलाई \$gift पठायो"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "ले तपाईंको पोस्टलाई \$gift पठायो"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("उपहार पठाउनुहोस्"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("पोस्ट सम्पादन गर्नुहोस्"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("तपाईं यसलाई अझै \$n मिनेट सम्पादन गर्न सक्नुहुन्छ"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("पोस्ट सम्पादन गर्नुहोस्"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "तपाईं यसलाई अझै \$n मिनेट सम्पादन गर्न सक्नुहुन्छ"),
       "ui_save": MessageLookupByLibrary.simpleMessage("सुरक्षित गर्नुहोस्"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("#\$tab अन्तर्गत अहिलेसम्म केही पोस्ट गरिएको छैन।"),
-      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("एउटा उपहार छान्नुहोस्"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("पर्याप्त सिक्का छैन"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("परीक्षण सिक्का: यिनलाई किन्न सकिँदैन र यिनको कुनै नगद मूल्य छैन।"),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date मा फेरि भरिन्छ।"),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab अन्तर्गत अहिलेसम्म केही पोस्ट गरिएको छैन।"),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("एउटा उपहार छान्नुहोस्"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("पर्याप्त सिक्का छैन"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "परीक्षण सिक्का: यिनलाई किन्न सकिँदैन र यिनको कुनै नगद मूल्य छैन।"),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date मा फेरि भरिन्छ।"),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("१ सिक्का"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count सिक्का"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("तपाईंसँग \$coins छन्"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift पठाउनुहोस्"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift पठाइयो"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("तपाईंसँग \$coins छन्"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift पठाउनुहोस्"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift पठाइयो"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("फेरि प्रयास गर्नुहोस्"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("पोस्ट गरेपछि १५ मिनेटसम्म"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("पोस्ट गरेपछि १५ मिनेटसम्म"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("सम्पादन गरियो"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("तपाईंका सुरक्षित टिप्पणीहरू लोड गर्न सकिएन"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("कुनै सुरक्षित टिप्पणी छैन"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("टिप्पणीलाई यहाँ राख्न त्यसको तलको अभिलेख आइकनमा ट्याप गर्नुहोस्। तपाईंले सुरक्षित गरेको कुरा तपाईं मात्र देख्न सक्नुहुन्छ।"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "तपाईंका सुरक्षित टिप्पणीहरू लोड गर्न सकिएन"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("कुनै सुरक्षित टिप्पणी छैन"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "टिप्पणीलाई यहाँ राख्न त्यसको तलको अभिलेख आइकनमा ट्याप गर्नुहोस्। तपाईंले सुरक्षित गरेको कुरा तपाईं मात्र देख्न सक्नुहुन्छ।"),
       "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name लाई जवाफ"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("प्रतिलिपि गर्नुहोस्"),
       "ui_search": MessageLookupByLibrary.simpleMessage("खोज्नुहोस्"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("सबै छान्नुहोस्"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count उपहार"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("१ उपहार"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("थप पोस्टहरू लोड गर्न सकिएन।"),
+      "ui_feed_more_failed":
+          MessageLookupByLibrary.simpleMessage("थप पोस्टहरू लोड गर्न सकिएन।"),
     };
 
 final messageLookup = MessageLookup();

@@ -2132,64 +2132,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "این حساب حذف شده است، بنابراین دیگر نمی‌توان اینجا پیام فرستاد."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "با Google ثبت‌نام کرده‌اید؟ به‌جای آن از «Sign in with Google» استفاده کنید."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("این لنز بارگیری نشد."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("ضبط ویدیو ممکن نشد."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("افزودن لنز به این ویدیو ممکن نشد، پس همان‌طور که ضبط شده منتشر می‌شود."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("پست شما همین حالا حداکثر تعداد پیوست را دارد."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("در حال افزودن لنز…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("این لنز بارگیری نشد."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("ضبط ویدیو ممکن نشد."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "افزودن لنز به این ویدیو ممکن نشد، پس همان‌طور که ضبط شده منتشر می‌شود."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "پست شما همین حالا حداکثر تعداد پیوست را دارد."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("در حال افزودن لنز…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("فلاش"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("ضبط ویدیو"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("عکس"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("ویدیو"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("ورود با Google لغو شد."),
+      "googleSignInCancelled":
+          MessageLookupByLibrary.simpleMessage("ورود با Google لغو شد."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("هدیه‌ها"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("هنوز کسی برای این پست هدیه نفرستاده است."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "هنوز کسی برای این پست هدیه نفرستاده است."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("هدیه"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("هدیه‌ها"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("سکه‌ها"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("فرستنده"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("فرستندگان"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("سکه‌های آزمایشی: هنوز قابل برداشت نیستند."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "سکه‌های آزمایشی: هنوز قابل برداشت نیستند."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("ذخیره‌شده‌ها"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("پست‌ها"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("نظرها"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("دیدن پاسخ‌های بیشتر"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("دیدن پاسخ‌های بیشتر"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("ویرایش‌شده"),
       "ui_more": MessageLookupByLibrary.simpleMessage("بیشتر"),
       "ui_following": MessageLookupByLibrary.simpleMessage("دنبال‌شده‌ها"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("برتر"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("جدیدترین"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("مرتب‌سازی نظرها: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("برای پست شما هدیه فرستاد"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("برای نظر شما \$gift فرستاد"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("برای پست شما \$gift فرستاد"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("مرتب‌سازی نظرها: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("برای پست شما هدیه فرستاد"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("برای نظر شما \$gift فرستاد"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("برای پست شما \$gift فرستاد"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("فرستادن هدیه"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("ویرایش پست"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("می‌توانید تا \$n دقیقه دیگر ویرایشش کنید"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "می‌توانید تا \$n دقیقه دیگر ویرایشش کنید"),
       "ui_save": MessageLookupByLibrary.simpleMessage("ذخیره"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("هنوز چیزی زیر #\$tab منتشر نشده است."),
-      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("یک هدیه انتخاب کنید"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("سکهٔ کافی ندارید"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("سکه‌های آزمایشی: قابل خرید نیستند و ارزش پولی ندارند."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("در \$date دوباره پر می‌شود."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "هنوز چیزی زیر #\$tab منتشر نشده است."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("یک هدیه انتخاب کنید"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("سکهٔ کافی ندارید"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "سکه‌های آزمایشی: قابل خرید نیستند و ارزش پولی ندارند."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("در \$date دوباره پر می‌شود."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("۱ سکه"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count سکه"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("\$coins دارید"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("فرستادن \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift فرستاده شد"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("فرستادن \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift فرستاده شد"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("دوباره امتحان کنید"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("تا ۱۵ دقیقه پس از انتشار"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("تا ۱۵ دقیقه پس از انتشار"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("ویرایش شد"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("نظرهای ذخیره‌شدهٔ شما بارگیری نشد"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("نظر ذخیره‌شده‌ای نیست"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("روی نماد بایگانی زیر یک نظر بزنید تا اینجا نگهش دارید. فقط خودتان آنچه را ذخیره می‌کنید می‌بینید."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("در پاسخ به \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "نظرهای ذخیره‌شدهٔ شما بارگیری نشد"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("نظر ذخیره‌شده‌ای نیست"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "روی نماد بایگانی زیر یک نظر بزنید تا اینجا نگهش دارید. فقط خودتان آنچه را ذخیره می‌کنید می‌بینید."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("در پاسخ به \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("کپی"),
       "ui_search": MessageLookupByLibrary.simpleMessage("جستجو"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("انتخاب همه"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count هدیه"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("۱ هدیه"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("بارگیری پست‌های بیشتر ممکن نشد."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "بارگیری پست‌های بیشتر ممکن نشد."),
     };
 
 final messageLookup = MessageLookup();

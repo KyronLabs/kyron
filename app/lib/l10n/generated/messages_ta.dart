@@ -2178,64 +2178,99 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "இந்தக் கணக்கு நீக்கப்பட்டதால், இனி இங்கே செய்திகளை அனுப்ப முடியாது."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Google மூலம் பதிவு செய்தீர்களா? பதிலாக «Sign in with Google» ஐப் பயன்படுத்துங்கள்."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("அந்த லென்ஸை ஏற்ற முடியவில்லை."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("வீடியோவைப் பதிவுசெய்ய முடியவில்லை."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("இந்த வீடியோவில் லென்ஸைச் சேர்க்க முடியவில்லை, எனவே படம்பிடித்தபடியே இடுகையிடப்படும்."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("உங்கள் இடுகையில் ஏற்கனவே அதிகபட்ச இணைப்புகள் உள்ளன."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("உங்கள் லென்ஸ் சேர்க்கப்படுகிறது…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("அந்த லென்ஸை ஏற்ற முடியவில்லை."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "வீடியோவைப் பதிவுசெய்ய முடியவில்லை."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "இந்த வீடியோவில் லென்ஸைச் சேர்க்க முடியவில்லை, எனவே படம்பிடித்தபடியே இடுகையிடப்படும்."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகையில் ஏற்கனவே அதிகபட்ச இணைப்புகள் உள்ளன."),
+      "ar_applying_lens": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் லென்ஸ் சேர்க்கப்படுகிறது…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("ஃபிளாஷ்"),
-      "ar_record_video": MessageLookupByLibrary.simpleMessage("வீடியோவைப் பதிவுசெய்"),
+      "ar_record_video":
+          MessageLookupByLibrary.simpleMessage("வீடியோவைப் பதிவுசெய்"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("படம்"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("வீடியோ"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Google உள்நுழைவு ரத்துசெய்யப்பட்டது."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Google உள்நுழைவு ரத்துசெய்யப்பட்டது."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("பரிசுகள்"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("இந்த இடுகைக்கு இன்னும் யாரும் பரிசு அனுப்பவில்லை."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "இந்த இடுகைக்கு இன்னும் யாரும் பரிசு அனுப்பவில்லை."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("பரிசு"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("பரிசுகள்"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("நாணயங்கள்"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("அனுப்புநர்"),
-      "analytics_senders": MessageLookupByLibrary.simpleMessage("அனுப்புநர்கள்"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("சோதனை நாணயங்கள்: இவற்றை இன்னும் எடுக்க முடியாது."),
+      "analytics_senders":
+          MessageLookupByLibrary.simpleMessage("அனுப்புநர்கள்"),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "சோதனை நாணயங்கள்: இவற்றை இன்னும் எடுக்க முடியாது."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("சேமித்தவை"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("இடுகைகள்"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("கருத்துகள்"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("மேலும் பதில்களைக் காண்க"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("கருத்துகள்"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("மேலும் பதில்களைக் காண்க"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("திருத்தப்பட்டது"),
       "ui_more": MessageLookupByLibrary.simpleMessage("மேலும்"),
       "ui_following": MessageLookupByLibrary.simpleMessage("பின்தொடர்பவை"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("சிறந்தவை"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("சமீபத்தியவை"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("கருத்துகளை வரிசைப்படுத்து: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("உங்கள் இடுகைக்கு ஒரு பரிசு அனுப்பினார்"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("உங்கள் கருத்துக்கு \$gift அனுப்பினார்"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("உங்கள் இடுகைக்கு \$gift அனுப்பினார்"),
+      "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
+          "கருத்துகளை வரிசைப்படுத்து: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகைக்கு ஒரு பரிசு அனுப்பினார்"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கருத்துக்கு \$gift அனுப்பினார்"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் இடுகைக்கு \$gift அனுப்பினார்"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("பரிசு அனுப்பு"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("இடுகையைத் திருத்து"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("இன்னும் \$n நிமிடங்கள் திருத்தலாம்"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("இடுகையைத் திருத்து"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "இன்னும் \$n நிமிடங்கள் திருத்தலாம்"),
       "ui_save": MessageLookupByLibrary.simpleMessage("சேமி"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("#\$tab இன் கீழ் இன்னும் எதுவும் இடுகையிடப்படவில்லை."),
-      "ui_gift_pick": MessageLookupByLibrary.simpleMessage("ஒரு பரிசைத் தேர்ந்தெடு"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("போதுமான நாணயங்கள் இல்லை"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("சோதனை நாணயங்கள்: இவற்றை வாங்க முடியாது, பண மதிப்பும் இல்லை."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("\$date அன்று நிரப்பப்படும்."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "#\$tab இன் கீழ் இன்னும் எதுவும் இடுகையிடப்படவில்லை."),
+      "ui_gift_pick":
+          MessageLookupByLibrary.simpleMessage("ஒரு பரிசைத் தேர்ந்தெடு"),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("போதுமான நாணயங்கள் இல்லை"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "சோதனை நாணயங்கள்: இவற்றை வாங்க முடியாது, பண மதிப்பும் இல்லை."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("\$date அன்று நிரப்பப்படும்."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 நாணயம்"),
-      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count நாணயங்கள்"),
-      "ui_gift_balance": MessageLookupByLibrary.simpleMessage("உங்களிடம் \$coins உள்ளன"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("\$gift அனுப்பு"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("\$gift அனுப்பப்பட்டது"),
+      "ui_gift_coins":
+          MessageLookupByLibrary.simpleMessage("\$count நாணயங்கள்"),
+      "ui_gift_balance":
+          MessageLookupByLibrary.simpleMessage("உங்களிடம் \$coins உள்ளன"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("\$gift அனுப்பு"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("\$gift அனுப்பப்பட்டது"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்க"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("இடுகையிட்ட பிறகு 15 நிமிடங்கள்"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "இடுகையிட்ட பிறகு 15 நிமிடங்கள்"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("திருத்தப்பட்டது"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("சேமித்த கருத்துகளை ஏற்ற முடியவில்லை"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("சேமித்த கருத்துகள் இல்லை"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("ஒரு கருத்தை இங்கே வைத்திருக்க அதன் கீழுள்ள காப்பக ஐகானைத் தட்டவும். நீங்கள் சேமிப்பதை நீங்கள் மட்டுமே பார்க்க முடியும்."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("\$name க்குப் பதில்"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "சேமித்த கருத்துகளை ஏற்ற முடியவில்லை"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("சேமித்த கருத்துகள் இல்லை"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒரு கருத்தை இங்கே வைத்திருக்க அதன் கீழுள்ள காப்பக ஐகானைத் தட்டவும். நீங்கள் சேமிப்பதை நீங்கள் மட்டுமே பார்க்க முடியும்."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("\$name க்குப் பதில்"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("நகலெடு"),
       "ui_search": MessageLookupByLibrary.simpleMessage("தேடு"),
-      "ui_select_all": MessageLookupByLibrary.simpleMessage("அனைத்தையும் தேர்ந்தெடு"),
-      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count பரிசுகள்"),
+      "ui_select_all":
+          MessageLookupByLibrary.simpleMessage("அனைத்தையும் தேர்ந்தெடு"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("\$count பரிசுகள்"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 பரிசு"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("மேலும் இடுகைகளை ஏற்ற முடியவில்லை."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "மேலும் இடுகைகளை ஏற்ற முடியவில்லை."),
     };
 
 final messageLookup = MessageLookup();

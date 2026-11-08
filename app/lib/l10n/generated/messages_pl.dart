@@ -2156,64 +2156,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "To konto zostało usunięte, więc nie można już tu wysyłać wiadomości."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Rejestracja przez Google? Użyj zamiast tego „Sign in with Google”."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Nie udało się wczytać tego filtra."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Nie udało się nagrać filmu."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Nie udało się dodać filtra do tego filmu, więc zostanie opublikowany w oryginalnej postaci."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Twój post ma już maksymalną liczbę załączników."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Dodawanie filtra…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Nie udało się wczytać tego filtra."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("Nie udało się nagrać filmu."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Nie udało się dodać filtra do tego filmu, więc zostanie opublikowany w oryginalnej postaci."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Twój post ma już maksymalną liczbę załączników."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Dodawanie filtra…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Lampa błyskowa"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Nagraj film"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Zdjęcie"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Wideo"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Logowanie przez Google zostało anulowane."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Logowanie przez Google zostało anulowane."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("PREZENTY"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Nikt jeszcze nie wysłał prezentu do tego posta."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Nikt jeszcze nie wysłał prezentu do tego posta."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Prezent"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Prezenty"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Monety"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Nadawca"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Nadawcy"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Monety testowe: nie można ich jeszcze wypłacić."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Monety testowe: nie można ich jeszcze wypłacić."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Zapisane"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Posty"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Komentarze"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Zobacz więcej odpowiedzi"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("Komentarze"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Zobacz więcej odpowiedzi"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Edytowano"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Więcej"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Obserwowani"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Najlepsze"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Najnowsze"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Sortuj komentarze: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("wysłał(a) prezent do Twojego posta"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("wysłał(a) \$gift do Twojego komentarza"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("wysłał(a) \$gift do Twojego posta"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Sortuj komentarze: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "wysłał(a) prezent do Twojego posta"),
+      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage(
+          "wysłał(a) \$gift do Twojego komentarza"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "wysłał(a) \$gift do Twojego posta"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Wyślij prezent"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("Edytuj post"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Możesz go edytować jeszcze przez \$n min"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Możesz go edytować jeszcze przez \$n min"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Zapisz"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Pod #\$tab nic jeszcze nie opublikowano."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Pod #\$tab nic jeszcze nie opublikowano."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Wybierz prezent"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Za mało monet"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Monety testowe: nie można ich kupić i nie mają wartości pieniężnej."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Doładowanie: \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Za mało monet"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Monety testowe: nie można ich kupić i nie mają wartości pieniężnej."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Doładowanie: \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 moneta"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("Monety: \$count"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Masz \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Wyślij \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("Wysłano \$gift"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Wyślij \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("Wysłano \$gift"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Spróbuj ponownie"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Przez 15 minut od publikacji"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("Przez 15 minut od publikacji"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Edytowano"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Nie udało się wczytać zapisanych komentarzy"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Brak zapisanych komentarzy"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Stuknij ikonę archiwum pod komentarzem, aby zachować go tutaj. Tylko Ty widzisz to, co zapisujesz."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Odpowiedź do \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Nie udało się wczytać zapisanych komentarzy"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("Brak zapisanych komentarzy"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Stuknij ikonę archiwum pod komentarzem, aby zachować go tutaj. Tylko Ty widzisz to, co zapisujesz."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Odpowiedź do \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Kopiuj"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Szukaj"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Zaznacz wszystko"),
-      "ui_gifts_count": MessageLookupByLibrary.simpleMessage("Prezenty: \$count"),
+      "ui_gifts_count":
+          MessageLookupByLibrary.simpleMessage("Prezenty: \$count"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 prezent"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Nie udało się wczytać kolejnych postów."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Nie udało się wczytać kolejnych postów."),
     };
 
 final messageLookup = MessageLookup();

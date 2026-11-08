@@ -2340,64 +2340,92 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Αυτός ο λογαριασμός έχει διαγραφεί, οπότε δεν μπορούν πλέον να σταλούν μηνύματα εδώ."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "Εγγραφήκατε με Google; Χρησιμοποιήστε τη «Σύνδεση με Google»."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατή η φόρτωση αυτού του φίλτρου."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατή η εγγραφή του βίντεο."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατή η προσθήκη του φίλτρου σε αυτό το βίντεο, οπότε δημοσιεύεται όπως τραβήχτηκε."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("Η ανάρτησή σας έχει ήδη τον μέγιστο αριθμό συνημμένων."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("Προσθήκη του φίλτρου σας…"),
+      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση αυτού του φίλτρου."),
+      "ar_could_not_record": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η εγγραφή του βίντεο."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η προσθήκη του φίλτρου σε αυτό το βίντεο, οπότε δημοσιεύεται όπως τραβήχτηκε."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "Η ανάρτησή σας έχει ήδη τον μέγιστο αριθμό συνημμένων."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη του φίλτρου σας…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("Φλας"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Εγγραφή βίντεο"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Φωτογραφία"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("Βίντεο"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("Η σύνδεση με Google ακυρώθηκε."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "Η σύνδεση με Google ακυρώθηκε."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("ΔΩΡΑ"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("Κανείς δεν έχει στείλει ακόμη δώρο σε αυτή την ανάρτηση."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "Κανείς δεν έχει στείλει ακόμη δώρο σε αυτή την ανάρτηση."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("Δώρο"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("Δώρα"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("Νομίσματα"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("Αποστολέας"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("Αποστολείς"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("Δοκιμαστικά νομίσματα: δεν μπορούν ακόμη να αναληφθούν."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "Δοκιμαστικά νομίσματα: δεν μπορούν ακόμη να αναληφθούν."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("Αποθηκευμένα"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("Αναρτήσεις"),
       "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("Σχόλια"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("Δείτε περισσότερες απαντήσεις"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("Δείτε περισσότερες απαντήσεις"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("Επεξεργασμένο"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Περισσότερα"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Ακολουθείτε"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("Κορυφαία"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Πρόσφατα"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("Ταξινόμηση σχολίων: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("έστειλε ένα δώρο στην ανάρτησή σας"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("έστειλε \$gift στο σχόλιό σας"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("έστειλε \$gift στην ανάρτησή σας"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("Ταξινόμηση σχολίων: \$order"),
+      "ui_notif_gift": MessageLookupByLibrary.simpleMessage(
+          "έστειλε ένα δώρο στην ανάρτησή σας"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("έστειλε \$gift στο σχόλιό σας"),
+      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage(
+          "έστειλε \$gift στην ανάρτησή σας"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("Αποστολή δώρου"),
-      "ui_edit_post": MessageLookupByLibrary.simpleMessage("Επεξεργασία ανάρτησης"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("Μπορείτε να την επεξεργαστείτε για \$n λεπτά ακόμη"),
+      "ui_edit_post":
+          MessageLookupByLibrary.simpleMessage("Επεξεργασία ανάρτησης"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "Μπορείτε να την επεξεργαστείτε για \$n λεπτά ακόμη"),
       "ui_save": MessageLookupByLibrary.simpleMessage("Αποθήκευση"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("Δεν έχει δημοσιευτεί ακόμη τίποτα στο #\$tab."),
+      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage(
+          "Δεν έχει δημοσιευτεί ακόμη τίποτα στο #\$tab."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("Επιλέξτε ένα δώρο"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("Δεν έχετε αρκετά νομίσματα"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("Δοκιμαστικά νομίσματα: δεν αγοράζονται και δεν έχουν χρηματική αξία."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("Ανανεώνονται στις \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("Δεν έχετε αρκετά νομίσματα"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "Δοκιμαστικά νομίσματα: δεν αγοράζονται και δεν έχουν χρηματική αξία."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("Ανανεώνονται στις \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 νόμισμα"),
-      "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count νομίσματα"),
+      "ui_gift_coins":
+          MessageLookupByLibrary.simpleMessage("\$count νομίσματα"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("Έχετε \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("Αποστολή \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("Στάλθηκε: \$gift"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("Αποστολή \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("Στάλθηκε: \$gift"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("Για 15 λεπτά μετά τη δημοσίευση"),
+      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage(
+          "Για 15 λεπτά μετά τη δημοσίευση"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("Επεξεργάστηκε"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατή η φόρτωση των αποθηκευμένων σχολίων σας"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("Δεν υπάρχουν αποθηκευμένα σχόλια"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("Πατήστε το εικονίδιο αρχειοθέτησης κάτω από ένα σχόλιο για να το κρατήσετε εδώ. Μόνο εσείς βλέπετε τι αποθηκεύετε."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("Απάντηση σε \$name"),
+      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση των αποθηκευμένων σχολίων σας"),
+      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage(
+          "Δεν υπάρχουν αποθηκευμένα σχόλια"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "Πατήστε το εικονίδιο αρχειοθέτησης κάτω από ένα σχόλιο για να το κρατήσετε εδώ. Μόνο εσείς βλέπετε τι αποθηκεύετε."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("Απάντηση σε \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("Αντιγραφή"),
       "ui_search": MessageLookupByLibrary.simpleMessage("Αναζήτηση"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("Επιλογή όλων"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count δώρα"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 δώρο"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("Δεν ήταν δυνατή η φόρτωση περισσότερων αναρτήσεων."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση περισσότερων αναρτήσεων."),
     };
 
 final messageLookup = MessageLookup();

@@ -2123,64 +2123,91 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "تم حذف هذا الحساب، لذا لم يعد بالإمكان إرسال رسائل هنا."),
       "ui_login_google_hint": MessageLookupByLibrary.simpleMessage(
           "هل سجّلت باستخدام Google؟ استخدم «تسجيل الدخول بواسطة Google» بدلاً من ذلك."),
-      "ar_lens_not_loaded": MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه العدسة."),
-      "ar_could_not_record": MessageLookupByLibrary.simpleMessage("تعذّر تسجيل الفيديو."),
-      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage("تعذّرت إضافة العدسة إلى هذا الفيديو، لذا سيُنشر كما صُوّر."),
-      "ar_composer_full": MessageLookupByLibrary.simpleMessage("منشورك يحتوي بالفعل على أكبر عدد ممكن من المرفقات."),
-      "ar_applying_lens": MessageLookupByLibrary.simpleMessage("جارٍ إضافة العدسة…"),
+      "ar_lens_not_loaded":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل هذه العدسة."),
+      "ar_could_not_record":
+          MessageLookupByLibrary.simpleMessage("تعذّر تسجيل الفيديو."),
+      "ar_lens_left_out": MessageLookupByLibrary.simpleMessage(
+          "تعذّرت إضافة العدسة إلى هذا الفيديو، لذا سيُنشر كما صُوّر."),
+      "ar_composer_full": MessageLookupByLibrary.simpleMessage(
+          "منشورك يحتوي بالفعل على أكبر عدد ممكن من المرفقات."),
+      "ar_applying_lens":
+          MessageLookupByLibrary.simpleMessage("جارٍ إضافة العدسة…"),
       "ar_flash": MessageLookupByLibrary.simpleMessage("الفلاش"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("تسجيل فيديو"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("صورة"),
       "ar_mode_video": MessageLookupByLibrary.simpleMessage("فيديو"),
-      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage("أُلغي تسجيل الدخول باستخدام Google."),
+      "googleSignInCancelled": MessageLookupByLibrary.simpleMessage(
+          "أُلغي تسجيل الدخول باستخدام Google."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("الهدايا"),
-      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage("لم يرسل أحد هدية إلى هذا المنشور بعد."),
+      "analytics_no_gifts_yet": MessageLookupByLibrary.simpleMessage(
+          "لم يرسل أحد هدية إلى هذا المنشور بعد."),
       "analytics_gift": MessageLookupByLibrary.simpleMessage("هدية"),
       "analytics_gifts_label": MessageLookupByLibrary.simpleMessage("الهدايا"),
       "analytics_coins": MessageLookupByLibrary.simpleMessage("العملات"),
       "analytics_sender": MessageLookupByLibrary.simpleMessage("المرسِل"),
       "analytics_senders": MessageLookupByLibrary.simpleMessage("المرسِلون"),
-      "analytics_test_coins": MessageLookupByLibrary.simpleMessage("عملات تجريبية: لا يمكن سحبها بعد."),
+      "analytics_test_coins": MessageLookupByLibrary.simpleMessage(
+          "عملات تجريبية: لا يمكن سحبها بعد."),
       "ui_saved": MessageLookupByLibrary.simpleMessage("المحفوظات"),
       "ui_saved_tab_posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
-      "ui_saved_tab_comments": MessageLookupByLibrary.simpleMessage("التعليقات"),
-      "ui_view_more_replies": MessageLookupByLibrary.simpleMessage("عرض المزيد من الردود"),
+      "ui_saved_tab_comments":
+          MessageLookupByLibrary.simpleMessage("التعليقات"),
+      "ui_view_more_replies":
+          MessageLookupByLibrary.simpleMessage("عرض المزيد من الردود"),
       "ui_edited": MessageLookupByLibrary.simpleMessage("معدَّل"),
       "ui_more": MessageLookupByLibrary.simpleMessage("المزيد"),
       "ui_following": MessageLookupByLibrary.simpleMessage("المتابَعون"),
       "ui_sort_top": MessageLookupByLibrary.simpleMessage("الأبرز"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("الأحدث"),
-      "ui_sort_comments": MessageLookupByLibrary.simpleMessage("ترتيب التعليقات: \$order"),
-      "ui_notif_gift": MessageLookupByLibrary.simpleMessage("أرسل هدية إلى منشورك"),
-      "ui_notif_gift_comment": MessageLookupByLibrary.simpleMessage("أرسل \$gift إلى تعليقك"),
-      "ui_notif_gift_named": MessageLookupByLibrary.simpleMessage("أرسل \$gift إلى منشورك"),
+      "ui_sort_comments":
+          MessageLookupByLibrary.simpleMessage("ترتيب التعليقات: \$order"),
+      "ui_notif_gift":
+          MessageLookupByLibrary.simpleMessage("أرسل هدية إلى منشورك"),
+      "ui_notif_gift_comment":
+          MessageLookupByLibrary.simpleMessage("أرسل \$gift إلى تعليقك"),
+      "ui_notif_gift_named":
+          MessageLookupByLibrary.simpleMessage("أرسل \$gift إلى منشورك"),
       "ui_gift_title": MessageLookupByLibrary.simpleMessage("إرسال هدية"),
       "ui_edit_post": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
-      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage("يمكنك تعديله لمدة \$n دقيقة أخرى"),
+      "ui_edit_post_left": MessageLookupByLibrary.simpleMessage(
+          "يمكنك تعديله لمدة \$n دقيقة أخرى"),
       "ui_save": MessageLookupByLibrary.simpleMessage("حفظ"),
-      "ui_feed_tag_detail": MessageLookupByLibrary.simpleMessage("لم يُنشر شيء تحت #\$tab بعد."),
+      "ui_feed_tag_detail":
+          MessageLookupByLibrary.simpleMessage("لم يُنشر شيء تحت #\$tab بعد."),
       "ui_gift_pick": MessageLookupByLibrary.simpleMessage("اختر هدية"),
-      "ui_gift_not_enough": MessageLookupByLibrary.simpleMessage("العملات غير كافية"),
-      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage("عملات تجريبية: لا يمكن شراؤها وليست لها قيمة نقدية."),
-      "ui_gift_refills_on": MessageLookupByLibrary.simpleMessage("تُعاد التعبئة في \$date."),
+      "ui_gift_not_enough":
+          MessageLookupByLibrary.simpleMessage("العملات غير كافية"),
+      "ui_gift_test_notice": MessageLookupByLibrary.simpleMessage(
+          "عملات تجريبية: لا يمكن شراؤها وليست لها قيمة نقدية."),
+      "ui_gift_refills_on":
+          MessageLookupByLibrary.simpleMessage("تُعاد التعبئة في \$date."),
       "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("عملة واحدة"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count عملة"),
       "ui_gift_balance": MessageLookupByLibrary.simpleMessage("لديك \$coins"),
-      "ui_gift_send_named": MessageLookupByLibrary.simpleMessage("إرسال \$gift"),
-      "ui_gift_sent_named": MessageLookupByLibrary.simpleMessage("تم إرسال \$gift"),
+      "ui_gift_send_named":
+          MessageLookupByLibrary.simpleMessage("إرسال \$gift"),
+      "ui_gift_sent_named":
+          MessageLookupByLibrary.simpleMessage("تم إرسال \$gift"),
       "ui_retry": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
-      "ui_edit_post_detail": MessageLookupByLibrary.simpleMessage("لمدة 15 دقيقة بعد النشر"),
+      "ui_edit_post_detail":
+          MessageLookupByLibrary.simpleMessage("لمدة 15 دقيقة بعد النشر"),
       "ui_post_edited": MessageLookupByLibrary.simpleMessage("تم التعديل"),
-      "ui_could_not_load_saved_comments": MessageLookupByLibrary.simpleMessage("تعذّر تحميل تعليقاتك المحفوظة"),
-      "ui_no_saved_comments": MessageLookupByLibrary.simpleMessage("لا توجد تعليقات محفوظة"),
-      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage("اضغط على أيقونة الأرشيف أسفل التعليق للاحتفاظ به هنا. أنت وحدك ترى ما تحفظه."),
-      "ui_replying_to": MessageLookupByLibrary.simpleMessage("ردًّا على \$name"),
+      "ui_could_not_load_saved_comments":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل تعليقاتك المحفوظة"),
+      "ui_no_saved_comments":
+          MessageLookupByLibrary.simpleMessage("لا توجد تعليقات محفوظة"),
+      "ui_no_saved_comments_detail": MessageLookupByLibrary.simpleMessage(
+          "اضغط على أيقونة الأرشيف أسفل التعليق للاحتفاظ به هنا. أنت وحدك ترى ما تحفظه."),
+      "ui_replying_to":
+          MessageLookupByLibrary.simpleMessage("ردًّا على \$name"),
       "ui_copy": MessageLookupByLibrary.simpleMessage("نسخ"),
       "ui_search": MessageLookupByLibrary.simpleMessage("بحث"),
       "ui_select_all": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count هدية"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("هدية واحدة"),
-      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("تعذّر تحميل المزيد من المنشورات."),
+      "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
+          "تعذّر تحميل المزيد من المنشورات."),
     };
 
 final messageLookup = MessageLookup();
