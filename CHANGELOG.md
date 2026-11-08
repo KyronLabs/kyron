@@ -20,6 +20,8 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+
+## [0.1.42] - 2026-11-08
 ### Changed
 
 - **Gifts have a place of their own.** What a post has been given -- its
@@ -2542,7 +2544,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.41...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.42...HEAD
+[0.1.42]: https://github.com/KyronLabs/kyron/compare/v0.1.41...v0.1.42
 [0.1.41]: https://github.com/KyronLabs/kyron/compare/v0.1.40...v0.1.41
 [0.1.40]: https://github.com/KyronLabs/kyron/compare/v0.1.39...v0.1.40
 [0.1.39]: https://github.com/KyronLabs/kyron/compare/v0.1.38...v0.1.39
