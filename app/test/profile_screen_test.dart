@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:kyron_app/models/feed_post.dart';
 import 'package:kyron_app/models/profile_model.dart';
 import 'package:kyron_app/providers/feed_provider.dart';
@@ -50,7 +51,7 @@ FeedPost _post(String id) => FeedPost(
       author: const FeedAuthor(id: 'u1', name: 'Epigone', username: 'epigone'),
     );
 
-Widget _app(FeedState seed) => ProviderScope(
+Widget _app(FeedState seed, {ThemeData? theme}) => ProviderScope(
       overrides: [
         signedInAs(),
         profileProvider.overrideWith(
@@ -60,7 +61,7 @@ Widget _app(FeedState seed) => ProviderScope(
           (ref, source) => _StubPosts(ref, source, seed),
         ),
       ],
-      child: const MaterialApp(home: ProfileScreen()),
+      child: MaterialApp(theme: theme, home: const ProfileScreen()),
     );
 
 void main() {
@@ -266,6 +267,27 @@ void main() {
         );
     expect(rules.any((r) => r.top >= media.bottom && r.top - media.bottom < 12),
         isTrue);
+    await tester.pump(const Duration(seconds: 3));
+  });
+
+  testWidgets('in the dark, the tab strip is the page, not a grey band', (
+    tester,
+  ) async {
+    final dark = KyronTheme.darkTheme;
+    await tester.pumpWidget(_app(FeedState(posts: [_post('p1')]), theme: dark));
+    await tester.pump();
+
+    final strip = tester.widget<Material>(
+      find
+          .ancestor(
+            of: find.byKey(const ValueKey('profile-tab-posts')),
+            matching: find.byType(Material),
+          )
+          // The nearest: the strip's own background, not the page's.
+          .first,
+    );
+    expect(strip.color, dark.scaffoldBackgroundColor);
+    expect(dark.scaffoldBackgroundColor, isNot(dark.colorScheme.surface));
     await tester.pump(const Duration(seconds: 3));
   });
 }

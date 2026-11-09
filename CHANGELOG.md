@@ -20,6 +20,11 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Fixed
+
+- **A profile's tabs sit on the page in the dark theme**, not on a grey band
+  across it, and the ring round the profile picture is the page's black
+  instead of grey.
 
 ## [0.1.42] - 2026-11-08
 ### Changed
