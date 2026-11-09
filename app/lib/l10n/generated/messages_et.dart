@@ -40,7 +40,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("ja"),
       "answerNumber": (Object a0) => "Vastus ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-lääts"),
       "attachSystemLog":
           MessageLookupByLibrary.simpleMessage("Lisa süsteemilog"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
@@ -115,9 +115,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Sinu vahekaardid"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
       "audit_password_requirements_symbol_322aed1e":
@@ -264,7 +263,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Loo oma konto"),
       "createYourProfile":
           MessageLookupByLibrary.simpleMessage("Loo oma profiil"),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-lääts"),
       "create_go_live": MessageLookupByLibrary.simpleMessage(
         "Alusta otseülekannet",
       ),
@@ -493,8 +492,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Jätka redigeerimist"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyroni sõnad on veel tõlkimisel, seetõttu on enamik ekraane praegu inglise keeles.",
-      ),
+          "Kyroni ekraanid on sinu keeles. Kui mõni sõna kõlab valesti, anna meile teada valikus Saada tagasisidet."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Keeled"),
       "leave": MessageLookupByLibrary.simpleMessage("Lahku"),
@@ -1175,8 +1173,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Tõlget ei ole veel loodud. Täna ei ole sinu voos midagi tõlgitud; see mäletatakse ja rakendub siis, kui tõlked olemas on.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyroni enda tekstid on veel tõlkimisel, seega jääb enamik ekraane praegu inglise keelde. See muudab täna: Flutteri joonistatud liidese osad, kuupäevad ja numbrid ning rakenduse paigutuse suuna parematelt-vasakule kirjutavate keelte jaoks.",
-      ),
+          "See muudab Kyroni enda sõnu, liidese osi, mida Flutter ise joonistab, kuupäevi ja numbreid ning rakenduse paigutuse suunda paremalt vasakule kirjutatavate keelte puhul."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Proovi uuesti"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privaatsuspoliitika",
@@ -2045,7 +2042,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Seda ei saanud saata. Proovi uuesti."),
       "ui_follower_one": MessageLookupByLibrary.simpleMessage("Jälgija"),
-      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtreeri"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Kõik"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Lugemata"),
       "ui_dm_filter_unanswered":

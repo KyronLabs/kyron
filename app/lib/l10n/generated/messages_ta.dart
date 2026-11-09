@@ -8,248 +8,208 @@ class MessageLookup extends MessageLookupByLibrary {
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+          "சொல், சொற்றொடர் அல்லது #குறிச்சொல்"),
+      "about": MessageLookupByLibrary.simpleMessage("அறிமுகம்"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("பதிலைச் சேர்"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("மொழிகளைச் சேர்…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("ஏற்று தொடரவும்"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("ஏற்கனவே Kyron கணக்கு உள்ளதா?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("கருத்துகள்"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "வெவ்வேறு நபர்கள், திறப்புகள் அல்ல"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("ஈடுபாடு"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("விருப்பங்கள்"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் பார்வையாளர்கள் இல்லை"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "இந்த இடுகையை இன்னும் யாரும் திறக்கவில்லை."),
+      "analytics_posted":
+          MessageLookupByLibrary.simpleMessage("இடுகையிடப்பட்டது"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("சேமிப்புகள்"),
+      "analytics_viewers":
+          MessageLookupByLibrary.simpleMessage("பார்வையாளர்கள்"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("நாளொன்றுக்கு பார்வையாளர்கள்"),
+      "and": MessageLookupByLibrary.simpleMessage("மற்றும்"),
+      "answerNumber": (Object a0) => "பதில் ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR லென்ஸ்"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("ஆப் பதிவைச் இணை"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("போய் வரும் நேரம்"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("டோக்கன் சரிபார்ப்பு"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "இப்போது ஒளிபரப்பைத் தொடங்கினால் யாரும் நுழைய முடியாத அறையில் இருப்பீர்கள்"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("சமூகத்தைத் தொடங்கு"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("இது எதற்காக? (விருப்பம்)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் நுழைய முடியாது."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "இந்தப் பட்டியலிலிருந்து மீண்டும் நுழைய முடியாது."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("அதை மூடினால்"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("முதலில் சேருங்கள்"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("விரைவில்"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage(
+              "உங்கள் பெயரில் இடுகையிடுகிறீர்கள்"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("இந்தச் சமூகத்தில் இடுகையிடு"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("இப்போதுதான்"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("தலைப்பு 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("உங்களுக்காக"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("ஏதோ உள்ளது."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("இப்போது அங்கே செல்கிறது."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", இல்லை"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("நான் நகர்கிறேனா"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("ஒலியை அணை"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("ஒலியை இயக்கு"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("உங்களுக்காக"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("உங்கள் தாவல்கள்"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("குறியீடு (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("நாளொன்றுக்கு பார்வையாளர்கள்"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("ஏற்ற முடியவில்லை"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகை"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "ஏதாவது சேர்க்க வேண்டுமா? (விருப்பம்)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகை"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ஒரு கணக்கிலிருந்து"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("வெளியேறு"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கு"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லை உறுதிப்படுத்து"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("இப்போது இல்லை"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("ஏற்றுகிறது…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("இடுகையிடுகிறது…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 மணி நேரம் முன்"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("ஸ்டோரி இணைப்பை நகலெடு"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("உங்கள் ஸ்டோரி"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "உங்கள் கணக்கு, உங்கள் இடுகைகள், நீங்கள் தட்டுபவை, இதனால்"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("தலைப்பைச் சேர்"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("சொந்தம்."),
+      "authorBlocked": (Object a0) => "${a0} தடுக்கப்பட்டார்",
+      "authorPostsHidden": (Object a0) =>
+          "${a0}-இன் இடுகைகளைப் பார்க்க மாட்டீர்கள்",
+      "block": MessageLookupByLibrary.simpleMessage("தடு"),
+      "blockAuthor": (Object a0) => "${a0}-ஐத் தடுக்கவா?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "பில்ட் விவரங்கள் நகலெடுக்கப்பட்டன"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "தொடர்வதன் மூலம், நீங்கள் ஏற்கிறீர்கள்"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "தொடர்வதன் மூலம், எங்கள் சேவை விதிமுறைகளையும் தனியுரிமைக் கொள்கையையும் ஏற்கிறீர்கள்"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "பதிவுசெய்வதன் மூலம், நீங்கள் ஏற்கிறீர்கள்"),
+      "cancel": MessageLookupByLibrary.simpleMessage("ரத்துசெய்"),
       "change": MessageLookupByLibrary.simpleMessage("மாற்று"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("மின்னஞ்சலை மாற்று"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "உங்கள் மின்னஞ்சலில் இருந்து கணக்கைச் சரிபார்க்கவும்."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Kyron அணுகக்கூடியதா எனச் சரிபார்"),
+      "clear": MessageLookupByLibrary.simpleMessage("அழி"),
+      "close": MessageLookupByLibrary.simpleMessage("மூடு"),
+      "closeCommunity": (Object a0) => "${a0}-ஐ மூடவா?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("மூடு"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("இந்தச் சமூகத்தை மூடு"),
+      "communities": MessageLookupByLibrary.simpleMessage("சமூகங்கள்"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "ஆராய் பகுதியில் ஒன்றைக் கண்டறியுங்கள், அல்லது உங்களுடையதைத் தொடங்குங்கள்."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
+          "ஒரு சூடான கருத்தை வீசுங்கள் (அல்லது இளஞ்சூடான)"),
       "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "உங்கள் மனதில் என்ன இருக்கிறது?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "உங்களால் மட்டுமே சொல்லக்கூடியதைச் சொல்லுங்கள்…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "இதுதான் அறிகுறி: இடுகையிடுங்கள்"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "தட்டச்சு செய்யுங்கள், பேசுங்கள் அல்லது சத்தமாகச் சிந்தியுங்கள்"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லை உறுதிப்படுத்து"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("உதவியைத் தொடர்புகொள்"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "இடுகைகளுக்கு இன்னும் மொழி இல்லை, எனவே இது இன்னும் உங்கள் ஊட்டத்தை வடிகட்டாது. அதுவரை உங்கள் தேர்வுகள் வைக்கப்படும்."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("தொடர்"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("மின்னஞ்சலுடன் தொடரவும்"),
+      "copy": MessageLookupByLibrary.simpleMessage("நகலெடு"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("பதிலாக அறிக்கையை நகலெடு"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
+          "Google உள்நுழைவைத் திறக்க முடியவில்லை. ${a0}",
+      "couldNotSignOut": (Object a0) => "வெளியேற முடியவில்லை: ${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "புகைப்படம் எடுக்க முடியவில்லை."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும்."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -261,89 +221,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "உங்கள் சுயவிவரத்திலும் உங்கள் இடுகைகளுக்குக் கீழும் காட்டப்படும். நீங்கள் ஒருவரின் இடுகைகளைப் பார்க்கும்போது, உங்கள் நாடு அவரின் நுண்ணறிவுகளில் கணக்கிடப்படும், ஐந்து அல்லது அதற்கு மேற்பட்டோர் குழுக்களில் மட்டும், ஒருபோதும் பெயரால் அல்ல."),
       "country_suggested": MessageLookupByLibrary.simpleMessage(
           "உங்கள் ஃபோனின் அமைப்புகளிலிருந்து"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("உருவாக்கு"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("கணக்கை உருவாக்கு"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கை உருவாக்குங்கள்"),
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+          "உங்கள் சுயவிவரத்தை உருவாக்குங்கள்"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR லென்ஸ்"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("நேரலைக்குச் செல்"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("உரை இடுகை"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("குரல் இடுகை"),
+      "delete": MessageLookupByLibrary.simpleMessage("நீக்கு"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("இந்தக் கருத்தை நீக்கவா?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகையை நீக்கவா?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("இந்த இணைப்பை விவரியுங்கள்"),
+      "description": MessageLookupByLibrary.simpleMessage("விளக்கம்"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"),
       "done": MessageLookupByLibrary.simpleMessage("முடிந்தது"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "ஏதாவது எழுதிய பின் திருத்தியை மூடுங்கள், உங்களுக்கு வரைவு வழங்கப்படும்."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} நாட்களுக்கு முன்"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("{hours} மணிநேரத்திற்கு முன்"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("இப்போதுதான்"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} நிமிடங்களுக்கு முன்"),
       "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
+          "இன்னும் எதுவும் எழுதப்படவில்லை"),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "கருத்துக்கணிப்பு, இன்னும் கேள்வி இல்லை"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("மேற்கோள், இன்னும் உரை இல்லை"),
+      "drafts": MessageLookupByLibrary.simpleMessage("வரைவுகள்"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரத்தைத் திருத்து"),
+      "email": MessageLookupByLibrary.simpleMessage("மின்னஞ்சல்"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("மின்னஞ்சல் அறிவிப்புகள்"),
+      "explore": MessageLookupByLibrary.simpleMessage("ஆராய்"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "இந்தச் சாதனத்தில் முகக் கண்காணிப்பு இல்லை."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "#${a0} உடன் இன்னும் எதுவும் இடுகையிடப்படவில்லை.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name} ஐப் பின்தொடர்"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("பின்தொடர்பவர்கள்"),
+      "following": MessageLookupByLibrary.simpleMessage("பின்தொடர்பவை"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல் மறந்துவிட்டதா?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("உதவி பெறுதல்"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google உடன் தொடர்"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google மூலம் உள்நுழை"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google முடிந்த உள்நுழைவை Android மற்றும் iOS மட்டுமே பதிலளிக்கும் இணைப்பின் மூலம் Kyron-க்குத் திருப்பி அனுப்புகிறது, எனவே ${a0}-இல் உலாவிக்கு அதைத் திருப்பி அனுப்ப இடமில்லை.\\n\\nGoogle மூலம் உங்களுக்கு ஏற்கனவே Kyron கணக்கு இருந்தால், அதே முகவரியுடன் மின்னஞ்சலுடன் தொடரவும் என்பதைத் தேர்ந்தெடுத்து கடவுச்சொல் மறந்துவிட்டதா என்பதைத் தட்டவும்: கடவுச்சொல்லை அமைக்க இணைப்பு கிடைக்கும்.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google உள்நுழைவுக்கு ஃபோன் ஆப் தேவை"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Google மூலம் பதிவுசெய்"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "வழிகாட்டிகள் மற்றும் பொதுவான கேள்விகளுக்கான பதில்கள்"),
+      "handle": MessageLookupByLibrary.simpleMessage("ஹேண்டில்"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("உதவி & ஆதரவு"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("உதவி மையம்"),
+      "home": MessageLookupByLibrary.simpleMessage("முகப்பு"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("ஒரே வரியில்"),
       "ins_account": MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கு"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("சமூகத்தைத் திறங்கள்"),
@@ -463,691 +412,581 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("சிறந்த இடுகைகள்"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "முந்தைய {days} நாட்களுடன் ஒப்பிடும்போது"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("ஆர்வத்தைச் சேர்"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("வரிசையை மாற்ற இழுக்கவும்"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "பட்டையில் அதிகபட்சம் ஐந்து தாவல்கள் பொருந்தும். வேறொன்றைச் சேர்க்க ஒன்றை அகற்றுங்கள்."),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("பின்தொடர்பவை"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("உங்களுக்காக"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "மக்கள் ஹேஷ்டேக்குகளைப் பயன்படுத்தத் தொடங்கும்போது அவை இங்கே தோன்றும்."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("இப்போது டிரெண்டிங்"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("வீடியோக்கள்"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("உங்கள் தாவல்கள்"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          "இது உங்கள் இருவருக்கும் மறைந்துவிடும்."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "இது திரியிலிருந்து நீக்கப்படும்."),
+      "join": MessageLookupByLibrary.simpleMessage("சேர்"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("திருத்துவதைத் தொடர்"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron-இன் திரைகள் உங்கள் மொழியில் உள்ளன. ஏதேனும் சொல் தவறாகத் தெரிந்தால், கருத்தை அனுப்பு மூலம் எங்களுக்குச் சொல்லுங்கள்."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("மொழிகள்"),
+      "leave": MessageLookupByLibrary.simpleMessage("விலகு"),
+      "leaveCommunity": (Object a0) => "${a0}-இலிருந்து விலகவா?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("மீண்டும் அனுமதி"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 பக்கம் திறந்துள்ளது"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("கிளிப் சேர்"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF சேர்"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("ஹேஷ்டேக் சேர்"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("புகைப்படம் சேர்"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("கருத்துக்கணிப்பைச் சேர்"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("வீடியோ சேர்"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("ஆர்வத்தைச் சேர்"),
+      "literaladdLabelAsATab": (Object a0) => "${a0}-ஐத் தாவலாகச் சேர்",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("ஆப் மொழி"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("ஆப் பதிப்பு"),
+      "literalblockAuthor": (Object a0) => "${a0}-ஐத் தடு",
+      "literalblockAuthor2": (Object a0) => "${a0}-ஐத் தடுக்கவா?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("இந்தக் கணக்கைத் தடுக்கவா?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("பதிலை நிராகரி"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("மீண்டும் சரிபார்"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("கேலரியிலிருந்து தேர்ந்தெடு"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("தற்காலிகச் சேமிப்பை அழி"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("எல்லாப் பக்கங்களையும் மூடு"),
+      "literalcloseTabLabel": (Object a0) => "${a0}-ஐ மூடு",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("உலாவியை மூடு"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0}-ஐ மூடவா?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("ஆதரவைத் தொடர்புகொள்"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("உள்ளடக்க மொழிகள்"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("இணைப்பை நகலெடு"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("இடுகை இணைப்பை நகலெடு"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          MessageLookupByLibrary.simpleMessage("இடுகை உரையை நகலெடு"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("உரையை நகலெடு"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("சமூகங்களை ஏற்ற முடியவில்லை"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF-களை ஏற்ற முடியவில்லை"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("அறிவிப்புகளை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "உறுப்பினர்களை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "இந்த இடுகைகளை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "இந்த உரையாடலை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "இந்தப் பட்டியலை ஏற்ற முடியவில்லை"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகையை ஏற்ற முடியவில்லை"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("இந்தப் பதிலை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "பிரபல குறிச்சொற்களை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "உங்கள் சமூகங்களை ஏற்ற முடியவில்லை"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "உங்கள் செய்திகளை ஏற்ற முடியவில்லை"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "இந்தச் சமூகத்தைத் திறக்க முடியவில்லை"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("பதிலை இடுகையிட முடியவில்லை."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("தேடல் வேலை செய்யவில்லை"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "வெளியேற முடியவில்லை: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} பக்கங்கள் திறந்துள்ளன",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("அட்டைப் படம்"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("தரவுச் சேமிப்பு"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("இடுகையை நீக்கு"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("நபர்களைக் கண்டறி"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("பதிலளிக்காதீர்கள்"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("வரைவு சேமிக்கப்பட்டது"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "இப்போது கருத்தை அனுப்ப முடியாது"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("உரை அளவு"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF-கள் அமைக்கப்படவில்லை"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("வேறு ஆப்புக்குக் கொடு"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லை மறை"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகையை மறை"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "இதை மறைத்து, இதுபோன்றவற்றைக் குறைவாகக் காட்டச் சொல்கிறது"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("எப்படி நடந்துகொள்வது"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("எழுதுவதைத் தொடர்"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron பதிலளிக்கவில்லை"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} தேதி",
+      "literalleaveCommunityName": (Object a0) => "${a0}-இலிருந்து விலகவா?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, முக லென்ஸ்",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("விரும்பிய இடுகைகள்"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("இணைப்பு நகலெடுக்கப்பட்டது"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("மதிப்பாய்வாளராக்கு"),
+      "literalmuteAuthor": (Object a0) => "${a0}-ஐ முடக்கு",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("இந்தத் திரியை முடக்கு"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "சொற்களையோ குறிச்சொற்களையோ முடக்கு"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "முடக்கப்பட்ட & தடுக்கப்பட்ட கணக்குகள்"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "முடக்கப்பட்டது. உங்களுக்கு அறிவிப்புகள் வராது."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "இந்தச் சாதனத்திலுள்ள எந்த ஆப்பும் ${a0} இணைப்புகளைத் திறக்காது.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "இந்தச் சாதனத்திலுள்ள எந்த உலாவியும் இணைப்பை ஏற்கவில்லை."),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் DID இல்லை"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("வரைவுகள் இல்லை"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் ஆர்வங்கள் இல்லை"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் விருப்பங்கள் இல்லை"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் செய்திகள் இல்லை"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("புதிய பின்தொடர்பவர்கள் இல்லை"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் இடுகைகள் இல்லை"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("இன்னும் பதில்கள் இல்லை"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("இன்னும் மறுபதிவுகள் இல்லை"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "எந்தப் பிரபல குறிச்சொல்லும் பொருந்தவில்லை"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("யாரும் கிடைக்கவில்லை"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("யாரும் அகற்றப்படவில்லை"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("இங்கே இன்னும் யாரும் இல்லை"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("ஆர்வமில்லை"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
+          MessageLookupByLibrary.simpleMessage("எதுவும் கிடைக்கவில்லை"),
       "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          "இன்னும் எதுவும் டிரெண்டிங்கில் இல்லை"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("பதிவில் இன்னும் எதுவும் இல்லை"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("பொருத்தங்கள் இல்லை"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("முடக்கியவை இல்லை"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் பார்க்க எதுவும் இல்லை"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("படிக்காதவை இல்லை"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
+          "இதை உரிமையாளர் மட்டுமே மாற்ற முடியும்"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("பதிலைத் திற"),
       "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Kyron-இன் மின்னஞ்சலைத் திறக்கவும்"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல் & உள்நுழைவு"),
+      "literalpostInCommunityName": (Object a0) => "${a0}-இல் இடுகையிடு",
+      "literalpostInWidgetCommunityName": (Object a0) => "${a0}-இல் இடுகையிடு",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "மேலே உங்கள் சொந்த வார்த்தைகளுடன் இடுகையிடுங்கள்"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("முதன்மை மொழி"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("புஷ் அறிவிப்புகள்"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("சரிபார்க்கிறது…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("குரல் இடுகையைப் பதிவுசெய்"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
+          MessageLookupByLibrary.simpleMessage("மீண்டும் பதிவுசெய்"),
       "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
+          "மதிப்பாய்வாளர் பதவியிலிருந்து அகற்று"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("சமூகத்திலிருந்து அகற்று"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("சேமித்தவற்றிலிருந்து அகற்று"),
+      "literalremoveLabel": (Object a0) => "${a0}-ஐ அகற்று",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0}-ஐ அகற்று",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0}-ஐ அகற்றவா?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("கருத்துக்கணிப்பை அகற்று"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("இந்தப் பதிலை அகற்று"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("இந்த உரையாடலை நீக்கு"),
       "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          "இந்தக் கருத்துக்கணிப்பை அகற்று"),
+      "literalreportAuthor": (Object a0) => "${a0}-ஐப் புகாரளி",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("இடுகையைப் புகாரளி"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("குறியீட்டை மீண்டும் அனுப்பு"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("சேமித்த இடுகைகள்"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("ஏதாவது சொல்லுங்கள்"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0}-இல் ஏதாவது சொல்லுங்கள்",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("தேடல் தோல்வியடைந்தது"),
+      "literalsendAgain":
+          MessageLookupByLibrary.simpleMessage("மீண்டும் அனுப்பு"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "${a0} வி-இல் மீண்டும் அனுப்பு",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("கருத்து தெரிவி"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("இணைப்பை அனுப்பு"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "அனுப்பப்பட்டது. இது அறிக்கை #${a0}.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "கடவுச்சொல்லை அமைத்துத் தொடரவும்"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("பதிவை ஆதரவுடன் பகிர்"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("இந்தச் சமூகத்தைப் பகிர்"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("இந்தப் பக்கத்தைப் பகிர்"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("இந்தச் சுயவிவரத்தைப் பகிர்"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("பகிர்…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("மேற்கோளுடன் பகிர்"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("இதுபோன்றவற்றை அதிகம் காட்டு"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லைக் காட்டு"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("முடிவுகளைக் காட்டு"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("சமூகத்தைத் தொடங்கு"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("பதிவுசெய்யத் தொடங்கு"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("ஏற்றுவதை நிறுத்து"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "இந்த இடுகையையும் அதன் பதில்களையும் பார்ப்பதை நிறுத்து"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "ஸ்டோரி பட்டை, ${a0} உருப்படிகள்",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("கேமராவை மாற்று"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("யாரையாவது குறியிடு"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("புகைப்படம் எடு"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "மாற்ற பேனர் அல்லது புகைப்படத்தைத் தட்டவும்"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("அதிலுள்ள இணைப்பைத் தட்டவும்"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "புகைப்படம் மற்றும் அட்டையைச் சேர்க்கத் தட்டவும்"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "அது வேலை செய்யவில்லை. மீண்டும் முயலவும்."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("அந்த GIF-ஐ ஏற்ற முடியவில்லை."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+              "இந்த இணைப்பை இங்கே திறக்க முடியாது."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("கேமரா மூடப்பட்டுள்ளது"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("இந்தச் சமூகம்"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("இந்தப் பதில் இப்போது இல்லை"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("இடுகையை மொழிபெயர்"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("ஒலியை அணை"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("ஒலியை இயக்கு"),
       "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          "எங்களுடையதில் ஒன்றைப் பயன்படுத்து"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "சரிபார்ப்புக் குறியீடு மீண்டும் அனுப்பப்பட்டது."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "சரிபார்ப்பு தோல்வி: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("மின்னஞ்சலைச் சரிபார்"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
+              "பார்வையாளர்கள், விருப்பங்கள், சேமிப்புகள், கருத்துகள்"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron எதை வைத்திருக்கிறது"),
       "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+          "இந்த ஆப் என்ன செய்துகொண்டிருந்தது"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
+              "நீங்கள் என்ன செய்தீர்கள், என்ன எதிர்பார்த்தீர்கள், என்ன நடந்தது "),
       "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+          "நீங்கள் இடுகையிடுவது உங்களுடையது"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron இப்போது அணுகக்கூடியதா"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
+          MessageLookupByLibrary.simpleMessage("யார் பதிலளிக்கலாம்"),
       "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          "யாரைக் குறியிட விரும்புகிறீர்கள்?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
+              "நீங்கள் ஏற்கனவே எல்லாப் பிரபல குறிச்சொற்களையும் பின்தொடர்கிறீர்கள்"),
       "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+          "எல்லாவற்றையும் பார்த்துவிட்டீர்கள்"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "நீங்கள் எந்தச் சமூகத்திலும் இல்லை"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("நீங்கள் வெளியேறிவிட்டீர்கள்."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "நீங்கள் ${a0}-இலிருந்து விலகினீர்கள்",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "நீங்கள் இன்னும் எதையும் இடுகையிடவில்லை"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("மேலும் ஏற்று"),
+      "logCleared":
+          MessageLookupByLibrary.simpleMessage("பதிவு அழிக்கப்பட்டது"),
+      "logCopied":
+          MessageLookupByLibrary.simpleMessage("பதிவு நகலெடுக்கப்பட்டது"),
+      "logIn": MessageLookupByLibrary.simpleMessage("உள்நுழை"),
+      "logOut": MessageLookupByLibrary.simpleMessage("வெளியேறு"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("வெளியேறவா?"),
+      "login": MessageLookupByLibrary.simpleMessage("உள்நுழைவு"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "உள்நுழைய முடியவில்லை. உங்கள் விவரங்களைச் சரிபார்க்கவும்."),
+      "manage": MessageLookupByLibrary.simpleMessage("நிர்வகி"),
+      "menu": MessageLookupByLibrary.simpleMessage("மெனு"),
+      "message": MessageLookupByLibrary.simpleMessage("செய்தி"),
+      "messages": MessageLookupByLibrary.simpleMessage("செய்திகள்"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "எல்லா உரையாடல்களையும் படித்துவிட்டீர்கள்."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          "ஒருவரின் சுயவிவரத்தைத் திறந்து உரையாடலைத் தொடங்க செய்தியைத் தட்டவும்."),
+      "mute": MessageLookupByLibrary.simpleMessage("முடக்கு"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "முடக்கப்பட்டவை & தடுக்கப்பட்டவை"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "முடக்கப்பட்ட சொற்கள் & குறிச்சொற்கள்"),
+      "name": MessageLookupByLibrary.simpleMessage("பெயர்"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> திரை"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("புதிய மின்னஞ்சல் முகவரி"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("புதிய கடவுச்சொல்"),
+      "newPost": MessageLookupByLibrary.simpleMessage("புதிய இடுகை"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("இப்போது இல்லை"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "அனுப்பப்படவில்லை. மீண்டும் முயல தட்டவும்"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron-இல் \"${a0}\"-க்குப் பொருந்துவது எதுவும் இல்லை",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("நகலெடுக்க எதுவும் இல்லை"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "விருப்பங்கள், பதில்கள், புதிய பின்தொடர்பவர்கள் இங்கே வருவார்கள்."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "உங்களைப் பின்தொடர்பவர்கள் இங்கே தோன்றுவார்கள்."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "யாராவது உங்கள் இடுகையை விரும்பினால், அது இங்கே தோன்றும்."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "உங்கள் இடுகைகளுக்கான பதில்கள் இங்கே வரும்."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
+          "யாராவது உங்களை மறுபதிவிட்டால், அது இங்கே தோன்றும்."),
+      "notifications": MessageLookupByLibrary.simpleMessage("அறிவிப்புகள்"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("உலாவியில் திற"),
+      "or": MessageLookupByLibrary.simpleMessage("அல்லது"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("பக்கம் கிடைக்கவில்லை"),
+      "password": MessageLookupByLibrary.simpleMessage("கடவுச்சொல்"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல் மிகவும் சிறியது"),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "உங்கள் ஆர்வங்களைத் தேர்ந்தெடுங்கள்"),
+      "post": MessageLookupByLibrary.simpleMessage("இடுகையிடு"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("இடுகைப் புள்ளிவிவரங்கள்"),
+      "postInCommunity": (Object a0) => "${a0}-இல் இடுகையிடு",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("இடுகையிடு, சொல், காட்டு."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("இடுகை உரை நகலெடுக்கப்பட்டது"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("தனியுரிமைக் கொள்கை"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரம் புதுப்பிக்கப்பட்டது"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("சுயவிவரக் குறிப்பு"),
       "profile_country": MessageLookupByLibrary.simpleMessage("நாடு"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("காட்சிப் பெயர்"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("இருப்பிடம்"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("மாற்றத் தட்டவும்"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("இணையதளம்"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("புஷ் அறிவிப்புகள்"),
+      "quote": MessageLookupByLibrary.simpleMessage("மேற்கோள் காட்டு"),
+      "quotePost":
+          MessageLookupByLibrary.simpleMessage("இடுகையை மேற்கோள் காட்டு"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("மனிதரைத் தொடர்புகொள்"),
+      "remove": MessageLookupByLibrary.simpleMessage("அகற்று"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("இந்த உரையாடலை நீக்கவா?"),
+      "removeMember": (Object a0) => "${a0}-ஐ அகற்றவா?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("இந்தச் செய்தியை நீக்கவா?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "பதில்கள், பின்தொடர்தல்கள் மற்றும் குறிப்பீடுகள்"),
+      "repliesPolicy": (Object a0) => "பதில்கள்: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("பதிலளி"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("யார் வேண்டுமானாலும் சேரலாம்"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "யார் வேண்டுமானாலும் இந்த இடுகையைப் பார்க்கலாம், மறுபதிவிடலாம், மேற்கோள் காட்டலாம்."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron-இல் யார் வேண்டுமானாலும் இந்த இடுகைக்குப் பதிலளிக்கலாம்."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("உங்களைப் பின்தொடர்பவர்கள்"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "உங்களைப் பின்தொடர்பவர்கள் மட்டுமே இந்த இடுகைக்குப் பதிலளிக்கலாம்."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("நீங்கள் குறிப்பிடுபவர்கள்"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "இந்த இடுகையில் நீங்கள் @குறிப்பிடுபவர்கள் மட்டுமே பதிலளிக்கலாம்."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("யாரும் பதிலளிக்க முடியாது"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "பதில்கள் முடக்கப்பட்டுள்ளன. நீங்கள் இன்னும் பதிலளிக்கலாம்."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("யார் பதிலளிக்கலாம்?"),
       "report": MessageLookupByLibrary.simpleMessage("புகாரளி"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "அறிக்கை நகலெடுக்கப்பட்டது. ஆதரவுக்கான மின்னஞ்சலில் ஒட்டவும்."),
       "reportSent":
           MessageLookupByLibrary.simpleMessage("புகார் அனுப்பப்பட்டது"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("மறுபதிவிடு"),
+      "reset": MessageLookupByLibrary.simpleMessage("மீட்டமை"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லை மீட்டமைக்கவும்"),
+      "retry": MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்"),
+      "save": MessageLookupByLibrary.simpleMessage("சேமி"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("வரைவைச் சேமி"),
+      "saySomething": (Object a0) => "${a0}-இல் ஏதாவது சொல்லுங்கள்",
+      "search": MessageLookupByLibrary.simpleMessage("தேடு"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "பெயர் அல்லது ஹேண்டில் மூலம் தேடு"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("சமூகங்களைத் தேடு"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF-களைத் தேடு"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("மொழிகளைத் தேடு"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("பிரபல குறிச்சொற்களைத் தேடு"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "பாதுகாப்பு எச்சரிக்கைகள் மற்றும் கணக்கு மாற்றங்கள்"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "ஆப் இடைமுகத்தின் மொழியைத் தேர்ந்தெடுங்கள்."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "உங்கள் ஊட்டங்களில் எந்த மொழிகள் தோன்ற வேண்டும் எனத் தேர்ந்தெடுங்கள். எதையும் தேர்ந்தெடுக்காவிட்டால், எல்லா மொழிகளும் காட்டப்படும்."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "ஊட்டத்திலுள்ள மொழிபெயர்ப்புகளுக்கு உங்கள் முதன்மை மொழியைத் தேர்ந்தெடுங்கள்."),
+      "send": MessageLookupByLibrary.simpleMessage("அனுப்பு"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("சரிபார்ப்பை அனுப்பு"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("பிழை அறிக்கையை அனுப்பு"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("கருத்தை அனுப்பு"),
       "sendReport": MessageLookupByLibrary.simpleMessage("புகாரை அனுப்பு"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("ஆதரவுக்கு அனுப்பு"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("சேவை நிலை"),
+      "settings": MessageLookupByLibrary.simpleMessage("அமைப்புகள்"),
+      "shareAppLog":
+          MessageLookupByLibrary.simpleMessage("ஆப் பதிவை ஆதரவுடன் பகிர்"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron-இல் உள்நுழை"),
+      "signedInAs":
+          MessageLookupByLibrary.simpleMessage("இவ்வாறு உள்நுழைந்துள்ளீர்கள்"),
+      "signupFailed": (Object a0) => "பதிவுசெய்ய முடியவில்லை: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("இருங்கள்"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron தொடக்க நிலையில் உள்ளது, இதை உண்மையில் சரிசெய்யக்கூடியவரை அடைய வேகமான வழி டிக்கெட் திறப்பதுதான். நீங்கள் என்ன செய்தீர்கள், என்ன நடந்தது என்று சொல்லுங்கள்."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "ஆப்பில் இன்னும் ஆதரவு இன்பாக்ஸ் இல்லை, எனவே இந்தத் திரை எங்கும் செல்லாத படிவத்திற்குப் பதிலாக உண்மையில் கண்காணிக்கப்படும் இடத்திற்கு உங்களை அனுப்புகிறது."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("ஆப் பதிவு"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "என்ன இல்லை அல்லது என்ன உடைந்துள்ளது என்று சொல்லுங்கள்"),
+      "terms": MessageLookupByLibrary.simpleMessage("சேவை விதிமுறைகள்"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "உரை, குரல் மற்றும் வீடியோ, அவற்றை உருவாக்குபவர்கள், அவர்கள் உரையாடும் அறைகள்."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "திருத்தியில் இடுகையிடு பொத்தான் இல்லை"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("இருள்"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("எப்போதும் இருள்"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("மங்கல்"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "மென்மையான இருள், கருப்புக்குப் பதிலாக நீலச் சாம்பல்"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("வெளிர்"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("எப்போதும் வெளிர்"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("சிஸ்டம்"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "ஃபோனின் வெளிர் அல்லது இருள் அமைப்பைப் பின்பற்று"),
+      "translate": MessageLookupByLibrary.simpleMessage("மொழிபெயர்"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "மொழிபெயர்ப்பு இன்னும் இயக்கப்படவில்லை. உங்கள் ஊட்டத்தில் இன்னும் எதுவும் மொழிபெயர்க்கப்படவில்லை; அதுவரை இது நினைவில் வைக்கப்படும்."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "இது Kyron-இன் சொந்தச் சொற்கள், Flutter தானே வரையும் இடைமுகப் பகுதிகள், தேதிகள் மற்றும் எண்கள், வலமிருந்து இடமாக எழுதப்படும் மொழிகளுக்கான ஆப்பின் தளவமைப்புத் திசை ஆகியவற்றை மாற்றுகிறது."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("மீண்டும் முயல்க"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("தனியுரிமைக் கொள்கை"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("சேவை விதிமுறைகள்"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("கணக்கு"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("பின்"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("ஆப் & சாதனம்"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "மோசடியைப் பற்றி மக்களை எச்சரிக்கவே இந்த மேற்கோள்."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1162,15 +1001,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "மேல்முறையீடு அனுப்பப்பட்டது. முடிவானதும் உங்களுக்கு அறிவிப்பு வரும்."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "வழக்கு \$number மீது மேல்முறையீடு"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("தோற்றம்"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "வெளிர், இருள் அல்லது ஃபோனைப் பின்பற்று"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("முன்"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron-இல் நீங்கள் ஒருவரை ஒருவர் பார்க்க மாட்டீர்கள், உங்களுக்கு இடையேயான பின்தொடர்தல்கள் அகற்றப்படும். அவர்களுக்குத் தெரிவிக்கப்படாது."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("கொண்டுள்ளது"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("இது எதற்காக (விருப்பத்தேர்வு)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1279,29 +1116,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("குரல் குறிப்பைப் பதிவுசெய்"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("நீங்கள்"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("சமூகங்கள்"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("இது எதற்காக? (விருப்பம்)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("இடுகைகள்:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("உள்ளடக்கம் & காட்சி"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "உங்கள் ஊட்டத்தை ஏற்ற முடியவில்லை"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "நீங்கள் விரும்பிய இடுகைகளை ஏற்ற முடியவில்லை"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "உங்கள் சுயவிவரத்தை ஏற்ற முடியவில்லை"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "நீங்கள் சேமித்த இடுகைகளை ஏற்ற முடியவில்லை"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("பரவலாக்கப்பட்ட ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("சிக்கல் தீர்த்தல்"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("குழுக்கள்"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("குழுக்கள் இல்லை"),
@@ -1313,16 +1145,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("பின் செய்யப்பட்டது"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("விரும்பியவை"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("சேமித்தவை"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("இங்கே இன்னும் எதுவும் இல்லை"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "சில கணக்குகளைப் பின்தொடருங்கள், அவற்றின் இடுகைகள் இங்கே தோன்றும்."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "நீங்கள் பின்தொடர்பவர்களிடமிருந்து எதுவும் இல்லை"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "மக்கள் எழுத எழுத இடுகைகள் இங்கே தோன்றும்."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("மங்குகிறது"),
       "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("ஆர்வமில்லை"),
@@ -1341,16 +1171,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "இவை முகப்பையும் ஆராய்வையும், பெரும்பாலும் ஒவ்வொரு இடுகையும் எதைப் பற்றியது என்பதைக் கொண்டு வடிவமைக்கின்றன. ஒவ்வொன்றும் ஒவ்வொரு மாதமும் பாதியாகக் குறைந்து, ஆறு மாதங்களுக்குப் பிறகு கணக்கில் வராது. இப்போதே நிறுத்த ஒன்றை அகற்றவும்."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "கிளிப் உள்ள இடுகைகள் இங்கே தோன்றும்."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
+          MessageLookupByLibrary.simpleMessage("இன்னும் வீடியோக்கள் இல்லை"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("கருத்து"),
       "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
+          "Kyron-இல் நபர்களைக் கண்டறியுங்கள்"),
       "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ஒரு கணக்கிலிருந்து"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("நபர்களைச் சேர்"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("சேர்"),
       "ui_group_add_name":
@@ -1442,32 +1270,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("நீங்கள்"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("நீங்கள் பார்வையாளர்"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("உதவி"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "குறித்துக்கொண்டோம். உங்களுக்கு என்ன காட்ட வேண்டும் எனத் தேர்ந்தெடுக்க இது உதவுகிறது."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("சேர்"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("சேர்ந்தார்"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("மொழி"),
       "ui_language_detail": MessageLookupByLibrary.simpleMessage(
           "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("சட்டம்"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("விரும்பு"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("விரும்பிய இடுகைகள்"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "நீங்கள் விரும்பிய இடுகைகள் இங்கே தோன்றும், புதியவை முதலில்."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("இணைப்பு நகலெடுக்கப்பட்டது"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "இனி அவர்களின் இடுகைகளைப் பார்க்க மாட்டீர்கள். அவர்களுக்குத் தெரிவிக்கப்படாது."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் விருப்பங்கள் இல்லை"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "அந்த வடிப்பான்களுக்குப் பொருந்தும் இடுகைகள் இல்லை."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("இன்னும் சேமித்தவை இல்லை"),
       "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
           "உங்கள் கணக்கு புதுப்பிக்கப்பட்டது"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1527,13 +1353,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "உங்கள் கணக்குக்கு எச்சரிக்கை உள்ளது"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("நேற்று"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("முடிந்தது"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("தவிர்"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("இது ஏற்கனவே திறக்கப்பட்டது."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("காலாவதியானது"),
@@ -1550,23 +1372,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("ஒருமுறை பார்க்க அனுப்பு"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("பார்க்கத் தட்டவும்"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("இடைநிறுத்து"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("இயக்கு"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "இது உங்கள் சுயவிவரத்திலிருந்தும் அனைவரின் ஊட்டங்களிலிருந்தும் அகற்றப்படும். அதன் பதில்களும் அதனுடன் போய்விடும்."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("இடுகை நீக்கப்பட்டது"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("இடுகை மறைக்கப்பட்டது"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("இடுகை உரை நகலெடுக்கப்பட்டது"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("இடையே இடுகையிடப்பட்டது"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "மறைக்கப்பட்டது. இதுபோன்றவற்றைக் குறைவாகக் காட்டுவோம்."),
+      "ui_preferences":
+          MessageLookupByLibrary.simpleMessage("விருப்பத்தேர்வுகள்"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("தனியுரிமை"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "ஏதாவது சேர்க்க வேண்டுமா? (விருப்பத்தேர்வு)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1667,76 +1489,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("ஸ்பேம்"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("வன்முறை அல்லது அச்சுறுத்தல்"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("சேமித்த இடுகைகள்"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "ஓர் இடுகையை இங்கே வைத்திருக்க அதன் காப்பக ஐகானைத் தட்டவும். சேமித்தவற்றை நீங்கள் மட்டுமே பார்க்க முடியும்."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "ஹேண்டில் அல்லது காட்சிப் பெயர் மூலம் தேடுங்கள்."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("அழி"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "இடுகையிடப்பட்ட அனைத்திலும் தேடு"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("வடிப்பான்கள்"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("நபர்களைத் தேடு"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("இடுகைகளைத் தேடு"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("அமைப்புகள்"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("ஆப் & சாதனம்"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("உள்ளடக்கம் & காட்சி"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
+          MessageLookupByLibrary.simpleMessage("தரவுச் சேமிப்பு"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("உங்கள் எண்ணங்களைப் பகிருங்கள்"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("உதவிக் கட்டுரைகளைப் பார்"),
       "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          "உங்கள் மொழியைத் தேர்ந்தெடுங்கள்"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "நீங்கள் யாரை முடக்கினீர்கள் அல்லது தடுத்தீர்கள்"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("அறிவிப்பு விருப்பத்தேர்வுகள்"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "உங்கள் சுயவிவரம் மற்றும் தொடர்பு விவரங்கள்"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "உங்கள் கணக்கிற்குத் திரும்ப மீண்டும் உள்நுழைய வேண்டும்."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("பாதுகாப்பு அமைப்புகள்"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லை உறுதிப்படுத்து"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("ஒரே வரியில்"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("புதிய மின்னஞ்சல் முகவரி"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("புதிய கடவுச்சொல்"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("என்ன நடந்தது"),
       "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          "எங்கள் குழுவிடம் உதவி பெறுங்கள்"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("பகிர்"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("மேற்கோள் காட்டு"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("செய்தியில் அனுப்பு"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron இல் உள்ளவர்களுக்கு"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("இந்த இடுகையைப் பகிர்"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("எதைப் பற்றியது"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1833,54 +1644,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("உங்கள் இடுகை"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("உங்கள் பதில்"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("சேவை விதிமுறைகள்"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("இந்த இடுகை"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("திரி முடக்கப்பட்டது"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("மீண்டும் முயலவும்"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("ஒலியை அணை"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("ஒலியை இயக்கு"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("குறைந்தது இரண்டு எழுத்துகள்."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("செயல்தவிர்"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "சொற்கள், அல்லது வடிகட்டி: ஒரு கணக்கு, தேதி வரம்பு, அல்லது இடுகையில் உள்ளவை."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("மறுபதிவைச் செயல்தவிர்"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("கடவுச்சொல்லைப் புதுப்பி"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("வேறு முகவரியைப் பயன்படுத்து"),
+      "username": MessageLookupByLibrary.simpleMessage("பயனர்பெயர்"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "பயனர்பெயர் சிறிய எழுத்துகளில் இருக்க வேண்டும் (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("வீடியோ"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("இணை"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("இணைக்கத் தயார்"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("குரல் இடுகையைப் பதிவுசெய்"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("சேமிக்கிறது…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("நிறுத்து"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("என்ன நடந்தது"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "என்ன நடந்தது, நாங்கள் எதைப் பார்க்க வேண்டும்?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("இந்தப் படத்தில் என்ன உள்ளது?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("இது எதற்காக? (விருப்பம்)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "நீங்கள் என்ன செய்தீர்கள், என்ன எதிர்பார்த்தீர்கள், என்ன நடந்தது"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "இது நடந்தபோது நீங்கள் என்ன செய்துகொண்டிருந்தீர்கள்."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("நீங்கள் பதிலளித்தீர்கள்"),
       "dmReplied": (Object a0) => "$a0 பதிலளித்தார்",
@@ -2014,7 +1818,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "அனுப்பப்பட்டது, ஆனால் அனைவருக்கும் அல்ல."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "அனுப்ப முடியவில்லை. மீண்டும் முயலவும்."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("பின்தொடர்பவர்"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("வடிகட்டி"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("அனைத்தும்"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("படிக்காதவை"),

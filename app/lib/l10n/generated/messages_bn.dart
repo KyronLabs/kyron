@@ -39,12 +39,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("পোস্ট করা হয়েছে"),
       "analytics_saves": MessageLookupByLibrary.simpleMessage("সংরক্ষণ"),
       "analytics_viewers": MessageLookupByLibrary.simpleMessage("দর্শক"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("প্রতিদিনের দর্শক"),
       "and": MessageLookupByLibrary.simpleMessage("এবং"),
       "answerNumber": (Object a0) => "উত্তর ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR লেন্স"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "সিস্টেম লগ সংযুক্ত করুন",
       ),
@@ -52,11 +51,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("রাউন্ড ট্রিপ"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("টোকেন যাচাই"),
       "audit_ar_lens_screen_try_again_cdec8872":
           MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
       "audit_browser_engine_window_stop_39c04883":
@@ -65,120 +64,104 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "এখন সম্প্রচার শুরু করলে আপনি এমন একটি ঘরে থাকবেন যেখানে কেউ"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("একটি কমিউনিটি শুরু করুন"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("এটি কীসের জন্য? (ঐচ্ছিক)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("আবার ঢুকতে পারবে না।"),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
-      "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
-      "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
-      "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
-      "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
-      "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
-      "audit_drafts_screen_just_now_17a8d48a":
           MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+              "এই তালিকা থেকে আবার ঢুকতে পারবে না।"),
+      "audit_community_manage_screen_closing_it_f490fb09":
+          MessageLookupByLibrary.simpleMessage("এটি বন্ধ করলে"),
+      "audit_community_screen_join_first_7798cafc":
+          MessageLookupByLibrary.simpleMessage("আগে যোগ দিন"),
+      "audit_composer_screen_coming_soon_431fd23d":
+          MessageLookupByLibrary.simpleMessage("শীঘ্রই আসছে"),
+      "audit_composer_screen_posting_as_you_45d69932":
+          MessageLookupByLibrary.simpleMessage("আপনি হিসেবে পোস্ট করছেন"),
+      "audit_create_fab_post_in_this_community_0a42daf2":
+          MessageLookupByLibrary.simpleMessage("এই কমিউনিটিতে পোস্ট করুন"),
+      "audit_drafts_screen_just_now_17a8d48a":
+          MessageLookupByLibrary.simpleMessage("এইমাত্র"),
       "audit_empty_state_try_again_80ef48cd":
           MessageLookupByLibrary.simpleMessage(
         "আবার চেষ্টা করুন",
       ),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("বিষয় ১"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("আপনার জন্য"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("কিছু আছে।"),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
+          MessageLookupByLibrary.simpleMessage("এখন সেদিকে যাচ্ছে।"),
       "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
         ", না",
       ),
       "audit_inline_video_am_i_moving_4618f78c":
           MessageLookupByLibrary.simpleMessage("আমি কি কাঁপছি"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("শব্দ বন্ধ করুন"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("শব্দ চালু করুন"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("আপনার জন্য"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("আপনার ট্যাব"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("চিহ্ন (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("প্রতিদিনের দর্শক"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join(\", \")"),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("লোড করা যায়নি"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("এই পোস্ট"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("কিছু যোগ করতে চান? (ঐচ্ছিক)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("এই পোস্ট"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট থেকে"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("লগ আউট"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("আপনার অ্যাকাউন্ট"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড নিশ্চিত করুন"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("এখন নয়"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("লোড হচ্ছে…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("পোস্ট হচ্ছে…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("৩ ঘণ্টা আগে"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("স্টোরির লিংক কপি করুন"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("আপনার স্টোরি"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "আপনার অ্যাকাউন্ট, আপনার পোস্ট এবং আপনি যা ট্যাপ করেন, যাতে"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("একটি বিষয় যোগ করুন"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
+          MessageLookupByLibrary.simpleMessage("নিজের।"),
       "authorBlocked": (Object a0) => "${a0} ব্লক করা হয়েছে",
       "authorPostsHidden": (Object a0) => "আপনি ${a0}-এর পোস্ট দেখবেন না",
       "block": MessageLookupByLibrary.simpleMessage("ব্লক করুন"),
@@ -275,7 +258,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "আপনার প্রোফাইল তৈরি করুন",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR লেন্স"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("লাইভ শুরু করুন"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("টেক্সট পোস্ট"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("ভয়েস পোস্ট"),
@@ -350,7 +333,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
         "গাইড ও সাধারণ প্রশ্নের উত্তর",
       ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
+      "handle": MessageLookupByLibrary.simpleMessage("হ্যান্ডেল"),
       "helpAndSupport":
           MessageLookupByLibrary.simpleMessage("সহায়তা ও সাপোর্ট"),
       "helpCentre": MessageLookupByLibrary.simpleMessage("সহায়তা কেন্দ্র"),
@@ -480,16 +463,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
         "স্ট্রিপে সর্বোচ্চ পাঁচটি ট্যাব রাখা যায়। একটি অপসারণ করে আরেকটি যোগ করুন।",
       ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("অনুসরণ করছেন"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("আপনার জন্য"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
         "হ্যাশট্যাগ এখানে দেখা দেয় যখন মানুষ এগুলি ব্যবহার শুরু করে।",
       ),
       "interest_trending_now": MessageLookupByLibrary.simpleMessage(
         "এখন ট্রেন্ডিং",
       ),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("ভিডিওসমূহ"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("আপনার ট্যাব"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
         "এটি আপনাদের উভয়ের জন্য অদৃশ্য হবে।",
       ),
@@ -501,14 +485,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("সম্পাদনা চালিয়ে যান"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron-এর শব্দগুলি এখনও অনুবাদ হচ্ছে, তাই অধিকাংশ স্ক্রীন এখনও ইংরেজিতেই থাকবে।",
-      ),
+          "Kyron-এর স্ক্রিনগুলো আপনার ভাষায় আছে। কোনো শব্দ ভুল মনে হলে, প্রতিক্রিয়া পাঠান-এর মাধ্যমে আমাদের জানান।"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("ভাষা"),
       "leave": MessageLookupByLibrary.simpleMessage("ছেড়ে যান"),
       "leaveCommunity": (Object a0) => "${a0} ছেড়ে যাবেন?",
       "letBackIn": MessageLookupByLibrary.simpleMessage("আবার ঢুকতে দিন"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("১টি পৃষ্ঠা খোলা"),
       "literaladdAClip": MessageLookupByLibrary.simpleMessage(
         "একটি ক্লিপ যোগ করুন",
       ),
@@ -620,7 +604,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
           "সাইন আউট করা যায়নি: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
+      "literalcountPagesOpen": (Object a0) => "${a0}টি পৃষ্ঠা খোলা",
       "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("কভার ফটো"),
       "literaldataSaver": MessageLookupByLibrary.simpleMessage("ডাটা সেভার"),
       "literaldeletePost": MessageLookupByLibrary.simpleMessage("পোস্ট মুছুন"),
@@ -869,7 +853,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "এই পোস্ট এবং এর উত্তর দেখতে বন্ধ করুন",
       ),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "স্টোরি সারি, ${a0}টি আইটেম",
       "literalswitchCamera": MessageLookupByLibrary.simpleMessage(
         "ক্যামেরা পরিবর্তন করুন",
       ),
@@ -1183,15 +1167,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
         "কম্পোজারে পোস্ট বাটন নেই",
       ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("গাঢ়"),
       "theme_dark_detail": MessageLookupByLibrary.simpleMessage("সবসময় ডার্ক"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("আবছা"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
         "একটি নরম ডার্ক, কালো নয় বরং নীল-ধূসর",
       ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("হালকা"),
       "theme_light_detail": MessageLookupByLibrary.simpleMessage("সবসময় লাইট"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("সিস্টেম"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "ফোনের নিজস্ব লাইট বা ডার্ক সেটিং অনুসরণ করুন",
       ),
@@ -1200,15 +1184,12 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "অনুবাদ এখনও গঠিত হয়নি। আজ আপনার ফিডে কিছুই অনূদিত হচ্ছে না; এটি পরে জন্য মনে রাখা হবে।",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron-এর নিজস্ব শব্দগুলো এখনও অনুবাদ হচ্ছে, তাই অধিকাংশ স্ক্রীন আপাতত ইংরেজিতেই থাকবে। আজ যা বদলেছে: Flutter যে অংশগুলো আঁকে সেগুলো, তারিখ ও সংখ্যা, এবং রাইট-টু-লেফট ভাষাগুলোর জন্য অ্যাপ কিভাবে প্রস্ফুটিত হবে।",
-      ),
+          "এটি Kyron-এর নিজস্ব শব্দ, Flutter নিজে যে ইন্টারফেস অংশগুলো আঁকে, তারিখ ও সংখ্যা, এবং ডান থেকে বাম দিকে লেখা ভাষার জন্য অ্যাপের বিন্যাসের দিক পরিবর্তন করে।"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("আবার চেষ্টা করুন"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("গোপনীয়তা নীতি"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("পরিষেবার শর্তাবলি"),
       "ui_account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
       "ui_after": MessageLookupByLibrary.simpleMessage("পরে"),
       "ui_app_device": MessageLookupByLibrary.simpleMessage("অ্যাপ ও ডিভাইস"),
@@ -1339,7 +1320,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("আপনি"),
       "ui_communities": MessageLookupByLibrary.simpleMessage("কমিউনিটি"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("এটি কীসের জন্য? (ঐচ্ছিক)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("পোস্ট:"),
       "ui_content_display": MessageLookupByLibrary.simpleMessage(
         "কনটেন্ট ও প্রদর্শন",
@@ -1356,9 +1337,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
         "আপনার সংরক্ষিত পোস্ট লোড করা যায়নি",
       ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("বিকেন্দ্রীভূত আইডি"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("ডায়াগনস্টিক্স"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("গ্রুপ"),
       "ui_dm_groups_none":
@@ -1769,8 +1749,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
+              "আপনার অ্যাকাউন্টে ফিরে যেতে আবার সাইন ইন করতে হবে।"),
       "ui_settings_security": MessageLookupByLibrary.simpleMessage(
         "সুরক্ষা সেটিংস",
       ),

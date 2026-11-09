@@ -44,7 +44,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("und"),
       "answerNumber": (Object a0) => "Antwort ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-Linse"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Systemprotokoll anhängen",
       ),
@@ -121,9 +121,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Deine Tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
       "audit_password_requirements_symbol_322aed1e":
@@ -277,7 +276,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Erstelle dein Profil",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-Linse"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("Live gehen"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("Textbeitrag"),
       "create_voice_post":
@@ -502,8 +501,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("Weiter bearbeiten"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Die Worte von Kyron werden noch übersetzt, daher bleiben die meisten Bildschirme vorerst auf Englisch.",
-      ),
+          "Die Bildschirme von Kyron sind in deiner Sprache. Wenn ein Wort falsch klingt, sag es uns über Feedback senden."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Sprachen"),
       "leave": MessageLookupByLibrary.simpleMessage("Verlassen"),
@@ -1070,7 +1068,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
         "Tippe zum Ändern",
       ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Webseite"),
       "pushNotifications": MessageLookupByLibrary.simpleMessage(
         "Push-Benachrichtigungen",
       ),
@@ -1217,8 +1215,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Die Übersetzungsfunktion ist noch nicht implementiert. Nichts in Ihrem Feed wird heute übersetzt; diese Einstellung wird für später gespeichert.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyrons eigene Texte werden noch übersetzt, daher bleiben die meisten Bildschirme vorerst auf Englisch. Was sich dadurch heute ändert: die Teile der Oberfläche, die Flutter selbst zeichnet, Datums- und Zahlenformate sowie die Ausrichtung der App für rechts-nach-links-Sprachen.",
-      ),
+          "Damit änderst du Kyrons eigene Texte, die Teile der Oberfläche, die Flutter selbst zeichnet, Datums- und Zahlenformate sowie die Leserichtung der App bei Sprachen, die von rechts nach links geschrieben werden."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Datenschutzerklärung",
@@ -1357,7 +1354,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Sprachnachricht aufnehmen"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Du"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Communitys"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
           MessageLookupByLibrary.simpleMessage("Wofür ist es? (optional)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Beiträge:"),
@@ -1506,7 +1503,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Du bist nicht mehr in dieser Gruppe."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Umbenennen"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Mitglied"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Zuschauer"),
@@ -2311,7 +2309,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_edited": MessageLookupByLibrary.simpleMessage("Bearbeitet"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Mehr"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Folge ich"),
-      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Beliebt"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Neueste"),
       "ui_sort_comments":
           MessageLookupByLibrary.simpleMessage("Kommentare sortieren: \$order"),

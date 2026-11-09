@@ -44,7 +44,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("και"),
       "answerNumber": (Object a0) => "Απάντηση ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("Φακός AR"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Επισύναψη αρχείου καταγραφής συστήματος",
       ),
@@ -123,9 +123,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Οι καρτέλες σας"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
       "audit_password_requirements_symbol_322aed1e":
@@ -280,7 +279,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Δημιουργήστε το προφίλ σας",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Φακός AR"),
       "create_go_live":
           MessageLookupByLibrary.simpleMessage("Μετάδοση ζωντανά"),
       "create_text_post": MessageLookupByLibrary.simpleMessage(
@@ -517,8 +516,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Τα κείμενα του Kyron μεταφράζονται ακόμα, οπότε οι περισσότερες οθόνες παραμένουν προς το παρόν στα Αγγλικά.",
-      ),
+          "Οι οθόνες του Kyron είναι στη γλώσσα σου. Αν κάποια λέξη δεν ακούγεται σωστά, πες μας μέσω της επιλογής Αποστολή σχολίων."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Γλώσσες"),
       "leave": MessageLookupByLibrary.simpleMessage("Αποχώρηση"),
@@ -1268,8 +1266,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Η μετάφραση δεν έχει ακόμα υλοποιηθεί. Τίποτα στο feed σας δεν μεταφράζεται σήμερα· αυτό θα θυμάται όταν λειτουργήσει.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Τα ίδια τα λόγια του Kyron μεταφράζονται ακόμα, οπότε οι περισσότερες οθόνες παραμένουν στα Αγγλικά προς το παρόν. Τι αλλάζει σήμερα: τα μέρη της διεπαφής που σχεδιάζει το Flutter, οι ημερομηνίες και οι αριθμοί, και η κατεύθυνση διάταξης της εφαρμογής για γλώσσες που γράφονται από δεξιά προς τα αριστερά.",
-      ),
+          "Αυτό αλλάζει τις λέξεις του ίδιου του Kyron, τα μέρη της διεπαφής που σχεδιάζει το ίδιο το Flutter, τις ημερομηνίες και τους αριθμούς, καθώς και την κατεύθυνση διάταξης της εφαρμογής για γλώσσες που γράφονται από δεξιά προς τα αριστερά."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Δοκιμάστε ξανά"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Πολιτική Απορρήτου",
@@ -1431,9 +1428,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Δεν ήταν δυνατή η φόρτωση των αποθηκευμένων σας δημοσιεύσεων",
       ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Αποκεντρωμένο αναγνωριστικό"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Διαγνωστικά"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Ομάδες"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Καμία ομάδα"),

@@ -7,249 +7,201 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("ពាក្យ ឃ្លា ឬ #ស្លាក"),
+      "about": MessageLookupByLibrary.simpleMessage("អំពី"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("បន្ថែមចម្លើយ"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("បន្ថែមភាសា…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("យល់ព្រម និងបន្ត"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("មានគណនី Kyron រួចហើយ?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("មតិ"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("មនុស្សខុសៗគ្នា មិនមែនចំនួនបើក"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("ការចូលរួម"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("ចូលចិត្ត"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្នកមើល"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "មិនទាន់មាននរណាបើកការបង្ហោះនេះទេ។"),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("បានបង្ហោះ"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("ការរក្សាទុក"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("អ្នកមើល"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("អ្នកមើលក្នុងមួយថ្ងៃ"),
+      "and": MessageLookupByLibrary.simpleMessage("និង"),
+      "answerNumber": (Object a0) => "ចម្លើយ ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("កញ្ចក់ AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("ភ្ជាប់កំណត់ហេតុកម្មវិធី"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("ពេលទៅមក"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("ការផ្ទៀងផ្ទាត់ថូខឹន"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "ការចាប់ផ្ដើមផ្សាយឥឡូវនេះនឹងដាក់អ្នកក្នុងបន្ទប់ដែលគ្មាននរណាអាច"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("ចាប់ផ្ដើមសហគមន៍"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("សម្រាប់អ្វី? (ស្រេចចិត្ត)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("ចូលវិញបានទេ។"),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("ចូលវិញពីបញ្ជីនេះបានទេ។"),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("ការបិទវា"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("ចូលរួមជាមុន"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("ឆាប់ៗនេះ"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("បង្ហោះក្នុងនាមអ្នក"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("បង្ហោះក្នុងសហគមន៍នេះ"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("ទើបតែ"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("ប្រធានបទ 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("សម្រាប់អ្នក"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("មានអ្វីមួយ។"),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("កំពុងធ្វើដំណើរទៅទីនោះ។"),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", មិនមែន"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("តើខ្ញុំកំពុងផ្លាស់ទី"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("បិទសំឡេង"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("បើកសំឡេង"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("សម្រាប់អ្នក"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("ផ្ទាំងរបស់អ្នក"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("និមិត្តសញ្ញា (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("អ្នកមើលក្នុងមួយថ្ងៃ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកបាន"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះនេះ"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("មានអ្វីបន្ថែមទេ? (ស្រេចចិត្ត)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះនេះ"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ពីគណនីមួយ"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("ចាកចេញ"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នក"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("បញ្ជាក់ពាក្យសម្ងាត់"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនមែនឥឡូវ"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("កំពុងផ្ទុក…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("កំពុងបង្ហោះ…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 ម៉ោងមុន"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("ចម្លងតំណរឿង"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("រឿងរបស់អ្នក"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "គណនីរបស់អ្នក ការបង្ហោះរបស់អ្នក និងអ្វីដែលអ្នកចុច ដើម្បីឱ្យ"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("បន្ថែមប្រធានបទ"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("ផ្ទាល់ខ្លួន។"),
+      "authorBlocked": (Object a0) => "បានទប់ស្កាត់ ${a0}",
+      "authorPostsHidden": (Object a0) => "អ្នកនឹងមិនឃើញការបង្ហោះពី ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("ទប់ស្កាត់"),
+      "blockAuthor": (Object a0) => "ទប់ស្កាត់ ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("បានចម្លងព័ត៌មានកំណែ"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("ដោយបន្ត អ្នកយល់ព្រមនឹង"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "ដោយបន្ត អ្នកយល់ព្រមនឹងលក្ខខណ្ឌប្រើប្រាស់ និងគោលការណ៍ឯកជនភាពរបស់យើង"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("ដោយចុះឈ្មោះ អ្នកយល់ព្រមនឹង"),
+      "cancel": MessageLookupByLibrary.simpleMessage("បោះបង់"),
       "change": MessageLookupByLibrary.simpleMessage("ប្ដូរ"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("ប្ដូរអ៊ីមែល"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "ផ្ទៀងផ្ទាត់គណនីពីអ៊ីមែលរបស់អ្នក។"),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "ពិនិត្យថាតើ Kyron អាចភ្ជាប់បានឬទេ"),
+      "clear": MessageLookupByLibrary.simpleMessage("សម្អាត"),
+      "close": MessageLookupByLibrary.simpleMessage("បិទ"),
+      "closeCommunity": (Object a0) => "បិទ ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("បិទ"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("បិទសហគមន៍នេះ"),
+      "communities": MessageLookupByLibrary.simpleMessage("សហគមន៍"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
-      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "ស្វែងរកមួយក្នុង រុករក ឬចាប់ផ្ដើមរបស់អ្នកផ្ទាល់។"),
+      "composer_placeholder_hot_take":
+          MessageLookupByLibrary.simpleMessage("បោះមតិក្ដៅមួយ (ឬក្ដៅឧណ្ហៗ)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("តើអ្នកកំពុងគិតអ្វី?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "និយាយអ្វីដែលមានតែអ្នកអាចនិយាយបាន…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("នេះជាសញ្ញារបស់អ្នក៖ បង្ហោះទៅ"),
+      "composer_placeholder_think":
+          MessageLookupByLibrary.simpleMessage("វាយ និយាយ ឬគិតខ្លាំងៗ"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("បញ្ជាក់ពាក្យសម្ងាត់"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("ទាក់ទងផ្នែកជំនួយ"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "ការបង្ហោះមិនទាន់មានភាសានៅឡើយ ដូច្នេះនេះមិនទាន់ត្រងព័ត៌មានរបស់អ្នកទេ។ ជម្រើសរបស់អ្នកនឹងរក្សាទុករហូតដល់ពេលនោះ។"),
+      "continueAction": MessageLookupByLibrary.simpleMessage("បន្ត"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("បន្តដោយអ៊ីមែល"),
+      "copy": MessageLookupByLibrary.simpleMessage("ចម្លង"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("ចម្លងរបាយការណ៍ជំនួសវិញ"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "មិនអាចបើកការចូលដោយ Google បានទេ។ ${a0}",
+      "couldNotSignOut": (Object a0) => "ចាកចេញមិនបាន: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("មិនអាចថតរូបបានទេ។"),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "បង្ហាញនៅលើប្រវត្តិរូបរបស់អ្នក និងនៅក្រោមការបង្ហោះរបស់អ្នក។"),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +212,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "បង្ហាញនៅលើប្រវត្តិរូបរបស់អ្នក និងនៅក្រោមការបង្ហោះរបស់អ្នក។ ពេលអ្នកឃើញការបង្ហោះរបស់នរណាម្នាក់ ប្រទេសរបស់អ្នកត្រូវបានរាប់ក្នុងការយល់ដឹងរបស់គេ តែក្នុងក្រុមចាប់ពីប្រាំនាក់ឡើងទៅប៉ុណ្ណោះ ហើយមិនដែលដាក់ឈ្មោះឡើយ។"),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("ពីការកំណត់ទូរសព្ទរបស់អ្នក"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("បង្កើត"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("បង្កើតគណនី"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("បង្កើតគណនីរបស់អ្នក"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("បង្កើតប្រវត្តិរូបរបស់អ្នក"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("កញ្ចក់ AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("ផ្សាយផ្ទាល់"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះអត្ថបទ"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះសំឡេង"),
+      "delete": MessageLookupByLibrary.simpleMessage("លុប"),
+      "deleteThisComment": MessageLookupByLibrary.simpleMessage("លុបមតិនេះ?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("លុបការបង្ហោះនេះ?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("ពិពណ៌នាឯកសារភ្ជាប់នេះ"),
+      "description": MessageLookupByLibrary.simpleMessage("ការពិពណ៌នា"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("បានចម្លង DID ទៅឃ្លីបបត"),
       "done": MessageLookupByLibrary.simpleMessage("រួចរាល់"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "បិទកម្មវិធីកែក្រោយពេលសរសេរអ្វីមួយ ហើយអ្នកនឹងត្រូវបានផ្ដល់សេចក្ដីព្រាង។"),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} ថ្ងៃមុន"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("{hours} ម៉ោងមុន"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("ទើបតែ"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} នាទីមុន"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់បានសរសេរអ្វីទេ"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("ការស្ទង់មតិ មិនទាន់មានសំណួរ"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("សម្រង់ មិនទាន់មានអត្ថបទ"),
+      "drafts": MessageLookupByLibrary.simpleMessage("សេចក្ដីព្រាង"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("កែប្រវត្តិរូប"),
+      "email": MessageLookupByLibrary.simpleMessage("អ៊ីមែល"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងតាមអ៊ីមែល"),
+      "explore": MessageLookupByLibrary.simpleMessage("រុករក"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "ឧបករណ៍នេះមិនអាចតាមដានមុខបានទេ។"),
+      "feedTagDetail": (Object a0) => "មិនទាន់មានអ្វីបង្ហោះជាមួយ #${a0} នៅឡើយ។",
       "follow_author": MessageLookupByLibrary.simpleMessage("តាមដាន {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("អ្នកតាមដាន"),
+      "following": MessageLookupByLibrary.simpleMessage("កំពុងតាមដាន"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
-      "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("ភ្លេចពាក្យសម្ងាត់?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("ការទទួលជំនួយ"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("បន្តជាមួយ Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage("ចូលដោយ Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google ប្រគល់ការចូលដែលបានបញ្ចប់ទៅ Kyron វិញតាមតំណដែលមានតែ Android និង iOS ឆ្លើយតប ដូច្នេះលើ ${a0} កម្មវិធីរុករកគ្មានកន្លែងប្រគល់វាវិញទេ។\\n\\nបើអ្នកមានគណនី Kyron តាម Google រួចហើយ សូមជ្រើស បន្តដោយអ៊ីមែល ដោយប្រើអាសយដ្ឋានដដែល ហើយចុច ភ្លេចពាក្យសម្ងាត់៖ អ្នកនឹងទទួលបានតំណដើម្បីកំណត់ពាក្យសម្ងាត់។",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "ការចូលដោយ Google ត្រូវការកម្មវិធីទូរសព្ទ"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("ចុះឈ្មោះដោយ Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "មគ្គុទ្ទេសក៍ និងចម្លើយចំពោះសំណួរទូទៅ"),
+      "handle": MessageLookupByLibrary.simpleMessage("ឈ្មោះគណនី"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("ជំនួយ និងការគាំទ្រ"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("មជ្ឈមណ្ឌលជំនួយ"),
+      "home": MessageLookupByLibrary.simpleMessage("ទំព័រដើម"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("ក្នុងមួយបន្ទាត់"),
       "ins_account": MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នក"),
       "ins_act_community": MessageLookupByLibrary.simpleMessage("បើកសហគមន៍"),
       "ins_act_post": MessageLookupByLibrary.simpleMessage("សរសេរការបង្ហោះ"),
@@ -457,690 +395,552 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("ការបង្ហោះកំពូល"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("ធៀបនឹង {days} ថ្ងៃមុន"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមចំណាប់អារម្មណ៍"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("អូសដើម្បីរៀបលំដាប់"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "របារដាក់បានយ៉ាងច្រើនប្រាំផ្ទាំង។ ដកមួយចេញដើម្បីបន្ថែមមួយទៀត។"),
+      "interest_following": MessageLookupByLibrary.simpleMessage("កំពុងតាមដាន"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("សម្រាប់អ្នក"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "ហាសថេកនឹងបង្ហាញនៅទីនេះនៅពេលមនុស្សចាប់ផ្ដើមប្រើវា។"),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("ពេញនិយមឥឡូវនេះ"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("វីដេអូ"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("ផ្ទាំងរបស់អ្នក"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("វានឹងបាត់សម្រាប់អ្នកទាំងពីរ។"),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("វានឹងត្រូវដកចេញពីខ្សែ។"),
+      "join": MessageLookupByLibrary.simpleMessage("ចូលរួម"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("បន្តកែ"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "អេក្រង់របស់ Kyron ជាភាសារបស់អ្នក។ បើពាក្យណាមួយអានទៅមិនត្រូវ សូមប្រាប់យើងតាម ផ្ញើមតិកែលម្អ។"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("ភាសា"),
+      "leave": MessageLookupByLibrary.simpleMessage("ចាកចេញ"),
+      "leaveCommunity": (Object a0) => "ចាកចេញពី ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("អនុញ្ញាតឱ្យចូលវិញ"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("បើក 1 ទំព័រ"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("បន្ថែមឃ្លីប"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("បន្ថែម GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("បន្ថែមហាសថេក"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("បន្ថែមរូបថត"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមការស្ទង់មតិ"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("បន្ថែមវីដេអូ"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមចំណាប់អារម្មណ៍"),
+      "literaladdLabelAsATab": (Object a0) => "បន្ថែម ${a0} ជាផ្ទាំង",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("ភាសាកម្មវិធី"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("កំណែកម្មវិធី"),
+      "literalblockAuthor": (Object a0) => "ទប់ស្កាត់ ${a0}",
+      "literalblockAuthor2": (Object a0) => "ទប់ស្កាត់ ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("ទប់ស្កាត់គណនីនេះ?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("បោះបង់ការឆ្លើយតប"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("ពិនិត្យម្ដងទៀត"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសពីវិចិត្រសាល"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("សម្អាតឃ្លាំងសម្ងាត់"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("បិទទំព័រទាំងអស់"),
+      "literalcloseTabLabel": (Object a0) => "បិទ ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("បិទកម្មវិធីរុករក"),
+      "literalcloseWidgetCommunityName": (Object a0) => "បិទ ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("ទាក់ទងផ្នែកគាំទ្រ"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("ភាសាខ្លឹមសារ"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("ចម្លងតំណ"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("ចម្លងតំណការបង្ហោះ"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          MessageLookupByLibrary.simpleMessage("ចម្លងអត្ថបទការបង្ហោះ"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("ចម្លងអត្ថបទ"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកសហគមន៍បាន"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុក GIF បាន"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការជូនដំណឹងបាន"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកសមាជិកបាន"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "មិនអាចផ្ទុកការបង្ហោះទាំងនេះបាន"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការសន្ទនានេះបាន"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកបញ្ជីនេះបាន"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការបង្ហោះនេះបាន"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកការឆ្លើយតបនេះបាន"),
+      "literalcouldNotLoadTrendingTags":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកស្លាកពេញនិយមបាន"),
       "literalcouldNotLoadYourCommunities":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកសហគមន៍របស់អ្នកបាន"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកសាររបស់អ្នកបាន"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("មិនអាចបើកសហគមន៍នេះបាន"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("មិនអាចបង្ហោះការឆ្លើយតបបានទេ។"),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("ការស្វែងរកមិនដំណើរការ"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "ចាកចេញមិនបាន: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "បើក ${a0} ទំព័រ",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("រូបថតគម្រប"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("សន្សំទិន្នន័យ"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("លុបការបង្ហោះ"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកមនុស្ស"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("កុំឆ្លើយតប"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("បានរក្សាទុកសេចក្ដីព្រាង"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ញើមតិកែលម្អឥឡូវនេះទេ"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("ទំហំអក្សរ"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់រៀបចំ GIF"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("ផ្ដល់ទៅកម្មវិធីផ្សេង"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("លាក់ពាក្យសម្ងាត់"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("លាក់ការបង្ហោះនេះ"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "លាក់វា ហើយស្នើឱ្យយើងបង្ហាញបែបនេះតិចជាងមុន"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("របៀបប្រព្រឹត្ត"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("បន្តសរសេរ"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron មិនបានឆ្លើយតប"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallabelDate": (Object a0) => "កាលបរិច្ឆេទ \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "ចាកចេញពី ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, កញ្ចក់មុខ",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះដែលបានចូលចិត្ត"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage("បានចម្លងតំណ"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("តែងតាំងជាអ្នកសម្របសម្រួល"),
+      "literalmuteAuthor": (Object a0) => "បិទសំឡេង ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("បិទសំឡេងខ្សែនេះ"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("បិទសំឡេងពាក្យ ឬស្លាក"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "គណនីដែលបានបិទសំឡេង និងទប់ស្កាត់"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "បានបិទសំឡេង។ អ្នកនឹងមិនទទួលការជូនដំណឹងទេ។"),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "គ្មានកម្មវិធីណាមួយលើឧបករណ៍នេះបើកតំណ ${a0} ទេ។",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "គ្មានកម្មវិធីរុករកណាមួយលើឧបករណ៍នេះទទួលយកតំណទេ។"),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("មិនទាន់មាន DID"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("គ្មានសេចក្ដីព្រាង"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានចំណាប់អារម្មណ៍"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការចូលចិត្ត"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានសារ"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្នកតាមដានថ្មី"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការបង្ហោះ"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការឆ្លើយតប"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការបង្ហោះឡើងវិញ"),
+      "literalnoTrendingTagMatchesThat":
+          MessageLookupByLibrary.simpleMessage("គ្មានស្លាកពេញនិយមត្រូវគ្នា"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("រកមិនឃើញនរណាម្នាក់"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("គ្មាននរណាត្រូវបានដកចេញ"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មាននរណានៅទីនេះ"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("មិនចាប់អារម្មណ៍"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("រកមិនឃើញអ្វីទេ"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្វីពេញនិយម"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្វីក្នុងកំណត់ហេតុ"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("គ្មានលទ្ធផលត្រូវគ្នា"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីបិទសំឡេង"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្វីមើល"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("គ្មានសារមិនទាន់អាន"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("មានតែម្ចាស់ទេដែលអាចប្ដូរនេះ"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("បើកការឆ្លើយតប"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("បើកអ៊ីមែលពី Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់ និងការចូល"),
+      "literalpostInCommunityName": (Object a0) => "បង្ហោះទៅ ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "បង្ហោះទៅ ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+              "បង្ហោះវាជាមួយពាក្យរបស់អ្នកនៅខាងលើ"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("ភាសាចម្បង"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងរុញ"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("កំពុងពិនិត្យ…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("ថតការបង្ហោះជាសំឡេង"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("ថតម្ដងទៀត"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("ដកចេញពីអ្នកសម្របសម្រួល"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("ដកចេញពីសហគមន៍"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("ដកចេញពីការរក្សាទុក"),
+      "literalremoveLabel": (Object a0) => "ដក ${a0} ចេញ",
+      "literalremoveLanguageEnglishname": (Object a0) => "ដក ${a0} ចេញ",
+      "literalremoveMemberDisplayname": (Object a0) => "ដក ${a0} ចេញ?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("ដកការស្ទង់មតិចេញ"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("ដកចម្លើយនេះចេញ"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("លុបការសន្ទនានេះ"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("ដកការស្ទង់មតិនេះចេញ"),
+      "literalreportAuthor": (Object a0) => "រាយការណ៍ ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("រាយការណ៍ការបង្ហោះ"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("ផ្ញើលេខកូដម្ដងទៀត"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះដែលបានរក្សាទុក"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("និយាយអ្វីមួយ"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "និយាយអ្វីមួយក្នុង ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("ការស្វែងរកបរាជ័យ"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("ផ្ញើម្ដងទៀត"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "ផ្ញើម្ដងទៀតក្នុង ${a0} វិនាទី",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("ផ្ដល់មតិកែលម្អ"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("ផ្ញើតំណ"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "បានផ្ញើ។ នោះគឺរបាយការណ៍ #${a0}។",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("កំណត់ពាក្យសម្ងាត់ ហើយបន្ត"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "ចែករំលែកកំណត់ហេតុជាមួយផ្នែកគាំទ្រ"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកសហគមន៍នេះ"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកទំព័រនេះ"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកប្រវត្តិរូបនេះ"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("ចែករំលែក…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកជាមួយសម្រង់"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("បង្ហាញបែបនេះច្រើនទៀត"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("បង្ហាញពាក្យសម្ងាត់"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("បង្ហាញលទ្ធផល"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("ចាប់ផ្ដើមសហគមន៍"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("ចាប់ផ្ដើមថត"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("បញ្ឈប់ការផ្ទុក"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "ឈប់មើលការបង្ហោះនេះ និងការឆ្លើយតបរបស់វា"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "ខ្សែរឿង ${a0} ធាតុ",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("ប្ដូរកាមេរ៉ា"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("ស្លាកនរណាម្នាក់"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("ថតរូប"),
       "literaltapTheBannerOrThePictureToChangeIt":
-          MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          MessageLookupByLibrary.simpleMessage("ចុចបដា ឬរូបថតដើម្បីប្ដូរ"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("ចុចតំណនៅក្នុងនោះ"),
+      "literaltapToAddAPhotoAndACover":
+          MessageLookupByLibrary.simpleMessage("ចុចដើម្បីបន្ថែមរូបថត និងគម្រប"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "មិនបានសម្រេច។ សូមព្យាយាមម្ដងទៀត។"),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុក GIF នោះបាន។"),
       "literalthatLinkIsNotOneThisCanOpen":
-          MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("មិនអាចបើកតំណនេះនៅទីនេះបានទេ។"),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("កាមេរ៉ាបានបិទ"),
+      "literalthisCommunity": MessageLookupByLibrary.simpleMessage("សហគមន៍នេះ"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("ការឆ្លើយតបនេះលែងមានហើយ"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("បកប្រែការបង្ហោះ"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("បិទសំឡេង"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("បើកសំឡេង"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("ប្រើមួយក្នុងចំណោមរបស់យើង"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "បានផ្ញើលេខកូដផ្ទៀងផ្ទាត់ម្ដងទៀត។"),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "ការផ្ទៀងផ្ទាត់បរាជ័យ: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("ផ្ទៀងផ្ទាត់អ៊ីមែល"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "អ្នកមើល ការចូលចិត្ត ការរក្សាទុក និងមតិ"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("អ្វីដែល Kyron រក្សាទុក"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("តើកម្មវិធីនេះកំពុងធ្វើអ្វី"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "អ្វីដែលអ្នកបានធ្វើ អ្វីដែលអ្នករំពឹង អ្វីដែលបានកើតឡើង "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("អ្វីដែលអ្នកបង្ហោះជារបស់អ្នក"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "តើ Kyron អាចភ្ជាប់បានឥឡូវនេះឬទេ"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("អ្នកណាអាចឆ្លើយតប"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("តើអ្នកចង់ស្លាកនរណា?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "អ្នកកំពុងតាមដានស្លាកពេញនិយមទាំងអស់រួចហើយ"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("អ្នកបានមើលទាំងអស់ហើយ"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("អ្នកមិននៅក្នុងសហគមន៍ណាមួយទេ"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("អ្នកបានចាកចេញហើយ។"),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "អ្នកបានចាកចេញពី ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("អ្នកមិនទាន់បានបង្ហោះអ្វីទេ"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("ផ្ទុកបន្ថែម"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("បានសម្អាតកំណត់ហេតុ"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("បានចម្លងកំណត់ហេតុ"),
+      "logIn": MessageLookupByLibrary.simpleMessage("ចូល"),
+      "logOut": MessageLookupByLibrary.simpleMessage("ចាកចេញ"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("ចាកចេញ?"),
+      "login": MessageLookupByLibrary.simpleMessage("ចូល"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "ចូលមិនបាន។ ពិនិត្យព័ត៌មានរបស់អ្នក។"),
+      "manage": MessageLookupByLibrary.simpleMessage("គ្រប់គ្រង"),
+      "menu": MessageLookupByLibrary.simpleMessage("ម៉ឺនុយ"),
+      "message": MessageLookupByLibrary.simpleMessage("សារ"),
+      "messages": MessageLookupByLibrary.simpleMessage("សារ"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "អ្នកបានអានការសន្ទនាទាំងអស់ហើយ។"),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "បើកប្រវត្តិរូបនរណាម្នាក់ ហើយចុច សារ ដើម្បីចាប់ផ្ដើមការសន្ទនា។"),
+      "mute": MessageLookupByLibrary.simpleMessage("បិទសំឡេង"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("បានបិទសំឡេង និងទប់ស្កាត់"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("ពាក្យ និងស្លាកដែលបានបិទសំឡេង"),
+      "name": MessageLookupByLibrary.simpleMessage("ឈ្មោះ"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("អេក្រង់ <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("អាសយដ្ឋានអ៊ីមែលថ្មី"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់ថ្មី"),
+      "newPost": MessageLookupByLibrary.simpleMessage("ការបង្ហោះថ្មី"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("មិនមែនឥឡូវ"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "មិនបានផ្ញើ។ ចុចដើម្បីព្យាយាមម្ដងទៀត"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "គ្មានអ្វីនៅលើ Kyron ត្រូវនឹង \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីត្រូវចម្លង"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "ការចូលចិត្ត ការឆ្លើយតប និងអ្នកតាមដានថ្មីមកទីនេះ។"),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "មនុស្សដែលតាមដានអ្នកនឹងបង្ហាញនៅទីនេះ។"),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "ពេលនរណាម្នាក់ចូលចិត្តការបង្ហោះរបស់អ្នក វានឹងបង្ហាញនៅទីនេះ។"),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "ការឆ្លើយតបលើការបង្ហោះរបស់អ្នកមកទីនេះ។"),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "ពេលនរណាម្នាក់បង្ហោះអ្នកឡើងវិញ វានឹងបង្ហាញនៅទីនេះ។"),
+      "notifications": MessageLookupByLibrary.simpleMessage("ការជូនដំណឹង"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("បើកក្នុងកម្មវិធីរុករក"),
+      "or": MessageLookupByLibrary.simpleMessage("ឬ"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("រកមិនឃើញទំព័រ"),
+      "password": MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់ខ្លីពេក"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសចំណាប់អារម្មណ៍របស់អ្នក"),
+      "post": MessageLookupByLibrary.simpleMessage("បង្ហោះ"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("ស្ថិតិការបង្ហោះ"),
+      "postInCommunity": (Object a0) => "បង្ហោះទៅ ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("បង្ហោះ និយាយ បង្ហាញ។"),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("បានចម្លងអត្ថបទការបង្ហោះ"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("គោលការណ៍ឯកជនភាព"),
+      "profileUpdated": MessageLookupByLibrary.simpleMessage(
+          "បានធ្វើបច្ចុប្បន្នភាពប្រវត្តិរូប"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("ជីវប្រវត្តិ"),
       "profile_country": MessageLookupByLibrary.simpleMessage("ប្រទេស"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
-      "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("ឈ្មោះបង្ហាញ"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("ទីតាំង"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("ចុចដើម្បីប្ដូរ"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("គេហទំព័រ"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("ការជូនដំណឹងរុញ"),
+      "quote": MessageLookupByLibrary.simpleMessage("ដកស្រង់"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("ដកស្រង់ការបង្ហោះ"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("ទាក់ទងមនុស្ស"),
+      "remove": MessageLookupByLibrary.simpleMessage("ដកចេញ"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("លុបការសន្ទនានេះ?"),
+      "removeMember": (Object a0) => "ដក ${a0} ចេញ?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage("លុបសារនេះ?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "ការឆ្លើយតប ការតាមដាន និងការលើកឡើង"),
+      "repliesPolicy": (Object a0) => "ការឆ្លើយតប: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("ឆ្លើយតប"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("អ្នកណាក៏អាចចូលរួមបាន"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "អ្នកណាក៏នៅតែអាចមើល បង្ហោះឡើងវិញ និងដកស្រង់ការបង្ហោះនេះបាន។"),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "អ្នកណាក៏នៅលើ Kyron អាចឆ្លើយតបការបង្ហោះនេះបាន។"),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("អ្នកដែលតាមដានអ្នក"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "មានតែអ្នកដែលតាមដានអ្នកទេដែលអាចឆ្លើយតបការបង្ហោះនេះ។"),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("អ្នកដែលអ្នកលើកឡើង"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "មានតែអ្នកដែលអ្នក @លើកឡើងក្នុងការបង្ហោះនេះទេដែលអាចឆ្លើយតប។"),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("គ្មាននរណាអាចឆ្លើយតប"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "ការឆ្លើយតបត្រូវបានបិទ។ អ្នកនៅតែអាចឆ្លើយតបខ្លួនឯងបាន។"),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("អ្នកណាអាចឆ្លើយតប?"),
       "report": MessageLookupByLibrary.simpleMessage("រាយការណ៍"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "បានចម្លងរបាយការណ៍។ បិទភ្ជាប់វាក្នុងអ៊ីមែលទៅផ្នែកគាំទ្រ។"),
       "reportSent": MessageLookupByLibrary.simpleMessage("បានផ្ញើរបាយការណ៍"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("បង្ហោះឡើងវិញ"),
+      "reset": MessageLookupByLibrary.simpleMessage("កំណត់ឡើងវិញ"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("កំណត់ពាក្យសម្ងាត់ឡើងវិញ"),
+      "retry": MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
+      "save": MessageLookupByLibrary.simpleMessage("រក្សាទុក"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("រក្សាទុកសេចក្ដីព្រាង"),
+      "saySomething": (Object a0) => "និយាយអ្វីមួយក្នុង ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("ស្វែងរក"),
+      "searchByNameOrHandle":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកតាមឈ្មោះ ឬឈ្មោះគណនី"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកសហគមន៍"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("ស្វែងរក GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("ស្វែងរកភាសា"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកស្លាកពេញនិយម"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "ការជូនដំណឹងសុវត្ថិភាព និងការផ្លាស់ប្ដូរគណនី"),
+      "selectAppLanguage":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសភាសាសម្រាប់ផ្ទៃកម្មវិធី។"),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "ជ្រើសភាសាដែលបង្ហាញក្នុងព័ត៌មានរបស់អ្នក។ បើមិនជ្រើសណាមួយ ភាសាទាំងអស់នឹងត្រូវបង្ហាញ។"),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "ជ្រើសភាសាចម្បងរបស់អ្នកសម្រាប់ការបកប្រែក្នុងព័ត៌មាន។"),
+      "send": MessageLookupByLibrary.simpleMessage("ផ្ញើ"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("ផ្ញើការផ្ទៀងផ្ទាត់"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("ផ្ញើរបាយការណ៍កំហុស"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("ផ្ញើមតិកែលម្អ"),
       "sendReport": MessageLookupByLibrary.simpleMessage("ផ្ញើរបាយការណ៍"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("ផ្ញើទៅផ្នែកគាំទ្រ"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("ស្ថានភាពសេវា"),
+      "settings": MessageLookupByLibrary.simpleMessage("ការកំណត់"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "ចែករំលែកកំណត់ហេតុកម្មវិធីជាមួយផ្នែកគាំទ្រ"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("ចូល Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("បានចូលជា"),
+      "signupFailed": (Object a0) => "ចុះឈ្មោះមិនបាន: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("នៅ"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron ទើបតែចាប់ផ្ដើម ហើយវិធីលឿនបំផុតដើម្បីទាក់ទងអ្នកដែលពិតជាអាចជួសជុលបាន គឺបើកសំបុត្រ។ ប្រាប់យើងពីអ្វីដែលអ្នកកំពុងធ្វើ និងអ្វីដែលបានកើតឡើង។"),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
-      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "កម្មវិធីមិនទាន់មានប្រអប់សំបុត្រគាំទ្រនៅឡើយ ដូច្នេះអេក្រង់នេះបញ្ជូនអ្នកទៅកន្លែងដែលមានអ្នកតាមដានពិតប្រាកដ ជំនួសឱ្យទម្រង់ដែលមិនទៅណាទាំងអស់។"),
+      "systemLog": MessageLookupByLibrary.simpleMessage("កំណត់ហេតុកម្មវិធី"),
+      "tellMissingBroken":
+          MessageLookupByLibrary.simpleMessage("ប្រាប់យើងពីអ្វីដែលខ្វះ ឬខូច"),
+      "terms": MessageLookupByLibrary.simpleMessage("លក្ខខណ្ឌប្រើប្រាស់"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "អត្ថបទ សំឡេង និងវីដេអូ មនុស្សដែលបង្កើតវា និងបន្ទប់ដែលពួកគេជជែក។"),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
-      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "គ្មានប៊ូតុងបង្ហោះក្នុងកម្មវិធីកែ"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("ងងឹត"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("ងងឹតជានិច្ច"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("ស្រអាប់"),
+      "theme_dim_detail":
+          MessageLookupByLibrary.simpleMessage("ងងឹតទន់ជាង ប្រផេះខៀវជំនួសខ្មៅ"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("ភ្លឺ"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("ភ្លឺជានិច្ច"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("ប្រព័ន្ធ"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "តាមការកំណត់ភ្លឺ ឬងងឹតរបស់ទូរសព្ទ"),
+      "translate": MessageLookupByLibrary.simpleMessage("បកប្រែ"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "ការបកប្រែមិនទាន់បើកនៅឡើយ។ មិនទាន់មានអ្វីត្រូវបកប្រែក្នុងព័ត៌មានរបស់អ្នក ហើយនេះនឹងត្រូវចងចាំរហូតដល់ពេលនោះ។"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "វាប្ដូរពាក្យផ្ទាល់របស់ Kyron ផ្នែកនៃផ្ទៃដែល Flutter គូរដោយខ្លួនឯង កាលបរិច្ឆេទ និងលេខ ព្រមទាំងទិសដៅប្លង់កម្មវិធីសម្រាប់ភាសាដែលសរសេរពីស្ដាំទៅឆ្វេង។"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("គោលការណ៍ឯកជនភាព"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("លក្ខខណ្ឌប្រើប្រាស់"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("គណនី"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("បន្ទាប់ពី"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("កម្មវិធី និងឧបករណ៍"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "ការដកស្រង់នេះគឺដើម្បីព្រមានមនុស្សអំពីការឆបោក។"),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1155,15 +955,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "បានផ្ញើបណ្ដឹងឧទ្ធរណ៍។ អ្នកនឹងទទួលបានការជូនដំណឹងនៅពេលមានការសម្រេច។"),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("បណ្ដឹងឧទ្ធរណ៍លើករណី \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("រូបរាង"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("ភ្លឺ ងងឹត ឬតាមទូរសព្ទ"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("មុន"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "អ្នកទាំងពីរនឹងមិនឃើញគ្នានៅលើ Kyron ហើយការតាមដានរវាងអ្នកនឹងត្រូវដកចេញ។ គេមិនត្រូវបានជូនដំណឹងទេ។"),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("មាន"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("សម្រាប់អ្វី (ស្រេចចិត្ត)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1264,29 +1062,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("ឈប់ខ្ទាស់"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("ថតសារជាសំឡេង"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("អ្នក"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("សហគមន៍"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("សម្រាប់អ្វី? (ស្រេចចិត្ត)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("ការបង្ហោះ៖"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("ខ្លឹមសារ និងការបង្ហាញ"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុកព័ត៌មានរបស់អ្នកបាន"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "មិនអាចផ្ទុកការបង្ហោះដែលបានចូលចិត្តបាន"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "មិនអាចផ្ទុកប្រវត្តិរូបរបស់អ្នកបាន"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "មិនអាចផ្ទុកការបង្ហោះដែលបានរក្សាទុកបាន"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID វិមជ្ឈការ"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("ការដោះស្រាយបញ្ហា"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ក្រុម"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("គ្មានក្រុម"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1296,16 +1089,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("បានខ្ទាស់"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("បានចូលចិត្ត"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("បានរក្សាទុក"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានអ្វីនៅទីនេះ"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "តាមដានគណនីមួយចំនួន ហើយការបង្ហោះរបស់ពួកគេនឹងបង្ហាញនៅទីនេះ។"),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីពីអ្នកដែលអ្នកតាមដាន"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "ការបង្ហោះនឹងបង្ហាញនៅទីនេះនៅពេលមនុស្សសរសេរ។"),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("កំពុងខ្សោយ"),
       "ui_feed_signal_less":
@@ -1325,16 +1116,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "ទាំងនេះកំណត់ទម្រង់ទំព័រដើម និងរុករក ភាគច្រើនតាមប្រធានបទនៃការបង្ហោះនីមួយៗ។ នីមួយៗខ្សោយពាក់កណ្ដាលរៀងរាល់ខែ ហើយឈប់រាប់បន្ទាប់ពីប្រាំមួយខែ។ ដកមួយចេញដើម្បីបញ្ឈប់វាឥឡូវនេះ។"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "ការបង្ហោះដែលមានឃ្លីបនឹងបង្ហាញនៅទីនេះ។"),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានវីដេអូ"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("មតិកែលម្អ"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកមនុស្សនៅលើ Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("ពីគណនីមួយ"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("បន្ថែមមនុស្ស"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("បន្ថែម"),
       "ui_group_add_name":
@@ -1422,32 +1210,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("អ្នក"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("អ្នកជាអ្នកមើល"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("ជំនួយ"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "បានកត់ចំណាំ។ វាជួយជ្រើសអ្វីដែលបង្ហាញដល់អ្នក។"),
+      "ui_join": MessageLookupByLibrary.simpleMessage("ចូលរួម"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("បានចូលរួម"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("ភាសា"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("ជ្រើសរើសភាសារបស់អ្នក"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("ផ្លូវច្បាប់"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("ចូលចិត្ត"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះដែលបានចូលចិត្ត"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "ការបង្ហោះដែលអ្នកចូលចិត្តបង្ហាញនៅទីនេះ ថ្មីបំផុតមុន។"),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("បានចម្លងតំណ"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "អ្នកនឹងលែងឃើញការបង្ហោះរបស់គេទៀតហើយ។ គេមិនត្រូវបានជូនដំណឹងទេ។"),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការចូលចិត្ត"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "គ្មានការបង្ហោះត្រូវនឹងតម្រងទាំងនោះទេ។"),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("មិនទាន់មានការរក្សាទុក"),
       "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
           "គណនីរបស់អ្នកត្រូវបានធ្វើបច្ចុប្បន្នភាព"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1506,13 +1291,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នកមានការព្រមាន"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("ម្សិលមិញ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("រួចរាល់"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("រំលង"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("វាត្រូវបានបើករួចហើយ។"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("ផុតកំណត់"),
@@ -1528,23 +1309,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("ផ្ញើសម្រាប់មើលតែម្ដង"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("ចុចដើម្បីមើល"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("ផ្អាក"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("ចាក់"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "វានឹងត្រូវដកចេញពីប្រវត្តិរូបរបស់អ្នក និងព័ត៌មានរបស់មនុស្សគ្រប់គ្នា។ ការឆ្លើយតបរបស់វាក៏ទៅជាមួយដែរ។"),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("បានលុបការបង្ហោះ"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("បានលាក់ការបង្ហោះ"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("បានចម្លងអត្ថបទការបង្ហោះ"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("បានបង្ហោះចន្លោះ"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "បានលាក់។ យើងនឹងបង្ហាញបែបនេះតិចជាងមុន។"),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("ចំណូលចិត្ត"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("ឯកជនភាព"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "មានអ្វីចង់បន្ថែមទេ? (ស្រេចចិត្ត)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1645,76 +1425,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("សារឥតបានការ"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("អំពើហិង្សា ឬការគំរាមកំហែង"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("ការបង្ហោះដែលបានរក្សាទុក"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "ចុចរូបតំណាងបណ្ណសាររបស់ការបង្ហោះដើម្បីរក្សាវានៅទីនេះ។ មានតែអ្នកទេដែលឃើញអ្វីដែលបានរក្សាទុក។"),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "ស្វែងរកតាមឈ្មោះគណនី ឬឈ្មោះបង្ហាញ។"),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("សម្អាត"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកគ្រប់អ្វីដែលបានបង្ហោះ"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("តម្រង"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("ស្វែងរកមនុស្ស"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("ស្វែងរកការបង្ហោះ"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("ការកំណត់"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("កម្មវិធី និងឧបករណ៍"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("ខ្លឹមសារ និងការបង្ហាញ"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("សន្សំទិន្នន័យ"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកគំនិតរបស់អ្នក"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("រុករកអត្ថបទជំនួយ"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("ជ្រើសភាសារបស់អ្នក"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "អ្នកដែលអ្នកបានបិទសំឡេង ឬទប់ស្កាត់"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("ចំណូលចិត្តការជូនដំណឹង"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "ប្រវត្តិរូប និងព័ត៌មានទំនាក់ទំនងរបស់អ្នក"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "អ្នកត្រូវចូលម្ដងទៀតដើម្បីត្រឡប់ទៅគណនីរបស់អ្នក។"),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("ការកំណត់សុវត្ថិភាព"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("បញ្ជាក់ពាក្យសម្ងាត់"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("ក្នុងមួយបន្ទាត់"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("អាសយដ្ឋានអ៊ីមែលថ្មី"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់ថ្មី"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("អ្វីបានកើតឡើង"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("ទទួលជំនួយពីក្រុមរបស់យើង"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("ចែករំលែក"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("ដកស្រង់"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("ផ្ញើក្នុងសារ"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("ទៅកាន់មនុស្សនៅលើ Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("ចែករំលែកការបង្ហោះនេះ"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("អំពីអ្វី"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
           "គណនីរបស់អ្នកត្រូវបានហាមឃាត់ជាអចិន្ត្រៃយ៍"),
@@ -1808,54 +1576,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ការបង្ហោះរបស់អ្នក"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("ការឆ្លើយតបរបស់អ្នក"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("លក្ខខណ្ឌប្រើប្រាស់"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ការបង្ហោះនេះ"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("បានបិទសំឡេងខ្សែ"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("ព្យាយាមម្ដងទៀត"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("បិទសំឡេង"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("បើកសំឡេង"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("យ៉ាងហោចណាស់ពីរតួ។"),
       "ui_undo": MessageLookupByLibrary.simpleMessage("មិនធ្វើវិញ"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "ពាក្យ ឬតម្រង៖ គណនី ចន្លោះកាលបរិច្ឆេទ ឬអ្វីដែលការបង្ហោះមាន។"),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("មិនបង្ហោះឡើងវិញ"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage(
+          "ធ្វើបច្ចុប្បន្នភាពពាក្យសម្ងាត់"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("ប្រើអាសយដ្ឋានផ្សេង"),
+      "username": MessageLookupByLibrary.simpleMessage("ឈ្មោះអ្នកប្រើ"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "ឈ្មោះអ្នកប្រើត្រូវតែជាអក្សរតូច (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("វីដេអូ"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("ភ្ជាប់"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("រួចរាល់ដើម្បីភ្ជាប់"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("ថតការបង្ហោះជាសំឡេង"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("កំពុងរក្សាទុក…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("បញ្ឈប់"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("អ្វីបានកើតឡើង"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "តើមានអ្វីកើតឡើង ហើយយើងគួរពិនិត្យអ្វី?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("តើមានអ្វីក្នុងរូបនេះ?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("សម្រាប់អ្វី? (ស្រេចចិត្ត)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "អ្វីដែលអ្នកបានធ្វើ អ្វីដែលអ្នករំពឹង អ្វីដែលបានកើតឡើង"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "អ្វីដែលអ្នកកំពុងធ្វើពេលវាកើតឡើង។"),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("អ្នកបានឆ្លើយតប"),
       "dmReplied": (Object a0) => "$a0 បានឆ្លើយតប",
@@ -1981,7 +1741,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "បានផ្ញើ ប៉ុន្តែមិនមែនទៅគ្រប់គ្នាទេ។"),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "មិនអាចផ្ញើបានទេ។ សូមព្យាយាមម្តងទៀត។"),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("អ្នកតាមដាន"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("តម្រង"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("ទាំងអស់"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("មិនទាន់អាន"),

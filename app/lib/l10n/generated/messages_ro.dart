@@ -8,248 +8,204 @@ class MessageLookup extends MessageLookupByLibrary {
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+          "Cuvânt, expresie sau #etichetă"),
+      "about": MessageLookupByLibrary.simpleMessage("Despre"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Adaugă un răspuns"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Adaugă limbi…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Acceptă și continuă"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Ai deja un cont Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comentarii"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "Oameni diferiți, nu deschideri"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Implicare"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Aprecieri"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Încă niciun spectator"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Nimeni nu a deschis încă această postare."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Postat"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Salvări"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Spectatori"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("SPECTATORI PE ZI"),
+      "and": MessageLookupByLibrary.simpleMessage("și"),
+      "answerNumber": (Object a0) => "Răspunsul ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("Lentilă AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Atașează jurnalul aplicației"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Dus-întors"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("VERIFICARE TOKEN"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Dacă pornești acum o transmisiune, vei fi într-o cameră în care nimeni nu ar putea"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Creează o comunitate"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Pentru ce este? (opțional)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("intra din nou."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "intra din nou din această listă."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Închiderea ei"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("alătură-te mai întâi"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("în curând"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Postezi în nume propriu"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage(
+              "postează în această comunitate"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Chiar acum"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Subiectul 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pentru tine"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("are ceva."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("e pe drum acum."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", nu"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("mă mișc"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Oprește sunetul"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Pornește sunetul"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pentru tine"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Filele tale"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Simbol (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("SPECTATORI PE ZI"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("nu s-a putut încărca"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("această postare"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Ai ceva de adăugat? (opțional)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("această postare"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("De la un cont"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Deconectare"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Contul tău"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmă parola"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("nu acum"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Se încarcă…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Se postează…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("acum 3 h"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Copiază linkul poveștii"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Povestea ta"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Contul tău, postările tale și ce atingi, pentru ca"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Adaugă un subiect"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("propriu."),
+      "authorBlocked": (Object a0) => "${a0} a fost blocat",
+      "authorPostsHidden": (Object a0) => "Nu vei vedea postări de la ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Blochează"),
+      "blockAuthor": (Object a0) => "Blochezi pe ${a0}?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Detaliile versiunii au fost copiate"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Continuând, accepți"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Continuând, ești de acord cu Termenii și condițiile și cu Politica de confidențialitate"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Prin înregistrare, accepți"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Anulează"),
       "change": MessageLookupByLibrary.simpleMessage("Schimbă"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Schimbă e-mailul"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Verifică-ți contul din e-mail."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Verifică dacă Kyron e accesibil"),
+      "clear": MessageLookupByLibrary.simpleMessage("Golește"),
+      "close": MessageLookupByLibrary.simpleMessage("Închide"),
+      "closeCommunity": (Object a0) => "Închizi ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Închide"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Închide această comunitate"),
+      "communities": MessageLookupByLibrary.simpleMessage("Comunități"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Găsește una în Explorează sau creează-ți propria comunitate."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Aruncă o opinie fierbinte (sau călduță)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("La ce te gândești?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Spune ceva ce doar tu poți spune…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Acesta e semnul tău: postează"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Scrie, vorbește sau gândește cu voce tare"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmă parola"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Contactează asistența"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Postările nu au încă o limbă, așa că asta nu îți filtrează încă fluxul. Alegerile tale se păstrează până atunci."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Continuă"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Continuă cu e-mail"),
+      "copy": MessageLookupByLibrary.simpleMessage("Copiază"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Copiază raportul în schimb"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Nu s-a putut deschide conectarea cu Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Deconectarea a eșuat: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Nu s-a putut face fotografia."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Apare pe profilul tău și sub postările tale."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -261,89 +217,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Apare pe profilul tău și sub postările tale. Când vezi postările cuiva, țara ta este numărată în Statisticile acelei persoane, doar în grupuri de cinci sau mai mulți și niciodată după nume."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Din setările telefonului tău"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Creează"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Creează cont"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Creează-ți contul"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Creează-ți profilul"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Lentilă AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Intră în direct"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Postare text"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Postare vocală"),
+      "delete": MessageLookupByLibrary.simpleMessage("Șterge"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Ștergi acest comentariu?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Ștergi această postare?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Descrie acest atașament"),
+      "description": MessageLookupByLibrary.simpleMessage("Descriere"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID copiat în clipboard"),
       "done": MessageLookupByLibrary.simpleMessage("Gata"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Închide editorul după ce ai scris ceva și ți se va oferi o ciornă."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("acum {days} zile"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("acum {hours} ore"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Chiar acum"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("acum {minutes} minute"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Încă nimic scris"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Sondaj, încă fără întrebare"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Citat, încă fără text"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Ciorne"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Editează profilul"),
+      "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificări prin e-mail"),
+      "explore": MessageLookupByLibrary.simpleMessage("Explorează"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Urmărirea feței nu este disponibilă pe acest dispozitiv."),
+      "feedTagDetail": (Object a0) => "Nimic nu a fost postat încă cu #${a0}.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("Urmărește-l pe {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Urmăritori"),
+      "following": MessageLookupByLibrary.simpleMessage("Urmărești"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ai uitat parola?"),
+      "gettingHelp":
+          MessageLookupByLibrary.simpleMessage("Cum primești ajutor"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Continuă cu Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Conectează-te cu Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google trimite conectarea finalizată înapoi la Kyron printr-un link la care răspund doar Android și iOS, așa că pe ${a0} browserul nu are unde s-o trimită.\\n\\nDacă ai deja un cont Kyron prin Google, alege Continuă cu e-mail cu aceeași adresă și atinge Ai uitat parola: vei primi un link pentru a seta o parolă.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Conectarea cu Google necesită aplicația de telefon"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Înregistrează-te cu Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Ghiduri și răspunsuri la întrebări frecvente"),
+      "handle": MessageLookupByLibrary.simpleMessage("nume de utilizator"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Ajutor și asistență"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Centru de ajutor"),
+      "home": MessageLookupByLibrary.simpleMessage("Acasă"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Pe un singur rând"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Contul tău"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Deschide comunitatea"),
@@ -464,690 +409,573 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Cele mai bune postări"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Față de cele {days} zile dinainte"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Adaugă un interes"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Trage pentru a reordona"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Bara încape cel mult cinci file. Elimină una pentru a adăuga alta."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Urmărești"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Pentru tine"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Hashtagurile apar aici când oamenii încep să le folosească."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("În tendințe acum"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videoclipuri"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Filele tale"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Va dispărea pentru amândoi."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Va fi eliminat din fir."),
+      "join": MessageLookupByLibrary.simpleMessage("Alătură-te"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Continuă editarea"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Ecranele Kyron sunt în limba ta. Dacă un cuvânt sună greșit, spune-ne prin Trimite feedback."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Limbi"),
+      "leave": MessageLookupByLibrary.simpleMessage("Părăsește"),
+      "leaveCommunity": (Object a0) => "Părăsești ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Primește înapoi"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 pagină deschisă"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Adaugă clip"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Adaugă GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Adaugă hashtag"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Adaugă fotografie"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Adaugă sondaj"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Adaugă video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Adaugă un interes"),
+      "literaladdLabelAsATab": (Object a0) => "Adaugă ${a0} ca filă",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Limba aplicației"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Versiunea aplicației"),
+      "literalblockAuthor": (Object a0) => "Blochează pe ${a0}",
+      "literalblockAuthor2": (Object a0) => "Blochezi pe ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Blochezi acest cont?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Anulează răspunsul"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Verifică din nou"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Alege din galerie"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Golește memoria cache"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Închide toate paginile"),
+      "literalcloseTabLabel": (Object a0) => "Închide ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Închide browserul"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Închizi ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Contactează asistența"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Limbile conținutului"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copiază linkul"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Copiază linkul postării"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Copiază textul postării"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copiază textul"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
+          "Nu s-au putut încărca comunitățile"),
       "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Nu s-au putut încărca GIF-urile"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Nu s-au putut încărca notificările"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Nu s-au putut încărca membrii"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Nu s-au putut încărca aceste postări"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Nu s-a putut încărca această conversație"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Nu s-a putut încărca această listă"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Nu s-a putut încărca această postare"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Nu s-a putut încărca acest răspuns"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Nu s-au putut încărca etichetele populare"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Nu s-au putut încărca comunitățile tale"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Nu s-au putut încărca mesajele"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Nu s-a putut deschide această comunitate"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Nu s-a putut posta răspunsul."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Căutarea nu a funcționat"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Deconectarea a eșuat: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} pagini deschise",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Fotografie de copertă"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Economizor de date"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Șterge postarea"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Găsește oameni"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Nu răspunde"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Ciornă salvată"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Feedbackul nu poate fi trimis acum"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Dimensiunea textului"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF-urile nu sunt configurate"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Trimite-o altei aplicații"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Ascunde parola"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Ascunde această postare"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "O ascunde și ne cere să arătăm mai puține ca ea"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Cum să te porți"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Continuă să scrii"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron nu a răspuns"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "Data \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Părăsești ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, lentilă pentru față",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Postări apreciate"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copiat"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Fă-l moderator"),
+      "literalmuteAuthor": (Object a0) => "Ignoră pe ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Ignoră acest fir"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Ignoră cuvinte sau etichete"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Conturi ignorate și blocate"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Ignorat. Nu vei primi notificări."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Nicio aplicație de pe acest dispozitiv nu deschide linkuri ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Niciun browser de pe acest dispozitiv nu a acceptat linkul."),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Încă niciun DID"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Nicio ciornă"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Încă niciun interes"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Încă nicio apreciere"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Încă niciun mesaj"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Niciun urmăritor nou"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Încă nicio postare"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Încă niciun răspuns"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Încă nicio repostare"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Nicio etichetă populară nu se potrivește"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nu s-a găsit nimeni"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Nimeni nu a fost eliminat"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Încă nu e nimeni aici"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Nu mă interesează"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nu s-a găsit nimic"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Încă nimic în tendințe"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Încă nimic în jurnal"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Niciun rezultat"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nimic ignorat"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Încă nimic de vizionat"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Nimic necitit"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Doar proprietarul poate schimba asta"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Deschide răspunsul"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Deschide e-mailul de la Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Parolă și conectare"),
+      "literalpostInCommunityName": (Object a0) => "Postează în ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Postează în ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
+              "Postează-o cu propriile cuvinte deasupra"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Limba principală"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificări push"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Se verifică…"),
       "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+          "Înregistrează o postare vocală"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Înregistrează din nou"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Elimină din moderatori"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Elimină din comunitate"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Elimină din salvate"),
+      "literalremoveLabel": (Object a0) => "Elimină ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Elimină ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Elimini pe ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Elimină sondajul"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Elimină acest răspuns"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Șterge această conversație"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Elimină acest sondaj"),
+      "literalreportAuthor": (Object a0) => "Raportează pe ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Raportează postarea"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Retrimite codul"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Postări salvate"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Spune ceva"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Spune ceva în ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Căutarea a eșuat"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Retrimite"),
+      "literalsendAgainInCooldownS": (Object a0) => "Retrimite în ${a0} s",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Trimite feedback"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Trimite linkul"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Trimis. Este raportul nr. ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Setează o parolă și continuă"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Trimite jurnalul la asistență"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Distribuie această comunitate"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Distribuie această pagină"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Distribuie acest profil"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Distribuie…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Distribuie cu citat"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Arată mai multe ca aceasta"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Arată parola"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Arată rezultatele"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Creează o comunitate"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Începe înregistrarea"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Oprește încărcarea"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Nu mai vedea această postare și răspunsurile ei"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Bandă de povești, ${a0} elemente",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Schimbă camera"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Etichetează pe cineva"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Fă o fotografie"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Atinge bannerul sau fotografia pentru a schimba"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Atinge linkul din el"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Atinge pentru a adăuga fotografie și copertă"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("N-a mers. Încearcă din nou."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Nu s-a putut încărca acel GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Acest link nu poate fi deschis aici."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Camera este închisă"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Această comunitate"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Acest răspuns nu mai există"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Tradu postarea"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Oprește sunetul"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pornește sunetul"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Folosește una de-a noastră"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Codul de verificare a fost retrimis."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Verificarea a eșuat: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Verifică e-mailul"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Spectatori, aprecieri, salvări și comentarii"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Ce păstrează Kyron"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Ce a făcut această aplicație"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Ce ai făcut, ce te așteptai, ce s-a întâmplat "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Ce postezi îți aparține"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Dacă Kyron e accesibil acum"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Cine poate răspunde"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Pe cine vrei să etichetezi?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Urmărești deja toate etichetele populare"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Ești la zi"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Nu faci parte din nicio comunitate"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Te-ai deconectat."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Ai părăsit ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Încă n-ai postat nimic"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Încarcă mai multe"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Jurnal golit"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Jurnal copiat"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Conectare"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Deconectare"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Te deconectezi?"),
+      "login": MessageLookupByLibrary.simpleMessage("Conectare"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "Conectarea a eșuat. Verifică datele."),
+      "manage": MessageLookupByLibrary.simpleMessage("Gestionează"),
+      "menu": MessageLookupByLibrary.simpleMessage("Meniu"),
+      "message": MessageLookupByLibrary.simpleMessage("Mesaj"),
+      "messages": MessageLookupByLibrary.simpleMessage("Mesaje"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Ești la zi cu toate conversațiile."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Deschide profilul cuiva și atinge Mesaj pentru a începe o conversație."),
+      "mute": MessageLookupByLibrary.simpleMessage("Ignoră"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Ignorați și blocați"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Cuvinte și etichete ignorate"),
+      "name": MessageLookupByLibrary.simpleMessage("Nume"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Ecranul <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Adresă de e-mail nouă"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Parolă nouă"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Postare nouă"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Nu acum"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Netrimis. Atinge pentru a reîncerca"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Nimic de pe Kyron nu se potrivește cu \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nimic de copiat"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Aprecierile, răspunsurile și urmăritorii noi ajung aici."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Oamenii care te urmăresc vor apărea aici."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Când cuiva îi place postarea ta, va apărea aici."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Răspunsurile la postările tale ajung aici."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Când cineva te repostează, va apărea aici."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Notificări"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Deschide în browser"),
+      "or": MessageLookupByLibrary.simpleMessage("sau"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Pagina nu a fost găsită"),
+      "password": MessageLookupByLibrary.simpleMessage("Parolă"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Parola este prea scurtă"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Alege-ți interesele"),
+      "post": MessageLookupByLibrary.simpleMessage("Postează"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Statisticile postării"),
+      "postInCommunity": (Object a0) => "Postează în ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Postează, spune, arată."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
+          MessageLookupByLibrary.simpleMessage("Textul postării a fost copiat"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Politica de confidențialitate"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profil actualizat"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Țară"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Nume afișat"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Locație"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Atinge pentru a schimba"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Site web"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificări push"),
+      "quote": MessageLookupByLibrary.simpleMessage("Citează"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Citează postarea"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Contactează un om"),
+      "remove": MessageLookupByLibrary.simpleMessage("Elimină"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Ștergi această conversație?"),
+      "removeMember": (Object a0) => "Elimini pe ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Ștergi acest mesaj?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Răspunsuri, urmăriri și mențiuni"),
+      "repliesPolicy": (Object a0) => "Răspunsuri: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Răspunde"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Oricine poate participa"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Oricine poate în continuare să vadă, să reposteze și să citeze această postare."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Oricine de pe Kyron poate răspunde la această postare."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Cei care te urmăresc"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Doar cei care te urmăresc pot răspunde la această postare."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Persoanele menționate"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Doar persoanele pe care le @menționezi în această postare pot răspunde."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Nimeni nu poate răspunde"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Răspunsurile sunt dezactivate. Tu poți răspunde în continuare."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Cine poate răspunde?"),
       "report": MessageLookupByLibrary.simpleMessage("Raportează"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Raport copiat. Lipește-l într-un e-mail către asistență."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Raport trimis"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Repostează"),
+      "reset": MessageLookupByLibrary.simpleMessage("Resetează"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Resetează-ți parola"),
+      "retry": MessageLookupByLibrary.simpleMessage("Reîncearcă"),
+      "save": MessageLookupByLibrary.simpleMessage("Salvează"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Salvează ciorna"),
+      "saySomething": (Object a0) => "Spune ceva în ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Caută"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Caută după nume sau nume de utilizator"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Caută comunități"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Caută GIF-uri"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Caută limbi"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Caută etichete populare"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Alerte de securitate și modificări ale contului"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Alege limba interfeței aplicației."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Alege ce limbi apar în fluxurile tale. Dacă nu alegi niciuna, se afișează toate limbile."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Alege limba principală pentru traducerile din flux."),
+      "send": MessageLookupByLibrary.simpleMessage("Trimite"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Trimite verificarea"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Trimite un raport de eroare"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Trimite feedback"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Trimite raportul"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Trimite la asistență"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Starea serviciului"),
+      "settings": MessageLookupByLibrary.simpleMessage("Setări"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Trimite jurnalul aplicației la asistență"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Conectează-te la Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Conectat ca"),
+      "signupFailed": (Object a0) => "Înregistrarea a eșuat: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Rămâi"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron e la început, iar cea mai rapidă cale de a ajunge la cineva care chiar poate rezolva problema este să deschizi un tichet. Spune-ne ce făceai și ce s-a întâmplat."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Aplicația nu are încă o căsuță de asistență, așa că acest ecran te trimite unde se citește cu adevărat, nu la un formular care nu duce nicăieri."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Jurnalul aplicației"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Spune-ne ce lipsește sau ce nu merge"),
+      "terms": MessageLookupByLibrary.simpleMessage("Termenii și condițiile"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Text, voce și video, oamenii care le creează și camerele în care discută."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Nu există buton Postează în editor"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Întunecat"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Mereu întunecat"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Estompat"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Întunecat mai blând, gri-albăstrui în loc de negru"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Luminos"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Mereu luminos"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Sistem"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Urmează setarea luminoasă sau întunecată a telefonului"),
+      "translate": MessageLookupByLibrary.simpleMessage("Traduce"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Traducerea nu este încă activă. Nimic din flux nu se traduce încă; setarea se reține până atunci."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Aceasta schimbă cuvintele proprii ale Kyron, părțile interfeței pe care Flutter le desenează singur, datele și numerele, precum și direcția de așezare a aplicației pentru limbile scrise de la dreapta la stânga."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Politica de confidențialitate"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Termeni și condiții"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Cont"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("După"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Aplicație și dispozitiv"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Citam escrocheria ca să-i avertizez pe alții."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1161,15 +989,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Contestație trimisă. Vei primi o notificare când se decide."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "Contestație pentru cazul \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Aspect"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Luminos, întunecat sau după telefon"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Înainte"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Nu vă veți mai vedea unul pe altul pe Kyron, iar urmăririle dintre voi sunt eliminate. Persoana nu este anunțată."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Conține"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("La ce folosește (opțional)"),
       "ui_cchat_announcements":
@@ -1277,29 +1103,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Înregistrează un mesaj vocal"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Tu"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Comunități"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Pentru ce este? (opțional)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Postări:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Conținut și afișare"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Nu s-a putut încărca fluxul"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Nu s-au putut încărca postările apreciate"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Nu s-a putut încărca profilul tău"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Nu s-au putut încărca postările salvate"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID descentralizat"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Depanare"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupuri"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Niciun grup"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1309,16 +1129,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Fixată"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Apreciate"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvate"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Încă nimic aici"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Urmărește câteva conturi și postările lor vor apărea aici."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Nimic de la cei pe care îi urmărești"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Postările vor apărea aici pe măsură ce oamenii le scriu."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Slăbește"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Nu mă interesează"),
@@ -1337,16 +1154,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Ele modelează Acasă și Explorează, mai ales după subiectul fiecărei postări. Fiecare slăbește la jumătate în fiecare lună și nu mai contează după șase. Elimină unul ca să-l oprești acum."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Postările cu un clip vor apărea aici."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
+          MessageLookupByLibrary.simpleMessage("Încă niciun videoclip"),
       "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Găsește oameni pe Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("De la un cont"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Adaugă persoane"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Adaugă"),
       "ui_group_add_name":
@@ -1422,7 +1236,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Nu mai faci parte din acest grup."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Redenumește"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Membru"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Spectator"),
@@ -1436,31 +1251,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("tu"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Ești spectator"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Ajutor"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Notat. Ne ajută să alegem ce îți arătăm."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Alătură-te"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("S-a alăturat"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Limbă"),
       "ui_language_detail": MessageLookupByLibrary.simpleMessage("Alege limba"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Juridic"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Apreciază"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Postări apreciate"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Postările apreciate apar aici, cele mai noi primele."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copiat"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Nu-i vei mai vedea postările. Persoana nu este anunțată."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Încă nicio apreciere"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Nicio postare nu se potrivește acestor filtre."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Încă nimic salvat"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Contul tău a fost actualizat"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1520,13 +1332,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Contul tău a primit un avertisment"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Ieri"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Gata"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Omite"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("A fost deja deschis."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Expirat"),
@@ -1545,23 +1353,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Trimite pentru vizualizare unică"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Atinge pentru a vedea"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pauză"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Redă"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
-      "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          "Va fi eliminată din profilul tău și din fluxurile tuturor. Răspunsurile ei dispar odată cu ea."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Postare ștearsă"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Postare ascunsă"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Textul postării a fost copiat"),
+      "ui_posted_between": MessageLookupByLibrary.simpleMessage("Postat între"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Ascunsă. Vom arăta mai puține ca ea."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferințe"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Confidențialitate"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Ai ceva de adăugat? (opțional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1660,76 +1465,62 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Violență sau amenințări"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Postări salvate"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Atinge pictograma de arhivă a unei postări pentru a o păstra aici. Doar tu vezi ce ai salvat."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Caută după nume de utilizator sau nume afișat."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Golește"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Caută în tot ce s-a postat"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtre"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Caută oameni"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Caută postări"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Setări"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Aplicație și dispozitiv"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Conținut și afișare"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
+          MessageLookupByLibrary.simpleMessage("Economizor de date"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Spune-ne părerea ta"),
       "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Răsfoiește articolele de ajutor"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Alege-ți limba"),
+      "ui_settings_muted_blocked":
+          MessageLookupByLibrary.simpleMessage("Pe cine ai ignorat sau blocat"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Preferințe pentru notificări"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Profilul și datele tale de contact"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Va trebui să te conectezi din nou ca să revii în cont."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Setări de securitate"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmă parola"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Pe un singur rând"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Adresă de e-mail nouă"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Parolă nouă"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Ce s-a întâmplat"),
       "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          "Primește ajutor de la echipa noastră"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Distribuie"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citează"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Trimite într-un mesaj"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Către oameni de pe Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Distribuie această postare"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Despre ce era vorba"),
       "ui_standing_account_banned":
@@ -1826,54 +1617,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Postarea ta"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Răspunsul tău"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("Termenii și condițiile"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("această postare"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Fir ignorat"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Încearcă din nou"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Oprește sunetul"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Pornește sunetul"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Cel puțin două caractere."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Anulează"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Cuvinte sau un filtru: un cont, un interval de date sau ce conține o postare."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Anulează repostarea"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Actualizează parola"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Folosește altă adresă"),
+      "username": MessageLookupByLibrary.simpleMessage("Nume de utilizator"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Numele de utilizator trebuie să fie cu litere mici (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Atașează"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
+          MessageLookupByLibrary.simpleMessage("Gata de atașat"),
       "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          "Înregistrează o postare vocală"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Se salvează…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Oprește"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Ce s-a întâmplat"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Ce s-a întâmplat și ce ar trebui să verificăm?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Ce este în această imagine?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Pentru ce este? (opțional)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
-      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Ce ai făcut, ce te așteptai, ce s-a întâmplat"),
+      "whatYouWereDoing":
+          MessageLookupByLibrary.simpleMessage("Ce făceai când s-a întâmplat."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ai răspuns"),
       "dmReplied": (Object a0) => "$a0 a răspuns",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Adaugă la mesaj"),
@@ -2005,7 +1790,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Trimis, dar nu tuturor."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nu s-a putut trimite. Încearcă din nou."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Urmăritor"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtru"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Toate"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Necitite"),
@@ -2207,7 +1992,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_edited": MessageLookupByLibrary.simpleMessage("Editat"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Mai mult"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Urmăresc"),
-      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Populare"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Recente"),
       "ui_sort_comments": MessageLookupByLibrary.simpleMessage(
           "Sortează comentariile: \$order"),

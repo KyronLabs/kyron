@@ -34,12 +34,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "analytics_posted": MessageLookupByLibrary.simpleMessage("ታስተካለ"),
       "analytics_saves": MessageLookupByLibrary.simpleMessage("ተቀይረዋል"),
       "analytics_viewers": MessageLookupByLibrary.simpleMessage("እይታዎች"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("በቀን ተመልካቾች"),
       "and": MessageLookupByLibrary.simpleMessage("እና"),
       "answerNumber": (Object a0) => "መልስ ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR ሌንስ"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage("የስርዓት ሎግ ያስገቡ"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
@@ -49,7 +48,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("የቶከን ማረጋገጫ"),
       "audit_ar_lens_screen_try_again_cdec8872":
           MessageLookupByLibrary.simpleMessage("ደግሞ ይሞክሩ"),
       "audit_browser_engine_window_stop_39c04883":
@@ -113,15 +112,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("ያሉ ትክክለኛ ምርጫዎች"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("ደግሞ ይሞክሩ"),
       "audit_password_requirements_symbol_322aed1e":
           MessageLookupByLibrary.simpleMessage("ምልክት (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("በቀን ተመልካቾች"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
@@ -253,7 +251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourAccount":
           MessageLookupByLibrary.simpleMessage("የእርስዎን መለያ ፍጠር"),
       "createYourProfile": MessageLookupByLibrary.simpleMessage("መገለጫዎን ፍጠር"),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR ሌንስ"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("ቀጥሎ ይቀርቡ"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("ጽሑፍ ፖስት"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("የድምጽ ፖስት ፍጠር"),
@@ -443,8 +441,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("ማስተካከያን ቀጥሉ"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "የKyron ቃሎች እየተተረጉሙ ስለሆኑ አብዛኛዎቹ መስኮች በእንግሊዝኛ ናቸው።",
-      ),
+          "የKyron ገጾች በቋንቋዎ ናቸው። አንድ ቃል የተሳሳተ ከመሰለ በግብረ መልስ ላክ በኩል ይንገሩን።"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("ቋንቋዎች"),
       "leave": MessageLookupByLibrary.simpleMessage("ተተው"),
@@ -1014,15 +1011,15 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
         "ኮምፖዘሩ የPost አዝራር የለውም",
       ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("ጨለማ"),
       "theme_dark_detail": MessageLookupByLibrary.simpleMessage("ሁልጊዜ ጨለማ"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("ደብዛዛ"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
         "ጥቂት የቀለም ጨለማ፣ ከጥቁር ይልቅ ሰማያዊ-ግራይ",
       ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("ብሩህ"),
       "theme_light_detail": MessageLookupByLibrary.simpleMessage("ሁልጊዜ ብርሃን"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("ሲስተም"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "የስልኩን ማብራሪያ ወይም ጨለማ ቅንብር ይከተላሉ",
       ),
@@ -1031,8 +1028,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "ትርጉም እስካሁን አልተዋቀረም። ዛሬ በእንግሊዝኛ የተገለጹ ነገሮች ይቆያሉ፤ ይህ እንደሚለው ለሚሆኑ ጊዜያት ይታያል።",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "የKyron የራሱ ቃሎች እየተተረጉሙ ናቸው፣ ስለዚህ አብዛኛዎቹ መስኮች ለአሁን በእንግሊዝኛ ናቸው። ዛሬ ይህ የሚለውን ይቀይራል፤ የFlutter ራሱ የሚያሳይ የባለሞያ ክፍሎች፣ ቀናት እና ቁጥሮች፣ እና መተግበሪያው ለቀኝ-እስከ-ግራ ቋንቋዎች የሚያቀርብበት አቀራረብ።",
-      ),
+          "ይህ የKyronን የራሱን ቃላት፣ Flutter ራሱ የሚስላቸውን የበይነገጽ ክፍሎች፣ ቀኖችንና ቁጥሮችን፣ እንዲሁም ከቀኝ ወደ ግራ ለሚጻፉ ቋንቋዎች መተግበሪያው የሚደረደርበትን አቅጣጫ ይለውጣል።"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("ደግሞ ይሞክሩ"),
       "ui_about_privacy_policy":
           MessageLookupByLibrary.simpleMessage("የግላዊነት ፖሊሲ"),
@@ -1173,9 +1169,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
         "የተቀረጡ ጽሑፎችዎን ማስገባት አልቻለም",
       ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ያልተማከለ መታወቂያ"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("መገለጫዎች"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ቡድኖች"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("ምንም ቡድን የለም"),

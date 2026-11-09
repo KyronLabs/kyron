@@ -8,248 +8,202 @@ class MessageLookup extends MessageLookupByLibrary {
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+          "Et ord, en frase eller en #tagg"),
+      "about": MessageLookupByLibrary.simpleMessage("Om"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Legg til et svar"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Legg til flere språk…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Godta og fortsett"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Allerede på Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Kommentarer"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+          MessageLookupByLibrary.simpleMessage("Unike personer, ikke åpninger"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Engasjement"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Liker"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Ingen seere ennå"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Ingen har åpnet dette innlegget ennå."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Publisert"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Lagringer"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Seere"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("SEERE PER DAG"),
+      "and": MessageLookupByLibrary.simpleMessage("og"),
+      "answerNumber": (Object a0) => "Svar ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-linse"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Legg ved systemloggen"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Tur-retur"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TOKENBEKREFTELSE"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Prøv igjen"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Prøv igjen"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Å starte en sending nå ville satt deg i et rom ingen kunne"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Start et fellesskap"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Hva er den til? (valgfritt)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("inn igjen."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("inn igjen fra denne listen."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Å stenge det"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("bli med først"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("kommer snart"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Du publiserer som deg selv"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("publiser i dette fellesskapet"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Akkurat nå"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Prøv igjen"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Emne 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("For deg"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("har noe."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("på vei dit nå."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", ikke"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("beveger jeg meg"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Slå av lyd"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Slå på lyd"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("For deg"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Fanene dine"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Prøv igjen"),
       "audit_password_requirements_symbol_322aed1e":
           MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("SEERE PER DAG"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("kunne ikke lastes inn"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("dette innlegget"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Noe å legge til? (valgfritt)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("dette innlegget"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Fra en konto"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Logg ut"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Kontoen din"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Bekreft passord"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ikke nå"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Laster inn…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Publiserer…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 t siden"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kopier lenke til historien"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Historien din"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Kontoen din, innleggene dine og det du trykker på, slik at"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Legg til et emne"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("på egen hånd."),
+      "authorBlocked": (Object a0) => "${a0} blokkert",
+      "authorPostsHidden": (Object a0) => "Du vil ikke se innlegg fra ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Blokker"),
+      "blockAuthor": (Object a0) => "Blokkere ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Versjonsdetaljer kopiert"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Ved å fortsette godtar du våre"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Ved å fortsette godtar du vilkårene og personvernerklæringen vår"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Ved å registrere deg godtar du våre"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Avbryt"),
       "change": MessageLookupByLibrary.simpleMessage("Endre"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Endre e-post"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Sjekk e-posten din for å bekrefte kontoen."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Sjekk om Kyron kan nås"),
+      "clear": MessageLookupByLibrary.simpleMessage("Tøm"),
+      "close": MessageLookupByLibrary.simpleMessage("Lukk"),
+      "closeCommunity": (Object a0) => "Stenge ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Steng det"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Steng dette fellesskapet"),
+      "communities": MessageLookupByLibrary.simpleMessage("Fellesskap"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Finn et i Oppdag, eller start ditt eget."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
+          "Slipp en het mening (eller en lunken)"),
       "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
-      "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "Hva surrer rundt i hodet ditt?"),
+      "composer_placeholder_say":
+          MessageLookupByLibrary.simpleMessage("Si noe bare du kan si…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Dette er signalet ditt: send det"),
+      "composer_placeholder_think":
+          MessageLookupByLibrary.simpleMessage("Skriv, snakk eller tenk høyt"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Bekreft passord"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Kontakt brukerstøtte"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Innlegg har ikke språk ennå, så dette filtrerer ikke feeden i dag. Valget ditt tas vare på til de har det."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Fortsett"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Fortsett med e-post"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopier"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Kopier rapporten i stedet"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Kunne ikke åpne Google-pålogging. ${a0}",
+      "couldNotSignOut": (Object a0) => "Kunne ikke logge ut: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke ta det bildet."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Vises på profilen din og under innleggene dine."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +214,75 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Vises på profilen din og under innleggene dine. Når du ser noens innlegg, telles landet ditt med i Innsikten deres, bare i grupper på fem eller flere og aldri med navn."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Fra telefonens innstillinger"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Opprett"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Opprett konto"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Opprett kontoen din"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Opprett profilen din"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-linse"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Gå direkte"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Tekstinnlegg"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Taleinnlegg"),
+      "delete": MessageLookupByLibrary.simpleMessage("Slett"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Slette denne kommentaren?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Slette dette innlegget?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Beskriv dette vedlegget"),
+      "description": MessageLookupByLibrary.simpleMessage("Beskrivelse"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID kopiert til utklippstavlen"),
       "done": MessageLookupByLibrary.simpleMessage("Ferdig"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Lukk redigeringen med noe skrevet, så får du tilbud om et utkast."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} dager siden"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("{hours} timer siden"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Akkurat nå"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} minutter siden"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Ingenting skrevet ennå"),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "En avstemning, uten spørsmål ennå"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Et sitat, uten tekst ennå"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Utkast"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Rediger profil"),
+      "email": MessageLookupByLibrary.simpleMessage("E-post"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("E-postvarsler"),
+      "explore": MessageLookupByLibrary.simpleMessage("Utforsk"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Ansiktssporing er ikke tilgjengelig på denne enheten."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Ingenting er publisert under #${a0} ennå.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Følg {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Følgere"),
+      "following": MessageLookupByLibrary.simpleMessage("Følger"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Glemt passordet?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Få hjelp"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Fortsett med Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Logg inn med Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google leverer den fullførte påloggingen tilbake til Kyron via en lenke bare Android og iOS svarer på, så på ${a0} ville nettleseren ikke hatt noe sted å levere den.\\n\\nHar du allerede en Kyron-konto via Google, bruk Fortsett med e-post med samme adresse og trykk på Glemt passordet: du får en lenke for å lage et.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google-pålogging krever mobilappen"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Registrer deg med Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Veiledninger og svar på vanlige spørsmål"),
+      "handle": MessageLookupByLibrary.simpleMessage("brukernavn"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Hjelp og støtte"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Hjelpesenter"),
+      "home": MessageLookupByLibrary.simpleMessage("Hjem"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("På én linje"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Kontoen din"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Åpne fellesskapet"),
@@ -455,690 +396,561 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Toppinnlegg"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Sammenlignet med de {days} dagene før"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Legg til en interesse"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Dra for å endre rekkefølge"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Feltet har plass til fem faner. Fjern én for å legge til en annen."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Følger"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("For deg"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Emneknagger dukker opp her når folk begynner å bruke dem."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Populært nå"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videoer"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Fanene dine"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Det forsvinner for dere begge."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Det fjernes fra tråden."),
+      "join": MessageLookupByLibrary.simpleMessage("Bli med"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Fortsett å redigere"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Skjermene i Kyron er på ditt språk. Hvis et ord høres feil ut, si fra via Send tilbakemelding."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Språk"),
+      "leave": MessageLookupByLibrary.simpleMessage("Forlat"),
+      "leaveCommunity": (Object a0) => "Forlate ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Slipp inn igjen"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 side åpen"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Legg til et klipp"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Legg til en GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
-      "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Legg til en emneknagg"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Legg til et bilde"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Legg til en avstemning"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Legg til en video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Legg til en interesse"),
+      "literaladdLabelAsATab": (Object a0) => "Legg til ${a0} som fane",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("Appspråk"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("Appversjon"),
+      "literalblockAuthor": (Object a0) => "Blokker ${a0}",
+      "literalblockAuthor2": (Object a0) => "Blokkere ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Blokkere denne kontoen?"),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage("Avbryt svar"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Sjekk igjen"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Velg fra galleriet"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Tøm hurtigbuffer"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Lukk alle sider"),
+      "literalcloseTabLabel": (Object a0) => "Lukk ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Lukk nettleseren"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Stenge ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Kontakt brukerstøtten"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Innholdsspråk"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopier lenke"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kopier lenke til innlegget"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Kopier innleggstekst"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopier tekst"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Kunne ikke laste inn fellesskap"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke laste inn GIF-er"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke laste inn varsler"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Kunne ikke laste inn medlemmene"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Kunne ikke laste inn disse innleggene"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Kunne ikke laste inn denne samtalen"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Kunne ikke laste inn denne listen"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Kunne ikke laste inn dette innlegget"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Kunne ikke laste inn dette svaret"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Kunne ikke laste inn populære tagger"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Kunne ikke laste inn fellesskapene dine"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Kunne ikke laste inn meldingene dine"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Kunne ikke åpne dette fellesskapet"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Kunne ikke publisere det svaret."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Kunne ikke søke"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Kunne ikke logge ut: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} sider åpne",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Forsidebilde"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Datasparing"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Slett innlegg"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Oppdag folk"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Ikke svar"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Utkast lagret"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Tilbakemelding kan ikke sendes akkurat nå"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Skriftstørrelse"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF-er er ikke satt opp"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Gi det til en annen app"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Skjul passord"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Skjul dette innlegget"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Skjuler det og ber oss vise færre lignende"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Hvordan oppføre seg"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Fortsett å skrive"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron svarte ikke"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
-      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0}-dato",
+      "literalleaveCommunityName": (Object a0) => "Forlate ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, ansiktslinse",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Likte innlegg"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Lenken er kopiert"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Gjør til moderator"),
+      "literalmuteAuthor": (Object a0) => "Demp ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Demp denne tråden"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Demp ord eller tagger"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Dempede og blokkerte kontoer"),
+      "literalmutedYouWillNotBeNotified":
+          MessageLookupByLibrary.simpleMessage("Dempet. Du får ikke varsler."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Ingen app på denne enheten åpner ${a0}-lenker.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Ingen nettleser på denne enheten tok imot lenken."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Ingen DID ennå"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Ingen utkast"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Ingen interesser ennå"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Ingen liker ennå"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Ingen meldinger ennå"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Ingen nye følgere"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Ingen innlegg ennå"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Ingen svar ennå"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
-      "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ingen delinger ennå"),
+      "literalnoTrendingTagMatchesThat":
+          MessageLookupByLibrary.simpleMessage("Ingen populær tagg passer"),
+      "literalnobodyFound": MessageLookupByLibrary.simpleMessage("Fant ingen"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ingen er fjernet"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Ingen her ennå"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Ikke interessert"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ingenting funnet"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Ingenting er populært ennå"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Ingenting logget ennå"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Ingen treff"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("Ingenting dempet"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Ingenting å se på ennå"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Ingenting ulest"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("Bare eieren kan endre dette"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Åpne svar"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Åpne e-posten fra Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Passord og pålogging"),
+      "literalpostInCommunityName": (Object a0) => "Publiser i ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Publiser i ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Publiser det med egne ord over"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Hovedspråk"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-varsler"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Leser…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Ta opp et taleinnlegg"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Ta opp igjen"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Fjern som moderator"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Fjern fra fellesskapet"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Fjern fra lagrede"),
+      "literalremoveLabel": (Object a0) => "Fjern ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Fjern ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Fjerne ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Fjern avstemningen"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Fjern dette svaret"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Fjern denne samtalen"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Fjern denne avstemningen"),
+      "literalreportAuthor": (Object a0) => "Rapporter ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Rapporter innlegg"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Send koden på nytt"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Lagrede innlegg"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Si noe"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Si noe til ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Søket mislyktes"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send igjen"),
+      "literalsendAgainInCooldownS": (Object a0) => "Send igjen om ${a0} s",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Send tilbakemelding"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Send lenken"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Sendt. Det er rapport nr. ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Lag et passord og fortsett"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Del loggen med brukerstøtten"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Del dette fellesskapet"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Del denne siden"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Del denne profilen"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Del via…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Del med et sitat"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Vis flere innlegg som dette"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Vis passord"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Vis resultater"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Start et fellesskap"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Start opptak"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Stopp innlasting"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Slutt å se dette innlegget og svarene på det"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Historiefelt, ${a0} elementer",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Bytt kamera"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tagg noen"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Ta et bilde"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Trykk på banneret eller bildet for å endre det"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Trykk på lenken i den"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Trykk for å legge til et bilde og et forsidebilde"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Det gikk ikke gjennom. Prøv igjen."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Den GIF-en kunne ikke lastes ned."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+              "Den lenken kan ikke åpnes her."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kameraet er lukket"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Dette fellesskapet"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Dette svaret er borte"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Oversett innlegg"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("Slå av lyd"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Slå på lyd"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Bruk en av våre"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Bekreftelseskoden er sendt på nytt."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Bekreftelsen mislyktes: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Bekreft e-post"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Seere, liker, lagringer og kommentarer"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Hva Kyron tar vare på"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Hva denne appen har gjort"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Hva du gjorde, hva du forventet, hva som skjedde "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Det du publiserer er ditt"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Om Kyron kan nås akkurat nå"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hvem kan svare"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Hvem vil du tagge?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Du følger allerede alle populære tagger"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Du er à jour"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Du er ikke med i noen fellesskap"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Du er logget ut."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) => "Du har forlatt ${a0}",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "Du har ikke publisert noe ennå"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Last inn flere"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Loggen tømt"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Loggen kopiert"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Logg inn"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Logg ut"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Logge ut?"),
+      "login": MessageLookupByLibrary.simpleMessage("Pålogging"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Påloggingen mislyktes. Sjekk opplysningene dine."),
+      "manage": MessageLookupByLibrary.simpleMessage("Administrer"),
+      "menu": MessageLookupByLibrary.simpleMessage("Meny"),
+      "message": MessageLookupByLibrary.simpleMessage("Melding"),
+      "messages": MessageLookupByLibrary.simpleMessage("Meldinger"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Alle samtaler er à jour."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Åpne noens profil og trykk på Melding for å starte en samtale."),
+      "mute": MessageLookupByLibrary.simpleMessage("Demp"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Dempet og blokkert"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Dempede ord og tagger"),
+      "name": MessageLookupByLibrary.simpleMessage("Navn"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name>-skjerm"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Ny e-postadresse"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Nytt passord"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Nytt innlegg"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Ikke nå"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Ikke sendt. Trykk for å prøve igjen"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Ingenting på Kyron passer med «${a0}»",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Ingenting å kopiere"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Liker, svar og nye følgere havner her når de kommer."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Folk som følger deg, vises her."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Når noen liker et av innleggene dine, vises det her."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Svar på innleggene dine havner her."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
+          "Når noen deler deg videre, vises det her."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Varsler"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Åpne i nettleseren"),
+      "or": MessageLookupByLibrary.simpleMessage("eller"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Fant ikke siden"),
+      "password": MessageLookupByLibrary.simpleMessage("Passord"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Passordet er for kort"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Velg interessene dine"),
+      "post": MessageLookupByLibrary.simpleMessage("Publiser"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Innleggsstatistikk"),
+      "postInCommunity": (Object a0) => "Publiser i ${a0}",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Publiser det, si det, vis det."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
+          MessageLookupByLibrary.simpleMessage("Innleggstekst kopiert"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Personvernerklæring"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profilen er oppdatert"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Land"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Visningsnavn"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Sted"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Trykk for å endre"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Nettsted"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage("Push-varsler"),
+      "quote": MessageLookupByLibrary.simpleMessage("Siter"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Siter innlegg"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Nå et menneske"),
+      "remove": MessageLookupByLibrary.simpleMessage("Fjern"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Fjerne denne samtalen?"),
+      "removeMember": (Object a0) => "Fjerne ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("Fjerne denne meldingen?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Svar, følgere og omtaler"),
+      "repliesPolicy": (Object a0) => "Svar: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Svar"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Alle kan samhandle"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Alle kan fortsatt se, dele og sitere dette innlegget."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Alle på Kyron kan svare på dette innlegget."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Folk som følger deg"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
-      "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          "Bare folk som følger deg kan svare på dette innlegget."),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage("Folk du nevner"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Bare de du @nevner i dette innlegget kan svare."),
+      "reply_nobody": MessageLookupByLibrary.simpleMessage("Ingen kan svare"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Svar er slått av. Du kan fortsatt svare."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Hvem kan svare?"),
       "report": MessageLookupByLibrary.simpleMessage("Rapporter"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Rapporten er kopiert. Lim den inn i en e-post til brukerstøtten."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Rapport sendt"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Del videre"),
+      "reset": MessageLookupByLibrary.simpleMessage("Tilbakestill"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Tilbakestill passordet ditt"),
+      "retry": MessageLookupByLibrary.simpleMessage("Prøv igjen"),
+      "save": MessageLookupByLibrary.simpleMessage("Lagre"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Lagre utkast"),
+      "saySomething": (Object a0) => "Si noe til ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Søk"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Søk etter navn eller brukernavn"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Søk i fellesskap"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Søk etter GIF-er"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Søk etter språk"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Søk i populære tagger"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Sikkerhetsvarsler og kontoendringer"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Velg språket for appens brukergrensesnitt."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Velg hvilke språk feedene dine skal inneholde. Velger du ingen, vises alle språk."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
+          "Velg foretrukket språk for oversettelser i feeden."),
       "send": MessageLookupByLibrary.simpleMessage("Send"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Send bekreftelse"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Send feilrapport"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Send tilbakemelding"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Send rapport"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Send til brukerstøtten"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Tjenestestatus"),
+      "settings": MessageLookupByLibrary.simpleMessage("Innstillinger"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Del appens logg med brukerstøtten"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Logg inn på Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Logget inn som"),
+      "signupFailed": (Object a0) => "Registreringen mislyktes: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Bli"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron er tidlig ute, og den raskeste måten å nå noen som faktisk kan rette et problem på, er å åpne en sak. Fortell hva du gjorde og hva som skjedde i stedet."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Det finnes ingen innboks for brukerstøtte i appen ennå, så denne skjermen viser til stedet som faktisk følges med på, i stedet for et skjema som ikke leder noe sted."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Systemlogg"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Fortell oss hva som mangler eller ikke virker"),
+      "terms": MessageLookupByLibrary.simpleMessage("Vilkår"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Tekst, tale og video, menneskene som lager dem, og rommene de prater i."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Redigeringsverktøyet har ingen Publiser-knapp"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Mørkt"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Alltid mørkt"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Dempet"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
+          "Et mykere mørkt, blågrått i stedet for svart"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Lyst"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Alltid lyst"),
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Følg telefonens lyse eller mørke innstilling"),
+      "translate": MessageLookupByLibrary.simpleMessage("Oversett"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Oversettelse finnes ikke ennå. Ingenting i feeden oversettes i dag; dette huskes til den gjør det."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Dette endrer Kyrons egne ord, delene av grensesnittet Flutter tegner selv, datoer og tall, og retningen appen legges ut i for språk som skrives fra høyre mot venstre."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Prøv igjen"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Personvernerklæring"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Vilkår for bruk"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Konto"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Etter"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("App og enhet"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Jeg siterte svindelen for å advare folk."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1151,15 +963,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Klagen er sendt. Du får et varsel når den er avgjort."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Klage på sak \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Utseende"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Lyst, mørkt eller det telefonen er satt til"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Før"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Ingen av dere ser den andre på Kyron, og eventuelle følginger mellom dere fjernes. Personen får ikke beskjed."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Inneholder"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Hva den er til (valgfritt)"),
       "ui_cchat_announcements":
@@ -1264,29 +1074,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Ta opp en talemelding"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Du"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Fellesskap"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Hva er den til? (valgfritt)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Innlegg:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Innhold og visning"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Kunne ikke laste inn feeden din"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Kunne ikke laste inn innleggene du har likt"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Kunne ikke laste inn profilen din"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Kunne ikke laste inn de lagrede innleggene dine"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Desentralisert ID"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostikk"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupper"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("Ingen grupper"),
@@ -1297,16 +1101,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Festet"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Likt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Lagret"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Ingenting her ennå"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Følg noen kontoer, så vises innleggene deres her."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Ingenting fra folk du følger"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Innlegg vises her etter hvert som folk skriver dem."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Svekkes"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Ikke interessert"),
@@ -1324,16 +1126,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "De former Hjem og Utforsk, mest etter hva hvert innlegg handlet om. Hvert signal svekkes til det halve hver måned og teller ikke etter seks. Fjern ett for å stoppe det nå."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Innlegg med et klipp vises her."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Ingen videoer ennå"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Tilbakemelding"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Finn folk på Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Fra en konto"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Legg til personer"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Legg til"),
       "ui_group_add_name":
@@ -1409,7 +1208,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Du er ikke lenger med i denne gruppen."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Gi nytt navn"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Medlem"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Tilskuer"),
@@ -1423,31 +1223,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("deg"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Du er tilskuer"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Hjelp"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Notert. Dette hjelper oss å velge hva du får se."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Bli med"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Medlem"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Språk"),
       "ui_language_detail": MessageLookupByLibrary.simpleMessage("Velg språk"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Juridisk"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Lik"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Likte innlegg"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Innlegg du liker vises her, de nyeste først."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Lenken er kopiert"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Du slutter å se innleggene til personen. Personen får ikke beskjed."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Ingen liker ennå"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Ingen innlegg passer med disse filtrene."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Ingenting lagret ennå"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Kontoen din er oppdatert"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1503,13 +1300,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kontoen din har fått en advarsel"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("I går"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Fullfør"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hopp over"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Dette er allerede åpnet."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Utløpt"),
@@ -1527,22 +1320,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Send for visning én gang"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Trykk for å se"),
       "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Spill av"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Det fjernes fra profilen din og fra alle andres feeder. Svarene på det forsvinner også."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Innlegget er slettet"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Innlegget er skjult"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Innleggstekst kopiert"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Publisert mellom"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Skjult. Vi viser deg færre lignende."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Innstillinger"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Personvern"),
       "ui_report_add":
           MessageLookupByLibrary.simpleMessage("Noe å legge til? (valgfritt)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1641,79 +1433,66 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Innhold for voksne"),
       "ui_rule_something_else":
           MessageLookupByLibrary.simpleMessage("Noe annet"),
-      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Søppel"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Vold eller trusler"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Lagrede innlegg"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Trykk på arkivikonet på et innlegg for å beholde det her. Bare du ser det du lagrer."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Søk etter brukernavn eller visningsnavn."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Tøm"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Søk i alt som er publisert"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtre"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Søk etter folk"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Søk i innlegg"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Innstillinger"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("App og enhet"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Innhold og visning"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Datasparing"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Fortell oss hva du synes"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Bla gjennom hjelpeartikler"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Velg språket ditt"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Hvem du har dempet eller blokkert"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Varselinnstillinger"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Profilen og kontaktopplysningene dine"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Du må logge inn på nytt for å komme tilbake til kontoen din."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Sikkerhetsinnstillinger"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Bekreft passord"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("På én linje"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Ny e-postadresse"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Nytt passord"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Hva som skjedde"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Få hjelp fra teamet vårt"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Del"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Siter"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Send i en melding"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Til folk på Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Del dette innlegget"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Hva det gjaldt"),
       "ui_standing_account_banned":
@@ -1805,54 +1584,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Innlegget ditt"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Svaret ditt"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Vilkår"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("dette innlegget"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Tråden er dempet"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Prøv igjen"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Slå av lyd"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Slå på lyd"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("To tegn eller flere."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Angre"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Ord, eller et filter: en konto, et datointervall eller hva et innlegg inneholder."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Angre deling"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Oppdater passord"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Bruk en annen adresse"),
+      "username": MessageLookupByLibrary.simpleMessage("Brukernavn"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Brukernavnet må være små bokstaver (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Legg ved"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Klar til å legges ved"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Ta opp et taleinnlegg"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Tar opp…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Stopp"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Hva som skjedde"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Hva skjedde, og hva bør vi se på?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Hva er på dette bildet?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Hva er den til? (valgfritt)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Hva du gjorde, hva du forventet, hva som skjedde"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Hva du holdt på med da det skjedde."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Du svarte"),
       "dmReplied": (Object a0) => "$a0 svarte",
       "ui_dm_attach":
@@ -1979,8 +1750,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sendt, men ikke til alle."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Det kunne ikke sendes. Prøv igjen."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
-      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filter"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Følger"),
+      "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtrer"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Alle"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Uleste"),
       "ui_dm_filter_unanswered":

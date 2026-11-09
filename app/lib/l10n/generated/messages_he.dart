@@ -7,248 +7,198 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("מילה, ביטוי או #תג"),
+      "about": MessageLookupByLibrary.simpleMessage("אודות"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("הוספת תשובה"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("הוספת שפות…"),
+      "agreeAndContinue": MessageLookupByLibrary.simpleMessage("הסכמה והמשך"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("כבר יש לכם חשבון Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("תגובות"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("אנשים שונים, לא פתיחות"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("מעורבות"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("לייקים"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין צופים"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "אף אחד עוד לא פתח את הפוסט הזה."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("פורסם"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("שמירות"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("צופים"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("צופים ביום"),
+      "and": MessageLookupByLibrary.simpleMessage("ו"),
+      "answerNumber": (Object a0) => "תשובה ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("עדשת AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("צירוף יומן האפליקציה"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("זמן הלוך ושוב"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("אימות אסימון"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ניסיון חוזר"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ניסיון חוזר"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "התחלת שידור עכשיו תכניס אתכם לחדר שאף אחד לא יוכל"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("הקמת קהילה"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("למה זה? (לא חובה)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("להיכנס אליו שוב."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("להיכנס אליו שוב מהרשימה הזו."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("סגירתה"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("הצטרפו קודם"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("בקרוב"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("מפרסמים בשמכם"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("פרסום בקהילה הזו"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("עכשיו"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("ניסיון חוזר"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("נושא 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("בשבילך"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("יש בו משהו."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("בדרך לשם עכשיו."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", לא"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("האם אני זז"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("השתקת קול"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("הפעלת קול"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("בשבילך"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("הלשוניות שלך"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ניסיון חוזר"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("סמל (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("צופים ביום"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("הפוסט הזה"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("משהו להוסיף? (לא חובה)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("הפוסט הזה"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("מחשבון"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("התנתקות"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("החשבון שלך"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("אישור סיסמה"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא עכשיו"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("טוען…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("מפרסם…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("לפני 3 שע׳"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("העתקת קישור לסטורי"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("הסטורי שלך"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "החשבון שלך, הפוסטים שלך ומה שאתם מקישים עליו, כדי ש"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("הוספת נושא"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("משלו."),
+      "authorBlocked": (Object a0) => "${a0} נחסם",
+      "authorPostsHidden": (Object a0) => "לא תראו פוסטים של ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("חסימה"),
+      "blockAuthor": (Object a0) => "לחסום את ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("פרטי הגרסה הועתקו"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("בהמשך אתם מסכימים ל"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "בהמשך אתם מסכימים לתנאי השירות ולמדיניות הפרטיות שלנו"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("בהרשמה אתם מסכימים ל"),
+      "cancel": MessageLookupByLibrary.simpleMessage("ביטול"),
       "change": MessageLookupByLibrary.simpleMessage("שינוי"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
-      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("שינוי אימייל"),
+      "checkEmailConfirm":
+          MessageLookupByLibrary.simpleMessage("אמתו את החשבון מהאימייל."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("בדיקה אם Kyron זמין"),
+      "clear": MessageLookupByLibrary.simpleMessage("ניקוי"),
+      "close": MessageLookupByLibrary.simpleMessage("סגירה"),
+      "closeCommunity": (Object a0) => "לסגור את ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("סגירה"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("סגירת הקהילה הזו"),
+      "communities": MessageLookupByLibrary.simpleMessage("קהילות"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
-      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "מצאו אחת בגילוי, או הקימו משלכם."),
+      "composer_placeholder_hot_take":
+          MessageLookupByLibrary.simpleMessage("זרקו דעה לוהטת (או פושרת)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("מה עובר לכם בראש?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
-      "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          "אמרו משהו שרק אתם יכולים לומר…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("זה הסימן: פרסמו"),
+      "composer_placeholder_think":
+          MessageLookupByLibrary.simpleMessage("הקלידו, דברו או חשבו בקול"),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage("אישור סיסמה"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("פנייה לתמיכה"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "לפוסטים עדיין אין שפה, לכן זה עדיין לא מסנן את הפיד שלכם. הבחירות שלכם נשמרות עד אז."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("המשך"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("המשך עם אימייל"),
+      "copy": MessageLookupByLibrary.simpleMessage("העתקה"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("העתקת הדוח במקום"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "לא ניתן לפתוח התחברות עם Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "ההתנתקות נכשלה: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לצלם תמונה."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "מוצגת בפרופיל שלך ומתחת לפוסטים שלך."),
       "country_no_match":
@@ -259,89 +209,68 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "מוצגת בפרופיל שלך ומתחת לפוסטים שלך. כשאתה רואה פוסטים של מישהו, המדינה שלך נספרת בתובנות שלו, רק בקבוצות של חמישה ומעלה ואף פעם לא בשם."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("מההגדרות של הטלפון שלך"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("יצירה"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("יצירת חשבון"),
+      "createYourAccount": MessageLookupByLibrary.simpleMessage("צרו חשבון"),
+      "createYourProfile": MessageLookupByLibrary.simpleMessage("צרו פרופיל"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("עדשת AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("שידור חי"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("פוסט טקסט"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("פוסט קולי"),
+      "delete": MessageLookupByLibrary.simpleMessage("מחיקה"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("למחוק את התגובה הזו?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("למחוק את הפוסט הזה?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("תארו את הקובץ המצורף"),
+      "description": MessageLookupByLibrary.simpleMessage("תיאור"),
+      "didCopied": MessageLookupByLibrary.simpleMessage("ה-DID הועתק ללוח"),
       "done": MessageLookupByLibrary.simpleMessage("סיום"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "סגרו את העורך אחרי שכתבתם משהו ותוצע לכם טיוטה."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("לפני {days} ימים"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("לפני {hours} שעות"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("עכשיו"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("לפני {minutes} דקות"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("עדיין לא נכתב כלום"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("סקר, עדיין בלי שאלה"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("ציטוט, עדיין בלי טקסט"),
+      "drafts": MessageLookupByLibrary.simpleMessage("טיוטות"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("עריכת פרופיל"),
+      "email": MessageLookupByLibrary.simpleMessage("אימייל"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("התראות באימייל"),
+      "explore": MessageLookupByLibrary.simpleMessage("גילוי"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "מעקב פנים אינו זמין במכשיר הזה."),
+      "feedTagDetail": (Object a0) => "עדיין לא פורסם דבר עם #${a0}.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("לעקוב אחרי {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
-      "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
-      "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+      "followers": MessageLookupByLibrary.simpleMessage("עוקבים"),
+      "following": MessageLookupByLibrary.simpleMessage("נעקבים"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage("שכחתם סיסמה?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("קבלת עזרה"),
+      "googleContinue": MessageLookupByLibrary.simpleMessage("המשך עם Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage("התחברות עם Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google מחזירה את ההתחברות שהושלמה ל-Kyron דרך קישור שרק Android ו-iOS עונים לו, ולכן ב-${a0} לדפדפן אין לאן להחזיר אותה.\\n\\nאם כבר יש לכם חשבון Kyron דרך Google, בחרו המשך עם אימייל עם אותה כתובת והקישו על שכחתם סיסמה: תקבלו קישור להגדרת סיסמה.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
-      "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
-      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "התחברות עם Google דורשת את אפליקציית הטלפון"),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage("הרשמה עם Google"),
+      "guidesAndAnswers":
+          MessageLookupByLibrary.simpleMessage("מדריכים ותשובות לשאלות נפוצות"),
+      "handle": MessageLookupByLibrary.simpleMessage("כינוי"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("עזרה ותמיכה"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("מרכז העזרה"),
+      "home": MessageLookupByLibrary.simpleMessage("בית"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("בשורה אחת"),
       "ins_account": MessageLookupByLibrary.simpleMessage("החשבון שלך"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("פתח את הקהילה"),
@@ -457,690 +386,530 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("הפוסטים המובילים"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("לעומת {days} הימים הקודמים"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("הוספת תחום עניין"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("גררו כדי לסדר מחדש"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "בסרגל נכנסות עד חמש לשוניות. הסירו אחת כדי להוסיף אחרת."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("נעקבים"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("בשבילך"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "האשטאגים יופיעו כאן כשאנשים יתחילו להשתמש בהם."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("בטרנד עכשיו"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("סרטונים"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("הלשוניות שלך"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("זה ייעלם לשניכם."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("זה יוסר מהשרשור."),
+      "join": MessageLookupByLibrary.simpleMessage("הצטרפות"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("המשך עריכה"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "המסכים של Kyron בשפה שלכם. אם מילה נשמעת לא נכון, ספרו לנו דרך שליחת משוב."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("שפות"),
+      "leave": MessageLookupByLibrary.simpleMessage("עזיבה"),
+      "leaveCommunity": (Object a0) => "לעזוב את ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("החזרה פנימה"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("דף אחד פתוח"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("הוספת קליפ"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("הוספת GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("הוספת האשטאג"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("הוספת תמונה"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("הוספת סקר"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("הוספת וידאו"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("הוספת תחום עניין"),
+      "literaladdLabelAsATab": (Object a0) => "הוספת ${a0} כלשונית",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("שפת האפליקציה"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("גרסת האפליקציה"),
+      "literalblockAuthor": (Object a0) => "חסימת ${a0}",
+      "literalblockAuthor2": (Object a0) => "לחסום את ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("לחסום את החשבון הזה?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("ביטול התגובה"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("בדיקה חוזרת"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("בחירה מהגלריה"),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage("ניקוי המטמון"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("סגירת כל הדפים"),
+      "literalcloseTabLabel": (Object a0) => "סגירת ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("סגירת הדפדפן"),
+      "literalcloseWidgetCommunityName": (Object a0) => "לסגור את ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("פנייה לתמיכה"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("שפות התוכן"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("העתקת קישור"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("העתקת קישור לפוסט"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          MessageLookupByLibrary.simpleMessage("העתקת טקסט הפוסט"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("העתקת טקסט"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון קהילות"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון GIF"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון התראות"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון חברים"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הפוסטים האלה"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את השיחה הזו"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הרשימה הזו"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הפוסט הזה"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את התגובה הזו"),
+      "literalcouldNotLoadTrendingTags":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון תגים פופולריים"),
       "literalcouldNotLoadYourCommunities":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הקהילות שלך"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את ההודעות שלך"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לפתוח את הקהילה הזו"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לפרסם את התגובה."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("החיפוש לא הצליח"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "ההתנתקות נכשלה: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} דפים פתוחים",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("תמונת נושא"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("חיסכון בנתונים"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("מחיקת הפוסט"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("חיפוש אנשים"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("לא להגיב"),
+      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("הטיוטה נשמרה"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא ניתן לשלוח משוב כרגע"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("גודל טקסט"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF לא הוגדרו"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("העברה לאפליקציה אחרת"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("הסתרת סיסמה"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("הסתרת הפוסט הזה"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
-      "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+              "מסתיר אותו ומבקש מאיתנו להציג פחות כאלה"),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage("איך להתנהג"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("המשך כתיבה"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron לא הגיב"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
-      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+      "literallabelDate": (Object a0) => "תאריך \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "לעזוב את ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, עדשת פנים",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("פוסטים שאהבתם"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage("הקישור הועתק"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("הפיכה למנחה"),
+      "literalmuteAuthor": (Object a0) => "השתקת ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("השתקת השרשור הזה"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("השתקת מילים או תגים"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("חשבונות מושתקים וחסומים"),
+      "literalmutedYouWillNotBeNotified":
+          MessageLookupByLibrary.simpleMessage("הושתק. לא תקבלו התראות."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "אף אפליקציה במכשיר לא פותחת קישורי ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "אף דפדפן במכשיר לא קיבל את הקישור."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("עדיין אין DID"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("אין טיוטות"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין תחומי עניין"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין לייקים"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין הודעות"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("אין עוקבים חדשים"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין פוסטים"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("עדיין אין תגובות"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          MessageLookupByLibrary.simpleMessage("עדיין אין שיתופים חוזרים"),
+      "literalnoTrendingTagMatchesThat":
+          MessageLookupByLibrary.simpleMessage("אף תג פופולרי לא תואם"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא נמצא אף אחד"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("אף אחד לא הוסר"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין כאן אף אחד"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("לא מעניין אותי"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
-      "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("לא נמצא דבר"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין טרנדים"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין כלום ביומן"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("אין התאמות"),
+      "literalnothingMuted": MessageLookupByLibrary.simpleMessage("אין השתקות"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין מה לצפות"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("אין הודעות שלא נקראו"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("רק הבעלים יכולים לשנות את זה"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("פתיחת התגובה"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("פתחו את האימייל מ-Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("סיסמה והתחברות"),
+      "literalpostInCommunityName": (Object a0) => "פרסום ב-${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "פרסום ב-${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
-          MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("פרסמו עם מילים משלכם מעליו"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("שפה ראשית"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("התראות פוש"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("בודק…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("הקלטת פוסט קולי"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("הקלטה מחדש"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("הסרה מתפקיד מנחה"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("הסרה מהקהילה"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("הסרה מהשמורים"),
+      "literalremoveLabel": (Object a0) => "הסרת ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "הסרת ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "להסיר את ${a0}?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage("הסרת סקר"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("הסרת התשובה הזו"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("מחיקת השיחה הזו"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("הסרת הסקר הזה"),
+      "literalreportAuthor": (Object a0) => "דיווח על ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("דיווח על הפוסט"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("שליחת הקוד שוב"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("פוסטים שמורים"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("אמרו משהו"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "אמרו משהו ב-${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
-      "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("החיפוש נכשל"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("שליחה חוזרת"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "שליחה חוזרת בעוד ${a0} שנ׳",
+      "literalsendFeedback": MessageLookupByLibrary.simpleMessage("מתן משוב"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("שליחת קישור"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
-      "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
-      "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          "נשלח. זה דוח מס׳ ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("הגדירו סיסמה והמשיכו"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("שיתוף היומן עם התמיכה"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("שיתוף הקהילה הזו"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("שיתוף הדף הזה"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("שיתוף הפרופיל הזה"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("שיתוף…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("שיתוף עם ציטוט"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("להציג עוד כאלה"),
+      "literalshowPassword": MessageLookupByLibrary.simpleMessage("הצגת סיסמה"),
+      "literalshowResults": MessageLookupByLibrary.simpleMessage("הצגת תוצאות"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("הקמת קהילה"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("התחלת הקלטה"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("עצירת הטעינה"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "להפסיק לראות את הפוסט הזה ואת התגובות אליו"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "רצועת סטוריז, ${a0} פריטים",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("החלפת מצלמה"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("תיוג מישהו"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("צילום תמונה"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "הקישו על הבאנר או התמונה כדי להחליף"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("הקישו על הקישור שבתוכו"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "הקישו כדי להוסיף תמונה ותמונת נושא"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("זה לא הצליח. נסו שוב."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את ה-GIF הזה."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+              "לא ניתן לפתוח את הקישור הזה כאן."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("המצלמה סגורה"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("הקהילה הזו"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("התגובה הזו כבר לא קיימת"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("תרגום הפוסט"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("השתקת קול"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("הפעלת קול"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("שימוש באחת שלנו"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("קוד האימות נשלח שוב."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "האימות נכשל: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("אימות אימייל"),
       "literalviewersLikesSavesAndComments":
-          MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+          MessageLookupByLibrary.simpleMessage("צופים, לייקים, שמירות ותגובות"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("מה Kyron שומר"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("מה האפליקציה עשתה"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
-          MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+          MessageLookupByLibrary.simpleMessage("מה עשיתם, למה ציפיתם, מה קרה "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("מה שאתם מפרסמים שייך לכם"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("האם Kyron זמין כרגע"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("מי יכול להגיב"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("את מי לתייג?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "אתם כבר עוקבים אחרי כל התגים הפופולריים"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("ראיתם הכול"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("אינכם חברים באף קהילה"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("התנתקתם."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "עזבתם את ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("עדיין לא פרסמתם כלום"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("טעינת עוד"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("היומן נוקה"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("היומן הועתק"),
+      "logIn": MessageLookupByLibrary.simpleMessage("התחברות"),
+      "logOut": MessageLookupByLibrary.simpleMessage("התנתקות"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("להתנתק?"),
+      "login": MessageLookupByLibrary.simpleMessage("התחברות"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "ההתחברות נכשלה. בדקו את הפרטים."),
+      "manage": MessageLookupByLibrary.simpleMessage("ניהול"),
+      "menu": MessageLookupByLibrary.simpleMessage("תפריט"),
+      "message": MessageLookupByLibrary.simpleMessage("הודעה"),
+      "messages": MessageLookupByLibrary.simpleMessage("הודעות"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("קראתם את כל השיחות."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "פתחו פרופיל של מישהו והקישו על הודעה כדי להתחיל שיחה."),
+      "mute": MessageLookupByLibrary.simpleMessage("השתקה"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("מושתקים וחסומים"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("מילים ותגים מושתקים"),
+      "name": MessageLookupByLibrary.simpleMessage("שם"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("מסך <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("כתובת אימייל חדשה"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("סיסמה חדשה"),
+      "newPost": MessageLookupByLibrary.simpleMessage("פוסט חדש"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
-      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+      "notNow": MessageLookupByLibrary.simpleMessage("לא עכשיו"),
+      "notSentTapRetry":
+          MessageLookupByLibrary.simpleMessage("לא נשלח. הקישו כדי לנסות שוב"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "שום דבר ב-Kyron לא תואם ל\"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("אין מה להעתיק"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "לייקים, תגובות ועוקבים חדשים מגיעים לכאן."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "אנשים שעוקבים אחריכם יופיעו כאן."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "כשמישהו יעשה לייק לפוסט שלכם, זה יופיע כאן."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "תגובות לפוסטים שלכם מגיעות לכאן."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "כשמישהו ישתף אתכם מחדש, זה יופיע כאן."),
+      "notifications": MessageLookupByLibrary.simpleMessage("התראות"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("פתיחה בדפדפן"),
+      "or": MessageLookupByLibrary.simpleMessage("או"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("הדף לא נמצא"),
+      "password": MessageLookupByLibrary.simpleMessage("סיסמה"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("הסיסמה קצרה מדי"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("בחרו תחומי עניין"),
+      "post": MessageLookupByLibrary.simpleMessage("פרסום"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("נתוני הפוסט"),
+      "postInCommunity": (Object a0) => "פרסום ב-${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("פרסמו, אמרו, הראו."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("טקסט הפוסט הועתק"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("מדיניות הפרטיות"),
+      "profileUpdated": MessageLookupByLibrary.simpleMessage("הפרופיל עודכן"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("ביו"),
       "profile_country": MessageLookupByLibrary.simpleMessage("מדינה"),
-      "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+      "profile_display_name": MessageLookupByLibrary.simpleMessage("שם תצוגה"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("מיקום"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("הקישו כדי להחליף"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("אתר"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage("התראות פוש"),
+      "quote": MessageLookupByLibrary.simpleMessage("ציטוט"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("ציטוט הפוסט"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("פנייה לאדם"),
+      "remove": MessageLookupByLibrary.simpleMessage("הסרה"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("למחוק את השיחה הזו?"),
+      "removeMember": (Object a0) => "להסיר את ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("למחוק את ההודעה הזו?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("תגובות, מעקבים ואזכורים"),
+      "repliesPolicy": (Object a0) => "תגובות: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("תגובה"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("כל אחד יכול להצטרף"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "כל אחד עדיין יכול לראות, לשתף מחדש ולצטט את הפוסט הזה."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "כל אחד ב-Kyron יכול להגיב לפוסט הזה."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("מי שעוקב אחריכם"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "רק מי שעוקב אחריכם יכול להגיב לפוסט הזה."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("אנשים שאתם מזכירים"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "רק אנשים שאתם מזכירים עם @ בפוסט הזה יכולים להגיב."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("אף אחד לא יכול להגיב"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "התגובות כבויות. אתם עדיין יכולים להגיב בעצמכם."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("מי יכול להגיב?"),
       "report": MessageLookupByLibrary.simpleMessage("דיווח"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "הדוח הועתק. הדביקו אותו באימייל לתמיכה."),
       "reportSent": MessageLookupByLibrary.simpleMessage("הדיווח נשלח"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
-      "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
-      "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+      "repost": MessageLookupByLibrary.simpleMessage("שיתוף חוזר"),
+      "reset": MessageLookupByLibrary.simpleMessage("איפוס"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage("איפוס הסיסמה"),
+      "retry": MessageLookupByLibrary.simpleMessage("ניסיון חוזר"),
+      "save": MessageLookupByLibrary.simpleMessage("שמירה"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("שמירת טיוטה"),
+      "saySomething": (Object a0) => "אמרו משהו ב-${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("חיפוש"),
+      "searchByNameOrHandle":
+          MessageLookupByLibrary.simpleMessage("חיפוש לפי שם או כינוי"),
+      "searchCommunities": MessageLookupByLibrary.simpleMessage("חיפוש קהילות"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("חיפוש GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("חיפוש שפות"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("חיפוש תגים פופולריים"),
+      "securityAlerts":
+          MessageLookupByLibrary.simpleMessage("התראות אבטחה ושינויים בחשבון"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "בחרו את שפת הממשק של האפליקציה."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "בחרו אילו שפות יופיעו בפידים שלכם. אם לא תבחרו אף אחת, יוצגו כל השפות."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
-      "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          "בחרו את השפה הראשית לתרגומים בפיד."),
+      "send": MessageLookupByLibrary.simpleMessage("שליחה"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage("שליחת אימות"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("שליחת דיווח על באג"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("שליחת משוב"),
       "sendReport": MessageLookupByLibrary.simpleMessage("שליחת דיווח"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("שליחה לתמיכה"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("מצב השירות"),
+      "settings": MessageLookupByLibrary.simpleMessage("הגדרות"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "שיתוף יומן האפליקציה עם התמיכה"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("התחברות ל-Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("מחובר בתור"),
+      "signupFailed": (Object a0) => "ההרשמה נכשלה: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("להישאר"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron רק בתחילת דרכו, והדרך המהירה ביותר להגיע למי שבאמת יכול לתקן היא לפתוח פנייה. ספרו לנו מה עשיתם ומה קרה."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
-      "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "לאפליקציה עדיין אין תיבת תמיכה, לכן המסך הזה מפנה אתכם למקום שבאמת עוקבים אחריו, ולא לטופס שלא מגיע לשום מקום."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("יומן האפליקציה"),
+      "tellMissingBroken":
+          MessageLookupByLibrary.simpleMessage("ספרו לנו מה חסר או מה שבור"),
+      "terms": MessageLookupByLibrary.simpleMessage("תנאי השירות"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "טקסט, קול ווידאו, האנשים שיוצרים אותם והחדרים שבהם הם משוחחים."),
+      "theComposerNoPostButton":
+          MessageLookupByLibrary.simpleMessage("אין כפתור פרסום בעורך"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("כהה"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("תמיד כהה"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("מעומעם"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "כהה רך יותר, אפור-כחלחל במקום שחור"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("בהיר"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("תמיד בהיר"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("מערכת"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "לפי ההגדרה הבהירה או הכהה של הטלפון"),
+      "translate": MessageLookupByLibrary.simpleMessage("תרגום"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "התרגום עדיין לא פעיל. שום דבר בפיד עדיין לא מתורגם; ההגדרה תיזכר עד אז."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "זה משנה את המילים של Kyron עצמו, את חלקי הממשק ש-Flutter מצייר בעצמו, תאריכים ומספרים, ואת כיוון הפריסה של האפליקציה בשפות שנכתבות מימין לשמאל."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("לנסות שוב"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("מדיניות הפרטיות"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("תנאי השירות"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("חשבון"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("אחרי"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("אפליקציה ומכשיר"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "ציטטתי את ההונאה כדי להזהיר אחרים."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1153,15 +922,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "הערעור נשלח. תישלח אליך התראה כשתתקבל החלטה."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("ערעור על תיק \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("מראה"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("בהיר, כהה או לפי הטלפון"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("לפני"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "לא תראו זה את זה ב-Kyron, והמעקבים ביניכם יוסרו. לא נודיע להם."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("מכיל"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("למה היא נועדה (לא חובה)"),
       "ui_cchat_announcements":
@@ -1262,29 +1029,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("הקלטת הודעה קולית"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("את/ה"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("קהילות"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("למה זה? (לא חובה)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("פוסטים:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display": MessageLookupByLibrary.simpleMessage("תוכן ותצוגה"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הפיד שלך"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "לא ניתן לטעון את הפוסטים שאהבתם"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון את הפרופיל שלך"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "לא ניתן לטעון את הפוסטים השמורים שלך"),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage("מזהה מבוזר"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("פתרון בעיות"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("קבוצות"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("אין קבוצות"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1294,16 +1053,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("מוצמד"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("אהבתי"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("שמורים"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("עדיין אין כאן כלום"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "עקבו אחרי כמה חשבונות והפוסטים שלהם יופיעו כאן."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "אין כלום ממי שאתם עוקבים אחריו"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "פוסטים יופיעו כאן כשאנשים יכתבו אותם."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("נחלש"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("לא מעניין אותי"),
@@ -1320,17 +1077,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "מה הצג עוד ולא מעניין אותי אומרים לפידים שלך"),
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "הם מעצבים את הבית ואת הגילוי, בעיקר לפי הנושא של כל פוסט. כל אחד נחלש בחצי בכל חודש ומפסיק להיחשב אחרי שישה. הסר אחד כדי לעצור אותו עכשיו."),
-      "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+      "ui_feed_videos_detail":
+          MessageLookupByLibrary.simpleMessage("פוסטים עם קליפ יופיעו כאן."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("עדיין אין סרטונים"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("משוב"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("מצאו אנשים ב-Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("מחשבון"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("הוספת אנשים"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("הוספה"),
       "ui_group_add_name":
@@ -1414,31 +1168,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("את/ה"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("את/ה צופה"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("עזרה"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "נרשם. זה עוזר לבחור מה להציג לכם."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("הצטרפות"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("הצטרף"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("שפה"),
       "ui_language_detail": MessageLookupByLibrary.simpleMessage("בחירת שפה"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("מידע משפטי"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("לייק"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("פוסטים שאהבתם"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "פוסטים שאהבתם מופיעים כאן, החדשים קודם."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("הקישור הועתק"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "לא תראו יותר את הפוסטים שלהם. לא נודיע להם."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין לייקים"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "אין פוסטים שתואמים למסננים האלה."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("עדיין אין שמורים"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("החשבון שלך עודכן"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1495,13 +1245,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("החשבון שלך קיבל אזהרה"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("אתמול"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("סיום"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("דילוג"),
       "ui_once_already": MessageLookupByLibrary.simpleMessage("זה כבר נפתח."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("פג תוקף"),
       "ui_once_failed":
@@ -1517,23 +1263,19 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("שליחה לצפייה חד־פעמית"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("הקשה לצפייה"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("השהיה"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("הפעלה"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
-      "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
-      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "הוא יוסר מהפרופיל שלכם ומהפידים של כולם. התגובות אליו נעלמות איתו."),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("הפוסט נמחק"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("הפוסט הוסתר"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("טקסט הפוסט הועתק"),
+      "ui_posted_between": MessageLookupByLibrary.simpleMessage("פורסם בין"),
+      "ui_posts_hidden":
+          MessageLookupByLibrary.simpleMessage("הוסתר. נציג פחות כאלה."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("העדפות"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("פרטיות"),
       "ui_report_add":
           MessageLookupByLibrary.simpleMessage("משהו להוסיף? (לא חובה)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1630,76 +1372,61 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("ספאם"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("אלימות או איומים"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("פוסטים שמורים"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "הקישו על סמל הארכיון של פוסט כדי לשמור אותו כאן. רק אתם רואים את מה ששמרתם."),
       "ui_search_by_handle_or_display_name":
-          MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          MessageLookupByLibrary.simpleMessage("חפשו לפי כינוי או שם תצוגה."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("ניקוי"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("חיפוש בכל מה שפורסם"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("מסננים"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("חיפוש אנשים"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("חיפוש פוסטים"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("הגדרות"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("אפליקציה ומכשיר"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("תוכן ותצוגה"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          MessageLookupByLibrary.simpleMessage("חיסכון בנתונים"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("שתפו את דעתכם"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("עיון במאמרי עזרה"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("בחרו שפה"),
+      "ui_settings_muted_blocked":
+          MessageLookupByLibrary.simpleMessage("את מי השתקתם או חסמתם"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("העדפות התראות"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("הפרופיל ופרטי הקשר שלך"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "תצטרכו להתחבר שוב כדי לחזור לחשבון."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("הגדרות אבטחה"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("אישור סיסמה"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("בשורה אחת"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("כתובת אימייל חדשה"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("סיסמה חדשה"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("מה קרה"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("קבלו עזרה מהצוות שלנו"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("שיתוף"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("ציטוט"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("שליחה בהודעה"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("לאנשים ב-Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("שיתוף הפוסט הזה"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("במה מדובר"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("החשבון שלך נחסם לצמיתות"),
@@ -1789,54 +1516,42 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("הפוסט שלך"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("התגובה שלך"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("תנאי השירות"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("הפוסט הזה"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("השרשור הושתק"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("ניסיון נוסף"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("השתקת קול"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("הפעלת קול"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("לפחות שני תווים."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("ביטול"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "מילים, או מסנן: חשבון, טווח תאריכים או מה שיש בפוסט."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("ביטול השיתוף החוזר"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage("עדכון סיסמה"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("שימוש בכתובת אחרת"),
+      "username": MessageLookupByLibrary.simpleMessage("שם משתמש"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
-      "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          "שם המשתמש חייב להיות באותיות קטנות (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("וידאו"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("צירוף"),
+      "voice_ready_attach": MessageLookupByLibrary.simpleMessage("מוכן לצירוף"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("הקלטת פוסט קולי"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("שומר…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("עצירה"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("מה קרה"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "מה קרה, ועל מה כדאי לנו להסתכל?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
-      "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
-      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("מה יש בתמונה הזו?"),
+      "whatIsItFor": MessageLookupByLibrary.simpleMessage("למה זה? (לא חובה)"),
+      "whatYouDid":
+          MessageLookupByLibrary.simpleMessage("מה עשיתם, למה ציפיתם, מה קרה"),
+      "whatYouWereDoing":
+          MessageLookupByLibrary.simpleMessage("מה עשיתם כשזה קרה."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("התשובה שלך"),
       "dmReplied": (Object a0) => "תשובה מאת $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("הוספה להודעה"),
@@ -1954,7 +1669,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("נשלח, אבל לא לכולם."),
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("לא ניתן היה לשלוח. נסו שוב."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("עוקב"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("סינון"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("הכול"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("לא נקראו"),

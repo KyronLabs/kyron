@@ -1336,8 +1336,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron's screens are in your language. If a word reads wrong, tell us through Send feedback."),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "Find one on Discover, or start your own.",
       ),
@@ -1779,8 +1778,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
       "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "This changes Kyron's own words, the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages."),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Follow the phone’s own light or dark setting",
       ),

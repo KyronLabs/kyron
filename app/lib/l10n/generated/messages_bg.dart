@@ -40,7 +40,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("и"),
       "answerNumber": (Object a0) => "Отговор ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR леща"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Прикачи системния лог",
       ),
@@ -116,9 +116,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Вашите раздели"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Опитай отново"),
       "audit_password_requirements_symbol_322aed1e":
@@ -269,7 +268,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Създай своя профил",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR леща"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("Излез на живо"),
       "create_text_post": MessageLookupByLibrary.simpleMessage(
         "Текстова публикация",
@@ -496,8 +495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Продължи да редактираш"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Думите на Kyron все още се превеждат, затова повечето екрани остават на английски за момента.",
-      ),
+          "Екраните на Kyron са на твоя език. Ако някоя дума звучи грешно, кажи ни чрез Изпрати отзив."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Езици"),
       "leave": MessageLookupByLibrary.simpleMessage("Напусни"),
@@ -656,7 +654,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
       "literallabelDate": (Object a0) => "\\${a0} дата",
       "literalleaveCommunityName": (Object a0) => "Напусни ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
+      "literallensNameFaceLens": (Object a0) => "${a0}, леща за лице",
       "literallikedPosts": MessageLookupByLibrary.simpleMessage(
         "Харесани публикации",
       ),
@@ -1207,8 +1205,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Преводът все още не е наличен. Нищо във вашия фийд не е преведено днес; това се запомня за когато бъде.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Думите на Kyron все още се превеждат, затова за момента повечето екрани остават на английски. Какво променя това днес: частите от интерфейса, които Flutter рисува сам, датите и числата и посоката на оформление за езици отдясно наляво.",
-      ),
+          "Това променя собствените думи на Kyron, частите от интерфейса, които Flutter рисува сам, датите и числата, както и посоката на подреждане на приложението за езици, които се пишат отдясно наляво."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Опитай отново"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Политика за поверителност",

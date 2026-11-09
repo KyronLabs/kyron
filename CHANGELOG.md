@@ -22,6 +22,10 @@ the section; GitHub does not show it:
 ## [Unreleased]
 ### Changed
 
+- **Kyron now speaks your language everywhere.** The buttons, menus, empty
+  screens and error messages that were still in English are now translated in
+  all 68 languages, and the language screen no longer claims parts of the app
+  stay in English.
 - **Back takes you Home, not out.** From Explore, Communities or Messages,
   back goes to Home; on Home, it asks for a second press before Kyron
   closes, so a stray back never leaves the app.

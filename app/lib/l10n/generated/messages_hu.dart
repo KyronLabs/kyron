@@ -7,249 +7,205 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Szó, kifejezés vagy #címke"),
+      "about": MessageLookupByLibrary.simpleMessage("Névjegy"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Válasz hozzáadása"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Nyelvek hozzáadása…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Elfogadás és folytatás"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Van már Kyron-fiókod?"),
+      "analytics_comments":
+          MessageLookupByLibrary.simpleMessage("Hozzászólások"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "Különböző emberek, nem megnyitások"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Aktivitás"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Kedvelések"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek nézők"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Ezt a bejegyzést még senki sem nyitotta meg."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Közzétéve"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Mentések"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Nézők"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("NAPI NÉZŐK"),
+      "and": MessageLookupByLibrary.simpleMessage("és"),
+      "answerNumber": (Object a0) => "${a0}. válasz",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-lencse"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Alkalmazásnapló csatolása"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Oda-vissza idő"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TOKEN-ELLENŐRZÉS"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Ha most indítasz közvetítést, egy olyan szobába kerülsz, ahová senki sem tudna"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Közösség indítása"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Mire szolgál? (nem kötelező)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("visszajönni."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("visszajönni erről a listáról."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Ha bezárod,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("előbb csatlakozz"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("hamarosan"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Saját nevedben posztolsz"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("posztolj ebben a közösségben"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Épp most"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("1. téma"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neked"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("van valami."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("már úton van oda."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", nem"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("mozgok-e"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Hang kikapcsolása"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Hang bekapcsolása"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neked"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Lapjaid"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Szimbólum (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("NAPI NÉZŐK"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("nem sikerült betölteni"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ez a bejegyzés"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Szeretnél még valamit hozzáfűzni? (nem kötelező)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ez a bejegyzés"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Egy fióktól"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Kijelentkezés"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Fiókod"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Jelszó megerősítése"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("most nem"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Betöltés…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Közzététel…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 órája"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Történet linkjének másolása"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Történeted"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "A fiókod, a bejegyzéseid és amire koppintasz, hogy"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Téma hozzáadása"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("sajátja."),
+      "authorBlocked": (Object a0) => "${a0} letiltva",
+      "authorPostsHidden": (Object a0) => "Nem fogod látni ${a0} bejegyzéseit",
+      "block": MessageLookupByLibrary.simpleMessage("Letiltás"),
+      "blockAuthor": (Object a0) => "Letiltod: ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Buildadatok másolva"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("A folytatással elfogadod:"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "A folytatással elfogadod a Felhasználási feltételeket és az Adatvédelmi irányelveket"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("A regisztrációval elfogadod:"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Mégse"),
       "change": MessageLookupByLibrary.simpleMessage("Módosítás"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("E-mail módosítása"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Erősítsd meg a fiókodat az e-mailből."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Ellenőrzés, hogy a Kyron elérhető-e"),
+      "clear": MessageLookupByLibrary.simpleMessage("Törlés"),
+      "close": MessageLookupByLibrary.simpleMessage("Bezárás"),
+      "closeCommunity": (Object a0) => "Bezárod: ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Bezárás"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Közösség bezárása"),
+      "communities": MessageLookupByLibrary.simpleMessage("Közösségek"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Keress egyet a Felfedezésben, vagy indíts sajátot."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Dobj be egy merész véleményt (vagy langyosat)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Mi jár a fejedben?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Mondj valamit, amit csak te tudsz…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Ez a jel: posztold"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Írj, beszélj vagy gondolkodj hangosan"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Jelszó megerősítése"),
       "contactSupport": MessageLookupByLibrary.simpleMessage(
           "Kapcsolatfelvétel az ügyfélszolgálattal"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "A bejegyzéseknek még nincs nyelve, ezért ez még nem szűri a hírfolyamodat. A választásaidat addig megőrizzük."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Folytatás"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Folytatás e-maillel"),
+      "copy": MessageLookupByLibrary.simpleMessage("Másolás"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Inkább a jelentés másolása"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Nem sikerült megnyitni a Google-bejelentkezést. ${a0}",
+      "couldNotSignOut": (Object a0) => "Sikertelen kijelentkezés: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Nem sikerült fotót készíteni."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Megjelenik a profilodon és a bejegyzéseid alatt."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -262,88 +218,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Megjelenik a profilodon és a bejegyzéseid alatt. Ha látod valaki bejegyzéseit, az országodat beleszámolják az Elemzéseibe, csak legalább ötfős csoportokban, és soha nem a neveddel."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("A telefonod beállításaiból"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Létrehozás"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Fiók létrehozása"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Hozd létre a fiókodat"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Hozd létre a profilodat"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-lencse"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("Élő adás indítása"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Szöveges bejegyzés"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Hangbejegyzés"),
+      "delete": MessageLookupByLibrary.simpleMessage("Törlés"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Törlöd ezt a hozzászólást?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Törlöd ezt a bejegyzést?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Írd le ezt a mellékletet"),
+      "description": MessageLookupByLibrary.simpleMessage("Leírás"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID a vágólapra másolva"),
       "done": MessageLookupByLibrary.simpleMessage("Kész"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
-      "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Zárd be a szerkesztőt, miután írtál valamit, és felajánlunk egy piszkozatot."),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} napja"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage("{hours} órája"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Épp most"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} perce"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Még semmi sincs megírva"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Szavazás, még kérdés nélkül"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Idézet, még szöveg nélkül"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Piszkozatok"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("Profil szerkesztése"),
+      "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("E-mail-értesítések"),
+      "explore": MessageLookupByLibrary.simpleMessage("Felfedezés"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Az arckövetés ezen az eszközön nem érhető el."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Még semmit sem tettek közzé ezzel: #${a0}.",
       "follow_author": MessageLookupByLibrary.simpleMessage("{name} követése"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Követők"),
+      "following": MessageLookupByLibrary.simpleMessage("Követettek"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Elfelejtetted a jelszót?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Segítség kérése"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Folytatás Google-lel"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Bejelentkezés Google-lel"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "A Google a kész bejelentkezést egy olyan linken küldi vissza a Kyronnak, amelyre csak az Android és az iOS válaszol, így ${a0} rendszeren a böngészőnek nincs hová visszaküldenie.\\n\\nHa már van Kyron-fiókod Google-lel, válaszd a Folytatás e-maillel lehetőséget ugyanazzal a címmel, és koppints az Elfelejtett jelszóra: kapsz egy linket a jelszó beállításához.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "A Google-bejelentkezéshez a telefonos alkalmazás kell"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Regisztráció Google-lel"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Útmutatók és válaszok gyakori kérdésekre"),
+      "handle": MessageLookupByLibrary.simpleMessage("felhasználónév"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Súgó és támogatás"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Súgóközpont"),
+      "home": MessageLookupByLibrary.simpleMessage("Kezdőlap"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Egy sorban"),
       "ins_account": MessageLookupByLibrary.simpleMessage("A fiókod"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Közösség megnyitása"),
@@ -459,690 +405,580 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Legjobb bejegyzések"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("Az előző {days} naphoz képest"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Érdeklődési kör hozzáadása"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Húzd az átrendezéshez"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "A sávra legfeljebb öt lap fér. Távolíts el egyet, hogy újat adj hozzá."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Követettek"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Neked"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "A hashtagek itt jelennek meg, amikor az emberek elkezdik használni őket."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Most felkapott"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videók"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Lapjaid"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Mindkettőtöknél eltűnik."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Eltávolítjuk a szálból."),
+      "join": MessageLookupByLibrary.simpleMessage("Csatlakozás"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Szerkesztés folytatása"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "A Kyron képernyői a te nyelveden vannak. Ha egy szó furcsán hangzik, szólj nekünk a Visszajelzés küldése menüben."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Nyelvek"),
+      "leave": MessageLookupByLibrary.simpleMessage("Kilépés"),
+      "leaveCommunity": (Object a0) => "Kilépsz innen: ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Visszaengedés"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 oldal nyitva"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Klip hozzáadása"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF hozzáadása"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Hashtag hozzáadása"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Fotó hozzáadása"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Szavazás hozzáadása"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Videó hozzáadása"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Érdeklődési kör hozzáadása"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} hozzáadása lapként",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Alkalmazás nyelve"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Alkalmazásverzió"),
+      "literalblockAuthor": (Object a0) => "${a0} letiltása",
+      "literalblockAuthor2": (Object a0) => "Letiltod: ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Letiltod ezt a fiókot?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Válasz elvetése"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Újraellenőrzés"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Választás a galériából"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Gyorsítótár törlése"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Összes oldal bezárása"),
+      "literalcloseTabLabel": (Object a0) => "${a0} bezárása",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Böngésző bezárása"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Bezárod: ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Kapcsolat a támogatással"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Tartalom nyelvei"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Link másolása"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés linkjének másolása"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Bejegyzés szövegének másolása"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Szöveg másolása"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
+          "Nem sikerült betölteni a közösségeket"),
       "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Nem sikerült betölteni a GIF-eket"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Nem sikerült betölteni az értesítéseket"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Nem sikerült betölteni a tagokat"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Nem sikerült betölteni ezeket a bejegyzéseket"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Nem sikerült betölteni ezt a beszélgetést"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Nem sikerült betölteni ezt a listát"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Nem sikerült betölteni ezt a bejegyzést"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Nem sikerült betölteni ezt a választ"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Nem sikerült betölteni a népszerű címkéket"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Nem sikerült betölteni a közösségeidet"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Nem sikerült betölteni az üzeneteidet"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Nem sikerült megnyitni ezt a közösséget"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Nem sikerült közzétenni a választ."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("A keresés nem sikerült"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Sikertelen kijelentkezés: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} oldal nyitva",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Borítókép"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Adattakarékosság"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés törlése"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Emberek keresése"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Ne válaszolj"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Piszkozat mentve"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "A visszajelzést most nem lehet elküldeni"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Szövegméret"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("A GIF-ek nincsenek beállítva"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Átadás másik alkalmazásnak"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Jelszó elrejtése"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Bejegyzés elrejtése"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Elrejti, és kevesebb hasonló megjelenítését kéri"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Hogyan viselkedj"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Írás folytatása"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("A Kyron nem válaszolt"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} dátuma",
+      "literalleaveCommunityName": (Object a0) => "Kilépsz innen: ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, arclencse",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Kedvelt bejegyzések"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link másolva"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Moderátorrá tétel"),
+      "literalmuteAuthor": (Object a0) => "${a0} némítása",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Szál némítása"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Szavak vagy címkék némítása"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Némított és letiltott fiókok"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Némítva. Nem kapsz értesítéseket."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Ezen az eszközön egyetlen alkalmazás sem nyit meg ${a0} linkeket.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
+              "Az eszközön egyetlen böngésző sem fogadta a linket."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Még nincs DID"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Nincsenek piszkozatok"),
       "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+          "Még nincsenek érdeklődési körök"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek kedvelések"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek üzenetek"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Nincsenek új követők"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek bejegyzések"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Még nincsenek válaszok"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Még nincsenek megosztások"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Egy népszerű címke sem egyezik"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Senki sem található"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Senkit sem távolítottak el"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Még nincs itt senki"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Nem érdekel"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nincs találat"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Még semmi sem felkapott"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Még semmi sincs a naplóban"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Nincs találat"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nincs némítás"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Még nincs mit nézni"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Nincs olvasatlan"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Ezt csak a tulajdonos módosíthatja"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Válasz megnyitása"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Nyisd meg a Kyron e-mailjét"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Jelszó és bejelentkezés"),
+      "literalpostInCommunityName": (Object a0) => "Közzététel itt: ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "Közzététel itt: ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Tedd közzé saját szavaiddal fölötte"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Elsődleges nyelv"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-értesítések"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Ellenőrzés…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Hangbejegyzés rögzítése"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Újrafelvétel"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Moderátori jog elvétele"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Eltávolítás a közösségből"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Eltávolítás a mentettek közül"),
+      "literalremoveLabel": (Object a0) => "${a0} eltávolítása",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0} eltávolítása",
+      "literalremoveMemberDisplayname": (Object a0) => "Eltávolítod: ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Szavazás eltávolítása"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Válasz eltávolítása"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Beszélgetés törlése"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Szavazás eltávolítása"),
+      "literalreportAuthor": (Object a0) => "${a0} jelentése",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés jelentése"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Kód újraküldése"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Mentett bejegyzések"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Mondj valamit"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Mondj valamit itt: ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Sikertelen keresés"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Újraküldés"),
+      "literalsendAgainInCooldownS": (Object a0) => "Újraküldés ${a0} mp múlva",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Visszajelzés küldése"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Link küldése"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "Elküldve. Ez a(z) ${a0}. számú jelentés.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Állíts be jelszót, és folytasd"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Napló megosztása a támogatással"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Közösség megosztása"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Oldal megosztása"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Profil megosztása"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Megosztás…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Megosztás idézettel"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Több ilyet mutass"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Jelszó megjelenítése"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Találatok megjelenítése"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Közösség indítása"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Felvétel indítása"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Betöltés leállítása"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Ne lássam többé ezt a bejegyzést és a válaszait"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Történetsáv, ${a0} elem",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Kameraváltás"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Valaki megjelölése"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Fotó készítése"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Koppints a borítóra vagy a fotóra a cseréhez"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Koppints a benne lévő linkre"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Koppints fotó és borító hozzáadásához"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nem sikerült. Próbáld újra."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Nem sikerült betölteni azt a GIF-et."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Ez a link itt nem nyitható meg."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("A kamera zárva"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Ez a közösség"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Ez a válasz már nem létezik"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés fordítása"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Hang kikapcsolása"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hang bekapcsolása"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Egy a mieink közül"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("Megerősítő kód újraküldve."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Sikertelen megerősítés: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("E-mail megerősítése"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Nézők, kedvelések, mentések és hozzászólások"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Mit őriz meg a Kyron"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Mit csinált ez az alkalmazás"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Mit csináltál, mire számítottál, mi történt "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Amit közzéteszel, az a tiéd"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Elérhető-e most a Kyron"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ki válaszolhat"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Kit szeretnél megjelölni?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Már minden népszerű címkét követsz"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Mindent láttál"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Nem vagy tagja egyetlen közösségnek sem"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Kijelentkeztél."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Kiléptél innen: ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Még nem tettél közzé semmit"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Továbbiak betöltése"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Napló törölve"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Napló másolva"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Bejelentkezés"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Kijelentkezés"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Kijelentkezel?"),
+      "login": MessageLookupByLibrary.simpleMessage("Bejelentkezés"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "Sikertelen bejelentkezés. Ellenőrizd az adataidat."),
+      "manage": MessageLookupByLibrary.simpleMessage("Kezelés"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menü"),
+      "message": MessageLookupByLibrary.simpleMessage("Üzenet"),
+      "messages": MessageLookupByLibrary.simpleMessage("Üzenetek"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Minden beszélgetést elolvastál."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Nyisd meg valakinek a profilját, és koppints az Üzenetre a beszélgetés indításához."),
+      "mute": MessageLookupByLibrary.simpleMessage("Némítás"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
-      "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Némítottak és letiltottak"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Némított szavak és címkék"),
+      "name": MessageLookupByLibrary.simpleMessage("Név"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> képernyő"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage("Új e-mail-cím"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Új jelszó"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Új bejegyzés"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Most nem"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Nincs elküldve. Koppints az újrapróbáláshoz"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Semmi sem egyezik ezzel a Kyronon: \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Nincs mit másolni"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "A kedvelések, válaszok és új követők ide érkeznek."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Akik követnek, itt jelennek meg."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Ha valaki kedveli a bejegyzésedet, itt jelenik meg."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "A bejegyzéseidre érkező válaszok ide jönnek."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
+          "Ha valaki megoszt téged, itt jelenik meg."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Értesítések"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Megnyitás böngészőben"),
+      "or": MessageLookupByLibrary.simpleMessage("vagy"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Az oldal nem található"),
+      "password": MessageLookupByLibrary.simpleMessage("Jelszó"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("A jelszó túl rövid"),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Válaszd ki az érdeklődési köreidet"),
+      "post": MessageLookupByLibrary.simpleMessage("Közzététel"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés statisztikái"),
+      "postInCommunity": (Object a0) => "Közzététel itt: ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Posztolj, mondd, mutasd."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Bejegyzés szövege másolva"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Adatvédelmi irányelvek"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profil frissítve"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Bemutatkozás"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Ország"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Megjelenített név"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Hely"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Koppints a cseréhez"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Webhely"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-értesítések"),
+      "quote": MessageLookupByLibrary.simpleMessage("Idézés"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Bejegyzés idézése"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Kapcsolat egy emberrel"),
+      "remove": MessageLookupByLibrary.simpleMessage("Eltávolítás"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Törlöd ezt a beszélgetést?"),
+      "removeMember": (Object a0) => "Eltávolítod: ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Törlöd ezt az üzenetet?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Válaszok, követések és említések"),
+      "repliesPolicy": (Object a0) => "Válaszok: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Válasz"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Bárki csatlakozhat"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Bárki továbbra is láthatja, megoszthatja és idézheti ezt a bejegyzést."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "A Kyronon bárki válaszolhat erre a bejegyzésre."),
+      "reply_followers": MessageLookupByLibrary.simpleMessage("Akik követnek"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Csak a követőid válaszolhatnak erre a bejegyzésre."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Akiket megemlítesz"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Csak azok válaszolhatnak, akiket @megemlítesz ebben a bejegyzésben."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Senki sem válaszolhat"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "A válaszok ki vannak kapcsolva. Te azért válaszolhatsz."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Ki válaszolhat?"),
       "report": MessageLookupByLibrary.simpleMessage("Jelentés"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Jelentés másolva. Illeszd be egy e-mailbe a támogatásnak."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Jelentés elküldve"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Megosztás újra"),
+      "reset": MessageLookupByLibrary.simpleMessage("Visszaállítás"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Jelszó visszaállítása"),
+      "retry": MessageLookupByLibrary.simpleMessage("Újra"),
+      "save": MessageLookupByLibrary.simpleMessage("Mentés"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Piszkozat mentése"),
+      "saySomething": (Object a0) => "Mondj valamit itt: ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Keresés"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Keresés név vagy felhasználónév alapján"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Közösségek keresése"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF-ek keresése"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nyelvek keresése"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Népszerű címkék keresése"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Biztonsági riasztások és fiókváltozások"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Válaszd ki az alkalmazás felületének nyelvét."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Válaszd ki, mely nyelvek jelenjenek meg a hírfolyamaidban. Ha egyet sem választasz, minden nyelv megjelenik."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Válaszd ki az elsődleges nyelvet a hírfolyam fordításaihoz."),
+      "send": MessageLookupByLibrary.simpleMessage("Küldés"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Megerősítés küldése"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Hibajelentés küldése"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Visszajelzés küldése"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Jelentés küldése"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Küldés a támogatásnak"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Szolgáltatás állapota"),
+      "settings": MessageLookupByLibrary.simpleMessage("Beállítások"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Alkalmazásnapló megosztása a támogatással"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Bejelentkezés a Kyronba"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Bejelentkezve mint"),
+      "signupFailed": (Object a0) => "Sikertelen regisztráció: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Maradok"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "A Kyron még az elején tart, és a leggyorsabban úgy érheted el azt, aki tényleg ki tudja javítani, ha jegyet nyitsz. Mondd el, mit csináltál, és mi történt."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Az alkalmazásnak még nincs támogatási postafiókja, ezért ez a képernyő oda irányít, amit valóban figyelnek, nem egy semmibe vezető űrlaphoz."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Alkalmazásnapló"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Mondd el, mi hiányzik vagy mi romlott el"),
+      "terms": MessageLookupByLibrary.simpleMessage("Felhasználási feltételek"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Szöveg, hang és videó, az alkotóik, és a szobák, ahol beszélgetnek."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "A szerkesztőben nincs Közzététel gomb"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Sötét"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Mindig sötét"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Tompa"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Lágyabb sötét, fekete helyett kékesszürke"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Világos"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Mindig világos"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Rendszer"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "A telefon világos vagy sötét beállítását követi"),
+      "translate": MessageLookupByLibrary.simpleMessage("Fordítás"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "A fordítás még nem működik. A hírfolyamban még semmi sincs lefordítva; ezt addig megjegyezzük."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Ez megváltoztatja a Kyron saját szövegeit, a felület azon részeit, amelyeket a Flutter maga rajzol, a dátumokat és számokat, valamint az alkalmazás elrendezési irányát a jobbról balra írt nyelveknél."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Próbáld újra"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Adatvédelmi irányelvek"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Felhasználási feltételek"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Fiók"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Után"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Alkalmazás és eszköz"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Az átverést azért idéztem, hogy figyelmeztessem az embereket."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1157,15 +993,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Fellebbezés elküldve. Értesítést kapsz, amikor döntés születik."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "Fellebbezés a(z) \$number. ügyben"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Megjelenés"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Világos, sötét vagy a telefon szerint"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Előtt"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Nem fogjátok látni egymást a Kyronon, és a köztetek lévő követések megszűnnek. Erről nem kap értesítést."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Tartalmazza"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Mire való (nem kötelező)"),
       "ui_cchat_announcements":
@@ -1275,30 +1109,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Hangüzenet felvétele"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Te"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Közösségek"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Mire szolgál? (nem kötelező)"),
       "ui_community_posts":
           MessageLookupByLibrary.simpleMessage("Bejegyzések:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Tartalom és megjelenítés"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Nem sikerült betölteni a hírfolyamot"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Nem sikerült betölteni a kedvelt bejegyzéseidet"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Nem sikerült betölteni a profilodat"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Nem sikerült betölteni a mentett bejegyzéseidet"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Decentralizált azonosító"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Hibaelhárítás"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Csoportok"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("Nincsenek csoportok"),
@@ -1309,16 +1137,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kitűzve"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Kedvelt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Mentett"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Még nincs itt semmi"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Kövess néhány fiókot, és a bejegyzéseik itt jelennek meg."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Semmi a követetteidtől"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "A bejegyzések itt jelennek meg, ahogy az emberek megírják őket."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Halványul"),
       "ui_feed_signal_less":
@@ -1337,16 +1163,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Ezek alakítják a Kezdőlapot és a Felfedezést, főleg aszerint, miről szólt egy bejegyzés. Mindegyik havonta a felére gyengül, és hat hónap után már nem számít. Távolíts el egyet, hogy most leállítsd."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "A klipet tartalmazó bejegyzések itt jelennek meg."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Még nincsenek videók"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Visszajelzés"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Emberek keresése a Kyronon"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Egy fióktól"),
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Személyek hozzáadása"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Hozzáadás"),
@@ -1423,7 +1246,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Már nem vagy tagja ennek a csoportnak."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Átnevezés"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Adminisztrátor"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Tag"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Néző"),
       "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(
@@ -1436,32 +1260,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("te"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Néző vagy"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Súgó"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Feljegyeztük. Ez segít eldönteni, mit mutassunk neked."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Csatlakozás"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Csatlakozott"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Nyelv"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Válassz nyelvet"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Jogi információk"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Tetszik"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Kedvelt bejegyzések"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "A kedvelt bejegyzéseid itt jelennek meg, a legújabbak elöl."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link másolva"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Többé nem látod a bejegyzéseit. Erről nem kap értesítést."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Még nincsenek kedvelések"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Egy bejegyzés sem felel meg ezeknek a szűrőknek."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Még nincs mentés"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("A fiókod frissült"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1518,13 +1339,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A fiókod figyelmeztetést kapott"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Tegnap"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kész"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kihagyás"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Ezt már megnyitották."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Lejárt"),
@@ -1543,23 +1360,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Küldés egyszeri megtekintésre"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Koppints a megtekintéshez"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Szünet"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Lejátszás"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Eltávolítjuk a profilodról és mindenki hírfolyamából. A válaszai is eltűnnek vele együtt."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés törölve"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés elrejtve"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Bejegyzés szövege másolva"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Közzétéve ekkor"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Elrejtve. Kevesebb ilyet mutatunk."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Beállítások"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Adatvédelem"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Van, amit hozzátennél? (nem kötelező)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1659,76 +1475,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Kéretlen tartalom"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Erőszak vagy fenyegetés"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Mentett bejegyzések"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Koppints egy bejegyzés archiválás ikonjára, hogy itt megtartsd. A mentéseidet csak te látod."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "Keress felhasználónév vagy megjelenített név alapján."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Törlés"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "Keresés minden közzétett tartalomban"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Szűrők"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Emberek keresése"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Bejegyzések keresése"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Beállítások"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Alkalmazás és eszköz"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Tartalom és megjelenítés"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Adattakarékosság"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Oszd meg a véleményed"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Súgócikkek böngészése"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Válassz nyelvet"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Kiket némítottál vagy tiltottál le"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Értesítési beállítások"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Profilod és elérhetőségeid"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Újra be kell jelentkezned, hogy visszatérj a fiókodba."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Biztonsági beállítások"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Jelszó megerősítése"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Egy sorban"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Új e-mail-cím"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Új jelszó"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Mi történt"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Segítség a csapatunktól"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Megosztás"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Idézés"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Küldés üzenetben"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyronon lévő embereknek"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Bejegyzés megosztása"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("Miről szólt"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
           "A fiókodat véglegesen letiltottuk"),
@@ -1823,54 +1628,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("A bejegyzésed"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("A válaszod"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("Felhasználási feltételek"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ez a bejegyzés"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Szál némítva"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Próbáld újra"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hang kikapcsolása"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Hang bekapcsolása"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Legalább két karakter."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Visszavonás"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Szavak vagy szűrő: fiók, időszak vagy a bejegyzés tartalma."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Megosztás visszavonása"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Jelszó frissítése"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Másik cím használata"),
+      "username": MessageLookupByLibrary.simpleMessage("Felhasználónév"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "A felhasználónév csak kisbetűs lehet (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Videó"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Csatolás"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Csatolásra kész"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Hangbejegyzés rögzítése"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Mentés…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Leállítás"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Mi történt"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Mi történt, és mit nézzünk meg?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Mi van ezen a képen?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Mire szolgál? (nem kötelező)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Mit csináltál, mire számítottál, mi történt"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Mit csináltál, amikor történt."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Válaszoltál"),
       "dmReplied": (Object a0) => "$a0 válaszolt",
       "ui_dm_attach":
@@ -1998,7 +1798,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Elküldve, de nem mindenkinek."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült elküldeni. Próbáld újra."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Követő"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Szűrő"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Összes"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Olvasatlan"),

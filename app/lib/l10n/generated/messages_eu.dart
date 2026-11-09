@@ -7,249 +7,208 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Hitza, esaldia edo #etiketa"),
+      "about": MessageLookupByLibrary.simpleMessage("Honi buruz"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Gehitu erantzuna"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Gehitu hizkuntzak…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Onartu eta jarraitu"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Baduzu Kyron kontu bat?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Iruzkinak"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "Pertsona desberdinak, ez irekierak"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Parte-hartzea"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Atsegiteak"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago ikuslerik"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+          "Inork ez du argitalpen hau ireki oraindik."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Argitaratua"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Gordetzeak"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Ikusleak"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("IKUSLEAK EGUNEKO"),
+      "and": MessageLookupByLibrary.simpleMessage("eta"),
+      "answerNumber": (Object a0) => "${a0}. erantzuna",
+      "arLens": MessageLookupByLibrary.simpleMessage("EH lentea"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Erantsi aplikazioaren erregistroa"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Joan-etorriko denbora"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TOKENAREN EGIAZTAPENA"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Orain emanaldi bat hasiz gero, inork sartu ezingo lukeen gela batean egongo zinateke"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Sortu komunitate bat"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Zertarako da? (aukerakoa)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("berriro sartu."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "berriro sartu zerrenda honetatik."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Ixten baduzu"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("batu lehenik"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("laster"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Zeure izenean argitaratzen"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("argitaratu komunitate honetan"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Oraintxe"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("1. gaia"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Zuretzat"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("zerbait du."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("bidean da orain."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", ez"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("mugitzen ari naizen"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Desaktibatu soinua"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Aktibatu soinua"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Zuretzat"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Zure fitxak"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Ikurra (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("IKUSLEAK EGUNEKO"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("ezin izan da kargatu"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("argitalpen hau"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Zerbait gehitu nahi? (aukerakoa)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("argitalpen hau"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Kontu batetik"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Amaitu saioa"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Zure kontua"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Berretsi pasahitza"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("orain ez"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Kargatzen…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Argitaratzen…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("duela 3 h"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kopiatu istorioaren esteka"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Zure istorioa"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Zure kontua, zure argitalpenak eta sakatzen duzuna, honetarako:"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Gehitu gai bat"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("berea."),
+      "authorBlocked": (Object a0) => "${a0} blokeatu da",
+      "authorPostsHidden": (Object a0) =>
+          "Ez dituzu ${a0} erabiltzailearen argitalpenak ikusiko",
+      "block": MessageLookupByLibrary.simpleMessage("Blokeatu"),
+      "blockAuthor": (Object a0) => "${a0} blokeatu?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Konpilazioaren xehetasunak kopiatu dira"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Jarraituz gero, onartu egiten dituzu"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Jarraituz gero, gure Zerbitzu-baldintzak eta Pribatutasun-gidalerroak onartzen dituzu"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Erregistratuz gero, onartu egiten dituzu"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Utzi"),
       "change": MessageLookupByLibrary.simpleMessage("Aldatu"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("Aldatu helbide elektronikoa"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Egiaztatu kontua posta elektronikoaren bidez."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Egiaztatu Kyron eskuragarri dagoen"),
+      "clear": MessageLookupByLibrary.simpleMessage("Garbitu"),
+      "close": MessageLookupByLibrary.simpleMessage("Itxi"),
+      "closeCommunity": (Object a0) => "${a0} itxi?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Itxi"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Itxi komunitate hau"),
+      "communities": MessageLookupByLibrary.simpleMessage("Komunitateak"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
-      "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Aurkitu bat Arakatu atalean edo sortu zurea."),
+      "composer_placeholder_hot_take":
+          MessageLookupByLibrary.simpleMessage("Bota iritzi beroa (edo epela)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Zer duzu buruan?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "Esan zuk bakarrik esan dezakezun zerbait…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Hau da zure seinalea: argitaratu"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Idatzi, hitz egin edo pentsatu ozen"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Berretsi pasahitza"),
       "contactSupport": MessageLookupByLibrary.simpleMessage(
           "Jarri harremanetan laguntzarekin"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
+          "Argitalpenek ez dute oraindik hizkuntzarik, beraz honek ez du oraindik zure jarioa iragazten. Zure aukerak orduan arte gordeko dira."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Jarraitu"),
       "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Jarraitu posta elektronikoarekin"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopiatu"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Kopiatu txostena horren ordez"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Ezin izan da Google-ren saio-hasiera ireki. ${a0}",
+      "couldNotSignOut": (Object a0) => "Ezin izan da saioa amaitu: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Ezin izan da argazkia atera."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Zure profilean eta zure argitalpenen azpian erakusten da."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -262,88 +221,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Zure profilean eta zure argitalpenen azpian erakusten da. Norbaiten argitalpenak ikustean, zure herrialdea haren Estatistiketan zenbatzen da, bost edo gehiagoko taldeetan bakarrik eta inoiz ez izenez."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Telefonoaren ezarpenetatik"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Sortu"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Sortu kontua"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Sortu zure kontua"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Sortu zure profila"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("EH lentea"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Hasi zuzenekoa"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Testu-argitalpena"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Ahots-argitalpena"),
+      "delete": MessageLookupByLibrary.simpleMessage("Ezabatu"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Iruzkin hau ezabatu?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Argitalpen hau ezabatu?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Deskribatu eranskin hau"),
+      "description": MessageLookupByLibrary.simpleMessage("Deskribapena"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DIDa arbelean kopiatu da"),
       "done": MessageLookupByLibrary.simpleMessage("Eginda"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Itxi editorea zerbait idatzi ondoren, eta zirriborro bat eskainiko zaizu."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("duela {days} egun"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("duela {hours} ordu"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Oraintxe"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("duela {minutes} minutu"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez da ezer idatzi"),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Inkesta, galderarik gabe oraindik"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Aipua, testurik gabe oraindik"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Zirriborroak"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Editatu profila"),
+      "email": MessageLookupByLibrary.simpleMessage("Posta elektronikoa"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Posta bidezko jakinarazpenak"),
+      "explore": MessageLookupByLibrary.simpleMessage("Arakatu"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Aurpegiaren jarraipena ez dago erabilgarri gailu honetan."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Oraindik ez da ezer argitaratu #${a0} etiketarekin.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Jarraitu {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Jarraitzaileak"),
+      "following": MessageLookupByLibrary.simpleMessage("Jarraitzen"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pasahitza ahaztu duzu?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Laguntza lortzea"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Jarraitu Google-rekin"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Hasi saioa Google-rekin"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google-k amaitutako saio-hasiera Kyron-i itzultzen dio Android-ek eta iOS-ek soilik erantzuten duten esteka baten bidez; beraz, ${a0} plataforman arakatzaileak ez du non itzuli.\\n\\nGoogle bidez Kyron kontu bat baduzu, aukeratu Jarraitu posta elektronikoarekin helbide berarekin eta sakatu Pasahitza ahaztu duzu: pasahitz bat ezartzeko esteka jasoko duzu.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google bidezko saio-hasierak telefonoko aplikazioa behar du"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Erregistratu Google-rekin"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Gidak eta ohiko galderen erantzunak"),
+      "handle": MessageLookupByLibrary.simpleMessage("erabiltzaile-izena"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Laguntza eta euskarria"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Laguntza-zentroa"),
+      "home": MessageLookupByLibrary.simpleMessage("Hasiera"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Lerro bakarrean"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Zure kontua"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Ireki komunitatea"),
@@ -464,690 +413,585 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Argitalpen onenak"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Aurreko {days} egunekin alderatuta"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Gehitu interes bat"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Arrastatu ordena aldatzeko"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Barran gehienez bost fitxa sartzen dira. Kendu bat beste bat gehitzeko."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Jarraitzen"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Zuretzat"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Traolak hemen agertuko dira jendea erabiltzen hasten denean."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Joera orain"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Bideoak"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Zure fitxak"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Biontzat desagertuko da."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Haritik kenduko da."),
+      "join": MessageLookupByLibrary.simpleMessage("Batu"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Jarraitu editatzen"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron-en pantailak zure hizkuntzan daude. Hitzen batek oker ematen badu, esaguzu Bidali iritzia atalean."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Hizkuntzak"),
+      "leave": MessageLookupByLibrary.simpleMessage("Irten"),
+      "leaveCommunity": (Object a0) => "${a0} komunitatetik irten?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Utzi berriro sartzen"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("Orri 1 irekita"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Gehitu klipa"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Gehitu GIFa"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Gehitu traola"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Gehitu argazkia"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Gehitu inkesta"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Gehitu bideoa"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Gehitu interes bat"),
+      "literaladdLabelAsATab": (Object a0) => "Gehitu ${a0} fitxa gisa",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Aplikazioaren hizkuntza"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Aplikazioaren bertsioa"),
+      "literalblockAuthor": (Object a0) => "Blokeatu ${a0}",
+      "literalblockAuthor2": (Object a0) => "${a0} blokeatu?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Kontu hau blokeatu?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Baztertu erantzuna"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Egiaztatu berriro"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Aukeratu galeriatik"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Garbitu cachea"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Itxi orri guztiak"),
+      "literalcloseTabLabel": (Object a0) => "Itxi ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Itxi arakatzailea"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} itxi?",
       "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          "Jarri harremanetan euskarriarekin"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Edukiaren hizkuntzak"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopiatu esteka"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kopiatu argitalpenaren esteka"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Kopiatu argitalpenaren testua"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopiatu testua"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Ezin izan dira komunitateak kargatu"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Ezin izan dira GIFak kargatu"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Ezin izan dira jakinarazpenak kargatu"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Ezin izan dira kideak kargatu"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Ezin izan dira argitalpen hauek kargatu"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Ezin izan da elkarrizketa hau kargatu"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Ezin izan da zerrenda hau kargatu"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Ezin izan da argitalpen hau kargatu"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Ezin izan da erantzun hau kargatu"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Ezin izan dira etiketa ezagunak kargatu"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Ezin izan dira zure komunitateak kargatu"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Ezin izan dira zure mezuak kargatu"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Ezin izan da komunitate hau ireki"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Ezin izan da erantzuna argitaratu."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Bilaketak ez du funtzionatu"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Ezin izan da saioa amaitu: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} orri irekita",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Azaleko argazkia"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Datu-aurrezlea"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Ezabatu argitalpena"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Aurkitu jendea"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Ez erantzun"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Zirriborroa gorde da"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Ezin da iritzia bidali une honetan"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Testuaren tamaina"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIFak ez daude konfiguratuta"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Pasatu beste aplikazio bati"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Ezkutatu pasahitza"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Ezkutatu argitalpen hau"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
-      "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+              "Ezkutatu egiten du eta honelako gutxiago erakusteko eskatzen digu"),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage("Nola jokatu"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Jarraitu idazten"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron-ek ez du erantzun"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} data",
+      "literalleaveCommunityName": (Object a0) => "${a0} komunitatetik irten?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, aurpegiko lentea",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Atsegin dituzun argitalpenak"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Esteka kopiatu da"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Egin moderatzaile"),
+      "literalmuteAuthor": (Object a0) => "Isilarazi ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Isilarazi hari hau"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Isilarazi hitzak edo etiketak"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Isilarazitako eta blokeatutako kontuak"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Isilarazita. Ez duzu jakinarazpenik jasoko."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Gailu honetako aplikazioek ez dituzte ${a0} estekak irekitzen.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Gailu honetako arakatzaileek ez dute esteka onartu."),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago DIDrik"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Ez dago zirriborrorik"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago interesik"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago atsegiterik"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago mezurik"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Ez dago jarraitzaile berririk"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago argitalpenik"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
-      "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago erantzunik"),
+      "literalnoRepostsYet": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez dago birbidalketarik"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Ez dago bat datorren etiketa ezagunik"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ez da inor aurkitu"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ez da inor kendu"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago inor hemen"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Ez zait interesatzen"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ez da ezer aurkitu"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago joerarik"),
       "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          "Oraindik ez dago ezer erregistroan"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Ez dago bat-etortzerik"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
+          MessageLookupByLibrary.simpleMessage("Ez dago isilarazitakorik"),
       "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Oraindik ez dago ikusteko ezer"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Ez dago irakurri gaberik"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("Jabeak soilik alda dezake hau"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Ireki erantzuna"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Ireki Kyron-en mezua"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Pasahitza eta saio-hasiera"),
+      "literalpostInCommunityName": (Object a0) =>
+          "Argitaratu ${a0} komunitatean",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "Argitaratu ${a0} komunitatean",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Argitaratu zure hitzekin gainean"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Hizkuntza nagusia"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push jakinarazpenak"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Egiaztatzen…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Grabatu ahots-argitalpena"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Grabatu berriro"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Kendu moderatzaile gisa"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Kendu komunitatetik"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Kendu gordetakoetatik"),
+      "literalremoveLabel": (Object a0) => "Kendu ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Kendu ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0} kendu?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Kendu inkesta"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Kendu erantzun hau"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Ezabatu elkarrizketa hau"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Kendu inkesta hau"),
+      "literalreportAuthor": (Object a0) => "Salatu ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Salatu argitalpena"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Birbidali kodea"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Gordetako argitalpenak"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Esan zerbait"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Esan zerbait ${a0} komunitatean",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Bilaketak huts egin du"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Birbidali"),
+      "literalsendAgainInCooldownS": (Object a0) => "Birbidali ${a0} s barru",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Eman iritzia"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Bidali esteka"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Bidalita. ${a0}. txostena da.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Ezarri pasahitza eta jarraitu"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Partekatu erregistroa euskarriarekin"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Partekatu komunitate hau"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Partekatu orri hau"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Partekatu profil hau"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Partekatu…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Partekatu aipuarekin"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Erakutsi honelako gehiago"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Erakutsi pasahitza"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Erakutsi emaitzak"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Sortu komunitate bat"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Hasi grabatzen"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Gelditu karga"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Utzi argitalpen hau eta haren erantzunak ikusteari"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Istorioen zinta, ${a0} elementu",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Aldatu kamera"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Etiketatu norbait"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Atera argazkia"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Sakatu banerra edo argazkia aldatzeko"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Sakatu barruko esteka"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Sakatu argazkia eta azala gehitzeko"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ez da atera. Saiatu berriro."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Ezin izan da GIF hori kargatu."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Esteka hau ezin da hemen ireki."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kamera itxita dago"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Komunitate hau"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Erantzun hau jada ez dago"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Itzuli argitalpena"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Desaktibatu soinua"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Aktibatu soinua"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Erabili gureetako bat"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Egiaztapen-kodea berriro bidali da."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Egiaztapenak huts egin du: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Egiaztatu posta elektronikoa"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
+              "Ikusleak, atsegiteak, gordetzeak eta iruzkinak"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Zer gordetzen duen Kyron-ek"),
       "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+          "Zer egiten aritu den aplikazio hau"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Zer egin duzun, zer espero zenuen, zer gertatu den "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Argitaratzen duzuna zurea da"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Kyron une honetan eskuragarri dagoen"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nork erantzun dezake"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Nor etiketatu nahi duzu?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Etiketa ezagun guztiak jarraitzen dituzu dagoeneko"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Dena ikusi duzu"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Ez zaude inongo komunitatetan"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Saioa amaitu duzu."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "${a0} komunitatetik irten zara",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "Oraindik ez duzu ezer argitaratu"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Kargatu gehiago"),
+      "logCleared":
+          MessageLookupByLibrary.simpleMessage("Erregistroa garbitu da"),
+      "logCopied":
+          MessageLookupByLibrary.simpleMessage("Erregistroa kopiatu da"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Hasi saioa"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Amaitu saioa"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Saioa amaitu?"),
+      "login": MessageLookupByLibrary.simpleMessage("Saio-hasiera"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "Ezin izan da saioa hasi. Egiaztatu kredentzialak."),
+      "manage": MessageLookupByLibrary.simpleMessage("Kudeatu"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menua"),
+      "message": MessageLookupByLibrary.simpleMessage("Mezua"),
+      "messages": MessageLookupByLibrary.simpleMessage("Mezuak"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Elkarrizketa guztiak irakurri dituzu."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          "Ireki norbaiten profila eta sakatu Mezua elkarrizketa bat hasteko."),
+      "mute": MessageLookupByLibrary.simpleMessage("Isilarazi"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "Isilarazitakoak eta blokeatutakoak"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "Isilarazitako hitzak eta etiketak"),
+      "name": MessageLookupByLibrary.simpleMessage("Izena"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> pantaila"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Helbide elektroniko berria"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Pasahitz berria"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Argitalpen berria"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Orain ez"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Ez da bidali. Sakatu berriro saiatzeko"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron-en ez dago \"${a0}\" bilaketarekin bat datorren ezer",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Ez dago ezer kopiatzeko"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Atsegiteak, erantzunak eta jarraitzaile berriak hona iristen dira."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Jarraitzen zaituztenak hemen agertuko dira."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Norbaitek zure argitalpena atsegin duenean, hemen agertuko da."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Zure argitalpenei emandako erantzunak hona iristen dira."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
-      "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          "Norbaitek birbidaltzen zaituenean, hemen agertuko da."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Jakinarazpenak"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Ireki arakatzailean"),
+      "or": MessageLookupByLibrary.simpleMessage("edo"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Ez da orria aurkitu"),
+      "password": MessageLookupByLibrary.simpleMessage("Pasahitza"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Pasahitza laburregia da"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Aukeratu zure interesak"),
+      "post": MessageLookupByLibrary.simpleMessage("Argitaratu"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Argitalpenaren estatistikak"),
+      "postInCommunity": (Object a0) => "Argitaratu ${a0} komunitatean",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Argitaratu, esan, erakutsi."),
+      "postTextCopied": MessageLookupByLibrary.simpleMessage(
+          "Argitalpenaren testua kopiatu da"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Pribatutasun-gidalerroak"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profila eguneratu da"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Biografia"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Herrialdea"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Bistaratzeko izena"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Kokapena"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Sakatu aldatzeko"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Webgunea"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push jakinarazpenak"),
+      "quote": MessageLookupByLibrary.simpleMessage("Aipatu"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Aipatu argitalpena"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage(
+          "Jarri harremanetan pertsona batekin"),
+      "remove": MessageLookupByLibrary.simpleMessage("Kendu"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Elkarrizketa hau ezabatu?"),
+      "removeMember": (Object a0) => "${a0} kendu?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Mezu hau ezabatu?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Erantzunak, jarraipenak eta aipamenak"),
+      "repliesPolicy": (Object a0) => "Erantzunak: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Erantzun"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Edonork parte har dezake"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Edonork ikus, birbidal eta aipa dezake argitalpen hau oraindik."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron-eko edonork erantzun diezaioke argitalpen honi."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Jarraitzen zaituztenak"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Jarraitzen zaituztenek soilik erantzun diezaiokete argitalpen honi."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Aipatzen dituzunak"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Argitalpen honetan @aipatzen dituzunek soilik erantzun dezakete."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Inork ezin du erantzun"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Erantzunak desaktibatuta daude. Zuk erantzun dezakezu oraindik."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Nork erantzun dezake?"),
       "report": MessageLookupByLibrary.simpleMessage("Salatu"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Txostena kopiatu da. Itsatsi euskarriari bidaliko diozun mezu batean."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Salaketa bidalita"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Birbidali"),
+      "reset": MessageLookupByLibrary.simpleMessage("Berrezarri"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Berrezarri pasahitza"),
+      "retry": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
+      "save": MessageLookupByLibrary.simpleMessage("Gorde"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Gorde zirriborroa"),
+      "saySomething": (Object a0) => "Esan zerbait ${a0} komunitatean",
+      "search": MessageLookupByLibrary.simpleMessage("Bilatu"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Bilatu izenaren edo erabiltzaile-izenaren arabera"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Bilatu komunitateak"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Bilatu GIFak"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bilatu hizkuntzak"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Bilatu etiketa ezagunak"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Segurtasun-alertak eta kontuko aldaketak"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Aukeratu aplikazioaren interfazearen hizkuntza."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Aukeratu zein hizkuntza agertzen diren zure jarioetan. Bat ere aukeratzen ez baduzu, hizkuntza guztiak erakutsiko dira."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Aukeratu jarioko itzulpenetarako hizkuntza nagusia."),
+      "send": MessageLookupByLibrary.simpleMessage("Bidali"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Bidali egiaztapena"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Bidali akats-txostena"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Bidali iritzia"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Bidali salaketa"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Bidali euskarriari"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Zerbitzuaren egoera"),
+      "settings": MessageLookupByLibrary.simpleMessage("Ezarpenak"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Partekatu aplikazioaren erregistroa euskarriarekin"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Hasi saioa Kyron-en"),
+      "signedInAs":
+          MessageLookupByLibrary.simpleMessage("Saioa hasita honela:"),
+      "signupFailed": (Object a0) => "Ezin izan da erregistratu: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Geratu"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron hasieran dago, eta hau benetan konpon dezakeen norbaitengana iristeko biderik azkarrena txartel bat irekitzea da. Esaguzu zer egiten ari zinen eta zer gertatu den."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Aplikazioak ez du oraindik euskarri-sarrerako ontzirik, beraz pantaila honek benetan zaintzen den lekura bidaltzen zaitu, inora ez doan inprimaki batera bidali beharrean."),
+      "systemLog":
+          MessageLookupByLibrary.simpleMessage("Aplikazioaren erregistroa"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Esaguzu zer falta den edo zer dagoen hautsita"),
+      "terms": MessageLookupByLibrary.simpleMessage("Zerbitzu-baldintzak"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Testua, ahotsa eta bideoa, horiek sortzen dituzten pertsonak eta hizketan aritzen diren gelak."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Editoreak ez du Argitaratu botoirik"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Iluna"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Beti iluna"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Ilundua"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "Ilun leunagoa, gris urdinxka beltzaren ordez"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Argia"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Beti argia"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Sistema"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Jarraitu telefonoaren ezarpen argiari edo ilunari"),
+      "translate": MessageLookupByLibrary.simpleMessage("Itzuli"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Itzulpena ez dago aktibatuta oraindik. Zure jarioan ez da ezer itzultzen oraindik; orduan arte gogoratuko da."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Honek Kyron-en beraren hitzak, Flutter-ek berak marrazten dituen interfazearen zatiak, datak eta zenbakiak, eta eskuinetik ezkerrera idazten diren hizkuntzetan aplikazioaren diseinuaren norabidea aldatzen ditu."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Pribatutasun-gidalerroak"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Zerbitzu-baldintzak"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Kontua"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Ondoren"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Aplikazioa eta gailua"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Iruzurra aipatzen ari nintzen jendeari ohartarazteko."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1161,15 +1005,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Helegitea bidali da. Erabakia hartzean jakinarazpena jasoko duzu."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("\$number kasuaren helegitea"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Itxura"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Argia, iluna edo telefonoaren arabera"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Aurretik"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Ez zarete elkar ikusiko Kyron-en, eta zuen arteko jarraipenak kenduko dira. Ez zaio jakinaraziko."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Barne hartzen du"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Zertarako den (aukerakoa)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1275,30 +1117,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Grabatu ahots-ohar bat"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Zu"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Komunitateak"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Zertarako da? (aukerakoa)"),
       "ui_community_posts":
           MessageLookupByLibrary.simpleMessage("Argitalpenak:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Edukia eta bistaratzea"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Ezin izan da zure jarioa kargatu"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Ezin izan dira atsegin dituzun argitalpenak kargatu"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Ezin izan da zure profila kargatu"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Ezin izan dira gordetako argitalpenak kargatu"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID deszentralizatua"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Arazoak konpontzea"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Taldeak"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("Ez dago talderik"),
@@ -1309,16 +1146,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Ainguratuta"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Gustukoak"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Gordetakoak"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago ezer hemen"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Jarraitu kontu batzuei eta haien argitalpenak hemen agertuko dira."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Ezer ez jarraitzen dituzunengandik"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Argitalpenak hemen agertuko dira jendeak idatzi ahala."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Ahultzen"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Ez zait interesatzen"),
@@ -1336,16 +1171,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Hasiera eta Arakatu moldatzen dituzte, batez ere argitalpen bakoitzaren gaiaren arabera. Bakoitza erdira ahultzen da hilero eta sei hilabeteren ondoren ez da kontatzen. Kendu bat orain gelditzeko."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Klipa duten argitalpenak hemen agertuko dira."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago bideorik"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Iritzia"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Aurkitu jendea Kyron-en"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Kontu batetik"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Gehitu jendea"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Gehitu"),
       "ui_group_add_name":
@@ -1417,7 +1249,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed":
           MessageLookupByLibrary.simpleMessage("Jada ez zaude talde honetan."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Aldatu izena"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administratzailea"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Kidea"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Ikuslea"),
@@ -1431,32 +1264,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("zu"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Ikuslea zara"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Laguntza"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Jasota. Zuri zer erakutsi aukeratzen laguntzen du."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Batu"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Batu zen"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Hizkuntza"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Aukeratu zure hizkuntza"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Lege-oharra"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Atsegin dut"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Atsegin dituzun argitalpenak"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Atsegin dituzun argitalpenak hemen agertzen dira, berrienak lehenik."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Esteka kopiatu da"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Ez dituzu haren argitalpenak gehiago ikusiko. Ez zaio jakinaraziko."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago atsegiterik"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Ez dago iragazki horiekin bat datorren argitalpenik."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Oraindik ez dago gordetakorik"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Zure kontua eguneratu da"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1517,13 +1348,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Zure kontuak ohartarazpen bat du"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Atzo"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Eginda"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Saltatu"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Hau dagoeneko ireki da."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Iraungita"),
@@ -1540,23 +1367,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Bidali behin ikusteko"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Sakatu ikusteko"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pausatu"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Erreproduzitu"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
+          "Zure profiletik eta guztien jarioetatik kenduko da. Haren erantzunak ere berarekin joango dira."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Argitalpena ezabatu da"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Argitalpena ezkutatu da"),
       "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Argitalpenaren testua kopiatu da"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Noiz argitaratua"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Ezkutatuta. Honelako gutxiago erakutsiko ditugu."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Hobespenak"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Pribatutasuna"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Zerbait gehitu nahi duzu? (aukerakoa)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1660,76 +1486,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spama"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Indarkeria edo mehatxuak"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Gordetako argitalpenak"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Sakatu argitalpen baten artxibo-ikonoa hemen gordetzeko. Zuk bakarrik ikusten dituzu gordetakoak."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Bilatu erabiltzaile-izenaren edo bistaratzeko izenaren arabera."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Garbitu"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Bilatu argitaratutako guztian"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Iragazkiak"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Bilatu jendea"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Bilatu argitalpenak"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Ezarpenak"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Aplikazioa eta gailua"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Edukia eta bistaratzea"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Datu-aurrezlea"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Partekatu zure iritzia"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Arakatu laguntza-artikuluak"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Aukeratu hizkuntza"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Nor isilarazi edo blokeatu duzun"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Jakinarazpen-hobespenak"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Zure profila eta harremanetarako datuak"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Berriro hasi beharko duzu saioa zure kontura itzultzeko."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Segurtasun-ezarpenak"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Berretsi pasahitza"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Lerro bakarrean"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Helbide elektroniko berria"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Pasahitz berria"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Zer gertatu da"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Lortu laguntza gure taldetik"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Partekatu"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Aipatu"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Bidali mezu batean"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron-eko jendeari"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Partekatu argitalpen hau"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Zeri buruzkoa zen"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1825,54 +1639,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Zure argitalpena"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Zure erantzuna"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Zerbitzu-baldintzak"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("argitalpen hau"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Haria isilarazi da"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Saiatu berriro"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Desaktibatu soinua"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Aktibatu soinua"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Gutxienez bi karaktere."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Desegin"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Hitzak edo iragazki bat: kontu bat, data-tarte bat edo argitalpen batek duena."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Desegin birbidalketa"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Eguneratu pasahitza"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Erabili beste helbide bat"),
+      "username": MessageLookupByLibrary.simpleMessage("Erabiltzaile-izena"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Erabiltzaile-izenak minuskulaz izan behar du (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Bideoa"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Erantsi"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Eransteko prest"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Grabatu ahots-argitalpena"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Gordetzen…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Gelditu"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Zer gertatu da"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Zer gertatu da, eta zer begiratu behar dugu?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Zer dago irudi honetan?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Zertarako da? (aukerakoa)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Zer egin duzun, zer espero zenuen, zer gertatu den"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Zer egiten ari zinen gertatu zenean."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Erantzun duzu"),
       "dmReplied": (Object a0) => "$a0(e)k erantzun du",
@@ -2002,7 +1811,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bidalita, baina ez guztiei."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Ezin izan da bidali. Saiatu berriro."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Jarraitzailea"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Iragazkia"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Guztiak"),
       "ui_dm_filter_unread":

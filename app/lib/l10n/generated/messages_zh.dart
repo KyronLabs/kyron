@@ -995,8 +995,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "选择你希望订阅内容包含的语言。如未选择，将显示所有语言。",
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron 的文案仍在翻译中，所以目前大多数界面仍为英文。",
-      ),
+          "Kyron 的界面已使用你的语言。如果某个词读起来不对，请通过“发送反馈”告诉我们。"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "去“发现”找一个，或创建你自己的。",
       ),
@@ -1156,9 +1155,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("你的标签页"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ 替代文本"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("再试一次"),
       "audit_password_requirements_symbol_322aed1e":
@@ -1388,8 +1386,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_location": MessageLookupByLibrary.simpleMessage("位置"),
       "profile_website": MessageLookupByLibrary.simpleMessage("网站"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron 自己的文字仍在翻译中，因此大多数页面目前仍显示英文。现在会翻译 Flutter 绘制的界面、日期和数字，并支持从右向左语言的布局方向。",
-      ),
+          "这会更改 Kyron 自身的文字、由 Flutter 自行绘制的界面部分、日期和数字，以及从右到左书写的语言中应用的布局方向。"),
       "theme_system_detail":
           MessageLookupByLibrary.simpleMessage("跟随手机的浅色或深色设置"),
       "theme_light_detail": MessageLookupByLibrary.simpleMessage("始终使用浅色"),

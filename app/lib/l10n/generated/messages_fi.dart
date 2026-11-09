@@ -7,249 +7,204 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Sana, lause tai #tunniste"),
+      "about": MessageLookupByLibrary.simpleMessage("Tietoja"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Lisää vastaus"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Lisää kieliä…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Hyväksy ja jatka"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Onko sinulla jo Kyron-tili?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Kommentit"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+          MessageLookupByLibrary.simpleMessage("Eri ihmiset, ei avauskertoja"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sitoutuminen"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Tykkäykset"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä katsojia"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Kukaan ei ole vielä avannut tätä julkaisua."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Julkaistu"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Tallennukset"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Katsojat"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("KATSOJIA PÄIVÄSSÄ"),
+      "and": MessageLookupByLibrary.simpleMessage("ja"),
+      "answerNumber": (Object a0) => "Vastaus ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-linssi"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Liitä järjestelmäloki"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Edestakainen viive"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TUNNUKSEN VAHVISTUS"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Lähetyksen aloittaminen nyt veisi sinut huoneeseen, johon kukaan ei voisi"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Perusta yhteisö"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Mihin se on tarkoitettu? (valinnainen)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("takaisin sisään."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "takaisin sisään tästä luettelosta."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Sen sulkeminen"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("liity ensin"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("tulossa pian"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Julkaiset omana itsenäsi"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("julkaise tässä yhteisössä"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Juuri nyt"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Aihe 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sinulle"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("on jotain."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("matkalla sinne nyt."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", ei"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("liikunko"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Ääni pois"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Ääni päälle"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sinulle"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Välilehtesi"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Symboli (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("KATSOJIA PÄIVÄSSÄ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("ei voitu ladata"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("tämä julkaisu"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Lisättävää? (valinnainen)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("tämä julkaisu"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Tililtä"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Kirjaudu ulos"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Tilisi"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Vahvista salasana"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ei nyt"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Ladataan…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Julkaistaan…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 t sitten"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kopioi tarinan linkki"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Tarinasi"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Tilisi, julkaisusi ja se, mitä napautat, jotta"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Lisää aihe"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("itsestään."),
+      "authorBlocked": (Object a0) => "${a0} estetty",
+      "authorPostsHidden": (Object a0) => "Et näe julkaisuja käyttäjältä ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Estä"),
+      "blockAuthor": (Object a0) => "Estetäänkö ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Koontiversion tiedot kopioitu"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Jatkamalla hyväksyt"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Jatkamalla hyväksyt käyttöehtomme ja tietosuojakäytäntömme"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Rekisteröitymällä hyväksyt"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Peruuta"),
       "change": MessageLookupByLibrary.simpleMessage("Vaihda"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Vaihda sähköposti"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Vahvista tilisi sähköpostistasi."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Tarkista, onko Kyron tavoitettavissa"),
+      "clear": MessageLookupByLibrary.simpleMessage("Tyhjennä"),
+      "close": MessageLookupByLibrary.simpleMessage("Sulje"),
+      "closeCommunity": (Object a0) => "Suljetaanko ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Sulje se"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Sulje tämä yhteisö"),
+      "communities": MessageLookupByLibrary.simpleMessage("Yhteisöt"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Löydä sellainen Löydöistä tai perusta oma."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Heitä kuuma mielipide (tai haalea)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Mitä päässäsi pyörii?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Sano jotain, mitä vain sinä voit sanoa…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Tämä on merkkisi: lähetä se"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Kirjoita, puhu tai ajattele ääneen"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Vahvista salasana"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Ota yhteyttä tukeen"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Julkaisuilla ei vielä ole kieltä, joten tämä ei vielä suodata syötettäsi. Valintasi säilytetään siihen asti."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Jatka"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Jatka sähköpostilla"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopioi"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Kopioi raportti sen sijaan"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google-kirjautumista ei voitu avata. ${a0}",
+      "couldNotSignOut": (Object a0) => "Uloskirjautuminen epäonnistui: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Kuvaa ei voitu ottaa."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Näkyy profiilissasi ja julkaisujesi alla."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +215,75 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Näkyy profiilissasi ja julkaisujesi alla. Kun näet jonkun julkaisuja, maasi lasketaan mukaan hänen Tilastoihinsa, vain vähintään viiden hengen ryhminä eikä koskaan nimellä."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Puhelimesi asetuksista"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Luo"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Luo tili"),
+      "createYourAccount": MessageLookupByLibrary.simpleMessage("Luo tilisi"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Luo profiilisi"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-linssi"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("Aloita suora lähetys"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Tekstijulkaisu"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Äänijulkaisu"),
+      "delete": MessageLookupByLibrary.simpleMessage("Poista"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Poistetaanko tämä kommentti?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Poistetaanko tämä julkaisu?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Kuvaile tätä liitettä"),
+      "description": MessageLookupByLibrary.simpleMessage("Kuvaus"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID kopioitu leikepöydälle"),
       "done": MessageLookupByLibrary.simpleMessage("Valmis"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Sulje editori, kun olet kirjoittanut jotain, niin sinulle tarjotaan luonnosta."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} päivää sitten"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("{hours} tuntia sitten"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Juuri nyt"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} minuuttia sitten"),
       "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Mitään ei ole vielä kirjoitettu"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Kysely, vielä ilman kysymystä"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Lainaus, vielä ilman tekstiä"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Luonnokset"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Muokkaa profiilia"),
+      "email": MessageLookupByLibrary.simpleMessage("Sähköposti"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Sähköposti-ilmoitukset"),
+      "explore": MessageLookupByLibrary.simpleMessage("Tutki"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Kasvojen seuranta ei ole käytettävissä tässä laitteessa."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Tunnisteella #${a0} ei ole vielä julkaistu mitään.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Seuraa: {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Seuraajat"),
+      "following": MessageLookupByLibrary.simpleMessage("Seuratut"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Unohditko salasanan?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Avun saaminen"),
+      "googleContinue": MessageLookupByLibrary.simpleMessage("Jatka Googlella"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Kirjaudu Googlella"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google palauttaa valmiin kirjautumisen Kyroniin linkillä, johon vastaavat vain Android ja iOS, joten alustalla ${a0} selaimella ei olisi minne palauttaa sitä.\\n\\nJos sinulla on jo Kyron-tili Googlen kautta, valitse Jatka sähköpostilla samalla osoitteella ja napauta Unohditko salasanan: saat linkin salasanan asettamiseen.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google-kirjautuminen vaatii puhelinsovelluksen"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Rekisteröidy Googlella"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Oppaita ja vastauksia yleisiin kysymyksiin"),
+      "handle": MessageLookupByLibrary.simpleMessage("käyttäjänimi"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Ohje ja tuki"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Ohjekeskus"),
+      "home": MessageLookupByLibrary.simpleMessage("Koti"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Yhdellä rivillä"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Tilisi"),
       "ins_act_community": MessageLookupByLibrary.simpleMessage("Avaa yhteisö"),
       "ins_act_post": MessageLookupByLibrary.simpleMessage("Kirjoita julkaisu"),
@@ -461,690 +403,567 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Parhaat julkaisut"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Verrattuna edellisiin {days} päivään"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Lisää kiinnostuksen kohde"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Järjestä vetämällä"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Palkkiin mahtuu enintään viisi välilehteä. Poista yksi lisätäksesi toisen."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Seuratut"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Sinulle"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Aihetunnisteet ilmestyvät tänne, kun ihmiset alkavat käyttää niitä."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Suosittua nyt"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videot"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Välilehtesi"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Se katoaa teiltä molemmilta."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Se poistetaan ketjusta."),
+      "join": MessageLookupByLibrary.simpleMessage("Liity"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Jatka muokkaamista"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyronin näkymät ovat sinun kielelläsi. Jos jokin sana kuulostaa väärältä, kerro siitä kohdassa Lähetä palautetta."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Kielet"),
+      "leave": MessageLookupByLibrary.simpleMessage("Poistu"),
+      "leaveCommunity": (Object a0) => "Poistutaanko ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Päästä takaisin"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 sivu auki"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Lisää leike"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Lisää GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Lisää aihetunniste"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Lisää kuva"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Lisää kysely"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Lisää video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Lisää kiinnostuksen kohde"),
+      "literaladdLabelAsATab": (Object a0) => "Lisää ${a0} välilehdeksi",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sovelluksen kieli"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Sovelluksen versio"),
+      "literalblockAuthor": (Object a0) => "Estä ${a0}",
+      "literalblockAuthor2": (Object a0) => "Estetäänkö ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Estetäänkö tämä tili?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Peru vastaus"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Tarkista uudelleen"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Valitse galleriasta"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Tyhjennä välimuisti"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Sulje kaikki sivut"),
+      "literalcloseTabLabel": (Object a0) => "Sulje ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Sulje selain"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Suljetaanko ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Ota yhteyttä tukeen"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Sisällön kielet"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopioi linkki"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kopioi julkaisun linkki"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kopioi julkaisun teksti"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopioi teksti"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("Yhteisöjä ei voitu ladata"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF-kuvia ei voitu ladata"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("Ilmoituksia ei voitu ladata"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Jäseniä ei voitu ladata"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Näitä julkaisuja ei voitu ladata"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Tätä keskustelua ei voitu ladata"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Tätä luetteloa ei voitu ladata"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Tätä julkaisua ei voitu ladata"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Tätä vastausta ei voitu ladata"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Suosittuja tunnisteita ei voitu ladata"),
       "literalcouldNotLoadYourCommunities":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          MessageLookupByLibrary.simpleMessage("Yhteisöjäsi ei voitu ladata"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("Viestejäsi ei voitu ladata"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Tätä yhteisöä ei voitu avata"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Vastausta ei voitu julkaista."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Haku ei onnistunut"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Uloskirjautuminen epäonnistui: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} sivua auki",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Kansikuva"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Datansäästö"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Poista julkaisu"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Löydä ihmisiä"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Älä vastaa"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Luonnos tallennettu"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Palautetta ei voi lähettää juuri nyt"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Tekstin koko"),
       "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
+          "GIF-kuvia ei ole otettu käyttöön"),
       "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+          "Anna se toiselle sovellukselle"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Piilota salasana"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Piilota tämä julkaisu"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Piilottaa sen ja pyytää meitä näyttämään vähemmän tällaisia"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Miten käyttäytyä"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Jatka kirjoittamista"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron ei vastannut"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0}-päivä",
+      "literalleaveCommunityName": (Object a0) => "Poistutaanko ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, kasvolinssi",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Tykätyt julkaisut"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Linkki kopioitu"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Tee valvojaksi"),
+      "literalmuteAuthor": (Object a0) => "Mykistä ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Mykistä tämä ketju"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Mykistä sanoja tai tunnisteita"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Mykistetyt ja estetyt tilit"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Mykistetty. Et saa ilmoituksia."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Mikään tämän laitteen sovellus ei avaa ${a0}-linkkejä.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
+              "Mikään tämän laitteen selain ei ottanut linkkiä vastaan."),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä DID:tä"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Ei luonnoksia"),
       "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+          "Ei vielä kiinnostuksen kohteita"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä tykkäyksiä"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä viestejä"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Ei uusia seuraajia"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä julkaisuja"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Ei vielä vastauksia"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Ei vielä uudelleenjulkaisuja"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Mikään suosittu tunniste ei vastaa"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ketään ei löytynyt"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ketään ei ole poistettu"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Täällä ei ole vielä ketään"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Ei kiinnosta"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mitään ei löytynyt"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Mikään ei ole vielä suosittua"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Lokissa ei ole vielä mitään"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Ei osumia"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ei mykistyksiä"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä mitään katsottavaa"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Ei lukemattomia"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Vain omistaja voi muuttaa tätä"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Avaa vastaus"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Avaa Kyronin sähköposti"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Salasana ja kirjautuminen"),
+      "literalpostInCommunityName": (Object a0) => "Julkaise yhteisöön ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "Julkaise yhteisöön ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Julkaise se omin sanoin yläpuolella"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Ensisijainen kieli"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-ilmoitukset"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Luetaan…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Äänitä äänijulkaisu"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Tallenna uudelleen"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Poista valvojista"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Poista yhteisöstä"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Poista tallennetuista"),
+      "literalremoveLabel": (Object a0) => "Poista ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Poista ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Poistetaanko ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Poista kysely"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Poista tämä vastaus"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Poista tämä keskustelu"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Poista tämä kysely"),
+      "literalreportAuthor": (Object a0) => "Ilmoita käyttäjästä ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Ilmoita julkaisusta"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Lähetä koodi uudelleen"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Tallennetut julkaisut"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Sano jotain"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Sano jotain yhteisölle ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Haku epäonnistui"),
+      "literalsendAgain":
+          MessageLookupByLibrary.simpleMessage("Lähetä uudelleen"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "Lähetä uudelleen ${a0} s kuluttua",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Lähetä palautetta"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Lähetä linkki"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
+          "Lähetetty. Se on raportti nro ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Aseta salasana ja jatka"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Jaa loki tuelle"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Jaa tämä yhteisö"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Jaa tämä sivu"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Jaa tämä profiili"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Jaa…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Jaa lainauksen kanssa"),
       "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Näytä lisää tällaisia julkaisuja"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Näytä salasana"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Näytä tulokset"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Perusta yhteisö"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Aloita tallennus"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Lopeta lataus"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Lakkaa näkemästä tätä julkaisua ja sen vastauksia"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Tarinapalkki, ${a0} kohdetta",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Vaihda kameraa"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Merkitse joku"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("Ota kuva"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
+              "Vaihda napauttamalla banneria tai kuvaa"),
       "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+          "Napauta sen sisällä olevaa linkkiä"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Lisää kuva ja kansi napauttamalla"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Se ei mennyt läpi. Yritä uudelleen."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("GIF-kuvaa ei voitu ladata."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+              "Tätä linkkiä ei voi avata täällä."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kamera on suljettu"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Tämä yhteisö"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Tämä vastaus on poistunut"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Käännä julkaisu"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("Ääni pois"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Ääni päälle"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Käytä jotain meidän"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Vahvistuskoodi lähetetty uudelleen."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Vahvistus epäonnistui: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Vahvista sähköposti"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Katsojat, tykkäykset, tallennukset ja kommentit"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Mitä Kyron säilyttää"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Mitä tämä sovellus on tehnyt"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Mitä teit, mitä odotit, mitä tapahtui "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Julkaisemasi on sinun"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Onko Kyron tavoitettavissa juuri nyt"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kuka voi vastata"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Kenet haluat merkitä?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Seuraat jo kaikkia suosittuja tunnisteita"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Olet ajan tasalla"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Et ole missään yhteisössä"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Olet kirjautunut ulos."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "Poistuit yhteisöstä ${a0}",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "Et ole vielä julkaissut mitään"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Lataa lisää"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Loki tyhjennetty"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Loki kopioitu"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Kirjaudu sisään"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Kirjaudu ulos"),
+      "logOutQuestion":
+          MessageLookupByLibrary.simpleMessage("Kirjaudutaanko ulos?"),
+      "login": MessageLookupByLibrary.simpleMessage("Kirjautuminen"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "Kirjautuminen epäonnistui. Tarkista tunnuksesi."),
+      "manage": MessageLookupByLibrary.simpleMessage("Hallinnoi"),
+      "menu": MessageLookupByLibrary.simpleMessage("Valikko"),
+      "message": MessageLookupByLibrary.simpleMessage("Viesti"),
+      "messages": MessageLookupByLibrary.simpleMessage("Viestit"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Kaikki keskustelut ovat ajan tasalla."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Avaa jonkun profiili ja aloita keskustelu napauttamalla Viesti."),
+      "mute": MessageLookupByLibrary.simpleMessage("Mykistä"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          MessageLookupByLibrary.simpleMessage("Mykistetyt ja estetyt"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "Mykistetyt sanat ja tunnisteet"),
+      "name": MessageLookupByLibrary.simpleMessage("Nimi"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name>-näkymä"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Uusi sähköpostiosoite"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Uusi salasana"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Uusi julkaisu"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Ei nyt"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Ei lähetetty. Yritä uudelleen napauttamalla"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Mikään Kyronissa ei vastaa hakua \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Ei mitään kopioitavaa"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Tykkäykset, vastaukset ja uudet seuraajat tulevat tänne."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Sinua seuraavat ihmiset näkyvät täällä."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Kun joku tykkää julkaisustasi, se näkyy täällä."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Vastaukset julkaisuihisi tulevat tänne."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
+          "Kun joku julkaisee sinut uudelleen, se näkyy täällä."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Ilmoitukset"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Avaa selaimessa"),
+      "or": MessageLookupByLibrary.simpleMessage("tai"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Sivua ei löytynyt"),
+      "password": MessageLookupByLibrary.simpleMessage("Salasana"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Salasana on liian lyhyt"),
       "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Valitse kiinnostuksen kohteesi"),
+      "post": MessageLookupByLibrary.simpleMessage("Julkaise"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Julkaisun tilastot"),
+      "postInCommunity": (Object a0) => "Julkaise yhteisöön ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Julkaise, sano, näytä."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Julkaisun teksti kopioitu"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Tietosuojakäytäntö"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profiili päivitetty"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Esittely"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Maa"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Näyttönimi"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Sijainti"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Vaihda napauttamalla"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Verkkosivusto"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-ilmoitukset"),
+      "quote": MessageLookupByLibrary.simpleMessage("Lainaa"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Lainaa julkaisua"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Tavoita ihminen"),
+      "remove": MessageLookupByLibrary.simpleMessage("Poista"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Poistetaanko tämä keskustelu?"),
+      "removeMember": (Object a0) => "Poistetaanko ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Poistetaanko tämä viesti?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Vastaukset, seuraamiset ja maininnat"),
+      "repliesPolicy": (Object a0) => "Vastaukset: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Vastaa"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Kuka tahansa voi osallistua"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Kuka tahansa voi edelleen nähdä, julkaista uudelleen ja lainata tätä julkaisua."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kuka tahansa Kyronissa voi vastata tähän julkaisuun."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Sinua seuraavat"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Vain sinua seuraavat voivat vastata tähän julkaisuun."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Mainitsemasi ihmiset"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Vain tässä julkaisussa @mainitsemasi ihmiset voivat vastata."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Kukaan ei voi vastata"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Vastaukset on poistettu käytöstä. Voit silti vastata itse."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Kuka voi vastata?"),
       "report": MessageLookupByLibrary.simpleMessage("Raportoi"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Raportti kopioitu. Liitä se sähköpostiin tuelle."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Raportti lähetetty"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Julkaise uudelleen"),
+      "reset": MessageLookupByLibrary.simpleMessage("Nollaa"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Nollaa salasanasi"),
+      "retry": MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
+      "save": MessageLookupByLibrary.simpleMessage("Tallenna"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Tallenna luonnos"),
+      "saySomething": (Object a0) => "Sano jotain yhteisölle ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Hae"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Hae nimellä tai käyttäjänimellä"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Hae yhteisöjä"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Hae GIF-kuvia"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Hae kieliä"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Hae suosittuja tunnisteita"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Tietoturvailmoitukset ja tilin muutokset"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Valitse sovelluksen käyttöliittymän kieli."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Valitse, mitä kieliä syötteisiisi tulee. Jos et valitse yhtään, kaikki kielet näytetään."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Valitse ensisijainen kieli syötteesi käännöksille."),
+      "send": MessageLookupByLibrary.simpleMessage("Lähetä"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Lähetä vahvistus"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Lähetä virheraportti"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Lähetä palautetta"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Lähetä raportti"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Lähetä tuelle"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Palvelun tila"),
+      "settings": MessageLookupByLibrary.simpleMessage("Asetukset"),
+      "shareAppLog":
+          MessageLookupByLibrary.simpleMessage("Jaa sovelluksen loki tuelle"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kirjaudu Kyroniin"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Kirjautuneena"),
+      "signupFailed": (Object a0) => "Rekisteröinti epäonnistui: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Jää"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron on alussa, ja nopein tapa tavoittaa joku, joka voi oikeasti korjata ongelman, on avata tiketti. Kerro, mitä olit tekemässä ja mitä tapahtui."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Sovelluksessa ei ole vielä tuen postilaatikkoa, joten tämä näkymä ohjaa paikkaan, jota oikeasti seurataan, eikä lomakkeeseen, joka ei vie mihinkään."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Järjestelmäloki"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Kerro, mitä puuttuu tai mikä on rikki"),
+      "terms": MessageLookupByLibrary.simpleMessage("Käyttöehdot"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Tekstiä, ääntä ja videota, niiden tekijät ja huoneet, joissa he juttelevat."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Editorissa ei ole Julkaise-painiketta"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Tumma"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Aina tumma"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Himmeä"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "Pehmeämpi tumma, sinertävän harmaa mustan sijaan"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Vaalea"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Aina vaalea"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Järjestelmä"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Noudata puhelimen vaaleaa tai tummaa asetusta"),
+      "translate": MessageLookupByLibrary.simpleMessage("Käännä"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Kääntäminen ei ole vielä käytössä. Syötteessäsi ei käännetä vielä mitään; tämä muistetaan siihen asti."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Tämä vaihtaa Kyronin omat sanat, Flutterin itse piirtämät käyttöliittymän osat, päivämäärät ja luvut sekä sovelluksen asettelun suunnan oikealta vasemmalle kirjoitettaville kielille."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Tietosuojakäytäntö"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Käyttöehdot"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Tili"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Jälkeen"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Sovellus ja laite"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Lainasin huijausta varoittaakseni muita."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1157,15 +976,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Valitus lähetetty. Saat ilmoituksen, kun asia on ratkaistu."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Valitus tapauksesta \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Ulkoasu"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Vaalea, tumma tai puhelimen asetuksen mukaan"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Ennen"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kumpikaan teistä ei näe toista Kyronissa, ja seuraamiset välillänne poistetaan. Hänelle ei kerrota."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Sisältää"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
           "Mitä varten se on (valinnainen)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1273,29 +1090,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Nauhoita ääniviesti"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Sinä"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Yhteisöt"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Mihin se on tarkoitettu? (valinnainen)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Julkaisut:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Sisältö ja näyttö"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Syötettäsi ei voitu ladata"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Tykkäämiäsi julkaisuja ei voitu ladata"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("Profiiliasi ei voitu ladata"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Tallennettuja julkaisujasi ei voitu ladata"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Hajautettu tunniste"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Vianmääritys"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Ryhmät"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Ei ryhmiä"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1305,16 +1117,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Kiinnitetty"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Tykätyt"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Tallennetut"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Täällä ei ole vielä mitään"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Seuraa muutamaa tiliä, niin niiden julkaisut näkyvät täällä."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Ei mitään seuraamiltasi"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Julkaisut näkyvät täällä sitä mukaa kuin ihmiset kirjoittavat niitä."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Heikkenee"),
       "ui_feed_signal_less":
@@ -1334,16 +1144,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Ne muokkaavat Kotia ja Tutkia, enimmäkseen sen mukaan, mistä julkaisu kertoi. Jokainen heikkenee puoleen joka kuukausi eikä lasketa enää kuuden jälkeen. Poista jokin, niin se loppuu heti."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Leikkeen sisältävät julkaisut näkyvät täällä."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Ei vielä videoita"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Palaute"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Löydä ihmisiä Kyronista"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Tililtä"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Lisää henkilöitä"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Lisää"),
       "ui_group_add_name":
@@ -1432,32 +1239,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("sinä"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Olet katsoja"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Ohje"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Kirjattu. Tämä auttaa valitsemaan, mitä sinulle näytetään."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Liity"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Liittynyt"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Kieli"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Valitse kieli"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Juridiset tiedot"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Tykkää"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Tykätyt julkaisut"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Tykkäämäsi julkaisut näkyvät täällä uusimmat ensin."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Linkki kopioitu"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Et enää näe hänen julkaisujaan. Hänelle ei kerrota."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä tykkäyksiä"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Mikään julkaisu ei vastaa suodattimia."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Ei vielä tallennettuja"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Tiliäsi on päivitetty"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1517,13 +1321,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Tilillesi on annettu varoitus"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Eilen"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Valmis"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ohita"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Tämä on jo avattu."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Vanhentunut"),
@@ -1540,23 +1340,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Lähetä kerran katsottavaksi"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Napauta nähdäksesi"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Tauko"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Toista"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Se poistetaan profiilistasi ja kaikkien syötteistä. Sen vastaukset lähtevät sen mukana."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Julkaisu poistettu"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Julkaisu piilotettu"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Julkaisun teksti kopioitu"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Julkaistu välillä"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Piilotettu. Näytämme vähemmän tällaisia."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Asetukset"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Tietosuoja"),
       "ui_report_add":
           MessageLookupByLibrary.simpleMessage("Lisättävää? (valinnainen)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1656,76 +1455,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Roskaposti"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Väkivalta tai uhkaukset"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Tallennetut julkaisut"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Säilytä julkaisu täällä napauttamalla sen arkistokuvaketta. Vain sinä näet tallentamasi."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Hae käyttäjänimellä tai näyttönimellä."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Tyhjennä"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Hae kaikesta julkaistusta"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Suodattimet"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Hae ihmisiä"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Hae julkaisuja"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Asetukset"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Sovellus ja laite"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Sisältö ja näyttö"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Datansäästö"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Kerro mielipiteesi"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Selaa ohjeartikkeleita"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Valitse kieli"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Ketkä olet mykistänyt tai estänyt"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Ilmoitusasetukset"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Profiilisi ja yhteystietosi"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Sinun täytyy kirjautua uudelleen päästäksesi tilillesi."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Tietoturva-asetukset"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Vahvista salasana"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Yhdellä rivillä"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Uusi sähköpostiosoite"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Uusi salasana"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Mitä tapahtui"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Saa apua tiimiltämme"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Jaa"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Lainaa"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Lähetä viestissä"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Ihmisille Kyronissa"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Jaa tämä julkaisu"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Mitä asia koski"),
       "ui_standing_account_banned":
@@ -1821,54 +1607,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Julkaisusi"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Vastauksesi"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Käyttöehdot"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("tämä julkaisu"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Ketju mykistetty"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Yritä uudelleen"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Ääni pois"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Ääni päälle"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Vähintään kaksi merkkiä."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Kumoa"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Sanoja tai suodatin: tili, aikaväli tai mitä julkaisu sisältää."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Kumoa uudelleenjulkaisu"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Päivitä salasana"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Käytä toista osoitetta"),
+      "username": MessageLookupByLibrary.simpleMessage("Käyttäjänimi"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Käyttäjänimen on oltava pienillä kirjaimilla (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Liitä"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Valmis liitettäväksi"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Äänitä äänijulkaisu"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Tallennetaan…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Lopeta"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Mitä tapahtui"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Mitä tapahtui, ja mitä meidän pitäisi tarkistaa?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Mitä tässä kuvassa on?"),
       "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+          "Mihin se on tarkoitettu? (valinnainen)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Mitä teit, mitä odotit, mitä tapahtui"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Mitä olit tekemässä, kun se tapahtui."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Vastasit"),
       "dmReplied": (Object a0) => "$a0 vastasi",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Lisää viestiin"),
@@ -1996,7 +1775,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Lähetetty, mutta ei kaikille."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Lähettäminen ei onnistunut. Yritä uudelleen."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Seuraaja"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Suodatin"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Kaikki"),
       "ui_dm_filter_unread":

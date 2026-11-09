@@ -7,248 +7,206 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("වචනය, වාක්‍ය ඛණ්ඩය හෝ #ටැගය"),
+      "about": MessageLookupByLibrary.simpleMessage("පිළිබඳ"),
+      "addAnAnswer":
+          MessageLookupByLibrary.simpleMessage("පිළිතුරක් එක් කරන්න"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("භාෂා එක් කරන්න…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("එකඟ වී ඉදිරියට යන්න"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("දැනටමත් Kyron ගිණුමක් තිබේද?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("අදහස්"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "වෙනස් පුද්ගලයන්, විවෘත කිරීම් නොවේ"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("සම්බන්ධවීම"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("කැමැත්ත"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("තවම නරඹන්නන් නැත"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "මෙම පළ කිරීම තවම කිසිවෙකු විවෘත කර නැත."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("පළ කළා"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("සුරැකීම්"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("නරඹන්නන්"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("දිනකට නරඹන්නන්"),
+      "and": MessageLookupByLibrary.simpleMessage("සහ"),
+      "answerNumber": (Object a0) => "පිළිතුර ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR කාචය"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("යෙදුම් ලොගය අමුණන්න"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("ගමන් කාලය"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("ටෝකන සත්‍යාපනය"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "දැන් විකාශනයක් ආරම්භ කළොත් කිසිවෙකුට ඇතුළු විය නොහැකි කාමරයක ඔබ සිටිනු ඇත"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාවක් අරඹන්න"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("මෙය කුමකටද? (විකල්ප)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("නැවත ඇතුළු විය නොහැක."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "මෙම ලැයිස්තුවෙන් නැවත ඇතුළු විය නොහැක."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("එය වැසුවොත්"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("පළමුව එක්වන්න"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("ළඟදීම"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("ඔබ ලෙස පළ කරයි"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("මෙම ප්‍රජාවේ පළ කරන්න"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("දැන්ම"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("මාතෘකාව 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("ඔබ වෙනුවෙන්"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("යමක් ඇත."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("දැන් එතැනට යමින් සිටී."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", නොවේ"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("මම චලනය වෙනවාද"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("ශබ්දය අක්‍රිය කරන්න"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("ශබ්දය සක්‍රිය කරන්න"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("ඔබ වෙනුවෙන්"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("ඔබේ ටැබ්"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("සංකේතය (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("දිනකට නරඹන්නන්"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("පූරණය කළ නොහැකි විය"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "එකතු කිරීමට යමක් තිබේද? (විකල්ප)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ගිණුමකින්"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("ඉවත් වන්න"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("මුරපදය තහවුරු කරන්න"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("දැන් නොවේ"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("පූරණය වෙමින්…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("පළ කරමින්…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("පැය 3කට පෙර"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("කතා සබැඳිය පිටපත් කරන්න"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("ඔබේ කතාව"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "ඔබේ ගිණුම, ඔබේ පළ කිරීම් සහ ඔබ තට්ටු කරන දේ, එවිට"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("මාතෘකාවක් එක් කරන්න"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("තමන්ගේම."),
+      "authorBlocked": (Object a0) => "${a0} අවහිර කළා",
+      "authorPostsHidden": (Object a0) => "ඔබ ${a0}ගේ පළ කිරීම් නොදකිනු ඇත",
+      "block": MessageLookupByLibrary.simpleMessage("අවහිර කරන්න"),
+      "blockAuthor": (Object a0) => "${a0} අවහිර කරන්නද?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("ගොඩනැගීමේ විස්තර පිටපත් විය"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("ඉදිරියට යාමෙන් ඔබ එකඟ වේ"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "ඉදිරියට යාමෙන්, ඔබ අපගේ සේවා නියම සහ රහස්‍යතා ප්‍රතිපත්තියට එකඟ වේ"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("ලියාපදිංචි වීමෙන් ඔබ එකඟ වේ"),
+      "cancel": MessageLookupByLibrary.simpleMessage("අවලංගු කරන්න"),
       "change": MessageLookupByLibrary.simpleMessage("වෙනස් කරන්න"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("ඊමේලය වෙනස් කරන්න"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "ඔබේ ඊමේලයෙන් ගිණුම සත්‍යාපනය කරන්න."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Kyron ළඟා විය හැකිදැයි බලන්න"),
+      "clear": MessageLookupByLibrary.simpleMessage("හිස් කරන්න"),
+      "close": MessageLookupByLibrary.simpleMessage("වසන්න"),
+      "closeCommunity": (Object a0) => "${a0} වසන්නද?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("වසන්න"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("මෙම ප්‍රජාව වසන්න"),
+      "communities": MessageLookupByLibrary.simpleMessage("ප්‍රජාවන්"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "ගවේෂණයේ එකක් සොයන්න, නැත්නම් ඔබේම අරඹන්න."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "උණුසුම් අදහසක් විසි කරන්න (නැත්නම් ඇල්මැරුණු)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("ඔබේ සිතේ ඇත්තේ කුමක්ද?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "ඔබට පමණක් කිව හැකි දෙයක් කියන්න…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("මෙය ඔබේ සංඥාවයි: පළ කරන්න"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "ටයිප් කරන්න, කතා කරන්න, නැත්නම් හයියෙන් සිතන්න"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("මුරපදය තහවුරු කරන්න"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("සහාය අමතන්න"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "පළ කිරීම්වලට තවම භාෂාවක් නැති නිසා, මෙය තවම ඔබේ සංග්‍රහය පෙරන්නේ නැත. එතෙක් ඔබේ තේරීම් රැඳේ."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("ඉදිරියට"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("ඊමේලය සමඟ ඉදිරියට යන්න"),
+      "copy": MessageLookupByLibrary.simpleMessage("පිටපත් කරන්න"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("ඒ වෙනුවට වාර්තාව පිටපත් කරන්න"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google පුරනය විවෘත කළ නොහැකි විය. ${a0}",
+      "couldNotSignOut": (Object a0) => "ඉවත් වීම අසාර්ථකයි: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("ඡායාරූපය ගත නොහැකි විය."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "ඔබගේ පැතිකඩෙහි සහ ඔබගේ පළ කිරීම් යටතේ පෙන්වයි."),
       "country_no_match":
@@ -259,89 +217,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ඔබගේ පැතිකඩෙහි සහ ඔබගේ පළ කිරීම් යටතේ පෙන්වයි. ඔබ කෙනෙකුගේ පළ කිරීම් දකින විට, ඔබගේ රට ඔවුන්ගේ තීක්ෂ්ණ බුද්ධියෙහි ගණන් කෙරේ, පස් දෙනෙකු හෝ ඊට වැඩි කණ්ඩායම්වලින් පමණක්, කිසිවිටෙක නමින් නොවේ."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("ඔබගේ දුරකථනයේ සැකසීම් වලින්"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("සාදන්න"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("ගිණුමක් සාදන්න"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම සාදන්න"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("ඔබේ පැතිකඩ සාදන්න"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR කාචය"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("සජීවීව යන්න"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("පාඨ පළ කිරීම"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("හඬ පළ කිරීම"),
+      "delete": MessageLookupByLibrary.simpleMessage("මකන්න"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("මෙම අදහස මකන්නද?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම මකන්නද?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("මෙම ඇමුණුම විස්තර කරන්න"),
+      "description": MessageLookupByLibrary.simpleMessage("විස්තරය"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID පසුරු පුවරුවට පිටපත් විය"),
       "done": MessageLookupByLibrary.simpleMessage("නිමයි"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "යමක් ලියූ පසු සංස්කාරකය වසන්න, ඔබට කෙටුම්පතක් ලබා දෙනු ඇත."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("දින {days}කට පෙර"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("පැය {hours}කට පෙර"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("දැන්ම"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("මිනිත්තු {minutes}කට පෙර"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("තවම කිසිවක් ලියා නැත"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("මත විමසුම, තවම ප්‍රශ්නයක් නැත"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("උපුටනය, තවම පාඨයක් නැත"),
+      "drafts": MessageLookupByLibrary.simpleMessage("කෙටුම්පත්"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("පැතිකඩ සංස්කරණය"),
+      "email": MessageLookupByLibrary.simpleMessage("ඊමේලය"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("ඊමේල් දැනුම්දීම්"),
+      "explore": MessageLookupByLibrary.simpleMessage("ගවේෂණය"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "මෙම උපාංගයේ මුහුණු ලුහුබැඳීම නොමැත."),
+      "feedTagDetail": (Object a0) => "#${a0} සමඟ තවම කිසිවක් පළ කර නැත.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name} අනුගමනය කරන්න"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
-      "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+      "followers": MessageLookupByLibrary.simpleMessage("අනුගාමිකයන්"),
+      "following": MessageLookupByLibrary.simpleMessage("අනුගමනය කරන"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage("මුරපදය අමතකද?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("උදව් ලබා ගැනීම"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google සමඟ ඉදිරියට"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google සමඟ පුරනය වන්න"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google සම්පූර්ණ වූ පුරනය Kyron වෙත ආපසු දෙන්නේ Android සහ iOS පමණක් පිළිතුරු දෙන සබැඳියක් හරහාය, එබැවින් ${a0} මත බ්‍රවුසරයට එය ආපසු දීමට තැනක් නැත.\\n\\nGoogle හරහා ඔබට දැනටමත් Kyron ගිණුමක් ඇත්නම්, එම ලිපිනයම සමඟ ඊමේලය සමඟ ඉදිරියට යන්න තෝරා මුරපදය අමතකද තට්ටු කරන්න: මුරපදයක් සැකසීමට සබැඳියක් ලැබේ.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google පුරනයට දුරකථන යෙදුම අවශ්‍යයි"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Google සමඟ ලියාපදිංචි වන්න"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "මාර්ගෝපදේශ සහ පොදු ප්‍රශ්නවලට පිළිතුරු"),
+      "handle": MessageLookupByLibrary.simpleMessage("හැසිරවුම් නාමය"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("උදව් සහ සහාය"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("උදව් මධ්‍යස්ථානය"),
+      "home": MessageLookupByLibrary.simpleMessage("මුල් පිටුව"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("එක පේළියක"),
       "ins_account": MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("ප්‍රජාව විවෘත කරන්න"),
@@ -460,690 +403,573 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("ඉහළම පළ කිරීම්"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("පෙර දින {days} හා සසඳන විට"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("රුචිකත්වයක් එක් කරන්න"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("පිළිවෙළ වෙනස් කිරීමට අදින්න"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "තීරුවට උපරිම ටැබ් පහක් ගැළපේ. තවත් එකක් එක් කිරීමට එකක් ඉවත් කරන්න."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("අනුගමනය කරන"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("ඔබ වෙනුවෙන්"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "මිනිසුන් හැෂ්ටැග් භාවිත කිරීම අරඹන විට ඒවා මෙහි පෙන්වයි."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("දැන් ප්‍රවණතාවය"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("වීඩියෝ"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("ඔබේ ටැබ්"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("එය ඔබ දෙදෙනාටම අතුරුදන් වේ."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("එය නූලෙන් ඉවත් කෙරේ."),
+      "join": MessageLookupByLibrary.simpleMessage("එක්වන්න"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("සංස්කරණය දිගටම"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron තිර ඔබේ භාෂාවෙන් ඇත. වචනයක් වැරදියි වගේ නම්, ප්‍රතිපෝෂණ යවන්න හරහා අපට කියන්න."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("භාෂා"),
+      "leave": MessageLookupByLibrary.simpleMessage("ඉවත් වන්න"),
+      "leaveCommunity": (Object a0) => "${a0} හැර යන්නද?",
+      "letBackIn":
+          MessageLookupByLibrary.simpleMessage("නැවත ඇතුළු වීමට ඉඩ දෙන්න"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("පිටු 1ක් විවෘතයි"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("ක්ලිප් එකක් එක් කරන්න"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF එක් කරන්න"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("හැෂ්ටැග් එක් කරන්න"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("ඡායාරූපයක් එක් කරන්න"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("මත විමසුමක් එක් කරන්න"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("වීඩියෝවක් එක් කරන්න"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("රුචිකත්වයක් එක් කරන්න"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} ටැබයක් ලෙස එක් කරන්න",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("යෙදුම් භාෂාව"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("යෙදුම් අනුවාදය"),
+      "literalblockAuthor": (Object a0) => "${a0} අවහිර කරන්න",
+      "literalblockAuthor2": (Object a0) => "${a0} අවහිර කරන්නද?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("මෙම ගිණුම අවහිර කරන්නද?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("පිළිතුර ඉවතලන්න"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("නැවත පරීක්ෂා කරන්න"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("ගැලරියෙන් තෝරන්න"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("හැඹිලිය හිස් කරන්න"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("සියලු පිටු වසන්න"),
+      "literalcloseTabLabel": (Object a0) => "${a0} වසන්න",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("බ්‍රවුසරය වසන්න"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} වසන්නද?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("සහාය අමතන්න"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("අන්තර්ගත භාෂා"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("සබැඳිය පිටපත් කරන්න"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමේ සබැඳිය පිටපත් කරන්න"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමේ පාඨය පිටපත් කරන්න"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("පාඨය පිටපත් කරන්න"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාවන් පූරණය කළ නොහැකි විය"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "දැනුම්දීම් පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "සාමාජිකයන් පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "මෙම පළ කිරීම් පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "මෙම සංවාදය පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "මෙම ලැයිස්තුව පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "මෙම පළ කිරීම පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "මෙම පිළිතුර පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "ජනප්‍රිය ටැග් පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "ඔබේ ප්‍රජාවන් පූරණය කළ නොහැකි විය"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "ඔබේ පණිවිඩ පූරණය කළ නොහැකි විය"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "මෙම ප්‍රජාව විවෘත කළ නොහැකි විය"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("පිළිතුර පළ කළ නොහැකි විය."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("සෙවීම ක්‍රියා කළේ නැත"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "ඉවත් වීම අසාර්ථකයි: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "පිටු ${a0}ක් විවෘතයි",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("ආවරණ ඡායාරූපය"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("දත්ත ඉතිරිකරුව"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම මකන්න"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("පුද්ගලයන් සොයන්න"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("පිළිතුරු නොදෙන්න"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("කෙටුම්පත සුරැකිණි"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("දැන් ප්‍රතිපෝෂණ යැවිය නොහැක"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("පාඨ ප්‍රමාණය"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF සකසා නැත"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("වෙනත් යෙදුමකට දෙන්න"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("මුරපදය සඟවන්න"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම සඟවන්න"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "එය සඟවා මෙවැනි අඩුවෙන් පෙන්වන්නැයි අපෙන් ඉල්ලයි"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("හැසිරිය යුතු ආකාරය"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("ලිවීම දිගටම"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron ප්‍රතිචාර දැක්වූයේ නැත"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} දිනය",
+      "literalleaveCommunityName": (Object a0) => "${a0} හැර යන්නද?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, මුහුණු කාචය",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("කැමති පළ කිරීම්"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("සබැඳිය පිටපත් විය"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("මධ්‍යස්ථකරු කරන්න"),
+      "literalmuteAuthor": (Object a0) => "${a0} නිහඬ කරන්න",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("මෙම නූල නිහඬ කරන්න"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("වචන හෝ ටැග් නිහඬ කරන්න"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("නිහඬ සහ අවහිර කළ ගිණුම්"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "නිහඬ කළා. ඔබට දැනුම්දීම් නොලැබේ."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "මෙම උපාංගයේ කිසිදු යෙදුමක් ${a0} සබැඳි විවෘත නොකරයි.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "මෙම උපාංගයේ කිසිදු බ්‍රවුසරයක් සබැඳිය පිළිගත්තේ නැත."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("තවම DID නැත"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("කෙටුම්පත් නැත"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("තවම රුචිකත්ව නැත"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("තවම කැමැත්ත නැත"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("තවම පණිවිඩ නැත"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("නව අනුගාමිකයන් නැත"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("තවම පළ කිරීම් නැත"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("තවම පිළිතුරු නැත"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("තවම නැවත පළ කිරීම් නැත"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "කිසිදු ජනප්‍රිය ටැගයක් නොගැළපේ"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("කිසිවෙකු හමු නොවීය"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("කිසිවෙකු ඉවත් කර නැත"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("මෙහි තවම කිසිවෙකු නැත"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("උනන්දුවක් නැත"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("කිසිවක් හමු නොවීය"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("තවම කිසිවක් ප්‍රවණතාවයේ නැත"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("ලොගයේ තවම කිසිවක් නැත"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("ගැළපීම් නැත"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("නිහඬ කළ කිසිවක් නැත"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("තවම නැරඹීමට කිසිවක් නැත"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("නොකියවූ කිසිවක් නැත"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
+          "මෙය වෙනස් කළ හැක්කේ හිමිකරුට පමණි"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("පිළිතුර විවෘත කරන්න"),
       "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Kyron වෙතින් ආ ඊමේලය විවෘත කරන්න"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("මුරපදය සහ පුරනය"),
+      "literalpostInCommunityName": (Object a0) => "${a0} හි පළ කරන්න",
+      "literalpostInWidgetCommunityName": (Object a0) => "${a0} හි පළ කරන්න",
       "literalpostItWithYourOwnWordsAboveIt":
-          MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+          MessageLookupByLibrary.simpleMessage("ඉහළින් ඔබේම වචන සමඟ පළ කරන්න"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("ප්‍රධාන භාෂාව"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("තල්ලු දැනුම්දීම්"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("පරීක්ෂා කරමින්…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("හඬ පළ කිරීමක් පටිගත කරන්න"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("නැවත පටිගත කරන්න"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("මධ්‍යස්ථකරුවෙන් ඉවත් කරන්න"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාවෙන් ඉවත් කරන්න"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("සුරැකි දෙයින් ඉවත් කරන්න"),
+      "literalremoveLabel": (Object a0) => "${a0} ඉවත් කරන්න",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0} ඉවත් කරන්න",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0} ඉවත් කරන්නද?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("මත විමසුම ඉවත් කරන්න"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("මෙම පිළිතුර ඉවත් කරන්න"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("මෙම සංවාදය මකන්න"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("මෙම මත විමසුම ඉවත් කරන්න"),
+      "literalreportAuthor": (Object a0) => "${a0} වාර්තා කරන්න",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම වාර්තා කරන්න"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("කේතය නැවත යවන්න"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("සුරැකි පළ කිරීම්"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("යමක් කියන්න"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0} හි යමක් කියන්න",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("සෙවීම අසාර්ථකයි"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("නැවත යවන්න"),
+      "literalsendAgainInCooldownS": (Object a0) => "තත්. ${a0}කින් නැවත යවන්න",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("ප්‍රතිපෝෂණ දෙන්න"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("සබැඳිය යවන්න"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "යැවිණි. එය වාර්තා අංක ${a0}යි.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("මුරපදයක් සකසා ඉදිරියට යන්න"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("ලොගය සහාය සමඟ බෙදාගන්න"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("මෙම ප්‍රජාව බෙදාගන්න"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("මෙම පිටුව බෙදාගන්න"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("මෙම පැතිකඩ බෙදාගන්න"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("බෙදාගන්න…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("උපුටනයක් සමඟ බෙදාගන්න"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("මෙවැනි තවත් පෙන්වන්න"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("මුරපදය පෙන්වන්න"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("ප්‍රතිඵල පෙන්වන්න"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාවක් අරඹන්න"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("පටිගත කිරීම අරඹන්න"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("පූරණය නවත්වන්න"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "මෙම පළ කිරීම සහ එහි පිළිතුරු දැකීම නවත්වන්න"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "කතා පටිය, අයිතම ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("කැමරාව මාරු කරන්න"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("කෙනෙකු ටැග් කරන්න"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("ඡායාරූපයක් ගන්න"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "වෙනස් කිරීමට බැනරය හෝ ඡායාරූපය තට්ටු කරන්න"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("එහි ඇති සබැඳිය තට්ටු කරන්න"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "ඡායාරූපයක් සහ ආවරණයක් එක් කිරීමට තට්ටු කරන්න"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "එය සාර්ථක වූයේ නැත. නැවත උත්සාහ කරන්න."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("එම GIF පූරණය කළ නොහැකි විය."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "මෙම සබැඳිය මෙහි විවෘත කළ නොහැක."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("කැමරාව වසා ඇත"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("මෙම ප්‍රජාව"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("මෙම පිළිතුර තවදුරටත් නැත"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම පරිවර්තනය"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("ශබ්දය අක්‍රිය කරන්න"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("ශබ්දය සක්‍රිය කරන්න"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("අපගේ එකක් භාවිත කරන්න"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("සත්‍යාපන කේතය නැවත යැවිණි."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "සත්‍යාපනය අසාර්ථකයි: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("ඊමේලය සත්‍යාපනය කරන්න"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
+              "නරඹන්නන්, කැමැත්ත, සුරැකීම් සහ අදහස්"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron තබා ගන්නේ කුමක්ද"),
       "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+          "මෙම යෙදුම කරමින් සිටියේ කුමක්ද"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "ඔබ කළ දේ, අපේක්ෂා කළ දේ, සිදු වූ දේ "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("ඔබ පළ කරන දේ ඔබේය"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron දැන් ළඟා විය හැකිද"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("පිළිතුරු දිය හැක්කේ කාටද"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("ඔබට ටැග් කිරීමට අවශ්‍ය කාවද?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "ඔබ දැනටමත් සියලු ජනප්‍රිය ටැග් අනුගමනය කරයි"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("ඔබ සියල්ල දැක ඇත"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("ඔබ කිසිදු ප්‍රජාවක නැත"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("ඔබ ඉවත් වී ඇත."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "ඔබ ${a0} හැර ගියා",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("ඔබ තවම කිසිවක් පළ කර නැත"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("තවත් පූරණය"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("ලොගය හිස් කළා"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("ලොගය පිටපත් විය"),
+      "logIn": MessageLookupByLibrary.simpleMessage("පුරනය වන්න"),
+      "logOut": MessageLookupByLibrary.simpleMessage("ඉවත් වන්න"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("ඉවත් වන්නද?"),
+      "login": MessageLookupByLibrary.simpleMessage("පුරනය"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "පුරනය අසාර්ථකයි. ඔබේ විස්තර පරීක්ෂා කරන්න."),
+      "manage": MessageLookupByLibrary.simpleMessage("කළමනාකරණය"),
+      "menu": MessageLookupByLibrary.simpleMessage("මෙනුව"),
+      "message": MessageLookupByLibrary.simpleMessage("පණිවිඩය"),
+      "messages": MessageLookupByLibrary.simpleMessage("පණිවිඩ"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("ඔබ සියලු සංවාද කියවා ඇත."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "කෙනෙකුගේ පැතිකඩ විවෘත කර සංවාදයක් ඇරඹීමට පණිවිඩය තට්ටු කරන්න."),
+      "mute": MessageLookupByLibrary.simpleMessage("නිහඬ කරන්න"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("නිහඬ සහ අවහිර කළ"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("නිහඬ කළ වචන සහ ටැග්"),
+      "name": MessageLookupByLibrary.simpleMessage("නම"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> තිරය"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("නව ඊමේල් ලිපිනය"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("නව මුරපදය"),
+      "newPost": MessageLookupByLibrary.simpleMessage("නව පළ කිරීම"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("දැන් නොවේ"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "යැවුණේ නැත. නැවත උත්සාහයට තට්ටු කරන්න"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron හි \"${a0}\" සමඟ ගැළපෙන කිසිවක් නැත",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("පිටපත් කිරීමට කිසිවක් නැත"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "කැමැත්ත, පිළිතුරු සහ නව අනුගාමිකයන් මෙහි පැමිණේ."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "ඔබ අනුගමනය කරන අය මෙහි පෙන්වයි."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "කවුරුහරි ඔබේ පළ කිරීමට කැමති වූ විට, එය මෙහි පෙන්වයි."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "ඔබේ පළ කිරීම්වලට පිළිතුරු මෙහි පැමිණේ."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "කවුරුහරි ඔබව නැවත පළ කළ විට, එය මෙහි පෙන්වයි."),
+      "notifications": MessageLookupByLibrary.simpleMessage("දැනුම්දීම්"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("බ්‍රවුසරයේ විවෘත කරන්න"),
+      "or": MessageLookupByLibrary.simpleMessage("හෝ"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("පිටුව හමු නොවීය"),
+      "password": MessageLookupByLibrary.simpleMessage("මුරපදය"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("මුරපදය ඉතා කෙටියි"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("ඔබේ රුචිකත්ව තෝරන්න"),
+      "post": MessageLookupByLibrary.simpleMessage("පළ කරන්න"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමේ සංඛ්‍යාලේඛන"),
+      "postInCommunity": (Object a0) => "${a0} හි පළ කරන්න",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("පළ කරන්න, කියන්න, පෙන්වන්න."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමේ පාඨය පිටපත් විය"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("රහස්‍යතා ප්‍රතිපත්තිය"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩ යාවත්කාලීන විය"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("චරිතාපදානය"),
       "profile_country": MessageLookupByLibrary.simpleMessage("රට"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("සංදර්ශක නාමය"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("ස්ථානය"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("වෙනස් කිරීමට තට්ටු කරන්න"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("වෙබ් අඩවිය"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("තල්ලු දැනුම්දීම්"),
+      "quote": MessageLookupByLibrary.simpleMessage("උපුටන්න"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("පළ කිරීම උපුටන්න"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("මිනිසෙකු අමතන්න"),
+      "remove": MessageLookupByLibrary.simpleMessage("ඉවත් කරන්න"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("මෙම සංවාදය මකන්නද?"),
+      "removeMember": (Object a0) => "${a0} ඉවත් කරන්නද?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("මෙම පණිවිඩය මකන්නද?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("පිළිතුරු, අනුගමන සහ සඳහන්"),
+      "repliesPolicy": (Object a0) => "පිළිතුරු: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("පිළිතුරු දෙන්න"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("ඕනෑම කෙනෙකුට එක්විය හැක"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "ඕනෑම කෙනෙකුට තවමත් මෙම පළ කිරීම දැකීමට, නැවත පළ කිරීමට සහ උපුටා දැක්වීමට හැක."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron හි ඕනෑම කෙනෙකුට මෙම පළ කිරීමට පිළිතුරු දිය හැක."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("ඔබ අනුගමනය කරන අය"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "ඔබ අනුගමනය කරන අයට පමණක් මෙම පළ කිරීමට පිළිතුරු දිය හැක."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("ඔබ සඳහන් කරන අය"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "මෙම පළ කිරීමේ ඔබ @සඳහන් කරන අයට පමණක් පිළිතුරු දිය හැක."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("කිසිවෙකුට පිළිතුරු දිය නොහැක"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "පිළිතුරු අක්‍රියයි. ඔබට තවමත් පිළිතුරු දිය හැක."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("පිළිතුරු දිය හැක්කේ කාටද?"),
       "report": MessageLookupByLibrary.simpleMessage("වාර්තා කරන්න"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "වාර්තාව පිටපත් විය. සහාය වෙත යවන ඊමේලයක අලවන්න."),
       "reportSent": MessageLookupByLibrary.simpleMessage("වාර්තාව යවන ලදී"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("නැවත පළ කරන්න"),
+      "reset": MessageLookupByLibrary.simpleMessage("යළි සකසන්න"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("ඔබේ මුරපදය යළි සකසන්න"),
+      "retry": MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
+      "save": MessageLookupByLibrary.simpleMessage("සුරකින්න"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("කෙටුම්පත සුරකින්න"),
+      "saySomething": (Object a0) => "${a0} හි යමක් කියන්න",
+      "search": MessageLookupByLibrary.simpleMessage("සොයන්න"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "නම හෝ හැසිරවුම් නාමයෙන් සොයන්න"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("ප්‍රජාවන් සොයන්න"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF සොයන්න"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("භාෂා සොයන්න"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("ජනප්‍රිය ටැග් සොයන්න"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "ආරක්ෂක ඇඟවීම් සහ ගිණුම් වෙනස්කම්"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "යෙදුම් අතුරු මුහුණතේ භාෂාව තෝරන්න."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "ඔබේ සංග්‍රහවල දිස්විය යුතු භාෂා තෝරන්න. කිසිවක් නොතෝරුවොත් සියලු භාෂා පෙන්වයි."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "සංග්‍රහයේ පරිවර්තන සඳහා ඔබේ ප්‍රධාන භාෂාව තෝරන්න."),
+      "send": MessageLookupByLibrary.simpleMessage("යවන්න"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("සත්‍යාපනය යවන්න"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("දෝෂ වාර්තාවක් යවන්න"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("ප්‍රතිපෝෂණ යවන්න"),
       "sendReport": MessageLookupByLibrary.simpleMessage("වාර්තාව යවන්න"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("සහාය වෙත යවන්න"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("සේවා තත්ත්වය"),
+      "settings": MessageLookupByLibrary.simpleMessage("සැකසීම්"),
+      "shareAppLog":
+          MessageLookupByLibrary.simpleMessage("යෙදුම් ලොගය සහාය සමඟ බෙදාගන්න"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron වෙත පුරනය වන්න"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("ලෙස පුරනය වී ඇත"),
+      "signupFailed": (Object a0) => "ලියාපදිංචිය අසාර්ථකයි: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("රැඳී සිටින්න"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron තවම මුල් අවධියේය, මෙය සැබවින්ම නිවැරදි කළ හැකි කෙනෙකු වෙත ළඟා වීමට වේගවත්ම මඟ ටිකට්පතක් විවෘත කිරීමයි. ඔබ කරමින් සිටි දේ සහ සිදු වූ දේ අපට කියන්න."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "යෙදුමට තවම සහාය එන ලිපි පෙට්ටියක් නැති නිසා, මෙම තිරය ඔබව කොහේවත් නොයන පෝරමයක් වෙනුවට සැබවින්ම නිරීක්ෂණය කරන තැනකට යොමු කරයි."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("යෙදුම් ලොගය"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "අඩු දේ හෝ කැඩුණු දේ අපට කියන්න"),
+      "terms": MessageLookupByLibrary.simpleMessage("සේවා නියම"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "පාඨ, හඬ සහ වීඩියෝ, ඒවා සාදන මිනිසුන් සහ ඔවුන් කතාබහ කරන කාමර."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
-      "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "සංස්කාරකයේ පළ කරන්න බොත්තමක් නැත"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("තද"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("සැමවිටම තද"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("අඳුරු"),
+      "theme_dim_detail":
+          MessageLookupByLibrary.simpleMessage("මෘදු තද, කළු වෙනුවට නිල් අළු"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("ලා"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("සැමවිටම ලා"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("පද්ධතිය"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "දුරකථනයේ ලා හෝ තද සැකසීම අනුගමනය කරන්න"),
+      "translate": MessageLookupByLibrary.simpleMessage("පරිවර්තනය කරන්න"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "පරිවර්තනය තවම සක්‍රිය නැත. ඔබේ සංග්‍රහයේ තවම කිසිවක් පරිවර්තනය නොවේ; එතෙක් මෙය මතක තබා ගැනේ."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "මෙය Kyron හි ම වචන, Flutter විසින්ම අඳින අතුරු මුහුණතේ කොටස්, දින සහ අංක, සහ දකුණේ සිට වමට ලියන භාෂා සඳහා යෙදුමේ පිරිසැලසුමේ දිශාව වෙනස් කරයි."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("රහස්‍යතා ප්‍රතිපත්තිය"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("සේවා නියම"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("ගිණුම"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("පසු"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("යෙදුම සහ උපාංගය"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "මෙම උපුටා දැක්වීම වංචාව ගැන අන් අයට අනතුරු ඇඟවීමට විය."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1156,15 +982,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "අභියාචනය යවන ලදී. තීරණය වූ විට ඔබට දැනුම්දීමක් ලැබේ."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("නඩුව \$number සඳහා අභියාචනය"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("පෙනුම"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("ලා, තද හෝ දුරකථනය අනුව"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("පෙර"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron හි ඔබ එකිනෙකා නොදකිනු ඇත, ඔබ අතර අනුගමන ඉවත් කෙරේ. ඔවුන්ට දන්වනු නොලැබේ."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("අඩංගුයි"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("මෙය කුමක් සඳහාද (විකල්ප)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1273,29 +1097,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("හඬ සටහනක් පටිගත කරන්න"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("ඔබ"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("ප්‍රජාවන්"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("මෙය කුමකටද? (විකල්ප)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("පළ කිරීම්:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("අන්තර්ගතය සහ සංදර්ශකය"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "ඔබේ සංග්‍රහය පූරණය කළ නොහැකි විය"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "ඔබ කැමති පළ කිරීම් පූරණය කළ නොහැකි විය"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "ඔබේ පැතිකඩ පූරණය කළ නොහැකි විය"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "ඔබේ සුරැකි පළ කිරීම් පූරණය කළ නොහැකි විය"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("විමධ්‍යගත ID"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("දෝෂ නිරාකරණය"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("කණ්ඩායම්"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("කණ්ඩායම් නැත"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1305,16 +1123,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("අමුණා ඇත"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("කැමති"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("සුරැකි"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("මෙහි තවම කිසිවක් නැත"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "ගිණුම් කිහිපයක් අනුගමනය කරන්න, ඒවායේ පළ කිරීම් මෙහි පෙන්වයි."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "ඔබ අනුගමනය කරන අයගෙන් කිසිවක් නැත"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "මිනිසුන් ලියන විට පළ කිරීම් මෙහි පෙන්වයි."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("දුර්වල වෙමින්"),
       "ui_feed_signal_less":
@@ -1334,16 +1150,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "මේවා මුල් පිටුව සහ ගවේෂණය හැඩගස්වයි, බොහෝ විට එක් එක් පළ කිරීම කුමක් ගැනද යන්න අනුව. එක් එක් සංඥාව සෑම මසකම අඩකින් දුර්වල වන අතර මාස හයකට පසු ගණන් නොගැනේ. දැන් නැවැත්වීමට එකක් ඉවත් කරන්න."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "ක්ලිප් සහිත පළ කිරීම් මෙහි පෙන්වයි."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("තවම වීඩියෝ නැත"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("ප්‍රතිපෝෂණ"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyron හි පුද්ගලයන් සොයන්න"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("ගිණුමකින්"),
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("පුද්ගලයින් එක් කරන්න"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("එක් කරන්න"),
@@ -1435,32 +1248,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ඔබ"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("ඔබ නරඹන්නෙකි"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("උදව්"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "සටහන් කළා. ඔබට පෙන්විය යුතු දේ තේරීමට මෙය උදව් වේ."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("එක්වන්න"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("එක්විය"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("භාෂාව"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("ඔබේ භාෂාව තෝරන්න"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("නෛතික"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("කැමතියි"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("කැමති පළ කිරීම්"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "ඔබ කැමති පළ කිරීම් මෙහි පෙන්වයි, අලුත්ම ඒවා පළමුව."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("සබැඳිය පිටපත් විය"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "ඔබ තවදුරටත් ඔවුන්ගේ පළ කිරීම් නොදකිනු ඇත. ඔවුන්ට දන්වනු නොලැබේ."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("තවම කැමැත්ත නැත"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "එම පෙරහන්වලට ගැළපෙන පළ කිරීම් නැත."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("තවම සුරැකි දේ නැත"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම යාවත්කාලීන විය"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1518,13 +1328,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුමට අනතුරු ඇඟවීමක් ඇත"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("ඊයේ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("හරි"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("මඟහරින්න"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("මෙය දැනටමත් විවෘත කර ඇත."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("කල් ඉකුත් විය"),
@@ -1541,23 +1347,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("එක් වරක් බැලීමට යවන්න"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("බැලීමට තට්ටු කරන්න"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("විරාමය"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("වාදනය"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "එය ඔබේ පැතිකඩෙන් සහ සැමගේ සංග්‍රහවලින් ඉවත් කෙරේ. එහි පිළිතුරුද එය සමඟ යයි."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම මැකිණි"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම සැඟවිණි"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීමේ පාඨය පිටපත් විය"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("අතර කාලයේ පළ කළ"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "සැඟවුණා. අපි මෙවැනි අඩුවෙන් පෙන්වන්නෙමු."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("මනාප"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("රහස්‍යතාව"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "තව යමක් එක් කිරීමට තිබේද? (විකල්ප)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1656,76 +1461,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("ස්පෑම්"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("ප්‍රචණ්ඩත්වය හෝ තර්ජන"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("සුරැකි පළ කිරීම්"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "පළ කිරීමක් මෙහි තබා ගැනීමට එහි සංරක්ෂණ නිරූපකය තට්ටු කරන්න. ඔබ සුරැකි දේ දකින්නේ ඔබ පමණි."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "හැසිරවුම් නාමයෙන් හෝ සංදර්ශක නාමයෙන් සොයන්න."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("හිස් කරන්න"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("පළ කළ සියල්ලෙහි සොයන්න"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("පෙරහන්"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("පුද්ගලයන් සොයන්න"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("පළ කිරීම් සොයන්න"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("සැකසීම්"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("යෙදුම සහ උපාංගය"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("අන්තර්ගතය සහ සංදර්ශකය"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          MessageLookupByLibrary.simpleMessage("දත්ත ඉතිරිකරුව"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("ඔබේ අදහස් බෙදාගන්න"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("උදව් ලිපි පිරික්සන්න"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("ඔබේ භාෂාව තෝරන්න"),
+      "ui_settings_muted_blocked":
+          MessageLookupByLibrary.simpleMessage("ඔබ නිහඬ කළ හෝ අවහිර කළ අය"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("දැනුම්දීම් මනාප"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "ඔබේ පැතිකඩ සහ සම්බන්ධතා විස්තර"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "ඔබේ ගිණුමට ආපසු යාමට නැවත පුරනය වීමට සිදුවේ."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("ආරක්ෂක සැකසීම්"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("මුරපදය තහවුරු කරන්න"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("එක පේළියක"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("නව ඊමේල් ලිපිනය"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("නව මුරපදය"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("සිදු වූයේ කුමක්ද"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("අපගේ කණ්ඩායමෙන් උදව් ලබා ගන්න"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("බෙදාගන්න"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("උපුටා දක්වන්න"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("පණිවිඩයකින් යවන්න"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron හි අයට"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම බෙදාගන්න"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("කුමක් ගැනද"),
       "ui_standing_account_banned":
           MessageLookupByLibrary.simpleMessage("ඔබේ ගිණුම ස්ථිරවම තහනම් කර ඇත"),
@@ -1819,54 +1613,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ඔබේ පළ කිරීම"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("ඔබේ පිළිතුර"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("සේවා නියම"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("මෙම පළ කිරීම"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("නූල නිහඬ කළා"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("නැවත උත්සාහ කරන්න"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("ශබ්දය අක්‍රිය කරන්න"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("ශබ්දය සක්‍රිය කරන්න"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("අවම වශයෙන් අක්ෂර දෙකක්."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("අහෝසි කරන්න"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "වචන, හෝ පෙරහනක්: ගිණුමක්, දින පරාසයක්, හෝ පළ කිරීමක ඇති දේ."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("නැවත පළ කිරීම අහෝසි කරන්න"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("මුරපදය යාවත්කාලීන කරන්න"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("වෙනත් ලිපිනයක් භාවිත කරන්න"),
+      "username": MessageLookupByLibrary.simpleMessage("පරිශීලක නාමය"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "පරිශීලක නාමය කුඩා අකුරින් විය යුතුය (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("වීඩියෝව"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("අමුණන්න"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("ඇමිණීමට සූදානම්"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("හඬ පළ කිරීමක් පටිගත කරන්න"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("සුරකිමින්…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("නවත්වන්න"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("සිදු වූයේ කුමක්ද"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "කුමක් සිදු වූයේද, අප බැලිය යුත්තේ කුමක්ද?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("මෙම රූපයේ ඇත්තේ කුමක්ද?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("මෙය කුමකටද? (විකල්ප)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "ඔබ කළ දේ, අපේක්ෂා කළ දේ, සිදු වූ දේ"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "එය සිදු වූ විට ඔබ කරමින් සිටියේ කුමක්ද."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("ඔබ පිළිතුරු දුන්නා"),
       "dmReplied": (Object a0) => "$a0 පිළිතුරු දුන්නා",
@@ -1996,7 +1784,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "යැව්වා, නමුත් සියලු දෙනාටම නොවේ."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "යැවිය නොහැකි විය. නැවත උත්සාහ කරන්න."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("අනුගාමිකයා"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("පෙරහන"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("සියල්ල"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("නොකියවූ"),

@@ -7,249 +7,206 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Uma palavra, frase ou #tag"),
+      "about": MessageLookupByLibrary.simpleMessage("Sobre"),
+      "addAnAnswer":
+          MessageLookupByLibrary.simpleMessage("Adicionar uma resposta"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Adicionar mais idiomas…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Concordar e continuar"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Já está no Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comentários"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "Pessoas distintas, não aberturas"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Engajamento"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Curtidas"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Nenhum espectador ainda"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Ninguém abriu esta publicação ainda."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Publicada"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Salvos"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Espectadores"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("ESPECTADORES POR DIA"),
+      "and": MessageLookupByLibrary.simpleMessage("e"),
+      "answerNumber": (Object a0) => "Resposta ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("Lente de RA"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Anexar o log do sistema"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Ida e volta"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("VERIFICAÇÃO DO TOKEN"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Tentar novamente"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Tentar novamente"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Começar uma transmissão agora colocaria você em uma sala em que ninguém poderia"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Criar uma comunidade"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Para que serve? (opcional)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("voltar."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("voltar a partir desta lista."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Fechá-la"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("participe primeiro"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("em breve"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Publicando como você"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("publicar nesta comunidade"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Agora mesmo"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tentar novamente"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tópico 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Para você"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("tem algo."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("a caminho dela agora."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", não"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("estou me mexendo"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Desativar som"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Ativar som"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Para você"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Suas abas"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Tentar novamente"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Símbolo (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("ESPECTADORES POR DIA"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("não foi possível carregar"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("esta publicação"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Algo a acrescentar? (opcional)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("esta publicação"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("De uma conta"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Sair"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Sua conta"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmar senha"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("agora não"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Carregando…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Publicando…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("há 3 h"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Copiar link do story"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Seu story"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Sua conta, suas publicações e o que você toca, para que"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Adicionar um tópico"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("sozinha."),
+      "authorBlocked": (Object a0) => "${a0} bloqueado",
+      "authorPostsHidden": (Object a0) => "Você não verá publicações de ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Bloquear"),
+      "blockAuthor": (Object a0) => "Bloquear ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Detalhes da versão copiados"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Ao continuar, você concorda com nossos"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Ao continuar, você concorda com nossos Termos e Política de Privacidade"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Ao se cadastrar, você concorda com nossos"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
       "change": MessageLookupByLibrary.simpleMessage("Alterar"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Alterar e-mail"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Verifique seu e-mail para confirmar sua conta."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Verificar se o Kyron está acessível"),
+      "clear": MessageLookupByLibrary.simpleMessage("Limpar"),
+      "close": MessageLookupByLibrary.simpleMessage("Fechar"),
+      "closeCommunity": (Object a0) => "Fechar ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Fechar"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Fechar esta comunidade"),
+      "communities": MessageLookupByLibrary.simpleMessage("Comunidades"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Encontre uma em Descobrir ou crie a sua."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
+          "Solte uma opinião forte (ou morna)"),
       "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "O que está passando pela sua cabeça?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Diga algo que só você pode dizer…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Este é o seu sinal: envie"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Digite, fale ou pense em voz alta"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmar senha"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Fale com o suporte"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "As publicações ainda não têm idioma, então isto ainda não filtra seu feed. Sua escolha fica guardada para quando tiverem."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Continuar"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Continuar com e-mail"),
+      "copy": MessageLookupByLibrary.simpleMessage("Copiar"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Copiar o relatório"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
+          "Não foi possível abrir o login do Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Não foi possível sair: ${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Não foi possível tirar essa foto."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Aparece no teu perfil e por baixo das tuas publicações."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -261,88 +218,75 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Aparece no teu perfil e por baixo das tuas publicações. Quando vês as publicações de alguém, o teu país é contado nas Estatísticas dessa pessoa, só em grupos de cinco ou mais e nunca pelo nome."),
       "country_suggested": MessageLookupByLibrary.simpleMessage(
           "Das definições do teu telemóvel"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Criar"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Criar conta"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Crie sua conta"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Crie seu perfil"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Lente de RA"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Fazer live"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Publicação de texto"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Publicação de voz"),
+      "delete": MessageLookupByLibrary.simpleMessage("Excluir"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Excluir este comentário?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Excluir esta publicação?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Descreva este anexo"),
+      "description": MessageLookupByLibrary.simpleMessage("Descrição"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID copiado para a área de transferência"),
       "done": MessageLookupByLibrary.simpleMessage("Concluído"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Feche o editor com algo escrito e um rascunho será oferecido."),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("há {days} dias"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("há {hours} horas"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Agora mesmo"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("há {minutes} minutos"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Nada escrito ainda"),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Uma enquete, ainda sem pergunta"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Uma citação, ainda sem texto"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Rascunhos"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Editar perfil"),
+      "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificações por e-mail"),
+      "explore": MessageLookupByLibrary.simpleMessage("Explorar"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "O rastreamento facial não está disponível neste dispositivo."),
+      "feedTagDetail": (Object a0) => "Ainda não há nada publicado em #${a0}.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Seguir {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Seguidores"),
+      "following": MessageLookupByLibrary.simpleMessage("Seguindo"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Esqueceu a senha?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Obter ajuda"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Continuar com o Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Entrar com o Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "O Google devolve o login concluído ao Kyron por um link que só Android e iOS atendem, então no ${a0} o navegador não teria para onde devolvê-lo.\\n\\nSe você já tem uma conta Kyron pelo Google, use Continuar com e-mail com o mesmo endereço e toque em Esqueceu a senha: você receberá um link para criar uma.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "O login com Google precisa do app de celular"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Cadastrar com o Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Guias e respostas para perguntas comuns"),
+      "handle": MessageLookupByLibrary.simpleMessage("nome de usuário"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Ajuda e suporte"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Central de ajuda"),
+      "home": MessageLookupByLibrary.simpleMessage("Início"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Em uma linha"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Sua conta"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Abrir a comunidade"),
@@ -463,690 +407,580 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Melhores publicações"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Em relação aos {days} dias anteriores"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Adicionar um interesse"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Arraste para reordenar"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "A barra comporta no máximo cinco abas. Remova uma para adicionar outra."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Seguindo"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Para você"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "As hashtags aparecem aqui conforme as pessoas começam a usá-las."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Em alta agora"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Vídeos"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Suas abas"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          "Ela desaparece para vocês dois."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Ela será removida da conversa."),
+      "join": MessageLookupByLibrary.simpleMessage("Participar"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Continuar editando"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "As telas do Kyron estão no seu idioma. Se uma palavra soar errada, conte pelo Enviar feedback."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Idiomas"),
+      "leave": MessageLookupByLibrary.simpleMessage("Sair"),
+      "leaveCommunity": (Object a0) => "Sair de ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Readmitir"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 página aberta"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Adicionar um clipe"),
+      "literaladdAGif":
+          MessageLookupByLibrary.simpleMessage("Adicionar um GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Adicionar uma hashtag"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Adicionar uma foto"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Adicionar uma enquete"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Adicionar um vídeo"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Adicionar um interesse"),
+      "literaladdLabelAsATab": (Object a0) => "Adicionar ${a0} como aba",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Idioma do app"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Versão do app"),
+      "literalblockAuthor": (Object a0) => "Bloquear ${a0}",
+      "literalblockAuthor2": (Object a0) => "Bloquear ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Bloquear esta conta?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Cancelar resposta"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Verificar de novo"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Escolher da galeria"),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage("Limpar cache"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Fechar todas as páginas"),
+      "literalcloseTabLabel": (Object a0) => "Fechar ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Fechar o navegador"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Fechar ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Falar com o suporte"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Idiomas do conteúdo"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copiar link"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Copiar link da publicação"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Copiar texto da publicação"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copiar texto"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
+          "Não foi possível carregar as comunidades"),
       "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Não foi possível carregar os GIFs"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Não foi possível carregar as notificações"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Não foi possível carregar os membros"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Não foi possível carregar estas publicações"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Não foi possível carregar esta conversa"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Não foi possível carregar esta lista"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Não foi possível carregar esta publicação"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Não foi possível carregar esta resposta"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Não foi possível carregar as tags em alta"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Não foi possível carregar suas comunidades"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Não foi possível carregar suas mensagens"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Não foi possível abrir esta comunidade"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Não foi possível publicar essa resposta."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Não foi possível pesquisar"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Não foi possível sair: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} páginas abertas",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Foto de capa"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Economia de dados"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Excluir publicação"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Descobrir pessoas"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Não responder"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Rascunho salvo"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Não é possível enviar feedback agora"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Tamanho da fonte"),
       "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+          "Os GIFs não estão configurados"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Entregar a outro app"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Ocultar senha"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Ocultar esta publicação"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Oculta e nos diz para mostrar menos parecidas"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Como se comportar"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Continue digitando"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("O Kyron não respondeu"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallabelDate": (Object a0) => "Data de \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Sair de ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, lente facial",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Publicações curtidas"),
+      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copiado"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Tornar moderador"),
+      "literalmuteAuthor": (Object a0) => "Silenciar ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Silenciar esta conversa"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Silenciar palavras ou tags"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Contas silenciadas e bloqueadas"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Silenciado. Você não será notificado."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Nenhum app deste dispositivo abre links ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Nenhum navegador deste dispositivo aceitou esse link."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Ainda sem DID"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Nenhum rascunho"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Nenhum interesse ainda"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Nenhuma curtida ainda"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Nenhuma mensagem ainda"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Nenhum seguidor novo"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Nenhuma publicação ainda"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Nenhuma resposta ainda"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Nenhuma republicação ainda"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Nenhuma tag em alta corresponde"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ninguém encontrado"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ninguém foi removido"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Ninguém aqui ainda"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Não tenho interesse"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nada encontrado"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Nada em alta ainda"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Nada registrado ainda"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Nada encontrado"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("Nada silenciado"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Nada para ver ainda"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Nada não lido"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("Só o dono pode alterar isto"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Abrir resposta"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Abra o e-mail do Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Senha e login"),
+      "literalpostInCommunityName": (Object a0) => "Publicar em ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Publicar em ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Publique com suas próprias palavras acima"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Idioma principal"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificações push"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Lendo…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Gravar uma publicação de voz"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Gravar de novo"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Remover como moderador"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Remover da comunidade"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Remover dos salvos"),
+      "literalremoveLabel": (Object a0) => "Remover ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Remover ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Remover ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Remover a enquete"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Remover esta resposta"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Remover esta conversa"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Remover esta enquete"),
+      "literalreportAuthor": (Object a0) => "Denunciar ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Denunciar publicação"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Reenviar código"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Publicações salvas"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Diga algo"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Diga algo para ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("A pesquisa falhou"),
+      "literalsendAgain":
+          MessageLookupByLibrary.simpleMessage("Enviar de novo"),
+      "literalsendAgainInCooldownS": (Object a0) => "Enviar de novo em ${a0} s",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Enviar feedback"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Enviar o link"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Enviado. É o relatório nº ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Crie uma senha e continue"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
+          "Compartilhar o log com o suporte"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Compartilhar esta comunidade"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Compartilhar esta página"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Compartilhar este perfil"),
+      "literalshareVia":
+          MessageLookupByLibrary.simpleMessage("Compartilhar via…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Compartilhar com uma citação"),
       "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Mostrar mais publicações assim"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Mostrar senha"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mostrar resultados"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Criar uma comunidade"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Começar a gravar"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Parar de carregar"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Parar de ver esta publicação e as respostas"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Faixa de stories, ${a0} itens",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Trocar câmera"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Marcar alguém"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Tirar uma foto"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Toque no banner ou na imagem para trocar"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Toque no link dentro dele"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Toque para adicionar uma foto e uma capa"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Não deu certo. Tente de novo."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Não foi possível baixar esse GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Esse link não pode ser aberto aqui."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("A câmera está fechada"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Esta comunidade"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Esta resposta não existe mais"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Traduzir publicação"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Desativar som"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Ativar som"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Usar uma das nossas"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Código de verificação reenviado."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Falha na verificação: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Verificar e-mail"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Espectadores, curtidas, salvos e comentários"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("O que o Kyron guarda"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("O que este app tem feito"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "O que você fez, o que esperava, o que aconteceu "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("O que você publica é seu"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Se o Kyron está acessível agora"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Quem pode responder"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Quem você quer marcar?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Você já segue todas as tags em alta"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Você está em dia"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Você não está em nenhuma comunidade"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Você saiu."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Você saiu de ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Você ainda não publicou"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Carregar mais"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Log limpo"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Log copiado"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Entrar"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Sair"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Sair?"),
+      "login": MessageLookupByLibrary.simpleMessage("Entrar"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
+          "Falha no login. Verifique suas credenciais."),
+      "manage": MessageLookupByLibrary.simpleMessage("Gerenciar"),
       "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+      "message": MessageLookupByLibrary.simpleMessage("Mensagem"),
+      "messages": MessageLookupByLibrary.simpleMessage("Mensagens"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Todas as conversas estão em dia."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Abra o perfil de alguém e toque em Mensagem para começar uma conversa."),
+      "mute": MessageLookupByLibrary.simpleMessage("Silenciar"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Silenciados e bloqueados"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Palavras e tags silenciadas"),
+      "name": MessageLookupByLibrary.simpleMessage("Nome"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Tela <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Novo endereço de e-mail"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Nova senha"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Nova publicação"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Agora não"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Não enviado. Toque para tentar de novo"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Nada no Kyron corresponde a \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nada para copiar"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Curtidas, respostas e novos seguidores chegam aqui."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "As pessoas que seguem você aparecem aqui."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Quando alguém curtir uma publicação sua, aparece aqui."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "As respostas às suas publicações chegam aqui."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Quando alguém republicar você, aparece aqui."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Notificações"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Abrir no navegador"),
+      "or": MessageLookupByLibrary.simpleMessage("ou"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Página não encontrada"),
+      "password": MessageLookupByLibrary.simpleMessage("Senha"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Senha muito curta"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Escolha seus interesses"),
+      "post": MessageLookupByLibrary.simpleMessage("Publicar"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Estatísticas da publicação"),
+      "postInCommunity": (Object a0) => "Publicar em ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Publique, diga, mostre."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
+          MessageLookupByLibrary.simpleMessage("Texto da publicação copiado"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Política de Privacidade"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Perfil atualizado"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
       "profile_country": MessageLookupByLibrary.simpleMessage("País"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Nome de exibição"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Local"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Toque para alterar"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Site"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Notificações push"),
+      "quote": MessageLookupByLibrary.simpleMessage("Citar"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Citar publicação"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Falar com uma pessoa"),
+      "remove": MessageLookupByLibrary.simpleMessage("Remover"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Remover esta conversa?"),
+      "removeMember": (Object a0) => "Remover ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Remover esta mensagem?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
-      "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          "Respostas, seguidores e menções"),
+      "repliesPolicy": (Object a0) => "Respostas: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Responder"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage(
+          "Qualquer pessoa pode interagir"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Qualquer pessoa ainda pode ver, republicar e citar esta publicação."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Qualquer pessoa no Kyron pode responder a esta publicação."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Pessoas que seguem você"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Só quem segue você pode responder a esta publicação."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Pessoas que você menciona"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Só as pessoas que você @menciona nesta publicação podem responder."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Ninguém pode responder"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "As respostas estão desativadas. Você ainda pode responder."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Quem pode responder?"),
       "report": MessageLookupByLibrary.simpleMessage("Denunciar"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Relatório copiado. Cole-o em um e-mail para o suporte."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Denúncia enviada"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Republicar"),
+      "reset": MessageLookupByLibrary.simpleMessage("Redefinir"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          MessageLookupByLibrary.simpleMessage("Redefina sua senha"),
+      "retry": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+      "save": MessageLookupByLibrary.simpleMessage("Salvar"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Salvar rascunho"),
+      "saySomething": (Object a0) => "Diga algo para ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Pesquisar"),
+      "searchByNameOrHandle":
+          MessageLookupByLibrary.simpleMessage("Pesquisar por nome ou usuário"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Pesquisar comunidades"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Pesquisar GIFs"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pesquisar idiomas"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Pesquisar tags em alta"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Alertas de segurança e alterações na conta"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Escolha o idioma da interface do app."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Escolha quais idiomas seus feeds devem incluir. Se nenhum for escolhido, todos serão mostrados."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Escolha seu idioma preferido para traduções no seu feed."),
+      "send": MessageLookupByLibrary.simpleMessage("Enviar"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Enviar confirmação"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Enviar relatório de erro"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Enviar feedback"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Enviar denúncia"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Enviar ao suporte"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Status do serviço"),
+      "settings": MessageLookupByLibrary.simpleMessage("Configurações"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Compartilhar o log do app com o suporte"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Entrar no Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Conectado como"),
+      "signupFailed": (Object a0) => "Falha no cadastro: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Ficar"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "O Kyron está no início, e o jeito mais rápido de falar com quem pode resolver um problema é abrir um chamado. Diga o que você estava fazendo e o que aconteceu."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Ainda não há caixa de suporte no app, então esta tela aponta para o lugar realmente acompanhado em vez de um formulário que não leva a lugar nenhum."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Log do sistema"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Conte o que está faltando ou quebrado"),
+      "terms": MessageLookupByLibrary.simpleMessage("Termos"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Texto, voz e vídeo, as pessoas que os criam e as salas onde conversam."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "O editor não tem botão Publicar"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Escuro"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Sempre escuro"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Esmaecido"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Um escuro mais suave, cinza-azulado em vez de preto"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Claro"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Sempre claro"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Sistema"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Seguir a configuração clara ou escura do celular"),
+      "translate": MessageLookupByLibrary.simpleMessage("Traduzir"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "A tradução ainda não existe. Nada no seu feed é traduzido hoje; isto fica guardado para quando for."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Isto muda as palavras do Kyron, as partes da interface que o Flutter desenha sozinho, datas e números, e a direção em que o app se organiza para idiomas da direita para a esquerda."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Política de Privacidade"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Termos de Serviço"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Conta"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Depois"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("App e dispositivo"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Eu estava citando o golpe para alertar as pessoas."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1159,15 +993,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Recurso enviado. Você receberá uma notificação quando houver uma decisão."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Recurso do caso \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Aparência"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Claro, escuro ou como o celular estiver"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Antes"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Nenhum de vocês verá o outro no Kyron, e qualquer relação de seguir entre vocês é removida. A pessoa não é avisada."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Contendo"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Para que serve (opcional)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1272,30 +1104,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Gravar mensagem de voz"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Você"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Comunidades"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Para que serve? (opcional)"),
       "ui_community_posts":
           MessageLookupByLibrary.simpleMessage("Publicações:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Conteúdo e exibição"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Não foi possível carregar seu feed"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Não foi possível carregar suas publicações curtidas"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Não foi possível carregar seu perfil"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Não foi possível carregar suas publicações salvas"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID descentralizado"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnóstico"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupos"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Nenhum grupo"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1305,16 +1131,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Fixada"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Curtidos"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Salvos"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nada aqui ainda"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Siga algumas contas e as publicações delas aparecerão aqui."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Nada das pessoas que você segue"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "As publicações aparecerão aqui conforme as pessoas escreverem."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Enfraquecendo"),
       "ui_feed_signal_less":
@@ -1334,16 +1157,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Eles moldam o Início e o Explorar, sobretudo pelo assunto de cada publicação. Cada um enfraquece pela metade todo mês e deixa de contar após seis. Remova um para pará-lo agora."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Publicações com um clipe aparecerão aqui."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
+          MessageLookupByLibrary.simpleMessage("Nenhum vídeo ainda"),
       "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Encontrar pessoas no Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("De uma conta"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Adicionar pessoas"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Adicionar"),
       "ui_group_add_name":
@@ -1419,7 +1239,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Você não está mais neste grupo."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Renomear"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrador"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Membro"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Espectador"),
@@ -1433,32 +1254,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("você"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Você é espectador"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Ajuda"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Anotado. Isso ajuda a definir o que você vê."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Participar"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Participando"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Idioma"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Escolha seu idioma"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Jurídico"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Curtir"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Publicações curtidas"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "As publicações que você curte aparecem aqui, das mais recentes."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copiado"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Você deixará de ver as publicações dela. A pessoa não é avisada."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Nenhuma curtida ainda"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Nenhuma publicação corresponde a esses filtros."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Nada salvo ainda"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Sua conta foi atualizada"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1516,13 +1334,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Sua conta recebeu uma advertência"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Ontem"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Concluir"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pular"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Isso já foi aberto."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Expirado"),
@@ -1540,23 +1354,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Enviar para ver uma vez"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Toque para ver"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pausar"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Reproduzir"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Ela é removida do seu perfil e do feed de todos. As respostas vão junto."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Publicação excluída"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Publicação oculta"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Texto da publicação copiado"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Publicada entre"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Oculta. Mostraremos menos parecidas."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferências"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacidade"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Algo a acrescentar? (opcional)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1659,76 +1472,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Violência ou ameaças"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Publicações salvas"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Toque no ícone de arquivo em uma publicação para guardá-la aqui. Só você vê o que salva."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "Pesquise por usuário ou nome de exibição."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Limpar"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "Pesquisar tudo o que foi publicado"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtros"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Pesquisar pessoas"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Pesquisar publicações"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Configurações"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("App e dispositivo"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Conteúdo e exibição"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Economia de dados"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Diga o que você acha"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Ver artigos de ajuda"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Escolha seu idioma"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Quem você silenciou ou bloqueou"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Preferências de notificação"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Seu perfil e dados de contato"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Você precisará entrar de novo para voltar à sua conta."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Configurações de segurança"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Confirmar senha"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Em uma linha"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Novo endereço de e-mail"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Nova senha"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("O que aconteceu"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Receber ajuda da nossa equipe"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Compartilhar"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citar"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Enviar em uma mensagem"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Para pessoas no Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Compartilhar esta publicação"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Do que se tratava"),
       "ui_standing_account_banned":
@@ -1821,54 +1623,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sua publicação"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Sua resposta"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Termos"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("esta publicação"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Conversa silenciada"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Desativar som"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Ativar som"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Dois caracteres ou mais."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Desfazer"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Palavras, ou um filtro: uma conta, um período ou o que uma publicação contém."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Desfazer republicação"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage("Atualizar senha"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Usar outro endereço"),
+      "username": MessageLookupByLibrary.simpleMessage("Nome de usuário"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "O nome de usuário deve estar em minúsculas (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Vídeo"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Anexar"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Pronto para anexar"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Gravar uma publicação de voz"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Gravando…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Parar"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("O que aconteceu"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "O que aconteceu e o que devemos analisar?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("O que há nesta imagem?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Para que serve? (opcional)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "O que você fez, o que esperava, o que aconteceu"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "O que você estava fazendo quando aconteceu."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Você respondeu"),
       "dmReplied": (Object a0) => "$a0 respondeu",
@@ -1997,7 +1792,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Enviado, mas não para todos."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Não foi possível enviar. Tente novamente."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Seguidor"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtro"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Todas"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Não lidas"),

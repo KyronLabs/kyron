@@ -590,7 +590,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed":
           MessageLookupByLibrary.simpleMessage("Ya no estás en este grupo."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Cambiar nombre"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrador"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Miembro"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Espectador"),
@@ -1444,8 +1445,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Selecciona los idiomas que quieres incluir en tus feeds. Si no eliges ninguno, se mostrarán todos los idiomas.",
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Las palabras de Kyron todavía se están traduciendo, por lo que la mayoría de las pantallas seguirán en inglés por ahora.",
-      ),
+          "Las pantallas de Kyron están en tu idioma. Si alguna palabra no suena bien, dínoslo en Enviar comentarios."),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "Encuentra una en Descubrir o crea la tuya.",
       ),
@@ -1615,9 +1615,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Tus pestañas"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Intentar de nuevo"),
       "audit_password_requirements_symbol_322aed1e":
@@ -1774,7 +1773,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
         "Claro, oscuro, o lo que tenga configurado el teléfono",
       ),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Aviso legal"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnósticos"),
       "ui_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Publicaciones guardadas",
@@ -1917,8 +1916,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_location": MessageLookupByLibrary.simpleMessage("Ubicación"),
       "profile_website": MessageLookupByLibrary.simpleMessage("Sitio web"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Las palabras propias de Kyron todavía se están traduciendo, así que la mayoría de las pantallas siguen en inglés. Por ahora se traducen las partes de la interfaz que dibuja Flutter, las fechas y los números, y la dirección de diseño para idiomas de derecha a izquierda.",
-      ),
+          "Esto cambia las palabras propias de Kyron, las partes de la interfaz que dibuja el propio Flutter, las fechas y los números, y la dirección en la que se organiza la app para los idiomas que se escriben de derecha a izquierda."),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "Usar el modo claro u oscuro del teléfono",
       ),

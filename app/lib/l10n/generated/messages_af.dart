@@ -43,7 +43,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("en"),
       "answerNumber": (Object a0) => "Antwoord ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-lens"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Heg die stelsel-log aan",
       ),
@@ -120,9 +120,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Jou oortjies"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Probeer weer"),
       "audit_password_requirements_symbol_322aed1e":
@@ -274,7 +273,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "createYourProfile":
           MessageLookupByLibrary.simpleMessage("Skep jou profiel"),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-lens"),
       "create_go_live":
           MessageLookupByLibrary.simpleMessage("Begin regstreeks"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("Teksplasing"),
@@ -483,7 +482,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "interest_trending_now":
           MessageLookupByLibrary.simpleMessage("Trending nou"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Video's"),
       "interest_your_tabs":
           MessageLookupByLibrary.simpleMessage("Jou oortjies"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
@@ -497,8 +496,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Gaan voort met wysig"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron se woorde word steeds vertaal, so die meeste skerms bly vir nou in Engels.",
-      ),
+          "Kyron se skerms is in jou taal. As 'n woord verkeerd lees, sê vir ons via Stuur terugvoer."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Tale"),
       "leave": MessageLookupByLibrary.simpleMessage("Verlaat"),
@@ -650,7 +648,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Kyron het nie geantwoord nie",
       ),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
+      "literallabelDate": (Object a0) => "\\${a0}-datum",
       "literalleaveCommunityName": (Object a0) => "Verlaat ${a0}?",
       "literallensNameFaceLens": (Object a0) => "${a0}, gesiglens",
       "literallikedPosts":
@@ -968,7 +966,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Aanmelding het misluk. Kontroleer asseblief jou inlogbesonderhede.",
       ),
       "manage": MessageLookupByLibrary.simpleMessage("Bestuur"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+      "menu": MessageLookupByLibrary.simpleMessage("Kieslys"),
       "message": MessageLookupByLibrary.simpleMessage("Boodskap"),
       "messages": MessageLookupByLibrary.simpleMessage("Boodskappe"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
@@ -1187,8 +1185,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Vertaling is nog nie geskep nie. Niks in jou voer word vandag vertaal nie; dit word onthou vir wanneer dit wel is.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron se eie woorde word nog vertaal, dus bly die meeste skerms vir nou in Engels. Wat dit vandag verander: die dele van die koppelvlak wat Flutter self teken, datums en nommers, en die rigting waarin die app gerangskik word vir regs-na-links tale.",
-      ),
+          "Dit verander Kyron se eie woorde, die dele van die koppelvlak wat Flutter self teken, datums en getalle, en die rigting waarin die app uitgelê word vir regs-na-links-tale."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Probeer weer"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privaatheidsbeleid",
@@ -1468,7 +1465,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Jy is nie meer in hierdie groep nie."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Hernoem"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrateur"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Lid"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Toeskouer"),
@@ -2253,7 +2251,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_edited": MessageLookupByLibrary.simpleMessage("Gewysig"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Meer"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Volg"),
-      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Gewildste"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Onlangs"),
       "ui_sort_comments":
           MessageLookupByLibrary.simpleMessage("Sorteer kommentaar: \$order"),

@@ -7,248 +7,204 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Kalma, jimla ko #alama"),
+      "about": MessageLookupByLibrary.simpleMessage("Game da"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Ƙara amsa"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Ƙara harsuna…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Amince ka ci gaba"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Kana da asusun Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Sharhi"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "Mutane daban-daban, ba yawan buɗewa ba"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Shiga"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("So"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Babu masu kallo tukuna"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Babu wanda ya buɗe wannan rubutu tukuna."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("An wallafa"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Ajiya"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Masu kallo"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("MASU KALLO A RANA"),
+      "and": MessageLookupByLibrary.simpleMessage("da"),
+      "answerNumber": (Object a0) => "Amsa ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("Ruwan tabarau na AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Haɗa rajistar manhaja"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Lokacin zuwa da dawowa"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TABBATAR DA ALAMA"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Fara watsa shirye-shirye yanzu zai sanya ka a ɗakin da babu wanda zai iya"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Fara al'umma"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Don me ne? (na zaɓi)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("sake shiga."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("sake shiga daga wannan jerin."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Rufe ta"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("shiga tukuna"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("na zuwa nan ba da daɗewa ba"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Kana wallafa a matsayinka"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("wallafa a wannan al'umma"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Yanzun nan"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Jigo 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Gare ka"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("yana da wani abu."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
-      "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
-      "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "audit_interest_tabs_for_you_7ef9e823":
           MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+              "yana kan hanyar zuwa can yanzu."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", ba"),
+      "audit_inline_video_am_i_moving_4618f78c":
+          MessageLookupByLibrary.simpleMessage("ina motsi ne"),
+      "audit_inline_video_turn_sound_off_97714bbc":
+          MessageLookupByLibrary.simpleMessage("Kashe sauti"),
+      "audit_inline_video_turn_sound_on_83671c54":
+          MessageLookupByLibrary.simpleMessage("Kunna sauti"),
+      "audit_interest_tabs_for_you_7ef9e823":
+          MessageLookupByLibrary.simpleMessage("Gare ka"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Shafukanka"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Alama (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("MASU KALLO A RANA"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("an kasa lodawa"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("wannan rubutu"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Akwai abin da za ka ƙara? (na zaɓi)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("wannan rubutu"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Daga wani asusu"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Fita"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Asusunka"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Tabbatar da kalmar sirri"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ba yanzu ba"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Ana lodawa…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Ana wallafawa…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("awa 3 da suka wuce"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kwafi mahaɗin labari"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Labarinka"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Asusunka, rubuce-rubucenka da abin da kake taɓawa, domin"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Ƙara jigo"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("nasa."),
+      "authorBlocked": (Object a0) => "An toshe ${a0}",
+      "authorPostsHidden": (Object a0) =>
+          "Ba za ka ga rubuce-rubuce daga ${a0} ba",
+      "block": MessageLookupByLibrary.simpleMessage("Toshe"),
+      "blockAuthor": (Object a0) => "A toshe ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("An kwafi bayanan ginin"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Ta ci gaba, ka amince da"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Ta ci gaba, ka amince da Sharuɗɗan Sabis da Manufar Sirrinmu"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Ta yin rajista, ka amince da"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Soke"),
       "change": MessageLookupByLibrary.simpleMessage("Canza"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Canja imel"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Tabbatar da asusunka daga imel ɗinka."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Duba ko ana iya kaiwa Kyron"),
+      "clear": MessageLookupByLibrary.simpleMessage("Share"),
+      "close": MessageLookupByLibrary.simpleMessage("Rufe"),
+      "closeCommunity": (Object a0) => "A rufe ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Rufe ta"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Rufe wannan al'umma"),
+      "communities": MessageLookupByLibrary.simpleMessage("Al'ummomi"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Nemo ɗaya a Bincika, ko fara naka."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Jefa ra'ayi mai zafi (ko mai ɗumi)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Me ke zuciyarka?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "Faɗi abin da kai kaɗai za ka iya faɗa…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Wannan ita ce alamarka: wallafa shi"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Rubuta, yi magana, ko yi tunani da babbar murya"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Tabbatar da kalmar sirri"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("Tuntuɓi tallafi"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Rubuce-rubuce ba su da harshe tukuna, don haka wannan bai tace ciyarwarka ba tukuna. Za a ajiye zaɓinka har zuwa lokacin."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Ci gaba"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Ci gaba da imel"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kwafi"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Kwafi rahoton a maimakon haka"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "An kasa buɗe shiga da Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Fita ya kasa: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("An kasa ɗaukar hoto."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -259,88 +215,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ana nuna shi a bayananka da ƙarƙashin rubuce-rubucenka. Idan ka ga rubuce-rubucen wani, ana ƙirga ƙasarka a cikin Bayanansa, a rukunin mutum biyar ko fiye kawai, kuma ba da sunanka ba."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Daga saitunan wayarka"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Ƙirƙira"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Ƙirƙiri asusu"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Ƙirƙiri asusunka"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Ƙirƙiri bayananka"),
+      "create_ar_lens":
+          MessageLookupByLibrary.simpleMessage("Ruwan tabarau na AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Fara kai tsaye"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Rubutun rubutu"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Rubutun murya"),
+      "delete": MessageLookupByLibrary.simpleMessage("Share"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("A share wannan sharhi?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
+          MessageLookupByLibrary.simpleMessage("A share wannan rubutu?"),
       "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          "Bayyana wannan abin da aka haɗa"),
+      "description": MessageLookupByLibrary.simpleMessage("Bayani"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("An kwafi DID zuwa allo"),
       "done": MessageLookupByLibrary.simpleMessage("An gama"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Rufe editan bayan ka rubuta wani abu kuma za a ba ka zayyana."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("kwana {days} da suka wuce"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("awa {hours} da suka wuce"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Yanzun nan"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("minti {minutes} da suka wuce"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Ba a rubuta komai ba tukuna"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Ƙuri'a, babu tambaya tukuna"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Ambato, babu rubutu tukuna"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Zayyanai"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Gyara bayanai"),
+      "email": MessageLookupByLibrary.simpleMessage("Imel"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Sanarwar imel"),
+      "explore": MessageLookupByLibrary.simpleMessage("Bincika"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Bin fuska ba ya samuwa a wannan na'ura."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Babu abin da aka wallafa da #${a0} tukuna.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Bi {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Mabiya"),
+      "following": MessageLookupByLibrary.simpleMessage("Ana bi"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
-      "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Ka manta kalmar sirri?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Samun taimako"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Ci gaba da Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage("Shiga da Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google yana mayar da shigar da aka kammala zuwa Kyron ta hanyar mahaɗin da Android da iOS ne kaɗai ke amsawa, don haka a ${a0} mai binciken ba shi da inda zai mayar da shi.\\n\\nIdan kana da asusun Kyron ta Google, zaɓi Ci gaba da imel da adireshin guda, sannan ka taɓa Ka manta kalmar sirri: za ka sami mahaɗin saita kalmar sirri.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Shiga da Google yana buƙatar manhajar waya"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Yi rajista da Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Jagorori da amsoshin tambayoyi na yau da kullum"),
+      "handle": MessageLookupByLibrary.simpleMessage("sunan mai amfani"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Taimako da Tallafi"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Cibiyar Taimako"),
+      "home": MessageLookupByLibrary.simpleMessage("Gida"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("A layi ɗaya"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Asusunka"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Buɗe al'ummar"),
@@ -457,690 +403,564 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Manyan rubutu"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Idan aka kwatanta da kwanaki {days} kafin haka"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Ƙara abin sha'awa"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Ja don sake tsarawa"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Sandar tana ɗaukar shafuka biyar ne kawai. Cire ɗaya don ƙara wani."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Ana bi"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Gare ka"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Hashtag za su bayyana a nan idan mutane sun fara amfani da su."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Mai tashe yanzu"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Bidiyoyi"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Shafukanka"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Zai ɓace muku duka."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Za a cire shi daga zaren."),
+      "join": MessageLookupByLibrary.simpleMessage("Shiga"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Ci gaba da gyara"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Allon Kyron suna cikin harshenka. Idan wata kalma ba ta yi daidai ba, gaya mana ta Aika ra'ayi."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Harsuna"),
+      "leave": MessageLookupByLibrary.simpleMessage("Bar"),
+      "leaveCommunity": (Object a0) => "A bar ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Bari ya dawo"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("Shafi 1 a buɗe"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Ƙara gajeren bidiyo"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Ƙara GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Ƙara hashtag"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Ƙara hoto"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Ƙara ƙuri'a"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Ƙara bidiyo"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Ƙara abin sha'awa"),
+      "literaladdLabelAsATab": (Object a0) => "Ƙara ${a0} a matsayin shafi",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Harshen manhaja"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Sigar manhaja"),
+      "literalblockAuthor": (Object a0) => "Toshe ${a0}",
+      "literalblockAuthor2": (Object a0) => "A toshe ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("A toshe wannan asusu?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Watsar da amsa"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Sake dubawa"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Zaɓi daga gidan hotuna"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Share ma'ajiya"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Rufe duk shafuka"),
+      "literalcloseTabLabel": (Object a0) => "Rufe ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Rufe mai bincike"),
+      "literalcloseWidgetCommunityName": (Object a0) => "A rufe ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Tuntuɓi tallafi"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Harsunan abun ciki"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kwafi mahaɗi"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kwafi mahaɗin rubutu"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kwafi rubutun"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kwafi rubutu"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("An kasa loda al'ummomi"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("An kasa loda GIF"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("An kasa loda sanarwa"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("An kasa loda mambobi"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "An kasa loda waɗannan rubuce-rubuce"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          MessageLookupByLibrary.simpleMessage("An kasa loda wannan hira"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("An kasa loda wannan jerin"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("An kasa loda wannan rubutu"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("An kasa loda wannan amsa"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "An kasa loda shahararrun alamomi"),
       "literalcouldNotLoadYourCommunities":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          MessageLookupByLibrary.simpleMessage("An kasa loda al'ummominka"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("An kasa loda saƙonninka"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("An kasa buɗe wannan al'umma"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("An kasa wallafa amsa."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Bincike bai yi aiki ba"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Fita ya kasa: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "Shafuka ${a0} a buɗe",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Hoton bango"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Mai tanadin bayanai"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Share rubutu"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Nemo mutane"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Kada ka amsa"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("An ajiye zayyana"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Ba za a iya aika ra'ayi yanzu ba"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Girman rubutu"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("Ba a saita GIF ba"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Miƙa wa wata manhaja"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Ɓoye kalmar sirri"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Ɓoye wannan rubutu"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Yana ɓoye shi kuma yana roƙon mu mu rage nuna irinsa"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Yadda za a yi ɗabi'a"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Ci gaba da rubutu"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron bai amsa ba"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "Ranar \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "A bar ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, tabarau na fuska",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Rubuce-rubucen da aka so"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("An kwafi mahaɗi"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Mai da shi mai sa ido"),
+      "literalmuteAuthor": (Object a0) => "Yi wa ${a0} shiru",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Yi wa wannan zaren shiru"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "Yi wa kalmomi ko alamomi shiru"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Asusun da aka yi wa shiru da aka toshe"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "An yi shiru. Ba za ka sami sanarwa ba."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Babu manhaja a wannan na'ura da ke buɗe mahaɗan ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Babu mai bincike a wannan na'ura da ya karɓi mahaɗin."),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("Babu DID tukuna"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Babu zayyanai"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Babu abubuwan sha'awa tukuna"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Babu so tukuna"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Babu saƙonni tukuna"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Babu sababbin mabiya"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Babu rubuce-rubuce tukuna"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Babu amsoshi tukuna"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Babu sake wallafawa tukuna"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Babu shahararriyar alama da ta dace"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ba a sami kowa ba"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ba a cire kowa ba"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Babu kowa a nan tukuna"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Ba ni da sha'awa"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ba a sami komai ba"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Babu abin da ke tashe tukuna"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Babu komai a rajista tukuna"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Babu daidaito"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Babu waɗanda aka yi wa shiru"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Babu abin kallo tukuna"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Babu waɗanda ba a karanta ba"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Mai shi ne kaɗai zai iya canja wannan"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Buɗe amsa"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Buɗe imel daga Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Kalmar sirri da shiga"),
+      "literalpostInCommunityName": (Object a0) => "Wallafa a ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Wallafa a ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+              "Wallafa shi da kalmominka a sama"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Babban harshe"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Sanarwar tura"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Ana dubawa…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Naɗa rubutun murya"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("Sake naɗa"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Cire daga masu sa ido"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Cire daga al'umma"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Cire daga ajiyayyu"),
+      "literalremoveLabel": (Object a0) => "Cire ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Cire ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "A cire ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Cire ƙuri'a"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Cire wannan amsa"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Share wannan hira"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Cire wannan ƙuri'a"),
+      "literalreportAuthor": (Object a0) => "Kai rahoton ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Kai rahoton rubutu"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Sake aika lamba"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Ajiyayyun rubuce-rubuce"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Faɗi wani abu"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Faɗi wani abu a ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Bincike ya kasa"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Sake aikawa"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "Sake aikawa cikin daƙiƙa ${a0}",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Ba da ra'ayi"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Aika mahaɗi"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "An aika. Wannan rahoto ne #${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Saita kalmar sirri ka ci gaba"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Raba rajista da tallafi"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Raba wannan al'umma"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Raba wannan shafi"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Raba wannan bayani"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Raba…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Raba tare da ambato"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Nuna ƙari irin wannan"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Nuna kalmar sirri"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nuna sakamako"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Fara al'umma"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Fara naɗa"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Daina lodawa"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Daina ganin wannan rubutu da amsoshinsa"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Layin labarai, abubuwa ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Canja kyamara"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Yiwa wani alama"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("Ɗauki hoto"),
       "literaltapTheBannerOrThePictureToChangeIt":
-          MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          MessageLookupByLibrary.simpleMessage("Taɓa tuta ko hoto don canjawa"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Taɓa mahaɗin da ke ciki"),
+      "literaltapToAddAPhotoAndACover":
+          MessageLookupByLibrary.simpleMessage("Taɓa don ƙara hoto da bango"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Hakan bai yi aiki ba. Sake gwadawa."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("An kasa loda wannan GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Ba za a iya buɗe wannan mahaɗin a nan ba."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kyamara a rufe take"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Wannan al'umma"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Wannan amsa ta tafi"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Fassara rubutu"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kashe sauti"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Kunna sauti"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Yi amfani da ɗaya daga namu"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "An sake aika lambar tabbatarwa."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Tabbatarwa ta kasa: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Tabbatar da imel"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Masu kallo, so, ajiya da sharhi"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Abin da Kyron ke ajiyewa"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Me wannan manhaja take yi"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Me ka yi, me ka yi tsammani, me ya faru "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Abin da ka wallafa naka ne"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ko ana iya kaiwa Kyron yanzu"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Wa zai iya amsawa"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Wa kake so ka yiwa alama?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Kana bin duk shahararrun alamomi tuni"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Ka ga komai"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Ba ka cikin wata al'umma"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Ka fita."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Ka bar ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Ba ka wallafa komai ba tukuna"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Ƙara lodawa"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("An share rajista"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("An kwafi rajista"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Shiga"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Fita"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("A fita?"),
+      "login": MessageLookupByLibrary.simpleMessage("Shiga"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
+          "Shiga ya kasa. Duba bayananka."),
+      "manage": MessageLookupByLibrary.simpleMessage("Sarrafa"),
       "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+      "message": MessageLookupByLibrary.simpleMessage("Saƙo"),
+      "messages": MessageLookupByLibrary.simpleMessage("Saƙonni"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Ka karanta duk hirarraki."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          "Buɗe bayanin wani ka taɓa Saƙo don fara hira."),
+      "mute": MessageLookupByLibrary.simpleMessage("Yi shiru"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "Waɗanda aka yi wa shiru da aka toshe"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "Kalmomi da alamun da aka yi wa shiru"),
+      "name": MessageLookupByLibrary.simpleMessage("Suna"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Allon <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Sabon adireshin imel"),
+      "newPassword":
+          MessageLookupByLibrary.simpleMessage("Sabuwar kalmar sirri"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Sabon rubutu"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Ba yanzu ba"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Ba a aika ba. Taɓa don sake gwadawa"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Babu abin da ya dace da \"${a0}\" a Kyron",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Babu abin kwafa"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "So, amsoshi da sababbin mabiya suna zuwa nan."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Mutanen da ke binka za su bayyana a nan."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Idan wani ya so rubutunka, zai bayyana a nan."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Amsoshin rubuce-rubucenka suna zuwa nan."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Idan wani ya sake wallafa ka, zai bayyana a nan."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Sanarwa"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Buɗe a mai bincike"),
+      "or": MessageLookupByLibrary.simpleMessage("ko"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Ba a sami shafin ba"),
+      "password": MessageLookupByLibrary.simpleMessage("Kalmar sirri"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Kalmar sirri ta yi gajarta"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Zaɓi abubuwan da kake so"),
+      "post": MessageLookupByLibrary.simpleMessage("Wallafa"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Ƙididdigar rubutu"),
+      "postInCommunity": (Object a0) => "Wallafa a ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Wallafa, faɗa, nuna."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("An kwafi rubutun"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Manufar Sirri"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("An sabunta bayanai"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Tarihin kai"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Ƙasa"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Sunan nuni"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Wuri"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Taɓa don canjawa"),
+      "profile_website":
+          MessageLookupByLibrary.simpleMessage("Shafin yanar gizo"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Sanarwar tura"),
+      "quote": MessageLookupByLibrary.simpleMessage("Ambato"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Ambato rubutu"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Tuntuɓi mutum"),
+      "remove": MessageLookupByLibrary.simpleMessage("Cire"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("A share wannan hira?"),
+      "removeMember": (Object a0) => "A cire ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("A share wannan saƙo?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Amsoshi, bibiya da ambato"),
+      "repliesPolicy": (Object a0) => "Amsoshi: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Amsa"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Kowa zai iya shiga"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Kowa zai iya gani, sake wallafawa da ambaton wannan rubutu har yanzu."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kowa a Kyron zai iya amsa wannan rubutu."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Mutanen da ke binka"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Mabiyanka ne kaɗai za su iya amsa wannan rubutu."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Mutanen da ka ambata"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Mutanen da ka @ambata a wannan rubutu ne kaɗai za su iya amsawa."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Babu wanda zai iya amsawa"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "An kashe amsoshi. Kai har yanzu za ka iya amsawa."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Wa zai iya amsawa?"),
       "report": MessageLookupByLibrary.simpleMessage("Kai rahoto"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "An kwafi rahoto. Liƙa shi a imel zuwa tallafi."),
       "reportSent": MessageLookupByLibrary.simpleMessage("An aika rahoto"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Sake wallafawa"),
+      "reset": MessageLookupByLibrary.simpleMessage("Sake saitawa"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Sake saita kalmar sirrinka"),
+      "retry": MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
+      "save": MessageLookupByLibrary.simpleMessage("Ajiye"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Ajiye zayyana"),
+      "saySomething": (Object a0) => "Faɗi wani abu a ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Bincika"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Bincika da suna ko sunan mai amfani"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Bincika al'ummomi"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Bincika GIF"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bincika harsuna"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Bincika shahararrun alamomi"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Faɗakarwar tsaro da canje-canjen asusu"),
+      "selectAppLanguage":
+          MessageLookupByLibrary.simpleMessage("Zaɓi harshen fuskar manhaja."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Zaɓi harsunan da za su bayyana a ciyarwarka. Idan ba ka zaɓi kowanne ba, za a nuna duk harsuna."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Zaɓi babban harshenka don fassarori a cikin ciyarwa."),
+      "send": MessageLookupByLibrary.simpleMessage("Aika"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Aika tabbatarwa"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Aika rahoton kuskure"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Aika ra'ayi"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Aika rahoto"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Aika zuwa tallafi"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Matsayin sabis"),
+      "settings": MessageLookupByLibrary.simpleMessage("Saituna"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Raba rajistar manhaja da tallafi"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Shiga Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("An shiga a matsayin"),
+      "signupFailed": (Object a0) => "Yin rajista ya kasa: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Zauna"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron yana farkon farawa, kuma hanya mafi sauri don kaiwa ga wanda zai iya gyara shi ita ce buɗe tikiti. Gaya mana abin da kake yi da abin da ya faru."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Manhajar ba ta da akwatin saƙon tallafi tukuna, don haka wannan allon yana nuna maka wurin da ake kulawa da gaske maimakon fom da ba ya zuwa ko'ina."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Rajistar manhaja"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Gaya mana abin da ya ɓace ko ya lalace"),
+      "terms": MessageLookupByLibrary.simpleMessage("Sharuɗɗan Sabis"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Rubutu, murya da bidiyo, mutanen da suke yin su, da ɗakunan da suke hira."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Babu maɓallin Wallafa a editan"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Duhu"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Duhu koyaushe"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Dusashe"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Duhu mai laushi, toka mai shuɗi a maimakon baƙi"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Haske"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Haske koyaushe"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Tsarin"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Bi saitin haske ko duhu na wayarka"),
+      "translate": MessageLookupByLibrary.simpleMessage("Fassara"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Fassara ba ta kunnu ba tukuna. Babu abin da ake fassarawa a ciyarwarka tukuna; za a tuna da wannan har zuwa lokacin."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Wannan yana canja kalmomin Kyron na kansa, sassan fuskar da Flutter ke zanawa da kansa, kwanan wata da lambobi, da kuma alkiblar tsarin manhaja ga harsunan da ake rubutawa daga dama zuwa hagu."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Manufar Sirri"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Sharuɗɗan Sabis"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Asusu"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Bayan"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Manhaja da Na'ura"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Na ambaci zambar ne don in gargaɗi mutane."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1155,15 +975,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "An aika ɗaukaka ƙara. Za ka sami sanarwa idan an yanke hukunci."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "Ɗaukaka ƙara kan shari'a \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Kamanni"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("Haske, duhu, ko bi wayarka"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Kafin"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Ba za ku ga juna a Kyron ba, kuma za a cire bibiyar da ke tsakaninku. Ba za a sanar da shi ba."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Ya ƙunshi"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Don me ne (na zaɓi)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1266,29 +1084,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Naɗi saƙon murya"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Kai"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Al'ummomi"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Don me ne? (na zaɓi)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Rubutu:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Abun ciki da Nuni"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("An kasa loda ciyarwarka"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "An kasa loda rubuce-rubucen da ka so"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("An kasa loda bayananka"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "An kasa loda ajiyayyun rubuce-rubucenka"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID mara cibiya"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Gyara matsala"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Rukunoni"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Babu rukuni"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1298,16 +1110,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("An maƙala"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Waɗanda aka so"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Ajiyayyu"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Babu komai a nan tukuna"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Bi wasu asusu kuma rubuce-rubucensu za su bayyana a nan."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Babu komai daga waɗanda kake bi"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Rubuce-rubuce za su bayyana a nan yayin da mutane suke rubutawa."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Yana raguwa"),
       "ui_feed_signal_less":
@@ -1326,16 +1136,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Waɗannan suna tsara Gida da Bincika, galibi bisa abin da kowane rubutu ya kasance a kai. Kowanne yana raguwa da rabi kowane wata kuma ba a ƙirga shi bayan watanni shida. Cire ɗaya don dakatar da shi yanzu."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Rubuce-rubuce masu gajeren bidiyo za su bayyana a nan."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
+          MessageLookupByLibrary.simpleMessage("Babu bidiyoyi tukuna"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Ra'ayi"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Nemo mutane a Kyron"),
       "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Daga wani asusu"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Ƙara mutane"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Ƙara"),
       "ui_group_add_name":
@@ -1426,32 +1234,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("kai"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Kai ɗan kallo ne"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Taimako"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "An lura. Wannan yana taimakawa wajen zaɓar abin da za a nuna maka."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Shiga"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Ya shiga"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Harshe"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Zaɓi harshenka"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Na shari'a"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("So"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Rubuce-rubucen da aka so"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Rubuce-rubucen da ka so suna bayyana a nan, sababbi farko."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("An kwafi mahaɗi"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Ba za ka sake ganin rubuce-rubucensa ba. Ba za a sanar da shi ba."),
+      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("Babu so tukuna"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Babu rubutun da ya dace da waɗannan matatai."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Babu ajiyayyu tukuna"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("An sabunta asusunka"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1507,13 +1311,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Asusunka yana da gargaɗi"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Jiya"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("An gama"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tsallake"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("An riga an buɗe wannan."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Ya ƙare"),
@@ -1530,23 +1330,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Aika don dubawa sau ɗaya"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Taɓa don dubawa"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Dakata"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Kunna"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Za a cire shi daga bayananka da ciyarwar kowa. Amsoshinsa ma za su tafi tare da shi."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("An share rubutu"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("An ɓoye rubutu"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("An kwafi rubutun"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("An wallafa tsakanin"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "An ɓoye. Za mu rage nuna irin wannan."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Zaɓuɓɓuka"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Sirri"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Akwai abin da kake son ƙarawa? (na zaɓi)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1643,76 +1441,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Saƙon banza"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Tashin hankali ko barazana"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Ajiyayyun rubuce-rubuce"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Taɓa alamar ajiya ta rubutu don riƙe shi a nan. Kai kaɗai kake ganin abin da ka ajiye."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "Bincika da sunan mai amfani ko sunan nuni."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Share"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "Bincika duk abin da aka wallafa"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Matatai"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Bincika mutane"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Bincika rubuce-rubuce"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Saituna"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Manhaja da Na'ura"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Abun ciki da Nuni"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mai tanadin bayanai"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Raba tunaninka"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Duba labaran taimako"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Zaɓi harshenka"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Waɗanda ka yi wa shiru ko ka toshe"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Zaɓuɓɓukan sanarwa"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Bayananka da bayanan tuntuɓa"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Za ka buƙaci sake shiga don komawa asusunka."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Saitunan tsaro"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Tabbatar da kalmar sirri"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("A layi ɗaya"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Sabon adireshin imel"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Sabuwar kalmar sirri"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Me ya faru"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Sami taimako daga ƙungiyarmu"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Raba"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Kawo"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Aika a cikin saƙo"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Ga mutane a Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Raba wannan rubutu"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Abin da ya shafa"),
       "ui_standing_account_banned":
@@ -1806,54 +1593,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post":
           MessageLookupByLibrary.simpleMessage("Rubutunka"),
       "ui_standing_your_reply": MessageLookupByLibrary.simpleMessage("Amsarka"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Sharuɗɗan Sabis"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("wannan rubutu"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("An yi wa zare shiru"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Sake gwadawa"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Kashe sauti"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Kunna sauti"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Aƙalla haruffa biyu."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Soke"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Kalmomi, ko matata: asusu, tazarar kwanan wata, ko abin da rubutu ya ƙunsa."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Soke sake wallafawa"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Sabunta kalmar sirri"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Yi amfani da wani adireshi"),
+      "username": MessageLookupByLibrary.simpleMessage("Sunan mai amfani"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Sunan mai amfani dole ya zama ƙananan haruffa (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Bidiyo"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Haɗa"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("A shirye don haɗawa"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Naɗa rubutun murya"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Ana ajiyewa…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Tsaya"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Me ya faru"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Me ya faru, kuma me ya kamata mu duba?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Me ke cikin wannan hoto?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Don me ne? (na zaɓi)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Me ka yi, me ka yi tsammani, me ya faru"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Me kake yi lokacin da ya faru."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Kun amsa"),
       "dmReplied": (Object a0) => "Amsa daga $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Ƙara cikin saƙo"),
@@ -1979,7 +1758,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("An aika, amma ba ga kowa ba."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Ba a iya aikawa ba. Sake gwadawa."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Mabiyi"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Tace"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Duka"),
       "ui_dm_filter_unread":

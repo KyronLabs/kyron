@@ -8,247 +8,201 @@ class MessageLookup extends MessageLookupByLibrary {
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+          "Okwu, nkebiokwu ma ọ bụ #mkpado"),
+      "about": MessageLookupByLibrary.simpleMessage("Maka"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Tinye azịza"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Tinye asụsụ…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Kwenye ma gaa n'ihu"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Ị nweelarị akaụntụ Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Nkọwa"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "Ndị dị iche iche, ọ bụghị ugboro mmeghe"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Itinye aka"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Mmasị"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ndị na-ele"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Onye ọ bụla emeghebeghị ozi a."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Ebipụtara"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Nchekwa"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Ndị na-ele"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("NDỊ NA-ELE KWA ỤBỌCHỊ"),
+      "and": MessageLookupByLibrary.simpleMessage("na"),
+      "answerNumber": (Object a0) => "Azịza ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("Lens AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Tinye ndekọ ngwa"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Oge njem gaa na-alọta"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("NKWADO TOKEN"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Ịmalite mgbasa ugbu a ga-etinye gị n'ime ụlọ onye ọ bụla na-agaghị"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Malite obodo"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Gịnị ka ọ bụ maka? (nhọrọ)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("abanye ọzọ."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("abanye ọzọ site na ndepụta a."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Imechi ya"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("sonye mbụ"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("na-abịa n'oge na-adịghị anya"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Ị na-ebipụta dịka onwe gị"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("biputa n'obodo a"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ugbu a"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Isiokwu 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Maka gị"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("nwere ihe."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("na-aga ebe ahụ ugbu a."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", ọ bụghị"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("m na-aga n'ihu"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Gbanyụọ ụda"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Gbanye ụda"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Maka gị"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Taabụ gị"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Akara (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("NDỊ NA-ELE KWA ỤBỌCHỊ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("enweghị ike ibudata"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ozi a"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Ị nwere ihe ịgbakwunye? (nhọrọ)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ozi a"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Site n'akaụntụ"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Pụọ"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Akaụntụ gị"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Kwado paswọọdụ"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ọ bụghị ugbu a"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Na-ebudata…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Na-ebipụta…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("awa 3 gara aga"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Detuo njikọ akụkọ"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Akụkọ gị"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Akaụntụ gị, ozi gị, na ihe ị pịa, ka"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Tinye isiokwu"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("nke ya."),
+      "authorBlocked": (Object a0) => "Egbochiela ${a0}",
+      "authorPostsHidden": (Object a0) => "Ị gaghị ahụ ozi sitere n'aka ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Gbochie"),
+      "blockAuthor": (Object a0) => "Gbochie ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Edetuola nkọwa ụdị"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Site n'ịga n'ihu, ị kwenyere na"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Site n'ịga n'ihu, ị kwenyere na Usoro Ọrụ na Iwu Nzuzo anyị"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Site n'idebanye aha, ị kwenyere na"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Kagbuo"),
       "change": MessageLookupByLibrary.simpleMessage("Gbanwee"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Gbanwee email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Kwado akaụntụ gị site na email gị."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Lelee ma Kyron ọ dị"),
+      "clear": MessageLookupByLibrary.simpleMessage("Hichapụ"),
+      "close": MessageLookupByLibrary.simpleMessage("Mechie"),
+      "closeCommunity": (Object a0) => "Mechie ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Mechie ya"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Mechie obodo a"),
+      "communities": MessageLookupByLibrary.simpleMessage("Obodo"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Chọta otu na Nyochaa, ma ọ bụ malite nke gị."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Tụpụ echiche dị ọkụ (ma ọ bụ nke dị ọkụ ọkụ)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Gịnị dị gị n'obi?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "Kwuo ihe naanị gị nwere ike ikwu…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Nke a bụ ihe ngosi gị: biputa ya"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
-      "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          "Pịnye, kwuo okwu, ma ọ bụ chee echiche n'olu dara ụda"),
+      "confirmPassword": MessageLookupByLibrary.simpleMessage("Kwado paswọọdụ"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("Kpọtụrụ nkwado"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Ozi enwebeghị asụsụ, ya mere nke a anaghị azacha nri ozi gị ugbu a. A ga-edobe nhọrọ gị ruo mgbe ahụ."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Gaa n'ihu"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Gaa n'ihu na email"),
+      "copy": MessageLookupByLibrary.simpleMessage("Detuo"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Detuo akụkọ kama"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Enweghị ike imeghe ịbanye Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Ịpụ dara: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ise foto."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +214,72 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A na-egosi ya na profaịlụ gị na n'okpuru ihe ndị ị na-ezipụta. Mgbe ị hụrụ ihe mmadụ zipụtara, a na-agụ obodo gị n'Nghọta ya, naanị n'otu mmadụ ise ma ọ bụ karịa, ọ dịghịkwa mgbe a na-akpọ aha gị."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Site na ntọala ekwentị gị"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
-      "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+      "create": MessageLookupByLibrary.simpleMessage("Mepụta"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Mepụta akaụntụ"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Mepụta akaụntụ gị"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Mepụta profaịlụ gị"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Lens AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Gaa ndụ"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Ozi ederede"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Ozi olu"),
+      "delete": MessageLookupByLibrary.simpleMessage("Hichapụ"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Hichapụ nkọwa a?"),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage("Hichapụ ozi a?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Kọwaa ihe ntinye a"),
+      "description": MessageLookupByLibrary.simpleMessage("Nkọwa"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Edetuola DID na klipbọọdụ"),
       "done": MessageLookupByLibrary.simpleMessage("Emechaala"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Mechie onye ndezi mgbe i dechara ihe, a ga-enye gị ndebiri."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("ụbọchị {days} gara aga"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+          MessageLookupByLibrary.simpleMessage("awa {hours} gara aga"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Ugbu a"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("nkeji {minutes} gara aga"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe edere"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Ntuli aka, enweghị ajụjụ ka"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Nhota, enweghị ederede ka"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Ndebiri"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Dezie profaịlụ"),
       "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+      "emailNotifications": MessageLookupByLibrary.simpleMessage("Ọkwa email"),
+      "explore": MessageLookupByLibrary.simpleMessage("Nyochaa"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Nsochi ihu adịghị na ngwaọrụ a."),
+      "feedTagDetail": (Object a0) => "Ọ dịbeghị ihe ebipụtara na #${a0}.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Soro {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Ndị na-eso"),
+      "following": MessageLookupByLibrary.simpleMessage("Ndị ị na-eso"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
-      "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Chefuru paswọọdụ?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Inweta enyemaka"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Gaa n'ihu na Google"),
+      "googleSignIn": MessageLookupByLibrary.simpleMessage("Banye na Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google na-eweghachi ịbanye zuru ezu na Kyron site na njikọ naanị Android na iOS na-aza, ya mere na ${a0} ihe nchọgharị enweghị ebe ọ ga-eweghachi ya.\\n\\nỌ bụrụ na ị nweelarị akaụntụ Kyron site na Google, họrọ Gaa n'ihu na email jiri otu adreesị ahụ, wee pịa Chefuru paswọọdụ: ị ga-enweta njikọ iji tọọ paswọọdụ.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Ịbanye Google chọrọ ngwa ekwentị"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Debanye aha na Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Ntuziaka na azịza ajụjụ ndị a na-ajụkarị"),
+      "handle": MessageLookupByLibrary.simpleMessage("aha njirimara"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Enyemaka na Nkwado"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Ebe Enyemaka"),
+      "home": MessageLookupByLibrary.simpleMessage("Ụlọ"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("N'otu ahịrị"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Akaụntụ gị"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Mepee obodo ahụ"),
@@ -460,690 +398,542 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Post kacha mma"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Ma e jiri ya tụnyere ụbọchị {days} gara aga"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Tinye ihe na-amasị gị"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Dọkpụ ka ịhazigharịa"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Ogwe na-anabata naanị taabụ ise. Wepụ otu ka ịtinye ọzọ."),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("Ndị ị na-eso"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Maka gị"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Hashtag ga-apụta ebe a mgbe ndị mmadụ malitere iji ha."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Na-ewu ewu ugbu a"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Vidiyo"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Taabụ gị"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Ọ ga-apụ n'anya maka unu abụọ."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("A ga-ewepụ ya na eriri."),
+      "join": MessageLookupByLibrary.simpleMessage("Sonye"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Gaa n'ihu na-edezi"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Ihuenyo Kyron dị n'asụsụ gị. Ọ bụrụ na okwu ọ bụla adịghị mma, gwa anyị site na Zipu nzaghachi."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Asụsụ"),
+      "leave": MessageLookupByLibrary.simpleMessage("Hapụ"),
+      "leaveCommunity": (Object a0) => "Hapụ ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Kwe ka ọ laghachi"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("Ibe 1 meghere"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Tinye klipụ"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Tinye GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
-      "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tinye hashtag"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Tinye foto"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Tinye ntuli aka"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Tinye vidiyo"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Tinye ihe na-amasị gị"),
+      "literaladdLabelAsATab": (Object a0) => "Tinye ${a0} dịka taabụ",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("Asụsụ ngwa"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("Ụdị ngwa"),
+      "literalblockAuthor": (Object a0) => "Gbochie ${a0}",
+      "literalblockAuthor2": (Object a0) => "Gbochie ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Gbochie akaụntụ a?"),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage("Tufuo azịza"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Lelee ọzọ"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Họrọ site na gallery"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Hichapụ cache"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Mechie ibe niile"),
+      "literalcloseTabLabel": (Object a0) => "Mechie ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Mechie ihe nchọgharị"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Mechie ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Kpọtụrụ nkwado"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Asụsụ ọdịnaya"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Detuo njikọ"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Detuo njikọ ozi"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          MessageLookupByLibrary.simpleMessage("Detuo ederede ozi"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Detuo ederede"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata obodo"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata GIF"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ọkwa"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ndị otu"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ozi ndị a"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+              "Enweghị ike ibudata mkparịta ụka a"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ndepụta a"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ozi a"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata azịza a"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Enweghị ike ibudata mkpado ndị a ma ama"),
       "literalcouldNotLoadYourCommunities":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata obodo gị"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata ozi gị"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike imeghe obodo a"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibipụta azịza."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Nchọta arụghị ọrụ"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Ịpụ dara: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "Ibe ${a0} meghere",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Foto mkpuchi"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Nchekwa data"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Hichapụ ozi"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Chọta ndị mmadụ"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Azala"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Echekwaala ndebiri"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Enweghị ike izipu nzaghachi ugbu a"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Nha ederede"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("Edozibeghị GIF"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Nyefee ya ngwa ọzọ"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
-      "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Zoo paswọọdụ"),
+      "literalhideThisPost": MessageLookupByLibrary.simpleMessage("Zoo ozi a"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Na-ezo ya ma na-arịọ anyị ka anyị gosi obere ndị dị otú a"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Otu esi akpa agwa"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Gaa n'ihu na-ede"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron azaghị"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "Ụbọchị \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Hapụ ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, lens ihu",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Ozi masịrị gị"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Edetuola njikọ"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Mee ka ọ bụrụ onye nlekọta"),
+      "literalmuteAuthor": (Object a0) => "Mee ka ${a0} gbachi nkịtị",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Mee ka eriri a gbachi nkịtị"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "Mee ka okwu ma ọ bụ mkpado gbachi nkịtị"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Akaụntụ gbachiri nkịtị na ndị egbochiri"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Gbachiri nkịtị. Ị gaghị enweta ọkwa."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Ọ dịghị ngwa na ngwaọrụ a na-emeghe njikọ ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Ọ dịghị ihe nchọgharị na ngwaọrụ a nabatara njikọ ahụ."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Ọ dịbeghị DID"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Enweghị ndebiri"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe na-amasị gị"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị mmasị"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ozi"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ndị na-eso ọhụrụ"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ozi"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị azịza"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị mbipụta ọzọ"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Ọ dịghị mkpado a ma ama kwekọrọ"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ahụghị onye ọ bụla"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ewepụbeghị onye ọ bụla"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị onye nọ ebe a"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Enweghị mmasị"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ahụghị ihe ọ bụla"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe na-ewu ewu"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe na ndekọ"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị nke kwekọrọ"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe gbachiri nkịtị"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe ị ga-ele"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị nke a na-agụbeghị"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Naanị onye nwe ya nwere ike ịgbanwe nke a"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Meghee azịza"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Meghee email sitere na Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Paswọọdụ na ịbanye"),
+      "literalpostInCommunityName": (Object a0) => "Biputa na ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Biputa na ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+              "Biputa ya na okwu nke gị n'elu"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Asụsụ isi"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Ọkwa push"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Na-elele…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("Dekọọ ọzọ"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Wepụ dịka onye nlekọta"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Wepụ n'obodo"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Wepụ na ndị echekwara"),
+      "literalremoveLabel": (Object a0) => "Wepụ ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Wepụ ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Wepụ ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Wepụ ntuli aka"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Wepụ azịza a"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Hichapụ mkparịta ụka a"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Wepụ ntuli aka a"),
+      "literalreportAuthor": (Object a0) => "Kọọ ${a0}",
+      "literalreportPost": MessageLookupByLibrary.simpleMessage("Kọọ ozi"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Zipu koodu ọzọ"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Ozi echekwara"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Kwuo ihe"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Kwuo ihe na ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Nchọta dara"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Zipu ọzọ"),
+      "literalsendAgainInCooldownS": (Object a0) => "Zipu ọzọ na sekọnd ${a0}",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Nye nzaghachi"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Zipu njikọ"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Ezipụla. Nke ahụ bụ akụkọ #${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Tọọ paswọọdụ wee gaa n'ihu"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta ndekọ na nkwado"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta obodo a"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta ibe a"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta profaịlụ a"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Kekọrịta…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta na nhota"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Gosi ndị ọzọ dị ka nke a"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Gosi paswọọdụ"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Gosi nsonaazụ"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Malite obodo"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Malite ndekọ"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Kwụsị ibudata"),
       "literalstopSeeingThisPostAndRepliesToIt":
-          MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kwụsị ịhụ ozi a na azịza ya"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Eriri akụkọ, ihe ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Gbanwee igwefoto"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Mkpado onye"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("See foto"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+              "Pịa banna ma ọ bụ foto ka ịgbanwee"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Pịa njikọ dị n'ime ya"),
+      "literaltapToAddAPhotoAndACover":
+          MessageLookupByLibrary.simpleMessage("Pịa ka ịtinye foto na mkpuchi"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nke ahụ arụghị ọrụ. Nwaa ọzọ."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibudata GIF ahụ."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Enweghị ike imeghe njikọ a ebe a."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Igwefoto mechiri emechi"),
+      "literalthisCommunity": MessageLookupByLibrary.simpleMessage("Obodo a"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Azịza a adịkwaghị"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Sụgharịa ozi"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Gbanyụọ ụda"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Gbanye ụda"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Jiri otu n'ime nke anyị"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("Ezipụla koodu nkwado ọzọ."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
-      "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          "Nkwado dara: ${a0}",
+      "literalverifyEmail": MessageLookupByLibrary.simpleMessage("Kwado email"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Ndị na-ele, mmasị, nchekwa na nkọwa"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Ihe Kyron na-edobe"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Ihe ngwa a na-eme"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Ihe i mere, ihe ị tụrụ anya, ihe mere "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Ihe ị bipụtara bụ nke gị"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ma Kyron ọ dị ugbu a"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Onye nwere ike ịza"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Onye ka ịchọrọ ịmkpado?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Ị na-eso mkpado niile a ma ama"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Ị hụla ihe niile"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Ị nọghị n'obodo ọ bụla"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Ị pụọla."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
-      "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Ị hapụla ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Ị bipụtabeghị ihe ọ bụla"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Budata ndị ọzọ"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Ehichapụla ndekọ"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Edetuola ndekọ"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Banye"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Pụọ"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Pụọ?"),
+      "login": MessageLookupByLibrary.simpleMessage("Ịbanye"),
+      "loginFailed":
+          MessageLookupByLibrary.simpleMessage("Ịbanye dara. Lelee nkọwa gị."),
+      "manage": MessageLookupByLibrary.simpleMessage("Jikwaa"),
       "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+      "message": MessageLookupByLibrary.simpleMessage("Ozi"),
+      "messages": MessageLookupByLibrary.simpleMessage("Ozi"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Ị gụchaala mkparịta ụka niile."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "Meghee profaịlụ mmadụ wee pịa Ozi ka ịmalite mkparịta ụka."),
+      "mute": MessageLookupByLibrary.simpleMessage("Mee ka ọ gbachi nkịtị"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "Ndị gbachiri nkịtị na ndị egbochiri"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Okwu na mkpado gbachiri nkịtị"),
+      "name": MessageLookupByLibrary.simpleMessage("Aha"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Ihuenyo <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Adreesị email ọhụrụ"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Paswọọdụ ọhụrụ"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Ozi ọhụrụ"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
-      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+      "notNow": MessageLookupByLibrary.simpleMessage("Ọ bụghị ugbu a"),
+      "notSentTapRetry":
+          MessageLookupByLibrary.simpleMessage("Ezipụghị. Pịa ka ịnwaa ọzọ"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Ọ dịghị ihe na Kyron kwekọrọ na \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe ịdetu"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
-      "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Mmasị, azịza na ndị na-eso ọhụrụ na-abịa ebe a."),
+      "notificationFollowersDetail":
+          MessageLookupByLibrary.simpleMessage("Ndị na-eso gị ga-apụta ebe a."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
-      "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Mgbe onye ọ bụla nwere mmasị n'ozi gị, ọ ga-apụta ebe a."),
+      "notificationRepliesDetail":
+          MessageLookupByLibrary.simpleMessage("Azịza n'ozi gị na-abịa ebe a."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Mgbe onye ọ bụla bipụtara gị ọzọ, ọ ga-apụta ebe a."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Ọkwa"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Meghee na ihe nchọgharị"),
+      "or": MessageLookupByLibrary.simpleMessage("ma ọ bụ"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Ahụghị ibe ahụ"),
+      "password": MessageLookupByLibrary.simpleMessage("Paswọọdụ"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Paswọọdụ dị mkpụmkpụ"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Họrọ ihe na-amasị gị"),
+      "post": MessageLookupByLibrary.simpleMessage("Biputa"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("Ọnụọgụ ozi"),
+      "postInCommunity": (Object a0) => "Biputa na ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Biputa, kwuo, gosi."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Edetuola ederede ozi"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Iwu Nzuzo"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Emelitela profaịlụ"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Nkọwa onwe"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Obodo"),
-      "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
-      "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+      "profile_display_name": MessageLookupByLibrary.simpleMessage("Aha ngosi"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Ebe"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Pịa ka ịgbanwee"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Weebụsaịtị"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage("Ọkwa push"),
+      "quote": MessageLookupByLibrary.simpleMessage("Hota"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Hota ozi"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Kpọtụrụ mmadụ"),
+      "remove": MessageLookupByLibrary.simpleMessage("Wepụ"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Hichapụ mkparịta ụka a?"),
+      "removeMember": (Object a0) => "Wepụ ${a0}?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage("Hichapụ ozi a?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Azịza, nsochi na nkọwapụta"),
+      "repliesPolicy": (Object a0) => "Azịza: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Zaa"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Onye ọ bụla nwere ike isonye"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Onye ọ bụla ka nwere ike ịhụ, ibipụta ọzọ na ịhota ozi a."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Onye ọ bụla na Kyron nwere ike ịza ozi a."),
+      "reply_followers": MessageLookupByLibrary.simpleMessage("Ndị na-eso gị"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Naanị ndị na-eso gị nwere ike ịza ozi a."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Ndị ị kpọtụrụ aha"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Naanị ndị ị @kpọtụrụ aha n'ozi a nwere ike ịza."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị onye nwere ike ịza"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Agbanyụọla azịza. Ị ka nwere ike ịza."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Onye nwere ike ịza?"),
       "report": MessageLookupByLibrary.simpleMessage("Kọọ akụkọ"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Edetuola akụkọ. Mado ya na email ị na-ezigara nkwado."),
       "reportSent": MessageLookupByLibrary.simpleMessage("E zipụla akụkọ"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Biputa ọzọ"),
+      "reset": MessageLookupByLibrary.simpleMessage("Tọgharịa"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Tọgharịa paswọọdụ gị"),
+      "retry": MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
+      "save": MessageLookupByLibrary.simpleMessage("Chekwaa"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Chekwaa ndebiri"),
+      "saySomething": (Object a0) => "Kwuo ihe na ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Chọọ"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Chọọ site n'aha ma ọ bụ aha njirimara"),
+      "searchCommunities": MessageLookupByLibrary.simpleMessage("Chọọ obodo"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Chọọ GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Chọọ asụsụ"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Chọọ mkpado ndị a ma ama"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Ọkwa nchekwa na mgbanwe akaụntụ"),
+      "selectAppLanguage":
+          MessageLookupByLibrary.simpleMessage("Họrọ asụsụ ihu ngwa."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Họrọ asụsụ ga-apụta na nri ozi gị. Ọ bụrụ na ị họrọghị nke ọ bụla, a ga-egosi asụsụ niile."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
-      "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          "Họrọ asụsụ isi gị maka nsụgharị na nri ozi."),
+      "send": MessageLookupByLibrary.simpleMessage("Zipu"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage("Zipu nkwado"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Zipu akụkọ njehie"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Zipu nzaghachi"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Zipu akụkọ"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Zipu na nkwado"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Ọnọdụ ọrụ"),
+      "settings": MessageLookupByLibrary.simpleMessage("Ntọala"),
+      "shareAppLog":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta ndekọ ngwa na nkwado"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Banye na Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Abanyela dịka"),
+      "signupFailed": (Object a0) => "Ndebanye aha dara: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Nọrọ"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron ka na-amalite, ụzọ kachasị ọsọ iji ruo onye nwere ike idozi ya n'ezie bụ imeghe tiketi. Gwa anyị ihe ị na-eme na ihe mere."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Ngwa enwebeghị igbe ozi nkwado, ya mere ihuenyo a na-eduga gị n'ebe a na-elekọta n'ezie kama fọm na-anaghị aga ebe ọ bụla."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Ndekọ ngwa"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Gwa anyị ihe na-efu ma ọ bụ ihe mebiri emebi"),
+      "terms": MessageLookupByLibrary.simpleMessage("Usoro Ọrụ"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Ederede, olu na vidiyo, ndị na-eme ha, na ụlọ ebe ha na-akparịta ụka."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Enweghị bọtịnụ Biputa na onye ndezi"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Ọchịchịrị"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Ọchịchịrị mgbe niile"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Mmịrị mmịrị"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Ọchịchịrị dị nro, ntụ na-acha anụnụ anụnụ kama oji"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Ìhè"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Ìhè mgbe niile"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Sistemụ"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Soro ntọala ìhè ma ọ bụ ọchịchịrị nke ekwentị gị"),
+      "translate": MessageLookupByLibrary.simpleMessage("Sụgharịa"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Ngbanwe asụsụ agbanyebeghị. Ọ dịghị ihe a na-asụgharị na nri ozi gị ugbu a; a ga-echeta nke a ruo mgbe ahụ."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Nke a na-agbanwe okwu Kyron n'onwe ya, akụkụ ihu Flutter na-ese n'onwe ya, ụbọchị na nọmba, na ụzọ nhazi ngwa maka asụsụ a na-ede site n'aka nri gaa n'aka ekpe."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Iwu Nzuzo"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Usoro Ọrụ"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Akaụntụ"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Mgbe"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("Ngwa na Ngwaọrụ"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Ana m ehota aghụghọ ahụ iji dọọ ndị mmadụ aka ná ntị."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1156,15 +946,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "E zipụla mkpesa. Ị ga-enweta ọkwa mgbe e mere mkpebi."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Mkpesa na okwu \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Ọdịdị"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Ìhè, ọchịchịrị, ma ọ bụ soro ekwentị gị"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Tupu"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Unu agaghị ahụ ibe unu na Kyron, a ga-ewepụkwa nsochi dị n'etiti unu. A gaghị agwa ya."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Nwere"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Ihe ọ bụ maka (nhọrọ)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1271,29 +1059,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_unpin": MessageLookupByLibrary.simpleMessage("Wepụ pịnụ"),
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Gị"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Obodo"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Gịnị ka ọ bụ maka? (nhọrọ)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Post:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Ọdịnaya na Ngosipụta"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Enweghị ike ibudata nri ozi gị"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Enweghị ike ibudata ozi masịrị gị"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Enweghị ike ibudata profaịlụ gị"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Enweghị ike ibudata ozi ị chekwara"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID na-enweghị etiti"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Idozi nsogbu"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Otu"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Enweghị otu"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1303,16 +1085,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Apịnara"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ndị m masịrị"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Echekwara"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe ebe a"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Soro akaụntụ ole na ole, ozi ha ga-apụta ebe a."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Ọ dịghị ihe sitere n'aka ndị ị na-eso"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Ozi ga-apụta ebe a ka ndị mmadụ na-ede ha."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Na-ada"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Ọ masịghị m"),
@@ -1329,16 +1109,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Ha na-akpụzi Ụlọ na Nyochaa, ọkachasị dịka ihe post ọ bụla gbasara. Nke ọ bụla na-ada ọkara kwa ọnwa ma kwụsị ịgụ mgbe ọnwa isii gachara. Wepụ otu iji kwụsị ya ugbu a."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Ozi nwere klipụ ga-apụta ebe a."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị vidiyo"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Nzaghachi"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Chọta ndị mmadụ na Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Site n'akaụntụ"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Tinye mmadụ"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Tinye"),
       "ui_group_add_name":
@@ -1425,32 +1202,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("gị"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Ị bụ onye na-ekiri"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Enyemaka"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Edeela ya. Nke a na-enyere aka ịhọrọ ihe a ga-egosi gị."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Sonye"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Sonyere"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Asụsụ"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Họrọ asụsụ gị"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Iwu"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Nwee mmasị"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Ozi masịrị gị"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Ozi masịrị gị na-apụta ebe a, nke kacha ọhụrụ na mbụ."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Edetuola njikọ"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Ị gaghị ahụkwa ozi ya. A gaghị agwa ya."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị mmasị"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Ọ dịghị ozi kwekọrọ na nzacha ndị ahụ."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Ọ dịbeghị ihe echekwara"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Emelitere akaụntụ gị"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1507,13 +1280,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akaụntụ gị nwere ịdọ aka na ntị"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Ụnyaahụ"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Emechaala"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mafee"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("E meghela nke a."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Agwụla"),
@@ -1530,23 +1299,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Zipu ka e lee otu ugboro"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Pịa ka ị hụ"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Kwụsịtụ"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Kpọọ"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "A ga-ewepụ ya na profaịlụ gị na nri ozi onye ọ bụla. Azịza ya ga-esokwa ya pụọ."),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Ehichapụla ozi"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Ezoola ozi"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Edetuola ederede ozi"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Ebipụtara n'etiti"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Ezoro ezo. Anyị ga-egosi obere ndị dị otú a."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Mmasị"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Nzuzo"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Ọ nwere ihe ị chọrọ ịgbakwunye? (nhọrọ)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1644,76 +1410,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Ime ihe ike ma ọ bụ iyi egwu"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Ozi echekwara"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Pịa akara ebe nchekwa nke ozi ka idobe ya ebe a. Naanị gị na-ahụ ihe ị chekwara."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Chọọ site n'aha njirimara ma ọ bụ aha ngosi."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Hichapụ"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Chọọ ihe niile ebipụtara"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Nzacha"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Chọọ ndị mmadụ"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Chọọ ozi"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Ntọala"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Ngwa na Ngwaọrụ"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Ọdịnaya na Ngosipụta"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nchekwa data"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Kekọrịta echiche gị"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Nyochaa akụkọ enyemaka"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Họrọ asụsụ gị"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Ndị i mere ka ha gbachi nkịtị ma ọ bụ gbochiri"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Mmasị ọkwa"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Profaịlụ gị na nkọwa kọntaktị"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Ị ga-abanye ọzọ iji laghachi na akaụntụ gị."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Ntọala nchekwa"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Kwado paswọọdụ"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("N'otu ahịrị"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Adreesị email ọhụrụ"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Paswọọdụ ọhụrụ"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Ihe mere"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Nweta enyemaka n'aka otu anyị"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Kekọrịta"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Hota"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Ziga ya na ozi"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Nye ndị nọ na Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Kekọrịta ozi a"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Ihe ọ gbasara"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1807,54 +1560,45 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("Post gị"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Nzaghachi gị"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Usoro Ọrụ"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ozi a"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Eriri gbachiri nkịtị"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Nwaa ọzọ"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Gbanyụọ ụda"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Gbanye ụda"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Opekempe mkpụrụedemede abụọ."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Mehie"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Okwu, ma ọ bụ nzacha: akaụntụ, oge ụbọchị, ma ọ bụ ihe dị n'ozi."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Kagbuo mbipụta ọzọ"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage("Melite paswọọdụ"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Jiri adreesị ọzọ"),
+      "username": MessageLookupByLibrary.simpleMessage("Aha onye ọrụ"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Aha onye ọrụ ga-abụrịrị obere mkpụrụedemede (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Vidiyo"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Tinye"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Ọ dị njikere itinye"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Dekọọ ozi olu"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Na-echekwa…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Kwụsị"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Ihe mere"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Gịnị mere, gịnị ka anyị kwesịrị ilele?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Gịnị dị na foto a?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Gịnị ka ọ bụ maka? (nhọrọ)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
-      "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Ihe i mere, ihe ị tụrụ anya, ihe mere"),
+      "whatYouWereDoing":
+          MessageLookupByLibrary.simpleMessage("Ihe ị na-eme mgbe ọ mere."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ị zaghachiri"),
       "dmReplied": (Object a0) => "$a0 zaghachiri",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Tinye na ozi"),
@@ -1976,7 +1720,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "E zigala, mana ọ bụghị nye mmadụ niile."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Enweghị ike iziga ya. Nwaa ọzọ."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Onye na-eso"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Nzacha"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Ha niile"),
       "ui_dm_filter_unread":
