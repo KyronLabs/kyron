@@ -1,5 +1,38 @@
 [
   {
+    "version": "0.1.43",
+    "items": [
+      {
+        "title": "See who gave a post its gifts.",
+        "detail": "Tap the gift pill: everyone who sent one, the biggest giver first and named as such, with what they sent."
+      },
+      {
+        "title": "Every part of a notification opens its own page.",
+        "detail": "A face or a name opens that person, the picture opens the post, and a reply's words open the reply."
+      },
+      {
+        "title": "What's new, after each update, once, so you can see what changed.",
+        "detail": ""
+      },
+      {
+        "title": "A quick check-in on your third and tenth day: one tap on a face, and a line if you have something to say.",
+        "detail": ""
+      },
+      {
+        "title": "Reminders, now and then.",
+        "detail": "After a day and a half away, an evening note about what's new, only if something is; and on Monday, a note that your gift coins are back, if you spent some."
+      },
+      {
+        "title": "Full-width buttons are the login button's size.",
+        "detail": "They were 8 points taller and heavier than it, across settings, sheets and moderation screens; every one is now exactly the same 40-point pill."
+      },
+      {
+        "title": "A profile's tabs sit on the page in the dark theme, not on a grey band across it, and the ring round the profile picture is the page's black instead of grey.",
+        "detail": ""
+      }
+    ]
+  },
+  {
     "version": "0.1.42",
     "items": [
       {
@@ -87,35 +120,6 @@
       },
       {
         "title": "The line between two conversations sits in the middle, as far from the buttons above it as from the face below.",
-        "detail": ""
-      }
-    ]
-  },
-  {
-    "version": "0.1.38",
-    "items": [
-      {
-        "title": "Choose the words in a post.",
-        "detail": "Hold a post's, comment's or reply's text to select it, with Copy, Search and Select all — black on white in the light theme, white on black in the dark."
-      },
-      {
-        "title": "Emoji on their own are big in posts, comments and replies, as they are in messages.",
-        "detail": ""
-      },
-      {
-        "title": "Your followers and following open from the side menu.",
-        "detail": ""
-      },
-      {
-        "title": "A photo on its own is shown whole, in its own shape, edged with a hairline, instead of cut to fit a box.",
-        "detail": "Two or more are laid out as before."
-      },
-      {
-        "title": "Threads curve gently into each reply, and replies have more room between them.",
-        "detail": ""
-      },
-      {
-        "title": "A profile's Posts, Media and Likes are pills, as in messages, over a hairline.",
         "detail": ""
       }
     ]
