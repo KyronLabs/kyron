@@ -1185,5 +1185,21 @@
   "ui_select_all": "બધું પસંદ કરો",
   "ui_gifts_count": "$count ભેટો",
   "ui_gifts_count_one": "1 ભેટ",
-  "ui_feed_more_failed": "વધુ પોસ્ટ લોડ થઈ શકી નહીં."
+  "ui_feed_more_failed": "વધુ પોસ્ટ લોડ થઈ શકી નહીં.",
+  "ui_reminders": "રિમાઇન્ડર",
+  "ui_reminders_detail": "થોડો સમય દૂર રહ્યા પછી નવું શું છે, અને તમારા સિક્કા પાછા આવે ત્યારે. દિવસમાં એકથી વધુ ક્યારેય નહીં.",
+  "ui_gifts_title": "ભેટો",
+  "ui_gifts_from_one": "1 વ્યક્તિ તરફથી",
+  "ui_gifts_from_people": "$count લોકો તરફથી",
+  "ui_top_gifter": "સૌથી મોટા ભેટદાતા",
+  "ui_gifts_load_failed": "ભેટ કોણે મોકલી તે લોડ થઈ શક્યું નહીં.",
+  "ui_whats_new": "નવું શું છે",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "સમજાયું",
+  "ui_check_in_thanks": "આભાર. અમે દરેક જવાબ વાંચીએ છીએ.",
+  "ui_check_in_title": "અત્યાર સુધી Kyron કેવું લાગ્યું?",
+  "ui_check_in_detail": "તમારા પરીક્ષણનો દિવસ $day. એક ટૅપ પૂરતો છે.",
+  "ui_check_in_hint": "કંઈ સુધારવું કે ઉમેરવું જોઈએ? (વૈકલ્પિક)",
+  "ui_send": "મોકલો",
+  "ui_not_now": "હમણાં નહીં"
 }

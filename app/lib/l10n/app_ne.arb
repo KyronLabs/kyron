@@ -1185,5 +1185,21 @@
   "ui_select_all": "सबै छान्नुहोस्",
   "ui_gifts_count": "$count उपहार",
   "ui_gifts_count_one": "१ उपहार",
-  "ui_feed_more_failed": "थप पोस्टहरू लोड गर्न सकिएन।"
+  "ui_feed_more_failed": "थप पोस्टहरू लोड गर्न सकिएन।",
+  "ui_reminders": "रिमाइन्डरहरू",
+  "ui_reminders_detail": "केही समय टाढा रहेपछि के नयाँ छ, र तपाईंका सिक्का फर्किँदा। दिनमा एकभन्दा बढी कहिल्यै होइन।",
+  "ui_gifts_title": "उपहारहरू",
+  "ui_gifts_from_one": "१ जनाबाट",
+  "ui_gifts_from_people": "$count जनाबाट",
+  "ui_top_gifter": "सबैभन्दा ठूलो दाता",
+  "ui_gifts_load_failed": "उपहार कसले पठायो लोड गर्न सकिएन।",
+  "ui_whats_new": "के नयाँ छ",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "बुझें",
+  "ui_check_in_thanks": "धन्यवाद। हामी हरेक जवाफ पढ्छौं।",
+  "ui_check_in_title": "अहिलेसम्म Kyron कस्तो लाग्यो?",
+  "ui_check_in_detail": "तपाईंको परीक्षणको दिन $day। एक ट्याप पर्याप्त छ।",
+  "ui_check_in_hint": "केही सच्याउनु वा थप्नुपर्छ? (ऐच्छिक)",
+  "ui_send": "पठाउनुहोस्",
+  "ui_not_now": "अहिले होइन"
 }

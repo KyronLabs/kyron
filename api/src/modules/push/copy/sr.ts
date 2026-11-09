@@ -71,4 +71,10 @@ export const sr: Copy = {
   rule_impersonation: 'Лажно представљање',
   rule_intellectual_property: 'Интелектуална својина',
   rule_illegal_goods: 'Незаконита роба или услуге',
+  away_title: 'Док вас није било',
+  away_posted: '{who} је објавио/ла.',
+  away_activity_one: '1 ново обавештење.',
+  away_activity: 'Нових обавештења: {count}.',
+  refill_title: 'Новчићи су вам се вратили',
+  refill_body: '{coins} новчића за поклоне ове недеље.',
 };

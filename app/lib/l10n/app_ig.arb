@@ -1185,5 +1185,21 @@
   "ui_select_all": "Họrọ ha niile",
   "ui_gifts_count": "Onyinye $count",
   "ui_gifts_count_one": "Onyinye 1",
-  "ui_feed_more_failed": "Enweghị ike ibunye ihe ndị ọzọ e biputere."
+  "ui_feed_more_failed": "Enweghị ike ibunye ihe ndị ọzọ e biputere.",
+  "ui_reminders": "Ihe ncheta",
+  "ui_reminders_detail": "Ihe ọhụrụ mgbe ị nọghị ebe a, na mgbe mkpụrụ ego gị lọghachiri. Ọ dịghị mgbe karịa otu kwa ụbọchị.",
+  "ui_gifts_title": "Onyinye",
+  "ui_gifts_from_one": "site n'aka mmadụ 1",
+  "ui_gifts_from_people": "site n'aka mmadụ $count",
+  "ui_top_gifter": "Onye kacha nye onyinye",
+  "ui_gifts_load_failed": "Enweghị ike ibunye ndị zitere onyinye.",
+  "ui_whats_new": "Ihe ọhụrụ",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Aghọtala m",
+  "ui_check_in_thanks": "Daalụ. Anyị na-agụ azịza ọ bụla.",
+  "ui_check_in_title": "Kedu ka Kyron si dị ruo ugbu a?",
+  "ui_check_in_detail": "Ụbọchị $day nke nnwale gị. Otu mmetụ ezuola.",
+  "ui_check_in_hint": "Ọ nwere ihe anyị kwesịrị idozi ma ọ bụ itinye? (nhọrọ)",
+  "ui_send": "Zipu",
+  "ui_not_now": "Ọ bụghị ugbu a"
 }

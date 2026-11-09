@@ -71,4 +71,10 @@ export const xh: Copy = {
   rule_impersonation: 'Ukuzenza omnye umntu',
   rule_intellectual_property: 'Ipropathi yobukrelekrele',
   rule_illegal_goods: 'Iimpahla okanye iinkonzo ezingekho mthethweni',
+  away_title: 'Ngoxa ubungekho',
+  away_posted: 'U-{who} uthumele iposti.',
+  away_activity_one: 'Isaziso esitsha esi-1.',
+  away_activity: 'Izaziso ezintsha eziyi-{count}.',
+  refill_title: 'Iingqekembe zakho zibuyile',
+  refill_body: 'Iingqekembe eziyi-{coins} zokuthumela izipho kule veki.',
 };

@@ -1185,5 +1185,21 @@
   "ui_select_all": "Yan gbogbo rẹ̀",
   "ui_gifts_count": "Ẹ̀bùn $count",
   "ui_gifts_count_one": "Ẹ̀bùn 1",
-  "ui_feed_more_failed": "A kò lè gbé àwọn ìfiránṣẹ́ míì wá."
+  "ui_feed_more_failed": "A kò lè gbé àwọn ìfiránṣẹ́ míì wá.",
+  "ui_reminders": "Àwọn ìránnilétí",
+  "ui_reminders_detail": "Ohun tuntun lẹ́yìn tí o ti lọ fún ìgbà díẹ̀, àti nígbà tí ẹyọ owó rẹ bá padà. Kò ju ẹyọ kan lọ lójoojúmọ́.",
+  "ui_gifts_title": "Àwọn ẹ̀bùn",
+  "ui_gifts_from_one": "láti ọ̀dọ̀ ènìyàn 1",
+  "ui_gifts_from_people": "láti ọ̀dọ̀ ènìyàn $count",
+  "ui_top_gifter": "Olùfúnni tó ga jù",
+  "ui_gifts_load_failed": "A kò lè gbé àwọn tó fi ẹ̀bùn ránṣẹ́ wá.",
+  "ui_whats_new": "Kí ló ṣẹ̀ṣẹ̀ dé",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Ó yé mi",
+  "ui_check_in_thanks": "A dúpẹ́. A ń ka gbogbo ìdáhùn.",
+  "ui_check_in_title": "Báwo ni Kyron ṣe rí títí di ìsinsìnyí?",
+  "ui_check_in_detail": "Ọjọ́ $day ìdánwò rẹ. Títẹ̀ ẹ̀ẹ̀kan tó.",
+  "ui_check_in_hint": "Ṣé ohun kan wà tí a gbọ́dọ̀ tún ṣe tàbí fi kún un? (àṣàyàn)",
+  "ui_send": "Fi ránṣẹ́",
+  "ui_not_now": "Kì í ṣe báyìí"
 }

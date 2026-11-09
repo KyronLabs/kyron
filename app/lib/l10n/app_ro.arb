@@ -1185,5 +1185,21 @@
   "ui_select_all": "Selectează tot",
   "ui_gifts_count": "$count cadouri",
   "ui_gifts_count_one": "1 cadou",
-  "ui_feed_more_failed": "Nu s-au putut încărca mai multe postări."
+  "ui_feed_more_failed": "Nu s-au putut încărca mai multe postări.",
+  "ui_reminders": "Mementouri",
+  "ui_reminders_detail": "Ce e nou după ce ai lipsit și când îți revin monedele. Niciodată mai mult de unul pe zi.",
+  "ui_gifts_title": "Cadouri",
+  "ui_gifts_from_one": "de la 1 persoană",
+  "ui_gifts_from_people": "de la $count persoane",
+  "ui_top_gifter": "Cel mai generos",
+  "ui_gifts_load_failed": "Nu s-a putut încărca cine a trimis cadouri.",
+  "ui_whats_new": "Noutăți",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Am înțeles",
+  "ui_check_in_thanks": "Mulțumim. Citim fiecare răspuns.",
+  "ui_check_in_title": "Cum ți se pare Kyron până acum?",
+  "ui_check_in_detail": "Ziua $day a testului tău. O atingere e de ajuns.",
+  "ui_check_in_hint": "Ceva ce ar trebui să reparăm sau să adăugăm? (opțional)",
+  "ui_send": "Trimite",
+  "ui_not_now": "Nu acum"
 }

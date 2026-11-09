@@ -72,4 +72,10 @@ export const uz: Copy = {
   rule_impersonation: 'Boshqa shaxs nomidan chiqish',
   rule_intellectual_property: 'Intellektual mulk',
   rule_illegal_goods: 'Noqonuniy tovarlar yoki xizmatlar',
+  away_title: 'Siz yo‘qligingizda',
+  away_posted: '{who} post joyladi.',
+  away_activity_one: '1 ta yangi bildirishnoma.',
+  away_activity: '{count} ta yangi bildirishnoma.',
+  refill_title: 'Tangalaringiz qaytdi',
+  refill_body: 'Shu hafta sovg‘a yuborish uchun {coins} tanga.',
 };

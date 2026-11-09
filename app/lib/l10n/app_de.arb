@@ -1185,5 +1185,21 @@
   "ui_select_all": "Alles auswählen",
   "ui_gifts_count": "$count Geschenke",
   "ui_gifts_count_one": "1 Geschenk",
-  "ui_feed_more_failed": "Weitere Beiträge konnten nicht geladen werden."
+  "ui_feed_more_failed": "Weitere Beiträge konnten nicht geladen werden.",
+  "ui_reminders": "Erinnerungen",
+  "ui_reminders_detail": "Was neu ist, wenn du eine Weile weg warst, und wenn deine Münzen zurück sind. Nie mehr als eine am Tag.",
+  "ui_gifts_title": "Geschenke",
+  "ui_gifts_from_one": "von 1 Person",
+  "ui_gifts_from_people": "von $count Personen",
+  "ui_top_gifter": "Top-Schenker",
+  "ui_gifts_load_failed": "Wer Geschenke gesendet hat, konnte nicht geladen werden.",
+  "ui_whats_new": "Neuigkeiten",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Verstanden",
+  "ui_check_in_thanks": "Danke. Wir lesen jede Antwort.",
+  "ui_check_in_title": "Wie gefällt dir Kyron bisher?",
+  "ui_check_in_detail": "Tag $day deines Tests. Ein Tipp genügt.",
+  "ui_check_in_hint": "Sollen wir etwas verbessern oder hinzufügen? (optional)",
+  "ui_send": "Senden",
+  "ui_not_now": "Nicht jetzt"
 }

@@ -2230,6 +2230,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Kyauta 1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Ba a iya loda ƙarin rubuce-rubuce ba."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Tunatarwa"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Abin da ke sabo bayan ba ka nan, da lokacin da tsabar kuɗinka suka dawo. Ba fiye da ɗaya a rana ba."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Kyautuka"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("daga mutum 1"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("daga mutane \$count"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Babban mai bayar da kyauta"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya loda waɗanda suka aiko kyauta ba."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Abin da ke sabo"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Na gane"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Na gode. Muna karanta kowace amsa."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Yaya Kyron yake zuwa yanzu?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Rana ta \$day na gwajinka. Taɓawa ɗaya ta isa."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Akwai abin da ya kamata mu gyara ko ƙara? (na zaɓi)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Aika"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ba yanzu ba"),
     };
 
 final messageLookup = MessageLookup();

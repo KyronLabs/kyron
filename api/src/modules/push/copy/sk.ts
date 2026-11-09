@@ -71,4 +71,10 @@ export const sk: Copy = {
   rule_impersonation: 'Vydávanie sa za iného',
   rule_intellectual_property: 'Duševné vlastníctvo',
   rule_illegal_goods: 'Nelegálny tovar alebo služby',
+  away_title: 'Kým ste boli preč',
+  away_posted: '{who} pridal(a) príspevok.',
+  away_activity_one: '1 nové upozornenie.',
+  away_activity: 'Nové upozornenia: {count}.',
+  refill_title: 'Mince sú späť',
+  refill_body: '{coins} mincí na darčeky tento týždeň.',
 };

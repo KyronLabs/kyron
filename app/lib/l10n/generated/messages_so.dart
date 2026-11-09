@@ -2257,6 +2257,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hadiyad"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Qoraallo kale lama soo shubi karo."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Xasuusin"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Waxa cusub kadib markaad maqnayd, iyo marka qadaadiicdaadu soo laabato. Weligaa kama badna mid maalintii."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Hadiyado"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 qof"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count qof"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Bixiyaha ugu sarreeya"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama soo shubi karo cidda hadiyadaha dirtay."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Waxa cusub"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Waan fahmay"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Mahadsanid. Jawaab kasta waan akhrinaa."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Sidee buu Kyron ilaa hadda yahay?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Maalinta \$day ee tijaabadaada. Hal taabasho ayaa ku filan."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ma jiraan wax aan hagaajinno ama ku darno? (ikhtiyaari)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Dir"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Hadda maya"),
     };
 
 final messageLookup = MessageLookup();

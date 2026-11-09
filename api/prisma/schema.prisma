@@ -83,6 +83,21 @@ model User {
   // they stay in Communities, where each one shows what is new.
   communityPostsInHome Boolean @default(true)
 
+  // When the app was last open on this account, and the phone's offset from
+  // UTC then, in minutes. Reported by the app on opening and on coming back
+  // to the front; what the scheduled pushes (ScheduledPushService) go by --
+  // who has been away, and when their evening is.
+  lastActiveAt     DateTime? @db.Timestamptz()
+  utcOffsetMinutes Int?
+
+  // The pushes nobody's action sends: "while you were away" and "your coins
+  // are back". Off, neither is sent; everything somebody does still is.
+  reminderPushes Boolean @default(true)
+
+  // When each of those last went, so neither goes twice for one occasion.
+  awayPushAt   DateTime? @db.Timestamptz()
+  refillPushAt DateTime? @db.Timestamptz()
+
   // When a suspension ends. Kept in step with status by
   // ModerationService.applyStanding from the actions that are in force, so
   // the guard can tell a running suspension from a finished one without a
@@ -166,6 +181,8 @@ model User {
   @@index([status])
   @@index([username])
   @@index([did]) // 🔥 NEW
+
+  @@index([lastActiveAt])
 }
 
 // ==========================================

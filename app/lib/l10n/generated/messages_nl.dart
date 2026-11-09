@@ -2243,6 +2243,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 cadeau"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Kon geen berichten meer laden."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Herinneringen"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Wat er nieuw is als je even weg was, en wanneer je munten terug zijn. Nooit meer dan één per dag."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Cadeaus"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("van 1 persoon"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("van \$count personen"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Grootste gever"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon niet laden wie cadeaus heeft gestuurd."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Nieuw"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Begrepen"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Bedankt. We lezen elk antwoord."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Hoe bevalt Kyron tot nu toe?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Dag \$day van je test. Eén tik is genoeg."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Iets wat we moeten verbeteren of toevoegen? (optioneel)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Versturen"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Niet nu"),
     };
 
 final messageLookup = MessageLookup();

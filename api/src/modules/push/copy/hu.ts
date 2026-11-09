@@ -72,4 +72,10 @@ export const hu: Copy = {
   rule_impersonation: 'Más személy megszemélyesítése',
   rule_intellectual_property: 'Szellemi tulajdon',
   rule_illegal_goods: 'Illegális áruk vagy szolgáltatások',
+  away_title: 'Amíg távol voltál',
+  away_posted: '{who} posztolt.',
+  away_activity_one: '1 új értesítés.',
+  away_activity: '{count} új értesítés.',
+  refill_title: 'Visszakaptad az érméidet',
+  refill_body: '{coins} érme ajándékokra ezen a héten.',
 };

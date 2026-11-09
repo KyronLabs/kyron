@@ -2048,6 +2048,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 ስጦታ"),
       "ui_feed_more_failed":
           MessageLookupByLibrary.simpleMessage("ተጨማሪ ልጥፎችን መጫን አልተቻለም።"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("ማስታወሻዎች"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "ለጥቂት ጊዜ ከሌሉ በኋላ አዲስ ነገር፣ እና ሳንቲሞችዎ ሲመለሱ። በቀን ከአንድ በላይ በጭራሽ።"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("ስጦታዎች"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("ከ1 ሰው"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("ከ\$count ሰዎች"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("ከፍተኛ ስጦታ ሰጪ"),
+      "ui_gifts_load_failed":
+          MessageLookupByLibrary.simpleMessage("ስጦታ የላኩትን መጫን አልተቻለም።"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("አዲስ ነገሮች"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("ገባኝ"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("እናመሰግናለን። እያንዳንዱን መልስ እናነባለን።"),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("እስካሁን Kyron እንዴት ነው?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "የሙከራዎ ቀን \$day። አንድ መንካት በቂ ነው።"),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "ልናስተካክለው ወይም ልንጨምረው የሚገባ ነገር አለ? (አማራጭ)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("ላክ"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("አሁን አይደለም"),
     };
 
 final messageLookup = MessageLookup();

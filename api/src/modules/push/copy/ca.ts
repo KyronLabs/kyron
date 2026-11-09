@@ -71,4 +71,10 @@ export const ca: Copy = {
   rule_impersonation: "Suplantació d'identitat",
   rule_intellectual_property: 'Propietat intel·lectual',
   rule_illegal_goods: 'Béns o serveis il·legals',
+  away_title: 'Mentre no hi eres',
+  away_posted: '{who} ha publicat.',
+  away_activity_one: '1 notificació nova.',
+  away_activity: '{count} notificacions noves.',
+  refill_title: 'Tornes a tenir monedes',
+  refill_body: '{coins} monedes per enviar com a regals aquesta setmana.',
 };

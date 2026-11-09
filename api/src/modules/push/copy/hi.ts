@@ -71,4 +71,10 @@ export const hi: Copy = {
   rule_impersonation: 'किसी और का रूप धरना',
   rule_intellectual_property: 'बौद्धिक संपदा',
   rule_illegal_goods: 'अवैध सामान या सेवाएँ',
+  away_title: 'जब आप दूर थे',
+  away_posted: '{who} ने पोस्ट किया।',
+  away_activity_one: '1 नई सूचना।',
+  away_activity: '{count} नई सूचनाएँ।',
+  refill_title: 'आपके सिक्के वापस आ गए',
+  refill_body: 'इस हफ़्ते उपहार भेजने के लिए {coins} सिक्के।',
 };

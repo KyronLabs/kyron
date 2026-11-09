@@ -71,4 +71,10 @@ export const pt: Copy = {
   rule_impersonation: 'Se passar por outra pessoa',
   rule_intellectual_property: 'Propriedade intelectual',
   rule_illegal_goods: 'Produtos ou serviços ilegais',
+  away_title: 'Enquanto você esteve fora',
+  away_posted: '{who} publicou.',
+  away_activity_one: '1 nova notificação.',
+  away_activity: '{count} novas notificações.',
+  refill_title: 'Suas moedas voltaram',
+  refill_body: '{coins} moedas para enviar como presentes esta semana.',
 };

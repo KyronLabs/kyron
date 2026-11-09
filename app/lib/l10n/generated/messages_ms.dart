@@ -2232,6 +2232,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hadiah"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Tidak dapat memuatkan lebih banyak siaran."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Peringatan"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Perkara baharu selepas anda tiada, dan bila syiling anda kembali. Tidak lebih daripada satu sehari."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Hadiah"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("daripada 1 orang"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("daripada \$count orang"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Pemberi teratas"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat memuatkan siapa yang menghantar hadiah."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Apa yang baharu"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Faham"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Terima kasih. Kami membaca setiap jawapan."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Bagaimana Kyron setakat ini?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Hari ke-\$day ujian anda. Satu ketikan sudah memadai."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ada apa-apa yang patut kami baiki atau tambah? (pilihan)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Hantar"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Bukan sekarang"),
     };
 
 final messageLookup = MessageLookup();

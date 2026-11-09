@@ -67,4 +67,10 @@ export const am: Copy = {
   rule_impersonation: 'ሌላ ሰው መስሎ መቅረብ',
   rule_intellectual_property: 'የአእምሮ ንብረት',
   rule_illegal_goods: 'ሕገወጥ ዕቃዎች ወይም አገልግሎቶች',
+  away_title: 'በሌሉበት ጊዜ',
+  away_posted: '{who} ለጥፈዋል።',
+  away_activity_one: '1 አዲስ ማሳወቂያ።',
+  away_activity: '{count} አዲስ ማሳወቂያዎች።',
+  refill_title: 'ሳንቲሞችዎ ተመልሰዋል',
+  refill_body: 'በዚህ ሳምንት በስጦታ የሚላኩ {coins} ሳንቲሞች።',
 };

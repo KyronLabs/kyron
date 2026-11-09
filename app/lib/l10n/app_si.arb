@@ -1185,5 +1185,21 @@
   "ui_select_all": "සියල්ල තෝරන්න",
   "ui_gifts_count": "තෑගි $count",
   "ui_gifts_count_one": "තෑගි 1",
-  "ui_feed_more_failed": "තවත් පළ කිරීම් පූරණය කළ නොහැකි විය."
+  "ui_feed_more_failed": "තවත් පළ කිරීම් පූරණය කළ නොහැකි විය.",
+  "ui_reminders": "සිහිකැඳවීම්",
+  "ui_reminders_detail": "ඔබ ටික කලක් නොසිටි පසු අලුත් දේ, සහ ඔබේ කාසි ආපසු එන විට. දිනකට එකකට වඩා කිසිදා නැත.",
+  "ui_gifts_title": "තෑගි",
+  "ui_gifts_from_one": "1 දෙනෙකුගෙන්",
+  "ui_gifts_from_people": "$count දෙනෙකුගෙන්",
+  "ui_top_gifter": "ඉහළම තෑගි දෙන්නා",
+  "ui_gifts_load_failed": "තෑගි එවූ අය පූරණය කළ නොහැකි විය.",
+  "ui_whats_new": "අලුත් දේ",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "තේරුණා",
+  "ui_check_in_thanks": "ස්තූතියි. අපි සෑම පිළිතුරක්ම කියවමු.",
+  "ui_check_in_title": "මේ දක්වා Kyron කෙසේද?",
+  "ui_check_in_detail": "ඔබේ පරීක්ෂණයේ $day වන දිනය. එක් තට්ටුවක් ප්‍රමාණවත්.",
+  "ui_check_in_hint": "අප නිවැරදි කළ යුතු හෝ එක් කළ යුතු දෙයක් තිබේද? (අත්‍යවශ්‍ය නොවේ)",
+  "ui_send": "යවන්න",
+  "ui_not_now": "දැන් නොවේ"
 }

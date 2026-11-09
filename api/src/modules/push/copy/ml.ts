@@ -74,4 +74,10 @@ export const ml: Copy = {
   rule_impersonation: 'ആൾമാറാട്ടം',
   rule_intellectual_property: 'ബൗദ്ധിക സ്വത്ത്',
   rule_illegal_goods: 'നിയമവിരുദ്ധ സാധനങ്ങളോ സേവനങ്ങളോ',
+  away_title: 'നിങ്ങൾ ഇല്ലാതിരുന്നപ്പോൾ',
+  away_posted: '{who} പോസ്റ്റ് ചെയ്തു.',
+  away_activity_one: '1 പുതിയ അറിയിപ്പ്.',
+  away_activity: '{count} പുതിയ അറിയിപ്പുകൾ.',
+  refill_title: 'നിങ്ങളുടെ നാണയങ്ങൾ തിരിച്ചെത്തി',
+  refill_body: 'ഈ ആഴ്ച സമ്മാനമായി അയയ്ക്കാൻ {coins} നാണയങ്ങൾ.',
 };

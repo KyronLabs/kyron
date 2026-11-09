@@ -34,6 +34,8 @@ typedef PushDestination = ({String route, Object? arguments});
 ///   moderation     about: report (its outcome)    -> Your reports
 ///   moderation.queue  (the team only)             -> the moderation queue
 ///   verification   (an answer, or a badge lost)   -> Verification
+///   away, coins    (the scheduled reminders)      -> the app as it opens:
+///                  the feed is what is new, and gifts are sent from it
 ///
 /// A like used to carry only its kind, so every activity notification
 /// opened the notifications page and left the reader to find the post.

@@ -72,4 +72,10 @@ export const ja: Copy = {
   rule_impersonation: 'なりすまし',
   rule_intellectual_property: '知的財産',
   rule_illegal_goods: '違法な商品やサービス',
+  away_title: 'あなたがいない間に',
+  away_posted: '{who}さんが投稿しました。',
+  away_activity_one: '新しいお知らせが1件あります。',
+  away_activity: '新しいお知らせが{count}件あります。',
+  refill_title: 'コインが戻りました',
+  refill_body: '今週ギフトに使える{coins}コインです。',
 };

@@ -2208,6 +2208,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ของขวัญ 1 ชิ้น"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "ไม่สามารถโหลดโพสต์เพิ่มเติมได้"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("การเตือน"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "สิ่งใหม่หลังจากที่คุณไม่อยู่ และเมื่อเหรียญของคุณกลับมา ไม่เกินวันละครั้ง"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("ของขวัญ"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("จาก 1 คน"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("จาก \$count คน"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("ผู้ให้มากที่สุด"),
+      "ui_gifts_load_failed":
+          MessageLookupByLibrary.simpleMessage("ไม่สามารถโหลดผู้ส่งของขวัญได้"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("มีอะไรใหม่"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("เข้าใจแล้ว"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("ขอบคุณ เราอ่านทุกคำตอบ"),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyron เป็นอย่างไรบ้าง"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "วันที่ \$day ของการทดสอบ แตะครั้งเดียวก็พอ"),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "มีอะไรที่เราควรแก้หรือเพิ่มไหม (ไม่บังคับ)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("ส่ง"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("ไว้ทีหลัง"),
     };
 
 final messageLookup = MessageLookup();

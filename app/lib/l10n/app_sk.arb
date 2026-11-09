@@ -1185,5 +1185,21 @@
   "ui_select_all": "Vybrať všetko",
   "ui_gifts_count": "Darčeky: $count",
   "ui_gifts_count_one": "1 darček",
-  "ui_feed_more_failed": "Ďalšie príspevky sa nepodarilo načítať."
+  "ui_feed_more_failed": "Ďalšie príspevky sa nepodarilo načítať.",
+  "ui_reminders": "Pripomienky",
+  "ui_reminders_detail": "Čo je nové, keď ste boli preč, a kedy sa vrátia mince. Nikdy viac ako jedna denne.",
+  "ui_gifts_title": "Darčeky",
+  "ui_gifts_from_one": "od 1 osoby",
+  "ui_gifts_from_people": "od $count ľudí",
+  "ui_top_gifter": "Najväčší darca",
+  "ui_gifts_load_failed": "Nepodarilo sa načítať, kto poslal darčeky.",
+  "ui_whats_new": "Novinky",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Rozumiem",
+  "ui_check_in_thanks": "Ďakujeme. Čítame každú odpoveď.",
+  "ui_check_in_title": "Ako sa vám zatiaľ páči Kyron?",
+  "ui_check_in_detail": "Deň $day vášho testu. Stačí jedno ťuknutie.",
+  "ui_check_in_hint": "Niečo, čo by sme mali opraviť alebo pridať? (nepovinné)",
+  "ui_send": "Odoslať",
+  "ui_not_now": "Teraz nie"
 }

@@ -153,13 +153,30 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
       Navigator.pushNamed(context, Routes.yourReports);
       return;
     }
-    final postId = row.postId;
-    if (postId != null && postId.isNotEmpty) {
-      Navigator.pushNamed(context, Routes.postDetail, arguments: postId);
+    // A reply, or something in one: that reply, with its conversation.
+    if (row.commentId != null) {
+      _openComment(row);
       return;
     }
+    if (_hasPost(row)) {
+      _openPost(row);
+      return;
+    }
+    _openActor(row);
+  }
+
+  bool _hasPost(NotificationModel row) =>
+      row.postId != null && row.postId!.isNotEmpty;
+
+  void _openPost(NotificationModel row) =>
+      Navigator.pushNamed(context, Routes.postDetail, arguments: row.postId);
+
+  void _openComment(NotificationModel row) =>
+      Navigator.pushNamed(context, Routes.comment, arguments: row.commentId);
+
+  void _openActor(NotificationModel row) {
     final actor = row.actor;
-    if (actor == null) return;
+    if (actor == null || actor.id.isEmpty) return;
     openProfile(context, username: actor.username, userId: actor.id);
   }
 
@@ -295,7 +312,14 @@ class _NotificationListState extends ConsumerState<_NotificationList> {
                 ),
               ),
               for (final row in rows) ...[
-                NotificationItem(notification: row, onTap: () => _open(row)),
+                NotificationItem(
+                  notification: row,
+                  onTap: () => _open(row),
+                  onActor: row.actor == null ? null : () => _openActor(row),
+                  onPost: _hasPost(row) ? () => _openPost(row) : null,
+                  onContent:
+                      row.commentId == null ? null : () => _openComment(row),
+                ),
                 const Hairline(),
               ],
             ],

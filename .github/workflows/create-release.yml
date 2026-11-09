@@ -92,11 +92,17 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: python3 scripts/changelog.py release "$VERSION"
 
+      # The app's "What's new" card reads the latest versions from a file it
+      # carries, written from the changelog just stamped, so the build this
+      # tag makes describes itself.
+      - name: Write the app's What's new notes
+        run: python3 scripts/changelog.py app-notes
+
       - name: Commit and tag
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          git add app/pubspec.yaml CHANGELOG.md
+          git add app/pubspec.yaml CHANGELOG.md app/lib/assets/whats_new.json
           git commit -m "chore(release): v${VERSION}"
           git tag -a "v${VERSION}" -m "Kyron v${VERSION}"
           git push origin main "v${VERSION}"

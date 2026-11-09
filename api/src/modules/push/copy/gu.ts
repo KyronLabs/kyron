@@ -71,4 +71,10 @@ export const gu: Copy = {
   rule_impersonation: 'બીજાનો ઢોંગ કરવો',
   rule_intellectual_property: 'બૌદ્ધિક સંપદા',
   rule_illegal_goods: 'ગેરકાયદે માલ અથવા સેવાઓ',
+  away_title: 'તમે દૂર હતા ત્યારે',
+  away_posted: '{who} એ પોસ્ટ કર્યું.',
+  away_activity_one: '1 નવી સૂચના.',
+  away_activity: '{count} નવી સૂચનાઓ.',
+  refill_title: 'તમારા સિક્કા પાછા આવ્યા',
+  refill_body: 'આ અઠવાડિયે ભેટ મોકલવા માટે {coins} સિક્કા.',
 };

@@ -24,20 +24,38 @@ class _Push extends PushRegistrar {
 }
 
 class _Devices extends DevicesRepository {
-  _Devices(this.answer) : super(ApiClient()..dio.interceptors.clear());
+  _Devices(this.answer, {this.remind = true})
+      : super(ApiClient()..dio.interceptors.clear());
   final PushTest answer;
+  bool remind;
+  final saved = <bool>[];
 
   @override
   Future<PushTest> test() async => answer;
+
+  @override
+  Future<bool> reminders() async => remind;
+
+  @override
+  Future<bool> setReminders(bool on) async {
+    saved.add(on);
+    return remind = on;
+  }
 }
 
-Future<_Push> _pump(WidgetTester tester, PushTest answer) async {
+Future<_Push> _pump(
+  WidgetTester tester,
+  PushTest answer, {
+  _Devices? devices,
+}) async {
   final push = _Push();
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
         pushRegistrarProvider.overrideWithValue(push),
-        devicesRepositoryProvider.overrideWithValue(_Devices(answer)),
+        devicesRepositoryProvider.overrideWithValue(
+          devices ?? _Devices(answer),
+        ),
       ],
       child: MaterialApp(
         theme: KyronTheme.lightTheme,
@@ -90,4 +108,23 @@ void main() {
       await tester.pump(const Duration(seconds: 7));
     });
   }
+
+  testWidgets('reminders show what the account has, and change it', (
+    tester,
+  ) async {
+    const ok = PushTest(configured: true, devices: 1, delivered: 1);
+    final devices = _Devices(ok, remind: false);
+    await _pump(tester, ok, devices: devices);
+
+    SwitchListTile tile() => tester.widget<SwitchListTile>(
+          find.byKey(const ValueKey('reminders-switch')),
+        );
+    expect(tile().value, isFalse);
+    expect(find.text('Reminders'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('reminders-switch')));
+    await tester.pumpAndSettle();
+    expect(devices.saved, [true]);
+    expect(tile().value, isTrue);
+  });
 }

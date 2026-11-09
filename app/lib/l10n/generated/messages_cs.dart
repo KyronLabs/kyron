@@ -2303,6 +2303,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 dárek"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Další příspěvky se nepodařilo načíst."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Připomenutí"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Co je nového, když jste byli pryč, a kdy se vrátí mince. Nikdy víc než jedno denně."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Dárky"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("od 1 osoby"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("od \$count lidí"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Největší dárce"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepodařilo se načíst, kdo poslal dárky."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Novinky"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Rozumím"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Děkujeme. Čteme každou odpověď."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Jak se vám zatím líbí Kyron?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Den \$day vašeho testu. Stačí jedno klepnutí."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Něco, co bychom měli opravit nebo přidat? (nepovinné)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Odeslat"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Teď ne"),
     };
 
 final messageLookup = MessageLookup();

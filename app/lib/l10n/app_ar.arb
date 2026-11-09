@@ -1185,5 +1185,21 @@
   "ui_select_all": "تحديد الكل",
   "ui_gifts_count": "$count هدية",
   "ui_gifts_count_one": "هدية واحدة",
-  "ui_feed_more_failed": "تعذّر تحميل المزيد من المنشورات."
+  "ui_feed_more_failed": "تعذّر تحميل المزيد من المنشورات.",
+  "ui_reminders": "التذكيرات",
+  "ui_reminders_detail": "الجديد بعد غيابك، وعندما تعود عملاتك. لا أكثر من تذكير واحد في اليوم.",
+  "ui_gifts_title": "الهدايا",
+  "ui_gifts_from_one": "من شخص واحد",
+  "ui_gifts_from_people": "من $count أشخاص",
+  "ui_top_gifter": "أكثر المُهدين",
+  "ui_gifts_load_failed": "تعذّر تحميل من أرسل الهدايا.",
+  "ui_whats_new": "ما الجديد",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "حسنًا",
+  "ui_check_in_thanks": "شكرًا. نقرأ كل رد.",
+  "ui_check_in_title": "ما رأيك في Kyron حتى الآن؟",
+  "ui_check_in_detail": "اليوم $day من تجربتك. نقرة واحدة تكفي.",
+  "ui_check_in_hint": "هل هناك ما يجب إصلاحه أو إضافته؟ (اختياري)",
+  "ui_send": "إرسال",
+  "ui_not_now": "ليس الآن"
 }

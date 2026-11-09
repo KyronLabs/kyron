@@ -2251,6 +2251,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 ajándék"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült több bejegyzést betölteni."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Emlékeztetők"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Mi újság, ha egy ideig távol voltál, és mikor kapod vissza az érméidet. Naponta legfeljebb egy."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Ajándékok"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 személytől"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count személytől"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Legnagyobb ajándékozó"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni, ki küldött ajándékot."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Újdonságok"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Értem"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Köszönjük. Minden választ elolvasunk."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Hogy tetszik eddig a Kyron?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "A teszted \$day. napja. Egy koppintás elég."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Mit javítsunk vagy adjunk hozzá? (nem kötelező)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Küldés"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Most nem"),
     };
 
 final messageLookup = MessageLookup();

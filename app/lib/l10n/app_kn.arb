@@ -1185,5 +1185,21 @@
   "ui_select_all": "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ",
   "ui_gifts_count": "$count ಉಡುಗೊರೆಗಳು",
   "ui_gifts_count_one": "1 ಉಡುಗೊರೆ",
-  "ui_feed_more_failed": "ಇನ್ನಷ್ಟು ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."
+  "ui_feed_more_failed": "ಇನ್ನಷ್ಟು ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ.",
+  "ui_reminders": "ಜ್ಞಾಪನೆಗಳು",
+  "ui_reminders_detail": "ನೀವು ಸ್ವಲ್ಪ ಸಮಯ ಇಲ್ಲದಿದ್ದಾಗ ಹೊಸದೇನು, ಮತ್ತು ನಿಮ್ಮ ನಾಣ್ಯಗಳು ಮರಳಿ ಬಂದಾಗ. ದಿನಕ್ಕೆ ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಚು ಎಂದಿಗೂ ಇಲ್ಲ.",
+  "ui_gifts_title": "ಉಡುಗೊರೆಗಳು",
+  "ui_gifts_from_one": "1 ವ್ಯಕ್ತಿಯಿಂದ",
+  "ui_gifts_from_people": "$count ಜನರಿಂದ",
+  "ui_top_gifter": "ಅಗ್ರ ಉಡುಗೊರೆದಾರ",
+  "ui_gifts_load_failed": "ಉಡುಗೊರೆ ಕಳುಹಿಸಿದವರನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ.",
+  "ui_whats_new": "ಹೊಸದೇನು",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "ಅರ್ಥವಾಯಿತು",
+  "ui_check_in_thanks": "ಧನ್ಯವಾದಗಳು. ನಾವು ಪ್ರತಿಯೊಂದು ಉತ್ತರವನ್ನೂ ಓದುತ್ತೇವೆ.",
+  "ui_check_in_title": "ಇಲ್ಲಿಯವರೆಗೆ Kyron ಹೇಗಿದೆ?",
+  "ui_check_in_detail": "ನಿಮ್ಮ ಪರೀಕ್ಷೆಯ $dayನೇ ದಿನ. ಒಂದು ಟ್ಯಾಪ್ ಸಾಕು.",
+  "ui_check_in_hint": "ನಾವು ಸರಿಪಡಿಸಬೇಕಾದ ಅಥವಾ ಸೇರಿಸಬೇಕಾದದ್ದು ಏನಾದರೂ ಇದೆಯೇ? (ಐಚ್ಛಿಕ)",
+  "ui_send": "ಕಳುಹಿಸಿ",
+  "ui_not_now": "ಈಗ ಬೇಡ"
 }

@@ -1,0 +1,123 @@
+[
+  {
+    "version": "0.1.42",
+    "items": [
+      {
+        "title": "Gifts have a place of their own.",
+        "detail": "What a post has been given — its best gifts and how many — is a small pill on the bottom-right corner of the post, on words, photos, voice notes and links alike, and never over any of them."
+      },
+      {
+        "title": "Mentions are gold.",
+        "detail": "An @name in a post is a deep gold on white and a bright yellow on black, so a post is no longer all one blue: tags and links are places to go, a mention is someone."
+      },
+      {
+        "title": "Select all goes once everything is selected, instead of staying in the menu doing nothing.",
+        "detail": ""
+      },
+      {
+        "title": "Recent screens speak your language.",
+        "detail": "Editing a post, sorting comments, the gift sheet, gift notifications, saved comments, the text menu, the AR lens camera and a post's gift analytics were English in every language."
+      },
+      {
+        "title": "The comment sort menu has an edge in the light theme.",
+        "detail": "It was white on white with only a faint shadow; it now has a fine line round it."
+      }
+    ]
+  },
+  {
+    "version": "0.1.41",
+    "items": [
+      {
+        "title": "Bug fixes and performance improvements.",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "version": "0.1.40",
+    "items": [
+      {
+        "title": "Edit a post.",
+        "detail": "For 15 minutes after posting, your post's menu has Edit post: change the words, and the post says \"Edited\"."
+      },
+      {
+        "title": "Sort comments.",
+        "detail": "Top or Recent, from the end of the comments heading."
+      },
+      {
+        "title": "Videos play like TikTok.",
+        "detail": "A tap pauses once it is clear it is not a double tap; a double tap likes without stopping the clip, and more taps are more hearts."
+      },
+      {
+        "title": "The bar on a post's page changes at its own pace — the same calm change however fast the scroll — and turns round smoothly if you scroll back halfway.",
+        "detail": ""
+      },
+      {
+        "title": "A shared comment opens the comment.",
+        "detail": "Comment links used the address communities use, so tapping one opened an empty community page."
+      },
+      {
+        "title": "Scrolling the feed while a post is deleted no longer errors.",
+        "detail": "Counting what you have seen could trip over a post removed at the same moment; that post is now simply skipped."
+      }
+    ]
+  },
+  {
+    "version": "0.1.39",
+    "items": [
+      {
+        "title": "A red heart is red.",
+        "detail": "❤️ — and ☀️, ⚠️ and a few others — came out as flat black shapes: the app's own font has a black-and-white drawing of them, and that won over the phone's emoji."
+      },
+      {
+        "title": "Wide photos are shown whole, short rather than cut at the ends.",
+        "detail": ""
+      },
+      {
+        "title": "\"kubernetes.io\" is a link.",
+        "detail": "A web address written without \"https://\" — which is how people write them — was plain text you could not tap."
+      },
+      {
+        "title": "More room between a comment's words and its buttons, and the line into a reply is one long, gentle sweep rather than a turn.",
+        "detail": ""
+      },
+      {
+        "title": "A broken hairline above a profile's tabs.",
+        "detail": ""
+      },
+      {
+        "title": "The line between two conversations sits in the middle, as far from the buttons above it as from the face below.",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "version": "0.1.38",
+    "items": [
+      {
+        "title": "Choose the words in a post.",
+        "detail": "Hold a post's, comment's or reply's text to select it, with Copy, Search and Select all — black on white in the light theme, white on black in the dark."
+      },
+      {
+        "title": "Emoji on their own are big in posts, comments and replies, as they are in messages.",
+        "detail": ""
+      },
+      {
+        "title": "Your followers and following open from the side menu.",
+        "detail": ""
+      },
+      {
+        "title": "A photo on its own is shown whole, in its own shape, edged with a hairline, instead of cut to fit a box.",
+        "detail": "Two or more are laid out as before."
+      },
+      {
+        "title": "Threads curve gently into each reply, and replies have more room between them.",
+        "detail": ""
+      },
+      {
+        "title": "A profile's Posts, Media and Likes are pills, as in messages, over a hairline.",
+        "detail": ""
+      }
+    ]
+  }
+]

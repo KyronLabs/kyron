@@ -1185,5 +1185,21 @@
   "ui_select_all": "Seleccionar todo",
   "ui_gifts_count": "$count regalos",
   "ui_gifts_count_one": "1 regalo",
-  "ui_feed_more_failed": "No se pudieron cargar más publicaciones."
+  "ui_feed_more_failed": "No se pudieron cargar más publicaciones.",
+  "ui_reminders": "Recordatorios",
+  "ui_reminders_detail": "Lo nuevo cuando has estado fuera y cuando vuelven tus monedas. Nunca más de uno al día.",
+  "ui_gifts_title": "Regalos",
+  "ui_gifts_from_one": "de 1 persona",
+  "ui_gifts_from_people": "de $count personas",
+  "ui_top_gifter": "Mejor donante",
+  "ui_gifts_load_failed": "No se pudo cargar quién envió regalos.",
+  "ui_whats_new": "Novedades",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Entendido",
+  "ui_check_in_thanks": "Gracias. Leemos todas las respuestas.",
+  "ui_check_in_title": "¿Qué te parece Kyron hasta ahora?",
+  "ui_check_in_detail": "Día $day de tu prueba. Con un toque basta.",
+  "ui_check_in_hint": "¿Algo que debamos arreglar o añadir? (opcional)",
+  "ui_send": "Enviar",
+  "ui_not_now": "Ahora no"
 }

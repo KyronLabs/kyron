@@ -1185,5 +1185,21 @@
   "ui_select_all": "Dooro dhammaan",
   "ui_gifts_count": "$count hadiyadood",
   "ui_gifts_count_one": "1 hadiyad",
-  "ui_feed_more_failed": "Qoraallo kale lama soo shubi karo."
+  "ui_feed_more_failed": "Qoraallo kale lama soo shubi karo.",
+  "ui_reminders": "Xasuusin",
+  "ui_reminders_detail": "Waxa cusub kadib markaad maqnayd, iyo marka qadaadiicdaadu soo laabato. Weligaa kama badna mid maalintii.",
+  "ui_gifts_title": "Hadiyado",
+  "ui_gifts_from_one": "1 qof",
+  "ui_gifts_from_people": "$count qof",
+  "ui_top_gifter": "Bixiyaha ugu sarreeya",
+  "ui_gifts_load_failed": "Lama soo shubi karo cidda hadiyadaha dirtay.",
+  "ui_whats_new": "Waxa cusub",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Waan fahmay",
+  "ui_check_in_thanks": "Mahadsanid. Jawaab kasta waan akhrinaa.",
+  "ui_check_in_title": "Sidee buu Kyron ilaa hadda yahay?",
+  "ui_check_in_detail": "Maalinta $day ee tijaabadaada. Hal taabasho ayaa ku filan.",
+  "ui_check_in_hint": "Ma jiraan wax aan hagaajinno ama ku darno? (ikhtiyaari)",
+  "ui_send": "Dir",
+  "ui_not_now": "Hadda maya"
 }

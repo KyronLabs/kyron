@@ -2220,6 +2220,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 भेटवस्तू"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "आणखी पोस्ट लोड होऊ शकल्या नाहीत."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("स्मरणपत्रे"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "काही काळ दूर राहिल्यानंतर नवीन काय आहे, आणि तुमची नाणी परत आल्यावर. दिवसातून एकापेक्षा जास्त कधीच नाही."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("भेटवस्तू"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("1 व्यक्तीकडून"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count लोकांकडून"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("सर्वात मोठा देणगीदार"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "भेटवस्तू कोणी पाठवल्या ते लोड होऊ शकले नाही."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("नवीन काय"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("समजले"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "धन्यवाद. आम्ही प्रत्येक उत्तर वाचतो."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("आतापर्यंत Kyron कसे वाटले?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या चाचणीचा दिवस \$day. एक टॅप पुरेसा आहे."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "काही दुरुस्त किंवा जोडायला हवे? (पर्यायी)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("पाठवा"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("आता नाही"),
     };
 
 final messageLookup = MessageLookup();

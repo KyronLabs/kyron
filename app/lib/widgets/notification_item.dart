@@ -1,4 +1,5 @@
 // lib/widgets/notification_item.dart
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
@@ -15,17 +16,50 @@ import 'verified_badge.dart';
 /// Delete button that dropped the row until the next load. Neither could be
 /// built: a notification here is the like or the follow itself, so there is
 /// nothing to delete that would not also unlike the post.
-class NotificationItem extends StatelessWidget {
+class NotificationItem extends StatefulWidget {
   final NotificationModel notification;
 
-  /// Opens the post, or the profile when there is no post.
+  /// The row as a whole: the reply it is about, else the post, else the
+  /// person.
   final VoidCallback onTap;
+
+  /// The person's face and name: their profile.
+  final VoidCallback? onActor;
+
+  /// The picture at the end: the post.
+  final VoidCallback? onPost;
+
+  /// The words quoted under the action, when they are a reply's: that reply.
+  final VoidCallback? onContent;
 
   const NotificationItem({
     super.key,
     required this.notification,
     required this.onTap,
+    this.onActor,
+    this.onPost,
+    this.onContent,
   });
+
+  @override
+  State<NotificationItem> createState() => _NotificationItemState();
+}
+
+/// Each part of a row opens its own page -- the face and the name the
+/// person, the picture the post, a reply's words the reply -- and the rest
+/// of the row what the row is about. One target for the whole row sent a
+/// tap on somebody's face to a post.
+class _NotificationItemState extends State<NotificationItem> {
+  late final _name = TapGestureRecognizer();
+
+  NotificationModel get notification => widget.notification;
+  VoidCallback get onTap => widget.onTap;
+
+  @override
+  void dispose() {
+    _name.dispose();
+    super.dispose();
+  }
 
   IconData get _badge => switch (notification.type) {
         NotificationType.like => Iconsax.heart_copy,
@@ -69,37 +103,42 @@ class NotificationItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: scheme.primary.withValues(alpha: 0.15),
-                  foregroundImage: actor.avatarUrl == null
-                      ? null
-                      : NetworkImage(actor.avatarUrl!),
-                  child: Icon(
-                    Iconsax.user_copy,
-                    size: 18,
-                    color: scheme.primary,
+            GestureDetector(
+              key: ValueKey('notification-actor-${notification.id}'),
+              onTap: widget.onActor,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor: scheme.primary.withValues(alpha: 0.15),
+                    foregroundImage: actor.avatarUrl == null
+                        ? null
+                        : NetworkImage(actor.avatarUrl!),
+                    child: Icon(
+                      Iconsax.user_copy,
+                      size: 18,
+                      color: scheme.primary,
+                    ),
                   ),
-                ),
-                Positioned(
-                  right: -2,
-                  bottom: -2,
-                  child: gift != null
-                      ? _GiftBadge(type: gift.type)
-                      : Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: _badgeColor(scheme),
-                            shape: BoxShape.circle,
-                            border: Border.all(color: scheme.surface, width: 2),
+                  Positioned(
+                    right: -2,
+                    bottom: -2,
+                    child: gift != null
+                        ? _GiftBadge(type: gift.type)
+                        : Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: _badgeColor(scheme),
+                              shape: BoxShape.circle,
+                              border:
+                                  Border.all(color: scheme.surface, width: 2),
+                            ),
+                            child: Icon(_badge, size: 10, color: Colors.white),
                           ),
-                          child: Icon(_badge, size: 10, color: Colors.white),
-                        ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
             const SizedBox(width: SpacingTokens.space12),
             // Expanded, because a Row gives a non-flex child unbounded width
@@ -114,6 +153,9 @@ class NotificationItem extends StatelessWidget {
                         TextSpan(
                           text: actor.label,
                           style: const TextStyle(fontWeight: FontWeight.w700),
+                          recognizer: widget.onActor == null
+                              ? null
+                              : (_name..onTap = widget.onActor),
                         ),
                         if (actor.verified)
                           WidgetSpan(
@@ -142,13 +184,17 @@ class NotificationItem extends StatelessWidget {
                   ),
                   if (snippet != null && snippet.isNotEmpty) ...[
                     const SizedBox(height: SpacingTokens.space4),
-                    Text(
-                      snippet,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: TypographyTokens.fontSize2,
-                        color: scheme.onSurface.withValues(alpha: 0.6),
+                    GestureDetector(
+                      key: ValueKey('notification-content-${notification.id}'),
+                      onTap: widget.onContent,
+                      child: Text(
+                        snippet,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: TypographyTokens.fontSize2,
+                          color: scheme.onSurface.withValues(alpha: 0.6),
+                        ),
                       ),
                     ),
                   ],
@@ -168,7 +214,14 @@ class NotificationItem extends StatelessWidget {
             // words alone, the gift by itself.
             if (notification.postImage != null) ...[
               const SizedBox(width: SpacingTokens.space12),
-              _PostPicture(url: notification.postImage!, gift: gift?.type),
+              GestureDetector(
+                key: ValueKey('notification-post-${notification.id}'),
+                onTap: widget.onPost,
+                child: _PostPicture(
+                  url: notification.postImage!,
+                  gift: gift?.type,
+                ),
+              ),
             ] else if (gift != null) ...[
               const SizedBox(width: SpacingTokens.space8),
               GiftArt(type: gift.type, size: 32),

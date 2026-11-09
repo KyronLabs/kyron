@@ -1185,5 +1185,21 @@
   "ui_select_all": "সব নির্বাচন করুন",
   "ui_gifts_count": "$count উপহার",
   "ui_gifts_count_one": "১টি উপহার",
-  "ui_feed_more_failed": "আরও পোস্ট লোড করা যায়নি।"
+  "ui_feed_more_failed": "আরও পোস্ট লোড করা যায়নি।",
+  "ui_reminders": "রিমাইন্ডার",
+  "ui_reminders_detail": "কিছুদিন দূরে থাকার পর নতুন কী আছে, আর কয়েন কখন ফিরে আসে। দিনে একটির বেশি কখনো নয়।",
+  "ui_gifts_title": "উপহার",
+  "ui_gifts_from_one": "১ জনের কাছ থেকে",
+  "ui_gifts_from_people": "$count জনের কাছ থেকে",
+  "ui_top_gifter": "শীর্ষ উপহারদাতা",
+  "ui_gifts_load_failed": "কে উপহার পাঠিয়েছে তা লোড করা যায়নি।",
+  "ui_whats_new": "নতুন কী",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "বুঝেছি",
+  "ui_check_in_thanks": "ধন্যবাদ। আমরা প্রতিটি উত্তর পড়ি।",
+  "ui_check_in_title": "এখন পর্যন্ত Kyron কেমন লাগছে?",
+  "ui_check_in_detail": "আপনার পরীক্ষার $day তম দিন। একটি ট্যাপই যথেষ্ট।",
+  "ui_check_in_hint": "কিছু ঠিক করা বা যোগ করা উচিত? (ঐচ্ছিক)",
+  "ui_send": "পাঠান",
+  "ui_not_now": "এখন নয়"
 }

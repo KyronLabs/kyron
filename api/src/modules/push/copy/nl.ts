@@ -72,4 +72,10 @@ export const nl: Copy = {
   rule_impersonation: 'Zich voordoen als iemand anders',
   rule_intellectual_property: 'Intellectueel eigendom',
   rule_illegal_goods: 'Illegale goederen of diensten',
+  away_title: 'Terwijl je weg was',
+  away_posted: '{who} heeft iets geplaatst.',
+  away_activity_one: '1 nieuwe melding.',
+  away_activity: '{count} nieuwe meldingen.',
+  refill_title: 'Je munten zijn terug',
+  refill_body: '{coins} munten om deze week als cadeau te sturen.',
 };

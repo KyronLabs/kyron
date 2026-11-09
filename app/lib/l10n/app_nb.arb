@@ -1185,5 +1185,21 @@
   "ui_select_all": "Merk alt",
   "ui_gifts_count": "$count gaver",
   "ui_gifts_count_one": "1 gave",
-  "ui_feed_more_failed": "Kunne ikke laste inn flere innlegg."
+  "ui_feed_more_failed": "Kunne ikke laste inn flere innlegg.",
+  "ui_reminders": "Påminnelser",
+  "ui_reminders_detail": "Hva som er nytt når du har vært borte, og når myntene dine er tilbake. Aldri mer enn én om dagen.",
+  "ui_gifts_title": "Gaver",
+  "ui_gifts_from_one": "fra 1 person",
+  "ui_gifts_from_people": "fra $count personer",
+  "ui_top_gifter": "Største giver",
+  "ui_gifts_load_failed": "Kunne ikke laste inn hvem som sendte gaver.",
+  "ui_whats_new": "Nyheter",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Skjønner",
+  "ui_check_in_thanks": "Takk. Vi leser hvert svar.",
+  "ui_check_in_title": "Hva synes du om Kyron så langt?",
+  "ui_check_in_detail": "Dag $day av testen din. Ett trykk er nok.",
+  "ui_check_in_hint": "Noe vi bør fikse eller legge til? (valgfritt)",
+  "ui_send": "Send",
+  "ui_not_now": "Ikke nå"
 }

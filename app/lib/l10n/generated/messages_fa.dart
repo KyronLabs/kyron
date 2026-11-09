@@ -2217,6 +2217,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("۱ هدیه"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "بارگیری پست‌های بیشتر ممکن نشد."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("یادآورها"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "تازه‌ها پس از غیبت شما، و وقتی سکه‌هایتان برمی‌گردد. هرگز بیش از یکی در روز."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("هدیه‌ها"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("از ۱ نفر"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("از \$count نفر"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("بخشنده‌ترین"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "بارگیری فرستندگان هدیه ممکن نشد."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("تازه‌ها"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("فهمیدم"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "سپاس. همهٔ پاسخ‌ها را می‌خوانیم."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyron تا اینجا چطور بوده؟"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "روز \$day آزمایش شما. یک ضربه کافی است."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "چیزی هست که باید درست یا اضافه کنیم؟ (اختیاری)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("ارسال"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("الان نه"),
     };
 
 final messageLookup = MessageLookup();

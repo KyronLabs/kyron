@@ -17,6 +17,7 @@ import 'community_avatar.dart';
 import 'country_sheet.dart';
 import 'gift_sheet.dart';
 import 'link_preview_card.dart';
+import 'gift_givers_sheet.dart';
 import 'gift_pill.dart';
 import 'media_grid.dart';
 import 'poll_card.dart';
@@ -185,7 +186,9 @@ class PostCard extends ConsumerWidget {
                       count: post.gifts,
                       yours: post.viewerGift != null,
                       endsInText: GiftPillHost.endsInWords(post),
-                      onTap: _gifting(ref, post, source),
+                      // Who gave it what. Sending one is the heart's long
+                      // press, which still flies the gift to the pill.
+                      onTap: (_) => GiftGiversSheet.show(context, post),
                       content: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

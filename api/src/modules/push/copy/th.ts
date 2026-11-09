@@ -70,4 +70,10 @@ export const th: Copy = {
   rule_impersonation: 'การแอบอ้างเป็นผู้อื่น',
   rule_intellectual_property: 'ทรัพย์สินทางปัญญา',
   rule_illegal_goods: 'สินค้าหรือบริการผิดกฎหมาย',
+  away_title: 'ระหว่างที่คุณไม่อยู่',
+  away_posted: '{who} โพสต์ใหม่',
+  away_activity_one: 'การแจ้งเตือนใหม่ 1 รายการ',
+  away_activity: 'การแจ้งเตือนใหม่ {count} รายการ',
+  refill_title: 'เหรียญของคุณกลับมาแล้ว',
+  refill_body: '{coins} เหรียญสำหรับส่งเป็นของขวัญในสัปดาห์นี้',
 };

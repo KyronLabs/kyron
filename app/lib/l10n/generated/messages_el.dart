@@ -2426,6 +2426,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 δώρο"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Δεν ήταν δυνατή η φόρτωση περισσότερων αναρτήσεων."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Υπενθυμίσεις"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Τι νέο υπάρχει όταν λείπατε και πότε επιστρέφουν τα νομίσματά σας. Ποτέ πάνω από μία την ημέρα."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Δώρα"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("από 1 άτομο"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("από \$count άτομα"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Κορυφαίος δωρητής"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση του ποιος έστειλε δώρα."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Τι νέο υπάρχει"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Εντάξει"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Ευχαριστούμε. Διαβάζουμε κάθε απάντηση."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Πώς σας φαίνεται το Kyron μέχρι τώρα;"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ημέρα \$day της δοκιμής σας. Ένα πάτημα αρκεί."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Κάτι να διορθώσουμε ή να προσθέσουμε; (προαιρετικό)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Αποστολή"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Όχι τώρα"),
     };
 
 final messageLookup = MessageLookup();

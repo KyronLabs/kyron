@@ -73,4 +73,10 @@ export const so: Copy = {
   rule_impersonation: 'Iska dhigid qof kale',
   rule_intellectual_property: 'Hantida aqooneed',
   rule_illegal_goods: 'Alaab ama adeeg sharci-darro ah',
+  away_title: 'Intii aad maqnayd',
+  away_posted: '{who} ayaa wax dhajiyay.',
+  away_activity_one: '1 ogeysiis cusub.',
+  away_activity: '{count} ogeysiis oo cusub.',
+  refill_title: 'Qadaadiicdaadu way soo noqotay',
+  refill_body: '{coins} qadaadiic oo aad usbuucan hadiyado ku diri karto.',
 };

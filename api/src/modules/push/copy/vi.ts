@@ -72,4 +72,10 @@ export const vi: Copy = {
   rule_impersonation: 'Mạo danh',
   rule_intellectual_property: 'Sở hữu trí tuệ',
   rule_illegal_goods: 'Hàng hóa hoặc dịch vụ bất hợp pháp',
+  away_title: 'Trong lúc bạn vắng mặt',
+  away_posted: '{who} đã đăng bài.',
+  away_activity_one: '1 thông báo mới.',
+  away_activity: '{count} thông báo mới.',
+  refill_title: 'Xu của bạn đã trở lại',
+  refill_body: '{coins} xu để gửi quà trong tuần này.',
 };

@@ -70,4 +70,10 @@ export const sw: Copy = {
   rule_impersonation: 'Kujifanya mtu mwingine',
   rule_intellectual_property: 'Mali miliki',
   rule_illegal_goods: 'Bidhaa au huduma haramu',
+  away_title: 'Ulipokuwa mbali',
+  away_posted: '{who} amechapisha.',
+  away_activity_one: 'Arifa 1 mpya.',
+  away_activity: 'Arifa {count} mpya.',
+  refill_title: 'Sarafu zako zimerudi',
+  refill_body: 'Sarafu {coins} za kutuma kama zawadi wiki hii.',
 };

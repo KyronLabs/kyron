@@ -168,6 +168,51 @@ run('gifts, against a real database', () => {
     expect(summary.total).toBe(6);
   });
 
+  it('says who gave the post what, the biggest giver first', async () => {
+    const { senders } = await gifts.summary(post, ben);
+    const rows = await prisma.gift.findMany({
+      where: { postId: post, commentId: null },
+      select: { senderId: true, type: true, coins: true },
+    });
+
+    expect(senders.length).toBeGreaterThan(1);
+    // Every sender once, with everything they sent and spent.
+    expect(new Set(senders.map((s) => s.user.id))).toEqual(
+      new Set(rows.map((r) => r.senderId)),
+    );
+    for (const sender of senders) {
+      const theirs = rows.filter((r) => r.senderId === sender.user.id);
+      expect(sender.coins).toBe(theirs.reduce((sum, r) => sum + r.coins, 0));
+      expect(sender.gifts.reduce((sum, g) => sum + g.count, 0)).toBe(
+        theirs.length,
+      );
+    }
+    // Biggest giver first, and each one's gifts most valuable first.
+    const spent = senders.map((s) => s.coins);
+    expect(spent).toEqual([...spent].sort((a, b) => b - a));
+    for (const sender of senders) {
+      const prices = sender.gifts.map(
+        (g) => rows.find((r) => r.type === g.type)!.coins,
+      );
+      expect(prices).toEqual([...prices].sort((a, b) => b - a));
+    }
+  });
+
+  it('leaves out of the givers anybody the reader has blocked', async () => {
+    const { senders: before } = await gifts.summary(post, ben);
+    const other = before.find((s) => s.user.id !== ben)!.user.id;
+    await prisma.block.create({ data: { blockerId: ben, blockedId: other } });
+    try {
+      const { senders } = await gifts.summary(post, ben);
+      expect(senders.map((s) => s.user.id)).not.toContain(other);
+      expect(senders.length).toBe(before.length - 1);
+    } finally {
+      await prisma.block.deleteMany({
+        where: { blockerId: ben, blockedId: other },
+      });
+    }
+  });
+
   it('tells the author, on the notifications screen of an app that asked', async () => {
     const notifications = new NotificationsService(prisma as PrismaService);
 

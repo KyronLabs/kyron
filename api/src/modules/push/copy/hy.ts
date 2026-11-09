@@ -72,4 +72,10 @@ export const hy: Copy = {
   rule_impersonation: 'Այլ անձի անունից հանդես գալը',
   rule_intellectual_property: 'Մտավոր սեփականություն',
   rule_illegal_goods: 'Անօրինական ապրանքներ կամ ծառայություններ',
+  away_title: 'Մինչ դուք բացակա էիք',
+  away_posted: '{who}-ը գրառում արեց։',
+  away_activity_one: '1 նոր ծանուցում։',
+  away_activity: '{count} նոր ծանուցում։',
+  refill_title: 'Ձեր մետաղադրամները վերադարձան',
+  refill_body: '{coins} մետաղադրամ այս շաբաթ նվերներ ուղարկելու համար։',
 };

@@ -72,4 +72,10 @@ export const ka: Copy = {
   rule_impersonation: 'სხვის სახელით გამოსვლა',
   rule_intellectual_property: 'ინტელექტუალური საკუთრება',
   rule_illegal_goods: 'უკანონო საქონელი ან მომსახურება',
+  away_title: 'სანამ არ იყავით',
+  away_posted: '{who}-მ გამოაქვეყნა.',
+  away_activity_one: '1 ახალი შეტყობინება.',
+  away_activity: '{count} ახალი შეტყობინება.',
+  refill_title: 'თქვენი მონეტები დაბრუნდა',
+  refill_body: '{coins} მონეტა ამ კვირაში საჩუქრების გასაგზავნად.',
 };

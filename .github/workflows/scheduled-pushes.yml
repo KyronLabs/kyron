@@ -1,0 +1,52 @@
+name: Scheduled pushes
+
+# The outside clock for "while you were away" and "your coins are back"
+# (api/src/modules/push/scheduled-push.service.ts). The API also runs them
+# every 15 minutes on its own, but only while it is awake: a server that has
+# gone to sleep runs nothing, and this call is what wakes it.
+#
+# Needs CRON_KEY: the same value as a GitHub Actions secret here and as an
+# environment variable on the API's Render service. Without the secret this
+# says so and stops; without the variable the API answers 404.
+on:
+  schedule:
+    # Minute 23 rather than 0: GitHub delays the top of the hour most.
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-pushes
+  cancel-in-progress: false
+
+jobs:
+  run:
+    name: Send what is due
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Ask the API to send what is due
+        env:
+          CRON_KEY: ${{ secrets.CRON_KEY }}
+          API_URL: ${{ vars.KYRON_API_URL || 'https://kyron-47r6.onrender.com' }}
+        run: |
+          if [ -z "$CRON_KEY" ]; then
+            echo "::notice::CRON_KEY is not set, so nothing was asked for. See the comment at the top of this file."
+            exit 0
+          fi
+          # A sleeping server takes a while to answer its first request, so
+          # a few tries, spaced out.
+          for attempt in 1 2 3 4; do
+            if answer=$(curl -fsS -m 90 -X POST \
+                -H "x-cron-key: $CRON_KEY" \
+                "$API_URL/internal/scheduled-pushes"); then
+              echo "Sent: $answer"
+              echo "Sent: \`$answer\`" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          echo "::error::The API did not answer. Is CRON_KEY the same on Render as here?"
+          exit 1

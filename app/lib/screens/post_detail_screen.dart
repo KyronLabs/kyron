@@ -29,6 +29,7 @@ import '../widgets/community_avatar.dart';
 import '../widgets/post_card.dart';
 import '../models/post_media.dart' show MediaKind;
 import '../widgets/gif_picker_sheet.dart';
+import '../widgets/gift_givers_sheet.dart';
 import '../widgets/gift_pill.dart';
 import '../widgets/gift_sheet.dart';
 import '../widgets/reply_bar.dart';
@@ -730,7 +731,8 @@ class _Post extends ConsumerWidget {
             yours: post.viewerGift != null,
             endsInText: GiftPillHost.endsInWords(post),
             gap: SpacingTokens.space12,
-            onTap: gift,
+            // Who gave it what; sending one is the heart's long press.
+            onTap: (_) => GiftGiversSheet.show(context, post),
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

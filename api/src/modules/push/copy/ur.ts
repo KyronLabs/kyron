@@ -70,4 +70,10 @@ export const ur: Copy = {
   rule_impersonation: 'کسی اور کا روپ دھارنا',
   rule_intellectual_property: 'دانشورانہ ملکیت',
   rule_illegal_goods: 'غیر قانونی اشیا یا خدمات',
+  away_title: 'جب آپ موجود نہیں تھے',
+  away_posted: '{who} نے پوسٹ کیا۔',
+  away_activity_one: '1 نئی اطلاع۔',
+  away_activity: '{count} نئی اطلاعات۔',
+  refill_title: 'آپ کے سکے واپس آ گئے',
+  refill_body: 'اس ہفتے تحفے بھیجنے کے لیے {coins} سکے۔',
 };

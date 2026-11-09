@@ -2246,6 +2246,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 lahja"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Lisää julkaisuja ei voitu ladata."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Muistutukset"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Mitä uutta on, kun olet ollut poissa, ja kun kolikkosi palaavat. Korkeintaan yksi päivässä."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Lahjat"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 henkilöltä"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count henkilöltä"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Suurin lahjoittaja"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Lahjojen lähettäjiä ei voitu ladata."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Uutta"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Selvä"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Kiitos. Luemme jokaisen vastauksen."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Mitä pidät Kyronista tähän mennessä?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Testisi päivä \$day. Yksi napautus riittää."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Pitäisikö meidän korjata tai lisätä jotain? (valinnainen)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Lähetä"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ei nyt"),
     };
 
 final messageLookup = MessageLookup();

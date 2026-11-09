@@ -70,4 +70,10 @@ export const nb: Copy = {
   rule_impersonation: 'Utgir seg for å være en annen',
   rule_intellectual_property: 'Immaterielle rettigheter',
   rule_illegal_goods: 'Ulovlige varer eller tjenester',
+  away_title: 'Mens du var borte',
+  away_posted: '{who} har publisert noe.',
+  away_activity_one: '1 nytt varsel.',
+  away_activity: '{count} nye varsler.',
+  refill_title: 'Myntene dine er tilbake',
+  refill_body: '{coins} mynter å sende som gaver denne uken.',
 };

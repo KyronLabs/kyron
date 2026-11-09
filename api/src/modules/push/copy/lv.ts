@@ -71,4 +71,10 @@ export const lv: Copy = {
   rule_impersonation: 'Uzdošanās par citu personu',
   rule_intellectual_property: 'Intelektuālais īpašums',
   rule_illegal_goods: 'Nelegālas preces vai pakalpojumi',
+  away_title: 'Kamēr jūs nebijāt',
+  away_posted: '{who} publicēja ierakstu.',
+  away_activity_one: '1 jauns paziņojums.',
+  away_activity: 'Jauni paziņojumi: {count}.',
+  refill_title: 'Jūsu monētas ir atpakaļ',
+  refill_body: '{coins} monētas dāvanām šonedēļ.',
 };

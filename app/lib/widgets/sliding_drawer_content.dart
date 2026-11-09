@@ -769,8 +769,9 @@ class SlidingDrawerContent extends ConsumerWidget {
                   },
                   icon: const Icon(Iconsax.copy_copy, size: 18),
                   label: Text(AppLocalizations.of(context).copy),
+                  // The theme's 40, as the login button is: no button is 48.
                   style: FilledButton.styleFrom(
-                    minimumSize: const Size.fromHeight(48),
+                    minimumSize: const Size.fromHeight(KyronTheme.buttonHeight),
                   ),
                 ),
               ],

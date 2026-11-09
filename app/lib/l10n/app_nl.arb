@@ -1185,5 +1185,21 @@
   "ui_select_all": "Alles selecteren",
   "ui_gifts_count": "$count cadeaus",
   "ui_gifts_count_one": "1 cadeau",
-  "ui_feed_more_failed": "Kon geen berichten meer laden."
+  "ui_feed_more_failed": "Kon geen berichten meer laden.",
+  "ui_reminders": "Herinneringen",
+  "ui_reminders_detail": "Wat er nieuw is als je even weg was, en wanneer je munten terug zijn. Nooit meer dan één per dag.",
+  "ui_gifts_title": "Cadeaus",
+  "ui_gifts_from_one": "van 1 persoon",
+  "ui_gifts_from_people": "van $count personen",
+  "ui_top_gifter": "Grootste gever",
+  "ui_gifts_load_failed": "Kon niet laden wie cadeaus heeft gestuurd.",
+  "ui_whats_new": "Nieuw",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Begrepen",
+  "ui_check_in_thanks": "Bedankt. We lezen elk antwoord.",
+  "ui_check_in_title": "Hoe bevalt Kyron tot nu toe?",
+  "ui_check_in_detail": "Dag $day van je test. Eén tik is genoeg.",
+  "ui_check_in_hint": "Iets wat we moeten verbeteren of toevoegen? (optioneel)",
+  "ui_send": "Versturen",
+  "ui_not_now": "Niet nu"
 }

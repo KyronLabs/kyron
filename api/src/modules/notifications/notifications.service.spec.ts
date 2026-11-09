@@ -107,6 +107,8 @@ describe('NotificationsService', () => {
     ]);
     expect(items[0].content).toBe('nice one');
     expect(items[0].actor?.username).toBe('bo');
+    // A reply's row carries the reply, so it can open the reply itself.
+    expect(items[0].commentId).toBe('c1');
     // A follow is about the account, not about any one post.
     expect(items[2].postId).toBeNull();
   });
@@ -310,7 +312,9 @@ describe('NotificationsService', () => {
 
     it('says when a gift went to your reply, and quotes the reply', async () => {
       const { svc } = serviceWith({
-        gifts: [{ ...gift, comment: { content: 'thanks all' } }],
+        gifts: [
+          { ...gift, commentId: 'c7', comment: { content: 'thanks all' } },
+        ],
       });
 
       const { items } = await svc.list(ME, { gifts: true });
@@ -319,6 +323,7 @@ describe('NotificationsService', () => {
         kind: 'gift',
         postId: 'p1',
         content: 'thanks all',
+        commentId: 'c7',
         gift: { onComment: true },
       });
     });

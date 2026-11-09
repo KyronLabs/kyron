@@ -1185,5 +1185,21 @@
   "ui_select_all": "అన్నీ ఎంచుకోండి",
   "ui_gifts_count": "$count బహుమతులు",
   "ui_gifts_count_one": "1 బహుమతి",
-  "ui_feed_more_failed": "మరిన్ని పోస్ట్‌లను లోడ్ చేయలేకపోయాము."
+  "ui_feed_more_failed": "మరిన్ని పోస్ట్‌లను లోడ్ చేయలేకపోయాము.",
+  "ui_reminders": "రిమైండర్‌లు",
+  "ui_reminders_detail": "మీరు కొంతకాలం లేనప్పుడు కొత్తవి, మీ నాణేలు తిరిగి వచ్చినప్పుడు. రోజుకు ఒకటి కంటే ఎక్కువ ఎప్పుడూ కాదు.",
+  "ui_gifts_title": "బహుమతులు",
+  "ui_gifts_from_one": "1 వ్యక్తి నుండి",
+  "ui_gifts_from_people": "$count మంది నుండి",
+  "ui_top_gifter": "అగ్ర బహుమతిదారు",
+  "ui_gifts_load_failed": "బహుమతులు ఎవరు పంపారో లోడ్ చేయలేకపోయాము.",
+  "ui_whats_new": "కొత్తవి",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "అర్థమైంది",
+  "ui_check_in_thanks": "ధన్యవాదాలు. మేము ప్రతి సమాధానం చదువుతాము.",
+  "ui_check_in_title": "ఇప్పటివరకు Kyron ఎలా ఉంది?",
+  "ui_check_in_detail": "మీ పరీక్షలో $dayవ రోజు. ఒక్క ట్యాప్ చాలు.",
+  "ui_check_in_hint": "మేము సరిచేయాల్సినవి లేదా జోడించాల్సినవి ఏమైనా ఉన్నాయా? (ఐచ్ఛికం)",
+  "ui_send": "పంపండి",
+  "ui_not_now": "ఇప్పుడు కాదు"
 }

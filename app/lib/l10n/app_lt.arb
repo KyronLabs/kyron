@@ -1185,5 +1185,21 @@
   "ui_select_all": "Pažymėti viską",
   "ui_gifts_count": "Dovanos: $count",
   "ui_gifts_count_one": "1 dovana",
-  "ui_feed_more_failed": "Nepavyko įkelti daugiau įrašų."
+  "ui_feed_more_failed": "Nepavyko įkelti daugiau įrašų.",
+  "ui_reminders": "Priminimai",
+  "ui_reminders_detail": "Kas nauja, kai jūsų nebuvo, ir kada grįžta monetos. Ne daugiau kaip vienas per dieną.",
+  "ui_gifts_title": "Dovanos",
+  "ui_gifts_from_one": "iš 1 žmogaus",
+  "ui_gifts_from_people": "iš $count žmonių",
+  "ui_top_gifter": "Dosniausias",
+  "ui_gifts_load_failed": "Nepavyko įkelti, kas atsiuntė dovanas.",
+  "ui_whats_new": "Kas naujo",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Supratau",
+  "ui_check_in_thanks": "Ačiū. Skaitome kiekvieną atsakymą.",
+  "ui_check_in_title": "Kaip jums Kyron iki šiol?",
+  "ui_check_in_detail": "$day jūsų bandymo diena. Užtenka vieno bakstelėjimo.",
+  "ui_check_in_hint": "Ką turėtume pataisyti ar pridėti? (neprivaloma)",
+  "ui_send": "Siųsti",
+  "ui_not_now": "Ne dabar"
 }

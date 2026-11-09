@@ -1,4 +1,5 @@
 // lib/models/gift.dart
+import 'feed_post.dart';
 
 /// The gift types from least to most valuable, as the catalogue prices them.
 ///
@@ -156,5 +157,60 @@ class GiftNote {
         emoji: json['emoji'] as String? ?? '🎁',
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         onComment: json['onComment'] == true,
+      );
+}
+
+/// Who gave a post gifts, and what -- the list the gift pill opens.
+class PostGifts {
+  /// Every gift the post was given, from anyone.
+  final int total;
+
+  /// The people, the biggest giver first.
+  final List<GiftGiver> givers;
+
+  const PostGifts({required this.total, required this.givers});
+
+  factory PostGifts.fromJson(Map<String, dynamic> json) => PostGifts(
+        total: (json['total'] as num?)?.toInt() ?? 0,
+        givers: [
+          for (final row in json['senders'] as List? ?? const [])
+            if (row is Map<String, dynamic>) GiftGiver.fromJson(row),
+        ],
+      );
+}
+
+/// One person who gave a post gifts, and every gift they gave it.
+class GiftGiver {
+  final FeedAuthor user;
+
+  /// What they spent on it in all.
+  final int coins;
+
+  /// Each kind and how many, most valuable first.
+  final List<({String type, String name, int count})> gifts;
+
+  const GiftGiver({
+    required this.user,
+    required this.coins,
+    required this.gifts,
+  });
+
+  /// How many gifts in all, of every kind.
+  int get count => gifts.fold(0, (sum, g) => sum + g.count);
+
+  factory GiftGiver.fromJson(Map<String, dynamic> json) => GiftGiver(
+        user: FeedAuthor.fromJson(
+          json['user'] as Map<String, dynamic>? ?? const {},
+        ),
+        coins: (json['coins'] as num?)?.toInt() ?? 0,
+        gifts: [
+          for (final g in json['gifts'] as List? ?? const [])
+            if (g is Map<String, dynamic> && g['type'] is String)
+              (
+                type: g['type'] as String,
+                name: g['name'] as String? ?? 'Gift',
+                count: (g['count'] as num?)?.toInt() ?? 1,
+              ),
+        ],
       );
 }

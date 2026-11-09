@@ -69,4 +69,10 @@ export const si: Copy = {
   rule_impersonation: 'වෙනත් අයෙකු ලෙස පෙනී සිටීම',
   rule_intellectual_property: 'බුද්ධිමය දේපළ',
   rule_illegal_goods: 'නීති විරෝධී භාණ්ඩ හෝ සේවා',
+  away_title: 'ඔබ නොසිටි අතරතුර',
+  away_posted: '{who} පළ කළා.',
+  away_activity_one: 'නව දැනුම්දීම් 1ක්.',
+  away_activity: 'නව දැනුම්දීම් {count}ක්.',
+  refill_title: 'ඔබේ කාසි ආපසු පැමිණ ඇත',
+  refill_body: 'මෙම සතියේ තෑගි යැවීමට කාසි {coins}ක්.',
 };

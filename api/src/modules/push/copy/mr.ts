@@ -71,4 +71,10 @@ export const mr: Copy = {
   rule_impersonation: 'दुसऱ्याचे सोंग घेणे',
   rule_intellectual_property: 'बौद्धिक संपदा',
   rule_illegal_goods: 'बेकायदेशीर वस्तू किंवा सेवा',
+  away_title: 'तुम्ही दूर असताना',
+  away_posted: '{who} यांनी पोस्ट केले.',
+  away_activity_one: '1 नवीन सूचना.',
+  away_activity: '{count} नवीन सूचना.',
+  refill_title: 'तुमची नाणी परत आली',
+  refill_body: 'या आठवड्यात भेटवस्तू पाठवण्यासाठी {coins} नाणी.',
 };

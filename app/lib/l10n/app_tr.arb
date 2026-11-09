@@ -1185,5 +1185,21 @@
   "ui_select_all": "Tümünü seç",
   "ui_gifts_count": "$count hediye",
   "ui_gifts_count_one": "1 hediye",
-  "ui_feed_more_failed": "Daha fazla gönderi yüklenemedi."
+  "ui_feed_more_failed": "Daha fazla gönderi yüklenemedi.",
+  "ui_reminders": "Hatırlatmalar",
+  "ui_reminders_detail": "Bir süre uzak kaldığında neler olduğu ve jetonların ne zaman geri geldiği. Günde en fazla bir tane.",
+  "ui_gifts_title": "Hediyeler",
+  "ui_gifts_from_one": "1 kişiden",
+  "ui_gifts_from_people": "$count kişiden",
+  "ui_top_gifter": "En cömert",
+  "ui_gifts_load_failed": "Kimin hediye gönderdiği yüklenemedi.",
+  "ui_whats_new": "Yenilikler",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Anladım",
+  "ui_check_in_thanks": "Teşekkürler. Her yanıtı okuyoruz.",
+  "ui_check_in_title": "Kyron şimdiye kadar nasıl?",
+  "ui_check_in_detail": "Testinin $day. günü. Tek dokunuş yeter.",
+  "ui_check_in_hint": "Düzeltmemiz ya da eklememiz gereken bir şey var mı? (isteğe bağlı)",
+  "ui_send": "Gönder",
+  "ui_not_now": "Şimdi değil"
 }

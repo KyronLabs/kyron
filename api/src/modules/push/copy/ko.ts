@@ -72,4 +72,10 @@ export const ko: Copy = {
   rule_impersonation: '사칭',
   rule_intellectual_property: '지식 재산권',
   rule_illegal_goods: '불법 상품 또는 서비스',
+  away_title: '자리를 비운 사이',
+  away_posted: '{who}님이 게시물을 올렸습니다.',
+  away_activity_one: '새 알림 1개.',
+  away_activity: '새 알림 {count}개.',
+  refill_title: '코인이 다시 채워졌어요',
+  refill_body: '이번 주에 선물로 보낼 수 있는 코인 {coins}개.',
 };

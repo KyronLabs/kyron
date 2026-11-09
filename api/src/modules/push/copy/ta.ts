@@ -73,4 +73,10 @@ export const ta: Copy = {
   rule_impersonation: 'ஆள்மாறாட்டம்',
   rule_intellectual_property: 'அறிவுசார் சொத்து',
   rule_illegal_goods: 'சட்டவிரோதப் பொருட்கள் அல்லது சேவைகள்',
+  away_title: 'நீங்கள் இல்லாதபோது',
+  away_posted: '{who} இடுகையிட்டார்.',
+  away_activity_one: '1 புதிய அறிவிப்பு.',
+  away_activity: '{count} புதிய அறிவிப்புகள்.',
+  refill_title: 'உங்கள் நாணயங்கள் திரும்ப வந்துவிட்டன',
+  refill_body: 'இந்த வாரம் பரிசுகளாக அனுப்ப {coins} நாணயங்கள்.',
 };

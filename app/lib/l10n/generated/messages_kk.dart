@@ -2226,6 +2226,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 сыйлық"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Қосымша жазбаларды жүктеу мүмкін болмады."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Еске салғыштар"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Сіз болмаған кезде не жаңалық болды және тиындарыңыз қашан оралады. Күніне біреуден артық емес."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Сыйлықтар"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 адамнан"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count адамнан"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Ең жомарт"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Сыйлық жіберушілерді жүктеу мүмкін болмады."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Не жаңалық"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Түсіндім"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("Рақмет. Әр жауапты оқимыз."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyron әзірге қалай?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Сынағыңыздың \$day-күні. Бір түрту жеткілікті."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Түзету не қосу керек нәрсе бар ма? (міндетті емес)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Жіберу"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Қазір емес"),
     };
 
 final messageLookup = MessageLookup();

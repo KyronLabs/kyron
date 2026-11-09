@@ -71,4 +71,10 @@ export const pa: Copy = {
   rule_impersonation: 'ਕਿਸੇ ਹੋਰ ਦਾ ਭੇਸ ਧਾਰਨਾ',
   rule_intellectual_property: 'ਬੌਧਿਕ ਸੰਪਤੀ',
   rule_illegal_goods: 'ਗ਼ੈਰ-ਕਾਨੂੰਨੀ ਸਮਾਨ ਜਾਂ ਸੇਵਾਵਾਂ',
+  away_title: 'ਜਦੋਂ ਤੁਸੀਂ ਦੂਰ ਸੀ',
+  away_posted: '{who} ਨੇ ਪੋਸਟ ਕੀਤਾ।',
+  away_activity_one: '1 ਨਵੀਂ ਸੂਚਨਾ।',
+  away_activity: '{count} ਨਵੀਆਂ ਸੂਚਨਾਵਾਂ।',
+  refill_title: 'ਤੁਹਾਡੇ ਸਿੱਕੇ ਵਾਪਸ ਆ ਗਏ',
+  refill_body: 'ਇਸ ਹਫ਼ਤੇ ਤੋਹਫ਼ੇ ਭੇਜਣ ਲਈ {coins} ਸਿੱਕੇ।',
 };

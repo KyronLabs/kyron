@@ -30,6 +30,14 @@ class GiftsRepository {
     return SentGift.fromJson(res.data ?? const {});
   }
 
+  /// Who gave [postId] gifts, and what: the biggest giver first.
+  Future<PostGifts> givers(String postId) async {
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/feed/posts/$postId/gifts',
+    );
+    return PostGifts.fromJson(res.data ?? const {});
+  }
+
   /// A gift to a comment, paid to whoever wrote it.
   Future<SentGift> sendToComment(
     String commentId,

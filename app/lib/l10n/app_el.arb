@@ -1185,5 +1185,21 @@
   "ui_select_all": "Επιλογή όλων",
   "ui_gifts_count": "$count δώρα",
   "ui_gifts_count_one": "1 δώρο",
-  "ui_feed_more_failed": "Δεν ήταν δυνατή η φόρτωση περισσότερων αναρτήσεων."
+  "ui_feed_more_failed": "Δεν ήταν δυνατή η φόρτωση περισσότερων αναρτήσεων.",
+  "ui_reminders": "Υπενθυμίσεις",
+  "ui_reminders_detail": "Τι νέο υπάρχει όταν λείπατε και πότε επιστρέφουν τα νομίσματά σας. Ποτέ πάνω από μία την ημέρα.",
+  "ui_gifts_title": "Δώρα",
+  "ui_gifts_from_one": "από 1 άτομο",
+  "ui_gifts_from_people": "από $count άτομα",
+  "ui_top_gifter": "Κορυφαίος δωρητής",
+  "ui_gifts_load_failed": "Δεν ήταν δυνατή η φόρτωση του ποιος έστειλε δώρα.",
+  "ui_whats_new": "Τι νέο υπάρχει",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Εντάξει",
+  "ui_check_in_thanks": "Ευχαριστούμε. Διαβάζουμε κάθε απάντηση.",
+  "ui_check_in_title": "Πώς σας φαίνεται το Kyron μέχρι τώρα;",
+  "ui_check_in_detail": "Ημέρα $day της δοκιμής σας. Ένα πάτημα αρκεί.",
+  "ui_check_in_hint": "Κάτι να διορθώσουμε ή να προσθέσουμε; (προαιρετικό)",
+  "ui_send": "Αποστολή",
+  "ui_not_now": "Όχι τώρα"
 }

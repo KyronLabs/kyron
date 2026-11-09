@@ -14,6 +14,8 @@ last debug build, which is usually nothing.
     changelog.py store <version>  the same section as plain text for an app
                                   store's "What's new", within 500 characters
     changelog.py release <version> stamp Unreleased as <version>, dated today
+    changelog.py app-notes        the latest versions' headlines as JSON, for
+                                  the app's "What's new" card
 
 ## When nothing was written
 
@@ -351,6 +353,56 @@ def release(version: str) -> int:
     return 0
 
 
+APP_NOTES_VERSIONS = 5
+APP_NOTES = CHANGELOG.parent / "app" / "lib" / "assets" / "whats_new.json"
+
+
+def app_notes(content: str, versions: int = APP_NOTES_VERSIONS) -> list[dict]:
+    """The latest released versions' entries, as the app's What's new card
+    shows them: each one's headline and its first sentence, newest first.
+
+    Released versions only: Unreleased is what the next build will say, and
+    a card about it would describe a version nobody has.
+    """
+    notes = []
+    for name, start, end in sections(content):
+        if name.lower() == "unreleased":
+            continue
+        if not re.match(r"^\d+\.\d+\.\d+$", name):
+            continue
+        body = or_default(content[start:end].strip())
+        items = []
+        for _, group in entries(body):
+            for entry in group:
+                head, rest = _headline(entry)
+                # A headline that stops mid-sentence ("**Select all goes**,
+                # instead of ...") carries on into the rest: the sentence is
+                # the title, and what follows it the detail.
+                if rest and (rest[0] in ",;:\u2014-" or rest[0].islower()):
+                    joined = f"{head.rstrip('.')}{'' if rest[0] in ',;:' else ' '}{rest}"
+                    head = _first_sentence(joined)
+                    rest = joined[len(head):].strip()
+                items.append({"title": head, "detail": _first_sentence(rest)})
+        if not items:
+            items = [{"title": DEFAULT_NOTES, "detail": ""}]
+        notes.append({"version": name, "items": items})
+        if len(notes) == versions:
+            break
+    return notes
+
+
+def write_app_notes() -> int:
+    import json
+
+    content = CHANGELOG.read_text(encoding="utf-8")
+    APP_NOTES.write_text(
+        json.dumps(app_notes(content), ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"Wrote {APP_NOTES.relative_to(CHANGELOG.parent)}")
+    return 0
+
+
 def main() -> int:
     args = sys.argv[1:]
     if len(args) == 1 and args[0] == "unreleased":
@@ -363,6 +415,8 @@ def main() -> int:
         return show(args[1], int(args[3]))
     if len(args) == 2 and args[0] == "release":
         return release(args[1])
+    if len(args) == 1 and args[0] == "app-notes":
+        return write_app_notes()
 
     print(__doc__, file=sys.stderr)
     return 2

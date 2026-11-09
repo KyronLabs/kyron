@@ -2242,6 +2242,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 նվեր"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Չհաջողվեց բեռնել ավելի շատ գրառումներ։"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Հիշեցումներ"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Ինչ նորություն կա ձեր բացակայությունից հետո, և երբ են վերադառնում ձեր մետաղադրամները։ Օրը ոչ ավելի, քան մեկ։"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Նվերներ"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 հոգուց"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count հոգուց"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Ամենառատաձեռնը"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել, թե ով է նվեր ուղարկել։"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Ինչ նոր կա"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Հասկանալի է"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Շնորհակալություն։ Կարդում ենք յուրաքանչյուր պատասխան։"),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Ինչպե՞ս է Kyron-ը մինչ այժմ։"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր փորձարկման \$day-րդ օրը։ Մեկ հպումը բավական է։"),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ինչ-որ բան պե՞տք է ուղղենք կամ ավելացնենք։ (ըստ ցանկության)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Ուղարկել"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ոչ հիմա"),
     };
 
 final messageLookup = MessageLookup();

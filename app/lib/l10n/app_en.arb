@@ -1185,5 +1185,21 @@
   "ui_select_all": "Select all",
   "ui_gifts_count": "$count gifts",
   "ui_gifts_count_one": "1 gift",
-  "ui_feed_more_failed": "Couldn't load more posts."
+  "ui_feed_more_failed": "Couldn't load more posts.",
+  "ui_reminders": "Reminders",
+  "ui_reminders_detail": "What's new after you've been away, and when your coins are back. Never more than one a day.",
+  "ui_gifts_title": "Gifts",
+  "ui_gifts_from_one": "from 1 person",
+  "ui_gifts_from_people": "from $count people",
+  "ui_top_gifter": "Top gifter",
+  "ui_gifts_load_failed": "Couldn't load who sent gifts.",
+  "ui_whats_new": "What's new",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Got it",
+  "ui_check_in_thanks": "Thank you. We read every one.",
+  "ui_check_in_title": "How's Kyron so far?",
+  "ui_check_in_detail": "Day $day of your test. One tap is enough.",
+  "ui_check_in_hint": "Anything we should fix or add? (optional)",
+  "ui_send": "Send",
+  "ui_not_now": "Not now"
 }

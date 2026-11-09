@@ -72,4 +72,10 @@ export const uk: Copy = {
   rule_impersonation: 'Видавання себе за іншу особу',
   rule_intellectual_property: 'Інтелектуальна власність',
   rule_illegal_goods: 'Незаконні товари чи послуги',
+  away_title: 'Поки вас не було',
+  away_posted: '{who}: новий допис.',
+  away_activity_one: '1 нове сповіщення.',
+  away_activity: 'Нових сповіщень: {count}.',
+  refill_title: 'Монети знову у вас',
+  refill_body: '{coins} монет для подарунків цього тижня.',
 };

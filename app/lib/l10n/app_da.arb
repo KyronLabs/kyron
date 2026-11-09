@@ -1185,5 +1185,21 @@
   "ui_select_all": "Vælg alt",
   "ui_gifts_count": "$count gaver",
   "ui_gifts_count_one": "1 gave",
-  "ui_feed_more_failed": "Kunne ikke indlæse flere opslag."
+  "ui_feed_more_failed": "Kunne ikke indlæse flere opslag.",
+  "ui_reminders": "Påmindelser",
+  "ui_reminders_detail": "Hvad der er nyt, når du har været væk, og når dine mønter er tilbage. Aldrig mere end én om dagen.",
+  "ui_gifts_title": "Gaver",
+  "ui_gifts_from_one": "fra 1 person",
+  "ui_gifts_from_people": "fra $count personer",
+  "ui_top_gifter": "Største giver",
+  "ui_gifts_load_failed": "Kunne ikke indlæse, hvem der sendte gaver.",
+  "ui_whats_new": "Nyheder",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Forstået",
+  "ui_check_in_thanks": "Tak. Vi læser hvert svar.",
+  "ui_check_in_title": "Hvad synes du om Kyron indtil videre?",
+  "ui_check_in_detail": "Dag $day af din test. Ét tryk er nok.",
+  "ui_check_in_hint": "Noget vi bør rette eller tilføje? (valgfrit)",
+  "ui_send": "Send",
+  "ui_not_now": "Ikke nu"
 }

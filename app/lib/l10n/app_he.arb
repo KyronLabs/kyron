@@ -1185,5 +1185,21 @@
   "ui_select_all": "בחירת הכול",
   "ui_gifts_count": "$count מתנות",
   "ui_gifts_count_one": "מתנה אחת",
-  "ui_feed_more_failed": "לא ניתן לטעון פוסטים נוספים."
+  "ui_feed_more_failed": "לא ניתן לטעון פוסטים נוספים.",
+  "ui_reminders": "תזכורות",
+  "ui_reminders_detail": "מה חדש אחרי שלא היית כאן, ומתי המטבעות חוזרים. לא יותר מאחת ביום.",
+  "ui_gifts_title": "מתנות",
+  "ui_gifts_from_one": "מאדם אחד",
+  "ui_gifts_from_people": "מ-$count אנשים",
+  "ui_top_gifter": "הנדיב ביותר",
+  "ui_gifts_load_failed": "לא ניתן לטעון מי שלח מתנות.",
+  "ui_whats_new": "מה חדש",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "הבנתי",
+  "ui_check_in_thanks": "תודה. אנחנו קוראים כל תשובה.",
+  "ui_check_in_title": "איך Kyron עד עכשיו?",
+  "ui_check_in_detail": "יום $day של הניסיון שלך. הקשה אחת מספיקה.",
+  "ui_check_in_hint": "משהו שכדאי לתקן או להוסיף? (לא חובה)",
+  "ui_send": "שליחה",
+  "ui_not_now": "לא עכשיו"
 }

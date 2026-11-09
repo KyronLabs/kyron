@@ -131,6 +131,10 @@ class NotificationModel {
   /// The post it happened to. Null for a follow.
   final String? postId;
 
+  /// The reply it is about, when it is about one: a reply to the reader's
+  /// post, the reply that named them, or the reply a gift went to.
+  final String? commentId;
+
   /// The start of that post, so the row says which one.
   final String? postSnippet;
 
@@ -157,6 +161,7 @@ class NotificationModel {
     required this.isRead,
     this.actor,
     this.postId,
+    this.commentId,
     this.postSnippet,
     this.postImage,
     this.content,
@@ -192,6 +197,9 @@ class NotificationModel {
           ? GiftNote.fromJson(json['gift'] as Map<String, dynamic>)
           : null,
       postId: json['postId'] as String?,
+      commentId: (json['commentId'] as String?)?.trim().isEmpty ?? true
+          ? null
+          : json['commentId'] as String,
       postSnippet: json['postSnippet'] as String?,
       postImage: (json['postImage'] as String?)?.trim().isEmpty ?? true
           ? null

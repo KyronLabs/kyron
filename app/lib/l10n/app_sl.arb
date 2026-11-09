@@ -1185,5 +1185,21 @@
   "ui_select_all": "Izberi vse",
   "ui_gifts_count": "Darila: $count",
   "ui_gifts_count_one": "1 darilo",
-  "ui_feed_more_failed": "Več objav ni bilo mogoče naložiti."
+  "ui_feed_more_failed": "Več objav ni bilo mogoče naložiti.",
+  "ui_reminders": "Opomniki",
+  "ui_reminders_detail": "Kaj je novega, ko vas je nekaj časa ni bilo, in ko se kovanci vrnejo. Nikoli več kot eden na dan.",
+  "ui_gifts_title": "Darila",
+  "ui_gifts_from_one": "od 1 osebe",
+  "ui_gifts_from_people": "od $count oseb",
+  "ui_top_gifter": "Največji darovalec",
+  "ui_gifts_load_failed": "Ni bilo mogoče naložiti, kdo je poslal darila.",
+  "ui_whats_new": "Novosti",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Razumem",
+  "ui_check_in_thanks": "Hvala. Preberemo vsak odgovor.",
+  "ui_check_in_title": "Kako vam je Kyron všeč do zdaj?",
+  "ui_check_in_detail": "Dan $day vašega preizkusa. Dovolj je en dotik.",
+  "ui_check_in_hint": "Kaj naj popravimo ali dodamo? (neobvezno)",
+  "ui_send": "Pošlji",
+  "ui_not_now": "Ne zdaj"
 }

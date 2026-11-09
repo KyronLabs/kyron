@@ -73,4 +73,10 @@ export const ms: Copy = {
   rule_impersonation: 'Penyamaran',
   rule_intellectual_property: 'Harta intelek',
   rule_illegal_goods: 'Barangan atau perkhidmatan haram',
+  away_title: 'Semasa anda tiada',
+  away_posted: '{who} menyiarkan sesuatu.',
+  away_activity_one: '1 pemberitahuan baharu.',
+  away_activity: '{count} pemberitahuan baharu.',
+  refill_title: 'Syiling anda sudah kembali',
+  refill_body: '{coins} syiling untuk dihantar sebagai hadiah minggu ini.',
 };

@@ -73,4 +73,10 @@ export const te: Copy = {
   rule_impersonation: 'వేరొకరిలా నటించడం',
   rule_intellectual_property: 'మేధో సంపత్తి',
   rule_illegal_goods: 'చట్టవిరుద్ధ వస్తువులు లేదా సేవలు',
+  away_title: 'మీరు లేనప్పుడు',
+  away_posted: '{who} పోస్ట్ చేశారు.',
+  away_activity_one: '1 కొత్త నోటిఫికేషన్.',
+  away_activity: '{count} కొత్త నోటిఫికేషన్‌లు.',
+  refill_title: 'మీ నాణేలు తిరిగి వచ్చాయి',
+  refill_body: 'ఈ వారం బహుమతులుగా పంపడానికి {coins} నాణేలు.',
 };
