@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Día $day da túa proba. Abonda cun toque.",
   "ui_check_in_hint": "Algo que debamos arranxar ou engadir? (opcional)",
   "ui_send": "Enviar",
-  "ui_not_now": "Agora non"
+  "ui_not_now": "Agora non",
+  "ui_back_again_to_leave": "Preme atrás de novo para saír de Kyron"
 }

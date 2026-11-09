@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dan $day vašega preizkusa. Dovolj je en dotik.",
   "ui_check_in_hint": "Kaj naj popravimo ali dodamo? (neobvezno)",
   "ui_send": "Pošlji",
-  "ui_not_now": "Ne zdaj"
+  "ui_not_now": "Ne zdaj",
+  "ui_back_again_to_leave": "Znova pritisnite Nazaj za izhod iz Kyrona"
 }

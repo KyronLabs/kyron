@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Usuku lwe-$day lovavanyo lwakho. Ukucofa kanye kwanele.",
   "ui_check_in_hint": "Ingaba kukho into ekufuneka siyilungise okanye siyongeze? (ukhetho)",
   "ui_send": "Thumela",
-  "ui_not_now": "Hayi ngoku"
+  "ui_not_now": "Hayi ngoku",
+  "ui_back_again_to_leave": "Cofa emva kwakhona ukuze uphume ku-Kyron"
 }

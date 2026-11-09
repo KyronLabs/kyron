@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Hari ke-$day uji cobamu. Satu ketukan sudah cukup.",
   "ui_check_in_hint": "Ada yang perlu kami perbaiki atau tambahkan? (opsional)",
   "ui_send": "Kirim",
-  "ui_not_now": "Nanti saja"
+  "ui_not_now": "Nanti saja",
+  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron"
 }

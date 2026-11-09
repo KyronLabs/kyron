@@ -2279,6 +2279,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "May dapat ba kaming ayusin o idagdag? (opsyonal)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Ipadala"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hindi ngayon"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Pindutin muli ang back para umalis sa Kyron"),
     };
 
 final messageLookup = MessageLookup();

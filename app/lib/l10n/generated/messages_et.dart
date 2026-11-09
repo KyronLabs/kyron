@@ -2318,6 +2318,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Midagi, mida peaksime parandama või lisama? (valikuline)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Saada"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Mitte praegu"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyronist lahkumiseks vajuta uuesti tagasi"),
     };
 
 final messageLookup = MessageLookup();

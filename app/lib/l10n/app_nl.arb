@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dag $day van je test. Eén tik is genoeg.",
   "ui_check_in_hint": "Iets wat we moeten verbeteren of toevoegen? (optioneel)",
   "ui_send": "Versturen",
-  "ui_not_now": "Niet nu"
+  "ui_not_now": "Niet nu",
+  "ui_back_again_to_leave": "Druk nogmaals op terug om Kyron te verlaten"
 }

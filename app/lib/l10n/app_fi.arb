@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Testisi päivä $day. Yksi napautus riittää.",
   "ui_check_in_hint": "Pitäisikö meidän korjata tai lisätä jotain? (valinnainen)",
   "ui_send": "Lähetä",
-  "ui_not_now": "Ei nyt"
+  "ui_not_now": "Ei nyt",
+  "ui_back_again_to_leave": "Poistu Kyronista painamalla Takaisin uudelleen"
 }

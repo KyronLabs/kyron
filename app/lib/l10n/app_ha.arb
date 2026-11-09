@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Rana ta $day na gwajinka. Taɓawa ɗaya ta isa.",
   "ui_check_in_hint": "Akwai abin da ya kamata mu gyara ko ƙara? (na zaɓi)",
   "ui_send": "Aika",
-  "ui_not_now": "Ba yanzu ba"
+  "ui_not_now": "Ba yanzu ba",
+  "ui_back_again_to_leave": "Sake danna baya don barin Kyron"
 }

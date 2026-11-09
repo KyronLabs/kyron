@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "A teszted $day. napja. Egy koppintás elég.",
   "ui_check_in_hint": "Mit javítsunk vagy adjunk hozzá? (nem kötelező)",
   "ui_send": "Küldés",
-  "ui_not_now": "Most nem"
+  "ui_not_now": "Most nem",
+  "ui_back_again_to_leave": "Nyomd meg újra a Vissza gombot a Kyronból való kilépéshez"
 }

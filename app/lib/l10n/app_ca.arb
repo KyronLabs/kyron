@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dia $day de la teva prova. N'hi ha prou amb un toc.",
   "ui_check_in_hint": "Alguna cosa a arreglar o afegir? (opcional)",
   "ui_send": "Envia",
-  "ui_not_now": "Ara no"
+  "ui_not_now": "Ara no",
+  "ui_back_again_to_leave": "Torna a prémer Enrere per sortir de Kyron"
 }

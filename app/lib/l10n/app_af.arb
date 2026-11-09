@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dag $day van jou toets. Een tik is genoeg.",
   "ui_check_in_hint": "Iets wat ons moet regmaak of byvoeg? (opsioneel)",
   "ui_send": "Stuur",
-  "ui_not_now": "Nie nou nie"
+  "ui_not_now": "Nie nou nie",
+  "ui_back_again_to_leave": "Druk weer terug om Kyron te verlaat"
 }

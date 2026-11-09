@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
@@ -233,7 +234,50 @@ class _MainContainerState extends ConsumerState<MainContainer>
     // A tapped notification opens over either: whatever it is about, rather
     // than the feed.
     return PushTapOpener(
-      child: Layout.hasRail(context) ? _wide() : _tall(),
+      // Back never closes the app by accident: it closes the drawer, then
+      // goes Home from any other tab, then -- on Home -- asks for a second
+      // press. Pages opened over this one keep their own back.
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didPop, _) {
+          if (!didPop) _back();
+        },
+        child: Layout.hasRail(context) ? _wide() : _tall(),
+      ),
+    );
+  }
+
+  /// When back was last pressed on Home, for the second press that leaves.
+  DateTime? _leaveAskedAt;
+
+  void _back() {
+    final now = DateTime.now();
+    switch (backStep(
+      drawerOpen: _drawerKey.currentState?.isOpen ?? false,
+      tab: _currentIndex,
+      askedAt: _leaveAskedAt,
+      now: now,
+    )) {
+      case BackStep.closeDrawer:
+        _drawerKey.currentState?.closeDrawer();
+        return;
+      case BackStep.goHome:
+        // Home, with its bar showing, as a tap on it would leave it.
+        _navHideProgress.value = 0;
+        setState(() => _currentIndex = NavDestinations.home.index);
+        _leaveAskedAt = null;
+        return;
+      case BackStep.leave:
+        SystemNavigator.pop();
+        return;
+      case BackStep.askAgain:
+        break;
+    }
+    _leaveAskedAt = now;
+    Toast.show(
+      context,
+      AppLocalizations.of(context)
+          .ui('ui_back_again_to_leave', 'Press back again to leave Kyron'),
     );
   }
 
@@ -301,4 +345,26 @@ class _MainContainerState extends ConsumerState<MainContainer>
       ),
     );
   }
+}
+
+/// What a back press on the signed-in app does.
+enum BackStep { closeDrawer, goHome, askAgain, leave }
+
+/// Back, decided: the drawer if it is open, then Home from any other tab,
+/// then -- on Home -- leaving only on a second press within
+/// two seconds. Apart from the widget so it can be
+/// checked without building the whole app.
+BackStep backStep({
+  required bool drawerOpen,
+  required int tab,
+  required DateTime? askedAt,
+  required DateTime now,
+}) {
+  if (drawerOpen) return BackStep.closeDrawer;
+  if (tab != NavDestinations.home.index) return BackStep.goHome;
+  if (askedAt != null &&
+      now.difference(askedAt) <= const Duration(seconds: 2)) {
+    return BackStep.leave;
+  }
+  return BackStep.askAgain;
 }

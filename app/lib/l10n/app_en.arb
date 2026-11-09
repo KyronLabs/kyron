@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Day $day of your test. One tap is enough.",
   "ui_check_in_hint": "Anything we should fix or add? (optional)",
   "ui_send": "Send",
-  "ui_not_now": "Not now"
+  "ui_not_now": "Not now",
+  "ui_back_again_to_leave": "Press back again to leave Kyron"
 }

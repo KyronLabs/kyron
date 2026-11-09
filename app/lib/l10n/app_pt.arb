@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dia $day do seu teste. Um toque basta.",
   "ui_check_in_hint": "Algo que devemos corrigir ou adicionar? (opcional)",
   "ui_send": "Enviar",
-  "ui_not_now": "Agora não"
+  "ui_not_now": "Agora não",
+  "ui_back_again_to_leave": "Pressione voltar novamente para sair do Kyron"
 }

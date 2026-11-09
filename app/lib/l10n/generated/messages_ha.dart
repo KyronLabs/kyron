@@ -2255,6 +2255,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Akwai abin da ya kamata mu gyara ko ƙara? (na zaɓi)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Aika"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ba yanzu ba"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Sake danna baya don barin Kyron"),
     };
 
 final messageLookup = MessageLookup();

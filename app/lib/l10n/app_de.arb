@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Tag $day deines Tests. Ein Tipp genügt.",
   "ui_check_in_hint": "Sollen wir etwas verbessern oder hinzufügen? (optional)",
   "ui_send": "Senden",
-  "ui_not_now": "Nicht jetzt"
+  "ui_not_now": "Nicht jetzt",
+  "ui_back_again_to_leave": "Erneut auf Zurück tippen, um Kyron zu verlassen"
 }

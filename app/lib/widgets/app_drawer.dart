@@ -38,6 +38,9 @@ class AppDrawerState extends State<AppDrawer>
     );
   }
 
+  /// Whether the drawer is out, or on its way: what back closes first.
+  bool get isOpen => !_controller.isDismissed;
+
   void openDrawer() {
     _hapticFeedback(DrawerFeedbackType.open);
     _controller.forward();

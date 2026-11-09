@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Jūsu testa $day. diena. Pietiek ar vienu pieskārienu.",
   "ui_check_in_hint": "Ko mums labot vai pievienot? (pēc izvēles)",
   "ui_send": "Sūtīt",
-  "ui_not_now": "Ne tagad"
+  "ui_not_now": "Ne tagad",
+  "ui_back_again_to_leave": "Vēlreiz nospiediet Atpakaļ, lai izietu no Kyron"
 }

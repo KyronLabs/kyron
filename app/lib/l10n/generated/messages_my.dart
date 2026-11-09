@@ -2291,6 +2291,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ပြင်ရန် သို့မဟုတ် ထည့်ရန် ရှိပါသလား။ (ရွေးချယ်ခွင့်)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("ပို့ရန်"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("နောက်မှ"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyron မှ ထွက်ရန် နောက်သို့ ထပ်နှိပ်ပါ"),
     };
 
 final messageLookup = MessageLookup();

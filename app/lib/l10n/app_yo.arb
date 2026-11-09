@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Ọjọ́ $day ìdánwò rẹ. Títẹ̀ ẹ̀ẹ̀kan tó.",
   "ui_check_in_hint": "Ṣé ohun kan wà tí a gbọ́dọ̀ tún ṣe tàbí fi kún un? (àṣàyàn)",
   "ui_send": "Fi ránṣẹ́",
-  "ui_not_now": "Kì í ṣe báyìí"
+  "ui_not_now": "Kì í ṣe báyìí",
+  "ui_back_again_to_leave": "Tẹ padà lẹ́ẹ̀kan sí i láti kúrò ní Kyron"
 }

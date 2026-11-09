@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Testinin $day. günü. Tek dokunuş yeter.",
   "ui_check_in_hint": "Düzeltmemiz ya da eklememiz gereken bir şey var mı? (isteğe bağlı)",
   "ui_send": "Gönder",
-  "ui_not_now": "Şimdi değil"
+  "ui_not_now": "Şimdi değil",
+  "ui_back_again_to_leave": "Kyron'dan çıkmak için tekrar geri tuşuna basın"
 }

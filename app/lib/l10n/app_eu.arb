@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Zure probaren $day. eguna. Ukitu bat nahikoa da.",
   "ui_check_in_hint": "Zerbait konpondu edo gehitu beharko genuke? (aukerakoa)",
   "ui_send": "Bidali",
-  "ui_not_now": "Orain ez"
+  "ui_not_now": "Orain ez",
+  "ui_back_again_to_leave": "Sakatu atzera berriro Kyron uzteko"
 }

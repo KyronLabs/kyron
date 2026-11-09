@@ -2249,6 +2249,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ọ nwere ihe anyị kwesịrị idozi ma ọ bụ itinye? (nhọrọ)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Zipu"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ọ bụghị ugbu a"),
+      "ui_back_again_to_leave":
+          MessageLookupByLibrary.simpleMessage("Pịa azụ ọzọ ka ịpụ na Kyron"),
     };
 
 final messageLookup = MessageLookup();

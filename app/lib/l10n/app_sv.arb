@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dag $day av ditt test. Ett tryck räcker.",
   "ui_check_in_hint": "Något vi borde fixa eller lägga till? (valfritt)",
   "ui_send": "Skicka",
-  "ui_not_now": "Inte nu"
+  "ui_not_now": "Inte nu",
+  "ui_back_again_to_leave": "Tryck på tillbaka igen för att lämna Kyron"
 }

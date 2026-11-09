@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Sinu testi $day. päev. Ühest puudutusest piisab.",
   "ui_check_in_hint": "Midagi, mida peaksime parandama või lisama? (valikuline)",
   "ui_send": "Saada",
-  "ui_not_now": "Mitte praegu"
+  "ui_not_now": "Mitte praegu",
+  "ui_back_again_to_leave": "Kyronist lahkumiseks vajuta uuesti tagasi"
 }

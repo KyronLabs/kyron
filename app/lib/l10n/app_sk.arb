@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Deň $day vášho testu. Stačí jedno ťuknutie.",
   "ui_check_in_hint": "Niečo, čo by sme mali opraviť alebo pridať? (nepovinné)",
   "ui_send": "Odoslať",
-  "ui_not_now": "Teraz nie"
+  "ui_not_now": "Teraz nie",
+  "ui_back_again_to_leave": "Ďalším stlačením Späť opustíte Kyron"
 }

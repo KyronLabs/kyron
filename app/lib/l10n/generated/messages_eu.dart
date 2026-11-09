@@ -2280,6 +2280,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Zerbait konpondu edo gehitu beharko genuke? (aukerakoa)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Bidali"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Orain ez"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Sakatu atzera berriro Kyron uzteko"),
     };
 
 final messageLookup = MessageLookup();

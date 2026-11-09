@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Usuku lwe-$day lokuhlola kwakho. Ukuthepha kanye kwanele.",
   "ui_check_in_hint": "Ingabe kukhona okufanele sikulungise noma sikwengeze? (ongakukhetha)",
   "ui_send": "Thumela",
-  "ui_not_now": "Hhayi manje"
+  "ui_not_now": "Hhayi manje",
+  "ui_back_again_to_leave": "Cindezela emuva futhi ukuze uphume ku-Kyron"
 }
