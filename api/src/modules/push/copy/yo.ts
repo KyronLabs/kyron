@@ -69,4 +69,10 @@ export const yo: Copy = {
   rule_impersonation: 'Ṣíṣe bí ẹlòmíràn',
   rule_intellectual_property: 'Ohun-ìní ọgbọ́n',
   rule_illegal_goods: 'Ọjà tàbí iṣẹ́ tí kò bófin mu',
+  away_title: 'Nígbà tí o kò sí',
+  away_posted: '{who} fi nǹkan síta.',
+  away_activity_one: 'Ìfitónilétí tuntun 1.',
+  away_activity: 'Ìfitónilétí tuntun {count}.',
+  refill_title: 'Ẹyọ owó rẹ ti padà',
+  refill_body: 'Ẹyọ owó {coins} láti fi ẹ̀bùn ránṣẹ́ ní ọ̀sẹ̀ yìí.',
 };

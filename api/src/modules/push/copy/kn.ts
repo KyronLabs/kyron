@@ -72,4 +72,10 @@ export const kn: Copy = {
   rule_impersonation: 'ಇನ್ನೊಬ್ಬರಂತೆ ನಟಿಸುವುದು',
   rule_intellectual_property: 'ಬೌದ್ಧಿಕ ಆಸ್ತಿ',
   rule_illegal_goods: 'ಕಾನೂನುಬಾಹಿರ ವಸ್ತುಗಳು ಅಥವಾ ಸೇವೆಗಳು',
+  away_title: 'ನೀವು ಇಲ್ಲದಿದ್ದಾಗ',
+  away_posted: '{who} ಪೋಸ್ಟ್ ಮಾಡಿದ್ದಾರೆ.',
+  away_activity_one: '1 ಹೊಸ ಅಧಿಸೂಚನೆ.',
+  away_activity: '{count} ಹೊಸ ಅಧಿಸೂಚನೆಗಳು.',
+  refill_title: 'ನಿಮ್ಮ ನಾಣ್ಯಗಳು ಮರಳಿ ಬಂದಿವೆ',
+  refill_body: 'ಈ ವಾರ ಉಡುಗೊರೆ ಕಳುಹಿಸಲು {coins} ನಾಣ್ಯಗಳು.',
 };

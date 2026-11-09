@@ -93,6 +93,8 @@ flutter:
     - lib/assets/google.svg
     - lib/assets/google_g.svg
     - lib/assets/rooster.webp
+    # Written by scripts/changelog.py app-notes, at each release.
+    - lib/assets/whats_new.json
     # The rest of the welcome picture's cast, by scripts/welcome_cast.py.
     - lib/assets/cast/cat.webp
     - lib/assets/cast/watermelon.webp

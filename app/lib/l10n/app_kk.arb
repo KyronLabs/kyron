@@ -1185,5 +1185,21 @@
   "ui_select_all": "Барлығын таңдау",
   "ui_gifts_count": "$count сыйлық",
   "ui_gifts_count_one": "1 сыйлық",
-  "ui_feed_more_failed": "Қосымша жазбаларды жүктеу мүмкін болмады."
+  "ui_feed_more_failed": "Қосымша жазбаларды жүктеу мүмкін болмады.",
+  "ui_reminders": "Еске салғыштар",
+  "ui_reminders_detail": "Сіз болмаған кезде не жаңалық болды және тиындарыңыз қашан оралады. Күніне біреуден артық емес.",
+  "ui_gifts_title": "Сыйлықтар",
+  "ui_gifts_from_one": "1 адамнан",
+  "ui_gifts_from_people": "$count адамнан",
+  "ui_top_gifter": "Ең жомарт",
+  "ui_gifts_load_failed": "Сыйлық жіберушілерді жүктеу мүмкін болмады.",
+  "ui_whats_new": "Не жаңалық",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Түсіндім",
+  "ui_check_in_thanks": "Рақмет. Әр жауапты оқимыз.",
+  "ui_check_in_title": "Kyron әзірге қалай?",
+  "ui_check_in_detail": "Сынағыңыздың $day-күні. Бір түрту жеткілікті.",
+  "ui_check_in_hint": "Түзету не қосу керек нәрсе бар ма? (міндетті емес)",
+  "ui_send": "Жіберу",
+  "ui_not_now": "Қазір емес"
 }

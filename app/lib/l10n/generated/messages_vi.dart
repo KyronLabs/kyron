@@ -2238,6 +2238,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 món quà"),
       "ui_feed_more_failed":
           MessageLookupByLibrary.simpleMessage("Không thể tải thêm bài đăng."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Lời nhắc"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Điều mới sau khi bạn vắng mặt, và khi xu của bạn trở lại. Không quá một lần mỗi ngày."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Quà tặng"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("từ 1 người"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("từ \$count người"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Người tặng nhiều nhất"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể tải danh sách người tặng quà."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Có gì mới"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Đã hiểu"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Cảm ơn bạn. Chúng tôi đọc mọi câu trả lời."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Bạn thấy Kyron thế nào?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ngày \$day trong đợt thử nghiệm. Chỉ cần một chạm."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Có điều gì chúng tôi nên sửa hoặc thêm không? (không bắt buộc)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Gửi"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Để sau"),
     };
 
 final messageLookup = MessageLookup();

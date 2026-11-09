@@ -71,4 +71,10 @@ export const fa: Copy = {
   rule_impersonation: 'جعل هویت',
   rule_intellectual_property: 'مالکیت فکری',
   rule_illegal_goods: 'کالاها یا خدمات غیرقانونی',
+  away_title: 'وقتی نبودید',
+  away_posted: '{who} پست گذاشت.',
+  away_activity_one: '۱ اعلان تازه.',
+  away_activity: '{count} اعلان تازه.',
+  refill_title: 'سکه‌هایتان برگشت',
+  refill_body: '{coins} سکه برای هدیه دادن در این هفته.',
 };

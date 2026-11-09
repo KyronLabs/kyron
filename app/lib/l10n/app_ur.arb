@@ -1185,5 +1185,21 @@
   "ui_select_all": "سب منتخب کریں",
   "ui_gifts_count": "$count تحائف",
   "ui_gifts_count_one": "1 تحفہ",
-  "ui_feed_more_failed": "مزید پوسٹس لوڈ نہیں ہو سکیں۔"
+  "ui_feed_more_failed": "مزید پوسٹس لوڈ نہیں ہو سکیں۔",
+  "ui_reminders": "یاد دہانیاں",
+  "ui_reminders_detail": "آپ کی غیر موجودگی کے بعد نیا کیا ہے، اور جب آپ کے سکے واپس آئیں۔ دن میں ایک سے زیادہ کبھی نہیں۔",
+  "ui_gifts_title": "تحائف",
+  "ui_gifts_from_one": "1 شخص سے",
+  "ui_gifts_from_people": "$count لوگوں سے",
+  "ui_top_gifter": "سب سے بڑا تحفہ دینے والا",
+  "ui_gifts_load_failed": "تحفے بھیجنے والے لوڈ نہیں ہو سکے۔",
+  "ui_whats_new": "نیا کیا ہے",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "سمجھ گیا",
+  "ui_check_in_thanks": "شکریہ۔ ہم ہر جواب پڑھتے ہیں۔",
+  "ui_check_in_title": "اب تک Kyron کیسا لگا؟",
+  "ui_check_in_detail": "آپ کے ٹیسٹ کا دن $day۔ ایک ٹیپ کافی ہے۔",
+  "ui_check_in_hint": "کچھ ٹھیک کرنا یا شامل کرنا چاہیے؟ (اختیاری)",
+  "ui_send": "بھیجیں",
+  "ui_not_now": "ابھی نہیں"
 }

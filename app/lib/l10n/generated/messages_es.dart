@@ -2370,6 +2370,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 regalo"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "No se pudieron cargar más publicaciones."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Recordatorios"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Lo nuevo cuando has estado fuera y cuando vuelven tus monedas. Nunca más de uno al día."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Regalos"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("de 1 persona"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("de \$count personas"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Mejor donante"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "No se pudo cargar quién envió regalos."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Novedades"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Entendido"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Gracias. Leemos todas las respuestas."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "¿Qué te parece Kyron hasta ahora?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Día \$day de tu prueba. Con un toque basta."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "¿Algo que debamos arreglar o añadir? (opcional)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Enviar"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ahora no"),
     };
 
 final messageLookup = MessageLookup();

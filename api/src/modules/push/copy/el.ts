@@ -72,4 +72,10 @@ export const el: Copy = {
   rule_impersonation: 'Πλαστοπροσωπία',
   rule_intellectual_property: 'Πνευματική ιδιοκτησία',
   rule_illegal_goods: 'Παράνομα προϊόντα ή υπηρεσίες',
+  away_title: 'Όσο έλειπες',
+  away_posted: 'Ο/Η {who} δημοσίευσε.',
+  away_activity_one: '1 νέα ειδοποίηση.',
+  away_activity: '{count} νέες ειδοποιήσεις.',
+  refill_title: 'Τα νομίσματά σου επέστρεψαν',
+  refill_body: '{coins} νομίσματα για δώρα αυτή την εβδομάδα.',
 };

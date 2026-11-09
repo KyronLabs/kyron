@@ -70,4 +70,10 @@ export const tr: Copy = {
   rule_impersonation: 'Başkasının kimliğine bürünme',
   rule_intellectual_property: 'Fikri mülkiyet',
   rule_illegal_goods: 'Yasa dışı mal veya hizmetler',
+  away_title: 'Sen yokken',
+  away_posted: '{who} paylaşım yaptı.',
+  away_activity_one: '1 yeni bildirim.',
+  away_activity: '{count} yeni bildirim.',
+  refill_title: 'Jetonların geri geldi',
+  refill_body: 'Bu hafta hediye göndermek için {coins} jeton.',
 };

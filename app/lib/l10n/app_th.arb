@@ -1185,5 +1185,21 @@
   "ui_select_all": "เลือกทั้งหมด",
   "ui_gifts_count": "ของขวัญ $count ชิ้น",
   "ui_gifts_count_one": "ของขวัญ 1 ชิ้น",
-  "ui_feed_more_failed": "ไม่สามารถโหลดโพสต์เพิ่มเติมได้"
+  "ui_feed_more_failed": "ไม่สามารถโหลดโพสต์เพิ่มเติมได้",
+  "ui_reminders": "การเตือน",
+  "ui_reminders_detail": "สิ่งใหม่หลังจากที่คุณไม่อยู่ และเมื่อเหรียญของคุณกลับมา ไม่เกินวันละครั้ง",
+  "ui_gifts_title": "ของขวัญ",
+  "ui_gifts_from_one": "จาก 1 คน",
+  "ui_gifts_from_people": "จาก $count คน",
+  "ui_top_gifter": "ผู้ให้มากที่สุด",
+  "ui_gifts_load_failed": "ไม่สามารถโหลดผู้ส่งของขวัญได้",
+  "ui_whats_new": "มีอะไรใหม่",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "เข้าใจแล้ว",
+  "ui_check_in_thanks": "ขอบคุณ เราอ่านทุกคำตอบ",
+  "ui_check_in_title": "Kyron เป็นอย่างไรบ้าง",
+  "ui_check_in_detail": "วันที่ $day ของการทดสอบ แตะครั้งเดียวก็พอ",
+  "ui_check_in_hint": "มีอะไรที่เราควรแก้หรือเพิ่มไหม (ไม่บังคับ)",
+  "ui_send": "ส่ง",
+  "ui_not_now": "ไว้ทีหลัง"
 }

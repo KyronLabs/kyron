@@ -2255,6 +2255,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Opari 1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Ezin izan da argitalpen gehiago kargatu."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Gogorarazleak"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Zer dagoen berri kanpoan egon ondoren, eta txanponak noiz itzultzen diren. Inoiz ez bat baino gehiago egunean."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Opariak"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("pertsona batengandik"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count pertsonarengandik"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Emaile handiena"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da kargatu nork bidali dituen opariak."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Berritasunak"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Ulertuta"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Eskerrik asko. Erantzun guztiak irakurtzen ditugu."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Zer iruditzen zaizu Kyron orain arte?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure probaren \$day. eguna. Ukitu bat nahikoa da."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Zerbait konpondu edo gehitu beharko genuke? (aukerakoa)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Bidali"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Orain ez"),
     };
 
 final messageLookup = MessageLookup();

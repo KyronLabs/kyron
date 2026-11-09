@@ -1185,5 +1185,21 @@
   "ui_select_all": "அனைத்தையும் தேர்ந்தெடு",
   "ui_gifts_count": "$count பரிசுகள்",
   "ui_gifts_count_one": "1 பரிசு",
-  "ui_feed_more_failed": "மேலும் இடுகைகளை ஏற்ற முடியவில்லை."
+  "ui_feed_more_failed": "மேலும் இடுகைகளை ஏற்ற முடியவில்லை.",
+  "ui_reminders": "நினைவூட்டல்கள்",
+  "ui_reminders_detail": "நீங்கள் இல்லாதபோது என்ன புதிது, உங்கள் நாணயங்கள் எப்போது திரும்பும். நாளுக்கு ஒன்றுக்கு மேல் ஒருபோதும் இல்லை.",
+  "ui_gifts_title": "பரிசுகள்",
+  "ui_gifts_from_one": "1 நபரிடமிருந்து",
+  "ui_gifts_from_people": "$count நபர்களிடமிருந்து",
+  "ui_top_gifter": "சிறந்த பரிசாளர்",
+  "ui_gifts_load_failed": "பரிசு அனுப்பியவர்களை ஏற்ற முடியவில்லை.",
+  "ui_whats_new": "புதியவை",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "சரி",
+  "ui_check_in_thanks": "நன்றி. ஒவ்வொரு பதிலையும் படிக்கிறோம்.",
+  "ui_check_in_title": "இதுவரை Kyron எப்படி இருக்கிறது?",
+  "ui_check_in_detail": "உங்கள் சோதனையின் $day-ஆம் நாள். ஒரு தட்டல் போதும்.",
+  "ui_check_in_hint": "சரிசெய்ய அல்லது சேர்க்க வேண்டியது ஏதேனும் உள்ளதா? (விருப்பம்)",
+  "ui_send": "அனுப்பு",
+  "ui_not_now": "இப்போது வேண்டாம்"
 }

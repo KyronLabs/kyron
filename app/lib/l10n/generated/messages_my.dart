@@ -2267,6 +2267,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("လက်ဆောင် 1 ခု"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "နောက်ထပ် ပို့စ်များ ဖွင့်၍မရပါ။"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("သတိပေးချက်များ"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်မရှိစဉ် ဘာအသစ်ရှိလဲ၊ သင့်ဒင်္ဂါးများ ပြန်ရောက်ချိန်။ တစ်ရက်လျှင် တစ်ခုထက် ပိုမပို့ပါ။"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("လက်ဆောင်များ"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("လူ 1 ဦးထံမှ"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("လူ \$count ဦးထံမှ"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("အများဆုံးပေးသူ"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "လက်ဆောင်ပို့သူများကို ဖွင့်၍မရပါ။"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("အသစ်များ"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("နားလည်ပြီ"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "ကျေးဇူးတင်ပါသည်။ အဖြေတိုင်းကို ဖတ်ပါသည်။"),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Kyron ကို ယခုထိ ဘယ်လိုသဘောရလဲ။"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "သင့်စမ်းသပ်မှု၏ \$day ရက်မြောက်နေ့။ တစ်ချက်နှိပ်ရုံ လုံလောက်ပါသည်။"),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "ပြင်ရန် သို့မဟုတ် ထည့်ရန် ရှိပါသလား။ (ရွေးချယ်ခွင့်)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("ပို့ရန်"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("နောက်မှ"),
     };
 
 final messageLookup = MessageLookup();

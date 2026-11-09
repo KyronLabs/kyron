@@ -2257,6 +2257,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 подарунок"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Не вдалося завантажити більше дописів."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Нагадування"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Що нового, поки вас не було, і коли повертаються монети. Не більше одного на день."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Подарунки"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("від 1 людини"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("від \$count людей"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Найщедріший"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити, хто надіслав подарунки."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Що нового"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Зрозуміло"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Дякуємо. Ми читаємо кожну відповідь."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Як вам Kyron поки що?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "День \$day вашого тестування. Достатньо одного дотику."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Що нам виправити або додати? (необов'язково)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Надіслати"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Не зараз"),
     };
 
 final messageLookup = MessageLookup();

@@ -1185,5 +1185,21 @@
   "ui_select_all": "Hautatu guztiak",
   "ui_gifts_count": "$count opari",
   "ui_gifts_count_one": "Opari 1",
-  "ui_feed_more_failed": "Ezin izan da argitalpen gehiago kargatu."
+  "ui_feed_more_failed": "Ezin izan da argitalpen gehiago kargatu.",
+  "ui_reminders": "Gogorarazleak",
+  "ui_reminders_detail": "Zer dagoen berri kanpoan egon ondoren, eta txanponak noiz itzultzen diren. Inoiz ez bat baino gehiago egunean.",
+  "ui_gifts_title": "Opariak",
+  "ui_gifts_from_one": "pertsona batengandik",
+  "ui_gifts_from_people": "$count pertsonarengandik",
+  "ui_top_gifter": "Emaile handiena",
+  "ui_gifts_load_failed": "Ezin izan da kargatu nork bidali dituen opariak.",
+  "ui_whats_new": "Berritasunak",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Ulertuta",
+  "ui_check_in_thanks": "Eskerrik asko. Erantzun guztiak irakurtzen ditugu.",
+  "ui_check_in_title": "Zer iruditzen zaizu Kyron orain arte?",
+  "ui_check_in_detail": "Zure probaren $day. eguna. Ukitu bat nahikoa da.",
+  "ui_check_in_hint": "Zerbait konpondu edo gehitu beharko genuke? (aukerakoa)",
+  "ui_send": "Bidali",
+  "ui_not_now": "Orain ez"
 }

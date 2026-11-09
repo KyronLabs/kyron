@@ -1185,5 +1185,21 @@
   "ui_select_all": "Khetha konke",
   "ui_gifts_count": "Izipho ezingu-$count",
   "ui_gifts_count_one": "Isipho esi-1",
-  "ui_feed_more_failed": "Akukwazanga ukulayisha okunye okuthunyelwe."
+  "ui_feed_more_failed": "Akukwazanga ukulayisha okunye okuthunyelwe.",
+  "ui_reminders": "Izikhumbuzo",
+  "ui_reminders_detail": "Okusha ngemva kokuba ubungekho, nalapho izinhlamvu zakho zemali zibuya. Akukaze kube ngaphezu kwesisodwa ngosuku.",
+  "ui_gifts_title": "Izipho",
+  "ui_gifts_from_one": "kumuntu o-1",
+  "ui_gifts_from_people": "kubantu abangu-$count",
+  "ui_top_gifter": "Umuphi ophambili",
+  "ui_gifts_load_failed": "Akukwazanga ukulayisha abathumele izipho.",
+  "ui_whats_new": "Okusha",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Ngiyezwa",
+  "ui_check_in_thanks": "Siyabonga. Sifunda yonke impendulo.",
+  "ui_check_in_title": "I-Kyron injani kuze kube manje?",
+  "ui_check_in_detail": "Usuku lwe-$day lokuhlola kwakho. Ukuthepha kanye kwanele.",
+  "ui_check_in_hint": "Ingabe kukhona okufanele sikulungise noma sikwengeze? (ongakukhetha)",
+  "ui_send": "Thumela",
+  "ui_not_now": "Hhayi manje"
 }

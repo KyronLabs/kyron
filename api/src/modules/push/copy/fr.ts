@@ -74,4 +74,10 @@ export const fr: Copy = {
   rule_impersonation: 'Usurpation d’identité',
   rule_intellectual_property: 'Propriété intellectuelle',
   rule_illegal_goods: 'Biens ou services illégaux',
+  away_title: 'Pendant votre absence',
+  away_posted: '{who} a publié.',
+  away_activity_one: '1 nouvelle notification.',
+  away_activity: '{count} nouvelles notifications.',
+  refill_title: 'Vos pièces sont de retour',
+  refill_body: '{coins} pièces à offrir en cadeaux cette semaine.',
 };

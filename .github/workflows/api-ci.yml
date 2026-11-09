@@ -137,5 +137,10 @@ jobs:
       - name: Apply migrations
         run: npx prisma migrate deploy
 
+      # One file at a time. They share this one database, and a spec that
+      # pages through the whole feed (feed.impressions.db.spec) saw another
+      # spec's posts deleted halfway through its pages and failed, about one
+      # run in four, for nothing it had done. In parallel they took ~6s, in
+      # band ~9s.
       - name: Database tests
-        run: npx jest db.spec
+        run: npx jest db.spec --runInBand

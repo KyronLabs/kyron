@@ -20,6 +20,22 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Added
+
+- **See who gave a post its gifts.** Tap the gift pill: everyone who sent
+  one, the biggest giver first and named as such, with what they sent.
+  Holding the heart still sends one of your own.
+- **Every part of a notification opens its own page.** A face or a name
+  opens that person, the picture opens the post, and a reply's words open
+  the reply.
+- **What's new, after each update**, once, so you can see what changed.
+- **A quick check-in on your third and tenth day**: one tap on a face, and
+  a line if you have something to say.
+- **Reminders, now and then.** After a day and a half away, an evening
+  note about what's new, only if something is; and on Monday, a note that
+  your gift coins are back, if you spent some. Never more than one a day,
+  and off in Settings, Notifications.
+
 ### Fixed
 
 - **A profile's tabs sit on the page in the dark theme**, not on a grey band

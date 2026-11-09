@@ -1911,6 +1911,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("선물 1개"),
       "ui_feed_more_failed":
           MessageLookupByLibrary.simpleMessage("게시물을 더 불러올 수 없습니다."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("알림"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "자리를 비운 사이의 새 소식과 코인이 다시 채워졌을 때 알려 드려요. 하루에 한 번까지."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("선물"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1명에게서"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count명에게서"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("최고 선물러"),
+      "ui_gifts_load_failed":
+          MessageLookupByLibrary.simpleMessage("선물을 보낸 사람을 불러올 수 없습니다."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("새로운 기능"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("확인"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("감사합니다. 모든 답변을 읽고 있어요."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("지금까지 Kyron 어떠세요?"),
+      "ui_check_in_detail":
+          MessageLookupByLibrary.simpleMessage("테스트 \$day일째예요. 한 번만 탭하면 돼요."),
+      "ui_check_in_hint":
+          MessageLookupByLibrary.simpleMessage("고치거나 추가했으면 하는 게 있나요? (선택)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("보내기"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("나중에"),
     };
 
 final messageLookup = MessageLookup();

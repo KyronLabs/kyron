@@ -165,5 +165,63 @@ class NothingWritten(unittest.TestCase):
         self.assertNotIn("Bug fixes and performance", body)
 
 
+
+class AppNotes(unittest.TestCase):
+    CONTENT = """# Changelog
+
+## [Unreleased]
+### Added
+
+- **Not out yet.** Nobody has this.
+
+## [0.2.0] - 2026-11-09
+### Added
+
+- **Gifts have a place of their own.** A pill on the post. And more.
+- **Select all goes once everything is selected**, instead of staying.
+
+## [0.1.9] - 2026-11-01
+### Changed
+
+## [0.1.8] - 2026-10-30
+### Fixed
+
+- **One.** Two.
+"""
+
+    def test_released_versions_newest_first_never_unreleased(self):
+        notes = changelog.app_notes(self.CONTENT)
+        self.assertEqual([n["version"] for n in notes], ["0.2.0", "0.1.9", "0.1.8"])
+
+    def test_headline_and_first_sentence_as_plain_text(self):
+        first = changelog.app_notes(self.CONTENT)[0]["items"][0]
+        self.assertEqual(first["title"], "Gifts have a place of their own.")
+        self.assertEqual(first["detail"], "A pill on the post.")
+
+    def test_a_headline_that_stops_mid_sentence_keeps_its_sentence(self):
+        second = changelog.app_notes(self.CONTENT)[0]["items"][1]
+        self.assertEqual(
+            second["title"],
+            "Select all goes once everything is selected, instead of staying.",
+        )
+
+    def test_an_empty_version_says_the_default(self):
+        empty = changelog.app_notes(self.CONTENT)[1]["items"]
+        self.assertEqual(
+            empty, [{"title": "Bug fixes and performance improvements.", "detail": ""}]
+        )
+
+    def test_the_bundled_notes_match_the_changelog(self):
+        import json
+
+        bundled = json.loads(changelog.APP_NOTES.read_text(encoding="utf-8"))
+        current = changelog.app_notes(changelog.CHANGELOG.read_text(encoding="utf-8"))
+        self.assertEqual(
+            bundled,
+            current,
+            "app/lib/assets/whats_new.json is stale: run "
+            "python3 scripts/changelog.py app-notes",
+        )
+
 if __name__ == "__main__":
     unittest.main()

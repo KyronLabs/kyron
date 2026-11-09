@@ -1734,6 +1734,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count": MessageLookupByLibrary.simpleMessage("\$count 份礼物"),
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 份礼物"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage("无法加载更多帖子。"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("提醒"),
+      "ui_reminders_detail":
+          MessageLookupByLibrary.simpleMessage("离开一段时间后有什么新内容，以及金币回来时。每天最多一条。"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("礼物"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("来自 1 个人"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("来自 \$count 个人"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("最佳送礼者"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage("无法加载送礼人。"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("新功能"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("知道了"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("谢谢。我们会读每一条回复。"),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("目前觉得 Kyron 怎么样？"),
+      "ui_check_in_detail":
+          MessageLookupByLibrary.simpleMessage("你的测试第 \$day 天。点一下就好。"),
+      "ui_check_in_hint":
+          MessageLookupByLibrary.simpleMessage("有什么需要我们修复或添加的吗？（可选）"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("发送"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("以后再说"),
     };
 
 final messageLookup = MessageLookup();

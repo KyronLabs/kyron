@@ -67,4 +67,10 @@ export const zh: Copy = {
   rule_impersonation: '冒充他人',
   rule_intellectual_property: '知识产权',
   rule_illegal_goods: '非法商品或服务',
+  away_title: '你不在时',
+  away_posted: '{who} 发布了新内容。',
+  away_activity_one: '1 条新通知。',
+  away_activity: '{count} 条新通知。',
+  refill_title: '你的金币回来了',
+  refill_body: '本周可用 {coins} 枚金币送礼物。',
 };

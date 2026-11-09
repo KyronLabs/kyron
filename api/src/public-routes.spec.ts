@@ -32,6 +32,10 @@ const PUBLIC = new Map<string, string>([
   ['GET /health/history', 'the status page'],
   ['GET /metrics', 'checks METRICS_TOKEN itself'],
   [
+    'POST /internal/scheduled-pushes',
+    'checks CRON_KEY itself, and is a 404 on a server without one',
+  ],
+  [
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],

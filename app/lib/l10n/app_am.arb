@@ -1185,5 +1185,21 @@
   "ui_select_all": "ሁሉንም ምረጥ",
   "ui_gifts_count": "$count ስጦታዎች",
   "ui_gifts_count_one": "1 ስጦታ",
-  "ui_feed_more_failed": "ተጨማሪ ልጥፎችን መጫን አልተቻለም።"
+  "ui_feed_more_failed": "ተጨማሪ ልጥፎችን መጫን አልተቻለም።",
+  "ui_reminders": "ማስታወሻዎች",
+  "ui_reminders_detail": "ለጥቂት ጊዜ ከሌሉ በኋላ አዲስ ነገር፣ እና ሳንቲሞችዎ ሲመለሱ። በቀን ከአንድ በላይ በጭራሽ።",
+  "ui_gifts_title": "ስጦታዎች",
+  "ui_gifts_from_one": "ከ1 ሰው",
+  "ui_gifts_from_people": "ከ$count ሰዎች",
+  "ui_top_gifter": "ከፍተኛ ስጦታ ሰጪ",
+  "ui_gifts_load_failed": "ስጦታ የላኩትን መጫን አልተቻለም።",
+  "ui_whats_new": "አዲስ ነገሮች",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "ገባኝ",
+  "ui_check_in_thanks": "እናመሰግናለን። እያንዳንዱን መልስ እናነባለን።",
+  "ui_check_in_title": "እስካሁን Kyron እንዴት ነው?",
+  "ui_check_in_detail": "የሙከራዎ ቀን $day። አንድ መንካት በቂ ነው።",
+  "ui_check_in_hint": "ልናስተካክለው ወይም ልንጨምረው የሚገባ ነገር አለ? (አማራጭ)",
+  "ui_send": "ላክ",
+  "ui_not_now": "አሁን አይደለም"
 }

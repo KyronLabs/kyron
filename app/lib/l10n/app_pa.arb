@@ -1185,5 +1185,21 @@
   "ui_select_all": "ਸਭ ਚੁਣੋ",
   "ui_gifts_count": "$count ਤੋਹਫ਼ੇ",
   "ui_gifts_count_one": "1 ਤੋਹਫ਼ਾ",
-  "ui_feed_more_failed": "ਹੋਰ ਪੋਸਟਾਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ।"
+  "ui_feed_more_failed": "ਹੋਰ ਪੋਸਟਾਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ।",
+  "ui_reminders": "ਯਾਦ-ਦਹਾਨੀਆਂ",
+  "ui_reminders_detail": "ਕੁਝ ਸਮਾਂ ਦੂਰ ਰਹਿਣ ਤੋਂ ਬਾਅਦ ਨਵਾਂ ਕੀ ਹੈ, ਅਤੇ ਤੁਹਾਡੇ ਸਿੱਕੇ ਵਾਪਸ ਆਉਣ ʼਤੇ। ਦਿਨ ਵਿੱਚ ਇੱਕ ਤੋਂ ਵੱਧ ਕਦੇ ਨਹੀਂ।",
+  "ui_gifts_title": "ਤੋਹਫ਼ੇ",
+  "ui_gifts_from_one": "1 ਵਿਅਕਤੀ ਤੋਂ",
+  "ui_gifts_from_people": "$count ਲੋਕਾਂ ਤੋਂ",
+  "ui_top_gifter": "ਸਭ ਤੋਂ ਵੱਡਾ ਤੋਹਫ਼ਾ ਦੇਣ ਵਾਲਾ",
+  "ui_gifts_load_failed": "ਤੋਹਫ਼ੇ ਕਿਸ ਨੇ ਭੇਜੇ, ਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ।",
+  "ui_whats_new": "ਨਵਾਂ ਕੀ ਹੈ",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "ਸਮਝ ਗਿਆ",
+  "ui_check_in_thanks": "ਧੰਨਵਾਦ। ਅਸੀਂ ਹਰ ਜਵਾਬ ਪੜ੍ਹਦੇ ਹਾਂ।",
+  "ui_check_in_title": "ਹੁਣ ਤੱਕ Kyron ਕਿਵੇਂ ਲੱਗਿਆ?",
+  "ui_check_in_detail": "ਤੁਹਾਡੇ ਟੈਸਟ ਦਾ ਦਿਨ $day। ਇੱਕ ਟੈਪ ਕਾਫ਼ੀ ਹੈ।",
+  "ui_check_in_hint": "ਕੁਝ ਠੀਕ ਕਰਨਾ ਜਾਂ ਜੋੜਨਾ ਚਾਹੀਦਾ ਹੈ? (ਵਿਕਲਪਿਕ)",
+  "ui_send": "ਭੇਜੋ",
+  "ui_not_now": "ਹੁਣ ਨਹੀਂ"
 }

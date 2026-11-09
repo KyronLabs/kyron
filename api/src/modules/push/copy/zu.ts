@@ -72,4 +72,11 @@ export const zu: Copy = {
   rule_impersonation: 'Ukuzenza omunye umuntu',
   rule_intellectual_property: 'Impahla yengqondo',
   rule_illegal_goods: 'Izimpahla noma izinsizakalo ezingekho emthethweni',
+  away_title: 'Ngesikhathi ungekho',
+  away_posted: 'U-{who} uthumele okuthile.',
+  away_activity_one: 'Isaziso esisha esi-1.',
+  away_activity: 'Izaziso ezintsha ezingu-{count}.',
+  refill_title: 'Izinhlamvu zakho zemali zibuyile',
+  refill_body:
+    'Izinhlamvu zemali ezingu-{coins} zokuthumela izipho kuleli sonto.',
 };

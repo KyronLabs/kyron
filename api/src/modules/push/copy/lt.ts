@@ -71,4 +71,10 @@ export const lt: Copy = {
   rule_impersonation: 'Apsimetinėjimas kitu asmeniu',
   rule_intellectual_property: 'Intelektinė nuosavybė',
   rule_illegal_goods: 'Neteisėtos prekės ar paslaugos',
+  away_title: 'Kol jūsų nebuvo',
+  away_posted: '{who} paskelbė įrašą.',
+  away_activity_one: '1 naujas pranešimas.',
+  away_activity: 'Naujų pranešimų: {count}.',
+  refill_title: 'Jūsų monetos sugrįžo',
+  refill_body: '{coins} monetų dovanoms šią savaitę.',
 };

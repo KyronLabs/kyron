@@ -1905,6 +1905,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("ギフト 1 件"),
       "ui_feed_more_failed":
           MessageLookupByLibrary.simpleMessage("これ以上の投稿を読み込めませんでした。"),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("リマインダー"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "しばらく離れていた間の新着と、コインが戻ったときにお知らせします。1日1回まで。"),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("ギフト"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1人から"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count人から"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("トップギフター"),
+      "ui_gifts_load_failed":
+          MessageLookupByLibrary.simpleMessage("ギフトを贈った人を読み込めませんでした。"),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("新機能"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("OK"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("ありがとうございます。すべて読んでいます。"),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyronの使い心地はいかがですか？"),
+      "ui_check_in_detail":
+          MessageLookupByLibrary.simpleMessage("テスト\$day日目です。タップひとつで十分です。"),
+      "ui_check_in_hint":
+          MessageLookupByLibrary.simpleMessage("直してほしいこと、追加してほしいことは？（任意）"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("送信"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("後で"),
     };
 
 final messageLookup = MessageLookup();

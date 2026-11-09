@@ -2248,6 +2248,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Ẹ̀bùn 1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "A kò lè gbé àwọn ìfiránṣẹ́ míì wá."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Àwọn ìránnilétí"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Ohun tuntun lẹ́yìn tí o ti lọ fún ìgbà díẹ̀, àti nígbà tí ẹyọ owó rẹ bá padà. Kò ju ẹyọ kan lọ lójoojúmọ́."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Àwọn ẹ̀bùn"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("láti ọ̀dọ̀ ènìyàn 1"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("láti ọ̀dọ̀ ènìyàn \$count"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Olùfúnni tó ga jù"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè gbé àwọn tó fi ẹ̀bùn ránṣẹ́ wá."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Kí ló ṣẹ̀ṣẹ̀ dé"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Ó yé mi"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "A dúpẹ́. A ń ka gbogbo ìdáhùn."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Báwo ni Kyron ṣe rí títí di ìsinsìnyí?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọjọ́ \$day ìdánwò rẹ. Títẹ̀ ẹ̀ẹ̀kan tó."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ṣé ohun kan wà tí a gbọ́dọ̀ tún ṣe tàbí fi kún un? (àṣàyàn)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Kì í ṣe báyìí"),
     };
 
 final messageLookup = MessageLookup();

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart' show RemoteMessage;
 
+import '../providers/push_provider.dart';
 import '../providers/keys_provider.dart';
 import '../providers/messages_provider.dart';
 import '../providers/notifications_provider.dart';
@@ -57,6 +58,7 @@ class _MainContainerState extends ConsumerState<MainContainer>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _reportActive();
     // A share from another app: the one that opened the app is already
     // waiting; one that arrives later is listened for.
     ref.listenManual<SharedContent?>(
@@ -115,6 +117,7 @@ class _MainContainerState extends ConsumerState<MainContainer>
         break;
     }
     if (state == AppLifecycleState.resumed) {
+      _reportActive();
       ref.invalidate(unreadNotificationsProvider);
       // A message that arrived while the app was away came as a push, not
       // over the socket, so nothing has moved the count since.
@@ -124,6 +127,27 @@ class _MainContainerState extends ConsumerState<MainContainer>
       // the background does not always say so on return.
       unawaited(ref.read(messageVaultProvider).answerPending());
     }
+  }
+
+  /// When the server was last told the app is open, so a phone flicking
+  /// in and out of the app does not tell it every time.
+  static DateTime? _reportedAt;
+
+  /// Tells the server the app is open, and the phone's offset from UTC: the
+  /// reminders go only to somebody away, and only in their evening.
+  void _reportActive() {
+    final now = DateTime.now();
+    final last = _reportedAt;
+    if (last != null && now.difference(last) < const Duration(minutes: 10)) {
+      return;
+    }
+    _reportedAt = now;
+    unawaited(
+      ref
+          .read(devicesRepositoryProvider)
+          .active(utcOffsetMinutes: now.timeZoneOffset.inMinutes)
+          .catchError((Object _) => _reportedAt = null),
+    );
   }
 
   @override

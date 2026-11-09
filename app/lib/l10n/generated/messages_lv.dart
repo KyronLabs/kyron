@@ -2255,6 +2255,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 dāvana"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Neizdevās ielādēt vairāk ierakstu."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Atgādinājumi"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Kas jauns pēc jūsu prombūtnes un kad monētas atgriežas. Ne vairāk kā viens dienā."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Dāvanas"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("no 1 cilvēka"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("no \$count cilvēkiem"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Dāsnākais"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās ielādēt, kas sūtīja dāvanas."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Jaunumi"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Skaidrs"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Paldies. Mēs izlasām katru atbildi."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kā jums līdz šim patīk Kyron?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Jūsu testa \$day. diena. Pietiek ar vienu pieskārienu."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ko mums labot vai pievienot? (pēc izvēles)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Sūtīt"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne tagad"),
     };
 
 final messageLookup = MessageLookup();

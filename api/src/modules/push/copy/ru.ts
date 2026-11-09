@@ -70,4 +70,10 @@ export const ru: Copy = {
   rule_impersonation: 'Выдача себя за другого человека',
   rule_intellectual_property: 'Интеллектуальная собственность',
   rule_illegal_goods: 'Незаконные товары или услуги',
+  away_title: 'Пока вас не было',
+  away_posted: '{who}: новая публикация.',
+  away_activity_one: '1 новое уведомление.',
+  away_activity: 'Новых уведомлений: {count}.',
+  refill_title: 'Монеты снова у вас',
+  refill_body: '{coins} монет для подарков на этой неделе.',
 };

@@ -72,4 +72,10 @@ export const sl: Copy = {
   rule_impersonation: 'Lažno predstavljanje',
   rule_intellectual_property: 'Intelektualna lastnina',
   rule_illegal_goods: 'Nezakonito blago ali storitve',
+  away_title: 'Medtem ko vas ni bilo',
+  away_posted: '{who} je objavil/a.',
+  away_activity_one: '1 novo obvestilo.',
+  away_activity: 'Nova obvestila: {count}.',
+  refill_title: 'Kovanci so spet tu',
+  refill_body: '{coins} kovancev za darila ta teden.',
 };

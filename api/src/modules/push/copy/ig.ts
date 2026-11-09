@@ -71,4 +71,10 @@ export const ig: Copy = {
   rule_impersonation: 'Ime onwe ka onye ọzọ',
   rule_intellectual_property: 'Ihe onwunwe ọgụgụ isi',
   rule_illegal_goods: 'Ngwongwo ma ọ bụ ọrụ megidere iwu',
+  away_title: 'Mgbe ị nọghị ebe a',
+  away_posted: '{who} biputere ihe.',
+  away_activity_one: 'Ọkwa ọhụrụ 1.',
+  away_activity: 'Ọkwa ọhụrụ {count}.',
+  refill_title: 'Mkpụrụ ego gị alọghachila',
+  refill_body: "Mkpụrụ ego {coins} iji zipu onyinye n'izu a.",
 };

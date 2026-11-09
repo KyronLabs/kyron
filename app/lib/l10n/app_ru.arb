@@ -1185,5 +1185,21 @@
   "ui_select_all": "Выбрать всё",
   "ui_gifts_count": "Подарки: $count",
   "ui_gifts_count_one": "1 подарок",
-  "ui_feed_more_failed": "Не удалось загрузить больше публикаций."
+  "ui_feed_more_failed": "Не удалось загрузить больше публикаций.",
+  "ui_reminders": "Напоминания",
+  "ui_reminders_detail": "Что нового, пока вас не было, и когда вернутся монеты. Не чаще одного в день.",
+  "ui_gifts_title": "Подарки",
+  "ui_gifts_from_one": "от 1 человека",
+  "ui_gifts_from_people": "от $count человек",
+  "ui_top_gifter": "Самый щедрый",
+  "ui_gifts_load_failed": "Не удалось загрузить, кто отправил подарки.",
+  "ui_whats_new": "Что нового",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Понятно",
+  "ui_check_in_thanks": "Спасибо. Мы читаем каждый ответ.",
+  "ui_check_in_title": "Как вам Kyron пока?",
+  "ui_check_in_detail": "День $day вашего тестирования. Достаточно одного касания.",
+  "ui_check_in_hint": "Что нам исправить или добавить? (необязательно)",
+  "ui_send": "Отправить",
+  "ui_not_now": "Не сейчас"
 }

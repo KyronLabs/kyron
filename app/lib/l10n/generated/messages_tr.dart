@@ -2222,6 +2222,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 hediye"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Daha fazla gönderi yüklenemedi."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Hatırlatmalar"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Bir süre uzak kaldığında neler olduğu ve jetonların ne zaman geri geldiği. Günde en fazla bir tane."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Hediyeler"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 kişiden"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count kişiden"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("En cömert"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kimin hediye gönderdiği yüklenemedi."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Yenilikler"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Anladım"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Teşekkürler. Her yanıtı okuyoruz."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyron şimdiye kadar nasıl?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Testinin \$day. günü. Tek dokunuş yeter."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Düzeltmemiz ya da eklememiz gereken bir şey var mı? (isteğe bağlı)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Gönder"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Şimdi değil"),
     };
 
 final messageLookup = MessageLookup();

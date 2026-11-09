@@ -2259,6 +2259,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 sovg‘a"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Ko‘proq postlarni yuklab bo‘lmadi."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Eslatmalar"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Yo‘qligingizdan keyin nima yangilik va tangalaringiz qachon qaytadi. Kuniga bittadan ko‘p emas."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Sovg‘alar"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("1 kishidan"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("\$count kishidan"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Eng saxiy"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kim sovg‘a yuborgani yuklanmadi."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Yangiliklar"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Tushunarli"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Rahmat. Har bir javobni o‘qiymiz."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Hozircha Kyron qanday?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinovingizning \$day-kuni. Bir bosish kifoya."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Tuzatishimiz yoki qo‘shishimiz kerak bo‘lgan narsa bormi? (ixtiyoriy)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Yuborish"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Hozir emas"),
     };
 
 final messageLookup = MessageLookup();

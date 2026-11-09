@@ -1185,5 +1185,21 @@
   "ui_select_all": "全选",
   "ui_gifts_count": "$count 份礼物",
   "ui_gifts_count_one": "1 份礼物",
-  "ui_feed_more_failed": "无法加载更多帖子。"
+  "ui_feed_more_failed": "无法加载更多帖子。",
+  "ui_reminders": "提醒",
+  "ui_reminders_detail": "离开一段时间后有什么新内容，以及金币回来时。每天最多一条。",
+  "ui_gifts_title": "礼物",
+  "ui_gifts_from_one": "来自 1 个人",
+  "ui_gifts_from_people": "来自 $count 个人",
+  "ui_top_gifter": "最佳送礼者",
+  "ui_gifts_load_failed": "无法加载送礼人。",
+  "ui_whats_new": "新功能",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "知道了",
+  "ui_check_in_thanks": "谢谢。我们会读每一条回复。",
+  "ui_check_in_title": "目前觉得 Kyron 怎么样？",
+  "ui_check_in_detail": "你的测试第 $day 天。点一下就好。",
+  "ui_check_in_hint": "有什么需要我们修复或添加的吗？（可选）",
+  "ui_send": "发送",
+  "ui_not_now": "以后再说"
 }

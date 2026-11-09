@@ -73,4 +73,10 @@ export const eu: Copy = {
   rule_impersonation: 'Nortasun-ordezpena',
   rule_intellectual_property: 'Jabetza intelektuala',
   rule_illegal_goods: 'Legez kanpoko ondasunak edo zerbitzuak',
+  away_title: 'Kanpoan zinen bitartean',
+  away_posted: '{who} erabiltzaileak argitaratu du.',
+  away_activity_one: 'Jakinarazpen berri 1.',
+  away_activity: '{count} jakinarazpen berri.',
+  refill_title: 'Zure txanponak itzuli dira',
+  refill_body: '{coins} txanpon aste honetan opariak bidaltzeko.',
 };

@@ -71,4 +71,10 @@ export const hr: Copy = {
   rule_impersonation: 'Lažno predstavljanje',
   rule_intellectual_property: 'Intelektualno vlasništvo',
   rule_illegal_goods: 'Nezakonita roba ili usluge',
+  away_title: 'Dok vas nije bilo',
+  away_posted: '{who} je objavio/la.',
+  away_activity_one: '1 nova obavijest.',
+  away_activity: 'Novih obavijesti: {count}.',
+  refill_title: 'Kovanice su vam se vratile',
+  refill_body: '{coins} kovanica za darove ovaj tjedan.',
 };

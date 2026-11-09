@@ -1,4 +1,6 @@
 // lib/screens/home_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +14,11 @@ import '../widgets/feed_canvas.dart';
 import '../widgets/feed_refresh.dart';
 import '../widgets/app_drawer.dart';
 import '../routes.dart';
+import '../services/app_info.dart';
+import '../services/home_prompts.dart';
+import '../widgets/check_in_sheet.dart';
+import '../widgets/whats_new_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   final GlobalKey<AppDrawerState> drawerKey;
@@ -64,6 +71,38 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     );
 
     _scrollController.addListener(_handleScrollLive);
+
+    // A moment after the feed is up, not over it as it loads.
+    _promptTimer = Timer(const Duration(milliseconds: 1200), _offerPrompt);
+  }
+
+  Timer? _promptTimer;
+
+  /// "What's new" after an update, or a check-in a few days in -- one at
+  /// most, and only while the home screen is the page on top.
+  Future<void> _offerPrompt() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final info = await AppInfo.load();
+      final notes = await HomePrompts.bundledNotes();
+      if (!mounted || ModalRoute.of(context)?.isCurrent == false) return;
+      final prompt = await HomePrompts.decide(
+        prefs: prefs,
+        version: info.version,
+        now: DateTime.now(),
+        notes: notes,
+      );
+      if (!mounted || prompt == null) return;
+      switch (prompt) {
+        case WhatsNewPrompt(:final versions):
+          await WhatsNewSheet.show(context, versions);
+        case CheckInPrompt(:final day):
+          await CheckInSheet.show(context, day: day);
+      }
+    } catch (_) {
+      // A prompt is never worth an error: no build info in a test, a
+      // missing asset, a closed screen.
+    }
   }
 
   /// Everything the home screen shows that can be out of date: the selected
@@ -155,6 +194,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   void dispose() {
+    _promptTimer?.cancel();
     _scrollController.removeListener(_handleScrollLive);
     _scrollController.dispose();
     _topEdgeAnimController.dispose();

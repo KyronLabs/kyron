@@ -69,4 +69,10 @@ export const et: Copy = {
   rule_impersonation: 'Kellegi teisena esinemine',
   rule_intellectual_property: 'Intellektuaalomand',
   rule_illegal_goods: 'Ebaseaduslikud kaubad või teenused',
+  away_title: 'Sel ajal, kui sind polnud',
+  away_posted: '{who} postitas.',
+  away_activity_one: '1 uus teavitus.',
+  away_activity: '{count} uut teavitust.',
+  refill_title: 'Su mündid on tagasi',
+  refill_body: '{coins} münti, et sel nädalal kingitusi saata.',
 };

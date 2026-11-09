@@ -71,4 +71,10 @@ export const sv: Copy = {
   rule_impersonation: 'Utger sig för att vara någon annan',
   rule_intellectual_property: 'Immateriella rättigheter',
   rule_illegal_goods: 'Olagliga varor eller tjänster',
+  away_title: 'Medan du var borta',
+  away_posted: '{who} har publicerat något.',
+  away_activity_one: '1 ny avisering.',
+  away_activity: '{count} nya aviseringar.',
+  refill_title: 'Dina mynt är tillbaka',
+  refill_body: '{coins} mynt att skicka som gåvor den här veckan.',
 };

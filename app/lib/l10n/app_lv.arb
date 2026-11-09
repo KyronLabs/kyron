@@ -1185,5 +1185,21 @@
   "ui_select_all": "Atlasīt visu",
   "ui_gifts_count": "Dāvanas: $count",
   "ui_gifts_count_one": "1 dāvana",
-  "ui_feed_more_failed": "Neizdevās ielādēt vairāk ierakstu."
+  "ui_feed_more_failed": "Neizdevās ielādēt vairāk ierakstu.",
+  "ui_reminders": "Atgādinājumi",
+  "ui_reminders_detail": "Kas jauns pēc jūsu prombūtnes un kad monētas atgriežas. Ne vairāk kā viens dienā.",
+  "ui_gifts_title": "Dāvanas",
+  "ui_gifts_from_one": "no 1 cilvēka",
+  "ui_gifts_from_people": "no $count cilvēkiem",
+  "ui_top_gifter": "Dāsnākais",
+  "ui_gifts_load_failed": "Neizdevās ielādēt, kas sūtīja dāvanas.",
+  "ui_whats_new": "Jaunumi",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Skaidrs",
+  "ui_check_in_thanks": "Paldies. Mēs izlasām katru atbildi.",
+  "ui_check_in_title": "Kā jums līdz šim patīk Kyron?",
+  "ui_check_in_detail": "Jūsu testa $day. diena. Pietiek ar vienu pieskārienu.",
+  "ui_check_in_hint": "Ko mums labot vai pievienot? (pēc izvēles)",
+  "ui_send": "Sūtīt",
+  "ui_not_now": "Ne tagad"
 }

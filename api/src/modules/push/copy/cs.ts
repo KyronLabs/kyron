@@ -71,4 +71,10 @@ export const cs: Copy = {
   rule_impersonation: 'Vydávání se za jiného',
   rule_intellectual_property: 'Duševní vlastnictví',
   rule_illegal_goods: 'Nelegální zboží nebo služby',
+  away_title: 'Zatímco jste byli pryč',
+  away_posted: '{who} přidal(a) příspěvek.',
+  away_activity_one: '1 nové oznámení.',
+  away_activity: 'Nová oznámení: {count}.',
+  refill_title: 'Mince jsou zpět',
+  refill_body: '{coins} mincí na dárky pro tento týden.',
 };

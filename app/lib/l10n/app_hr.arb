@@ -1185,5 +1185,21 @@
   "ui_select_all": "Odaberi sve",
   "ui_gifts_count": "Darovi: $count",
   "ui_gifts_count_one": "1 dar",
-  "ui_feed_more_failed": "Nije moguće učitati više objava."
+  "ui_feed_more_failed": "Nije moguće učitati više objava.",
+  "ui_reminders": "Podsjetnici",
+  "ui_reminders_detail": "Što je novo kad vas nije bilo i kad vam se vrate kovanice. Nikad više od jednog dnevno.",
+  "ui_gifts_title": "Darovi",
+  "ui_gifts_from_one": "od 1 osobe",
+  "ui_gifts_from_people": "od $count osoba",
+  "ui_top_gifter": "Najveći darovatelj",
+  "ui_gifts_load_failed": "Nije moguće učitati tko je poslao darove.",
+  "ui_whats_new": "Novosti",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Razumijem",
+  "ui_check_in_thanks": "Hvala. Čitamo svaki odgovor.",
+  "ui_check_in_title": "Kako vam se zasad sviđa Kyron?",
+  "ui_check_in_detail": "Dan $day vašeg testiranja. Dovoljan je jedan dodir.",
+  "ui_check_in_hint": "Nešto što bismo trebali popraviti ili dodati? (neobavezno)",
+  "ui_send": "Pošalji",
+  "ui_not_now": "Ne sada"
 }

@@ -74,6 +74,10 @@ export interface NotificationItem {
   postImage: string | null;
   /** What was written, for a comment or a mention. */
   content: string | null;
+  /** The reply it is about -- the reply itself, the reply that named the
+   * reader, or the reply a gift went to -- so the row can open that reply
+   * rather than the whole post. Null when it is about the post. */
+  commentId?: string | null;
   createdAt: Date;
   /** Nothing this new had been seen last time the screen was opened. */
   unread: boolean;
@@ -253,6 +257,7 @@ export class NotificationsService {
                 sender: { select: this.actorFields },
                 post: { select: this.postFields },
                 // Set when it went to the reader's reply rather than a post.
+                commentId: true,
                 comment: { select: { content: true } },
               },
             })
@@ -284,6 +289,7 @@ export class NotificationsService {
         postSnippet: this.snippet(row.post?.content),
         postImage: this.picture(row.post),
         content: this.snippet(row.content),
+        commentId: row.id,
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
       })),
@@ -318,6 +324,7 @@ export class NotificationsService {
         postImage: this.picture(row.post),
         // Where they named you: the reply's words, or the post's.
         content: this.snippet(row.comment?.content ?? row.post?.content),
+        commentId: row.commentId,
         createdAt: row.createdAt,
         unread: this.isUnread(row.createdAt, seenAt),
       })),
@@ -334,6 +341,7 @@ export class NotificationsService {
                 // The reply it was sent to, in its own words: "to your post"
                 // would point at a post that is somebody else's.
                 content: row.comment ? this.snippet(row.comment.content) : null,
+                commentId: row.comment ? row.commentId : null,
                 createdAt: row.createdAt,
                 unread: this.isUnread(row.createdAt, seenAt),
                 gift: {
@@ -370,7 +378,14 @@ export class NotificationsService {
   /** What the tab bar's badge counts. */
   async unreadCount(
     userId: string,
-    options: { moderation?: boolean; mentions?: boolean; gifts?: boolean } = {},
+    options: {
+      moderation?: boolean;
+      mentions?: boolean;
+      gifts?: boolean;
+      /** Only what is newer than this as well: what a push has not
+       * already told somebody about. */
+      after?: Date;
+    } = {},
   ): Promise<{ count: number }> {
     const me = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -380,6 +395,7 @@ export class NotificationsService {
       Math.max(
         Date.now() - WINDOW_DAYS * 86_400_000,
         me?.notificationsSeenAt?.getTime() ?? 0,
+        options.after?.getTime() ?? 0,
       ),
     );
     const blocked = await this.blockedIds(userId);
@@ -461,6 +477,7 @@ export class NotificationsService {
         postId: true,
         author: { select: this.actorFields },
         post: { select: this.postFields },
+        commentId: true,
         comment: { select: { content: true } },
       },
     });

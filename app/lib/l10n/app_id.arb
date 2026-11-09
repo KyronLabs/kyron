@@ -1185,5 +1185,21 @@
   "ui_select_all": "Pilih semua",
   "ui_gifts_count": "$count hadiah",
   "ui_gifts_count_one": "1 hadiah",
-  "ui_feed_more_failed": "Tidak dapat memuat postingan lainnya."
+  "ui_feed_more_failed": "Tidak dapat memuat postingan lainnya.",
+  "ui_reminders": "Pengingat",
+  "ui_reminders_detail": "Yang baru setelah kamu pergi, dan saat koinmu kembali. Tidak lebih dari satu sehari.",
+  "ui_gifts_title": "Hadiah",
+  "ui_gifts_from_one": "dari 1 orang",
+  "ui_gifts_from_people": "dari $count orang",
+  "ui_top_gifter": "Pemberi teratas",
+  "ui_gifts_load_failed": "Tidak dapat memuat siapa yang mengirim hadiah.",
+  "ui_whats_new": "Yang baru",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Mengerti",
+  "ui_check_in_thanks": "Terima kasih. Kami membaca setiap jawaban.",
+  "ui_check_in_title": "Bagaimana Kyron sejauh ini?",
+  "ui_check_in_detail": "Hari ke-$day uji cobamu. Satu ketukan sudah cukup.",
+  "ui_check_in_hint": "Ada yang perlu kami perbaiki atau tambahkan? (opsional)",
+  "ui_send": "Kirim",
+  "ui_not_now": "Nanti saja"
 }

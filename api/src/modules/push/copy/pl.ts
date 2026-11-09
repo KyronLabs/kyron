@@ -72,4 +72,10 @@ export const pl: Copy = {
   rule_impersonation: 'Podszywanie się',
   rule_intellectual_property: 'Własność intelektualna',
   rule_illegal_goods: 'Nielegalne towary lub usługi',
+  away_title: 'Gdy cię nie było',
+  away_posted: '{who} opublikował(a) post.',
+  away_activity_one: '1 nowe powiadomienie.',
+  away_activity: 'Nowe powiadomienia: {count}.',
+  refill_title: 'Twoje monety wróciły',
+  refill_body: '{coins} monet na prezenty w tym tygodniu.',
 };

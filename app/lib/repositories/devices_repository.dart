@@ -20,6 +20,27 @@ class DevicesRepository {
         },
       );
 
+  /// Says the app is open, and where in the day the phone is: what the
+  /// "while you were away" and "your coins are back" pushes go by.
+  Future<void> active({required int utcOffsetMinutes}) => _api.dio.post<void>(
+        '/devices/active',
+        data: {'utcOffsetMinutes': utcOffsetMinutes},
+      );
+
+  /// Whether those two reminders are sent to this account.
+  Future<bool> reminders() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/devices/reminders');
+    return res.data?['reminders'] != false;
+  }
+
+  Future<bool> setReminders(bool on) async {
+    final res = await _api.dio.patch<Map<String, dynamic>>(
+      '/devices/reminders',
+      data: {'reminders': on},
+    );
+    return res.data?['reminders'] != false;
+  }
+
   /// Forgets it, on sign-out.
   Future<void> forget(String token) =>
       _api.dio.delete<void>('/devices', data: {'token': token});

@@ -70,4 +70,10 @@ export const kk: Copy = {
   rule_impersonation: 'Басқа адамның атын жамылу',
   rule_intellectual_property: 'Зияткерлік меншік',
   rule_illegal_goods: 'Заңсыз тауарлар немесе қызметтер',
+  away_title: 'Сіз жоқта',
+  away_posted: '{who} жазба жариялады.',
+  away_activity_one: '1 жаңа хабарландыру.',
+  away_activity: '{count} жаңа хабарландыру.',
+  refill_title: 'Тиындарыңыз оралды',
+  refill_body: 'Осы аптада сыйлық жіберуге {coins} тиын.',
 };

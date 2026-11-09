@@ -72,4 +72,10 @@ export const km: Copy = {
   rule_impersonation: 'ការក្លែងខ្លួន',
   rule_intellectual_property: 'កម្មសិទ្ធិបញ្ញា',
   rule_illegal_goods: 'ទំនិញ ឬសេវាខុសច្បាប់',
+  away_title: 'ពេលអ្នកមិននៅ',
+  away_posted: '{who} បានបង្ហោះ។',
+  away_activity_one: 'ការជូនដំណឹងថ្មី 1។',
+  away_activity: 'ការជូនដំណឹងថ្មី {count}។',
+  refill_title: 'កាក់របស់អ្នកបានត្រឡប់មកវិញ',
+  refill_body: 'កាក់ {coins} សម្រាប់ផ្ញើជាអំណោយក្នុងសប្ដាហ៍នេះ។',
 };

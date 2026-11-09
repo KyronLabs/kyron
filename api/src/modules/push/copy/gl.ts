@@ -71,4 +71,10 @@ export const gl: Copy = {
   rule_impersonation: 'Suplantación de identidade',
   rule_intellectual_property: 'Propiedade intelectual',
   rule_illegal_goods: 'Bens ou servizos ilegais',
+  away_title: 'Mentres non estabas',
+  away_posted: '{who} publicou.',
+  away_activity_one: '1 notificación nova.',
+  away_activity: '{count} notificacións novas.',
+  refill_title: 'As túas moedas volveron',
+  refill_body: '{coins} moedas para enviar como agasallos esta semana.',
 };

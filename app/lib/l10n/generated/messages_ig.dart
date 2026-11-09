@@ -2223,6 +2223,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Onyinye 1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Enweghị ike ibunye ihe ndị ọzọ e biputere."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Ihe ncheta"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Ihe ọhụrụ mgbe ị nọghị ebe a, na mgbe mkpụrụ ego gị lọghachiri. Ọ dịghị mgbe karịa otu kwa ụbọchị."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Onyinye"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("site n'aka mmadụ 1"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("site n'aka mmadụ \$count"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Onye kacha nye onyinye"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ibunye ndị zitere onyinye."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Ihe ọhụrụ"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Aghọtala m"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Daalụ. Anyị na-agụ azịza ọ bụla."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Kedu ka Kyron si dị ruo ugbu a?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ụbọchị \$day nke nnwale gị. Otu mmetụ ezuola."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ọ nwere ihe anyị kwesịrị idozi ma ọ bụ itinye? (nhọrọ)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Zipu"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ọ bụghị ugbu a"),
     };
 
 final messageLookup = MessageLookup();

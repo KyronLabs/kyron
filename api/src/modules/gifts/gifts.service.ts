@@ -38,6 +38,25 @@ export interface SentGift {
 export interface GiftSummary {
   total: number;
   byType: (GiftType & { count: number })[];
+  /** Who gave it something, and what: the biggest giver first. */
+  senders: GiftSender[];
+}
+
+/** One person who gave a post gifts, and every gift they gave it. */
+export interface GiftSender {
+  user: {
+    id: string;
+    name: string | null;
+    username: string | null;
+    avatarUrl: string | null;
+    verified: boolean;
+  };
+  /** What they spent on it in all. */
+  coins: number;
+  /** Each kind they sent and how many, most valuable first. */
+  gifts: { type: string; name: string; count: number }[];
+  /** When they last gave it one. */
+  lastAt: Date;
 }
 
 type Tx = Prisma.TransactionClient;
@@ -304,7 +323,103 @@ export class GiftsService {
       ...kind,
       count: counts.find((row) => row.type === kind.type)?._count._all ?? 0,
     })).filter((row) => row.count > 0);
-    return { total: post.giftCount, byType };
+    return {
+      total: post.giftCount,
+      byType,
+      senders: await this.senders(postId, viewerId),
+    };
+  }
+
+  /** The most people a post's list of givers names. */
+  static readonly sendersShown = 100;
+
+  /**
+   * Who gave [postId] gifts, grouped by person, the biggest giver first --
+   * the list the gift pill opens. Not those either side has blocked, nobody
+   * whose account has gone, and nobody banned.
+   */
+  private async senders(
+    postId: string,
+    viewerId: string,
+  ): Promise<GiftSender[]> {
+    const blocks = await this.prisma.block.findMany({
+      where: { OR: [{ blockerId: viewerId }, { blockedId: viewerId }] },
+      select: { blockerId: true, blockedId: true },
+    });
+    const blocked = blocks.map((b) =>
+      b.blockerId === viewerId ? b.blockedId : b.blockerId,
+    );
+    const rows = await this.prisma.gift.findMany({
+      where: {
+        postId,
+        commentId: null,
+        senderId: { not: null, notIn: blocked },
+        sender: { status: { not: AccountStatus.BANNED } },
+      },
+      orderBy: { createdAt: 'desc' },
+      // A post's gifts, not a feed's: thousands at the very most.
+      take: 5000,
+      select: {
+        type: true,
+        coins: true,
+        createdAt: true,
+        sender: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            verifiedAt: true,
+            profile: { select: { avatarUrl: true } },
+          },
+        },
+      },
+    });
+
+    const price = (type: string) => giftType(type)?.coins ?? 0;
+    const people = new Map<
+      string,
+      GiftSender & { kinds: Map<string, number> }
+    >();
+    for (const row of rows) {
+      const who = row.sender;
+      if (!who) continue;
+      let entry = people.get(who.id);
+      if (!entry) {
+        entry = {
+          user: {
+            id: who.id,
+            name: who.name,
+            username: who.username,
+            avatarUrl: who.profile?.avatarUrl ?? null,
+            verified: !!who.verifiedAt,
+          },
+          coins: 0,
+          gifts: [],
+          // Rows come newest first: the first one seen is the latest.
+          lastAt: row.createdAt,
+          kinds: new Map(),
+        };
+        people.set(who.id, entry);
+      }
+      entry.coins += row.coins;
+      entry.kinds.set(row.type, (entry.kinds.get(row.type) ?? 0) + 1);
+    }
+
+    return [...people.values()]
+      .sort(
+        (a, b) => b.coins - a.coins || b.lastAt.getTime() - a.lastAt.getTime(),
+      )
+      .slice(0, GiftsService.sendersShown)
+      .map(({ kinds, ...sender }) => ({
+        ...sender,
+        gifts: [...kinds.entries()]
+          .sort(([a], [b]) => price(b) - price(a))
+          .map(([type, count]) => ({
+            type,
+            name: giftType(type)?.name ?? 'Gift',
+            count,
+          })),
+      }));
   }
 
   private async answer(

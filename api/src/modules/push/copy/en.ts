@@ -93,6 +93,15 @@ export const en = {
   staff_verify: 'Somebody asked to be verified.',
 
   test_working: 'Notifications are working.',
+
+  // Pushes nobody's action sends (ScheduledPushService): what is new for
+  // somebody who has been away, and the weekly coins coming back.
+  away_title: 'While you were away',
+  away_posted: '{who} posted.',
+  away_activity_one: '1 new notification.',
+  away_activity: '{count} new notifications.',
+  refill_title: 'Your coins are back',
+  refill_body: '{coins} coins to send as gifts this week.',
 } as const;
 
 export type PushKey = keyof typeof en;

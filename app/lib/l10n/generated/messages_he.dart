@@ -2193,6 +2193,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("מתנה אחת"),
       "ui_feed_more_failed":
           MessageLookupByLibrary.simpleMessage("לא ניתן לטעון פוסטים נוספים."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("תזכורות"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "מה חדש אחרי שלא היית כאן, ומתי המטבעות חוזרים. לא יותר מאחת ביום."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("מתנות"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("מאדם אחד"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("מ-\$count אנשים"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("הנדיב ביותר"),
+      "ui_gifts_load_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן לטעון מי שלח מתנות."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("מה חדש"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("הבנתי"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("תודה. אנחנו קוראים כל תשובה."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("איך Kyron עד עכשיו?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "יום \$day של הניסיון שלך. הקשה אחת מספיקה."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "משהו שכדאי לתקן או להוסיף? (לא חובה)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("שליחה"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("לא עכשיו"),
     };
 
 final messageLookup = MessageLookup();

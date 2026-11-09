@@ -71,4 +71,10 @@ export const bg: Copy = {
   rule_impersonation: 'Представяне за друг човек',
   rule_intellectual_property: 'Интелектуална собственост',
   rule_illegal_goods: 'Незаконни стоки или услуги',
+  away_title: 'Докато ви нямаше',
+  away_posted: '{who} публикува.',
+  away_activity_one: '1 ново известие.',
+  away_activity: '{count} нови известия.',
+  refill_title: 'Монетите ви се върнаха',
+  refill_body: '{coins} монети за подаръци тази седмица.',
 };

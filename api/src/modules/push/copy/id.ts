@@ -71,4 +71,10 @@ export const id: Copy = {
   rule_impersonation: 'Peniruan identitas',
   rule_intellectual_property: 'Kekayaan intelektual',
   rule_illegal_goods: 'Barang atau jasa ilegal',
+  away_title: 'Selama kamu pergi',
+  away_posted: '{who} memposting.',
+  away_activity_one: '1 notifikasi baru.',
+  away_activity: '{count} notifikasi baru.',
+  refill_title: 'Koinmu kembali',
+  refill_body: '{coins} koin untuk dikirim sebagai hadiah minggu ini.',
 };

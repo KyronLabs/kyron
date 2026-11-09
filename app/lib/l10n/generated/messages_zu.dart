@@ -2262,6 +2262,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Isipho esi-1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Akukwazanga ukulayisha okunye okuthunyelwe."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Izikhumbuzo"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Okusha ngemva kokuba ubungekho, nalapho izinhlamvu zakho zemali zibuya. Akukaze kube ngaphezu kwesisodwa ngosuku."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Izipho"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("kumuntu o-1"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("kubantu abangu-\$count"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Umuphi ophambili"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Akukwazanga ukulayisha abathumele izipho."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Okusha"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Ngiyezwa"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Siyabonga. Sifunda yonke impendulo."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "I-Kyron injani kuze kube manje?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Usuku lwe-\$day lokuhlola kwakho. Ukuthepha kanye kwanele."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ingabe kukhona okufanele sikulungise noma sikwengeze? (ongakukhetha)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Thumela"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Hhayi manje"),
     };
 
 final messageLookup = MessageLookup();

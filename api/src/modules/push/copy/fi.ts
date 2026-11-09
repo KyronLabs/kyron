@@ -69,4 +69,10 @@ export const fi: Copy = {
   rule_impersonation: 'Toisena henkilönä esiintyminen',
   rule_intellectual_property: 'Immateriaalioikeudet',
   rule_illegal_goods: 'Laittomat tuotteet tai palvelut',
+  away_title: 'Sillä aikaa kun olit poissa',
+  away_posted: '{who} julkaisi.',
+  away_activity_one: '1 uusi ilmoitus.',
+  away_activity: '{count} uutta ilmoitusta.',
+  refill_title: 'Kolikkosi ovat palanneet',
+  refill_body: '{coins} kolikkoa lahjoihin tällä viikolla.',
 };

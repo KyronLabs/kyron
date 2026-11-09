@@ -72,4 +72,10 @@ export const tl: Copy = {
   rule_impersonation: 'Pagpapanggap',
   rule_intellectual_property: 'Intellectual property',
   rule_illegal_goods: 'Ilegal na produkto o serbisyo',
+  away_title: 'Habang wala ka',
+  away_posted: 'Nag-post si {who}.',
+  away_activity_one: '1 bagong notification.',
+  away_activity: '{count} bagong notification.',
+  refill_title: 'Bumalik na ang mga coin mo',
+  refill_body: '{coins} coin na maipapadala bilang regalo ngayong linggo.',
 };

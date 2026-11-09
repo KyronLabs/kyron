@@ -1185,5 +1185,21 @@
   "ui_select_all": "Вибрати все",
   "ui_gifts_count": "Подарунки: $count",
   "ui_gifts_count_one": "1 подарунок",
-  "ui_feed_more_failed": "Не вдалося завантажити більше дописів."
+  "ui_feed_more_failed": "Не вдалося завантажити більше дописів.",
+  "ui_reminders": "Нагадування",
+  "ui_reminders_detail": "Що нового, поки вас не було, і коли повертаються монети. Не більше одного на день.",
+  "ui_gifts_title": "Подарунки",
+  "ui_gifts_from_one": "від 1 людини",
+  "ui_gifts_from_people": "від $count людей",
+  "ui_top_gifter": "Найщедріший",
+  "ui_gifts_load_failed": "Не вдалося завантажити, хто надіслав подарунки.",
+  "ui_whats_new": "Що нового",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Зрозуміло",
+  "ui_check_in_thanks": "Дякуємо. Ми читаємо кожну відповідь.",
+  "ui_check_in_title": "Як вам Kyron поки що?",
+  "ui_check_in_detail": "День $day вашого тестування. Достатньо одного дотику.",
+  "ui_check_in_hint": "Що нам виправити або додати? (необов'язково)",
+  "ui_send": "Надіслати",
+  "ui_not_now": "Не зараз"
 }

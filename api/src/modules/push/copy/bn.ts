@@ -70,4 +70,10 @@ export const bn: Copy = {
   rule_impersonation: 'অন্যের ছদ্মবেশ ধারণ',
   rule_intellectual_property: 'মেধাস্বত্ব',
   rule_illegal_goods: 'অবৈধ পণ্য বা পরিষেবা',
+  away_title: 'আপনি যখন ছিলেন না',
+  away_posted: '{who} পোস্ট করেছেন।',
+  away_activity_one: '১টি নতুন বিজ্ঞপ্তি।',
+  away_activity: '{count}টি নতুন বিজ্ঞপ্তি।',
+  refill_title: 'আপনার কয়েন ফিরে এসেছে',
+  refill_body: 'এই সপ্তাহে উপহার পাঠানোর জন্য {coins} কয়েন।',
 };

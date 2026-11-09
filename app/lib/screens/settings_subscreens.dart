@@ -618,11 +618,65 @@ class SettingsNotificationsScreen extends ConsumerWidget {
             contentPadding: EdgeInsets.zero,
           ),
           if (prefs.pushEnabled) ...[
+            const _RemindersSwitch(),
             const SizedBox(height: SpacingTokens.space8),
             const _PushTest(),
           ],
         ],
       ),
+    );
+  }
+}
+
+/// The two pushes nobody's action sends: "while you were away", and "your
+/// coins are back". Kept on the account, not the phone, because it is the
+/// server that decides to send them.
+class _RemindersSwitch extends ConsumerStatefulWidget {
+  const _RemindersSwitch();
+
+  @override
+  ConsumerState<_RemindersSwitch> createState() => _RemindersSwitchState();
+}
+
+class _RemindersSwitchState extends ConsumerState<_RemindersSwitch> {
+  bool? _on;
+
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(devicesRepositoryProvider)
+        .reminders()
+        .then((on) => mounted ? setState(() => _on = on) : null)
+        .catchError((Object _) => mounted ? setState(() => _on = true) : null);
+  }
+
+  Future<void> _set(bool on) async {
+    final was = _on;
+    setState(() => _on = on);
+    try {
+      await ref.read(devicesRepositoryProvider).setReminders(on);
+    } catch (_) {
+      if (mounted) setState(() => _on = was);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return SwitchListTile(
+      key: const ValueKey('reminders-switch'),
+      value: _on ?? true,
+      onChanged: _on == null ? null : _set,
+      title: Text(l10n.ui('ui_reminders', 'Reminders')),
+      subtitle: Text(
+        l10n.ui(
+          'ui_reminders_detail',
+          "What's new after you've been away, and when your coins are back. "
+              'Never more than one a day.',
+        ),
+      ),
+      contentPadding: EdgeInsets.zero,
     );
   }
 }

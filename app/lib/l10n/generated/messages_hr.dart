@@ -2244,6 +2244,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 dar"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Nije moguće učitati više objava."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Podsjetnici"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Što je novo kad vas nije bilo i kad vam se vrate kovanice. Nikad više od jednog dnevno."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Darovi"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("od 1 osobe"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("od \$count osoba"),
+      "ui_top_gifter":
+          MessageLookupByLibrary.simpleMessage("Najveći darovatelj"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nije moguće učitati tko je poslao darove."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Novosti"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Razumijem"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("Hvala. Čitamo svaki odgovor."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Kako vam se zasad sviđa Kyron?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Dan \$day vašeg testiranja. Dovoljan je jedan dodir."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Nešto što bismo trebali popraviti ili dodati? (neobavezno)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Pošalji"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne sada"),
     };
 
 final messageLookup = MessageLookup();

@@ -2257,6 +2257,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 dovana"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Nepavyko įkelti daugiau įrašų."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Priminimai"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Kas nauja, kai jūsų nebuvo, ir kada grįžta monetos. Ne daugiau kaip vienas per dieną."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Dovanos"),
+      "ui_gifts_from_one": MessageLookupByLibrary.simpleMessage("iš 1 žmogaus"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("iš \$count žmonių"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Dosniausias"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko įkelti, kas atsiuntė dovanas."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Kas naujo"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Supratau"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Ačiū. Skaitome kiekvieną atsakymą."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kaip jums Kyron iki šiol?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "\$day jūsų bandymo diena. Užtenka vieno bakstelėjimo."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ką turėtume pataisyti ar pridėti? (neprivaloma)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Siųsti"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne dabar"),
     };
 
 final messageLookup = MessageLookup();

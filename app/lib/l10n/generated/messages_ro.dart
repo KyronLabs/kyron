@@ -2257,6 +2257,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 cadou"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Nu s-au putut încărca mai multe postări."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Mementouri"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Ce e nou după ce ai lipsit și când îți revin monedele. Niciodată mai mult de unul pe zi."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Cadouri"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("de la 1 persoană"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("de la \$count persoane"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Cel mai generos"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a putut încărca cine a trimis cadouri."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Noutăți"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Am înțeles"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Mulțumim. Citim fiecare răspuns."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Cum ți se pare Kyron până acum?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Ziua \$day a testului tău. O atingere e de ajuns."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Ceva ce ar trebui să reparăm sau să adăugăm? (opțional)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Trimite"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Nu acum"),
     };
 
 final messageLookup = MessageLookup();

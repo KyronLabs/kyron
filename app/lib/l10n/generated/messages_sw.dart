@@ -2226,6 +2226,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("Zawadi 1"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Imeshindwa kupakia machapisho zaidi."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Vikumbusho"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Kipya baada ya kuwa mbali, na sarafu zako zinaporudi. Kamwe zaidi ya kimoja kwa siku."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Zawadi"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("kutoka kwa mtu 1"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("kutoka kwa watu \$count"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Mtoaji mkuu"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kupakia waliotuma zawadi."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Kipya"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Nimeelewa"),
+      "ui_check_in_thanks":
+          MessageLookupByLibrary.simpleMessage("Asante. Tunasoma kila jibu."),
+      "ui_check_in_title":
+          MessageLookupByLibrary.simpleMessage("Kyron inaendeleaje hadi sasa?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Siku ya \$day ya majaribio yako. Mguso mmoja unatosha."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Kuna kitu tunachopaswa kurekebisha au kuongeza? (si lazima)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Tuma"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Si sasa"),
     };
 
 final messageLookup = MessageLookup();

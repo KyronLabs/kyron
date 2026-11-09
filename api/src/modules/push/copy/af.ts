@@ -71,4 +71,10 @@ export const af: Copy = {
   rule_impersonation: 'Nabootsing',
   rule_intellectual_property: 'Intellektuele eiendom',
   rule_illegal_goods: 'Onwettige goedere of dienste',
+  away_title: 'Terwyl jy weg was',
+  away_posted: '{who} het iets geplaas.',
+  away_activity_one: '1 nuwe kennisgewing.',
+  away_activity: '{count} nuwe kennisgewings.',
+  refill_title: 'Jou munte is terug',
+  refill_body: '{coins} munte om hierdie week as geskenke te stuur.',
 };

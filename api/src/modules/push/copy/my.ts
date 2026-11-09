@@ -73,4 +73,10 @@ export const my: Copy = {
   rule_impersonation: 'အယောင်ဆောင်ခြင်း',
   rule_intellectual_property: 'ဉာဏပစ္စည်း',
   rule_illegal_goods: 'တရားမဝင် ကုန်ပစ္စည်း သို့မဟုတ် ဝန်ဆောင်မှု',
+  away_title: 'သင်မရှိစဉ်',
+  away_posted: '{who} က ပို့စ်တင်ခဲ့သည်။',
+  away_activity_one: 'အသိပေးချက်အသစ် 1 ခု။',
+  away_activity: 'အသိပေးချက်အသစ် {count} ခု။',
+  refill_title: 'သင့်ဒင်္ဂါးများ ပြန်ရောက်လာပြီ',
+  refill_body: 'ဤအပတ်တွင် လက်ဆောင်ပို့ရန် ဒင်္ဂါး {coins} ခု။',
 };

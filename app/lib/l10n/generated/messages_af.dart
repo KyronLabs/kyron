@@ -2304,6 +2304,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_gifts_count_one": MessageLookupByLibrary.simpleMessage("1 geskenk"),
       "ui_feed_more_failed": MessageLookupByLibrary.simpleMessage(
           "Kon nie meer plasings laai nie."),
+      "ui_reminders": MessageLookupByLibrary.simpleMessage("Herinnerings"),
+      "ui_reminders_detail": MessageLookupByLibrary.simpleMessage(
+          "Wat nuut is nadat jy weg was, en wanneer jou munte terug is. Nooit meer as een per dag nie."),
+      "ui_gifts_title": MessageLookupByLibrary.simpleMessage("Geskenke"),
+      "ui_gifts_from_one":
+          MessageLookupByLibrary.simpleMessage("van 1 persoon"),
+      "ui_gifts_from_people":
+          MessageLookupByLibrary.simpleMessage("van \$count mense"),
+      "ui_top_gifter": MessageLookupByLibrary.simpleMessage("Grootste gewer"),
+      "ui_gifts_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kon nie laai wie geskenke gestuur het nie."),
+      "ui_whats_new": MessageLookupByLibrary.simpleMessage("Wat's nuut"),
+      "ui_whats_new_version":
+          MessageLookupByLibrary.simpleMessage("Kyron \$version"),
+      "ui_got_it": MessageLookupByLibrary.simpleMessage("Verstaan"),
+      "ui_check_in_thanks": MessageLookupByLibrary.simpleMessage(
+          "Dankie. Ons lees elke antwoord."),
+      "ui_check_in_title": MessageLookupByLibrary.simpleMessage(
+          "Hoe hou jy tot dusver van Kyron?"),
+      "ui_check_in_detail": MessageLookupByLibrary.simpleMessage(
+          "Dag \$day van jou toets. Een tik is genoeg."),
+      "ui_check_in_hint": MessageLookupByLibrary.simpleMessage(
+          "Iets wat ons moet regmaak of byvoeg? (opsioneel)"),
+      "ui_send": MessageLookupByLibrary.simpleMessage("Stuur"),
+      "ui_not_now": MessageLookupByLibrary.simpleMessage("Nie nou nie"),
     };
 
 final messageLookup = MessageLookup();

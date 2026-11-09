@@ -73,4 +73,10 @@ export const ro: Copy = {
   rule_impersonation: 'Uzurpare de identitate',
   rule_intellectual_property: 'Proprietate intelectuală',
   rule_illegal_goods: 'Bunuri sau servicii ilegale',
+  away_title: 'Cât ai lipsit',
+  away_posted: '{who} a publicat.',
+  away_activity_one: '1 notificare nouă.',
+  away_activity: '{count} notificări noi.',
+  refill_title: 'Monedele tale s-au întors',
+  refill_body: '{coins} monede de trimis drept cadouri săptămâna aceasta.',
 };

@@ -67,4 +67,10 @@ export const he: Copy = {
   rule_impersonation: 'התחזות',
   rule_intellectual_property: 'קניין רוחני',
   rule_illegal_goods: 'מוצרים או שירותים לא חוקיים',
+  away_title: 'בזמן שלא היית כאן',
+  away_posted: '{who} פרסם/ה.',
+  away_activity_one: 'התראה חדשה אחת.',
+  away_activity: '{count} התראות חדשות.',
+  refill_title: 'המטבעות שלך חזרו',
+  refill_body: '{coins} מטבעות לשליחת מתנות השבוע.',
 };

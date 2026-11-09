@@ -68,4 +68,10 @@ export const ar: Copy = {
   rule_impersonation: 'انتحال الشخصية',
   rule_intellectual_property: 'الملكية الفكرية',
   rule_illegal_goods: 'سلع أو خدمات غير قانونية',
+  away_title: 'أثناء غيابك',
+  away_posted: 'نشر {who}.',
+  away_activity_one: 'إشعار جديد واحد.',
+  away_activity: '{count} إشعارات جديدة.',
+  refill_title: 'عادت عملاتك',
+  refill_body: '{coins} عملة لإرسالها هدايا هذا الأسبوع.',
 };

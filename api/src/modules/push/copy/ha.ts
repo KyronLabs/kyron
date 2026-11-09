@@ -72,4 +72,10 @@ export const ha: Copy = {
   rule_impersonation: 'Yin sojan gona',
   rule_intellectual_property: 'Mallakar fasaha',
   rule_illegal_goods: 'Kayayyaki ko ayyuka na haram',
+  away_title: 'Lokacin da ba ka nan',
+  away_posted: '{who} ya wallafa.',
+  away_activity_one: 'Sabon sanarwa 1.',
+  away_activity: 'Sabbin sanarwa {count}.',
+  refill_title: 'Tsabar kuɗinka sun dawo',
+  refill_body: 'Tsaba {coins} don aika kyautuka a wannan makon.',
 };

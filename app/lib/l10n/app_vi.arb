@@ -1185,5 +1185,21 @@
   "ui_select_all": "Chọn tất cả",
   "ui_gifts_count": "$count món quà",
   "ui_gifts_count_one": "1 món quà",
-  "ui_feed_more_failed": "Không thể tải thêm bài đăng."
+  "ui_feed_more_failed": "Không thể tải thêm bài đăng.",
+  "ui_reminders": "Lời nhắc",
+  "ui_reminders_detail": "Điều mới sau khi bạn vắng mặt, và khi xu của bạn trở lại. Không quá một lần mỗi ngày.",
+  "ui_gifts_title": "Quà tặng",
+  "ui_gifts_from_one": "từ 1 người",
+  "ui_gifts_from_people": "từ $count người",
+  "ui_top_gifter": "Người tặng nhiều nhất",
+  "ui_gifts_load_failed": "Không thể tải danh sách người tặng quà.",
+  "ui_whats_new": "Có gì mới",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Đã hiểu",
+  "ui_check_in_thanks": "Cảm ơn bạn. Chúng tôi đọc mọi câu trả lời.",
+  "ui_check_in_title": "Bạn thấy Kyron thế nào?",
+  "ui_check_in_detail": "Ngày $day trong đợt thử nghiệm. Chỉ cần một chạm.",
+  "ui_check_in_hint": "Có điều gì chúng tôi nên sửa hoặc thêm không? (không bắt buộc)",
+  "ui_send": "Gửi",
+  "ui_not_now": "Để sau"
 }

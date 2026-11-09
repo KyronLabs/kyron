@@ -70,4 +70,10 @@ export const ne: Copy = {
   rule_impersonation: 'अरूको भेष धारण',
   rule_intellectual_property: 'बौद्धिक सम्पत्ति',
   rule_illegal_goods: 'अवैध सामान वा सेवाहरू',
+  away_title: 'तपाईं नहुँदा',
+  away_posted: '{who} ले पोस्ट गर्नुभयो।',
+  away_activity_one: '१ नयाँ सूचना।',
+  away_activity: '{count} नयाँ सूचनाहरू।',
+  refill_title: 'तपाईंका सिक्काहरू फर्किए',
+  refill_body: 'यो हप्ता उपहार पठाउन {coins} सिक्का।',
 };

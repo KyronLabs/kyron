@@ -1185,5 +1185,21 @@
   "ui_select_all": "Markera allt",
   "ui_gifts_count": "$count gåvor",
   "ui_gifts_count_one": "1 gåva",
-  "ui_feed_more_failed": "Det gick inte att läsa in fler inlägg."
+  "ui_feed_more_failed": "Det gick inte att läsa in fler inlägg.",
+  "ui_reminders": "Påminnelser",
+  "ui_reminders_detail": "Vad som är nytt när du varit borta, och när dina mynt är tillbaka. Aldrig mer än en om dagen.",
+  "ui_gifts_title": "Gåvor",
+  "ui_gifts_from_one": "från 1 person",
+  "ui_gifts_from_people": "från $count personer",
+  "ui_top_gifter": "Största givare",
+  "ui_gifts_load_failed": "Det gick inte att läsa in vem som skickade gåvor.",
+  "ui_whats_new": "Nyheter",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "Uppfattat",
+  "ui_check_in_thanks": "Tack. Vi läser varje svar.",
+  "ui_check_in_title": "Vad tycker du om Kyron hittills?",
+  "ui_check_in_detail": "Dag $day av ditt test. Ett tryck räcker.",
+  "ui_check_in_hint": "Något vi borde fixa eller lägga till? (valfritt)",
+  "ui_send": "Skicka",
+  "ui_not_now": "Inte nu"
 }

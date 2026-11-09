@@ -71,4 +71,10 @@ export const az: Copy = {
   rule_impersonation: 'Başqasını təqlid etmə',
   rule_intellectual_property: 'Əqli mülkiyyət',
   rule_illegal_goods: 'Qanunsuz mallar və ya xidmətlər',
+  away_title: 'Siz yoxkən',
+  away_posted: '{who} paylaşım etdi.',
+  away_activity_one: '1 yeni bildiriş.',
+  away_activity: '{count} yeni bildiriş.',
+  refill_title: 'Sikkələriniz geri qayıtdı',
+  refill_body: 'Bu həftə hədiyyə göndərmək üçün {coins} sikkə.',
 };

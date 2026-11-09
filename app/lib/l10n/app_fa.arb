@@ -1185,5 +1185,21 @@
   "ui_select_all": "انتخاب همه",
   "ui_gifts_count": "$count هدیه",
   "ui_gifts_count_one": "۱ هدیه",
-  "ui_feed_more_failed": "بارگیری پست‌های بیشتر ممکن نشد."
+  "ui_feed_more_failed": "بارگیری پست‌های بیشتر ممکن نشد.",
+  "ui_reminders": "یادآورها",
+  "ui_reminders_detail": "تازه‌ها پس از غیبت شما، و وقتی سکه‌هایتان برمی‌گردد. هرگز بیش از یکی در روز.",
+  "ui_gifts_title": "هدیه‌ها",
+  "ui_gifts_from_one": "از ۱ نفر",
+  "ui_gifts_from_people": "از $count نفر",
+  "ui_top_gifter": "بخشنده‌ترین",
+  "ui_gifts_load_failed": "بارگیری فرستندگان هدیه ممکن نشد.",
+  "ui_whats_new": "تازه‌ها",
+  "ui_whats_new_version": "Kyron $version",
+  "ui_got_it": "فهمیدم",
+  "ui_check_in_thanks": "سپاس. همهٔ پاسخ‌ها را می‌خوانیم.",
+  "ui_check_in_title": "Kyron تا اینجا چطور بوده؟",
+  "ui_check_in_detail": "روز $day آزمایش شما. یک ضربه کافی است.",
+  "ui_check_in_hint": "چیزی هست که باید درست یا اضافه کنیم؟ (اختیاری)",
+  "ui_send": "ارسال",
+  "ui_not_now": "الان نه"
 }
