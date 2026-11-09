@@ -29,8 +29,10 @@ enum ActionButtonKind {
 /// `FilledButton.icon`: a 40-tall stadium, 18-pixel icon, eight-pixel gap, and
 /// asymmetric padding so the icon does not crowd the leading edge.
 ///
-/// Use [expand] for the full-width case rather than reaching back for the
-/// 48-tall themes.
+/// Use [expand] for the full-width case. It is the login button, exactly --
+/// 40 tall, a stadium, its label 15 Medium -- and nothing in the app is 48:
+/// see "The one height" in the design system's frontend/components/
+/// buttons.md, and the button-height check in test/design_system_test.dart.
 class ActionButton extends StatelessWidget {
   final String label;
 
@@ -92,21 +94,29 @@ class ActionButton extends StatelessWidget {
           };
 
     final style = ButtonStyle(
+      // Full width is the login button, exactly: the theme's 40, never the
+      // 48 this once was (design-system frontend/components/buttons.md,
+      // "The one height").
       minimumSize: WidgetStatePropertyAll(
         expand
-            ? const Size.fromHeight(48)
+            ? const Size.fromHeight(height)
             : Size(0, compact ? compactHeight : height),
       ),
       // Without this the 48-tall minimum from the theme is still enforced by
       // the tap target, which leaves an invisible band above and below.
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       padding: WidgetStatePropertyAll(
-        compact
-            ? EdgeInsetsDirectional.only(start: icon == null ? 14 : 10, end: 14)
-            : EdgeInsetsDirectional.only(
-                start: icon == null ? 20 : 16,
-                end: 20,
-              ),
+        expand
+            ? const EdgeInsets.symmetric(horizontal: 24)
+            : compact
+                ? EdgeInsetsDirectional.only(
+                    start: icon == null ? 14 : 10,
+                    end: 14,
+                  )
+                : EdgeInsetsDirectional.only(
+                    start: icon == null ? 20 : 16,
+                    end: 20,
+                  ),
       ),
       shape: const WidgetStatePropertyAll(StadiumBorder()),
       // The theme's typeface, named: a button's label does not inherit one,
@@ -115,12 +125,14 @@ class ActionButton extends StatelessWidget {
       textStyle: WidgetStatePropertyAll(
         TextStyle(
           fontFamily: Theme.of(context).textTheme.labelLarge?.fontFamily,
+          // Full width: the login button's 15 Medium. In a row: 14, or 13
+          // compact, Semibold, so a short label still reads as a button.
           fontSize: expand
-              ? 16
+              ? TypographyTokens.fontSize3
               : compact
                   ? 13
                   : 14,
-          fontWeight: FontWeight.w600,
+          fontWeight: expand ? FontWeight.w500 : FontWeight.w600,
         ),
       ),
       splashFactory: NoSplash.splashFactory,

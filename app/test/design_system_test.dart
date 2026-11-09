@@ -52,6 +52,26 @@ void main() {
     );
   });
 
+  test('no button sets its own height', () {
+    // Every button is the login button's height -- KyronTheme.buttonHeight,
+    // 40 -- or the compact 32, and both come from ActionButton, AppButton
+    // and the theme. A number written into a button's minimumSize is how
+    // the full-width ones crept back to 48, twice: the design system's
+    // frontend/components/buttons.md, "The one height".
+    final found = offences(
+      RegExp(
+        r'^(?!\s*//).*(minimumSize|fixedSize|maximumSize):.*'
+        r'Size(\.fromHeight)?\(\s*[1-9]',
+      ),
+    );
+    expect(
+      found,
+      isEmpty,
+      reason: 'a button height is set from a number rather than '
+          'KyronTheme.buttonHeight:\n${found.join('\n')}',
+    );
+  });
+
   test('the browser draws outlines', () {
     // Iconsax ships every glyph twice, and the `_copy` suffix is the outline.
     // A filled glyph in Kyron means a state -- a liked post, a saved one, the

@@ -38,6 +38,9 @@ the section; GitHub does not show it:
 
 ### Fixed
 
+- **Full-width buttons are the login button's size.** They were 8 points
+  taller and heavier than it, across settings, sheets and moderation
+  screens; every one is now exactly the same 40-point pill.
 - **A profile's tabs sit on the page in the dark theme**, not on a grey band
   across it, and the ring round the profile picture is the page's black
   instead of grey.
