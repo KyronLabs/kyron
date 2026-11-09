@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.44",
+    "items": [
+      {
+        "title": "Kyron now speaks your language everywhere.",
+        "detail": "The buttons, menus, empty screens and error messages that were still in English are now translated in all 68 languages, and the language screen no longer claims parts of the app stay in English."
+      },
+      {
+        "title": "Back takes you Home, not out.",
+        "detail": "From Explore, Communities or Messages, back goes to Home; on Home, it asks for a second press before Kyron closes, so a stray back never leaves the app."
+      }
+    ]
+  },
+  {
     "version": "0.1.43",
     "items": [
       {
@@ -92,35 +105,6 @@
       {
         "title": "Scrolling the feed while a post is deleted no longer errors.",
         "detail": "Counting what you have seen could trip over a post removed at the same moment; that post is now simply skipped."
-      }
-    ]
-  },
-  {
-    "version": "0.1.39",
-    "items": [
-      {
-        "title": "A red heart is red.",
-        "detail": "❤️ — and ☀️, ⚠️ and a few others — came out as flat black shapes: the app's own font has a black-and-white drawing of them, and that won over the phone's emoji."
-      },
-      {
-        "title": "Wide photos are shown whole, short rather than cut at the ends.",
-        "detail": ""
-      },
-      {
-        "title": "\"kubernetes.io\" is a link.",
-        "detail": "A web address written without \"https://\" — which is how people write them — was plain text you could not tap."
-      },
-      {
-        "title": "More room between a comment's words and its buttons, and the line into a reply is one long, gentle sweep rather than a turn.",
-        "detail": ""
-      },
-      {
-        "title": "A broken hairline above a profile's tabs.",
-        "detail": ""
-      },
-      {
-        "title": "The line between two conversations sits in the middle, as far from the buttons above it as from the face below.",
-        "detail": ""
       }
     ]
   }
