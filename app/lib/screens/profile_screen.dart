@@ -225,7 +225,10 @@ class _LoadedState extends ConsumerState<_Loaded> {
                 if (tab == _tab) return;
                 setState(() => _tab = tab);
               },
-              background: Theme.of(context).colorScheme.surface,
+              // The page's own colour. `surface` is a step lighter in the
+              // dark theme, and drew the strip as a grey band across a
+              // black page.
+              background: Theme.of(context).scaffoldBackgroundColor,
             ),
           ),
           ..._body(profile, posts),
@@ -471,7 +474,12 @@ class _CoverAndHeader extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: scheme.surface, width: avatarRing),
+                // The page's colour, so the ring reads as a cut in the cover
+                // rather than a grey halo in the dark theme.
+                border: Border.all(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  width: avatarRing,
+                ),
               ),
               child: CircleAvatar(
                 radius: avatarRadius,
