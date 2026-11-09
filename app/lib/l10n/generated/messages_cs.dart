@@ -41,7 +41,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("a"),
       "answerNumber": (Object a0) => "Odpověď ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR čočka"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Připojit systémový log",
       ),
@@ -117,9 +117,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Vaše karty"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
       "audit_password_requirements_symbol_322aed1e":
@@ -266,7 +265,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Vytvořte si profil",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR čočka"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("Vysílat živě"),
       "create_text_post":
           MessageLookupByLibrary.simpleMessage("Textový příspěvek"),
@@ -491,8 +490,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Pokračovat v úpravách"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyronovy texty se stále překládají, takže většina obrazovek zatím zůstává v angličtině.",
-      ),
+          "Obrazovky Kyronu jsou ve vašem jazyce. Pokud nějaké slovo nezní správně, dejte nám vědět přes Odeslat zpětnou vazbu."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Jazyky"),
       "leave": MessageLookupByLibrary.simpleMessage("Opustit"),
@@ -648,7 +646,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
       "literallabelDate": (Object a0) => "\\${a0} datum",
       "literalleaveCommunityName": (Object a0) => "Opustit ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
+      "literallensNameFaceLens": (Object a0) => "${a0}, obličejová čočka",
       "literallikedPosts": MessageLookupByLibrary.simpleMessage(
         "Oblíbené příspěvky",
       ),
@@ -965,7 +963,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Přihlášení selhalo. Zkontrolujte prosím své přihlašovací údaje.",
       ),
       "manage": MessageLookupByLibrary.simpleMessage("Spravovat"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+      "menu": MessageLookupByLibrary.simpleMessage("Nabídka"),
       "message": MessageLookupByLibrary.simpleMessage("Zpráva"),
       "messages": MessageLookupByLibrary.simpleMessage("Zprávy"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
@@ -1040,7 +1038,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "profileUpdated":
           MessageLookupByLibrary.simpleMessage("Profil aktualizován"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("O mně"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Země"),
       "profile_display_name": MessageLookupByLibrary.simpleMessage(
         "Zobrazované jméno",
@@ -1189,8 +1187,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Překlad ještě není připraven. Dnes se v běhu nic nepřekládá; toto se zapamatuje pro pozdější použití.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyronovy vlastní texty se stále překládají, takže většina obrazovek zatím zůstává v angličtině. Co se tím dnes mění: části rozhraní, které vykresluje Flutter, data a čísla a směr uspořádání aplikace pro jazyky zprava doleva.",
-      ),
+          "Tímto se změní vlastní texty Kyronu, části rozhraní, které Flutter kreslí sám, data a čísla a také směr rozvržení aplikace pro jazyky psané zprava doleva."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Zkusit znovu"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Zásady ochrany osobních údajů",
@@ -1476,7 +1473,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed":
           MessageLookupByLibrary.simpleMessage("Už nejste v této skupině."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Přejmenovat"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Správce"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Člen"),
       "ui_group_role_spectator": MessageLookupByLibrary.simpleMessage("Divák"),
       "ui_group_spectator_note": MessageLookupByLibrary.simpleMessage(

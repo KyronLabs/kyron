@@ -11,7 +11,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "addAnAnswer": MessageLookupByLibrary.simpleMessage("回答を追加"),
       "agreeAndContinue": MessageLookupByLibrary.simpleMessage("同意して続行"),
       "answerNumber": (Object a0) => "回答 ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("ARレンズ"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage("システムログを添付"),
       "aWordPhraseOrTag":
           MessageLookupByLibrary.simpleMessage("単語、フレーズ、または #tag"),
@@ -1120,8 +1120,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "購読しているフィードに含めたい言語を選択してください。何も選択しない場合は、すべての言語が表示されます。",
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyronの文言はまだ翻訳中のため、現時点ではほとんどの画面が英語のままになっています。",
-      ),
+          "Kyronの画面はあなたの言語で表示されています。おかしな言葉があれば、「フィードバックを送信」からお知らせください。"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "「Discover」で見つけるか、自分で作成してください。",
       ),
@@ -1283,9 +1282,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("あなたのタブ"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ 代替テキスト"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("もう一度試す"),
       "audit_password_requirements_symbol_322aed1e":
@@ -1530,8 +1528,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_location": MessageLookupByLibrary.simpleMessage("場所"),
       "profile_website": MessageLookupByLibrary.simpleMessage("ウェブサイト"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron自身のテキストはまだ翻訳作業中のため、当面ほとんどの画面は英語のままです。本日変わる点：Flutterが描画するインターフェイスの一部、日付と数値、そして右から左への言語に対するアプリのレイアウト方向です。",
-      ),
+          "Kyron自体の文言、Flutterが自ら描画するインターフェースの部分、日付と数字、そして右から左に書く言語でのアプリのレイアウト方向が変わります。"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "端末のライト/ダーク設定に従う",
       ),

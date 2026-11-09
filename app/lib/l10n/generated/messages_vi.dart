@@ -7,248 +7,204 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Từ, cụm từ hoặc #thẻ"),
+      "about": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Thêm câu trả lời"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Thêm ngôn ngữ…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Đồng ý và tiếp tục"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Đã có tài khoản Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Bình luận"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
-      "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+              "Số người khác nhau, không phải số lần mở"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Tương tác"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Lượt thích"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Chưa có người xem"),
+      "analytics_nobody_opened_post":
+          MessageLookupByLibrary.simpleMessage("Chưa ai mở bài đăng này."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Đã đăng"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Lượt lưu"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Người xem"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("NGƯỜI XEM MỖI NGÀY"),
+      "and": MessageLookupByLibrary.simpleMessage("và"),
+      "answerNumber": (Object a0) => "Câu trả lời ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("Ống kính AR"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Đính kèm nhật ký ứng dụng"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Thời gian khứ hồi"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("XÁC MINH TOKEN"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Thử lại"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Thử lại"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Bắt đầu phát sóng lúc này sẽ đưa bạn vào một phòng mà không ai có thể"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Tạo cộng đồng"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Dùng để làm gì? (không bắt buộc)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("vào lại."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("vào lại từ danh sách này."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Đóng nó"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("hãy tham gia trước"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("sắp ra mắt"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Đăng với tư cách bạn"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("đăng trong cộng đồng này"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Vừa xong"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Thử lại"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Chủ đề 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Dành cho bạn"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("có gì đó."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("đang trên đường tới đó."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", không"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("tôi có đang di chuyển"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Tắt âm thanh"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Bật âm thanh"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Dành cho bạn"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Các tab của bạn"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Thử lại"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Ký hiệu (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("NGƯỜI XEM MỖI NGÀY"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("không tải được"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("bài đăng này"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Muốn thêm gì không? (không bắt buộc)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("bài đăng này"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Từ một tài khoản"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Đăng xuất"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Tài khoản của bạn"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("để sau"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Đang tải…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Đang đăng…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 giờ trước"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Sao chép liên kết tin"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Tin của bạn"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Tài khoản, bài đăng của bạn và những gì bạn nhấn để"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Thêm chủ đề"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("của riêng nó."),
+      "authorBlocked": (Object a0) => "Đã chặn ${a0}",
+      "authorPostsHidden": (Object a0) => "Bạn sẽ không thấy bài đăng từ ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Chặn"),
+      "blockAuthor": (Object a0) => "Chặn ${a0}?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Đã sao chép thông tin bản dựng"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Khi tiếp tục, bạn đồng ý với"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Khi tiếp tục, bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Khi đăng ký, bạn đồng ý với"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
       "change": MessageLookupByLibrary.simpleMessage("Thay đổi"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Đổi email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Hãy xác minh tài khoản qua email."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Kiểm tra Kyron có truy cập được không"),
+      "clear": MessageLookupByLibrary.simpleMessage("Xóa"),
+      "close": MessageLookupByLibrary.simpleMessage("Đóng"),
+      "closeCommunity": (Object a0) => "Đóng ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Đóng"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Đóng cộng đồng này"),
+      "communities": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Tìm một cộng đồng trong Khám phá hoặc tự tạo."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Tung một quan điểm nóng (hoặc ấm)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Bạn đang nghĩ gì?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Nói điều chỉ bạn mới nói được…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Đây là dấu hiệu: đăng đi"),
+      "composer_placeholder_think":
+          MessageLookupByLibrary.simpleMessage("Gõ, nói hoặc nghĩ thành tiếng"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
       "contactSupport": MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Bài đăng chưa có ngôn ngữ nên tùy chọn này chưa lọc bảng tin. Lựa chọn của bạn được giữ đến lúc đó."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Tiếp tục bằng email"),
+      "copy": MessageLookupByLibrary.simpleMessage("Sao chép"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Sao chép báo cáo thay vào đó"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Không mở được đăng nhập Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Đăng xuất thất bại: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Không chụp được ảnh."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Hiển thị trên trang cá nhân và dưới bài viết của bạn."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +216,76 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Hiển thị trên trang cá nhân và dưới bài viết của bạn. Khi bạn xem bài viết của ai đó, quốc gia của bạn được tính trong Thông tin chi tiết của họ, chỉ theo nhóm từ năm người trở lên và không bao giờ kèm tên."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Từ cài đặt điện thoại của bạn"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Tạo"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Tạo tài khoản của bạn"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Tạo hồ sơ của bạn"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Ống kính AR"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Phát trực tiếp"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Bài đăng văn bản"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Bài đăng giọng nói"),
+      "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Xóa bình luận này?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Xóa bài đăng này?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Mô tả tệp đính kèm này"),
+      "description": MessageLookupByLibrary.simpleMessage("Mô tả"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "Đã sao chép DID vào bộ nhớ tạm"),
       "done": MessageLookupByLibrary.simpleMessage("Xong"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Đóng trình soạn thảo sau khi viết gì đó và bạn sẽ được gợi ý lưu bản nháp."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} ngày trước"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+          MessageLookupByLibrary.simpleMessage("{hours} giờ trước"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Vừa xong"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} phút trước"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Chưa viết gì"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Bình chọn, chưa có câu hỏi"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Trích dẫn, chưa có nội dung"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Bản nháp"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Sửa hồ sơ"),
       "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Thông báo qua email"),
+      "explore": MessageLookupByLibrary.simpleMessage("Khám phá"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Thiết bị này không hỗ trợ theo dõi khuôn mặt."),
+      "feedTagDetail": (Object a0) => "Chưa có gì được đăng với #${a0}.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Theo dõi {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
-      "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+      "followers": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
+      "following": MessageLookupByLibrary.simpleMessage("Đang theo dõi"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Nhận trợ giúp"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Tiếp tục với Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Đăng nhập bằng Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google trả lượt đăng nhập đã xong về Kyron qua một liên kết mà chỉ Android và iOS phản hồi, nên trên ${a0} trình duyệt không có nơi nào để trả nó về.\\n\\nNếu bạn đã có tài khoản Kyron qua Google, hãy chọn Tiếp tục bằng email với cùng địa chỉ rồi nhấn Quên mật khẩu: bạn sẽ nhận được liên kết để đặt mật khẩu.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Đăng nhập Google cần ứng dụng điện thoại"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Đăng ký bằng Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Hướng dẫn và giải đáp câu hỏi thường gặp"),
+      "handle": MessageLookupByLibrary.simpleMessage("tên người dùng"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Trợ giúp & Hỗ trợ"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Trung tâm trợ giúp"),
+      "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Trên một dòng"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Tài khoản của bạn"),
       "ins_act_community": MessageLookupByLibrary.simpleMessage("Mở cộng đồng"),
       "ins_act_post": MessageLookupByLibrary.simpleMessage("Viết bài"),
@@ -456,690 +400,560 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bài viết hàng đầu"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("So với {days} ngày trước đó"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Thêm sở thích"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Kéo để sắp xếp"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Thanh chỉ chứa tối đa năm tab. Gỡ một tab để thêm tab khác."),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("Đang theo dõi"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Dành cho bạn"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Hashtag sẽ hiện ở đây khi mọi người bắt đầu dùng."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Đang thịnh hành"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Video"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Các tab của bạn"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Nó sẽ biến mất với cả hai bạn."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Nó sẽ bị gỡ khỏi chuỗi."),
+      "join": MessageLookupByLibrary.simpleMessage("Tham gia"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Tiếp tục chỉnh sửa"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Các màn hình của Kyron đã ở ngôn ngữ của bạn. Nếu có từ nào nghe sai, hãy báo cho chúng tôi qua Gửi phản hồi."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+      "leave": MessageLookupByLibrary.simpleMessage("Rời"),
+      "leaveCommunity": (Object a0) => "Rời ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Cho vào lại"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 trang đang mở"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Thêm clip"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Thêm GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Thêm hashtag"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Thêm bình chọn"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Thêm video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Thêm sở thích"),
+      "literaladdLabelAsATab": (Object a0) => "Thêm ${a0} làm tab",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
-      "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ngôn ngữ ứng dụng"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Phiên bản ứng dụng"),
+      "literalblockAuthor": (Object a0) => "Chặn ${a0}",
+      "literalblockAuthor2": (Object a0) => "Chặn ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Chặn tài khoản này?"),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage("Hủy trả lời"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Kiểm tra lại"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Chọn từ thư viện"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Xóa bộ nhớ đệm"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Đóng tất cả trang"),
+      "literalcloseTabLabel": (Object a0) => "Đóng ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Đóng trình duyệt"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Đóng ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Ngôn ngữ nội dung"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Sao chép liên kết"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Sao chép liên kết bài đăng"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sao chép nội dung bài đăng"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Sao chép văn bản"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("Không tải được cộng đồng"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Không tải được GIF"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("Không tải được thông báo"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Không tải được thành viên"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Không tải được các bài đăng này"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+              "Không tải được cuộc trò chuyện này"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("Không tải được danh sách này"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("Không tải được bài đăng này"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Không tải được câu trả lời này"),
+      "literalcouldNotLoadTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Không tải được thẻ phổ biến"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+              "Không tải được các cộng đồng của bạn"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("Không tải được tin nhắn"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Không mở được cộng đồng này"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Không đăng được câu trả lời."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Tìm kiếm không thành công"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Đăng xuất thất bại: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} trang đang mở",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Ảnh bìa"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Tiết kiệm dữ liệu"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Xóa bài đăng"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Tìm người"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Đừng trả lời"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Đã lưu bản nháp"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hiện không gửi được phản hồi"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Cỡ chữ"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("Chưa thiết lập GIF"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Chuyển sang ứng dụng khác"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Ẩn mật khẩu"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Ẩn bài đăng này"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
-      "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+              "Ẩn nó và yêu cầu chúng tôi hiện ít nội dung như vậy hơn"),
+      "literalhowToBehave": MessageLookupByLibrary.simpleMessage("Cách cư xử"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Tiếp tục viết"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron không phản hồi"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "Ngày \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Rời ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, ống kính khuôn mặt",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Bài đăng đã thích"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Đã sao chép liên kết"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Đặt làm người kiểm duyệt"),
+      "literalmuteAuthor": (Object a0) => "Ẩn ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Ẩn chuỗi này"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Ẩn từ hoặc thẻ"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Tài khoản đã ẩn & đã chặn"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Đã ẩn. Bạn sẽ không nhận thông báo."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Không ứng dụng nào trên thiết bị này mở được liên kết ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Không trình duyệt nào trên thiết bị này nhận liên kết."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Chưa có DID"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Không có bản nháp"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có sở thích"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có lượt thích"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có tin nhắn"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Không có người theo dõi mới"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có bài đăng"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Chưa có trả lời"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Chưa có lượt đăng lại"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Không có thẻ phổ biến nào khớp"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Không tìm thấy ai"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Chưa ai bị gỡ"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có ai ở đây"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Không quan tâm"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
-      "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Không tìm thấy gì"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có gì thịnh hành"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có gì trong nhật ký"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Không có kết quả"),
+      "literalnothingMuted": MessageLookupByLibrary.simpleMessage("Chưa ẩn ai"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Chưa có gì để xem"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Không có tin chưa đọc"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Chỉ chủ sở hữu mới thay đổi được"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Mở câu trả lời"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Mở email từ Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Mật khẩu & đăng nhập"),
+      "literalpostInCommunityName": (Object a0) => "Đăng lên ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Đăng lên ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+              "Đăng lại với lời của riêng bạn ở trên"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Ngôn ngữ chính"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Thông báo đẩy"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Đang kiểm tra…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Ghi bài đăng giọng nói"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("Ghi lại"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Bỏ quyền kiểm duyệt"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Gỡ khỏi cộng đồng"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Bỏ khỏi mục đã lưu"),
+      "literalremoveLabel": (Object a0) => "Gỡ ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Gỡ ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Gỡ ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Gỡ bình chọn"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Gỡ câu trả lời này"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Xóa cuộc trò chuyện này"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Gỡ bình chọn này"),
+      "literalreportAuthor": (Object a0) => "Báo cáo ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Báo cáo bài đăng"),
+      "literalresendCode": MessageLookupByLibrary.simpleMessage("Gửi lại mã"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Bài đăng đã lưu"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("Nói gì đó"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Nói gì đó với ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Tìm kiếm thất bại"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Gửi lại"),
+      "literalsendAgainInCooldownS": (Object a0) => "Gửi lại sau ${a0} giây",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Gửi phản hồi"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Gửi liên kết"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
+          "Đã gửi. Đó là báo cáo số ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Đặt mật khẩu và tiếp tục"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ nhật ký với hỗ trợ"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ cộng đồng này"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ trang này"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ hồ sơ này"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Chia sẻ…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ kèm trích dẫn"),
       "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Hiện thêm nội dung như thế này"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Hiện mật khẩu"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
-      "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Hiện kết quả"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Tạo cộng đồng"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Bắt đầu ghi"),
+      "literalstopLoading": MessageLookupByLibrary.simpleMessage("Dừng tải"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Không xem bài đăng này và các trả lời nữa"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
-      "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          "Dải tin, ${a0} mục",
+      "literalswitchCamera": MessageLookupByLibrary.simpleMessage("Đổi camera"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Gắn thẻ ai đó"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("Chụp ảnh"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
-      "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+              "Nhấn vào ảnh bìa hoặc ảnh để đổi"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Nhấn vào liên kết bên trong"),
+      "literaltapToAddAPhotoAndACover":
+          MessageLookupByLibrary.simpleMessage("Nhấn để thêm ảnh và ảnh bìa"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Chưa thành công. Hãy thử lại."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Không tải được GIF đó."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Không thể mở liên kết này ở đây."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Camera đã đóng"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Cộng đồng này"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Câu trả lời này đã không còn"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Dịch bài đăng"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Tắt âm thanh"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bật âm thanh"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Dùng một ảnh của chúng tôi"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("Đã gửi lại mã xác minh."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Xác minh thất bại: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Xác minh email"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Người xem, lượt thích, lượt lưu và bình luận"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron lưu giữ gì"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Ứng dụng này đã làm gì"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Bạn đã làm gì, mong đợi gì, điều gì đã xảy ra "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Những gì bạn đăng là của bạn"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Kyron hiện có truy cập được không"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ai có thể trả lời"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Bạn muốn gắn thẻ ai?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Bạn đã theo dõi tất cả thẻ phổ biến"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Bạn đã xem hết"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Bạn chưa ở trong cộng đồng nào"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Bạn đã đăng xuất."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Bạn đã rời ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Bạn chưa đăng gì"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Tải thêm"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Đã xóa nhật ký"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Đã sao chép nhật ký"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Đăng xuất?"),
+      "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
+          "Đăng nhập thất bại. Hãy kiểm tra thông tin đăng nhập."),
+      "manage": MessageLookupByLibrary.simpleMessage("Quản lý"),
       "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+      "message": MessageLookupByLibrary.simpleMessage("Nhắn tin"),
+      "messages": MessageLookupByLibrary.simpleMessage("Tin nhắn"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Bạn đã đọc hết mọi cuộc trò chuyện."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Mở hồ sơ của ai đó và nhấn Nhắn tin để bắt đầu trò chuyện."),
+      "mute": MessageLookupByLibrary.simpleMessage("Ẩn"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Đã ẩn & đã chặn"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Từ & thẻ đã ẩn"),
+      "name": MessageLookupByLibrary.simpleMessage("Tên"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Màn hình <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Địa chỉ email mới"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Bài đăng mới"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
-      "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+      "notNow": MessageLookupByLibrary.simpleMessage("Để sau"),
+      "notSentTapRetry":
+          MessageLookupByLibrary.simpleMessage("Chưa gửi. Nhấn để thử lại"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Không có gì trên Kyron khớp với \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Không có gì để sao chép"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Lượt thích, trả lời và người theo dõi mới sẽ đến đây."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Những người theo dõi bạn sẽ hiện ở đây."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Khi ai đó thích bài đăng của bạn, nó sẽ hiện ở đây."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Trả lời cho bài đăng của bạn sẽ đến đây."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Khi ai đó đăng lại bài của bạn, nó sẽ hiện ở đây."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Thông báo"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Mở trong trình duyệt"),
+      "or": MessageLookupByLibrary.simpleMessage("hoặc"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Không tìm thấy trang"),
+      "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Mật khẩu quá ngắn"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Chọn sở thích của bạn"),
+      "post": MessageLookupByLibrary.simpleMessage("Đăng"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Thống kê bài đăng"),
+      "postInCommunity": (Object a0) => "Đăng lên ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Đăng, nói, khoe."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Đã sao chép nội dung bài đăng"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Chính sách quyền riêng tư"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Đã cập nhật hồ sơ"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Tiểu sử"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Quốc gia"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Tên hiển thị"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Vị trí"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Nhấn để đổi"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Trang web"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Thông báo đẩy"),
+      "quote": MessageLookupByLibrary.simpleMessage("Trích dẫn"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Trích dẫn bài đăng"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Liên hệ với người thật"),
+      "remove": MessageLookupByLibrary.simpleMessage("Gỡ"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Xóa cuộc trò chuyện này?"),
+      "removeMember": (Object a0) => "Gỡ ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("Xóa tin nhắn này?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Trả lời, theo dõi và nhắc đến"),
+      "repliesPolicy": (Object a0) => "Trả lời: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Trả lời"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Ai cũng có thể tham gia"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Mọi người vẫn có thể xem, đăng lại và trích dẫn bài đăng này."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Bất kỳ ai trên Kyron đều có thể trả lời bài đăng này."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Người theo dõi bạn"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Chỉ người theo dõi bạn mới trả lời được bài đăng này."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Người bạn nhắc đến"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Chỉ những người bạn @nhắc đến trong bài đăng này mới có thể trả lời."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Không ai có thể trả lời"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Đã tắt trả lời. Bạn vẫn có thể tự trả lời."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Ai có thể trả lời?"),
       "report": MessageLookupByLibrary.simpleMessage("Báo cáo"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Đã sao chép báo cáo. Hãy dán vào email gửi bộ phận hỗ trợ."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Đã gửi báo cáo"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
-      "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+      "repost": MessageLookupByLibrary.simpleMessage("Đăng lại"),
+      "reset": MessageLookupByLibrary.simpleMessage("Đặt lại"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
+      "retry": MessageLookupByLibrary.simpleMessage("Thử lại"),
+      "save": MessageLookupByLibrary.simpleMessage("Lưu"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Lưu bản nháp"),
+      "saySomething": (Object a0) => "Nói gì đó với ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Tìm theo tên hoặc tên người dùng"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Tìm cộng đồng"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Tìm GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Tìm ngôn ngữ"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Tìm thẻ phổ biến"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Cảnh báo bảo mật và thay đổi tài khoản"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Chọn ngôn ngữ cho giao diện ứng dụng."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Chọn ngôn ngữ xuất hiện trong bảng tin. Nếu không chọn ngôn ngữ nào, tất cả sẽ được hiển thị."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
-      "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          "Chọn ngôn ngữ chính cho bản dịch trong bảng tin."),
+      "send": MessageLookupByLibrary.simpleMessage("Gửi"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage("Gửi xác minh"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Gửi báo cáo lỗi"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Gửi phản hồi"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Gửi báo cáo"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Gửi đến hỗ trợ"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Trạng thái dịch vụ"),
+      "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Chia sẻ nhật ký ứng dụng với hỗ trợ"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Đăng nhập Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Đã đăng nhập với"),
+      "signupFailed": (Object a0) => "Đăng ký thất bại: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Ở lại"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron mới bắt đầu, và cách nhanh nhất để liên hệ người thật sự sửa được là mở một yêu cầu hỗ trợ. Hãy cho chúng tôi biết bạn đang làm gì và chuyện gì đã xảy ra."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Ứng dụng chưa có hộp thư hỗ trợ, nên màn hình này dẫn bạn tới nơi thực sự có người theo dõi thay vì một biểu mẫu không đi đến đâu."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Nhật ký ứng dụng"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Cho chúng tôi biết điều gì còn thiếu hoặc bị hỏng"),
+      "terms": MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Văn bản, giọng nói và video, những người tạo ra chúng, và những phòng nơi họ trò chuyện."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Trình soạn thảo không có nút Đăng"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Tối"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Luôn tối"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Mờ"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "Tối dịu hơn, xám xanh thay vì đen"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Sáng"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Luôn sáng"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Hệ thống"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Theo cài đặt sáng hoặc tối của điện thoại"),
+      "translate": MessageLookupByLibrary.simpleMessage("Dịch"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Tính năng dịch chưa bật. Chưa có gì trong bảng tin được dịch; lựa chọn này được ghi nhớ đến lúc đó."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Tùy chọn này thay đổi chữ của chính Kyron, các phần giao diện do Flutter tự vẽ, ngày tháng và con số, cùng hướng bố cục của ứng dụng cho các ngôn ngữ viết từ phải sang trái."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Thử lại"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Chính sách quyền riêng tư"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Sau"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Ứng dụng & Thiết bị"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Tôi trích dẫn trò lừa đảo để cảnh báo mọi người."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1153,15 +967,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Đã gửi kháng nghị. Bạn sẽ nhận được thông báo khi có quyết định."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Kháng nghị vụ việc \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Giao diện"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Sáng, tối hoặc theo điện thoại"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Trước"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Hai bạn sẽ không thấy nhau trên Kyron, và việc theo dõi giữa hai bạn bị gỡ. Họ không được thông báo."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Chứa"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
           "Dùng để làm gì (không bắt buộc)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1269,29 +1081,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Ghi âm tin nhắn thoại"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Bạn"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Cộng đồng"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Dùng để làm gì? (không bắt buộc)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Bài viết:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Nội dung & Hiển thị"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Không tải được bảng tin"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Không tải được bài đăng đã thích"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("Không tải được hồ sơ của bạn"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Không tải được bài đăng đã lưu"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("ID phi tập trung"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Khắc phục sự cố"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Nhóm"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("Không có nhóm"),
@@ -1302,16 +1109,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Đã ghim"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Đã thích"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Đã lưu"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Chưa có gì ở đây"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Theo dõi vài tài khoản và bài đăng của họ sẽ hiện ở đây."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Chưa có gì từ người bạn theo dõi"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Bài đăng sẽ hiện ở đây khi mọi người viết."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Đang mờ dần"),
       "ui_feed_signal_less":
@@ -1330,16 +1134,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Chúng định hình Trang chủ và Khám phá, chủ yếu theo chủ đề của từng bài viết. Mỗi tín hiệu yếu đi một nửa mỗi tháng và thôi được tính sau sáu tháng. Xóa một tín hiệu để dừng nó ngay."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Bài đăng có clip sẽ hiện ở đây."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
+          MessageLookupByLibrary.simpleMessage("Chưa có video"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Phản hồi"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Tìm người trên Kyron"),
       "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Từ một tài khoản"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Thêm người"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Thêm"),
       "ui_group_add_name":
@@ -1428,32 +1230,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("bạn"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Bạn là người xem"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Trợ giúp"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Đã ghi nhận. Điều này giúp chọn nội dung hiển thị cho bạn."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Tham gia"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Đã tham gia"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Pháp lý"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Thích"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Bài đăng đã thích"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Bài đăng bạn thích sẽ hiện ở đây, mới nhất trước."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Đã sao chép liên kết"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Bạn sẽ không thấy bài đăng của họ nữa. Họ không được thông báo."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Chưa có lượt thích"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Không có bài đăng nào khớp bộ lọc."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Chưa lưu gì"),
       "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
           "Tài khoản của bạn đã được cập nhật"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1511,13 +1311,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tài khoản của bạn có một cảnh cáo"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Xong"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bỏ qua"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Nội dung này đã được mở."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Đã hết hạn"),
@@ -1534,23 +1330,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Gửi để xem một lần"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Nhấn để xem"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Tạm dừng"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Phát"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Bài sẽ bị gỡ khỏi hồ sơ của bạn và bảng tin của mọi người. Các trả lời cũng biến mất theo."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Đã xóa bài đăng"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Đã ẩn bài đăng"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Đã sao chép nội dung bài đăng"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Đăng trong khoảng"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Đã ẩn. Chúng tôi sẽ hiện ít nội dung như vậy hơn."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Tùy chọn"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Quyền riêng tư"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Bạn muốn bổ sung gì không? (không bắt buộc)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1648,79 +1442,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Nội dung người lớn"),
       "ui_rule_something_else":
           MessageLookupByLibrary.simpleMessage("Lý do khác"),
-      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
+      "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Thư rác"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Bạo lực hoặc đe dọa"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Bài đăng đã lưu"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Nhấn biểu tượng lưu trữ trên bài đăng để giữ nó ở đây. Chỉ bạn thấy mục đã lưu."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Tìm theo tên người dùng hoặc tên hiển thị."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Xóa"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Tìm trong mọi thứ đã đăng"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Tìm người"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Tìm bài đăng"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Ứng dụng & Thiết bị"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Nội dung & Hiển thị"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
-      "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tiết kiệm dữ liệu"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Chia sẻ suy nghĩ"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Xem bài viết trợ giúp"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
+      "ui_settings_muted_blocked":
+          MessageLookupByLibrary.simpleMessage("Những ai bạn đã ẩn hoặc chặn"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Tùy chọn thông báo"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Hồ sơ và thông tin liên hệ của bạn"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Bạn sẽ cần đăng nhập lại để quay lại tài khoản."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Cài đặt bảo mật"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Trên một dòng"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Địa chỉ email mới"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Chuyện gì đã xảy ra"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Nhận trợ giúp từ đội ngũ"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Chia sẻ"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Trích dẫn"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Gửi trong tin nhắn"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Cho mọi người trên Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Chia sẻ bài đăng này"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Nội dung liên quan"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1816,54 +1596,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bài viết của bạn"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Phản hồi của bạn"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Điều khoản dịch vụ"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("bài đăng này"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Đã ẩn chuỗi"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Thử lại"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Tắt âm thanh"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Bật âm thanh"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Ít nhất hai ký tự."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Hoàn tác"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Từ khóa hoặc bộ lọc: tài khoản, khoảng thời gian, hoặc nội dung bài đăng."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Hủy đăng lại"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Cập nhật mật khẩu"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Dùng địa chỉ khác"),
+      "username": MessageLookupByLibrary.simpleMessage("Tên người dùng"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Tên người dùng phải viết thường (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Đính kèm"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Sẵn sàng đính kèm"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Ghi bài đăng giọng nói"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Đang lưu…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Dừng"),
+      "whatHappened":
+          MessageLookupByLibrary.simpleMessage("Chuyện gì đã xảy ra"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Đã xảy ra chuyện gì, và chúng tôi nên xem gì?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Có gì trong hình này?"),
       "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+          "Dùng để làm gì? (không bắt buộc)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Bạn đã làm gì, mong đợi gì, điều gì đã xảy ra"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Bạn đang làm gì khi chuyện đó xảy ra."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Bạn đã trả lời"),
       "dmReplied": (Object a0) => "$a0 đã trả lời",
@@ -1991,7 +1763,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Đã gửi, nhưng không phải đến tất cả."),
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("Không gửi được. Hãy thử lại."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Bộ lọc"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Tất cả"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Chưa đọc"),

@@ -8,248 +8,208 @@ class MessageLookup extends MessageLookupByLibrary {
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+          "စကားလုံး၊ စကားစု သို့မဟုတ် #တဂ်"),
+      "about": MessageLookupByLibrary.simpleMessage("အကြောင်း"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("အဖြေ ထည့်ရန်"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("ဘာသာစကားများ ထည့်ရန်…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("သဘောတူပြီး ဆက်လုပ်ရန်"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Kyron အကောင့် ရှိပြီးသားလား။"),
+      "analytics_comments":
+          MessageLookupByLibrary.simpleMessage("မှတ်ချက်များ"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "မတူညီသော လူများ၊ ဖွင့်သည့်အကြိမ် မဟုတ်"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("ပါဝင်ဆောင်ရွက်မှု"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("လိုက်ခ်များ"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("ကြည့်ရှုသူ မရှိသေးပါ"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "ဤပို့စ်ကို မည်သူမျှ မဖွင့်ရသေးပါ။"),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("တင်ပြီး"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("သိမ်းမှုများ"),
+      "analytics_viewers":
+          MessageLookupByLibrary.simpleMessage("ကြည့်ရှုသူများ"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("တစ်ရက်လျှင် ကြည့်ရှုသူ"),
+      "and": MessageLookupByLibrary.simpleMessage("နှင့်"),
+      "answerNumber": (Object a0) => "အဖြေ ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR မှန်ဘီလူး"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("အက်ပ် မှတ်တမ်း ပူးတွဲရန်"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("အသွားအပြန် အချိန်"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("တိုကင် အတည်ပြုခြင်း"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ထပ်ကြိုးစားရန်"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ထပ်ကြိုးစားရန်"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "ယခု ထုတ်လွှင့်မှု စတင်ပါက မည်သူမျှ မဝင်နိုင်သော အခန်းထဲ ရောက်သွားပါမည်"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်း စတင်ရန်"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("ဘာအတွက်လဲ။ (ရွေးချယ်နိုင်)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("ပြန်မဝင်နိုင်ပါ။"),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("ဤစာရင်းမှ ပြန်မဝင်နိုင်ပါ။"),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("၎င်းကို ပိတ်ပါက"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("ဦးစွာ ပါဝင်ပါ"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("မကြာမီ"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("သင့်အမည်ဖြင့် ပို့စ်တင်နေသည်"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage(
+              "ဤအသိုင်းအဝိုင်းတွင် ပို့စ်တင်ရန်"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("ယခုလေးတင်"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("ထပ်ကြိုးစားရန်"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("ခေါင်းစဉ် 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("သင့်အတွက်"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("တစ်ခုခု ရှိသည်။"),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("ယခု ထိုနေရာသို့ သွားနေသည်။"),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage("၊ မဟုတ်"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("ကျွန်ုပ် ရွေ့နေသလား"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("အသံပိတ်ရန်"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("အသံဖွင့်ရန်"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("သင့်အတွက်"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("သင့်တက်ဘ်များ"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("ထပ်ကြိုးစားရန်"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("သင်္ကေတ (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("တစ်ရက်လျှင် ကြည့်ရှုသူ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("ဖွင့်၍ မရပါ"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "ထပ်ဖြည့်စရာ ရှိပါသလား။ (ရွေးချယ်နိုင်)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("အကောင့်တစ်ခုမှ"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("ထွက်ရန်"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("သင့်အကောင့်"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် အတည်ပြုပါ"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ယခု မဟုတ်"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("ဖွင့်နေသည်…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်တင်နေသည်…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 နာရီ အကြာက"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("စတိုရီ လင့်ခ် ကူးယူရန်"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("သင့်စတိုရီ"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "သင့်အကောင့်၊ သင့်ပို့စ်များနှင့် သင်နှိပ်သည့်အရာများ၊ ထို့ကြောင့်"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("ခေါင်းစဉ် ထည့်ရန်"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("ကိုယ်ပိုင်။"),
+      "authorBlocked": (Object a0) => "${a0} ကို ပိတ်ဆို့ပြီး",
+      "authorPostsHidden": (Object a0) => "${a0} ၏ ပို့စ်များကို မမြင်ရတော့ပါ",
+      "block": MessageLookupByLibrary.simpleMessage("ပိတ်ဆို့ရန်"),
+      "blockAuthor": (Object a0) => "${a0} ကို ပိတ်ဆို့မလား။",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("ဗားရှင်း အသေးစိတ် ကူးယူပြီး"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "ဆက်လုပ်ခြင်းဖြင့် သင်သဘောတူပါသည်"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "ဆက်လုပ်ခြင်းဖြင့် ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှု စည်းမျဉ်းများနှင့် ကိုယ်ရေးအချက်အလက် မူဝါဒကို သဘောတူပါသည်"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "စာရင်းသွင်းခြင်းဖြင့် သင်သဘောတူပါသည်"),
+      "cancel": MessageLookupByLibrary.simpleMessage("မလုပ်တော့ပါ"),
       "change": MessageLookupByLibrary.simpleMessage("ပြောင်းရန်"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ် ပြောင်းရန်"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "သင့်အီးမေးလ်မှ အကောင့်ကို အတည်ပြုပါ။"),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Kyron ချိတ်ဆက်နိုင်မနိုင် စစ်ရန်"),
+      "clear": MessageLookupByLibrary.simpleMessage("ရှင်းရန်"),
+      "close": MessageLookupByLibrary.simpleMessage("ပိတ်ရန်"),
+      "closeCommunity": (Object a0) => "${a0} ကို ပိတ်မလား။",
+      "closeIt": MessageLookupByLibrary.simpleMessage("ပိတ်ရန်"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ဤအသိုင်းအဝိုင်းကို ပိတ်ရန်"),
+      "communities": MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းများ"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "စူးစမ်းရန် တွင် ရှာပါ သို့မဟုတ် ကိုယ်ပိုင် စတင်ပါ။"),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "ပူပြင်းသော အမြင်တစ်ခု ပစ်လိုက်ပါ (သို့မဟုတ် နွေးနွေး)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("ဘာတွေ တွေးနေလဲ။"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "သင်သာ ပြောနိုင်သည့်အရာကို ပြောပါ…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "ဤသည်မှာ သင့်အတွက် အချက်ပြ- တင်လိုက်ပါ"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "ရိုက်ပါ၊ ပြောပါ သို့မဟုတ် အသံထွက် စဉ်းစားပါ"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် အတည်ပြုပါ"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("အကူအညီဌာနကို ဆက်သွယ်ရန်"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "ပို့စ်များတွင် ဘာသာစကား မရှိသေးသောကြောင့် ၎င်းသည် သင့်ဖိဒ်ကို မစစ်ထုတ်သေးပါ။ ထိုအချိန်အထိ သင့်ရွေးချယ်မှုများကို သိမ်းထားပါမည်။"),
+      "continueAction": MessageLookupByLibrary.simpleMessage("ဆက်လုပ်ရန်"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ်ဖြင့် ဆက်လုပ်ရန်"),
+      "copy": MessageLookupByLibrary.simpleMessage("ကူးယူရန်"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("အစား အစီရင်ခံစာ ကူးယူရန်"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google ဝင်ရောက်မှု ဖွင့်၍ မရပါ။ ${a0}",
+      "couldNotSignOut": (Object a0) => "ထွက်၍ မရပါ: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံ ရိုက်၍ မရပါ။"),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "သင့်ပရိုဖိုင်နှင့် သင့်ပို့စ်များအောက်တွင် ပြသသည်။"),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -262,89 +222,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "သင့်ပရိုဖိုင်နှင့် သင့်ပို့စ်များအောက်တွင် ပြသသည်။ တစ်စုံတစ်ယောက်၏ ပို့စ်များကို သင်မြင်သောအခါ သင့်နိုင်ငံကို သူတို့၏ အချက်အလက်များတွင် ရေတွက်သည်၊ ငါးဦးနှင့်အထက် အုပ်စုများဖြင့်သာဖြစ်ပြီး အမည်ဖြင့် ဘယ်တော့မှ မဟုတ်ပါ။"),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("သင့်ဖုန်း၏ ဆက်တင်များမှ"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("ဖန်တီးရန်"),
+      "createAccount":
+          MessageLookupByLibrary.simpleMessage("အကောင့် ဖန်တီးရန်"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("သင့်အကောင့် ဖန်တီးပါ"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("သင့်ပရိုဖိုင် ဖန်တီးပါ"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR မှန်ဘီလူး"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("တိုက်ရိုက်ထုတ်လွှင့်ရန်"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("စာသား ပို့စ်"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("အသံ ပို့စ်"),
+      "delete": MessageLookupByLibrary.simpleMessage("ဖျက်ရန်"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("ဤမှတ်ချက်ကို ဖျက်မလား။"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်ကို ဖျက်မလား။"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("ဤပူးတွဲဖိုင်ကို ဖော်ပြပါ"),
+      "description": MessageLookupByLibrary.simpleMessage("ဖော်ပြချက်"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID ကို ကလစ်ဘုတ်သို့ ကူးယူပြီး"),
       "done": MessageLookupByLibrary.simpleMessage("ပြီးပါပြီ"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "တစ်ခုခု ရေးပြီးနောက် တည်းဖြတ်ကိရိယာကို ပိတ်ပါ၊ မူကြမ်း ကမ်းလှမ်းပါမည်။"),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} ရက် အကြာက"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("{hours} နာရီ အကြာက"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("ယခုလေးတင်"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} မိနစ် အကြာက"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("ဘာမျှ မရေးရသေးပါ"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("စစ်တမ်း၊ မေးခွန်း မရှိသေး"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("ကိုးကားချက်၊ စာသား မရှိသေး"),
+      "drafts": MessageLookupByLibrary.simpleMessage("မူကြမ်းများ"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("ပရိုဖိုင် ပြင်ရန်"),
+      "email": MessageLookupByLibrary.simpleMessage("အီးမေးလ်"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ် အသိပေးချက်များ"),
+      "explore": MessageLookupByLibrary.simpleMessage("စူးစမ်းရန်"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "ဤစက်တွင် မျက်နှာ ခြေရာခံခြင်း မရနိုင်ပါ။"),
+      "feedTagDetail": (Object a0) => "#${a0} ဖြင့် ဘာမျှ မတင်ရသေးပါ။",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name} ကို စောင့်ကြည့်ရန်"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("ဖော်လိုဝါများ"),
+      "following": MessageLookupByLibrary.simpleMessage("ဖော်လိုလုပ်ထားသည်"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် မေ့နေပါသလား။"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("အကူအညီ ရယူခြင်း"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google ဖြင့် ဆက်လုပ်ရန်"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google ဖြင့် ဝင်ရန်"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google သည် ပြီးဆုံးသော ဝင်ရောက်မှုကို Android နှင့် iOS သာ တုံ့ပြန်သော လင့်ခ်မှတစ်ဆင့် Kyron သို့ ပြန်ပေးသောကြောင့် ${a0} ပေါ်တွင် ဘရောက်ဇာအတွက် ပြန်ပေးစရာ နေရာ မရှိပါ။\\n\\nGoogle မှတစ်ဆင့် Kyron အကောင့် ရှိပြီးသားဆိုလျှင် တူညီသော လိပ်စာဖြင့် အီးမေးလ်ဖြင့် ဆက်လုပ်ရန် ကို ရွေးပြီး စကားဝှက် မေ့နေပါသလား ကို နှိပ်ပါ- စကားဝှက် သတ်မှတ်ရန် လင့်ခ် ရရှိပါမည်။",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google ဝင်ရောက်မှုအတွက် ဖုန်းအက်ပ် လိုအပ်သည်"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Google ဖြင့် စာရင်းသွင်းရန်"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "လမ်းညွှန်များနှင့် အမေးများသော မေးခွန်းများ၏ အဖြေ"),
+      "handle": MessageLookupByLibrary.simpleMessage("အသုံးပြုသူအမည်"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("အကူအညီနှင့် ပံ့ပိုးမှု"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("အကူအညီ စင်တာ"),
+      "home": MessageLookupByLibrary.simpleMessage("ပင်မ"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("တစ်ကြောင်းတည်းဖြင့်"),
       "ins_account": MessageLookupByLibrary.simpleMessage("သင့်အကောင့်"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းကို ဖွင့်ရန်"),
@@ -466,692 +415,578 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ထိပ်တန်းပို့စ်များ"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "ယခင် {days} ရက်နှင့် နှိုင်းယှဉ်လျှင်"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("စိတ်ဝင်စားမှု ထည့်ရန်"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("အစီအစဉ် ပြောင်းရန် ဆွဲပါ"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "ဘားတွင် တက်ဘ် ငါးခုအထိသာ ဆံ့သည်။ နောက်တစ်ခု ထည့်ရန် တစ်ခု ဖယ်ရှားပါ။"),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("ဖော်လိုလုပ်ထားသည်"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("သင့်အတွက်"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "လူများ ဟက်ရှ်တဂ်များ သုံးစတင်သောအခါ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("ယခု ခေတ်စားနေသည်"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("ဗီဒီယိုများ"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("သင့်တက်ဘ်များ"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          "၎င်းသည် သင်တို့နှစ်ဦးစလုံးအတွက် ပျောက်သွားပါမည်။"),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "၎င်းကို ချည်တန်းမှ ဖယ်ရှားပါမည်။"),
+      "join": MessageLookupByLibrary.simpleMessage("ပါဝင်ရန်"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("ဆက်ပြင်ရန်"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron မျက်နှာပြင်များသည် သင့်ဘာသာစကားဖြင့် ဖြစ်သည်။ စကားလုံးတစ်ခု မှားနေသလို ထင်ရပါက အကြံပြုချက် ပို့ရန် မှတစ်ဆင့် ပြောပြပါ။"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("ဘာသာစကားများ"),
+      "leave": MessageLookupByLibrary.simpleMessage("ထွက်ရန်"),
+      "leaveCommunity": (Object a0) => "${a0} မှ ထွက်မလား။",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("ပြန်ဝင်ခွင့်ပေးရန်"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("စာမျက်နှာ 1 ခု ဖွင့်ထားသည်"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("ကလစ် ထည့်ရန်"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF ထည့်ရန်"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("ဟက်ရှ်တဂ် ထည့်ရန်"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံ ထည့်ရန်"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("စစ်တမ်း ထည့်ရန်"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("ဗီဒီယို ထည့်ရန်"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("စိတ်ဝင်စားမှု ထည့်ရန်"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} ကို တက်ဘ်အဖြစ် ထည့်ရန်",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("အက်ပ် ဘာသာစကား"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("အက်ပ် ဗားရှင်း"),
+      "literalblockAuthor": (Object a0) => "${a0} ကို ပိတ်ဆို့ရန်",
+      "literalblockAuthor2": (Object a0) => "${a0} ကို ပိတ်ဆို့မလား။",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("ဤအကောင့်ကို ပိတ်ဆို့မလား။"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("ပြန်စာ ပယ်ရန်"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("ထပ်စစ်ရန်"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("ပြခန်းမှ ရွေးရန်"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("ကက်ရှ် ရှင်းရန်"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("စာမျက်နှာအားလုံး ပိတ်ရန်"),
+      "literalcloseTabLabel": (Object a0) => "${a0} ပိတ်ရန်",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("ဘရောက်ဇာ ပိတ်ရန်"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} ကို ပိတ်မလား။",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("ပံ့ပိုးမှုကို ဆက်သွယ်ရန်"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("အကြောင်းအရာ ဘာသာစကားများ"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("လင့်ခ် ကူးယူရန်"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် လင့်ခ် ကူးယူရန်"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("ပို့စ် စာသား ကူးယူရန်"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("စာသား ကူးယူရန်"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "အသိုင်းအဝိုင်းများ ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF များ ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("အသိပေးချက်များ ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("အဖွဲ့ဝင်များ ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်များကို ဖွင့်၍ မရပါ"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          MessageLookupByLibrary.simpleMessage("ဤစကားဝိုင်းကို ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("ဤစာရင်းကို ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်ကို ဖွင့်၍ မရပါ"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("ဤပြန်စာကို ဖွင့်၍ မရပါ"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "လူကြိုက်များသော တဂ်များ ဖွင့်၍ မရပါ"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "သင့်အသိုင်းအဝိုင်းများကို ဖွင့်၍ မရပါ"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "သင့်မက်ဆေ့ချ်များကို ဖွင့်၍ မရပါ"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "ဤအသိုင်းအဝိုင်းကို ဖွင့်၍ မရပါ"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("ပြန်စာ ပို့စ်တင်၍ မရပါ။"),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("ရှာဖွေမှု အလုပ်မလုပ်ပါ"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "ထွက်၍ မရပါ: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "စာမျက်နှာ ${a0} ခု ဖွင့်ထားသည်",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("မျက်နှာဖုံး ဓာတ်ပုံ"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("ဒေတာ ချွေတာရေး"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် ဖျက်ရန်"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("လူများ ရှာရန်"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("ပြန်မဖြေပါနှင့်"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("မူကြမ်း သိမ်းပြီး"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("ယခု အကြံပြုချက် ပို့၍ မရပါ"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("စာသား အရွယ်အစား"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF သတ်မှတ်မထားပါ"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("အခြားအက်ပ်သို့ ပေးရန်"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် ဖျောက်ရန်"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်ကို ဖျောက်ရန်"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "၎င်းကို ဖျောက်ပြီး ဤကဲ့သို့ လျှော့ပြရန် တောင်းဆိုသည်"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("မည်သို့ ပြုမူရမည်"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("ဆက်ရေးရန်"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron မတုံ့ပြန်ပါ"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} ရက်စွဲ",
+      "literalleaveCommunityName": (Object a0) => "${a0} မှ ထွက်မလား။",
+      "literallensNameFaceLens": (Object a0) => "${a0}၊ မျက်နှာ မှန်ဘီလူး",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("လိုက်ခ်လုပ်ထားသော ပို့စ်များ"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("လင့်ခ် ကူးယူပြီး"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("ထိန်းညှိသူ ခန့်ရန်"),
+      "literalmuteAuthor": (Object a0) => "${a0} ကို အသံပိတ်ရန်",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("ဤချည်တန်းကို အသံပိတ်ရန်"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "စကားလုံး သို့မဟုတ် တဂ်များ အသံပိတ်ရန်"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "အသံပိတ်ထားသောနှင့် ပိတ်ဆို့ထားသော အကောင့်များ"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "အသံပိတ်ပြီး။ အသိပေးချက် ရရှိမည် မဟုတ်ပါ။"),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "ဤစက်ရှိ မည်သည့်အက်ပ်ကမျှ ${a0} လင့်ခ်များကို မဖွင့်ပါ။",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "ဤစက်ရှိ မည်သည့် ဘရောက်ဇာကမျှ လင့်ခ်ကို လက်မခံပါ။"),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("DID မရှိသေးပါ"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("မူကြမ်း မရှိပါ"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("စိတ်ဝင်စားမှု မရှိသေးပါ"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("လိုက်ခ် မရှိသေးပါ"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ် မရှိသေးပါ"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("ဖော်လိုဝါ အသစ် မရှိပါ"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် မရှိသေးပါ"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("ပြန်စာ မရှိသေးပါ"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("ပြန်တင်မှု မရှိသေးပါ"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "ကိုက်ညီသော လူကြိုက်များ တဂ် မရှိပါ"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("မည်သူ့ကိုမျှ မတွေ့ပါ"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("မည်သူ့ကိုမျှ မဖယ်ရှားရသေးပါ"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("ဤနေရာတွင် မည်သူမျှ မရှိသေးပါ"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("စိတ်မဝင်စားပါ"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("ဘာမျှ မတွေ့ပါ"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("ခေတ်စား နေသည့်အရာ မရှိသေးပါ"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("မှတ်တမ်းတွင် ဘာမျှ မရှိသေးပါ"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("ကိုက်ညီမှု မရှိပါ"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("အသံပိတ်ထားသည် မရှိပါ"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("ကြည့်စရာ မရှိသေးပါ"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("မဖတ်ရသေးသည် မရှိပါ"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "ပိုင်ရှင်သာ ဤအရာကို ပြောင်းနိုင်သည်"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("ပြန်စာ ဖွင့်ရန်"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron မှ အီးမေးလ်ကို ဖွင့်ပါ"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("စကားဝှက်နှင့် ဝင်ရောက်မှု"),
+      "literalpostInCommunityName": (Object a0) => "${a0} တွင် ပို့စ်တင်ရန်",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "${a0} တွင် ပို့စ်တင်ရန်",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "အပေါ်တွင် ကိုယ်ပိုင်စကားဖြင့် ပို့စ်တင်ပါ"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("အဓိက ဘာသာစကား"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("ပုရှ် အသိပေးချက်များ"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("စစ်နေသည်…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("အသံပို့စ် မှတ်တမ်းတင်ရန်"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("ထပ်မှတ်တမ်းတင်ရန်"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("ထိန်းညှိသူမှ ဖယ်ရှားရန်"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းမှ ဖယ်ရှားရန်"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("သိမ်းထားသည်မှ ဖယ်ရှားရန်"),
+      "literalremoveLabel": (Object a0) => "${a0} ဖယ်ရှားရန်",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0} ဖယ်ရှားရန်",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0} ကို ဖယ်ရှားမလား။",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("စစ်တမ်း ဖယ်ရှားရန်"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("ဤအဖြေကို ဖယ်ရှားရန်"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("ဤစကားဝိုင်းကို ဖျက်ရန်"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("ဤစစ်တမ်းကို ဖယ်ရှားရန်"),
+      "literalreportAuthor": (Object a0) => "${a0} ကို တိုင်ကြားရန်",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်ကို တိုင်ကြားရန်"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("ကုဒ် ပြန်ပို့ရန်"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("သိမ်းထားသော ပို့စ်များ"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("တစ်ခုခု ပြောပါ"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0} တွင် တစ်ခုခု ပြောပါ",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("ရှာဖွေမှု မအောင်မြင်ပါ"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("ပြန်ပို့ရန်"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "${a0} စက္ကန့်အတွင်း ပြန်ပို့ရန်",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("အကြံပြုချက် ပေးရန်"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("လင့်ခ် ပို့ရန်"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "ပို့ပြီးပါပြီ။ ၎င်းမှာ အစီရင်ခံစာ #${a0} ဖြစ်သည်။",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "စကားဝှက် သတ်မှတ်ပြီး ဆက်လုပ်ပါ"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "မှတ်တမ်းကို ပံ့ပိုးမှုနှင့် မျှဝေရန်"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ဤအသိုင်းအဝိုင်းကို မျှဝေရန်"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("ဤစာမျက်နှာကို မျှဝေရန်"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("ဤပရိုဖိုင်ကို မျှဝေရန်"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("မျှဝေရန်…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("ကိုးကားချက်ဖြင့် မျှဝေရန်"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("ဤကဲ့သို့ ပိုပြရန်"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် ပြရန်"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("ရလဒ်များ ပြရန်"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်း စတင်ရန်"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("မှတ်တမ်းတင်ခြင်း စတင်ရန်"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("ဖွင့်ခြင်း ရပ်ရန်"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "ဤပို့စ်နှင့် ၎င်း၏ ပြန်စာများကို မမြင်တော့ရန်"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "စတိုရီ တန်း၊ ${a0} ခု",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("ကင်မရာ ပြောင်းရန်"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("တစ်စုံတစ်ယောက်ကို တဂ်လုပ်ရန်"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("ဓာတ်ပုံ ရိုက်ရန်"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "ပြောင်းရန် နဖူးစည်း သို့မဟုတ် ဓာတ်ပုံကို နှိပ်ပါ"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("၎င်းထဲရှိ လင့်ခ်ကို နှိပ်ပါ"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "ဓာတ်ပုံနှင့် မျက်နှာဖုံး ထည့်ရန် နှိပ်ပါ"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("မအောင်မြင်ပါ။ ထပ်ကြိုးစားပါ။"),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("ထို GIF ကို ဖွင့်၍ မရပါ။"),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
-      "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+              "ဤလင့်ခ်ကို ဤနေရာတွင် ဖွင့်၍ မရပါ။"),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("ကင်မရာ ပိတ်ထားသည်"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("ဤအသိုင်းအဝိုင်း"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("ဤပြန်စာ မရှိတော့ပါ"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် ဘာသာပြန်ရန်"),
+      "literalturnSoundOff": MessageLookupByLibrary.simpleMessage("အသံပိတ်ရန်"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("အသံဖွင့်ရန်"),
       "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "ကျွန်ုပ်တို့ထံမှ တစ်ခု သုံးရန်"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("အတည်ပြုကုဒ် ပြန်ပို့ပြီး။"),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "အတည်ပြု၍ မရပါ: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ် အတည်ပြုရန်"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "ကြည့်ရှုသူ၊ လိုက်ခ်၊ သိမ်းမှုနှင့် မှတ်ချက်များ"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron ဘာသိမ်းထားသလဲ"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("ဤအက်ပ် ဘာလုပ်နေခဲ့သလဲ"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "သင်ဘာလုပ်ခဲ့သလဲ၊ ဘာမျှော်လင့်ခဲ့သလဲ၊ ဘာဖြစ်ခဲ့သလဲ "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("သင်တင်သည့်အရာ သင့်ပိုင်"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron ယခု ချိတ်ဆက်နိုင်မနိုင်"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("မည်သူ ပြန်စာရေးနိုင်သလဲ"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("မည်သူ့ကို တဂ်လုပ်လိုသလဲ။"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "လူကြိုက်များသော တဂ်အားလုံးကို ဖော်လိုလုပ်ပြီးပါပြီ"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("အားလုံးကို ကြည့်ပြီးပါပြီ"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "သင် မည်သည့်အသိုင်းအဝိုင်းတွင်မျှ မရှိပါ"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("သင် ထွက်ပြီးပါပြီ။"),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "သင် ${a0} မှ ထွက်ခဲ့သည်",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("သင် ဘာမျှ ပို့စ်မတင်ရသေးပါ"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("ထပ်ဖွင့်ရန်"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("မှတ်တမ်း ရှင်းပြီး"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("မှတ်တမ်း ကူးယူပြီး"),
+      "logIn": MessageLookupByLibrary.simpleMessage("ဝင်ရန်"),
+      "logOut": MessageLookupByLibrary.simpleMessage("ထွက်ရန်"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("ထွက်မလား။"),
+      "login": MessageLookupByLibrary.simpleMessage("ဝင်ရောက်မှု"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "ဝင်၍ မရပါ။ သင့်အချက်အလက်များကို စစ်ပါ။"),
+      "manage": MessageLookupByLibrary.simpleMessage("စီမံရန်"),
+      "menu": MessageLookupByLibrary.simpleMessage("မီနူး"),
+      "message": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်"),
+      "messages": MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်များ"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "စကားဝိုင်းအားလုံးကို ဖတ်ပြီးပါပြီ။"),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          "တစ်စုံတစ်ယောက်၏ ပရိုဖိုင်ကို ဖွင့်ပြီး စကားဝိုင်း စတင်ရန် မက်ဆေ့ချ် ကို နှိပ်ပါ။"),
+      "mute": MessageLookupByLibrary.simpleMessage("အသံပိတ်ရန်"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "အသံပိတ်ထားသူများနှင့် ပိတ်ဆို့ထားသူများ"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "အသံပိတ်ထားသော စကားလုံးနှင့် တဂ်များ"),
+      "name": MessageLookupByLibrary.simpleMessage("အမည်"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> မျက်နှာပြင်"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ် လိပ်စာ အသစ်"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("စကားဝှက် အသစ်"),
+      "newPost": MessageLookupByLibrary.simpleMessage("ပို့စ်အသစ်"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("ယခု မဟုတ်"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "မပို့ရသေးပါ။ ထပ်ကြိုးစားရန် နှိပ်ပါ"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron တွင် \"${a0}\" နှင့် ကိုက်ညီသည် မရှိပါ",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("ကူးယူစရာ မရှိပါ"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "လိုက်ခ်များ၊ ပြန်စာများနှင့် ဖော်လိုဝါအသစ်များ ဤနေရာသို့ ရောက်လာသည်။"),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "သင့်ကို ဖော်လိုလုပ်သူများ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "တစ်စုံတစ်ယောက်က သင့်ပို့စ်ကို လိုက်ခ်လုပ်သောအခါ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "သင့်ပို့စ်များအတွက် ပြန်စာများ ဤနေရာသို့ ရောက်လာသည်။"),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "တစ်စုံတစ်ယောက်က သင့်ကို ပြန်တင်သောအခါ ဤနေရာတွင် ပေါ်ပါမည်။"),
+      "notifications": MessageLookupByLibrary.simpleMessage("အသိပေးချက်များ"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("ဘရောက်ဇာတွင် ဖွင့်ရန်"),
+      "or": MessageLookupByLibrary.simpleMessage("သို့မဟုတ်"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("စာမျက်နှာ မတွေ့ပါ"),
+      "password": MessageLookupByLibrary.simpleMessage("စကားဝှက်"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် တိုလွန်းသည်"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("သင့်စိတ်ဝင်စားမှုများ ရွေးပါ"),
+      "post": MessageLookupByLibrary.simpleMessage("ပို့စ်တင်ရန်"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် စာရင်းအင်း"),
+      "postInCommunity": (Object a0) => "${a0} တွင် ပို့စ်တင်ရန်",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်တင်ပါ၊ ပြောပါ၊ ပြပါ။"),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("ပို့စ် စာသား ကူးယူပြီး"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးအချက်အလက် မူဝါဒ"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင် အပ်ဒိတ်လုပ်ပြီး"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးအကျဉ်း"),
       "profile_country": MessageLookupByLibrary.simpleMessage("နိုင်ငံ"),
-      "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+      "profile_display_name": MessageLookupByLibrary.simpleMessage("ပြသအမည်"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("တည်နေရာ"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("ပြောင်းရန် နှိပ်ပါ"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("ဝဘ်ဆိုက်"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("ပုရှ် အသိပေးချက်များ"),
+      "quote": MessageLookupByLibrary.simpleMessage("ကိုးကားရန်"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("ပို့စ်ကို ကိုးကားရန်"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("လူနှင့် ဆက်သွယ်ရန်"),
+      "remove": MessageLookupByLibrary.simpleMessage("ဖယ်ရှားရန်"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("ဤစကားဝိုင်းကို ဖျက်မလား။"),
+      "removeMember": (Object a0) => "${a0} ကို ဖယ်ရှားမလား။",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("ဤမက်ဆေ့ချ်ကို ဖျက်မလား။"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "ပြန်စာများ၊ ဖော်လိုများနှင့် ဖော်ပြချက်များ"),
+      "repliesPolicy": (Object a0) => "ပြန်စာများ: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("ပြန်စာရေးရန်"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("မည်သူမဆို ပါဝင်နိုင်သည်"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "မည်သူမဆို ဤပို့စ်ကို ကြည့်၊ ပြန်တင်နှင့် ကိုးကားနိုင်ဆဲ ဖြစ်သည်။"),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron ရှိ မည်သူမဆို ဤပို့စ်ကို ပြန်စာရေးနိုင်သည်။"),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("သင့်ကို ဖော်လိုလုပ်သူများ"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "သင့်ကို ဖော်လိုလုပ်သူများသာ ဤပို့စ်ကို ပြန်စာရေးနိုင်သည်။"),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("သင်ဖော်ပြသူများ"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "ဤပို့စ်တွင် သင် @ဖော်ပြသူများသာ ပြန်စာရေးနိုင်သည်။"),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("မည်သူမျှ ပြန်စာမရေးနိုင်ပါ"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "ပြန်စာများ ပိတ်ထားသည်။ သင်ကိုယ်တိုင် ပြန်စာရေးနိုင်ဆဲ ဖြစ်သည်။"),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("မည်သူ ပြန်စာရေးနိုင်သလဲ။"),
       "report": MessageLookupByLibrary.simpleMessage("တိုင်ကြားရန်"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "အစီရင်ခံစာ ကူးယူပြီး။ ပံ့ပိုးမှုထံ ပို့မည့် အီးမေးလ်တွင် ကပ်ပါ။"),
       "reportSent":
           MessageLookupByLibrary.simpleMessage("တိုင်ကြားချက် ပို့ပြီးပါပြီ"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("ပြန်တင်ရန်"),
+      "reset": MessageLookupByLibrary.simpleMessage("ပြန်သတ်မှတ်ရန်"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("သင့်စကားဝှက် ပြန်သတ်မှတ်ပါ"),
+      "retry": MessageLookupByLibrary.simpleMessage("ထပ်ကြိုးစားရန်"),
+      "save": MessageLookupByLibrary.simpleMessage("သိမ်းရန်"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("မူကြမ်း သိမ်းရန်"),
+      "saySomething": (Object a0) => "${a0} တွင် တစ်ခုခု ပြောပါ",
+      "search": MessageLookupByLibrary.simpleMessage("ရှာရန်"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "အမည် သို့မဟုတ် အသုံးပြုသူအမည်ဖြင့် ရှာရန်"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းများ ရှာရန်"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF ရှာရန်"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
+          MessageLookupByLibrary.simpleMessage("ဘာသာစကားများ ရှာရန်"),
       "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "လူကြိုက်များသော တဂ်များ ရှာရန်"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "လုံခြုံရေး သတိပေးချက်များနှင့် အကောင့် ပြောင်းလဲမှုများ"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "အက်ပ် မျက်နှာပြင်၏ ဘာသာစကားကို ရွေးပါ။"),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "သင့်ဖိဒ်များတွင် ပေါ်မည့် ဘာသာစကားများကို ရွေးပါ။ မရွေးပါက ဘာသာစကားအားလုံး ပြပါမည်။"),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "ဖိဒ်ရှိ ဘာသာပြန်ချက်များအတွက် အဓိက ဘာသာစကားကို ရွေးပါ။"),
+      "send": MessageLookupByLibrary.simpleMessage("ပို့ရန်"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
-      "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("အတည်ပြုချက် ပို့ရန်"),
+      "sendErrorReport": MessageLookupByLibrary.simpleMessage(
+          "ချို့ယွင်းချက် အစီရင်ခံစာ ပို့ရန်"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("အကြံပြုချက် ပို့ရန်"),
       "sendReport":
           MessageLookupByLibrary.simpleMessage("တိုင်ကြားချက် ပို့ရန်"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("ပံ့ပိုးမှုထံ ပို့ရန်"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("ဝန်ဆောင်မှု အခြေအနေ"),
+      "settings": MessageLookupByLibrary.simpleMessage("ဆက်တင်များ"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "အက်ပ် မှတ်တမ်းကို ပံ့ပိုးမှုနှင့် မျှဝေရန်"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron သို့ ဝင်ရန်"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("ဤအဖြစ် ဝင်ထားသည်"),
+      "signupFailed": (Object a0) => "စာရင်းသွင်း၍ မရပါ: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("နေရန်"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron သည် စတင်ခါစ ဖြစ်ပြီး ၎င်းကို အမှန်တကယ် ပြင်ပေးနိုင်သူထံ အမြန်ဆုံး ရောက်ရန်နည်းမှာ လက်မှတ်ဖွင့်ခြင်း ဖြစ်သည်။ သင်ဘာလုပ်နေခဲ့သလဲ၊ ဘာဖြစ်ခဲ့သလဲ ပြောပြပါ။"),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "အက်ပ်တွင် ပံ့ပိုးမှု ဝင်စာပုံး မရှိသေးသောကြောင့် ဤမျက်နှာပြင်သည် ဘယ်မှမရောက်သော ဖောင်အစား အမှန်တကယ် စောင့်ကြည့်သော နေရာသို့ ညွှန်ပြသည်။"),
+      "systemLog": MessageLookupByLibrary.simpleMessage("အက်ပ် မှတ်တမ်း"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "ဘာလိုနေသလဲ သို့မဟုတ် ဘာပျက်နေသလဲ ပြောပါ"),
+      "terms":
+          MessageLookupByLibrary.simpleMessage("ဝန်ဆောင်မှု စည်းမျဉ်းများ"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "စာသား၊ အသံနှင့် ဗီဒီယို၊ ၎င်းတို့ကို ဖန်တီးသူများနှင့် သူတို့ စကားပြောကြသော အခန်းများ။"),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "တည်းဖြတ်ကိရိယာတွင် ပို့စ်တင် ခလုတ် မရှိပါ"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("အမှောင်"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("အမြဲ အမှောင်"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("မှိန်"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "ပိုနူးညံ့သော အမှောင်၊ အနက်အစား အပြာရောင်သန်း မီးခိုး"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("အလင်း"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("အမြဲ အလင်း"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("စနစ်"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "ဖုန်း၏ အလင်း သို့မဟုတ် အမှောင် ဆက်တင်အတိုင်း"),
+      "translate": MessageLookupByLibrary.simpleMessage("ဘာသာပြန်ရန်"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "ဘာသာပြန်ခြင်း မဖွင့်ရသေးပါ။ သင့်ဖိဒ်တွင် ဘာမျှ ဘာသာမပြန်ရသေးပါ၊ ထိုအချိန်အထိ မှတ်ထားပါမည်။"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "ဤအရာသည် Kyron ၏ ကိုယ်ပိုင်စကားလုံးများ၊ Flutter ကိုယ်တိုင် ဆွဲသော မျက်နှာပြင် အစိတ်အပိုင်းများ၊ ရက်စွဲနှင့် ဂဏန်းများနှင့် ညာမှဘယ်သို့ ရေးသော ဘာသာစကားများအတွက် အက်ပ် အပြင်အဆင် လမ်းကြောင်းကို ပြောင်းသည်။"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("ထပ်စမ်းကြည့်ရန်"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးအချက်အလက် မူဝါဒ"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("ဝန်ဆောင်မှု စည်းမျဉ်းများ"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("အကောင့်"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("ပြီးနောက်"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("အက်ပ်နှင့် စက်"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "ဤကိုးကားချက်သည် လိမ်လည်မှုအကြောင်း လူများကို သတိပေးရန်ဖြစ်သည်။"),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1164,15 +999,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "အယူခံ ပို့ပြီးပါပြီ။ ဆုံးဖြတ်ပြီးသည့်အခါ အသိပေးချက် ရရှိပါမည်။"),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("အမှု \$number အတွက် အယူခံ"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("အသွင်အပြင်"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "အလင်း၊ အမှောင် သို့မဟုတ် ဖုန်းအတိုင်း"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("မတိုင်မီ"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron တွင် သင်တို့ တစ်ဦးကိုတစ်ဦး မမြင်ရတော့ဘဲ သင်တို့ကြားရှိ ဖော်လိုများကို ဖယ်ရှားပါမည်။ ၎င်းတို့ကို အသိမပေးပါ။"),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("ပါဝင်သည်"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("ဘာအတွက်လဲ (မဖြစ်မနေမဟုတ်)"),
       "ui_cchat_announcements":
@@ -1279,29 +1112,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("အသံမက်ဆေ့ချ် မှတ်တမ်းတင်ရန်"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("သင်"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities":
+          MessageLookupByLibrary.simpleMessage("အသိုင်းအဝိုင်းများ"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("ဘာအတွက်လဲ။ (ရွေးချယ်နိုင်)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("ပို့စ်များ-"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("အကြောင်းအရာနှင့် ပြသမှု"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("သင့်ဖိဒ်ကို ဖွင့်၍ မရပါ"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "လိုက်ခ်လုပ်ထားသော ပို့စ်များကို ဖွင့်၍ မရပါ"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("သင့်ပရိုဖိုင်ကို ဖွင့်၍ မရပါ"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "သိမ်းထားသော ပို့စ်များကို ဖွင့်၍ မရပါ"),
+      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage("ဗဟိုမဲ့ ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("ပြဿနာဖြေရှင်းခြင်း"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("အဖွဲ့များ"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("အဖွဲ့ မရှိပါ"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1311,16 +1139,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("ပင်ထိုးထားသည်"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("နှစ်သက်သည်"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("သိမ်းထားသည်"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("ဤနေရာတွင် ဘာမျှ မရှိသေးပါ"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "အကောင့်အချို့ကို ဖော်လိုလုပ်ပါ၊ ၎င်းတို့၏ ပို့စ်များ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "သင်ဖော်လိုလုပ်ထားသူများထံမှ ဘာမျှ မရှိပါ"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "လူများ ရေးသားသည်နှင့်အမျှ ပို့စ်များ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("မှိန်လာနေသည်"),
       "ui_feed_signal_less":
@@ -1340,16 +1166,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "၎င်းတို့သည် ပင်မနှင့် ရှာဖွေရန်ကို ပို့စ်တစ်ခုချင်းစီ၏ အကြောင်းအရာအလိုက် အဓိကပုံဖော်သည်။ တစ်ခုချင်းစီသည် လစဉ် တစ်ဝက်လျော့ပြီး ခြောက်လအကြာတွင် မရေတွက်တော့ပါ။ ယခုရပ်ရန် တစ်ခုကို ဖယ်ရှားပါ။"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "ကလစ်ပါသော ပို့စ်များ ဤနေရာတွင် ပေါ်ပါမည်။"),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ဗီဒီယို မရှိသေးပါ"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("အကြံပြုချက်"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyron တွင် လူများ ရှာပါ"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("အကောင့်တစ်ခုမှ"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("လူထည့်ရန်"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("ထည့်ရန်"),
       "ui_group_add_name":
@@ -1440,32 +1263,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("သင်"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("သင်သည် ကြည့်ရှုသူ ဖြစ်သည်"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("အကူအညီ"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "မှတ်သားပြီး။ ၎င်းသည် သင့်ကို ဘာပြရမည် ရွေးရာတွင် ကူညီသည်။"),
+      "ui_join": MessageLookupByLibrary.simpleMessage("ပါဝင်ရန်"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("ပါဝင်ခဲ့သည်"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("ဘာသာစကား"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("သင့်ဘာသာစကားကို ရွေးပါ"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("ဥပဒေဆိုင်ရာ"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("လိုက်ခ်"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("လိုက်ခ်လုပ်ထားသော ပို့စ်များ"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "သင်လိုက်ခ်လုပ်ထားသော ပို့စ်များ ဤနေရာတွင် ပေါ်သည်၊ အသစ်ဆုံး အရင်။"),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("လင့်ခ် ကူးယူပြီး"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "၎င်းတို့၏ ပို့စ်များကို မမြင်ရတော့ပါ။ ၎င်းတို့ကို အသိမပေးပါ။"),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("လိုက်ခ် မရှိသေးပါ"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "ထိုစစ်ထုတ်မှုများနှင့် ကိုက်ညီသော ပို့စ် မရှိပါ။"),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("သိမ်းထားသည် မရှိသေးပါ"),
       "ui_notif_account_update": MessageLookupByLibrary.simpleMessage(
           "သင့်အကောင့်ကို အပ်ဒိတ်လုပ်ပြီးပါပြီ"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1526,13 +1347,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "သင့်အကောင့်တွင် သတိပေးချက်ရှိသည်"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("မနေ့က"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("ပြီးပါပြီ"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("ကျော်ရန်"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("ဤအရာကို ဖွင့်ပြီးပါပြီ။"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("သက်တမ်းကုန်ပြီ"),
@@ -1548,23 +1365,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("တစ်ကြိမ်ကြည့်ရန် ပို့ရန်"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("ကြည့်ရန် နှိပ်ပါ"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("ခဏရပ်"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("ဖွင့်ရန်"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "၎င်းကို သင့်ပရိုဖိုင်နှင့် လူတိုင်း၏ ဖိဒ်များမှ ဖယ်ရှားပါမည်။ ၎င်း၏ ပြန်စာများလည်း ၎င်းနှင့်အတူ ပါသွားမည်။"),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် ဖျက်ပြီး"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် ဖျောက်ပြီး"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("ပို့စ် စာသား ကူးယူပြီး"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("ကြားတွင် တင်ခဲ့သည်"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "ဖျောက်ပြီး။ ဤကဲ့သို့ လျှော့ပြပါမည်။"),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("ရွေးချယ်မှုများ"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("ကိုယ်ရေးအချက်အလက်"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "ထပ်ဖြည့်စရာ ရှိပါသလား။ (ရွေးချယ်နိုင်)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1663,76 +1479,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("စပမ်"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage(
           "အကြမ်းဖက်မှု သို့မဟုတ် ခြိမ်းခြောက်မှု"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("သိမ်းထားသော ပို့စ်များ"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "ပို့စ်ကို ဤနေရာတွင် ထားရန် ၎င်း၏ မှတ်တမ်းတိုက် အိုင်ကွန်ကို နှိပ်ပါ။ သိမ်းထားသည်များကို သင်သာ မြင်ရသည်။"),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "အသုံးပြုသူအမည် သို့မဟုတ် ပြသအမည်ဖြင့် ရှာပါ။"),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("ရှင်းရန်"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("တင်ထားသမျှတွင် ရှာရန်"),
+      "ui_search_filters":
+          MessageLookupByLibrary.simpleMessage("စစ်ထုတ်မှုများ"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("လူများ ရှာရန်"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("ပို့စ်များ ရှာရန်"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("ဆက်တင်များ"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("အက်ပ်နှင့် စက်"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("အကြောင်းအရာနှင့် ပြသမှု"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("ဒေတာ ချွေတာရေး"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("သင့်အမြင် မျှဝေပါ"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("အကူအညီ ဆောင်းပါးများ ကြည့်ရန်"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("သင့်ဘာသာစကား ရွေးပါ"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "သင် အသံပိတ်ထား သို့မဟုတ် ပိတ်ဆို့ထားသူများ"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("အသိပေးချက် ရွေးချယ်မှုများ"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "သင့်ပရိုဖိုင်နှင့် ဆက်သွယ်ရန် အချက်အလက်"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "သင့်အကောင့်သို့ ပြန်ဝင်ရန် ထပ်မံ ဝင်ရောက်ရပါမည်။"),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("လုံခြုံရေး ဆက်တင်များ"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် အတည်ပြုပါ"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("တစ်ကြောင်းတည်းဖြင့်"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ် လိပ်စာ အသစ်"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် အသစ်"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("ဘာဖြစ်ခဲ့သလဲ"),
       "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          "ကျွန်ုပ်တို့အဖွဲ့ထံမှ အကူအညီ ရယူပါ"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("မျှဝေရန်"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("ကိုးကားရန်"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("မက်ဆေ့ချ်ဖြင့် ပို့ရန်"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron ရှိ လူများထံ"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("ဤပို့စ်ကို မျှဝေရန်"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("ဘာအကြောင်းဖြစ်ခဲ့သနည်း"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1829,54 +1634,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("သင့်ပို့စ်"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("သင့်ပြန်စာ"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("ဝန်ဆောင်မှု စည်းမျဉ်းများ"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ဤပို့စ်"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("ချည်တန်း အသံပိတ်ပြီး"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("ထပ်စမ်းကြည့်ရန်"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("အသံပိတ်ရန်"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("အသံဖွင့်ရန်"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("အနည်းဆုံး စာလုံးနှစ်လုံး။"),
       "ui_undo": MessageLookupByLibrary.simpleMessage("ပြန်ဖျက်ရန်"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "စကားလုံးများ သို့မဟုတ် စစ်ထုတ်မှု- အကောင့်၊ ရက်စွဲ အပိုင်းအခြား သို့မဟုတ် ပို့စ်တွင် ပါဝင်သည့်အရာ။"),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("ပြန်တင်မှု ပယ်ဖျက်ရန်"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("စကားဝှက် အပ်ဒိတ်လုပ်ရန်"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("အခြားလိပ်စာ သုံးရန်"),
+      "username": MessageLookupByLibrary.simpleMessage("အသုံးပြုသူအမည်"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "အသုံးပြုသူအမည်သည် စာလုံးအသေး ဖြစ်ရမည် (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("ဗီဒီယို"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("ပူးတွဲရန်"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("ပူးတွဲရန် အသင့်"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("အသံပို့စ် မှတ်တမ်းတင်ရန်"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("သိမ်းနေသည်…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("ရပ်ရန်"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("ဘာဖြစ်ခဲ့သလဲ"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "ဘာဖြစ်ခဲ့သနည်း၊ ကျွန်ုပ်တို့ ဘာကို ကြည့်သင့်သနည်း။",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("ဤပုံတွင် ဘာရှိသလဲ။"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("ဘာအတွက်လဲ။ (ရွေးချယ်နိုင်)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "သင်ဘာလုပ်ခဲ့သလဲ၊ ဘာမျှော်လင့်ခဲ့သလဲ၊ ဘာဖြစ်ခဲ့သလဲ"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "ထိုသို့ဖြစ်စဉ် သင်ဘာလုပ်နေခဲ့သလဲ။"),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("သင် ပြန်စာပို့ခဲ့သည်"),
       "dmReplied": (Object a0) => "$a0 ပြန်စာပို့ခဲ့သည်",
@@ -2007,7 +1806,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ပို့ပြီးပါပြီ၊ သို့သော် လူတိုင်းထံ မရောက်ပါ။"),
       "ui_share_failed":
           MessageLookupByLibrary.simpleMessage("ပို့၍ မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("ဖော်လိုဝါ"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("စစ်ထုတ်ရန်"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("အားလုံး"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("မဖတ်ရသေး"),

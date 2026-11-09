@@ -7,249 +7,205 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Vārds, frāze vai #birka"),
+      "about": MessageLookupByLibrary.simpleMessage("Par"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Pievienot atbildi"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Pievienot valodas…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Piekrist un turpināt"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Jau ir Kyron konts?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Komentāri"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "Dažādi cilvēki, nevis atvēršanas reizes"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Iesaiste"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Patīk"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav skatītāju"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Šo ziņu vēl neviens nav atvēris."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Publicēts"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saglabājumi"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Skatītāji"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("SKATĪTĀJI DIENĀ"),
+      "and": MessageLookupByLibrary.simpleMessage("un"),
+      "answerNumber": (Object a0) => "${a0}. atbilde",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR lēca"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Pievienot lietotnes žurnālu"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Turp un atpakaļ laiks"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("MARĶIERA PĀRBAUDE"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Sākot raidījumu tagad, jūs nonāktu telpā, kurā neviens nevarētu"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Izveidot kopienu"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Kam tas paredzēts? (neobligāti)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("atgriezties."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("atgriezties no šī saraksta."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Ja to slēgsiet,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("vispirms pievienojieties"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("drīzumā"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Publicējat savā vārdā"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("publicēt šajā kopienā"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tikko"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("1. tēma"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Jums"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("kaut kas ir."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("jau ir ceļā."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", nevis"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("vai es kustos"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Izslēgt skaņu"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Ieslēgt skaņu"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Jums"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Jūsu cilnes"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Simbols (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("SKATĪTĀJI DIENĀ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("neizdevās ielādēt"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("šī ziņa"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Vai ko vēlaties piebilst? (neobligāti)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("šī ziņa"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("No konta"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Izrakstīties"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Jūsu konts"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Apstipriniet paroli"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ne tagad"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Notiek ielāde…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Notiek publicēšana…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("pirms 3 h"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kopēt stāsta saiti"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Jūsu stāsts"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Jūsu konts, jūsu ziņas un tas, ko pieskaraties, lai"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Pievienot tēmu"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("savu."),
+      "authorBlocked": (Object a0) => "${a0} bloķēts",
+      "authorPostsHidden": (Object a0) => "Jūs neredzēsiet ${a0} ziņas",
+      "block": MessageLookupByLibrary.simpleMessage("Bloķēt"),
+      "blockAuthor": (Object a0) => "Bloķēt ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Būvējuma informācija nokopēta"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Turpinot jūs piekrītat"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Turpinot jūs piekrītat mūsu Pakalpojuma noteikumiem un Privātuma politikai"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Reģistrējoties jūs piekrītat"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Atcelt"),
       "change": MessageLookupByLibrary.simpleMessage("Mainīt"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Mainīt e-pastu"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Apstipriniet kontu no e-pasta."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Pārbaudīt, vai Kyron ir sasniedzams"),
+      "clear": MessageLookupByLibrary.simpleMessage("Notīrīt"),
+      "close": MessageLookupByLibrary.simpleMessage("Aizvērt"),
+      "closeCommunity": (Object a0) => "Slēgt ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Slēgt"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Slēgt šo kopienu"),
+      "communities": MessageLookupByLibrary.simpleMessage("Kopienas"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Atrodiet kādu sadaļā Izpētīt vai izveidojiet savu."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Izsakiet karstu viedokli (vai remdenu)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Ko jūs domājat?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Sakiet to, ko varat pateikt tikai jūs…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Šī ir jūsu zīme: publicējiet"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Rakstiet, runājiet vai domājiet skaļi"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Apstipriniet paroli"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Sazināties ar atbalstu"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Ziņām vēl nav valodas, tāpēc tas vēl nefiltrē jūsu plūsmu. Jūsu izvēle līdz tam tiek saglabāta."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Turpināt"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Turpināt ar e-pastu"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopēt"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Tā vietā kopēt ziņojumu"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Neizdevās atvērt Google pierakstīšanos. ${a0}",
+      "couldNotSignOut": (Object a0) => "Izrakstīšanās neizdevās: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Neizdevās uzņemt fotoattēlu."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Tiek rādīta tavā profilā un zem taviem ierakstiem."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +216,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tiek rādīta tavā profilā un zem taviem ierakstiem. Kad redzi kāda ierakstus, tava valsts tiek ieskaitīta viņa Ieskatos, tikai vismaz piecu cilvēku grupās un nekad ar vārdu."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("No tava tālruņa iestatījumiem"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
-      "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+      "create": MessageLookupByLibrary.simpleMessage("Izveidot"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Izveidot kontu"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Izveidojiet kontu"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Izveidojiet profilu"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR lēca"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Sākt tiešraidi"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Teksta ziņa"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Balss ziņa"),
+      "delete": MessageLookupByLibrary.simpleMessage("Dzēst"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Dzēst šo komentāru?"),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage("Dzēst šo ziņu?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Aprakstiet šo pielikumu"),
+      "description": MessageLookupByLibrary.simpleMessage("Apraksts"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID nokopēts starpliktuvē"),
       "done": MessageLookupByLibrary.simpleMessage("Gatavs"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Aizveriet redaktoru pēc tam, kad kaut ko uzrakstāt, un jums tiks piedāvāts melnraksts."),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("pirms {days} d."),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("pirms {hours} h"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Tikko"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("pirms {minutes} min"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Vēl nekas nav uzrakstīts"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Aptauja, vēl bez jautājuma"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Citāts, vēl bez teksta"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Melnraksti"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Rediģēt profilu"),
+      "email": MessageLookupByLibrary.simpleMessage("E-pasts"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("E-pasta paziņojumi"),
+      "explore": MessageLookupByLibrary.simpleMessage("Izpētīt"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Sejas izsekošana šajā ierīcē nav pieejama."),
+      "feedTagDetail": (Object a0) => "Ar #${a0} vēl nekas nav publicēts.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Sekot {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Sekotāji"),
+      "following": MessageLookupByLibrary.simpleMessage("Sekojat"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Aizmirsāt paroli?"),
+      "gettingHelp":
+          MessageLookupByLibrary.simpleMessage("Kā saņemt palīdzību"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Turpināt ar Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Pierakstīties ar Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google atgriež pabeigto pierakstīšanos Kyron, izmantojot saiti, uz kuru atbild tikai Android un iOS, tāpēc platformā ${a0} pārlūkam nav kur to atgriezt.\\n\\nJa jums jau ir Kyron konts ar Google, izvēlieties Turpināt ar e-pastu ar to pašu adresi un pieskarieties Aizmirsāt paroli: saņemsiet saiti paroles iestatīšanai.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google pierakstīšanās darbojas tālruņa lietotnē"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Reģistrēties ar Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Ceļveži un atbildes uz biežiem jautājumiem"),
+      "handle": MessageLookupByLibrary.simpleMessage("lietotājvārds"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Palīdzība un atbalsts"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Palīdzības centrs"),
+      "home": MessageLookupByLibrary.simpleMessage("Sākums"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Vienā rindā"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Jūsu konts"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Atvērt kopienu"),
@@ -459,690 +401,568 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Labākie ieraksti"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Salīdzinot ar iepriekšējām {days} dienām"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Pievienot interesi"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Velciet, lai pārkārtotu"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Joslā ietilpst ne vairāk kā piecas cilnes. Noņemiet vienu, lai pievienotu citu."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Sekojat"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Jums"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Tēmturi parādīsies šeit, kad cilvēki tos sāks izmantot."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Tagad populārs"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Video"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Jūsu cilnes"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Tā pazudīs jums abiem."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Tā tiks noņemta no pavediena."),
+      "join": MessageLookupByLibrary.simpleMessage("Pievienoties"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Turpināt rediģēšanu"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron ekrāni ir jūsu valodā. Ja kāds vārds izklausās nepareizi, pastāstiet mums sadaļā Sūtīt atsauksmi."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Valodas"),
+      "leave": MessageLookupByLibrary.simpleMessage("Pamest"),
+      "leaveCommunity": (Object a0) => "Pamest ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Ielaist atpakaļ"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("Atvērta 1 lapa"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Pievienot klipu"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Pievienot GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Pievienot tēmturi"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Pievienot foto"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Pievienot aptauju"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Pievienot video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Pievienot interesi"),
+      "literaladdLabelAsATab": (Object a0) => "Pievienot ${a0} kā cilni",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Lietotnes valoda"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Lietotnes versija"),
+      "literalblockAuthor": (Object a0) => "Bloķēt ${a0}",
+      "literalblockAuthor2": (Object a0) => "Bloķēt ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Bloķēt šo kontu?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Atmest atbildi"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Pārbaudīt vēlreiz"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Izvēlēties no galerijas"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Notīrīt kešatmiņu"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Aizvērt visas lapas"),
+      "literalcloseTabLabel": (Object a0) => "Aizvērt ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Aizvērt pārlūku"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Slēgt ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Sazināties ar atbalstu"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Satura valodas"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Kopēt saiti"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kopēt ziņas saiti"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kopēt ziņas tekstu"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Kopēt tekstu"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt kopienas"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt GIF"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt paziņojumus"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt dalībniekus"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šīs ziņas"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šo sarunu"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šo sarakstu"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šo ziņu"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šo atbildi"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Neizdevās ielādēt populārās birkas"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+              "Neizdevās ielādēt jūsu kopienas"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt jūsu ziņas"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Neizdevās atvērt šo kopienu"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Neizdevās publicēt atbildi."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Meklēšana nedarbojās"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Izrakstīšanās neizdevās: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "Atvērtas lapas: ${a0}",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Vāka foto"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Datu taupīšana"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Dzēst ziņu"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Atrast cilvēkus"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Neatbildēt"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Melnraksts saglabāts"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Atsauksmi pašlaik nevar nosūtīt"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Teksta lielums"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF nav iestatīti"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Nodot citai lietotnei"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Slēpt paroli"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Paslēpt šo ziņu"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Paslēpj to un lūdz mums rādīt mazāk šādu"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Kā uzvesties"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Turpināt rakstīt"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron neatbildēja"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} datums",
+      "literalleaveCommunityName": (Object a0) => "Pamest ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, sejas lēca",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Patikušās ziņas"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Saite nokopēta"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Padarīt par moderatoru"),
+      "literalmuteAuthor": (Object a0) => "Apklusināt ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Apklusināt šo pavedienu"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Apklusināt vārdus vai birkas"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Apklusinātie un bloķētie konti"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Apklusināts. Jūs nesaņemsiet paziņojumus."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Neviena lietotne šajā ierīcē neatver ${a0} saites.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Neviens pārlūks šajā ierīcē nepieņēma saiti."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Vēl nav DID"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Nav melnrakstu"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav interešu"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav patīk"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav ziņu"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Nav jaunu sekotāju"),
+      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("Vēl nav ziņu"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Vēl nav atbilžu"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Vēl nav atkārtotu publikāciju"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Neviena populāra birka neatbilst"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neviens netika atrasts"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Neviens nav noņemts"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Šeit vēl neviena nav"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Neinteresē"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nekas netika atrasts"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Pagaidām nekas nav populārs"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Žurnālā vēl nekā nav"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Nav atbilstību"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("Nekas nav apklusināts"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav ko skatīties"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Nav nelasītu"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("To var mainīt tikai īpašnieks"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Atvērt atbildi"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Atveriet Kyron e-pastu"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Parole un pierakstīšanās"),
+      "literalpostInCommunityName": (Object a0) => "Publicēt ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Publicēt ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Publicējiet to ar saviem vārdiem virs tās"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Galvenā valoda"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push paziņojumi"),
+      "literalreading":
+          MessageLookupByLibrary.simpleMessage("Notiek pārbaude…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Ierakstīt balss ziņu"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Ierakstīt vēlreiz"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Noņemt no moderatoriem"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Noņemt no kopienas"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Noņemt no saglabātajiem"),
+      "literalremoveLabel": (Object a0) => "Noņemt ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Noņemt ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Noņemt ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Noņemt aptauju"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Noņemt šo atbildi"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Dzēst šo sarunu"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Noņemt šo aptauju"),
+      "literalreportAuthor": (Object a0) => "Ziņot par ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Ziņot par ziņu"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Sūtīt kodu vēlreiz"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Saglabātās ziņas"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Sakiet kaut ko"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Sakiet kaut ko ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Meklēšana neizdevās"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Sūtīt vēlreiz"),
+      "literalsendAgainInCooldownS": (Object a0) => "Sūtīt vēlreiz pēc ${a0} s",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Sniegt atsauksmi"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Sūtīt saiti"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Nosūtīts. Tas ir ziņojums Nr. ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Iestatiet paroli un turpiniet"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Kopīgot žurnālu ar atbalstu"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Kopīgot šo kopienu"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Kopīgot šo lapu"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Kopīgot šo profilu"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Kopīgot…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Kopīgot ar citātu"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Rādīt vairāk šādu"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Rādīt paroli"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Rādīt rezultātus"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Izveidot kopienu"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Sākt ierakstu"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Apturēt ielādi"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Pārtraukt redzēt šo ziņu un tās atbildes"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Stāstu josla, vienumi: ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Pārslēgt kameru"),
+      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Atzīmēt kādu"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Uzņemt foto"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
+              "Pieskarieties reklāmkarogam vai foto, lai mainītu"),
       "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+          "Pieskarieties tajā esošajai saitei"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Pieskarieties, lai pievienotu foto un vāku"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neizdevās. Mēģiniet vēlreiz."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt šo GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
-          MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Šo saiti šeit nevar atvērt."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kamera ir aizvērta"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Šī kopiena"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Šīs atbildes vairs nav"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Tulkot ziņu"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Izslēgt skaņu"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ieslēgt skaņu"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Izmantot kādu no mūsējiem"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Apstiprinājuma kods nosūtīts vēlreiz."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Apstiprināšana neizdevās: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Apstiprināt e-pastu"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Skatītāji, patīk, saglabājumi un komentāri"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Ko Kyron saglabā"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Ko šī lietotne darīja"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
+              "Ko jūs darījāt, ko gaidījāt, kas notika "),
       "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+          "Tas, ko publicējat, pieder jums"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Vai Kyron šobrīd ir sasniedzams"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kas var atbildēt"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Ko vēlaties atzīmēt?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Jūs jau sekojat visām populārajām birkām"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Viss izlasīts"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Jūs neesat nevienā kopienā"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Jūs esat izrakstījies."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) => "Jūs pametāt ${a0}",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "Jūs vēl neko neesat publicējis"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Ielādēt vairāk"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Žurnāls notīrīts"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Žurnāls nokopēts"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Pierakstīties"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Izrakstīties"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Izrakstīties?"),
+      "login": MessageLookupByLibrary.simpleMessage("Pierakstīšanās"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Pierakstīšanās neizdevās. Pārbaudiet datus."),
+      "manage": MessageLookupByLibrary.simpleMessage("Pārvaldīt"),
+      "menu": MessageLookupByLibrary.simpleMessage("Izvēlne"),
+      "message": MessageLookupByLibrary.simpleMessage("Ziņa"),
+      "messages": MessageLookupByLibrary.simpleMessage("Ziņas"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Visas sarunas izlasītas."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Atveriet kāda profilu un pieskarieties Ziņa, lai sāktu sarunu."),
+      "mute": MessageLookupByLibrary.simpleMessage("Apklusināt"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Apklusinātie un bloķētie"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Apklusinātie vārdi un birkas"),
+      "name": MessageLookupByLibrary.simpleMessage("Vārds"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> ekrāns"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Jauna e-pasta adrese"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Jauna parole"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Jauna ziņa"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Ne tagad"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
-      "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Nav nosūtīts. Pieskarieties, lai mēģinātu vēlreiz"),
+      "nothingMatchesQuery": (Object a0) => "Kyron nekas neatbilst \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nav ko kopēt"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Šeit nonāk patīk, atbildes un jauni sekotāji."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Šeit parādīsies cilvēki, kas jums seko."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Kad kādam patiks jūsu ziņa, tas parādīsies šeit."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Šeit nonāk atbildes uz jūsu ziņām."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Kad kāds jūs publicēs atkārtoti, tas parādīsies šeit."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Paziņojumi"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Atvērt pārlūkā"),
+      "or": MessageLookupByLibrary.simpleMessage("vai"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Lapa nav atrasta"),
+      "password": MessageLookupByLibrary.simpleMessage("Parole"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Parole ir pārāk īsa"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Izvēlieties intereses"),
+      "post": MessageLookupByLibrary.simpleMessage("Publicēt"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("Ziņas statistika"),
+      "postInCommunity": (Object a0) => "Publicēt ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Publicē, saki, parādi."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Ziņas teksts nokopēts"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Privātuma politika"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profils atjaunināts"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Par sevi"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Valsts"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
-      "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Parādāmais vārds"),
+      "profile_location":
+          MessageLookupByLibrary.simpleMessage("Atrašanās vieta"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Pieskarieties, lai mainītu"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Tīmekļa vietne"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push paziņojumi"),
+      "quote": MessageLookupByLibrary.simpleMessage("Citēt"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Citēt ziņu"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Sazināties ar cilvēku"),
+      "remove": MessageLookupByLibrary.simpleMessage("Noņemt"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Dzēst šo sarunu?"),
+      "removeMember": (Object a0) => "Noņemt ${a0}?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage("Dzēst šo ziņu?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Atbildes, sekošana un pieminējumi"),
+      "repliesPolicy": (Object a0) => "Atbildes: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Atbildēt"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Pievienoties var ikviens"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Ikviens joprojām var redzēt, atkārtoti publicēt un citēt šo ziņu."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Ikviens Kyron var atbildēt uz šo ziņu."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Cilvēki, kas jums seko"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Uz šo ziņu var atbildēt tikai jūsu sekotāji."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Pieminētie cilvēki"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Atbildēt var tikai cilvēki, kurus šajā ziņā @pieminat."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Neviens nevar atbildēt"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Atbildes ir izslēgtas. Jūs joprojām varat atbildēt."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Kas var atbildēt?"),
       "report": MessageLookupByLibrary.simpleMessage("Ziņot"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Ziņojums nokopēts. Ielīmējiet to e-pastā atbalstam."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Sūdzība nosūtīta"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Publicēt atkārtoti"),
+      "reset": MessageLookupByLibrary.simpleMessage("Atiestatīt"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Atiestatiet paroli"),
+      "retry": MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
+      "save": MessageLookupByLibrary.simpleMessage("Saglabāt"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Saglabāt melnrakstu"),
+      "saySomething": (Object a0) => "Sakiet kaut ko ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Meklēt"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Meklēt pēc vārda vai lietotājvārda"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Meklēt kopienas"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Meklēt GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Meklēt valodas"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Meklēt populāras birkas"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Drošības brīdinājumi un konta izmaiņas"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Izvēlieties lietotnes saskarnes valodu."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Izvēlieties, kuras valodas parādās jūsu plūsmās. Ja neizvēlaties nevienu, tiek rādītas visas valodas."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Izvēlieties galveno valodu plūsmas tulkojumiem."),
+      "send": MessageLookupByLibrary.simpleMessage("Sūtīt"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Sūtīt apstiprinājumu"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Sūtīt kļūdas ziņojumu"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Sūtīt atsauksmi"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Nosūtīt sūdzību"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Sūtīt atbalstam"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Pakalpojuma statuss"),
+      "settings": MessageLookupByLibrary.simpleMessage("Iestatījumi"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Kopīgot lietotnes žurnālu ar atbalstu"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Pierakstīties Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Pierakstījies kā"),
+      "signupFailed": (Object a0) => "Reģistrācija neizdevās: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Palikt"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron tikai sāk darbu, un ātrākais veids, kā sasniegt kādu, kas tiešām var to salabot, ir atvērt pieteikumu. Pastāstiet, ko darījāt un kas notika."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Lietotnei vēl nav atbalsta pastkastes, tāpēc šis ekrāns novirza uz vietu, ko tiešām uzrauga, nevis uz veidlapu, kas nekur neved."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Lietotnes žurnāls"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Pastāstiet, kas trūkst vai kas nedarbojas"),
+      "terms": MessageLookupByLibrary.simpleMessage("Pakalpojuma noteikumiem"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Teksts, balss un video, cilvēki, kas tos veido, un telpas, kur viņi sarunājas."),
+      "theComposerNoPostButton":
+          MessageLookupByLibrary.simpleMessage("Redaktorā nav pogas Publicēt"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Tumšs"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Vienmēr tumšs"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Blāvs"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Maigāks tumšs, zilgani pelēks melnā vietā"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Gaišs"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Vienmēr gaišs"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Sistēmas"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Sekot tālruņa gaišajam vai tumšajam iestatījumam"),
+      "translate": MessageLookupByLibrary.simpleMessage("Tulkot"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Tulkošana vēl nav ieslēgta. Jūsu plūsmā vēl nekas netiek tulkots; tas tiks atcerēts līdz tam."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Tas maina paša Kyron vārdus, saskarnes daļas, ko Flutter zīmē pats, datumus un skaitļus, kā arī lietotnes izkārtojuma virzienu valodām, kuras raksta no labās uz kreiso."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Privātuma politika"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Pakalpojuma noteikumi"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Konts"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Pēc"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Lietotne un ierīce"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Citāts bija domāts, lai brīdinātu citus par krāpšanu."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1156,15 +976,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Apelācija nosūtīta. Kad lēmums būs pieņemts, saņemsiet paziņojumu."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Apelācija lietā \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Izskats"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("Gaišs, tumšs vai kā tālrunī"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Pirms"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron jūs viens otru neredzēsiet, un sekošana starp jums tiks noņemta. Viņam netiek paziņots."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Satur"),
       "ui_cchat_about": MessageLookupByLibrary.simpleMessage(
           "Kam tā paredzēta (nav obligāti)"),
       "ui_cchat_announcements":
@@ -1275,29 +1093,25 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Ierakstīt balss ziņu"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Jūs"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Kopienas"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Kam tas paredzēts? (neobligāti)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Ieraksti:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Saturs un attēlojums"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt jūsu plūsmu"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Neizdevās ielādēt patikušās ziņas"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Neizdevās ielādēt jūsu profilu"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Neizdevās ielādēt saglabātās ziņas"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Decentralizēts ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Problēmu novēršana"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Grupas"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Nav grupu"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1307,16 +1121,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Piesprausts"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Patīk"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saglabātie"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Šeit vēl nekā nav"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Sekojiet dažiem kontiem, un to ziņas parādīsies šeit."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Nekā no tiem, kam sekojat"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Ziņas parādīsies šeit, kad cilvēki tās rakstīs."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Vājinās"),
       "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Neinteresē"),
       "ui_feed_signal_more":
@@ -1333,16 +1145,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Tie veido Sākumu un Izpēti, galvenokārt pēc katras ziņas tēmas. Katrs ik mēnesi kļūst uz pusi vājāks un pēc sešiem vairs netiek skaitīts. Noņemiet kādu, lai to apturētu tūlīt."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Ziņas ar klipu parādīsies šeit."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Vēl nav video"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Atsauksmes"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Atrodiet cilvēkus Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("No konta"),
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("Pievienot cilvēkus"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Pievienot"),
@@ -1435,32 +1244,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("jūs"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Jūs esat skatītājs"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Palīdzība"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Atzīmēts. Tas palīdz izvēlēties, ko jums rādīt."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Pievienoties"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Pievienojās"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Valoda"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Izvēlieties valodu"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Juridiskā informācija"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Patīk"),
+      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Patikušās ziņas"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Patikušās ziņas parādās šeit, jaunākās vispirms."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Saite nokopēta"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Jūs vairs neredzēsiet viņa ziņas. Viņam netiek paziņots."),
+      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("Vēl nav patīk"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Neviena ziņa neatbilst šiem filtriem."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Vēl nav saglabājumu"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Jūsu konts ir atjaunināts"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1519,13 +1323,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Jūsu konts saņēma brīdinājumu"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Vakar"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Gatavs"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Izlaist"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Tas jau ir atvērts."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Beidzies"),
@@ -1543,23 +1343,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Sūtīt vienreizējai skatīšanai"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Pieskarieties, lai skatītu"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pauze"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Atskaņot"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Tā tiks noņemta no jūsu profila un visu plūsmām. Tās atbildes pazudīs kopā ar to."),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Ziņa dzēsta"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Ziņa paslēpta"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Ziņas teksts nokopēts"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
-      "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Publicēts laikā no"),
+      "ui_posts_hidden":
+          MessageLookupByLibrary.simpleMessage("Paslēpts. Rādīsim mazāk šādu."),
       "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privātums"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Vai vēlaties ko piebilst? (neobligāti)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1658,76 +1455,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Mēstules"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Vardarbība vai draudi"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Saglabātās ziņas"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Pieskarieties ziņas arhīva ikonai, lai to paturētu šeit. Saglabāto redzat tikai jūs."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Meklējiet pēc lietotājvārda vai parādāmā vārda."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Notīrīt"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Meklēt visā publicētajā"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtri"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Meklēt cilvēkus"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Meklēt ziņas"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Iestatījumi"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Lietotne un ierīce"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Saturs un attēlojums"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Datu taupīšana"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Dalieties ar domām"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Pārlūkot palīdzības rakstus"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Izvēlieties valodu"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Ko esat apklusinājis vai bloķējis"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Paziņojumu preferences"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Jūsu profils un kontaktinformācija"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Lai atgrieztos kontā, jums būs jāpierakstās vēlreiz."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Drošības iestatījumi"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Apstipriniet paroli"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Vienā rindā"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Jauna e-pasta adrese"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Jauna parole"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Kas notika"),
       "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          "Saņemt palīdzību no mūsu komandas"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Kopīgot"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Citēt"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Sūtīt ziņā"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Cilvēkiem Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Kopīgot šo ziņu"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Par ko bija runa"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1825,54 +1610,50 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Jūsu ieraksts"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Jūsu atbilde"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("Pakalpojuma noteikumiem"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("šī ziņa"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Pavediens apklusināts"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Mēģināt vēlreiz"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Izslēgt skaņu"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Ieslēgt skaņu"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Vismaz divas rakstzīmes."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Atsaukt"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Vārdi vai filtrs: konts, datumu diapazons vai ziņas saturs."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Atsaukt atkārtoto publikāciju"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Atjaunināt paroli"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Izmantot citu adresi"),
+      "username": MessageLookupByLibrary.simpleMessage("Lietotājvārds"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Lietotājvārdam jābūt ar mazajiem burtiem (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Pievienot"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Gatavs pievienošanai"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Ierakstīt balss ziņu"),
+      "voice_recording":
+          MessageLookupByLibrary.simpleMessage("Notiek saglabāšana…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Apturēt"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Kas notika"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Kas notika, un ko mums vajadzētu apskatīt?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Kas ir šajā attēlā?"),
       "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+          "Kam tas paredzēts? (neobligāti)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Ko jūs darījāt, ko gaidījāt, kas notika"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Ko jūs darījāt, kad tas notika."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Jūs atbildējāt"),
       "dmReplied": (Object a0) => "$a0 atbildēja",
@@ -2002,7 +1783,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Nosūtīts, bet ne visiem."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Neizdevās nosūtīt. Mēģiniet vēlreiz."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Sekotājs"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtrs"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Visas"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Nelasītās"),

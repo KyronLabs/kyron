@@ -56,7 +56,7 @@ class _Sheet extends StatelessWidget {
             Text(
               AppLocalizations.of(context).ui(
                 'translation_description',
-                "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
+                "This changes Kyron's own words, the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
               ),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize2,

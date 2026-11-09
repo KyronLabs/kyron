@@ -7,249 +7,204 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Слово, фраза або #тег"),
+      "about": MessageLookupByLibrary.simpleMessage("Про себе"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Додати варіант"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Додати мови…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Прийняти й продовжити"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Уже маєте акаунт Kyron?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Коментарі"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+          MessageLookupByLibrary.simpleMessage("Різні люди, а не відкриття"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Залученість"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Вподобання"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Глядачів поки немає"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Цю публікацію ще ніхто не відкривав."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Опубліковано"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Збереження"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Глядачі"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("ГЛЯДАЧІВ НА ДЕНЬ"),
+      "and": MessageLookupByLibrary.simpleMessage("і"),
+      "answerNumber": (Object a0) => "Варіант ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-лінза"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Додати журнал застосунку"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Затримка туди й назад"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("ПЕРЕВІРКА ТОКЕНА"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Спробувати знову"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Спробувати знову"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Якщо почати трансляцію зараз, ви опинитеся в кімнаті, куди ніхто не зможе"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Створити спільноту"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Для чого це? (необов'язково)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("увійти знову."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("повернутися з цього списку."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Якщо її закрити,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("спершу приєднайтеся"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("незабаром"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Публікуєте від свого імені"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("публікувати в цій спільноті"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Щойно"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Спробувати знову"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Тема 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Для вас"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("щось є."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("вже прямує туди."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", не"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("чи рухаюся я"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Вимкнути звук"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Увімкнути звук"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Для вас"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ваші вкладки"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Спробувати знову"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Символ (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("ГЛЯДАЧІВ НА ДЕНЬ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("не вдалося завантажити"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ця публікація"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Хочете щось додати? (необов'язково)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ця публікація"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Від акаунта"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Вийти"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Ваш акаунт"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Підтвердьте пароль"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("не зараз"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Завантаження…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Публікація…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 год тому"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage(
+              "Копіювати посилання на історію"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Ваша історія"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Ваш акаунт, ваші публікації та те, на що ви натискаєте, щоб"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Додати тему"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("своє."),
+      "authorBlocked": (Object a0) => "${a0} заблоковано",
+      "authorPostsHidden": (Object a0) => "Ви не бачитимете публікацій ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Заблокувати"),
+      "blockAuthor": (Object a0) => "Заблокувати ${a0}?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Відомості про збірку скопійовано"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Продовжуючи, ви приймаєте"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Продовжуючи, ви погоджуєтеся з нашими Умовами використання та Політикою конфіденційності"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Реєструючись, ви приймаєте"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Скасувати"),
       "change": MessageLookupByLibrary.simpleMessage("Змінити"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Змінити пошту"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "Підтвердьте акаунт через лист."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Перевірити, чи доступний Kyron"),
+      "clear": MessageLookupByLibrary.simpleMessage("Очистити"),
+      "close": MessageLookupByLibrary.simpleMessage("Закрити"),
+      "closeCommunity": (Object a0) => "Закрити ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Закрити"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Закрити цю спільноту"),
+      "communities": MessageLookupByLibrary.simpleMessage("Спільноти"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Знайдіть спільноту в Огляді або створіть свою."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Висловіть гарячу думку (або теплу)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Про що думаєте?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Скажіть те, що можете сказати лише ви…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Це знак: надсилайте"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Пишіть, говоріть або думайте вголос"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Підтвердьте пароль"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Звернутися до підтримки"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "У публікацій поки немає мови, тож це ще не фільтрує стрічку. Ваш вибір збережеться до того часу."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Продовжити"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Продовжити з поштою"),
+      "copy": MessageLookupByLibrary.simpleMessage("Копіювати"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Скопіювати звіт натомість"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Не вдалося відкрити вхід через Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Не вдалося вийти: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Не вдалося зробити знімок."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Показується у твоєму профілі та під твоїми дописами."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -261,89 +216,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Показується у твоєму профілі та під твоїми дописами. Коли ти бачиш чиїсь дописи, твоя країна враховується в його Статистиці, лише в групах від п'яти осіб і ніколи за іменем."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("З налаштувань телефона"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Створити"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Створити акаунт"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Створіть акаунт"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Створіть профіль"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-лінза"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Почати ефір"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Текстова публікація"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Голосова публікація"),
+      "delete": MessageLookupByLibrary.simpleMessage("Видалити"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Видалити цей коментар?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Видалити цю публікацію?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Опишіть це вкладення"),
+      "description": MessageLookupByLibrary.simpleMessage("Опис"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID скопійовано в буфер обміну"),
       "done": MessageLookupByLibrary.simpleMessage("Готово"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Закрийте редактор, написавши щось, і вам запропонують зберегти чернетку."),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} дн. тому"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("{hours} год тому"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Щойно"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} хв тому"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Поки нічого не написано"),
       "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Опитування, поки без запитання"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Цитата, поки без тексту"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Чернетки"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Редагувати профіль"),
+      "email": MessageLookupByLibrary.simpleMessage("Пошта"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Сповіщення поштою"),
+      "explore": MessageLookupByLibrary.simpleMessage("Огляд"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Відстеження обличчя недоступне на цьому пристрої."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "З тегом #${a0} поки нічого не опубліковано.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("Стежити за {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
-      "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+      "followers": MessageLookupByLibrary.simpleMessage("Підписники"),
+      "following": MessageLookupByLibrary.simpleMessage("Стежите"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage("Забули пароль?"),
+      "gettingHelp":
+          MessageLookupByLibrary.simpleMessage("Як отримати допомогу"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Продовжити з Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Увійти через Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google повертає завершений вхід у Kyron за посиланням, на яке відповідають лише Android та iOS, тож на платформі ${a0} браузеру нікуди його повернути.\\n\\nЯкщо у вас уже є акаунт Kyron через Google, оберіть «Продовжити з поштою» з тією ж адресою й натисніть «Забули пароль?»: вам прийде посилання для створення пароля.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Вхід через Google працює в застосунку для телефона"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Зареєструватися через Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Посібники та відповіді на поширені запитання"),
+      "handle": MessageLookupByLibrary.simpleMessage("ім'я користувача"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Допомога й підтримка"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Довідковий центр"),
+      "home": MessageLookupByLibrary.simpleMessage("Головна"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("В одному рядку"),
       "ins_account":
           MessageLookupByLibrary.simpleMessage("Ваш обліковий запис"),
       "ins_act_community":
@@ -462,690 +406,575 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Найкращі дописи"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Порівняно з попередніми {days} днями"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Додати інтерес"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Перетягніть, щоб упорядкувати"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "На панелі вміщується не більше п'яти вкладок. Приберіть одну, щоб додати іншу."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Стежите"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Для вас"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Хештеги з'являться тут, коли люди почнуть ними користуватися."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Зараз у тренді"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Відео"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Ваші вкладки"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Воно зникне в вас обох."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Його буде видалено з гілки."),
+      "join": MessageLookupByLibrary.simpleMessage("Приєднатися"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Продовжити редагування"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Екрани Kyron вашою мовою. Якщо якесь слово звучить неправильно, повідомте нам через «Надіслати відгук»."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Мови"),
+      "leave": MessageLookupByLibrary.simpleMessage("Вийти"),
+      "leaveCommunity": (Object a0) => "Вийти з ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Впустити знову"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("Відкрито 1 сторінку"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Додати кліп"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Додати GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Додати хештег"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Додати фото"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Додати опитування"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Додати відео"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Додати інтерес"),
+      "literaladdLabelAsATab": (Object a0) => "Додати ${a0} як вкладку",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Мова застосунку"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Версія застосунку"),
+      "literalblockAuthor": (Object a0) => "Заблокувати ${a0}",
+      "literalblockAuthor2": (Object a0) => "Заблокувати ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Заблокувати цей акаунт?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
+          MessageLookupByLibrary.simpleMessage("Скасувати відповідь"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Перевірити знову"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Вибрати з галереї"),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage("Очистити кеш"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Закрити всі сторінки"),
+      "literalcloseTabLabel": (Object a0) => "Закрити ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Закрити браузер"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Закрити ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Зв'язатися з підтримкою"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Мови контенту"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Копіювати посилання"),
       "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          "Копіювати посилання на публікацію"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Копіювати текст публікації"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Копіювати текст"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Не вдалося завантажити спільноти"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Не вдалося завантажити GIF"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Не вдалося завантажити сповіщення"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Не вдалося завантажити учасників"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Не вдалося завантажити ці публікації"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Не вдалося завантажити цей чат"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Не вдалося завантажити цей список"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Не вдалося завантажити цю публікацію"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Не вдалося завантажити цю відповідь"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Не вдалося завантажити популярні теги"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Не вдалося завантажити ваші спільноти"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Не вдалося завантажити повідомлення"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Не вдалося відкрити цю спільноту"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Не вдалося опублікувати відповідь."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Пошук не вдався"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Не вдалося вийти: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "Відкрито сторінок: ${a0}",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Обкладинка"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Економія трафіку"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Видалити публікацію"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Знайти людей"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Не відповідати"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Чернетку збережено"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Зараз не вдається надіслати відгук"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Розмір тексту"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF не налаштовано"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Передати в інший застосунок"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Сховати пароль"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Приховати цю публікацію"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Приховує її й просить показувати менше подібного"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Як поводитися"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Продовжити писати"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron не відповів"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0}: дата",
+      "literalleaveCommunityName": (Object a0) => "Вийти з ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, лінза для обличчя",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Вподобані публікації"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Посилання скопійовано"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Зробити модератором"),
+      "literalmuteAuthor": (Object a0) => "Приховати ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Приховати цю гілку"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Приховати слова або теги"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
-      "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Приховані й заблоковані акаунти"),
+      "literalmutedYouWillNotBeNotified":
+          MessageLookupByLibrary.simpleMessage("Приховано. Сповіщень не буде."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Жоден застосунок на цьому пристрої не відкриває посилання ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Жоден браузер на цьому пристрої не прийняв посилання."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("DID поки немає"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Немає чернеток"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Інтересів поки немає"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Вподобань поки немає"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Повідомлень поки немає"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Нових підписників немає"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Публікацій поки немає"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Відповідей поки немає"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Репостів поки немає"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Жоден популярний тег не підходить"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Нікого не знайдено"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Нікого не видалено"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Тут поки нікого немає"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Не цікаво"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Нічого не знайдено"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Поки нічого не в тренді"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("У журналі поки нічого немає"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Нічого не знайдено"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("Нічого не приховано"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Поки нічого дивитися"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Немає непрочитаних"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("Змінити це може лише власник"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Відкрити відповідь"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Відкрийте лист від Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Пароль і вхід"),
+      "literalpostInCommunityName": (Object a0) => "Опублікувати в ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Опублікувати в ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Опублікуйте зі своїми словами зверху"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Основна мова"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-сповіщення"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Перевіряємо…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Записати голосову публікацію"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Записати знову"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Зняти з модераторів"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Видалити зі спільноти"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Прибрати зі збереженого"),
+      "literalremoveLabel": (Object a0) => "Прибрати ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Прибрати ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Видалити ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Видалити опитування"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Видалити цей варіант"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Видалити цей чат"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Видалити це опитування"),
+      "literalreportAuthor": (Object a0) => "Поскаржитися на ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Поскаржитися на публікацію"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Надіслати код знову"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Збережені публікації"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Скажіть щось"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Скажіть щось у ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Пошук не вдався"),
+      "literalsendAgain":
+          MessageLookupByLibrary.simpleMessage("Надіслати знову"),
+      "literalsendAgainInCooldownS": (Object a0) => "Повторити через ${a0} с",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Залишити відгук"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Надіслати посилання"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Надіслано. Це звіт №${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Задайте пароль і продовжуйте"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Поділитися журналом із підтримкою"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Поділитися цією спільнотою"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Поділитися цією сторінкою"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Поділитися цим профілем"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Поділитися…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Поділитися з цитатою"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Показувати більше таких"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Показати пароль"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Показати результати"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Створити спільноту"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Почати запис"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Зупинити завантаження"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Більше не бачити цю публікацію та відповіді на неї"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Стрічка історій, елементів: ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Змінити камеру"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Позначити людину"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Зробити знімок"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Торкніться банера або фото, щоб змінити"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Торкніться посилання в ньому"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Торкніться, щоб додати фото й обкладинку"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Не вийшло. Спробуйте ще раз."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Не вдалося завантажити цей GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
-          MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Це посилання тут не відкрити."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Камеру закрито"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Ця спільнота"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Цю відповідь видалено"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Перекласти публікацію"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Вимкнути звук"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Увімкнути звук"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Взяти одну з наших"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Код підтвердження надіслано знову."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Не вдалося підтвердити: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Підтвердьте пошту"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Глядачі, вподобання, збереження та коментарі"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Що зберігає Kyron"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Що робив цей застосунок"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Що ви робили, чого очікували, що сталося "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Ваші публікації належать вам"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Чи доступний Kyron просто зараз"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Хто може відповідати"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Кого позначити?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Ви вже стежите за всіма популярними тегами"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Ви все переглянули"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Ви не перебуваєте в жодній спільноті"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Ви вийшли з акаунта."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Ви вийшли з ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Ви ще нічого не опублікували"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Завантажити ще"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Журнал очищено"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Журнал скопійовано"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Увійти"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Вийти"),
+      "logOutQuestion":
+          MessageLookupByLibrary.simpleMessage("Вийти з акаунта?"),
+      "login": MessageLookupByLibrary.simpleMessage("Вхід"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Не вдалося увійти. Перевірте облікові дані."),
+      "manage": MessageLookupByLibrary.simpleMessage("Керувати"),
+      "menu": MessageLookupByLibrary.simpleMessage("Меню"),
+      "message": MessageLookupByLibrary.simpleMessage("Написати"),
+      "messages": MessageLookupByLibrary.simpleMessage("Повідомлення"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Усі розмови прочитано."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Відкрийте чийсь профіль і натисніть «Написати», щоб почати розмову."),
+      "mute": MessageLookupByLibrary.simpleMessage("Приховати"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Приховані й заблоковані"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Приховані слова й теги"),
+      "name": MessageLookupByLibrary.simpleMessage("Ім'я"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Екран <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Нова адреса пошти"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Новий пароль"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Нова публікація"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Не зараз"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Не надіслано. Торкніться, щоб повторити"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "У Kyron немає нічого за запитом \"${a0}\"",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Нічого копіювати"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Сюди надходять вподобання, відповіді та нові підписники."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Тут з'являться люди, які на вас підписалися."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Коли комусь сподобається ваша публікація, це з'явиться тут."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Сюди надходять відповіді на ваші публікації."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
+          "Коли хтось зробить репост вашої публікації, це з'явиться тут."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Сповіщення"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Відкрити в браузері"),
+      "or": MessageLookupByLibrary.simpleMessage("або"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Сторінку не знайдено"),
+      "password": MessageLookupByLibrary.simpleMessage("Пароль"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Пароль надто короткий"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Оберіть інтереси"),
+      "post": MessageLookupByLibrary.simpleMessage("Опублікувати"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Статистика публікації"),
+      "postInCommunity": (Object a0) => "Опублікувати в ${a0}",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Публікуйте, кажіть, показуйте."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Текст публікації скопійовано"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Політика конфіденційності"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Профіль оновлено"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Про себе"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Країна"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Відображуване ім'я"),
+      "profile_location":
+          MessageLookupByLibrary.simpleMessage("Місцезнаходження"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Торкніться, щоб змінити"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Вебсайт"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push-сповіщення"),
+      "quote": MessageLookupByLibrary.simpleMessage("Цитувати"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Цитувати публікацію"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Зв'язатися з людиною"),
+      "remove": MessageLookupByLibrary.simpleMessage("Прибрати"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Видалити цей чат?"),
+      "removeMember": (Object a0) => "Видалити ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("Видалити це повідомлення?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Відповіді, підписки та згадки"),
+      "repliesPolicy": (Object a0) => "Відповіді: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Відповісти"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Усі можуть долучитися"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Бачити, репостити й цитувати цю публікацію, як і раніше, може будь-хто."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Відповідати на цю публікацію може будь-хто в Kyron."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Ваші підписники"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
-      "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          "Відповідати на цю публікацію можуть лише ваші підписники."),
+      "reply_mentioned": MessageLookupByLibrary.simpleMessage("Згадані люди"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Відповідати можуть лише люди, яких ви @згадали в цій публікації."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Ніхто не може відповідати"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Відповіді вимкнено. Ви все одно можете відповісти самі."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Хто може відповідати?"),
       "report": MessageLookupByLibrary.simpleMessage("Поскаржитися"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Звіт скопійовано. Вставте його в лист до підтримки."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Скаргу надіслано"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
-      "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+      "repost": MessageLookupByLibrary.simpleMessage("Репост"),
+      "reset": MessageLookupByLibrary.simpleMessage("Скинути"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage("Скиньте пароль"),
+      "retry": MessageLookupByLibrary.simpleMessage("Повторити"),
+      "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Зберегти чернетку"),
+      "saySomething": (Object a0) => "Скажіть щось у ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Пошук"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Пошук за іменем або ім'ям користувача"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Пошук спільнот"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Пошук GIF"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Пошук мов"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Пошук популярних тегів"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Сповіщення безпеки та зміни акаунта"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Оберіть мову інтерфейсу застосунку."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Оберіть, якими мовами показувати стрічку. Якщо нічого не вибрано, показуються всі мови."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Оберіть основну мову для перекладів у стрічці."),
+      "send": MessageLookupByLibrary.simpleMessage("Надіслати"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Надіслати підтвердження"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Надіслати звіт про помилку"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Надіслати відгук"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Надіслати скаргу"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Надіслати в підтримку"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Стан сервісу"),
+      "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Поділитися журналом застосунку з підтримкою"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Вхід у Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Ви увійшли як"),
+      "signupFailed": (Object a0) => "Не вдалося зареєструватися: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Залишитися"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron лише починається, і найшвидше зв'язатися з тим, хто справді може виправити проблему, — відкрити заявку. Розкажіть, що ви робили і що сталося."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "У застосунку поки немає скриньки підтримки, тож цей екран веде туди, де справді читають, а не до форми, що нікуди не йде."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Журнал застосунку"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Розкажіть, чого бракує або що зламалося"),
+      "terms": MessageLookupByLibrary.simpleMessage("Умови використання"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Текст, голос і відео, люди, які їх створюють, і кімнати, де вони спілкуються."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "У редакторі немає кнопки «Опублікувати»"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Темна"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Завжди темна"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Приглушена"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "М'яка темна, синьо-сіра замість чорної"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Світла"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Завжди світла"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Системна"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Як світла чи темна тема телефона"),
+      "translate": MessageLookupByLibrary.simpleMessage("Перекласти"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Переклад поки не працює. У стрічці поки нічого не перекладається; налаштування запам'ятається до того часу."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Це змінює власні слова Kyron, частини інтерфейсу, які Flutter малює сам, дати й числа, а також напрямок розкладки застосунку для мов із письмом справа наліво."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Політика конфіденційності"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Умови використання"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Акаунт"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Після"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Застосунок і пристрій"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Це цитата, щоб застерегти людей від шахрайства."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1159,15 +988,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Апеляцію надіслано. Ви отримаєте сповіщення, коли буде ухвалено рішення."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Апеляція у справі \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Вигляд"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Світла, темна або як у телефоні"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("До"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Ви перестанете бачити одне одного в Kyron, а підписки між вами буде видалено. Йому не повідомлять."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Містить"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Для чого він (необов’язково)"),
       "ui_cchat_announcements":
@@ -1277,29 +1104,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice": MessageLookupByLibrary.simpleMessage(
           "Записати голосове повідомлення"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ви"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Спільноти"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Для чого це? (необов'язково)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Дописи:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Контент і відображення"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Не вдалося завантажити стрічку"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Не вдалося завантажити вподобані публікації"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Не вдалося завантажити ваш профіль"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Не вдалося завантажити збережені публікації"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Децентралізований ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Усунення несправностей"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Групи"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Немає груп"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1309,16 +1131,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Закріплено"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Вподобане"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Збережене"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Тут поки нічого немає"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Підпишіться на кілька акаунтів, і їхні публікації з'являться тут."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Нічого від тих, за ким ви стежите"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Публікації з'являтимуться тут, коли люди почнуть їх писати."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Слабне"),
       "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Не цікаво"),
       "ui_feed_signal_more":
@@ -1336,16 +1156,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Вони формують Головну та Огляд, переважно за темою кожного допису. Кожен сигнал щомісяця слабне вдвічі й через шість перестає враховуватися. Видаліть сигнал, щоб зупинити його зараз."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Тут з'являться публікації з кліпом."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Відео поки немає"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Відгук"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Знайдіть людей у Kyron"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Від акаунта"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Додати людей"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Додати"),
       "ui_group_add_name":
@@ -1436,32 +1253,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ви"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Ви глядач"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Допомога"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Враховано. Це допоможе обирати, що вам показувати."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Приєднатися"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Приєднався"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Мова"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Виберіть мову"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Правова інформація"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Подобається"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Вподобані публікації"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Вподобані публікації з'являться тут, спершу нові."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Посилання скопійовано"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Ви більше не бачитимете його публікацій. Йому не повідомлять."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Вподобань поки немає"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Немає публікацій, що відповідають фільтрам."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Поки нічого не збережено"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Ваш обліковий запис оновлено"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1519,13 +1334,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ваш обліковий запис отримав попередження"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Учора"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Готово"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Пропустити"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Це вже відкривали."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Термін минув"),
@@ -1544,23 +1355,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Надіслати для одноразового перегляду"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Торкніться, щоб переглянути"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Пауза"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Відтворити"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Її буде видалено з вашого профілю та зі стрічок усіх користувачів. Відповіді на неї зникнуть разом із нею."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Публікацію видалено"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Публікацію приховано"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Текст публікації скопійовано"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Опубліковано в період"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Приховано. Показуватимемо менше такого."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Налаштування"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Конфіденційність"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Хочете щось додати? (необов’язково)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1658,76 +1468,64 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Спам"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Насильство або погрози"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Збережені публікації"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Натисніть значок архіву на публікації, щоб зберегти її тут. Збережене бачите лише ви."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "Шукайте за ім'ям користувача або відображуваним ім'ям."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Очистити"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "Пошук по всьому опублікованому"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Фільтри"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Пошук людей"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Пошук публікацій"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Застосунок і пристрій"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Контент і відображення"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Економія трафіку"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Поділіться думкою"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Довідкові статті"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Оберіть мову"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Кого ви приховали або заблокували"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Налаштування сповіщень"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Ваш профіль і контактні дані"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Щоб повернутися до акаунта, доведеться увійти знову."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Налаштування безпеки"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Підтвердьте пароль"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("В одному рядку"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Нова адреса пошти"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Новий пароль"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Що сталося"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Допомога від нашої команди"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Поділитися"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Цитувати"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Надіслати в повідомленні"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Людям у Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Поділитися цією публікацією"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Про що йшлося"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1823,54 +1621,47 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ваш допис"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Ваша відповідь"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Умови використання"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ця публікація"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Гілку приховано"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Вимкнути звук"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("Увімкнути звук"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Щонайменше два символи."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Скасувати"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Слова або фільтр: акаунт, період чи вміст публікації."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("Скасувати репост"),
+      "updatePassword": MessageLookupByLibrary.simpleMessage("Оновити пароль"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Використати іншу адресу"),
+      "username": MessageLookupByLibrary.simpleMessage("Ім'я користувача"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Ім'я користувача має бути в нижньому регістрі (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Відео"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Вставити"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Готово до вставлення"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Записати голосову публікацію"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Збереження…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Стоп"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Що сталося"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Що сталося і на що нам звернути увагу?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Що на цьому зображенні?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Для чого це? (необов'язково)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Що ви робили, чого очікували, що сталося"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Що ви робили, коли це сталося."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ви відповіли"),
       "dmReplied": (Object a0) => "Відповідь від $a0",
       "ui_dm_attach":
@@ -2002,7 +1793,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Надіслано, але не всім."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Не вдалося надіслати. Спробуйте ще раз."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Підписник"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Фільтр"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Усі"),
       "ui_dm_filter_unread":

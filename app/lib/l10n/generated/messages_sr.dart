@@ -7,249 +7,204 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Реч, фраза или #ознака"),
+      "about": MessageLookupByLibrary.simpleMessage("О мени"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Додај одговор"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Додај језике…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Прихвати и настави"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Већ имате Kyron налог?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Коментари"),
       "analytics_distinct_people_not_opens":
-          MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+          MessageLookupByLibrary.simpleMessage("Различити људи, не отварања"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ангажовање"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Свиђања"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Још нема гледалаца"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Ову објаву још нико није отворио."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Објављено"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Чувања"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Гледаоци"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("ГЛЕДАОЦИ ПО ДАНУ"),
+      "and": MessageLookupByLibrary.simpleMessage("и"),
+      "answerNumber": (Object a0) => "Одговор ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR сочиво"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Приложи дневник апликације"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Повратно време"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("ПРОВЕРА ТОКЕНА"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Покушај поново"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Покушај поново"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Покретање преноса сада ставило би вас у собу у коју нико не би могао"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Покрени заједницу"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Чему служи? (није обавезно)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("поново да уђе."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("поново да уђе са ове листе."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Ако је затворите,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("прво се придружите"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("ускоро"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Објављујете у своје име"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("објављујте у овој заједници"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Управо сада"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Покушај поново"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Тема 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("За вас"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("има нешто."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("управо је на путу."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", не"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("да ли се крећем"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Искључи звук"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Укључи звук"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("За вас"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ваше картице"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Покушај поново"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Симбол (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("ГЛЕДАОЦИ ПО ДАНУ"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("није могуће учитати"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ова објава"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Желите ли нешто да додате? (није обавезно)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ова објава"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Са налога"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Одјави се"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Ваш налог"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Потврдите лозинку"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("не сада"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Учитавање…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Објављивање…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("пре 3 ч"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Копирај линк приче"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Ваша прича"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Ваш налог, ваше објаве и оно што додирнете, како би"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Додај тему"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("своје."),
+      "authorBlocked": (Object a0) => "${a0} је блокиран",
+      "authorPostsHidden": (Object a0) =>
+          "Нећете видети објаве корисника ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("Блокирај"),
+      "blockAuthor": (Object a0) => "Блокирати корисника ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Подаци о верзији су копирани"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Наставком прихватате"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Наставком прихватате наше Услове коришћења и Политику приватности"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Регистрацијом прихватате"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Откажи"),
       "change": MessageLookupByLibrary.simpleMessage("Промени"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
-      "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Промени имејл"),
+      "checkEmailConfirm":
+          MessageLookupByLibrary.simpleMessage("Потврдите налог путем имејла."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Провери да ли је Kyron доступан"),
+      "clear": MessageLookupByLibrary.simpleMessage("Обриши"),
+      "close": MessageLookupByLibrary.simpleMessage("Затвори"),
+      "closeCommunity": (Object a0) => "Затворити ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Затвори"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Затвори ову заједницу"),
+      "communities": MessageLookupByLibrary.simpleMessage("Заједнице"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Пронађите је у Истражи или покрените сопствену."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Избаците вруће мишљење (или млако)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Шта вам је на уму?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Реците нешто што само ви можете да кажете…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Ово је знак: објавите"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Пишите, говорите или размишљајте наглас"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Потврдите лозинку"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Контактирај подршку"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Објаве још немају језик, па ово још не филтрира ваш фид. Ваш избор се чува до тада."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Настави"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Настави са имејлом"),
+      "copy": MessageLookupByLibrary.simpleMessage("Копирај"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Радије копирај извештај"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
+          "Није могуће отворити пријаву преко Google-а. ${a0}",
+      "couldNotSignOut": (Object a0) => "Одјава није успела: ${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Није могуће снимити фотографију."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Приказује се на твом профилу и испод твојих објава."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -261,88 +216,75 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Приказује се на твом профилу и испод твојих објава. Када видиш нечије објаве, твоја држава се рачуна у његовим Увидима, само у групама од пет или више и никад по имену."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Из подешавања твог телефона"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Направи"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Направи налог"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Направите налог"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Направите профил"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR сочиво"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Уживо"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Текстуална објава"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Гласовна објава"),
+      "delete": MessageLookupByLibrary.simpleMessage("Избриши"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Избрисати овај коментар?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Избрисати ову објаву?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Опишите овај прилог"),
+      "description": MessageLookupByLibrary.simpleMessage("Опис"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID је копиран у привремену меморију"),
       "done": MessageLookupByLibrary.simpleMessage("Готово"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
-      "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Затворите уређивач када нешто напишете и биће вам понуђен нацрт."),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("пре {days} д"),
+      "draft_hours_ago": MessageLookupByLibrary.simpleMessage("пре {hours} ч"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Управо сада"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("пре {minutes} мин"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Још ништа није написано"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Анкета, још без питања"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Цитат, још без текста"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Нацрти"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Измени профил"),
+      "email": MessageLookupByLibrary.simpleMessage("Имејл"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Обавештења имејлом"),
+      "explore": MessageLookupByLibrary.simpleMessage("Истражи"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Праћење лица није доступно на овом уређају."),
+      "feedTagDetail": (Object a0) => "Са #${a0} још ништа није објављено.",
       "follow_author": MessageLookupByLibrary.simpleMessage("Прати {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Пратиоци"),
+      "following": MessageLookupByLibrary.simpleMessage("Пратите"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Заборавили сте лозинку?"),
+      "gettingHelp":
+          MessageLookupByLibrary.simpleMessage("Како да добијете помоћ"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Настави преко Google-а"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Пријави се преко Google-а"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google враћа завршену пријаву у Kyron преко линка на који одговарају само Android и iOS, па на платформи ${a0} прегледач нема где да је врати.\\n\\nАко већ имате Kyron налог преко Google-а, изаберите Настави са имејлом са истом адресом и додирните Заборавили сте лозинку: добићете линк за постављање лозинке.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Пријава преко Google-а захтева апликацију за телефон"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Региструј се преко Google-а"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Водичи и одговори на честа питања"),
+      "handle": MessageLookupByLibrary.simpleMessage("корисничко име"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Помоћ и подршка"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Центар за помоћ"),
+      "home": MessageLookupByLibrary.simpleMessage("Почетна"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("У једном реду"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Твој налог"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Отвори заједницу"),
@@ -456,690 +398,573 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Најбоље објаве"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "У односу на претходних {days} дана"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Додај интересовање"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+          "Превуците да промените редослед"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "На траку стаје највише пет картица. Уклоните једну да бисте додали другу."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Пратите"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("За вас"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Хештегови се појављују овде када људи почну да их користе."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          MessageLookupByLibrary.simpleMessage("Тренутно у тренду"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Видео снимци"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Ваше картице"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Нестаће за обоје."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Биће уклоњено из нити."),
+      "join": MessageLookupByLibrary.simpleMessage("Придружи се"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Настави уређивање"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Екрани Kyron-а су на вашем језику. Ако вам нека реч звучи погрешно, јавите нам преко опције Пошаљи повратне информације."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Језици"),
+      "leave": MessageLookupByLibrary.simpleMessage("Напусти"),
+      "leaveCommunity": (Object a0) => "Напустити ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Врати назад"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("Отворена 1 страница"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Додај клип"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Додај GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+          MessageLookupByLibrary.simpleMessage("Додај хештаг"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Додај фотографију"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Додај анкету"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Додај видео"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Додај интересовање"),
+      "literaladdLabelAsATab": (Object a0) => "Додај ${a0} као картицу",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Језик апликације"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Верзија апликације"),
+      "literalblockAuthor": (Object a0) => "Блокирај ${a0}",
+      "literalblockAuthor2": (Object a0) => "Блокирати ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Блокирати овај налог?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Одбаци одговор"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Провери поново"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Изабери из галерије"),
+      "literalclearCache": MessageLookupByLibrary.simpleMessage("Обриши кеш"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Затвори све странице"),
+      "literalcloseTabLabel": (Object a0) => "Затвори ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Затвори прегледач"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Затворити ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Контактирај подршку"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Језици садржаја"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Копирај линк"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Копирај линк објаве"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          MessageLookupByLibrary.simpleMessage("Копирај текст објаве"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Копирај текст"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати заједнице"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати GIF-ove"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Није могуће учитати обавештења"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати чланове"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Није могуће учитати ове објаве"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+              "Није могуће учитати овај разговор"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати ову листу"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Није могуће учитати ову објаву"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Није могуће учитати овај одговор"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Није могуће учитати популарне ознаке"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Није могуће учитати ваше заједнице"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Није могуће учитати ваше поруке"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Није могуће отворити ову заједницу"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Није могуће објавити одговор."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Претрага није успела"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Одјава није успела: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "Отворених страница: ${a0}",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Насловна фотографија"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Уштеда података"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Избриши објаву"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Пронађи људе"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Не одговарај"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Нацрт је сачуван"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Повратне информације тренутно не могу да се пошаљу"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("Величина текста"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF-ови нису подешени"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Предај другој апликацији"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Сакриј лозинку"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Сакриј ову објаву"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Скрива је и тражи да приказујемо мање оваквих"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Како се понашати"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Настави писање"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron није одговорио"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "Датум \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Напустити ${a0}?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, сочиво за лице",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Објаве које вам се свиђају"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Линк је копиран"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Постави за модератора"),
+      "literalmuteAuthor": (Object a0) => "Утишај ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Утишај ову нит"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("Утишај речи или ознаке"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("Утишани и блокирани налози"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Утишано. Нећете примати обавештења."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Ниједна апликација на овом уређају не отвара линкове ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Ниједан прегледач на овом уређају није прихватио линк."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Још нема DID-а"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Нема нацрта"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Још нема интересовања"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Још нема свиђања"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Још нема порука"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Нема нових пратилаца"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Још нема објава"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Још нема одговора"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Још нема поновних објава"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Ниједна популарна ознака се не подудара"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Нико није пронађен"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Нико није уклоњен"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Овде још нема никога"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Не занима ме"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ништа није пронађено"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Још ништа није у тренду"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("У дневнику још нема ничега"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Нема резултата"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ништа није утишано"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Још нема ничега за гледање"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Нема непрочитаних"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Ово може да промени само власник"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Отвори одговор"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Отворите имејл од Kyron-а"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Лозинка и пријава"),
+      "literalpostInCommunityName": (Object a0) => "Објави у ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "Објави у ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Објави са сопственим речима изнад"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Главни језик"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push обавештења"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Провера…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Сними гласовну објаву"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Сними поново"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Уклони из модератора"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Уклони из заједнице"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Уклони из сачуваног"),
+      "literalremoveLabel": (Object a0) => "Уклони ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Уклони ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Уклонити ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Уклони анкету"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Уклони овај одговор"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Избриши овај разговор"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Уклони ову анкету"),
+      "literalreportAuthor": (Object a0) => "Пријави ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Пријави објаву"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Поново пошаљи код"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Сачуване објаве"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Реците нешто"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "Реците нешто у ${a0}",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Претрага није успела"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Поново пошаљи"),
+      "literalsendAgainInCooldownS": (Object a0) => "Поново пошаљи за ${a0} с",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Пошаљи повратне информације"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("Пошаљи линк"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Послато. То је извештај бр. ${a0}.",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("Поставите лозинку и наставите"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Подели дневник са подршком"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Подели ову заједницу"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Подели ову страницу"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Подели овај профил"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Подели…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Подели са цитатом"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Прикажи више оваквих"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Прикажи лозинку"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Прикажи резултате"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Покрени заједницу"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Почни снимање"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Заустави учитавање"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Престани да гледаш ову објаву и њене одговоре"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Трака прича, ставки: ${a0}",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Промени камеру"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Означи некога"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Сними фотографију"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Додирните насловну слику или фотографију да бисте их променили"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Додирните линк у њему"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Додирните да додате фотографију и насловну слику"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Није успело. Покушајте поново."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати тај GIF."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Овај линк не може да се отвори овде."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Камера је затворена"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Ова заједница"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Овај одговор више не постоји"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Преведи објаву"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Искључи звук"),
+      "literalturnSoundOn": MessageLookupByLibrary.simpleMessage("Укључи звук"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Користи неку од наших"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Код за потврду је поново послат."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Потврда није успела: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Потврди имејл"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Гледаоци, свиђања, чувања и коментари"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Шта Kyron чува"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Шта је ова апликација радила"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Шта сте радили, шта сте очекивали, шта се десило "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Оно што објавите припада вама"),
       "literalwhetherKyronIsReachableRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+              "Да ли је Kyron тренутно доступан"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ко може да одговори"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Кога желите да означите?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Већ пратите све популарне ознаке"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Све сте прегледали"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Нисте ни у једној заједници"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Одјављени сте."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Напустили сте ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Још нисте ништа објавили"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Учитај још"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Дневник је обрисан"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Дневник је копиран"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Пријави се"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Одјави се"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Одјавити се?"),
+      "login": MessageLookupByLibrary.simpleMessage("Пријава"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Пријава није успела. Проверите податке."),
+      "manage": MessageLookupByLibrary.simpleMessage("Управљај"),
+      "menu": MessageLookupByLibrary.simpleMessage("Мени"),
+      "message": MessageLookupByLibrary.simpleMessage("Порука"),
+      "messages": MessageLookupByLibrary.simpleMessage("Поруке"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Прочитали сте све разговоре."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Отворите нечији профил и додирните Порука да бисте започели разговор."),
+      "mute": MessageLookupByLibrary.simpleMessage("Утишај"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Утишани и блокирани"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Утишане речи и ознаке"),
+      "name": MessageLookupByLibrary.simpleMessage("Име"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Екран <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Нова имејл адреса"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Нова лозинка"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Нова објава"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Не сада"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Није послато. Додирните да покушате поново"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Ништа на Kyron-у не одговара упиту \"${a0}\"",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Нема ничега за копирање"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Овде стижу свиђања, одговори и нови пратиоци."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Овде ће се појавити људи који вас прате."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Када се некоме свиди ваша објава, појавиће се овде."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Овде стижу одговори на ваше објаве."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Када вас неко поново објави, појавиће се овде."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Обавештења"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Отвори у прегледачу"),
+      "or": MessageLookupByLibrary.simpleMessage("или"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Страница није пронађена"),
+      "password": MessageLookupByLibrary.simpleMessage("Лозинка"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Лозинка је прекратка"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Изаберите интересовања"),
+      "post": MessageLookupByLibrary.simpleMessage("Објави"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Статистика објаве"),
+      "postInCommunity": (Object a0) => "Објави у ${a0}",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Објави, реци, покажи."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Текст објаве је копиран"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Политика приватности"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Профил је ажуриран"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("О мени"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Држава"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Приказно име"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Локација"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Додирните да промените"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Веб-сајт"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push обавештења"),
+      "quote": MessageLookupByLibrary.simpleMessage("Цитирај"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("Цитирај објаву"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Обратите се човеку"),
+      "remove": MessageLookupByLibrary.simpleMessage("Уклони"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Избрисати овај разговор?"),
+      "removeMember": (Object a0) => "Уклонити ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("Избрисати ову поруку?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("Одговори, праћења и помињања"),
+      "repliesPolicy": (Object a0) => "Одговори: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Одговори"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Свако може да се укључи"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Свако и даље може да види, поново објави и цитира ову објаву."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Свако на Kyron-у може да одговори на ову објаву."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Људи који вас прате"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "На ову објаву могу да одговоре само ваши пратиоци."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Људи које поменете"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Одговорити могу само људи које @поменете у овој објави."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Нико не може да одговори"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Одговори су искључени. Ви и даље можете да одговорите."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Ко може да одговори?"),
       "report": MessageLookupByLibrary.simpleMessage("Пријави"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Извештај је копиран. Налепите га у имејл подршци."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Пријава је послата"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Поново објави"),
+      "reset": MessageLookupByLibrary.simpleMessage("Ресетуј"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Ресетујте лозинку"),
+      "retry": MessageLookupByLibrary.simpleMessage("Покушај поново"),
+      "save": MessageLookupByLibrary.simpleMessage("Сачувај"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Сачувај нацрт"),
+      "saySomething": (Object a0) => "Реците нешто у ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Претрага"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Претражи по имену или корисничком имену"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Претражи заједнице"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Претражи GIF-ove"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Претражи језике"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Претражи популарне ознаке"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Безбедносна упозорења и промене налога"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Изаберите језик интерфејса апликације."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Изаберите који се језици приказују у вашим фидовима. Ако не изаберете ниједан, приказују се сви језици."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Изаберите главни језик за преводе у фиду."),
+      "send": MessageLookupByLibrary.simpleMessage("Пошаљи"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Пошаљи потврду"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Пошаљи извештај о грешци"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Пошаљи повратне информације"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Пошаљи пријаву"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("Пошаљи подршци"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Статус услуге"),
+      "settings": MessageLookupByLibrary.simpleMessage("Подешавања"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Подели дневник апликације са подршком"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Пријава на Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Пријављени сте као"),
+      "signupFailed": (Object a0) => "Регистрација није успела: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Остани"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron је на почетку, а најбржи начин да стигнете до некога ко то заиста може да поправи јесте да отворите тикет. Реците нам шта сте радили и шта се десило."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Апликација још нема пријемно сандуче подршке, па вас овај екран упућује тамо где неко заиста прати, а не на образац који никуда не води."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Дневник апликације"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Реците нам шта недостаје или не ради"),
+      "terms": MessageLookupByLibrary.simpleMessage("Услове коришћења"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Текст, глас и видео, људи који их стварају и собе у којима разговарају."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "У уређивачу нема дугмета Објави"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Тамна"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Увек тамна"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Пригушена"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "Блажа тамна, плавкастосива уместо црне"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Светла"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Увек светла"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Систем"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Прати светло или тамно подешавање телефона"),
+      "translate": MessageLookupByLibrary.simpleMessage("Преведи"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Превођење још није укључено. У вашем фиду се још ништа не преводи; подешавање се памти до тада."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Ово мења Kyron-ове сопствене речи, делове интерфејса које Flutter сам црта, датуме и бројеве, као и смер распореда апликације за језике који се пишу здесна налево."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Покушај поново"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Политика приватности"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Услови коришћења"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Налог"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("После"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Апликација и уређај"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Цитат је требало да упозори друге на превару."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1152,15 +977,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Жалба је послата. Добићете обавештење када се одлучи."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Жалба на случај \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Изглед"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Светла, тамна или према телефону"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Пре"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Нећете се међусобно видети на Kyron-у, а праћења међу вама биће уклоњена. Та особа неће бити обавештена."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Садржи"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Чему служи (необавезно)"),
       "ui_cchat_announcements":
@@ -1265,29 +1088,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Сними гласовну поруку"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ви"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Заједнице"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Чему служи? (није обавезно)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Објаве:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Садржај и приказ"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати ваш фид"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Није могуће учитати објаве које вам се свиђају"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Није могуће учитати ваш профил"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Није могуће учитати сачуване објаве"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Децентрализовани ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Решавање проблема"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Групе"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Нема група"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1297,16 +1115,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Закачено"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Свиђа ми се"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Сачувано"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Овде још нема ничега"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Пратите неколико налога и њихове објаве ће се појавити овде."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Ништа од оних које пратите"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Објаве ће се појављивати овде како их људи пишу."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Слаби"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Не занима ме"),
@@ -1325,16 +1141,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Обликују Почетну и Истражи, углавном према теми сваке објаве. Сваки сваког месеца ослаби на пола и престаје да се рачуна после шест. Уклони један да га одмах зауставиш."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Објаве са клипом појавиће се овде."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Још нема видео снимака"),
+      "ui_feedback":
+          MessageLookupByLibrary.simpleMessage("Повратне информације"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Пронађите људе на Kyron-у"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Са налога"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Додај особе"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Додај"),
       "ui_group_add_name":
@@ -1425,32 +1239,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ви"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Ви сте посматрач"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Помоћ"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Забележено. То помаже да изаберемо шта вам приказујемо."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Придружи се"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Придружио се"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Језик"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Изаберите језик"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Правне информације"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Свиђа ми се"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Објаве које вам се свиђају"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Објаве које вам се свиђају појављују се овде, најновије прве."),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Линк је копиран"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Више нећете видети њене објаве. Та особа неће бити обавештена."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Још нема свиђања"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Ниједна објава не одговара тим филтерима."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Још ништа није сачувано"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Ваш налог је ажуриран"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1506,13 +1317,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ваш налог је добио упозорење"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Јуче"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Готово"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Прескочи"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Ово је већ отворено."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Истекло"),
@@ -1530,23 +1337,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Пошаљи за једнократан приказ"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Додирните за приказ"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Пауза"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Пусти"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Биће уклоњена са вашег профила и из свих фидова. Њени одговори нестају са њом."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Објава је избрисана"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Објава је сакривена"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Текст објаве је копиран"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Објављено између"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Сакривено. Приказиваћемо мање оваквих."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Подешавања"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Приватност"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Желите ли нешто да додате? (опционо)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1645,76 +1451,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Нежељени садржај"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Насиље или претње"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Сачуване објаве"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Додирните икону архиве на објави да бисте је задржали овде. Сачувано видите само ви."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Тражите по корисничком или приказном имену."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Обриши"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Претражите све објављено"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Филтери"),
+      "ui_search_people": MessageLookupByLibrary.simpleMessage("Претражи људе"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Претражи објаве"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Подешавања"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Апликација и уређај"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Садржај и приказ"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Уштеда података"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Поделите мишљење"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Прегледај чланке помоћи"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Изаберите језик"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
-      "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Кога сте утишали или блокирали"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Подешавања обавештења"),
+      "ui_settings_profile_contact":
+          MessageLookupByLibrary.simpleMessage("Ваш профил и контакт подаци"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Мораћете поново да се пријавите да бисте се вратили на налог."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Безбедносна подешавања"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Потврдите лозинку"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("У једном реду"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Нова имејл адреса"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Нова лозинка"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Шта се десило"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Помоћ нашег тима"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Подели"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("Цитирај"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Пошаљи у поруци"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Људима на Kyron-у"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Подели ову објаву"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("На шта се односило"),
       "ui_standing_account_banned":
@@ -1809,54 +1602,46 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ваша објава"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Ваш одговор"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Услове коришћења"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ова објава"),
+      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Нит је утишана"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Покушај поново"),
-      "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+      "ui_turn_sound_off": MessageLookupByLibrary.simpleMessage("Искључи звук"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Укључи звук"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Најмање два знака."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Опозови"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Речи или филтер: налог, период или садржај објаве."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Опозови поновну објаву"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Ажурирај лозинку"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Користи другу адресу"),
+      "username": MessageLookupByLibrary.simpleMessage("Корисничко име"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Корисничко име мора бити малим словима (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Видео"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Приложи"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Спремно за прилагање"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Сними гласовну објаву"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Чување…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Заустави"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Шта се десило"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Шта се догодило и шта треба да погледамо?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Шта је на овој слици?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Чему служи? (није обавезно)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Шта сте радили, шта сте очекивали, шта се десило"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Шта сте радили када се то десило."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Ваш одговор"),
       "dmReplied": (Object a0) => "Одговор од $a0",
       "ui_dm_attach": MessageLookupByLibrary.simpleMessage("Додај у поруку"),
@@ -1982,7 +1767,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Послато, али не свима."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Слање није успело. Покушај поново."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Пратилац"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Филтер"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Све"),
       "ui_dm_filter_unread":

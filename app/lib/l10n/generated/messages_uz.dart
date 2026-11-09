@@ -7,249 +7,206 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("So‘z, ibora yoki #teg"),
+      "about": MessageLookupByLibrary.simpleMessage("Haqida"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Javob qo‘shish"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Til qo‘shish…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Rozi bo‘lish va davom etish"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Kyron hisobingiz bormi?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Izohlar"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "Turli odamlar, ochilishlar soni emas"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("Faollik"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Layklar"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Hali tomoshabinlar yo‘q"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Bu postni hali hech kim ochmagan."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Joylandi"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saqlashlar"),
+      "analytics_viewers":
+          MessageLookupByLibrary.simpleMessage("Tomoshabinlar"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("KUNLIK TOMOSHABINLAR"),
+      "and": MessageLookupByLibrary.simpleMessage("va"),
+      "answerNumber": (Object a0) => "${a0}-javob",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR linza"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Ilova jurnalini biriktirish"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Borib-kelish vaqti"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("TOKENNI TEKSHIRISH"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Hozir efirni boshlasangiz, hech kim kira olmaydigan xonada qolasiz"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Hamjamiyat yaratish"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Bu nima uchun? (ixtiyoriy)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("qayta kira olmaydi."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "bu ro‘yxatdan qayta kira olmaydi."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Uni yopsangiz,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("avval qo‘shiling"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("tez orada"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("O‘z nomingizdan joylayapsiz"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("bu hamjamiyatda joylash"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hozirgina"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("1-mavzu"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Siz uchun"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("nimadir bor."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("hozir u yerga ketyapti."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", emas"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("harakatlanyapmanmi"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Ovozni o‘chirish"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Ovozni yoqish"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Siz uchun"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Varaqlaringiz"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Belgi (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("KUNLIK TOMOSHABINLAR"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("yuklab bo‘lmadi"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("bu post"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Qo‘shimcha gap bormi? (ixtiyoriy)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("bu post"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Hisobdan"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Chiqish"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Hisobingiz"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Parolni tasdiqlang"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("hozir emas"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Yuklanmoqda…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Joylanmoqda…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 soat oldin"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Hikoya havolasini nusxalash"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Hikoyangiz"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Hisobingiz, postlaringiz va bosgan narsalaringiz, toki"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Mavzu qo‘shish"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("o‘ziniki."),
+      "authorBlocked": (Object a0) => "${a0} bloklandi",
+      "authorPostsHidden": (Object a0) => "${a0} postlarini ko‘rmaysiz",
+      "block": MessageLookupByLibrary.simpleMessage("Bloklash"),
+      "blockAuthor": (Object a0) => "${a0} bloklansinmi?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Yig‘ma ma’lumotlari nusxalandi"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Davom etish orqali rozilik bildirasiz:"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Davom etish orqali Xizmat shartlari va Maxfiylik siyosatimizga rozilik bildirasiz"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Ro‘yxatdan o‘tish orqali rozilik bildirasiz:"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
       "change": MessageLookupByLibrary.simpleMessage("O‘zgartirish"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("Emailni o‘zgartirish"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Hisobingizni email orqali tasdiqlang."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Kyron mavjudligini tekshirish"),
+      "clear": MessageLookupByLibrary.simpleMessage("Tozalash"),
+      "close": MessageLookupByLibrary.simpleMessage("Yopish"),
+      "closeCommunity": (Object a0) => "${a0} yopilsinmi?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Yopish"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Bu hamjamiyatni yopish"),
+      "communities": MessageLookupByLibrary.simpleMessage("Hamjamiyatlar"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Kashf qilish bo‘limidan toping yoki o‘zingiznikini yarating."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Qaynoq fikr tashlang (yoki iliq)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Xayolingizda nima bor?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Faqat siz ayta oladigan narsani ayting…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Bu sizga ishora: joylang"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Yozing, gapiring yoki ovoz chiqarib o‘ylang"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Parolni tasdiqlang"),
       "contactSupport": MessageLookupByLibrary.simpleMessage(
           "Yordam xizmatiga murojaat qilish"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
+          "Postlarda hali til yo‘q, shuning uchun bu lentangizni hali filtrlamaydi. Tanlovlaringiz o‘shangacha saqlanadi."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Davom etish"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Email bilan davom etish"),
+      "copy": MessageLookupByLibrary.simpleMessage("Nusxalash"),
       "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Uning o‘rniga hisobotni nusxalash"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google orqali kirishni ochib bo‘lmadi. ${a0}",
+      "couldNotSignOut": (Object a0) => "Chiqib bo‘lmadi: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Suratga olib bo‘lmadi."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Profilingizda va postlaringiz ostida ko‘rsatiladi."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -262,89 +219,79 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Profilingizda va postlaringiz ostida ko‘rsatiladi. Kimningdir postlarini ko‘rganingizda, mamlakatingiz uning Tahlillarida hisoblanadi, faqat besh yoki undan ko‘p kishilik guruhlarda va hech qachon ism bilan emas."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Telefoningiz sozlamalaridan"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Yaratish"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Hisob yaratish"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Hisobingizni yarating"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Profilingizni yarating"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR linza"),
+      "create_go_live":
+          MessageLookupByLibrary.simpleMessage("Jonli efirga chiqish"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("Matnli post"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("Ovozli post"),
+      "delete": MessageLookupByLibrary.simpleMessage("O‘chirish"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Bu izoh o‘chirilsinmi?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Bu post o‘chirilsinmi?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Bu ilovani tasvirlang"),
+      "description": MessageLookupByLibrary.simpleMessage("Tavsif"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID buferga nusxalandi"),
       "done": MessageLookupByLibrary.simpleMessage("Tayyor"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Biror narsa yozgach muharrirni yoping, sizga qoralama taklif qilinadi."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} kun oldin"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+          MessageLookupByLibrary.simpleMessage("{hours} soat oldin"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Hozirgina"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} daqiqa oldin"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Hali hech narsa yozilmagan"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("So‘rovnoma, hali savolsiz"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Iqtibos, hali matnsiz"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Qoralamalar"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("Profilni tahrirlash"),
       "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Email bildirishnomalari"),
+      "explore": MessageLookupByLibrary.simpleMessage("Kashf qilish"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Bu qurilmada yuzni kuzatish mavjud emas."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "#${a0} bilan hali hech narsa joylanmagan.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name}ni kuzatish"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Obunachilar"),
+      "following": MessageLookupByLibrary.simpleMessage("Kuzatilmoqda"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Parolni unutdingizmi?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Yordam olish"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google bilan davom etish"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google orqali kirish"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google tugallangan kirishni Kyron’ga faqat Android va iOS javob beradigan havola orqali qaytaradi, shuning uchun ${a0} platformasida brauzer uni qaytaradigan joy yo‘q.\\n\\nAgar Google orqali Kyron hisobingiz bo‘lsa, xuddi shu manzil bilan Email bilan davom etishni tanlang va Parolni unutdingizmi tugmasini bosing: parol o‘rnatish uchun havola olasiz.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
-      "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          "Google orqali kirish uchun telefon ilovasi kerak"),
+      "googleSignUp": MessageLookupByLibrary.simpleMessage(
+          "Google orqali ro‘yxatdan o‘tish"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Qo‘llanmalar va ko‘p beriladigan savollarga javoblar"),
+      "handle": MessageLookupByLibrary.simpleMessage("foydalanuvchi nomi"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Yordam va qo‘llab-quvvatlash"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Yordam markazi"),
+      "home": MessageLookupByLibrary.simpleMessage("Bosh sahifa"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Bir qatorda"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Hisobingiz"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Hamjamiyatni ochish"),
@@ -464,690 +411,585 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Eng yaxshi postlar"),
       "ins_vs_before":
           MessageLookupByLibrary.simpleMessage("Oldingi {days} kunga nisbatan"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Qiziqish qo‘shish"),
       "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+          "Tartibni o‘zgartirish uchun torting"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Panelga ko‘pi bilan beshta varaq sig‘adi. Boshqasini qo‘shish uchun bittasini olib tashlang."),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("Kuzatilmoqda"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Siz uchun"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Odamlar heshteglardan foydalana boshlaganda ular shu yerda chiqadi."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Hozir trendda"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Videolar"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Varaqlaringiz"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          "U ikkalangiz uchun ham yo‘qoladi."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "U suhbat zanjiridan olib tashlanadi."),
+      "join": MessageLookupByLibrary.simpleMessage("Qo‘shilish"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Tahrirlashni davom ettirish"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron ekranlari sizning tilingizda. Agar biror so‘z noto‘g‘ri tuyulsa, Fikr-mulohaza yuborish orqali bizga ayting."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Tillar"),
+      "leave": MessageLookupByLibrary.simpleMessage("Chiqish"),
+      "leaveCommunity": (Object a0) => "${a0} hamjamiyatidan chiqilsinmi?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Qayta kiritish"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 ta sahifa ochiq"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Klip qo‘shish"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF qo‘shish"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Heshteg qo‘shish"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Rasm qo‘shish"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("So‘rovnoma qo‘shish"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Video qo‘shish"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Qiziqish qo‘shish"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} varaq sifatida qo‘shish",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("Ilova tili"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Ilova versiyasi"),
+      "literalblockAuthor": (Object a0) => "${a0} bloklash",
+      "literalblockAuthor2": (Object a0) => "${a0} bloklansinmi?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Bu hisob bloklansinmi?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Javobni bekor qilish"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Qayta tekshirish"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Galereyadan tanlash"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Keshni tozalash"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Barcha sahifalarni yopish"),
+      "literalcloseTabLabel": (Object a0) => "${a0} yopish",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Brauzerni yopish"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} yopilsinmi?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Yordam xizmatiga murojaat"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Kontent tillari"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Havolani nusxalash"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Post havolasini nusxalash"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Post matnini nusxalash"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Matnni nusxalash"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Hamjamiyatlarni yuklab bo‘lmadi"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF’larni yuklab bo‘lmadi"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Bildirishnomalarni yuklab bo‘lmadi"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("A’zolarni yuklab bo‘lmadi"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("Bu postlarni yuklab bo‘lmadi"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bu suhbatni yuklab bo‘lmadi"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("Bu ro‘yxatni yuklab bo‘lmadi"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("Bu postni yuklab bo‘lmadi"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("Bu javobni yuklab bo‘lmadi"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Ommabop teglarni yuklab bo‘lmadi"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Hamjamiyatlaringizni yuklab bo‘lmadi"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Xabarlaringizni yuklab bo‘lmadi"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Bu hamjamiyatni ochib bo‘lmadi"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Javobni joylab bo‘lmadi."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Qidiruv ishlamadi"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Chiqib bo‘lmadi: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} ta sahifa ochiq",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Muqova rasmi"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Trafikni tejash"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Postni o‘chirish"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Odamlarni topish"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Javob bermang"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Qoralama saqlandi"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Hozir fikr-mulohaza yuborib bo‘lmaydi"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Matn o‘lchami"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF sozlanmagan"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Boshqa ilovaga uzatish"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Parolni yashirish"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Bu postni yashirish"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Uni yashiradi va bizdan shunga o‘xshashlarni kamroq ko‘rsatishni so‘raydi"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Qanday muomala qilish kerak"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Yozishni davom ettirish"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron javob bermadi"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} sanasi",
+      "literalleaveCommunityName": (Object a0) =>
+          "${a0} hamjamiyatidan chiqilsinmi?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, yuz linzasi",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Yoqtirilgan postlar"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Havola nusxalandi"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Moderator qilish"),
+      "literalmuteAuthor": (Object a0) => "${a0} ovozsiz qilish",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Bu zanjirni ovozsiz qilish"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "So‘z yoki teglarni ovozsiz qilish"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Ovozsiz va bloklangan hisoblar"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Ovozsiz qilindi. Bildirishnomalar kelmaydi."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Bu qurilmadagi hech bir ilova ${a0} havolalarini ochmaydi.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Bu qurilmadagi hech bir brauzer havolani qabul qilmadi."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Hali DID yo‘q"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("Qoralamalar yo‘q"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Hali qiziqishlar yo‘q"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Hali layklar yo‘q"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Hali xabarlar yo‘q"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Yangi obunachilar yo‘q"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Hali postlar yo‘q"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Hali javoblar yo‘q"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Hali qayta joylashlar yo‘q"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Mos keladigan ommabop teg yo‘q"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hech kim topilmadi"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Hech kim olib tashlanmagan"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Bu yerda hali hech kim yo‘q"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Qiziq emas"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hech narsa topilmadi"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Hali hech narsa trendda emas"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Jurnalda hali hech narsa yo‘q"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Mos keladigan natija yo‘q"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ovozsizlar yo‘q"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Hali ko‘radigan narsa yo‘q"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("O‘qilmaganlar yo‘q"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
+          "Buni faqat egasi o‘zgartira oladi"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Javobni ochish"),
       "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Kyron’dan kelgan emailni oching"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Parol va kirish"),
+      "literalpostInCommunityName": (Object a0) =>
+          "${a0} hamjamiyatiga joylash",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "${a0} hamjamiyatiga joylash",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "Ustiga o‘z so‘zlaringizni yozib joylang"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Asosiy til"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push bildirishnomalar"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Tekshirilmoqda…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Ovozli post yozib olish"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Qayta yozib olish"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Moderatorlikdan olish"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyatdan olib tashlash"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Saqlanganlardan olib tashlash"),
+      "literalremoveLabel": (Object a0) => "${a0} olib tashlash",
+      "literalremoveLanguageEnglishname": (Object a0) =>
+          "${a0} tilini olib tashlash",
+      "literalremoveMemberDisplayname": (Object a0) =>
+          "${a0} olib tashlansinmi?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("So‘rovnomani olib tashlash"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Bu javobni olib tashlash"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Bu suhbatni o‘chirish"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Bu so‘rovnomani olib tashlash"),
+      "literalreportAuthor": (Object a0) => "${a0} ustidan shikoyat qilish",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Post ustidan shikoyat qilish"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Kodni qayta yuborish"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Saqlangan postlar"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Biror narsa ayting"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0} hamjamiyatiga biror narsa ayting",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Qidiruv amalga oshmadi"),
+      "literalsendAgain":
+          MessageLookupByLibrary.simpleMessage("Qayta yuborish"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "${a0} s dan keyin qayta yuborish",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Fikr bildirish"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Havolani yuborish"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "Yuborildi. Bu №${a0} hisobot.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Parol o‘rnating va davom eting"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
+          "Jurnalni yordam xizmatiga ulashish"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Bu hamjamiyatni ulashish"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Bu sahifani ulashish"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Bu profilni ulashish"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Ulashish…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Iqtibos bilan ulashish"),
       "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Shunga o‘xshashlarni ko‘proq ko‘rsatish"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Parolni ko‘rsatish"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Natijalarni ko‘rsatish"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyat yaratish"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Yozishni boshlash"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Yuklashni to‘xtatish"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Bu post va unga javoblarni boshqa ko‘rmaslik"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Hikoyalar tasmasi, ${a0} ta element",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Kamerani almashtirish"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Kimnidir belgilash"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Suratga olish"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Almashtirish uchun banner yoki rasmni bosing"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Undagi havolani bosing"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Rasm va muqova qo‘shish uchun bosing"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Bo‘lmadi. Qayta urinib ko‘ring."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Bu GIF’ni yuklab bo‘lmadi."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Bu havolani bu yerda ochib bo‘lmaydi."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Kamera yopiq"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Bu hamjamiyat"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Bu javob endi mavjud emas"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Postni tarjima qilish"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Ovozni o‘chirish"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ovozni yoqish"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Bizdagilardan birini tanlash"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Tasdiqlash kodi qayta yuborildi."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Tasdiqlab bo‘lmadi: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Emailni tasdiqlash"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Tomoshabinlar, layklar, saqlashlar va izohlar"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron nimalarni saqlaydi"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Bu ilova nima qilayotgan edi"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Nima qildingiz, nimani kutdingiz, nima bo‘ldi "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Joylaganlaringiz sizniki"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron hozir mavjudmi"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kim javob bera oladi"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Kimni belgilamoqchisiz?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Siz allaqachon barcha ommabop teglarni kuzatyapsiz"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Hammasini ko‘rib chiqdingiz"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Siz hech qaysi hamjamiyatda emassiz"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Hisobdan chiqdingiz."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "Siz ${a0} hamjamiyatidan chiqdingiz",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "Siz hali hech narsa joylamadingiz"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Yana yuklash"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Jurnal tozalandi"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Jurnal nusxalandi"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Kirish"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Chiqilsinmi?"),
+      "login": MessageLookupByLibrary.simpleMessage("Kirish"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "Kirib bo‘lmadi. Ma’lumotlaringizni tekshiring."),
+      "manage": MessageLookupByLibrary.simpleMessage("Boshqarish"),
+      "menu": MessageLookupByLibrary.simpleMessage("Menyu"),
+      "message": MessageLookupByLibrary.simpleMessage("Xabar"),
+      "messages": MessageLookupByLibrary.simpleMessage("Xabarlar"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Barcha suhbatlarni o‘qib chiqdingiz."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Birovning profilini oching va suhbat boshlash uchun Xabar tugmasini bosing."),
+      "mute": MessageLookupByLibrary.simpleMessage("Ovozsiz qilish"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          MessageLookupByLibrary.simpleMessage("Ovozsiz va bloklanganlar"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("Ovozsiz so‘zlar va teglar"),
+      "name": MessageLookupByLibrary.simpleMessage("Ism"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> ekrani"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Yangi email manzil"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Yangi parol"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Yangi post"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Hozir emas"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Yuborilmadi. Qayta urinish uchun bosing"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron’da \"${a0}\" bo‘yicha hech narsa topilmadi",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage(
+          "Nusxalash uchun hech narsa yo‘q"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Layklar, javoblar va yangi obunachilar shu yerga keladi."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Sizga obuna bo‘lganlar shu yerda ko‘rinadi."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Kimdir postingizni yoqtirsa, bu yerda ko‘rinadi."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Postlaringizga javoblar shu yerga keladi."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Kimdir sizni qayta joylasa, bu yerda ko‘rinadi."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Bildirishnomalar"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Brauzerda ochish"),
+      "or": MessageLookupByLibrary.simpleMessage("yoki"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Sahifa topilmadi"),
+      "password": MessageLookupByLibrary.simpleMessage("Parol"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Parol juda qisqa"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Qiziqishlaringizni tanlang"),
+      "post": MessageLookupByLibrary.simpleMessage("Joylash"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Post statistikasi"),
+      "postInCommunity": (Object a0) => "${a0} hamjamiyatiga joylash",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("Joylang, ayting, ko‘rsating."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
+          MessageLookupByLibrary.simpleMessage("Post matni nusxalandi"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Maxfiylik siyosati"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Profil yangilandi"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Mamlakat"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Ko‘rsatiladigan ism"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Joylashuv"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Almashtirish uchun bosing"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Veb-sayt"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push bildirishnomalar"),
+      "quote": MessageLookupByLibrary.simpleMessage("Iqtibos keltirish"),
+      "quotePost":
+          MessageLookupByLibrary.simpleMessage("Postdan iqtibos keltirish"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Inson bilan bog‘lanish"),
+      "remove": MessageLookupByLibrary.simpleMessage("Olib tashlash"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Bu suhbat o‘chirilsinmi?"),
+      "removeMember": (Object a0) => "${a0} olib tashlansinmi?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Bu xabar o‘chirilsinmi?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Javoblar, obunalar va eslatmalar"),
+      "repliesPolicy": (Object a0) => "Javoblar: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Javob berish"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Har kim qo‘shilishi mumkin"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Har kim bu postni ko‘rishi, qayta joylashi va iqtibos keltirishi mumkin."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron’dagi har kim bu postga javob bera oladi."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Sizga obuna bo‘lganlar"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Bu postga faqat obunachilaringiz javob bera oladi."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Siz eslatgan odamlar"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Faqat shu postda @eslatgan odamlaringiz javob bera oladi."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Hech kim javob bera olmaydi"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Javoblar o‘chirilgan. Siz baribir javob bera olasiz."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Kim javob bera oladi?"),
       "report": MessageLookupByLibrary.simpleMessage("Shikoyat qilish"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Hisobot nusxalandi. Uni yordam xizmatiga yoziladigan emailga joylang."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Shikoyat yuborildi"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("Qayta joylash"),
+      "reset": MessageLookupByLibrary.simpleMessage("Tiklash"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("Parolingizni tiklang"),
+      "retry": MessageLookupByLibrary.simpleMessage("Qayta urinish"),
+      "save": MessageLookupByLibrary.simpleMessage("Saqlash"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Qoralamani saqlash"),
+      "saySomething": (Object a0) => "${a0} hamjamiyatiga biror narsa ayting",
+      "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Ism yoki foydalanuvchi nomi bo‘yicha qidirish"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Hamjamiyatlarni qidirish"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF qidirish"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tillarni qidirish"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Ommabop teglarni qidirish"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Xavfsizlik ogohlantirishlari va hisob o‘zgarishlari"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Ilova interfeysi tilini tanlang."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Lentalaringizda qaysi tillar chiqishini tanlang. Hech birini tanlamasangiz, barcha tillar ko‘rsatiladi."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Lentadagi tarjimalar uchun asosiy tilingizni tanlang."),
+      "send": MessageLookupByLibrary.simpleMessage("Yuborish"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Tasdiqlashni yuborish"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Xato haqida hisobot yuborish"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Fikr-mulohaza yuborish"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Shikoyatni yuborish"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Yordam xizmatiga yuborish"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Xizmat holati"),
+      "settings": MessageLookupByLibrary.simpleMessage("Sozlamalar"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Ilova jurnalini yordam xizmatiga ulashish"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Kyron’ga kirish"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Kirgan hisob"),
+      "signupFailed": (Object a0) => "Ro‘yxatdan o‘tib bo‘lmadi: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Qolish"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron endigina boshlanmoqda va buni haqiqatan tuzata oladigan odamga tez yetishning eng tez yo‘li — murojaat ochish. Nima qilayotganingiz va nima bo‘lganini ayting."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Ilovada hali yordam xizmati qutisi yo‘q, shuning uchun bu ekran sizni hech qayerga bormaydigan shakl o‘rniga haqiqatan kuzatiladigan joyga yo‘naltiradi."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Ilova jurnali"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Nima yetishmayotgani yoki buzilganini ayting"),
+      "terms": MessageLookupByLibrary.simpleMessage("Xizmat shartlari"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Matn, ovoz va video, ularni yaratuvchi odamlar va ular suhbatlashadigan xonalar."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Muharrirda Joylash tugmasi yo‘q"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Qorong‘i"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Doim qorong‘i"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Xira"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "Yumshoqroq qorong‘i, qora o‘rniga ko‘kish kulrang"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Yorug‘"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("Doim yorug‘"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Tizim"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Telefonning yorug‘ yoki qorong‘i sozlamasiga amal qilish"),
+      "translate": MessageLookupByLibrary.simpleMessage("Tarjima qilish"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Tarjima hali yoqilmagan. Lentangizda hali hech narsa tarjima qilinmaydi; bu o‘shangacha eslab qolinadi."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Bu Kyron’ning o‘z so‘zlarini, Flutter o‘zi chizadigan interfeys qismlarini, sana va raqamlarni hamda o‘ngdan chapga yoziladigan tillar uchun ilova joylashuvi yo‘nalishini o‘zgartiradi."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Qayta urinish"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Maxfiylik siyosati"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Xizmat shartlari"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Hisob"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Keyin"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("Ilova va qurilma"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Odamlarni ogohlantirish uchun firibgarlikdan iqtibos keltirgandim."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1162,15 +1004,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Apellyatsiya yuborildi. Qaror chiqqanda bildirishnoma olasiz."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "\$number raqamli ish bo‘yicha apellyatsiya"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Ko‘rinish"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Yorug‘, qorong‘i yoki telefonga ko‘ra"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Oldin"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron’da bir-biringizni ko‘rmaysiz va o‘rtangizdagi obunalar olib tashlanadi. Unga xabar berilmaydi."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("O‘z ichiga oladi"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Nima uchun (ixtiyoriy)"),
       "ui_cchat_announcements":
@@ -1278,29 +1118,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Ovozli xabar yozib olish"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Siz"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Hamjamiyatlar"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Bu nima uchun? (ixtiyoriy)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Postlar:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Kontent va displey"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Lentangizni yuklab bo‘lmadi"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Yoqtirgan postlaringizni yuklab bo‘lmadi"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("Profilingizni yuklab bo‘lmadi"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Saqlangan postlaringizni yuklab bo‘lmadi"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Markazlashmagan ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Muammolarni bartaraf etish"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Guruhlar"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("Guruhlar yo‘q"),
@@ -1311,16 +1146,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Qadalgan"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Yoqqanlar"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Saqlanganlar"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Bu yerda hali hech narsa yo‘q"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Bir nechta hisobni kuzating, ularning postlari shu yerda chiqadi."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Kuzatayotganlaringizdan hech narsa yo‘q"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Odamlar yozgan sari postlar shu yerda chiqadi."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Susaymoqda"),
       "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Qiziq emas"),
@@ -1339,16 +1172,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Ular Bosh sahifa va Kashf etishni, asosan har bir post nima haqida bo‘lganiga qarab shakllantiradi. Har biri har oy ikki baravar susayadi va olti oydan keyin hisobga olinmaydi. Hozir to‘xtatish uchun birini olib tashlang."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Klipli postlar shu yerda chiqadi."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Hali videolar yo‘q"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Fikr-mulohaza"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyron’da odamlarni toping"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Hisobdan"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Odam qo‘shish"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Qo‘shish"),
       "ui_group_add_name":
@@ -1425,7 +1255,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Siz endi bu guruhda emassiz."),
       "ui_group_rename":
           MessageLookupByLibrary.simpleMessage("Nomini o‘zgartirish"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("A’zo"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Tomoshabin"),
@@ -1440,32 +1271,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("siz"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Siz tomoshabinsiz"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Yordam"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Qayd etildi. Bu sizga nimani ko‘rsatishni tanlashga yordam beradi."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Qo‘shilish"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Qo‘shildi"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Til"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Tilni tanlang"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Huquqiy ma’lumot"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Yoqdi"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Yoqtirilgan postlar"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Yoqtirgan postlaringiz shu yerda, eng yangilari birinchi ko‘rinadi."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Havola nusxalandi"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Endi uning postlarini ko‘rmaysiz. Unga xabar berilmaydi."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Hali layklar yo‘q"),
+      "ui_no_posts_match_filters":
+          MessageLookupByLibrary.simpleMessage("Bu filtrlarga mos post yo‘q."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Hali saqlanganlar yo‘q"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Hisobingiz yangilandi"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1525,13 +1354,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Hisobingiz ogohlantirish oldi"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Kecha"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tayyor"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("O‘tkazib yuborish"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Bu allaqachon ochilgan."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Muddati o‘tgan"),
@@ -1550,23 +1375,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Bir marta ko‘rishga yuborish"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("Ko‘rish uchun bosing"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Pauza"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Ijro etish"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "U profilingizdan va hammaning lentasidan olib tashlanadi. Unga javoblar ham u bilan birga ketadi."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Post o‘chirildi"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post yashirildi"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Post matni nusxalandi"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Joylangan oraliq"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Yashirildi. Shunga o‘xshashlarni kamroq ko‘rsatamiz."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Sozlamalar"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Maxfiylik"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Qo‘shadigan narsangiz bormi? (ixtiyoriy)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1667,69 +1490,58 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Zo‘ravonlik yoki tahdidlar"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Saqlangan postlar"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Postni shu yerda saqlash uchun uning arxiv belgisini bosing. Saqlaganlaringizni faqat siz ko‘rasiz."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "Foydalanuvchi nomi yoki ko‘rsatiladigan ism bo‘yicha qidiring."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Tozalash"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "Joylangan hamma narsadan qidiring"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filtrlar"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Odamlarni qidirish"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Postlarni qidirish"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Sozlamalar"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Ilova va qurilma"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Kontent va displey"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Trafikni tejash"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Fikringizni bildiring"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Yordam maqolalarini ko‘rish"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Tilingizni tanlang"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Kimlarni ovozsiz qilgansiz yoki bloklagansiz"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Bildirishnoma sozlamalari"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Profilingiz va aloqa ma’lumotlaringiz"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Hisobingizga qaytish uchun qayta kirishingiz kerak bo‘ladi."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Xavfsizlik sozlamalari"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Parolni tasdiqlang"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Bir qatorda"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Yangi email manzil"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Yangi parol"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Nima bo‘ldi"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Jamoamizdan yordam olish"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Ulashish"),
       "ui_share_quote":
           MessageLookupByLibrary.simpleMessage("Iqtibos keltirish"),
       "ui_share_send_message":
@@ -1737,7 +1549,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron’dagi odamlarga"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Bu postni ulashish"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Nima haqida edi"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1833,54 +1645,48 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Postingiz"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Javobingiz"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("Xizmat shartlari"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("bu post"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Zanjir ovozsiz qilindi"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Qayta urinish"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ovozni o‘chirish"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Ovozni yoqish"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Kamida ikki belgi."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "So‘zlar yoki filtr: hisob, sana oralig‘i yoki post tarkibi."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Qayta joylashni bekor qilish"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Parolni yangilash"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Boshqa manzildan foydalanish"),
+      "username": MessageLookupByLibrary.simpleMessage("Foydalanuvchi nomi"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Foydalanuvchi nomi kichik harflarda bo‘lishi kerak (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Biriktirish"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Biriktirishga tayyor"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Ovozli post yozib olish"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Saqlanmoqda…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("To‘xtatish"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Nima bo‘ldi"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Nima bo‘ldi va nimani ko‘rib chiqishimiz kerak?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Bu rasmda nima bor?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Bu nima uchun? (ixtiyoriy)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Nima qildingiz, nimani kutdingiz, nima bo‘ldi"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Bu sodir bo‘lganda nima qilayotgan edingiz."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Siz javob berdingiz"),
       "dmReplied": (Object a0) => "$a0 javob berdi",
@@ -2009,7 +1815,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Yuborildi, lekin hammaga emas."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Yuborib bo‘lmadi. Qayta urinib ko‘ring."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Obunachi"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Filtr"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Hammasi"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("O‘qilmagan"),

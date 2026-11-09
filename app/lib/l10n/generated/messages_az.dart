@@ -43,7 +43,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("və"),
       "answerNumber": (Object a0) => "Cavab ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR linza"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Sistem jurnalını əlavə et",
       ),
@@ -119,9 +119,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Sizin tablarınız"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Yenidən cəhd et"),
       "audit_password_requirements_symbol_322aed1e":
@@ -272,7 +271,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Profilinizi yaradın",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR linza"),
       "create_go_live":
           MessageLookupByLibrary.simpleMessage("Canlı yayıma başla"),
       "create_text_post":
@@ -496,8 +495,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("Redaktəyə davam et"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron-un sözləri hələ tərcümə olunur, buna görə əksər ekranlar hələlik ingilis dilində qalır.",
-      ),
+          "Kyron ekranları sizin dilinizdədir. Əgər hansısa söz yanlış oxunursa, Rəy göndər vasitəsilə bizə bildirin."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Dillər"),
       "leave": MessageLookupByLibrary.simpleMessage("Tərk et"),
@@ -1199,8 +1197,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Tərcümə hələ qurulmayıb. Feedinizdə bu gün heç nə tərcümə edilmir; bu, hazır olduqda yadda saxlanacaq.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron-un öz sözləri hələ tərcümə olunur, buna görə əksər ekranlar indilik ingilis dilində qalır. Bu gün nə dəyişir: Flutter-in özü çəkdiyi interfeys hissələri, tarixlər və rəqəmlər, və tətbiqin sağdan-sola dillər üçün düzülüş istiqaməti.",
-      ),
+          "Bu, Kyron-un öz sözlərini, Flutter-in özünün çəkdiyi interfeys hissələrini, tarixləri və rəqəmləri, həmçinin sağdan sola yazılan dillər üçün tətbiqin düzülmə istiqamətini dəyişir."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Yenidən cəhd et"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Məxfilik siyasəti",
@@ -1356,9 +1353,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
         "Saxlanmış paylaşımlarınız yüklənmədi",
       ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Mərkəzsizləşdirilmiş ID"),
       "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diaqnostika"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Qruplar"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Qrup yoxdur"),
@@ -1479,7 +1475,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed":
           MessageLookupByLibrary.simpleMessage("Artıq bu qrupda deyilsiniz."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Adını dəyiş"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Üzv"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("İzləyici"),
@@ -1919,7 +1916,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "usernameRule": MessageLookupByLibrary.simpleMessage(
         "İstifadəçi adı kiçik hərflərlə olmalıdır (a-z, 0-9, _)",
       ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
+      "video": MessageLookupByLibrary.simpleMessage("Videonuxa"),
       "voice_attach": MessageLookupByLibrary.simpleMessage("Qoş"),
       "voice_ready_attach":
           MessageLookupByLibrary.simpleMessage("Qoşmağa hazır"),
@@ -2021,7 +2018,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Müəllif bəyəndi"),
       "ui_add_photo_or_clip":
           MessageLookupByLibrary.simpleMessage("Şəkil və ya klip əlavə et"),
-      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Media"),
+      "ui_dm_info_media": MessageLookupByLibrary.simpleMessage("Mediya"),
       "ui_dm_info_voice_notes":
           MessageLookupByLibrary.simpleMessage("Səsli qeydlər"),
       "ui_dm_info_chat": MessageLookupByLibrary.simpleMessage("Söhbət"),
@@ -2093,7 +2090,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Hər söhbət sizin sözünüzlə bitir."),
       "ui_dm_preview_photo": MessageLookupByLibrary.simpleMessage("Foto"),
       "ui_dm_preview_photos": MessageLookupByLibrary.simpleMessage("Fotolar"),
-      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ui_dm_preview_video": MessageLookupByLibrary.simpleMessage("Videonuxa"),
       "ui_dm_preview_gif": MessageLookupByLibrary.simpleMessage("GIF"),
       "ui_dm_preview_none":
           MessageLookupByLibrary.simpleMessage("Hələ mesaj yoxdur"),
@@ -2244,7 +2241,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ar_flash": MessageLookupByLibrary.simpleMessage("Fləş"),
       "ar_record_video": MessageLookupByLibrary.simpleMessage("Video yaz"),
       "ar_mode_photo": MessageLookupByLibrary.simpleMessage("Foto"),
-      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Video"),
+      "ar_mode_video": MessageLookupByLibrary.simpleMessage("Videonuxa"),
       "googleSignInCancelled":
           MessageLookupByLibrary.simpleMessage("Google ilə giriş ləğv edildi."),
       "analytics_gifts": MessageLookupByLibrary.simpleMessage("HƏDİYYƏLƏR"),

@@ -7,249 +7,205 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("పదం, పదబంధం లేదా #ట్యాగ్"),
+      "about": MessageLookupByLibrary.simpleMessage("గురించి"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("సమాధానం జోడించు"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("భాషలను జోడించు…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("అంగీకరించి కొనసాగించు"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("ఇప్పటికే Kyron ఖాతా ఉందా?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("వ్యాఖ్యలు"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "వేర్వేరు వ్యక్తులు, తెరిచిన సార్లు కాదు"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("భాగస్వామ్యం"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("లైక్‌లు"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా వీక్షకులు లేరు"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "ఈ పోస్ట్‌ను ఇంకా ఎవరూ తెరవలేదు."),
+      "analytics_posted":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ చేయబడింది"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("సేవ్‌లు"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("వీక్షకులు"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("రోజుకు వీక్షకులు"),
+      "and": MessageLookupByLibrary.simpleMessage("మరియు"),
+      "answerNumber": (Object a0) => "సమాధానం ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR లెన్స్"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("యాప్ లాగ్‌ను జోడించు"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("రాకపోకల సమయం"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("టోకెన్ ధృవీకరణ"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించు"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించు"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "ఇప్పుడు ప్రసారం ప్రారంభిస్తే ఎవరూ రాలేని గదిలో మీరు ఉంటారు"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీని ప్రారంభించు"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("ఇది దేనికి? (ఐచ్ఛికం)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ రాలేరు."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("ఈ జాబితా నుండి మళ్లీ రాలేరు."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("దాన్ని మూసివేస్తే"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("ముందుగా చేరండి"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("త్వరలో వస్తుంది"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("మీ పేరుతో పోస్ట్ చేస్తున్నారు"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("ఈ కమ్యూనిటీలో పోస్ట్ చేయండి"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఇప్పుడే"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించు"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("అంశం 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("మీ కోసం"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("ఏదో ఉంది."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఇప్పుడు అక్కడికి వెళ్తోంది."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", కాదు"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("నేను కదులుతున్నానా"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆఫ్ చేయి"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆన్ చేయి"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("మీ కోసం"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("మీ ట్యాబ్‌లు"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించు"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("గుర్తు (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("రోజుకు వీక్షకులు"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("లోడ్ చేయలేకపోయింది"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("ఏదైనా జోడించాలా? (ఐచ్ఛికం)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ఒక ఖాతా నుండి"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("లాగ్ అవుట్"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతా"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను నిర్ధారించండి"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఇప్పుడు కాదు"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("లోడ్ అవుతోంది…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ అవుతోంది…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 గం. క్రితం"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("స్టోరీ లింక్‌ను కాపీ చేయి"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("మీ స్టోరీ"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "మీ ఖాతా, మీ పోస్ట్‌లు, మీరు ట్యాప్ చేసేవి, తద్వారా"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("అంశాన్ని జోడించు"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("సొంతం."),
+      "authorBlocked": (Object a0) => "${a0} బ్లాక్ చేయబడ్డారు",
+      "authorPostsHidden": (Object a0) => "మీరు ${a0} పోస్ట్‌లను చూడరు",
+      "block": MessageLookupByLibrary.simpleMessage("బ్లాక్ చేయి"),
+      "blockAuthor": (Object a0) => "${a0}ను బ్లాక్ చేయాలా?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("బిల్డ్ వివరాలు కాపీ అయ్యాయి"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "కొనసాగించడం ద్వారా మీరు అంగీకరిస్తున్నారు"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "కొనసాగించడం ద్వారా, మీరు మా సేవా నిబంధనలు మరియు గోప్యతా విధానానికి అంగీకరిస్తున్నారు"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "సైన్ అప్ చేయడం ద్వారా మీరు అంగీకరిస్తున్నారు"),
+      "cancel": MessageLookupByLibrary.simpleMessage("రద్దు చేయి"),
       "change": MessageLookupByLibrary.simpleMessage("మార్చండి"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("ఈమెయిల్ మార్చు"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "మీ ఈమెయిల్ నుండి ఖాతాను ధృవీకరించండి."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Kyron అందుబాటులో ఉందో లేదో చూడు"),
+      "clear": MessageLookupByLibrary.simpleMessage("క్లియర్ చేయి"),
+      "close": MessageLookupByLibrary.simpleMessage("మూసివేయి"),
+      "closeCommunity": (Object a0) => "${a0}ను మూసివేయాలా?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("మూసివేయి"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ఈ కమ్యూనిటీని మూసివేయి"),
+      "communities": MessageLookupByLibrary.simpleMessage("కమ్యూనిటీలు"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "అన్వేషించులో ఒకటి కనుగొనండి, లేదా మీ సొంతది ప్రారంభించండి."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "ఒక వేడి అభిప్రాయం విసరండి (లేదా గోరువెచ్చనిది)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("మీ మనసులో ఏముంది?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "మీరు మాత్రమే చెప్పగలిగేది చెప్పండి…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("ఇదే మీ సంకేతం: పోస్ట్ చేయండి"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "టైప్ చేయండి, మాట్లాడండి లేదా బిగ్గరగా ఆలోచించండి"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను నిర్ధారించండి"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("సపోర్ట్‌ను సంప్రదించండి"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "పోస్ట్‌లకు ఇంకా భాష లేదు, కాబట్టి ఇది ఇంకా మీ ఫీడ్‌ను ఫిల్టర్ చేయదు. అప్పటి వరకు మీ ఎంపికలు ఉంచబడతాయి."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("కొనసాగించు"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("ఈమెయిల్‌తో కొనసాగించు"),
+      "copy": MessageLookupByLibrary.simpleMessage("కాపీ చేయి"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("బదులుగా నివేదికను కాపీ చేయి"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google సైన్-ఇన్ తెరవలేకపోయింది. ${a0}",
+      "couldNotSignOut": (Object a0) => "లాగ్ అవుట్ విఫలమైంది: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("ఫోటో తీయలేకపోయింది."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "మీ ప్రొఫైల్‌లో మరియు మీ పోస్ట్‌ల కింద చూపబడుతుంది."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,89 +216,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "మీ ప్రొఫైల్‌లో మరియు మీ పోస్ట్‌ల కింద చూపబడుతుంది. మీరు ఎవరి పోస్ట్‌లైనా చూసినప్పుడు, మీ దేశం వారి ఇన్‌సైట్స్‌లో లెక్కించబడుతుంది, ఐదుగురు లేదా అంతకంటే ఎక్కువ మంది గుంపులలో మాత్రమే, ఎప్పుడూ పేరుతో కాదు."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("మీ ఫోన్ సెట్టింగ్‌ల నుండి"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("సృష్టించు"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("ఖాతా సృష్టించు"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతాను సృష్టించండి"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("మీ ప్రొఫైల్‌ను సృష్టించండి"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR లెన్స్"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("లైవ్‌కి వెళ్లు"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("టెక్స్ట్ పోస్ట్"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ పోస్ట్"),
+      "delete": MessageLookupByLibrary.simpleMessage("తొలగించు"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("ఈ వ్యాఖ్యను తొలగించాలా?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
-      "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్‌ను తొలగించాలా?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("ఈ జోడింపును వివరించండి"),
+      "description": MessageLookupByLibrary.simpleMessage("వివరణ"),
+      "didCopied": MessageLookupByLibrary.simpleMessage(
+          "DID క్లిప్‌బోర్డ్‌కు కాపీ అయింది"),
       "done": MessageLookupByLibrary.simpleMessage("పూర్తయింది"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "ఏదైనా రాసిన తర్వాత ఎడిటర్‌ను మూసివేయండి, మీకు డ్రాఫ్ట్ అందించబడుతుంది."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} రోజుల క్రితం"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("{hours} గంటల క్రితం"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("ఇప్పుడే"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} నిమిషాల క్రితం"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("ఇంకా ఏమీ రాయలేదు"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("పోల్, ఇంకా ప్రశ్న లేదు"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("కోట్, ఇంకా టెక్స్ట్ లేదు"),
+      "drafts": MessageLookupByLibrary.simpleMessage("డ్రాఫ్ట్‌లు"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్‌ను సవరించు"),
+      "email": MessageLookupByLibrary.simpleMessage("ఈమెయిల్"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("ఈమెయిల్ నోటిఫికేషన్‌లు"),
+      "explore": MessageLookupByLibrary.simpleMessage("అన్వేషించు"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "ఈ పరికరంలో ముఖ ట్రాకింగ్ అందుబాటులో లేదు."),
+      "feedTagDetail": (Object a0) => "#${a0}తో ఇంకా ఏదీ పోస్ట్ చేయబడలేదు.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name}ను అనుసరించండి"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("ఫాలోవర్‌లు"),
+      "following": MessageLookupByLibrary.simpleMessage("ఫాలో అవుతున్నవి"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్ మర్చిపోయారా?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("సహాయం పొందడం"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Googleతో కొనసాగించు"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Googleతో సైన్ ఇన్ చేయండి"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google పూర్తయిన సైన్-ఇన్‌ను Android మరియు iOS మాత్రమే స్పందించే లింక్ ద్వారా Kyronకు తిరిగి ఇస్తుంది, కాబట్టి ${a0}లో బ్రౌజర్‌కు దాన్ని తిరిగి ఇవ్వడానికి చోటు లేదు.\\n\\nGoogle ద్వారా మీకు ఇప్పటికే Kyron ఖాతా ఉంటే, అదే చిరునామాతో ఈమెయిల్‌తో కొనసాగించు ఎంచుకుని పాస్‌వర్డ్ మర్చిపోయారా ట్యాప్ చేయండి: పాస్‌వర్డ్ సెట్ చేయడానికి లింక్ వస్తుంది.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google సైన్-ఇన్‌కు ఫోన్ యాప్ అవసరం"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Googleతో సైన్ అప్ చేయండి"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "గైడ్‌లు మరియు సాధారణ ప్రశ్నలకు సమాధానాలు"),
+      "handle": MessageLookupByLibrary.simpleMessage("హ్యాండిల్"),
+      "helpAndSupport": MessageLookupByLibrary.simpleMessage("సహాయం & మద్దతు"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("సహాయ కేంద్రం"),
+      "home": MessageLookupByLibrary.simpleMessage("హోమ్"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("ఒకే లైన్‌లో"),
       "ins_account": MessageLookupByLibrary.simpleMessage("మీ ఖాతా"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("కమ్యూనిటీని తెరవండి"),
@@ -459,690 +404,568 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("అగ్ర పోస్ట్‌లు"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "మునుపటి {days} రోజులతో పోలిస్తే"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("ఆసక్తిని జోడించు"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("క్రమం మార్చడానికి లాగండి"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "బార్‌లో గరిష్టంగా ఐదు ట్యాబ్‌లు పడతాయి. మరొకటి జోడించడానికి ఒకదాన్ని తీసివేయండి."),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("ఫాలో అవుతున్నవి"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("మీ కోసం"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "వ్యక్తులు హ్యాష్‌ట్యాగ్‌లు ఉపయోగించడం ప్రారంభించినప్పుడు అవి ఇక్కడ కనిపిస్తాయి."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఇప్పుడు ట్రెండింగ్"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("వీడియోలు"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("మీ ట్యాబ్‌లు"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("ఇది మీ ఇద్దరికీ కనిపించదు."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "ఇది థ్రెడ్ నుండి తీసివేయబడుతుంది."),
+      "join": MessageLookupByLibrary.simpleMessage("చేరు"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("సవరణ కొనసాగించు"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron స్క్రీన్‌లు మీ భాషలో ఉన్నాయి. ఏదైనా పదం తప్పుగా అనిపిస్తే, అభిప్రాయం పంపు ద్వారా మాకు చెప్పండి."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("భాషలు"),
+      "leave": MessageLookupByLibrary.simpleMessage("వదిలివేయి"),
+      "leaveCommunity": (Object a0) => "${a0}ను వదిలివేయాలా?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("తిరిగి అనుమతించు"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 పేజీ తెరిచి ఉంది"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("క్లిప్ జోడించు"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF జోడించు"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("హ్యాష్‌ట్యాగ్ జోడించు"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("ఫోటో జోడించు"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("పోల్ జోడించు"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("వీడియో జోడించు"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("ఆసక్తిని జోడించు"),
+      "literaladdLabelAsATab": (Object a0) => "${a0}ను ట్యాబ్‌గా జోడించు",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("యాప్ భాష"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("యాప్ వెర్షన్"),
+      "literalblockAuthor": (Object a0) => "${a0}ను బ్లాక్ చేయి",
+      "literalblockAuthor2": (Object a0) => "${a0}ను బ్లాక్ చేయాలా?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("ఈ ఖాతాను బ్లాక్ చేయాలా?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("సమాధానాన్ని విస్మరించు"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("మళ్లీ తనిఖీ చేయి"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("గ్యాలరీ నుండి ఎంచుకోండి"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("కాష్‌ను క్లియర్ చేయి"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("అన్ని పేజీలను మూసివేయి"),
+      "literalcloseTabLabel": (Object a0) => "${a0}ను మూసివేయి",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("బ్రౌజర్‌ను మూసివేయి"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0}ను మూసివేయాలా?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("మద్దతును సంప్రదించు"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("కంటెంట్ భాషలు"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("లింక్‌ను కాపీ చేయి"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ లింక్‌ను కాపీ చేయి"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ టెక్స్ట్‌ను కాపీ చేయి"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("టెక్స్ట్‌ను కాపీ చేయి"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "కమ్యూనిటీలను లోడ్ చేయలేకపోయింది"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIFలను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "నోటిఫికేషన్‌లను లోడ్ చేయలేకపోయింది"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("సభ్యులను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "ఈ పోస్ట్‌లను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఈ సంభాషణను లోడ్ చేయలేకపోయింది"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("ఈ జాబితాను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "ఈ పోస్ట్‌ను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "ఈ సమాధానాన్ని లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "జనాదరణ పొందిన ట్యాగ్‌లను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "మీ కమ్యూనిటీలను లోడ్ చేయలేకపోయింది"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "మీ సందేశాలను లోడ్ చేయలేకపోయింది"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ఈ కమ్యూనిటీని తెరవలేకపోయింది"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "సమాధానాన్ని పోస్ట్ చేయలేకపోయింది."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("శోధన పని చేయలేదు"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "లాగ్ అవుట్ విఫలమైంది: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} పేజీలు తెరిచి ఉన్నాయి",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("కవర్ ఫోటో"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("డేటా సేవర్"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను తొలగించు"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("వ్యక్తులను కనుగొను"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("సమాధానం ఇవ్వకండి"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("డ్రాఫ్ట్ సేవ్ అయింది"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఇప్పుడు అభిప్రాయం పంపలేరు"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("టెక్స్ట్ పరిమాణం"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIFలు సెటప్ చేయబడలేదు"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("వేరే యాప్‌కు ఇవ్వు"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను దాచు"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్‌ను దాచు"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "దాన్ని దాచి, ఇలాంటివి తక్కువగా చూపమని మమ్మల్ని అడుగుతుంది"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("ఎలా ప్రవర్తించాలి"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("రాయడం కొనసాగించు"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron స్పందించలేదు"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} తేదీ",
+      "literalleaveCommunityName": (Object a0) => "${a0}ను వదిలివేయాలా?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, ముఖ లెన్స్",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("లైక్ చేసిన పోస్ట్‌లు"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("లింక్ కాపీ అయింది"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("మోడరేటర్‌గా చేయి"),
+      "literalmuteAuthor": (Object a0) => "${a0}ను మ్యూట్ చేయి",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("ఈ థ్రెడ్‌ను మ్యూట్ చేయి"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "పదాలు లేదా ట్యాగ్‌లను మ్యూట్ చేయి"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("మ్యూట్ & బ్లాక్ చేసిన ఖాతాలు"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "మ్యూట్ చేయబడింది. మీకు నోటిఫికేషన్‌లు రావు."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "ఈ పరికరంలోని ఏ యాప్ కూడా ${a0} లింక్‌లను తెరవదు.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "ఈ పరికరంలోని ఏ బ్రౌజర్ కూడా లింక్‌ను స్వీకరించలేదు."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("ఇంకా DID లేదు"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("డ్రాఫ్ట్‌లు లేవు"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా ఆసక్తులు లేవు"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా లైక్‌లు లేవు"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా సందేశాలు లేవు"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("కొత్త ఫాలోవర్‌లు లేరు"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా పోస్ట్‌లు లేవు"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("ఇంకా సమాధానాలు లేవు"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("ఇంకా రీపోస్ట్‌లు లేవు"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "ఏ జనాదరణ పొందిన ట్యాగ్ సరిపోలలేదు"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఎవరూ కనుగొనబడలేదు"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("ఎవరినీ తీసివేయలేదు"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("ఇక్కడ ఇంకా ఎవరూ లేరు"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("ఆసక్తి లేదు"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఏమీ కనుగొనబడలేదు"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా ఏదీ ట్రెండింగ్‌లో లేదు"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("లాగ్‌లో ఇంకా ఏమీ లేదు"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("సరిపోలికలు లేవు"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("మ్యూట్ చేసినవి లేవు"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా చూడటానికి ఏమీ లేదు"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("చదవనివి ఏవీ లేవు"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
+          "దీన్ని యజమాని మాత్రమే మార్చగలరు"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("సమాధానాన్ని తెరువు"),
       "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Kyron నుండి వచ్చిన ఈమెయిల్ తెరవండి"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్ & లాగ్ ఇన్"),
+      "literalpostInCommunityName": (Object a0) => "${a0}లో పోస్ట్ చేయి",
+      "literalpostInWidgetCommunityName": (Object a0) => "${a0}లో పోస్ట్ చేయి",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "పైన మీ సొంత మాటలతో పోస్ట్ చేయండి"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("ప్రధాన భాష"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("పుష్ నోటిఫికేషన్‌లు"),
+      "literalreading":
+          MessageLookupByLibrary.simpleMessage("తనిఖీ చేస్తోంది…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ పోస్ట్ రికార్డ్ చేయి"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
+          MessageLookupByLibrary.simpleMessage("మళ్లీ రికార్డ్ చేయి"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("మోడరేటర్ నుండి తీసివేయి"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీ నుండి తీసివేయి"),
       "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          "సేవ్ చేసిన వాటి నుండి తీసివేయి"),
+      "literalremoveLabel": (Object a0) => "${a0}ను తీసివేయి",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0}ను తీసివేయి",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0}ను తీసివేయాలా?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("పోల్‌ను తీసివేయి"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("ఈ సమాధానాన్ని తీసివేయి"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("ఈ సంభాషణను తొలగించు"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("ఈ పోల్‌ను తీసివేయి"),
+      "literalreportAuthor": (Object a0) => "${a0}ను నివేదించు",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను నివేదించు"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("కోడ్‌ను మళ్లీ పంపు"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("సేవ్ చేసిన పోస్ట్‌లు"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("ఏదైనా చెప్పండి"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0}లో ఏదైనా చెప్పండి",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("శోధన విఫలమైంది"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("మళ్లీ పంపు"),
+      "literalsendAgainInCooldownS": (Object a0) => "${a0} సె.లో మళ్లీ పంపు",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("అభిప్రాయం ఇవ్వు"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("లింక్ పంపు"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "పంపబడింది. ఇది నివేదిక #${a0}.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "పాస్‌వర్డ్ సెట్ చేసి కొనసాగించండి"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("లాగ్‌ను మద్దతుతో షేర్ చేయి"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("ఈ కమ్యూనిటీని షేర్ చేయి"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("ఈ పేజీని షేర్ చేయి"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("ఈ ప్రొఫైల్‌ను షేర్ చేయి"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("షేర్ చేయి…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("కోట్‌తో షేర్ చేయి"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("ఇలాంటివి మరిన్ని చూపు"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను చూపు"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఫలితాలను చూపు"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీని ప్రారంభించు"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("రికార్డింగ్ ప్రారంభించు"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("లోడ్ చేయడం ఆపు"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "ఈ పోస్ట్ మరియు దాని సమాధానాలను చూడటం ఆపు"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "స్టోరీ పట్టీ, ${a0} అంశాలు",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("కెమెరాను మార్చు"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("ఎవరినైనా ట్యాగ్ చేయి"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("ఫోటో తీయి"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
+              "మార్చడానికి బ్యానర్ లేదా ఫోటోను ట్యాప్ చేయండి"),
       "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+          "అందులోని లింక్‌ను ట్యాప్ చేయండి"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "ఫోటో మరియు కవర్ జోడించడానికి ట్యాప్ చేయండి"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "అది పని చేయలేదు. మళ్లీ ప్రయత్నించండి."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఆ GIFను లోడ్ చేయలేకపోయింది."),
       "literalthatLinkIsNotOneThisCanOpen":
-          MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+          MessageLookupByLibrary.simpleMessage("ఈ లింక్‌ను ఇక్కడ తెరవలేము."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("కెమెరా మూసివేయబడింది"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("ఈ కమ్యూనిటీ"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("ఈ సమాధానం ఇప్పుడు లేదు"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను అనువదించు"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆఫ్ చేయి"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆన్ చేయి"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("మాది ఒకటి ఉపయోగించండి"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("ధృవీకరణ కోడ్ మళ్లీ పంపబడింది."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "ధృవీకరణ విఫలమైంది: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("ఈమెయిల్‌ను ధృవీకరించు"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "వీక్షకులు, లైక్‌లు, సేవ్‌లు మరియు వ్యాఖ్యలు"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron ఏమి ఉంచుకుంటుంది"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("ఈ యాప్ ఏమి చేస్తోంది"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "మీరు ఏమి చేశారు, ఏమి ఆశించారు, ఏమి జరిగింది "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("మీరు పోస్ట్ చేసేది మీదే"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron ఇప్పుడు అందుబాటులో ఉందా"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
+          MessageLookupByLibrary.simpleMessage("ఎవరు సమాధానం ఇవ్వగలరు"),
       "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          "మీరు ఎవరిని ట్యాగ్ చేయాలనుకుంటున్నారు?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "మీరు ఇప్పటికే అన్ని జనాదరణ పొందిన ట్యాగ్‌లను ఫాలో అవుతున్నారు"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("మీరు అన్నీ చూశారు"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("మీరు ఏ కమ్యూనిటీలోనూ లేరు"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("మీరు లాగ్ అవుట్ అయ్యారు."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "మీరు ${a0}ను వదిలివేశారు",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("మీరు ఇంకా ఏమీ పోస్ట్ చేయలేదు"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("మరిన్ని లోడ్ చేయి"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("లాగ్ క్లియర్ అయింది"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("లాగ్ కాపీ అయింది"),
+      "logIn": MessageLookupByLibrary.simpleMessage("లాగ్ ఇన్"),
+      "logOut": MessageLookupByLibrary.simpleMessage("లాగ్ అవుట్"),
+      "logOutQuestion":
+          MessageLookupByLibrary.simpleMessage("లాగ్ అవుట్ చేయాలా?"),
+      "login": MessageLookupByLibrary.simpleMessage("లాగ్ ఇన్"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+          "లాగ్ ఇన్ విఫలమైంది. మీ వివరాలను తనిఖీ చేయండి."),
+      "manage": MessageLookupByLibrary.simpleMessage("నిర్వహించు"),
+      "menu": MessageLookupByLibrary.simpleMessage("మెనూ"),
+      "message": MessageLookupByLibrary.simpleMessage("సందేశం"),
+      "messages": MessageLookupByLibrary.simpleMessage("సందేశాలు"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "మీరు అన్ని సంభాషణలను చదివేశారు."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "ఎవరిదైనా ప్రొఫైల్ తెరిచి సంభాషణ ప్రారంభించడానికి సందేశం ట్యాప్ చేయండి."),
+      "mute": MessageLookupByLibrary.simpleMessage("మ్యూట్ చేయి"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          MessageLookupByLibrary.simpleMessage("మ్యూట్ & బ్లాక్ చేసినవి"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "మ్యూట్ చేసిన పదాలు & ట్యాగ్‌లు"),
+      "name": MessageLookupByLibrary.simpleMessage("పేరు"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> స్క్రీన్"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("కొత్త ఈమెయిల్ చిరునామా"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("కొత్త పాస్‌వర్డ్"),
+      "newPost": MessageLookupByLibrary.simpleMessage("కొత్త పోస్ట్"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("ఇప్పుడు కాదు"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "పంపబడలేదు. మళ్లీ ప్రయత్నించడానికి ట్యాప్ చేయండి"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyronలో \"${a0}\"కు సరిపోయేది ఏదీ లేదు",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("కాపీ చేయడానికి ఏమీ లేదు"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "లైక్‌లు, సమాధానాలు మరియు కొత్త ఫాలోవర్‌లు ఇక్కడికి వస్తారు."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "మిమ్మల్ని ఫాలో అయ్యేవారు ఇక్కడ కనిపిస్తారు."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "ఎవరైనా మీ పోస్ట్‌ను లైక్ చేస్తే, అది ఇక్కడ కనిపిస్తుంది."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "మీ పోస్ట్‌లకు సమాధానాలు ఇక్కడికి వస్తాయి."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
+          "ఎవరైనా మిమ్మల్ని రీపోస్ట్ చేస్తే, అది ఇక్కడ కనిపిస్తుంది."),
+      "notifications": MessageLookupByLibrary.simpleMessage("నోటిఫికేషన్‌లు"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("బ్రౌజర్‌లో తెరువు"),
+      "or": MessageLookupByLibrary.simpleMessage("లేదా"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("పేజీ కనుగొనబడలేదు"),
+      "password": MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్ చాలా చిన్నది"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("మీ ఆసక్తులను ఎంచుకోండి"),
+      "post": MessageLookupByLibrary.simpleMessage("పోస్ట్ చేయి"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("పోస్ట్ గణాంకాలు"),
+      "postInCommunity": (Object a0) => "${a0}లో పోస్ట్ చేయి",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "పోస్ట్ చేయండి, చెప్పండి, చూపించండి."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ టెక్స్ట్ కాపీ అయింది"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("గోప్యతా విధానం"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ అప్‌డేట్ అయింది"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("బయో"),
       "profile_country": MessageLookupByLibrary.simpleMessage("దేశం"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("డిస్‌ప్లే పేరు"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("స్థానం"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("మార్చడానికి ట్యాప్ చేయండి"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("వెబ్‌సైట్"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("పుష్ నోటిఫికేషన్‌లు"),
+      "quote": MessageLookupByLibrary.simpleMessage("కోట్ చేయి"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("పోస్ట్‌ను కోట్ చేయి"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("మనిషిని సంప్రదించు"),
+      "remove": MessageLookupByLibrary.simpleMessage("తీసివేయి"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("ఈ సంభాషణను తొలగించాలా?"),
+      "removeMember": (Object a0) => "${a0}ను తీసివేయాలా?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("ఈ సందేశాన్ని తొలగించాలా?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
-      "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          "సమాధానాలు, ఫాలోలు మరియు ప్రస్తావనలు"),
+      "repliesPolicy": (Object a0) => "సమాధానాలు: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("సమాధానం ఇవ్వు"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage("ఎవరైనా చేరవచ్చు"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "ఎవరైనా ఇప్పటికీ ఈ పోస్ట్‌ను చూడవచ్చు, రీపోస్ట్ చేయవచ్చు, కోట్ చేయవచ్చు."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyronలో ఎవరైనా ఈ పోస్ట్‌కు సమాధానం ఇవ్వవచ్చు."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("మిమ్మల్ని ఫాలో అయ్యేవారు"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "మిమ్మల్ని ఫాలో అయ్యేవారు మాత్రమే ఈ పోస్ట్‌కు సమాధానం ఇవ్వగలరు."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("మీరు ప్రస్తావించినవారు"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "ఈ పోస్ట్‌లో మీరు @ప్రస్తావించిన వ్యక్తులు మాత్రమే సమాధానం ఇవ్వగలరు."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("ఎవరూ సమాధానం ఇవ్వలేరు"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "సమాధానాలు ఆఫ్‌లో ఉన్నాయి. మీరు ఇప్పటికీ సమాధానం ఇవ్వవచ్చు."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("ఎవరు సమాధానం ఇవ్వగలరు?"),
       "report": MessageLookupByLibrary.simpleMessage("రిపోర్ట్ చేయండి"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "నివేదిక కాపీ అయింది. మద్దతుకు పంపే ఈమెయిల్‌లో అతికించండి."),
       "reportSent": MessageLookupByLibrary.simpleMessage("రిపోర్ట్ పంపబడింది"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
-      "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+      "repost": MessageLookupByLibrary.simpleMessage("రీపోస్ట్ చేయి"),
+      "reset": MessageLookupByLibrary.simpleMessage("రీసెట్ చేయి"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+          "మీ పాస్‌వర్డ్‌ను రీసెట్ చేయండి"),
+      "retry": MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించు"),
+      "save": MessageLookupByLibrary.simpleMessage("సేవ్ చేయి"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("డ్రాఫ్ట్ సేవ్ చేయి"),
+      "saySomething": (Object a0) => "${a0}లో ఏదైనా చెప్పండి",
+      "search": MessageLookupByLibrary.simpleMessage("శోధించు"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
+          "పేరు లేదా హ్యాండిల్‌తో శోధించు"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("కమ్యూనిటీలను శోధించు"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIFలను శోధించు"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("భాషలను శోధించు"),
       "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "జనాదరణ పొందిన ట్యాగ్‌లను శోధించు"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "భద్రతా హెచ్చరికలు మరియు ఖాతా మార్పులు"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "యాప్ ఇంటర్‌ఫేస్ భాషను ఎంచుకోండి."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "మీ ఫీడ్‌లలో ఏ భాషలు కనిపించాలో ఎంచుకోండి. ఏదీ ఎంచుకోకపోతే అన్ని భాషలు చూపబడతాయి."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
-      "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          "ఫీడ్‌లోని అనువాదాల కోసం మీ ప్రధాన భాషను ఎంచుకోండి."),
+      "send": MessageLookupByLibrary.simpleMessage("పంపు"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage("ధృవీకరణ పంపు"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("బగ్ నివేదిక పంపు"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("అభిప్రాయం పంపు"),
       "sendReport": MessageLookupByLibrary.simpleMessage("రిపోర్ట్ పంపండి"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("మద్దతుకు పంపు"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("సేవా స్థితి"),
+      "settings": MessageLookupByLibrary.simpleMessage("సెట్టింగ్‌లు"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "యాప్ లాగ్‌ను మద్దతుతో షేర్ చేయి"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyronకు సైన్ ఇన్ చేయండి"),
+      "signedInAs":
+          MessageLookupByLibrary.simpleMessage("ఇలా సైన్ ఇన్ అయ్యారు"),
+      "signupFailed": (Object a0) => "సైన్ అప్ విఫలమైంది: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("ఉండు"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron ఇప్పుడే మొదలవుతోంది, దీన్ని నిజంగా సరిచేయగల వ్యక్తిని చేరుకోవడానికి వేగవంతమైన మార్గం టికెట్ తెరవడం. మీరు ఏమి చేస్తున్నారో, ఏమి జరిగిందో చెప్పండి."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "యాప్‌లో ఇంకా మద్దతు ఇన్‌బాక్స్ లేదు, కాబట్టి ఈ స్క్రీన్ మిమ్మల్ని ఎక్కడికీ వెళ్లని ఫారమ్‌కు బదులుగా నిజంగా పర్యవేక్షించే చోటుకు పంపుతుంది."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("యాప్ లాగ్"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "ఏమి లేదు లేదా ఏమి పాడైందో చెప్పండి"),
+      "terms": MessageLookupByLibrary.simpleMessage("సేవా నిబంధనలు"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "టెక్స్ట్, వాయిస్ మరియు వీడియో, వాటిని రూపొందించే వ్యక్తులు, వారు మాట్లాడుకునే గదులు."),
+      "theComposerNoPostButton":
+          MessageLookupByLibrary.simpleMessage("ఎడిటర్‌లో పోస్ట్ బటన్ లేదు"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("ముదురు"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("ఎప్పుడూ ముదురు"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("మసక"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "మృదువైన ముదురు, నలుపుకు బదులుగా నీలి బూడిద"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("లేత"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("ఎప్పుడూ లేత"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("సిస్టమ్"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "ఫోన్ లేత లేదా ముదురు సెట్టింగ్‌ను అనుసరించు"),
+      "translate": MessageLookupByLibrary.simpleMessage("అనువదించు"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "అనువాదం ఇంకా ఆన్ కాలేదు. మీ ఫీడ్‌లో ఇంకా ఏదీ అనువదించబడదు; అప్పటి వరకు ఇది గుర్తుంచుకోబడుతుంది."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "ఇది Kyron సొంత పదాలను, Flutter స్వయంగా గీసే ఇంటర్‌ఫేస్ భాగాలను, తేదీలు మరియు సంఖ్యలను, కుడి నుండి ఎడమకు రాసే భాషల కోసం యాప్ లేఅవుట్ దిశను మారుస్తుంది."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించండి"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("గోప్యతా విధానం"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("సేవా నిబంధనలు"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("ఖాతా"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("తర్వాత"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("యాప్ & పరికరం"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "మోసం గురించి ప్రజలను హెచ్చరించడానికే ఈ ఉల్లేఖనం."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1155,15 +978,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "అప్పీల్ పంపబడింది. నిర్ణయం వచ్చినప్పుడు మీకు నోటిఫికేషన్ వస్తుంది."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("కేసు \$number పై అప్పీల్"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("రూపం"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "లేత, ముదురు లేదా ఫోన్‌ను అనుసరించు"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("ముందు"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyronలో మీరు ఒకరినొకరు చూడలేరు, మీ మధ్య ఫాలోలు తీసివేయబడతాయి. వారికి తెలియజేయబడదు."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("కలిగి ఉంది"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("ఇది దేనికోసం (ఐచ్ఛికం)"),
       "ui_cchat_announcements":
@@ -1271,29 +1092,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("వాయిస్ నోట్ రికార్డ్ చేయి"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("మీరు"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("కమ్యూనిటీలు"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("ఇది దేనికి? (ఐచ్ఛికం)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("పోస్ట్‌లు:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("కంటెంట్ & డిస్‌ప్లే"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("మీ ఫీడ్‌ను లోడ్ చేయలేకపోయింది"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "మీరు లైక్ చేసిన పోస్ట్‌లను లోడ్ చేయలేకపోయింది"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "మీ ప్రొఫైల్‌ను లోడ్ చేయలేకపోయింది"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "మీరు సేవ్ చేసిన పోస్ట్‌లను లోడ్ చేయలేకపోయింది"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("వికేంద్రీకృత ID"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("ట్రబుల్‌షూటింగ్"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("గ్రూప్‌లు"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("గ్రూప్‌లు లేవు"),
@@ -1304,16 +1119,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("పిన్ చేయబడింది"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("నచ్చినవి"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("సేవ్ చేసినవి"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("ఇక్కడ ఇంకా ఏమీ లేదు"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "కొన్ని ఖాతాలను ఫాలో అవ్వండి, వాటి పోస్ట్‌లు ఇక్కడ కనిపిస్తాయి."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "మీరు ఫాలో అయ్యేవారి నుండి ఏమీ లేదు"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "వ్యక్తులు రాసే కొద్దీ పోస్ట్‌లు ఇక్కడ కనిపిస్తాయి."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("మసకబారుతోంది"),
       "ui_feed_signal_less":
@@ -1333,16 +1146,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "ఇవి హోమ్ మరియు ఎక్స్‌ప్లోర్‌ను, ఎక్కువగా ప్రతి పోస్ట్ దేని గురించి అనేదాని ఆధారంగా రూపొందిస్తాయి. ప్రతిదీ ప్రతి నెలా సగానికి తగ్గుతుంది, ఆరు నెలల తర్వాత లెక్కలోకి రాదు. ఇప్పుడే ఆపడానికి ఒకదాన్ని తీసివేయండి."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "క్లిప్ ఉన్న పోస్ట్‌లు ఇక్కడ కనిపిస్తాయి."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("ఇంకా వీడియోలు లేవు"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("అభిప్రాయం"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyronలో వ్యక్తులను కనుగొనండి"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("ఒక ఖాతా నుండి"),
       "ui_group_add":
           MessageLookupByLibrary.simpleMessage("వ్యక్తులను జోడించండి"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("జోడించండి"),
@@ -1433,32 +1243,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("మీరు"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("మీరు ప్రేక్షకుడు"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("సహాయం"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "గమనించాము. మీకు ఏమి చూపాలో ఎంచుకోవడానికి ఇది సహాయపడుతుంది."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("చేరు"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("చేరారు"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("భాష"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("మీ భాషను ఎంచుకోండి"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("చట్టపరమైనవి"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("లైక్"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("లైక్ చేసిన పోస్ట్‌లు"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "మీరు లైక్ చేసిన పోస్ట్‌లు ఇక్కడ కనిపిస్తాయి, కొత్తవి ముందుగా."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("లింక్ కాపీ అయింది"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "మీరు ఇకపై వారి పోస్ట్‌లను చూడరు. వారికి తెలియజేయబడదు."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా లైక్‌లు లేవు"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "ఆ ఫిల్టర్‌లకు సరిపోయే పోస్ట్‌లు లేవు."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("ఇంకా సేవ్ చేసినవి లేవు"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("మీ ఖాతా అప్‌డేట్ అయింది"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1517,13 +1325,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("మీ ఖాతాకు హెచ్చరిక ఉంది"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("నిన్న"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("పూర్తయింది"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("దాటవేయి"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("ఇది ఇప్పటికే తెరవబడింది."),
       "ui_once_expired":
@@ -1541,23 +1345,22 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("ఒక్కసారి చూడటానికి పంపండి"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("చూడటానికి నొక్కండి"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("పాజ్"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("ప్లే చేయి"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "ఇది మీ ప్రొఫైల్ నుండి మరియు అందరి ఫీడ్‌ల నుండి తీసివేయబడుతుంది. దాని సమాధానాలు కూడా దానితో పాటు పోతాయి."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ తొలగించబడింది"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ దాచబడింది"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్ టెక్స్ట్ కాపీ అయింది"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("మధ్యలో పోస్ట్ చేయబడింది"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "దాచబడింది. ఇలాంటివి తక్కువగా చూపిస్తాము."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("ప్రాధాన్యతలు"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("గోప్యత"),
       "ui_report_add":
           MessageLookupByLibrary.simpleMessage("ఇంకేమైనా జోడించాలా? (ఐచ్ఛికం)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1660,76 +1463,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("స్పామ్"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("హింస లేదా బెదిరింపులు"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("సేవ్ చేసిన పోస్ట్‌లు"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "పోస్ట్‌ను ఇక్కడ ఉంచడానికి దాని ఆర్కైవ్ చిహ్నాన్ని ట్యాప్ చేయండి. మీరు సేవ్ చేసినవి మీకు మాత్రమే కనిపిస్తాయి."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+              "హ్యాండిల్ లేదా డిస్‌ప్లే పేరుతో శోధించండి."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("క్లియర్ చేయి"),
       "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+          "పోస్ట్ చేసిన అన్నింటిలో శోధించు"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("ఫిల్టర్‌లు"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("వ్యక్తులను శోధించు"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("పోస్ట్‌లను శోధించు"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("సెట్టింగ్‌లు"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("యాప్ & పరికరం"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("కంటెంట్ & డిస్‌ప్లే"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("డేటా సేవర్"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("మీ ఆలోచనలను పంచుకోండి"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("సహాయ కథనాలను బ్రౌజ్ చేయి"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("మీ భాషను ఎంచుకోండి"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "మీరు ఎవరిని మ్యూట్ లేదా బ్లాక్ చేశారు"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("నోటిఫికేషన్ ప్రాధాన్యతలు"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "మీ ప్రొఫైల్ మరియు సంప్రదింపు వివరాలు"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "మీ ఖాతాకు తిరిగి రావడానికి మళ్లీ సైన్ ఇన్ చేయాలి."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("భద్రతా సెట్టింగ్‌లు"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను నిర్ధారించండి"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("ఒకే లైన్‌లో"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("కొత్త ఈమెయిల్ చిరునామా"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("కొత్త పాస్‌వర్డ్"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("ఏమి జరిగింది"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("మా బృందం నుండి సహాయం పొందండి"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("షేర్ చేయి"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("కోట్ చేయి"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("సందేశంలో పంపు"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyronలోని వ్యక్తులకు"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్‌ను షేర్ చేయి"),
       "ui_standing_about": MessageLookupByLibrary.simpleMessage("దేని గురించి"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
           "మీ ఖాతా శాశ్వతంగా నిషేధించబడింది"),
@@ -1823,55 +1615,50 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("మీ పోస్ట్"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("మీ ప్రత్యుత్తరం"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("సేవా నిబంధనలు"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ఈ పోస్ట్"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("థ్రెడ్ మ్యూట్ చేయబడింది"),
       "ui_try_again":
           MessageLookupByLibrary.simpleMessage("మళ్లీ ప్రయత్నించండి"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆఫ్ చేయి"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("శబ్దం ఆన్ చేయి"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("కనీసం రెండు అక్షరాలు."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("రద్దు చేయి"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "పదాలు, లేదా ఫిల్టర్: ఖాతా, తేదీ పరిధి, లేదా పోస్ట్‌లో ఉన్నది."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("రీపోస్ట్‌ను రద్దు చేయి"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్‌ను అప్‌డేట్ చేయి"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("వేరే చిరునామాను ఉపయోగించు"),
+      "username": MessageLookupByLibrary.simpleMessage("యూజర్‌నేమ్"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "యూజర్‌నేమ్ చిన్న అక్షరాలలో ఉండాలి (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("వీడియో"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("జోడించు"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("జోడించడానికి సిద్ధం"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("వాయిస్ పోస్ట్ రికార్డ్ చేయి"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("సేవ్ అవుతోంది…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("ఆపు"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("ఏమి జరిగింది"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "ఏమి జరిగింది, మేము దేన్ని చూడాలి?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("ఈ చిత్రంలో ఏముంది?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("ఇది దేనికి? (ఐచ్ఛికం)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "మీరు ఏమి చేశారు, ఏమి ఆశించారు, ఏమి జరిగింది"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "అది జరిగినప్పుడు మీరు ఏమి చేస్తున్నారు."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("మీరు ప్రత్యుత్తరం ఇచ్చారు"),
       "dmReplied": (Object a0) => "$a0 ప్రత్యుత్తరం ఇచ్చారు",
@@ -2002,7 +1789,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("పంపబడింది, కానీ అందరికీ కాదు."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "పంపడం సాధ్యం కాలేదు. మళ్లీ ప్రయత్నించండి."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("ఫాలోవర్"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("ఫిల్టర్"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("అన్నీ"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("చదవనివి"),

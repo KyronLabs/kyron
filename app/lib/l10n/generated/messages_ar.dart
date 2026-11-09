@@ -40,7 +40,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("و"),
       "answerNumber": (Object a0) => "الإجابة ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("عدسة الواقع المعزز"),
       "attachSystemLog":
           MessageLookupByLibrary.simpleMessage("إرفاق سجل النظام"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
@@ -115,9 +115,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("علاماتك"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ نص بديل"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
       "audit_password_requirements_symbol_322aed1e":
@@ -263,7 +262,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
       "createYourProfile":
           MessageLookupByLibrary.simpleMessage("أنشئ ملفك الشخصي"),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens":
+          MessageLookupByLibrary.simpleMessage("عدسة الواقع المعزز"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("اذهب مباشرة"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("مشاركة نصية"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("مشاركة صوتية"),
@@ -474,8 +474,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("تابع التحرير"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "كلمات Kyron ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن.",
-      ),
+          "شاشات Kyron بلغتك. إذا بدت لك كلمة خاطئة، أخبرنا عبر إرسال الملاحظات."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
       "leave": MessageLookupByLibrary.simpleMessage("مغادرة"),
@@ -1128,8 +1127,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "الترجمة لم تُنشأ بعد. لا شيء في موجزك يُترجم اليوم؛ سيُتذكّر هذا لوقت حدوثه.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "كلمات Kyron نفسها ما زالت تُترجم، لذلك تبقى معظم الشاشات باللغة الإنجليزية الآن. ما الذي يغيّره هذا اليوم: أجزاء واجهة Flutter نفسها، التواريخ والأرقام، واتجاه تخطيط التطبيق للغات من اليمين إلى اليسار.",
-      ),
+          "يغيّر هذا كلمات Kyron نفسها، وأجزاء الواجهة التي يرسمها Flutter بنفسه، والتواريخ والأرقام، واتجاه تخطيط التطبيق للغات التي تُكتب من اليمين إلى اليسار."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "سياسة الخصوصية",

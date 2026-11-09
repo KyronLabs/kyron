@@ -42,7 +42,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("og"),
       "answerNumber": (Object a0) => "Svar ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("AR-linse"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Vedhæft systemloggen",
       ),
@@ -118,9 +118,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Dine faner"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Prøv igen"),
       "audit_password_requirements_symbol_322aed1e":
@@ -266,7 +265,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Opret din konto"),
       "createYourProfile":
           MessageLookupByLibrary.simpleMessage("Opret din profil"),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR-linse"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("Gå live"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("Tekstopslag"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("Stemmeopslag"),
@@ -484,8 +483,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("Fortsæt redigering"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyrons egne ord bliver stadig oversat, så de fleste skærme forbliver på engelsk indtil videre.",
-      ),
+          "Kyrons skærme er på dit sprog. Hvis et ord lyder forkert, så fortæl os det via Send feedback."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Sprog"),
       "leave": MessageLookupByLibrary.simpleMessage("Forlad"),
@@ -1156,8 +1154,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "Oversættelse er ikke opbygget endnu. Intet i dit feed er oversat i dag; dette huskes til, når det er.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyrons egne ord bliver stadig oversat, så de fleste skærme forbliver på engelsk lige nu. Hvad dette ændrer i dag: de dele af grænsefladen, som Flutter selv tegner, datoer og tal, og layoutretningen i appen for højre-til-venstre-sprog.",
-      ),
+          "Dette ændrer Kyrons egne ord, de dele af brugerfladen som Flutter selv tegner, datoer og tal samt den retning appen lægges ud i for sprog, der skrives fra højre mod venstre."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Prøv igen"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Privatlivspolitik",
@@ -1436,7 +1433,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Du er ikke længere med i denne gruppe."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Omdøb"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrator"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Medlem"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Tilskuer"),
@@ -2209,7 +2207,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_edited": MessageLookupByLibrary.simpleMessage("Redigeret"),
       "ui_more": MessageLookupByLibrary.simpleMessage("Mere"),
       "ui_following": MessageLookupByLibrary.simpleMessage("Følger"),
-      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Top"),
+      "ui_sort_top": MessageLookupByLibrary.simpleMessage("Mest populære"),
       "ui_sort_recent": MessageLookupByLibrary.simpleMessage("Nyeste"),
       "ui_sort_comments":
           MessageLookupByLibrary.simpleMessage("Sortér kommentarer: \$order"),

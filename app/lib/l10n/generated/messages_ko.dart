@@ -1125,8 +1125,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "구독한 피드에 포함되길 원하는 언어를 선택하세요. 선택된 항목이 없으면 모든 언어가 표시됩니다.",
       ),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron의 문구는 아직 번역 중이라 대부분의 화면은 당분간 영어로 표시됩니다.",
-      ),
+          "Kyron 화면이 사용자의 언어로 표시됩니다. 어색한 단어가 있으면 피드백 보내기로 알려 주세요."),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
         "둘러보기에서 찾거나 직접 커뮤니티를 시작하세요.",
       ),
@@ -1289,9 +1288,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("내 탭"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ 대체 텍스트"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("다시 시도"),
       "audit_password_requirements_symbol_322aed1e":
@@ -1536,8 +1534,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "profile_location": MessageLookupByLibrary.simpleMessage("위치"),
       "profile_website": MessageLookupByLibrary.simpleMessage("웹사이트"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron의 자체 문구는 아직 번역 중이라 대부분의 화면은 당분간 영어로 유지됩니다. 이번 변경으로 적용되는 항목: Flutter가 그리는 인터페이스 일부, 날짜와 숫자, 그리고 오른쪽에서 왼쪽으로 읽는 언어에 대한 앱 레이아웃 방향입니다.",
-      ),
+          "Kyron 자체의 문구, Flutter가 직접 그리는 인터페이스 부분, 날짜와 숫자, 그리고 오른쪽에서 왼쪽으로 쓰는 언어에서 앱이 배치되는 방향이 바뀝니다."),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
         "휴대폰의 라이트 또는 다크 설정을 따름",
       ),

@@ -7,249 +7,205 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("शब्द, वाक्यांश या #टैग"),
+      "about": MessageLookupByLibrary.simpleMessage("परिचय"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("जवाब जोड़ें"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("भाषाएँ जोड़ें…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("सहमत हों और जारी रखें"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("क्या पहले से Kyron खाता है?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("टिप्पणियाँ"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
-      "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+              "अलग-अलग लोग, खोलने की संख्या नहीं"),
+      "analytics_engagement": MessageLookupByLibrary.simpleMessage("जुड़ाव"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई दर्शक नहीं"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "इस पोस्ट को अभी किसी ने नहीं खोला।"),
+      "analytics_posted":
+          MessageLookupByLibrary.simpleMessage("पोस्ट किया गया"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("सेव"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("दर्शक"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("प्रतिदिन दर्शक"),
+      "and": MessageLookupByLibrary.simpleMessage("और"),
+      "answerNumber": (Object a0) => "जवाब ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR लेंस"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("ऐप लॉग संलग्न करें"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("आने-जाने का समय"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("टोकन सत्यापन"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("फिर कोशिश करें"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("फिर कोशिश करें"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "अभी प्रसारण शुरू करने पर आप ऐसे कमरे में होंगे जिसमें कोई नहीं"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("कम्युनिटी शुरू करें"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("यह किसलिए है? (वैकल्पिक)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("दोबारा आ सकेगा।"),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("इस सूची से दोबारा आ सकेगा।"),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("इसे बंद करने पर"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("पहले जुड़ें"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("जल्द आ रहा है"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage(
+              "आप अपने नाम से पोस्ट कर रहे हैं"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("इस कम्युनिटी में पोस्ट करें"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("अभी-अभी"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("फिर कोशिश करें"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("विषय 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("आपके लिए"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("में कुछ है।"),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("अभी वहाँ जा रहा है।"),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", नहीं"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("क्या मैं हिल रहा हूँ"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("आवाज़ बंद करें"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("आवाज़ चालू करें"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("आपके लिए"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("आपके टैब"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("फिर कोशिश करें"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("चिह्न (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("प्रतिदिन दर्शक"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("लोड नहीं हो सका"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("यह पोस्ट"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage("कुछ जोड़ना है? (वैकल्पिक)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("यह पोस्ट"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("किसी खाते से"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("लॉग आउट"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("आपका खाता"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("पासवर्ड की पुष्टि करें"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("अभी नहीं"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("लोड हो रहा है…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("पोस्ट हो रहा है…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 घंटे पहले"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("स्टोरी का लिंक कॉपी करें"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("आपकी स्टोरी"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "आपका खाता, आपकी पोस्ट और आप जिन पर टैप करते हैं, ताकि"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("विषय जोड़ें"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("अपना।"),
+      "authorBlocked": (Object a0) => "${a0} को ब्लॉक किया गया",
+      "authorPostsHidden": (Object a0) => "आपको ${a0} की पोस्ट नहीं दिखेंगी",
+      "block": MessageLookupByLibrary.simpleMessage("ब्लॉक करें"),
+      "blockAuthor": (Object a0) => "${a0} को ब्लॉक करें?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("बिल्ड विवरण कॉपी हुआ"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("जारी रखकर आप सहमत होते हैं"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "जारी रखकर आप हमारी सेवा की शर्तों और निजता नीति से सहमत होते हैं"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("साइन अप करके आप सहमत होते हैं"),
+      "cancel": MessageLookupByLibrary.simpleMessage("रद्द करें"),
       "change": MessageLookupByLibrary.simpleMessage("बदलें"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("ईमेल बदलें"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "अपने ईमेल से खाते का सत्यापन करें।"),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "जाँचें कि Kyron पहुँच में है या नहीं"),
+      "clear": MessageLookupByLibrary.simpleMessage("साफ़ करें"),
+      "close": MessageLookupByLibrary.simpleMessage("बंद करें"),
+      "closeCommunity": (Object a0) => "${a0} बंद करें?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("इसे बंद करें"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("यह कम्युनिटी बंद करें"),
+      "communities": MessageLookupByLibrary.simpleMessage("कम्युनिटी"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "खोजें में कोई ढूँढें, या अपनी शुरू करें।"),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "कोई तीखी राय रखिए (या हल्की-फुल्की)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("आपके मन में क्या है?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
-      "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "कुछ ऐसा कहें जो सिर्फ़ आप कह सकते हैं…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("यही संकेत है: पोस्ट कर दीजिए"),
+      "composer_placeholder_think":
+          MessageLookupByLibrary.simpleMessage("लिखें, बोलें या ज़ोर से सोचें"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("पासवर्ड की पुष्टि करें"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("सहायता से संपर्क करें"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "पोस्ट में अभी भाषा नहीं होती, इसलिए यह अभी आपकी फ़ीड फ़िल्टर नहीं करता। तब तक आपके चुनाव सहेजे रहते हैं।"),
+      "continueAction": MessageLookupByLibrary.simpleMessage("जारी रखें"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("ईमेल से जारी रखें"),
+      "copy": MessageLookupByLibrary.simpleMessage("कॉपी करें"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("इसके बजाय रिपोर्ट कॉपी करें"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Google साइन-इन नहीं खुल सका। ${a0}",
+      "couldNotSignOut": (Object a0) => "लॉग आउट नहीं हो सका: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("फ़ोटो नहीं ली जा सकी।"),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "आपकी प्रोफ़ाइल पर और आपकी पोस्ट के नीचे दिखता है।"),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,89 +216,74 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "आपकी प्रोफ़ाइल पर और आपकी पोस्ट के नीचे दिखता है। जब आप किसी की पोस्ट देखते हैं, तो आपका देश उनकी इनसाइट्स में गिना जाता है, सिर्फ़ पाँच या उससे ज़्यादा के समूहों में और कभी नाम से नहीं।"),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("आपके फ़ोन की सेटिंग से"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
-      "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+      "create": MessageLookupByLibrary.simpleMessage("बनाएँ"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("खाता बनाएँ"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("अपना खाता बनाएँ"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("अपनी प्रोफ़ाइल बनाएँ"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR लेंस"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("लाइव जाएँ"),
+      "create_text_post": MessageLookupByLibrary.simpleMessage("टेक्स्ट पोस्ट"),
+      "create_voice_post": MessageLookupByLibrary.simpleMessage("वॉइस पोस्ट"),
+      "delete": MessageLookupByLibrary.simpleMessage("हटाएँ"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("यह टिप्पणी हटाएँ?"),
+      "deleteThisPost": MessageLookupByLibrary.simpleMessage("यह पोस्ट हटाएँ?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("इस अटैचमेंट का वर्णन करें"),
+      "description": MessageLookupByLibrary.simpleMessage("विवरण"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID क्लिपबोर्ड पर कॉपी हुआ"),
       "done": MessageLookupByLibrary.simpleMessage("हो गया"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "कुछ लिखने के बाद एडिटर बंद करें, आपको ड्राफ़्ट का विकल्प मिलेगा।"),
+      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} दिन पहले"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          MessageLookupByLibrary.simpleMessage("{hours} घंटे पहले"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("अभी-अभी"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} मिनट पहले"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("अभी कुछ लिखा नहीं गया"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("पोल, अभी कोई सवाल नहीं"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("कोट, अभी कोई टेक्स्ट नहीं"),
+      "drafts": MessageLookupByLibrary.simpleMessage("ड्राफ़्ट"),
+      "editProfile":
+          MessageLookupByLibrary.simpleMessage("प्रोफ़ाइल संपादित करें"),
+      "email": MessageLookupByLibrary.simpleMessage("ईमेल"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("ईमेल सूचनाएँ"),
+      "explore": MessageLookupByLibrary.simpleMessage("खोजें"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "इस डिवाइस पर फ़ेस ट्रैकिंग उपलब्ध नहीं है।"),
+      "feedTagDetail": (Object a0) => "#${a0} के साथ अभी कुछ पोस्ट नहीं हुआ।",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("{name} को फ़ॉलो करें"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
-      "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+      "followers": MessageLookupByLibrary.simpleMessage("फ़ॉलोअर"),
+      "following": MessageLookupByLibrary.simpleMessage("फ़ॉलो किए जा रहे"),
+      "forgotPassword": MessageLookupByLibrary.simpleMessage("पासवर्ड भूल गए?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("मदद पाना"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google के साथ जारी रखें"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google से साइन इन करें"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google पूरा हुआ साइन-इन Kyron को ऐसे लिंक से लौटाता है जिसका जवाब सिर्फ़ Android और iOS देते हैं, इसलिए ${a0} पर ब्राउज़र के पास उसे लौटाने की कोई जगह नहीं है।\\n\\nअगर Google के ज़रिए आपका पहले से Kyron खाता है, तो उसी पते के साथ ईमेल से जारी रखें चुनें और पासवर्ड भूल गए पर टैप करें: आपको पासवर्ड सेट करने का लिंक मिलेगा।",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google साइन-इन के लिए फ़ोन ऐप चाहिए"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
-      "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Google से साइन अप करें"),
+      "guidesAndAnswers":
+          MessageLookupByLibrary.simpleMessage("गाइड और आम सवालों के जवाब"),
+      "handle": MessageLookupByLibrary.simpleMessage("हैंडल"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("सहायता और समर्थन"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("सहायता केंद्र"),
+      "home": MessageLookupByLibrary.simpleMessage("होम"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("एक पंक्ति में"),
       "ins_account": MessageLookupByLibrary.simpleMessage("आपका खाता"),
       "ins_act_community": MessageLookupByLibrary.simpleMessage("समुदाय खोलें"),
       "ins_act_post": MessageLookupByLibrary.simpleMessage("पोस्ट लिखें"),
@@ -456,690 +397,552 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("शीर्ष पोस्ट"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "पिछले {days} दिनों की तुलना में"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("रुचि जोड़ें"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("क्रम बदलने के लिए खींचें"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "बार में ज़्यादा से ज़्यादा पाँच टैब आते हैं। दूसरा जोड़ने के लिए एक हटाएँ।"),
+      "interest_following":
+          MessageLookupByLibrary.simpleMessage("फ़ॉलो किए जा रहे"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("आपके लिए"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "लोग जब हैशटैग इस्तेमाल करने लगेंगे, तो वे यहाँ दिखेंगे।"),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("अभी ट्रेंड में"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("वीडियो"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("आपके टैब"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "यह आप दोनों के लिए गायब हो जाएगा।"),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("इसे थ्रेड से हटा दिया जाएगा।"),
+      "join": MessageLookupByLibrary.simpleMessage("जुड़ें"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("संपादन जारी रखें"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron की स्क्रीनें आपकी भाषा में हैं। अगर कोई शब्द गलत लगे, तो फ़ीडबैक भेजें से हमें बताएँ।"),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("भाषाएँ"),
+      "leave": MessageLookupByLibrary.simpleMessage("छोड़ें"),
+      "leaveCommunity": (Object a0) => "${a0} छोड़ें?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("वापस आने दें"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 पेज खुला है"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("क्लिप जोड़ें"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF जोड़ें"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
-      "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("हैशटैग जोड़ें"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("फ़ोटो जोड़ें"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("पोल जोड़ें"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("वीडियो जोड़ें"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("रुचि जोड़ें"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} को टैब के रूप में जोड़ें",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("ऐप की भाषा"),
+      "literalappVersion": MessageLookupByLibrary.simpleMessage("ऐप वर्शन"),
+      "literalblockAuthor": (Object a0) => "${a0} को ब्लॉक करें",
+      "literalblockAuthor2": (Object a0) => "${a0} को ब्लॉक करें?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("इस खाते को ब्लॉक करें?"),
+      "literalcancelReply": MessageLookupByLibrary.simpleMessage("जवाब छोड़ें"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("फिर से जाँचें"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("गैलरी से चुनें"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("कैश साफ़ करें"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("सभी पेज बंद करें"),
+      "literalcloseTabLabel": (Object a0) => "${a0} बंद करें",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("ब्राउज़र बंद करें"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} बंद करें?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("सहायता से संपर्क करें"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("सामग्री की भाषाएँ"),
+      "literalcopyLink": MessageLookupByLibrary.simpleMessage("लिंक कॉपी करें"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("पोस्ट का लिंक कॉपी करें"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
-      "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
-      "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
-      "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
-      "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          MessageLookupByLibrary.simpleMessage("पोस्ट का टेक्स्ट कॉपी करें"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("टेक्स्ट कॉपी करें"),
+      "literalcouldNotLoadCommunities":
+          MessageLookupByLibrary.simpleMessage("कम्युनिटी लोड नहीं हो सकीं"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF लोड नहीं हो सके"),
+      "literalcouldNotLoadNotifications":
+          MessageLookupByLibrary.simpleMessage("सूचनाएँ लोड नहीं हो सकीं"),
+      "literalcouldNotLoadTheMembers":
+          MessageLookupByLibrary.simpleMessage("सदस्य लोड नहीं हो सके"),
+      "literalcouldNotLoadThesePosts":
+          MessageLookupByLibrary.simpleMessage("ये पोस्ट लोड नहीं हो सकीं"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
-      "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
-      "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
-      "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("यह बातचीत लोड नहीं हो सकी"),
+      "literalcouldNotLoadThisList":
+          MessageLookupByLibrary.simpleMessage("यह सूची लोड नहीं हो सकी"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("यह पोस्ट लोड नहीं हो सकी"),
+      "literalcouldNotLoadThisReply":
+          MessageLookupByLibrary.simpleMessage("यह जवाब लोड नहीं हो सका"),
+      "literalcouldNotLoadTrendingTags":
+          MessageLookupByLibrary.simpleMessage("लोकप्रिय टैग लोड नहीं हो सके"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
-      "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
-      "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+              "आपकी कम्युनिटी लोड नहीं हो सकीं"),
+      "literalcouldNotLoadYourMessages":
+          MessageLookupByLibrary.simpleMessage("आपके संदेश लोड नहीं हो सके"),
+      "literalcouldNotOpenThisCommunity":
+          MessageLookupByLibrary.simpleMessage("यह कम्युनिटी नहीं खुल सकी"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("जवाब पोस्ट नहीं हो सका।"),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("खोज काम नहीं आई"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "लॉग आउट नहीं हो सका: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} पेज खुले हैं",
+      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("कवर फ़ोटो"),
+      "literaldataSaver": MessageLookupByLibrary.simpleMessage("डेटा सेवर"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("पोस्ट हटाएँ"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("लोगों को खोजें"),
+      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("जवाब न दें"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("ड्राफ़्ट सहेजा गया"),
       "literalfeedbackCannotBeSentRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("अभी फ़ीडबैक नहीं भेजा जा सकता"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize":
+          MessageLookupByLibrary.simpleMessage("टेक्स्ट का आकार"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF सेट अप नहीं हैं"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("किसी दूसरे ऐप को दें"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("पासवर्ड छिपाएँ"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("यह पोस्ट छिपाएँ"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "इसे छिपाता है और हमसे ऐसी कम दिखाने को कहता है"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("कैसे पेश आएँ"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("लिखना जारी रखें"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron ने जवाब नहीं दिया"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
-      "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} तारीख",
+      "literalleaveCommunityName": (Object a0) => "${a0} छोड़ें?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, फ़ेस लेंस",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("पसंद की गई पोस्ट"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("लिंक कॉपी हुआ"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("मॉडरेटर बनाएँ"),
+      "literalmuteAuthor": (Object a0) => "${a0} को म्यूट करें",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("यह थ्रेड म्यूट करें"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("शब्द या टैग म्यूट करें"),
+      "literalmutedAndBlockedAccounts":
+          MessageLookupByLibrary.simpleMessage("म्यूट और ब्लॉक किए गए खाते"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "म्यूट किया गया। आपको सूचनाएँ नहीं मिलेंगी।"),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "इस डिवाइस का कोई ऐप ${a0} लिंक नहीं खोलता।",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "इस डिवाइस के किसी ब्राउज़र ने लिंक स्वीकार नहीं किया।"),
+      "literalnoDidYet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई DID नहीं"),
+      "literalnoDrafts":
+          MessageLookupByLibrary.simpleMessage("कोई ड्राफ़्ट नहीं"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई रुचि नहीं"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई लाइक नहीं"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई संदेश नहीं"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("कोई नया फ़ॉलोअर नहीं"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई पोस्ट नहीं"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("अभी कोई जवाब नहीं"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("अभी कोई रीपोस्ट नहीं"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "कोई लोकप्रिय टैग मेल नहीं खाता"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("कोई नहीं मिला"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("किसी को नहीं हटाया गया"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("यहाँ अभी कोई नहीं है"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("दिलचस्पी नहीं"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("कुछ नहीं मिला"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("अभी कुछ ट्रेंड में नहीं"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("लॉग में अभी कुछ नहीं है"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("कोई मेल नहीं"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("कुछ म्यूट नहीं"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("अभी देखने को कुछ नहीं"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("कोई अपठित नहीं"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("इसे सिर्फ़ मालिक बदल सकता है"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("जवाब खोलें"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron का ईमेल खोलें"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("पासवर्ड और लॉग इन"),
+      "literalpostInCommunityName": (Object a0) => "${a0} में पोस्ट करें",
+      "literalpostInWidgetCommunityName": (Object a0) => "${a0} में पोस्ट करें",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "ऊपर अपने शब्दों के साथ पोस्ट करें"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("मुख्य भाषा"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("पुश सूचनाएँ"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("जाँच हो रही है…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("वॉइस पोस्ट रिकॉर्ड करें"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
-      "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("फिर से रिकॉर्ड करें"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("मॉडरेटर से हटाएँ"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("कम्युनिटी से हटाएँ"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("सहेजे गए से हटाएँ"),
+      "literalremoveLabel": (Object a0) => "${a0} हटाएँ",
+      "literalremoveLanguageEnglishname": (Object a0) => "${a0} हटाएँ",
+      "literalremoveMemberDisplayname": (Object a0) => "${a0} को हटाएँ?",
+      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage("पोल हटाएँ"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("यह जवाब हटाएँ"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("यह बातचीत हटाएँ"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("यह पोल हटाएँ"),
+      "literalreportAuthor": (Object a0) => "${a0} की रिपोर्ट करें",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("पोस्ट की रिपोर्ट करें"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("कोड फिर से भेजें"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("सहेजी गई पोस्ट"),
+      "literalsaySomething": MessageLookupByLibrary.simpleMessage("कुछ कहें"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0} में कुछ कहें",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("खोज विफल रही"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("फिर से भेजें"),
+      "literalsendAgainInCooldownS": (Object a0) => "${a0} सेकंड में फिर भेजें",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
-      "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("फ़ीडबैक दें"),
+      "literalsendTheLink": MessageLookupByLibrary.simpleMessage("लिंक भेजें"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
-      "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "भेजा गया। यह रिपोर्ट #${a0} है।",
+      "literalsetAPasswordAndCarryOn":
+          MessageLookupByLibrary.simpleMessage("पासवर्ड सेट करें और जारी रखें"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("लॉग सहायता के साथ साझा करें"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("यह कम्युनिटी साझा करें"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("यह पेज साझा करें"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("यह प्रोफ़ाइल साझा करें"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("साझा करें…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("कोट के साथ साझा करें"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("ऐसी और दिखाएँ"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("पासवर्ड दिखाएँ"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("नतीजे दिखाएँ"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("कम्युनिटी शुरू करें"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("रिकॉर्डिंग शुरू करें"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("लोड होना रोकें"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "यह पोस्ट और इसके जवाब देखना बंद करें"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "स्टोरी पट्टी, ${a0} आइटम",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
-      "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("कैमरा बदलें"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("किसी को टैग करें"),
+      "literaltakeAPicture": MessageLookupByLibrary.simpleMessage("फ़ोटो लें"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "बदलने के लिए बैनर या फ़ोटो पर टैप करें"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("उसके अंदर के लिंक पर टैप करें"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "फ़ोटो और कवर जोड़ने के लिए टैप करें"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "यह नहीं हो सका। फिर कोशिश करें।"),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("वह GIF लोड नहीं हो सका।"),
       "literalthatLinkIsNotOneThisCanOpen":
-          MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+          MessageLookupByLibrary.simpleMessage("यह लिंक यहाँ नहीं खुल सकता।"),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("कैमरा बंद है"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("यह कम्युनिटी"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("यह जवाब अब मौजूद नहीं है"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("पोस्ट का अनुवाद करें"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("आवाज़ बंद करें"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("आवाज़ चालू करें"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("हमारी कोई एक इस्तेमाल करें"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("सत्यापन कोड फिर से भेजा गया।"),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "सत्यापन विफल: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("ईमेल सत्यापित करें"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "दर्शक, लाइक, सेव और टिप्पणियाँ"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron क्या रखता है"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("यह ऐप क्या कर रहा था"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
+              "आपने क्या किया, क्या उम्मीद थी, क्या हुआ "),
       "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+          "आप जो पोस्ट करते हैं वह आपका है"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("क्या Kyron अभी पहुँच में है"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("कौन जवाब दे सकता है"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("आप किसे टैग करना चाहते हैं?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "आप पहले से सभी लोकप्रिय टैग फ़ॉलो कर रहे हैं"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("आपने सब देख लिया"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "आप किसी कम्युनिटी में नहीं हैं"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("आप लॉग आउट हो गए हैं।"),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
+      "literalyouHaveLeftCommunityName": (Object a0) => "आपने ${a0} छोड़ दी",
       "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+          "आपने अभी तक कुछ पोस्ट नहीं किया"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("और लोड करें"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("लॉग साफ़ हुआ"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("लॉग कॉपी हुआ"),
+      "logIn": MessageLookupByLibrary.simpleMessage("लॉग इन करें"),
+      "logOut": MessageLookupByLibrary.simpleMessage("लॉग आउट"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("लॉग आउट करें?"),
+      "login": MessageLookupByLibrary.simpleMessage("लॉग इन"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "लॉग इन नहीं हो सका। अपनी जानकारी जाँचें।"),
+      "manage": MessageLookupByLibrary.simpleMessage("प्रबंधित करें"),
+      "menu": MessageLookupByLibrary.simpleMessage("मेनू"),
+      "message": MessageLookupByLibrary.simpleMessage("संदेश"),
+      "messages": MessageLookupByLibrary.simpleMessage("संदेश"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("आपने सभी बातचीत पढ़ ली हैं।"),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "किसी की प्रोफ़ाइल खोलें और बातचीत शुरू करने के लिए संदेश पर टैप करें।"),
+      "mute": MessageLookupByLibrary.simpleMessage("म्यूट करें"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
-      "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
-      "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("म्यूट और ब्लॉक किए गए"),
+      "mutedWordsAndTags":
+          MessageLookupByLibrary.simpleMessage("म्यूट किए गए शब्द और टैग"),
+      "name": MessageLookupByLibrary.simpleMessage("नाम"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> स्क्रीन"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage("नया ईमेल पता"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("नया पासवर्ड"),
+      "newPost": MessageLookupByLibrary.simpleMessage("नई पोस्ट"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("अभी नहीं"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "नहीं भेजा गया। फिर से कोशिश करने के लिए टैप करें"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron पर \"${a0}\" से कुछ मेल नहीं खाता",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("कॉपी करने के लिए कुछ नहीं"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "लाइक, जवाब और नए फ़ॉलोअर यहाँ आते हैं।"),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "आपको फ़ॉलो करने वाले लोग यहाँ दिखेंगे।"),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "जब कोई आपकी पोस्ट लाइक करेगा, तो यह यहाँ दिखेगा।"),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "आपकी पोस्ट के जवाब यहाँ आते हैं।"),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
-      "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "जब कोई आपको रीपोस्ट करेगा, तो यह यहाँ दिखेगा।"),
+      "notifications": MessageLookupByLibrary.simpleMessage("सूचनाएँ"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("ब्राउज़र में खोलें"),
+      "or": MessageLookupByLibrary.simpleMessage("या"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("पेज नहीं मिला"),
+      "password": MessageLookupByLibrary.simpleMessage("पासवर्ड"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("पासवर्ड बहुत छोटा है"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("अपनी रुचियाँ चुनें"),
+      "post": MessageLookupByLibrary.simpleMessage("पोस्ट करें"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("पोस्ट के आँकड़े"),
+      "postInCommunity": (Object a0) => "${a0} में पोस्ट करें",
+      "postItSayItShowIt":
+          MessageLookupByLibrary.simpleMessage("पोस्ट करें, कहें, दिखाएँ।"),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("पोस्ट का टेक्स्ट कॉपी हुआ"),
+      "privacyPolicy": MessageLookupByLibrary.simpleMessage("निजता नीति"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("प्रोफ़ाइल अपडेट हुई"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("परिचय"),
       "profile_country": MessageLookupByLibrary.simpleMessage("देश"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
-      "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
-      "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          MessageLookupByLibrary.simpleMessage("डिस्प्ले नाम"),
+      "profile_location": MessageLookupByLibrary.simpleMessage("स्थान"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("बदलने के लिए टैप करें"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("वेबसाइट"),
+      "pushNotifications": MessageLookupByLibrary.simpleMessage("पुश सूचनाएँ"),
+      "quote": MessageLookupByLibrary.simpleMessage("कोट करें"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("पोस्ट कोट करें"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("किसी इंसान से बात करें"),
+      "remove": MessageLookupByLibrary.simpleMessage("हटाएँ"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("यह बातचीत हटाएँ?"),
+      "removeMember": (Object a0) => "${a0} को हटाएँ?",
+      "removeMessage": MessageLookupByLibrary.simpleMessage("यह संदेश हटाएँ?"),
+      "repliesFollowsMentions":
+          MessageLookupByLibrary.simpleMessage("जवाब, फ़ॉलो और उल्लेख"),
+      "repliesPolicy": (Object a0) => "जवाब: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("जवाब दें"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("कोई भी शामिल हो सकता है"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "कोई भी अब भी इस पोस्ट को देख, रीपोस्ट और कोट कर सकता है।"),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron पर कोई भी इस पोस्ट का जवाब दे सकता है।"),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("आपको फ़ॉलो करने वाले"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "सिर्फ़ आपको फ़ॉलो करने वाले इस पोस्ट का जवाब दे सकते हैं।"),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("जिनका आप उल्लेख करते हैं"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "इस पोस्ट में जिनका आप @उल्लेख करते हैं, सिर्फ़ वही जवाब दे सकते हैं।"),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("कोई जवाब नहीं दे सकता"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "जवाब बंद हैं। आप फिर भी खुद जवाब दे सकते हैं।"),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("कौन जवाब दे सकता है?"),
       "report": MessageLookupByLibrary.simpleMessage("रिपोर्ट करें"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "रिपोर्ट कॉपी हुई। इसे सहायता टीम के ईमेल में पेस्ट करें।"),
       "reportSent": MessageLookupByLibrary.simpleMessage("रिपोर्ट भेजी गई"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("रीपोस्ट करें"),
+      "reset": MessageLookupByLibrary.simpleMessage("रीसेट करें"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
-      "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("अपना पासवर्ड रीसेट करें"),
+      "retry": MessageLookupByLibrary.simpleMessage("फिर कोशिश करें"),
+      "save": MessageLookupByLibrary.simpleMessage("सहेजें"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("ड्राफ़्ट सहेजें"),
+      "saySomething": (Object a0) => "${a0} में कुछ कहें",
+      "search": MessageLookupByLibrary.simpleMessage("खोजें"),
+      "searchByNameOrHandle":
+          MessageLookupByLibrary.simpleMessage("नाम या हैंडल से खोजें"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("कम्युनिटी खोजें"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF खोजें"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("भाषाएँ खोजें"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("लोकप्रिय टैग खोजें"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
-      "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "सुरक्षा अलर्ट और खाते में बदलाव"),
+      "selectAppLanguage":
+          MessageLookupByLibrary.simpleMessage("ऐप इंटरफ़ेस की भाषा चुनें।"),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "चुनें कि आपकी फ़ीड में कौन-सी भाषाएँ दिखें। कोई न चुनने पर सभी भाषाएँ दिखेंगी।"),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
-      "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          "फ़ीड में अनुवाद के लिए अपनी मुख्य भाषा चुनें।"),
+      "send": MessageLookupByLibrary.simpleMessage("भेजें"),
+      "sendConfirmation": MessageLookupByLibrary.simpleMessage("सत्यापन भेजें"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("बग रिपोर्ट भेजें"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("फ़ीडबैक भेजें"),
       "sendReport": MessageLookupByLibrary.simpleMessage("रिपोर्ट भेजें"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport": MessageLookupByLibrary.simpleMessage("सहायता को भेजें"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("सेवा की स्थिति"),
+      "settings": MessageLookupByLibrary.simpleMessage("सेटिंग"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "ऐप लॉग सहायता के साथ साझा करें"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron में साइन इन करें"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("इस रूप में साइन इन"),
+      "signupFailed": (Object a0) => "साइन अप नहीं हो सका: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("रुकें"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron अभी शुरुआती दौर में है, और ऐसे व्यक्ति तक पहुँचने का सबसे तेज़ तरीका जो सच में इसे ठीक कर सके, टिकट खोलना है। बताइए आप क्या कर रहे थे और क्या हुआ।"),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "ऐप में अभी सहायता इनबॉक्स नहीं है, इसलिए यह स्क्रीन आपको ऐसी जगह ले जाती है जिस पर सच में नज़र रखी जाती है, न कि किसी ऐसे फ़ॉर्म पर जो कहीं नहीं जाता।"),
+      "systemLog": MessageLookupByLibrary.simpleMessage("ऐप लॉग"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "बताइए क्या कमी है या क्या टूटा है"),
+      "terms": MessageLookupByLibrary.simpleMessage("सेवा की शर्तों"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "टेक्स्ट, आवाज़ और वीडियो, उन्हें बनाने वाले लोग, और वे कमरे जहाँ वे बातें करते हैं।"),
+      "theComposerNoPostButton":
+          MessageLookupByLibrary.simpleMessage("एडिटर में पोस्ट बटन नहीं है"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("गहरी"),
+      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("हमेशा गहरी"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("मद्धम"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
-      "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          "नरम गहरी, काले की जगह नीला-धूसर"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("हल्की"),
+      "theme_light_detail": MessageLookupByLibrary.simpleMessage("हमेशा हल्की"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("सिस्टम"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "फ़ोन की हल्की या गहरी सेटिंग के अनुसार"),
+      "translate": MessageLookupByLibrary.simpleMessage("अनुवाद करें"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "अनुवाद अभी चालू नहीं है। आपकी फ़ीड में अभी कुछ अनुवादित नहीं होता; तब तक यह याद रखा जाता है।"),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "यह Kyron के अपने शब्दों, इंटरफ़ेस के उन हिस्सों को जिन्हें Flutter खुद बनाता है, तारीखों और संख्याओं, और दाएँ से बाएँ लिखी जाने वाली भाषाओं के लिए ऐप के लेआउट की दिशा को बदलता है।"),
       "tryAgain": MessageLookupByLibrary.simpleMessage("फिर से कोशिश करें"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("निजता नीति"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("सेवा की शर्तें"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("खाता"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("बाद"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("ऐप और डिवाइस"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "यह उद्धरण लोगों को धोखाधड़ी से सावधान करने के लिए था।"),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1152,15 +955,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "अपील भेज दी गई। फ़ैसला होने पर आपको सूचना मिलेगी।"),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("केस \$number पर अपील"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-      "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("रूप-रंग"),
+      "ui_appearance_detail":
+          MessageLookupByLibrary.simpleMessage("हल्की, गहरी या फ़ोन के अनुसार"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("पहले"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "आप दोनों Kyron पर एक-दूसरे को नहीं देखेंगे, और आपके बीच के फ़ॉलो हटा दिए जाएँगे। उन्हें बताया नहीं जाता।"),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("इसमें है"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("यह किसलिए है (वैकल्पिक)"),
       "ui_cchat_announcements":
@@ -1260,29 +1061,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("वॉइस नोट रिकॉर्ड करें"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("आप"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("कम्युनिटी"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("यह किसलिए है? (वैकल्पिक)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("पोस्ट:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("सामग्री और डिस्प्ले"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("आपकी फ़ीड लोड नहीं हो सकी"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "आपकी पसंद की गई पोस्ट लोड नहीं हो सकीं"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "आपकी प्रोफ़ाइल लोड नहीं हो सकी"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "आपकी सहेजी गई पोस्ट लोड नहीं हो सकीं"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("विकेंद्रीकृत ID"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("समस्या निवारण"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("ग्रुप"),
       "ui_dm_groups_none":
           MessageLookupByLibrary.simpleMessage("कोई ग्रुप नहीं"),
@@ -1293,16 +1088,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("पिन किया गया"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("पसंद किए गए"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("सहेजे गए"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("यहाँ अभी कुछ नहीं"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "कुछ खातों को फ़ॉलो करें और उनकी पोस्ट यहाँ दिखेंगी।"),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "जिन्हें आप फ़ॉलो करते हैं उनसे कुछ नहीं"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "जैसे-जैसे लोग लिखेंगे, पोस्ट यहाँ दिखेंगी।"),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("फीका हो रहा है"),
       "ui_feed_signal_less":
@@ -1322,16 +1115,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "ये होम और एक्सप्लोर को आकार देते हैं, ज़्यादातर इस आधार पर कि हर पोस्ट किस बारे में थी। हर संकेत हर महीने आधा हो जाता है और छह महीने बाद गिना नहीं जाता। अभी रोकने के लिए किसी को हटाएँ।"),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "क्लिप वाली पोस्ट यहाँ दिखेंगी।"),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("अभी कोई वीडियो नहीं"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("फ़ीडबैक"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyron पर लोगों को खोजें"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("किसी खाते से"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("लोग जोड़ें"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("जोड़ें"),
       "ui_group_add_name":
@@ -1416,32 +1206,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("आप"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("आप दर्शक हैं"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("सहायता"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "नोट किया गया। इससे यह चुनने में मदद मिलती है कि आपको क्या दिखाया जाए।"),
+      "ui_join": MessageLookupByLibrary.simpleMessage("जुड़ें"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("जुड़े"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("भाषा"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("अपनी भाषा चुनें"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("कानूनी"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("लाइक"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("पसंद की गई पोस्ट"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "आपकी पसंद की गई पोस्ट यहाँ दिखती हैं, नई पहले।"),
+      "ui_link_copied": MessageLookupByLibrary.simpleMessage("लिंक कॉपी हुआ"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "अब आप उनकी पोस्ट नहीं देखेंगे। उन्हें बताया नहीं जाता।"),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("अभी कोई लाइक नहीं"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "उन फ़िल्टर से कोई पोस्ट मेल नहीं खाती।"),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("अभी कुछ सहेजा नहीं गया"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("आपका खाता अपडेट हुआ"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1498,13 +1285,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("आपके खाते को चेतावनी मिली है"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("कल"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("हो गया"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("छोड़ें"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("यह पहले ही खोला जा चुका है।"),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("समय समाप्त"),
@@ -1522,23 +1305,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("एक बार देखने के लिए भेजें"),
       "ui_once_tap":
           MessageLookupByLibrary.simpleMessage("देखने के लिए टैप करें"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("रोकें"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("चलाएँ"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "इसे आपकी प्रोफ़ाइल और सबकी फ़ीड से हटा दिया जाएगा। इसके जवाब भी इसके साथ चले जाएँगे।"),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("पोस्ट हटाई गई"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("पोस्ट छिपाई गई"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("पोस्ट का टेक्स्ट कॉपी हुआ"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("इस अवधि में पोस्ट किया गया"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "छिपाया गया। हम ऐसी कम दिखाएँगे।"),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("प्राथमिकताएँ"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("निजता"),
       "ui_report_add":
           MessageLookupByLibrary.simpleMessage("कुछ और जोड़ना है? (वैकल्पिक)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1636,76 +1416,63 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("स्पैम"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("हिंसा या धमकियाँ"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("सहेजी गई पोस्ट"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "किसी पोस्ट को यहाँ रखने के लिए उसके आर्काइव आइकन पर टैप करें। सहेजी गई चीज़ें सिर्फ़ आपको दिखती हैं।"),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "हैंडल या डिस्प्ले नाम से खोजें।"),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("साफ़ करें"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("पोस्ट की गई हर चीज़ में खोजें"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("फ़िल्टर"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("लोगों को खोजें"),
+      "ui_search_posts": MessageLookupByLibrary.simpleMessage("पोस्ट खोजें"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("सेटिंग"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("ऐप और डिवाइस"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("सामग्री और डिस्प्ले"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("डेटा सेवर"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("अपने विचार साझा करें"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("सहायता लेख देखें"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("अपनी भाषा चुनें"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "आपने किसे म्यूट या ब्लॉक किया है"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("सूचना प्राथमिकताएँ"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "आपकी प्रोफ़ाइल और संपर्क विवरण"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "अपने खाते में लौटने के लिए आपको फिर से साइन इन करना होगा।"),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("सुरक्षा सेटिंग"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("पासवर्ड की पुष्टि करें"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("एक पंक्ति में"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("नया ईमेल पता"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("नया पासवर्ड"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("क्या हुआ"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("हमारी टीम से मदद लें"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("साझा करें"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("उद्धृत करें"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("मैसेज में भेजें"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron पर लोगों को"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("यह पोस्ट साझा करें"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("मामला किस बारे में था"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1800,54 +1567,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("आपकी पोस्ट"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("आपका जवाब"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms": MessageLookupByLibrary.simpleMessage("सेवा की शर्तों"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("यह पोस्ट"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("थ्रेड म्यूट किया गया"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("फिर से कोशिश करें"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("आवाज़ बंद करें"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("आवाज़ चालू करें"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("कम से कम दो अक्षर।"),
       "ui_undo": MessageLookupByLibrary.simpleMessage("पूर्ववत करें"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "शब्द, या फ़िल्टर: कोई खाता, तारीख की सीमा, या पोस्ट में क्या है।"),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("रीपोस्ट वापस लें"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("पासवर्ड अपडेट करें"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("कोई दूसरा पता इस्तेमाल करें"),
+      "username": MessageLookupByLibrary.simpleMessage("उपयोगकर्ता नाम"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "उपयोगकर्ता नाम छोटे अक्षरों में होना चाहिए (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("वीडियो"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("संलग्न करें"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("संलग्न करने के लिए तैयार"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("वॉइस पोस्ट रिकॉर्ड करें"),
+      "voice_recording":
+          MessageLookupByLibrary.simpleMessage("सहेजा जा रहा है…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("रोकें"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("क्या हुआ"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "क्या हुआ, और हमें क्या देखना चाहिए?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("इस तस्वीर में क्या है?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("यह किसलिए है? (वैकल्पिक)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "आपने क्या किया, क्या उम्मीद थी, क्या हुआ"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "जब यह हुआ तब आप क्या कर रहे थे।"),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("आपने जवाब दिया"),
       "dmReplied": (Object a0) => "$a0 ने जवाब दिया",
@@ -1972,7 +1734,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("भेजा गया, पर सभी को नहीं।"),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "भेजा नहीं जा सका। फिर से कोशिश करें।"),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("फ़ॉलोअर"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("फ़िल्टर"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("सभी"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("अपठित"),

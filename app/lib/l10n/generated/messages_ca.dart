@@ -43,7 +43,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "and": MessageLookupByLibrary.simpleMessage("i"),
       "answerNumber": (Object a0) => "Resposta ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "arLens": MessageLookupByLibrary.simpleMessage("Lent de RA"),
       "attachSystemLog": MessageLookupByLibrary.simpleMessage(
         "Adjunta el registre del sistema",
       ),
@@ -120,9 +120,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       ),
       "audit_interest_tabs_your_tabs_c3ba148f":
           MessageLookupByLibrary.simpleMessage("Les teves pestanyes"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
           MessageLookupByLibrary.simpleMessage("Torna-ho a provar"),
       "audit_password_requirements_symbol_322aed1e":
@@ -276,7 +275,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "createYourProfile": MessageLookupByLibrary.simpleMessage(
         "Crea el teu perfil",
       ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("Lent de RA"),
       "create_go_live": MessageLookupByLibrary.simpleMessage("Emet en directe"),
       "create_text_post": MessageLookupByLibrary.simpleMessage(
         "Publicació de text",
@@ -508,8 +507,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "keepEditing": MessageLookupByLibrary.simpleMessage("Segueix editant"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Les paraules de Kyron encara s'estan traduint, així que la majoria de pantalles romanen en anglès per ara.",
-      ),
+          "Les pantalles de Kyron són en el teu idioma. Si una paraula no sona bé, digues-nos-ho a Envia comentaris."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
       "languages": MessageLookupByLibrary.simpleMessage("Idiomes"),
       "leave": MessageLookupByLibrary.simpleMessage("Abandona"),
@@ -1228,8 +1226,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
         "La traducció encara no està construïda. Res del teu fil està traduït avui; això es recordarà per quan ho estigui.",
       ),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Les paraules pròpies de Kyron encara s'estan traduint, així que la majoria de pantalles romanen en anglès per ara. El que això canvia avui: les parts de la interfície que Flutter dibuixa, les dates i els números, i la disposició de l'app per a idiomes d'esquerra a dreta o de dreta a esquerra.",
-      ),
+          "Això canvia les paraules pròpies de Kyron, les parts de la interfície que dibuixa el mateix Flutter, les dates i els números, i la direcció en què es disposa l'aplicació per als idiomes de dreta a esquerra."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Torna-ho a provar"),
       "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
         "Política de privacitat",
@@ -1518,7 +1515,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_removed": MessageLookupByLibrary.simpleMessage(
           "Ja no formes part d’aquest grup."),
       "ui_group_rename": MessageLookupByLibrary.simpleMessage("Canvia el nom"),
-      "ui_group_role_admin": MessageLookupByLibrary.simpleMessage("Admin"),
+      "ui_group_role_admin":
+          MessageLookupByLibrary.simpleMessage("Administrador"),
       "ui_group_role_member": MessageLookupByLibrary.simpleMessage("Membre"),
       "ui_group_role_spectator":
           MessageLookupByLibrary.simpleMessage("Espectador"),
@@ -1542,7 +1540,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_language": MessageLookupByLibrary.simpleMessage("Idioma"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Tria el teu idioma"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Avís legal"),
       "ui_like": MessageLookupByLibrary.simpleMessage("M'agrada"),
       "ui_liked_posts": MessageLookupByLibrary.simpleMessage(
         "Publicacions que t'han agradat",

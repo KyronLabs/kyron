@@ -7,249 +7,207 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Сөз, тіркес немесе #тег"),
+      "about": MessageLookupByLibrary.simpleMessage("Туралы"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Жауап қосу"),
+      "addMoreLanguages": MessageLookupByLibrary.simpleMessage("Тіл қосу…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Келісу және жалғастыру"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("Kyron аккаунтыңыз бар ма?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Пікірлер"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "Әртүрлі адамдар, ашылу саны емес"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Белсенділік"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Ұнатулар"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Әзірге көрермендер жоқ"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Бұл жазбаны әлі ешкім ашпаған."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Жарияланды"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Сақтаулар"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Көрермендер"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("КҮНДІК КӨРЕРМЕНДЕР"),
+      "and": MessageLookupByLibrary.simpleMessage("және"),
+      "answerNumber": (Object a0) => "${a0}-жауап",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR линзасы"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Қолданба журналын тіркеу"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Барып-келу уақыты"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("ТОКЕНДІ ТЕКСЕРУ"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Қайталау"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Қайталау"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Қазір эфир бастасаңыз, ешкім кіре алмайтын бөлмеде боласыз"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Қауымдастық құру"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Бұл не үшін? (міндетті емес)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("қайта кіре алмайды."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage(
+              "осы тізімнен қайта кіре алмайды."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Оны жапсаңыз,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("алдымен қосылыңыз"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("жақында"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage(
+              "Өз атыңыздан жариялап жатырсыз"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("осы қауымдастықта жариялау"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Жаңа ғана"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Қайталау"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("1-тақырып"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Сіз үшін"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("бірдеңе бар."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("қазір сонда бара жатыр."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", емес"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("қозғалып жатырмын ба"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Дыбысты өшіру"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("Дыбысты қосу"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Сіз үшін"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Қойындыларыңыз"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Қайталау"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Таңба (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("КҮНДІК КӨРЕРМЕНДЕР"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("жүктеу мүмкін болмады"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("бұл жазба"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "Қосарыңыз бар ма? (міндетті емес)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("бұл жазба"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Аккаунттан"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Шығу"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді растаңыз"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("қазір емес"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Жүктелуде…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Жариялануда…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 сағ бұрын"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Оқиға сілтемесін көшіру"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Сіздің оқиғаңыз"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Аккаунтыңыз, жазбаларыңыз және түрткен нәрселеріңіз, осылайша"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Тақырып қосу"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
+          MessageLookupByLibrary.simpleMessage("өзінікі."),
+      "authorBlocked": (Object a0) => "${a0} бұғатталды",
+      "authorPostsHidden": (Object a0) => "${a0} жазбаларын көрмейсіз",
+      "block": MessageLookupByLibrary.simpleMessage("Бұғаттау"),
+      "blockAuthor": (Object a0) => "${a0} бұғатталсын ба?",
       "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          "Құрастыру мәліметтері көшірілді"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
-      "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+      "byContinuingAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Жалғастыру арқылы келісесіз:"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
-      "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Жалғастыру арқылы Қызмет көрсету шарттары мен Құпиялылық саясатымызға келісесіз"),
+      "bySigningUpAgreeTerms":
+          MessageLookupByLibrary.simpleMessage("Тіркелу арқылы келісесіз:"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Бас тарту"),
       "change": MessageLookupByLibrary.simpleMessage("Өзгерту"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail":
+          MessageLookupByLibrary.simpleMessage("Электрондық поштаны өзгерту"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
-      "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Аккаунтыңызды электрондық пошта арқылы растаңыз."),
+      "checkKyronReachable":
+          MessageLookupByLibrary.simpleMessage("Kyron қолжетімді ме, тексеру"),
+      "clear": MessageLookupByLibrary.simpleMessage("Тазалау"),
+      "close": MessageLookupByLibrary.simpleMessage("Жабу"),
+      "closeCommunity": (Object a0) => "${a0} жабылсын ба?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Жабу"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Осы қауымдастықты жабу"),
+      "communities": MessageLookupByLibrary.simpleMessage("Қауымдастықтар"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Шолудан біреуін табыңыз немесе өзіңіздікін құрыңыз."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Ыстық пікір айтыңыз (немесе жылы)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Ойыңызда не бар?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
-      "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Тек сіз айта алатын нәрсені айтыңыз…"),
+      "composer_placeholder_signal":
+          MessageLookupByLibrary.simpleMessage("Бұл белгі: жариялаңыз"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Жазыңыз, сөйлеңіз немесе дауыстап ойлаңыз"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді растаңыз"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Қолдау қызметіне хабарласу"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
+          "Жазбалардың әлі тілі жоқ, сондықтан бұл лентаңызды әлі сүзбейді. Таңдауларыңыз оған дейін сақталады."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Жалғастыру"),
       "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Электрондық поштамен жалғастыру"),
+      "copy": MessageLookupByLibrary.simpleMessage("Көшіру"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Оның орнына есепті көшіру"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
+          "Google арқылы кіруді ашу мүмкін болмады. ${a0}",
+      "couldNotSignOut": (Object a0) => "Шығу сәтсіз: ${a0}",
       "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Суретке түсіру мүмкін болмады."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Профиліңде және жазбаларыңның астында көрсетіледі."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -260,88 +218,78 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Профиліңде және жазбаларыңның астында көрсетіледі. Біреудің жазбаларын көргенде, елің оның Талдауында есептеледі, тек бес не одан көп адамдық топтарда және ешқашан атыңмен емес."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Телефоныңның баптауларынан"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
-      "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
-      "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "create": MessageLookupByLibrary.simpleMessage("Жасау"),
+      "createAccount": MessageLookupByLibrary.simpleMessage("Аккаунт жасау"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңызды жасаңыз"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Профиліңізді жасаңыз"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR линзасы"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Тікелей эфир"),
+      "create_text_post":
+          MessageLookupByLibrary.simpleMessage("Мәтіндік жазба"),
+      "create_voice_post":
+          MessageLookupByLibrary.simpleMessage("Дауыстық жазба"),
+      "delete": MessageLookupByLibrary.simpleMessage("Жою"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Бұл пікір жойылсын ба?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
-      "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          MessageLookupByLibrary.simpleMessage("Бұл жазба жойылсын ба?"),
+      "describeAttachment":
+          MessageLookupByLibrary.simpleMessage("Бұл тіркемені сипаттаңыз"),
+      "description": MessageLookupByLibrary.simpleMessage("Сипаттама"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("DID буферге көшірілді"),
       "done": MessageLookupByLibrary.simpleMessage("Дайын"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Бірдеңе жазғаннан кейін редакторды жабыңыз, сізге жоба ұсынылады."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} күн бұрын"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
-      "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
-      "email": MessageLookupByLibrary.simpleMessage("Email"),
+          MessageLookupByLibrary.simpleMessage("{hours} сағ бұрын"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Жаңа ғана"),
+      "draft_minutes_ago":
+          MessageLookupByLibrary.simpleMessage("{minutes} мин бұрын"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Әлі ештеңе жазылмаған"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Сауалнама, әлі сұрақсыз"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Дәйексөз, әлі мәтінсіз"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Жобалар"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("Профильді өңдеу"),
+      "email": MessageLookupByLibrary.simpleMessage("Электрондық пошта"),
       "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+          "Электрондық пошта хабарландырулары"),
+      "explore": MessageLookupByLibrary.simpleMessage("Шолу"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
+          "Бұл құрылғыда бетті бақылау қолжетімсіз."),
       "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "#${a0} тегімен әлі ештеңе жарияланбаған.",
       "follow_author": MessageLookupByLibrary.simpleMessage("{name} жазылу"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Жазылушылар"),
+      "following": MessageLookupByLibrary.simpleMessage("Жазылымдар"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді ұмыттыңыз ба?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Көмек алу"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Google арқылы жалғастыру"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Google арқылы кіру"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Google аяқталған кіруді Kyron-ға тек Android пен iOS жауап беретін сілтеме арқылы қайтарады, сондықтан ${a0} платформасында браузердің оны қайтаратын жері жоқ.\\n\\nЕгер Google арқылы Kyron аккаунтыңыз болса, сол мекенжаймен Электрондық поштамен жалғастыруды таңдап, Құпия сөзді ұмыттыңыз ба түймесін түртіңіз: құпия сөз орнату сілтемесін аласыз.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Google арқылы кіруге телефон қолданбасы керек"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Google арқылы тіркелу"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
-      "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
-      "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+          "Нұсқаулықтар және жиі қойылатын сұрақтарға жауаптар"),
+      "handle": MessageLookupByLibrary.simpleMessage("пайдаланушы аты"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Анықтама және қолдау"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Анықтама орталығы"),
+      "home": MessageLookupByLibrary.simpleMessage("Басты бет"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Бір жолда"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Сіздің аккаунтыңыз"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Қауымдастықты ашу"),
@@ -458,690 +406,575 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ins_top_posts": MessageLookupByLibrary.simpleMessage("Үздік жазбалар"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Алдыңғы {days} күнмен салыстырғанда"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add": MessageLookupByLibrary.simpleMessage("Қызығушылық қосу"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("Ретін өзгерту үшін сүйреңіз"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Жолаққа ең көбі бес қойынды сыяды. Басқасын қосу үшін біреуін алып тастаңыз."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Жазылымдар"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Сіз үшін"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Адамдар хэштегтерді қолдана бастағанда, олар осында көрінеді."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Қазір трендте"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Бейнелер"),
+      "interest_your_tabs":
+          MessageLookupByLibrary.simpleMessage("Қойындыларыңыз"),
+      "itDisappearsForBoth":
+          MessageLookupByLibrary.simpleMessage("Ол екеуіңізден де жоғалады."),
       "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Ол тізбектен алынып тасталады."),
+      "join": MessageLookupByLibrary.simpleMessage("Қосылу"),
+      "keepEditing": MessageLookupByLibrary.simpleMessage("Өңдеуді жалғастыру"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Kyron экрандары сіздің тіліңізде. Қай сөз дұрыс естілмесе, Пікір жіберу арқылы бізге айтыңыз."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
-      "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
+      "languages": MessageLookupByLibrary.simpleMessage("Тілдер"),
+      "leave": MessageLookupByLibrary.simpleMessage("Шығу"),
+      "leaveCommunity": (Object a0) => "${a0} қауымдастығынан шығасыз ба?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Қайта кіргізу"),
+      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 бет ашық"),
+      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Клип қосу"),
+      "literaladdAGif": MessageLookupByLibrary.simpleMessage("GIF қосу"),
+      "literaladdAHashtag": MessageLookupByLibrary.simpleMessage("Хэштег қосу"),
+      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Сурет қосу"),
+      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Сауалнама қосу"),
+      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Бейне қосу"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Қызығушылық қосу"),
+      "literaladdLabelAsATab": (Object a0) => "${a0} қойынды ретінде қосу",
       "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Қолданба тілі"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Қолданба нұсқасы"),
+      "literalblockAuthor": (Object a0) => "${a0} бұғаттау",
+      "literalblockAuthor2": (Object a0) => "${a0} бұғатталсын ба?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("Бұл аккаунт бұғатталсын ба?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Жауаптан бас тарту"),
+      "literalcheckAgain":
+          MessageLookupByLibrary.simpleMessage("Қайта тексеру"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Галереядан таңдау"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("Кэшті тазалау"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Барлық беттерді жабу"),
+      "literalcloseTabLabel": (Object a0) => "${a0} жабу",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Браузерді жабу"),
+      "literalcloseWidgetCommunityName": (Object a0) => "${a0} жабылсын ба?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Қолдау қызметіне хабарласу"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Мазмұн тілдері"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Сілтемені көшіру"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Жазба сілтемесін көшіру"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Жазба мәтінін көшіру"),
+      "literalcopyText": MessageLookupByLibrary.simpleMessage("Мәтінді көшіру"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Қауымдастықтарды жүктеу мүмкін болмады"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("GIF жүктеу мүмкін болмады"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Хабарландыруларды жүктеу мүмкін болмады"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Мүшелерді жүктеу мүмкін болмады"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Бұл жазбаларды жүктеу мүмкін болмады"),
       "literalcouldNotLoadThisConversation":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+              "Бұл әңгімені жүктеу мүмкін болмады"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
+          "Бұл тізімді жүктеу мүмкін болмады"),
       "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Бұл жазбаны жүктеу мүмкін болмады"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Бұл жауапты жүктеу мүмкін болмады"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Танымал тегтерді жүктеу мүмкін болмады"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Қауымдастықтарыңызды жүктеу мүмкін болмады"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Хабарларыңызды жүктеу мүмкін болмады"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
+          "Бұл қауымдастықты ашу мүмкін болмады"),
       "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Жауапты жариялау мүмкін болмады."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Іздеу жұмыс істемеді"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
-      "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+          "Шығу сәтсіз: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} бет ашық",
+      "literalcoverPhoto":
+          MessageLookupByLibrary.simpleMessage("Мұқаба суреті"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Трафикті үнемдеу"),
+      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Жазбаны жою"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Адамдарды табу"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Жауап бермеңіз"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Жоба сақталды"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Қазір пікір жіберу мүмкін емес"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
-      "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Мәтін өлшемі"),
+      "literalgifsAreNotSetUp":
+          MessageLookupByLibrary.simpleMessage("GIF бапталмаған"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Басқа қолданбаға беру"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді жасыру"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Бұл жазбаны жасыру"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Оны жасырып, бізден осындайларды азырақ көрсетуді сұрайды"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Қалай әрекет ету керек"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Жазуды жалғастыру"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Kyron жауап бермеді"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
-      "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
+      "literallabelDate": (Object a0) => "\\${a0} күні",
+      "literalleaveCommunityName": (Object a0) =>
+          "${a0} қауымдастығынан шығасыз ба?",
+      "literallensNameFaceLens": (Object a0) => "${a0}, бет линзасы",
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Ұнатылған жазбалар"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Сілтеме көшірілді"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Модератор ету"),
+      "literalmuteAuthor": (Object a0) => "${a0} дыбысын өшіру",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("Бұл тізбектің дыбысын өшіру"),
       "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+          "Сөздердің немесе тегтердің дыбысын өшіру"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Дыбысы өшірілген және бұғатталған аккаунттар"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Дыбысы өшірілді. Хабарландырулар келмейді."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Бұл құрылғыдағы ешбір қолданба ${a0} сілтемелерін ашпайды.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Бұл құрылғыдағы ешбір браузер сілтемені қабылдамады."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Әзірге DID жоқ"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Жобалар жоқ"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге қызығушылықтар жоқ"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге ұнатулар жоқ"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге хабарлар жоқ"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Жаңа жазылушылар жоқ"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге жазбалар жоқ"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Әзірге жауаптар жоқ"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
-      "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          MessageLookupByLibrary.simpleMessage("Әзірге қайта жариялаулар жоқ"),
+      "literalnoTrendingTagMatchesThat":
+          MessageLookupByLibrary.simpleMessage("Сәйкес танымал тег жоқ"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ешкім табылмады"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Ешкім алып тасталмаған"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Мұнда әлі ешкім жоқ"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Қызық емес"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ештеңе табылмады"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге трендте ештеңе жоқ"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Журналда әлі ештеңе жоқ"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Сәйкестік жоқ"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
-      "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
-      "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          MessageLookupByLibrary.simpleMessage("Дыбысы өшірілгендер жоқ"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Әзірге көретін ештеңе жоқ"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Оқылмағандар жоқ"),
+      "literalonlyTheOwnerCanChangeThis":
+          MessageLookupByLibrary.simpleMessage("Мұны тек иесі өзгерте алады"),
+      "literalopenReply": MessageLookupByLibrary.simpleMessage("Жауапты ашу"),
+      "literalopenTheMailFromKyron":
+          MessageLookupByLibrary.simpleMessage("Kyron хатын ашыңыз"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Құпия сөз және кіру"),
+      "literalpostInCommunityName": (Object a0) =>
+          "${a0} қауымдастығына жариялау",
+      "literalpostInWidgetCommunityName": (Object a0) =>
+          "${a0} қауымдастығына жариялау",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+              "Үстіне өз сөзіңізді жазып жариялаңыз"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Негізгі тіл"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push хабарландырулар"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Тексерілуде…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Дауыстық жазба жазу"),
+      "literalrecordAgain": MessageLookupByLibrary.simpleMessage("Қайта жазу"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Модераторлықтан алу"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Қауымдастықтан алып тастау"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Сақталғандардан алып тастау"),
+      "literalremoveLabel": (Object a0) => "${a0} алып тастау",
+      "literalremoveLanguageEnglishname": (Object a0) =>
+          "${a0} тілін алып тастау",
+      "literalremoveMemberDisplayname": (Object a0) =>
+          "${a0} алып тасталсын ба?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Сауалнаманы алып тастау"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Бұл жауапты алып тастау"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Бұл әңгімені жою"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Бұл сауалнаманы алып тастау"),
+      "literalreportAuthor": (Object a0) => "${a0} туралы шағымдану",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("Жазба туралы шағымдану"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Кодты қайта жіберу"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Сақталған жазбалар"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Бірдеңе айтыңыз"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
+          "${a0} қауымдастығына бірдеңе айтыңыз",
       "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          MessageLookupByLibrary.simpleMessage("Іздеу сәтсіз"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Қайта жіберу"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "${a0} с кейін қайта жіберу",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Пікір қалдыру"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Сілтемені жіберу"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "Жіберілді. Бұл №${a0} есеп.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
+          "Құпия сөз орнатып, жалғастырыңыз"),
       "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Журналды қолдау қызметімен бөлісу"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Бұл қауымдастықпен бөлісу"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Бұл бетпен бөлісу"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Бұл профильмен бөлісу"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Бөлісу…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Дәйексөзбен бөлісу"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Осындайларды көбірек көрсету"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді көрсету"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Нәтижелерді көрсету"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Қауымдастық құру"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Жазуды бастау"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Жүктеуді тоқтату"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Бұл жазба мен оның жауаптарын көрмеу"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Оқиғалар таспасы, ${a0} элемент",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Камераны ауыстыру"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Біреуді белгілеу"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Суретке түсіру"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "Ауыстыру үшін баннерді немесе суретті түртіңіз"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("Ішіндегі сілтемені түртіңіз"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "Сурет пен мұқаба қосу үшін түртіңіз"),
       "literalthatDidNotGoThroughTryAgain":
-          MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Болмады. Қайталап көріңіз."),
       "literalthatGifCouldNotBeDownloaded":
-          MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Бұл GIF жүктелмеді."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Бұл сілтемені мұнда ашу мүмкін емес."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Камера жабық"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Бұл қауымдастық"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Бұл жауап енді жоқ"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Жазбаны аудару"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("Дыбысты өшіру"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
-      "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Дыбысты қосу"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Біздің біреуімізді пайдалану"),
+      "literalverificationCodeResent":
+          MessageLookupByLibrary.simpleMessage("Растау коды қайта жіберілді."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Растау сәтсіз: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("Электрондық поштаны растау"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
-      "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+              "Көрермендер, ұнатулар, сақтаулар және пікірлер"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Kyron нені сақтайды"),
+      "literalwhatThisAppHasBeenDoing":
+          MessageLookupByLibrary.simpleMessage("Бұл қолданба не істеп жатты"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Не істедіңіз, не күттіңіз, не болды "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Жариялағаныңыз — сіздікі"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kyron қазір қолжетімді ме"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Кім жауап бере алады"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Кімді белгілегіңіз келеді?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
+              "Сіз барлық танымал тегтерге жазылып қойғансыз"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Барлығын көрдіңіз"),
       "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+          "Сіз ешбір қауымдастықта емессіз"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Сіз шықтыңыз."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) =>
+          "Сіз ${a0} қауымдастығынан шықтыңыз",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Сіз әлі ештеңе жарияламадыңыз"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Тағы жүктеу"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Журнал тазаланды"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Журнал көшірілді"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Кіру"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Шығу"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Шығасыз ба?"),
+      "login": MessageLookupByLibrary.simpleMessage("Кіру"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
-      "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-      "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Кіру сәтсіз. Деректеріңізді тексеріңіз."),
+      "manage": MessageLookupByLibrary.simpleMessage("Басқару"),
+      "menu": MessageLookupByLibrary.simpleMessage("Мәзір"),
+      "message": MessageLookupByLibrary.simpleMessage("Хабар"),
+      "messages": MessageLookupByLibrary.simpleMessage("Хабарлар"),
+      "messagesCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Барлық әңгімелерді оқыдыңыз."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
-      "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          "Біреудің профилін ашып, әңгіме бастау үшін Хабар түймесін түртіңіз."),
+      "mute": MessageLookupByLibrary.simpleMessage("Дыбысын өшіру"),
+      "mutedAndBlocked": MessageLookupByLibrary.simpleMessage(
+          "Дыбысы өшірілгендер мен бұғатталғандар"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
-      "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          "Дыбысы өшірілген сөздер мен тегтер"),
+      "name": MessageLookupByLibrary.simpleMessage("Аты"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> экраны"),
+      "newEmailAddress": MessageLookupByLibrary.simpleMessage(
+          "Жаңа электрондық пошта мекенжайы"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Жаңа құпия сөз"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Жаңа жазба"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Қазір емес"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Жіберілмеді. Қайталау үшін түртіңіз"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Kyron-да \"${a0}\" сұрауына сәйкес ештеңе жоқ",
+      "nothingToCopy":
+          MessageLookupByLibrary.simpleMessage("Көшіретін ештеңе жоқ"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Ұнатулар, жауаптар және жаңа жазылушылар осында келеді."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Сізге жазылған адамдар осында көрінеді."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Біреу жазбаңызды ұнатса, ол осында көрінеді."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Жазбаларыңызға жауаптар осында келеді."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
-      "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
+          "Біреу сізді қайта жарияласа, ол осында көрінеді."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Хабарландырулар"),
+      "openInBrowser": MessageLookupByLibrary.simpleMessage("Браузерде ашу"),
+      "or": MessageLookupByLibrary.simpleMessage("немесе"),
+      "pageNotFound": MessageLookupByLibrary.simpleMessage("Бет табылмады"),
+      "password": MessageLookupByLibrary.simpleMessage("Құпия сөз"),
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Құпия сөз тым қысқа"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Қызығушылықтарыңызды таңдаңыз"),
+      "post": MessageLookupByLibrary.simpleMessage("Жариялау"),
+      "postAnalytics":
+          MessageLookupByLibrary.simpleMessage("Жазба статистикасы"),
+      "postInCommunity": (Object a0) => "${a0} қауымдастығына жариялау",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Жариялаңыз, айтыңыз, көрсетіңіз."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
-      "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
+          MessageLookupByLibrary.simpleMessage("Жазба мәтіні көшірілді"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Құпиялылық саясаты"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Профиль жаңартылды"),
+      "profile_bio": MessageLookupByLibrary.simpleMessage("Өзі туралы"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Ел"),
       "profile_display_name":
-          MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
-      "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+          MessageLookupByLibrary.simpleMessage("Көрсетілетін аты"),
+      "profile_location":
+          MessageLookupByLibrary.simpleMessage("Орналасқан жері"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("Ауыстыру үшін түртіңіз"),
+      "profile_website": MessageLookupByLibrary.simpleMessage("Веб-сайт"),
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Push хабарландырулар"),
+      "quote": MessageLookupByLibrary.simpleMessage("Дәйексөз келтіру"),
+      "quotePost":
+          MessageLookupByLibrary.simpleMessage("Жазбадан дәйексөз келтіру"),
+      "reachAPerson": MessageLookupByLibrary.simpleMessage("Адаммен байланысу"),
+      "remove": MessageLookupByLibrary.simpleMessage("Алып тастау"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Бұл әңгіме жойылсын ба?"),
+      "removeMember": (Object a0) => "${a0} алып тасталсын ба?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Бұл хабар жойылсын ба?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
+          "Жауаптар, жазылымдар және аталулар"),
+      "repliesPolicy": (Object a0) => "Жауаптар: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Жауап беру"),
       "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          MessageLookupByLibrary.simpleMessage("Кез келген адам қатыса алады"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Кез келген адам бұл жазбаны көре, қайта жариялай және дәйексөз келтіре алады."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Kyron-дағы кез келген адам бұл жазбаға жауап бере алады."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Сізге жазылғандар"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Бұл жазбаға тек жазылушыларыңыз жауап бере алады."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Сіз атаған адамдар"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Тек осы жазбада @атаған адамдарыңыз жауап бере алады."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Ешкім жауап бере алмайды"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Жауаптар өшірулі. Сіз бәрібір жауап бере аласыз."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Кім жауап бере алады?"),
       "report": MessageLookupByLibrary.simpleMessage("Шағымдану"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Есеп көшірілді. Оны қолдау қызметіне жазылатын хатқа қойыңыз."),
       "reportSent": MessageLookupByLibrary.simpleMessage("Шағым жіберілді"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
-      "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+      "repost": MessageLookupByLibrary.simpleMessage("Қайта жариялау"),
+      "reset": MessageLookupByLibrary.simpleMessage("Қалпына келтіру"),
+      "resetPassword": MessageLookupByLibrary.simpleMessage(
+          "Құпия сөзді қалпына келтіріңіз"),
+      "retry": MessageLookupByLibrary.simpleMessage("Қайталау"),
+      "save": MessageLookupByLibrary.simpleMessage("Сақтау"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("Жобаны сақтау"),
+      "saySomething": (Object a0) => "${a0} қауымдастығына бірдеңе айтыңыз",
+      "search": MessageLookupByLibrary.simpleMessage("Іздеу"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
-      "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          "Аты немесе пайдаланушы аты бойынша іздеу"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Қауымдастықтарды іздеу"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("GIF іздеу"),
+      "searchLanguages": MessageLookupByLibrary.simpleMessage("Тілдерді іздеу"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Танымал тегтерді іздеу"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Қауіпсіздік ескертулері және аккаунт өзгерістері"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Қолданба интерфейсінің тілін таңдаңыз."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Лентаңызда қандай тілдер көрсетілетінін таңдаңыз. Ешқайсысын таңдамасаңыз, барлық тілдер көрсетіледі."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Лентадағы аудармалар үшін негізгі тілді таңдаңыз."),
+      "send": MessageLookupByLibrary.simpleMessage("Жіберу"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Растауды жіберу"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Қате туралы есеп жіберу"),
+      "sendFeedback": MessageLookupByLibrary.simpleMessage("Пікір жіберу"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Шағым жіберу"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Қолдау қызметіне жіберу"),
+      "serviceStatus": MessageLookupByLibrary.simpleMessage("Қызмет күйі"),
+      "settings": MessageLookupByLibrary.simpleMessage("Параметрлер"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Қолданба журналын қолдау қызметімен бөлісу"),
+      "signInToKyron": MessageLookupByLibrary.simpleMessage("Kyron-ға кіру"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Кірген аккаунт"),
+      "signupFailed": (Object a0) => "Тіркелу сәтсіз: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Қалу"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Kyron енді ғана басталып жатыр, және мұны шынымен түзете алатын адамға жетудің ең жылдам жолы — өтініш ашу. Не істеп жатқаныңызды және не болғанын айтыңыз."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Қолданбада әлі қолдау жәшігі жоқ, сондықтан бұл экран сізді ешқайда апармайтын пішіннің орнына шынымен қадағаланатын жерге бағыттайды."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Қолданба журналы"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Не жетіспейтінін немесе не бұзылғанын айтыңыз"),
+      "terms": MessageLookupByLibrary.simpleMessage("Қызмет көрсету шарттары"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
+          "Мәтін, дауыс және бейне, оларды жасайтын адамдар және олар сөйлесетін бөлмелер."),
       "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Редакторда Жариялау түймесі жоқ"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Қараңғы"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Әрқашан қараңғы"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Күңгірт"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Жұмсағырақ қараңғы, қараның орнына көгілдір сұр"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Ашық"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
-      "theme_system": MessageLookupByLibrary.simpleMessage("System"),
+          MessageLookupByLibrary.simpleMessage("Әрқашан ашық"),
+      "theme_system": MessageLookupByLibrary.simpleMessage("Жүйе"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Телефонның ашық немесе қараңғы параметріне сай"),
+      "translate": MessageLookupByLibrary.simpleMessage("Аудару"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Аударма әлі қосылмаған. Лентаңызда әлі ештеңе аударылмайды; бұл оған дейін есте сақталады."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Бұл Kyron-ның өз сөздерін, Flutter өзі салатын интерфейс бөліктерін, күндер мен сандарды және оңнан солға жазылатын тілдер үшін қолданба орналасуының бағытын өзгертеді."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Қайталап көру"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
-      "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Құпиялылық саясаты"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Қызмет көрсету шарттары"),
+      "ui_account": MessageLookupByLibrary.simpleMessage("Аккаунт"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Кейін"),
+      "ui_app_device":
+          MessageLookupByLibrary.simpleMessage("Қолданба және құрылғы"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Бұл дәйексөз адамдарды алаяқтықтан сақтандыру үшін еді."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1155,15 +988,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Апелляция жіберілді. Шешім шыққанда хабарландыру аласыз."),
       "ui_appeal_title": MessageLookupByLibrary.simpleMessage(
           "\$number ісі бойынша апелляция"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Сыртқы түр"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Ашық, қараңғы немесе телефонға сай"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Бұрын"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Kyron-да бір-біріңізді көрмейсіз, ал араларыңыздағы жазылымдар алынып тасталады. Оған хабарланбайды."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Құрамында"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Не үшін (міндетті емес)"),
       "ui_cchat_announcements":
@@ -1266,29 +1097,23 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Дауыстық хабарлама жазу"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Сіз"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Қауымдастықтар"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Бұл не үшін? (міндетті емес)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Жазбалар:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Мазмұн және көрсету"),
       "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+          "Лентаңызды жүктеу мүмкін болмады"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
+          "Ұнатқан жазбаларыңызды жүктеу мүмкін болмады"),
       "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Профиліңізді жүктеу мүмкін болмады"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Сақталған жазбаларыңызды жүктеу мүмкін болмады"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Орталықсыздандырылған ID"),
+      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Ақауларды жою"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Топтар"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Топтар жоқ"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1298,16 +1123,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Бекітілген"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Ұнағандар"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Сақталғандар"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Мұнда әлі ештеңе жоқ"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
-      "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Бірнеше аккаунтқа жазылыңыз, олардың жазбалары осында көрінеді."),
+      "ui_feed_following_empty":
+          MessageLookupByLibrary.simpleMessage("Жазылғандарыңыздан ештеңе жоқ"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Адамдар жазған сайын жазбалар осында көрінеді."),
       "ui_feed_signal_fading":
           MessageLookupByLibrary.simpleMessage("Әлсіреп барады"),
       "ui_feed_signal_less": MessageLookupByLibrary.simpleMessage("Қызық емес"),
@@ -1326,16 +1149,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Олар Басты бет пен Шолуды, негізінен әр жазбаның тақырыбы бойынша қалыптастырады. Әрқайсысы ай сайын екі есе әлсірейді және алты айдан кейін есептелмейді. Қазір тоқтату үшін біреуін алып тастаңыз."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Клипі бар жазбалар осында көрінеді."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
-      "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
-      "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Әзірге бейнелер жоқ"),
+      "ui_feedback": MessageLookupByLibrary.simpleMessage("Пікір"),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Kyron-да адамдарды табыңыз"),
+      "ui_from_account": MessageLookupByLibrary.simpleMessage("Аккаунттан"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Адам қосу"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Қосу"),
       "ui_group_add_name":
@@ -1422,32 +1242,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("сіз"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Сіз көрерменсіз"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Анықтама"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Белгіленді. Бұл сізге не көрсетуді таңдауға көмектеседі."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Қосылу"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Қосылды"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Тіл"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Тілді таңдаңыз"),
-      "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_legal": MessageLookupByLibrary.simpleMessage("Құқықтық ақпарат"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("Ұнату"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Ұнатылған жазбалар"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Ұнатқан жазбаларыңыз осында, ең жаңалары алдымен көрінеді."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Сілтеме көшірілді"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Енді оның жазбаларын көрмейсіз. Оған хабарланбайды."),
+      "ui_no_likes_yet":
+          MessageLookupByLibrary.simpleMessage("Әзірге ұнатулар жоқ"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Бұл сүзгілерге сәйкес жазба жоқ."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Әзірге сақталғандар жоқ"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Аккаунтыңыз жаңартылды"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1506,13 +1324,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Аккаунтыңыз ескерту алды"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Кеше"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Дайын"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Өткізіп жіберу"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Бұл бұрын ашылған."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Мерзімі өтті"),
@@ -1529,23 +1343,20 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send":
           MessageLookupByLibrary.simpleMessage("Бір рет көруге жіберу"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("Көру үшін түртіңіз"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("Кідірту"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("Ойнату"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Ол профиліңізден және барлығының лентасынан алынып тасталады. Оған жауаптар да бірге кетеді."),
+      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Жазба жойылды"),
+      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Жазба жасырылды"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Жазба мәтіні көшірілді"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Жарияланған аралық"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
-      "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
+          "Жасырылды. Осындайларды азырақ көрсетеміз."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Параметрлер"),
+      "ui_privacy": MessageLookupByLibrary.simpleMessage("Құпиялылық"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "Қосатын нәрсе бар ма? (міндетті емес)"),
       "ui_report_follow_up": MessageLookupByLibrary.simpleMessage(
@@ -1643,69 +1454,59 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Спам"),
       "ui_rule_violence": MessageLookupByLibrary.simpleMessage(
           "Зорлық-зомбылық немесе қорқыту"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Сақталған жазбалар"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "Жазбаны осында сақтау үшін оның мұрағат белгішесін түртіңіз. Сақтағандарыңызды тек сіз көресіз."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Пайдаланушы аты немесе көрсетілетін аты бойынша іздеңіз."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Тазалау"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Жарияланғанның бәрінен іздеу"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Сүзгілер"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Адамдарды іздеу"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Жазбаларды іздеу"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Параметрлер"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("Қолданба және құрылғы"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Мазмұн және көрсету"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
-      "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          MessageLookupByLibrary.simpleMessage("Трафикті үнемдеу"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Ойыңызбен бөлісіңіз"),
+      "ui_settings_help_articles":
+          MessageLookupByLibrary.simpleMessage("Анықтама мақалаларын шолу"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Тілді таңдаңыз"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
-      "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Кімнің дыбысын өшірдіңіз немесе бұғаттадыңыз"),
+      "ui_settings_notifications_detail":
+          MessageLookupByLibrary.simpleMessage("Хабарландыру параметрлері"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Профиліңіз және байланыс деректеріңіз"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Аккаунтқа оралу үшін қайта кіруіңіз керек болады."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Қауіпсіздік параметрлері"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді растаңыз"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Бір жолда"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage(
+              "Жаңа электрондық пошта мекенжайы"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Жаңа құпия сөз"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
-      "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          MessageLookupByLibrary.simpleMessage("Не болды"),
+      "ui_settings_team_help":
+          MessageLookupByLibrary.simpleMessage("Біздің командадан көмек алу"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Бөлісу"),
       "ui_share_quote":
           MessageLookupByLibrary.simpleMessage("Дәйексөз келтіру"),
       "ui_share_send_message":
@@ -1713,7 +1514,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Kyron-дағы адамдарға"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Бұл жазбамен бөлісу"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Не туралы болды"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1805,54 +1606,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_standing_your_post": MessageLookupByLibrary.simpleMessage("Жазбаңыз"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Жауабыңыз"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("Қызмет көрсету шарттары"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("бұл жазба"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Тізбектің дыбысы өшірілді"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Қайталау"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          MessageLookupByLibrary.simpleMessage("Дыбысты өшіру"),
+      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Дыбысты қосу"),
+      "ui_two_characters_or_more":
+          MessageLookupByLibrary.simpleMessage("Кемінде екі таңба."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("Болдырмау"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
-      "username": MessageLookupByLibrary.simpleMessage("Username"),
+          "Сөздер немесе сүзгі: аккаунт, күн аралығы немесе жазба мазмұны."),
+      "undoRepost":
+          MessageLookupByLibrary.simpleMessage("Қайта жариялауды болдырмау"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("Құпия сөзді жаңарту"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Басқа мекенжайды пайдалану"),
+      "username": MessageLookupByLibrary.simpleMessage("Пайдаланушы аты"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
-      "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+          "Пайдаланушы аты кіші әріптермен болуы керек (a-z, 0-9, _)"),
+      "video": MessageLookupByLibrary.simpleMessage("Бейне"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Тіркеу"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Тіркеуге дайын"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Дауыстық жазба жазу"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Сақталуда…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Тоқтату"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Не болды"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Не болды және нені тексеруіміз керек?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Бұл суретте не бар?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Бұл не үшін? (міндетті емес)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Не істедіңіз, не күттіңіз, не болды"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Бұл болған кезде не істеп жатқан едіңіз."),
       "ui_dm_you_replied":
           MessageLookupByLibrary.simpleMessage("Сіз жауап бердіңіз"),
       "dmReplied": (Object a0) => "$a0 жауап берді",
@@ -1978,7 +1774,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Жіберілді, бірақ барлығына емес."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Жіберу мүмкін болмады. Қайталап көріңіз."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Жазылушы"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Сүзгі"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Барлығы"),
       "ui_dm_filter_unread": MessageLookupByLibrary.simpleMessage("Оқылмаған"),

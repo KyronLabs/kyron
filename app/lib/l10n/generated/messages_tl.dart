@@ -7,249 +7,206 @@ class MessageLookup extends MessageLookupByLibrary {
 }
 
 Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
-      "aWordPhraseOrTag": MessageLookupByLibrary.simpleMessage(
-        "A word, phrase or #tag",
-      ),
-      "about": MessageLookupByLibrary.simpleMessage("About"),
-      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Add an answer"),
-      "addMoreLanguages": MessageLookupByLibrary.simpleMessage(
-        "Add more languages…",
-      ),
-      "agreeAndContinue": MessageLookupByLibrary.simpleMessage(
-        "Agree and continue",
-      ),
+      "aWordPhraseOrTag":
+          MessageLookupByLibrary.simpleMessage("Salita, parirala, o #tag"),
+      "about": MessageLookupByLibrary.simpleMessage("Tungkol"),
+      "addAnAnswer": MessageLookupByLibrary.simpleMessage("Magdagdag ng sagot"),
+      "addMoreLanguages":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng wika…"),
+      "agreeAndContinue":
+          MessageLookupByLibrary.simpleMessage("Sumang-ayon at magpatuloy"),
       "alreadyOnKyron":
-          MessageLookupByLibrary.simpleMessage("Already on Kyron?"),
-      "analytics_comments": MessageLookupByLibrary.simpleMessage("Comments"),
+          MessageLookupByLibrary.simpleMessage("May Kyron account ka na?"),
+      "analytics_comments": MessageLookupByLibrary.simpleMessage("Mga komento"),
       "analytics_distinct_people_not_opens":
           MessageLookupByLibrary.simpleMessage(
-        "Distinct people, not opens",
-      ),
+              "Iba-ibang tao, hindi bilang ng pagbukas"),
       "analytics_engagement":
-          MessageLookupByLibrary.simpleMessage("Engagement"),
-      "analytics_likes": MessageLookupByLibrary.simpleMessage("Likes"),
-      "analytics_no_viewers_yet": MessageLookupByLibrary.simpleMessage(
-        "No viewers yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pakikilahok"),
+      "analytics_likes": MessageLookupByLibrary.simpleMessage("Mga like"),
+      "analytics_no_viewers_yet":
+          MessageLookupByLibrary.simpleMessage("Wala pang manonood"),
       "analytics_nobody_opened_post": MessageLookupByLibrary.simpleMessage(
-        "Nobody has opened this post yet.",
-      ),
-      "analytics_posted": MessageLookupByLibrary.simpleMessage("Posted"),
-      "analytics_saves": MessageLookupByLibrary.simpleMessage("Saves"),
-      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Viewers"),
-      "analytics_viewers_per_day": MessageLookupByLibrary.simpleMessage(
-        "VIEWERS PER DAY",
-      ),
-      "and": MessageLookupByLibrary.simpleMessage("and"),
-      "answerNumber": (Object a0) => "Answer ${a0}",
-      "arLens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "attachSystemLog": MessageLookupByLibrary.simpleMessage(
-        "Attach the system log",
-      ),
+          "Wala pang nagbukas ng post na ito."),
+      "analytics_posted": MessageLookupByLibrary.simpleMessage("Nai-post"),
+      "analytics_saves": MessageLookupByLibrary.simpleMessage("Mga save"),
+      "analytics_viewers": MessageLookupByLibrary.simpleMessage("Mga manonood"),
+      "analytics_viewers_per_day":
+          MessageLookupByLibrary.simpleMessage("MGA MANONOOD BAWAT ARAW"),
+      "and": MessageLookupByLibrary.simpleMessage("at"),
+      "answerNumber": (Object a0) => "Sagot ${a0}",
+      "arLens": MessageLookupByLibrary.simpleMessage("AR lens"),
+      "attachSystemLog":
+          MessageLookupByLibrary.simpleMessage("Ilakip ang log ng app"),
       "audit_about_screen_12_mb_e39721d6": MessageLookupByLibrary.simpleMessage(
         "12 MB",
       ),
       "audit_about_subscreens_round_trip_64776b4c":
-          MessageLookupByLibrary.simpleMessage("Round trip"),
+          MessageLookupByLibrary.simpleMessage("Balikang oras"),
       "audit_about_subscreens_support_kyron_so_a3a84d0f":
           MessageLookupByLibrary.simpleMessage("support@kyron.so"),
       "audit_about_subscreens_token_verification_7934e1f2":
-          MessageLookupByLibrary.simpleMessage("TOKEN VERIFICATION"),
+          MessageLookupByLibrary.simpleMessage("PAG-VERIFY NG TOKEN"),
       "audit_ar_lens_screen_try_again_cdec8872":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "audit_browser_engine_window_stop_39c04883":
           MessageLookupByLibrary.simpleMessage("window.stop();"),
       "audit_browser_sheet_try_again_44bc94ba":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "audit_coming_soon_screen_starting_a_broadcast_now_would_put_you_in_ca771e8b":
           MessageLookupByLibrary.simpleMessage(
-        "Starting a broadcast now would put you in a room nobody could",
-      ),
+              "Kapag nagsimula ka ng broadcast ngayon, mapupunta ka sa kuwartong walang makakapasok"),
       "audit_communities_screen_start_a_community_06c8ec4f":
-          MessageLookupByLibrary.simpleMessage("Start a community"),
+          MessageLookupByLibrary.simpleMessage("Magsimula ng komunidad"),
       "audit_communities_screen_what_is_it_for_optional_e7e82092":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Para saan ito? (opsyonal)"),
       "audit_community_manage_screen_back_in_e495a750":
-          MessageLookupByLibrary.simpleMessage("back in."),
+          MessageLookupByLibrary.simpleMessage("ulit."),
       "audit_community_manage_screen_back_in_from_this_list_9496a4fd":
-          MessageLookupByLibrary.simpleMessage("back in from this list."),
+          MessageLookupByLibrary.simpleMessage("ulit mula sa listahang ito."),
       "audit_community_manage_screen_closing_it_f490fb09":
-          MessageLookupByLibrary.simpleMessage("Closing it"),
+          MessageLookupByLibrary.simpleMessage("Kapag isinara ito,"),
       "audit_community_screen_join_first_7798cafc":
-          MessageLookupByLibrary.simpleMessage("join first"),
+          MessageLookupByLibrary.simpleMessage("sumali muna"),
       "audit_composer_screen_coming_soon_431fd23d":
-          MessageLookupByLibrary.simpleMessage("coming soon"),
+          MessageLookupByLibrary.simpleMessage("malapit na"),
       "audit_composer_screen_posting_as_you_45d69932":
-          MessageLookupByLibrary.simpleMessage("Posting as you"),
+          MessageLookupByLibrary.simpleMessage("Nagpo-post bilang ikaw"),
       "audit_create_fab_post_in_this_community_0a42daf2":
-          MessageLookupByLibrary.simpleMessage("post in this community"),
+          MessageLookupByLibrary.simpleMessage("mag-post sa komunidad na ito"),
       "audit_drafts_screen_just_now_17a8d48a":
-          MessageLookupByLibrary.simpleMessage(
-        "Just now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ngayon lang"),
       "audit_empty_state_try_again_80ef48cd":
-          MessageLookupByLibrary.simpleMessage(
-        "Try again",
-      ),
+          MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "audit_explore_screen_topic_1_83830b41":
-          MessageLookupByLibrary.simpleMessage(
-        "Topic 1",
-      ),
+          MessageLookupByLibrary.simpleMessage("Paksa 1"),
       "audit_feed_canvas_for_you_aa3c510d":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Para sa Iyo"),
       "audit_forgot_password_screen_has_anything_65044193":
-          MessageLookupByLibrary.simpleMessage("has anything."),
+          MessageLookupByLibrary.simpleMessage("may laman."),
       "audit_forgot_password_screen_its_way_to_it_now_271a6cea":
-          MessageLookupByLibrary.simpleMessage("its way to it now."),
-      "audit_google_button_not_bbd76526": MessageLookupByLibrary.simpleMessage(
-        ", not",
-      ),
+          MessageLookupByLibrary.simpleMessage("papunta na roon ngayon."),
+      "audit_google_button_not_bbd76526":
+          MessageLookupByLibrary.simpleMessage(", hindi"),
       "audit_inline_video_am_i_moving_4618f78c":
-          MessageLookupByLibrary.simpleMessage("am I moving"),
+          MessageLookupByLibrary.simpleMessage("gumagalaw ba ako"),
       "audit_inline_video_turn_sound_off_97714bbc":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("I-off ang tunog"),
       "audit_inline_video_turn_sound_on_83671c54":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("I-on ang tunog"),
       "audit_interest_tabs_for_you_7ef9e823":
-          MessageLookupByLibrary.simpleMessage(
-        "For You",
-      ),
+          MessageLookupByLibrary.simpleMessage("Para sa Iyo"),
       "audit_interest_tabs_your_tabs_c3ba148f":
-          MessageLookupByLibrary.simpleMessage("Your tabs"),
-      "audit_media_tray_alt_784030d4": MessageLookupByLibrary.simpleMessage(
-        "+ ALT",
-      ),
+          MessageLookupByLibrary.simpleMessage("Mga tab mo"),
+      "audit_media_tray_alt_784030d4":
+          MessageLookupByLibrary.simpleMessage("+ ALT"),
       "audit_mention_picker_sheet_try_again_fd5d5dd7":
-          MessageLookupByLibrary.simpleMessage("Try again"),
+          MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "audit_password_requirements_symbol_322aed1e":
-          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+          MessageLookupByLibrary.simpleMessage("Simbolo (!@#…)"),
       "audit_post_analytics_screen_viewers_per_day_5d881f10":
-          MessageLookupByLibrary.simpleMessage("VIEWERS PER DAY"),
+          MessageLookupByLibrary.simpleMessage("MGA MANONOOD BAWAT ARAW"),
       "audit_post_detail_screen_sublist_1_join_b0a5d508":
           MessageLookupByLibrary.simpleMessage(").sublist(1).join("),
       "audit_post_list_view_could_not_load_4dd86c79":
-          MessageLookupByLibrary.simpleMessage("could not load"),
+          MessageLookupByLibrary.simpleMessage("hindi ma-load"),
       "audit_post_options_sheet_this_post_99bfa981":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ang post na ito"),
       "audit_post_text_a_b_780da9a1":
           MessageLookupByLibrary.simpleMessage("a#b"),
       "audit_report_screen_anything_to_add_optional_f0051fa4":
-          MessageLookupByLibrary.simpleMessage("Anything to add? (optional)"),
+          MessageLookupByLibrary.simpleMessage(
+              "May gusto kang idagdag? (opsyonal)"),
       "audit_report_screen_this_post_820d9740":
-          MessageLookupByLibrary.simpleMessage("this post"),
+          MessageLookupByLibrary.simpleMessage("ang post na ito"),
       "audit_search_filter_sheet_from_an_account_f6a22687":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Mula sa isang account"),
       "audit_settings_screen_did_plc_abc_825b4f49":
           MessageLookupByLibrary.simpleMessage("did:plc:abc…"),
       "audit_settings_screen_log_out_0b39bfb2":
-          MessageLookupByLibrary.simpleMessage("Log Out"),
+          MessageLookupByLibrary.simpleMessage("Mag-log out"),
       "audit_settings_screen_your_account_bcdf27af":
-          MessageLookupByLibrary.simpleMessage("Your account"),
+          MessageLookupByLibrary.simpleMessage("Ang account mo"),
       "audit_settings_subscreens_confirm_password_f0e1f449":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Kumpirmahin ang password"),
       "audit_settings_subscreens_not_now_e1657fa9":
-          MessageLookupByLibrary.simpleMessage("not now"),
-      "audit_skeleton_loading_18e82bcc": MessageLookupByLibrary.simpleMessage(
-        "Loading…",
-      ),
+          MessageLookupByLibrary.simpleMessage("hindi ngayon"),
+      "audit_skeleton_loading_18e82bcc":
+          MessageLookupByLibrary.simpleMessage("Naglo-load…"),
       "audit_sliding_drawer_content_kyron_v1_0_0_d696e73a":
           MessageLookupByLibrary.simpleMessage("Kyron v1.0.0"),
-      "audit_story_pill_posting_bb613f87": MessageLookupByLibrary.simpleMessage(
-        "Posting…",
-      ),
+      "audit_story_pill_posting_bb613f87":
+          MessageLookupByLibrary.simpleMessage("Nagpo-post…"),
       "audit_story_viewer_3h_ago_174dc80d":
-          MessageLookupByLibrary.simpleMessage(
-        "3h ago",
-      ),
+          MessageLookupByLibrary.simpleMessage("3 oras ang nakalipas"),
       "audit_story_viewer_copy_story_link_2bd1546c":
-          MessageLookupByLibrary.simpleMessage("Copy story link"),
+          MessageLookupByLibrary.simpleMessage("Kopyahin ang link ng story"),
       "audit_story_viewer_your_story_b706ecb4":
-          MessageLookupByLibrary.simpleMessage("Your Story"),
+          MessageLookupByLibrary.simpleMessage("Ang Story Mo"),
       "audit_terms_gate_your_account_your_posts_and_what_you_tap_o_b0ad78ef":
           MessageLookupByLibrary.simpleMessage(
-        "Your account, your posts, and what you tap on so",
-      ),
+              "Ang account mo, ang mga post mo, at ang mga tina-tap mo para"),
       "audit_topic_picker_add_a_topic_25baaf8a":
-          MessageLookupByLibrary.simpleMessage("Add a topic"),
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng paksa"),
       "audit_url_preview_its_own_8b362f95":
-          MessageLookupByLibrary.simpleMessage(
-        "its own.",
-      ),
-      "authorBlocked": (Object a0) => "${a0} blocked",
-      "authorPostsHidden": (Object a0) => "You will not see posts from ${a0}",
-      "block": MessageLookupByLibrary.simpleMessage("Block"),
-      "blockAuthor": (Object a0) => "Block ${a0}?",
-      "buildDetailsCopied": MessageLookupByLibrary.simpleMessage(
-        "Build details copied",
-      ),
+          MessageLookupByLibrary.simpleMessage("sarili nito."),
+      "authorBlocked": (Object a0) => "Na-block si ${a0}",
+      "authorPostsHidden": (Object a0) =>
+          "Hindi mo makikita ang mga post ni ${a0}",
+      "block": MessageLookupByLibrary.simpleMessage("I-block"),
+      "blockAuthor": (Object a0) => "I-block si ${a0}?",
+      "buildDetailsCopied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang detalye ng build"),
       "bullet": MessageLookupByLibrary.simpleMessage("•"),
       "byContinuingAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our",
-      ),
+          "Sa pagpapatuloy, sumasang-ayon ka sa"),
       "byContinuingAgreeTermsPrivacy": MessageLookupByLibrary.simpleMessage(
-        "By continuing you agree to our Terms and Privacy Policy",
-      ),
+          "Sa pagpapatuloy, sumasang-ayon ka sa aming Mga Tuntunin ng Serbisyo at Patakaran sa Privacy"),
       "bySigningUpAgreeTerms": MessageLookupByLibrary.simpleMessage(
-        "By signing up you agree to our",
-      ),
-      "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+          "Sa pag-sign up, sumasang-ayon ka sa"),
+      "cancel": MessageLookupByLibrary.simpleMessage("Kanselahin"),
       "change": MessageLookupByLibrary.simpleMessage("Palitan"),
-      "changeEmail": MessageLookupByLibrary.simpleMessage("Change Email"),
+      "changeEmail": MessageLookupByLibrary.simpleMessage("Palitan ang email"),
       "checkEmailConfirm": MessageLookupByLibrary.simpleMessage(
-        "Check your email to confirm your account.",
-      ),
+          "I-verify ang account mo mula sa email mo."),
       "checkKyronReachable": MessageLookupByLibrary.simpleMessage(
-        "Check whether Kyron is reachable",
-      ),
-      "clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "close": MessageLookupByLibrary.simpleMessage("Close"),
-      "closeCommunity": (Object a0) => "Close ${a0}?",
-      "closeIt": MessageLookupByLibrary.simpleMessage("Close it"),
-      "closeThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Close this community",
-      ),
-      "communities": MessageLookupByLibrary.simpleMessage("Communities"),
+          "Tingnan kung naaabot ang Kyron"),
+      "clear": MessageLookupByLibrary.simpleMessage("I-clear"),
+      "close": MessageLookupByLibrary.simpleMessage("Isara"),
+      "closeCommunity": (Object a0) => "Isara ang ${a0}?",
+      "closeIt": MessageLookupByLibrary.simpleMessage("Isara ito"),
+      "closeThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Isara ang komunidad na ito"),
+      "communities": MessageLookupByLibrary.simpleMessage("Mga komunidad"),
       "communitiesEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Find one on Discover, or start your own.",
-      ),
+          "Maghanap ng isa sa Tuklasin, o magsimula ng sarili mo."),
       "composer_placeholder_hot_take": MessageLookupByLibrary.simpleMessage(
-        "Drop a hot take (or a warm one)",
-      ),
-      "composer_placeholder_rattling": MessageLookupByLibrary.simpleMessage(
-        "What's rattling around your head?",
-      ),
+          "Maghagis ng mainit na opinyon (o maligamgam)"),
+      "composer_placeholder_rattling":
+          MessageLookupByLibrary.simpleMessage("Ano ang nasa isip mo?"),
       "composer_placeholder_say": MessageLookupByLibrary.simpleMessage(
-        "Say something only you can say…",
-      ),
+          "Sabihin ang bagay na ikaw lang ang makapagsasabi…"),
       "composer_placeholder_signal": MessageLookupByLibrary.simpleMessage(
-        "This is your signal — send it",
-      ),
+          "Ito na ang senyales mo: i-post mo"),
       "composer_placeholder_think": MessageLookupByLibrary.simpleMessage(
-        "Type, speak, or think-out-loud",
-      ),
+          "Mag-type, magsalita, o mag-isip nang malakas"),
       "confirmPassword":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Kumpirmahin ang password"),
       "contactSupport":
           MessageLookupByLibrary.simpleMessage("Makipag-ugnayan sa support"),
       "contentLanguagesNotFilteringYet": MessageLookupByLibrary.simpleMessage(
-        "Posts do not carry a language yet, so this does not filter your feed today. Your choice is kept for when they do.",
-      ),
-      "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
-      "continueWithEmail": MessageLookupByLibrary.simpleMessage(
-        "Continue with email",
-      ),
-      "copy": MessageLookupByLibrary.simpleMessage("Copy"),
-      "copyReportInstead": MessageLookupByLibrary.simpleMessage(
-        "Copy report instead",
-      ),
+          "Wala pang wika ang mga post, kaya hindi pa nito sinasala ang feed mo. Itatago ang mga pinili mo hanggang doon."),
+      "continueAction": MessageLookupByLibrary.simpleMessage("Magpatuloy"),
+      "continueWithEmail":
+          MessageLookupByLibrary.simpleMessage("Magpatuloy gamit ang email"),
+      "copy": MessageLookupByLibrary.simpleMessage("Kopyahin"),
+      "copyReportInstead":
+          MessageLookupByLibrary.simpleMessage("Kopyahin na lang ang ulat"),
       "couldNotOpenGoogleSignIn": (Object a0) =>
-          "Could not open Google sign-in. ${a0}",
-      "couldNotSignOut": (Object a0) => "Could not sign out: ${a0}",
-      "couldNotTakePicture": MessageLookupByLibrary.simpleMessage(
-        "Could not take that picture.",
-      ),
+          "Hindi mabuksan ang pag-sign in gamit ang Google. ${a0}",
+      "couldNotSignOut": (Object a0) => "Hindi nakapag-log out: ${a0}",
+      "couldNotTakePicture":
+          MessageLookupByLibrary.simpleMessage("Hindi makakuha ng larawan."),
       "country_helper": MessageLookupByLibrary.simpleMessage(
           "Ipinapakita sa profile mo at sa ilalim ng mga post mo."),
       "country_no_match": MessageLookupByLibrary.simpleMessage(
@@ -262,89 +219,77 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ipinapakita sa profile mo at sa ilalim ng mga post mo. Kapag nakita mo ang mga post ng isang tao, binibilang ang bansa mo sa kanyang Insights, sa mga grupo lang na lima o higit pa at hindi kailanman sa pangalan."),
       "country_suggested":
           MessageLookupByLibrary.simpleMessage("Mula sa settings ng phone mo"),
-      "create": MessageLookupByLibrary.simpleMessage("Create"),
-      "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-      "createYourAccount": MessageLookupByLibrary.simpleMessage(
-        "Create your account",
-      ),
-      "createYourProfile": MessageLookupByLibrary.simpleMessage(
-        "Create your profile",
-      ),
-      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR Lens"),
-      "create_go_live": MessageLookupByLibrary.simpleMessage("Go live"),
+      "create": MessageLookupByLibrary.simpleMessage("Gumawa"),
+      "createAccount":
+          MessageLookupByLibrary.simpleMessage("Gumawa ng account"),
+      "createYourAccount":
+          MessageLookupByLibrary.simpleMessage("Gumawa ng account mo"),
+      "createYourProfile":
+          MessageLookupByLibrary.simpleMessage("Gumawa ng profile mo"),
+      "create_ar_lens": MessageLookupByLibrary.simpleMessage("AR lens"),
+      "create_go_live": MessageLookupByLibrary.simpleMessage("Mag-live"),
       "create_text_post": MessageLookupByLibrary.simpleMessage("Text post"),
       "create_voice_post": MessageLookupByLibrary.simpleMessage("Voice post"),
-      "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-      "deleteThisComment": MessageLookupByLibrary.simpleMessage(
-        "Delete this comment?",
-      ),
+      "delete": MessageLookupByLibrary.simpleMessage("Burahin"),
+      "deleteThisComment":
+          MessageLookupByLibrary.simpleMessage("Burahin ang komentong ito?"),
       "deleteThisPost":
-          MessageLookupByLibrary.simpleMessage("Delete this post?"),
+          MessageLookupByLibrary.simpleMessage("Burahin ang post na ito?"),
       "describeAttachment": MessageLookupByLibrary.simpleMessage(
-        "Describe this attachment",
-      ),
-      "description": MessageLookupByLibrary.simpleMessage("Description"),
+          "Ilarawan ang attachment na ito"),
+      "description": MessageLookupByLibrary.simpleMessage("Paglalarawan"),
       "didCopied":
-          MessageLookupByLibrary.simpleMessage("DID copied to clipboard"),
+          MessageLookupByLibrary.simpleMessage("Nakopya ang DID sa clipboard"),
       "done": MessageLookupByLibrary.simpleMessage("Tapos na"),
       "draft_close_composer_detail": MessageLookupByLibrary.simpleMessage(
-        "Close the composer with something written and you will be offered a draft.",
-      ),
-      "draft_days_ago": MessageLookupByLibrary.simpleMessage("{days} days ago"),
+          "Isara ang editor pagkatapos magsulat ng kahit ano at aalukin ka ng draft."),
+      "draft_days_ago":
+          MessageLookupByLibrary.simpleMessage("{days} araw ang nakalipas"),
       "draft_hours_ago":
-          MessageLookupByLibrary.simpleMessage("{hours} hours ago"),
-      "draft_just_now": MessageLookupByLibrary.simpleMessage("Just now"),
+          MessageLookupByLibrary.simpleMessage("{hours} oras ang nakalipas"),
+      "draft_just_now": MessageLookupByLibrary.simpleMessage("Ngayon lang"),
       "draft_minutes_ago": MessageLookupByLibrary.simpleMessage(
-        "{minutes} minutes ago",
-      ),
-      "draft_nothing_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing written yet",
-      ),
-      "draft_poll_empty": MessageLookupByLibrary.simpleMessage(
-        "A poll, with no question yet",
-      ),
-      "draft_quote_empty": MessageLookupByLibrary.simpleMessage(
-        "A quote, with nothing written yet",
-      ),
-      "drafts": MessageLookupByLibrary.simpleMessage("Drafts"),
-      "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+          "{minutes} minuto ang nakalipas"),
+      "draft_nothing_empty":
+          MessageLookupByLibrary.simpleMessage("Wala pang naisusulat"),
+      "draft_poll_empty":
+          MessageLookupByLibrary.simpleMessage("Poll, wala pang tanong"),
+      "draft_quote_empty":
+          MessageLookupByLibrary.simpleMessage("Quote, wala pang teksto"),
+      "drafts": MessageLookupByLibrary.simpleMessage("Mga draft"),
+      "editProfile": MessageLookupByLibrary.simpleMessage("I-edit ang profile"),
       "email": MessageLookupByLibrary.simpleMessage("Email"),
-      "emailNotifications": MessageLookupByLibrary.simpleMessage(
-        "Email notifications",
-      ),
-      "explore": MessageLookupByLibrary.simpleMessage("Explore"),
+      "emailNotifications":
+          MessageLookupByLibrary.simpleMessage("Mga notification sa email"),
+      "explore": MessageLookupByLibrary.simpleMessage("Tuklasin"),
       "faceTrackingUnavailable": MessageLookupByLibrary.simpleMessage(
-        "Face tracking is not available on this device.",
-      ),
-      "feedTagDetail": (Object a0) =>
-          "Nothing has been posted under #${a0} yet.",
+          "Hindi available ang face tracking sa device na ito."),
+      "feedTagDetail": (Object a0) => "Wala pang nai-post na may #${a0}.",
       "follow_author":
           MessageLookupByLibrary.simpleMessage("I-follow si {name}"),
-      "followers": MessageLookupByLibrary.simpleMessage("Followers"),
-      "following": MessageLookupByLibrary.simpleMessage("Following"),
+      "followers": MessageLookupByLibrary.simpleMessage("Mga tagasunod"),
+      "following": MessageLookupByLibrary.simpleMessage("Sinusundan"),
       "forgotPassword":
-          MessageLookupByLibrary.simpleMessage("Forgot password?"),
-      "gettingHelp": MessageLookupByLibrary.simpleMessage("Getting help"),
-      "googleContinue": MessageLookupByLibrary.simpleMessage(
-        "Continue with Google",
-      ),
+          MessageLookupByLibrary.simpleMessage("Nakalimutan ang password?"),
+      "gettingHelp": MessageLookupByLibrary.simpleMessage("Paghingi ng tulong"),
+      "googleContinue":
+          MessageLookupByLibrary.simpleMessage("Magpatuloy gamit ang Google"),
       "googleSignIn":
-          MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+          MessageLookupByLibrary.simpleMessage("Mag-sign in gamit ang Google"),
       "googleSignInDesktopExplanation": (Object a0) =>
-          "Google hands the finished sign-in back to Kyron over a link only Android and iOS answer, so on ${a0} the browser would have nowhere to return it to.\\n\\nIf you already have a Kyron account through Google, use Continue with email with that same address and tap Forgot password — it will mail you a link to set one.",
+          "Ibinabalik ng Google sa Kyron ang natapos na pag-sign in sa pamamagitan ng link na Android at iOS lang ang sumasagot, kaya sa ${a0} walang mapagbabalikan ang browser.\\n\\nKung may Kyron account ka na sa Google, piliin ang Magpatuloy gamit ang email gamit ang parehong address, at i-tap ang Nakalimutan ang password: makakatanggap ka ng link para magtakda ng password.",
       "googleSignInNeedsPhoneApp": MessageLookupByLibrary.simpleMessage(
-        "Google sign-in needs the phone app",
-      ),
+          "Kailangan ng phone app para sa pag-sign in gamit ang Google"),
       "googleSignUp":
-          MessageLookupByLibrary.simpleMessage("Sign up with Google"),
+          MessageLookupByLibrary.simpleMessage("Mag-sign up gamit ang Google"),
       "guidesAndAnswers": MessageLookupByLibrary.simpleMessage(
-        "Guides and answers to common questions",
-      ),
+          "Mga gabay at sagot sa mga karaniwang tanong"),
       "handle": MessageLookupByLibrary.simpleMessage("handle"),
-      "helpAndSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Centre"),
+      "helpAndSupport":
+          MessageLookupByLibrary.simpleMessage("Tulong at Suporta"),
+      "helpCentre": MessageLookupByLibrary.simpleMessage("Help Center"),
       "home": MessageLookupByLibrary.simpleMessage("Home"),
-      "inOneLine": MessageLookupByLibrary.simpleMessage("In one line"),
+      "inOneLine": MessageLookupByLibrary.simpleMessage("Sa isang linya"),
       "ins_account": MessageLookupByLibrary.simpleMessage("Ang account mo"),
       "ins_act_community":
           MessageLookupByLibrary.simpleMessage("Buksan ang komunidad"),
@@ -465,691 +410,582 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Mga nangungunang post"),
       "ins_vs_before": MessageLookupByLibrary.simpleMessage(
           "Kumpara sa naunang {days} araw"),
-      "interest_add": MessageLookupByLibrary.simpleMessage("Add an interest"),
-      "interest_drag_to_reorder": MessageLookupByLibrary.simpleMessage(
-        "Drag to reorder",
-      ),
+      "interest_add":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng interes"),
+      "interest_drag_to_reorder":
+          MessageLookupByLibrary.simpleMessage("I-drag para ayusin"),
       "interest_five_tabs_limit": MessageLookupByLibrary.simpleMessage(
-        "Five tabs is the most the strip holds. Remove one to add another.",
-      ),
-      "interest_following": MessageLookupByLibrary.simpleMessage("Following"),
-      "interest_for_you": MessageLookupByLibrary.simpleMessage("For You"),
+          "Hanggang limang tab lang ang kasya sa bar. Mag-alis ng isa para magdagdag ng iba."),
+      "interest_following": MessageLookupByLibrary.simpleMessage("Sinusundan"),
+      "interest_for_you": MessageLookupByLibrary.simpleMessage("Para sa Iyo"),
       "interest_hashtags_detail": MessageLookupByLibrary.simpleMessage(
-        "Hashtags turn up here as people start using them.",
-      ),
+          "Lalabas dito ang mga hashtag kapag nagsimula nang gamitin ng mga tao."),
       "interest_trending_now":
-          MessageLookupByLibrary.simpleMessage("Trending now"),
-      "interest_videos": MessageLookupByLibrary.simpleMessage("Videos"),
-      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Your tabs"),
+          MessageLookupByLibrary.simpleMessage("Trending ngayon"),
+      "interest_videos": MessageLookupByLibrary.simpleMessage("Mga video"),
+      "interest_your_tabs": MessageLookupByLibrary.simpleMessage("Mga tab mo"),
       "itDisappearsForBoth": MessageLookupByLibrary.simpleMessage(
-        "It disappears for both of you.",
-      ),
-      "itWillBeRemoved": MessageLookupByLibrary.simpleMessage(
-        "It will be removed from the thread.",
-      ),
-      "join": MessageLookupByLibrary.simpleMessage("Join"),
-      "keepEditing": MessageLookupByLibrary.simpleMessage("Keep editing"),
+          "Mawawala ito para sa inyong dalawa."),
+      "itWillBeRemoved":
+          MessageLookupByLibrary.simpleMessage("Aalisin ito sa thread."),
+      "join": MessageLookupByLibrary.simpleMessage("Sumali"),
+      "keepEditing":
+          MessageLookupByLibrary.simpleMessage("Ituloy ang pag-edit"),
       "kyron": MessageLookupByLibrary.simpleMessage("Kyron"),
       "kyronWordsStillBeingTranslated": MessageLookupByLibrary.simpleMessage(
-        "Kyron's words are still being translated, so most screens stay in English for now.",
-      ),
+          "Nasa wika mo na ang mga screen ng Kyron. Kung may salitang mali ang dating, sabihin sa amin sa Magpadala ng feedback."),
       "lagosDesign": MessageLookupByLibrary.simpleMessage("Lagos Design"),
-      "languages": MessageLookupByLibrary.simpleMessage("Languages"),
-      "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-      "leaveCommunity": (Object a0) => "Leave ${a0}?",
-      "letBackIn": MessageLookupByLibrary.simpleMessage("Let back in"),
-      "literal1PageOpen": MessageLookupByLibrary.simpleMessage("1 page open"),
-      "literaladdAClip": MessageLookupByLibrary.simpleMessage("Add a clip"),
-      "literaladdAGif": MessageLookupByLibrary.simpleMessage("Add a GIF"),
+      "languages": MessageLookupByLibrary.simpleMessage("Mga wika"),
+      "leave": MessageLookupByLibrary.simpleMessage("Umalis"),
+      "leaveCommunity": (Object a0) => "Umalis sa ${a0}?",
+      "letBackIn": MessageLookupByLibrary.simpleMessage("Papasukin ulit"),
+      "literal1PageOpen":
+          MessageLookupByLibrary.simpleMessage("1 pahinang bukas"),
+      "literaladdAClip":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng clip"),
+      "literaladdAGif":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng GIF"),
       "literaladdAHashtag":
-          MessageLookupByLibrary.simpleMessage("Add a hashtag"),
-      "literaladdAPhoto": MessageLookupByLibrary.simpleMessage("Add a photo"),
-      "literaladdAPoll": MessageLookupByLibrary.simpleMessage("Add a poll"),
-      "literaladdAVideo": MessageLookupByLibrary.simpleMessage("Add a video"),
-      "literaladdAnInterest": MessageLookupByLibrary.simpleMessage(
-        "Add an interest",
-      ),
-      "literaladdLabelAsATab": (Object a0) => "Add ${a0} as a tab",
-      "literalappLanguage":
-          MessageLookupByLibrary.simpleMessage("App language"),
-      "literalappVersion": MessageLookupByLibrary.simpleMessage("App version"),
-      "literalblockAuthor": (Object a0) => "Block ${a0}",
-      "literalblockAuthor2": (Object a0) => "Block ${a0}?",
-      "literalblockThisAccount": MessageLookupByLibrary.simpleMessage(
-        "Block this account?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng hashtag"),
+      "literaladdAPhoto":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng larawan"),
+      "literaladdAPoll":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng poll"),
+      "literaladdAVideo":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng video"),
+      "literaladdAnInterest":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng interes"),
+      "literaladdLabelAsATab": (Object a0) => "Idagdag ang ${a0} bilang tab",
+      "literalappLanguage": MessageLookupByLibrary.simpleMessage("Wika ng app"),
+      "literalappVersion":
+          MessageLookupByLibrary.simpleMessage("Bersyon ng app"),
+      "literalblockAuthor": (Object a0) => "I-block si ${a0}",
+      "literalblockAuthor2": (Object a0) => "I-block si ${a0}?",
+      "literalblockThisAccount":
+          MessageLookupByLibrary.simpleMessage("I-block ang account na ito?"),
       "literalcancelReply":
-          MessageLookupByLibrary.simpleMessage("Cancel reply"),
-      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Check again"),
-      "literalchooseFromGallery": MessageLookupByLibrary.simpleMessage(
-        "Choose from gallery",
-      ),
-      "literalclearCache": MessageLookupByLibrary.simpleMessage("Clear cache"),
-      "literalcloseAllPages": MessageLookupByLibrary.simpleMessage(
-        "Close all pages",
-      ),
-      "literalcloseTabLabel": (Object a0) => "Close ${a0}",
-      "literalcloseTheBrowser": MessageLookupByLibrary.simpleMessage(
-        "Close the browser",
-      ),
-      "literalcloseWidgetCommunityName": (Object a0) => "Close ${a0}?",
-      "literalcontactSupport": MessageLookupByLibrary.simpleMessage(
-        "Contact Support",
-      ),
-      "literalcontentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Content languages",
-      ),
-      "literalcopyLink": MessageLookupByLibrary.simpleMessage("Copy link"),
-      "literalcopyLinkToPost": MessageLookupByLibrary.simpleMessage(
-        "Copy link to post",
-      ),
+          MessageLookupByLibrary.simpleMessage("Itapon ang sagot"),
+      "literalcheckAgain": MessageLookupByLibrary.simpleMessage("Suriin ulit"),
+      "literalchooseFromGallery":
+          MessageLookupByLibrary.simpleMessage("Pumili mula sa gallery"),
+      "literalclearCache":
+          MessageLookupByLibrary.simpleMessage("I-clear ang cache"),
+      "literalcloseAllPages":
+          MessageLookupByLibrary.simpleMessage("Isara ang lahat ng pahina"),
+      "literalcloseTabLabel": (Object a0) => "Isara ang ${a0}",
+      "literalcloseTheBrowser":
+          MessageLookupByLibrary.simpleMessage("Isara ang browser"),
+      "literalcloseWidgetCommunityName": (Object a0) => "Isara ang ${a0}?",
+      "literalcontactSupport":
+          MessageLookupByLibrary.simpleMessage("Makipag-ugnayan sa suporta"),
+      "literalcontentLanguages":
+          MessageLookupByLibrary.simpleMessage("Mga wika ng nilalaman"),
+      "literalcopyLink":
+          MessageLookupByLibrary.simpleMessage("Kopyahin ang link"),
+      "literalcopyLinkToPost":
+          MessageLookupByLibrary.simpleMessage("Kopyahin ang link ng post"),
       "literalcopyPostText":
-          MessageLookupByLibrary.simpleMessage("Copy post text"),
-      "literalcopyText": MessageLookupByLibrary.simpleMessage("Copy text"),
+          MessageLookupByLibrary.simpleMessage("Kopyahin ang teksto ng post"),
+      "literalcopyText":
+          MessageLookupByLibrary.simpleMessage("Kopyahin ang teksto"),
       "literalcouldNotLoadCommunities": MessageLookupByLibrary.simpleMessage(
-        "Could not load communities",
-      ),
-      "literalcouldNotLoadGifs": MessageLookupByLibrary.simpleMessage(
-        "Could not load GIFs",
-      ),
+          "Hindi ma-load ang mga komunidad"),
+      "literalcouldNotLoadGifs":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang mga GIF"),
       "literalcouldNotLoadNotifications": MessageLookupByLibrary.simpleMessage(
-        "Could not load notifications",
-      ),
+          "Hindi ma-load ang mga notification"),
       "literalcouldNotLoadTheMembers": MessageLookupByLibrary.simpleMessage(
-        "Could not load the members",
-      ),
+          "Hindi ma-load ang mga miyembro"),
       "literalcouldNotLoadThesePosts": MessageLookupByLibrary.simpleMessage(
-        "Could not load these posts",
-      ),
+          "Hindi ma-load ang mga post na ito"),
       "literalcouldNotLoadThisConversation":
-          MessageLookupByLibrary.simpleMessage(
-        "Could not load this conversation",
-      ),
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang usapang ito"),
       "literalcouldNotLoadThisList": MessageLookupByLibrary.simpleMessage(
-        "Could not load this list",
-      ),
-      "literalcouldNotLoadThisPost": MessageLookupByLibrary.simpleMessage(
-        "Could not load this post",
-      ),
+          "Hindi ma-load ang listahang ito"),
+      "literalcouldNotLoadThisPost":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang post na ito"),
       "literalcouldNotLoadThisReply": MessageLookupByLibrary.simpleMessage(
-        "Could not load this reply",
-      ),
+          "Hindi ma-load ang sagot na ito"),
       "literalcouldNotLoadTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Could not load trending tags",
-      ),
+          "Hindi ma-load ang mga sikat na tag"),
       "literalcouldNotLoadYourCommunities":
           MessageLookupByLibrary.simpleMessage(
-        "Could not load your communities",
-      ),
+              "Hindi ma-load ang mga komunidad mo"),
       "literalcouldNotLoadYourMessages": MessageLookupByLibrary.simpleMessage(
-        "Could not load your messages",
-      ),
+          "Hindi ma-load ang mga mensahe mo"),
       "literalcouldNotOpenThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Could not open this community",
-      ),
-      "literalcouldNotPostThatReply": MessageLookupByLibrary.simpleMessage(
-        "Could not post that reply.",
-      ),
-      "literalcouldNotSearch": MessageLookupByLibrary.simpleMessage(
-        "Could not search",
-      ),
+          "Hindi mabuksan ang komunidad na ito"),
+      "literalcouldNotPostThatReply":
+          MessageLookupByLibrary.simpleMessage("Hindi maipost ang sagot."),
+      "literalcouldNotSearch":
+          MessageLookupByLibrary.simpleMessage("Hindi gumana ang paghahanap"),
       "literalcouldNotSignOutDescribeapierrorE": (Object a0) =>
-          "Could not sign out: ${a0}",
-      "literalcountPagesOpen": (Object a0) => "${a0} pages open",
+          "Hindi nakapag-log out: ${a0}",
+      "literalcountPagesOpen": (Object a0) => "${a0} pahinang bukas",
       "literalcoverPhoto": MessageLookupByLibrary.simpleMessage("Cover photo"),
-      "literaldataSaver": MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "literaldeletePost": MessageLookupByLibrary.simpleMessage("Delete post"),
-      "literaldiscoverPeople": MessageLookupByLibrary.simpleMessage(
-        "Discover people",
-      ),
-      "literaldoNotReply": MessageLookupByLibrary.simpleMessage("Do not reply"),
-      "literaldraftSaved": MessageLookupByLibrary.simpleMessage("Draft saved"),
+      "literaldataSaver":
+          MessageLookupByLibrary.simpleMessage("Pagtitipid ng data"),
+      "literaldeletePost":
+          MessageLookupByLibrary.simpleMessage("Burahin ang post"),
+      "literaldiscoverPeople":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng tao"),
+      "literaldoNotReply":
+          MessageLookupByLibrary.simpleMessage("Huwag sumagot"),
+      "literaldraftSaved":
+          MessageLookupByLibrary.simpleMessage("Na-save ang draft"),
       "literalfeedbackCannotBeSentRightNow":
           MessageLookupByLibrary.simpleMessage(
-        "Feedback cannot be sent right now",
-      ),
+              "Hindi maipadala ang feedback ngayon"),
       "literalfirstyearIndex": (Object a0) => "${a0}",
-      "literalfontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
+      "literalfontSize": MessageLookupByLibrary.simpleMessage("Laki ng teksto"),
       "literalgifsAreNotSetUp": MessageLookupByLibrary.simpleMessage(
-        "GIFs are not set up",
-      ),
-      "literalhandItToAnotherApp": MessageLookupByLibrary.simpleMessage(
-        "Hand it to another app",
-      ),
+          "Hindi pa naka-set up ang mga GIF"),
+      "literalhandItToAnotherApp":
+          MessageLookupByLibrary.simpleMessage("Ipasa sa ibang app"),
       "literalhidePassword":
-          MessageLookupByLibrary.simpleMessage("Hide password"),
+          MessageLookupByLibrary.simpleMessage("Itago ang password"),
       "literalhideThisPost":
-          MessageLookupByLibrary.simpleMessage("Hide this post"),
+          MessageLookupByLibrary.simpleMessage("Itago ang post na ito"),
       "literalhidesItAndTellsUsToShowFewerLikeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Hides it, and tells us to show fewer like it",
-      ),
+              "Itinatago ito at hinihiling sa amin na magpakita ng mas kaunting ganito"),
       "literalhowToBehave":
-          MessageLookupByLibrary.simpleMessage("How to behave"),
+          MessageLookupByLibrary.simpleMessage("Paano kumilos"),
       "literalindex1": (Object a0) => "${a0}",
-      "literalkeepTyping": MessageLookupByLibrary.simpleMessage("Keep typing"),
-      "literalkyronDidNotAnswer": MessageLookupByLibrary.simpleMessage(
-        "Kyron did not answer",
-      ),
+      "literalkeepTyping":
+          MessageLookupByLibrary.simpleMessage("Ituloy ang pagsusulat"),
+      "literalkyronDidNotAnswer":
+          MessageLookupByLibrary.simpleMessage("Hindi sumagot ang Kyron"),
       "literallabelCount": (Object a0, Object a1) => "${a0}, ${a1}",
-      "literallabelDate": (Object a0) => "\\${a0} date",
-      "literalleaveCommunityName": (Object a0) => "Leave ${a0}?",
+      "literallabelDate": (Object a0) => "Petsa ng \\${a0}",
+      "literalleaveCommunityName": (Object a0) => "Umalis sa ${a0}?",
       "literallensNameFaceLens": (Object a0) => "${a0}, face lens",
-      "literallikedPosts": MessageLookupByLibrary.simpleMessage("Liked posts"),
-      "literallinkCopied": MessageLookupByLibrary.simpleMessage("Link copied"),
-      "literalmakeAModerator": MessageLookupByLibrary.simpleMessage(
-        "Make a moderator",
-      ),
-      "literalmuteAuthor": (Object a0) => "Mute ${a0}",
-      "literalmuteThisThread": MessageLookupByLibrary.simpleMessage(
-        "Mute this thread",
-      ),
-      "literalmuteWordsOrTags": MessageLookupByLibrary.simpleMessage(
-        "Mute words or tags",
-      ),
+      "literallikedPosts":
+          MessageLookupByLibrary.simpleMessage("Mga ni-like na post"),
+      "literallinkCopied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang link"),
+      "literalmakeAModerator":
+          MessageLookupByLibrary.simpleMessage("Gawing moderator"),
+      "literalmuteAuthor": (Object a0) => "I-mute si ${a0}",
+      "literalmuteThisThread":
+          MessageLookupByLibrary.simpleMessage("I-mute ang thread na ito"),
+      "literalmuteWordsOrTags":
+          MessageLookupByLibrary.simpleMessage("I-mute ang mga salita o tag"),
       "literalmutedAndBlockedAccounts": MessageLookupByLibrary.simpleMessage(
-        "Muted and blocked accounts",
-      ),
+          "Mga naka-mute at naka-block na account"),
       "literalmutedYouWillNotBeNotified": MessageLookupByLibrary.simpleMessage(
-        "Muted. You will not be notified.",
-      ),
+          "Naka-mute. Hindi ka makakatanggap ng notification."),
       "literalnoAppOnThisDeviceOpensUriSchemeLinks": (Object a0) =>
-          "No app on this device opens ${a0} links.",
+          "Walang app sa device na ito ang nagbubukas ng mga link na ${a0}.",
       "literalnoBrowserOnThisDeviceTookThatLink":
           MessageLookupByLibrary.simpleMessage(
-        "No browser on this device took that link.",
-      ),
-      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("No DID yet"),
-      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("No drafts"),
-      "literalnoInterestsYet": MessageLookupByLibrary.simpleMessage(
-        "No interests yet",
-      ),
-      "literalnoLikesYet": MessageLookupByLibrary.simpleMessage("No likes yet"),
-      "literalnoMessagesYet": MessageLookupByLibrary.simpleMessage(
-        "No messages yet",
-      ),
-      "literalnoNewFollowers": MessageLookupByLibrary.simpleMessage(
-        "No new followers",
-      ),
-      "literalnoPostsYet": MessageLookupByLibrary.simpleMessage("No posts yet"),
+              "Walang browser sa device na ito ang tumanggap ng link."),
+      "literalnoDidYet": MessageLookupByLibrary.simpleMessage("Wala pang DID"),
+      "literalnoDrafts": MessageLookupByLibrary.simpleMessage("Walang draft"),
+      "literalnoInterestsYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang interes"),
+      "literalnoLikesYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang like"),
+      "literalnoMessagesYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang mensahe"),
+      "literalnoNewFollowers":
+          MessageLookupByLibrary.simpleMessage("Walang bagong tagasunod"),
+      "literalnoPostsYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang post"),
       "literalnoRepliesYet":
-          MessageLookupByLibrary.simpleMessage("No replies yet"),
+          MessageLookupByLibrary.simpleMessage("Wala pang sagot"),
       "literalnoRepostsYet":
-          MessageLookupByLibrary.simpleMessage("No reposts yet"),
+          MessageLookupByLibrary.simpleMessage("Wala pang repost"),
       "literalnoTrendingTagMatchesThat": MessageLookupByLibrary.simpleMessage(
-        "No trending tag matches that",
-      ),
+          "Walang tumutugmang sikat na tag"),
       "literalnobodyFound":
-          MessageLookupByLibrary.simpleMessage("Nobody found"),
-      "literalnobodyHasBeenRemoved": MessageLookupByLibrary.simpleMessage(
-        "Nobody has been removed",
-      ),
-      "literalnobodyHereYet": MessageLookupByLibrary.simpleMessage(
-        "Nobody here yet",
-      ),
+          MessageLookupByLibrary.simpleMessage("Walang nahanap na tao"),
+      "literalnobodyHasBeenRemoved":
+          MessageLookupByLibrary.simpleMessage("Walang inalis"),
+      "literalnobodyHereYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang tao rito"),
       "literalnormalised": (Object a0) => "#${a0}",
-      "literalnotInterestedInThis": MessageLookupByLibrary.simpleMessage(
-        "Not interested in this",
-      ),
+      "literalnotInterestedInThis":
+          MessageLookupByLibrary.simpleMessage("Hindi interesado"),
       "literalnothingFound":
-          MessageLookupByLibrary.simpleMessage("Nothing found"),
-      "literalnothingIsTrendingYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing is trending yet",
-      ),
-      "literalnothingLoggedYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing logged yet",
-      ),
-      "literalnothingMatched": MessageLookupByLibrary.simpleMessage(
-        "Nothing matched",
-      ),
+          MessageLookupByLibrary.simpleMessage("Walang nahanap"),
+      "literalnothingIsTrendingYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang trending"),
+      "literalnothingLoggedYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang laman ang log"),
+      "literalnothingMatched":
+          MessageLookupByLibrary.simpleMessage("Walang tugma"),
       "literalnothingMuted":
-          MessageLookupByLibrary.simpleMessage("Nothing muted"),
-      "literalnothingToLookAtYet": MessageLookupByLibrary.simpleMessage(
-        "Nothing to look at yet",
-      ),
-      "literalnothingUnread": MessageLookupByLibrary.simpleMessage(
-        "Nothing unread",
-      ),
+          MessageLookupByLibrary.simpleMessage("Walang naka-mute"),
+      "literalnothingToLookAtYet":
+          MessageLookupByLibrary.simpleMessage("Wala pang mapapanood"),
+      "literalnothingUnread":
+          MessageLookupByLibrary.simpleMessage("Walang hindi pa nababasa"),
       "literalonlyTheOwnerCanChangeThis": MessageLookupByLibrary.simpleMessage(
-        "Only the owner can change this",
-      ),
-      "literalopenReply": MessageLookupByLibrary.simpleMessage("Open reply"),
+          "Ang may-ari lang ang makakapagbago nito"),
+      "literalopenReply":
+          MessageLookupByLibrary.simpleMessage("Buksan ang sagot"),
       "literalopenTheMailFromKyron": MessageLookupByLibrary.simpleMessage(
-        "Open the mail from Kyron",
-      ),
-      "literalpasswordLogin": MessageLookupByLibrary.simpleMessage(
-        "Password & Login",
-      ),
-      "literalpostInCommunityName": (Object a0) => "Post in ${a0}",
-      "literalpostInWidgetCommunityName": (Object a0) => "Post in ${a0}",
+          "Buksan ang email mula sa Kyron"),
+      "literalpasswordLogin":
+          MessageLookupByLibrary.simpleMessage("Password at pag-log in"),
+      "literalpostInCommunityName": (Object a0) => "I-post sa ${a0}",
+      "literalpostInWidgetCommunityName": (Object a0) => "I-post sa ${a0}",
       "literalpostItWithYourOwnWordsAboveIt":
           MessageLookupByLibrary.simpleMessage(
-        "Post it with your own words above it",
-      ),
-      "literalprimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Primary language",
-      ),
-      "literalpushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push Notifications",
-      ),
-      "literalreading": MessageLookupByLibrary.simpleMessage("Reading…"),
-      "literalrecordAVoicePost": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
+              "I-post ito na may sarili mong salita sa itaas"),
+      "literalprimaryLanguage":
+          MessageLookupByLibrary.simpleMessage("Pangunahing wika"),
+      "literalpushNotifications":
+          MessageLookupByLibrary.simpleMessage("Mga push notification"),
+      "literalreading": MessageLookupByLibrary.simpleMessage("Sinusuri…"),
+      "literalrecordAVoicePost":
+          MessageLookupByLibrary.simpleMessage("Mag-record ng voice post"),
       "literalrecordAgain":
-          MessageLookupByLibrary.simpleMessage("Record again"),
-      "literalremoveAsModerator": MessageLookupByLibrary.simpleMessage(
-        "Remove as moderator",
-      ),
-      "literalremoveFromCommunity": MessageLookupByLibrary.simpleMessage(
-        "Remove from community",
-      ),
-      "literalremoveFromSaved": MessageLookupByLibrary.simpleMessage(
-        "Remove from saved",
-      ),
-      "literalremoveLabel": (Object a0) => "Remove ${a0}",
-      "literalremoveLanguageEnglishname": (Object a0) => "Remove ${a0}",
-      "literalremoveMemberDisplayname": (Object a0) => "Remove ${a0}?",
-      "literalremoveThePoll": MessageLookupByLibrary.simpleMessage(
-        "Remove the poll",
-      ),
-      "literalremoveThisAnswer": MessageLookupByLibrary.simpleMessage(
-        "Remove this answer",
-      ),
-      "literalremoveThisConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation",
-      ),
-      "literalremoveThisPoll": MessageLookupByLibrary.simpleMessage(
-        "Remove this poll",
-      ),
-      "literalreportAuthor": (Object a0) => "Report ${a0}",
-      "literalreportPost": MessageLookupByLibrary.simpleMessage("Report post"),
-      "literalresendCode": MessageLookupByLibrary.simpleMessage("Resend code"),
-      "literalsavedPosts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+          MessageLookupByLibrary.simpleMessage("Mag-record ulit"),
+      "literalremoveAsModerator":
+          MessageLookupByLibrary.simpleMessage("Alisin bilang moderator"),
+      "literalremoveFromCommunity":
+          MessageLookupByLibrary.simpleMessage("Alisin sa komunidad"),
+      "literalremoveFromSaved":
+          MessageLookupByLibrary.simpleMessage("Alisin sa mga naka-save"),
+      "literalremoveLabel": (Object a0) => "Alisin ang ${a0}",
+      "literalremoveLanguageEnglishname": (Object a0) => "Alisin ang ${a0}",
+      "literalremoveMemberDisplayname": (Object a0) => "Alisin si ${a0}?",
+      "literalremoveThePoll":
+          MessageLookupByLibrary.simpleMessage("Alisin ang poll"),
+      "literalremoveThisAnswer":
+          MessageLookupByLibrary.simpleMessage("Alisin ang sagot na ito"),
+      "literalremoveThisConversation":
+          MessageLookupByLibrary.simpleMessage("Burahin ang usapang ito"),
+      "literalremoveThisPoll":
+          MessageLookupByLibrary.simpleMessage("Alisin ang poll na ito"),
+      "literalreportAuthor": (Object a0) => "I-report si ${a0}",
+      "literalreportPost":
+          MessageLookupByLibrary.simpleMessage("I-report ang post"),
+      "literalresendCode":
+          MessageLookupByLibrary.simpleMessage("Ipadala ulit ang code"),
+      "literalsavedPosts":
+          MessageLookupByLibrary.simpleMessage("Mga naka-save na post"),
       "literalsaySomething":
-          MessageLookupByLibrary.simpleMessage("Say something"),
+          MessageLookupByLibrary.simpleMessage("Magsabi ng kahit ano"),
       "literalsaySomethingToWidgetCommunityName": (Object a0) =>
-          "Say something to ${a0}",
-      "literalsearchFailed":
-          MessageLookupByLibrary.simpleMessage("Search failed"),
-      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Send again"),
-      "literalsendAgainInCooldownS": (Object a0) => "Send again in ${a0}s",
+          "Magsabi ng kahit ano sa ${a0}",
+      "literalsearchFailed": MessageLookupByLibrary.simpleMessage(
+          "Hindi nagtagumpay ang paghahanap"),
+      "literalsendAgain": MessageLookupByLibrary.simpleMessage("Ipadala ulit"),
+      "literalsendAgainInCooldownS": (Object a0) =>
+          "Ipadala ulit sa loob ng ${a0}s",
       "literalsendFeedback":
-          MessageLookupByLibrary.simpleMessage("Send Feedback"),
+          MessageLookupByLibrary.simpleMessage("Magbigay ng feedback"),
       "literalsendTheLink":
-          MessageLookupByLibrary.simpleMessage("Send the link"),
+          MessageLookupByLibrary.simpleMessage("Ipadala ang link"),
       "literalsentItIsReportFiledNumber": (Object a0) =>
-          "Sent. It is report #${a0}.",
+          "Naipadala. Iyan ang ulat #${a0}.",
       "literalsetAPasswordAndCarryOn": MessageLookupByLibrary.simpleMessage(
-        "Set a password and carry on",
-      ),
-      "literalshareTheLogWithSupport": MessageLookupByLibrary.simpleMessage(
-        "Share the log with support",
-      ),
-      "literalshareThisCommunity": MessageLookupByLibrary.simpleMessage(
-        "Share this community",
-      ),
-      "literalshareThisPage": MessageLookupByLibrary.simpleMessage(
-        "Share this page",
-      ),
-      "literalshareThisProfile": MessageLookupByLibrary.simpleMessage(
-        "Share this profile",
-      ),
-      "literalshareVia": MessageLookupByLibrary.simpleMessage("Share via…"),
-      "literalshareWithAQuote": MessageLookupByLibrary.simpleMessage(
-        "Share with a quote",
-      ),
-      "literalshowMorePostsLikeThis": MessageLookupByLibrary.simpleMessage(
-        "Show more posts like this",
-      ),
+          "Magtakda ng password at magpatuloy"),
+      "literalshareTheLogWithSupport":
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang log sa suporta"),
+      "literalshareThisCommunity":
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang komunidad na ito"),
+      "literalshareThisPage":
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang pahinang ito"),
+      "literalshareThisProfile":
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang profile na ito"),
+      "literalshareVia": MessageLookupByLibrary.simpleMessage("Ibahagi…"),
+      "literalshareWithAQuote":
+          MessageLookupByLibrary.simpleMessage("Ibahagi nang may quote"),
+      "literalshowMorePostsLikeThis":
+          MessageLookupByLibrary.simpleMessage("Magpakita pa ng ganito"),
       "literalshowPassword":
-          MessageLookupByLibrary.simpleMessage("Show password"),
+          MessageLookupByLibrary.simpleMessage("Ipakita ang password"),
       "literalshowResults":
-          MessageLookupByLibrary.simpleMessage("Show results"),
-      "literalstartACommunity": MessageLookupByLibrary.simpleMessage(
-        "Start a community",
-      ),
-      "literalstartRecording": MessageLookupByLibrary.simpleMessage(
-        "Start recording",
-      ),
+          MessageLookupByLibrary.simpleMessage("Ipakita ang mga resulta"),
+      "literalstartACommunity":
+          MessageLookupByLibrary.simpleMessage("Magsimula ng komunidad"),
+      "literalstartRecording":
+          MessageLookupByLibrary.simpleMessage("Simulan ang pag-record"),
       "literalstopLoading":
-          MessageLookupByLibrary.simpleMessage("Stop loading"),
+          MessageLookupByLibrary.simpleMessage("Ihinto ang pag-load"),
       "literalstopSeeingThisPostAndRepliesToIt":
           MessageLookupByLibrary.simpleMessage(
-        "Stop seeing this post and replies to it",
-      ),
+              "Huwag nang makita ang post na ito at ang mga sagot dito"),
       "literalstoriesRibbonStoriesLengthItems": (Object a0) =>
-          "Stories ribbon, ${a0} items",
+          "Hanay ng mga story, ${a0} item",
       "literalswitchCamera":
-          MessageLookupByLibrary.simpleMessage("Switch camera"),
-      "literaltagSomeone": MessageLookupByLibrary.simpleMessage("Tag someone"),
+          MessageLookupByLibrary.simpleMessage("Palitan ang camera"),
+      "literaltagSomeone":
+          MessageLookupByLibrary.simpleMessage("Mag-tag ng tao"),
       "literaltakeAPicture":
-          MessageLookupByLibrary.simpleMessage("Take a picture"),
+          MessageLookupByLibrary.simpleMessage("Kumuha ng larawan"),
       "literaltapTheBannerOrThePictureToChangeIt":
           MessageLookupByLibrary.simpleMessage(
-        "Tap the banner or the picture to change it",
-      ),
-      "literaltapTheLinkInsideIt": MessageLookupByLibrary.simpleMessage(
-        "Tap the link inside it",
-      ),
+              "I-tap ang banner o larawan para palitan"),
+      "literaltapTheLinkInsideIt":
+          MessageLookupByLibrary.simpleMessage("I-tap ang link sa loob nito"),
       "literaltapToAddAPhotoAndACover": MessageLookupByLibrary.simpleMessage(
-        "Tap to add a photo and a cover",
-      ),
+          "I-tap para magdagdag ng larawan at cover"),
       "literalthatDidNotGoThroughTryAgain":
           MessageLookupByLibrary.simpleMessage(
-        "That did not go through. Try again.",
-      ),
+              "Hindi iyon gumana. Subukan ulit."),
       "literalthatGifCouldNotBeDownloaded":
           MessageLookupByLibrary.simpleMessage(
-        "That GIF could not be downloaded.",
-      ),
+              "Hindi ma-load ang GIF na iyon."),
       "literalthatLinkIsNotOneThisCanOpen":
           MessageLookupByLibrary.simpleMessage(
-        "That link is not one this can open.",
-      ),
-      "literaltheCameraIsClosed": MessageLookupByLibrary.simpleMessage(
-        "The camera is closed",
-      ),
-      "literalthisCommunity": MessageLookupByLibrary.simpleMessage(
-        "This community",
-      ),
-      "literalthisReplyIsGone": MessageLookupByLibrary.simpleMessage(
-        "This reply is gone",
-      ),
-      "literaltranslatePost": MessageLookupByLibrary.simpleMessage(
-        "Translate post",
-      ),
+              "Hindi mabubuksan dito ang link na ito."),
+      "literaltheCameraIsClosed":
+          MessageLookupByLibrary.simpleMessage("Nakasara ang camera"),
+      "literalthisCommunity":
+          MessageLookupByLibrary.simpleMessage("Ang komunidad na ito"),
+      "literalthisReplyIsGone":
+          MessageLookupByLibrary.simpleMessage("Wala na ang sagot na ito"),
+      "literaltranslatePost":
+          MessageLookupByLibrary.simpleMessage("Isalin ang post"),
       "literalturnSoundOff":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
+          MessageLookupByLibrary.simpleMessage("I-off ang tunog"),
       "literalturnSoundOn":
-          MessageLookupByLibrary.simpleMessage("Turn sound on"),
-      "literaluseOneOfOurs": MessageLookupByLibrary.simpleMessage(
-        "Use one of ours",
-      ),
+          MessageLookupByLibrary.simpleMessage("I-on ang tunog"),
+      "literaluseOneOfOurs":
+          MessageLookupByLibrary.simpleMessage("Gamitin ang isa sa amin"),
       "literalverificationCodeResent": MessageLookupByLibrary.simpleMessage(
-        "Verification code resent.",
-      ),
+          "Naipadala ulit ang verification code."),
       "literalverificationFailedDescribeapierrorE": (Object a0) =>
-          "Verification failed: ${a0}",
+          "Hindi na-verify: ${a0}",
       "literalverifyEmail":
-          MessageLookupByLibrary.simpleMessage("Verify Email"),
+          MessageLookupByLibrary.simpleMessage("I-verify ang email"),
       "literalviewersLikesSavesAndComments":
           MessageLookupByLibrary.simpleMessage(
-        "Viewers, likes, saves and comments",
-      ),
-      "literalwhatKyronKeeps": MessageLookupByLibrary.simpleMessage(
-        "What Kyron keeps",
-      ),
+              "Mga manonood, like, save, at komento"),
+      "literalwhatKyronKeeps":
+          MessageLookupByLibrary.simpleMessage("Ano ang iniingatan ng Kyron"),
       "literalwhatThisAppHasBeenDoing": MessageLookupByLibrary.simpleMessage(
-        "What this app has been doing",
-      ),
+          "Ano ang ginagawa ng app na ito"),
       "literalwhatYouDidWhatYouExpectedWhatHappened":
           MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened ",
-      ),
-      "literalwhatYouPostIsYours": MessageLookupByLibrary.simpleMessage(
-        "What you post is yours",
-      ),
+              "Ano ang ginawa mo, ano ang inaasahan mo, ano ang nangyari "),
+      "literalwhatYouPostIsYours":
+          MessageLookupByLibrary.simpleMessage("Sa iyo ang ipino-post mo"),
       "literalwhetherKyronIsReachableRightNow":
-          MessageLookupByLibrary.simpleMessage(
-        "Whether Kyron is reachable right now",
-      ),
+          MessageLookupByLibrary.simpleMessage("Kung naaabot ang Kyron ngayon"),
       "literalwhoCanReply":
-          MessageLookupByLibrary.simpleMessage("Who can reply"),
-      "literalwhoDoYouWantToTag": MessageLookupByLibrary.simpleMessage(
-        "Who do you want to tag?",
-      ),
+          MessageLookupByLibrary.simpleMessage("Sino ang puwedeng sumagot"),
+      "literalwhoDoYouWantToTag":
+          MessageLookupByLibrary.simpleMessage("Sino ang gusto mong i-tag?"),
       "literalyouAlreadyFollowEveryTrendingTag":
           MessageLookupByLibrary.simpleMessage(
-        "You already follow every trending tag",
-      ),
-      "literalyouAreAllCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "You are all caught up",
-      ),
-      "literalyouAreNotInAnyCommunities": MessageLookupByLibrary.simpleMessage(
-        "You are not in any communities",
-      ),
-      "literalyouAreSignedOut": MessageLookupByLibrary.simpleMessage(
-        "You are signed out.",
-      ),
+              "Sinusundan mo na ang lahat ng sikat na tag"),
+      "literalyouAreAllCaughtUp":
+          MessageLookupByLibrary.simpleMessage("Nakita mo na lahat"),
+      "literalyouAreNotInAnyCommunities":
+          MessageLookupByLibrary.simpleMessage("Wala ka sa anumang komunidad"),
+      "literalyouAreSignedOut":
+          MessageLookupByLibrary.simpleMessage("Naka-log out ka na."),
       "literalyouExampleCom": MessageLookupByLibrary.simpleMessage(
         "you@example.com",
       ),
-      "literalyouHaveLeftCommunityName": (Object a0) => "You have left ${a0}",
-      "literalyouHaveNotPostedYet": MessageLookupByLibrary.simpleMessage(
-        "You have not posted yet",
-      ),
-      "loadMore": MessageLookupByLibrary.simpleMessage("Load more"),
-      "logCleared": MessageLookupByLibrary.simpleMessage("Log cleared"),
-      "logCopied": MessageLookupByLibrary.simpleMessage("Log copied"),
-      "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
-      "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
-      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Log Out?"),
-      "login": MessageLookupByLibrary.simpleMessage("Login"),
+      "literalyouHaveLeftCommunityName": (Object a0) => "Umalis ka sa ${a0}",
+      "literalyouHaveNotPostedYet":
+          MessageLookupByLibrary.simpleMessage("Wala ka pang naipo-post"),
+      "loadMore": MessageLookupByLibrary.simpleMessage("Mag-load pa"),
+      "logCleared": MessageLookupByLibrary.simpleMessage("Na-clear ang log"),
+      "logCopied": MessageLookupByLibrary.simpleMessage("Nakopya ang log"),
+      "logIn": MessageLookupByLibrary.simpleMessage("Mag-log in"),
+      "logOut": MessageLookupByLibrary.simpleMessage("Mag-log out"),
+      "logOutQuestion": MessageLookupByLibrary.simpleMessage("Mag-log out?"),
+      "login": MessageLookupByLibrary.simpleMessage("Pag-log in"),
       "loginFailed": MessageLookupByLibrary.simpleMessage(
-        "Login failed. Please check your credentials.",
-      ),
-      "manage": MessageLookupByLibrary.simpleMessage("Manage"),
+          "Hindi nakapag-log in. Suriin ang credentials mo."),
+      "manage": MessageLookupByLibrary.simpleMessage("Pamahalaan"),
       "menu": MessageLookupByLibrary.simpleMessage("Menu"),
-      "message": MessageLookupByLibrary.simpleMessage("Message"),
-      "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+      "message": MessageLookupByLibrary.simpleMessage("Mensahe"),
+      "messages": MessageLookupByLibrary.simpleMessage("Mga mensahe"),
       "messagesCaughtUp": MessageLookupByLibrary.simpleMessage(
-        "Every conversation is caught up.",
-      ),
+          "Nabasa mo na ang lahat ng usapan."),
       "messagesNoMessages": MessageLookupByLibrary.simpleMessage(
-        "Open somebody's profile and tap Message to start a conversation.",
-      ),
-      "mute": MessageLookupByLibrary.simpleMessage("Mute"),
+          "Buksan ang profile ng isang tao at i-tap ang Mensahe para magsimula ng usapan."),
+      "mute": MessageLookupByLibrary.simpleMessage("I-mute"),
       "mutedAndBlocked":
-          MessageLookupByLibrary.simpleMessage("Muted and blocked"),
+          MessageLookupByLibrary.simpleMessage("Naka-mute at naka-block"),
       "mutedWordsAndTags": MessageLookupByLibrary.simpleMessage(
-        "Muted words and tags",
-      ),
-      "name": MessageLookupByLibrary.simpleMessage("Name"),
-      "nameScreen": MessageLookupByLibrary.simpleMessage("<name> Screen"),
+          "Mga naka-mute na salita at tag"),
+      "name": MessageLookupByLibrary.simpleMessage("Pangalan"),
+      "nameScreen": MessageLookupByLibrary.simpleMessage("Screen ng <name>"),
       "newEmailAddress":
-          MessageLookupByLibrary.simpleMessage("New email address"),
-      "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
-      "newPost": MessageLookupByLibrary.simpleMessage("New post"),
+          MessageLookupByLibrary.simpleMessage("Bagong email address"),
+      "newPassword": MessageLookupByLibrary.simpleMessage("Bagong password"),
+      "newPost": MessageLookupByLibrary.simpleMessage("Bagong post"),
       "normalised": (Object a0) => "#\\${a0}",
-      "notNow": MessageLookupByLibrary.simpleMessage("Not now"),
+      "notNow": MessageLookupByLibrary.simpleMessage("Hindi ngayon"),
       "notSentTapRetry": MessageLookupByLibrary.simpleMessage(
-        "Not sent. Tap to try again",
-      ),
+          "Hindi naipadala. I-tap para subukan ulit"),
       "nothingMatchesQuery": (Object a0) =>
-          "Nothing on Kyron matches \"${a0}\"",
-      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Nothing to copy"),
+          "Walang tumutugma sa \"${a0}\" sa Kyron",
+      "nothingToCopy": MessageLookupByLibrary.simpleMessage("Walang makokopya"),
       "notificationEmptyDetail": MessageLookupByLibrary.simpleMessage(
-        "Likes, replies and new followers land here as they arrive.",
-      ),
+          "Dito napupunta ang mga like, sagot, at bagong tagasunod."),
       "notificationFollowersDetail": MessageLookupByLibrary.simpleMessage(
-        "People who follow you show up here.",
-      ),
+          "Lalabas dito ang mga taong sumusunod sa iyo."),
       "notificationLikesDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody likes one of your posts, it shows up here.",
-      ),
+          "Kapag may nag-like sa post mo, lalabas ito rito."),
       "notificationRepliesDetail": MessageLookupByLibrary.simpleMessage(
-        "Replies to your posts land here.",
-      ),
+          "Dito napupunta ang mga sagot sa mga post mo."),
       "notificationRepostsDetail": MessageLookupByLibrary.simpleMessage(
-        "When somebody reposts you, it shows up here.",
-      ),
-      "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-      "openInBrowser": MessageLookupByLibrary.simpleMessage("Open in browser"),
-      "or": MessageLookupByLibrary.simpleMessage("or"),
-      "pageNotFound": MessageLookupByLibrary.simpleMessage("Page not found"),
+          "Kapag may nag-repost sa iyo, lalabas ito rito."),
+      "notifications": MessageLookupByLibrary.simpleMessage("Mga notification"),
+      "openInBrowser":
+          MessageLookupByLibrary.simpleMessage("Buksan sa browser"),
+      "or": MessageLookupByLibrary.simpleMessage("o"),
+      "pageNotFound":
+          MessageLookupByLibrary.simpleMessage("Hindi nahanap ang pahina"),
       "password": MessageLookupByLibrary.simpleMessage("Password"),
-      "passwordTooShort": MessageLookupByLibrary.simpleMessage(
-        "Password too short",
-      ),
-      "pickYourInterests": MessageLookupByLibrary.simpleMessage(
-        "Pick your interests",
-      ),
-      "post": MessageLookupByLibrary.simpleMessage("Post"),
-      "postAnalytics": MessageLookupByLibrary.simpleMessage("Post analytics"),
-      "postInCommunity": (Object a0) => "Post in ${a0}",
+      "passwordTooShort":
+          MessageLookupByLibrary.simpleMessage("Masyadong maikli ang password"),
+      "pickYourInterests":
+          MessageLookupByLibrary.simpleMessage("Piliin ang mga interes mo"),
+      "post": MessageLookupByLibrary.simpleMessage("I-post"),
+      "postAnalytics": MessageLookupByLibrary.simpleMessage("Stats ng post"),
+      "postInCommunity": (Object a0) => "I-post sa ${a0}",
       "postItSayItShowIt": MessageLookupByLibrary.simpleMessage(
-        "Post it, say it, show it.",
-      ),
+          "Mag-post, magsalita, magpakita."),
       "postTextCopied":
-          MessageLookupByLibrary.simpleMessage("Post text copied"),
-      "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-      "profileUpdated": MessageLookupByLibrary.simpleMessage("Profile updated"),
+          MessageLookupByLibrary.simpleMessage("Nakopya ang teksto ng post"),
+      "privacyPolicy":
+          MessageLookupByLibrary.simpleMessage("Patakaran sa Privacy"),
+      "profileUpdated":
+          MessageLookupByLibrary.simpleMessage("Na-update ang profile"),
       "profile_bio": MessageLookupByLibrary.simpleMessage("Bio"),
       "profile_country": MessageLookupByLibrary.simpleMessage("Bansa"),
       "profile_display_name":
           MessageLookupByLibrary.simpleMessage("Display name"),
-      "profile_location": MessageLookupByLibrary.simpleMessage("Location"),
-      "profile_tap_to_change": MessageLookupByLibrary.simpleMessage(
-        "Tap to change",
-      ),
+      "profile_location": MessageLookupByLibrary.simpleMessage("Lokasyon"),
+      "profile_tap_to_change":
+          MessageLookupByLibrary.simpleMessage("I-tap para palitan"),
       "profile_website": MessageLookupByLibrary.simpleMessage("Website"),
-      "pushNotifications": MessageLookupByLibrary.simpleMessage(
-        "Push notifications",
-      ),
-      "quote": MessageLookupByLibrary.simpleMessage("Quote"),
-      "quotePost": MessageLookupByLibrary.simpleMessage("Quote post"),
-      "reachAPerson": MessageLookupByLibrary.simpleMessage("Reach a person"),
-      "remove": MessageLookupByLibrary.simpleMessage("Remove"),
-      "removeConversation": MessageLookupByLibrary.simpleMessage(
-        "Remove this conversation?",
-      ),
-      "removeMember": (Object a0) => "Remove ${a0}?",
+      "pushNotifications":
+          MessageLookupByLibrary.simpleMessage("Mga push notification"),
+      "quote": MessageLookupByLibrary.simpleMessage("I-quote"),
+      "quotePost": MessageLookupByLibrary.simpleMessage("I-quote ang post"),
+      "reachAPerson":
+          MessageLookupByLibrary.simpleMessage("Makipag-ugnayan sa tao"),
+      "remove": MessageLookupByLibrary.simpleMessage("Alisin"),
+      "removeConversation":
+          MessageLookupByLibrary.simpleMessage("Burahin ang usapang ito?"),
+      "removeMember": (Object a0) => "Alisin si ${a0}?",
       "removeMessage":
-          MessageLookupByLibrary.simpleMessage("Remove this message?"),
+          MessageLookupByLibrary.simpleMessage("Burahin ang mensaheng ito?"),
       "repliesFollowsMentions": MessageLookupByLibrary.simpleMessage(
-        "Replies, follows and mentions",
-      ),
-      "repliesPolicy": (Object a0) => "Replies: ${a0}",
-      "reply": MessageLookupByLibrary.simpleMessage("Reply"),
-      "reply_anyone":
-          MessageLookupByLibrary.simpleMessage("Anyone can interact"),
+          "Mga sagot, follow, at pagbanggit"),
+      "repliesPolicy": (Object a0) => "Mga sagot: ${a0}",
+      "reply": MessageLookupByLibrary.simpleMessage("Sumagot"),
+      "reply_anyone": MessageLookupByLibrary.simpleMessage(
+          "Puwedeng sumali ang kahit sino"),
       "reply_anyone_can_see": MessageLookupByLibrary.simpleMessage(
-        "Anyone can still see, repost and quote this post.",
-      ),
+          "Puwede pa ring makita, i-repost, at i-quote ng kahit sino ang post na ito."),
       "reply_anyone_detail": MessageLookupByLibrary.simpleMessage(
-        "Anyone on Kyron can reply to this post.",
-      ),
-      "reply_followers": MessageLookupByLibrary.simpleMessage(
-        "People who follow you",
-      ),
+          "Puwedeng sumagot sa post na ito ang kahit sino sa Kyron."),
+      "reply_followers":
+          MessageLookupByLibrary.simpleMessage("Mga taong sumusunod sa iyo"),
       "reply_followers_detail": MessageLookupByLibrary.simpleMessage(
-        "Only people who follow you can reply to this post.",
-      ),
+          "Ang mga sumusunod lang sa iyo ang puwedeng sumagot sa post na ito."),
       "reply_mentioned":
-          MessageLookupByLibrary.simpleMessage("People you mention"),
+          MessageLookupByLibrary.simpleMessage("Mga taong binanggit mo"),
       "reply_mentioned_detail": MessageLookupByLibrary.simpleMessage(
-        "Only the people you @mention in this post can reply.",
-      ),
-      "reply_nobody": MessageLookupByLibrary.simpleMessage("Nobody can reply"),
+          "Ang mga taong @binanggit mo lang sa post na ito ang puwedeng sumagot."),
+      "reply_nobody":
+          MessageLookupByLibrary.simpleMessage("Walang puwedeng sumagot"),
       "reply_nobody_detail": MessageLookupByLibrary.simpleMessage(
-        "Replies are turned off. You can still reply.",
-      ),
+          "Naka-off ang mga sagot. Puwede ka pa ring sumagot."),
       "reply_who_can_reply":
-          MessageLookupByLibrary.simpleMessage("Who can reply?"),
+          MessageLookupByLibrary.simpleMessage("Sino ang puwedeng sumagot?"),
       "report": MessageLookupByLibrary.simpleMessage("I-report"),
       "reportCopied": MessageLookupByLibrary.simpleMessage(
-        "Report copied. Paste it into an email to support.",
-      ),
+          "Nakopya ang ulat. I-paste ito sa email para sa suporta."),
       "reportSent":
           MessageLookupByLibrary.simpleMessage("Naipadala ang report"),
-      "repost": MessageLookupByLibrary.simpleMessage("Repost"),
-      "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+      "repost": MessageLookupByLibrary.simpleMessage("I-repost"),
+      "reset": MessageLookupByLibrary.simpleMessage("I-reset"),
       "resetPassword":
-          MessageLookupByLibrary.simpleMessage("Reset your password"),
-      "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-      "save": MessageLookupByLibrary.simpleMessage("Save"),
-      "saveDraft": MessageLookupByLibrary.simpleMessage("Save draft"),
-      "saySomething": (Object a0) => "Say something to ${a0}",
-      "search": MessageLookupByLibrary.simpleMessage("Search"),
+          MessageLookupByLibrary.simpleMessage("I-reset ang password mo"),
+      "retry": MessageLookupByLibrary.simpleMessage("Subukan ulit"),
+      "save": MessageLookupByLibrary.simpleMessage("I-save"),
+      "saveDraft": MessageLookupByLibrary.simpleMessage("I-save ang draft"),
+      "saySomething": (Object a0) => "Magsabi ng kahit ano sa ${a0}",
+      "search": MessageLookupByLibrary.simpleMessage("Maghanap"),
       "searchByNameOrHandle": MessageLookupByLibrary.simpleMessage(
-        "Search by name or handle",
-      ),
-      "searchCommunities": MessageLookupByLibrary.simpleMessage(
-        "Search communities",
-      ),
-      "searchGIFs": MessageLookupByLibrary.simpleMessage("Search GIFs"),
+          "Maghanap ayon sa pangalan o handle"),
+      "searchCommunities":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng komunidad"),
+      "searchGIFs": MessageLookupByLibrary.simpleMessage("Maghanap ng GIF"),
       "searchLanguages":
-          MessageLookupByLibrary.simpleMessage("Search languages"),
-      "searchTrendingTags": MessageLookupByLibrary.simpleMessage(
-        "Search trending tags",
-      ),
+          MessageLookupByLibrary.simpleMessage("Maghanap ng wika"),
+      "searchTrendingTags":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng sikat na tag"),
       "securityAlerts": MessageLookupByLibrary.simpleMessage(
-        "Security alerts and account changes",
-      ),
+          "Mga alerto sa seguridad at pagbabago sa account"),
       "selectAppLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select which language to use for the app's user interface.",
-      ),
+          "Piliin ang wika ng interface ng app."),
       "selectContentLanguages": MessageLookupByLibrary.simpleMessage(
-        "Select which languages you want your subscribed feeds to include. If none are selected, all languages will be shown.",
-      ),
+          "Piliin kung aling mga wika ang lalabas sa mga feed mo. Kung wala kang pipiliin, ipapakita ang lahat ng wika."),
       "selectPrimaryLanguage": MessageLookupByLibrary.simpleMessage(
-        "Select your preferred language for translations in your feed.",
-      ),
-      "send": MessageLookupByLibrary.simpleMessage("Send"),
+          "Piliin ang pangunahing wika mo para sa mga pagsasalin sa feed."),
+      "send": MessageLookupByLibrary.simpleMessage("Ipadala"),
       "sendConfirmation":
-          MessageLookupByLibrary.simpleMessage("Send confirmation"),
+          MessageLookupByLibrary.simpleMessage("Ipadala ang verification"),
       "sendErrorReport":
-          MessageLookupByLibrary.simpleMessage("Send error report"),
-      "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
+          MessageLookupByLibrary.simpleMessage("Magpadala ng bug report"),
+      "sendFeedback":
+          MessageLookupByLibrary.simpleMessage("Magpadala ng feedback"),
       "sendReport": MessageLookupByLibrary.simpleMessage("Ipadala ang report"),
-      "sendToSupport": MessageLookupByLibrary.simpleMessage("Send to support"),
-      "serviceStatus": MessageLookupByLibrary.simpleMessage("Service status"),
-      "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+      "sendToSupport":
+          MessageLookupByLibrary.simpleMessage("Ipadala sa suporta"),
+      "serviceStatus":
+          MessageLookupByLibrary.simpleMessage("Status ng serbisyo"),
+      "settings": MessageLookupByLibrary.simpleMessage("Mga setting"),
       "shareAppLog": MessageLookupByLibrary.simpleMessage(
-        "Share the app log with support",
-      ),
-      "signInToKyron": MessageLookupByLibrary.simpleMessage("Sign in to Kyron"),
-      "signedInAs": MessageLookupByLibrary.simpleMessage("Signed in as"),
-      "signupFailed": (Object a0) => "Signup failed: ${a0}",
-      "stay": MessageLookupByLibrary.simpleMessage("Stay"),
+          "Ibahagi ang log ng app sa suporta"),
+      "signInToKyron":
+          MessageLookupByLibrary.simpleMessage("Mag-sign in sa Kyron"),
+      "signedInAs": MessageLookupByLibrary.simpleMessage("Naka-sign in bilang"),
+      "signupFailed": (Object a0) => "Hindi nakapag-sign up: ${a0}",
+      "stay": MessageLookupByLibrary.simpleMessage("Manatili"),
       "supportEarlyExplanation": MessageLookupByLibrary.simpleMessage(
-        "Kyron is early, and the fastest way to reach someone who can actually fix a problem is to open an issue. Include what you were doing and what happened instead.",
-      ),
+          "Bago pa lang ang Kyron, at ang pinakamabilis na paraan para maabot ang taong talagang makakaayos nito ay magbukas ng ticket. Sabihin sa amin kung ano ang ginagawa mo at ano ang nangyari."),
       "supportInboxNotYet": MessageLookupByLibrary.simpleMessage(
-        "There is no in-app support inbox yet, so this screen points at the place that is actually monitored rather than at a form that goes nowhere.",
-      ),
-      "systemLog": MessageLookupByLibrary.simpleMessage("System log"),
+          "Wala pang support inbox ang app, kaya itinuturo ka ng screen na ito sa lugar na talagang binabantayan sa halip na sa form na walang patutunguhan."),
+      "systemLog": MessageLookupByLibrary.simpleMessage("Log ng app"),
       "tellMissingBroken": MessageLookupByLibrary.simpleMessage(
-        "Tell us what is missing or broken",
-      ),
-      "terms": MessageLookupByLibrary.simpleMessage("Terms"),
+          "Sabihin sa amin kung ano ang kulang o sira"),
+      "terms": MessageLookupByLibrary.simpleMessage("Mga Tuntunin ng Serbisyo"),
       "textVoiceVideoPeopleRooms": MessageLookupByLibrary.simpleMessage(
-        "Text, voice and video, the people who make them, and the rooms they talk in.",
-      ),
-      "theComposerNoPostButton": MessageLookupByLibrary.simpleMessage(
-        "The composer has no Post button",
-      ),
-      "theme_dark": MessageLookupByLibrary.simpleMessage("Dark"),
-      "theme_dark_detail": MessageLookupByLibrary.simpleMessage("Always dark"),
-      "theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+          "Teksto, boses, at video, ang mga taong gumagawa nito, at ang mga kuwartong pinag-uusapan nila."),
+      "theComposerNoPostButton":
+          MessageLookupByLibrary.simpleMessage("Walang Post button sa editor"),
+      "theme_dark": MessageLookupByLibrary.simpleMessage("Madilim"),
+      "theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Laging madilim"),
+      "theme_dim": MessageLookupByLibrary.simpleMessage("Malamlam"),
       "theme_dim_detail": MessageLookupByLibrary.simpleMessage(
-        "A softer dark, blue-grey rather than black",
-      ),
-      "theme_light": MessageLookupByLibrary.simpleMessage("Light"),
+          "Mas malambot na dilim, asul-abuhin sa halip na itim"),
+      "theme_light": MessageLookupByLibrary.simpleMessage("Maliwanag"),
       "theme_light_detail":
-          MessageLookupByLibrary.simpleMessage("Always light"),
+          MessageLookupByLibrary.simpleMessage("Laging maliwanag"),
       "theme_system": MessageLookupByLibrary.simpleMessage("System"),
       "theme_system_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow the phone’s own light or dark setting",
-      ),
-      "translate": MessageLookupByLibrary.simpleMessage("Translate"),
+          "Sundin ang maliwanag o madilim na setting ng phone mo"),
+      "translate": MessageLookupByLibrary.simpleMessage("Isalin"),
       "translationNotBuiltYet": MessageLookupByLibrary.simpleMessage(
-        "Translation is not built yet. Nothing in your feed is translated today; this is remembered for when it is.",
-      ),
+          "Hindi pa naka-on ang pagsasalin. Wala pang isinasalin sa feed mo; tatandaan ito hanggang doon."),
       "translation_description": MessageLookupByLibrary.simpleMessage(
-        "Kyron's own words are still being translated, so most screens stay in English for now. What this changes today: the parts of the interface Flutter draws itself, dates and numbers, and the direction the app lays out in for right-to-left languages.",
-      ),
+          "Binabago nito ang sariling mga salita ng Kyron, ang mga bahagi ng interface na si Flutter mismo ang gumuguhit, ang mga petsa at numero, at ang direksyon ng layout ng app para sa mga wikang isinusulat mula kanan pakaliwa."),
       "tryAgain": MessageLookupByLibrary.simpleMessage("Subukan ulit"),
-      "ui_about_privacy_policy": MessageLookupByLibrary.simpleMessage(
-        "Privacy Policy",
-      ),
-      "ui_about_terms_of_service": MessageLookupByLibrary.simpleMessage(
-        "Terms of Service",
-      ),
+      "ui_about_privacy_policy":
+          MessageLookupByLibrary.simpleMessage("Patakaran sa Privacy"),
+      "ui_about_terms_of_service":
+          MessageLookupByLibrary.simpleMessage("Mga Tuntunin ng Serbisyo"),
       "ui_account": MessageLookupByLibrary.simpleMessage("Account"),
-      "ui_after": MessageLookupByLibrary.simpleMessage("After"),
-      "ui_app_device": MessageLookupByLibrary.simpleMessage("App & Device"),
+      "ui_after": MessageLookupByLibrary.simpleMessage("Pagkatapos"),
+      "ui_app_device": MessageLookupByLibrary.simpleMessage("App at Device"),
       "ui_appeal_hint": MessageLookupByLibrary.simpleMessage(
           "Kinopya ko ang scam para bigyan ng babala ang mga tao."),
       "ui_appeal_intro": MessageLookupByLibrary.simpleMessage(
@@ -1163,15 +999,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Naipadala ang apela. Makakatanggap ka ng notification kapag napagpasyahan na."),
       "ui_appeal_title":
           MessageLookupByLibrary.simpleMessage("Apela sa kaso \$number"),
-      "ui_appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+      "ui_appearance": MessageLookupByLibrary.simpleMessage("Hitsura"),
       "ui_appearance_detail": MessageLookupByLibrary.simpleMessage(
-        "Light, dark, or whatever the phone is set to",
-      ),
-      "ui_before": MessageLookupByLibrary.simpleMessage("Before"),
+          "Maliwanag, madilim, o sundin ang phone mo"),
+      "ui_before": MessageLookupByLibrary.simpleMessage("Bago"),
       "ui_block_detail": MessageLookupByLibrary.simpleMessage(
-        "Neither of you will see the other on Kyron, and any follow between you is removed. They are not told.",
-      ),
-      "ui_carrying": MessageLookupByLibrary.simpleMessage("Carrying"),
+          "Hindi na kayo magkikita sa Kyron, at aalisin ang mga follow sa pagitan ninyo. Hindi siya sasabihan."),
+      "ui_carrying": MessageLookupByLibrary.simpleMessage("Naglalaman"),
       "ui_cchat_about":
           MessageLookupByLibrary.simpleMessage("Para saan ito (opsyonal)"),
       "ui_cchat_announcements": MessageLookupByLibrary.simpleMessage(
@@ -1273,29 +1107,24 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_cchat_voice":
           MessageLookupByLibrary.simpleMessage("Mag-record ng voice note"),
       "ui_cchat_you": MessageLookupByLibrary.simpleMessage("Ikaw"),
-      "ui_communities": MessageLookupByLibrary.simpleMessage("Communities"),
+      "ui_communities": MessageLookupByLibrary.simpleMessage("Mga komunidad"),
       "ui_communities_screen_what_is_it_for_optional_39b687":
-          MessageLookupByLibrary.simpleMessage("What is it for? (optional)"),
+          MessageLookupByLibrary.simpleMessage("Para saan ito? (opsyonal)"),
       "ui_community_posts": MessageLookupByLibrary.simpleMessage("Mga post:"),
-      "ui_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
-      "ui_could_not_load_feed": MessageLookupByLibrary.simpleMessage(
-        "Could not load your feed",
-      ),
+      "ui_content_display":
+          MessageLookupByLibrary.simpleMessage("Nilalaman at Display"),
+      "ui_could_not_load_feed":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang feed mo"),
       "ui_could_not_load_liked_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your liked posts",
-      ),
-      "ui_could_not_load_profile": MessageLookupByLibrary.simpleMessage(
-        "Could not load your profile",
-      ),
+          "Hindi ma-load ang mga ni-like mong post"),
+      "ui_could_not_load_profile":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang profile mo"),
       "ui_could_not_load_saved_posts": MessageLookupByLibrary.simpleMessage(
-        "Could not load your saved posts",
-      ),
-      "ui_decentralized_id": MessageLookupByLibrary.simpleMessage(
-        "Decentralized ID",
-      ),
-      "ui_diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+          "Hindi ma-load ang mga naka-save mong post"),
+      "ui_decentralized_id":
+          MessageLookupByLibrary.simpleMessage("Desentralisadong ID"),
+      "ui_diagnostics":
+          MessageLookupByLibrary.simpleMessage("Pag-troubleshoot"),
       "ui_dm_groups": MessageLookupByLibrary.simpleMessage("Mga grupo"),
       "ui_dm_groups_none": MessageLookupByLibrary.simpleMessage("Walang grupo"),
       "ui_dm_groups_none_detail": MessageLookupByLibrary.simpleMessage(
@@ -1305,16 +1134,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_dm_pinned": MessageLookupByLibrary.simpleMessage("Naka-pin"),
       "ui_drawer_liked": MessageLookupByLibrary.simpleMessage("Nagustuhan"),
       "ui_drawer_saved": MessageLookupByLibrary.simpleMessage("Naka-save"),
-      "ui_feed_empty": MessageLookupByLibrary.simpleMessage("Nothing here yet"),
+      "ui_feed_empty":
+          MessageLookupByLibrary.simpleMessage("Wala pang laman dito"),
       "ui_feed_following_detail": MessageLookupByLibrary.simpleMessage(
-        "Follow a few accounts and their posts will show up here.",
-      ),
+          "Sundan ang ilang account at lalabas dito ang mga post nila."),
       "ui_feed_following_empty": MessageLookupByLibrary.simpleMessage(
-        "Nothing from the people you follow",
-      ),
+          "Wala mula sa mga sinusundan mo"),
       "ui_feed_for_you_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts will show up here as people write them.",
-      ),
+          "Lalabas dito ang mga post habang isinusulat ng mga tao."),
       "ui_feed_signal_fading": MessageLookupByLibrary.simpleMessage("Humihina"),
       "ui_feed_signal_less":
           MessageLookupByLibrary.simpleMessage("Hindi interesado"),
@@ -1332,16 +1159,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_feed_signals_intro": MessageLookupByLibrary.simpleMessage(
           "Hinuhubog nito ang Home at Explore, kadalasan ayon sa paksa ng bawat post. Humihina nang kalahati ang bawat isa buwan-buwan at hindi na binibilang pagkalipas ng anim. Alisin ang isa para itigil ito ngayon."),
       "ui_feed_videos_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts carrying a clip will show up here.",
-      ),
+          "Lalabas dito ang mga post na may clip."),
       "ui_feed_videos_empty":
-          MessageLookupByLibrary.simpleMessage("No videos yet"),
+          MessageLookupByLibrary.simpleMessage("Wala pang video"),
       "ui_feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
-      "ui_find_people_on_kyron": MessageLookupByLibrary.simpleMessage(
-        "Find people on Kyron",
-      ),
+      "ui_find_people_on_kyron":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng tao sa Kyron"),
       "ui_from_account":
-          MessageLookupByLibrary.simpleMessage("From an account"),
+          MessageLookupByLibrary.simpleMessage("Mula sa isang account"),
       "ui_group_add": MessageLookupByLibrary.simpleMessage("Magdagdag ng tao"),
       "ui_group_add_action": MessageLookupByLibrary.simpleMessage("Idagdag"),
       "ui_group_add_name": MessageLookupByLibrary.simpleMessage(
@@ -1434,32 +1259,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_group_you": MessageLookupByLibrary.simpleMessage("ikaw"),
       "ui_group_you_spectate":
           MessageLookupByLibrary.simpleMessage("Manonood ka"),
-      "ui_help": MessageLookupByLibrary.simpleMessage("Help"),
+      "ui_help": MessageLookupByLibrary.simpleMessage("Tulong"),
       "ui_interest_noted": MessageLookupByLibrary.simpleMessage(
-        "Noted. This helps shape what you are shown.",
-      ),
-      "ui_join": MessageLookupByLibrary.simpleMessage("Join"),
-      "ui_joined": MessageLookupByLibrary.simpleMessage("Joined"),
-      "ui_language": MessageLookupByLibrary.simpleMessage("Language"),
+          "Naitala. Nakakatulong ito sa pagpili ng ipapakita sa iyo."),
+      "ui_join": MessageLookupByLibrary.simpleMessage("Sumali"),
+      "ui_joined": MessageLookupByLibrary.simpleMessage("Sumali"),
+      "ui_language": MessageLookupByLibrary.simpleMessage("Wika"),
       "ui_language_detail":
           MessageLookupByLibrary.simpleMessage("Piliin ang iyong wika"),
       "ui_legal": MessageLookupByLibrary.simpleMessage("Legal"),
-      "ui_like": MessageLookupByLibrary.simpleMessage("Like"),
-      "ui_liked_posts": MessageLookupByLibrary.simpleMessage("Liked posts"),
+      "ui_like": MessageLookupByLibrary.simpleMessage("I-like"),
+      "ui_liked_posts":
+          MessageLookupByLibrary.simpleMessage("Mga ni-like na post"),
       "ui_liked_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Posts you like show up here, most recent first.",
-      ),
-      "ui_link_copied": MessageLookupByLibrary.simpleMessage("Link copied"),
+          "Lalabas dito ang mga post na ni-like mo, pinakabago muna."),
+      "ui_link_copied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang link"),
       "ui_mute_detail": MessageLookupByLibrary.simpleMessage(
-        "You will stop seeing their posts. They are not told.",
-      ),
-      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("No likes yet"),
+          "Hindi mo na makikita ang mga post niya. Hindi siya sasabihan."),
+      "ui_no_likes_yet": MessageLookupByLibrary.simpleMessage("Wala pang like"),
       "ui_no_posts_match_filters": MessageLookupByLibrary.simpleMessage(
-        "No posts match those filters.",
-      ),
-      "ui_nothing_saved_yet": MessageLookupByLibrary.simpleMessage(
-        "Nothing saved yet",
-      ),
+          "Walang post na tumutugma sa mga filter na iyon."),
+      "ui_nothing_saved_yet":
+          MessageLookupByLibrary.simpleMessage("Wala pang naka-save"),
       "ui_notif_account_update":
           MessageLookupByLibrary.simpleMessage("Na-update ang iyong account"),
       "ui_notif_appeal_accepted": MessageLookupByLibrary.simpleMessage(
@@ -1519,13 +1341,9 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("May babala ang iyong account"),
       "ui_notif_yesterday": MessageLookupByLibrary.simpleMessage("Kahapon"),
       "ui_onboard_step3_screen_finish_5c0ad8":
-          MessageLookupByLibrary.simpleMessage(
-        "Finish",
-      ),
+          MessageLookupByLibrary.simpleMessage("Tapos na"),
       "ui_onboard_step3_screen_skip_7b13d8":
-          MessageLookupByLibrary.simpleMessage(
-        "Skip",
-      ),
+          MessageLookupByLibrary.simpleMessage("Laktawan"),
       "ui_once_already":
           MessageLookupByLibrary.simpleMessage("Nabuksan na ito."),
       "ui_once_expired": MessageLookupByLibrary.simpleMessage("Nag-expire"),
@@ -1543,22 +1361,21 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_once_send": MessageLookupByLibrary.simpleMessage(
           "Ipadala para isang beses makita"),
       "ui_once_tap": MessageLookupByLibrary.simpleMessage("I-tap para makita"),
-      "ui_pause": MessageLookupByLibrary.simpleMessage("Pause"),
-      "ui_play": MessageLookupByLibrary.simpleMessage("Play"),
+      "ui_pause": MessageLookupByLibrary.simpleMessage("I-pause"),
+      "ui_play": MessageLookupByLibrary.simpleMessage("I-play"),
       "ui_post_delete_detail": MessageLookupByLibrary.simpleMessage(
-        "It is removed from your profile and from everyone else's feed. Replies to it go with it.",
-      ),
-      "ui_post_deleted": MessageLookupByLibrary.simpleMessage("Post deleted"),
-      "ui_post_hidden": MessageLookupByLibrary.simpleMessage("Post hidden"),
-      "ui_post_text_copied": MessageLookupByLibrary.simpleMessage(
-        "Post text copied",
-      ),
+          "Aalisin ito sa profile mo at sa feed ng lahat. Kasama nitong mawawala ang mga sagot dito."),
+      "ui_post_deleted":
+          MessageLookupByLibrary.simpleMessage("Nabura ang post"),
+      "ui_post_hidden":
+          MessageLookupByLibrary.simpleMessage("Nakatago ang post"),
+      "ui_post_text_copied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang teksto ng post"),
       "ui_posted_between":
-          MessageLookupByLibrary.simpleMessage("Posted between"),
+          MessageLookupByLibrary.simpleMessage("Nai-post sa pagitan ng"),
       "ui_posts_hidden": MessageLookupByLibrary.simpleMessage(
-        "Hidden. We will show you fewer like it.",
-      ),
-      "ui_preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
+          "Nakatago. Magpapakita kami ng mas kaunting ganito."),
+      "ui_preferences": MessageLookupByLibrary.simpleMessage("Mga kagustuhan"),
       "ui_privacy": MessageLookupByLibrary.simpleMessage("Privacy"),
       "ui_report_add": MessageLookupByLibrary.simpleMessage(
           "May gusto ka pang idagdag? (opsyonal)"),
@@ -1648,7 +1465,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_impersonation":
           MessageLookupByLibrary.simpleMessage("Pagpapanggap"),
       "ui_rule_intellectual_property":
-          MessageLookupByLibrary.simpleMessage("Intellectual property"),
+          MessageLookupByLibrary.simpleMessage("Intelektwal na ari-arian"),
       "ui_rule_misinformation":
           MessageLookupByLibrary.simpleMessage("Maling impormasyon"),
       "ui_rule_self_harm": MessageLookupByLibrary.simpleMessage(
@@ -1659,76 +1476,65 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_rule_spam": MessageLookupByLibrary.simpleMessage("Spam"),
       "ui_rule_violence":
           MessageLookupByLibrary.simpleMessage("Karahasan o pagbabanta"),
-      "ui_saved_posts": MessageLookupByLibrary.simpleMessage("Saved posts"),
+      "ui_saved_posts":
+          MessageLookupByLibrary.simpleMessage("Mga naka-save na post"),
       "ui_saved_posts_detail": MessageLookupByLibrary.simpleMessage(
-        "Tap the archive icon on any post to keep it here. Only you can see what you save.",
-      ),
+          "I-tap ang archive icon ng post para itago ito rito. Ikaw lang ang nakakakita ng mga naka-save mo."),
       "ui_search_by_handle_or_display_name":
           MessageLookupByLibrary.simpleMessage(
-        "Search by handle or display name.",
-      ),
-      "ui_search_clear": MessageLookupByLibrary.simpleMessage("Clear"),
-      "ui_search_everything_posted": MessageLookupByLibrary.simpleMessage(
-        "Search everything posted",
-      ),
-      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Filters"),
-      "ui_search_people": MessageLookupByLibrary.simpleMessage("Search people"),
-      "ui_search_posts": MessageLookupByLibrary.simpleMessage("Search posts"),
-      "ui_settings": MessageLookupByLibrary.simpleMessage("Settings"),
-      "ui_settings_app_device": MessageLookupByLibrary.simpleMessage(
-        "App & Device",
-      ),
-      "ui_settings_content_display": MessageLookupByLibrary.simpleMessage(
-        "Content & Display",
-      ),
+              "Maghanap ayon sa handle o display name."),
+      "ui_search_clear": MessageLookupByLibrary.simpleMessage("I-clear"),
+      "ui_search_everything_posted":
+          MessageLookupByLibrary.simpleMessage("Hanapin ang lahat ng nai-post"),
+      "ui_search_filters": MessageLookupByLibrary.simpleMessage("Mga filter"),
+      "ui_search_people":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng tao"),
+      "ui_search_posts":
+          MessageLookupByLibrary.simpleMessage("Maghanap ng post"),
+      "ui_settings": MessageLookupByLibrary.simpleMessage("Mga setting"),
+      "ui_settings_app_device":
+          MessageLookupByLibrary.simpleMessage("App at Device"),
+      "ui_settings_content_display":
+          MessageLookupByLibrary.simpleMessage("Nilalaman at Display"),
       "ui_settings_data_saver":
-          MessageLookupByLibrary.simpleMessage("Data Saver"),
-      "ui_settings_feedback_detail": MessageLookupByLibrary.simpleMessage(
-        "Tell us what you think",
-      ),
+          MessageLookupByLibrary.simpleMessage("Pagtitipid ng data"),
+      "ui_settings_feedback_detail":
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang iniisip mo"),
       "ui_settings_help_articles": MessageLookupByLibrary.simpleMessage(
-        "Browse help articles",
-      ),
-      "ui_settings_language_detail": MessageLookupByLibrary.simpleMessage(
-        "Choose your language",
-      ),
+          "Mag-browse ng mga artikulo ng tulong"),
+      "ui_settings_language_detail":
+          MessageLookupByLibrary.simpleMessage("Piliin ang wika mo"),
       "ui_settings_muted_blocked": MessageLookupByLibrary.simpleMessage(
-        "Who you have muted or blocked",
-      ),
+          "Sino ang na-mute o na-block mo"),
       "ui_settings_notifications_detail": MessageLookupByLibrary.simpleMessage(
-        "Notification preferences",
-      ),
+          "Mga kagustuhan sa notification"),
       "ui_settings_profile_contact": MessageLookupByLibrary.simpleMessage(
-        "Your profile and contact information",
-      ),
+          "Ang profile at contact details mo"),
       "ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001":
           MessageLookupByLibrary.simpleMessage(
-        "You will need to sign in again to get back to your account.",
-      ),
-      "ui_settings_security": MessageLookupByLibrary.simpleMessage(
-        "Security settings",
-      ),
+              "Kailangan mong mag-sign in ulit para makabalik sa account mo."),
+      "ui_settings_security":
+          MessageLookupByLibrary.simpleMessage("Mga setting sa seguridad"),
       "ui_settings_subscreens_confirm_password_41d040":
-          MessageLookupByLibrary.simpleMessage("Confirm password"),
+          MessageLookupByLibrary.simpleMessage("Kumpirmahin ang password"),
       "ui_settings_subscreens_in_one_line_06bdaf":
-          MessageLookupByLibrary.simpleMessage("In one line"),
+          MessageLookupByLibrary.simpleMessage("Sa isang linya"),
       "ui_settings_subscreens_new_email_address_dab96e":
-          MessageLookupByLibrary.simpleMessage("New email address"),
+          MessageLookupByLibrary.simpleMessage("Bagong email address"),
       "ui_settings_subscreens_new_password_88c1bf":
-          MessageLookupByLibrary.simpleMessage("New password"),
+          MessageLookupByLibrary.simpleMessage("Bagong password"),
       "ui_settings_subscreens_what_happened_977dd8":
-          MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Ano ang nangyari"),
       "ui_settings_team_help": MessageLookupByLibrary.simpleMessage(
-        "Get help from our team",
-      ),
-      "ui_share": MessageLookupByLibrary.simpleMessage("Share"),
+          "Humingi ng tulong sa aming team"),
+      "ui_share": MessageLookupByLibrary.simpleMessage("Ibahagi"),
       "ui_share_quote": MessageLookupByLibrary.simpleMessage("I-quote"),
       "ui_share_send_message":
           MessageLookupByLibrary.simpleMessage("Ipadala sa mensahe"),
       "ui_share_send_message_detail":
           MessageLookupByLibrary.simpleMessage("Sa mga tao sa Kyron"),
       "ui_share_this_post":
-          MessageLookupByLibrary.simpleMessage("Share this post"),
+          MessageLookupByLibrary.simpleMessage("Ibahagi ang post na ito"),
       "ui_standing_about":
           MessageLookupByLibrary.simpleMessage("Tungkol saan ito"),
       "ui_standing_account_banned": MessageLookupByLibrary.simpleMessage(
@@ -1823,54 +1629,49 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ang post mo"),
       "ui_standing_your_reply":
           MessageLookupByLibrary.simpleMessage("Ang reply mo"),
-      "ui_terms": MessageLookupByLibrary.simpleMessage("Terms"),
-      "ui_this_post": MessageLookupByLibrary.simpleMessage("this post"),
-      "ui_thread_muted": MessageLookupByLibrary.simpleMessage("Thread muted"),
+      "ui_terms":
+          MessageLookupByLibrary.simpleMessage("Mga Tuntunin ng Serbisyo"),
+      "ui_this_post": MessageLookupByLibrary.simpleMessage("ang post na ito"),
+      "ui_thread_muted":
+          MessageLookupByLibrary.simpleMessage("Naka-mute ang thread"),
       "ui_try_again": MessageLookupByLibrary.simpleMessage("Subukan ulit"),
       "ui_turn_sound_off":
-          MessageLookupByLibrary.simpleMessage("Turn sound off"),
-      "ui_turn_sound_on": MessageLookupByLibrary.simpleMessage("Turn sound on"),
+          MessageLookupByLibrary.simpleMessage("I-off ang tunog"),
+      "ui_turn_sound_on":
+          MessageLookupByLibrary.simpleMessage("I-on ang tunog"),
       "ui_two_characters_or_more": MessageLookupByLibrary.simpleMessage(
-        "Two characters or more.",
-      ),
+          "Hindi bababa sa dalawang character."),
       "ui_undo": MessageLookupByLibrary.simpleMessage("I-undo"),
       "ui_words_or_filter": MessageLookupByLibrary.simpleMessage(
-        "Words, or a filter — an account, a date range, or what a post carries.",
-      ),
-      "undoRepost": MessageLookupByLibrary.simpleMessage("Undo repost"),
-      "updatePassword": MessageLookupByLibrary.simpleMessage("Update password"),
-      "useDifferentAddress": MessageLookupByLibrary.simpleMessage(
-        "Use a different address",
-      ),
+          "Mga salita, o filter: account, saklaw ng petsa, o laman ng post."),
+      "undoRepost": MessageLookupByLibrary.simpleMessage("I-undo ang repost"),
+      "updatePassword":
+          MessageLookupByLibrary.simpleMessage("I-update ang password"),
+      "useDifferentAddress":
+          MessageLookupByLibrary.simpleMessage("Gumamit ng ibang address"),
       "username": MessageLookupByLibrary.simpleMessage("Username"),
       "usernameRule": MessageLookupByLibrary.simpleMessage(
-        "Username must be lowercase (a-z, 0-9, _)",
-      ),
+          "Dapat maliliit na titik ang username (a-z, 0-9, _)"),
       "video": MessageLookupByLibrary.simpleMessage("Video"),
-      "voice_attach": MessageLookupByLibrary.simpleMessage("Attach"),
+      "voice_attach": MessageLookupByLibrary.simpleMessage("Ilakip"),
       "voice_ready_attach":
-          MessageLookupByLibrary.simpleMessage("Ready to attach"),
-      "voice_record_post": MessageLookupByLibrary.simpleMessage(
-        "Record a voice post",
-      ),
-      "voice_recording": MessageLookupByLibrary.simpleMessage("Recording…"),
-      "voice_stop": MessageLookupByLibrary.simpleMessage("Stop"),
-      "whatHappened": MessageLookupByLibrary.simpleMessage("What happened"),
+          MessageLookupByLibrary.simpleMessage("Handa nang ilakip"),
+      "voice_record_post":
+          MessageLookupByLibrary.simpleMessage("Mag-record ng voice post"),
+      "voice_recording": MessageLookupByLibrary.simpleMessage("Sine-save…"),
+      "voice_stop": MessageLookupByLibrary.simpleMessage("Ihinto"),
+      "whatHappened": MessageLookupByLibrary.simpleMessage("Ano ang nangyari"),
       "whatHappenedAndLookAt": MessageLookupByLibrary.simpleMessage(
         "Ano ang nangyari, at ano ang dapat naming tingnan?",
       ),
-      "whatInPicture": MessageLookupByLibrary.simpleMessage(
-        "What is in this picture?",
-      ),
-      "whatIsItFor": MessageLookupByLibrary.simpleMessage(
-        "What is it for? (optional)",
-      ),
+      "whatInPicture":
+          MessageLookupByLibrary.simpleMessage("Ano ang nasa larawang ito?"),
+      "whatIsItFor":
+          MessageLookupByLibrary.simpleMessage("Para saan ito? (opsyonal)"),
       "whatYouDid": MessageLookupByLibrary.simpleMessage(
-        "What you did, what you expected, what happened",
-      ),
+          "Ano ang ginawa mo, ano ang inaasahan mo, ano ang nangyari"),
       "whatYouWereDoing": MessageLookupByLibrary.simpleMessage(
-        "What you were doing when it happened.",
-      ),
+          "Ano ang ginagawa mo nang mangyari ito."),
       "ui_dm_you_replied": MessageLookupByLibrary.simpleMessage("Sumagot ka"),
       "dmReplied": (Object a0) => "Sumagot si $a0",
       "ui_dm_attach":
@@ -1914,7 +1715,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Payagan ang Kyron na magdagdag sa iyong mga larawan para ma-save ito."),
       "ui_status_all_ok":
           MessageLookupByLibrary.simpleMessage("Gumagana ang lahat ng sistema"),
-      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Uptime"),
+      "ui_status_uptime": MessageLookupByLibrary.simpleMessage("Accessibility"),
       "ui_status_last_60":
           MessageLookupByLibrary.simpleMessage("Huling 60 araw"),
       "ui_status_60_days_ago":
@@ -1997,7 +1798,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Naipadala, pero hindi sa lahat."),
       "ui_share_failed": MessageLookupByLibrary.simpleMessage(
           "Hindi ito maipadala. Subukang muli."),
-      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Follower"),
+      "ui_follower_one": MessageLookupByLibrary.simpleMessage("Tagasunod"),
       "ui_dm_filter": MessageLookupByLibrary.simpleMessage("Salain"),
       "ui_dm_filter_all": MessageLookupByLibrary.simpleMessage("Lahat"),
       "ui_dm_filter_unread":
@@ -2226,7 +2027,7 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mga test coin: hindi mabibili at walang halagang pera."),
       "ui_gift_refills_on":
           MessageLookupByLibrary.simpleMessage("Mapupunan sa \$date."),
-      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 coin"),
+      "ui_gift_one_coin": MessageLookupByLibrary.simpleMessage("1 barya"),
       "ui_gift_coins": MessageLookupByLibrary.simpleMessage("\$count coin"),
       "ui_gift_balance":
           MessageLookupByLibrary.simpleMessage("Mayroon kang \$coins"),
