@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Dag $day af din test. Ét tryk er nok.",
   "ui_check_in_hint": "Noget vi bør rette eller tilføje? (valgfrit)",
   "ui_send": "Send",
-  "ui_not_now": "Ikke nu"
+  "ui_not_now": "Ikke nu",
+  "ui_back_again_to_leave": "Tryk på tilbage igen for at forlade Kyron"
 }

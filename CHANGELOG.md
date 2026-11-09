@@ -20,6 +20,11 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **Back takes you Home, not out.** From Explore, Communities or Messages,
+  back goes to Home; on Home, it asks for a second press before Kyron
+  closes, so a stray back never leaves the app.
 
 ## [0.1.43] - 2026-11-09
 ### Added

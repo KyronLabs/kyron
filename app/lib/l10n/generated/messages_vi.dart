@@ -2263,6 +2263,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Có điều gì chúng tôi nên sửa hoặc thêm không? (không bắt buộc)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Gửi"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Để sau"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Nhấn quay lại lần nữa để thoát Kyron"),
     };
 
 final messageLookup = MessageLookup();

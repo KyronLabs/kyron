@@ -2283,6 +2283,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tuzatishimiz yoki qo‘shishimiz kerak bo‘lgan narsa bormi? (ixtiyoriy)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Yuborish"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hozir emas"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyron’dan chiqish uchun yana orqaga bosing"),
     };
 
 final messageLookup = MessageLookup();

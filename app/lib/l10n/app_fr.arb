@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Jour $day de votre test. Un seul geste suffit.",
   "ui_check_in_hint": "Quelque chose à corriger ou à ajouter ? (facultatif)",
   "ui_send": "Envoyer",
-  "ui_not_now": "Plus tard"
+  "ui_not_now": "Plus tard",
+  "ui_back_again_to_leave": "Appuyez de nouveau sur Retour pour quitter Kyron"
 }

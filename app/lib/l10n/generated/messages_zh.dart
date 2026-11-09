@@ -1757,6 +1757,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("有什么需要我们修复或添加的吗？（可选）"),
       "ui_send": MessageLookupByLibrary.simpleMessage("发送"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("以后再说"),
+      "ui_back_again_to_leave":
+          MessageLookupByLibrary.simpleMessage("再按一次返回键退出 Kyron"),
     };
 
 final messageLookup = MessageLookup();

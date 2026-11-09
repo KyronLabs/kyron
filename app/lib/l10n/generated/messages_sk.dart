@@ -2266,6 +2266,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Niečo, čo by sme mali opraviť alebo pridať? (nepovinné)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Odoslať"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Teraz nie"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Ďalším stlačením Späť opustíte Kyron"),
     };
 
 final messageLookup = MessageLookup();

@@ -2279,6 +2279,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ko mums labot vai pievienot? (pēc izvēles)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Sūtīt"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne tagad"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Vēlreiz nospiediet Atpakaļ, lai izietu no Kyron"),
     };
 
 final messageLookup = MessageLookup();

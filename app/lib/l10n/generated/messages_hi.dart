@@ -2244,6 +2244,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "कुछ ठीक करना या जोड़ना चाहिए? (वैकल्पिक)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("भेजें"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("अभी नहीं"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyron छोड़ने के लिए फिर से वापस दबाएँ"),
     };
 
 final messageLookup = MessageLookup();

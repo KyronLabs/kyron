@@ -2250,6 +2250,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Түзету не қосу керек нәрсе бар ма? (міндетті емес)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Жіберу"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Қазір емес"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyron-нан шығу үшін «Артқа» түймесін қайта басыңыз"),
     };
 
 final messageLookup = MessageLookup();

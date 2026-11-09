@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Hari ke-$day ujian anda. Satu ketikan sudah memadai.",
   "ui_check_in_hint": "Ada apa-apa yang patut kami baiki atau tambah? (pilihan)",
   "ui_send": "Hantar",
-  "ui_not_now": "Bukan sekarang"
+  "ui_not_now": "Bukan sekarang",
+  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron"
 }

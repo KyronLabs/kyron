@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "የሙከራዎ ቀን $day። አንድ መንካት በቂ ነው።",
   "ui_check_in_hint": "ልናስተካክለው ወይም ልንጨምረው የሚገባ ነገር አለ? (አማራጭ)",
   "ui_send": "ላክ",
-  "ui_not_now": "አሁን አይደለም"
+  "ui_not_now": "አሁን አይደለም",
+  "ui_back_again_to_leave": "Kyronን ለመውጣት እንደገና ተመለስን ይጫኑ"
 }

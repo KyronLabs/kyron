@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Ụbọchị $day nke nnwale gị. Otu mmetụ ezuola.",
   "ui_check_in_hint": "Ọ nwere ihe anyị kwesịrị idozi ma ọ bụ itinye? (nhọrọ)",
   "ui_send": "Zipu",
-  "ui_not_now": "Ọ bụghị ugbu a"
+  "ui_not_now": "Ọ bụghị ugbu a",
+  "ui_back_again_to_leave": "Pịa azụ ọzọ ka ịpụ na Kyron"
 }

@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Maalinta $day ee tijaabadaada. Hal taabasho ayaa ku filan.",
   "ui_check_in_hint": "Ma jiraan wax aan hagaajinno ama ku darno? (ikhtiyaari)",
   "ui_send": "Dir",
-  "ui_not_now": "Hadda maya"
+  "ui_not_now": "Hadda maya",
+  "ui_back_again_to_leave": "Mar kale riix dib si aad uga baxdo Kyron"
 }

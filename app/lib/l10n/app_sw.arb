@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Siku ya $day ya majaribio yako. Mguso mmoja unatosha.",
   "ui_check_in_hint": "Kuna kitu tunachopaswa kurekebisha au kuongeza? (si lazima)",
   "ui_send": "Tuma",
-  "ui_not_now": "Si sasa"
+  "ui_not_now": "Si sasa",
+  "ui_back_again_to_leave": "Bonyeza nyuma tena ili kuondoka Kyron"
 }

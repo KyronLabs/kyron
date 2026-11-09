@@ -2276,6 +2276,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mit javítsunk vagy adjunk hozzá? (nem kötelező)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Küldés"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Most nem"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Nyomd meg újra a Vissza gombot a Kyronból való kilépéshez"),
     };
 
 final messageLookup = MessageLookup();

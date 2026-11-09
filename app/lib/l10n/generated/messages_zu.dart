@@ -2286,6 +2286,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ingabe kukhona okufanele sikulungise noma sikwengeze? (ongakukhetha)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Thumela"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hhayi manje"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Cindezela emuva futhi ukuze uphume ku-Kyron"),
     };
 
 final messageLookup = MessageLookup();

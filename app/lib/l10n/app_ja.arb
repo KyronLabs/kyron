@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "テスト$day日目です。タップひとつで十分です。",
   "ui_check_in_hint": "直してほしいこと、追加してほしいことは？（任意）",
   "ui_send": "送信",
-  "ui_not_now": "後で"
+  "ui_not_now": "後で",
+  "ui_back_again_to_leave": "もう一度戻るを押すとKyronを終了します"
 }

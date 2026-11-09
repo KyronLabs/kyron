@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "יום $day של הניסיון שלך. הקשה אחת מספיקה.",
   "ui_check_in_hint": "משהו שכדאי לתקן או להוסיף? (לא חובה)",
   "ui_send": "שליחה",
-  "ui_not_now": "לא עכשיו"
+  "ui_not_now": "לא עכשיו",
+  "ui_back_again_to_leave": "יש ללחוץ שוב על חזרה כדי לצאת מ-Kyron"
 }

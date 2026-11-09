@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "$day jūsų bandymo diena. Užtenka vieno bakstelėjimo.",
   "ui_check_in_hint": "Ką turėtume pataisyti ar pridėti? (neprivaloma)",
   "ui_send": "Siųsti",
-  "ui_not_now": "Ne dabar"
+  "ui_not_now": "Ne dabar",
+  "ui_back_again_to_leave": "Dar kartą paspauskite Atgal, kad išeitumėte iš Kyron"
 }

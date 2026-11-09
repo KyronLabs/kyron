@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Ngày $day trong đợt thử nghiệm. Chỉ cần một chạm.",
   "ui_check_in_hint": "Có điều gì chúng tôi nên sửa hoặc thêm không? (không bắt buộc)",
   "ui_send": "Gửi",
-  "ui_not_now": "Để sau"
+  "ui_not_now": "Để sau",
+  "ui_back_again_to_leave": "Nhấn quay lại lần nữa để thoát Kyron"
 }

@@ -2282,6 +2282,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ma jiraan wax aan hagaajinno ama ku darno? (ikhtiyaari)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Dir"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hadda maya"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Mar kale riix dib si aad uga baxdo Kyron"),
     };
 
 final messageLookup = MessageLookup();

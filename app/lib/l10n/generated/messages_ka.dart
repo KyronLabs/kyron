@@ -2270,6 +2270,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "რამე უნდა გავასწოროთ ან დავამატოთ? (არასავალდებულო)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("გაგზავნა"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("ახლა არა"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Kyron-იდან გასასვლელად კვლავ დააჭირეთ უკან"),
     };
 
 final messageLookup = MessageLookup();

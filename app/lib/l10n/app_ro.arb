@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Ziua $day a testului tău. O atingere e de ajuns.",
   "ui_check_in_hint": "Ceva ce ar trebui să reparăm sau să adăugăm? (opțional)",
   "ui_send": "Trimite",
-  "ui_not_now": "Nu acum"
+  "ui_not_now": "Nu acum",
+  "ui_back_again_to_leave": "Apasă din nou Înapoi pentru a ieși din Kyron"
 }

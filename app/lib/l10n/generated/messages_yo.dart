@@ -2274,6 +2274,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ṣé ohun kan wà tí a gbọ́dọ̀ tún ṣe tàbí fi kún un? (àṣàyàn)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Fi ránṣẹ́"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Kì í ṣe báyìí"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Tẹ padà lẹ́ẹ̀kan sí i láti kúrò ní Kyron"),
     };
 
 final messageLookup = MessageLookup();

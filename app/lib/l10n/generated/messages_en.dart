@@ -2527,6 +2527,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Anything we should fix or add? (optional)"),
       "ui_send": MessageLookupByLibrary.simpleMessage("Send"),
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Not now"),
+      "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
+          "Press back again to leave Kyron"),
     };
 
 final messageLookup = MessageLookup();

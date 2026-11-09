@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Sinovingizning $day-kuni. Bir bosish kifoya.",
   "ui_check_in_hint": "Tuzatishimiz yoki qo‘shishimiz kerak bo‘lgan narsa bormi? (ixtiyoriy)",
   "ui_send": "Yuborish",
-  "ui_not_now": "Hozir emas"
+  "ui_not_now": "Hozir emas",
+  "ui_back_again_to_leave": "Kyron’dan chiqish uchun yana orqaga bosing"
 }

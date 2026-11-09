@@ -1201,5 +1201,6 @@
   "ui_check_in_detail": "Araw $day ng iyong test. Sapat na ang isang tap.",
   "ui_check_in_hint": "May dapat ba kaming ayusin o idagdag? (opsyonal)",
   "ui_send": "Ipadala",
-  "ui_not_now": "Hindi ngayon"
+  "ui_not_now": "Hindi ngayon",
+  "ui_back_again_to_leave": "Pindutin muli ang back para umalis sa Kyron"
 }
