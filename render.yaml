@@ -7,11 +7,34 @@ services:
     env: static
     buildCommand: echo "Build complete"
     staticPublishPath: ./web/build/web
+    # The web app is withdrawn until further notice (#192): Kyron is the
+    # Android and Windows apps. Old links to /app land on the download page.
     routes:
-      - path: /app
-        destination: ./web/build/web/app
-      - path: /
-        destination: ./web/build/web
+      - type: redirect
+        source: /app
+        destination: /download.html
+      - type: redirect
+        source: /app/*
+        destination: /download.html
+    # The site holds no session any more, but it still runs a third-party
+    # script (the Tailwind CDN), so it gets the headers that keep it from
+    # being framed or sniffed.
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
 
   # The API. This service already exists, created in the dashboard rather than
   # from this file, so it was reproducible only by hand -- and nothing in the

@@ -145,13 +145,16 @@ async function bootstrap() {
   });
 
   // CORS_ORIGIN is a comma-separated allow-list. Unset, development reflects
-  // any origin and production answers only the web app's own (corsOrigins).
+  // any origin and production allows no browser origin at all (corsOrigins):
+  // there is no web client, and the apps send no Origin.
   const origins = corsOrigins(config.get<string>('CORS_ORIGIN'));
   if (!config.get<string>('CORS_ORIGIN')?.trim()) {
     logger.warn(
       origins === true
         ? 'CORS_ORIGIN is not set: reflecting any origin (development).'
-        : `CORS_ORIGIN is not set: allowing only ${origins.join(', ')}.`,
+        : origins.length
+          ? `CORS_ORIGIN is not set: allowing only ${origins.join(', ')}.`
+          : 'CORS_ORIGIN is not set: no browser origin may call this API.',
     );
   }
 
