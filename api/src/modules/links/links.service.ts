@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { normaliseUrl, resolveIfPublic } from './link-safety';
+import { linkDispatcher, normaliseUrl, resolveIfPublic } from './link-safety';
 import { oembedEndpoint, parseOembed } from './oembed';
 import { LinkCard, parseCard } from './open-graph';
 
@@ -231,10 +231,14 @@ export class LinksService {
     const timer = setTimeout(() => abort.abort(), LinksService.timeoutMs);
 
     try {
-      return await fetch(url, {
+      const init: RequestInit & { dispatcher: unknown } = {
         method: 'GET',
         redirect: 'manual',
         signal: abort.signal,
+        // Connects only to an address that passes the check, at the moment
+        // the socket opens: see publicOnlyLookup. resolveIfPublic before it
+        // stays as the quick refusal with the clearer message.
+        dispatcher: linkDispatcher,
         headers: {
           // Identifies the fetch so a site owner seeing it in their logs knows
           // what it is, and can refuse it.
@@ -242,7 +246,8 @@ export class LinksService {
           accept,
           'accept-language': 'en',
         },
-      });
+      };
+      return await fetch(url, init);
     } finally {
       clearTimeout(timer);
     }

@@ -13,13 +13,6 @@ class ApiClient {
   static void Function(AccountRestriction restriction)? onRestricted;
 
   // 🔥 Routes that should NOT have Authorization header
-  static const _publicRoutes = [
-    '/auth/login',
-    '/auth/register',
-    '/auth/refresh',
-    '/auth/verify-email',
-  ];
-
   ApiClient() {
     dio = Dio(
       BaseOptions(
@@ -46,21 +39,14 @@ class ApiClient {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // 🔥 CRITICAL FIX: Skip auth header for public routes
-    final isPublicRoute = _publicRoutes.any(
-      (route) => options.path.endsWith(route),
-    );
-
-    if (!isPublicRoute) {
-      // Read the token off the live session rather than a stored copy: the
-      // Supabase SDK refreshes in the background, so whatever it holds now is
-      // current and a cached value could already be stale.
-      final token = Supabase.instance.client.auth.currentSession?.accessToken;
-      if (token != null && token.isNotEmpty) {
-        options.headers.remove('Authorization');
-        options.headers['Authorization'] = 'Bearer $token';
-      }
-    } else {}
+    // Read the token off the live session rather than a stored copy: the
+    // Supabase SDK refreshes in the background, so whatever it holds now is
+    // current and a cached value could already be stale.
+    final token = Supabase.instance.client.auth.currentSession?.accessToken;
+    if (token != null && token.isNotEmpty) {
+      options.headers.remove('Authorization');
+      options.headers['Authorization'] = 'Bearer $token';
+    }
 
     handler.next(options);
   }

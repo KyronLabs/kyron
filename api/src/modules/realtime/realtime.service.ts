@@ -119,6 +119,11 @@ export class RealtimeService {
     socket: Sendable,
   ) => void)[] = [];
 
+  /** How many sockets [userId] has open on this instance. */
+  socketCount(userId: string): number {
+    return this.sockets.get(userId)?.size ?? 0;
+  }
+
   register(userId: string, socket: Sendable): void {
     const existing = this.sockets.get(userId);
     if (existing) {

@@ -50,6 +50,12 @@ jobs:
 
       # Prisma Client is generated, never committed. tsc and jest both fail
       # without it, so this has to come before either.
+      # Fails on a critical advisory in what ships. High ones are reported
+      # here but not fatal: the remaining ones are in the Prisma CLI, which
+      # runs at deploy time and never handles a request.
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=critical
+
       - name: Generate Prisma Client
         run: npm run prisma:generate
 

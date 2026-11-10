@@ -357,7 +357,7 @@ export class FeedService {
     if (input.quotedPostId) {
       // Checked here so quoting a deleted post fails with a message rather
       // than a foreign key error.
-      await this.requireVisiblePost(input.quotedPostId);
+      await this.requireInteractable(input.quotedPostId, authorId);
     }
 
     const topicIds = await this.topicLinks(input.topics ?? []);
@@ -933,7 +933,14 @@ export class FeedService {
                 ? [
                     {
                       id: { notIn: hiddenIds },
-                      quotedPostId: { notIn: hiddenIds },
+                      // Spelled out for null. `NULL NOT IN (...)` is not
+                      // true in SQL, so the bare `notIn` dropped every post
+                      // that quotes nothing -- which is most of them -- the
+                      // moment one post was hidden.
+                      OR: [
+                        { quotedPostId: null },
+                        { quotedPostId: { notIn: hiddenIds } },
+                      ],
                     } as Prisma.PostWhereInput,
                   ]
                 : []),
@@ -961,7 +968,11 @@ export class FeedService {
 
   /** Plain reposts. A quote is a post and appears in the feed as one. */
   async setReposted(viewerId: string, postId: string, reposted: boolean) {
-    const post = await this.requireVisiblePost(postId);
+    // Taking a repost back is always allowed; making one is not, across a
+    // block.
+    const post = reposted
+      ? await this.requireInteractable(postId, viewerId)
+      : await this.requireVisiblePost(postId);
     if (reposted) {
       const reposts = await this.countedWrite(postId, 'repostCount', (tx) =>
         tx.repost
@@ -1499,11 +1510,14 @@ export class FeedService {
         id: true,
         closesAt: true,
         options: { select: { id: true } },
-        post: { select: { deletedAt: true } },
+        post: { select: { deletedAt: true, authorId: true } },
       },
     });
 
     if (!poll || poll.post.deletedAt !== null) {
+      throw new NotFoundException('That poll no longer exists.');
+    }
+    if (await this.blockedEitherWay(poll.post.authorId, viewerId)) {
       throw new NotFoundException('That poll no longer exists.');
     }
     if (poll.closesAt.getTime() <= Date.now()) {
@@ -1655,7 +1669,9 @@ export class FeedService {
 
   /** Idempotent: liking an already-liked post is a no-op, not a duplicate. */
   async setLiked(viewerId: string, postId: string, liked: boolean) {
-    const post = await this.requireVisiblePost(postId);
+    const post = liked
+      ? await this.requireInteractable(postId, viewerId)
+      : await this.requireVisiblePost(postId);
     const likes = await this.countedWrite(postId, 'likeCount', (tx) =>
       liked
         ? tx.postLike
@@ -1706,7 +1722,8 @@ export class FeedService {
   }
 
   async setSaved(viewerId: string, postId: string, saved: boolean) {
-    await this.requireVisiblePost(postId);
+    if (saved) await this.requireInteractable(postId, viewerId);
+    else await this.requireVisiblePost(postId);
     if (saved) {
       await this.prisma.postSave.upsert({
         where: { userId_postId: { userId: viewerId, postId } },
@@ -1789,6 +1806,39 @@ export class FeedService {
       case ReplyPolicy.EVERYONE:
         return post;
     }
+  }
+
+  /** Whether either of two accounts has blocked the other. */
+  private async blockedEitherWay(a: string, b: string): Promise<boolean> {
+    if (a === b) return false;
+    const block = await this.prisma.block.findFirst({
+      where: {
+        OR: [
+          { blockerId: a, blockedId: b },
+          { blockerId: b, blockedId: a },
+        ],
+      },
+      select: { id: true },
+    });
+    return block != null;
+  }
+
+  /**
+   * A post this account may act on: like, repost, save, quote.
+   *
+   * Blocking has to mean the other account cannot touch your posts, or it
+   * is a mute with a stronger name. NotFound rather than Forbidden, for the
+   * reason [requireReplyAllowed] gives.
+   */
+  private async requireInteractable(
+    postId: string,
+    viewerId: string,
+  ): Promise<{ id: string; authorId: string }> {
+    const post = await this.requireVisiblePost(postId);
+    if (await this.blockedEitherWay(post.authorId, viewerId)) {
+      throw new NotFoundException('Post not found.');
+    }
+    return post;
   }
 
   private async requireVisiblePost(postId: string): Promise<{
@@ -2056,11 +2106,16 @@ export class FeedService {
     if (parentId) {
       const parent = await this.prisma.comment.findFirst({
         where: { id: parentId, postId, deletedAt: null },
-        select: { id: true, parentId: true },
+        select: { id: true, parentId: true, authorId: true },
       });
       // Scoped to this post, so a comment id from another thread cannot be
       // grafted onto it.
       if (!parent) throw new NotFoundException('Comment not found.');
+      // A block holds under somebody else's post too: the person a commenter
+      // blocked cannot answer that comment.
+      if (await this.blockedEitherWay(parent.authorId, authorId)) {
+        throw new NotFoundException('Comment not found.');
+      }
       threadParentId = await this.deepestAllowedParent(parent.id, postId);
     }
 
@@ -2567,9 +2622,12 @@ export class FeedService {
   async setCommentLike(viewerId: string, commentId: string, liked: boolean) {
     const comment = await this.prisma.comment.findFirst({
       where: { id: commentId, deletedAt: null },
-      select: { id: true },
+      select: { id: true, authorId: true },
     });
     if (!comment) throw new NotFoundException('That comment does not exist.');
+    if (liked && (await this.blockedEitherWay(comment.authorId, viewerId))) {
+      throw new NotFoundException('That comment does not exist.');
+    }
 
     if (liked) {
       // Nothing on a repeat: the unique index is what makes a double tap one

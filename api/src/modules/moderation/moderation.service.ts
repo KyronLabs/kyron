@@ -1,4 +1,9 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import {
   InterestKind,
   MuteKind,
@@ -103,6 +108,11 @@ export class ModerationService {
     }
 
     if (blocked) {
+      await this.requireRoom(
+        this.prisma.block.count({ where: { blockerId: userId } }),
+        ModerationService.maxBlocks,
+        'You have blocked as many accounts as Kyron allows. Unblock one first.',
+      );
       await this.prisma.block.upsert({
         where: {
           blockerId_blockedId: { blockerId: userId, blockedId: targetId },
@@ -236,6 +246,19 @@ export class ModerationService {
         create: { userId, postId },
         update: {},
       });
+      // Hiding is a passing gesture, so it never refuses: past the ceiling
+      // the oldest ones lapse instead. They are long off the feed by then.
+      const stale = await this.prisma.hiddenPost.findMany({
+        where: { userId },
+        orderBy: { createdAt: 'desc' },
+        skip: ModerationService.maxHiddenPosts,
+        select: { id: true },
+      });
+      if (stale.length) {
+        await this.prisma.hiddenPost.deleteMany({
+          where: { id: { in: stale.map((row) => row.id) } },
+        });
+      }
     } else {
       await this.prisma.hiddenPost.deleteMany({ where: { userId, postId } });
     }
@@ -354,6 +377,22 @@ export class ModerationService {
     return flat.length <= 140 ? flat : `${flat.slice(0, 139).trimEnd()}…`;
   }
 
+  static readonly maxBlocks = 2000;
+  static readonly maxHiddenPosts = 1000;
+  static readonly maxMutes: Record<MuteKind, number> = {
+    [MuteKind.WORD]: 200,
+    [MuteKind.THREAD]: 500,
+    [MuteKind.USER]: 1000,
+  };
+
+  private async requireRoom(
+    count: Promise<number>,
+    ceiling: number,
+    message: string,
+  ): Promise<void> {
+    if ((await count) >= ceiling) throw new BadRequestException(message);
+  }
+
   private async setMute(
     userId: string,
     kind: MuteKind,
@@ -369,6 +408,15 @@ export class ModerationService {
     };
 
     if (muted) {
+      // Every one of these goes into every feed query this account makes
+      // (FeedService.withFilters), a muted word as a scan of its own. Without
+      // a ceiling one account could make its own requests as slow as it
+      // liked.
+      await this.requireRoom(
+        this.prisma.mute.count({ where: { userId, kind, NOT: where } }),
+        ModerationService.maxMutes[kind],
+        'You have muted as many of these as Kyron allows. Remove one first.',
+      );
       // deleteMany then create rather than upsert: the unique index spans four
       // nullable columns, and Prisma cannot address a compound unique whose
       // members are null.

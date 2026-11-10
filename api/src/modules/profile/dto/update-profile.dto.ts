@@ -1,14 +1,30 @@
-// src/modules/profile/dto/update-profile.dto.ts
-import { IsOptional, IsString, IsArray, IsIn } from 'class-validator';
-import { COUNTRY_CODES } from '../../../common/countries';
+import {
+  ArrayMaxSize,
+  IsArray,
+  IsIn,
+  IsOptional,
+  IsString,
+  Matches,
+  MaxLength,
+} from 'class-validator';
 
+import { COUNTRY_CODES } from '../../../common/countries';
+import { IsStoredMediaUrl } from '../../../common/stored-media-url';
+
+/**
+ * What Edit profile may send. The lengths are the ones that screen enforces
+ * (50, 300, 200), so nothing it can type is refused here; this is for whoever
+ * is not using the screen.
+ */
 export class UpdateProfileDto {
   @IsOptional()
   @IsString()
+  @MaxLength(50)
   name?: string;
 
   @IsOptional()
   @IsString()
+  @MaxLength(300)
   bio?: string;
 
   /**
@@ -17,6 +33,7 @@ export class UpdateProfileDto {
    */
   @IsOptional()
   @IsString()
+  @MaxLength(100)
   location?: string;
 
   /**
@@ -28,19 +45,31 @@ export class UpdateProfileDto {
   @IsIn(COUNTRY_CODES)
   country?: string | null;
 
+  /**
+   * A web address, with or without `https://`, or empty to clear it.
+   *
+   * It becomes a link on the profile, so the one thing it must never be is
+   * another scheme: `javascript:`, `intent:` and the rest stop at the colon.
+   */
   @IsOptional()
   @IsString()
+  @MaxLength(200)
+  @Matches(/^$|^(https?:\/\/)?[^\s:@/?#]+(:\d{1,5})?([/?#]\S*)?$/i, {
+    message: 'website must be a web address.',
+  })
   website?: string;
 
   // A cover chosen from the default set. Uploads go through POST /profile/cover
-  // instead; this is for selecting one that already exists in storage, which
-  // previously had no way to be saved at all -- GET default-cover/random only
-  // ever returned a URL and persisted nothing.
+  // instead; this is for selecting one that already exists in storage.
   @IsOptional()
-  @IsString()
+  @IsStoredMediaUrl()
   coverUrl?: string;
 
+  /** Interest ids. */
   @IsOptional()
   @IsArray()
-  interests?: string[]; // array of interest IDs (prisma UUIDs)
+  @ArrayMaxSize(50)
+  @IsString({ each: true })
+  @MaxLength(64, { each: true })
+  interests?: string[];
 }

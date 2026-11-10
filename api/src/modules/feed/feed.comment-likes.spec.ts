@@ -17,6 +17,7 @@ function serviceWith({
   let level = 0;
 
   const prisma = {
+    block: { findFirst: jest.fn(() => Promise.resolve(null)) },
     comment: {
       findFirst: jest.fn().mockResolvedValue(comment),
       findMany: jest.fn(() => Promise.resolve(children[level++] ?? [])),

@@ -2,10 +2,12 @@ import { Controller, Delete, Req, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { AllowRestricted } from '../../common/guards/standing';
+import { requireRecentSignIn } from '../../common/recent-sign-in';
 import { AccountService } from './account.service';
 
 interface AuthRequest extends Request {
   user: { id: string };
+  signedInAt?: number | null;
 }
 
 @Controller('account')
@@ -21,7 +23,11 @@ export class AccountController {
   // kept, hashed, so leaving does not also wipe the ban (BannedIdentity).
   @Delete()
   @AllowRestricted()
+  //
+  // Only on a recent sign-in: a session alone lasts weeks, and holding a
+  // phone or a refresh token should not be enough to erase somebody.
   delete(@Req() req: AuthRequest) {
+    requireRecentSignIn(req.signedInAt);
     return this.svc.deleteAccount(req.user.id);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' show Supabase;
 import 'package:kyron_app/providers/account_provider.dart';
 import 'package:kyron_app/providers/auth_provider.dart';
 import 'package:kyron_app/repositories/account_repository.dart';
+import 'package:kyron_app/repositories/auth_repository.dart';
 import 'package:kyron_app/routes.dart';
 import 'package:kyron_app/screens/delete_account_screen.dart';
 import 'package:kyron_app/screens/settings_screen.dart';
@@ -22,11 +24,36 @@ class _Account extends AccountRepository {
   bool fails;
   int deletes = 0;
 
+  /// Refuses this many deletes for want of a recent sign-in first.
+  int staleSignIns = 0;
+
   @override
   Future<void> delete() async {
     deletes++;
     if (fails) throw StateError('server unavailable');
+    if (staleSignIns > 0) {
+      staleSignIns--;
+      final request = RequestOptions(path: '/account');
+      throw DioException(
+        requestOptions: request,
+        response: Response<Object>(
+          requestOptions: request,
+          statusCode: 403,
+          data: {'code': 'RECENT_SIGN_IN_REQUIRED'},
+        ),
+      );
+    }
   }
+}
+
+class _Passwords extends AuthRepository {
+  final typed = <String>[];
+
+  @override
+  bool get hasPassword => true;
+
+  @override
+  Future<void> confirmPassword(String password) async => typed.add(password);
 }
 
 class _Auth extends AuthNotifier {
@@ -40,7 +67,7 @@ class _Auth extends AuthNotifier {
 }
 
 Future<(_Account, _Auth)> _pump(WidgetTester tester,
-    {bool fails = false}) async {
+    {bool fails = false, AuthRepository? repo}) async {
   final account = _Account(fails: fails);
   final auth = _Auth();
   await tester.pumpWidget(
@@ -48,6 +75,7 @@ Future<(_Account, _Auth)> _pump(WidgetTester tester,
       overrides: [
         accountRepositoryProvider.overrideWithValue(account),
         authNotifierProvider.overrideWith(() => auth),
+        if (repo != null) authRepositoryProvider.overrideWithValue(repo),
       ],
       child: MaterialApp(
         onGenerateRoute: (settings) => MaterialPageRoute<void>(
@@ -150,6 +178,35 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('delete-account-final')));
     await tester.pumpAndSettle();
 
+    expect(account.deletes, 2);
+    expect(auth.signedOut, 1);
+    await tester.pump(Toast.stay + const Duration(seconds: 1));
+  });
+
+  testWidgets('an old sign-in is confirmed in place, then it deletes', (
+    tester,
+  ) async {
+    final repo = _Passwords();
+    final (account, auth) = await _pump(tester, repo: repo);
+    account.staleSignIns = 1;
+
+    await _askToDelete(tester);
+    await tester.tap(find.byKey(const ValueKey('delete-account-final')));
+    // The page's spinner turns behind the sheet, so nothing ever settles.
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
+
+    // Refused once, and asked who it is rather than shown an error.
+    expect(account.deletes, 1);
+    expect(find.text("Confirm it's you"), findsOneWidget);
+    await tester.enterText(
+        find.byKey(const ValueKey('confirm-password')), 'hunter22');
+    await tester.tap(find.byKey(const ValueKey('confirm-its-you')));
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+
+    expect(repo.typed, ['hunter22']);
     expect(account.deletes, 2);
     expect(auth.signedOut, 1);
     await tester.pump(Toast.stay + const Duration(seconds: 1));

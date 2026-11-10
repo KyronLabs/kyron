@@ -152,8 +152,11 @@ export class PushController {
   /** Called on sign-out. A token left behind delivers to the wrong person. */
   @Delete()
   @AllowRestricted()
-  async forget(@Body() dto: ForgetDeviceDto): Promise<{ forgotten: boolean }> {
-    await this.push.forget(dto.token);
+  async forget(
+    @Req() req: AuthRequest,
+    @Body() dto: ForgetDeviceDto,
+  ): Promise<{ forgotten: boolean }> {
+    await this.push.forget(req.user.id, dto.token);
     return { forgotten: true };
   }
 }

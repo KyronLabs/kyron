@@ -10,6 +10,7 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
+import { signedInAt } from '../recent-sign-in';
 import { Reflector } from '@nestjs/core';
 import { PrismaService } from '@/infrastructure/prisma/prisma.service';
 import { Request } from 'express';
@@ -84,6 +85,9 @@ export class AuthGuard implements CanActivate {
     const user = await this.resolveSupabaseUser(claims);
 
     (request as any).user = user;
+    // When the person last actually signed in, for the few routes that ask
+    // for a recent one (requireRecentSignIn).
+    (request as any).signedInAt = signedInAt(claims);
 
     // Suspensions and bans, enforced here rather than in each service: the
     // status column was set by nothing and read only by the password sign-in
@@ -139,39 +143,49 @@ export class AuthGuard implements CanActivate {
     if (existing?.status === AccountStatus.DELETED) {
       throw new UnauthorizedException('This account has been deleted.');
     }
-    if (existing) return this.backfill(existing, { name, username });
+    if (existing) {
+      const current = await this.followEmail(existing, claims.email);
+      return this.backfill(current, { name, username });
+    }
 
-    const email = claims.email ?? `${claims.sub}@users.noreply.kyron.so`;
+    const placeholder = `${claims.sub}@users.noreply.kyron.so`;
+    const email = claims.email ?? placeholder;
 
     try {
       return await this.createMirror(claims.sub, email, name, username);
     } catch (error) {
-      // Two concurrent first requests race here, and an address already present
-      // from the pre-Supabase era collides on the unique email. Recover by
-      // reading back whichever row won.
-      const recovered = await this.prisma.user.findFirst({
-        where: { OR: [{ id: claims.sub }, { email }] },
+      // Two concurrent first requests race here: read back whichever row
+      // won. By this sign-in's own id and nothing else. An address alone is
+      // never enough to attach a sign-in to a row: whoever controls an
+      // address at the identity provider would otherwise inherit whatever
+      // row once held it.
+      const recovered = await this.prisma.user.findUnique({
+        where: { id: claims.sub },
       });
-      // A row matched by email alone was not made for this sign-in, and
-      // anything that could write an email into User -- POST /users could,
-      // with any role it was asked for -- would otherwise hand that row's
-      // role to whoever signs up with the address. A staff role is never
-      // inherited that way; it is granted to the account's own id.
-      if (
-        recovered &&
-        recovered.id !== claims.sub &&
-        recovered.role !== UserRole.USER
-      ) {
-        this.logger.error(
-          `Refused to sign ${claims.sub} in as ${recovered.id}: the rows ` +
-            `share an email address, and ${recovered.id} is ${recovered.role}.`,
-        );
-        throw new ForbiddenException(
-          'This sign-in matches an account Kyron cannot attach it to. ' +
-            'Contact support.',
-        );
-      }
       if (recovered) return this.backfill(recovered, { name, username });
+
+      // A row with another id holds the address. None should (every row
+      // mirrors a Supabase account), so a stale one is logged, and this
+      // account is provisioned on a placeholder address that the next
+      // request moves to the real one once it is free.
+      const holder = await this.prisma.user.findUnique({
+        where: { email },
+        select: { id: true },
+      });
+      if (holder && holder.id !== claims.sub) {
+        this.logger.warn(
+          `${holder.id} holds the address ${claims.sub} signed in with; ` +
+            'provisioning on a placeholder.',
+        );
+        try {
+          return await this.createMirror(claims.sub, placeholder, name, null);
+        } catch (retry) {
+          this.logger.error(
+            `Could not provision ${claims.sub} on a placeholder`,
+            retry instanceof Error ? retry.stack : String(retry),
+          );
+        }
+      }
 
       // Nothing to read back, so the collision was on the handle: `username`
       // is unique, and somebody else already holds the one this account asked
@@ -215,6 +229,35 @@ export class AuthGuard implements CanActivate {
           'this server.',
       );
     }
+  }
+
+  /**
+   * Moves the row to the address the token carries, when it has changed.
+   *
+   * The address was written once, at first sight, and Settings lets people
+   * change it afterwards, so the row went on naming an address its owner had
+   * left: the one support writes to, and the one a ban is remembered by.
+   * The token's address is the verified one; a ban held against it applies
+   * here exactly as it would to a new account.
+   */
+  private async followEmail(
+    user: User,
+    email: string | undefined,
+  ): Promise<User> {
+    if (!email || email === user.email) return user;
+    let moved: User;
+    try {
+      moved = await this.prisma.user.update({
+        where: { id: user.id },
+        data: { email },
+      });
+    } catch {
+      // Held by another row. Leave this one where it is; the request is not
+      // the place to settle that.
+      return user;
+    }
+    if (moved.status === AccountStatus.BANNED) return moved;
+    return this.inheritBan(moved);
   }
 
   /** The row that mirrors a Supabase account. */

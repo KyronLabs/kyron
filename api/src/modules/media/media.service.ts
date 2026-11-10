@@ -251,7 +251,11 @@ export class MediaService {
 
     // Determined from the bytes, not from the declared type: a client can
     // claim any content type, and the bucket serves what it is given.
-    const sniffed = MediaService.sniff(buffer) ?? mimeType;
+    // Never the declared type as a fallback. What the bytes cannot be
+    // recognised as is refused, or a page of HTML sent as `image/png` would
+    // be stored and served from the bucket.
+    void mimeType;
+    const sniffed = MediaService.sniff(buffer);
     const kind = sniffed ? ACCEPTED[sniffed] : undefined;
     if (!sniffed || !kind) {
       throw new BadRequestException(
@@ -279,6 +283,38 @@ export class MediaService {
       );
     }
     return { sniffed, kind, measured };
+  }
+
+  /**
+   * A profile picture or cover: a still image, by its bytes, within the
+   * limits a picture in a post is held to. Answers the type to store it as
+   * and the extension to name it with, so neither comes from the uploader.
+   *
+   * No GIF: an avatar is drawn at thumbnail size in every row of every list,
+   * and a list of them all moving is nobody's idea of a feed.
+   */
+  static checkPicture(buffer: Buffer): { mimeType: string; extension: string } {
+    if (!buffer || buffer.length === 0) {
+      throw new BadRequestException('That file is empty.');
+    }
+    const sniffed = MediaService.sniff(buffer);
+    if (!sniffed || ACCEPTED[sniffed] !== MediaKind.IMAGE) {
+      throw new BadRequestException(
+        'A profile picture or cover must be a JPEG, PNG, WebP or HEIC.',
+      );
+    }
+    const ceiling = MediaService.maxBytesFor(MediaKind.IMAGE);
+    if (buffer.length > ceiling) {
+      const mb = Math.round(ceiling / (1024 * 1024));
+      throw new BadRequestException(`A picture cannot exceed ${mb} MB.`);
+    }
+    const measured = MediaService.measure(buffer, sniffed);
+    if (measured && measured.width * measured.height > MediaService.maxPixels) {
+      throw new BadRequestException(
+        'That picture is too large to display. Try one under 50 megapixels.',
+      );
+    }
+    return { mimeType: sniffed, extension: EXTENSIONS[sniffed] };
   }
 
   async upload(

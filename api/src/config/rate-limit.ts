@@ -70,3 +70,100 @@ export function isPagesService(
 export function limitFor(key: string, base = readRateLimit()): number {
   return key === PAGES_BUCKET ? PAGES_RATE_LIMIT : base;
 }
+
+/**
+ * How many different accounts one address may claim to be in a window
+ * before its claims stop being believed.
+ *
+ * The bucket is chosen from the token's subject without verifying the token
+ * (verifying is the guard's job, after the limiter). On its own that let a
+ * caller mint a fresh bucket per request by sending a made-up subject each
+ * time, which is no limit at all. So the subjects an address presents are
+ * counted: up to this many get a bucket each, which covers an office or a
+ * carrier's NAT, and past it everything from that address shares one
+ * overflow bucket, larger than a single caller's but finite.
+ */
+export const SUBJECTS_PER_ADDRESS = 200;
+export const OVERFLOW_FACTOR = 200;
+const OVERFLOW_PREFIX = 'crowd:';
+
+export class BucketChooser {
+  private claims = new Map<string, Set<string>>();
+  private windowStart = 0;
+
+  constructor(
+    private readonly windowMs = 60_000,
+    private readonly now: () => number = Date.now,
+  ) {}
+
+  /** The bucket for a request from [ip] presenting [subject], if any. */
+  bucketFor(ip: string, subject: string | null): string {
+    if (!subject) return `ip:${ip}`;
+
+    const at = this.now();
+    if (at - this.windowStart >= this.windowMs) {
+      // Forgotten wholesale each window: bounded memory with no sweeper.
+      this.claims = new Map();
+      this.windowStart = at;
+    }
+    let seen = this.claims.get(ip);
+    if (!seen) this.claims.set(ip, (seen = new Set()));
+    if (seen.has(subject)) return `user:${subject}`;
+    if (seen.size >= SUBJECTS_PER_ADDRESS) return `${OVERFLOW_PREFIX}${ip}`;
+    seen.add(subject);
+    return `user:${subject}`;
+  }
+}
+
+/** [limitFor], knowing about the overflow bucket. */
+export function limitForBucket(key: string, base = readRateLimit()): number {
+  if (key.startsWith(OVERFLOW_PREFIX)) return base * OVERFLOW_FACTOR;
+  return limitFor(key, base);
+}
+
+/**
+ * How many proxies in front of this process to believe about the caller's
+ * address (TRUST_PROXY_HOPS).
+ *
+ * Zero trusts nothing: every caller appears to come from the platform's own
+ * proxy and all anonymous traffic shares one bucket. Too many and a caller
+ * can write its own address in X-Forwarded-For. It must be exactly the
+ * number of proxies the platform puts in front; on Render that is one.
+ */
+export function readTrustedHops(raw = process.env.TRUST_PROXY_HOPS): number {
+  if (raw === undefined || raw.trim() === '') return 0;
+  const parsed = Number(raw.trim());
+  if (!Number.isInteger(parsed) || parsed < 0 || parsed > 5) {
+    throw new Error(
+      `TRUST_PROXY_HOPS must be a whole number from 0 to 5, and is "${raw}".`,
+    );
+  }
+  return parsed;
+}
+
+/** What answers cross-origin when CORS_ORIGIN is unset in production: the
+ * places the web app is served from, and nowhere else. */
+export const DEFAULT_PRODUCTION_ORIGINS = [
+  'https://kyron.spidroid.com',
+  'https://kyron-web.onrender.com',
+];
+
+/**
+ * The origins allowed to call this API from a browser, or `true` to reflect
+ * any (development only).
+ *
+ * Unset used to mean "reflect anything, with credentials" everywhere,
+ * production included. Nothing rides on a cookie today, so it was not yet a
+ * hole; it was one waiting for the first cookie.
+ */
+export function corsOrigins(
+  raw = process.env.CORS_ORIGIN,
+  nodeEnv = process.env.NODE_ENV,
+): string[] | true {
+  const listed = raw
+    ?.split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  if (listed?.length) return listed;
+  return nodeEnv === 'production' ? DEFAULT_PRODUCTION_ORIGINS : true;
+}

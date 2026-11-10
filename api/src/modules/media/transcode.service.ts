@@ -51,7 +51,13 @@ export class SpawnRunner implements CommandRunner {
     args: string[],
   ): Promise<{ code: number; stdout: string; stderr: string }> {
     return new Promise((resolve) => {
-      const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'] });
+      // An emptied environment: the process holds the database URL and the
+      // service keys, and ffmpeg, which parses whatever was uploaded, has no
+      // use for any of them.
+      const child = spawn(command, args, {
+        stdio: ['ignore', 'pipe', 'pipe'],
+        env: { PATH: process.env.PATH ?? '/usr/local/bin:/usr/bin:/bin' },
+      });
       let stdout = '';
       let stderr = '';
       child.stdout.on('data', (chunk: Buffer) => (stdout += chunk.toString()));

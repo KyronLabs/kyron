@@ -1,4 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Req } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+import { timingSafeEqual } from '../../infrastructure/observability/metrics.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
@@ -13,7 +16,25 @@ export class HealthController {
     private readonly supabase: SupabaseService,
     private readonly push: PushService,
     private readonly statusHistory: StatusHistoryService,
+    private readonly config: ConfigService,
   ) {}
+
+  /**
+   * Whether the caller may see the details: the same bearer token that opens
+   * /metrics. The details name the token issuer, which algorithms are
+   * accepted, whether the signing secret verifies and what Google last said
+   * about a push -- useful to whoever runs the service, more than a stranger
+   * needs.
+   */
+  private mayReadDetail(request?: {
+    headers?: Record<string, unknown>;
+  }): boolean {
+    const expected = this.config.get<string>('METRICS_TOKEN');
+    const header = request?.headers?.authorization;
+    if (!expected || typeof header !== 'string') return false;
+    if (!header.startsWith('Bearer ')) return false;
+    return timingSafeEqual(header.slice(7), expected);
+  }
 
   /**
    * Uptime per component over the last `days` days (default 60, at most 90),
@@ -30,7 +51,17 @@ export class HealthController {
   }
 
   @Get()
-  async health() {
+  async health(@Req() request?: { headers?: Record<string, unknown> }) {
+    const detail = await this.detail();
+    if (this.mayReadDetail(request)) return detail;
+    // Public: whether it is up, whether the database answers and whether the
+    // tables are there. The app's status screen is built from these.
+    const { status, timestamp, database, mirrorTables } = detail;
+    return { status, timestamp, database, mirrorTables };
+  }
+
+  /** Everything, for whoever runs the service. */
+  async detail() {
     const databaseReachable = await this.prisma.isReachable();
     // Only on the failure path, and only when DNS actually has something to
     // say. This endpoint exists so a misconfiguration can be diagnosed without

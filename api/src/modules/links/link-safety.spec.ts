@@ -1,4 +1,9 @@
-import { isBlockedAddress, normaliseUrl } from './link-safety';
+import {
+  isBlockedAddress,
+  linkDispatcher,
+  normaliseUrl,
+  publicOnlyLookup,
+} from './link-safety';
 
 describe('isBlockedAddress', () => {
   // The endpoint fetches a URL taken from a post, from inside the deployment's
@@ -86,5 +91,42 @@ describe('normaliseUrl', () => {
     expect(normaliseUrl('https://example.com/a?b=1').toString()).toBe(
       'https://example.com/a?b=1',
     );
+  });
+});
+
+describe('publicOnlyLookup', () => {
+  // A real server on loopback: the lookup must refuse it at connect time,
+  // which is where a rebinding name server would have slipped one through.
+  it('refuses to connect a fetch to a private address', async () => {
+    const { createServer } = await import('node:http');
+    const server = createServer((_req, res) => res.end('secret'));
+    await new Promise<void>((done) => server.listen(0, '127.0.0.1', done));
+    const { port } = server.address() as { port: number };
+    try {
+      await expect(
+        fetch(`http://localhost:${port}/`, {
+          dispatcher: linkDispatcher,
+        } as RequestInit & { dispatcher: unknown }),
+      ).rejects.toThrow();
+      // And the same server answers an ordinary fetch, so it was the lookup.
+      await expect(
+        fetch(`http://localhost:${port}/`).then((r) => r.text()),
+      ).resolves.toBe('secret');
+    } finally {
+      server.close();
+    }
+  });
+
+  it('passes a public address through', (done) => {
+    const lookup = publicOnlyLookup as unknown as (
+      host: string,
+      options: object,
+      cb: (e: Error | null, address: string, family: number) => void,
+    ) => void;
+    lookup('93.184.216.34', {}, (error, address) => {
+      expect(error).toBeNull();
+      expect(address).toBe('93.184.216.34');
+      done();
+    });
   });
 });

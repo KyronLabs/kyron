@@ -48,11 +48,6 @@ const PUBLIC = new Map<string, string>([
   ['GET /public/communities/:slug', 'a shared community: live ones only'],
   // The pre-Supabase sign-in. Nothing it issues is accepted by AuthGuard any
   // more, but the routes still answer.
-  ['POST /auth/register', 'legacy sign-up'],
-  ['POST /auth/verify-email', 'legacy sign-up'],
-  ['POST /auth/login', 'legacy sign-in'],
-  ['POST /auth/refresh', 'legacy sign-in'],
-  ['POST /auth/logout', 'legacy sign-in'],
 ]);
 
 /**

@@ -33,6 +33,13 @@ const KEY_PATTERN = /^[A-Za-z0-9_-]{43}=?$/;
  */
 @Injectable()
 export class KeysService {
+  /**
+   * Keys kept per account. The app seals for at most this many of anybody's
+   * devices anyway; beyond it a key is only something the server stores and
+   * every sender downloads. One account had published several hundred.
+   */
+  static readonly maxDevices = 16;
+
   private readonly logger = new Logger(KeysService.name);
 
   constructor(
@@ -69,6 +76,7 @@ export class KeysService {
       update: { publicKey },
       create: { userId, deviceId, publicKey },
     });
+    await this.dropStalest(userId);
     if (before?.publicKey !== publicKey) await this.announce(userId);
     return {
       userId: row.userId,
@@ -119,6 +127,25 @@ export class KeysService {
       select: { userId: true, deviceId: true, publicKey: true },
     });
     return rows;
+  }
+
+  /**
+   * Keeps the [maxDevices] keys seen most recently and drops the rest. A key
+   * is republished on every sign-in, so the ones dropped are installs that
+   * have not been opened in the longest time; such a device publishes again
+   * the next time it is.
+   */
+  private async dropStalest(userId: string): Promise<void> {
+    const stale = await this.prisma.messageKey.findMany({
+      where: { userId },
+      orderBy: { updatedAt: 'desc' },
+      skip: KeysService.maxDevices,
+      select: { deviceId: true },
+    });
+    if (!stale.length) return;
+    await this.prisma.messageKey.deleteMany({
+      where: { userId, deviceId: { in: stale.map((k) => k.deviceId) } },
+    });
   }
 
   /** Tells everybody who writes to [userId] that their devices changed. */

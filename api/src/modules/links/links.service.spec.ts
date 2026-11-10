@@ -4,6 +4,7 @@ jest.mock('./link-safety', () => ({
   ...jest.requireActual<typeof import('./link-safety')>('./link-safety'),
   // No DNS from a unit test; the address check has its own spec.
   resolveIfPublic: jest.fn().mockResolvedValue(['93.184.216.34']),
+  linkDispatcher: undefined,
 }));
 
 const youtube = 'https://www.youtube.com/watch?v=FDGacISecDQ';

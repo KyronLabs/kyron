@@ -395,6 +395,15 @@ export class InsightsService {
       WITH ${InsightsService.contacts(userId, since, until)},
       reached AS (SELECT DISTINCT c."viewerId" AS id FROM contacts c)`;
 
+    // The totals and the hour grid are not floored per group, so they are
+    // floored here as a whole: for posts that reached one person they would
+    // say whether that person gave a birthday and a country, and when they
+    // were online.
+    const [{ count: people }] = await this.prisma.$queryRaw<
+      { count: bigint }[]
+    >(Prisma.sql`${reached} SELECT COUNT(*) AS count FROM reached`);
+    if (Number(people) < floor) return InsightsService.noAudience();
+
     const [ages, interests, communities, countries, hours] = await Promise.all([
       this.prisma.$queryRaw<{ age: number; count: bigint }[]>(Prisma.sql`
         ${reached}

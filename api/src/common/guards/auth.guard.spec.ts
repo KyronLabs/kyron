@@ -38,7 +38,11 @@ function guardWith(
       create: jest.fn().mockResolvedValue({}),
     },
     user: {
-      findUnique: jest.fn().mockResolvedValue(existing),
+      // Rows carry the token's own address unless a test says otherwise, so
+      // only the tests about a changed address see that update.
+      findUnique: jest
+        .fn()
+        .mockResolvedValue(existing ? { email: 'a@b.c', ...existing } : null),
       findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn((args: { data: Row }) => {
         creates.push(args.data);
@@ -53,7 +57,7 @@ function guardWith(
       update: jest.fn((args: { where: unknown; data: Partial<Row> }) => {
         updates.push(args.data);
         if (updateFails) return Promise.reject(new Error('unique violation'));
-        return Promise.resolve({ ...existing, ...args.data });
+        return Promise.resolve({ email: 'a@b.c', ...existing, ...args.data });
       }),
     },
   };
@@ -217,33 +221,78 @@ describe('AuthGuard and deleted accounts', () => {
 });
 
 describe('AuthGuard and a row that shares only an email address', () => {
-  /** A sign-in whose own row cannot be created: the address is taken. */
+  /**
+   * A first sign-in whose address another row already holds: creating it on
+   * that address fails, and the holder is found only by the address.
+   */
   function collidingWith(row: Row & { role: string }) {
-    const made = guardWith(null, false, [], true);
-    const prisma = (made.guard as unknown as { prisma: { user: never } }).prisma
-      .user as unknown as { findFirst: jest.Mock };
-    prisma.findFirst.mockResolvedValue(row);
-    return made;
+    const made = guardWith(null);
+    const user = (made.guard as unknown as { prisma: { user: never } }).prisma
+      .user as unknown as { findUnique: jest.Mock; create: jest.Mock };
+    user.findUnique.mockImplementation(
+      (args: { where: { id?: string; email?: string } }) =>
+        Promise.resolve(args.where.email ? row : null),
+    );
+    const creates: { email: string }[] = [];
+    user.create.mockImplementation(
+      (args: { data: Row & { email: string } }) => {
+        creates.push(args.data);
+        if (args.data.email === 'a@b.c') {
+          return Promise.reject(new Error('unique constraint: email'));
+        }
+        return Promise.resolve(args.data);
+      },
+    );
+    return { ...made, creates };
   }
 
-  it('still attaches an account from before Supabase to its owner', async () => {
+  it('never attaches a sign-in to a row by its address alone', async () => {
+    // Whoever controls an address at the identity provider would otherwise
+    // inherit whatever row once held it.
     const legacy = { id: 'old', name: 'Ada', username: 'ada', role: 'USER' };
-    const { guard } = collidingWith(legacy);
+    const { guard, creates } = collidingWith(legacy);
 
-    await expect(guard.resolveSupabaseUser(subject({}))).resolves.toMatchObject(
-      { id: 'old' },
-    );
+    const user = await guard.resolveSupabaseUser(subject({}));
+
+    expect(user).toMatchObject({ id: 'u1' });
+    expect(creates.at(-1)).toMatchObject({
+      email: 'u1@users.noreply.kyron.so',
+    });
   });
 
-  it('never hands over a staff role that way', async () => {
-    // POST /users created rows with any role and any address. Signing up
-    // with that address would have arrived here, as ADMIN.
+  it('so a staff row is never handed over that way either', async () => {
     const planted = { id: 'old', name: null, username: null, role: 'ADMIN' };
     const { guard } = collidingWith(planted);
 
-    await expect(guard.resolveSupabaseUser(subject({}))).rejects.toMatchObject({
-      status: 403,
-    });
+    const user = await guard.resolveSupabaseUser(subject({}));
+
+    expect(user).toMatchObject({ id: 'u1', role: 'USER' });
+  });
+});
+
+describe('AuthGuard and a changed address', () => {
+  it('moves the row to the address the token now carries', async () => {
+    const { guard, updates } = guardWith({
+      id: 'u1',
+      name: 'Ada',
+      username: 'ada',
+      email: 'old@b.c',
+    } as Row);
+
+    await guard.resolveSupabaseUser(subject({}));
+
+    expect(updates).toContainEqual({ email: 'a@b.c' });
+  });
+
+  it('leaves it where it is when another row holds the new one', async () => {
+    const { guard } = guardWith(
+      { id: 'u1', name: 'Ada', username: 'ada', email: 'old@b.c' } as Row,
+      true,
+    );
+
+    await expect(guard.resolveSupabaseUser(subject({}))).resolves.toMatchObject(
+      { id: 'u1', email: 'old@b.c' },
+    );
   });
 });
 
@@ -255,6 +304,7 @@ describe('AuthGuard and restricted accounts', () => {
   ) {
     const user = {
       id: 'u1',
+      email: 'a@b.c',
       name: 'Ada',
       username: 'ada',
       role: 'USER',

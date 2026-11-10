@@ -32,6 +32,11 @@ COPY . .
 # Build application
 RUN npm run build
 
+# What runs needs no compiler, test runner or linter. Pruned here, in the
+# stage that is thrown away, so the final image never holds them. The Prisma
+# CLI is a production dependency: scripts/start.sh migrates with it.
+RUN npm prune --omit=dev
+
 
 # Final stage for app image
 FROM base
@@ -44,8 +49,18 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y openssl ffmpeg && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Copy built application
-COPY --from=build /app /app
+# Only what runs: the compiled server, its dependencies, the schema and
+# migrations, and the start script. Not the source, not the tests, not a .env
+# that happened to be in the build context.
+COPY --from=build --chown=node:node /app/dist ./dist
+COPY --from=build --chown=node:node /app/node_modules ./node_modules
+COPY --from=build --chown=node:node /app/prisma ./prisma
+COPY --from=build --chown=node:node /app/scripts ./scripts
+COPY --from=build --chown=node:node /app/package.json ./package.json
+
+# Not root. ffmpeg parses files strangers send; whatever a bug in it could
+# do, it does as an account that owns nothing but /app.
+USER node
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 8080

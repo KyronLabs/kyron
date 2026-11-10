@@ -7,7 +7,6 @@ import {
   IsInt,
   IsOptional,
   IsString,
-  IsUrl,
   IsUUID,
   Max,
   MaxLength,
@@ -16,12 +15,13 @@ import {
 } from 'class-validator';
 import { MediaKind, ReplyPolicy } from '@prisma/client';
 
+import { IsStoredMediaUrl } from '../../../common/stored-media-url';
+
 export class PostMediaDto {
   // Must be a URL this deployment served. Accepting an arbitrary one would let
   // a post embed anything from anywhere under our name, and hand a tracker a
   // view of everyone who scrolls past.
-  @IsUrl({ require_protocol: true, protocols: ['https'] })
-  @MaxLength(2048)
+  @IsStoredMediaUrl()
   url!: string;
 
   @IsOptional()
@@ -71,8 +71,7 @@ export class PostMediaDto {
    * served, or a post could point a reader's device at anything.
    */
   @IsOptional()
-  @IsUrl({ require_protocol: true, protocols: ['https'] })
-  @MaxLength(2048)
+  @IsStoredMediaUrl()
   thumbnailUrl?: string;
 
   @IsOptional()
