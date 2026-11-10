@@ -1996,6 +1996,299 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "این صفحه می‌خواهد برنامهٔ دیگری را باز کند"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "درخواست باز کردن یک پیوند {scheme} را دارد."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("نسخهٔ ساخت"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} تصویر و فایل در حافظهٔ موقت"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} آزاد شد"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("در حال اندازه‌گیری…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("چیزی برای پاک کردن نیست"),
+      "ui_about_storage":
+          MessageLookupByLibrary.simpleMessage("فضای ذخیره‌سازی"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("نسخهٔ {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("مسدودشده‌ها"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("با نام خودت منتشر می‌کنی"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "این پیوست‌ها بارگذاری نشدند. برای تلاش دوباره روی یکی بزن، یا آن را بردار."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "نشد ایمیلت را تغییر دهیم. دوباره امتحان کن."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "نشانی‌ات وقتی پیوندی را که می‌فرستیم باز کنی تغییر می‌کند."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "پیوند تأیید را در {email} ببین."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("یک نشانی ایمیل وارد کن."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("این شبیه نشانی ایمیل نیست."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "این همین حالا نشانی ایمیل توست."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "چه کردی، چه انتظاری داشتی و به‌جایش چه شد."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "بگذار یک پست را در نمایه‌ام سنجاق کنم"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "چه می‌خواهی و این به تو چه امکانی می‌دهد."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("چه چیزی کمک می‌کند"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("یک مشکل"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("یک ایده"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("یک پرسش"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "فقط تیم Kyron این را می‌خواند. همراه حسابت فرستاده می‌شود تا بتوانیم با ایمیل پاسخ دهیم، و همراه نسخهٔ برنامه‌ای که استفاده می‌کنی. حذف حساب، این را هم حذف می‌کند."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("چطور یک واژه را بی‌صدا کنم؟"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "چه کاری می‌خواهی بکنی و کجا گیر کرده‌ای."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("پرسش تو"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "دسترسی به Kyron ممکن نشد. اتصالت را بررسی کن و دوباره امتحان کن. هنوز چیزی نوشته نشده، پس چیزی از دست نرفته است."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("پاک کردن"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "درخواست‌های ناموفق و رویدادهای مهم دیگر اینجا نشان داده می‌شوند."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("بی‌صداشده‌ها"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "یک واژه یا برچسب در بالا اضافه کن. پست‌هایی که آن را دارند در خوراکت نمی‌آیند."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "پست‌هایی که هر کدام از این‌ها را داشته باشند در خوراکت نمی‌آیند. بزرگی و کوچکی حروف مهم نیست و یک واژه درون واژه‌های بلندتر هم پیدا می‌شود، پس «spoiler» واژهٔ «spoilers» را هم می‌گیرد."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("کسی مسدود نشده"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "مسدود کردن شما را از دید یکدیگر پنهان می‌کند، از هر دو طرف. از منوی نمایهٔ کسی او را مسدود کن."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("کسی بی‌صدا نشده"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "بی‌صدا کردن یک حساب پست‌هایش را بدون خبر دادن به او پنهان می‌کند. از منوی نمایه یا پست کسی او را بی‌صدا کن."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("گذرواژه"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("یکسان نیستند."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "در این دستگاه وارد می‌مانی. از دستگاه‌های دیگر خارج می‌شوی."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("دست‌کم ۸ نویسه به کار ببر."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "نشد گذرواژه‌ات را به‌روز کنیم. دوباره امتحان کن."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("گذرواژه به‌روز شد."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID کپی شد"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "پست‌هایی که می‌پسندی اینجا نگه داشته می‌شوند، فقط برای تو."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "هنوز هیچ عکس یا کلیپی منتشر نکرده‌ای."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} هنوز هیچ عکس یا کلیپی منتشر نکرده است."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "هر چه منتشر کنی اینجا دیده می‌شود."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} هنوز چیزی منتشر نکرده است."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("نشد نمایه‌ات را بارگیری کنیم"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("نشد @{handle} را بارگیری کنیم"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("دست‌کم ۸ نویسه"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("حرف کوچک (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("دست‌کم یک عدد"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("نماد (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("حرف بزرگ (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} مورد اخیر. پیش از فرستادن آن‌ها را در درباره › گزارش سامانه ببین."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "فقط تیم Kyron این را می‌خواند. همراه حسابت فرستاده می‌شود تا بتوانیم پیگیری کنیم. اگر می‌خواهی دقیقاً ببینی چه چیزی همراهش می‌رود، اول گزارش را در درباره › گزارش سامانه بخوان."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("فرستاده شد، سپاس."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "فرستاده شد، سپاس. شمارهٔ گزارش #{number} است."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("چه چیزی اشتباه شد؟"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "نسخه، سیاست‌ها، وضعیت و گزارش سامانه"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "ویدیوها هنگام پیمایش خودبه‌خود پخش نشوند"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("شناسهٔ غیرمتمرکز تو"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("نظارت"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "گزارش‌ها و اعتراض‌هایی که منتظر بررسی‌اند"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "پست‌هایی که این‌ها را دارند به خوراکت نیایند"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("وارد نشده‌ای"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("ترجیحات اعلان"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("حریم خصوصی و امنیت"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "تصمیم‌ها دربارهٔ حسابت، و اعتراض‌ها"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("تنظیم اندازهٔ متن"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("حساب تو"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "ضبط و انتشار لنزهای واقعیت افزوده هنوز در حال ساخت است. هنوز چیزی از آنچه ضبط می‌کنی ذخیره نمی‌شود، پس دوربین بسته می‌ماند."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("لنزها هنوز آماده نیستند"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("لنز واقعیت افزوده"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "پخش زنده به یک سرور رسانه نیاز دارد که Kyron هنوز راه نینداخته است. اگر حالا پخش را شروع کنی، در اتاقی خواهی بود که کسی نمی‌تواند به آن بپیوندد. ضبط پست صوتی همین امروز کار می‌کند."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("پخش زنده هنوز آماده نیست"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("پخش زنده"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "نظرسنجی‌ها جایی برای نگه داشتن گزینه‌ها و شمردن رأی‌ها لازم دارند. آن هنوز آماده نیست، پس نظرسنجی‌ای که امروز منتشر شود همهٔ پاسخ‌ها را از دست می‌دهد."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("نظرسنجی‌ها هنوز آماده نیستند"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("نظرسنجی"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("به‌جایش پست متنی بنویس"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("دوباره بررسی کن"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("جزئیات"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("جدول‌های آینه‌ای"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron پاسخ داد، اما چیزی درست نیست."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("زمان رفت‌وبرگشت"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("پرسیدن"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "دربارهٔ حسابت، یا اینکه چیزی چطور کار می‌کند"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("با ایمیل"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "اگر Kyron از کار افتاد: گزارش برنامه را هم می‌فرستد"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("در برنامه"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "از اینجا به تیم Kyron بنویس. پیامت به‌طور خصوصی و همراه حسابت به ما می‌رسد و ما به نشانی ایمیل همان حساب پاسخ می‌دهیم."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "هیچ برنامهٔ ایمیلی باز نشد. {address} کپی شد."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("حریم خصوصی و داده‌های تو"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("گزارش یک مشکل"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "چیزی خراب است یا آن‌طور که باید کار نمی‌کند"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "برای گزارش یک پست یا حساب، از منوی آن استفاده کن: این‌طور دقیقاً می‌دانیم منظورت کدام است."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("امنیت و سوءاستفاده"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron برای همه از کار افتاده یا فقط برای تو"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("بزرگ"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("بزرگ‌تر"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("متوسط"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron جایی است برای گفتن چیزی که ارزش خواندن دارد."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("کوچک"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("همیشه تیره"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("کم‌نور"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "تیره‌ای نرم‌تر، خاکستری مایل به آبی به‌جای سیاه"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("همیشه روشن"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "پیروی از تنظیم روشن یا تیرهٔ گوشی"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("رفع مسدودی"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("رفع بی‌صدا"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("تو کیستی"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "با کلمات خودت، آنچه بررسی‌کننده باید بداند."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "من اینجا و در وب‌سایت خودم دربارهٔ پرندگان می‌نویسم."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("افزودن پیوند دیگر"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "می‌توانی از {date} دوباره درخواست بدهی."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("درخواست تأیید"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("پیش از درخواست"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("سازنده"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("روزنامه‌نگار"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("سازمان یا برند"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("چیز دیگری"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("چهرهٔ عمومی"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("درخواست {number} پذیرفته نشد"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("تأیید شده‌ای"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("ویرایش نمایه"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("کد ۶ رقمی را وارد کن"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "ارسال دوبارهٔ کد تا {seconds} ثانیهٔ دیگر"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("آن را به {email} فرستادیم"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("تأیید"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("در Kyron تأیید شو"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("در Kyron"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("تأییدشده"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("شو."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "نشان یعنی کسی از تیم Kyron بررسی کرده که این حساب همان کسی است که ادعا می‌کند. دیده‌شدن بیشتری نمی‌دهد و فروشی نیست."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "نشان تا وقتی نامت تغییر نکند می‌ماند. اگر نامت را عوض کنی، تا وقتی کسی نام تازه را بررسی کند برداشته می‌شود."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("جایی که می‌توانیم بررسی کنیم"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("پیوند دیگر"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "یک وب‌سایت یا نمایهٔ دیگر که بگوید این حساب Kyron مال توست: نام Kyron خود یا پیوندی به نمایه‌ات را آنجا بگذار. Kyron هرگز مدارک شناسایی نمی‌خواهد."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("نشد وضعیتت را بارگیری کنیم"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "پیش از درخواست، همهٔ موارد بالا باید تیک خورده باشند."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "حسابی که دست‌کم {days} روز از عمرش گذشته"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("یک معرفی که بگوید کیستی"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("نامت در نمایه"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("عکس نمایه"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "هیچ سابقه‌ای در {days} روز گذشته"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "فرستاده شد. یک انسان آن را بررسی می‌کند."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("از {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("درخواست"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "تو کیستی، و پیوندی\nکه آن را ثابت کند"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("نشان"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("کنار نامت،\nهر جا که دیده شود"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("یک انسان\nبررسی می‌کند"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "کسی از تیم\nپیوندهایت را باز می‌کند"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("تأیید"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "درخواست {number} نزد یک انسان است"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "در {date} به‌عنوان {category} فرستاده شد. وقتی تصمیم گرفته شود اعلان می‌گیری."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("پس گرفتن درخواست"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("درخواست پس گرفته شد."),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("نشد ضبط را تمام کنیم: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("تا ده دقیقه."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("در حال گوش دادن…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron برای ضبط به اجازهٔ استفاده از میکروفون نیاز دارد. می‌توانی آن را در تنظیمات دستگاه بدهی."),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("نشد ضبط را شروع کنیم: {error}"),
     };
 
 final messageLookup = MessageLookup();

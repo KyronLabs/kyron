@@ -2053,6 +2053,307 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Halaman ini ingin membuka aplikasi lain"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Halaman ini meminta membuka tautan {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} gambar dan file dalam cache"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} dibebaskan"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Mengukur…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang perlu dihapus"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Penyimpanan"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versi {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Diblokir"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Memposting sebagai kamu"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Lampiran itu tidak terunggah. Ketuk salah satu untuk mencoba lagi, atau hapus."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat mengubah email kamu. Coba lagi."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Alamatmu berubah setelah kamu membuka tautan yang kami kirim."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Periksa {email} untuk tautan konfirmasi."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Masukkan alamat email."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Itu tidak terlihat seperti alamat email."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("Itu sudah alamat email kamu."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi sebagai gantinya."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Izinkan saya menyematkan postingan di profil"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Apa yang kamu inginkan, dan apa yang bisa kamu lakukan dengannya."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Apa yang akan membantu"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Masalah"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Ide"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Pertanyaan"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Hanya tim Kyron yang membaca ini. Dikirim bersama akunmu agar kami bisa membalas lewat email, dan bersama versi aplikasi yang kamu pakai. Menghapus akun juga menghapus ini."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Bagaimana cara membisukan kata?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Apa yang ingin kamu lakukan, dan di mana kamu terhambat."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Pertanyaanmu"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron tidak dapat dijangkau. Periksa koneksi lalu coba lagi. Belum ada yang ditulis, jadi tidak ada yang hilang."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Hapus"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Permintaan yang gagal dan peristiwa penting lainnya muncul di sini."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Dibisukan"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Tambahkan kata atau tag di atas. Postingan yang memuatnya tidak akan muncul di feed-mu."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Postingan yang memuat salah satu dari ini tidak muncul di feed-mu. Huruf besar dan kecil diabaikan, dan kata juga cocok di dalam kata yang lebih panjang, jadi “spoiler” juga menangkap “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang diblokir"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Memblokir menyembunyikan kalian dari satu sama lain, dua arah. Blokir seseorang dari menu di profilnya."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Tidak ada yang dibisukan"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Membisukan akun menyembunyikan postingannya tanpa memberi tahu. Bisukan seseorang dari menu di profil atau postingannya."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Kata sandi"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Tidak cocok."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Kamu tetap masuk di perangkat ini. Perangkat lain akan dikeluarkan."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Gunakan minimal 8 karakter."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat memperbarui kata sandi. Coba lagi."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Kata sandi diperbarui."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID disalin"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Postingan yang kamu sukai disimpan di sini, hanya untukmu."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Kamu belum memposting foto atau klip."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} belum memposting foto atau klip."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Semua yang kamu posting muncul di sini."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} belum memposting apa pun."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Tidak dapat memuat profilmu"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Tidak dapat memuat @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Minimal 8 karakter"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Huruf kecil (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Minimal satu angka"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Huruf besar (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} entri terbaru. Tinjau di Tentang › Log sistem sebelum mengirim."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Hanya tim Kyron yang membaca ini. Dikirim bersama akunmu agar kami bisa menindaklanjuti. Baca lognya dulu di Tentang › Log sistem jika ingin melihat persis apa yang ikut terkirim."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Terkirim, terima kasih."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Terkirim, terima kasih. Ini laporan #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Apa yang salah?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versi, kebijakan, status, dan log sistem"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Hentikan video yang berputar sendiri saat menggulir"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Pengenal Terdesentralisasi kamu"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderasi"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Laporan dan banding yang menunggu ditinjau"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Jauhkan postingan yang memuat ini dari feed-mu"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Belum masuk"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Preferensi notifikasi"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privasi & Keamanan"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Keputusan tentang akunmu, dan banding"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Sesuaikan ukuran teks"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Akunmu"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Merekam dan menerbitkan lensa AR masih dikembangkan. Belum ada yang kamu ambil yang akan tersimpan, jadi kamera tetap tertutup."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lensa belum siap"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lensa AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Siaran langsung memerlukan server media yang belum dijalankan Kyron. Memulai siaran sekarang akan menempatkanmu di ruang yang tidak bisa dimasuki siapa pun. Merekam postingan suara sudah berfungsi."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Siaran langsung belum siap"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Siaran langsung"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Polling perlu tempat untuk menyimpan pilihan dan menghitung suara. Itu belum tersedia, jadi polling yang diposting hari ini akan kehilangan semua jawaban."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Polling belum siap"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Polling"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Tulis postingan teks saja"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Periksa lagi"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detail"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Tabel cermin"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron menjawab, tetapi ada yang tidak beres."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Pulang-pergi"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Ajukan pertanyaan"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Tentang akunmu, atau cara kerja sesuatu"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Lewat email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Jika Kyron mogok: kirim log aplikasi bersamanya"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Di aplikasi"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Tulis ke tim Kyron dari sini. Pesan sampai ke kami secara pribadi, bersama akunmu, dan kami membalas ke alamat email di akun itu."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada aplikasi email yang terbuka. {address} sudah disalin."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privasi dan datamu"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Laporkan masalah"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Ada yang rusak atau tidak berfungsi semestinya"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Untuk melaporkan postingan atau akun, gunakan menunya: dengan begitu kami tahu persis mana yang kamu maksud."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Keamanan dan penyalahgunaan"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Apakah Kyron mati untuk semua orang, atau hanya untukmu"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Besar"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("Lebih besar"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Sedang"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron adalah tempat untuk mengatakan sesuatu yang layak dibaca."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Kecil"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Selalu gelap"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Redup"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Gelap yang lebih lembut, abu-abu kebiruan, bukan hitam"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Selalu terang"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Ikuti pengaturan terang atau gelap ponsel"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Buka blokir"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Bunyikan"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Siapa kamu"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Dengan kata-katamu sendiri, apa yang perlu diketahui peninjau."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Saya menulis tentang burung di sini dan di situs saya sendiri."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Tambah tautan lain"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Kamu bisa meminta lagi mulai {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Minta verifikasi"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Sebelum meminta"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Kreator"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Jurnalis"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisasi atau merek"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Lainnya"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Tokoh publik"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Permintaan {number} tidak disetujui"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Kamu terverifikasi"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Edit profilmu"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Masukkan kode 6 digit"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Kirim ulang kode dalam {seconds} detik"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Kami mengirimnya ke {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verifikasi"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Dapatkan verifikasi di Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Dapatkan"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verifikasi"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("di Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Lencana menunjukkan seseorang di tim Kyron sudah memeriksa bahwa akun ini memang seperti yang diakuinya. Lencana tidak memberi jangkauan tambahan, dan tidak dijual."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Lencana tetap ada selama namamu tetap. Ganti nama, dan lencana dicabut sampai seseorang memeriksa nama baru."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Tempat kami bisa memeriksa"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Tautan lain"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Situs atau profil lain yang menyatakan akun Kyron ini milikmu: cantumkan nama Kyron-mu, atau tautan ke profilmu, di sana. Kyron tidak pernah meminta dokumen identitas."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Tidak dapat memuat statusmu"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Semua di atas harus dicentang sebelum kamu bisa meminta."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Akun berusia minimal {days} hari"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Bio yang menyebutkan siapa kamu"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Namamu di profil"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Foto profil"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Tidak ada catatan dalam {days} hari terakhir"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Terkirim. Seseorang akan memeriksanya."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Sejak {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Minta"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Siapa kamu, dan tautan\nyang membuktikannya"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Lencana"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Di samping namamu,\ndi mana pun tampil"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Seseorang\nmemeriksa"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("Anggota tim\nmembuka tautanmu"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verifikasi"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Permintaan {number} sedang ditangani seseorang"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Dikirim {date}, sebagai {category}. Kamu akan mendapat notifikasi saat sudah diputuskan."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Tarik permintaan"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Permintaan ditarik."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat menyelesaikan rekaman: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Hingga sepuluh menit."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Mendengarkan…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron memerlukan izin mikrofon untuk merekam. Kamu bisa memberikannya di pengaturan perangkat."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat mulai merekam: {error}"),
     };
 
 final messageLookup = MessageLookup();

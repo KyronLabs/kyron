@@ -2329,6 +2329,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "See leht tahab avada teise rakenduse"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "See palub avada {scheme}-lingi."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Järk"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Vahemälus {size} pilte ja faile"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Vabastati {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Mõõdan…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Pole midagi tühjendada"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Salvestusruum"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versioon {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blokeeritud"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Postitad enda nimel"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Neid manuseid ei laaditud üles. Puuduta ühte, et uuesti proovida, või eemalda see."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "E-posti aadressi ei saanud muuta. Proovi uuesti."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Aadress muutub, kui avad meie saadetud lingi."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Otsi kinnituslinki aadressilt {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Sisesta e-posti aadress."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "See ei näe välja nagu e-posti aadress."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "See on juba sinu e-posti aadress."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Mida sa tegid, mida ootasid ja mis selle asemel juhtus."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Luba mul postitus profiilile kinnitada"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Mida sa sooviksid ja mida see sul teha võimaldaks."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Mis aitaks"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Probleem"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Idee"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Küsimus"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Seda loeb ainult Kyroni meeskond. See saadetakse koos sinu kontoga, et saaksime e-postiga vastata, ja koos kasutatava rakenduse versiooniga. Konto kustutamisel kustub ka see."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Kuidas sõna vaigistada?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Mida sa teha püüad ja kus jäid kinni."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Sinu küsimus"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyroniga ei saanud ühendust. Kontrolli ühendust ja proovi uuesti. Midagi pole veel kirjutatud, seega midagi ei läinud kaduma."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Tühjenda"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Siin kuvatakse ebaõnnestunud päringud ja muud olulised sündmused."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Vaigistatud"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Lisa ülal sõna või silt. Seda sisaldavad postitused jäävad sinu voost välja."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Postitused, mis sisaldavad midagi neist, jäävad sinu voost välja. Suur- ja väiketähtedel pole vahet ning sõna sobib ka pikemate sõnade sees, nii et „spoiler” püüab ka „spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Keegi pole blokeeritud"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokeerimine peidab teid teineteise eest mõlemas suunas. Blokeeri kedagi tema profiili menüüst."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Keegi pole vaigistatud"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Konto vaigistamine peidab selle postitused talle teada andmata. Vaigista kedagi tema profiili või postituse menüüst."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Parool"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Need ei ühti."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Sellel seadmel jääd sisse logituks. Teised seadmed logitakse välja."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Kasuta vähemalt 8 märki."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Parooli ei saanud uuendada. Proovi uuesti."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Parool on uuendatud."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID kopeeritud"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Postitused, mis sulle meeldivad, hoitakse siin ainult sinu jaoks."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Sa pole veel fotosid ega klippe postitanud."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} pole veel fotosid ega klippe postitanud."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Kõik, mida postitad, kuvatakse siin."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} pole veel midagi postitanud."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Sinu profiili ei saanud laadida"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Kontot @{handle} ei saanud laadida"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Vähemalt 8 märki"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Väiketäht (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Vähemalt üks number"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Sümbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Suurtäht (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} hiljutist kirjet. Vaata need enne saatmist üle jaotises Teave › Süsteemilogi."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Seda loeb ainult Kyroni meeskond. See saadetakse koos sinu kontoga, et saaksime ühendust võtta. Kui tahad näha, mis täpselt kaasa läheb, loe enne logi jaotises Teave › Süsteemilogi."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Saadetud, aitäh."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Saadetud, aitäh. See on teade #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Mis läks valesti?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versioon, reeglid, olek ja süsteemilogi"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Ära lase videotel kerimise ajal ise mängida"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Sinu detsentraliseeritud identifikaator"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Modereerimine"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Ülevaatust ootavad teated ja kaebused"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Hoia seda sisaldavad postitused voost eemal"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Pole sisse logitud"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Märguannete eelistused"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privaatsus ja turvalisus"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Otsused sinu konto kohta ja kaebused"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Muuda teksti suurust"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Sinu konto"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR-läätsede salvestamine ja avaldamine on alles valmimas. Midagi, mida jäädvustad, ei salvestataks veel, seega jääb kaamera suletuks."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Läätsed pole veel valmis"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-lääts"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Otse-eetriks on vaja meediaserverit, mida Kyron veel ei käita. Kui alustaksid ülekannet praegu, oleksid ruumis, kuhu keegi ei pääse. Häälpostituse salvestamine töötab juba täna."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Otse-eeter pole veel valmis"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Mine otse-eetrisse"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Küsitlused vajavad kohta, kus valikuid hoida ja hääli lugeda. Seda veel pole, seega kaotaks täna postitatud küsitlus kõik vastused."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Küsitlused pole veel valmis"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Küsitlus"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Kirjuta selle asemel tekstipostitus"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Kontrolli uuesti"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Üksikasi"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Peegeltabelid"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron vastas, aga midagi on valesti."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Edasi-tagasi aeg"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Esita küsimus"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinu konto kohta või selle kohta, kuidas miski töötab"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("E-posti teel"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kui Kyron jooksis kokku: saadab kaasa rakenduse logi"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Rakenduses"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kirjuta siit Kyroni meeskonnale. See jõuab meieni privaatselt koos sinu kontoga ja me vastame selle e-posti aadressile."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ühtki meilirakendust ei avatud. {address} on kopeeritud."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privaatsus ja sinu andmed"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Teata probleemist"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Midagi on katki või ei tööta nii, nagu peaks"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Postitusest või kontost teatamiseks kasuta selle menüüd: nii teame täpselt, millist sa mõtled."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Turvalisus ja väärkasutus"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kas Kyron on maas kõigi jaoks või ainult sinu jaoks"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Suur"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Suurem"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Keskmine"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron on koht, kus öelda midagi lugemist väärt."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Väike"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Alati tume"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Hämar"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Pehmem tume, musta asemel sinakashall"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Alati hele"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Järgi telefoni heleda või tumeda režiimi seadet"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Tühista blokeering"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Tühista vaigistus"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kes sa oled"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Oma sõnadega: mida ülevaataja peaks teadma."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Kirjutan siin ja oma lehel lindudest."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Lisa veel üks link"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Saad uuesti küsida alates {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Taotle kinnitust"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Enne taotlemist"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Looja"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Ajakirjanik"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisatsioon või bränd"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Midagi muud"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Avaliku elu tegelane"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Taotlust {number} ei kinnitatud"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Sa oled kinnitatud"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Muuda profiili"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Sisesta 6-kohaline kood"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Saada kood uuesti {seconds} sekundi pärast"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "Saatsime selle aadressile {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Kinnita"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Saa Kyronis kinnitatud"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Saa"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("kinnitatud"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyronis."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Märk näitab, et keegi Kyroni meeskonnast kontrollis, et see konto on see, kes ta väidab end olevat. See ei anna lisanähtavust ega ole müügiks."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Märk püsib seni, kuni püsib sinu nimi. Kui muudad nime, kaob märk, kuni keegi uue üle kontrollib."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Kust saame kontrollida"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Veel üks link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Leht või muu profiil, mis ütleb, et see Kyroni konto on sinu: pane sinna oma Kyroni nimi või link profiilile. Kyron ei küsi kunagi isikut tõendavaid dokumente."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Sinu olekut ei saanud laadida"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Enne taotlemist peab kõik ülal olema märgitud."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Vähemalt {days} päeva vanune konto"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Tutvustus, mis ütleb, kes sa oled"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Sinu nimi profiilil"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profiilifoto"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Viimase {days} päeva jooksul pole sinu kohta midagi kirjas"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Saadetud. Inimene vaatab selle üle."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Alates {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Taotle"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kes sa oled, ja link,\nmis seda tõendab"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Märk"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Sinu nime kõrval,\nkõikjal, kus see näha on"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Inimene\nkontrollib"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Keegi meeskonnast\navab sinu lingid"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Kinnitamine"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Taotlus {number} on inimese käes"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Saadetud {date} kategoorias {category}. Saad märguande, kui otsus on tehtud."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Võta taotlus tagasi"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Taotlus võeti tagasi."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Salvestist ei saanud lõpetada: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Kuni kümme minutit."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Kuulan…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron vajab salvestamiseks mikrofoni luba. Saad selle anda seadme seadetes."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Salvestamist ei saanud alustada: {error}"),
     };
 
 final messageLookup = MessageLookup();

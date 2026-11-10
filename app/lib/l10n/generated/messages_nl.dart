@@ -2071,6 +2071,308 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Deze pagina wil een andere app openen"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Ze vraagt om een {scheme}-link te openen."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} aan gecachte afbeeldingen en bestanden"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} vrijgemaakt"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Bezig met meten…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Niets te wissen"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Opslag"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versie {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Geblokkeerd"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Je plaatst als jezelf"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Die bijlagen zijn niet geüpload. Tik op een bijlage om het opnieuw te proberen, of verwijder hem."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Je e-mailadres kon niet worden gewijzigd. Probeer het opnieuw."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Je adres verandert zodra je de link volgt die we sturen."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Kijk in {email} voor een bevestigingslink."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Voer een e-mailadres in."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("Dat lijkt geen e-mailadres."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("Dat is al je e-mailadres."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Wat je deed, wat je verwachtte en wat er in plaats daarvan gebeurde."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Laat me een bericht vastzetten op mijn profiel"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Wat je zou willen en wat je daarmee zou kunnen."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Wat zou helpen"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Een probleem"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Een idee"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Een vraag"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Alleen het Kyron-team leest dit. Het wordt met je account verstuurd, zodat we per e-mail kunnen antwoorden, en met de versie van de app die je gebruikt. Als je je account verwijdert, wordt dit ook verwijderd."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Hoe demp ik een woord?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Wat je probeert te doen en waar je vastloopt."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Je vraag"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron was niet bereikbaar. Controleer je verbinding en probeer het opnieuw. Er is nog niets geschreven, dus er gaat niets verloren."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Wissen"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Mislukte verzoeken en andere opvallende gebeurtenissen verschijnen hier."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Gedempt"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Voeg hierboven een woord of tag toe. Berichten daarmee blijven uit je feed."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Berichten met een van deze blijven uit je feed. Hoofdletters maken niet uit, en een woord matcht ook binnen langere woorden, dus „spoiler” vangt ook „spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Niemand geblokkeerd"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokkeren verbergt jullie voor elkaar, in beide richtingen. Blokkeer iemand via het menu op diens profiel."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Niemand gedempt"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Een account dempen verbergt diens berichten zonder het te laten weten. Demp iemand via het menu op diens profiel of bij een bericht."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Wachtwoord"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Ze komen niet overeen."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Je blijft ingelogd op dit apparaat. Andere apparaten worden uitgelogd."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Gebruik minstens 8 tekens."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Je wachtwoord kon niet worden bijgewerkt. Probeer het opnieuw."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Wachtwoord bijgewerkt."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID gekopieerd"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Berichten die je leuk vindt, worden hier bewaard, alleen voor jou."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Je hebt nog geen foto's of clips geplaatst."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} heeft nog geen foto's of clips geplaatst."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Alles wat je plaatst, verschijnt hier."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} heeft nog niets geplaatst."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Je profiel kon niet worden geladen"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "@{handle} kon niet worden geladen"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Minimaal 8 tekens"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Kleine letter (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Minstens één cijfer"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Symbool (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Hoofdletter (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} recente regels. Bekijk ze onder Over › Systeemlogboek voordat je verstuurt."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Alleen het Kyron-team leest dit. Het wordt met je account verstuurd, zodat we contact kunnen opnemen. Lees eerst het logboek onder Over › Systeemlogboek als je precies wilt zien wat er meegaat."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Verstuurd, bedankt."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Verstuurd, bedankt. Het is melding #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Wat ging er mis?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versie, beleid, status en het systeemlogboek"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Video's niet vanzelf laten spelen tijdens het scrollen"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Je gedecentraliseerde identificatie"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderatie"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Meldingen en bezwaren die op beoordeling wachten"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Berichten met deze woorden uit je feed houden"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Niet ingelogd"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Meldingsvoorkeuren"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privacy en veiligheid"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Beslissingen over je account, en bezwaren"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Tekstgrootte aanpassen"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Je account"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Het opnemen en publiceren van AR-lenzen wordt nog gebouwd. Niets wat je vastlegt zou al worden bewaard, dus de camera blijft dicht."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lenzen zijn nog niet klaar"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-lens"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Live gaan heeft een mediaserver nodig die Kyron nog niet draait. Nu een uitzending starten zou je in een ruimte zetten waar niemand bij kan. Een spraakbericht opnemen werkt al."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Live gaan is nog niet klaar"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Live gaan"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Peilingen hebben een plek nodig om de opties te bewaren en de stemmen te tellen. Die is er nog niet, dus een peiling die je nu plaatst, zou elk antwoord kwijtraken."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Peilingen zijn nog niet klaar"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Peiling"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Schrijf in plaats daarvan een tekstbericht"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Opnieuw controleren"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detail"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Spiegeltabellen"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron antwoordde, maar er klopt iets niet."),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("Rondetijd"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Een vraag stellen"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Over je account, of hoe iets werkt"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Per e-mail"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Als Kyron is gecrasht: stuurt het logboek van de app mee"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("In de app"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Schrijf het Kyron-team vanaf hier. Het bereikt ons privé, met je account, en we antwoorden op het e-mailadres dat erbij hoort."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Er ging geen mailapp open. {address} is gekopieerd."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privacy en je gegevens"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Een probleem melden"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Iets is kapot of doet niet wat het moet doen"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Gebruik het menu bij een bericht of account om het te melden: zo weten we precies welke je bedoelt."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Veiligheid en misbruik"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Of Kyron voor iedereen plat ligt, of alleen voor jou"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Groot"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Groter"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Gemiddeld"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron is een plek om iets te zeggen dat het lezen waard is."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Klein"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Altijd donker"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Gedimd"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Een zachter donker, blauwgrijs in plaats van zwart"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Altijd licht"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "De lichte of donkere instelling van de telefoon volgen"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Deblokkeren"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Dempen opheffen"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Wie je bent"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "In je eigen woorden: wat de beoordelaar moet weten."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ik schrijf hier en op mijn eigen site over vogels."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Nog een link toevoegen"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Je kunt het vanaf {date} opnieuw vragen."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Verificatie aanvragen"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Voordat je het vraagt"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Maker"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Journalist"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisatie of merk"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Iets anders"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Publiek figuur"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Aanvraag {number} is niet goedgekeurd"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Je bent geverifieerd"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Je profiel bewerken"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Voer de 6-cijferige code in"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Code opnieuw sturen over {seconds} seconden"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "We hebben hem naar {email} gestuurd"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verifiëren"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Laat je verifiëren op Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Laat je"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verifiëren"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("op Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Het badge zegt dat iemand van het Kyron-team heeft gecontroleerd dat dit account is wie het zegt te zijn. Het geeft geen extra bereik en is niet te koop."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Het badge blijft zolang je naam blijft. Verander je naam, dan verdwijnt het tot iemand de nieuwe controleert."),
+      "ui_verify_link_first": MessageLookupByLibrary.simpleMessage(
+          "Waar we het kunnen controleren"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Nog een link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Een site of ander profiel dat zegt dat dit Kyron-account van jou is: zet je Kyron-naam, of een link naar je profiel, erop. Kyron vraagt nooit om identiteitsbewijzen."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Je stand van zaken kon niet worden geladen"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Alles hierboven heeft een vinkje nodig voordat je het kunt vragen."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Een account van minstens {days} dagen oud"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Een bio die zegt wie je bent"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Je naam op het profiel"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Een profielfoto"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Niets op je naam in de afgelopen {days} dagen"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Verstuurd. Een mens gaat ernaar kijken."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Sinds {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Vragen"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Wie je bent, en een link\ndie het bewijst"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Het badge"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Naast je naam,\noveral waar die staat"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Een mens\ncontroleert"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Iemand van het team\nvolgt je links"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verificatie"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Aanvraag {number} ligt bij een mens"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Verstuurd op {date}, als {category}. Je krijgt een melding als er is beslist."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Aanvraag intrekken"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Aanvraag ingetrokken."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "De opname kon niet worden afgerond: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Tot tien minuten."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Aan het luisteren…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron heeft toestemming nodig om de microfoon te gebruiken voor opnames. Je kunt die geven in de instellingen van je apparaat."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "De opname kon niet worden gestart: {error}"),
     };
 
 final messageLookup = MessageLookup();

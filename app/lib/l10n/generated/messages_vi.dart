@@ -2049,6 +2049,300 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Trang này muốn mở một ứng dụng khác"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Trang này yêu cầu mở một liên kết {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Bản dựng"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} hình ảnh và tệp đã lưu bộ nhớ đệm"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Đã giải phóng {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Đang đo…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Không có gì để xóa"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Bộ nhớ"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Phiên bản {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Đã chặn"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Đăng với tư cách bạn"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Các tệp đính kèm này chưa tải lên được. Chạm vào một tệp để thử lại, hoặc xóa nó."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể đổi email của bạn. Vui lòng thử lại."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Địa chỉ của bạn sẽ đổi khi bạn mở liên kết chúng tôi gửi."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Kiểm tra {email} để tìm liên kết xác nhận."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Nhập địa chỉ email."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Trông không giống địa chỉ email."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Đây đã là địa chỉ email của bạn."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Bạn đã làm gì, bạn mong đợi gì, và điều gì đã xảy ra thay vào đó."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Cho tôi ghim một bài lên hồ sơ"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Bạn muốn gì, và điều đó giúp bạn làm được gì."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Điều gì sẽ giúp ích"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Một sự cố"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Một ý tưởng"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Một câu hỏi"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Chỉ đội ngũ Kyron đọc nội dung này. Nó được gửi kèm tài khoản của bạn để chúng tôi trả lời qua email, và kèm phiên bản ứng dụng bạn đang dùng. Xóa tài khoản cũng xóa nó."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Làm sao để ẩn một từ?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Bạn đang cố làm gì, và bạn bị kẹt ở đâu."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Câu hỏi của bạn"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Không thể kết nối Kyron. Hãy kiểm tra kết nối và thử lại. Chưa có gì được viết, nên không mất gì cả."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Xóa"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Các yêu cầu thất bại và sự kiện đáng chú ý khác hiện ở đây."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Đã ẩn"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Thêm một từ hoặc thẻ ở trên. Bài đăng chứa nó sẽ không xuất hiện trong bảng tin của bạn."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Bài đăng chứa bất kỳ mục nào ở đây sẽ không xuất hiện trong bảng tin của bạn. Không phân biệt chữ hoa thường, và một từ cũng khớp bên trong từ dài hơn, nên “spoiler” cũng bắt được “spoilers”."),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("Chưa chặn ai"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Chặn khiến hai bạn không thấy nhau, theo cả hai chiều. Chặn ai đó từ menu trên hồ sơ của họ."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("Chưa ẩn ai"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Ẩn một tài khoản sẽ ẩn bài đăng của họ mà không báo cho họ. Ẩn ai đó từ menu trên hồ sơ hoặc bài đăng của họ."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Không khớp."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Bạn vẫn đăng nhập trên thiết bị này. Các thiết bị khác sẽ bị đăng xuất."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Dùng ít nhất 8 ký tự."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể cập nhật mật khẩu. Vui lòng thử lại."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Đã cập nhật mật khẩu."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("Đã sao chép DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Bài đăng bạn thích được giữ ở đây, chỉ cho bạn."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Bạn chưa đăng ảnh hay clip nào."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} chưa đăng ảnh hay clip nào."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Mọi thứ bạn đăng sẽ hiện ở đây."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} chưa đăng gì."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Không thể tải hồ sơ của bạn"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Không thể tải @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Tối thiểu 8 ký tự"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Chữ thường (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Ít nhất một chữ số"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Ký hiệu (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("Chữ hoa (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} mục gần đây. Xem lại tại Giới thiệu › Nhật ký hệ thống trước khi gửi."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Chỉ đội ngũ Kyron đọc nội dung này. Nó được gửi kèm tài khoản của bạn để chúng tôi theo dõi. Hãy đọc nhật ký trước tại Giới thiệu › Nhật ký hệ thống nếu bạn muốn biết chính xác những gì được gửi kèm."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Đã gửi, cảm ơn bạn."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Đã gửi, cảm ơn bạn. Đây là báo cáo #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Có chuyện gì?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Phiên bản, chính sách, trạng thái và nhật ký hệ thống"),
+      "ui_settings_autoplay_help":
+          MessageLookupByLibrary.simpleMessage("Không tự phát video khi cuộn"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Mã định danh phi tập trung của bạn"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Kiểm duyệt"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Báo cáo và kháng nghị đang chờ xem xét"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Không cho bài đăng chứa những từ này vào bảng tin"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Chưa đăng nhập"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Tùy chọn thông báo"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Quyền riêng tư & An toàn"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Các quyết định về tài khoản của bạn, và kháng nghị"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Điều chỉnh cỡ chữ"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Tài khoản của bạn"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Tính năng quay và đăng ống kính AR vẫn đang được xây dựng. Những gì bạn quay chưa được lưu, nên máy ảnh vẫn đóng."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Ống kính chưa sẵn sàng"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Ống kính AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Phát trực tiếp cần một máy chủ đa phương tiện mà Kyron chưa vận hành. Bắt đầu phát lúc này sẽ đưa bạn vào một phòng không ai vào được. Ghi âm bài đăng giọng nói đã dùng được."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Phát trực tiếp chưa sẵn sàng"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Phát trực tiếp"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Bình chọn cần nơi lưu các lựa chọn và đếm phiếu. Điều đó chưa có, nên bình chọn đăng hôm nay sẽ mất mọi câu trả lời."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Bình chọn chưa sẵn sàng"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Bình chọn"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Viết bài văn bản thay vào đó"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Kiểm tra lại"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Bảng sao chép"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron đã trả lời, nhưng có gì đó không ổn."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Thời gian khứ hồi"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Đặt câu hỏi"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Về tài khoản của bạn, hoặc cách một tính năng hoạt động"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Qua email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Nếu Kyron bị sập: gửi kèm nhật ký ứng dụng"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Trong ứng dụng"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Viết cho đội ngũ Kyron từ đây. Thư đến chúng tôi một cách riêng tư, kèm tài khoản của bạn, và chúng tôi trả lời tới địa chỉ email trên đó."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Không có ứng dụng thư nào mở. Đã sao chép {address}."),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage(
+          "Quyền riêng tư và dữ liệu của bạn"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Báo cáo sự cố"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Có gì đó bị hỏng hoặc không hoạt động như mong đợi"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Để báo cáo bài đăng hoặc tài khoản, hãy dùng menu trên đó: nhờ vậy chúng tôi biết chính xác bạn muốn nói đến cái nào."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("An toàn và lạm dụng"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron sập với mọi người, hay chỉ với bạn"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Lớn"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Lớn hơn"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Vừa"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron là nơi để nói điều đáng đọc."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Nhỏ"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("Luôn tối"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Mờ"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Tối dịu hơn, xám xanh thay vì đen"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Luôn sáng"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Theo cài đặt sáng hoặc tối của điện thoại"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Bỏ chặn"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Bỏ ẩn"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Bạn là ai"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Bằng lời của bạn, người xem xét cần biết điều gì."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Tôi viết về các loài chim ở đây và trên trang web riêng."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Thêm liên kết khác"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Bạn có thể yêu cầu lại từ {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Yêu cầu xác minh"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Trước khi yêu cầu"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Nhà sáng tạo"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Nhà báo"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Tổ chức hoặc thương hiệu"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Khác"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Người của công chúng"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Yêu cầu {number} không được duyệt"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Bạn đã được xác minh"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Chỉnh sửa hồ sơ"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Nhập mã 6 chữ số"),
+      "ui_verify_email_resend_in":
+          MessageLookupByLibrary.simpleMessage("Gửi lại mã sau {seconds} giây"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Chúng tôi đã gửi tới {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Xác minh"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Được xác minh trên Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Được"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("xác minh"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("trên Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Huy hiệu cho biết một người trong đội ngũ Kyron đã kiểm tra rằng tài khoản này đúng là người mà nó tự nhận. Huy hiệu không tăng lượt tiếp cận, và không bán."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Huy hiệu còn khi tên bạn còn giữ nguyên. Đổi tên thì huy hiệu bị gỡ cho đến khi có người kiểm tra tên mới."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Nơi chúng tôi có thể kiểm tra"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Liên kết khác"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Một trang web hoặc hồ sơ khác cho biết tài khoản Kyron này là của bạn: ghi tên Kyron của bạn, hoặc liên kết tới hồ sơ của bạn, lên đó. Kyron không bao giờ yêu cầu giấy tờ tùy thân."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể tải tình trạng của bạn"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Mọi mục ở trên cần được đánh dấu trước khi bạn có thể yêu cầu."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Tài khoản tạo ít nhất {days} ngày"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Tiểu sử nói bạn là ai"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Tên bạn trên hồ sơ"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("Ảnh hồ sơ"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Không có vi phạm nào trong {days} ngày qua"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Đã gửi. Một người sẽ xem xét."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Từ {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Yêu cầu"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Bạn là ai, và một liên kết\nchứng minh điều đó"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Huy hiệu"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Cạnh tên bạn,\nở mọi nơi tên hiện"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Một người\nkiểm tra"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Một người trong đội\nmở các liên kết"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Xác minh"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Yêu cầu {number} đang được một người xem xét"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Đã gửi {date}, với tư cách {category}. Bạn sẽ nhận thông báo khi có quyết định."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("Rút yêu cầu"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Đã rút yêu cầu."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể hoàn tất bản ghi: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Tối đa mười phút."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Đang nghe…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron cần quyền dùng micrô để ghi âm. Bạn có thể cấp quyền trong cài đặt thiết bị."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể bắt đầu ghi âm: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2071,6 +2071,302 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ojú-ìwé yìí fẹ́ ṣí ìṣàfilọ́lẹ̀ mìíràn"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Ó ń béèrè láti ṣí ìjápọ̀ {scheme} kan."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Ìkọ́"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Àwòrán àti fáìlì {size} nínú ibi ìpamọ́ ìgbà díẹ̀"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("A ti tú {size} sílẹ̀"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Ó ń wọ̀n…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Kò sí nǹkan láti pa rẹ́"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Ibi ìpamọ́"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Ẹ̀yà {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Àwọn tí a dí"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Ò ń fi ránṣẹ́ ní orúkọ ara rẹ"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Àwọn àsomọ́ wọ̀nyí kò gbéjáde. Tẹ ọ̀kan láti tún gbìyànjú, tàbí yọ ọ́ kúrò."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè yí ímeèlì rẹ padà. Jọ̀wọ́ tún gbìyànjú."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Àdírẹ́sì rẹ yóò yí padà nígbà tí o bá ṣí ìjápọ̀ tí a fi ránṣẹ́."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Wo {email} fún ìjápọ̀ ìfìdímúlẹ̀."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Tẹ àdírẹ́sì ímeèlì."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("Ìyẹn kò jọ àdírẹ́sì ímeèlì."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Ìyẹn ti jẹ́ àdírẹ́sì ímeèlì rẹ tẹ́lẹ̀."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí o ṣe, ohun tí o retí, àti ohun tí ó ṣẹlẹ̀ dípò rẹ̀."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Jẹ́ kí n lẹ ìfiránṣẹ́ mọ́ àkọọ́lẹ̀ mi"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí o fẹ́, àti ohun tí yóò jẹ́ kí o lè ṣe."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ohun tí yóò ṣe ìrànlọ́wọ́"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Ìṣòro kan"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Èrò kan"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Ìbéèrè kan"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ẹgbẹ́ Kyron nìkan ló ń ka èyí. A ń fi ránṣẹ́ pẹ̀lú àkọọ́lẹ̀ rẹ kí a lè fèsì nípasẹ̀ ímeèlì, àti pẹ̀lú ẹ̀yà ìṣàfilọ́lẹ̀ tí o ń lò. Pípa àkọọ́lẹ̀ rẹ rẹ́ yóò pa èyí rẹ́ náà."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Báwo ni mo ṣe lè pa ọ̀rọ̀ kan lẹ́nu mọ́?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ohun tí o ń gbìyànjú láti ṣe, àti ibi tí o há sí."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ìbéèrè rẹ"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "A kò lè dé Kyron. Ṣàyẹ̀wò ìsopọ̀ rẹ kí o sì tún gbìyànjú. A kò tíì kọ nǹkan kan, nítorí náà kò sí ohun tó sọnù."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Pa rẹ́"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìbéèrè tí kò yọrí àti àwọn ìṣẹ̀lẹ̀ pàtàkì míì máa ń hàn níbí."),
+      "ui_muted_tab":
+          MessageLookupByLibrary.simpleMessage("Àwọn tí a pa lẹ́nu mọ́"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Ṣàfikún ọ̀rọ̀ tàbí àmì lókè. Àwọn ìfiránṣẹ́ tí ó ní i kò ní hàn nínú àkójọ rẹ."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ tí ó ní èyíkéyìí nínú ìwọ̀nyí kò ní hàn nínú àkójọ rẹ. Lẹ́tà ńlá tàbí kékeré kò jẹ́ nǹkan, ọ̀rọ̀ sì ń bá ara mu nínú àwọn ọ̀rọ̀ tó gùn jù, nítorí náà “spoiler” ń mú “spoilers” pẹ̀lú."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Kò sí ẹni tí a dí"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Dídí ń fi yín pamọ́ fún ara yín, ní ẹ̀gbẹ́ méjèèjì. Dí ẹnìkan láti inú àkójọ àṣàyàn lórí àkọọ́lẹ̀ rẹ̀."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Kò sí ẹni tí a pa lẹ́nu mọ́"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Pípa àkọọ́lẹ̀ lẹ́nu mọ́ ń fi àwọn ìfiránṣẹ́ rẹ̀ pamọ́ láì sọ fún un. Pa ẹnìkan lẹ́nu mọ́ láti inú àkójọ àṣàyàn àkọọ́lẹ̀ tàbí ìfiránṣẹ́ rẹ̀."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Ọ̀rọ̀ aṣínà"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Wọn kò bá ara mu."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Ìwọ yóò wà nínú àkọọ́lẹ̀ lórí ẹ̀rọ yìí. A ó jáde kúrò lórí àwọn ẹ̀rọ míì."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Lo ó kéré tán lẹ́tà 8."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè ṣe àtúnṣe ọ̀rọ̀ aṣínà rẹ. Jọ̀wọ́ tún gbìyànjú."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("A ti ṣe àtúnṣe ọ̀rọ̀ aṣínà."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("A ti ṣe ẹ̀dà DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìfiránṣẹ́ tí o fẹ́ràn ni a ń tọ́jú síbí, fún ìwọ nìkan."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "O kò tíì fi fọ́tò tàbí fídíò kankan ránṣẹ́."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} kò tíì fi fọ́tò tàbí fídíò kankan ránṣẹ́."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Gbogbo ohun tí o bá fi ránṣẹ́ yóò hàn níbí."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} kò tíì fi nǹkan kankan ránṣẹ́."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("A kò lè gbé àkọọ́lẹ̀ rẹ jáde"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("A kò lè gbé @{handle} jáde"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Ó kéré tán lẹ́tà 8"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Lẹ́tà kékeré (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Ó kéré tán nọ́mbà kan"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Àmì (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Lẹ́tà ńlá (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Àkọsílẹ̀ {count} àìpẹ́ yìí. Ṣàyẹ̀wò wọn ní Nípa › Àkọsílẹ̀ ètò kí o tó fi ránṣẹ́."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ẹgbẹ́ Kyron nìkan ló ń ka èyí. A ń fi ránṣẹ́ pẹ̀lú àkọọ́lẹ̀ rẹ kí a lè tẹ̀lé e. Ka àkọsílẹ̀ náà ní Nípa › Àkọsílẹ̀ ètò kọ́kọ́ bí o bá fẹ́ rí gangan ohun tí ó ń bá a lọ."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("A ti fi ránṣẹ́, o ṣé."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "A ti fi ránṣẹ́, o ṣé. Ìròyìn #{number} ni."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Kí ló ṣẹlẹ̀ tí kò tọ́?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ẹ̀yà, ìlànà, ipò àti àkọsílẹ̀ ètò"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Dá fídíò dúró láti máa ṣeré fúnra wọn nígbà tí o bá ń yí"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Ìdánimọ̀ rẹ tí kò dá lórí ibì kan"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("Ìṣàkóso"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìròyìn àti ẹ̀bẹ̀ tí ń dúró de àyẹ̀wò"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Pa àwọn ìfiránṣẹ́ tí ó ní ìwọ̀nyí mọ́ kúrò nínú àkójọ rẹ"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("O kò wọlé"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Àwọn ààyò ìfitónilétí"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Àṣírí àti Ààbò"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Àwọn ìpinnu nípa àkọọ́lẹ̀ rẹ, àti ẹ̀bẹ̀"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe ìwọ̀n ọ̀rọ̀"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Àkọọ́lẹ̀ rẹ"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "A ṣì ń kọ́ gbígbàsílẹ̀ àti títẹ̀jáde lẹ́ńsì AR. Kò sí ohun tí o bá yà tí a ó fipamọ́ síbẹ̀, nítorí náà kámẹ́rà wà ní títì."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lẹ́ńsì kò tíì ṣetán"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lẹ́ńsì AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Láti lọ láàyè nílò olùpín ìkànnì media tí Kyron kò tíì ń ṣiṣẹ́. Bí o bá bẹ̀rẹ̀ ìgbéjáde báyìí, ìwọ yóò wà nínú yàrá tí ẹnikẹ́ni kò lè wọ̀. Gbígbàsílẹ̀ ìfiránṣẹ́ ohùn ń ṣiṣẹ́ lónìí."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Lílọ láàyè kò tíì ṣetán"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Lọ láàyè"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Ìdìbò nílò ibi láti tọ́jú àwọn àṣàyàn àti láti ka ìbò. Ìyẹn kò tíì sí, nítorí náà ìdìbò tí a fi ránṣẹ́ lónìí yóò pàdánù gbogbo ìdáhùn."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Ìdìbò kò tíì ṣetán"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Ìdìbò"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Kọ ìfiránṣẹ́ ọ̀rọ̀ dípò rẹ̀"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Tún ṣàyẹ̀wò"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Àlàyé"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Àwọn tábìlì dígí"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron dáhùn, ṣùgbọ́n nǹkan kan kò tọ́."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Ìrìn àjò lọ àti bọ̀"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Béèrè ìbéèrè"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Nípa àkọọ́lẹ̀ rẹ, tàbí bí nǹkan ṣe ń ṣiṣẹ́"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Nípasẹ̀ ímeèlì"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Bí Kyron bá kọlu: ó ń fi àkọsílẹ̀ ìṣàfilọ́lẹ̀ ránṣẹ́ pẹ̀lú"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Nínú ìṣàfilọ́lẹ̀"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kọ̀wé sí ẹgbẹ́ Kyron láti ibí. Ó ń dé ọ̀dọ̀ wa ní ìkọ̀kọ̀, pẹ̀lú àkọọ́lẹ̀ rẹ, a sì ń fèsì sí àdírẹ́sì ímeèlì tí ó wà lórí rẹ̀."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Kò sí ìṣàfilọ́lẹ̀ ímeèlì tí ó ṣí. A ti ṣe ẹ̀dà {address}."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Àṣírí àti dátà rẹ"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("Jábọ̀ ìṣòro"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Nǹkan kan ti bàjẹ́ tàbí kò ṣe ohun tí ó yẹ"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Láti jábọ̀ ìfiránṣẹ́ tàbí àkọọ́lẹ̀, lo àkójọ àṣàyàn rẹ̀: ìyẹn ń sọ fún wa gangan èyí tí o ní lọ́kàn."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Ààbò àti ìlòkulò"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Bóyá Kyron ti dúró fún gbogbo ènìyàn, tàbí fún ìwọ nìkan"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Ńlá"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Tóbi jù"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Àárín"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron jẹ́ ibi láti sọ ohun tí ó yẹ kí a kà."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Kékeré"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Òkùnkùn nígbà gbogbo"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Bàìbàì"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Òkùnkùn rírọ̀, búlúù-eérú dípò dúdú"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Ìmọ́lẹ̀ nígbà gbogbo"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Tẹ̀lé ètò ìmọ́lẹ̀ tàbí òkùnkùn fóònù"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Mú ìdènà kúrò"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Mú ìpalọ́lọ́ kúrò"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ta ni ọ́"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ní ọ̀rọ̀ ara rẹ, ohun tí olùyẹ̀wò yẹ kí ó mọ̀."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Mo ń kọ nípa ẹyẹ níbí àti lórí ojúlé mi."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Ṣàfikún ìjápọ̀ míì"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("O lè tún béèrè láti {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Béèrè ìjẹ́rìísí"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Kí o tó béèrè"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Olùdásílẹ̀"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Oníròyìn"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Àjọ tàbí àmì-ìdámọ̀"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Nǹkan míì"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Ènìyàn gbajúmọ̀"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("A kò fọwọ́ sí ìbéèrè {number}"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("A ti jẹ́rìísí rẹ"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Ṣàtúnṣe àkọọ́lẹ̀ rẹ"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Tẹ kóòdù oní-nọ́mbà 6"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Tún kóòdù fi ránṣẹ́ ní ìṣẹ́jú-àáyá {seconds}"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("A fi ránṣẹ́ sí {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Jẹ́rìísí"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Gba ìjẹ́rìísí lórí Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Gba"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("ìjẹ́rìísí"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("lórí Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Báájì náà fi hàn pé ẹnìkan nínú ẹgbẹ́ Kyron ti ṣàyẹ̀wò pé àkọọ́lẹ̀ yìí ni ẹni tí ó sọ pé òun jẹ́. Kò fúnni ní ìdé tó pọ̀ sí i, kò sì sí fún títà."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Báájì náà ń dúró níwọ̀n ìgbà tí orúkọ rẹ bá dúró. Yí orúkọ rẹ padà, a ó yọ ọ́ kúrò títí ẹnìkan yóò fi ṣàyẹ̀wò tuntun."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Ibi tí a ti lè ṣàyẹ̀wò"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("Ìjápọ̀ míì"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Ojúlé tàbí àkọọ́lẹ̀ míì tí ó sọ pé àkọọ́lẹ̀ Kyron yìí jẹ́ tìrẹ: fi orúkọ Kyron rẹ, tàbí ìjápọ̀ sí àkọọ́lẹ̀ rẹ, síbẹ̀. Kyron kò béèrè fún ìwé ìdánimọ̀ rí."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("A kò lè gbé ipò rẹ jáde"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Gbogbo ohun tí ó wà lókè gbọ́dọ̀ ní àmì kí o tó lè béèrè."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Àkọọ́lẹ̀ tí ó ti tó ọjọ́ {days} ó kéré tán"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Àpèjúwe tí ó sọ ẹni tí o jẹ́"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Orúkọ rẹ lórí àkọọ́lẹ̀"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Fọ́tò àkọọ́lẹ̀"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Kò sí nǹkan lórí àkọsílẹ̀ rẹ ní ọjọ́ {days} sẹ́yìn"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "A ti fi ránṣẹ́. Ènìyàn kan yóò wò ó."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Láti {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Béèrè"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ta ni ọ́, àti ìjápọ̀\ntí ó fi hàn"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Báájì náà"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Lẹ́gbẹ̀ẹ́ orúkọ rẹ,\nníbikíbi tí ó bá hàn"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Ènìyàn kan\nń ṣàyẹ̀wò"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Ẹnìkan nínú ẹgbẹ́\nń ṣí ìjápọ̀ rẹ"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Ìjẹ́rìísí"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Ìbéèrè {number} wà lọ́wọ́ ènìyàn kan"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "A fi ránṣẹ́ ní {date}, gẹ́gẹ́ bí {category}. Ìwọ yóò gba ìfitónilétí nígbà tí a bá pinnu."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Fa ìbéèrè sẹ́yìn"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("A ti fa ìbéèrè sẹ́yìn."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè parí gbígbàsílẹ̀: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Títí di ìṣẹ́jú mẹ́wàá."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Ó ń gbọ́…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron nílò àṣẹ láti lo gbohùngbohùn láti gbàsílẹ̀. O lè fún un nínú ètò ẹ̀rọ rẹ."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "A kò lè bẹ̀rẹ̀ gbígbàsílẹ̀: {error}"),
     };
 
 final messageLookup = MessageLookup();

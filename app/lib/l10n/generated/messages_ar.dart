@@ -2244,6 +2244,294 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("تريد هذه الصفحة فتح تطبيق آخر"),
       "ui_browser_leave_detail":
           MessageLookupByLibrary.simpleMessage("تطلب فتح رابط {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("الإصدار"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} من الصور والملفات المخزنة مؤقتًا"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("تم تحرير {size}"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("جارٍ القياس…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("لا يوجد ما يُمسح"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("التخزين"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("الإصدار {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("المحظورون"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("تنشر باسمك"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "لم تُرفع هذه المرفقات. انقر على أحدها لإعادة المحاولة، أو أزله."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "تعذّر تغيير بريدك الإلكتروني. يُرجى المحاولة مرة أخرى."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "يتغير عنوانك بعد أن تفتح الرابط الذي نرسله."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "تحقق من {email} للعثور على رابط التأكيد."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("أدخل عنوان بريد إلكتروني."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "لا يبدو هذا عنوان بريد إلكتروني."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "هذا هو عنوان بريدك الإلكتروني بالفعل."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "ما الذي فعلته، وما الذي توقعته، وما الذي حدث بدلًا من ذلك."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "دعني أثبّت منشورًا في ملفي الشخصي"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "ما الذي تريده، وما الذي سيتيحه لك."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("ما الذي سيساعد"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("مشكلة"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("فكرة"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("سؤال"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "فريق Kyron وحده يقرأ هذا. يُرسل مع حسابك حتى نتمكن من الرد عبر البريد الإلكتروني، ومع إصدار التطبيق الذي تستخدمه. حذف حسابك يحذفه أيضًا."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("كيف أكتم كلمة؟"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "ما الذي تحاول فعله، وأين توقفت."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("سؤالك"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "تعذّر الوصول إلى Kyron. تحقّق من اتصالك وحاول مرة أخرى. لم يُكتب شيء بعد، لذا لم يضِع شيء."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("مسح"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "تظهر هنا الطلبات الفاشلة والأحداث البارزة الأخرى."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("المكتومون"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "أضف كلمة أو وسمًا في الأعلى. المنشورات التي تحتويه لن تظهر في موجزك."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "المنشورات التي تحتوي على أي من هذه لن تظهر في موجزك. لا يهم حجم الأحرف، والكلمة تُطابق داخل الكلمات الأطول أيضًا، لذا فإن «spoiler» تلتقط «spoilers» كذلك."),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("لا أحد محظور"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "الحظر يخفيكما عن بعضكما في الاتجاهين. احظر شخصًا من القائمة في ملفه الشخصي."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("لا أحد مكتوم"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "كتم حساب يخفي منشوراته دون إخباره. اكتم شخصًا من القائمة في ملفه الشخصي أو في منشور."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("غير متطابقتين."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "ستبقى مسجّل الدخول على هذا الجهاز. سيُسجَّل خروجك من الأجهزة الأخرى."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("استخدم 8 أحرف على الأقل."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "تعذّر تحديث كلمة المرور. يُرجى المحاولة مرة أخرى."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("تم تحديث كلمة المرور."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("تم نسخ DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "المنشورات التي تعجبك تُحفظ هنا، لك وحدك."),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("لم تنشر أي صور أو مقاطع بعد."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "لم ينشر {name} أي صور أو مقاطع بعد."),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("كل ما تنشره يظهر هنا."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("لم ينشر {name} أي شيء بعد."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل ملفك الشخصي"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("8 أحرف على الأقل"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("حرف صغير (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("رقم واحد على الأقل"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("رمز (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("حرف كبير (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} من الإدخالات الأخيرة. راجعها في حول › سجل النظام قبل الإرسال."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "فريق Kyron وحده يقرأ هذا. يُرسل مع حسابك حتى نتمكن من المتابعة. اقرأ السجل أولًا في حول › سجل النظام إن أردت أن ترى بالضبط ما يُرسل معه."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("تم الإرسال، شكرًا لك."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "تم الإرسال، شكرًا لك. رقم البلاغ #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("ما الخطأ الذي حدث؟"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "الإصدار والسياسات والحالة وسجل النظام"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "منع تشغيل الفيديوهات تلقائيًا أثناء التمرير"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("معرّفك اللامركزي"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("الإشراف"),
+      "ui_settings_moderation_help":
+          MessageLookupByLibrary.simpleMessage("بلاغات وطعون بانتظار المراجعة"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "إبعاد المنشورات التي تحتوي على هذه عن موجزك"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("لم تسجّل الدخول"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("تفضيلات الإشعارات"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("قرارات بشأن حسابك، والطعون"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("ضبط حجم النص"),
+      "ui_settings_your_account": MessageLookupByLibrary.simpleMessage("حسابك"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "تسجيل عدسات الواقع المعزز ونشرها لا يزالان قيد الإنشاء. لن يُحفظ أي شيء تلتقطه بعد، لذا تبقى الكاميرا مغلقة."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("العدسات ليست جاهزة بعد"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("عدسة الواقع المعزز"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "البث المباشر يحتاج إلى خادم وسائط لا يشغّله Kyron بعد. بدء بث الآن سيضعك في غرفة لا يستطيع أحد الانضمام إليها. تسجيل منشور صوتي يعمل اليوم."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("البث المباشر ليس جاهزًا بعد"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("بث مباشر"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "الاستطلاعات تحتاج إلى مكان لحفظ الخيارات وعدّ الأصوات. هذا غير متوفر بعد، لذا فإن استطلاعًا يُنشر اليوم سيفقد كل إجابة."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("الاستطلاعات ليست جاهزة بعد"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("استطلاع"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "اكتب منشورًا نصيًا بدلًا من ذلك"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("تحقّق مرة أخرى"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("التفاصيل"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("الجداول المرآتية"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "استجاب Kyron، لكن هناك خطأ ما."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("زمن الذهاب والإياب"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("اطرح سؤالًا"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "عن حسابك، أو عن طريقة عمل شيء ما"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("عبر البريد الإلكتروني"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "إذا تعطّل Kyron: يُرسل سجل التطبيق معه"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("داخل التطبيق"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "راسل فريق Kyron من هنا. تصلنا رسالتك بشكل خاص، مع حسابك، ونرد على عنوان البريد الإلكتروني المرتبط به."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "لم يُفتح أي تطبيق بريد. تم نسخ {address}."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("الخصوصية وبياناتك"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("الإبلاغ عن مشكلة"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "شيء ما معطّل أو لا يعمل كما ينبغي"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "للإبلاغ عن منشور أو حساب، استخدم القائمة الخاصة به: هكذا نعرف بالضبط ما الذي تقصده."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("الأمان وإساءة الاستخدام"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "هل Kyron معطّل للجميع، أم لك وحدك"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("كبير"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("أكبر"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("متوسط"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron مكان لقول شيء يستحق القراءة."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("صغير"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("داكن دائمًا"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("خافت"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "داكن أنعم، رمادي مزرق بدلًا من الأسود"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("فاتح دائمًا"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "اتباع إعداد الهاتف الفاتح أو الداكن"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("إلغاء الحظر"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("إلغاء الكتم"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("من أنت"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "بكلماتك أنت، ما الذي يجب أن يعرفه المراجع."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "أكتب عن الطيور هنا وعلى موقعي الخاص."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("إضافة رابط آخر"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "يمكنك الطلب مرة أخرى ابتداءً من {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("طلب التوثيق"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("قبل أن تطلب"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("صانع محتوى"),
+      "ui_verify_cat_journalist": MessageLookupByLibrary.simpleMessage("صحفي"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("مؤسسة أو علامة تجارية"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("شيء آخر"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("شخصية عامة"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "لم تتم الموافقة على الطلب {number}"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("حسابك موثّق"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("تعديل ملفك الشخصي"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("أدخل الرمز المكوّن من 6 أرقام"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "إعادة إرسال الرمز بعد {seconds} ثانية"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("أرسلناه إلى {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("تحقّق"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("احصل على التوثيق في Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("احصل"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("على التوثيق"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("في Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "تعني الشارة أن أحد أعضاء فريق Kyron تحقّق من أن هذا الحساب هو من يدّعي أنه هو. لا تمنح وصولًا إضافيًا، وليست للبيع."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "تبقى الشارة ما دام اسمك كما هو. غيّر اسمك وستُزال حتى يتحقق أحد من الاسم الجديد."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("أين يمكننا التحقق"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("رابط آخر"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "موقع أو ملف شخصي آخر يقول إن حساب Kyron هذا لك: ضع عليه اسمك في Kyron، أو رابطًا إلى ملفك الشخصي. لا يطلب Kyron أبدًا وثائق هوية."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر تحميل وضعك"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "يجب وضع علامة على كل ما سبق قبل أن تتمكن من الطلب."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "حساب عمره {days} يومًا على الأقل"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("نبذة تقول من أنت"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("اسمك في الملف الشخصي"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("صورة الملف الشخصي"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "لا شيء في سجلك خلال آخر {days} يومًا"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("تم الإرسال. سيطّلع عليه شخص."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("منذ {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("اطلب"),
+      "ui_verify_step_ask_detail":
+          MessageLookupByLibrary.simpleMessage("من أنت، ورابط\nيثبت ذلك"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("الشارة"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("بجانب اسمك،\nأينما يظهر"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("شخص\nيتحقّق"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "أحد أعضاء الفريق\nيتابع روابطك"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("التوثيق"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("الطلب {number} لدى شخص يراجعه"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "أُرسل في {date}، بصفة {category}. سيصلك إشعار عند اتخاذ القرار."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("سحب الطلب"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("تم سحب الطلب."),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر إنهاء التسجيل: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("حتى عشر دقائق."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("جارٍ الاستماع…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "يحتاج Kyron إلى إذن لاستخدام الميكروفون للتسجيل. يمكنك منحه من إعدادات جهازك."),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("تعذّر بدء التسجيل: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2051,6 +2051,309 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ukurasa huu unataka kufungua programu nyingine"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Unaomba kufungua kiungo cha {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Muundo"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} za picha na faili zilizohifadhiwa"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} zimeachiliwa"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Inapima…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Hakuna cha kufuta"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Hifadhi"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Toleo {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Waliozuiwa"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Unachapisha kama wewe"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Viambatisho hivyo havikupakiwa. Gusa kimoja ujaribu tena, au kiondoe."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kubadilisha barua pepe yako. Tafadhali jaribu tena."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Anwani yako itabadilika ukifungua kiungo tutakachotuma."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Angalia {email} upate kiungo cha uthibitisho."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Weka anwani ya barua pepe."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Hiyo haionekani kama anwani ya barua pepe."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Hiyo tayari ni anwani yako ya barua pepe."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ulifanya nini, ulitarajia nini, na nini kilitokea badala yake."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Niruhusu nibandike chapisho kwenye wasifu wangu"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ungependa nini, na kingekuwezesha kufanya nini."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Nini kingesaidia"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Tatizo"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Wazo"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Swali"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ni timu ya Kyron pekee inayosoma hili. Hutumwa pamoja na akaunti yako ili tuweze kujibu kwa barua pepe, na pamoja na toleo la programu unalotumia. Ukifuta akaunti yako, hili nalo hufutwa."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Ninanyamazishaje neno?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Unajaribu kufanya nini, na umekwama wapi."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Swali lako"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kufikia Kyron. Angalia muunganisho wako ujaribu tena. Bado hakuna kilichoandikwa, kwa hiyo hakuna kilichopotea."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Futa"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Maombi yaliyoshindwa na matukio mengine muhimu huonekana hapa."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Walionyamazishwa"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Ongeza neno au lebo hapo juu. Machapisho yenye neno hilo hayataonekana kwenye mlisho wako."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Machapisho yenye yoyote kati ya haya hayaonekani kwenye mlisho wako. Herufi kubwa na ndogo hazijalishi, na neno hulingana hata ndani ya maneno marefu zaidi, kwa hiyo “spoiler” hunasa pia “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Hakuna aliyezuiwa"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuzuia hukuficheni ninyi kwa ninyi, pande zote mbili. Zuia mtu kutoka kwenye menyu ya wasifu wake."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Hakuna aliyenyamazishwa"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Kunyamazisha akaunti huficha machapisho yake bila kumwambia. Nyamazisha mtu kutoka kwenye menyu ya wasifu wake au chapisho."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Nenosiri"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Hayalingani."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Utaendelea kuingia kwenye kifaa hiki. Vifaa vingine vitaondolewa."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Tumia angalau herufi 8."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kusasisha nenosiri lako. Tafadhali jaribu tena."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Nenosiri limesasishwa."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID imenakiliwa"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Machapisho unayopenda huhifadhiwa hapa, kwa ajili yako tu."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Bado hujachapisha picha wala klipu."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} bado hajachapisha picha wala klipu."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Chochote unachochapisha huonekana hapa."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} bado hajachapisha chochote."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kupakia wasifu wako"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Imeshindwa kupakia @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Angalau herufi 8"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Herufi ndogo (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Angalau namba moja"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Alama (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Herufi kubwa (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Maingizo {count} ya hivi karibuni. Yapitie katika Kuhusu › Kumbukumbu ya mfumo kabla ya kutuma."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ni timu ya Kyron pekee inayosoma hili. Hutumwa pamoja na akaunti yako ili tuweze kufuatilia. Soma kumbukumbu kwanza katika Kuhusu › Kumbukumbu ya mfumo kama unataka kuona hasa kinachotumwa pamoja nalo."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Imetumwa, asante."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Imetumwa, asante. Ni ripoti #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Nini kimeharibika?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Toleo, sera, hali na kumbukumbu ya mfumo"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Zuia video kucheza zenyewe unaposogeza"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Kitambulisho chako Kisicho na Kituo Kimoja"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Udhibiti"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Ripoti na rufaa zinazosubiri kukaguliwa"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Weka mbali na mlisho machapisho yenye haya"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Hujaingia"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Mapendeleo ya arifa"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Faragha na Usalama"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Maamuzi kuhusu akaunti yako, na rufaa"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Rekebisha ukubwa wa maandishi"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Akaunti yako"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Kurekodi na kuchapisha lenzi za AR bado kunajengwa. Hakuna utakachonasa kitakachohifadhiwa bado, kwa hiyo kamera inabaki imefungwa."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lenzi bado hazijawa tayari"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lenzi ya AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Kurusha mubashara kunahitaji seva ya media ambayo Kyron bado haiendeshi. Ukianza matangazo sasa ungekuwa kwenye chumba ambacho hakuna anayeweza kujiunga. Kurekodi chapisho la sauti kunafanya kazi leo."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Kurusha mubashara bado hakujawa tayari"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Rusha mubashara"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kura za maoni zinahitaji mahali pa kuhifadhi chaguo na kuhesabu kura. Hilo bado halipo, kwa hiyo kura ya maoni iliyochapishwa leo ingepoteza kila jibu."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Kura za maoni bado hazijawa tayari"),
+      "ui_soon_poll_title":
+          MessageLookupByLibrary.simpleMessage("Kura ya maoni"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Andika chapisho la maandishi badala yake"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Angalia tena"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Maelezo"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Majedwali ya kioo"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ilijibu, lakini kuna kitu si sawa."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Muda wa kwenda na kurudi"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Uliza swali"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuhusu akaunti yako, au jinsi kitu kinavyofanya kazi"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Kwa barua pepe"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kama Kyron ilianguka: hutuma kumbukumbu ya programu pamoja nayo"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Ndani ya programu"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Iandikie timu ya Kyron kutoka hapa. Inatufikia kwa faragha, pamoja na akaunti yako, na tunajibu kwa anwani ya barua pepe iliyo kwenye akaunti hiyo."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Hakuna programu ya barua iliyofunguka. {address} imenakiliwa."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Faragha na data yako"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Ripoti tatizo"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuna kitu kimeharibika au hakifanyi kinachopaswa"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Ili kuripoti chapisho au akaunti, tumia menyu yake: hivyo tunajua hasa unamaanisha ipi."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Usalama na matumizi mabaya"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kama Kyron haifanyi kazi kwa kila mtu, au kwako tu"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Kubwa"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("Kubwa zaidi"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Wastani"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron ni mahali pa kusema kitu kinachostahili kusomwa."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Ndogo"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Giza kila wakati"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Hafifu"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Giza laini zaidi, kijivu-buluu badala ya nyeusi"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Mwanga kila wakati"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Fuata mpangilio wa mwanga au giza wa simu"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Ondoa kizuizi"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Ondoa unyamazishaji"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Wewe ni nani"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Kwa maneno yako mwenyewe, mkaguzi anapaswa kujua nini."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ninaandika kuhusu ndege hapa na kwenye tovuti yangu."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Ongeza kiungo kingine"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Unaweza kuomba tena kuanzia {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Omba uthibitishaji"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Kabla ya kuomba"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Mtayarishaji"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Mwandishi wa habari"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Shirika au chapa"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Kitu kingine"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Mtu maarufu"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Ombi {number} halikuidhinishwa"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Umethibitishwa"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Hariri wasifu wako"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Weka msimbo wa tarakimu 6"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Tuma msimbo tena baada ya sekunde {seconds}"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Tuliutuma kwa {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Thibitisha"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage(
+          "Pata uthibitishaji kwenye Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Pata"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("uthibitishaji"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("kwenye Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Beji inaonyesha kuwa mtu wa timu ya Kyron amekagua kwamba akaunti hii ni ile inayodai kuwa. Haiongezi ufikiaji, na haiuzwi."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Beji hubaki maadamu jina lako linabaki. Ukibadilisha jina, inaondolewa hadi mtu akague jipya."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Tunapoweza kukagua"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Kiungo kingine"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Tovuti au wasifu mwingine unaosema akaunti hii ya Kyron ni yako: weka jina lako la Kyron, au kiungo cha wasifu wako, hapo. Kyron haiombi kamwe hati za utambulisho."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Imeshindwa kupakia hali yako"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Kila kitu hapo juu kinahitaji alama ya tiki kabla ya kuomba."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Akaunti yenye umri wa angalau siku {days}"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Wasifu mfupi unaosema wewe ni nani"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Jina lako kwenye wasifu"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Picha ya wasifu"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Hakuna kitu kwenye rekodi yako katika siku {days} zilizopita"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Imetumwa. Mtu ataiangalia."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Tangu {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Omba"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Wewe ni nani, na kiungo\nkinachothibitisha"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Beji"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Kando ya jina lako,\npopote linapoonekana"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Mtu\nanakagua"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Mtu wa timu\nanafungua viungo vyako"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Uthibitishaji"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("Ombi {number} liko kwa mtu"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Imetumwa {date}, kama {category}. Utapata arifa uamuzi ukifanywa."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("Ondoa ombi"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Ombi limeondolewa."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kumaliza kurekodi: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Hadi dakika kumi."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Inasikiliza…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron inahitaji ruhusa ya maikrofoni ili kurekodi. Unaweza kuitoa kwenye mipangilio ya kifaa chako."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kuanza kurekodi: {error}"),
     };
 
 final messageLookup = MessageLookup();

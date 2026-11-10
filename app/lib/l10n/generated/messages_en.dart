@@ -2539,6 +2539,300 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "This page wants to open another app"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "It is asking to open a {scheme} link."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} of cached images and files"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} freed"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Measuring…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nothing to clear"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Storage"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Version {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blocked"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Posting as you"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Those attachments did not upload. Tap one to try again, or remove it."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Could not change your email. Please try again."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Your address changes once you follow the link we send."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Check {email} for a confirmation link."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Enter an email address."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "That does not look like an email address."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "That is already your email address."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "What you did, what you expected, and what happened instead."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Let me pin a post to my profile"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "What you would like, and what it would let you do."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("What would help"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("A problem"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("An idea"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("A question"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Only the Kyron team reads this. It is sent with your account, so we can answer by email, and with which version of the app you are running. Deleting your account deletes it too."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("How do I mute a word?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "What you are trying to do, and where you are stuck."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Your question"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron could not be reached. Check your connection and try again. Nothing has been written yet, so nothing is lost."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Clear"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Failed requests and other notable events show up here."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Muted"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Add a word or a tag above. Posts carrying it stay out of your feed."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Posts containing any of these are kept out of your feed. Matching ignores case, and a word matches inside longer ones, so \"spoiler\" also catches \"spoilers\"."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Nobody blocked"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blocking hides you from each other, both ways. Block someone from the menu on their profile."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("Nobody muted"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Muting an account hides their posts without telling them. Mute someone from the menu on their profile or a post."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Password"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("These do not match."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "You stay signed in on this device. Other devices are signed out."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Use at least 8 characters."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Could not update your password. Please try again."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Password updated."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID copied"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Posts you like are kept here, just for you."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "You have not posted any photos or clips."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} has not posted any photos or clips."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Anything you post shows up here."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} has not posted anything yet."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Could not load your profile"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Could not load @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Minimum 8 characters"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Lowercase letter (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("At least one number"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Uppercase letter (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} recent entries. Review them under About › System log before sending."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Only the Kyron team reads this. It is sent with your account so we can follow up. Read the log first under About › System log if you want to see exactly what goes with it."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Sent, thank you."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Sent, thank you. It is report #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("What went wrong?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Version, policies, status and the system log"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Stop videos playing by themselves as you scroll"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("Your Decentralized Identifier"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderation"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Reports and appeals waiting for review"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Keep posts containing these out of your feed"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Not signed in"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Notification preferences"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privacy & Safety"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Decisions about your account, and appeals"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Adjust text size"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Your account"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Recording and publishing AR lenses is still being built. Nothing you capture would be saved yet, so the camera stays closed."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lenses are not ready yet"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Going live needs a media server Kyron does not run yet. Starting a broadcast now would put you in a room nobody could join. Recording a voice post works today."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Going live is not ready yet"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Go live"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Polls need somewhere to keep the options and count the votes. That is not in place yet, so a poll posted today would lose every answer."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Polls are not ready yet"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Poll"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Write a text post instead"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Check again"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detail"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Mirror tables"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron answered, but something is not right."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Round trip"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Ask a question"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "About your account, or how something works"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("By email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "If Kyron crashed: sends the app's log with it"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("In the app"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Write to the Kyron team from here. It reaches us privately, with your account, and we answer at the email address on it."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "No mail app opened. {address} is copied."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privacy and your data"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Report a problem"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Something is broken or not doing what it should"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "To report a post or an account, use the menu on it: that tells us exactly which one you mean."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Safety and abuse"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Whether Kyron is down for everybody, or just you"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Large"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Larger"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Medium"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron is a place to say something worth reading."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Small"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Always dark"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Dim"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "A softer dark, blue-grey rather than black"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Always light"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Follow the phone’s own light or dark setting"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Unblock"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Unmute"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Who you are"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "In your own words, what the reviewer should know."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "I write about birds here and on my own site."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Add another link"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "You can ask again from {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Ask to be verified"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Before you ask"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Creator"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Journalist"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisation or brand"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Something else"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Public figure"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Request {number} was not approved"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("You're verified"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Edit your profile"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Enter the 6-digit code"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Resend code in {seconds} seconds"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("We sent it to {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Verify"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Get verified on Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Get"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verified"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("on Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "The badge says somebody on the Kyron team checked this account is who it says it is. It gives no extra reach, and it is not for sale."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "The badge stays while your name does. Change your name and it comes off until somebody checks the new one."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Where we can check"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Another link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "A site or another profile that says this Kyron account is yours: put your Kyron name, or a link to your profile, on it. Kyron never asks for ID documents."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Could not load where you stand"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Everything above needs a tick before you can ask."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "An account at least {days} days old"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("A bio that says who you are"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Your name on the profile"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("A profile photo"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Nothing on your record in the last {days} days"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Sent. A person will look at it."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Since {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Ask"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Who you are, and a link\nthat proves it"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("The badge"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Beside your name,\neverywhere it shows"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("A person\nchecks"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Somebody on the team\nfollows your links"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verification"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Request {number} is with a person"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Sent {date}, as {category}. You will get a notification when it is decided."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Withdraw the request"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Request withdrawn."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Could not finish the recording: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Up to ten minutes."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Listening…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron needs permission to use the microphone to record. You can grant it in your device settings."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Could not start recording: {error}"),
     };
 
 final messageLookup = MessageLookup();

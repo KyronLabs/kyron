@@ -2082,6 +2082,309 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ఈ పేజీ మరొక యాప్‌ను తెరవాలనుకుంటోంది"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "ఇది {scheme} లింక్‌ను తెరవమని అడుగుతోంది."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("బిల్డ్"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "కాష్‌లో {size} చిత్రాలు మరియు ఫైళ్లు"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} ఖాళీ అయింది"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("కొలుస్తోంది…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("క్లియర్ చేయడానికి ఏమీ లేదు"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("నిల్వ"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("వెర్షన్ {version}"),
+      "ui_blocked_tab":
+          MessageLookupByLibrary.simpleMessage("బ్లాక్ చేసినవారు"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("మీ పేరుతో పోస్ట్ చేస్తున్నారు"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ఈ అటాచ్‌మెంట్‌లు అప్‌లోడ్ కాలేదు. మళ్లీ ప్రయత్నించడానికి ఒకదాన్ని నొక్కండి, లేదా దాన్ని తీసివేయండి."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "మీ ఈమెయిల్‌ను మార్చలేకపోయాం. దయచేసి మళ్లీ ప్రయత్నించండి."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "మేము పంపే లింక్‌ను తెరిచిన తర్వాత మీ చిరునామా మారుతుంది."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "నిర్ధారణ లింక్ కోసం {email} చూడండి."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "ఈమెయిల్ చిరునామాను నమోదు చేయండి."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "ఇది ఈమెయిల్ చిరునామాలా కనిపించడం లేదు."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "ఇది ఇప్పటికే మీ ఈమెయిల్ చిరునామా."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఏం చేశారు, మీరు ఏం ఆశించారు, దానికి బదులుగా ఏం జరిగింది."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "నా ప్రొఫైల్‌లో పోస్ట్‌ను పిన్ చేయనివ్వండి"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "మీకు ఏం కావాలి, దానితో మీరు ఏం చేయగలరు."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("ఏది సహాయపడుతుంది"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("ఒక సమస్య"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("ఒక ఆలోచన"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("ఒక ప్రశ్న"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "దీన్ని Kyron బృందం మాత్రమే చదువుతుంది. మేము ఈమెయిల్ ద్వారా జవాబివ్వడానికి ఇది మీ ఖాతాతో, మరియు మీరు వాడే యాప్ వెర్షన్‌తో పంపబడుతుంది. ఖాతాను తొలగిస్తే ఇది కూడా తొలగిపోతుంది."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("ఒక పదాన్ని మ్యూట్ చేయడం ఎలా?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఏం చేయడానికి ప్రయత్నిస్తున్నారు, ఎక్కడ ఆగిపోయారు."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("మీ ప్రశ్న"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron‌ను చేరుకోలేకపోయాం. మీ కనెక్షన్‌ను చూసి మళ్లీ ప్రయత్నించండి. ఇంకా ఏమీ రాయలేదు, కాబట్టి ఏమీ కోల్పోలేదు."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("క్లియర్ చేయి"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "విఫలమైన అభ్యర్థనలు మరియు ఇతర ముఖ్యమైన ఘటనలు ఇక్కడ కనిపిస్తాయి."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("మ్యూట్ చేసినవి"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "పైన ఒక పదం లేదా ట్యాగ్‌ను జోడించండి. అది ఉన్న పోస్ట్‌లు మీ ఫీడ్‌లోకి రావు."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "వీటిలో ఏదైనా ఉన్న పోస్ట్‌లు మీ ఫీడ్‌లోకి రావు. పెద్ద, చిన్న అక్షరాలతో సంబంధం లేదు, పదం పొడవైన పదాల లోపల కూడా సరిపోలుతుంది, కాబట్టి “spoiler” “spoilers”‌ను కూడా పట్టుకుంటుంది."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("ఎవరూ బ్లాక్ చేయబడలేదు"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "బ్లాక్ చేస్తే మీరిద్దరూ రెండు వైపులా ఒకరికొకరు కనిపించరు. ఒకరి ప్రొఫైల్ మెనూ నుండి వారిని బ్లాక్ చేయండి."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("ఎవరూ మ్యూట్ చేయబడలేదు"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "ఖాతాను మ్యూట్ చేస్తే వారికి చెప్పకుండానే వారి పోస్ట్‌లు దాచబడతాయి. ప్రొఫైల్ లేదా పోస్ట్ మెనూ నుండి మ్యూట్ చేయండి."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("సరిపోలడం లేదు."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "ఈ పరికరంలో మీరు సైన్ ఇన్‌లోనే ఉంటారు. ఇతర పరికరాల నుండి సైన్ అవుట్ అవుతుంది."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("కనీసం 8 అక్షరాలు వాడండి."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "మీ పాస్‌వర్డ్‌ను అప్‌డేట్ చేయలేకపోయాం. దయచేసి మళ్లీ ప్రయత్నించండి."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("పాస్‌వర్డ్ అప్‌డేట్ అయింది."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID కాపీ అయింది"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఇష్టపడిన పోస్ట్‌లు మీ కోసం మాత్రమే ఇక్కడ ఉంచబడతాయి."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఇంకా ఫోటోలు లేదా క్లిప్‌లు పోస్ట్ చేయలేదు."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ఇంకా ఫోటోలు లేదా క్లిప్‌లు పోస్ట్ చేయలేదు."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "మీరు పోస్ట్ చేసేవన్నీ ఇక్కడ కనిపిస్తాయి."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ఇంకా ఏమీ పోస్ట్ చేయలేదు."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "మీ ప్రొఫైల్‌ను లోడ్ చేయలేకపోయాం"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle}‌ను లోడ్ చేయలేకపోయాం"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("కనీసం 8 అక్షరాలు"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("చిన్న అక్షరం (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("కనీసం ఒక సంఖ్య"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("గుర్తు (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("పెద్ద అక్షరం (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "ఇటీవలి {count} ఎంట్రీలు. పంపే ముందు వాటిని గురించి › సిస్టమ్ లాగ్‌లో చూడండి."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "దీన్ని Kyron బృందం మాత్రమే చదువుతుంది. మేము ఫాలో-అప్ చేయడానికి ఇది మీ ఖాతాతో పంపబడుతుంది. దానితో సరిగ్గా ఏం వెళ్తుందో చూడాలంటే ముందు గురించి › సిస్టమ్ లాగ్‌లో లాగ్ చదవండి."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("పంపాం, ధన్యవాదాలు."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "పంపాం, ధన్యవాదాలు. ఇది నివేదిక #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("ఏం తప్పు జరిగింది?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "వెర్షన్, విధానాలు, స్థితి మరియు సిస్టమ్ లాగ్"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "స్క్రోల్ చేస్తున్నప్పుడు వీడియోలు వాటంతట అవే ప్లే కాకుండా ఆపు"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("మీ వికేంద్రీకృత గుర్తింపు"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("మోడరేషన్"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "సమీక్ష కోసం వేచి ఉన్న నివేదికలు మరియు అప్పీళ్లు"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "ఇవి ఉన్న పోస్ట్‌లను ఫీడ్‌కు దూరంగా ఉంచు"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("సైన్ ఇన్ చేయలేదు"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("నోటిఫికేషన్ ప్రాధాన్యతలు"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("గోప్యత & భద్రత"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "మీ ఖాతా గురించిన నిర్ణయాలు, అప్పీళ్లు"),
+      "ui_settings_text_size_help": MessageLookupByLibrary.simpleMessage(
+          "టెక్స్ట్ పరిమాణాన్ని సర్దుబాటు చేయి"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("మీ ఖాతా"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR లెన్స్‌లను రికార్డ్ చేయడం, ప్రచురించడం ఇంకా నిర్మాణంలో ఉంది. మీరు క్యాప్చర్ చేసేది ఏదీ ఇంకా సేవ్ కాదు, కాబట్టి కెమెరా మూసే ఉంటుంది."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("లెన్స్‌లు ఇంకా సిద్ధంగా లేవు"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR లెన్స్"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "లైవ్‌కు Kyron ఇంకా నడపని మీడియా సర్వర్ అవసరం. ఇప్పుడు ప్రసారం మొదలుపెడితే ఎవరూ చేరలేని గదిలో ఉంటారు. వాయిస్ పోస్ట్ రికార్డ్ చేయడం ఈరోజే పనిచేస్తుంది."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("లైవ్ ఇంకా సిద్ధంగా లేదు"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("లైవ్‌కు వెళ్లు"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "పోల్‌లకు ఎంపికలను ఉంచి ఓట్లను లెక్కించే చోటు అవసరం. అది ఇంకా లేదు, కాబట్టి ఈరోజు పోస్ట్ చేసిన పోల్ ప్రతి జవాబును కోల్పోతుంది."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("పోల్‌లు ఇంకా సిద్ధంగా లేవు"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("పోల్"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "బదులుగా టెక్స్ట్ పోస్ట్ రాయండి"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("మళ్లీ తనిఖీ చేయి"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("వివరం"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("మిర్రర్ టేబుల్స్"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron జవాబిచ్చింది, కానీ ఏదో సరిగా లేదు."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("రౌండ్ ట్రిప్"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("ప్రశ్న అడగండి"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "మీ ఖాతా గురించి, లేదా ఏదైనా ఎలా పనిచేస్తుందో"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("ఈమెయిల్ ద్వారా"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron క్రాష్ అయితే: యాప్ లాగ్‌ను కూడా పంపుతుంది"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("యాప్‌లో"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "ఇక్కడి నుండి Kyron బృందానికి రాయండి. ఇది మీ ఖాతాతో ప్రైవేట్‌గా మాకు చేరుతుంది, దానిలోని ఈమెయిల్ చిరునామాకు మేము జవాబిస్తాం."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "మెయిల్ యాప్ ఏదీ తెరుచుకోలేదు. {address} కాపీ అయింది."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("గోప్యత మరియు మీ డేటా"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("సమస్యను నివేదించండి"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "ఏదో పాడైంది లేదా చేయాల్సింది చేయడం లేదు"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "పోస్ట్ లేదా ఖాతాను నివేదించడానికి దాని మెనూను వాడండి: దానివల్ల మీరు ఏది అంటున్నారో మాకు ఖచ్చితంగా తెలుస్తుంది."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("భద్రత మరియు దుర్వినియోగం"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron అందరికీ పనిచేయడం లేదా, లేక మీకు మాత్రమేనా"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("పెద్దది"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("ఇంకా పెద్దది"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("మధ్యస్థం"),
+      "ui_text_size_preview":
+          MessageLookupByLibrary.simpleMessage("Kyron చదవదగినది చెప్పే చోటు."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("చిన్నది"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("ఎల్లప్పుడూ డార్క్"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("మసక"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "నలుపుకు బదులుగా నీలి-బూడిద, మృదువైన డార్క్"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("ఎల్లప్పుడూ లైట్"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "ఫోన్ లైట్ లేదా డార్క్ సెట్టింగ్‌ను అనుసరించు"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("అన్‌బ్లాక్ చేయి"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("అన్‌మ్యూట్ చేయి"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("మీరు ఎవరు"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "మీ మాటల్లో, సమీక్షకుడు తెలుసుకోవాల్సింది."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "నేను ఇక్కడ, నా సొంత సైట్‌లో పక్షుల గురించి రాస్తాను."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("మరో లింక్ జోడించు"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} నుండి మళ్లీ అభ్యర్థించవచ్చు."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("ధృవీకరణ కోసం అభ్యర్థించండి"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("అభ్యర్థించే ముందు"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("సృష్టికర్త"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("జర్నలిస్ట్"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("సంస్థ లేదా బ్రాండ్"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("మరేదైనా"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("ప్రముఖ వ్యక్తి"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "అభ్యర్థన {number} ఆమోదించబడలేదు"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("మీరు ధృవీకరించబడ్డారు"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్‌ను సవరించు"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6 అంకెల కోడ్‌ను నమోదు చేయండి"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "{seconds} సెకన్లలో కోడ్‌ను మళ్లీ పంపు"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("దాన్ని {email}‌కు పంపాం"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("ధృవీకరించు"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron‌లో ధృవీకరణ పొందండి"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron‌లో"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("ధృవీకరణ"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("పొందండి."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ఈ ఖాతా తాను చెప్పుకునే వ్యక్తేనని Kyron బృందంలో ఎవరో తనిఖీ చేశారని బ్యాడ్జ్ తెలుపుతుంది. ఇది అదనపు రీచ్ ఇవ్వదు, అమ్మకానికి లేదు."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "మీ పేరు అలాగే ఉన్నంత వరకు బ్యాడ్జ్ ఉంటుంది. పేరు మారిస్తే, ఎవరైనా కొత్తదాన్ని తనిఖీ చేసే వరకు అది తొలగిపోతుంది."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("మేము ఎక్కడ తనిఖీ చేయవచ్చు"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("మరో లింక్"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "ఈ Kyron ఖాతా మీదని చెప్పే సైట్ లేదా మరో ప్రొఫైల్: అక్కడ మీ Kyron పేరును, లేదా మీ ప్రొఫైల్ లింక్‌ను ఉంచండి. Kyron ఎప్పుడూ గుర్తింపు పత్రాలు అడగదు."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("మీ స్థితిని లోడ్ చేయలేకపోయాం"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "అభ్యర్థించే ముందు పైన ఉన్న ప్రతిదానికీ టిక్ ఉండాలి."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("కనీసం {days} రోజుల పాత ఖాతా"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("మీరు ఎవరో చెప్పే బయో"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్‌లో మీ పేరు"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("ప్రొఫైల్ ఫోటో"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "గత {days} రోజుల్లో మీ రికార్డులో ఏమీ లేదు"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "పంపాం. ఒక వ్యక్తి దాన్ని చూస్తారు."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} నుండి."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("అభ్యర్థించు"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "మీరు ఎవరు, దాన్ని\nనిరూపించే లింక్"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("బ్యాడ్జ్"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "మీ పేరు పక్కన,\nఅది కనిపించే ప్రతిచోటా"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("ఒక వ్యక్తి\nతనిఖీ చేస్తారు"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "బృందంలో ఒకరు\nమీ లింక్‌లు తెరుస్తారు"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("ధృవీకరణ"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "అభ్యర్థన {number} ఒక వ్యక్తి వద్ద ఉంది"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date}న {category}గా పంపబడింది. నిర్ణయమైనప్పుడు మీకు నోటిఫికేషన్ వస్తుంది."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("అభ్యర్థనను ఉపసంహరించు"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("అభ్యర్థన ఉపసంహరించబడింది."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "రికార్డింగ్‌ను పూర్తి చేయలేకపోయాం: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("పది నిమిషాల వరకు."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("వింటోంది…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "రికార్డ్ చేయడానికి Kyron‌కు మైక్రోఫోన్ అనుమతి కావాలి. దాన్ని మీ పరికర సెట్టింగ్‌లలో ఇవ్వవచ్చు."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "రికార్డింగ్ ప్రారంభించలేకపోయాం: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2103,6 +2103,308 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bu sahifa boshqa ilovani ochmoqchi"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "U {scheme} havolasini ochishni soʻramoqda."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Yigʻma"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("Keshda {size} rasm va fayl"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} boʻshatildi"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Oʻlchanmoqda…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Tozalanadigan narsa yoʻq"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Xotira"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versiya {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Bloklanganlar"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Oʻz nomingizdan joylayapsiz"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Bu ilovalar yuklanmadi. Qayta urinish uchun birini bosing yoki olib tashlang."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Emailingizni oʻzgartirib boʻlmadi. Qayta urinib koʻring."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Biz yuborgan havolani ochganingizda manzilingiz oʻzgaradi."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Tasdiqlash havolasi uchun {email} manzilini tekshiring."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Email manzilini kiriting."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Bu email manziliga oʻxshamaydi."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Bu allaqachon sizning email manzilingiz."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Nima qildingiz, nimani kutgandingiz va oʻrniga nima boʻldi."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Profilimga post qadashga ruxsat bering"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Nimani xohlaysiz va bu sizga nima qilish imkonini beradi."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Nima yordam berardi"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Muammo"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Gʻoya"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Savol"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Buni faqat Kyron jamoasi oʻqiydi. Email orqali javob bera olishimiz uchun hisobingiz bilan va siz foydalanayotgan ilova versiyasi bilan birga yuboriladi. Hisobni oʻchirsangiz, bu ham oʻchadi."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Soʻzni qanday ovozsiz qilaman?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Nima qilmoqchisiz va qayerda qotib qoldingiz."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Savolingiz"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron bilan bogʻlanib boʻlmadi. Ulanishni tekshirib, qayta urinib koʻring. Hali hech narsa yozilmagan, shuning uchun hech narsa yoʻqolmadi."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Tozalash"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Muvaffaqiyatsiz soʻrovlar va boshqa muhim hodisalar shu yerda koʻrinadi."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Ovozsizlar"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Yuqoriga soʻz yoki teg qoʻshing. Uni oʻz ichiga olgan postlar lentangizga tushmaydi."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Bulardan istalganini oʻz ichiga olgan postlar lentangizga tushmaydi. Katta-kichik harf farq qilmaydi va soʻz uzunroq soʻzlar ichida ham mos keladi, shuning uchun “spoiler” “spoilers”ni ham ushlaydi."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Hech kim bloklanmagan"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Bloklash sizni bir-biringizdan ikki tomonlama yashiradi. Kimnidir uning profilidagi menyudan bloklang."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Hech kim ovozsiz qilinmagan"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Hisobni ovozsiz qilish uning postlarini unga aytmasdan yashiradi. Kimnidir profili yoki post menyusidan ovozsiz qiling."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Parol"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Mos kelmaydi."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Bu qurilmada tizimda qolasiz. Boshqa qurilmalardan chiqarilasiz."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Kamida 8 ta belgi ishlating."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Parolni yangilab boʻlmadi. Qayta urinib koʻring."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Parol yangilandi."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID nusxalandi"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Yoqtirgan postlaringiz shu yerda, faqat siz uchun saqlanadi."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Hali hech qanday rasm yoki klip joylamagansiz."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} hali hech qanday rasm yoki klip joylamagan."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Joylagan hamma narsangiz shu yerda koʻrinadi."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} hali hech narsa joylamagan."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Profilingizni yuklab boʻlmadi"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} yuklanmadi"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Kamida 8 ta belgi"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Kichik harf (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Kamida bitta raqam"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Belgi (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Bosh harf (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} ta soʻnggi yozuv. Yuborishdan oldin Haqida › Tizim jurnali boʻlimida koʻrib chiqing."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Buni faqat Kyron jamoasi oʻqiydi. Siz bilan bogʻlana olishimiz uchun hisobingiz bilan yuboriladi. U bilan nima ketishini aniq koʻrmoqchi boʻlsangiz, avval Haqida › Tizim jurnali boʻlimida jurnalni oʻqing."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Yuborildi, rahmat."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Yuborildi, rahmat. Bu #{number}-hisobot."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Nima notoʻgʻri ketdi?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versiya, qoidalar, holat va tizim jurnali"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Aylantirganda videolar oʻz-oʻzidan ijro etilmasin"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Markazlashmagan identifikatoringiz"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderatsiya"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Koʻrib chiqilishini kutayotgan shikoyat va apellyatsiyalar"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Bularni oʻz ichiga olgan postlarni lentadan uzoq tuting"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Tizimga kirilmagan"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Bildirishnoma sozlamalari"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Maxfiylik va xavfsizlik"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Hisobingiz boʻyicha qarorlar va apellyatsiyalar"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Matn hajmini sozlash"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Hisobingiz"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR linzalarini yozib olish va eʼlon qilish hali ishlab chiqilmoqda. Suratga olganingiz hali saqlanmaydi, shuning uchun kamera yopiq qoladi."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Linzalar hali tayyor emas"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR linza"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Jonli efir uchun Kyron hali ishga tushirmagan media server kerak. Hozir efir boshlasangiz, hech kim qoʻshila olmaydigan xonada boʻlasiz. Ovozli post yozib olish bugun ham ishlaydi."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Jonli efir hali tayyor emas"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Jonli efir"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Soʻrovnomalarga variantlarni saqlash va ovozlarni sanash uchun joy kerak. U hali yoʻq, shuning uchun bugun joylangan soʻrovnoma har bir javobni yoʻqotadi."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Soʻrovnomalar hali tayyor emas"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Soʻrovnoma"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Buning oʻrniga matnli post yozing"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Qayta tekshirish"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Tafsilot"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Koʻzgu jadvallar"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron javob berdi, lekin nimadir notoʻgʻri."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Borib-kelish vaqti"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Savol berish"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Hisobingiz yoki biror narsa qanday ishlashi haqida"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Email orqali"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ishdan chiqqan boʻlsa: ilova jurnalini ham yuboradi"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Ilovada"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kyron jamoasiga shu yerdan yozing. Xabar bizga shaxsiy tarzda, hisobingiz bilan yetib keladi va biz undagi email manziliga javob beramiz."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Hech qanday pochta ilovasi ochilmadi. {address} nusxalandi."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Maxfiylik va maʼlumotlaringiz"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Muammo haqida xabar berish"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Nimadir buzilgan yoki kerakli ishni qilmayapti"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Post yoki hisob haqida shikoyat qilish uchun uning menyusidan foydalaning: shunda qaysi birini nazarda tutayotganingizni aniq bilamiz."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Xavfsizlik va suiisteʼmol"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron hamma uchun ishlamayaptimi yoki faqat siz uchunmi"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Katta"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Kattaroq"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Oʻrtacha"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron — oʻqishga arziydigan narsa aytish joyi."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Kichik"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Doim qorongʻi"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Xira"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Yumshoqroq qorongʻi, qora oʻrniga koʻkimtir-kulrang"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Doim yorugʻ"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Telefonning yorugʻ yoki qorongʻi sozlamasiga mos"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Blokdan chiqarish"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Ovozni qaytarish"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Siz kimsiz"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Oʻz soʻzlaringiz bilan, tekshiruvchi nimani bilishi kerak."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Men bu yerda va oʻz saytimda qushlar haqida yozaman."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Yana havola qoʻshish"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} dan boshlab qayta soʻrashingiz mumkin."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Tasdiqlashni soʻrash"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Soʻrashdan oldin"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Ijodkor"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Jurnalist"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Tashkilot yoki brend"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Boshqa narsa"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Ommaviy shaxs"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("{number}-soʻrov tasdiqlanmadi"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Siz tasdiqlangansiz"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Profilni tahrirlash"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6 xonali kodni kiriting"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Kodni {seconds} soniyadan keyin qayta yuborish"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "Uni {email} manziliga yubordik"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron’da tasdiqlaning"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron’da"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("tasdiqdan"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("oʻting."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Nishon Kyron jamoasidan kimdir bu hisob oʻzini kim deb atasa, xuddi oʻsha ekanini tekshirganini bildiradi. U qoʻshimcha qamrov bermaydi va sotilmaydi."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Ismingiz oʻzgarmaguncha nishon qoladi. Ismingizni oʻzgartirsangiz, kimdir yangisini tekshirmaguncha olib qoʻyiladi."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Qayerda tekshira olamiz"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Boshqa havola"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Bu Kyron hisobi sizniki ekanini aytadigan sayt yoki boshqa profil: unga Kyron ismingizni yoki profilingiz havolasini qoʻying. Kyron hech qachon shaxsni tasdiqlovchi hujjat soʻramaydi."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Holatingizni yuklab boʻlmadi"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Soʻrashdan oldin yuqoridagilarning barchasi belgilangan boʻlishi kerak."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Kamida {days} kunlik hisob"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Kim ekaningizni aytadigan bio"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Profildagi ismingiz"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profil rasmi"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Soʻnggi {days} kunda qaydlaringizda hech narsa yoʻq"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Yuborildi. Uni inson koʻrib chiqadi."),
+      "ui_verify_since":
+          MessageLookupByLibrary.simpleMessage("{date} dan beri."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Soʻrash"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kim ekaningiz va buni\nisbotlovchi havola"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Nishon"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Ismingiz yonida,\nu koʻrinadigan hamma joyda"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Inson\ntekshiradi"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Jamoadan kimdir\nhavolalaringizni ochadi"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("{number}-soʻrov inson qoʻlida"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} kuni {category} sifatida yuborildi. Qaror qabul qilinganda bildirishnoma olasiz."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Soʻrovni qaytarib olish"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Soʻrov qaytarib olindi."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Yozuvni tugatib boʻlmadi: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Oʻn daqiqagacha."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Tinglanmoqda…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Yozib olish uchun Kyron’ga mikrofon ruxsati kerak. Uni qurilma sozlamalarida berishingiz mumkin."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Yozuvni boshlab boʻlmadi: {error}"),
     };
 
 final messageLookup = MessageLookup();

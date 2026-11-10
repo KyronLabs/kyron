@@ -2076,6 +2076,306 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Questa pagina vuole aprire un'altra app"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Chiede di aprire un link {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} di immagini e file nella cache"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} liberati"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Calcolo in corso…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Niente da svuotare"),
+      "ui_about_storage":
+          MessageLookupByLibrary.simpleMessage("Spazio di archiviazione"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versione {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Bloccati"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Pubblichi come te"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Questi allegati non sono stati caricati. Toccane uno per riprovare, oppure rimuovilo."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile cambiare la tua email. Riprova."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Il tuo indirizzo cambia quando apri il link che ti inviamo."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Controlla {email} per il link di conferma."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Inserisci un indirizzo email."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Non sembra un indirizzo email."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("È già il tuo indirizzo email."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Cosa hai fatto, cosa ti aspettavi e cosa è successo invece."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Fammi fissare un post sul mio profilo"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Cosa vorresti e cosa ti permetterebbe di fare."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Cosa aiuterebbe"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Un problema"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Un'idea"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Una domanda"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Solo il team di Kyron legge questo messaggio. Viene inviato con il tuo account, così possiamo risponderti via email, e con la versione dell'app che usi. Se elimini l'account, viene eliminato anche questo."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Come silenzio una parola?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Cosa stai cercando di fare e dove ti sei bloccato."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("La tua domanda"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Impossibile raggiungere Kyron. Controlla la connessione e riprova. Non è stato ancora scritto nulla, quindi non si perde nulla."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Svuota"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Qui compaiono le richieste non riuscite e altri eventi rilevanti."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Silenziati"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Aggiungi una parola o un tag qui sopra. I post che lo contengono restano fuori dal tuo feed."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "I post che contengono uno di questi restano fuori dal tuo feed. Maiuscole e minuscole non contano, e una parola corrisponde anche dentro parole più lunghe, quindi «spoiler» intercetta anche «spoilers»."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Nessuno bloccato"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Bloccare vi nasconde l'uno all'altro, in entrambi i sensi. Blocca qualcuno dal menu del suo profilo."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Nessuno silenziato"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Silenziare un account ne nasconde i post senza avvisarlo. Silenzia qualcuno dal menu del suo profilo o di un post."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Password"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Non corrispondono."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Resti connesso su questo dispositivo. Gli altri dispositivi vengono disconnessi."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Usa almeno 8 caratteri."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile aggiornare la password. Riprova."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Password aggiornata."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID copiato"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "I post che ti piacciono sono conservati qui, solo per te."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Non hai pubblicato foto o clip."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} non ha pubblicato foto o clip."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Tutto ciò che pubblichi compare qui."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} non ha ancora pubblicato nulla."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare il tuo profilo"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Minimo 8 caratteri"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Lettera minuscola (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Almeno un numero"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbolo (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Lettera maiuscola (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} voci recenti. Controllale in Info › Registro di sistema prima di inviare."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Solo il team di Kyron legge questo messaggio. Viene inviato con il tuo account così possiamo darti un seguito. Leggi prima il registro in Info › Registro di sistema se vuoi vedere esattamente cosa viene inviato."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Inviato, grazie."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Inviato, grazie. È la segnalazione n. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Cosa è andato storto?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versione, norme, stato e registro di sistema"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Non avviare i video da soli mentre scorri"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Il tuo identificatore decentralizzato"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderazione"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Segnalazioni e ricorsi in attesa di revisione"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Tieni fuori dal feed i post che contengono questi termini"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Non connesso"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Preferenze di notifica"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privacy e sicurezza"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Decisioni sul tuo account e ricorsi"),
+      "ui_settings_text_size_help": MessageLookupByLibrary.simpleMessage(
+          "Regola la dimensione del testo"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Il tuo account"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "La registrazione e pubblicazione delle lenti AR è ancora in costruzione. Niente di ciò che catturi verrebbe ancora salvato, quindi la fotocamera resta chiusa."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Le lenti non sono ancora pronte"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lente AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Andare in diretta richiede un server multimediale che Kyron non gestisce ancora. Avviare una trasmissione ora ti metterebbe in una stanza in cui nessuno può entrare. Registrare un post vocale funziona già."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "La diretta non è ancora pronta"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Vai in diretta"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "I sondaggi hanno bisogno di un posto dove conservare le opzioni e contare i voti. Non c'è ancora, quindi un sondaggio pubblicato oggi perderebbe ogni risposta."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "I sondaggi non sono ancora pronti"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Sondaggio"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Scrivi invece un post di testo"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Controlla di nuovo"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Dettaglio"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Tabelle specchio"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ha risposto, ma qualcosa non va."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Andata e ritorno"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Fai una domanda"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Sul tuo account, o su come funziona qualcosa"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Via email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Se Kyron si è bloccato: invia anche il registro dell'app"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Nell'app"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Scrivi al team di Kyron da qui. Ci arriva in privato, con il tuo account, e rispondiamo all'indirizzo email associato."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Nessuna app di posta aperta. {address} è stato copiato."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privacy e i tuoi dati"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Segnala un problema"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Qualcosa non funziona o non fa ciò che dovrebbe"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Per segnalare un post o un account, usa il suo menu: così sappiamo esattamente a quale ti riferisci."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Sicurezza e abusi"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Se Kyron non funziona per tutti o solo per te"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Grande"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Più grande"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Medio"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron è un posto dove dire qualcosa che valga la pena di leggere."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Piccolo"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Sempre scuro"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Attenuato"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Uno scuro più morbido, grigio-blu invece che nero"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Sempre chiaro"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Segui l'impostazione chiara o scura del telefono"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Sblocca"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Riattiva"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Chi sei"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Con parole tue, cosa dovrebbe sapere chi esamina."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Scrivo di uccelli qui e sul mio sito."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Aggiungi un altro link"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Puoi richiederlo di nuovo dal {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Chiedi la verifica"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Prima di chiedere"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Creator"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Giornalista"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organizzazione o marchio"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Altro"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Personaggio pubblico"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "La richiesta {number} non è stata approvata"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Sei verificato"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Modifica il profilo"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Inserisci il codice a 6 cifre"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Invia di nuovo il codice tra {seconds} secondi"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("L'abbiamo inviato a {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Fatti verificare su Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Fatti"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verificare"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("su Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Il badge indica che qualcuno del team di Kyron ha controllato che questo account è chi dice di essere. Non dà visibilità extra e non è in vendita."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Il badge resta finché resta il tuo nome. Se cambi nome, sparisce finché qualcuno non controlla quello nuovo."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Dove possiamo controllare"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Un altro link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Un sito o un altro profilo che dica che questo account Kyron è tuo: mettici il tuo nome Kyron, o un link al tuo profilo. Kyron non chiede mai documenti d'identità."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile caricare la tua situazione"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Tutto quanto sopra deve avere la spunta prima che tu possa chiedere."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Un account con almeno {days} giorni"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Una bio che dica chi sei"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Il tuo nome sul profilo"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Una foto del profilo"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Niente a tuo carico negli ultimi {days} giorni"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Inviata. Una persona la esaminerà."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Dal {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Chiedi"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Chi sei, e un link\nche lo dimostri"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Il badge"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Accanto al tuo nome,\novunque compaia"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Una persona\ncontrolla"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Qualcuno del team\nsegue i tuoi link"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "La richiesta {number} è nelle mani di una persona"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Inviata il {date}, come {category}. Riceverai una notifica quando sarà decisa."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Ritira la richiesta"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Richiesta ritirata."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile completare la registrazione: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Fino a dieci minuti."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("In ascolto…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron ha bisogno dell'autorizzazione a usare il microfono per registrare. Puoi concederla nelle impostazioni del dispositivo."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile avviare la registrazione: {error}"),
     };
 
 final messageLookup = MessageLookup();

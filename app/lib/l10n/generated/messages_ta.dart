@@ -2114,6 +2114,313 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "இந்தப் பக்கம் வேறொரு ஆப்ஸைத் திறக்க விரும்புகிறது"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "இது ஒரு {scheme} இணைப்பைத் திறக்கக் கேட்கிறது."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("பில்ட்"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "தற்காலிக நினைவகத்தில் {size} படங்களும் கோப்புகளும்"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} விடுவிக்கப்பட்டது"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("அளவிடுகிறது…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("அழிக்க எதுவும் இல்லை"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("சேமிப்பகம்"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("பதிப்பு {version}"),
+      "ui_blocked_tab":
+          MessageLookupByLibrary.simpleMessage("தடுக்கப்பட்டவர்கள்"),
+      "ui_composer_posting_as_you": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் பெயரில் இடுகையிடுகிறீர்கள்"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "இந்த இணைப்புகள் பதிவேற்றப்படவில்லை. மீண்டும் முயல ஒன்றைத் தட்டுங்கள், அல்லது அதை அகற்றுங்கள்."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் மின்னஞ்சலை மாற்ற முடியவில்லை. மீண்டும் முயலுங்கள்."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "நாங்கள் அனுப்பும் இணைப்பைத் திறந்ததும் உங்கள் முகவரி மாறும்."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "உறுதிப்படுத்தல் இணைப்புக்கு {email} ஐப் பாருங்கள்."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "மின்னஞ்சல் முகவரியை உள்ளிடுங்கள்."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "இது மின்னஞ்சல் முகவரி போலத் தெரியவில்லை."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "இது ஏற்கனவே உங்கள் மின்னஞ்சல் முகவரி."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் என்ன செய்தீர்கள், என்ன எதிர்பார்த்தீர்கள், அதற்குப் பதிலாக என்ன நடந்தது."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "என் சுயவிவரத்தில் இடுகையைப் பின் செய்ய அனுமதியுங்கள்"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் என்ன விரும்புகிறீர்கள், அது உங்களுக்கு என்ன செய்ய உதவும்."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("எது உதவும்"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("ஒரு சிக்கல்"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("ஒரு யோசனை"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("ஒரு கேள்வி"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "இதை Kyron குழு மட்டுமே படிக்கிறது. மின்னஞ்சலில் பதிலளிக்க உங்கள் கணக்குடனும், நீங்கள் பயன்படுத்தும் ஆப் பதிப்புடனும் இது அனுப்பப்படும். கணக்கை நீக்கினால் இதுவும் நீக்கப்படும்."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("ஒரு சொல்லை எப்படி முடக்குவது?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் என்ன செய்ய முயல்கிறீர்கள், எங்கே சிக்கிக்கொண்டீர்கள்."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("உங்கள் கேள்வி"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron ஐ அணுக முடியவில்லை. இணைப்பைச் சரிபார்த்து மீண்டும் முயலுங்கள். இன்னும் எதுவும் எழுதப்படவில்லை, அதனால் எதுவும் இழக்கப்படவில்லை."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("அழி"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "தோல்வியடைந்த கோரிக்கைகளும் பிற முக்கிய நிகழ்வுகளும் இங்கே காட்டப்படும்."),
+      "ui_muted_tab":
+          MessageLookupByLibrary.simpleMessage("முடக்கப்பட்டவர்கள்"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "மேலே ஒரு சொல் அல்லது குறிச்சொல்லைச் சேர்க்கவும். அதைக் கொண்ட இடுகைகள் உங்கள் ஊட்டத்தில் வராது."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "இவற்றில் எதையாவது கொண்ட இடுகைகள் உங்கள் ஊட்டத்தில் வராது. பெரிய, சிறிய எழுத்துகள் பொருட்டல்ல, சொல் நீண்ட சொற்களுக்குள்ளும் பொருந்தும், எனவே “spoiler” “spoilers” ஐயும் பிடிக்கும்."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("யாரும் தடுக்கப்படவில்லை"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "தடுத்தால் நீங்கள் இருவரும் இருபுறமும் ஒருவருக்கொருவர் மறைவீர்கள். ஒருவரின் சுயவிவர மெனுவிலிருந்து அவரைத் தடுக்கவும்."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("யாரும் முடக்கப்படவில்லை"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "ஒரு கணக்கை முடக்கினால் அவர்களுக்குத் தெரிவிக்காமல் அவர்களின் இடுகைகள் மறைக்கப்படும். சுயவிவரம் அல்லது இடுகையின் மெனுவிலிருந்து முடக்கவும்."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("கடவுச்சொல்"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("பொருந்தவில்லை."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "இந்தச் சாதனத்தில் உள்நுழைந்தே இருப்பீர்கள். மற்ற சாதனங்களில் இருந்து வெளியேற்றப்படுவீர்கள்."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "குறைந்தது 8 எழுத்துகளைப் பயன்படுத்துங்கள்."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "கடவுச்சொல்லைப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயலுங்கள்."),
+      "ui_password_updated": MessageLookupByLibrary.simpleMessage(
+          "கடவுச்சொல் புதுப்பிக்கப்பட்டது."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID நகலெடுக்கப்பட்டது"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் விரும்பிய இடுகைகள் உங்களுக்காக மட்டும் இங்கே வைக்கப்படும்."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் இன்னும் புகைப்படங்களோ கிளிப்புகளோ இடுகையிடவில்லை."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} இன்னும் புகைப்படங்களோ கிளிப்புகளோ இடுகையிடவில்லை."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் இடுகையிடும் அனைத்தும் இங்கே தோன்றும்."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} இன்னும் எதையும் இடுகையிடவில்லை."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சுயவிவரத்தை ஏற்ற முடியவில்லை"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} ஐ ஏற்ற முடியவில்லை"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("குறைந்தது 8 எழுத்துகள்"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("சிற்றெழுத்து (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("குறைந்தது ஒரு எண்"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("குறியீடு (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("பேரெழுத்து (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "சமீபத்திய {count} பதிவுகள். அனுப்பும் முன் அவற்றை அறிமுகம் › கணினிப் பதிவு இல் பாருங்கள்."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "இதை Kyron குழு மட்டுமே படிக்கிறது. உங்களைத் தொடர்புகொள்ள உங்கள் கணக்குடன் இது அனுப்பப்படும். உடன் சரியாக என்ன செல்கிறது என்று பார்க்க விரும்பினால், முதலில் அறிமுகம் › கணினிப் பதிவு இல் பதிவைப் படியுங்கள்."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("அனுப்பப்பட்டது, நன்றி."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "அனுப்பப்பட்டது, நன்றி. இது அறிக்கை #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("என்ன தவறு நடந்தது?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "பதிப்பு, கொள்கைகள், நிலை மற்றும் கணினிப் பதிவு"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "உருட்டும்போது வீடியோக்கள் தானாக இயங்காமல் தடு"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் பரவலாக்கப்பட்ட அடையாளங்காட்டி"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("நெறிப்படுத்தல்"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "மதிப்பாய்வுக்குக் காத்திருக்கும் புகார்களும் மேல்முறையீடுகளும்"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "இவற்றைக் கொண்ட இடுகைகளை ஊட்டத்திலிருந்து விலக்கு"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("உள்நுழையவில்லை"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("அறிவிப்பு விருப்பங்கள்"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("தனியுரிமை & பாதுகாப்பு"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு குறித்த முடிவுகளும் மேல்முறையீடுகளும்"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("உரை அளவைச் சரிசெய்"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("உங்கள் கணக்கு"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR லென்ஸ்களைப் பதிவுசெய்தலும் வெளியிடுதலும் இன்னும் உருவாக்கத்தில் உள்ளன. நீங்கள் பிடிக்கும் எதுவும் இன்னும் சேமிக்கப்படாது, எனவே கேமரா மூடியே இருக்கும்."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "லென்ஸ்கள் இன்னும் தயாராகவில்லை"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR லென்ஸ்"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "நேரலைக்கு Kyron இன்னும் இயக்காத ஒரு மீடியா சேவையகம் தேவை. இப்போது ஒளிபரப்பைத் தொடங்கினால் யாரும் சேர முடியாத அறையில் இருப்பீர்கள். குரல் இடுகையைப் பதிவுசெய்வது இன்றே வேலை செய்கிறது."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("நேரலை இன்னும் தயாராகவில்லை"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("நேரலை"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "கருத்துக்கணிப்புகளுக்கு விருப்பங்களை வைத்து வாக்குகளை எண்ண ஓர் இடம் தேவை. அது இன்னும் இல்லை, எனவே இன்று இடுகையிடப்படும் கருத்துக்கணிப்பு ஒவ்வொரு பதிலையும் இழக்கும்."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "கருத்துக்கணிப்புகள் இன்னும் தயாராகவில்லை"),
+      "ui_soon_poll_title":
+          MessageLookupByLibrary.simpleMessage("கருத்துக்கணிப்பு"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("பதிலாக உரை இடுகையை எழுதுங்கள்"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("மீண்டும் சரிபார்"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("விவரம்"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("பிரதி அட்டவணைகள்"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron பதிலளித்தது, ஆனால் ஏதோ சரியில்லை."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("சுற்றுப் பயண நேரம்"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("கேள்வி கேளுங்கள்"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் கணக்கு பற்றி, அல்லது ஏதாவது எப்படி வேலை செய்கிறது"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("மின்னஞ்சல் மூலம்"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron செயலிழந்தால்: ஆப்பின் பதிவையும் அனுப்பும்"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("ஆப்பில்"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "இங்கிருந்து Kyron குழுவுக்கு எழுதுங்கள். இது உங்கள் கணக்குடன் தனிப்பட்ட முறையில் எங்களை அடையும், அதிலுள்ள மின்னஞ்சல் முகவரிக்குப் பதிலளிப்போம்."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "எந்த மின்னஞ்சல் ஆப்பும் திறக்கவில்லை. {address} நகலெடுக்கப்பட்டது."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("தனியுரிமையும் உங்கள் தரவும்"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("சிக்கலைப் புகாரளி"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "ஏதோ உடைந்துள்ளது அல்லது செய்ய வேண்டியதைச் செய்யவில்லை"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "ஓர் இடுகையையோ கணக்கையோ புகாரளிக்க அதன் மெனுவைப் பயன்படுத்துங்கள்: அதனால் நீங்கள் எதைக் குறிப்பிடுகிறீர்கள் என்று எங்களுக்குச் சரியாகத் தெரியும்."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("பாதுகாப்பும் தவறான பயன்பாடும்"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron அனைவருக்கும் செயலிழந்ததா, அல்லது உங்களுக்கு மட்டுமா"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("பெரியது"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("இன்னும் பெரியது"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("நடுத்தரம்"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron படிக்கத் தகுந்த ஒன்றைச் சொல்லும் இடம்."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("சிறியது"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("எப்போதும் இருண்டது"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("மங்கல்"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "கருப்புக்குப் பதிலாக நீல-சாம்பல், மென்மையான இருள்"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("எப்போதும் ஒளிர்வு"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "மொபைலின் ஒளிர்வு அல்லது இருண்ட அமைப்பைப் பின்பற்று"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("தடையை நீக்கு"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("முடக்கத்தை நீக்கு"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("நீங்கள் யார்"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் சொந்த வார்த்தைகளில், மதிப்பாய்வாளர் அறிய வேண்டியது."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "நான் இங்கும் என் சொந்தத் தளத்திலும் பறவைகள் பற்றி எழுதுகிறேன்."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("மற்றொரு இணைப்பைச் சேர்"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} முதல் மீண்டும் கோரலாம்."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("சரிபார்ப்பைக் கோருங்கள்"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("கோருவதற்கு முன்"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("படைப்பாளர்"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("பத்திரிகையாளர்"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("நிறுவனம் அல்லது பிராண்ட்"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("வேறு ஏதாவது"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("பொது நபர்"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "கோரிக்கை {number} அங்கீகரிக்கப்படவில்லை"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் சரிபார்க்கப்பட்டுள்ளீர்கள்"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரத்தைத் திருத்து"),
+      "ui_verify_email_enter_code": MessageLookupByLibrary.simpleMessage(
+          "6 இலக்கக் குறியீட்டை உள்ளிடுங்கள்"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "{seconds} வினாடிகளில் குறியீட்டை மீண்டும் அனுப்பு"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("அதை {email} க்கு அனுப்பினோம்"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("சரிபார்"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage(
+          "Kyron இல் சரிபார்ப்பு பெறுங்கள்"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron இல்"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("சரிபார்ப்பு"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("பெறுங்கள்."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "இந்தக் கணக்கு தான் கூறும் நபரே என்று Kyron குழுவில் ஒருவர் சரிபார்த்துள்ளார் என்பதை பேட்ஜ் காட்டுகிறது. இது கூடுதல் அணுகலைத் தராது, விற்பனைக்கும் இல்லை."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் பெயர் மாறாத வரை பேட்ஜ் இருக்கும். பெயரை மாற்றினால், புதியதை யாராவது சரிபார்க்கும் வரை அது நீக்கப்படும்."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("நாங்கள் எங்கே சரிபார்க்கலாம்"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("மற்றொரு இணைப்பு"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "இந்த Kyron கணக்கு உங்களுடையது என்று சொல்லும் தளம் அல்லது வேறு சுயவிவரம்: அதில் உங்கள் Kyron பெயரையோ, சுயவிவர இணைப்பையோ சேர்க்கவும். Kyron ஒருபோதும் அடையாள ஆவணங்களைக் கேட்காது."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் நிலையை ஏற்ற முடியவில்லை"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "கோருவதற்கு முன் மேலே உள்ள அனைத்தும் டிக் செய்யப்பட வேண்டும்."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "குறைந்தது {days} நாள் பழைய கணக்கு"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் யார் என்று சொல்லும் சுயவிவரக் குறிப்பு"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரத்தில் உங்கள் பெயர்"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("சுயவிவரப் படம்"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "கடந்த {days} நாட்களில் உங்கள் பதிவில் எதுவும் இல்லை"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "அனுப்பப்பட்டது. ஒருவர் பார்ப்பார்."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} முதல்."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("கோரு"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "நீங்கள் யார், அதை\nநிரூபிக்கும் இணைப்பு"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("பேட்ஜ்"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் பெயருக்கு அருகில்,\nஅது தோன்றும் எல்லா இடத்திலும்"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("ஒருவர்\nசரிபார்க்கிறார்"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "குழுவில் ஒருவர்\nஉங்கள் இணைப்புகளைத் திறக்கிறார்"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("சரிபார்ப்பு"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "கோரிக்கை {number} ஒருவரிடம் உள்ளது"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} அன்று {category} ஆக அனுப்பப்பட்டது. முடிவானதும் அறிவிப்பு வரும்."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("கோரிக்கையைத் திரும்பப் பெறு"),
+      "ui_verify_withdrawn": MessageLookupByLibrary.simpleMessage(
+          "கோரிக்கை திரும்பப் பெறப்பட்டது."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "பதிவை முடிக்க முடியவில்லை: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("பத்து நிமிடங்கள் வரை."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("கேட்கிறது…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "பதிவுசெய்ய Kyron க்கு மைக்ரோஃபோன் அனுமதி தேவை. அதைச் சாதன அமைப்புகளில் வழங்கலாம்."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "பதிவைத் தொடங்க முடியவில்லை: {error}"),
     };
 
 final messageLookup = MessageLookup();

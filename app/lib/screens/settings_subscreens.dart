@@ -29,6 +29,7 @@ import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
 
 import '../l10n/app_localizations.dart';
+import '../utils/localized_settings.dart';
 
 /// Every screen in this file was `Center(child: Text(AppLocalizations.of(context).nameScreen))`.
 ///
@@ -68,12 +69,19 @@ class _SettingsChangeEmailScreenState
         UserAttributes(email: _controller.text.trim()),
       );
       if (!mounted) return;
-      _tell('Check ${_controller.text.trim()} for a confirmation link.');
+      _tell(
+        AppLocalizations.of(context)
+            .ui('ui_email_check_link', 'Check {email} for a confirmation link.')
+            .replaceAll('{email}', _controller.text.trim()),
+      );
       Navigator.pop(context);
     } on AuthException catch (e) {
       if (mounted) _tell(e.message);
     } catch (_) {
-      if (mounted) _tell('Could not change your email. Please try again.');
+      if (mounted) {
+        _tell(AppLocalizations.of(context).ui('ui_email_change_failed',
+            'Could not change your email. Please try again.'));
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -107,16 +115,25 @@ class _SettingsChangeEmailScreenState
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
               decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context).ui(
-                      'ui_settings_subscreens_new_email_address_dab96e',
-                      'New email address')),
+                labelText: AppLocalizations.of(context).ui(
+                  'ui_settings_subscreens_new_email_address_dab96e',
+                  'New email address',
+                ),
+              ),
               validator: (value) {
                 final v = value?.trim() ?? '';
-                if (v.isEmpty) return 'Enter an email address.';
-                if (!v.contains('@') || !v.contains('.')) {
-                  return "That does not look like an email address.";
+                if (v.isEmpty) {
+                  return AppLocalizations.of(context)
+                      .ui('ui_email_enter', 'Enter an email address.');
                 }
-                if (v == current) return 'That is already your email address.';
+                if (!v.contains('@') || !v.contains('.')) {
+                  return AppLocalizations.of(context).ui('ui_email_invalid',
+                      'That does not look like an email address.');
+                }
+                if (v == current) {
+                  return AppLocalizations.of(context).ui(
+                      'ui_email_same', 'That is already your email address.');
+                }
                 return null;
               },
             ),
@@ -132,7 +149,8 @@ class _SettingsChangeEmailScreenState
             ),
             const SizedBox(height: SpacingTokens.space12),
             Text(
-              'Your address changes once you follow the link we send.',
+              AppLocalizations.of(context).ui('ui_email_changes_after_link',
+                  'Your address changes once you follow the link we send.'),
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
@@ -173,12 +191,16 @@ class _SettingsPasswordLoginScreenState
         UserAttributes(password: _password.text),
       );
       if (!mounted) return;
-      _tell('Password updated.');
+      _tell(AppLocalizations.of(context)
+          .ui('ui_password_updated', 'Password updated.'));
       Navigator.pop(context);
     } on AuthException catch (e) {
       if (mounted) _tell(e.message);
     } catch (_) {
-      if (mounted) _tell('Could not update your password. Please try again.');
+      if (mounted) {
+        _tell(AppLocalizations.of(context).ui('ui_password_update_failed',
+            'Could not update your password. Please try again.'));
+      }
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -201,8 +223,9 @@ class _SettingsPasswordLoginScreenState
               obscureText: _obscure,
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context).ui(
-                    'ui_settings_subscreens_new_password_88c1bf',
-                    'New password'),
+                  'ui_settings_subscreens_new_password_88c1bf',
+                  'New password',
+                ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
@@ -215,7 +238,8 @@ class _SettingsPasswordLoginScreenState
                 // Supabase enforces its own minimum server-side; checking here
                 // too means the failure arrives before a round trip.
                 if (v.length < 8) {
-                  return 'Use at least 8 characters.';
+                  return AppLocalizations.of(context).ui(
+                      'ui_password_too_short', 'Use at least 8 characters.');
                 }
                 return null;
               },
@@ -225,11 +249,15 @@ class _SettingsPasswordLoginScreenState
               controller: _confirm,
               obscureText: _obscure,
               decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context).ui(
-                      'ui_settings_subscreens_confirm_password_41d040',
-                      'Confirm password')),
-              validator: (value) =>
-                  value == _password.text ? null : 'These do not match.',
+                labelText: AppLocalizations.of(context).ui(
+                  'ui_settings_subscreens_confirm_password_41d040',
+                  'Confirm password',
+                ),
+              ),
+              validator: (value) => value == _password.text
+                  ? null
+                  : AppLocalizations.of(context)
+                      .ui('ui_password_mismatch', 'These do not match.'),
             ),
             const SizedBox(height: SpacingTokens.space24),
             FilledButton(
@@ -243,7 +271,8 @@ class _SettingsPasswordLoginScreenState
             ),
             const SizedBox(height: SpacingTokens.space12),
             Text(
-              'You stay signed in on this device. Other devices are signed out.',
+              AppLocalizations.of(context).ui('ui_password_other_devices',
+                  'You stay signed in on this device. Other devices are signed out.'),
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
@@ -280,7 +309,8 @@ class SettingsFontSizeScreen extends ConsumerWidget {
               minScaleFactor: prefs.textScale,
               maxScaleFactor: prefs.textScale,
               child: Text(
-                'Kyron is a place to say something worth reading.',
+                AppLocalizations.of(context).ui('ui_text_size_preview',
+                    'Kyron is a place to say something worth reading.'),
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
@@ -293,7 +323,7 @@ class SettingsFontSizeScreen extends ConsumerWidget {
               onChanged: (value) => value == null
                   ? null
                   : ref.read(preferencesProvider.notifier).setTextScale(value),
-              title: Text(AppPreferences.textScaleLabels[i]),
+              title: Text(AppLocalizations.of(context).textScaleName(i)),
               contentPadding: EdgeInsets.zero,
             ),
         ],
@@ -783,7 +813,13 @@ class SettingsContactSupportScreen extends StatelessWidget {
     if (opened || !context.mounted) return;
     await Clipboard.setData(ClipboardData(text: address));
     if (context.mounted) {
-      Toast.show(context, 'No mail app opened. $address is copied.');
+      Toast.show(
+        context,
+        AppLocalizations.of(context)
+            .ui('ui_support_no_mail',
+                'No mail app opened. {address} is copied.')
+            .replaceAll('{address}', address),
+      );
     }
   }
 
@@ -834,15 +870,16 @@ class SettingsContactSupportScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Write to the Kyron team from here. It reaches us privately, with '
-            'your account, and we answer at the email address on it.',
+            l10n.ui('ui_support_intro',
+                'Write to the Kyron team from here. It reaches us privately, with your account, and we answer at the email address on it.'),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          group('In the app'),
+          group(l10n.ui('ui_support_in_app', 'In the app')),
           row(
             icon: Iconsax.message_question_copy,
-            title: 'Ask a question',
-            detail: 'About your account, or how something works',
+            title: l10n.ui('ui_support_ask', 'Ask a question'),
+            detail: l10n.ui('ui_support_ask_detail',
+                'About your account, or how something works'),
             onTap: () => Navigator.pushNamed(
               context,
               Routes.settingsFeedback,
@@ -851,8 +888,9 @@ class SettingsContactSupportScreen extends StatelessWidget {
           ),
           row(
             icon: Iconsax.danger_copy,
-            title: 'Report a problem',
-            detail: 'Something is broken or not doing what it should',
+            title: l10n.ui('ui_support_report', 'Report a problem'),
+            detail: l10n.ui('ui_support_report_detail',
+                'Something is broken or not doing what it should'),
             onTap: () => Navigator.pushNamed(
               context,
               Routes.settingsFeedback,
@@ -862,21 +900,23 @@ class SettingsContactSupportScreen extends StatelessWidget {
           row(
             icon: Iconsax.warning_2_copy,
             title: l10n.sendErrorReport,
-            detail: 'If Kyron crashed: sends the app\'s log with it',
+            detail: l10n.ui('ui_support_crash_detail',
+                'If Kyron crashed: sends the app\'s log with it'),
             onTap: () => Navigator.pushNamed(context, Routes.aboutErrorReport),
           ),
           row(
             icon: Iconsax.status_up_copy,
             title: l10n.serviceStatus,
-            detail: 'Whether Kyron is down for everybody, or just you',
+            detail: l10n.ui('ui_support_status_detail',
+                'Whether Kyron is down for everybody, or just you'),
             onTap: () => Navigator.pushNamed(context, Routes.aboutStatus),
           ),
           const SizedBox(height: SpacingTokens.space8),
           const Hairline(),
-          group('By email'),
+          group(l10n.ui('ui_support_by_email', 'By email')),
           row(
             icon: Iconsax.shield_cross_copy,
-            title: 'Safety and abuse',
+            title: l10n.ui('ui_support_safety', 'Safety and abuse'),
             detail: SupportLinks.abuse,
             leaves: true,
             onTap: () => _write(
@@ -887,7 +927,7 @@ class SettingsContactSupportScreen extends StatelessWidget {
           ),
           row(
             icon: Iconsax.lock_copy,
-            title: 'Privacy and your data',
+            title: l10n.ui('ui_support_privacy', 'Privacy and your data'),
             detail: SupportLinks.privacy,
             leaves: true,
             onTap: () => _write(
@@ -897,9 +937,9 @@ class SettingsContactSupportScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: SpacingTokens.space12),
-          const _Note(
-            'To report a post or an account, use the menu on it: that tells '
-            'us exactly which one you mean.',
+          _Note(
+            l10n.ui('ui_support_report_hint',
+                'To report a post or an account, use the menu on it: that tells us exactly which one you mean.'),
           ),
         ],
       ),
@@ -1013,8 +1053,12 @@ class _SettingsFeedbackScreenState
       Toast.show(
         context,
         filed.number > 0
-            ? 'Sent -- thank you. It is report #${filed.number}.'
-            : 'Sent -- thank you.',
+            ? AppLocalizations.of(context)
+                .ui('ui_report_sent_number',
+                    'Sent, thank you. It is report #{number}.')
+                .replaceAll('{number}', '${filed.number}')
+            : AppLocalizations.of(context)
+                .ui('ui_report_sent', 'Sent, thank you.'),
       );
       Navigator.of(context).pop();
     } catch (error) {
@@ -1033,19 +1077,26 @@ class _SettingsFeedbackScreenState
     final l10n = AppLocalizations.of(context);
     return switch (_kind) {
       FeedbackKind.idea => (
-          label: 'What would help',
-          hint: 'What you would like, and what it would let you do.',
-          title: 'Let me pin a post to my profile',
+          label: l10n.ui('ui_feedback_idea_label', 'What would help'),
+          hint: l10n.ui('ui_feedback_idea_hint',
+              'What you would like, and what it would let you do.'),
+          title: l10n.ui(
+              'ui_feedback_idea_example', 'Let me pin a post to my profile'),
         ),
       FeedbackKind.question => (
-          label: 'Your question',
-          hint: 'What you are trying to do, and where you are stuck.',
-          title: 'How do I mute a word?',
+          label: l10n.ui('ui_feedback_question_label', 'Your question'),
+          hint: l10n.ui('ui_feedback_question_hint',
+              'What you are trying to do, and where you are stuck.'),
+          title:
+              l10n.ui('ui_feedback_question_example', 'How do I mute a word?'),
         ),
       _ => (
           label: l10n.ui(
-              'ui_settings_subscreens_what_happened_977dd8', 'What happened'),
-          hint: '${l10n.literalwhatYouDidWhatYouExpectedWhatHappened}instead.',
+            'ui_settings_subscreens_what_happened_977dd8',
+            'What happened',
+          ),
+          hint: l10n.ui('ui_feedback_bug_hint',
+              'What you did, what you expected, and what happened instead.'),
           title: l10n.theComposerNoPostButton,
         ),
     };
@@ -1073,8 +1124,8 @@ class _SettingsFeedbackScreenState
           art: EmptyArt.messages,
           title:
               AppLocalizations.of(context).literalfeedbackCannotBeSentRightNow,
-          detail: 'Kyron could not be reached. Check your connection and try '
-              'again -- nothing has been written yet, so nothing is lost.',
+          detail: AppLocalizations.of(context).ui('ui_feedback_unreachable',
+              'Kyron could not be reached. Check your connection and try again. Nothing has been written yet, so nothing is lost.'),
           action: AppLocalizations.of(context).ui('ui_try_again', 'Try again'),
           onAction: _askIfItCanBeSent,
         ),
@@ -1095,7 +1146,15 @@ class _SettingsFeedbackScreenState
               for (final kind in FeedbackKind.offered) ...[
                 Expanded(
                   child: ActionButton(
-                    label: kind.label,
+                    label: switch (kind) {
+                      FeedbackKind.bug => AppLocalizations.of(context)
+                          .ui('ui_feedback_kind_bug', 'A problem'),
+                      FeedbackKind.idea => AppLocalizations.of(context)
+                          .ui('ui_feedback_kind_idea', 'An idea'),
+                      FeedbackKind.question => AppLocalizations.of(context)
+                          .ui('ui_feedback_kind_question', 'A question'),
+                      _ => kind.label,
+                    },
                     compact: true,
                     kind: _kind == kind
                         ? ActionButtonKind.primary
@@ -1114,8 +1173,9 @@ class _SettingsFeedbackScreenState
             maxLength: 120,
             onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
-              labelText: AppLocalizations.of(context).ui(
-                  'ui_settings_subscreens_in_one_line_06bdaf', 'In one line'),
+              labelText: AppLocalizations.of(
+                context,
+              ).ui('ui_settings_subscreens_in_one_line_06bdaf', 'In one line'),
               hintText: words.title,
             ),
           ),
@@ -1131,10 +1191,9 @@ class _SettingsFeedbackScreenState
               hintText: words.hint,
             ),
           ),
-          const _Note(
-            'Only the Kyron team reads this. It is sent with your account, so '
-            'we can answer by email, and with which version of the app you '
-            'are running. Deleting your account deletes it too.',
+          _Note(
+            AppLocalizations.of(context).ui('ui_feedback_privacy',
+                'Only the Kyron team reads this. It is sent with your account, so we can answer by email, and with which version of the app you are running. Deleting your account deletes it too.'),
           ),
           if (_error != null) ...[
             const SizedBox(height: SpacingTokens.space12),

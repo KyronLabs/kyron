@@ -2062,6 +2062,300 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Táto stránka chce otvoriť inú aplikáciu"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Žiada o otvorenie odkazu {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Zostava"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} obrázkov a súborov vo vyrovnávacej pamäti"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("Uvoľnené {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Meria sa…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nie je čo vymazať"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Úložisko"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Verzia {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blokovaní"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Uverejňujete ako vy"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Tieto prílohy sa nenahrali. Ťuknutím na jednu to skúste znova, alebo ju odstráňte."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "E-mail sa nepodarilo zmeniť. Skúste to znova."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adresa sa zmení, keď otvoríte odkaz, ktorý pošleme."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Odkaz na potvrdenie nájdete v {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Zadajte e-mailovú adresu."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "To nevyzerá ako e-mailová adresa."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "To už je vaša e-mailová adresa."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Čo ste urobili, čo ste čakali a čo sa stalo namiesto toho."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Chcem si pripnúť príspevok na profil"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Čo by ste chceli a čo by vám to umožnilo."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Čo by pomohlo"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Problém"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Nápad"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Otázka"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Číta to len tím Kyron. Odosiela sa to s vaším účtom, aby sme mohli odpovedať e-mailom, a s verziou aplikácie, ktorú používate. Odstránením účtu sa odstráni aj toto."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Ako stlmím slovo?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Čo sa snažíte urobiť a kde ste uviazli."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Vaša otázka"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron sa nepodarilo zastihnúť. Skontrolujte pripojenie a skúste to znova. Zatiaľ nič nebolo napísané, takže sa nič nestratilo."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Vymazať"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Neúspešné požiadavky a ďalšie dôležité udalosti sa zobrazujú tu."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Stlmení"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Pridajte hore slovo alebo štítok. Príspevky, ktoré ho obsahujú, sa do vášho kanála nedostanú."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Príspevky obsahujúce čokoľvek z toho sa do vášho kanála nedostanú. Na veľkosti písmen nezáleží a slovo sa nájde aj vnútri dlhších slov, takže „spoiler“ zachytí aj „spoilers“."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Nikto nie je blokovaný"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokovanie vás skryje pred sebou navzájom, oboma smermi. Zablokujte niekoho z ponuky na jeho profile."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Nikto nie je stlmený"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Stlmenie účtu skryje jeho príspevky bez toho, aby sa to dozvedel. Stlmte niekoho z ponuky na jeho profile alebo pri príspevku."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Heslo"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Nezhodujú sa."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Na tomto zariadení zostanete prihlásení. Ostatné zariadenia budú odhlásené."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Použite aspoň 8 znakov."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Heslo sa nepodarilo aktualizovať. Skúste to znova."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Heslo bolo aktualizované."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID skopírované"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Príspevky, ktoré sa vám páčia, sa ukladajú sem, len pre vás."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Zatiaľ ste neuverejnili žiadne fotky ani klipy."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} zatiaľ neuverejnil(a) žiadne fotky ani klipy."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Všetko, čo uverejníte, sa zobrazí tu."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} zatiaľ nič neuverejnil(a)."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Váš profil sa nepodarilo načítať"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "@{handle} sa nepodarilo načítať"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Aspoň 8 znakov"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Malé písmeno (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Aspoň jedna číslica"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Veľké písmeno (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Nedávne záznamy: {count}. Pred odoslaním si ich pozrite v O aplikácii › Systémový denník."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Číta to len tím Kyron. Odosiela sa to s vaším účtom, aby sme sa mohli ozvať. Ak chcete vidieť, čo presne sa odošle, prečítajte si najprv denník v O aplikácii › Systémový denník."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Odoslané, ďakujeme."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Odoslané, ďakujeme. Je to hlásenie č. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Čo sa pokazilo?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Verzia, zásady, stav a systémový denník"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Nespúšťať videá samé pri posúvaní"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Váš decentralizovaný identifikátor"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderovanie"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Hlásenia a odvolania čakajúce na kontrolu"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Nepúšťať do kanála príspevky s týmto obsahom"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Neprihlásený"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Predvoľby upozornení"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Súkromie a bezpečnosť"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Rozhodnutia o vašom účte a odvolania"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Upraviť veľkosť textu"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Váš účet"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Nahrávanie a zverejňovanie AR filtrov sa ešte vyvíja. Nič, čo nahráte, by sa zatiaľ neuložilo, preto zostáva fotoaparát zatvorený."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Filtre ešte nie sú hotové"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR filter"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Živé vysielanie potrebuje mediálny server, ktorý Kyron zatiaľ neprevádzkuje. Keby ste začali vysielať teraz, ocitli by ste sa v miestnosti, kam sa nikto nedostane. Nahrať hlasový príspevok už ide."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Živé vysielanie ešte nie je hotové"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Vysielať naživo"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Ankety potrebujú miesto, kde uložiť možnosti a spočítať hlasy. To zatiaľ nie je, takže anketa zverejnená dnes by prišla o všetky odpovede."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Ankety ešte nie sú hotové"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Anketa"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Napísať radšej textový príspevok"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Skontrolovať znova"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Podrobnosti"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Zrkadlové tabuľky"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron odpovedal, ale niečo nie je v poriadku."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Doba odozvy"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Položiť otázku"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "K vášmu účtu alebo k tomu, ako niečo funguje"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("E-mailom"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ak Kyron spadol: odošle s ním denník aplikácie"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("V aplikácii"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Napíšte odtiaľto tímu Kyron. Správa k nám príde súkromne, s vaším účtom, a odpovieme na e-mailovú adresu, ktorú má."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Neotvorila sa žiadna e-mailová aplikácia. {address} je skopírované."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Súkromie a vaše údaje"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Nahlásiť problém"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Niečo je pokazené alebo nerobí, čo má"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Príspevok alebo účet nahláste cez jeho ponuku: tak presne vieme, ktorý myslíte."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Bezpečnosť a zneužívanie"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Či Kyron nefunguje všetkým, alebo len vám"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Veľké"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Väčšie"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Stredné"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron je miesto, kde povedať niečo, čo stojí za prečítanie."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Malé"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Vždy tmavý"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Stlmený"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Jemnejší tmavý, modrosivý namiesto čierneho"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Vždy svetlý"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Podľa nastavenia svetlého alebo tmavého režimu telefónu"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Odblokovať"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Zrušiť stlmenie"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kto ste"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Vlastnými slovami: čo by mal vedieť ten, kto žiadosť posudzuje."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Píšem o vtákoch tu a na svojom webe."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Pridať ďalší odkaz"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Znova môžete požiadať od {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Požiadať o overenie"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Kým požiadate"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Tvorca"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Novinár"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organizácia alebo značka"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Niečo iné"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Verejne známa osoba"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Žiadosť {number} nebola schválená"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Ste overení"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Upraviť profil"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Zadajte 6-miestny kód"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Znova poslať kód o {seconds} s"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Poslali sme ho na {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Overiť"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Nechajte sa overiť na Kyrone"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Nechajte sa"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("overiť"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("na Kyrone."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Odznak znamená, že niekto z tímu Kyron overil, že tento účet je tým, za koho sa vydáva. Neprináša väčší dosah a nie je na predaj."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Odznak zostáva, kým zostáva vaše meno. Keď meno zmeníte, zmizne, kým niekto neskontroluje nové."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Kde to môžeme overiť"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Ďalší odkaz"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Web alebo iný profil, kde je uvedené, že tento účet Kyron je váš: uveďte tam svoje meno na Kyrone alebo odkaz na profil. Kyron nikdy nežiada doklady totožnosti."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Váš stav sa nepodarilo načítať"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Kým požiadate, musí byť všetko vyššie zaškrtnuté."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Účet starý aspoň {days} dní"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Bio, ktoré hovorí, kto ste"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Vaše meno na profile"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profilová fotka"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Nič v záznamoch za posledných {days} dní"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Odoslané. Pozrie sa na to človek."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Od {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Požiadať"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kto ste, a odkaz,\nktorý to dokazuje"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Odznak"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Vedľa vášho mena,\nvšade, kde sa zobrazuje"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Človek\nkontroluje"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Niekto z tímu\notvorí vaše odkazy"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Overenie"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Žiadosť {number} má v rukách človek"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Odoslané {date} ako {category}. Keď bude rozhodnuté, dostanete upozornenie."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Stiahnuť žiadosť"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Žiadosť stiahnutá."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Nahrávanie sa nepodarilo dokončiť: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("Až desať minút."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Počúvam…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron potrebuje povolenie používať mikrofón na nahrávanie. Udeliť ho môžete v nastaveniach zariadenia."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Nahrávanie sa nepodarilo spustiť: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -1946,6 +1946,290 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "הדף הזה רוצה לפתוח אפליקציה אחרת"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "הוא מבקש לפתוח קישור {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("גרסת בנייה"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} של תמונות וקבצים במטמון"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("פונו {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("מודדים…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("אין מה לנקות"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("אחסון"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("גרסה {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("חסומים"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("מפרסמים בשמך"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "הקבצים המצורפים לא הועלו. אפשר להקיש על אחד כדי לנסות שוב, או להסיר אותו."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה לשנות את האימייל. כדאי לנסות שוב."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "הכתובת תשתנה אחרי שתפתחו את הקישור שנשלח."),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("חפשו קישור אישור ב-{email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("הזינו כתובת אימייל."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("זה לא נראה כמו כתובת אימייל."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("זו כבר כתובת האימייל שלך."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "מה עשית, למה ציפית ומה קרה במקום."),
+      "ui_feedback_idea_example":
+          MessageLookupByLibrary.simpleMessage("תנו לי להצמיד פוסט לפרופיל"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "מה הייתם רוצים, ומה זה היה מאפשר לכם לעשות."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("מה היה עוזר"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("בעיה"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("רעיון"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("שאלה"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "רק צוות Kyron קורא את זה. זה נשלח עם החשבון שלך כדי שנוכל לענות באימייל, ועם גרסת האפליקציה שבה משתמשים. מחיקת החשבון מוחקת גם את זה."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("איך משתיקים מילה?"),
+      "ui_feedback_question_hint":
+          MessageLookupByLibrary.simpleMessage("מה ניסית לעשות, ואיפה נתקעת."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("השאלה שלך"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן להתחבר ל-Kyron. בדקו את החיבור ונסו שוב. עוד לא נכתב כלום, אז שום דבר לא אבד."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("ניקוי"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "בקשות שנכשלו ואירועים בולטים אחרים מופיעים כאן."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("מושתקים"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "הוסיפו מילה או תגית למעלה. פוסטים שמכילים אותה לא יופיעו בפיד."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "פוסטים שמכילים משהו מאלה לא מופיעים בפיד. אותיות גדולות וקטנות לא משנות, ומילה נמצאת גם בתוך מילים ארוכות יותר, כך ש-„spoiler” תופסת גם „spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("אף אחד לא חסום"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "חסימה מסתירה אתכם זה מזה, בשני הכיוונים. אפשר לחסום מישהו מהתפריט בפרופיל שלו."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("אף אחד לא מושתק"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "השתקת חשבון מסתירה את הפוסטים שלו בלי ליידע אותו. אפשר להשתיק מישהו מהתפריט בפרופיל שלו או בפוסט."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("סיסמה"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("הן לא תואמות."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "החשבון יישאר מחובר במכשיר הזה. במכשירים אחרים תתבצע התנתקות."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("יש להשתמש לפחות ב-8 תווים."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה לעדכן את הסיסמה. כדאי לנסות שוב."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("הסיסמה עודכנה."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("ה-DID הועתק"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "פוסטים שאהבת נשמרים כאן, רק בשבילך."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "עוד לא פרסמת תמונות או קליפים."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} עוד לא פרסם/ה תמונות או קליפים."),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("כל מה שמפרסמים מופיע כאן."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} עוד לא פרסם/ה כלום."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה לטעון את הפרופיל שלך"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה לטעון את @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("לפחות 8 תווים"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("אות קטנה (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("לפחות ספרה אחת"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("סמל (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("אות גדולה (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} רשומות אחרונות. אפשר לעבור עליהן ב-אודות › יומן מערכת לפני השליחה."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "רק צוות Kyron קורא את זה. זה נשלח עם החשבון שלך כדי שנוכל לחזור אליך. כדי לראות בדיוק מה נשלח יחד, קראו קודם את היומן ב-אודות › יומן מערכת."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("נשלח, תודה."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "נשלח, תודה. זה דיווח מס' {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("מה השתבש?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "גרסה, מדיניות, סטטוס ויומן מערכת"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "לא להפעיל סרטונים מעצמם בזמן גלילה"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("המזהה המבוזר שלך"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("ניהול תוכן"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "דיווחים וערעורים שממתינים לבדיקה"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "להרחיק מהפיד פוסטים שמכילים את אלה"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("לא מחובר"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("העדפות התראות"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("פרטיות ובטיחות"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "החלטות לגבי החשבון שלך, וערעורים"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("התאמת גודל הטקסט"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("החשבון שלך"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "הקלטה ופרסום של עדשות AR עדיין בבנייה. שום דבר שתצלמו עוד לא יישמר, ולכן המצלמה נשארת סגורה."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("העדשות עוד לא מוכנות"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("עדשת AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "שידור חי דורש שרת מדיה ש-Kyron עוד לא מפעילה. אם תתחילו שידור עכשיו, תהיו בחדר שאף אחד לא יכול להצטרף אליו. הקלטת פוסט קולי כבר עובדת היום."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("שידור חי עוד לא מוכן"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("שידור חי"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "סקרים צריכים מקום לשמור את האפשרויות ולספור את ההצבעות. זה עוד לא קיים, אז סקר שיפורסם היום יאבד כל תשובה."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("הסקרים עוד לא מוכנים"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("סקר"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("לכתוב פוסט טקסט במקום"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("בדיקה חוזרת"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("פרטים"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("טבלאות מראה"),
+      "ui_status_not_right":
+          MessageLookupByLibrary.simpleMessage("Kyron ענה, אבל משהו לא תקין."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("זמן הלוך-חזור"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("לשאול שאלה"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "על החשבון שלך, או איך משהו עובד"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("באימייל"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "אם Kyron קרס: נשלח גם יומן האפליקציה"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("באפליקציה"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "כתבו לצוות Kyron מכאן. ההודעה מגיעה אלינו באופן פרטי, עם החשבון שלך, ואנחנו עונים לכתובת האימייל שבו."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "לא נפתחה אפליקציית דואר. {address} הועתק."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("פרטיות והנתונים שלך"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("דיווח על בעיה"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "משהו שבור או לא עושה מה שהוא אמור"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "כדי לדווח על פוסט או חשבון, השתמשו בתפריט שלו: כך נדע בדיוק למה הכוונה."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("בטיחות ושימוש לרעה"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "האם Kyron לא עובד לכולם, או רק לך"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("גדול"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("גדול יותר"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("בינוני"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron הוא מקום להגיד משהו ששווה לקרוא."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("קטן"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("תמיד כהה"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("מעומעם"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "כהה רך יותר, אפור-כחלחל במקום שחור"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("תמיד בהיר"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "לפי הגדרת הבהיר או הכהה של הטלפון"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("ביטול חסימה"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("ביטול השתקה"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("מי את/ה"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "במילים שלך: מה הבודק צריך לדעת."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "אני כותב/ת על ציפורים כאן ובאתר שלי."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("הוספת קישור נוסף"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("אפשר לבקש שוב החל מ-{date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("בקשת אימות"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("לפני הבקשה"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("יוצר/ת"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("עיתונאי/ת"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("ארגון או מותג"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("משהו אחר"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("אישיות ציבורית"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("בקשה {number} לא אושרה"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("החשבון מאומת"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("עריכת הפרופיל"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("הזינו את הקוד בן 6 הספרות"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "שליחת הקוד מחדש בעוד {seconds} שניות"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("שלחנו אותו ל-{email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("אימות"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("קבלו אימות ב-Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("קבלו"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("אימות"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("ב-Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "התג אומר שמישהו מצוות Kyron בדק שהחשבון הזה הוא מי שהוא טוען שהוא. הוא לא נותן חשיפה נוספת, והוא לא למכירה."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "התג נשאר כל עוד השם נשאר. אם תשנו את השם, התג יוסר עד שמישהו יבדוק את השם החדש."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("איפה אפשר לבדוק"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("קישור נוסף"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "אתר או פרופיל אחר שאומר שחשבון Kyron הזה שלך: שימו בו את שמך ב-Kyron, או קישור לפרופיל שלך. Kyron אף פעם לא מבקשת מסמכי זיהוי."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("לא ניתן היה לטעון את המצב שלך"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "צריך לסמן הכול למעלה לפני שאפשר לבקש."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("חשבון בן {days} ימים לפחות"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("ביוגרפיה שאומרת מי את/ה"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("השם שלך בפרופיל"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("תמונת פרופיל"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "אין כלום ברשומות שלך ב-{days} הימים האחרונים"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("נשלח. אדם יעבור על זה."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("מאז {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("לבקש"),
+      "ui_verify_step_ask_detail":
+          MessageLookupByLibrary.simpleMessage("מי את/ה, וקישור\nשמוכיח את זה"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("התג"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "ליד השם שלך,\nבכל מקום שהוא מופיע"),
+      "ui_verify_step_check": MessageLookupByLibrary.simpleMessage("אדם\nבודק"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "מישהו מהצוות\nפותח את הקישורים שלך"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("אימות"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("בקשה {number} נמצאת אצל אדם"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "נשלח ב-{date}, בתור {category}. תתקבל התראה כשתתקבל החלטה."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("משיכת הבקשה"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("הבקשה נמשכה."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה לסיים את ההקלטה: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("עד עשר דקות."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("מקשיבים…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron צריכה הרשאה להשתמש במיקרופון כדי להקליט. אפשר לתת אותה בהגדרות המכשיר."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה להתחיל להקליט: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2073,6 +2073,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "මෙම පිටුවට වෙනත් යෙදුමක් විවෘත කිරීමට අවශ්‍යයි"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "එය {scheme} සබැඳියක් විවෘත කිරීමට ඉල්ලයි."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("ගොඩනැගීම"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("හැඹිලියේ රූප සහ ගොනු {size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} නිදහස් විය"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("මනිමින්…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("හිස් කිරීමට කිසිවක් නැත"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("ආචයනය"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("අනුවාදය {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("අවහිර කළ අය"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("ඔබේ නමින් පළ කරමින්"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "මෙම ඇමුණුම් උඩුගත නොවිණි. නැවත උත්සාහ කිරීමට එකක් තට්ටු කරන්න, හෝ එය ඉවත් කරන්න."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ ඊමේල් වෙනස් කළ නොහැකි විය. නැවත උත්සාහ කරන්න."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "අප එවන සබැඳිය විවෘත කළ පසු ඔබගේ ලිපිනය වෙනස් වේ."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "තහවුරු කිරීමේ සබැඳිය සඳහා {email} පරීක්ෂා කරන්න."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("ඊමේල් ලිපිනයක් ඇතුළත් කරන්න."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "එය ඊමේල් ලිපිනයක් මෙන් නොපෙනේ."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "එය දැනටමත් ඔබගේ ඊමේල් ලිපිනයයි."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "ඔබ කළ දේ, ඔබ බලාපොරොත්තු වූ දේ, සහ ඒ වෙනුවට සිදු වූ දේ."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "මගේ පැතිකඩට පළ කිරීමක් අමුණන්න ඉඩ දෙන්න"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "ඔබට අවශ්‍ය දේ, සහ එයින් ඔබට කළ හැකි දේ."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("උදව් වන්නේ කුමක්ද"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("ගැටලුවක්"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("අදහසක්"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("ප්‍රශ්නයක්"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "මෙය කියවන්නේ Kyron කණ්ඩායම පමණි. ඊමේල් මගින් පිළිතුරු දීමට හැකි වන පරිදි එය ඔබගේ ගිණුම සමඟ, සහ ඔබ භාවිත කරන යෙදුම් අනුවාදය සමඟ යවනු ලැබේ. ගිණුම මකා දැමුවහොත් මෙයද මැකේ."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("වචනයක් නිහඬ කරන්නේ කෙසේද?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "ඔබ කිරීමට උත්සාහ කරන්නේ කුමක්ද, සහ ඔබ සිර වූයේ කොතැනද."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ ප්‍රශ්නය"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron වෙත ළඟා විය නොහැකි විය. ඔබගේ සම්බන්ධතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න. තවම කිසිවක් ලියා නැත, එබැවින් කිසිවක් අහිමි නොවීය."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("හිස් කරන්න"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "අසාර්ථක ඉල්ලීම් සහ වෙනත් සැලකිය යුතු සිදුවීම් මෙහි දිස් වේ."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("නිහඬ කළ"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "ඉහළින් වචනයක් හෝ ටැගයක් එක් කරන්න. එය අඩංගු පළ කිරීම් ඔබගේ සංග්‍රහයට නොඑනු ඇත."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "මේවායින් ඕනෑම එකක් අඩංගු පළ කිරීම් ඔබගේ සංග්‍රහයට නොඑයි. ලොකු-කුඩා අකුරු වැදගත් නොවේ, වචනය දිගු වචන තුළද ගැළපේ, එබැවින් “spoiler” “spoilers”ද අල්ලා ගනී."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("කිසිවෙක් අවහිර කර නැත"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "අවහිර කිරීමෙන් ඔබ දෙදෙනා දෙපැත්තෙන්ම එකිනෙකාගෙන් සැඟවේ. යමෙකුගේ පැතිකඩ මෙනුවෙන් ඔවුන් අවහිර කරන්න."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("කිසිවෙක් නිහඬ කර නැත"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "ගිණුමක් නිහඬ කිරීමෙන් ඔවුන්ට නොකියා ඔවුන්ගේ පළ කිරීම් සැඟවේ. පැතිකඩ හෝ පළ කිරීමක මෙනුවෙන් නිහඬ කරන්න."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("මුරපදය"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("නොගැළපේ."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "ඔබ මෙම උපාංගයේ පුරනය වී සිටිනු ඇත. වෙනත් උපාංගවලින් ඉවත් කෙරේ."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "අවම වශයෙන් අක්ෂර 8ක් භාවිත කරන්න."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ මුරපදය යාවත්කාලීන කළ නොහැකි විය. නැවත උත්සාහ කරන්න."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("මුරපදය යාවත්කාලීන විය."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID පිටපත් විය"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "ඔබ කැමති පළ කිරීම් ඔබට පමණක් මෙහි තබා ඇත."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "ඔබ තවම ඡායාරූප හෝ ක්ලිප් කිසිවක් පළ කර නැත."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} තවම ඡායාරූප හෝ ක්ලිප් කිසිවක් පළ කර නැත."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "ඔබ පළ කරන සියල්ල මෙහි දිස් වේ."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} තවම කිසිවක් පළ කර නැත."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ පැතිකඩ පූරණය කළ නොහැකි විය"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} පූරණය කළ නොහැකි විය"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("අවම අක්ෂර 8ක්"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("කුඩා අකුර (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("අවම වශයෙන් අංකයක්"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("සංකේතය (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("ලොකු අකුර (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "මෑත ඇතුළත් කිරීම් {count}ක්. යැවීමට පෙර ඒවා පිළිබඳ › පද්ධති ලොගය තුළ පරීක්ෂා කරන්න."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "මෙය කියවන්නේ Kyron කණ්ඩායම පමණි. අපට පසු විපරම් කිරීමට හැකි වන පරිදි එය ඔබගේ ගිණුම සමඟ යවනු ලැබේ. ඒ සමඟ යන්නේ හරියටම කුමක්දැයි බැලීමට අවශ්‍ය නම්, පළමුව පිළිබඳ › පද්ධති ලොගය තුළ ලොගය කියවන්න."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("යවන ලදී, ස්තූතියි."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "යවන ලදී, ස්තූතියි. මෙය වාර්තාව #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("වැරදුණේ කුමක්ද?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "අනුවාදය, ප්‍රතිපත්ති, තත්ත්වය සහ පද්ධති ලොගය"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "අනුචලනය කරන විට වීඩියෝ ස්වයංක්‍රීයව ධාවනය නොවේවා"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ විමධ්‍යගත හඳුනාගැනීම"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("මධ්‍යස්ථකරණය"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "සමාලෝචනය සඳහා රැඳී සිටින වාර්තා සහ අභියාචනා"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "මේවා අඩංගු පළ කිරීම් සංග්‍රහයෙන් ඈත් කරන්න"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("පුරනය වී නැත"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("දැනුම්දීම් මනාපයන්"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("රහස්‍යතාව සහ ආරක්ෂාව"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ ගිණුම පිළිබඳ තීරණ, සහ අභියාචනා"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("පාඨ ප්‍රමාණය සකසන්න"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("ඔබගේ ගිණුම"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR කාච පටිගත කිරීම සහ ප්‍රකාශනය තවම ගොඩනැඟෙමින් පවතී. ඔබ ග්‍රහණය කරන කිසිවක් තවම සුරැකෙන්නේ නැත, එබැවින් කැමරාව වසා ඇත."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("කාච තවම සූදානම් නැත"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR කාචය"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "සජීවීව යාමට Kyron තවම ධාවනය නොකරන මාධ්‍ය සේවාදායකයක් අවශ්‍යයි. දැන් විකාශනයක් ඇරඹුවහොත් කිසිවෙකුට එක් විය නොහැකි කාමරයක ඔබ සිටිනු ඇත. හඬ පළ කිරීමක් පටිගත කිරීම අදම ක්‍රියා කරයි."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("සජීවී විකාශනය තවම සූදානම් නැත"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("සජීවීව යන්න"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "මත විමසුම්වලට විකල්ප තබා ඡන්ද ගණන් කිරීමට ස්ථානයක් අවශ්‍යයි. එය තවම නැත, එබැවින් අද පළ කරන මත විමසුමක් සෑම පිළිතුරක්ම අහිමි කරයි."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("මත විමසුම් තවම සූදානම් නැත"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("මත විමසුම"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "ඒ වෙනුවට පාඨ පළ කිරීමක් ලියන්න"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("නැවත පරීක්ෂා කරන්න"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("විස්තරය"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("දර්පණ වගු"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron පිළිතුරු දුන්නා, නමුත් යමක් හරි නැත."),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("වට ගමන"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("ප්‍රශ්නයක් අසන්න"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ ගිණුම ගැන, හෝ යමක් ක්‍රියා කරන ආකාරය ගැන"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("ඊමේල් මගින්"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron බිඳ වැටුණේ නම්: යෙදුම් ලොගයද යවයි"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("යෙදුම තුළ"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "මෙතැනින් Kyron කණ්ඩායමට ලියන්න. එය ඔබගේ ගිණුම සමඟ පෞද්ගලිකව අප වෙත ළඟා වන අතර, අපි එහි ඇති ඊමේල් ලිපිනයට පිළිතුරු දෙමු."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "තැපැල් යෙදුමක් විවෘත නොවීය. {address} පිටපත් කර ඇත."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("රහස්‍යතාව සහ ඔබගේ දත්ත"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("ගැටලුවක් වාර්තා කරන්න"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "යමක් කැඩී ඇත හෝ කළ යුතු දේ නොකරයි"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "පළ කිරීමක් හෝ ගිණුමක් වාර්තා කිරීමට එහි මෙනුව භාවිත කරන්න: එවිට ඔබ අදහස් කරන්නේ කුමක්දැයි අපට හරියටම දැනේ."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("ආරක්ෂාව සහ අපයෝජනය"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron සැමට අක්‍රිය ද, නැතහොත් ඔබට පමණක් ද"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("විශාල"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("වඩා විශාල"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("මධ්‍යම"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron කියවීමට වටින දෙයක් කීමට ස්ථානයකි."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("කුඩා"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("සැමවිටම අඳුරු"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("මඳ"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "කළු වෙනුවට නිල්-අළු, මෘදු අඳුරු"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("සැමවිටම ආලෝකමත්"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "දුරකථනයේ ආලෝක හෝ අඳුරු සැකසුම අනුගමනය කරන්න"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("අවහිර ඉවත් කරන්න"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("නිහඬ ඉවත් කරන්න"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("ඔබ කවුද"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "ඔබේම වචනවලින්, සමාලෝචකයා දැනගත යුතු දේ."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "මම මෙහි සහ මගේම වෙබ් අඩවියේ කුරුල්ලන් ගැන ලියමි."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("තවත් සබැඳියක් එක් කරන්න"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "ඔබට {date} සිට නැවත ඉල්ලිය හැක."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("සත්‍යාපනය ඉල්ලන්න"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("ඉල්ලීමට පෙර"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("නිර්මාපකයා"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("මාධ්‍යවේදියා"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("සංවිධානය හෝ සන්නාමය"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("වෙනත් දෙයක්"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("ප්‍රසිද්ධ පුද්ගලයා"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("ඉල්ලීම {number} අනුමත නොවීය"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("ඔබ සත්‍යාපිතයි"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩ සංස්කරණය කරන්න"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("ඉලක්කම් 6 කේතය ඇතුළත් කරන්න"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "තත්පර {seconds}කින් කේතය නැවත යවන්න"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("අපි එය {email} වෙත යැව්වෙමු"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("සත්‍යාපනය කරන්න"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron හි සත්‍යාපනය ලබා ගන්න"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron හි"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("සත්‍යාපනය"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("ලබා ගන්න."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ලාංඡනයෙන් කියවෙන්නේ මෙම ගිණුම එය පවසන පුද්ගලයාම බව Kyron කණ්ඩායමේ යමෙක් පරීක්ෂා කර ඇති බවයි. එය අමතර ළඟාවීමක් නොදෙයි, විකිණීමටද නැත."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ නම පවතින තාක් ලාංඡනය පවතී. නම වෙනස් කළහොත්, යමෙක් අලුත් නම පරීක්ෂා කරන තුරු එය ඉවත් වේ."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("අපට පරීක්ෂා කළ හැකි ස්ථානය"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("වෙනත් සබැඳියක්"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "මෙම Kyron ගිණුම ඔබගේ බව පවසන වෙබ් අඩවියක් හෝ වෙනත් පැතිකඩක්: එහි ඔබගේ Kyron නම, හෝ ඔබගේ පැතිකඩට සබැඳියක් දමන්න. Kyron කිසිදා හැඳුනුම්පත් ඉල්ලන්නේ නැත."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ තත්ත්වය පූරණය කළ නොහැකි විය"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "ඉල්ලීමට පෙර ඉහත සියල්ලට ලකුණක් තිබිය යුතුය."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "අවම වශයෙන් දින {days}ක් පැරණි ගිණුමක්"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("ඔබ කවුදැයි කියන ජීව දත්තයක්"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩේ ඔබගේ නම"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("පැතිකඩ ඡායාරූපයක්"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "පසුගිය දින {days} තුළ ඔබගේ වාර්තාවේ කිසිවක් නැත"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "යවන ලදී. පුද්ගලයෙක් එය බලනු ඇත."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} සිට."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("ඉල්ලන්න"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබ කවුද, සහ එය\nඔප්පු කරන සබැඳියක්"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("ලාංඡනය"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "ඔබගේ නම අසල,\nඑය දිස්වන සෑම තැනම"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("පුද්ගලයෙක්\nපරීක්ෂා කරයි"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "කණ්ඩායමේ කෙනෙක්\nඔබගේ සබැඳි විවෘත කරයි"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("සත්‍යාපනය"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "ඉල්ලීම {number} පුද්ගලයෙකු ළඟ ඇත"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} දින {category} ලෙස යවන ලදී. තීරණය වූ විට ඔබට දැනුම්දීමක් ලැබේ."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("ඉල්ලීම ඉවත් කරගන්න"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("ඉල්ලීම ඉවත් කර ගන්නා ලදී."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "පටිගත කිරීම අවසන් කළ නොහැකි විය: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("මිනිත්තු දහයක් දක්වා."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("සවන් දෙමින්…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "පටිගත කිරීමට Kyron ට මයික්‍රොෆෝන අවසරය අවශ්‍යයි. ඔබට එය උපාංග සැකසීම්වලදී ලබා දිය හැක."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "පටිගත කිරීම ආරම්භ කළ නොහැකි විය: {error}"),
     };
 
 final messageLookup = MessageLookup();

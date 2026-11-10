@@ -2093,6 +2093,311 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Boggani wuxuu rabaa inuu furo app kale"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Wuxuu codsanayaa inuu furo xiriirka {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Dhismo"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} sawirro iyo faylal ku jira kaydka ku-meel-gaarka ah"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} ayaa la sii daayay"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Waa la cabbirayaa…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Wax la nadiifiyo ma jiro"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Kaydinta"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Nooca {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("La xannibay"),
+      "ui_composer_posting_as_you": MessageLookupByLibrary.simpleMessage(
+          "Waxaad ku daabacaysaa magacaaga"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Lifaaqyadaas lama soo gelin. Taabo mid si aad isugu daydo mar kale, ama ka saar."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama beddeli karin iimaylkaaga. Fadlan isku day mar kale."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Cinwaankaagu wuu isbeddelayaa marka aad furto xiriirka aan kuu soo dirno."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Ka eeg {email} xiriirka xaqiijinta."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Geli cinwaan iimayl."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("Taasi uma eka cinwaan iimayl."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Taasi horey ayay u ahayd cinwaankaaga iimaylka."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Waxa aad samaysay, waxa aad filaysay, iyo waxa dhacay beddelkeeda."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "I sii aan qoraal ku dhejiyo bogga astaantayda"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Waxa aad rabto, iyo waxa ay kuu suurtagelinayso."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Waxa caawin lahaa"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Dhibaato"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Fikrad"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Su'aal"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Kooxda Kyron oo keliya ayaa akhrisa tan. Waxaa lagu diraa koontadaada si aan iimayl kuugu jawaabno, iyo nooca app-ka aad isticmaasho. Haddii aad tirtirto koontadaada, tanna waa la tirtiraa."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Sideen u aamusiyaa eray?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Waxa aad isku dayayso inaad samayso, iyo halka aad ku xayiran tahay."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Su'aashaada"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Lama gaari karin Kyron. Hubi xiriirkaaga oo isku day mar kale. Wax weli lama qorin, sidaa darteed waxba ma lumin."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Nadiifi"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Codsiyada fashilmay iyo dhacdooyinka kale ee muhiimka ah ayaa halkan ka muuqda."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("La aamusiyay"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Ku dar eray ama calaamad korka. Qoraallada ku jira kuma soo bixi doonaan quudintaada."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Qoraallada ka kooban mid ka mid ah kuwan kuma soo baxaan quudintaada. Xarfaha waaweyn iyo kuwa yaryar muhiim ma aha, ereyguna wuxuu ku dhex ekaadaa erayo dheer, sidaa darteed “spoiler” wuxuu sidoo kale qabtaa “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Qofna lama xannibin"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Xannibiddu waxay idinka qarisaa midba midka kale, labada dhinacba. Ka xannib qof liiska bogga astaantiisa."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Qofna lama aamusin"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Aamusinta koonto waxay qarisaa qoraalladeeda iyada oo aan loo sheegin. Ka aamusi qof liiska bogga astaantiisa ama qoraal."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Furaha sirta"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Isma laha."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Waxaad ku jiri doontaa qalabkan. Qalabka kale waa laga saarayaa."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Isticmaal ugu yaraan 8 xaraf."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama cusboonaysiin karin furahaaga sirta. Fadlan isku day mar kale."),
+      "ui_password_updated": MessageLookupByLibrary.simpleMessage(
+          "Furaha sirta waa la cusboonaysiiyay."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID waa la koobiyeeyay"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Qoraallada aad jeceshahay halkan ayaa laguu kaydiyaa, adiga oo keliya."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Weli ma aadan daabicin sawirro ama muuqaallo."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} weli ma daabicin sawirro ama muuqaallo."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Wax kasta oo aad daabacdo halkan ayuu ka muuqdaa."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} weli waxba ma daabicin."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Lama soo gelin karin bogga astaantaada"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Lama soo gelin karin @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Ugu yaraan 8 xaraf"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Xaraf yar (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Ugu yaraan hal lambar"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Calaamad (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Xaraf weyn (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} gelis oo dhowaan ah. Dib u eeg kahor intaadan dirin, Ku saabsan › Diiwaanka nidaamka."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Kooxda Kyron oo keliya ayaa akhrisa tan. Waxaa lagu diraa koontadaada si aan ula socon karno. Haddii aad rabto inaad si sax ah u aragto waxa la socda, marka hore akhri diiwaanka Ku saabsan › Diiwaanka nidaamka."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Waa la diray, mahadsanid."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Waa la diray, mahadsanid. Waa warbixinta #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Maxaa khaldamay?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Nooca, siyaasadaha, xaaladda iyo diiwaanka nidaamka"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Jooji muuqaallada inay iskood u ciyaaraan marka aad rogrogto"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("Aqoonsigaaga aan dhexe ahayn"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Maamulka"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Warbixinno iyo racfaanno sugaya dib-u-eegis"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Ka fogee quudinta qoraallada ka kooban kuwan"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Lama soo gelin"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Doorbidyada ogeysiisyada"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Asturnaanta & Badbaadada"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Go'aannada ku saabsan koontadaada, iyo racfaannada"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Hagaaji cabbirka qoraalka"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Koontadaada"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Duubista iyo daabacaadda muraayadaha AR weli waa la dhisayaa. Waxba oo aad qabato weli lama kaydin lahayn, sidaa darteed kamaraddu way xiran tahay."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Muraayaduhu weli diyaar ma aha"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("Muraayadda AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Tooska ah wuxuu u baahan yahay server warbaahineed oo Kyron weli aanu socodsiin. Haddii aad hadda bilowdo baahin, waxaad ku jiri lahayd qol aan qofna ku biiri karin. Duubista qoraal cod ah maanta way shaqaysaa."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Tooska weli diyaar ma aha"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Toos u bax"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Codbixinnadu waxay u baahan yihiin meel lagu kaydiyo doorashooyinka laguna tiriyo codadka. Taasi weli ma jirto, sidaa darteed codbixin maanta la daabaco waxay lumin lahayd jawaab kasta."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Codbixinnadu weli diyaar ma aha"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Codbixin"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Qor qoraal beddelkeeda"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Hubi mar kale"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Faahfaahin"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Miisaska muraayadda"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron wuu jawaabay, laakiin wax baa khaldan."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Socod-celin"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Weydii su'aal"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ku saabsan koontadaada, ama sida wax u shaqeeyaan"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Iimayl ahaan"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Haddii Kyron burburo: wuxuu la dirayaa diiwaanka app-ka"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("App-ka gudihiisa"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Halkan uga qor kooxda Kyron. Waxay noogu timaadaa si gaar ah, iyada oo wata koontadaada, waxaana uga jawaabnaa cinwaanka iimaylka ee ku yaal."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "App iimayl ah lama furin. {address} waa la koobiyeeyay."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Asturnaanta iyo xogtaada"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Soo sheeg dhibaato"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Wax baa jaban ama ma samaynayo waxa uu ahaa inuu sameeyo"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Si aad u soo sheegto qoraal ama koonto, isticmaal liiskiisa: taasi waxay nooga dhigaysaa inaan si sax ah u ogaano kan aad ula jeedo."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Badbaadada iyo xadgudubka"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ma u xiran yahay qof walba, mise adiga oo keliya"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Weyn"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Ka weyn"),
+      "ui_text_size_medium":
+          MessageLookupByLibrary.simpleMessage("Dhexdhexaad"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron waa meel lagu sheego wax mudan in la akhriyo."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Yar"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Had iyo jeer mugdi"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Daciif"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Mugdi jilicsan, buluug-cawl halkii madow"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Had iyo jeer iftiin"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Raac dejinta iftiinka ama mugdiga ee taleefanka"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Ka qaad xannibaadda"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Ka qaad aamusinta"),
+      "ui_verify_about":
+          MessageLookupByLibrary.simpleMessage("Adigu yaad tahay"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ereyadaada, waxa dib-u-eegaha ay tahay inuu ogaado."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Waxaan halkan iyo bartayda ku qoraa shimbiraha."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Ku dar xiriir kale"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Waad codsan kartaa mar kale laga bilaabo {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Codso xaqiijin"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Kahor intaadan codsan"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Abuure"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Saxafi"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Hay'ad ama summad"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Wax kale"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Shakhsi caan ah"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("Codsiga {number} lama ansixin"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Waa lagu xaqiijiyay"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Wax ka beddel bogga astaanta"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Geli koodhka 6-da god"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Dib u dir koodhka {seconds} ilbiriqsi gudahood"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Waxaan u dirnay {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Xaqiiji"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Ku hel xaqiijin Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Ku hel"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("xaqiijin"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Calaamaddu waxay muujinaysaa in qof ka mid ah kooxda Kyron hubiyay in koontadani tahay qofka ay sheegayso. Ma bixiso gaadhis dheeraad ah, lamana iibiyo."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Calaamaddu way sii jirtaa inta magacaagu jiro. Haddii aad beddesho magacaaga, waa laga qaadaa ilaa qof hubiyo kan cusub."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Halka aan ka hubin karno"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Xiriir kale"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Bog ama bog astaan kale oo sheegaya in koontadan Kyron ay taada tahay: ku dheji magacaaga Kyron, ama xiriir bogga astaantaada. Kyron weligeed ma weydiiso dukumentiyo aqoonsi."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama soo gelin karin xaaladdaada"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Wax walba oo kor ku xusan waa inay calaamad leeyihiin kahor intaadan codsan."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Koonto jirtay ugu yaraan {days} maalmood"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Taariikh nololeed sheegaysa cidda aad tahay"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Magacaaga bogga astaanta"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Sawirka astaanta"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Waxba kuma jiraan diiwaankaaga {days}-ii maalmood ee la soo dhaafay"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Waa la diray. Qof ayaa eegi doona."),
+      "ui_verify_since":
+          MessageLookupByLibrary.simpleMessage("Laga bilaabo {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Codso"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Cidda aad tahay, iyo xiriir\ncaddaynaya"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("Calaamadda"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Agtiisa magacaaga,\nmeel kasta oo uu ka muuqdo"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Qof\nayaa hubiya"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Qof kooxda ka mid ah\nayaa fura xiriiradaada"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Xaqiijin"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Codsiga {number} wuxuu ku jiraa gacanta qof"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "La diray {date}, ahaan {category}. Waxaad heli doontaa ogeysiis marka go'aan la gaaro."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Ka noqo codsiga"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Codsiga waa laga noqday."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama dhammaystiri karin duubista: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Ilaa toban daqiiqo."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Waa la dhegaysanayaa…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron wuxuu u baahan yahay ogolaanshaha makarafoonka si uu u duubo. Waxaad ka bixin kartaa dejinta qalabkaaga."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Lama bilaabi karin duubista: {error}"),
     };
 
 final messageLookup = MessageLookup();

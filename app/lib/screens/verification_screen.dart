@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/verification.dart';
 import '../providers/current_user_provider.dart';
 import '../providers/verification_provider.dart';
@@ -15,7 +16,7 @@ import '../widgets/kyron_app_bar.dart';
 import '../widgets/stamp.dart';
 import '../widgets/toast.dart';
 import '../widgets/verified_badge.dart';
-import 'account_status_screen.dart' show Quote, standingDay;
+import 'account_status_screen.dart' show Quote, readerLocale, standingDay;
 
 /// Asking for the verified badge.
 ///
@@ -40,7 +41,9 @@ class VerificationScreen extends ConsumerWidget {
           onPressed: () => Navigator.pop(context),
           tooltip: MaterialLocalizations.of(context).backButtonTooltip,
         ),
-        title: const Text('Verification'),
+        title: Text(
+          AppLocalizations.of(context).ui('ui_verify_title', 'Verification'),
+        ),
       ),
       body: SafeArea(
         child: RefreshIndicator(
@@ -56,25 +59,38 @@ class VerificationScreen extends ConsumerWidget {
               const _Hero(),
               const SizedBox(height: SpacingTokens.space16),
               Text(
-                'The badge says somebody on the Kyron team checked this '
-                'account is who it says it is. It gives no extra reach, and '
-                'it is not for sale.',
+                AppLocalizations.of(context).ui(
+                  'ui_verify_intro',
+                  'The badge says somebody on the Kyron team checked this account is who it says it is. It gives no extra reach, and it is not for sale.',
+                ),
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: SpacingTokens.space24),
-              const StampStrip(
+              StampStrip(
                 panels: [
                   (
-                    title: 'Ask',
-                    detail: 'Who you are, and a link\nthat proves it',
+                    title: AppLocalizations.of(context)
+                        .ui('ui_verify_step_ask', 'Ask'),
+                    detail: AppLocalizations.of(context).ui(
+                      'ui_verify_step_ask_detail',
+                      'Who you are, and a link\nthat proves it',
+                    ),
                   ),
                   (
-                    title: 'A person\nchecks',
-                    detail: 'Somebody on the team\nfollows your links',
+                    title: AppLocalizations.of(context)
+                        .ui('ui_verify_step_check', 'A person\nchecks'),
+                    detail: AppLocalizations.of(context).ui(
+                      'ui_verify_step_check_detail',
+                      'Somebody on the team\nfollows your links',
+                    ),
                   ),
                   (
-                    title: 'The badge',
-                    detail: 'Beside your name,\neverywhere it shows',
+                    title: AppLocalizations.of(context)
+                        .ui('ui_verify_step_badge', 'The badge'),
+                    detail: AppLocalizations.of(context).ui(
+                      'ui_verify_step_badge_detail',
+                      'Beside your name,\neverywhere it shows',
+                    ),
                   ),
                 ],
               ),
@@ -86,9 +102,13 @@ class VerificationScreen extends ConsumerWidget {
                 ),
                 error: (error, _) => EmptyState(
                   art: EmptyArt.offline,
-                  title: 'Could not load where you stand',
+                  title: AppLocalizations.of(context).ui(
+                    'ui_verify_load_failed',
+                    'Could not load where you stand',
+                  ),
                   detail: describeApiError(error, sessionIsLive: true),
-                  action: 'Try again',
+                  action: AppLocalizations.of(context)
+                      .ui('ui_try_again', 'Try again'),
                   onAction: () => ref.invalidate(verificationStatusProvider),
                 ),
                 data: (state) => _Now(state: state),
@@ -109,6 +129,7 @@ class _Hero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ink = Theme.of(context).colorScheme.onSurface;
+    final l10n = AppLocalizations.of(context);
     return LayoutBuilder(
       builder: (context, box) {
         final size = (box.maxWidth / 5.2).clamp(40.0, 76.0);
@@ -124,29 +145,28 @@ class _Hero extends StatelessWidget {
         Widget line(List<Widget> parts) => FittedBox(
               fit: BoxFit.scaleDown,
               alignment: Alignment.centerLeft,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: parts,
-              ),
+              child: Row(mainAxisSize: MainAxisSize.min, children: parts),
             );
 
         return Semantics(
           header: true,
-          label: 'Get verified on Kyron',
+          label: l10n.ui('ui_verify_hero', 'Get verified on Kyron'),
           excludeSemantics: true,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               line([
-                Text('Get', style: type),
+                Text(l10n.ui('ui_verify_hero_1', 'Get'), style: type),
                 SizedBox(width: size * 0.2),
                 _Switch(height: pillHeight, ink: ink),
               ]),
-              line([Text('verified', style: type)]),
+              line([
+                Text(l10n.ui('ui_verify_hero_2', 'verified'), style: type),
+              ]),
               line([
                 _StampPill(height: pillHeight),
                 SizedBox(width: size * 0.2),
-                Text('on Kyron.', style: type),
+                Text(l10n.ui('ui_verify_hero_3', 'on Kyron.'), style: type),
               ]),
             ],
           ),
@@ -230,10 +250,12 @@ class _Verified extends StatelessWidget {
             const SizedBox(width: SpacingTokens.space12),
             Expanded(
               child: Text(
-                "You're verified",
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
+                AppLocalizations.of(context)
+                    .ui('ui_verify_done', 'You\'re verified'),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
           ],
@@ -241,9 +263,15 @@ class _Verified extends StatelessWidget {
         const SizedBox(height: SpacingTokens.space12),
         Text(
           [
-            if (since != null) 'Since ${standingDay(since!)}.',
-            'The badge stays while your name does. Change your name and it '
-                'comes off until somebody checks the new one.',
+            if (since != null)
+              AppLocalizations.of(context)
+                  .ui('ui_verify_since', 'Since {date}.')
+                  .replaceAll('{date}',
+                      standingDay(since!, locale: readerLocale(context))),
+            AppLocalizations.of(context).ui(
+              'ui_verify_keeps',
+              'The badge stays while your name does. Change your name and it comes off until somebody checks the new one.',
+            ),
           ].join(' '),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
@@ -268,7 +296,13 @@ class _WaitingState extends ConsumerState<_Waiting> {
     try {
       await ref.read(verificationRepositoryProvider).withdraw();
       ref.invalidate(verificationStatusProvider);
-      if (mounted) Toast.show(context, 'Request withdrawn.');
+      if (mounted) {
+        Toast.show(
+          context,
+          AppLocalizations.of(context)
+              .ui('ui_verify_withdrawn', 'Request withdrawn.'),
+        );
+      }
     } catch (error) {
       if (!mounted) return;
       setState(() => _withdrawing = false);
@@ -283,21 +317,36 @@ class _WaitingState extends ConsumerState<_Waiting> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Request ${request.number} is with a person',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+          AppLocalizations.of(context)
+              .ui('ui_verify_waiting', 'Request {number} is with a person')
+              .replaceAll('{number}', '${request.number}'),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: SpacingTokens.space8),
         Text(
-          'Sent ${standingDay(request.createdAt)}, as '
-          '${request.category.label.toLowerCase()}. You will get a '
-          'notification when it is decided.',
+          AppLocalizations.of(context)
+              .ui(
+                'ui_verify_waiting_detail',
+                'Sent {date}, as {category}. You will get a notification when it is decided.',
+              )
+              .replaceAll('{date}',
+                  standingDay(request.createdAt, locale: readerLocale(context)))
+              .replaceAll(
+                '{category}',
+                categoryLabel(
+                  request.category,
+                  AppLocalizations.of(context),
+                ).toLowerCase(),
+              ),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: SpacingTokens.space16),
         ActionButton(
-          label: 'Withdraw the request',
+          label: AppLocalizations.of(context)
+              .ui('ui_verify_withdraw', 'Withdraw the request'),
           kind: ActionButtonKind.outlined,
           busy: _withdrawing,
           onPressed: _withdraw,
@@ -318,10 +367,13 @@ class _NotYet extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Request ${request.number} was not approved',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+          AppLocalizations.of(context)
+              .ui('ui_verify_denied', 'Request {number} was not approved')
+              .replaceAll('{number}', '${request.number}'),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         if (request.response != null) ...[
           const SizedBox(height: SpacingTokens.space8),
@@ -329,7 +381,10 @@ class _NotYet extends StatelessWidget {
         ],
         const SizedBox(height: SpacingTokens.space12),
         Text(
-          'You can ask again from ${standingDay(again)}.',
+          AppLocalizations.of(context)
+              .ui('ui_verify_again', 'You can ask again from {date}.')
+              .replaceAll(
+                  '{date}', standingDay(again, locale: readerLocale(context))),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
@@ -389,7 +444,11 @@ class _AskState extends ConsumerState<_Ask> {
           );
       ref.invalidate(verificationStatusProvider);
       if (mounted) {
-        Toast.show(context, 'Sent. A person will look at it.');
+        Toast.show(
+          context,
+          AppLocalizations.of(context)
+              .ui('ui_verify_sent', 'Sent. A person will look at it.'),
+        );
       }
     } catch (error) {
       if (!mounted) return;
@@ -403,6 +462,7 @@ class _AskState extends ConsumerState<_Ask> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     final faint = scheme.onSurface.withValues(alpha: .55);
     final missing = widget.state.requirements.where((r) => !r.met).toList();
     final profileFixes = missing.any(
@@ -413,10 +473,11 @@ class _AskState extends ConsumerState<_Ask> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Before you ask',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+          l10n.ui('ui_verify_before', 'Before you ask'),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: SpacingTokens.space8),
         for (final r in widget.state.requirements)
@@ -432,7 +493,7 @@ class _AskState extends ConsumerState<_Ask> {
                 const SizedBox(width: SpacingTokens.space12),
                 Expanded(
                   child: Text(
-                    r.label,
+                    requirementLabel(r.key, r.label, l10n),
                     style: TextStyle(color: r.met ? null : faint),
                   ),
                 ),
@@ -449,15 +510,18 @@ class _AskState extends ConsumerState<_Ask> {
                 ref.read(currentUserProvider.notifier).refresh();
               },
               icon: const Icon(Iconsax.edit_2_copy, size: 18),
-              label: const Text('Edit your profile'),
+              label: Text(
+                l10n.ui('ui_verify_edit_profile', 'Edit your profile'),
+              ),
             ),
           ),
         const SizedBox(height: SpacingTokens.space24),
         Text(
-          'Ask',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+          l10n.ui('ui_verify_step_ask', 'Ask'),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: SpacingTokens.space12),
         Wrap(
@@ -466,7 +530,7 @@ class _AskState extends ConsumerState<_Ask> {
           children: [
             for (final category in VerificationCategory.values)
               ChoiceChip(
-                label: Text(category.label),
+                label: Text(categoryLabel(category, l10n)),
                 selected: _category == category,
                 onSelected: (_) => setState(() => _category = category),
               ),
@@ -478,11 +542,17 @@ class _AskState extends ConsumerState<_Ask> {
           maxLines: 5,
           maxLength: 1000,
           onChanged: (_) => setState(() {}),
-          decoration: const InputDecoration(
-            labelText: 'Who you are',
+          decoration: InputDecoration(
+            labelText: l10n.ui('ui_verify_about', 'Who you are'),
             alignLabelWithHint: true,
-            hintText: 'I write about birds here and on my own site.',
-            helperText: 'In your own words, what the reviewer should know.',
+            hintText: l10n.ui(
+              'ui_verify_about_hint',
+              'I write about birds here and on my own site.',
+            ),
+            helperText: l10n.ui(
+              'ui_verify_about_help',
+              'In your own words, what the reviewer should know.',
+            ),
           ),
         ),
         const SizedBox(height: SpacingTokens.space8),
@@ -494,7 +564,9 @@ class _AskState extends ConsumerState<_Ask> {
               keyboardType: TextInputType.url,
               onChanged: (_) => setState(() {}),
               decoration: InputDecoration(
-                labelText: i == 0 ? 'Where we can check' : 'Another link',
+                labelText: i == 0
+                    ? l10n.ui('ui_verify_link_first', 'Where we can check')
+                    : l10n.ui('ui_verify_link_more', 'Another link'),
                 hintText: 'https://',
                 prefixIcon: const Icon(Iconsax.link_21_copy, size: 18),
               ),
@@ -507,13 +579,14 @@ class _AskState extends ConsumerState<_Ask> {
               onPressed: () =>
                   setState(() => _links.add(TextEditingController())),
               icon: const Icon(Iconsax.add_copy, size: 18),
-              label: const Text('Add another link'),
+              label: Text(l10n.ui('ui_verify_add_link', 'Add another link')),
             ),
           ),
         Text(
-          'A site or another profile that says this Kyron account is yours: '
-          'put your Kyron name, or a link to your profile, on it. Kyron never '
-          'asks for ID documents.',
+          l10n.ui(
+            'ui_verify_links_help',
+            'A site or another profile that says this Kyron account is yours: put your Kyron name, or a link to your profile, on it. Kyron never asks for ID documents.',
+          ),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         if (_error != null) ...[
@@ -528,7 +601,7 @@ class _AskState extends ConsumerState<_Ask> {
         ],
         const SizedBox(height: SpacingTokens.space16),
         ActionButton(
-          label: 'Ask to be verified',
+          label: l10n.ui('ui_verify_ask', 'Ask to be verified'),
           icon: Iconsax.send_2_copy,
           expand: true,
           busy: _sending,
@@ -537,11 +610,60 @@ class _AskState extends ConsumerState<_Ask> {
         if (!widget.state.eligible) ...[
           const SizedBox(height: SpacingTokens.space8),
           Text(
-            'Everything above needs a tick before you can ask.',
+            l10n.ui(
+              'ui_verify_need_ticks',
+              'Everything above needs a tick before you can ask.',
+            ),
             style: TextStyle(color: faint),
           ),
         ],
       ],
     );
   }
+}
+
+/// [category]'s name in the reader's language.
+String categoryLabel(VerificationCategory category, AppLocalizations l10n) =>
+    switch (category) {
+      VerificationCategory.creator => l10n.ui(
+          'ui_verify_cat_creator',
+          'Creator',
+        ),
+      VerificationCategory.publicFigure => l10n.ui(
+          'ui_verify_cat_public',
+          'Public figure',
+        ),
+      VerificationCategory.journalist => l10n.ui(
+          'ui_verify_cat_journalist',
+          'Journalist',
+        ),
+      VerificationCategory.organisation => l10n.ui(
+          'ui_verify_cat_org',
+          'Organisation or brand',
+        ),
+      VerificationCategory.other => l10n.ui(
+          'ui_verify_cat_other',
+          'Something else',
+        ),
+    };
+
+/// A requirement in the reader's language. The server sends English; the
+/// number of days in it is the server's, so it is read from there.
+String requirementLabel(String key, String english, AppLocalizations l10n) {
+  final days = RegExp(r'\d+').firstMatch(english)?.group(0) ?? '';
+  final text = switch (key) {
+    'photo' => l10n.ui('ui_verify_req_photo', 'A profile photo'),
+    'name' => l10n.ui('ui_verify_req_name', 'Your name on the profile'),
+    'bio' => l10n.ui('ui_verify_req_bio', 'A bio that says who you are'),
+    'age' => l10n.ui(
+        'ui_verify_req_age',
+        'An account at least {days} days old',
+      ),
+    'standing' => l10n.ui(
+        'ui_verify_req_standing',
+        'Nothing on your record in the last {days} days',
+      ),
+    _ => english,
+  };
+  return text.replaceAll('{days}', days);
 }

@@ -1768,6 +1768,251 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("此页面想要打开另一个应用"),
       "ui_browser_leave_detail":
           MessageLookupByLibrary.simpleMessage("它请求打开一个 {scheme} 链接。"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("版本信息"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("已缓存的图片和文件共 {size}"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("已释放 {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("正在计算…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("没有可清除的内容"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("存储"),
+      "ui_about_version": MessageLookupByLibrary.simpleMessage("版本 {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("已屏蔽"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("以你的身份发布"),
+      "ui_composer_uploads_failed":
+          MessageLookupByLibrary.simpleMessage("这些附件没有上传成功。点按一个重试，或将其移除。"),
+      "ui_email_change_failed":
+          MessageLookupByLibrary.simpleMessage("无法更改你的邮箱，请重试。"),
+      "ui_email_changes_after_link":
+          MessageLookupByLibrary.simpleMessage("点按我们发送的链接后，你的邮箱地址才会更改。"),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("请查看 {email} 中的确认链接。"),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage("请输入邮箱地址。"),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage("这看起来不像邮箱地址。"),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage("这已经是你的邮箱地址了。"),
+      "ui_feedback_bug_hint":
+          MessageLookupByLibrary.simpleMessage("你做了什么，你期望什么，以及实际发生了什么。"),
+      "ui_feedback_idea_example":
+          MessageLookupByLibrary.simpleMessage("让我可以把一条帖子置顶到个人资料"),
+      "ui_feedback_idea_hint":
+          MessageLookupByLibrary.simpleMessage("你想要什么，以及它能让你做到什么。"),
+      "ui_feedback_idea_label": MessageLookupByLibrary.simpleMessage("什么会有帮助"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("问题"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("想法"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("疑问"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "只有 Kyron 团队会阅读这些内容。它会随你的账号一起发送，以便我们通过邮件回复你，并了解你使用的应用版本。删除账号时它也会被删除。"),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("怎样屏蔽一个词？"),
+      "ui_feedback_question_hint":
+          MessageLookupByLibrary.simpleMessage("你想做什么，以及卡在了哪里。"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("你的问题"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "无法连接到 Kyron。请检查网络连接后重试。你还没有写任何内容，所以不会丢失任何东西。"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("清除"),
+      "ui_log_empty_detail":
+          MessageLookupByLibrary.simpleMessage("失败的请求和其他值得注意的事件会显示在这里。"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("已静音"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "在上方添加一个词或标签。包含它的帖子将不会出现在你的动态中。"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "包含以下任意内容的帖子都不会出现在你的动态中。匹配不区分大小写，而且一个词也会匹配更长的词，所以“spoiler”也会匹配“spoilers”。"),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("没有屏蔽任何人"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "屏蔽后你们会互相看不到对方。在对方的个人资料菜单中屏蔽他人。"),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("没有静音任何人"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "静音一个账号会隐藏其帖子，且不会通知对方。在对方的个人资料或帖子菜单中静音他人。"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("密码"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("两次输入不一致。"),
+      "ui_password_other_devices":
+          MessageLookupByLibrary.simpleMessage("你会在此设备上保持登录，其他设备将被退出登录。"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("请至少使用 8 个字符。"),
+      "ui_password_update_failed":
+          MessageLookupByLibrary.simpleMessage("无法更新你的密码，请重试。"),
+      "ui_password_updated": MessageLookupByLibrary.simpleMessage("密码已更新。"),
+      "ui_profile_did_copied": MessageLookupByLibrary.simpleMessage("已复制 DID"),
+      "ui_profile_empty_likes":
+          MessageLookupByLibrary.simpleMessage("你点赞的帖子会保存在这里，只有你能看到。"),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("你还没有发布任何照片或视频。"),
+      "ui_profile_empty_media_other":
+          MessageLookupByLibrary.simpleMessage("{name} 还没有发布任何照片或视频。"),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("你发布的所有内容都会显示在这里。"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} 还没有发布任何内容。"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("无法加载你的个人资料"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("无法加载 @{handle}"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("至少 8 个字符"),
+      "ui_pw_rule_lower": MessageLookupByLibrary.simpleMessage("小写字母 (a–z)"),
+      "ui_pw_rule_number": MessageLookupByLibrary.simpleMessage("至少一个数字"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("符号 (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("大写字母 (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "最近 {count} 条记录。发送前可在“关于 › 系统日志”中查看。"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "只有 Kyron 团队会阅读这些内容。它会随你的账号一起发送，以便我们跟进。如果你想确切了解会一起发送什么，请先在“关于 › 系统日志”中查看日志。"),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("已发送，谢谢。"),
+      "ui_report_sent_number":
+          MessageLookupByLibrary.simpleMessage("已发送，谢谢。报告编号为 #{number}。"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("出了什么问题？"),
+      "ui_settings_about_help":
+          MessageLookupByLibrary.simpleMessage("版本、政策、状态和系统日志"),
+      "ui_settings_autoplay_help":
+          MessageLookupByLibrary.simpleMessage("滚动时不自动播放视频"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage("你的去中心化标识符"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("内容审核"),
+      "ui_settings_moderation_help":
+          MessageLookupByLibrary.simpleMessage("等待审核的举报和申诉"),
+      "ui_settings_muted_words_help":
+          MessageLookupByLibrary.simpleMessage("不让包含这些内容的帖子出现在你的动态中"),
+      "ui_settings_not_signed_in": MessageLookupByLibrary.simpleMessage("未登录"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("通知偏好"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("隐私与安全"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("关于你账号的决定以及申诉"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("调整文字大小"),
+      "ui_settings_your_account": MessageLookupByLibrary.simpleMessage("你的账号"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "录制和发布 AR 滤镜的功能仍在开发中。你拍摄的任何内容目前都无法保存，所以相机保持关闭。"),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage("滤镜功能尚未就绪"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR 滤镜"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "直播需要一台 Kyron 目前还没有运行的媒体服务器。现在开始直播会把你放进一个没人能加入的房间。录制语音帖子现在已经可用。"),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage("直播功能尚未就绪"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("开始直播"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "投票需要一个地方来保存选项和统计票数。这部分还没有完成，所以现在发布的投票会丢失所有回答。"),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage("投票功能尚未就绪"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("投票"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage("改为发布文字帖子"),
+      "ui_status_check_again": MessageLookupByLibrary.simpleMessage("再次检查"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("详情"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("镜像表"),
+      "ui_status_not_right":
+          MessageLookupByLibrary.simpleMessage("Kyron 有响应，但有些地方不对劲。"),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("往返时间"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("提问"),
+      "ui_support_ask_detail":
+          MessageLookupByLibrary.simpleMessage("关于你的账号，或某个功能如何使用"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("通过邮件"),
+      "ui_support_crash_detail":
+          MessageLookupByLibrary.simpleMessage("如果 Kyron 崩溃了：会一并发送应用日志"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("在应用内"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "在这里给 Kyron 团队写信。它会私下送达我们，并附带你的账号，我们会回复到账号上的邮箱地址。"),
+      "ui_support_no_mail":
+          MessageLookupByLibrary.simpleMessage("没有打开任何邮件应用。已复制 {address}。"),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage("隐私与你的数据"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("报告问题"),
+      "ui_support_report_detail":
+          MessageLookupByLibrary.simpleMessage("有东西坏了或者不像应该的那样工作"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "要举报帖子或账号，请使用其上的菜单：这样我们就能确切知道你指的是哪一个。"),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage("安全与滥用"),
+      "ui_support_status_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron 是对所有人都宕机了，还是只有你"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("大"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("更大"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("中"),
+      "ui_text_size_preview":
+          MessageLookupByLibrary.simpleMessage("Kyron 是一个说值得一读的话的地方。"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("小"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("始终深色"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("暗淡"),
+      "ui_theme_dim_detail":
+          MessageLookupByLibrary.simpleMessage("更柔和的深色，蓝灰色而不是黑色"),
+      "ui_theme_light_detail": MessageLookupByLibrary.simpleMessage("始终浅色"),
+      "ui_theme_system_detail":
+          MessageLookupByLibrary.simpleMessage("跟随手机自身的浅色或深色设置"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("取消屏蔽"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("取消静音"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("你是谁"),
+      "ui_verify_about_help":
+          MessageLookupByLibrary.simpleMessage("用你自己的话说说审核人员应该知道什么。"),
+      "ui_verify_about_hint":
+          MessageLookupByLibrary.simpleMessage("我在这里和我自己的网站上写关于鸟类的文章。"),
+      "ui_verify_add_link": MessageLookupByLibrary.simpleMessage("添加另一个链接"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("你可以从 {date} 起再次申请。"),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("申请认证"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("申请之前"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("创作者"),
+      "ui_verify_cat_journalist": MessageLookupByLibrary.simpleMessage("记者"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage("组织或品牌"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("其他"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("公众人物"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("第 {number} 号申请未获批准"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("你已通过认证"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("编辑你的个人资料"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("输入 6 位验证码"),
+      "ui_verify_email_resend_in":
+          MessageLookupByLibrary.simpleMessage("{seconds} 秒后可重新发送验证码"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("我们已发送到 {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("验证"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage("在 Kyron 上获得认证"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("获得"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("认证"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("在 Kyron 上。"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "认证徽章表示 Kyron 团队的某位成员核实过这个账号就是它声称的那个人。它不会带来额外的曝光，也不出售。"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "只要你的名字不变，徽章就会保留。更改名字后，徽章会被取消，直到有人核实新名字。"),
+      "ui_verify_link_first": MessageLookupByLibrary.simpleMessage("我们可以核实的地方"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("另一个链接"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "一个表明这个 Kyron 账号属于你的网站或其他个人资料：在上面放上你的 Kyron 名字，或你个人资料的链接。Kyron 从不要求提供身份证件。"),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("无法加载你的认证状态"),
+      "ui_verify_need_ticks":
+          MessageLookupByLibrary.simpleMessage("上面每一项都需要打勾后才能申请。"),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("账号注册至少 {days} 天"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage("一段说明你是谁的简介"),
+      "ui_verify_req_name": MessageLookupByLibrary.simpleMessage("个人资料上有你的名字"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("一张头像"),
+      "ui_verify_req_standing":
+          MessageLookupByLibrary.simpleMessage("最近 {days} 天内没有任何违规记录"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage("已发送。会有人工查看。"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("自 {date} 起。"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("申请"),
+      "ui_verify_step_ask_detail":
+          MessageLookupByLibrary.simpleMessage("你是谁，以及一个\n能证明的链接"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("认证徽章"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("显示在你的名字旁，\n无处不在"),
+      "ui_verify_step_check": MessageLookupByLibrary.simpleMessage("由人工\n审核"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("团队成员\n查看你的链接"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("认证"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("第 {number} 号申请正在由人工处理"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} 已发送，类别为{category}。有结果时你会收到通知。"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("撤回申请"),
+      "ui_verify_withdrawn": MessageLookupByLibrary.simpleMessage("申请已撤回。"),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("无法完成录音：{error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("最长十分钟。"),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("正在聆听…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron 需要麦克风权限才能录音。你可以在设备设置中授予权限。"),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("无法开始录音：{error}"),
     };
 
 final messageLookup = MessageLookup();

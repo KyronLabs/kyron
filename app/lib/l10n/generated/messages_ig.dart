@@ -2007,6 +2007,292 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Ibe a chọrọ imeghe ngwa ọzọ"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Ọ na-arịọ imeghe njikọ {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Mwube"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Foto na faịlụ {size} dị na nchekwa nwa oge"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("E wepụrụ {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Na-atụ…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị ihe a ga-ehichapụ"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Nchekwa"),
+      "ui_about_version": MessageLookupByLibrary.simpleMessage("Ụdị {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Ndị e gbochiri"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Ị na-ebipụta n'aha gị"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ihe ndị a jikọtara anyụbanyeghị. Pịa otu ka ị nwaa ọzọ, ma ọ bụ wepụ ya."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ịgbanwe email gị. Biko nwaa ọzọ."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adreesị gị ga-agbanwe ozugbo ị meghere njikọ anyị zitere."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Lelee {email} maka njikọ nkwenye."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Tinye adreesị email."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Nke ahụ adịghị ka adreesị email."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Nke ahụ abụrụlarị adreesị email gị."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ihe i mere, ihe ị tụrụ anya ya, na ihe mere kama."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Kwe ka m pịnye otu post na profaịlụ m"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ihe ị chọrọ, na ihe ọ ga-eme ka i nwee ike ime."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ihe ga-enyere aka"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Nsogbu"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Echiche"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Ajụjụ"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụ naanị ndị otu Kyron na-agụ nke a. A na-eziga ya na akaụntụ gị ka anyị nwee ike ịza site na email, yana ụdị ngwa ị na-eji. Ihichapụ akaụntụ gị na-ehichapụkwa ya."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Kedu ka m ga-esi mechie okwu?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ihe ị na-achọ ime, na ebe i rapaara."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ajụjụ gị"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike iru Kyron. Lelee njikọ gị ma nwaa ọzọ. E deghị ihe ọ bụla ka, ya mere ọ dịghị ihe furu efu."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Hichapụ"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Arịrịọ ndị dara ada na ihe ndị ọzọ dị mkpa na-egosi ebe a."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Ndị e mechiri ọnụ"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Tinye okwu ma ọ bụ mkpado n'elu. Post ndị nwere ya agaghị apụta na nri gị."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Post ndị nwere nke ọ bụla n'ime ndị a anaghị apụta na nri gị. Mkpụrụedemede ukwu na nta adịghị mkpa, okwu na-adakọkwa n'ime okwu ndị toro ogologo, ya mere “spoiler” na-ejidekwa “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị onye e gbochiri"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Igbochi na-ezo unu n'ebe ibe unu nọ, n'akụkụ abụọ. Gbochie mmadụ site na menu na profaịlụ ya."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ọ dịghị onye e mechiri ọnụ"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Imechi akaụntụ ọnụ na-ezo post ya n'agwaghị ya. Mechie mmadụ ọnụ site na menu na profaịlụ ya ma ọ bụ post."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Okwuntughe"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Ha adabaghị."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Ị ga-anọgide na-abanye na ngwaọrụ a. A ga-apụpụ na ngwaọrụ ndị ọzọ."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Jiri opekata mpe mkpụrụedemede 8."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike imelite okwuntughe gị. Biko nwaa ọzọ."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Emelitere okwuntughe."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("E depụtaghachiri DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "A na-edebe post ndị masịrị gị ebe a, naanị maka gị."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Ị bipụtabeghị foto ma ọ bụ vidiyo ọ bụla."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ebipụtabeghị foto ma ọ bụ vidiyo ọ bụla."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Ihe niile ị bipụtara ga-apụta ebe a."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ebipụtabeghị ihe ọ bụla."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ibunye profaịlụ gị"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibunye @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Opekata mpe mkpụrụedemede 8"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Mkpụrụedemede nta (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Opekata mpe otu nọmba"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Akara (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Mkpụrụedemede ukwu (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Ndenye {count} nso nso a. Lelee ha na Banyere › Ndekọ sistemụ tupu iziga."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụ naanị ndị otu Kyron na-agụ nke a. A na-eziga ya na akaụntụ gị ka anyị nwee ike ịgbaso. Gụọ ndekọ ahụ mbụ na Banyere › Ndekọ sistemụ ma ọ bụrụ na ịchọrọ ịhụ kpọmkwem ihe na-eso ya."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("Ezigala, daalụ."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Ezigala, daalụ. Ọ bụ akụkọ #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Gịnị mehiere?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ụdị, iwu, ọnọdụ na ndekọ sistemụ"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Kwụsị vidiyo ịkpọ onwe ha mgbe ị na-apịgharị"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Njirimara gị nke na-adabereghị n'otu ebe"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("Nlekọta"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Akụkọ na mkpesa na-echere nyocha"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Debe post ndị nwere ndị a pụọ na nri gị"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Abanyeghị"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Mmasị ọkwa"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Nzuzo & Nchekwa"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Mkpebi gbasara akaụntụ gị, na mkpesa"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Hazie nha ederede"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Akaụntụ gị"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "A ka na-ewu ndekọ na mbipụta lens AR. Ọ dịghị ihe ị ga-ese a ga-echekwa ugbu a, ya mere igwefoto ahụ ka mechiri emechi."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lens adịbeghị njikere"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lens AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Ịga ndụ chọrọ sava mgbasa ozi Kyron na-agbabeghị. Ịmalite mgbasa ugbu a ga-etinye gị n'ime ụlọ onye ọ bụla na-enweghị ike ịbanye. Ndekọ post olu na-arụ ọrụ taa."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Ịga ndụ adịbeghị njikere"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Gaa ndụ"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Ntuli aka chọrọ ebe a ga-edebe nhọrọ ma gụọ votu. Nke ahụ adịbeghị, ya mere ntuli aka e bipụtara taa ga-atụfu azịza ọ bụla."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Ntuli aka adịbeghị njikere"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Ntuli aka"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Dee post ederede kama"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Lelee ọzọ"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Nkọwa"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Tebụl enyo"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron zara, mana ihe adịghị mma."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Njem gaa na nlọghachi"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Jụọ ajụjụ"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Gbasara akaụntụ gị, ma ọ bụ otu ihe si arụ ọrụ"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Site na email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ bụrụ na Kyron dara: na-eziga ndekọ ngwa ahụ"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("N'ime ngwa"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Dee ndị otu Kyron site ebe a. Ọ na-eru anyị na nzuzo, ya na akaụntụ gị, anyị na-azakwa na adreesị email dị na ya."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị ngwa email meghere. E depụtaghachiri {address}."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Nzuzo na data gị"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("Kọọ nsogbu"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Ihe mebiri emebi ma ọ bụ anaghị eme ihe o kwesịrị"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Iji kọọ post ma ọ bụ akaụntụ, jiri menu ya: nke ahụ na-agwa anyị kpọmkwem nke ị na-ekwu."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Nchekwa na mmegbu"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Ma Kyron adaala maka mmadụ niile, ma ọ bụ naanị gị"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Nnukwu"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Ka ukwuu"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Ọkara"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron bụ ebe ị ga-ekwu ihe kwesịrị ịgụ."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Obere"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Ọchịchịrị mgbe niile"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Mgbachi"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọchịchịrị dị nro, acha anụnụ-ntụ kama oji"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Ìhè mgbe niile"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Soro ntọala ìhè ma ọ bụ ọchịchịrị nke ekwentị"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Wepụ mgbochi"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Mepee ọnụ"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Onye ị bụ"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "N'okwu nke gị, ihe onye nyocha kwesịrị ịma."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ana m ede banyere nnụnụ ebe a na na saịtị m."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Tinye njikọ ọzọ"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Ị nwere ike ịrịọ ọzọ site na {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Rịọ nkwenye"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Tupu ị rịọ"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Onye okike"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Onye nta akụkọ"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Nzukọ ma ọ bụ akara"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Ihe ọzọ"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Onye ama ama"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("Anabataghị arịrịọ {number}"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Ekwenyela gị"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Dezie profaịlụ gị"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Tinye koodu ọnụọgụ 6"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Zigharịa koodu n'ime sekọnd {seconds}"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Anyị zigara ya na {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Kwado"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Nweta nkwenye na Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Nweta"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("nkwenye"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("na Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Baajị na-egosi na onye nọ n'otu Kyron lechara na akaụntụ a bụ onye ọ na-ekwu na ọ bụ. Ọ naghị enye mgbasa ọzọ, a naghịkwa ere ya."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Baajị na-anọ ma aha gị ka dị. Gbanwee aha gị, a ga-ewepụ ya ruo mgbe mmadụ lelere nke ọhụrụ."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Ebe anyị nwere ike ilele"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("Njikọ ọzọ"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Saịtị ma ọ bụ profaịlụ ọzọ na-ekwu na akaụntụ Kyron a bụ nke gị: tinye aha Kyron gị, ma ọ bụ njikọ na profaịlụ gị, na ya. Kyron anaghị arịọ akwụkwọ njirimara."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Enweghị ike ibunye ọnọdụ gị"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Ihe niile dị n'elu ga-enwerịrị akara tupu ị nwee ike ịrịọ."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Akaụntụ dịruru ụbọchị {days}"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Bio na-ekwu onye ị bụ"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Aha gị na profaịlụ"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Foto profaịlụ"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ọ dịghị ihe dị na ndekọ gị n'ime ụbọchị {days} gara aga"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Ezigala. Mmadụ ga-elele ya."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Kemgbe {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Rịọ"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Onye ị bụ, na njikọ\nna-egosi ya"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Baajị"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "N'akụkụ aha gị,\nebe ọ bụla ọ pụtara"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Mmadụ\nna-elele"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("Onye otu\nna-emepe njikọ gị"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Nkwenye"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Arịrịọ {number} nọ n'aka mmadụ"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "E zigara ya {date}, dị ka {category}. Ị ga-enweta ọkwa mgbe e kpebiri."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("Wepụ arịrịọ"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("E wepụrụ arịrịọ."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike imecha ndekọ: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("Ruo nkeji iri."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Na-ege ntị…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron chọrọ ikike iji maikrofon dekọọ. Ị nwere ike inye ya na ntọala ngwaọrụ gị."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ịmalite ndekọ: {error}"),
     };
 
 final messageLookup = MessageLookup();

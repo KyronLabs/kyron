@@ -2079,6 +2079,299 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Այս էջը ցանկանում է բացել այլ հավելված"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Այն խնդրում է բացել {scheme} հղում։"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Կառուցում"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("Քեշում {size} պատկեր և ֆայլ"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("Ազատվեց {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Չափվում է…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Մաքրելու բան չկա"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Պահոց"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Տարբերակ {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Արգելափակվածներ"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Հրապարակում եք ձեր անունով"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Այս կցորդները չվերբեռնվեցին։ Հպեք մեկին՝ նորից փորձելու համար, կամ հեռացրեք այն։"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց փոխել էլ. փոստը։ Նորից փորձեք։"),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հասցեն կփոխվի, երբ բացեք մեր ուղարկած հղումը։"),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Հաստատման հղումը փնտրեք {email}-ում։"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Մուտքագրեք էլ. փոստի հասցե։"),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("Սա էլ. փոստի հասցեի նման չէ։"),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Սա արդեն ձեր էլ. փոստի հասցեն է։"),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ինչ արեցիք, ինչ էիք ակնկալում և ինչ եղավ փոխարենը։"),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Թույլ տվեք գրառում ամրացնել պրոֆիլում"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ինչ կցանկանայիք, և ինչ դա թույլ կտար ձեզ անել։"),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ինչը կօգներ"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Խնդիր"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Գաղափար"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("Հարց"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Սա կարդում է միայն Kyron-ի թիմը։ Այն ուղարկվում է ձեր հաշվի հետ, որպեսզի կարողանանք պատասխանել էլ. փոստով, և ձեր հավելվածի տարբերակի հետ։ Հաշիվը ջնջելիս սա նույնպես ջնջվում է։"),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Ինչպե՞ս լռեցնել բառը։"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ինչ եք փորձում անել, և որտեղ եք խրվել։"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ձեր հարցը"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց կապվել Kyron-ի հետ։ Ստուգեք կապը և նորից փորձեք։ Դեռ ոչինչ գրված չէ, ուստի ոչինչ չի կորել։"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Մաքրել"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձախողված հարցումները և այլ նշանակալի իրադարձությունները ցուցադրվում են այստեղ։"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Լռեցվածներ"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Վերևում ավելացրեք բառ կամ պիտակ։ Այն պարունակող գրառումները չեն հայտնվի ձեր լրահոսում։"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Սրանցից որևէ մեկը պարունակող գրառումները չեն հայտնվում ձեր լրահոսում։ Մեծատառ-փոքրատառը նշանակություն չունի, և բառը համընկնում է նաև ավելի երկար բառերի ներսում, այնպես որ «spoiler»-ը բռնում է նաև «spoilers»-ը։"),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ոչ ոք արգելափակված չէ"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Արգելափակումը ձեզ թաքցնում է միմյանցից երկու ուղղությամբ։ Արգելափակեք որևէ մեկին նրա պրոֆիլի ընտրացանկից։"),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ոչ ոք լռեցված չէ"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Հաշիվը լռեցնելը թաքցնում է նրա գրառումները՝ առանց նրան տեղեկացնելու։ Լռեցրեք որևէ մեկին պրոֆիլի կամ գրառման ընտրացանկից։"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Գաղտնաբառ"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Չեն համընկնում։"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Այս սարքում մուտք գործած կմնաք։ Մյուս սարքերից դուրս կգաք։"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Օգտագործեք առնվազն 8 նիշ։"),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց թարմացնել գաղտնաբառը։ Նորից փորձեք։"),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Գաղտնաբառը թարմացվեց։"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID-ը պատճենվեց"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հավանած գրառումները պահվում են այստեղ՝ միայն ձեզ համար։"),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Դեռ ոչ մի լուսանկար կամ տեսահոլովակ չեք հրապարակել։"),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name}-ը դեռ ոչ մի լուսանկար կամ տեսահոլովակ չի հրապարակել։"),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հրապարակած ամեն ինչ հայտնվում է այստեղ։"),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name}-ը դեռ ոչինչ չի հրապարակել։"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Չհաջողվեց բեռնել ձեր պրոֆիլը"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Չհաջողվեց բեռնել @{handle}-ը"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Առնվազն 8 նիշ"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Փոքրատառ (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Առնվազն մեկ թիվ"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Նշան (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("Մեծատառ (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} վերջին գրառում։ Ուղարկելուց առաջ դիտեք դրանք Մասին › Համակարգի մատյան բաժնում։"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Սա կարդում է միայն Kyron-ի թիմը։ Այն ուղարկվում է ձեր հաշվի հետ, որպեսզի կարողանանք կապ հաստատել։ Եթե ուզում եք տեսնել, թե ճշգրտորեն ինչ է գնում դրա հետ, նախ կարդացեք մատյանը Մասին › Համակարգի մատյան բաժնում։"),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Ուղարկվեց, շնորհակալություն։"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Ուղարկվեց, շնորհակալություն։ Սա #{number} հաշվետվությունն է։"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Ի՞նչ սխալ գնաց։"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Տարբերակ, կանոններ, կարգավիճակ և համակարգի մատյան"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Թույլ մի տվեք, որ տեսանյութերն ինքնաբերաբար միանան ոլորելիս"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Ձեր ապակենտրոնացված նույնացուցիչը"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Մոդերացիա"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Ստուգման սպասող բողոքներ և վերաքննիչ դիմումներ"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Սրանք պարունակող գրառումները հեռու պահել լրահոսից"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Մուտք գործած չէ"),
+      "ui_settings_notifications_help": MessageLookupByLibrary.simpleMessage(
+          "Ծանուցումների նախընտրություններ"),
+      "ui_settings_privacy_safety": MessageLookupByLibrary.simpleMessage(
+          "Գաղտնիություն և անվտանգություն"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաշվի վերաբերյալ որոշումներ և բողոքներ"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Կարգավորել տեքստի չափը"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Ձեր հաշիվը"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR ոսպնյակների ձայնագրումն ու հրապարակումը դեռ մշակման մեջ են։ Ձեր նկարածը դեռ չի պահվի, ուստի տեսախցիկը փակ է մնում։"),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Ոսպնյակները դեռ պատրաստ չեն"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR ոսպնյակ"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Ուղիղ եթերի համար անհրաժեշտ է մեդիա սերվեր, որը Kyron-ը դեռ չի գործարկում։ Եթե հիմա սկսեք հեռարձակումը, կհայտնվեք մի սենյակում, որին ոչ ոք չի կարող միանալ։ Ձայնային գրառման ձայնագրումն արդեն աշխատում է։"),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Ուղիղ եթերը դեռ պատրաստ չէ"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Ուղիղ եթեր"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Հարցումներին անհրաժեշտ է տեղ՝ տարբերակները պահելու և ձայները հաշվելու համար։ Այն դեռ չկա, ուստի այսօր հրապարակված հարցումը կկորցնի բոլոր պատասխանները։"),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Հարցումները դեռ պատրաստ չեն"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Հարցում"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Փոխարենը գրեք տեքստային գրառում"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Նորից ստուգել"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Մանրամասն"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Հայելային աղյուսակներ"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ը պատասխանեց, բայց ինչ-որ բան այն չէ։"),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Պատասխանի ժամանակ"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Հարց տալ"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր հաշվի մասին, կամ ինչպես է ինչ-որ բան աշխատում"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Էլ. փոստով"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Եթե Kyron-ը խափանվել է՝ ուղարկում է նաև հավելվածի մատյանը"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Հավելվածում"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Գրեք Kyron-ի թիմին այստեղից։ Այն մեզ է հասնում գաղտնի՝ ձեր հաշվի հետ, և մենք պատասխանում ենք դրա էլ. փոստի հասցեին։"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ոչ մի փոստային հավելված չբացվեց։ {address}-ը պատճենվեց։"),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Գաղտնիություն և ձեր տվյալները"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Հաղորդել խնդրի մասին"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Ինչ-որ բան կոտրված է կամ չի անում այն, ինչ պետք է"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Գրառման կամ հաշվի մասին բողոքելու համար օգտագործեք դրա ընտրացանկը․ այդպես մենք ճշգրիտ գիտենք, թե որն նկատի ունեք։"),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Անվտանգություն և չարաշահում"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ը բոլորի համար է չաշխատում, թե միայն ձեզ համար"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Մեծ"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Ավելի մեծ"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Միջին"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ը կարդալու արժանի բան ասելու վայր է։"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Փոքր"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("Միշտ մուգ"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Մարմրուն"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Ավելի մեղմ մուգ՝ սևի փոխարեն կապտամոխրագույն"),
+      "ui_theme_light_detail": MessageLookupByLibrary.simpleMessage("Միշտ բաց"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Հետևել հեռախոսի բաց կամ մուգ կարգավորմանը"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Ապաարգելափակել"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Ապալռեցնել"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ով եք դուք"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ձեր բառերով՝ ինչ պետք է իմանա ստուգողը։"),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ես թռչունների մասին գրում եմ այստեղ և իմ կայքում։"),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Ավելացնել ևս մեկ հղում"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Կարող եք նորից խնդրել {date}-ից։"),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Խնդրել հաստատում"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Խնդրելուց առաջ"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Ստեղծագործող"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Լրագրող"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage(
+          "Կազմակերպություն կամ ապրանքանիշ"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Այլ բան"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Հանրային դեմք"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("{number} հայտը չհաստատվեց"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Դուք հաստատված եք"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Խմբագրել պրոֆիլը"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Մուտքագրեք 6-նիշանոց կոդը"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Կոդը նորից ուղարկել {seconds} վայրկյանից"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Մենք այն ուղարկեցինք {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Հաստատել"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Ստացեք հաստատում Kyron-ում"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Ստացեք"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("հաստատում"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron-ում։"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Կրծքանշանը նշանակում է, որ Kyron-ի թիմից ինչ-որ մեկը ստուգել է, որ այս հաշիվը նա է, ով պնդում է, թե ինքն է։ Այն լրացուցիչ հասանելիություն չի տալիս և վաճառքի չէ։"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Կրծքանշանը մնում է, քանի դեռ ձեր անունը մնում է։ Անունը փոխելու դեպքում այն հանվում է, մինչև ինչ-որ մեկը ստուգի նորը։"),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Որտեղ կարող ենք ստուգել"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Մեկ այլ հղում"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Կայք կամ այլ պրոֆիլ, որտեղ ասվում է, որ այս Kyron հաշիվը ձերն է․ տեղադրեք այնտեղ ձեր Kyron անունը կամ ձեր պրոֆիլի հղումը։ Kyron-ը երբեք անձը հաստատող փաստաթղթեր չի պահանջում։"),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց բեռնել ձեր կարգավիճակը"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Խնդրելուց առաջ վերևի ամեն ինչ պետք է նշված լինի։"),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Առնվազն {days} օրվա հաշիվ"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Կենսագրություն, որ ասում է, թե ով եք"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Ձեր անունը պրոֆիլում"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Պրոֆիլի լուսանկար"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ոչինչ ձեր գրանցամատյանում վերջին {days} օրվա ընթացքում"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Ուղարկվեց։ Մարդ կնայի այն։"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date}-ից։"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Խնդրել"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ով եք դուք, և հղում,\nորն ապացուցում է"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("Կրծքանշանը"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Ձեր անվան կողքին,\nամենուր, որտեղ երևում է"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Մարդ է\nստուգում"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Թիմից մեկը\nբացում է ձեր հղումները"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Հաստատում"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("{number} հայտը մարդու մոտ է"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Ուղարկվել է {date}՝ որպես {category}։ Որոշում կայացնելիս ծանուցում կստանաք։"),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Հետ վերցնել հայտը"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Հայտը հետ վերցվեց։"),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց ավարտել ձայնագրումը՝ {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Մինչև տասը րոպե։"),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Լսում է…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Ձայնագրելու համար Kyron-ին անհրաժեշտ է խոսափողի թույլտվություն։ Կարող եք այն տալ սարքի կարգավորումներում։"),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց սկսել ձայնագրումը՝ {error}"),
     };
 
 final messageLookup = MessageLookup();

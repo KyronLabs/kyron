@@ -2026,6 +2026,301 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ទំព័រនេះចង់បើកកម្មវិធីផ្សេង"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "វាកំពុងស្នើសុំបើកតំណ {scheme}។"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("កំណែបង្កើត"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "រូបភាព និងឯកសារក្នុងឃ្លាំងសម្ងាត់ {size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("បានសម្អាត {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("កំពុងវាស់…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("គ្មានអ្វីត្រូវសម្អាតទេ"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("ទំហំផ្ទុក"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("កំណែ {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("បានទប់ស្កាត់"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("កំពុងបង្ហោះក្នុងនាមអ្នក"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ឯកសារភ្ជាប់ទាំងនេះមិនបានផ្ទុកឡើងទេ។ ចុចមួយដើម្បីសាកម្ដងទៀត ឬដកវាចេញ។"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចប្ដូរអ៊ីមែលរបស់អ្នកបានទេ។ សូមសាកម្ដងទៀត។"),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "អាសយដ្ឋានរបស់អ្នកនឹងប្ដូរ ពេលអ្នកបើកតំណដែលយើងផ្ញើ។"),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "សូមពិនិត្យ {email} ដើម្បីរកតំណបញ្ជាក់។"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("បញ្ចូលអាសយដ្ឋានអ៊ីមែល។"),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("វាមិនដូចអាសយដ្ឋានអ៊ីមែលទេ។"),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "នេះជាអាសយដ្ឋានអ៊ីមែលរបស់អ្នករួចហើយ។"),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "អ្វីដែលអ្នកបានធ្វើ អ្វីដែលអ្នករំពឹង និងអ្វីដែលបានកើតឡើងជំនួសវិញ។"),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "ឲ្យខ្ញុំខ្ទាស់ការបង្ហោះមួយលើប្រូហ្វាល់"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "អ្វីដែលអ្នកចង់បាន និងអ្វីដែលវាអាចឲ្យអ្នកធ្វើបាន។"),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("អ្វីដែលនឹងជួយ"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("បញ្ហា"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("គំនិត"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("សំណួរ"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "មានតែក្រុម Kyron ទេដែលអានវា។ វាត្រូវបានផ្ញើជាមួយគណនីរបស់អ្នក ដើម្បីឲ្យយើងឆ្លើយតបតាមអ៊ីមែលបាន និងជាមួយកំណែកម្មវិធីដែលអ្នកប្រើ។ ការលុបគណនីក៏លុបវាដែរ។"),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "តើត្រូវបិទសំឡេងពាក្យដោយរបៀបណា?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "អ្វីដែលអ្នកកំពុងព្យាយាមធ្វើ និងកន្លែងដែលអ្នកជាប់គាំង។"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("សំណួររបស់អ្នក"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចភ្ជាប់ទៅ Kyron បានទេ។ សូមពិនិត្យការតភ្ជាប់ ហើយសាកម្ដងទៀត។ មិនទាន់មានអ្វីត្រូវបានសរសេរទេ ដូច្នេះគ្មានអ្វីបាត់ទេ។"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("សម្អាត"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "សំណើដែលបរាជ័យ និងព្រឹត្តិការណ៍សំខាន់ៗផ្សេងទៀតបង្ហាញនៅទីនេះ។"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("បានបិទសំឡេង"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "បន្ថែមពាក្យ ឬស្លាកនៅខាងលើ។ ការបង្ហោះដែលមានវានឹងមិនចូលក្នុងព័ត៌មានរបស់អ្នកទេ។"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះដែលមានពាក្យណាមួយក្នុងចំណោមនេះ មិនចូលក្នុងព័ត៌មានរបស់អ្នកទេ។ អក្សរធំតូចមិនសំខាន់ ហើយពាក្យក៏ត្រូវគ្នានៅក្នុងពាក្យវែងជាងដែរ ដូច្នេះ “spoiler” ក៏ចាប់ “spoilers” ដែរ។"),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("គ្មាននរណាត្រូវបានទប់ស្កាត់ទេ"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "ការទប់ស្កាត់លាក់អ្នកទាំងពីរពីគ្នាទៅវិញទៅមក ទាំងសងខាង។ ទប់ស្កាត់នរណាម្នាក់ពីម៉ឺនុយលើប្រូហ្វាល់របស់គេ។"),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("គ្មាននរណាត្រូវបានបិទសំឡេងទេ"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "ការបិទសំឡេងគណនីលាក់ការបង្ហោះរបស់គេដោយមិនប្រាប់គេ។ បិទសំឡេងនរណាម្នាក់ពីម៉ឺនុយលើប្រូហ្វាល់ ឬការបង្ហោះ។"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("ពាក្យសម្ងាត់"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("មិនត្រូវគ្នាទេ។"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "អ្នកនៅតែចូលគណនីលើឧបករណ៍នេះ។ ឧបករណ៍ផ្សេងទៀតនឹងត្រូវចេញ។"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("ប្រើយ៉ាងហោចណាស់ 8 តួ។"),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចធ្វើបច្ចុប្បន្នភាពពាក្យសម្ងាត់បានទេ។ សូមសាកម្ដងទៀត។"),
+      "ui_password_updated": MessageLookupByLibrary.simpleMessage(
+          "ពាក្យសម្ងាត់ត្រូវបានធ្វើបច្ចុប្បន្នភាព។"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("បានចម្លង DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "ការបង្ហោះដែលអ្នកចូលចិត្តត្រូវបានរក្សាទុកនៅទីនេះ សម្រាប់តែអ្នក។"),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "អ្នកមិនទាន់បង្ហោះរូបថត ឬឃ្លីបណាមួយទេ។"),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} មិនទាន់បង្ហោះរូបថត ឬឃ្លីបណាមួយទេ។"),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "អ្វីៗដែលអ្នកបង្ហោះនឹងបង្ហាញនៅទីនេះ។"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} មិនទាន់បង្ហោះអ្វីទេ។"),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ទុកប្រូហ្វាល់របស់អ្នកបានទេ"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("មិនអាចផ្ទុក @{handle} បានទេ"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("យ៉ាងហោចណាស់ 8 តួ"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("អក្សរតូច (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("យ៉ាងហោចណាស់លេខមួយ"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("និមិត្តសញ្ញា (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("អក្សរធំ (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "ធាតុថ្មីៗ {count}។ សូមពិនិត្យវានៅ អំពី › កំណត់ហេតុប្រព័ន្ធ មុនពេលផ្ញើ។"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "មានតែក្រុម Kyron ទេដែលអានវា។ វាត្រូវបានផ្ញើជាមួយគណនីរបស់អ្នក ដើម្បីឲ្យយើងតាមដានបាន។ បើអ្នកចង់ឃើញច្បាស់ថាមានអ្វីទៅជាមួយ សូមអានកំណត់ហេតុជាមុននៅ អំពី › កំណត់ហេតុប្រព័ន្ធ។"),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("បានផ្ញើ សូមអរគុណ។"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ សូមអរគុណ។ នេះជារបាយការណ៍ #{number}។"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("មានអ្វីខុស?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "កំណែ គោលការណ៍ ស្ថានភាព និងកំណត់ហេតុប្រព័ន្ធ"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "កុំឲ្យវីដេអូចាក់ដោយខ្លួនឯងពេលរំកិល"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("អត្តសញ្ញាណវិមជ្ឈការរបស់អ្នក"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("ការសម្របសម្រួល"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "របាយការណ៍ និងបណ្ដឹងឧទ្ធរណ៍ដែលរង់ចាំពិនិត្យ"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "កុំឲ្យការបង្ហោះដែលមានទាំងនេះចូលព័ត៌មាន"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("មិនបានចូលគណនី"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("ចំណូលចិត្តការជូនដំណឹង"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("ឯកជនភាព និងសុវត្ថិភាព"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "ការសម្រេចចិត្តអំពីគណនីរបស់អ្នក និងបណ្ដឹងឧទ្ធរណ៍"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("កែទំហំអក្សរ"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("គណនីរបស់អ្នក"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "ការថត និងបោះពុម្ពកែវ AR នៅតែកំពុងសាងសង់។ អ្វីដែលអ្នកថតនឹងមិនទាន់ត្រូវរក្សាទុកទេ ដូច្នេះកាមេរ៉ានៅបិទ។"),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("កែវមិនទាន់រួចរាល់ទេ"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("កែវ AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "ការផ្សាយផ្ទាល់ត្រូវការម៉ាស៊ីនមេប្រព័ន្ធផ្សព្វផ្សាយ ដែល Kyron មិនទាន់ដំណើរការ។ ចាប់ផ្ដើមផ្សាយឥឡូវ នឹងដាក់អ្នកក្នុងបន្ទប់ដែលគ្មាននរណាអាចចូលរួមបាន។ ការថតការបង្ហោះជាសំឡេងដំណើរការថ្ងៃនេះហើយ។"),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "ការផ្សាយផ្ទាល់មិនទាន់រួចរាល់ទេ"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("ផ្សាយផ្ទាល់"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "ការស្ទង់មតិត្រូវការកន្លែងរក្សាជម្រើស និងរាប់សន្លឹកឆ្នោត។ វាមិនទាន់មានទេ ដូច្នេះការស្ទង់មតិដែលបង្ហោះថ្ងៃនេះនឹងបាត់ចម្លើយទាំងអស់។"),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("ការស្ទង់មតិមិនទាន់រួចរាល់ទេ"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("ការស្ទង់មតិ"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("សរសេរការបង្ហោះជាអក្សរជំនួសវិញ"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("ពិនិត្យម្ដងទៀត"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("ព័ត៌មានលម្អិត"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("តារាងកញ្ចក់"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron បានឆ្លើយ ប៉ុន្តែមានអ្វីមួយមិនប្រក្រតី។"),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("ពេលទៅមក"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("សួរសំណួរ"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "អំពីគណនីរបស់អ្នក ឬរបៀបដែលអ្វីមួយដំណើរការ"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("តាមអ៊ីមែល"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "បើ Kyron គាំង៖ ផ្ញើកំណត់ហេតុកម្មវិធីជាមួយ"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("ក្នុងកម្មវិធី"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "សរសេរទៅក្រុម Kyron ពីទីនេះ។ វាមកដល់យើងជាឯកជន ជាមួយគណនីរបស់អ្នក ហើយយើងឆ្លើយទៅអាសយដ្ឋានអ៊ីមែលលើវា។"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "គ្មានកម្មវិធីអ៊ីមែលណាបើកទេ។ បានចម្លង {address} ហើយ។"),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("ឯកជនភាព និងទិន្នន័យរបស់អ្នក"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("រាយការណ៍បញ្ហា"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "មានអ្វីខូច ឬមិនធ្វើអ្វីដែលគួរធ្វើ"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "ដើម្បីរាយការណ៍ការបង្ហោះ ឬគណនី សូមប្រើម៉ឺនុយរបស់វា៖ ដូច្នេះយើងដឹងច្បាស់ថាអ្នកសំដៅលើមួយណា។"),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("សុវត្ថិភាព និងការរំលោភបំពាន"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron គាំងសម្រាប់គ្រប់គ្នា ឬតែអ្នក"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("ធំ"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("ធំជាង"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("មធ្យម"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron ជាកន្លែងសម្រាប់និយាយអ្វីដែលគួរអាន។"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("តូច"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("ងងឹតជានិច្ច"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("ស្រអាប់"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "ងងឹតទន់ជាង ពណ៌ប្រផេះខៀវជំនួសពណ៌ខ្មៅ"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("ភ្លឺជានិច្ច"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "តាមការកំណត់ភ្លឺ ឬងងឹតរបស់ទូរសព្ទ"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("ឈប់ទប់ស្កាត់"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("បើកសំឡេងវិញ"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("អ្នកជានរណា"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "ក្នុងពាក្យរបស់អ្នក អ្វីដែលអ្នកពិនិត្យគួរដឹង។"),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "ខ្ញុំសរសេរអំពីសត្វស្លាបនៅទីនេះ និងលើគេហទំព័ររបស់ខ្ញុំ។"),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("បន្ថែមតំណមួយទៀត"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "អ្នកអាចស្នើម្ដងទៀតចាប់ពី {date}។"),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("ស្នើការផ្ទៀងផ្ទាត់"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("មុនពេលស្នើ"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("អ្នកបង្កើត"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("អ្នកសារព័ត៌មាន"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("អង្គការ ឬម៉ាក"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("អ្វីផ្សេង"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("ឥស្សរជន"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "សំណើ {number} មិនត្រូវបានអនុម័តទេ"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("អ្នកត្រូវបានផ្ទៀងផ្ទាត់"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("កែប្រូហ្វាល់"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("បញ្ចូលលេខកូដ 6 ខ្ទង់"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "ផ្ញើលេខកូដម្ដងទៀតក្នុង {seconds} វិនាទី"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("យើងបានផ្ញើវាទៅ {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("ផ្ទៀងផ្ទាត់"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("ទទួលការផ្ទៀងផ្ទាត់លើ Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("ទទួល"),
+      "ui_verify_hero_2":
+          MessageLookupByLibrary.simpleMessage("ការផ្ទៀងផ្ទាត់"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("លើ Kyron។"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ផ្លាកសញ្ញាបង្ហាញថា នរណាម្នាក់ក្នុងក្រុម Kyron បានពិនិត្យថា គណនីនេះពិតជាអ្នកដែលខ្លួនអះអាង។ វាមិនផ្ដល់ការទៅដល់បន្ថែមទេ ហើយមិនលក់ទេ។"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "ផ្លាកសញ្ញានៅដរាបណាឈ្មោះរបស់អ្នកនៅដដែល។ បើប្ដូរឈ្មោះ វានឹងត្រូវដកចេញ រហូតដល់មាននរណាពិនិត្យឈ្មោះថ្មី។"),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("កន្លែងដែលយើងអាចពិនិត្យ"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("តំណមួយទៀត"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "គេហទំព័រ ឬប្រូហ្វាល់ផ្សេងដែលនិយាយថាគណនី Kyron នេះជារបស់អ្នក៖ ដាក់ឈ្មោះ Kyron របស់អ្នក ឬតំណទៅប្រូហ្វាល់នៅទីនោះ។ Kyron មិនដែលសុំឯកសារអត្តសញ្ញាណទេ។"),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចផ្ទុកស្ថានភាពរបស់អ្នកបានទេ"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "អ្វីៗខាងលើត្រូវមានសញ្ញាធីក មុនពេលអ្នកអាចស្នើ។"),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "គណនីដែលមានអាយុយ៉ាងហោចណាស់ {days} ថ្ងៃ"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "ជីវប្រវត្តិដែលប្រាប់ថាអ្នកជានរណា"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("ឈ្មោះរបស់អ្នកលើប្រូហ្វាល់"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("រូបប្រូហ្វាល់"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "គ្មានអ្វីក្នុងកំណត់ត្រារបស់អ្នកក្នុងរយៈ {days} ថ្ងៃចុងក្រោយ"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ។ មនុស្សម្នាក់នឹងមើលវា។"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("ចាប់ពី {date}។"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("ស្នើ"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "អ្នកជានរណា និងតំណ\nដែលបញ្ជាក់វា"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("ផ្លាកសញ្ញា"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "ក្បែរឈ្មោះរបស់អ្នក\nគ្រប់កន្លែងដែលវាបង្ហាញ"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("មនុស្សម្នាក់\nពិនិត្យ"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "នរណាម្នាក់ក្នុងក្រុម\nបើកតំណរបស់អ្នក"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("ការផ្ទៀងផ្ទាត់"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "សំណើ {number} នៅជាមួយមនុស្សម្នាក់"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "បានផ្ញើ {date} ជា {category}។ អ្នកនឹងទទួលការជូនដំណឹង ពេលមានការសម្រេច។"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("ដកសំណើវិញ"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("បានដកសំណើវិញ។"),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចបញ្ចប់ការថតបានទេ៖ {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("រហូតដល់ដប់នាទី។"),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("កំពុងស្ដាប់…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron ត្រូវការការអនុញ្ញាតប្រើមីក្រូហ្វូនដើម្បីថត។ អ្នកអាចផ្ដល់វានៅក្នុងការកំណត់ឧបករណ៍។"),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចចាប់ផ្ដើមថតបានទេ៖ {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -27,7 +27,7 @@ class PasswordInputField extends StatefulWidget {
     super.key,
     this.controller,
     this.hint,
-    this.label = 'Password',
+    this.label,
     this.validator,
     this.onChanged,
     this.textInputAction,
@@ -59,7 +59,8 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         widget.isNew ? AutofillHints.newPassword : AutofillHints.password,
       ],
       decoration: InputDecoration(
-        labelText: widget.label,
+        labelText: widget.label ??
+            AppLocalizations.of(context).ui('ui_password', 'Password'),
         hintText: widget.hint,
         suffixIconConstraints: const BoxConstraints(minWidth: 40, minHeight: 0),
         suffixIcon: Padding(

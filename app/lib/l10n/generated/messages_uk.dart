@@ -2086,6 +2086,306 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ця сторінка хоче відкрити інший застосунок"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Вона просить відкрити посилання {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Збірка"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} зображень і файлів у кеші"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Звільнено {size}"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Вимірювання…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Нема чого очищати"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Сховище"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Версія {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Заблоковані"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Публікуєте від свого імені"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ці вкладення не завантажилися. Торкніться одного, щоб спробувати ще раз, або видаліть його."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося змінити пошту. Спробуйте ще раз."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Адреса зміниться, коли ви перейдете за посиланням, яке ми надішлемо."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Перевірте {email} — там посилання для підтвердження."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "Введіть адресу електронної пошти."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Це не схоже на адресу електронної пошти."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Це вже ваша адреса електронної пошти."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Що ви зробили, чого очікували і що сталося натомість."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Дайте закріпити допис у профілі"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Чого ви хочете і що це дасть вам зробити."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Що допомогло б"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Проблема"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Ідея"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Запитання"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Це читає лише команда Kyron. Повідомлення надсилається разом з обліковим записом, щоб ми могли відповісти поштою, і з версією застосунку, якою ви користуєтеся. Якщо видалити обліковий запис, воно теж видалиться."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Як приховати слово?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Що ви намагаєтеся зробити і де застрягли."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ваше запитання"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося зв'язатися з Kyron. Перевірте підключення і спробуйте ще раз. Поки нічого не написано, тож нічого не втрачено."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Очистити"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Тут з'являються невдалі запити й інші помітні події."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Приховані"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Додайте слово або тег вище. Дописи з ним не потраплятимуть у вашу стрічку."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Дописи з будь-яким із цих слів не потрапляють у вашу стрічку. Регістр не враховується, а слово знаходиться й усередині довших, тож «spoiler» спіймає й «spoilers»."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Нікого не заблоковано"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Блокування приховує вас одне від одного в обидва боки. Заблокувати можна в меню профілю."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Нікого не приховано"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Приховування облікового запису ховає його дописи, не повідомляючи про це. Приховати можна в меню профілю або допису."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Пароль"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Не збігаються."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "На цьому пристрої ви залишитеся в обліковому записі. На інших пристроях буде виконано вихід."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Використайте щонайменше 8 символів."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося оновити пароль. Спробуйте ще раз."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Пароль оновлено."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID скопійовано"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Дописи, що вам сподобалися, зберігаються тут, лише для вас."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Ви ще не публікували фото чи кліпів."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ще не публікував(ла) фото чи кліпів."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Усе, що ви публікуєте, з'являється тут."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ще нічого не опублікував(ла)."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити ваш профіль"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Щонайменше 8 символів"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Мала літера (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Хоча б одна цифра"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Символ (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Велика літера (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Останніх записів: {count}. Перегляньте їх у розділі «Про застосунок › Системний журнал» перед надсиланням."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Це читає лише команда Kyron. Повідомлення надсилається разом з обліковим записом, щоб ми могли відповісти. Спершу прочитайте журнал у розділі «Про застосунок › Системний журнал», якщо хочете побачити, що саме буде надіслано."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Надіслано, дякуємо."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Надіслано, дякуємо. Номер звіту — #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Що пішло не так?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Версія, правила, стан і системний журнал"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Не запускати відео автоматично під час прокручування"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Ваш децентралізований ідентифікатор"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Модерація"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Скарги й апеляції, що чекають на розгляд"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Не показувати у стрічці дописи з цими словами"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Вхід не виконано"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Налаштування сповіщень"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Конфіденційність і безпека"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Рішення щодо вашого облікового запису та апеляції"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Змінити розмір тексту"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Ваш обліковий запис"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Запис і публікація AR-масок ще в розробці. Нічого із знятого поки не збережеться, тож камера лишається закритою."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Маски ще не готові"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-маска"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Для ефіру потрібен медіасервер, якого в Kyron поки немає. Якщо почати трансляцію зараз, ви опинитеся в кімнаті, куди ніхто не зможе увійти. Записати голосовий допис можна вже сьогодні."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Ефіри ще не готові"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Почати ефір"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Опитуванням потрібне місце, де зберігати варіанти й рахувати голоси. Його поки немає, тож опитування, опубліковане сьогодні, втратить усі відповіді."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Опитування ще не готові"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Опитування"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Написати текстовий допис"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Перевірити знову"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Подробиці"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Дзеркальні таблиці"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron відповів, але щось не так."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Час відгуку"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Поставити запитання"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Про обліковий запис або про те, як щось працює"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Поштою"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Якщо Kyron аварійно закрився: надсилає журнал застосунку"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("У застосунку"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Напишіть команді Kyron звідси. Повідомлення надійде нам приватно, разом з вашим обліковим записом, а відповімо ми на його адресу пошти."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Поштовий застосунок не відкрився. {address} скопійовано."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Конфіденційність і ваші дані"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Повідомити про проблему"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Щось зламалося або працює не так, як має"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Щоб поскаржитися на допис чи обліковий запис, скористайтеся його меню: так ми точно знатимемо, про що йдеться."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Безпека та порушення"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Чи не працює Kyron для всіх, чи лише для вас"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Великий"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("Дуже великий"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Середній"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron — місце, де кажуть те, що варто прочитати."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Малий"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Завжди темна"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Приглушена"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "М'якша темна тема, синьо-сіра, а не чорна"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Завжди світла"),
+      "ui_theme_system_detail":
+          MessageLookupByLibrary.simpleMessage("Як у налаштуваннях телефона"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Розблокувати"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Показувати знову"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Хто ви"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Власними словами: що має знати перевіряльник."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Я пишу про птахів тут і на своєму сайті."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Додати ще посилання"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Подати запит знову можна з {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Подати запит на підтвердження"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Перед запитом"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Автор"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Журналіст"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Організація або бренд"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Інше"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Публічна особа"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("Запит {number} не схвалено"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Вас підтверджено"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Редагувати профіль"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Введіть 6-значний код"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Надіслати код повторно через {seconds} с"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Ми надіслали його на {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Підтвердити"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage(
+          "Пройдіть підтвердження в Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Пройдіть"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("підтвердження"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("в Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Значок означає, що хтось із команди Kyron перевірив, що цей обліковий запис — той, за кого себе видає. Він не дає додаткового охоплення і не продається."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Значок лишається, поки не змінюється ваше ім'я. Якщо змінити ім'я, значок зникне, доки хтось не перевірить нове."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Де ми можемо перевірити"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Ще посилання"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Сайт або інший профіль, де сказано, що цей обліковий запис Kyron ваш: укажіть там своє ім'я в Kyron або посилання на профіль. Kyron ніколи не просить документів."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завантажити ваш статус"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Щоб подати запит, усе вище має бути позначене."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Обліковому запису щонайменше {days} днів"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Опис, де сказано, хто ви"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Ваше ім'я в профілі"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Фото профілю"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Жодних порушень за останні {days} днів"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Надіслано. Запит перегляне людина."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("З {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Запит"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Хто ви, і посилання,\nщо це доводить"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Значок"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Поруч з вашим іменем,\nскрізь, де воно видно"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Перевіряє\nлюдина"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Хтось із команди\nпереходить за посиланнями"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Підтвердження"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Запит {number} у перевіряльника"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Надіслано {date}, категорія: {category}. Коли рішення буде ухвалено, прийде сповіщення."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Відкликати запит"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Запит відкликано."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося завершити запис: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("До десяти хвилин."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Слухаю…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron потрібен дозвіл на мікрофон для запису. Його можна надати в налаштуваннях пристрою."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося почати запис: {error}"),
     };
 
 final messageLookup = MessageLookup();

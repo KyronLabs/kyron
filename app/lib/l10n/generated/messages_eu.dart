@@ -2103,6 +2103,309 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Orri honek beste aplikazio bat ireki nahi du"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "{scheme} esteka bat irekitzeko eskatzen du."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Konpilazioa"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Cachean gordetako {size} irudi eta fitxategi"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} askatuta"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Neurtzen…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Ez dago ezer garbitzeko"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Biltegiratzea"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("{version} bertsioa"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blokeatuak"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Zure izenean argitaratzen"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Eranskin horiek ez dira kargatu. Sakatu bat berriro saiatzeko, edo kendu."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da helbide elektronikoa aldatu. Saiatu berriro."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Bidaltzen dizugun esteka irekitzean aldatuko da helbidea."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Begiratu {email} helbidean berrespen-esteka."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "Idatzi helbide elektroniko bat."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Hori ez dirudi helbide elektroniko bat."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Hori da dagoeneko zure helbide elektronikoa."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Zer egin zenuen, zer espero zenuen eta zer gertatu zen horren ordez."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Utzi argitalpen bat profilean ainguratzen"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Zer nahiko zenukeen, eta horrek zer egiteko aukera emango lizukeen."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Zerk lagunduko luke"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Arazo bat"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Ideia bat"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Galdera bat"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Kyron taldeak bakarrik irakurtzen du hau. Zure kontuarekin bidaltzen da, posta elektronikoz erantzun ahal izateko, eta erabiltzen duzun aplikazioaren bertsioarekin. Kontua ezabatzen baduzu, hau ere ezabatzen da."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Nola isilarazten dut hitz bat?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Zer egin nahi duzun eta non trabatu zaren."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Zure galdera"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da Kyron-ekin konektatu. Egiaztatu konexioa eta saiatu berriro. Oraindik ez da ezer idatzi, beraz ez da ezer galdu."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Garbitu"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Huts egindako eskaerak eta beste gertaera nabarmen batzuk hemen agertzen dira."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Isilaraziak"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Gehitu hitz edo etiketa bat goian. Hori duten argitalpenak ez dira zure jarioan agertuko."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Hauetako edozein duten argitalpenak ez dira zure jarioan agertzen. Maiuskulek eta minuskulek ez dute axola, eta hitz bat hitz luzeagoen barruan ere bat dator, beraz «spoiler»-ek «spoilers» ere harrapatzen du."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ez dago inor blokeatuta"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokeatzeak elkarrengandik ezkutatzen zaituzte, bi noranzkoetan. Blokeatu norbait bere profileko menutik."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ez dago inor isilarazita"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Kontu bat isilarazteak haren argitalpenak ezkutatzen ditu, jakinarazi gabe. Isilarazi norbait bere profileko edo argitalpen bateko menutik."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Pasahitza"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Ez datoz bat."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Gailu honetan saioa hasita jarraituko duzu. Beste gailuetan saioa amaituko da."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Erabili gutxienez 8 karaktere."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da pasahitza eguneratu. Saiatu berriro."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Pasahitza eguneratu da."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DIDa kopiatu da"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Gustuko dituzun argitalpenak hemen gordetzen dira, zuretzat bakarrik."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Oraindik ez duzu argazki edo kliprik argitaratu."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name}(e)k oraindik ez du argazki edo kliprik argitaratu."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Argitaratzen duzun guztia hemen agertzen da."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name}(e)k oraindik ez du ezer argitaratu."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da zure profila kargatu"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da @{handle} kargatu"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Gutxienez 8 karaktere"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Minuskula (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Gutxienez zenbaki bat"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Ikurra (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Maiuskula (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Azken {count} sarrera. Bidali aurretik, berrikusi Honi buruz › Sistemaren erregistroa atalean."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Kyron taldeak bakarrik irakurtzen du hau. Zure kontuarekin bidaltzen da, jarraipena egin ahal izateko. Irakurri lehenik erregistroa Honi buruz › Sistemaren erregistroa atalean, harekin zer doan zehazki ikusi nahi baduzu."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Bidalita, eskerrik asko."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Bidalita, eskerrik asko. {number}. txostena da."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Zer joan da gaizki?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Bertsioa, gidalerroak, egoera eta sistemaren erregistroa"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Ez erreproduzitu bideoak berez korritzean"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Zure identifikatzaile deszentralizatua"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderazioa"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Berrikusteko zain dauden salaketak eta helegiteak"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Mantendu jariotik kanpo hauek dituzten argitalpenak"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Saioa hasi gabe"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Jakinarazpenen hobespenak"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Pribatutasuna eta segurtasuna"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Zure kontuari buruzko erabakiak eta helegiteak"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Doitu testuaren tamaina"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Zure kontua"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR lenteak grabatzea eta argitaratzea eraikitzen ari da oraindik. Hartzen duzun ezer ez litzateke oraindik gordeko, beraz kamera itxita geratzen da."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Lenteak ez daude prest oraindik"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR lentea"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Zuzenean emateko, Kyron-ek oraindik martxan ez duen multimedia-zerbitzari bat behar da. Orain emanaldi bat hasiz gero, inor sartu ezin den gela batean egongo zinateke. Ahots-argitalpen bat grabatzeak gaur bertan funtzionatzen du."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Zuzenekoa ez dago prest oraindik"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Zuzenean eman"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Inkestek aukerak gordetzeko eta botoak zenbatzeko leku bat behar dute. Hori ez dago oraindik, beraz gaur argitaratutako inkesta batek erantzun guztiak galduko lituzke."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Inkestak ez daude prest oraindik"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Inkesta"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Idatzi testu-argitalpen bat horren ordez"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Egiaztatu berriro"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Xehetasuna"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Ispilu-taulak"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ek erantzun du, baina zerbait ez dago ondo."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Joan-etorria"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Egin galdera bat"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure kontuari buruz, edo zerbaitek nola funtzionatzen duen"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Posta elektronikoz"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ek huts egin badu: aplikazioaren erregistroa ere bidaltzen du"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Aplikazioan"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Idatzi Kyron taldeari hemendik. Modu pribatuan iristen zaigu, zure kontuarekin, eta bertako helbide elektronikora erantzuten dugu."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ez da posta-aplikaziorik ireki. {address} kopiatu da."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Pribatutasuna eta zure datuak"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Jakinarazi arazo bat"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Zerbait hautsita dago edo ez du egin beharrekoa egiten"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Argitalpen edo kontu bat salatzeko, erabili haren menua: horrela badakigu zehazki zein esan nahi duzun."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Segurtasuna eta gehiegikeria"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron denentzat dagoen eroria, ala zuretzat bakarrik"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Handia"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Handiagoa"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Ertaina"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron irakurtzea merezi duen zerbait esateko lekua da."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Txikia"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Beti iluna"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Ilundua"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Ilun leunagoa, gris urdinxka beltzaren ordez"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Beti argia"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Jarraitu telefonoaren ezarpen argi edo ilunari"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Desblokeatu"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Utzi isilarazteari"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Nor zaren"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Zure hitzekin, berrikusleak zer jakin beharko lukeen."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Hegaztiei buruz idazten dut hemen eta nire webgunean."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Gehitu beste esteka bat"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date}(e)tik aurrera eska dezakezu berriro."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Eskatu egiaztapena"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Eskatu aurretik"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Sortzailea"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Kazetaria"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Erakundea edo marka"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Beste zerbait"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Pertsona publikoa"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "{number}. eskaera ez da onartu"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Egiaztatuta zaude"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Editatu profila"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Idatzi 6 digituko kodea"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Bidali kodea berriro {seconds} segundo barru"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("{email} helbidera bidali dugu"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Egiaztatu"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Lortu egiaztapena Kyron-en"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Lortu"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("egiaztapena"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron-en."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Bereizgarriak esan nahi du Kyron taldeko norbaitek egiaztatu duela kontu hau dela esaten duena. Ez du irismen gehigarririk ematen, eta ez dago salgai."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Bereizgarria zure izena dagoen bitartean geratzen da. Izena aldatzen baduzu, kendu egiten da norbaitek berria egiaztatu arte."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Non egiazta dezakegun"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Beste esteka bat"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Kyron kontu hau zurea dela dioen webgune edo beste profil bat: jarri bertan zure Kyron izena edo zure profilerako esteka. Kyron-ek ez du inoiz nortasun-agiririk eskatzen."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da zure egoera kargatu"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Goiko guztiak markatuta egon behar du eskatu aurretik."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Gutxienez {days} eguneko kontua"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Nor zaren esaten duen biografia"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Zure izena profilean"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profileko argazkia"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ezer ez zure erregistroan azken {days} egunetan"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Bidalita. Pertsona batek begiratuko du."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date}(e)tik."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Eskatu"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Nor zaren, eta hori\nfrogatzen duen esteka"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("Bereizgarria"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Zure izenaren ondoan,\nagertzen den toki orotan"),
+      "ui_verify_step_check": MessageLookupByLibrary.simpleMessage(
+          "Pertsona batek\negiaztatzen du"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Taldeko norbaitek\nzure estekak irekitzen ditu"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Egiaztapena"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "{number}. eskaera pertsona baten esku dago"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date}(e)an bidalia, {category} gisa. Erabakia hartzean jakinarazpen bat jasoko duzu."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Erretiratu eskaera"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Eskaera erretiratu da."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da grabazioa amaitu: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Hamar minutu arte."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Entzuten…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ek mikrofonoa erabiltzeko baimena behar du grabatzeko. Gailuaren ezarpenetan eman dezakezu."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da grabatzen hasi: {error}"),
     };
 
 final messageLookup = MessageLookup();

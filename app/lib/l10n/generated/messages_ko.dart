@@ -1945,6 +1945,261 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("이 페이지가 다른 앱을 열려고 합니다"),
       "ui_browser_leave_detail":
           MessageLookupByLibrary.simpleMessage("{scheme} 링크를 열려고 합니다."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("빌드"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("캐시된 이미지와 파일 {size}"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} 확보됨"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("측정 중…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("지울 것이 없습니다"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("저장 공간"),
+      "ui_about_version": MessageLookupByLibrary.simpleMessage("버전 {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("차단됨"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("내 이름으로 게시"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "첨부 파일이 업로드되지 않았어요. 하나를 탭해 다시 시도하거나 삭제하세요."),
+      "ui_email_change_failed":
+          MessageLookupByLibrary.simpleMessage("이메일을 변경하지 못했어요. 다시 시도하세요."),
+      "ui_email_changes_after_link":
+          MessageLookupByLibrary.simpleMessage("보내 드린 링크를 열면 주소가 변경됩니다."),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("{email}에서 확인 링크를 확인하세요."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage("이메일 주소를 입력하세요."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("이메일 주소 형식이 아닌 것 같아요."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage("이미 내 이메일 주소예요."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "무엇을 했고, 무엇을 기대했으며, 대신 무슨 일이 일어났는지."),
+      "ui_feedback_idea_example":
+          MessageLookupByLibrary.simpleMessage("프로필에 게시물을 고정하고 싶어요"),
+      "ui_feedback_idea_hint":
+          MessageLookupByLibrary.simpleMessage("원하는 것과 그걸로 할 수 있게 될 일."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("도움이 될 만한 것"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("문제"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("아이디어"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("질문"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "이 내용은 Kyron 팀만 읽어요. 이메일로 답할 수 있도록 계정과 함께, 그리고 사용 중인 앱 버전과 함께 전송돼요. 계정을 삭제하면 이것도 삭제됩니다."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("단어를 뮤트하려면?"),
+      "ui_feedback_question_hint":
+          MessageLookupByLibrary.simpleMessage("하려는 일과 막힌 부분."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("내 질문"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron에 연결할 수 없어요. 연결을 확인하고 다시 시도하세요. 아직 아무것도 작성되지 않아서 잃어버린 건 없어요."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("지우기"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "실패한 요청과 기타 주목할 만한 이벤트가 여기에 표시돼요."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("뮤트됨"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "위에 단어나 태그를 추가하세요. 그걸 포함한 게시물은 피드에 나타나지 않아요."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "이 중 하나라도 포함한 게시물은 피드에 나타나지 않아요. 대소문자는 구분하지 않으며, 단어는 더 긴 단어 안에서도 일치하므로 “spoiler”는 “spoilers”도 걸러요."),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("차단한 사람이 없어요"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "차단하면 서로에게 보이지 않아요. 상대 프로필의 메뉴에서 차단할 수 있어요."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("뮤트한 사람이 없어요"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "계정을 뮤트하면 알리지 않고 그 게시물을 숨겨요. 상대 프로필이나 게시물의 메뉴에서 뮤트할 수 있어요."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("비밀번호"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("일치하지 않아요."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "이 기기에서는 로그인 상태가 유지돼요. 다른 기기에서는 로그아웃됩니다."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("8자 이상 입력하세요."),
+      "ui_password_update_failed":
+          MessageLookupByLibrary.simpleMessage("비밀번호를 업데이트하지 못했어요. 다시 시도하세요."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("비밀번호가 업데이트되었어요."),
+      "ui_profile_did_copied": MessageLookupByLibrary.simpleMessage("DID 복사됨"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "좋아요한 게시물은 나만 볼 수 있도록 여기에 보관돼요."),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("아직 사진이나 클립을 게시하지 않았어요."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} 님은 아직 사진이나 클립을 게시하지 않았어요."),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("게시하는 모든 것이 여기에 표시돼요."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} 님은 아직 아무것도 게시하지 않았어요."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("내 프로필을 불러올 수 없어요"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle}을(를) 불러올 수 없어요"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("최소 8자"),
+      "ui_pw_rule_lower": MessageLookupByLibrary.simpleMessage("소문자 (a–z)"),
+      "ui_pw_rule_number": MessageLookupByLibrary.simpleMessage("숫자 하나 이상"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("기호 (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("대문자 (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "최근 기록 {count}개. 보내기 전에 정보 › 시스템 로그에서 확인하세요."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "이 내용은 Kyron 팀만 읽어요. 후속 조치를 할 수 있도록 계정과 함께 전송돼요. 함께 전송되는 내용을 정확히 보려면 먼저 정보 › 시스템 로그에서 로그를 읽어 보세요."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("보냈어요. 감사합니다."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "보냈어요. 감사합니다. 신고 번호는 #{number}예요."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("무엇이 잘못되었나요?"),
+      "ui_settings_about_help":
+          MessageLookupByLibrary.simpleMessage("버전, 정책, 상태 및 시스템 로그"),
+      "ui_settings_autoplay_help":
+          MessageLookupByLibrary.simpleMessage("스크롤할 때 동영상이 자동으로 재생되지 않게 하기"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("나의 탈중앙화 식별자"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("운영 관리"),
+      "ui_settings_moderation_help":
+          MessageLookupByLibrary.simpleMessage("검토를 기다리는 신고와 이의 제기"),
+      "ui_settings_muted_words_help":
+          MessageLookupByLibrary.simpleMessage("이것이 포함된 게시물을 피드에서 제외"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("로그인하지 않음"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("알림 설정"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("개인정보 보호 및 안전"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("내 계정에 대한 결정과 이의 제기"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("글자 크기 조정"),
+      "ui_settings_your_account": MessageLookupByLibrary.simpleMessage("내 계정"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR 렌즈 촬영과 게시는 아직 개발 중이에요. 촬영한 내용이 아직 저장되지 않으므로 카메라는 닫혀 있어요."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("렌즈는 아직 준비되지 않았어요"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR 렌즈"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "라이브 방송에는 Kyron이 아직 운영하지 않는 미디어 서버가 필요해요. 지금 방송을 시작하면 아무도 들어올 수 없는 방에 있게 돼요. 음성 게시물 녹음은 지금도 가능해요."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("라이브는 아직 준비되지 않았어요"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("라이브 방송"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "투표에는 선택지를 저장하고 표를 셀 곳이 필요해요. 아직 마련되지 않아서 오늘 게시한 투표는 모든 응답을 잃게 돼요."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("투표는 아직 준비되지 않았어요"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("투표"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("대신 텍스트 게시물 쓰기"),
+      "ui_status_check_again": MessageLookupByLibrary.simpleMessage("다시 확인"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("세부 정보"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("미러 테이블"),
+      "ui_status_not_right":
+          MessageLookupByLibrary.simpleMessage("Kyron이 응답했지만 무언가 이상해요."),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("왕복 시간"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("질문하기"),
+      "ui_support_ask_detail":
+          MessageLookupByLibrary.simpleMessage("내 계정이나 기능 사용법에 대해"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("이메일로"),
+      "ui_support_crash_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron이 중단된 경우: 앱 로그를 함께 보내요"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("앱에서"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "여기에서 Kyron 팀에 연락하세요. 계정과 함께 비공개로 전달되며, 계정의 이메일 주소로 답장해 드려요."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "메일 앱이 열리지 않았어요. {address}이(가) 복사되었어요."),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage("개인정보와 내 데이터"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("문제 신고"),
+      "ui_support_report_detail":
+          MessageLookupByLibrary.simpleMessage("무언가 고장 났거나 제대로 작동하지 않아요"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "게시물이나 계정을 신고하려면 해당 메뉴를 사용하세요. 그래야 어느 것인지 정확히 알 수 있어요."),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage("안전 및 악용"),
+      "ui_support_status_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron이 모두에게 안 되는지, 나에게만 안 되는지"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("크게"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("더 크게"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("보통"),
+      "ui_text_size_preview":
+          MessageLookupByLibrary.simpleMessage("Kyron은 읽을 가치가 있는 말을 하는 곳이에요."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("작게"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("항상 어둡게"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("흐리게"),
+      "ui_theme_dim_detail":
+          MessageLookupByLibrary.simpleMessage("검정 대신 청회색인 더 부드러운 어두운 테마"),
+      "ui_theme_light_detail": MessageLookupByLibrary.simpleMessage("항상 밝게"),
+      "ui_theme_system_detail":
+          MessageLookupByLibrary.simpleMessage("휴대폰의 라이트/다크 설정 따르기"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("차단 해제"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("뮤트 해제"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("당신은 누구인가요"),
+      "ui_verify_about_help":
+          MessageLookupByLibrary.simpleMessage("검토자가 알아야 할 내용을 직접 적어 주세요."),
+      "ui_verify_about_hint":
+          MessageLookupByLibrary.simpleMessage("여기와 제 사이트에서 새에 관한 글을 써요."),
+      "ui_verify_add_link": MessageLookupByLibrary.simpleMessage("링크 추가"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("{date}부터 다시 신청할 수 있어요."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("인증 신청"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("신청하기 전에"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("크리에이터"),
+      "ui_verify_cat_journalist": MessageLookupByLibrary.simpleMessage("기자"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage("단체 또는 브랜드"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("기타"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("공인"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("신청 {number}이(가) 승인되지 않았어요"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("인증되었어요"),
+      "ui_verify_edit_profile": MessageLookupByLibrary.simpleMessage("프로필 수정"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6자리 코드를 입력하세요"),
+      "ui_verify_email_resend_in":
+          MessageLookupByLibrary.simpleMessage("{seconds}초 후 코드 다시 보내기"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("{email}(으)로 보냈어요"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("인증"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage("Kyron에서 인증받으세요"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron에서"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("인증을"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("받으세요."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "배지는 Kyron 팀의 누군가가 이 계정이 본인임을 확인했다는 뜻이에요. 노출이 늘어나지 않으며 판매하지 않아요."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "이름이 유지되는 동안 배지도 유지돼요. 이름을 바꾸면 누군가 새 이름을 확인할 때까지 배지가 사라져요."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("확인할 수 있는 곳"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("다른 링크"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "이 Kyron 계정이 내 것임을 보여 주는 사이트나 다른 프로필: 거기에 Kyron 이름이나 프로필 링크를 올려 주세요. Kyron은 신분증을 요구하지 않아요."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("내 상태를 불러올 수 없어요"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "신청하려면 위의 모든 항목에 체크 표시가 있어야 해요."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("가입한 지 {days}일 이상 된 계정"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage("나를 소개하는 자기소개"),
+      "ui_verify_req_name": MessageLookupByLibrary.simpleMessage("프로필에 내 이름"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("프로필 사진"),
+      "ui_verify_req_standing":
+          MessageLookupByLibrary.simpleMessage("최근 {days}일 동안 기록 없음"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("보냈어요. 담당자가 살펴볼 거예요."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date}부터."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("신청"),
+      "ui_verify_step_ask_detail":
+          MessageLookupByLibrary.simpleMessage("나에 대한 소개와\n이를 증명할 링크"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("배지"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("내 이름 옆,\n어디에서나 표시"),
+      "ui_verify_step_check": MessageLookupByLibrary.simpleMessage("사람이\n확인"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("팀원이\n링크를 확인"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("인증"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("신청 {number}을(를) 담당자가 검토 중이에요"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date}에 {category}(으)로 보냈어요. 결정되면 알림을 받게 돼요."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("신청 철회"),
+      "ui_verify_withdrawn": MessageLookupByLibrary.simpleMessage("신청을 철회했어요."),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("녹음을 마치지 못했어요: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("최대 10분."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("듣는 중…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "녹음하려면 Kyron에 마이크 사용 권한이 필요해요. 기기 설정에서 허용할 수 있어요."),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("녹음을 시작하지 못했어요: {error}"),
     };
 
 final messageLookup = MessageLookup();

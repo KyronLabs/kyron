@@ -2091,6 +2091,309 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Eli phepha lifuna ukuvula enye i-app"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Licela ukuvula ikhonkco le-{scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Ukwakhiwa"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Imifanekiso neefayile ezigciniweyo eziyi-{size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Kukhululwe i-{size}"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("Iyalinganisa…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Akukho nto yokucima"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Ugcino"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Uguqulelo {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Abavaliweyo"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Upapasha njengawe"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezo zinto zincanyathiselweyo azilayishwanga. Cofa enye ukuzama kwakhona, okanye uyisuse."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukutshintsha i-imeyile yakho. Nceda uzame kwakhona."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Idilesi yakho iyatshintsha xa uvula ikhonkco esilithumelayo."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Khangela kwi-{email} ikhonkco lokuqinisekisa."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Faka idilesi ye-imeyile."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Oko akubonakali njengedilesi ye-imeyile."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Leyo sele iyidilesi yakho ye-imeyile."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Into oyenzileyo, into obuyilindele, nento eyenzekileyo endaweni yayo."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Ndivumele ndincamathelise ipowusti kwiprofayile yam"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Into oyifunayo, nento eya kukwenza ukuba uyenze."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Into enokunceda"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Ingxaki"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Ingcamango"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Umbuzo"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Lo nto ifundwa liqela le-Kyron kuphela. Ithunyelwa nge-akhawunti yakho ukuze siphendule nge-imeyile, kunye noguqulelo lwe-app olusebenzisayo. Ukucima i-akhawunti yakho kuyicima nayo."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Ndililanda njani igama?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Into ozama ukuyenza, nalapho uthe wabambeka khona."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Umbuzo wakho"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukufikelela kwi-Kyron. Jonga uqhagamshelo lwakho uzame kwakhona. Akukho nto ibhaliweyo okwangoku, ngoko akukho nto ilahlekileyo."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Cima"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Izicelo ezisilelayo neziganeko ezibalulekileyo zivela apha."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Abathuliswe"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Yongeza igama okanye ithegi ngentla. Iipowusti eziqulethe lona aziyi kuvela kwi-feed yakho."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Iipowusti eziqulethe nayiphi na kwezi azivelanga kwi-feed yakho. Oonobumba abakhulu nabancinci abanamsebenzi, kwaye igama liyafana nangaphakathi kwamagama amade, ngoko “spoiler” ikwabamba “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Akukho mntu uvaliweyo"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukuvala kunifihla omnye komnye, macala omabini. Vala umntu kwimenyu ekwiprofayile yakhe."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Akukho mntu uthulisiweyo"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukuthulisa i-akhawunti kufihla iipowusti zayo ngaphandle kokumxelela. Thulisa umntu kwimenyu ekwiprofayile yakhe okanye kwipowusti."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Igama lokugqitha"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Awahambelani."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Uya kuhlala ungene kwesi sixhobo. Ezinye izixhobo ziya kuphuma."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Sebenzisa ubuncinci oonobumba aba-8."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukuhlaziya igama lakho lokugqitha. Nceda uzame kwakhona."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Igama lokugqitha lihlaziyiwe."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("I-DID ikhutshelwe"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Iipowusti ozithandayo zigcinwa apha, zezakho wedwa."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Awukapapashi zifoto okanye iiklip."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} akakapapashi zifoto okanye iiklip."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Yonke into oyipapashayo ivela apha."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} akakapapashi nto."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukulayisha iprofayile yakho"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukulayisha i-@{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Ubuncinci oonobumba aba-8"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Unobumba omncinci (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Ubuncinci inombolo enye"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Uphawu (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Unobumba omkhulu (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Amangeniso akutshanje ali-{count}. Wajonge ku-Malunga › Ilog yesistim phambi kokuthumela."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Lo nto ifundwa liqela le-Kyron kuphela. Ithunyelwa nge-akhawunti yakho ukuze sikwazi ukulandelela. Funda ilog kuqala ku-Malunga › Ilog yesistim ukuba ufuna ukubona kanye into ehamba nayo."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Ithunyelwe, enkosi."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Ithunyelwe, enkosi. Yingxelo #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Kuphazame ntoni?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Uguqulelo, imigaqo-nkqubo, imeko nelog yesistim"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Misa iividiyo ukudlala ngokwazo xa uskrola"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Isichongi sakho esingaxhomekekanga kwindawo enye"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("Ulawulo"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Iingxelo nezibheno ezilinde uphononongo"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Gcina iipowusti eziqulethe ezi kude ne-feed"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Akungenanga"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Okhetho lwezaziso"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Ubumfihlo noKhuseleko"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Izigqibo malunga ne-akhawunti yakho, nezibheno"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Lungisa ubungakanani bombhalo"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("I-akhawunti yakho"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukurekhoda nokupapasha iilensi ze-AR kusakhiwa. Akukho nto oyithathayo eya kugcinwa okwangoku, ngoko ikhamera ihlala ivaliwe."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Iilensi azikalungi"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("Ilensi ye-AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukusasaza bukhoma kufuna iseva yemidiya engekasetyenziswa yi-Kyron. Ukuqala usasazo ngoku kuya kukubeka kwigumbi ekungekho mntu unokungena kulo. Ukurekhoda ipowusti yelizwi kuyasebenza namhlanje."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Ukusasaza bukhoma akukalungi"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Sasaza bukhoma"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Iivoti zifuna indawo yokugcina ukhetho nokubala iivoti. Leyo ayikabikho, ngoko ivoti epapashwe namhlanje ibiya kulahlekelwa yiyo yonke impendulo."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Iivoti azikalungi"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Ivoti"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Bhala ipowusti yombhalo endaweni yoko"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Jonga kwakhona"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Iinkcukacha"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Iitheyibhile zesipili"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "I-Kyron iphendule, kodwa kukho into engalunganga."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Ukuya nokubuya"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Buza umbuzo"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Malunga ne-akhawunti yakho, okanye indlela into esebenza ngayo"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Nge-imeyile"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ukuba i-Kyron iwile: ithumela ilog ye-app kunye nayo"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Kwi-app"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Bhalela iqela le-Kyron ukusuka apha. Ifika kuthi ngasese, ine-akhawunti yakho, kwaye siphendula kwidilesi ye-imeyile ekuyo."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Akukho app ye-imeyile evulekileyo. I-{address} ikhutshelwe."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Ubumfihlo nedatha yakho"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("Xela ingxaki"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Kukho into eyaphukileyo okanye engenzi le nto ifanele ukuyenza"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Ukuxela ipowusti okanye i-akhawunti, sebenzisa imenyu yayo: oko kusixelela kanye ukuba uthetha ngayiphi."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Ukhuseleko nokuxhatshazwa"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Ingaba i-Kyron iwile kubo bonke, okanye kuwe kuphela"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Enkulu"),
+      "ui_text_size_larger":
+          MessageLookupByLibrary.simpleMessage("Enkulu ngakumbi"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Ephakathi"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "I-Kyron yindawo yokuthetha into efanele ukufundwa."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Encinci"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Mnyama rhoqo"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Fiphele"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Ubumnyama obuthambileyo, bluwu-ngwevu endaweni yomnyama"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Khanya rhoqo"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Landela useto lokukhanya okanye ubumnyama lwefowuni"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Susa uvalo"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Susa ukuthulisa"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ungubani"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Ngamazwi akho, into ekufuneka umphononongi ayazi."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ndibhala ngeentaka apha nakwisayithi yam."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Yongeza elinye ikhonkco"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Ungacela kwakhona ukusuka ngo-{date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Cela ukuqinisekiswa"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Phambi kokuba ucele"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Umyili"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Intatheli"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Umbutho okanye uphawu"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Enye into"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Umntu owaziwayo"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("Isicelo {number} asivunywanga"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Uqinisekisiwe"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Hlela iprofayile yakho"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Faka ikhowudi yamanani ama-6"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Thumela kwakhona ikhowudi kwimizuzwana eyi-{seconds}"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Siyithumele ku-{email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Qinisekisa"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Qinisekiswa kwi-Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Fumana"),
+      "ui_verify_hero_2":
+          MessageLookupByLibrary.simpleMessage("ukuqinisekiswa"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("kwi-Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Ibheji ibonisa ukuba umntu kwiqela le-Kyron ukhangele ukuba le akhawunti ngulowo ithi nguye. Ayiniki kufikelela okongezelelweyo, kwaye ayithengiswa."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Ibheji ihlala ixesha elide njengegama lakho. Tshintsha igama lakho kwaye iyasuswa de umntu ajonge elitsha."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Apho sinokukhangela khona"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Elinye ikhonkco"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Isayithi okanye enye iprofayile ethi le akhawunti ye-Kyron yeyakho: beka kuyo igama lakho le-Kyron, okanye ikhonkco eliya kwiprofayile yakho. I-Kyron ayizange icele amaxwebhu esazisi."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukulayisha imeko yakho"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Yonke into engentla ifuna uphawu phambi kokuba ucele."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "I-akhawunti eneentsuku ezi-{days} ubuncinci"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("I-bio ethi ungubani"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Igama lakho kwiprofayile"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Ifoto yeprofayile"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Akukho nto kwirekhodi yakho kwiintsuku ezi-{days} ezidlulileyo"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Ithunyelwe. Umntu uya kuyijonga."),
+      "ui_verify_since":
+          MessageLookupByLibrary.simpleMessage("Ukusukela ngo-{date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Cela"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ungubani, nekhonkco\nelikubonisayo"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Ibheji"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Ecaleni kwegama lakho,\nnaphi na apho livela khona"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Umntu\nuyakhangela"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Umntu weqela\nuvula amakhonkco akho"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Ukuqinisekisa"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("Isicelo {number} sikumntu"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Sithunyelwe ngo-{date}, njenge-{category}. Uya kufumana isaziso xa sele kugqitywe."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Rhoxisa isicelo"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Isicelo sirhoxisiwe."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukugqiba ukurekhoda: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Ukuya kumzuzu elishumi."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Iyamamela…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "I-Kyron ifuna imvume yokusebenzisa imakrofoni ukuze irekhode. Ungayinika kwiisetingi zesixhobo sakho."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Asikwazanga ukuqala ukurekhoda: {error}"),
     };
 
 final messageLookup = MessageLookup();
