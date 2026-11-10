@@ -10,6 +10,7 @@ import '../providers/account_provider.dart';
 import '../providers/auth_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/action_button.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/toast.dart';
 
@@ -311,7 +312,7 @@ class _ConfirmItsYouSheetState extends ConsumerState<_ConfirmItsYouSheet> {
                 onSubmitted: (_) =>
                     _go(() => repo.confirmPassword(_password.text)),
                 decoration: InputDecoration(
-                  labelText: l10n.ui('ui_password', 'Password'),
+                  labelText: l10n.password,
                   errorText: _error,
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -327,27 +328,14 @@ class _ConfirmItsYouSheetState extends ConsumerState<_ConfirmItsYouSheet> {
                   style: TextStyle(color: Theme.of(context).colorScheme.error)),
               const SizedBox(height: SpacingTokens.space16),
             ],
-            SizedBox(
-              height: 40,
-              child: FilledButton(
-                key: const ValueKey('confirm-its-you'),
-                style: FilledButton.styleFrom(
-                  textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w500),
-                ),
-                onPressed: () => _go(withPassword
-                    ? () => repo.confirmPassword(_password.text)
-                    : repo.confirmWithGoogle),
-                child: _busy
-                    ? const SizedBox.square(
-                        dimension: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : Text(withPassword
-                        ? l10n.ui('ui_confirm_its_you_continue', 'Continue')
-                        : l10n.ui(
-                            'ui_continue_with_google', 'Continue with Google')),
-              ),
+            ActionButton(
+              key: const ValueKey('confirm-its-you'),
+              expand: true,
+              busy: _busy,
+              label: withPassword ? l10n.continueAction : l10n.googleContinue,
+              onPressed: () => _go(withPassword
+                  ? () => repo.confirmPassword(_password.text)
+                  : repo.confirmWithGoogle),
             ),
           ],
         ),

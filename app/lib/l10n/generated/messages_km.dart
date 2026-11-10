@@ -2014,6 +2014,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("ពេលក្រោយ"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "ចុចថយក្រោយម្ដងទៀត ដើម្បីចាកចេញពី Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("បញ្ជាក់ថាជាអ្នក"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "បញ្ចូលពាក្យសម្ងាត់របស់អ្នក ដើម្បីលុបគណនី។"),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "ចូលម្ដងទៀតជាមួយ Google ដើម្បីលុបគណនី។"),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនដំណើរការទេ។ សូមពិនិត្យ ហើយសាកម្ដងទៀត។"),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("ទំព័រនេះចង់បើកកម្មវិធីផ្សេង"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "វាកំពុងស្នើសុំបើកតំណ {scheme}។"),
     };
 
 final messageLookup = MessageLookup();

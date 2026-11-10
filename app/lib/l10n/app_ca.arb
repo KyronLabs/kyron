@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Alguna cosa a arreglar o afegir? (opcional)",
   "ui_send": "Envia",
   "ui_not_now": "Ara no",
-  "ui_back_again_to_leave": "Torna a prémer Enrere per sortir de Kyron"
+  "ui_back_again_to_leave": "Torna a prémer Enrere per sortir de Kyron",
+  "ui_confirm_its_you_title": "Confirma que ets tu",
+  "ui_confirm_its_you_password": "Introdueix la contrasenya per suprimir el compte.",
+  "ui_confirm_its_you_google": "Torna a iniciar la sessió amb Google per suprimir el compte.",
+  "ui_confirm_its_you_failed": "No ha funcionat. Comprova-ho i torna-ho a provar.",
+  "ui_browser_leave_title": "Aquesta pàgina vol obrir una altra aplicació",
+  "ui_browser_leave_detail": "Demana obrir un enllaç {scheme}."
 }

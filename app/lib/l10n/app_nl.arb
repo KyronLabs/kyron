@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Iets wat we moeten verbeteren of toevoegen? (optioneel)",
   "ui_send": "Versturen",
   "ui_not_now": "Niet nu",
-  "ui_back_again_to_leave": "Druk nogmaals op terug om Kyron te verlaten"
+  "ui_back_again_to_leave": "Druk nogmaals op terug om Kyron te verlaten",
+  "ui_confirm_its_you_title": "Bevestig dat jij het bent",
+  "ui_confirm_its_you_password": "Voer je wachtwoord in om je account te verwijderen.",
+  "ui_confirm_its_you_google": "Log opnieuw in met Google om je account te verwijderen.",
+  "ui_confirm_its_you_failed": "Dat lukte niet. Controleer het en probeer het opnieuw.",
+  "ui_browser_leave_title": "Deze pagina wil een andere app openen",
+  "ui_browser_leave_detail": "Ze vraagt om een {scheme}-link te openen."
 }

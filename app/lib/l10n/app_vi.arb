@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Có điều gì chúng tôi nên sửa hoặc thêm không? (không bắt buộc)",
   "ui_send": "Gửi",
   "ui_not_now": "Để sau",
-  "ui_back_again_to_leave": "Nhấn quay lại lần nữa để thoát Kyron"
+  "ui_back_again_to_leave": "Nhấn quay lại lần nữa để thoát Kyron",
+  "ui_confirm_its_you_title": "Xác nhận đó là bạn",
+  "ui_confirm_its_you_password": "Nhập mật khẩu để xóa tài khoản của bạn.",
+  "ui_confirm_its_you_google": "Đăng nhập lại bằng Google để xóa tài khoản của bạn.",
+  "ui_confirm_its_you_failed": "Không được. Hãy kiểm tra rồi thử lại.",
+  "ui_browser_leave_title": "Trang này muốn mở một ứng dụng khác",
+  "ui_browser_leave_detail": "Trang này yêu cầu mở một liên kết {scheme}."
 }

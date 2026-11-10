@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Algo que debamos arranxar ou engadir? (opcional)",
   "ui_send": "Enviar",
   "ui_not_now": "Agora non",
-  "ui_back_again_to_leave": "Preme atrás de novo para saír de Kyron"
+  "ui_back_again_to_leave": "Preme atrás de novo para saír de Kyron",
+  "ui_confirm_its_you_title": "Confirma que es ti",
+  "ui_confirm_its_you_password": "Introduce o teu contrasinal para eliminar a conta.",
+  "ui_confirm_its_you_google": "Volve iniciar sesión con Google para eliminar a conta.",
+  "ui_confirm_its_you_failed": "Non funcionou. Revísao e téntao de novo.",
+  "ui_browser_leave_title": "Esta páxina quere abrir outra aplicación",
+  "ui_browser_leave_detail": "Pide abrir unha ligazón {scheme}."
 }

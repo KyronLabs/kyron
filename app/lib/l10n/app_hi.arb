@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "कुछ ठीक करना या जोड़ना चाहिए? (वैकल्पिक)",
   "ui_send": "भेजें",
   "ui_not_now": "अभी नहीं",
-  "ui_back_again_to_leave": "Kyron छोड़ने के लिए फिर से वापस दबाएँ"
+  "ui_back_again_to_leave": "Kyron छोड़ने के लिए फिर से वापस दबाएँ",
+  "ui_confirm_its_you_title": "पुष्टि करें कि यह आप हैं",
+  "ui_confirm_its_you_password": "अपना खाता हटाने के लिए अपना पासवर्ड डालें।",
+  "ui_confirm_its_you_google": "अपना खाता हटाने के लिए Google से फिर से साइन इन करें।",
+  "ui_confirm_its_you_failed": "यह काम नहीं किया। जाँचें और फिर से कोशिश करें।",
+  "ui_browser_leave_title": "यह पेज कोई दूसरा ऐप खोलना चाहता है",
+  "ui_browser_leave_detail": "यह एक {scheme} लिंक खोलना चाहता है।"
 }

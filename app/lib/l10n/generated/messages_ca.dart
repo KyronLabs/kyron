@@ -2398,6 +2398,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ara no"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Torna a prémer Enrere per sortir de Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Confirma que ets tu"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Introdueix la contrasenya per suprimir el compte."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Torna a iniciar la sessió amb Google per suprimir el compte."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "No ha funcionat. Comprova-ho i torna-ho a provar."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Aquesta pàgina vol obrir una altra aplicació"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Demana obrir un enllaç {scheme}."),
     };
 
 final messageLookup = MessageLookup();

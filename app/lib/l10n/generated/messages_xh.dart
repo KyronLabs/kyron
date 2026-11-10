@@ -2079,6 +2079,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hayi ngoku"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Cofa emva kwakhona ukuze uphume ku-Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Qinisekisa ukuba nguwe"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Faka igama lokugqitha ukuze ucime iakhawunti yakho."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Ngena kwakhona nge-Google ukuze ucime iakhawunti yakho."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Oko akusebenzanga. Khangela uzame kwakhona."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Eli phepha lifuna ukuvula enye i-app"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Licela ukuvula ikhonkco le-{scheme}."),
     };
 
 final messageLookup = MessageLookup();

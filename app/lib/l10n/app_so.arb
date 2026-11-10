@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ma jiraan wax aan hagaajinno ama ku darno? (ikhtiyaari)",
   "ui_send": "Dir",
   "ui_not_now": "Hadda maya",
-  "ui_back_again_to_leave": "Mar kale riix dib si aad uga baxdo Kyron"
+  "ui_back_again_to_leave": "Mar kale riix dib si aad uga baxdo Kyron",
+  "ui_confirm_its_you_title": "Xaqiiji inaad adigu tahay",
+  "ui_confirm_its_you_password": "Geli eraygaaga sirta ah si aad u tirtirto akoonkaaga.",
+  "ui_confirm_its_you_google": "Mar kale Google ku gal si aad u tirtirto akoonkaaga.",
+  "ui_confirm_its_you_failed": "Taasi ma shaqayn. Hubi oo isku day mar kale.",
+  "ui_browser_leave_title": "Boggani wuxuu rabaa inuu furo app kale",
+  "ui_browser_leave_detail": "Wuxuu codsanayaa inuu furo xiriirka {scheme}."
 }

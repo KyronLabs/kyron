@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -11,33 +10,9 @@ async function main() {
 
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
-  // ------------------------------------------
-  // 1. ADMIN ACCOUNT
-  // ------------------------------------------
-
-  const adminEmail = 'admin@kyron.app';
-
-  const existingAdmin = await prisma.user.findUnique({
-    where: { email: adminEmail },
-  });
-
-  if (!existingAdmin) {
-    const hashed = await bcrypt.hash('Admin123!', 10);
-
-    await prisma.user.create({
-      data: {
-        email: adminEmail,
-        password: hashed,
-        role: 'ADMIN',
-        name: 'Kyron Administrator',
-        emailStatus: 'VERIFIED',
-      },
-    });
-
-    console.log('✔ Admin user created');
-  } else {
-    console.log('✔ Admin user already exists');
-  }
+  // No admin account. This used to create admin@kyron.app with a password
+  // written here; accounts now come only from Supabase, and staff roles are
+  // granted to a real account in the database, never seeded.
 
   // ------------------------------------------
   // 2. SYSTEM MODULES

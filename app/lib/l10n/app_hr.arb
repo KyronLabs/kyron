@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Nešto što bismo trebali popraviti ili dodati? (neobavezno)",
   "ui_send": "Pošalji",
   "ui_not_now": "Ne sada",
-  "ui_back_again_to_leave": "Ponovno pritisnite Natrag za izlazak iz Kyrona"
+  "ui_back_again_to_leave": "Ponovno pritisnite Natrag za izlazak iz Kyrona",
+  "ui_confirm_its_you_title": "Potvrdite da ste to vi",
+  "ui_confirm_its_you_password": "Unesite lozinku da biste izbrisali račun.",
+  "ui_confirm_its_you_google": "Ponovno se prijavite putem Googlea da biste izbrisali račun.",
+  "ui_confirm_its_you_failed": "Nije uspjelo. Provjerite i pokušajte ponovno.",
+  "ui_browser_leave_title": "Ova stranica želi otvoriti drugu aplikaciju",
+  "ui_browser_leave_detail": "Traži otvaranje poveznice {scheme}."
 }

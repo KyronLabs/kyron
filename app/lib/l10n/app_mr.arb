@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "काही दुरुस्त किंवा जोडायला हवे? (पर्यायी)",
   "ui_send": "पाठवा",
   "ui_not_now": "आता नाही",
-  "ui_back_again_to_leave": "Kyron सोडण्यासाठी पुन्हा मागे दाबा"
+  "ui_back_again_to_leave": "Kyron सोडण्यासाठी पुन्हा मागे दाबा",
+  "ui_confirm_its_you_title": "हे तुम्हीच आहात याची पुष्टी करा",
+  "ui_confirm_its_you_password": "तुमचे खाते हटवण्यासाठी पासवर्ड टाका.",
+  "ui_confirm_its_you_google": "तुमचे खाते हटवण्यासाठी पुन्हा Google ने साइन इन करा.",
+  "ui_confirm_its_you_failed": "ते जमले नाही. तपासा आणि पुन्हा प्रयत्न करा.",
+  "ui_browser_leave_title": "हे पेज दुसरे ॲप उघडू इच्छिते",
+  "ui_browser_leave_detail": "ते {scheme} लिंक उघडण्यास सांगत आहे."
 }

@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ceva ce ar trebui să reparăm sau să adăugăm? (opțional)",
   "ui_send": "Trimite",
   "ui_not_now": "Nu acum",
-  "ui_back_again_to_leave": "Apasă din nou Înapoi pentru a ieși din Kyron"
+  "ui_back_again_to_leave": "Apasă din nou Înapoi pentru a ieși din Kyron",
+  "ui_confirm_its_you_title": "Confirmă că ești tu",
+  "ui_confirm_its_you_password": "Introdu parola pentru a-ți șterge contul.",
+  "ui_confirm_its_you_google": "Conectează-te din nou cu Google pentru a-ți șterge contul.",
+  "ui_confirm_its_you_failed": "Nu a funcționat. Verifică și încearcă din nou.",
+  "ui_browser_leave_title": "Această pagină vrea să deschidă altă aplicație",
+  "ui_browser_leave_detail": "Cere să deschidă un link {scheme}."
 }

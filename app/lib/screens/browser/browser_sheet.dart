@@ -87,11 +87,55 @@ class _BrowserSheetState extends State<BrowserSheet> {
 
   /// A link the page holds that no web view renders: mail, a phone number,
   /// another app. Refusing silently would look like a dead link.
+  ///
+  /// Asked first, every time: a page can send the reader here without a tap,
+  /// and "call this number" or "open this app" is the reader's decision.
   Future<void> _handOff(Uri uri) async {
+    // A page that fires these in a loop gets one question, not a stack.
+    if (_askingToLeave) return;
+    _askingToLeave = true;
+    final bool? go;
+    try {
+      go = await _askToLeave(uri);
+    } finally {
+      _askingToLeave = false;
+    }
+    if (go != true || !mounted) return;
     final gone = await AppBrowser.leave(uri);
     if (!gone && mounted) {
       Toast.show(context, 'No app on this device opens ${uri.scheme} links.');
     }
+  }
+
+  bool _askingToLeave = false;
+
+  Future<bool?> _askToLeave(Uri uri) {
+    final l10n = AppLocalizations.of(context);
+    return showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.ui(
+            'ui_browser_leave_title', 'This page wants to open another app')),
+        content: Text(
+          l10n
+              .ui('ui_browser_leave_detail',
+                  'It is asking to open a {scheme} link.')
+              .replaceAll('{scheme}', '${uri.scheme}:'),
+        ),
+        actions: [
+          TextButton(
+            key: const ValueKey('browser-leave-cancel'),
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.cancel),
+          ),
+          TextButton(
+            key: const ValueKey('browser-leave-open'),
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l10n.ui('ui_toast_open', 'Open')),
+          ),
+        ],
+      ),
+    );
   }
 
   BrowserTab get _tab => _session.active;

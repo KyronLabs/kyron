@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ọ nwere ihe anyị kwesịrị idozi ma ọ bụ itinye? (nhọrọ)",
   "ui_send": "Zipu",
   "ui_not_now": "Ọ bụghị ugbu a",
-  "ui_back_again_to_leave": "Pịa azụ ọzọ ka ịpụ na Kyron"
+  "ui_back_again_to_leave": "Pịa azụ ọzọ ka ịpụ na Kyron",
+  "ui_confirm_its_you_title": "Kwado na ọ bụ gị",
+  "ui_confirm_its_you_password": "Tinye okwuntughe gị iji hichapụ akaụntụ gị.",
+  "ui_confirm_its_you_google": "Banye ọzọ na Google iji hichapụ akaụntụ gị.",
+  "ui_confirm_its_you_failed": "Nke ahụ arụghị ọrụ. Lelee ya ma nwaa ọzọ.",
+  "ui_browser_leave_title": "Ibe a chọrọ imeghe ngwa ọzọ",
+  "ui_browser_leave_detail": "Ọ na-arịọ imeghe njikọ {scheme}."
 }

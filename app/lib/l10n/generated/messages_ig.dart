@@ -1995,6 +1995,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ọ bụghị ugbu a"),
       "ui_back_again_to_leave":
           MessageLookupByLibrary.simpleMessage("Pịa azụ ọzọ ka ịpụ na Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Kwado na ọ bụ gị"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Tinye okwuntughe gị iji hichapụ akaụntụ gị."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Banye ọzọ na Google iji hichapụ akaụntụ gị."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Nke ahụ arụghị ọrụ. Lelee ya ma nwaa ọzọ."),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("Ibe a chọrọ imeghe ngwa ọzọ"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Ọ na-arịọ imeghe njikọ {scheme}."),
     };
 
 final messageLookup = MessageLookup();

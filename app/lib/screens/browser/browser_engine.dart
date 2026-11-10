@@ -110,8 +110,10 @@ class WebViewEngine implements BrowserEngine {
     _ready = _controller.addJavaScriptChannel(
       _channel,
       onMessageReceived: (message) {
+        // Web pages only: the channel is reachable from any script on any
+        // page, so it must not become a way to open something else.
         final uri = Uri.tryParse(message.message);
-        if (uri != null) host.openTab(uri);
+        if (uri != null && isWeb(uri)) host.openTab(uri);
       },
     );
   }
@@ -119,15 +121,36 @@ class WebViewEngine implements BrowserEngine {
   NavigationDecision _decide(NavigationRequest request) {
     final uri = Uri.tryParse(request.url);
     if (uri == null) return NavigationDecision.prevent;
-    if (uri.scheme == 'http' || uri.scheme == 'https') {
-      return NavigationDecision.navigate;
+    if (isWeb(uri)) return NavigationDecision.navigate;
+    // A frame inside the page has no business opening an app, and the
+    // reader cannot see which frame asked.
+    if (!request.isMainFrame) return NavigationDecision.prevent;
+    // Never handed to the phone: an intent can name any component of any
+    // app, file: and content: reach this app's own files, and Kyron's own
+    // scheme would let a page drive Kyron (open a screen, finish a sign-in).
+    if (refusedSchemes.contains(uri.scheme.toLowerCase())) {
+      return NavigationDecision.prevent;
     }
     // A page may link to mail, a phone number, a map or another app. The web
-    // view renders none of those, and letting it try shows an error page for
-    // something that would have worked.
+    // view renders none of those; the sheet asks the reader before leaving,
+    // since a page can also redirect here with nobody having tapped.
     host.handOff(uri);
     return NavigationDecision.prevent;
   }
+
+  static bool isWeb(Uri uri) => uri.scheme == 'http' || uri.scheme == 'https';
+
+  static const refusedSchemes = {
+    'intent',
+    'android-app',
+    'file',
+    'content',
+    'javascript',
+    'data',
+    'blob',
+    'about',
+    'so.kyron.app',
+  };
 
   Future<void> _settle(String url) async {
     final title = await _controller.getTitle();

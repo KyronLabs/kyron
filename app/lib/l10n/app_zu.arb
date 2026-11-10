@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ingabe kukhona okufanele sikulungise noma sikwengeze? (ongakukhetha)",
   "ui_send": "Thumela",
   "ui_not_now": "Hhayi manje",
-  "ui_back_again_to_leave": "Cindezela emuva futhi ukuze uphume ku-Kyron"
+  "ui_back_again_to_leave": "Cindezela emuva futhi ukuze uphume ku-Kyron",
+  "ui_confirm_its_you_title": "Qinisekisa ukuthi nguwe",
+  "ui_confirm_its_you_password": "Faka iphasiwedi yakho ukuze ususe i-akhawunti yakho.",
+  "ui_confirm_its_you_google": "Ngena futhi nge-Google ukuze ususe i-akhawunti yakho.",
+  "ui_confirm_its_you_failed": "Lokho akusebenzanga. Hlola bese uzama futhi.",
+  "ui_browser_leave_title": "Leli khasi lifuna ukuvula enye i-app",
+  "ui_browser_leave_detail": "Licela ukuvula isixhumanisi se-{scheme}."
 }

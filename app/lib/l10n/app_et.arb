@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Midagi, mida peaksime parandama või lisama? (valikuline)",
   "ui_send": "Saada",
   "ui_not_now": "Mitte praegu",
-  "ui_back_again_to_leave": "Kyronist lahkumiseks vajuta uuesti tagasi"
+  "ui_back_again_to_leave": "Kyronist lahkumiseks vajuta uuesti tagasi",
+  "ui_confirm_its_you_title": "Kinnita, et see oled sina",
+  "ui_confirm_its_you_password": "Konto kustutamiseks sisesta oma parool.",
+  "ui_confirm_its_you_google": "Konto kustutamiseks logi uuesti Google'iga sisse.",
+  "ui_confirm_its_you_failed": "See ei õnnestunud. Kontrolli ja proovi uuesti.",
+  "ui_browser_leave_title": "See leht tahab avada teise rakenduse",
+  "ui_browser_leave_detail": "See palub avada {scheme}-lingi."
 }

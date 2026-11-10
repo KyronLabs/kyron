@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "直してほしいこと、追加してほしいことは？（任意）",
   "ui_send": "送信",
   "ui_not_now": "後で",
-  "ui_back_again_to_leave": "もう一度戻るを押すとKyronを終了します"
+  "ui_back_again_to_leave": "もう一度戻るを押すとKyronを終了します",
+  "ui_confirm_its_you_title": "ご本人確認",
+  "ui_confirm_its_you_password": "アカウントを削除するにはパスワードを入力してください。",
+  "ui_confirm_its_you_google": "アカウントを削除するには Google でもう一度ログインしてください。",
+  "ui_confirm_its_you_failed": "うまくいきませんでした。確認してもう一度お試しください。",
+  "ui_browser_leave_title": "このページが別のアプリを開こうとしています",
+  "ui_browser_leave_detail": "{scheme} のリンクを開こうとしています。"
 }

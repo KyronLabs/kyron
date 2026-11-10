@@ -2062,6 +2062,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne tagad"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Vēlreiz nospiediet Atpakaļ, lai izietu no Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Apstipriniet, ka tas esat jūs"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Ievadiet paroli, lai dzēstu kontu."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Vēlreiz pierakstieties ar Google, lai dzēstu kontu."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās. Pārbaudiet un mēģiniet vēlreiz."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Šī lapa vēlas atvērt citu lietotni"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Tā lūdz atvērt {scheme} saiti."),
     };
 
 final messageLookup = MessageLookup();

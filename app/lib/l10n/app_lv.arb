@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ko mums labot vai pievienot? (pēc izvēles)",
   "ui_send": "Sūtīt",
   "ui_not_now": "Ne tagad",
-  "ui_back_again_to_leave": "Vēlreiz nospiediet Atpakaļ, lai izietu no Kyron"
+  "ui_back_again_to_leave": "Vēlreiz nospiediet Atpakaļ, lai izietu no Kyron",
+  "ui_confirm_its_you_title": "Apstipriniet, ka tas esat jūs",
+  "ui_confirm_its_you_password": "Ievadiet paroli, lai dzēstu kontu.",
+  "ui_confirm_its_you_google": "Vēlreiz pierakstieties ar Google, lai dzēstu kontu.",
+  "ui_confirm_its_you_failed": "Neizdevās. Pārbaudiet un mēģiniet vēlreiz.",
+  "ui_browser_leave_title": "Šī lapa vēlas atvērt citu lietotni",
+  "ui_browser_leave_detail": "Tā lūdz atvērt {scheme} saiti."
 }

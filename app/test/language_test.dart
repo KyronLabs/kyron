@@ -470,10 +470,10 @@ void main() {
     testWidgets('says what does not work yet rather than implying it does', (
       tester,
     ) async {
-      // The translation feature is not built, posts carry no language, and
-      // Kyron's own words are not translated. Three settings that quietly do
-      // nothing is what the settings audit just finished removing; these say
-      // so instead.
+      // The translation feature is not built and posts carry no language:
+      // settings that quietly do nothing is what the settings audit removed,
+      // so these say so. Kyron's own words are translated now, and the note
+      // says that, from the catalogs rather than in English.
       SharedPreferences.setMockInitialValues(<String, Object>{});
       await pumpScreen(tester);
       await tester.pump();
@@ -488,7 +488,11 @@ void main() {
         find.textContaining('Posts do not carry a language yet'),
         findsOneWidget,
       );
-      expect(find.textContaining('still being translated'), findsOneWidget);
+      expect(find.textContaining('still being translated'), findsNothing);
+      expect(
+        find.textContaining("Kyron's screens are in your language"),
+        findsOneWidget,
+      );
     });
 
     testWidgets('shows the languages already chosen for content', (

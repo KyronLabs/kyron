@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart'
 import 'package:flutter/services.dart'; // Add this import
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'services/secure_session_storage.dart';
 import 'services/app_log.dart';
 import 'services/draft_service.dart';
 import 'services/platform_support.dart';
@@ -72,6 +73,15 @@ void main() async {
   await Supabase.initialize(
     url: SupabaseConfig.url,
     anonKey: SupabaseConfig.anonKey,
+    authOptions: FlutterAuthClientOptions(
+      // The session, refresh token included, in the keystore rather than
+      // plain preferences. The key is the SDK's own, so a session it stored
+      // there before is moved across on first launch.
+      localStorage: SecureSessionStorage(
+        persistSessionKey:
+            'sb-${Uri.parse(SupabaseConfig.url).host.split('.').first}-auth-token',
+      ),
+    ),
   );
 
   runApp(const ProviderScope(child: KyronApp()));

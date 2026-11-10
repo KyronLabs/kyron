@@ -1756,6 +1756,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("以后再说"),
       "ui_back_again_to_leave":
           MessageLookupByLibrary.simpleMessage("再按一次返回键退出 Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("确认是你本人"),
+      "ui_confirm_its_you_password":
+          MessageLookupByLibrary.simpleMessage("输入密码以删除你的账号。"),
+      "ui_confirm_its_you_google":
+          MessageLookupByLibrary.simpleMessage("请再次使用 Google 登录以删除你的账号。"),
+      "ui_confirm_its_you_failed":
+          MessageLookupByLibrary.simpleMessage("没有成功。请检查后重试。"),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("此页面想要打开另一个应用"),
+      "ui_browser_leave_detail":
+          MessageLookupByLibrary.simpleMessage("它请求打开一个 {scheme} 链接。"),
     };
 
 final messageLookup = MessageLookup();

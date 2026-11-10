@@ -103,19 +103,30 @@ class AuthRepository {
     } finally {
       // Clear local caches even if the network sign-out fails, so the device
       // is not left showing a signed-in shell.
-      await _storage.clearAll();
+      await _storage.clearSession();
     }
   }
 
   /// The SDK refreshes on its own schedule; this forces one and reports whether
   /// a usable session survived.
+  ///
+  /// Only an answer from Supabase that the session is gone signs anybody
+  /// out. A refresh that could not reach Supabase -- no signal, a timeout --
+  /// says nothing about the session, so it is kept: the person stays signed
+  /// in, and the SDK refreshes once there is a connection. This used to wipe
+  /// the store on any failure, which signed people out for opening the app
+  /// on a train.
   Future<bool> refresh() async {
     try {
       final res = await _auth.refreshSession();
       return res.session != null;
-    } catch (_) {
-      await _storage.clearAll();
+    } on AuthRetryableFetchException {
+      return hasPersistedSession;
+    } on AuthException {
+      await _storage.clearSession();
       return false;
+    } catch (_) {
+      return hasPersistedSession;
     }
   }
 

@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Düzəltməli və ya əlavə etməli olduğumuz bir şey? (istəyə görə)",
   "ui_send": "Göndər",
   "ui_not_now": "İndi yox",
-  "ui_back_again_to_leave": "Kyron-dan çıxmaq üçün yenidən geri basın"
+  "ui_back_again_to_leave": "Kyron-dan çıxmaq üçün yenidən geri basın",
+  "ui_confirm_its_you_title": "Siz olduğunuzu təsdiqləyin",
+  "ui_confirm_its_you_password": "Hesabınızı silmək üçün parolunuzu daxil edin.",
+  "ui_confirm_its_you_google": "Hesabınızı silmək üçün Google ilə yenidən daxil olun.",
+  "ui_confirm_its_you_failed": "Alınmadı. Yoxlayın və yenidən cəhd edin.",
+  "ui_browser_leave_title": "Bu səhifə başqa tətbiqi açmaq istəyir",
+  "ui_browser_leave_detail": "{scheme} keçidini açmağı xahiş edir."
 }

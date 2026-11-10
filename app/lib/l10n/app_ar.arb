@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "هل هناك ما يجب إصلاحه أو إضافته؟ (اختياري)",
   "ui_send": "إرسال",
   "ui_not_now": "ليس الآن",
-  "ui_back_again_to_leave": "اضغط رجوع مرة أخرى للخروج من Kyron"
+  "ui_back_again_to_leave": "اضغط رجوع مرة أخرى للخروج من Kyron",
+  "ui_confirm_its_you_title": "أكّد أنه أنت",
+  "ui_confirm_its_you_password": "أدخل كلمة المرور لحذف حسابك.",
+  "ui_confirm_its_you_google": "سجّل الدخول باستخدام Google مرة أخرى لحذف حسابك.",
+  "ui_confirm_its_you_failed": "لم ينجح ذلك. تحقّق منه وحاول مرة أخرى.",
+  "ui_browser_leave_title": "تريد هذه الصفحة فتح تطبيق آخر",
+  "ui_browser_leave_detail": "تطلب فتح رابط {scheme}."
 }

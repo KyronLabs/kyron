@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "چیزی هست که باید درست یا اضافه کنیم؟ (اختیاری)",
   "ui_send": "ارسال",
   "ui_not_now": "الان نه",
-  "ui_back_again_to_leave": "برای خروج از Kyron دوباره بازگشت را بزنید"
+  "ui_back_again_to_leave": "برای خروج از Kyron دوباره بازگشت را بزنید",
+  "ui_confirm_its_you_title": "تأیید کنید که خودتان هستید",
+  "ui_confirm_its_you_password": "برای حذف حساب، گذرواژه‌تان را وارد کنید.",
+  "ui_confirm_its_you_google": "برای حذف حساب، دوباره با Google وارد شوید.",
+  "ui_confirm_its_you_failed": "انجام نشد. بررسی کنید و دوباره امتحان کنید.",
+  "ui_browser_leave_title": "این صفحه می‌خواهد برنامهٔ دیگری را باز کند",
+  "ui_browser_leave_detail": "درخواست باز کردن یک پیوند {scheme} را دارد."
 }

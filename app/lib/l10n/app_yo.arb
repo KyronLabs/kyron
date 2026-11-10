@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ṣé ohun kan wà tí a gbọ́dọ̀ tún ṣe tàbí fi kún un? (àṣàyàn)",
   "ui_send": "Fi ránṣẹ́",
   "ui_not_now": "Kì í ṣe báyìí",
-  "ui_back_again_to_leave": "Tẹ padà lẹ́ẹ̀kan sí i láti kúrò ní Kyron"
+  "ui_back_again_to_leave": "Tẹ padà lẹ́ẹ̀kan sí i láti kúrò ní Kyron",
+  "ui_confirm_its_you_title": "Jẹ́rìí pé ìwọ ni",
+  "ui_confirm_its_you_password": "Tẹ ọ̀rọ̀ aṣínà rẹ láti pa àkọọ́lẹ̀ rẹ rẹ́.",
+  "ui_confirm_its_you_google": "Wọlé lẹ́ẹ̀kan sí i pẹ̀lú Google láti pa àkọọ́lẹ̀ rẹ rẹ́.",
+  "ui_confirm_its_you_failed": "Ìyẹn kò ṣiṣẹ́. Ṣàyẹ̀wò rẹ̀ kí o sì tún gbìyànjú.",
+  "ui_browser_leave_title": "Ojú-ìwé yìí fẹ́ ṣí ìṣàfilọ́lẹ̀ mìíràn",
+  "ui_browser_leave_detail": "Ó ń béèrè láti ṣí ìjápọ̀ {scheme} kan."
 }

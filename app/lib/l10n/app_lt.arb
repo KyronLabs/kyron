@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ką turėtume pataisyti ar pridėti? (neprivaloma)",
   "ui_send": "Siųsti",
   "ui_not_now": "Ne dabar",
-  "ui_back_again_to_leave": "Dar kartą paspauskite Atgal, kad išeitumėte iš Kyron"
+  "ui_back_again_to_leave": "Dar kartą paspauskite Atgal, kad išeitumėte iš Kyron",
+  "ui_confirm_its_you_title": "Patvirtinkite, kad tai jūs",
+  "ui_confirm_its_you_password": "Įveskite slaptažodį, kad ištrintumėte paskyrą.",
+  "ui_confirm_its_you_google": "Dar kartą prisijunkite per „Google“, kad ištrintumėte paskyrą.",
+  "ui_confirm_its_you_failed": "Nepavyko. Patikrinkite ir bandykite dar kartą.",
+  "ui_browser_leave_title": "Šis puslapis nori atidaryti kitą programą",
+  "ui_browser_leave_detail": "Prašoma atidaryti {scheme} nuorodą."
 }

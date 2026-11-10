@@ -1971,6 +1971,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("ไว้ทีหลัง"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "กดย้อนกลับอีกครั้งเพื่อออกจาก Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("ยืนยันว่าเป็นคุณ"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "ป้อนรหัสผ่านเพื่อลบบัญชีของคุณ"),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "ลงชื่อเข้าใช้ด้วย Google อีกครั้งเพื่อลบบัญชีของคุณ"),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "ไม่สำเร็จ ตรวจสอบแล้วลองอีกครั้ง"),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("หน้านี้ต้องการเปิดแอปอื่น"),
+      "ui_browser_leave_detail":
+          MessageLookupByLibrary.simpleMessage("หน้านี้ขอเปิดลิงก์ {scheme}"),
     };
 
 final messageLookup = MessageLookup();

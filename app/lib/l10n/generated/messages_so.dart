@@ -2081,6 +2081,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hadda maya"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Mar kale riix dib si aad uga baxdo Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Xaqiiji inaad adigu tahay"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Geli eraygaaga sirta ah si aad u tirtirto akoonkaaga."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Mar kale Google ku gal si aad u tirtirto akoonkaaga."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Taasi ma shaqayn. Hubi oo isku day mar kale."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Boggani wuxuu rabaa inuu furo app kale"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Wuxuu codsanayaa inuu furo xiriirka {scheme}."),
     };
 
 final messageLookup = MessageLookup();

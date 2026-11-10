@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "משהו שכדאי לתקן או להוסיף? (לא חובה)",
   "ui_send": "שליחה",
   "ui_not_now": "לא עכשיו",
-  "ui_back_again_to_leave": "יש ללחוץ שוב על חזרה כדי לצאת מ-Kyron"
+  "ui_back_again_to_leave": "יש ללחוץ שוב על חזרה כדי לצאת מ-Kyron",
+  "ui_confirm_its_you_title": "אשרו שזה אתם",
+  "ui_confirm_its_you_password": "הזינו את הסיסמה כדי למחוק את החשבון.",
+  "ui_confirm_its_you_google": "התחברו שוב עם Google כדי למחוק את החשבון.",
+  "ui_confirm_its_you_failed": "זה לא הצליח. בדקו ונסו שוב.",
+  "ui_browser_leave_title": "הדף הזה רוצה לפתוח אפליקציה אחרת",
+  "ui_browser_leave_detail": "הוא מבקש לפתוח קישור {scheme}."
 }

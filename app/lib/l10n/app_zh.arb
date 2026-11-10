@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "有什么需要我们修复或添加的吗？（可选）",
   "ui_send": "发送",
   "ui_not_now": "以后再说",
-  "ui_back_again_to_leave": "再按一次返回键退出 Kyron"
+  "ui_back_again_to_leave": "再按一次返回键退出 Kyron",
+  "ui_confirm_its_you_title": "确认是你本人",
+  "ui_confirm_its_you_password": "输入密码以删除你的账号。",
+  "ui_confirm_its_you_google": "请再次使用 Google 登录以删除你的账号。",
+  "ui_confirm_its_you_failed": "没有成功。请检查后重试。",
+  "ui_browser_leave_title": "此页面想要打开另一个应用",
+  "ui_browser_leave_detail": "它请求打开一个 {scheme} 链接。"
 }

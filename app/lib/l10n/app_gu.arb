@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "કંઈ સુધારવું કે ઉમેરવું જોઈએ? (વૈકલ્પિક)",
   "ui_send": "મોકલો",
   "ui_not_now": "હમણાં નહીં",
-  "ui_back_again_to_leave": "Kyron છોડવા માટે ફરીથી પાછળ દબાવો"
+  "ui_back_again_to_leave": "Kyron છોડવા માટે ફરીથી પાછળ દબાવો",
+  "ui_confirm_its_you_title": "ખાતરી કરો કે આ તમે છો",
+  "ui_confirm_its_you_password": "તમારું એકાઉન્ટ કાઢી નાખવા માટે પાસવર્ડ દાખલ કરો.",
+  "ui_confirm_its_you_google": "તમારું એકાઉન્ટ કાઢી નાખવા માટે ફરીથી Google વડે સાઇન ઇન કરો.",
+  "ui_confirm_its_you_failed": "તે કામ ન કર્યું. તપાસો અને ફરી પ્રયાસ કરો.",
+  "ui_browser_leave_title": "આ પેજ બીજી ઍપ ખોલવા માંગે છે",
+  "ui_browser_leave_detail": "તે {scheme} લિંક ખોલવા માંગે છે."
 }

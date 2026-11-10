@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "რამე უნდა გავასწოროთ ან დავამატოთ? (არასავალდებულო)",
   "ui_send": "გაგზავნა",
   "ui_not_now": "ახლა არა",
-  "ui_back_again_to_leave": "Kyron-იდან გასასვლელად კვლავ დააჭირეთ უკან"
+  "ui_back_again_to_leave": "Kyron-იდან გასასვლელად კვლავ დააჭირეთ უკან",
+  "ui_confirm_its_you_title": "დაადასტურეთ, რომ ეს თქვენ ხართ",
+  "ui_confirm_its_you_password": "ანგარიშის წასაშლელად შეიყვანეთ პაროლი.",
+  "ui_confirm_its_you_google": "ანგარიშის წასაშლელად ხელახლა შედით Google-ით.",
+  "ui_confirm_its_you_failed": "არ გამოვიდა. შეამოწმეთ და სცადეთ ხელახლა.",
+  "ui_browser_leave_title": "ეს გვერდი სხვა აპის გახსნას ითხოვს",
+  "ui_browser_leave_detail": "ის ითხოვს {scheme} ბმულის გახსნას."
 }

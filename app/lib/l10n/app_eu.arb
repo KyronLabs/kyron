@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Zerbait konpondu edo gehitu beharko genuke? (aukerakoa)",
   "ui_send": "Bidali",
   "ui_not_now": "Orain ez",
-  "ui_back_again_to_leave": "Sakatu atzera berriro Kyron uzteko"
+  "ui_back_again_to_leave": "Sakatu atzera berriro Kyron uzteko",
+  "ui_confirm_its_you_title": "Berretsi zu zarela",
+  "ui_confirm_its_you_password": "Idatzi pasahitza kontua ezabatzeko.",
+  "ui_confirm_its_you_google": "Hasi saioa berriro Google-rekin kontua ezabatzeko.",
+  "ui_confirm_its_you_failed": "Ez du funtzionatu. Egiaztatu eta saiatu berriro.",
+  "ui_browser_leave_title": "Orri honek beste aplikazio bat ireki nahi du",
+  "ui_browser_leave_detail": "{scheme} esteka bat irekitzeko eskatzen du."
 }

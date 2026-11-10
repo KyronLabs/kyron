@@ -332,15 +332,10 @@ class SettingsLanguageScreen extends ConsumerWidget {
           // translations for the parts of the interface it draws -- the back
           // button's tooltip, the text-selection menu, date pickers -- and
           // right-to-left languages lay the whole app out the other way round.
-          // Kyron's own words are not translated yet. Saying so is the
-          // difference between a setting that under-delivers and one that
-          // lies.
-          _Note(
-            'Kyron\'s own words are still being translated, so most screens '
-            'stay in English for now. What this changes today: the parts of '
-            'the interface Flutter draws itself, dates and numbers, and the '
-            'direction the app lays out in for right-to-left languages.',
-          ),
+          // What the setting changes. Read from the catalogs like everything
+          // else: this sentence used to be written here in English, so the
+          // catalogs' corrected wording never reached the screen.
+          _Note(AppLocalizations.of(context).kyronWordsStillBeingTranslated),
           const SizedBox(height: SpacingTokens.space24),
           const Hairline(),
           const SizedBox(height: SpacingTokens.space24),

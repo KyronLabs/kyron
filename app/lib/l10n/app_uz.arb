@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Tuzatishimiz yoki qo‘shishimiz kerak bo‘lgan narsa bormi? (ixtiyoriy)",
   "ui_send": "Yuborish",
   "ui_not_now": "Hozir emas",
-  "ui_back_again_to_leave": "Kyron’dan chiqish uchun yana orqaga bosing"
+  "ui_back_again_to_leave": "Kyron’dan chiqish uchun yana orqaga bosing",
+  "ui_confirm_its_you_title": "Bu siz ekaningizni tasdiqlang",
+  "ui_confirm_its_you_password": "Hisobni oʻchirish uchun parolingizni kiriting.",
+  "ui_confirm_its_you_google": "Hisobni oʻchirish uchun Google orqali qayta kiring.",
+  "ui_confirm_its_you_failed": "Boʻlmadi. Tekshirib, qayta urinib koʻring.",
+  "ui_browser_leave_title": "Bu sahifa boshqa ilovani ochmoqchi",
+  "ui_browser_leave_detail": "U {scheme} havolasini ochishni soʻramoqda."
 }

@@ -172,14 +172,16 @@ class MainActivity : FlutterFragmentActivity() {
      * up for the length of the copy.
      */
     private fun copy(uri: Uri): String? = try {
-        val type = contentResolver.getType(uri) ?: ""
-        if (!type.startsWith("image/")) {
+        // The extension comes from a fixed table, never from the type the
+        // other app reports: that is free text, and "image/../../x" would
+        // otherwise be part of a file name.
+        val extension = EXTENSIONS[(contentResolver.getType(uri) ?: "").lowercase()]
+        if (extension == null) {
             null
         } else if (sizeOf(uri) > MAX_BYTES) {
             null
         } else {
             val folder = File(cacheDir, "shared").apply { mkdirs() }
-            val extension = type.substringAfter('/').substringBefore('+').ifEmpty { "jpg" }
             val file = File(folder, "${System.nanoTime()}.$extension")
             contentResolver.openInputStream(uri)?.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
@@ -199,6 +201,17 @@ class MainActivity : FlutterFragmentActivity() {
 
     private companion object {
         const val CHANNEL = "so.kyron.app/share"
+
+        /** The pictures a share is taken for, and the name each is saved under. */
+        val EXTENSIONS = mapOf(
+            "image/jpeg" to "jpg",
+            "image/jpg" to "jpg",
+            "image/png" to "png",
+            "image/webp" to "webp",
+            "image/gif" to "gif",
+            "image/heic" to "heic",
+            "image/heif" to "heif",
+        )
 
         const val SECURE = "so.kyron.app/secure"
 

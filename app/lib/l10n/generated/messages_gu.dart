@@ -2004,6 +2004,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("હમણાં નહીં"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Kyron છોડવા માટે ફરીથી પાછળ દબાવો"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("ખાતરી કરો કે આ તમે છો"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "તમારું એકાઉન્ટ કાઢી નાખવા માટે પાસવર્ડ દાખલ કરો."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "તમારું એકાઉન્ટ કાઢી નાખવા માટે ફરીથી Google વડે સાઇન ઇન કરો."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "તે કામ ન કર્યું. તપાસો અને ફરી પ્રયાસ કરો."),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("આ પેજ બીજી ઍપ ખોલવા માંગે છે"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "તે {scheme} લિંક ખોલવા માંગે છે."),
     };
 
 final messageLookup = MessageLookup();

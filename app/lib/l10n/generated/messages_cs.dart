@@ -2326,6 +2326,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Teď ne"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Dalším stisknutím Zpět opustíte Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Potvrďte, že jste to vy"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Zadejte heslo, abyste mohli smazat účet."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Znovu se přihlaste přes Google, abyste mohli smazat účet."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepovedlo se. Zkontrolujte to a zkuste to znovu."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Tato stránka chce otevřít jinou aplikaci"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Žádá o otevření odkazu {scheme}."),
     };
 
 final messageLookup = MessageLookup();

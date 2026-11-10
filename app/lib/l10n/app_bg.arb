@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Нещо да поправим или добавим? (по желание)",
   "ui_send": "Изпрати",
   "ui_not_now": "Не сега",
-  "ui_back_again_to_leave": "Натиснете „Назад“ отново, за да излезете от Kyron"
+  "ui_back_again_to_leave": "Натиснете „Назад“ отново, за да излезете от Kyron",
+  "ui_confirm_its_you_title": "Потвърдете, че сте вие",
+  "ui_confirm_its_you_password": "Въведете паролата си, за да изтриете профила си.",
+  "ui_confirm_its_you_google": "Влезте отново с Google, за да изтриете профила си.",
+  "ui_confirm_its_you_failed": "Не се получи. Проверете и опитайте отново.",
+  "ui_browser_leave_title": "Тази страница иска да отвори друго приложение",
+  "ui_browser_leave_detail": "Иска да отвори връзка {scheme}."
 }
