@@ -1,5 +1,42 @@
 [
   {
+    "version": "0.1.45",
+    "items": [
+      {
+        "title": "The last English screens are translated.",
+        "detail": "Sign-up's password rules, the profile tabs, verification, the voice recorder, the \"not ready yet\" screens, About, error reports, contact support, text size, appearance, muted and blocked accounts and the password screen now read in all 68 languages."
+      },
+      {
+        "title": "Deleting your account asks you to confirm it's you.",
+        "detail": "If you last signed in a while ago, Kyron asks for your password (or Google) first, so an unlocked phone is not enough to erase an account."
+      },
+      {
+        "title": "Blocking holds everywhere.",
+        "detail": "Someone you blocked, or who blocked you, can no longer like, repost, save, quote, vote on or reply to your posts and comments, and hiding one post no longer empties your feed."
+      },
+      {
+        "title": "Deleted posts' pictures go too.",
+        "detail": "Photos and clips of a deleted post are removed 30 days later, after any report or appeal about it has had time."
+      },
+      {
+        "title": "Signing out no longer loses your messages.",
+        "detail": "Signing out, or a refresh that failed for want of signal, deleted this phone's message key along with the session, so messages sent to you before showed as \"Waiting for this message\"."
+      },
+      {
+        "title": "Your sign-in is kept in the phone's keystore, not in a plain file, and Kyron is left out of backups and phone-to-phone transfers.",
+        "detail": ""
+      },
+      {
+        "title": "Links in the in-app browser ask before opening another app, and can never open Kyron itself or an app's internals.",
+        "detail": ""
+      },
+      {
+        "title": "A security review's findings on the server: link previews can no longer be steered at private addresses, uploads are checked by their contents, profile fields have limits, message keys are capped per account, rate limits and CORS are stricter, the old sign-in endpoints are removed, and the server runs as an unprivileged user.",
+        "detail": ""
+      }
+    ]
+  },
+  {
     "version": "0.1.44",
     "items": [
       {
@@ -76,35 +113,6 @@
       {
         "title": "Bug fixes and performance improvements.",
         "detail": ""
-      }
-    ]
-  },
-  {
-    "version": "0.1.40",
-    "items": [
-      {
-        "title": "Edit a post.",
-        "detail": "For 15 minutes after posting, your post's menu has Edit post: change the words, and the post says \"Edited\"."
-      },
-      {
-        "title": "Sort comments.",
-        "detail": "Top or Recent, from the end of the comments heading."
-      },
-      {
-        "title": "Videos play like TikTok.",
-        "detail": "A tap pauses once it is clear it is not a double tap; a double tap likes without stopping the clip, and more taps are more hearts."
-      },
-      {
-        "title": "The bar on a post's page changes at its own pace — the same calm change however fast the scroll — and turns round smoothly if you scroll back halfway.",
-        "detail": ""
-      },
-      {
-        "title": "A shared comment opens the comment.",
-        "detail": "Comment links used the address communities use, so tapping one opened an empty community page."
-      },
-      {
-        "title": "Scrolling the feed while a post is deleted no longer errors.",
-        "detail": "Counting what you have seen could trip over a post removed at the same moment; that post is now simply skipped."
       }
     ]
   }
