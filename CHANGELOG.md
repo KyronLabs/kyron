@@ -20,6 +20,18 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **The web app is withdrawn until further notice.** Kyron is the Android and
+  Windows apps; the website's "Log In" and sign-up buttons now lead to the
+  download page, and old links to the web app land there too. The Google Play
+  link on the download page also pointed at the wrong app and is fixed.
+
+### Security
+
+- The website sends headers that stop it being framed or content-sniffed, and
+  the API no longer accepts calls from any web page.
+
 
 ## [0.1.45] - 2026-11-10
 ### Changed

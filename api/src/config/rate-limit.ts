@@ -141,12 +141,11 @@ export function readTrustedHops(raw = process.env.TRUST_PROXY_HOPS): number {
   return parsed;
 }
 
-/** What answers cross-origin when CORS_ORIGIN is unset in production: the
- * places the web app is served from, and nowhere else. */
-export const DEFAULT_PRODUCTION_ORIGINS = [
-  'https://kyron.spidroid.com',
-  'https://kyron-web.onrender.com',
-];
+/** What answers cross-origin when CORS_ORIGIN is unset in production:
+ * nothing. The web app is withdrawn (#192), and the Android and Windows apps
+ * do not send an Origin, so no browser page needs to call this API. Set
+ * CORS_ORIGIN if a web client comes back. */
+export const DEFAULT_PRODUCTION_ORIGINS: string[] = [];
 
 /**
  * The origins allowed to call this API from a browser, or `true` to reflect

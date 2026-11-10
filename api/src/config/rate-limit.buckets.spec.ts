@@ -64,6 +64,8 @@ describe('corsOrigins', () => {
       DEFAULT_PRODUCTION_ORIGINS,
     );
     expect(corsOrigins('  ', 'production')).toEqual(DEFAULT_PRODUCTION_ORIGINS);
+    // No web client exists, so no web page may call the API by default.
+    expect(DEFAULT_PRODUCTION_ORIGINS).toEqual([]);
   });
 
   it('reflects in development', () => {
