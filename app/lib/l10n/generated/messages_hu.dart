@@ -2090,6 +2090,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ez az oldal egy másik alkalmazást szeretne megnyitni"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Egy {scheme} hivatkozás megnyitását kéri."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} gyorsítótárazott kép és fájl"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} felszabadítva"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Mérés…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nincs mit törölni"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Tárhely"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Verzió: {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Letiltottak"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Saját nevedben teszel közzé"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezeket a mellékleteket nem sikerült feltölteni. Koppints egyre az újrapróbáláshoz, vagy távolítsd el."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült módosítani az e-mail-címed. Próbáld újra."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "A címed akkor változik meg, amikor megnyitod az általunk küldött linket."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Nézd meg a megerősítő linket itt: {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Adj meg egy e-mail-címet."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("Ez nem tűnik e-mail-címnek."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("Ez már az e-mail-címed."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Mit csináltál, mire számítottál, és mi történt helyette."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Hadd tűzhessek ki egy bejegyzést a profilomra"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Mit szeretnél, és mit tehetnél meg vele."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Mi segítene"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Egy probléma"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Egy ötlet"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Egy kérdés"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ezt csak a Kyron csapata olvassa. A fiókoddal együtt küldjük, hogy e-mailben válaszolhassunk, és a használt alkalmazásverzióval együtt. Ha törlöd a fiókod, ez is törlődik."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Hogyan némíthatok el egy szót?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Mit próbálsz csinálni, és hol akadtál el."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("A kérdésed"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült elérni a Kyront. Ellenőrizd a kapcsolatot, és próbáld újra. Még semmit nem írtál, így semmi sem veszett el."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Törlés"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "A sikertelen kérések és más fontos események itt jelennek meg."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Némítottak"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Adj meg fent egy szót vagy címkét. Az azt tartalmazó bejegyzések nem kerülnek a hírfolyamodba."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Az ezek bármelyikét tartalmazó bejegyzések nem kerülnek a hírfolyamodba. A kis- és nagybetű nem számít, és a szó hosszabb szavak belsejében is egyezik, így a „spoiler” a „spoilers” szót is kiszűri."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Senki sincs letiltva"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "A letiltás elrejt titeket egymás elől, mindkét irányban. Valakit a profilja menüjéből tilthatsz le."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Senki sincs elnémítva"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Egy fiók elnémítása elrejti a bejegyzéseit anélkül, hogy szólnánk neki. Valakit a profilja vagy egy bejegyzés menüjéből némíthatsz el."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Jelszó"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Nem egyeznek."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Ezen az eszközön bejelentkezve maradsz. A többi eszközről kijelentkeztetünk."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Legalább 8 karaktert használj."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült frissíteni a jelszavad. Próbáld újra."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Jelszó frissítve."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID másolva"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "A kedvelt bejegyzéseid itt maradnak, csak neked."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Még nem tettél közzé fotót vagy klipet."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} még nem tett közzé fotót vagy klipet."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Minden, amit közzéteszel, itt jelenik meg."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} még semmit nem tett közzé."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni a profilod"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni: @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Legalább 8 karakter"),
+      "ui_pw_rule_lower": MessageLookupByLibrary.simpleMessage("Kisbetű (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Legalább egy szám"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Szimbólum (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Nagybetű (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} friss bejegyzés. Küldés előtt nézd át őket itt: Névjegy › Rendszernapló."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ezt csak a Kyron csapata olvassa. A fiókoddal együtt küldjük, hogy jelentkezhessünk. Ha pontosan látni szeretnéd, mi megy vele, előbb olvasd el a naplót itt: Névjegy › Rendszernapló."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Elküldve, köszönjük."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Elküldve, köszönjük. Ez a(z) #{number} számú jelentés."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Mi romlott el?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Verzió, szabályzatok, állapot és rendszernapló"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Görgetéskor ne induljanak el maguktól a videók"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("A decentralizált azonosítód"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderálás"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Ellenőrzésre váró jelentések és fellebbezések"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Az ezeket tartalmazó bejegyzések ne kerüljenek a hírfolyamba"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Nincs bejelentkezve"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Értesítési beállítások"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Adatvédelem és biztonság"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "A fiókodról hozott döntések és fellebbezések"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Szövegméret módosítása"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("A fiókod"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Az AR-szűrők rögzítése és közzététele még fejlesztés alatt áll. Semmi, amit rögzítesz, nem mentődne még el, ezért a kamera zárva marad."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("A szűrők még nincsenek készen"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-szűrő"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Az élő közvetítéshez médiaszerver kell, amelyet a Kyron még nem üzemeltet. Ha most indítanál közvetítést, egy olyan szobába kerülnél, ahová senki sem tud belépni. Hangbejegyzést rögzíteni már ma is lehet."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Az élő közvetítés még nincs kész"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Élő közvetítés"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "A szavazásokhoz kell egy hely, ahol a lehetőségeket tároljuk és a szavazatokat számoljuk. Ez még nincs meg, így egy ma közzétett szavazás minden választ elveszítene."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "A szavazások még nincsenek készen"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Szavazás"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Inkább szöveges bejegyzést írok"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Ellenőrzés újra"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Részletek"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Tükörtáblák"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "A Kyron válaszolt, de valami nincs rendben."),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("Válaszidő"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Kérdés feltevése"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "A fiókodról, vagy arról, hogyan működik valami"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("E-mailben"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ha a Kyron összeomlott: az alkalmazás naplóját is elküldi"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Az alkalmazásban"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Írj innen a Kyron csapatának. Az üzenet privátban, a fiókoddal együtt ér el minket, és a fiókhoz tartozó e-mail-címre válaszolunk."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Nem nyílt meg levelezőalkalmazás. {address} kimásolva."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Adatvédelem és az adataid"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Probléma jelentése"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Valami elromlott, vagy nem úgy működik, ahogy kellene"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Bejegyzés vagy fiók jelentéséhez használd annak menüjét: így pontosan tudjuk, melyikre gondolsz."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Biztonság és visszaélés"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Mindenkinél leállt a Kyron, vagy csak nálad"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Nagy"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Nagyobb"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Közepes"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "A Kyron hely arra, hogy olvasásra érdemeset mondj."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Kicsi"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Mindig sötét"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Tompa"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Lágyabb sötét, fekete helyett kékesszürke"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Mindig világos"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "A telefon világos vagy sötét beállítását követi"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Letiltás feloldása"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Némítás feloldása"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ki vagy"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "A saját szavaiddal: mit kell tudnia az ellenőrzőnek."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Itt és a saját oldalamon írok a madarakról."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Újabb link hozzáadása"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("{date} után kérheted újra."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Hitelesítés kérése"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Mielőtt kérnéd"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Alkotó"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Újságíró"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Szervezet vagy márka"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Valami más"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Közszereplő"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "A(z) {number} számú kérés nem lett jóváhagyva"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Hitelesített vagy"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Profil szerkesztése"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Add meg a 6 jegyű kódot"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Kód újraküldése {seconds} másodperc múlva"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Elküldtük ide: {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Ellenőrzés"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Legyél hitelesített a Kyronon"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Legyél"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("hitelesített"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("a Kyronon."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "A jelvény azt jelenti, hogy a Kyron csapatából valaki ellenőrizte, hogy a fiók az, akinek mondja magát. Nem ad extra elérést, és nem eladó."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "A jelvény addig marad, amíg a neved. Ha megváltoztatod a neved, eltűnik, amíg valaki meg nem nézi az újat."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Ahol ellenőrizhetjük"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("Másik link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Egy oldal vagy másik profil, amely szerint ez a Kyron-fiók a tiéd: tedd rá a Kyron-neved vagy a profilod linkjét. A Kyron soha nem kér személyazonosító okmányt."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült betölteni, hol tartasz"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Mielőtt kérhetnéd, a fentiek mindegyikét ki kell pipálni."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Legalább {days} napos fiók"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Egy bemutatkozás, amely elmondja, ki vagy"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("A neved a profilon"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("Profilkép"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Semmi a nyilvántartásodban az elmúlt {days} napban"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Elküldve. Egy ember megnézi."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} óta."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Kérés"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ki vagy, és egy link,\namely bizonyítja"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("A jelvény"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "A neved mellett,\nmindenhol, ahol látszik"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Egy ember\nellenőrzi"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "A csapatból valaki\nmegnyitja a linkjeid"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Hitelesítés"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "A(z) {number} számú kérés egy embernél van"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Elküldve: {date}, mint {category}. Értesítést kapsz, ha döntés születik."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Kérés visszavonása"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Kérés visszavonva."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült befejezni a felvételt: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Legfeljebb tíz perc."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Figyelés…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "A Kyronnak engedély kell a mikrofon használatához a felvételhez. Ezt az eszköz beállításaiban adhatod meg."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült elindítani a felvételt: {error}"),
     };
 
 final messageLookup = MessageLookup();

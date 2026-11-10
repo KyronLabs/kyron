@@ -2089,6 +2089,306 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Šis puslapis nori atidaryti kitą programą"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Prašoma atidaryti {scheme} nuorodą."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Versija"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Talpykloje {size} vaizdų ir failų"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Atlaisvinta {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Matuojama…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nėra ką išvalyti"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Saugykla"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versija {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Užblokuoti"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Skelbiate savo vardu"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Šie priedai nebuvo įkelti. Bakstelėkite vieną, kad bandytumėte dar kartą, arba jį pašalinkite."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko pakeisti el. pašto. Bandykite dar kartą."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adresas pasikeis, kai atidarysite mūsų atsiųstą nuorodą."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Patvirtinimo nuorodos ieškokite {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Įveskite el. pašto adresą."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Tai nepanašu į el. pašto adresą."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Tai jau jūsų el. pašto adresas."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ką darėte, ko tikėjotės ir kas nutiko vietoj to."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Leiskite prisegti įrašą prie profilio"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ko norėtumėte ir ką tai leistų jums padaryti."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Kas padėtų"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Problema"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Idėja"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Klausimas"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Tai skaito tik Kyron komanda. Tai siunčiama su jūsų paskyra, kad galėtume atsakyti el. paštu, ir su naudojama programėlės versija. Ištrynus paskyrą, ištrinama ir tai."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Kaip nutildyti žodį?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ką bandote padaryti ir kur įstrigote."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Jūsų klausimas"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko pasiekti Kyron. Patikrinkite ryšį ir bandykite dar kartą. Dar nieko neparašyta, tad niekas neprarasta."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Išvalyti"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Čia rodomos nepavykusios užklausos ir kiti svarbūs įvykiai."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Nutildyti"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Viršuje pridėkite žodį ar žymą. Įrašai su juo nebus rodomi jūsų sraute."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Įrašai, kuriuose yra bet kas iš šių, nerodomi jūsų sraute. Didžiosios ir mažosios raidės nesvarbu, o žodis atitinka ir ilgesnių žodžių viduje, tad „spoiler“ pagauna ir „spoilers“."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Niekas neužblokuotas"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokavimas paslepia jus vienas nuo kito abiem kryptimis. Užblokuokite ką nors iš jo profilio meniu."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Niekas nenutildytas"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Nutildžius paskyrą, jos įrašai paslepiami jai nepranešus. Nutildykite ką nors iš jo profilio ar įrašo meniu."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Slaptažodis"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Nesutampa."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Šiame įrenginyje liksite prisijungę. Kituose įrenginiuose būsite atjungti."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Naudokite bent 8 simbolius."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko atnaujinti slaptažodžio. Bandykite dar kartą."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Slaptažodis atnaujintas."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID nukopijuotas"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Patikę įrašai saugomi čia, tik jums."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Dar nepaskelbėte nuotraukų ar klipų."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} dar nepaskelbė nuotraukų ar klipų."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Viskas, ką paskelbsite, bus rodoma čia."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} dar nieko nepaskelbė."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Nepavyko įkelti jūsų profilio"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Nepavyko įkelti @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Bent 8 simboliai"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Mažoji raidė (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Bent vienas skaičius"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbolis (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Didžioji raidė (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Naujausių įrašų: {count}. Prieš siųsdami peržiūrėkite juos skiltyje Apie › Sistemos žurnalas."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Tai skaito tik Kyron komanda. Tai siunčiama su jūsų paskyra, kad galėtume susisiekti. Jei norite tiksliai matyti, kas siunčiama kartu, pirmiausia perskaitykite žurnalą skiltyje Apie › Sistemos žurnalas."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("Išsiųsta, ačiū."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Išsiųsta, ačiū. Tai pranešimas Nr. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Kas nutiko?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versija, taisyklės, būsena ir sistemos žurnalas"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Neleisti vaizdo įrašams pasileisti patiems slenkant"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Jūsų decentralizuotas identifikatorius"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderavimas"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Peržiūros laukiantys pranešimai ir apeliacijos"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Neleisti į srautą įrašų su šiais žodžiais"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Neprisijungta"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Pranešimų nuostatos"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privatumas ir saugumas"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Sprendimai dėl jūsų paskyros ir apeliacijos"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Koreguoti teksto dydį"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Jūsų paskyra"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR lęšių įrašymas ir skelbimas dar kuriami. Niekas, ką užfiksuosite, dar nebūtų išsaugota, todėl kamera lieka uždaryta."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lęšiai dar neparuošti"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR lęšis"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Tiesioginei transliacijai reikia medijos serverio, kurio Kyron dar nevaldo. Pradėję transliaciją dabar, atsidurtumėte kambaryje, į kurį niekas negali prisijungti. Balso įrašo įrašymas jau veikia."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Tiesioginės transliacijos dar neparuoštos"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Transliuoti tiesiogiai"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Apklausoms reikia vietos parinktims laikyti ir balsams skaičiuoti. Jos dar nėra, todėl šiandien paskelbta apklausa prarastų kiekvieną atsakymą."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Apklausos dar neparuoštos"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Apklausa"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Verčiau parašykite teksto įrašą"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Tikrinti dar kartą"),
+      "ui_status_detail":
+          MessageLookupByLibrary.simpleMessage("Išsami informacija"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Veidrodinės lentelės"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron atsakė, bet kažkas negerai."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Atsako laikas"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Užduoti klausimą"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Apie jūsų paskyrą ar kaip kas nors veikia"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("El. paštu"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Jei Kyron užstrigo: kartu siunčia programėlės žurnalą"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Programėlėje"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Rašykite Kyron komandai iš čia. Žinutė pas mus ateina privačiai, su jūsų paskyra, o atsakome jos el. pašto adresu."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Neatsidarė jokia pašto programėlė. {address} nukopijuotas."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privatumas ir jūsų duomenys"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Pranešti apie problemą"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Kažkas sugedo ar veikia ne taip, kaip turėtų"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Norėdami pranešti apie įrašą ar paskyrą, naudokite jo meniu: taip tiksliai žinosime, kurį turite omenyje."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Saugumas ir piktnaudžiavimas"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Ar Kyron neveikia visiems, ar tik jums"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Didelis"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Didesnis"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Vidutinis"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron yra vieta pasakyti tai, ką verta perskaityti."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Mažas"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Visada tamsi"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Prislopinta"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Švelnesnė tamsi, melsvai pilka vietoj juodos"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Visada šviesi"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Pagal telefono šviesios ar tamsios temos nustatymą"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Atblokuoti"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Atšaukti nutildymą"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kas jūs"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Savais žodžiais: ką turėtų žinoti tikrintojas."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Rašau apie paukščius čia ir savo svetainėje."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Pridėti dar vieną nuorodą"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Vėl paprašyti galėsite nuo {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Prašyti patvirtinimo"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Prieš prašydami"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Kūrėjas"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Žurnalistas"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage(
+          "Organizacija ar prekės ženklas"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Kita"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Vieša asmenybė"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Prašymas {number} nepatvirtintas"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Esate patvirtinti"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Redaguoti profilį"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Įveskite 6 skaitmenų kodą"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Kodą siųsti iš naujo po {seconds} s"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Išsiuntėme jį adresu {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Patvirtinti"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Gaukite patvirtinimą Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Gaukite"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("patvirtinimą"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Ženklelis reiškia, kad kažkas iš Kyron komandos patikrino, jog ši paskyra yra ta, kuo dedasi. Jis nesuteikia papildomo pasiekiamumo ir nėra parduodamas."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Ženklelis lieka tol, kol lieka jūsų vardas. Pakeitus vardą, jis dingsta, kol kas nors patikrins naująjį."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Kur galime patikrinti"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Dar viena nuoroda"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Svetainė ar kitas profilis, kuriame sakoma, kad ši Kyron paskyra yra jūsų: įdėkite ten savo Kyron vardą arba nuorodą į profilį. Kyron niekada neprašo tapatybės dokumentų."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Nepavyko įkelti jūsų būsenos"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Prieš prašant viskas aukščiau turi būti pažymėta."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Bent {days} dienų senumo paskyra"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Aprašymas, kuriame sakoma, kas jūs"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Jūsų vardas profilyje"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profilio nuotrauka"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Per pastarąsias {days} dienas jūsų istorijoje nieko"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Išsiųsta. Peržiūrės žmogus."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Nuo {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Prašyti"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kas jūs, ir nuoroda,\nkuri tai įrodo"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Ženklelis"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Šalia jūsų vardo,\nvisur, kur jis rodomas"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Žmogus\npatikrina"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Kažkas iš komandos\natidaro jūsų nuorodas"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Patvirtinimas"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Prašymą {number} nagrinėja žmogus"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Išsiųsta {date}, kaip {category}. Gausite pranešimą, kai bus nuspręsta."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Atšaukti prašymą"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Prašymas atšauktas."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko užbaigti įrašo: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Iki dešimties minučių."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Klausomasi…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron reikia leidimo naudoti mikrofoną įrašymui. Jį galite suteikti įrenginio nustatymuose."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko pradėti įrašymo: {error}"),
     };
 
 final messageLookup = MessageLookup();

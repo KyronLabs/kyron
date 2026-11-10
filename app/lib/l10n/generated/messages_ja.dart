@@ -1939,6 +1939,274 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("このページが別のアプリを開こうとしています"),
       "ui_browser_leave_detail":
           MessageLookupByLibrary.simpleMessage("{scheme} のリンクを開こうとしています。"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("ビルド"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("キャッシュされた画像とファイル {size}"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} を解放しました"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("計測中…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("消去するものはありません"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("ストレージ"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("バージョン {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("ブロック中"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("あなたとして投稿"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "添付ファイルをアップロードできませんでした。タップして再試行するか、削除してください。"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "メールアドレスを変更できませんでした。もう一度お試しください。"),
+      "ui_email_changes_after_link":
+          MessageLookupByLibrary.simpleMessage("お送りするリンクを開くと、アドレスが変更されます。"),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("{email} に届いた確認リンクを確認してください。"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("メールアドレスを入力してください。"),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("メールアドレスの形式ではないようです。"),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("すでにあなたのメールアドレスです。"),
+      "ui_feedback_bug_hint":
+          MessageLookupByLibrary.simpleMessage("何をしたか、何を期待していたか、そして実際に何が起きたか。"),
+      "ui_feedback_idea_example":
+          MessageLookupByLibrary.simpleMessage("プロフィールに投稿を固定したい"),
+      "ui_feedback_idea_hint":
+          MessageLookupByLibrary.simpleMessage("どうしたいか、そしてそれで何ができるようになるか。"),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("あると助かること"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("問題"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("アイデア"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("質問"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "これを読むのは Kyron チームだけです。メールで返信できるようにアカウントと一緒に、また使用中のアプリのバージョンと一緒に送信されます。アカウントを削除すると、これも削除されます。"),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("単語をミュートするには？"),
+      "ui_feedback_question_hint":
+          MessageLookupByLibrary.simpleMessage("何をしようとしていて、どこで困っているか。"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("あなたの質問"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron に接続できませんでした。接続を確認して、もう一度お試しください。まだ何も書かれていないので、失われるものはありません。"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("消去"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "失敗したリクエストやその他の注目すべき出来事がここに表示されます。"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("ミュート中"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "上に単語かタグを追加してください。それを含む投稿はフィードに表示されなくなります。"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "これらのいずれかを含む投稿はフィードに表示されません。大文字と小文字は区別されず、単語は長い単語の中でも一致するため、「spoiler」は「spoilers」にも一致します。"),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("ブロックしている人はいません"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "ブロックすると、お互いが相手から見えなくなります。相手のプロフィールのメニューからブロックできます。"),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("ミュートしている人はいません"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "アカウントをミュートすると、相手に知らせずにその投稿を非表示にします。プロフィールや投稿のメニューからミュートできます。"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("パスワード"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("一致しません。"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "この端末ではログインしたままです。ほかの端末からはログアウトされます。"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("8 文字以上にしてください。"),
+      "ui_password_update_failed":
+          MessageLookupByLibrary.simpleMessage("パスワードを更新できませんでした。もう一度お試しください。"),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("パスワードを更新しました。"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID をコピーしました"),
+      "ui_profile_empty_likes":
+          MessageLookupByLibrary.simpleMessage("いいねした投稿は、あなただけのためにここに保存されます。"),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("まだ写真や動画を投稿していません。"),
+      "ui_profile_empty_media_other":
+          MessageLookupByLibrary.simpleMessage("{name} さんはまだ写真や動画を投稿していません。"),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("投稿したものはすべてここに表示されます。"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} さんはまだ何も投稿していません。"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("プロフィールを読み込めませんでした"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} を読み込めませんでした"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("8 文字以上"),
+      "ui_pw_rule_lower": MessageLookupByLibrary.simpleMessage("小文字 (a–z)"),
+      "ui_pw_rule_number": MessageLookupByLibrary.simpleMessage("数字を 1 つ以上"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("記号 (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("大文字 (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "最近の記録 {count} 件。送信する前に「概要 › システムログ」で確認してください。"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "これを読むのは Kyron チームだけです。こちらから連絡できるよう、アカウントと一緒に送信されます。一緒に送られる内容を正確に確認したい場合は、先に「概要 › システムログ」でログを見てください。"),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("送信しました。ありがとうございます。"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "送信しました。ありがとうございます。報告番号は #{number} です。"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("何が起きましたか？"),
+      "ui_settings_about_help":
+          MessageLookupByLibrary.simpleMessage("バージョン、ポリシー、ステータス、システムログ"),
+      "ui_settings_autoplay_help":
+          MessageLookupByLibrary.simpleMessage("スクロール中に動画が自動再生されないようにする"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("あなたの分散型識別子"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("モデレーション"),
+      "ui_settings_moderation_help":
+          MessageLookupByLibrary.simpleMessage("審査待ちの報告と異議申し立て"),
+      "ui_settings_muted_words_help":
+          MessageLookupByLibrary.simpleMessage("これらを含む投稿をフィードに表示しない"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("ログインしていません"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("通知の設定"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("プライバシーと安全"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("アカウントに関する決定と異議申し立て"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("文字サイズを調整"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("あなたのアカウント"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR レンズの撮影と公開はまだ開発中です。撮影したものはまだ保存されないため、カメラは閉じたままです。"),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("レンズはまだ準備中です"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR レンズ"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "ライブ配信には、Kyron がまだ運用していないメディアサーバーが必要です。今配信を始めても、誰も参加できない部屋に入ることになります。音声投稿の録音はすでに使えます。"),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("ライブ配信はまだ準備中です"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("ライブ配信"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "投票には、選択肢を保存して票を数える場所が必要です。それがまだないため、今日投稿した投票はすべての回答を失ってしまいます。"),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("投票はまだ準備中です"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("投票"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("代わりにテキストを投稿"),
+      "ui_status_check_again": MessageLookupByLibrary.simpleMessage("もう一度確認"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("詳細"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("ミラーテーブル"),
+      "ui_status_not_right":
+          MessageLookupByLibrary.simpleMessage("Kyron は応答しましたが、何かがおかしいようです。"),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("往復時間"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("質問する"),
+      "ui_support_ask_detail":
+          MessageLookupByLibrary.simpleMessage("アカウントについて、または機能の使い方"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("メールで"),
+      "ui_support_crash_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron がクラッシュした場合：アプリのログも送信します"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("アプリ内"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "ここから Kyron チームに連絡できます。アカウントと一緒に非公開で届き、アカウントのメールアドレス宛てに返信します。"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "メールアプリが開きませんでした。{address} をコピーしました。"),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("プライバシーとあなたのデータ"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("問題を報告"),
+      "ui_support_report_detail":
+          MessageLookupByLibrary.simpleMessage("何かが壊れている、または正しく動かない"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "投稿やアカウントを報告するには、そのメニューを使ってください。どれのことか正確にわかります。"),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage("安全と不正行為"),
+      "ui_support_status_detail":
+          MessageLookupByLibrary.simpleMessage("Kyron が全員で使えないのか、あなただけなのか"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("大"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("特大"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("中"),
+      "ui_text_size_preview":
+          MessageLookupByLibrary.simpleMessage("Kyron は、読む価値のあることを言う場所です。"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("小"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("常にダーク"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("ディム"),
+      "ui_theme_dim_detail":
+          MessageLookupByLibrary.simpleMessage("黒ではなく青みがかったグレーの、やわらかいダーク"),
+      "ui_theme_light_detail": MessageLookupByLibrary.simpleMessage("常にライト"),
+      "ui_theme_system_detail":
+          MessageLookupByLibrary.simpleMessage("スマホのライト／ダーク設定に合わせる"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("ブロックを解除"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("ミュートを解除"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("あなたについて"),
+      "ui_verify_about_help":
+          MessageLookupByLibrary.simpleMessage("審査担当者に知ってほしいことを、あなた自身の言葉で。"),
+      "ui_verify_about_hint":
+          MessageLookupByLibrary.simpleMessage("ここと自分のサイトで鳥について書いています。"),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("リンクをもう 1 つ追加"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("{date} から再申請できます。"),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("認証を申請"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("申請の前に"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("クリエイター"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("ジャーナリスト"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage("組織またはブランド"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("その他"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("著名人"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("申請 {number} は承認されませんでした"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("認証済みです"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("プロフィールを編集"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6 桁のコードを入力"),
+      "ui_verify_email_resend_in":
+          MessageLookupByLibrary.simpleMessage("{seconds} 秒後にコードを再送信"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("{email} に送信しました"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("確認"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage("Kyron で認証を受けよう"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron で"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("認証を"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("受けよう。"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "このバッジは、Kyron チームの誰かがこのアカウントが本人であることを確認したことを示します。表示回数が増えることはなく、販売もしていません。"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "名前が変わらない限りバッジは残ります。名前を変えると、新しい名前が確認されるまでバッジは外れます。"),
+      "ui_verify_link_first": MessageLookupByLibrary.simpleMessage("確認できる場所"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("別のリンク"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "この Kyron アカウントがあなたのものだとわかるサイトや別のプロフィール：そこに Kyron の名前か、プロフィールへのリンクを載せてください。Kyron が身分証明書を求めることはありません。"),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("状況を読み込めませんでした"),
+      "ui_verify_need_ticks":
+          MessageLookupByLibrary.simpleMessage("申請するには、上のすべてにチェックが必要です。"),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("作成から {days} 日以上のアカウント"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("あなたが誰かがわかる自己紹介"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("プロフィールにあなたの名前"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("プロフィール写真"),
+      "ui_verify_req_standing":
+          MessageLookupByLibrary.simpleMessage("過去 {days} 日間に記録がないこと"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("送信しました。担当者が確認します。"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} から。"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("申請"),
+      "ui_verify_step_ask_detail":
+          MessageLookupByLibrary.simpleMessage("あなたについてと、\nそれを証明するリンク"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("バッジ"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("あなたの名前の横に、\nどこでも表示"),
+      "ui_verify_step_check": MessageLookupByLibrary.simpleMessage("人が\n確認"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("チームの誰かが\nリンクをたどります"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("認証"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("申請 {number} は担当者が確認中です"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} に {category} として送信しました。決定したら通知が届きます。"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("申請を取り下げる"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("申請を取り下げました。"),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("録音を完了できませんでした：{error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("最長 10 分。"),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("聞き取り中…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "録音するには Kyron にマイクの使用を許可する必要があります。端末の設定から許可できます。"),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("録音を開始できませんでした：{error}"),
     };
 
 final messageLookup = MessageLookup();

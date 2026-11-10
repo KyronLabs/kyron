@@ -2072,6 +2072,303 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ეს გვერდი სხვა აპის გახსნას ითხოვს"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "ის ითხოვს {scheme} ბმულის გახსნას."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("ანაწყობი"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("ქეშში {size} სურათი და ფაილი"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("გათავისუფლდა {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("იზომება…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("გასასუფთავებელი არაფერია"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("მეხსიერება"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("ვერსია {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("დაბლოკილები"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("აქვეყნებთ საკუთარი სახელით"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ეს დანართები ვერ აიტვირთა. შეეხეთ ერთ-ერთს ხელახლა საცდელად, ან წაშალეთ."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "ელფოსტის შეცვლა ვერ მოხერხდა. სცადეთ ხელახლა."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "მისამართი შეიცვლება, როცა გაგზავნილ ბმულს გახსნით."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "დადასტურების ბმული მოძებნეთ {email}-ში."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("შეიყვანეთ ელფოსტის მისამართი."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "ეს ელფოსტის მისამართს არ ჰგავს."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "ეს უკვე თქვენი ელფოსტის მისამართია."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "რა გააკეთეთ, რას ელოდით და რა მოხდა სანაცვლოდ."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "ნება მომეცით, პროფილზე პოსტი მივამაგრო"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "რა გინდათ და რის გაკეთების საშუალებას მოგცემთ."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("რა დაგეხმარებოდათ"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("პრობლემა"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("იდეა"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("კითხვა"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "ამას მხოლოდ Kyron-ის გუნდი კითხულობს. იგზავნება თქვენს ანგარიშთან ერთად, რომ ელფოსტით გიპასუხოთ, და აპის იმ ვერსიასთან ერთად, რომელსაც იყენებთ. ანგარიშის წაშლისას ესეც იშლება."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("როგორ დავადუმო სიტყვა?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "რისი გაკეთება გსურთ და სად გაიჭედეთ."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("თქვენი კითხვა"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron-თან დაკავშირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა. ჯერ არაფერი დაწერილა, ამიტომ არაფერი დაკარგულა."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("გასუფთავება"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "წარუმატებელი მოთხოვნები და სხვა მნიშვნელოვანი მოვლენები აქ ჩანს."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("დადუმებულები"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "ზემოთ დაამატეთ სიტყვა ან თეგი. მისი შემცველი პოსტები თქვენს არხში არ გამოჩნდება."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "პოსტები, რომლებიც რომელიმე მათგანს შეიცავს, თქვენს არხში არ ჩანს. ასოების ზომას მნიშვნელობა არ აქვს, და სიტყვა გრძელი სიტყვების შიგნითაც ემთხვევა, ამიტომ „spoiler“ „spoilers“-საც იჭერს."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("არავინ არის დაბლოკილი"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "დაბლოკვა ორივე მხრიდან გმალავთ ერთმანეთისგან. დაბლოკეთ ვინმე მისი პროფილის მენიუდან."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("არავინ არის დადუმებული"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "ანგარიშის დადუმება მის პოსტებს მალავს ისე, რომ მას არ ეუბნება. დაადუმეთ ვინმე პროფილის ან პოსტის მენიუდან."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("პაროლი"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("არ ემთხვევა."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "ამ მოწყობილობაზე შესული დარჩებით. სხვა მოწყობილობებიდან გამოხვალთ."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("გამოიყენეთ მინიმუმ 8 სიმბოლო."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "პაროლის განახლება ვერ მოხერხდა. სცადეთ ხელახლა."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("პაროლი განახლდა."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID დაკოპირდა"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "მოწონებული პოსტები აქ ინახება, მხოლოდ თქვენთვის."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "ჯერ არცერთი ფოტო ან კლიპი არ გამოგიქვეყნებიათ."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name}-ს ჯერ არცერთი ფოტო ან კლიპი არ გამოუქვეყნებია."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "ყველაფერი, რასაც გამოაქვეყნებთ, აქ გამოჩნდება."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name}-ს ჯერ არაფერი გამოუქვეყნებია."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "თქვენი პროფილის ჩატვირთვა ვერ მოხერხდა"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "@{handle}-ის ჩატვირთვა ვერ მოხერხდა"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("მინიმუმ 8 სიმბოლო"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("პატარა ასო (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("მინიმუმ ერთი ციფრი"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("სიმბოლო (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("დიდი ასო (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} ბოლო ჩანაწერი. გაგზავნამდე გადახედეთ მათ: შესახებ › სისტემის ჟურნალი."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "ამას მხოლოდ Kyron-ის გუნდი კითხულობს. იგზავნება თქვენს ანგარიშთან ერთად, რომ დაგიკავშირდეთ. თუ გინდათ ზუსტად ნახოთ, რა მიდის მასთან ერთად, ჯერ წაიკითხეთ ჟურნალი: შესახებ › სისტემის ჟურნალი."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("გაიგზავნა, გმადლობთ."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "გაიგზავნა, გმადლობთ. ეს არის ანგარიში #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("რა წავიდა არასწორად?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "ვერსია, წესები, სტატუსი და სისტემის ჟურნალი"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "არ ჩაირთოს ვიდეოები თავისით გადახვევისას"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "თქვენი დეცენტრალიზებული იდენტიფიკატორი"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("მოდერაცია"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "განხილვის მომლოდინე საჩივრები და გასაჩივრებები"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "ამის შემცველი პოსტები არხიდან შორს დაიჭირეთ"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("არ ხართ შესული"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("შეტყობინებების პარამეტრები"),
+      "ui_settings_privacy_safety": MessageLookupByLibrary.simpleMessage(
+          "კონფიდენციალურობა და უსაფრთხოება"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "გადაწყვეტილებები თქვენს ანგარიშზე და გასაჩივრებები"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("ტექსტის ზომის მორგება"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("თქვენი ანგარიში"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR ლინზების ჩაწერა და გამოქვეყნება ჯერ კიდევ მზადდება. რასაც გადაიღებთ, ჯერ არ შეინახება, ამიტომ კამერა დახურული რჩება."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("ლინზები ჯერ მზად არ არის"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR ლინზა"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "პირდაპირი ეთერისთვის საჭიროა მედიასერვერი, რომელსაც Kyron ჯერ არ მართავს. ახლა თუ დაიწყებთ ტრანსლაციას, აღმოჩნდებით ოთახში, სადაც ვერავინ შემოვა. ხმოვანი პოსტის ჩაწერა უკვე მუშაობს."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "პირდაპირი ეთერი ჯერ მზად არ არის"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("პირდაპირი ეთერი"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "გამოკითხვებს სჭირდება ადგილი ვარიანტების შესანახად და ხმების დასათვლელად. ეს ჯერ არ არსებობს, ამიტომ დღეს გამოქვეყნებული გამოკითხვა ყველა პასუხს დაკარგავდა."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("გამოკითხვები ჯერ მზად არ არის"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("გამოკითხვა"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "ამის ნაცვლად დაწერეთ ტექსტური პოსტი"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("ხელახლა შემოწმება"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("დეტალი"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("სარკისებრი ცხრილები"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron-მა უპასუხა, მაგრამ რაღაც რიგზე არ არის."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("ორმხრივი დრო"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("კითხვის დასმა"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "თქვენს ანგარიშზე, ან როგორ მუშაობს რამე"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("ელფოსტით"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "თუ Kyron გაითიშა: აპის ჟურნალსაც აგზავნის"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("აპში"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "მისწერეთ Kyron-ის გუნდს აქედან. წერილი პირადად მოგვდის, თქვენს ანგარიშთან ერთად, და ვპასუხობთ მასზე მითითებულ ელფოსტაზე."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "ფოსტის აპი არ გაიხსნა. {address} დაკოპირდა."),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage(
+          "კონფიდენციალურობა და თქვენი მონაცემები"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("პრობლემის შეტყობინება"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "რაღაც გაფუჭდა ან ისე არ მუშაობს, როგორც უნდა"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "პოსტის ან ანგარიშის გასაჩივრებლად გამოიყენეთ მისი მენიუ: ასე ზუსტად ვიცით, რომელს გულისხმობთ."),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage(
+          "უსაფრთხოება და ბოროტად გამოყენება"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ყველასთვის გაითიშა, თუ მხოლოდ თქვენთვის"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("დიდი"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("უფრო დიდი"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("საშუალო"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron არის ადგილი, სადაც წასაკითხად ღირებულს იტყვით."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("პატარა"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("ყოველთვის მუქი"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("მკრთალი"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "უფრო რბილი მუქი, შავის ნაცვლად მოლურჯო-ნაცრისფერი"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("ყოველთვის ღია"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "ტელეფონის ღია ან მუქი პარამეტრის მიხედვით"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("განბლოკვა"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("დადუმების მოხსნა"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("ვინ ხართ"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "საკუთარი სიტყვებით: რა უნდა იცოდეს შემმოწმებელმა."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "აქ და ჩემს საიტზე ფრინველებზე ვწერ."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("კიდევ ერთი ბმულის დამატება"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "ხელახლა მოთხოვნა შეგიძლიათ {date}-დან."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("ვერიფიკაციის მოთხოვნა"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("მოთხოვნამდე"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("შემქმნელი"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("ჟურნალისტი"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("ორგანიზაცია ან ბრენდი"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("სხვა რამ"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("საჯარო პირი"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "მოთხოვნა {number} არ დამტკიცდა"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("ვერიფიცირებული ხართ"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("პროფილის რედაქტირება"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("შეიყვანეთ 6-ნიშნა კოდი"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "კოდის ხელახლა გაგზავნა {seconds} წამში"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("გავგზავნეთ {email}-ზე"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("დადასტურება"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("მიიღეთ ვერიფიკაცია Kyron-ზე"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("მიიღეთ"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("ვერიფიკაცია"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron-ზე."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ნიშანი ნიშნავს, რომ Kyron-ის გუნდიდან ვიღაცამ შეამოწმა, რომ ეს ანგარიში ის არის, ვინც თავს აცხადებს. ის დამატებით წვდომას არ იძლევა და არ იყიდება."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "ნიშანი რჩება, სანამ თქვენი სახელი რჩება. სახელს თუ შეცვლით, მოიხსნება, სანამ ვინმე ახალს შეამოწმებს."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("სად შეგვიძლია შემოწმება"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("სხვა ბმული"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "საიტი ან სხვა პროფილი, სადაც წერია, რომ ეს Kyron ანგარიში თქვენია: განათავსეთ იქ თქვენი Kyron სახელი ან პროფილის ბმული. Kyron არასოდეს ითხოვს პირადობის დამადასტურებელ დოკუმენტებს."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "თქვენი მდგომარეობის ჩატვირთვა ვერ მოხერხდა"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "მოთხოვნამდე ზემოთ ყველაფერი მონიშნული უნდა იყოს."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("მინიმუმ {days} დღის ანგარიში"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("ბიო, რომელიც ამბობს, ვინ ხართ"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("თქვენი სახელი პროფილზე"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("პროფილის ფოტო"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "ბოლო {days} დღეში თქვენს ჩანაწერებში არაფერი"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "გაიგზავნა. ადამიანი გადახედავს."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date}-დან."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("მოთხოვნა"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "ვინ ხართ, და ბმული,\nრომელიც ამას ამტკიცებს"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("ნიშანი"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "თქვენი სახელის გვერდით,\nყველგან, სადაც ჩანს"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("ადამიანი\nამოწმებს"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "გუნდის წევრი\nხსნის თქვენს ბმულებს"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("ვერიფიკაცია"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "მოთხოვნა {number} ადამიანთანაა"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "გაიგზავნა {date}, როგორც {category}. გადაწყვეტილების მიღებისას შეტყობინებას მიიღებთ."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("მოთხოვნის გაუქმება"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("მოთხოვნა გაუქმდა."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "ჩაწერის დასრულება ვერ მოხერხდა: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("ათ წუთამდე."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("ისმენს…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "ჩასაწერად Kyron-ს მიკროფონის ნებართვა სჭირდება. მისი მიცემა მოწყობილობის პარამეტრებში შეგიძლიათ."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "ჩაწერის დაწყება ვერ მოხერხდა: {error}"),
     };
 
 final messageLookup = MessageLookup();

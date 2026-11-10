@@ -2104,6 +2104,308 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ဤစာမျက်နှာသည် အခြားအက်ပ်ကို ဖွင့်လိုသည်"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "{scheme} လင့်ခ်ကို ဖွင့်ရန် တောင်းဆိုနေသည်။"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("တည်ဆောက်မှု"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "ကက်ရှ်ထဲရှိ ပုံနှင့်ဖိုင် {size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} ရှင်းလိုက်ပြီ"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("တိုင်းနေသည်…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("ရှင်းစရာ မရှိပါ"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("သိုလှောင်မှု"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("ဗားရှင်း {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("ပိတ်ထားသူများ"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("သင့်အမည်ဖြင့် ပို့စ်တင်နေသည်"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ထိုပူးတွဲဖိုင်များ အပ်လုဒ်မလုပ်ရပါ။ ထပ်စမ်းရန် တစ်ခုကို နှိပ်ပါ၊ သို့မဟုတ် ဖယ်ရှားပါ။"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "သင့်အီးမေးလ်ကို ပြောင်း၍မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "ကျွန်ုပ်တို့ပို့သော လင့်ခ်ကို ဖွင့်လိုက်သည့်အခါ သင့်လိပ်စာ ပြောင်းပါမည်။"),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "အတည်ပြုလင့်ခ်အတွက် {email} ကို စစ်ကြည့်ပါ။"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ်လိပ်စာ ထည့်ပါ။"),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "ထိုအရာသည် အီးမေးလ်လိပ်စာနှင့် မတူပါ။"),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "၎င်းသည် သင့်အီးမေးလ်လိပ်စာ ဖြစ်ပြီးသားပါ။"),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "သင်ဘာလုပ်ခဲ့သည်၊ ဘာမျှော်လင့်ခဲ့သည်၊ အစား ဘာဖြစ်ခဲ့သည်။"),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "ကျွန်ုပ်၏ ပရိုဖိုင်တွင် ပို့စ်တစ်ခု ပင်ထိုးခွင့်ပေးပါ"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "သင်ဘာလိုချင်သည်၊ ၎င်းက သင့်ကို ဘာလုပ်နိုင်စေမည်။"),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("ဘာက အထောက်အကူဖြစ်မည်"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("ပြဿနာ"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("အကြံ"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("မေးခွန်း"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "ဤအရာကို Kyron အဖွဲ့သာ ဖတ်ပါသည်။ အီးမေးလ်ဖြင့် ပြန်ကြားနိုင်ရန် သင့်အကောင့်နှင့်အတူ၊ သင်သုံးသော အက်ပ်ဗားရှင်းနှင့်အတူ ပို့ပါသည်။ အကောင့်ဖျက်လျှင် ဤအရာလည်း ပျက်ပါမည်။"),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "စကားလုံးတစ်လုံးကို ဘယ်လို အသံပိတ်မလဲ?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "သင်ဘာလုပ်ရန် ကြိုးစားနေသည်၊ ဘယ်နေရာတွင် ပိတ်မိနေသည်။"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("သင့်မေးခွန်း"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron ကို ချိတ်ဆက်၍မရပါ။ ချိတ်ဆက်မှုကို စစ်ပြီး ထပ်စမ်းပါ။ ဘာမှ မရေးရသေးသဖြင့် ဘာမှ မဆုံးရှုံးပါ။"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("ရှင်းမည်"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "မအောင်မြင်သော တောင်းဆိုမှုများနှင့် အခြားထူးခြားသော ဖြစ်ရပ်များ ဤနေရာတွင် ပေါ်ပါသည်။"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("အသံပိတ်ထားသူများ"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "အပေါ်တွင် စကားလုံး သို့မဟုတ် တဂ်ထည့်ပါ။ ၎င်းပါသော ပို့စ်များ သင့်ဖိဒ်တွင် မပေါ်တော့ပါ။"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "ဤအရာများထဲမှ တစ်ခုခုပါသော ပို့စ်များ သင့်ဖိဒ်တွင် မပေါ်ပါ။ စာလုံးအကြီးအသေး အရေးမပါ၊ စကားလုံးသည် ပိုရှည်သော စကားလုံးများအတွင်းတွင်လည်း ကိုက်ညီသဖြင့် “spoiler” က “spoilers” ကိုပါ ဖမ်းပါသည်။"),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("မည်သူ့ကိုမျှ မပိတ်ထားပါ"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "ပိတ်ခြင်းသည် သင်တို့နှစ်ဦးကို အပြန်အလှန် နှစ်ဖက်စလုံး ဖျောက်ထားပါသည်။ တစ်စုံတစ်ယောက်ကို ၎င်း၏ ပရိုဖိုင်မီနူးမှ ပိတ်ပါ။"),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("မည်သူ့ကိုမျှ အသံမပိတ်ထားပါ"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "အကောင့်ကို အသံပိတ်ခြင်းသည် သူတို့ကို မပြောဘဲ ၎င်းတို့၏ ပို့စ်များကို ဖျောက်ပါသည်။ ပရိုဖိုင် သို့မဟုတ် ပို့စ်မီနူးမှ အသံပိတ်ပါ။"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("စကားဝှက်"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("မကိုက်ညီပါ။"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "ဤစက်တွင် ဝင်ထားဆဲ ဖြစ်ပါမည်။ အခြားစက်များမှ ထွက်သွားပါမည်။"),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "အနည်းဆုံး စာလုံး 8 လုံး သုံးပါ။"),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "စကားဝှက်ကို အပ်ဒိတ်လုပ်၍မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_password_updated": MessageLookupByLibrary.simpleMessage(
+          "စကားဝှက် အပ်ဒိတ်လုပ်ပြီးပါပြီ။"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID ကူးယူပြီး"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "သင်နှစ်သက်သော ပို့စ်များကို သင့်အတွက်သာ ဤနေရာတွင် ထားပါသည်။"),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "သင် ဓာတ်ပုံ သို့မဟုတ် ကလစ် မတင်ရသေးပါ။"),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} သည် ဓာတ်ပုံ သို့မဟုတ် ကလစ် မတင်ရသေးပါ။"),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "သင်တင်သမျှ ဤနေရာတွင် ပေါ်ပါမည်။"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} သည် ဘာမှ မတင်ရသေးပါ။"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("သင့်ပရိုဖိုင်ကို ဖွင့်၍မရပါ"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} ကို ဖွင့်၍မရပါ"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("အနည်းဆုံး စာလုံး 8 လုံး"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("စာလုံးသေး (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("အနည်းဆုံး ဂဏန်းတစ်လုံး"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("သင်္ကေတ (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("စာလုံးကြီး (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "မကြာသေးမီ ထည့်သွင်းမှု {count} ခု။ မပို့မီ အကြောင်း › စနစ်မှတ်တမ်း တွင် စစ်ကြည့်ပါ။"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "ဤအရာကို Kyron အဖွဲ့သာ ဖတ်ပါသည်။ ဆက်သွယ်နိုင်ရန် သင့်အကောင့်နှင့်အတူ ပို့ပါသည်။ အတူပါသွားမည့်အရာကို အတိအကျ ကြည့်လိုလျှင် အကြောင်း › စနစ်မှတ်တမ်း တွင် မှတ်တမ်းကို အရင်ဖတ်ပါ။"),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage(
+          "ပို့ပြီးပါပြီ၊ ကျေးဇူးတင်ပါသည်။"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "ပို့ပြီးပါပြီ၊ ကျေးဇူးတင်ပါသည်။ ၎င်းသည် အစီရင်ခံစာ #{number} ဖြစ်သည်။"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("ဘာမှားသွားသလဲ?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "ဗားရှင်း၊ မူဝါဒများ၊ အခြေအနေနှင့် စနစ်မှတ်တမ်း"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "လှိမ့်နေစဉ် ဗီဒီယိုများ အလိုအလျောက် မဖွင့်ပါစေနှင့်"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "သင်၏ ဗဟိုချုပ်ကိုင်မှုမဲ့ အမှတ်အသား"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("စိစစ်ထိန်းချုပ်မှု"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "စစ်ဆေးရန် စောင့်နေသော အစီရင်ခံစာများနှင့် အယူခံများ"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "ဤအရာများပါသော ပို့စ်များကို ဖိဒ်မှ ဝေးဝေးထားပါ"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("မဝင်ရသေးပါ"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("အသိပေးချက် စိတ်ကြိုက်များ"),
+      "ui_settings_privacy_safety": MessageLookupByLibrary.simpleMessage(
+          "ကိုယ်ရေးလုံခြုံမှုနှင့် ဘေးကင်းရေး"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်ဆိုင်ရာ ဆုံးဖြတ်ချက်များနှင့် အယူခံများ"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("စာသားအရွယ်အစား ချိန်ညှိရန်"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("သင့်အကောင့်"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR မှန်ဘီလူးများ ရိုက်ကူးခြင်းနှင့် ထုတ်ဝေခြင်းကို တည်ဆောက်နေဆဲ ဖြစ်သည်။ သင်ရိုက်သမျှ မသိမ်းနိုင်သေးသဖြင့် ကင်မရာ ပိတ်ထားပါသည်။"),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "မှန်ဘီလူးများ အဆင်သင့် မဖြစ်သေးပါ"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("AR မှန်ဘီလူး"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "တိုက်ရိုက်ထုတ်လွှင့်ရန် Kyron မလည်ပတ်ရသေးသော မီဒီယာဆာဗာ လိုအပ်သည်။ ယခု ထုတ်လွှင့်ပါက မည်သူမျှ ဝင်မရသော အခန်းထဲတွင် ရှိနေပါမည်။ အသံပို့စ် ရိုက်ကူးခြင်းကမူ ယနေ့ အလုပ်လုပ်ပါသည်။"),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "တိုက်ရိုက်ထုတ်လွှင့်မှု အဆင်သင့် မဖြစ်သေးပါ"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("တိုက်ရိုက်ထုတ်လွှင့်ရန်"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "စစ်တမ်းများသည် ရွေးချယ်စရာများ သိမ်းရန်နှင့် မဲရေတွက်ရန် နေရာ လိုအပ်သည်။ ၎င်း မရှိသေးသဖြင့် ယနေ့တင်သော စစ်တမ်းသည် အဖြေတိုင်းကို ဆုံးရှုံးပါမည်။"),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "စစ်တမ်းများ အဆင်သင့် မဖြစ်သေးပါ"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("စစ်တမ်း"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("အစား စာသားပို့စ် ရေးပါ"),
+      "ui_status_check_again": MessageLookupByLibrary.simpleMessage("ထပ်စစ်ပါ"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("အသေးစိတ်"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("မှန်ပြင်ဇယားများ"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ပြန်ဖြေသော်လည်း တစ်ခုခု မှားနေသည်။"),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("အသွားအပြန်"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("မေးခွန်းမေးရန်"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "သင့်အကောင့်အကြောင်း သို့မဟုတ် တစ်ခုခု ဘယ်လိုအလုပ်လုပ်သလဲ"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("အီးမေးလ်ဖြင့်"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ပျက်ခဲ့လျှင်- အက်ပ်မှတ်တမ်းပါ ပို့ပါသည်"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("အက်ပ်တွင်"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "ဤနေရာမှ Kyron အဖွဲ့ထံ စာရေးပါ။ ၎င်းသည် သင့်အကောင့်နှင့်အတူ ကိုယ်ပိုင်အနေဖြင့် ကျွန်ုပ်တို့ထံ ရောက်ပြီး ၎င်းပေါ်ရှိ အီးမေးလ်လိပ်စာသို့ ပြန်ကြားပါသည်။"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "မေးလ်အက်ပ် မပွင့်ပါ။ {address} ကို ကူးယူပြီးပါပြီ။"),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage(
+          "ကိုယ်ရေးလုံခြုံမှုနှင့် သင့်ဒေတာ"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("ပြဿနာ အစီရင်ခံရန်"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "တစ်ခုခု ပျက်နေသည် သို့မဟုတ် လုပ်သင့်သည်ကို မလုပ်ပါ"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "ပို့စ် သို့မဟုတ် အကောင့်ကို အစီရင်ခံရန် ၎င်း၏ မီနူးကို သုံးပါ- ထိုသို့ဆိုလျှင် သင်ဘယ်ဟာကို ဆိုလိုသည်ကို ကျွန်ုပ်တို့ အတိအကျ သိပါသည်။"),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage(
+          "ဘေးကင်းရေးနှင့် အလွဲသုံးစားမှု"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron အားလုံးအတွက် ပျက်နေသလား၊ သင့်အတွက်သာလား"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("ကြီး"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("ပိုကြီး"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("အလယ်အလတ်"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron သည် ဖတ်ရကျိုးနပ်သော အရာကို ပြောရာ နေရာ ဖြစ်သည်။"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("သေး"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("အမြဲ မှောင်"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("မှိန်"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "ပိုနူးညံ့သော အမှောင်၊ အနက်အစား အပြာနုမီးခိုး"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("အမြဲ လင်း"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "ဖုန်း၏ လင်း သို့မဟုတ် မှောင် ဆက်တင်အတိုင်း"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("ပိတ်ခြင်း ဖြုတ်ရန်"),
+      "ui_unmute":
+          MessageLookupByLibrary.simpleMessage("အသံပိတ်ခြင်း ဖြုတ်ရန်"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("သင်မည်သူလဲ"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "သင့်စကားဖြင့် စစ်ဆေးသူ သိသင့်သည့်အရာ။"),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "ကျွန်ုပ်သည် ဤနေရာနှင့် ကိုယ်ပိုင်ဆိုက်တွင် ငှက်များအကြောင်း ရေးပါသည်။"),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("နောက်လင့်ခ်တစ်ခု ထည့်ရန်"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} မှစ၍ ထပ်တောင်းနိုင်ပါသည်။"),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("အတည်ပြုရန် တောင်းဆိုပါ"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("မတောင်းဆိုမီ"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("ဖန်တီးသူ"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("သတင်းထောက်"),
+      "ui_verify_cat_org": MessageLookupByLibrary.simpleMessage(
+          "အဖွဲ့အစည်း သို့မဟုတ် အမှတ်တံဆိပ်"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("အခြားအရာ"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("လူသိများသူ"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "တောင်းဆိုချက် {number} ကို အတည်မပြုပါ"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("သင် အတည်ပြုပြီး ဖြစ်သည်"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင် တည်းဖြတ်ရန်"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("ဂဏန်း 6 လုံးကုဒ် ထည့်ပါ"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "{seconds} စက္ကန့်အတွင်း ကုဒ်ပြန်ပို့ရန်"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("{email} သို့ ပို့လိုက်ပါပြီ"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("အတည်ပြုရန်"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron တွင် အတည်ပြုခံပါ"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron တွင်"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("အတည်ပြု"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("ခံပါ။"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "တံဆိပ်သည် Kyron အဖွဲ့မှ တစ်ဦးက ဤအကောင့်သည် ၎င်းပြောသူ အစစ်အမှန် ဖြစ်ကြောင်း စစ်ဆေးပြီးကြောင်း ပြသည်။ ၎င်းသည် အပိုရောက်ရှိမှု မပေးပါ၊ ရောင်းရန်လည်း မဟုတ်ပါ။"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "သင့်အမည် မပြောင်းသရွေ့ တံဆိပ် ရှိနေပါမည်။ အမည်ပြောင်းပါက အသစ်ကို တစ်စုံတစ်ဦး စစ်ဆေးသည်အထိ ဖြုတ်ထားပါမည်။"),
+      "ui_verify_link_first": MessageLookupByLibrary.simpleMessage(
+          "ကျွန်ုပ်တို့ စစ်ဆေးနိုင်သည့်နေရာ"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("နောက်လင့်ခ်"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "ဤ Kyron အကောင့်သည် သင့်ဟာ ဖြစ်ကြောင်း ဖော်ပြသော ဆိုက် သို့မဟုတ် အခြားပရိုဖိုင်- ထိုနေရာတွင် သင့် Kyron အမည် သို့မဟုတ် ပရိုဖိုင်လင့်ခ် ထည့်ပါ။ Kyron သည် မည်သည့်အခါမျှ သက်သေခံကတ် မတောင်းပါ။"),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("သင့်အခြေအနေကို ဖွင့်၍မရပါ"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "မတောင်းဆိုမီ အပေါ်ရှိ အရာအားလုံးကို အမှန်ခြစ်ထားရပါမည်။"),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "အနည်းဆုံး {days} ရက် သက်တမ်းရှိ အကောင့်"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "သင်မည်သူဖြစ်ကြောင်း ပြောသော ကိုယ်ရေးအကျဉ်း"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင်ပေါ်ရှိ သင့်အမည်"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("ပရိုဖိုင်ဓာတ်ပုံ"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "နောက်ဆုံး {days} ရက်အတွင်း သင့်မှတ်တမ်းတွင် ဘာမှမရှိ"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "ပို့ပြီးပါပြီ။ လူတစ်ဦးက ကြည့်ပါမည်။"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} မှစ၍။"),
+      "ui_verify_step_ask":
+          MessageLookupByLibrary.simpleMessage("တောင်းဆိုရန်"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "သင်မည်သူဖြစ်ကြောင်းနှင့်\nသက်သေပြသော လင့်ခ်"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("တံဆိပ်"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "သင့်အမည်ဘေးတွင်၊\nပေါ်သည့်နေရာတိုင်း"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("လူတစ်ဦး\nစစ်ဆေးသည်"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "အဖွဲ့ဝင်တစ်ဦး\nသင့်လင့်ခ်များကို ဖွင့်သည်"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("အတည်ပြုခြင်း"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "တောင်းဆိုချက် {number} သည် လူတစ်ဦးထံ ရှိသည်"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} တွင် {category} အဖြစ် ပို့ခဲ့သည်။ ဆုံးဖြတ်ပြီးသည့်အခါ အသိပေးချက် ရပါမည်။"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage(
+          "တောင်းဆိုချက် ပြန်ရုပ်သိမ်းရန်"),
+      "ui_verify_withdrawn": MessageLookupByLibrary.simpleMessage(
+          "တောင်းဆိုချက် ပြန်ရုပ်သိမ်းပြီး။"),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "အသံဖမ်းခြင်း မပြီးဆုံးနိုင်ပါ- {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("ဆယ်မိနစ်အထိ။"),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("နားထောင်နေသည်…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "အသံဖမ်းရန် Kyron သည် မိုက်ခရိုဖုန်းခွင့်ပြုချက် လိုအပ်သည်။ စက်ဆက်တင်တွင် ပေးနိုင်ပါသည်။"),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "အသံဖမ်းခြင်း စတင်၍မရပါ- {error}"),
     };
 
 final messageLookup = MessageLookup();

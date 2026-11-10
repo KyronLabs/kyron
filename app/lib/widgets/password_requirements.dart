@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../l10n/app_localizations.dart';
+
 import 'package:kyron_design_system/kyron_design_system.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -45,18 +48,35 @@ class PasswordRequirements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _row('Minimum 8 characters', hasMinLength, context),
+        _row(
+          l10n.ui('ui_pw_rule_length', 'Minimum 8 characters'),
+          hasMinLength,
+          context,
+        ),
         const SizedBox(height: 6),
-        _row('Uppercase letter (A–Z)', hasUppercase, context),
+        _row(
+          l10n.ui('ui_pw_rule_upper', 'Uppercase letter (A–Z)'),
+          hasUppercase,
+          context,
+        ),
         const SizedBox(height: 6),
-        _row('Lowercase letter (a–z)', hasLowercase, context),
+        _row(
+          l10n.ui('ui_pw_rule_lower', 'Lowercase letter (a–z)'),
+          hasLowercase,
+          context,
+        ),
         const SizedBox(height: 6),
-        _row('At least one number', hasNumber, context),
+        _row(
+          l10n.ui('ui_pw_rule_number', 'At least one number'),
+          hasNumber,
+          context,
+        ),
         const SizedBox(height: 6),
-        _row('Symbol (!@#…)', hasSymbol, context),
+        _row(l10n.ui('ui_pw_rule_symbol', 'Symbol (!@#…)'), hasSymbol, context),
       ],
     );
   }

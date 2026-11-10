@@ -93,8 +93,9 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
               ),
             ),
             _divider(scheme),
-            _group(AppLocalizations.of(context)
-                .ui('ui_diagnostics', 'Diagnostics')),
+            _group(
+              AppLocalizations.of(context).ui('ui_diagnostics', 'Diagnostics'),
+            ),
             _Row(
               icon: Iconsax.status_up_copy,
               label: AppLocalizations.of(context).serviceStatus,
@@ -118,13 +119,21 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                   Navigator.pushNamed(context, Routes.aboutErrorReport),
             ),
             _divider(scheme),
-            _group('Storage'),
+            _group(
+              AppLocalizations.of(context).ui('ui_about_storage', 'Storage'),
+            ),
             _Row(
               icon: Iconsax.trash_copy,
               label: AppLocalizations.of(context).literalclearCache,
               subtitle: _cacheBytes == null
-                  ? 'Measuring…'
-                  : '${formatBytes(_cacheBytes!)} of cached images and files',
+                  ? AppLocalizations.of(context)
+                      .ui('ui_about_measuring', 'Measuring…')
+                  : AppLocalizations.of(context)
+                      .ui(
+                        'ui_about_cache_size',
+                        '{size} of cached images and files',
+                      )
+                      .replaceAll('{size}', formatBytes(_cacheBytes!)),
               trailing: _clearing
                   ? const SizedBox.square(
                       dimension: 18,
@@ -134,7 +143,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
               onTap: _clearing ? null : _clearCache,
             ),
             _divider(scheme),
-            _group('Build'),
+            _group(AppLocalizations.of(context).ui('ui_about_build', 'Build')),
             _Row(
               icon: Iconsax.mobile_copy,
               label: AppLocalizations.of(context).literalappVersion,
@@ -163,7 +172,12 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          freed == 0 ? 'Nothing to clear' : '${formatBytes(freed)} freed',
+          freed == 0
+              ? AppLocalizations.of(context)
+                  .ui('ui_about_nothing_to_clear', 'Nothing to clear')
+              : AppLocalizations.of(context)
+                  .ui('ui_about_freed', '{size} freed')
+                  .replaceAll('{size}', formatBytes(freed)),
         ),
       ),
     );
@@ -242,7 +256,11 @@ class _Wordmark extends StatelessWidget {
         ),
         const SizedBox(height: SpacingTokens.space4),
         Text(
-          info == null ? '' : 'Version ${info!.display}',
+          info == null
+              ? ''
+              : AppLocalizations.of(context)
+                  .ui('ui_about_version', 'Version {version}')
+                  .replaceAll('{version}', info!.display),
           style: TextStyle(
             fontSize: TypographyTokens.fontSize2,
             color: scheme.onSurface.withValues(alpha: .6),

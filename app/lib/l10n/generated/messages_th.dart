@@ -1983,6 +1983,294 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("หน้านี้ต้องการเปิดแอปอื่น"),
       "ui_browser_leave_detail":
           MessageLookupByLibrary.simpleMessage("หน้านี้ขอเปิดลิงก์ {scheme}"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("บิลด์"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("รูปภาพและไฟล์ในแคช {size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("เพิ่มพื้นที่ {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("กำลังวัด…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("ไม่มีอะไรให้ล้าง"),
+      "ui_about_storage":
+          MessageLookupByLibrary.simpleMessage("พื้นที่เก็บข้อมูล"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("เวอร์ชัน {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("ที่บล็อก"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("โพสต์ในนามคุณ"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ไฟล์แนบเหล่านี้อัปโหลดไม่สำเร็จ แตะไฟล์ใดไฟล์หนึ่งเพื่อลองอีกครั้ง หรือลบออก"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "เปลี่ยนอีเมลไม่ได้ โปรดลองอีกครั้ง"),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "ที่อยู่ของคุณจะเปลี่ยนเมื่อคุณเปิดลิงก์ที่เราส่งไป"),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("ดูลิงก์ยืนยันที่ {email}"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("ป้อนที่อยู่อีเมล"),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("ดูไม่เหมือนที่อยู่อีเมล"),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "นี่คือที่อยู่อีเมลของคุณอยู่แล้ว"),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "คุณทำอะไร คาดหวังอะไร และเกิดอะไรขึ้นแทน"),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "ให้ฉันปักหมุดโพสต์ในโปรไฟล์ได้"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "สิ่งที่คุณอยากได้ และสิ่งที่มันจะช่วยให้คุณทำได้"),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("อะไรจะช่วยได้"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("ปัญหา"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("ไอเดีย"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("คำถาม"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "มีเพียงทีม Kyron ที่อ่านข้อความนี้ ข้อความจะส่งไปพร้อมบัญชีของคุณเพื่อให้เราตอบกลับทางอีเมลได้ และพร้อมเวอร์ชันแอปที่คุณใช้ การลบบัญชีจะลบข้อความนี้ด้วย"),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("ปิดเสียงคำได้อย่างไร"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "สิ่งที่คุณพยายามทำ และติดอยู่ตรงไหน"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("คำถามของคุณ"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "เชื่อมต่อ Kyron ไม่ได้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง ยังไม่มีอะไรถูกเขียน จึงไม่มีอะไรหาย"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("ล้าง"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "คำขอที่ล้มเหลวและเหตุการณ์สำคัญอื่น ๆ จะแสดงที่นี่"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("ที่ปิดเสียง"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "เพิ่มคำหรือแท็กด้านบน โพสต์ที่มีคำนั้นจะไม่แสดงในฟีดของคุณ"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "โพสต์ที่มีคำใดคำหนึ่งเหล่านี้จะไม่แสดงในฟีดของคุณ ไม่สนตัวพิมพ์เล็กใหญ่ และคำจะตรงกันแม้อยู่ในคำที่ยาวกว่า ดังนั้น “spoiler” จะจับ “spoilers” ด้วย"),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("ไม่ได้บล็อกใคร"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "การบล็อกทำให้คุณทั้งสองมองไม่เห็นกัน ทั้งสองทาง บล็อกใครสักคนได้จากเมนูในโปรไฟล์ของเขา"),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("ไม่ได้ปิดเสียงใคร"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "การปิดเสียงบัญชีจะซ่อนโพสต์ของเขาโดยไม่แจ้งให้ทราบ ปิดเสียงใครสักคนได้จากเมนูในโปรไฟล์หรือโพสต์"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("รหัสผ่าน"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("ไม่ตรงกัน"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "คุณยังลงชื่อเข้าใช้บนอุปกรณ์นี้ อุปกรณ์อื่นจะถูกออกจากระบบ"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("ใช้อย่างน้อย 8 ตัวอักษร"),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "อัปเดตรหัสผ่านไม่ได้ โปรดลองอีกครั้ง"),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("อัปเดตรหัสผ่านแล้ว"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("คัดลอก DID แล้ว"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "โพสต์ที่คุณถูกใจจะเก็บไว้ที่นี่ สำหรับคุณคนเดียว"),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("คุณยังไม่ได้โพสต์รูปหรือคลิป"),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ยังไม่ได้โพสต์รูปหรือคลิป"),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "ทุกอย่างที่คุณโพสต์จะแสดงที่นี่"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} ยังไม่ได้โพสต์อะไร"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("โหลดโปรไฟล์ของคุณไม่ได้"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("โหลด @{handle} ไม่ได้"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("อย่างน้อย 8 ตัวอักษร"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("ตัวพิมพ์เล็ก (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("ตัวเลขอย่างน้อยหนึ่งตัว"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("สัญลักษณ์ (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("ตัวพิมพ์ใหญ่ (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "รายการล่าสุด {count} รายการ ตรวจดูได้ที่ เกี่ยวกับ › บันทึกระบบ ก่อนส่ง"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "มีเพียงทีม Kyron ที่อ่านข้อความนี้ ข้อความจะส่งไปพร้อมบัญชีของคุณเพื่อให้เราติดตามได้ หากอยากเห็นว่ามีอะไรส่งไปด้วยบ้าง ให้อ่านบันทึกก่อนที่ เกี่ยวกับ › บันทึกระบบ"),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("ส่งแล้ว ขอบคุณ"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "ส่งแล้ว ขอบคุณ นี่คือรายงาน #{number}"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("เกิดอะไรขึ้น"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "เวอร์ชัน นโยบาย สถานะ และบันทึกระบบ"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "หยุดวิดีโอไม่ให้เล่นเองขณะเลื่อน"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("ตัวระบุแบบกระจายศูนย์ของคุณ"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("การกลั่นกรอง"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "รายงานและคำอุทธรณ์ที่รอตรวจสอบ"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "ไม่ให้โพสต์ที่มีคำเหล่านี้อยู่ในฟีด"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("ยังไม่ได้ลงชื่อเข้าใช้"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("การตั้งค่าการแจ้งเตือน"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("ความเป็นส่วนตัวและความปลอดภัย"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "การตัดสินเกี่ยวกับบัญชีของคุณ และการอุทธรณ์"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("ปรับขนาดตัวอักษร"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("บัญชีของคุณ"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "การบันทึกและเผยแพร่เลนส์ AR ยังอยู่ระหว่างพัฒนา สิ่งที่คุณถ่ายจะยังไม่ถูกบันทึก กล้องจึงยังปิดอยู่"),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("เลนส์ยังไม่พร้อม"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("เลนส์ AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "การไลฟ์ต้องใช้เซิร์ฟเวอร์สื่อที่ Kyron ยังไม่ได้เปิดใช้ การเริ่มไลฟ์ตอนนี้จะพาคุณไปอยู่ในห้องที่ไม่มีใครเข้าได้ การบันทึกโพสต์เสียงใช้ได้แล้ววันนี้"),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("การไลฟ์ยังไม่พร้อม"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("ไลฟ์"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "โพลต้องมีที่เก็บตัวเลือกและนับคะแนน ซึ่งยังไม่พร้อม โพลที่โพสต์วันนี้จึงจะเสียคำตอบทั้งหมด"),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("โพลยังไม่พร้อม"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("โพล"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("เขียนโพสต์ข้อความแทน"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("ตรวจสอบอีกครั้ง"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("รายละเอียด"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("ตารางมิเรอร์"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ตอบกลับแล้ว แต่มีบางอย่างไม่ถูกต้อง"),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("เวลาไป-กลับ"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("ถามคำถาม"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "เกี่ยวกับบัญชีของคุณ หรือวิธีใช้งานบางอย่าง"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("ทางอีเมล"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "หาก Kyron ขัดข้อง: ส่งบันทึกของแอปไปด้วย"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("ในแอป"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "เขียนถึงทีม Kyron ได้จากที่นี่ ข้อความจะถึงเราแบบส่วนตัวพร้อมบัญชีของคุณ และเราจะตอบไปที่อีเมลของบัญชีนั้น"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "ไม่มีแอปอีเมลเปิดขึ้น คัดลอก {address} แล้ว"),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage(
+          "ความเป็นส่วนตัวและข้อมูลของคุณ"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("รายงานปัญหา"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "มีบางอย่างเสีย หรือไม่ทำงานอย่างที่ควร"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "หากต้องการรายงานโพสต์หรือบัญชี ให้ใช้เมนูของสิ่งนั้น เราจะได้รู้แน่ชัดว่าคุณหมายถึงอันไหน"),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("ความปลอดภัยและการละเมิด"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ล่มสำหรับทุกคน หรือแค่คุณ"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("ใหญ่"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("ใหญ่ขึ้น"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("กลาง"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron คือที่สำหรับพูดสิ่งที่ควรค่าแก่การอ่าน"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("เล็ก"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("มืดเสมอ"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("สลัว"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "โทนมืดที่นุ่มกว่า เป็นสีเทาอมฟ้าแทนสีดำ"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("สว่างเสมอ"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "ตามการตั้งค่าสว่างหรือมืดของโทรศัพท์"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("เลิกบล็อก"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("เลิกปิดเสียง"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("คุณเป็นใคร"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "ด้วยคำพูดของคุณเอง สิ่งที่ผู้ตรวจสอบควรรู้"),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "ฉันเขียนเรื่องนกที่นี่และในเว็บไซต์ของฉันเอง"),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("เพิ่มลิงก์อื่น"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "คุณขอได้อีกครั้งตั้งแต่ {date}"),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("ขอการยืนยัน"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("ก่อนขอ"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("ครีเอเตอร์"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("นักข่าว"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("องค์กรหรือแบรนด์"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("อื่น ๆ"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("บุคคลสาธารณะ"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "คำขอ {number} ไม่ได้รับอนุมัติ"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("คุณได้รับการยืนยันแล้ว"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("แก้ไขโปรไฟล์"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("ป้อนรหัส 6 หลัก"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "ส่งรหัสอีกครั้งใน {seconds} วินาที"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("เราส่งไปที่ {email} แล้ว"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("ยืนยัน"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("รับการยืนยันบน Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("รับ"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("การยืนยัน"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("บน Kyron"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ตราบ่งบอกว่ามีคนในทีม Kyron ตรวจสอบแล้วว่าบัญชีนี้เป็นตัวจริงตามที่อ้าง ตราไม่ได้เพิ่มการเข้าถึง และไม่ได้ขาย"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "ตราจะอยู่ตราบที่ชื่อของคุณไม่เปลี่ยน หากเปลี่ยนชื่อ ตราจะถูกถอดจนกว่าจะมีคนตรวจสอบชื่อใหม่"),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("ที่ที่เราตรวจสอบได้"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("ลิงก์อื่น"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "เว็บไซต์หรือโปรไฟล์อื่นที่บอกว่าบัญชี Kyron นี้เป็นของคุณ: ใส่ชื่อ Kyron ของคุณ หรือลิงก์ไปยังโปรไฟล์ไว้ที่นั่น Kyron ไม่เคยขอเอกสารยืนยันตัวตน"),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("โหลดสถานะของคุณไม่ได้"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "ทุกข้อด้านบนต้องมีเครื่องหมายถูกก่อนจึงจะขอได้"),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "บัญชีที่มีอายุอย่างน้อย {days} วัน"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("ประวัติย่อที่บอกว่าคุณเป็นใคร"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("ชื่อของคุณในโปรไฟล์"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("รูปโปรไฟล์"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "ไม่มีประวัติใดในช่วง {days} วันที่ผ่านมา"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("ส่งแล้ว จะมีคนตรวจดู"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("ตั้งแต่ {date}"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("ขอ"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "คุณเป็นใคร และลิงก์\nที่พิสูจน์ได้"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("ตรา"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("ข้างชื่อของคุณ\nทุกที่ที่แสดง"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("มีคน\nตรวจสอบ"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("คนในทีม\nเปิดลิงก์ของคุณ"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("การยืนยัน"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "คำขอ {number} อยู่กับผู้ตรวจสอบ"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "ส่งเมื่อ {date} ในฐานะ {category} คุณจะได้รับการแจ้งเตือนเมื่อมีการตัดสิน"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("ถอนคำขอ"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("ถอนคำขอแล้ว"),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("บันทึกให้เสร็จไม่ได้: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("สูงสุดสิบนาที"),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("กำลังฟัง…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron ต้องได้รับอนุญาตให้ใช้ไมโครโฟนเพื่อบันทึก คุณให้สิทธิ์ได้ในการตั้งค่าของอุปกรณ์"),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("เริ่มบันทึกไม่ได้: {error}"),
     };
 
 final messageLookup = MessageLookup();

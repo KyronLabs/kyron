@@ -91,11 +91,26 @@ class ServiceStatusScreen extends ConsumerWidget {
               ),
               const SizedBox(height: SpacingTokens.space8),
               _Line('API', status.status),
-              _Line('Database', status.database),
+              _Line(
+                AppLocalizations.of(context)
+                    .ui('ui_status_database', 'Database'),
+                status.database,
+              ),
               if (status.databaseDetail != null)
-                _Line('Detail', status.databaseDetail!),
-              _Line('Mirror tables', status.mirrorTables),
-              _Line('Round trip', '${status.latency.inMilliseconds} ms'),
+                _Line(
+                  AppLocalizations.of(context).ui('ui_status_detail', 'Detail'),
+                  status.databaseDetail!,
+                ),
+              _Line(
+                AppLocalizations.of(context)
+                    .ui('ui_status_mirror', 'Mirror tables'),
+                status.mirrorTables,
+              ),
+              _Line(
+                AppLocalizations.of(context)
+                    .ui('ui_status_round_trip', 'Round trip'),
+                '${status.latency.inMilliseconds} ms',
+              ),
               // The API only says this to the team now (GET /health with
               // the metrics token), so on a phone the section is usually
               // empty, and an empty heading is just noise.
@@ -132,11 +147,7 @@ class _Banner extends StatelessWidget {
   /// from /health with one of these is not "all systems operational".
   final List<String> failing;
 
-  const _Banner({
-    required this.healthy,
-    this.problem,
-    this.failing = const [],
-  });
+  const _Banner({required this.healthy, this.problem, this.failing = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +188,11 @@ class _Banner extends StatelessWidget {
                   // Say what is wrong, rather than pointing at rows that all
                   // read fine and leaving the reader to guess which one meant
                   // something.
-                  : problem ?? 'Kyron answered, but something is not right.',
+                  : problem ??
+                      AppLocalizations.of(context).ui(
+                        'ui_status_not_right',
+                        'Kyron answered, but something is not right.',
+                      ),
               style: TextStyle(
                 fontSize: TypographyTokens.fontSize4,
                 fontWeight: FontWeight.w700,
@@ -209,10 +224,10 @@ extension on _Banner {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppLocalizations.of(context).ui(
-                      'ui_status_degraded',
-                      'Some systems are having problems',
-                    ),
+                    AppLocalizations.of(
+                      context,
+                    ).ui('ui_status_degraded',
+                        'Some systems are having problems'),
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize4,
                       fontWeight: FontWeight.w700,
@@ -274,10 +289,7 @@ class _SectionLabel extends StatelessWidget {
 
 /// [build] in the reader's locale, or in English where the platform has no
 /// date or number data for it -- never an exception on a status screen.
-String _localized(
-  BuildContext context,
-  String Function(String? locale) build,
-) {
+String _localized(BuildContext context, String Function(String? locale) build) {
   try {
     return build(Localizations.maybeLocaleOf(context)?.toLanguageTag());
   } catch (_) {
@@ -312,10 +324,7 @@ class _History extends ConsumerWidget {
     final scheme = Theme.of(context).colorScheme;
     final history = ref.watch(serviceHistoryProvider);
     final unavailable = _Note(
-      l10n.ui(
-        'ui_status_unavailable',
-        'Uptime history is not available yet.',
-      ),
+      l10n.ui('ui_status_unavailable', 'Uptime history is not available yet.'),
     );
 
     return history.when(
@@ -337,9 +346,7 @@ class _History extends ConsumerWidget {
             for (final component in history.components)
               _ComponentUptime(component: component, days: history.days),
             const SizedBox(height: SpacingTokens.space16),
-            _SectionLabel(
-              l10n.ui('ui_status_incidents', 'Recent incidents'),
-            ),
+            _SectionLabel(l10n.ui('ui_status_incidents', 'Recent incidents')),
             const SizedBox(height: SpacingTokens.space12),
             if (history.incidents.isEmpty)
               Container(
@@ -445,8 +452,10 @@ class _ComponentUptime extends StatelessWidget {
           const SizedBox(height: SpacingTokens.space4),
           Row(
             children: [
-              Text(l10n.ui('ui_status_60_days_ago', '60 days ago'),
-                  style: muted),
+              Text(
+                l10n.ui('ui_status_60_days_ago', '60 days ago'),
+                style: muted,
+              ),
               const Spacer(),
               Text(l10n.ui('ui_status_today', 'Today'), style: muted),
             ],
@@ -515,8 +524,9 @@ class _Bars extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
                         color: color,
-                        borderRadius:
-                            BorderRadius.circular(RadiusTokens.radius2),
+                        borderRadius: BorderRadius.circular(
+                          RadiusTokens.radius2,
+                        ),
                       ),
                     ),
                   ),
@@ -589,8 +599,9 @@ class _IncidentTile extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: scheme.error.withValues(alpha: 0.12),
-                    borderRadius:
-                        BorderRadius.circular(RadiusTokens.radiusFull),
+                    borderRadius: BorderRadius.circular(
+                      RadiusTokens.radiusFull,
+                    ),
                   ),
                   child: Text(
                     AppLocalizations.of(context)
@@ -642,7 +653,8 @@ class _Unreachable extends StatelessWidget {
         child: EmptyState.failed(
           title: AppLocalizations.of(context).literalkyronDidNotAnswer,
           detail: message,
-          action: 'Check again',
+          action: AppLocalizations.of(context)
+              .ui('ui_status_check_again', 'Check again'),
           onAction: onRetry,
         ),
       ),
@@ -723,7 +735,7 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
           ),
           IconButton(
             icon: const Icon(Iconsax.trash_copy, size: 20),
-            tooltip: 'Clear',
+            tooltip: AppLocalizations.of(context).ui('ui_log_clear', 'Clear'),
             onPressed: _clear,
           ),
         ],
@@ -741,8 +753,10 @@ class _SystemLogScreenState extends State<SystemLogScreen> {
                   compact: true,
                   art: EmptyArt.drafts,
                   title: AppLocalizations.of(context).literalnothingLoggedYet,
-                  detail: 'Failed requests and other notable events show up '
-                      'here.',
+                  detail: AppLocalizations.of(context).ui(
+                    'ui_log_empty_detail',
+                    'Failed requests and other notable events show up here.',
+                  ),
                 ),
               );
             }
@@ -900,7 +914,8 @@ class _ErrorReportScreenState extends ConsumerState<ErrorReportScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'What went wrong?',
+            AppLocalizations.of(context)
+                .ui('ui_report_what_went_wrong', 'What went wrong?'),
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: SpacingTokens.space8),
@@ -920,9 +935,13 @@ class _ErrorReportScreenState extends ConsumerState<ErrorReportScreen> {
             title: Text(AppLocalizations.of(context).attachSystemLog),
             subtitle: Text(
               entries == 0
-                  ? 'Nothing logged yet'
-                  : '$entries recent entries. Review them under About › '
-                      'System log before sending.',
+                  ? AppLocalizations.of(context).literalnothingLoggedYet
+                  : AppLocalizations.of(context)
+                      .ui(
+                        'ui_report_entries',
+                        '{count} recent entries. Review them under About › System log before sending.',
+                      )
+                      .replaceAll('{count}', '$entries'),
             ),
           ),
           if (_error != null) ...[
@@ -953,9 +972,10 @@ class _ErrorReportScreenState extends ConsumerState<ErrorReportScreen> {
           ),
           const SizedBox(height: SpacingTokens.space16),
           Text(
-            'Only the Kyron team reads this. It is sent with your account so '
-            'we can follow up. Read the log first under About › System log '
-            'if you want to see exactly what goes with it.',
+            AppLocalizations.of(context).ui(
+              'ui_report_privacy',
+              'Only the Kyron team reads this. It is sent with your account so we can follow up. Read the log first under About › System log if you want to see exactly what goes with it.',
+            ),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
@@ -1010,8 +1030,14 @@ class _ErrorReportScreenState extends ConsumerState<ErrorReportScreen> {
       Toast.show(
         context,
         filed.number > 0
-            ? 'Sent -- thank you. It is report #${filed.number}.'
-            : 'Sent -- thank you.',
+            ? AppLocalizations.of(context)
+                .ui(
+                  'ui_report_sent_number',
+                  'Sent, thank you. It is report #{number}.',
+                )
+                .replaceAll('{number}', '${filed.number}')
+            : AppLocalizations.of(context)
+                .ui('ui_report_sent', 'Sent, thank you.'),
       );
       Navigator.pop(context);
     } catch (error) {

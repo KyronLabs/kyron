@@ -2036,6 +2036,298 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Denne siden vil åpne en annen app"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Den ber om å åpne en {scheme}-lenke."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Bygg"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} med bufrede bilder og filer"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} frigjort"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Måler …"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Ingenting å tømme"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Lagring"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versjon {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blokkerte"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Du publiserer som deg selv"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Vedleggene ble ikke lastet opp. Trykk på ett for å prøve igjen, eller fjern det."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke endre e-postadressen. Prøv igjen."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adressen endres når du følger lenken vi sender."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Se etter en bekreftelseslenke i {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Skriv inn en e-postadresse."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Det ser ikke ut som en e-postadresse."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Det er allerede e-postadressen din."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Hva du gjorde, hva du forventet, og hva som skjedde i stedet."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "La meg feste et innlegg på profilen min"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Hva du ønsker deg, og hva det ville la deg gjøre."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Hva ville hjulpet"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Et problem"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("En idé"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Et spørsmål"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Bare Kyron-teamet leser dette. Det sendes med kontoen din, så vi kan svare på e-post, og med versjonen av appen du bruker. Sletter du kontoen, slettes det også."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Hvordan demper jeg et ord?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Hva du prøver å gjøre, og hvor du står fast."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Spørsmålet ditt"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke nå Kyron. Sjekk tilkoblingen og prøv igjen. Ingenting er skrevet ennå, så ingenting går tapt."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Tøm"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Mislykkede forespørsler og andre viktige hendelser vises her."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Dempet"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Legg til et ord eller en tagg ovenfor. Innlegg med det holdes unna feeden din."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Innlegg som inneholder noen av disse holdes unna feeden din. Store og små bokstaver ignoreres, og et ord treffer også inne i lengre ord, så «spoiler» fanger også «spoilers»."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ingen blokkert"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blokkering skjuler dere for hverandre, begge veier. Blokker noen fra menyen på profilen deres."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("Ingen dempet"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Å dempe en konto skjuler innleggene deres uten å si fra. Demp noen fra menyen på profilen deres eller et innlegg."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Passord"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("De samsvarer ikke."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Du forblir pålogget på denne enheten. Andre enheter logges ut."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Bruk minst 8 tegn."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke oppdatere passordet. Prøv igjen."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Passordet er oppdatert."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID kopiert"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Innlegg du liker, tas vare på her, bare for deg."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Du har ikke publisert noen bilder eller klipp."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} har ikke publisert noen bilder eller klipp."),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("Alt du publiserer, vises her."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} har ikke publisert noe ennå."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke laste inn profilen din"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke laste inn @{handle}"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("Minst 8 tegn"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Liten bokstav (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Minst ett tall"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Symbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Stor bokstav (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} nylige oppføringer. Se gjennom dem under Om › Systemlogg før du sender."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Bare Kyron-teamet leser dette. Det sendes med kontoen din, så vi kan følge opp. Les loggen først under Om › Systemlogg hvis du vil se nøyaktig hva som sendes med."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("Sendt, takk."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Sendt, takk. Det er rapport #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Hva gikk galt?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versjon, retningslinjer, status og systemloggen"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Ikke la videoer spille av seg selv mens du blar"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Din desentraliserte identifikator"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderering"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Rapporter og klager som venter på gjennomgang"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Hold innlegg med disse unna feeden din"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Ikke pålogget"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Varslingsinnstillinger"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Personvern og sikkerhet"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Avgjørelser om kontoen din, og klager"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Juster tekststørrelse"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Kontoen din"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Opptak og publisering av AR-linser er fortsatt under arbeid. Ingenting du tar opp, ville blitt lagret ennå, så kameraet forblir lukket."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Linser er ikke klare ennå"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-linse"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Å gå direkte krever en medieserver Kyron ikke kjører ennå. Å starte en sending nå ville satt deg i et rom ingen kan bli med i. Å ta opp et lydinnlegg fungerer allerede i dag."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Direktesending er ikke klart ennå"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Gå direkte"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Avstemninger trenger et sted å lagre alternativene og telle stemmene. Det er ikke på plass ennå, så en avstemning publisert i dag ville mistet hvert svar."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Avstemninger er ikke klare ennå"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Avstemning"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Skriv et tekstinnlegg i stedet"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Sjekk igjen"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detalj"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Speiltabeller"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron svarte, men noe er ikke som det skal."),
+      "ui_status_round_trip": MessageLookupByLibrary.simpleMessage("Tur-retur"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Still et spørsmål"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Om kontoen din, eller hvordan noe fungerer"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("På e-post"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Hvis Kyron krasjet: sender appens logg med"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("I appen"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Skriv til Kyron-teamet herfra. Det når oss privat, med kontoen din, og vi svarer til e-postadressen på den."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ingen e-postapp åpnet seg. {address} er kopiert."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Personvern og dataene dine"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Rapporter et problem"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Noe er ødelagt eller gjør ikke det det skal"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Bruk menyen på et innlegg eller en konto for å rapportere det: da vet vi nøyaktig hvilken du mener."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Sikkerhet og misbruk"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Om Kyron er nede for alle, eller bare for deg"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Stor"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Større"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Middels"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron er et sted for å si noe som er verdt å lese."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Liten"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Alltid mørk"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Dempet"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "En mykere mørk, blågrå i stedet for svart"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Alltid lys"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Følg telefonens egen innstilling for lys eller mørk"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Opphev blokkering"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Opphev demping"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Hvem du er"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Med dine egne ord: hva den som vurderer, bør vite."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Jeg skriver om fugler her og på min egen nettside."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Legg til en lenke til"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Du kan spørre igjen fra {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Be om verifisering"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Før du spør"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Skaper"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Journalist"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisasjon eller merkevare"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Noe annet"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Offentlig person"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Forespørsel {number} ble ikke godkjent"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Du er verifisert"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Rediger profilen din"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Skriv inn den 6-sifrede koden"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Send koden på nytt om {seconds} sekunder"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Vi sendte den til {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Bekreft"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Bli verifisert på Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Bli"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verifisert"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("på Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Merket viser at noen i Kyron-teamet har sjekket at kontoen er den den sier den er. Det gir ingen ekstra rekkevidde, og det er ikke til salgs."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Merket blir værende så lenge navnet ditt gjør det. Bytter du navn, forsvinner det til noen har sjekket det nye."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Hvor vi kan sjekke"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("En lenke til"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "En nettside eller en annen profil som sier at denne Kyron-kontoen er din: legg Kyron-navnet ditt, eller en lenke til profilen din, der. Kyron ber aldri om ID-dokumenter."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke laste inn statusen din"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Alt ovenfor må være huket av før du kan spørre."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "En konto som er minst {days} dager gammel"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("En bio som sier hvem du er"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Navnet ditt på profilen"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Et profilbilde"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ingenting på deg de siste {days} dagene"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Sendt. Et menneske ser på det."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Siden {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Spør"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Hvem du er, og en lenke\nsom beviser det"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Merket"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Ved siden av navnet ditt,\noveralt der det vises"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Et menneske\nsjekker"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Noen i teamet\nfølger lenkene dine"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verifisering"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Forespørsel {number} ligger hos et menneske"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Sendt {date}, som {category}. Du får et varsel når det er avgjort."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Trekk tilbake forespørselen"),
+      "ui_verify_withdrawn": MessageLookupByLibrary.simpleMessage(
+          "Forespørselen er trukket tilbake."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke fullføre opptaket: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Opptil ti minutter."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Lytter …"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron trenger tillatelse til å bruke mikrofonen for å ta opp. Du kan gi den i enhetsinnstillingene."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke starte opptaket: {error}"),
     };
 
 final messageLookup = MessageLookup();

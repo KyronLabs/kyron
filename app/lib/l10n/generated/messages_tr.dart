@@ -2043,6 +2043,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Bu sayfa başka bir uygulamayı açmak istiyor"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Bir {scheme} bağlantısı açmak istiyor."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Derleme"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Önbellekte {size} görsel ve dosya"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} boşaltıldı"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Ölçülüyor…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Temizlenecek bir şey yok"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Depolama"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Sürüm {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Engellenenler"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Kendi adınla paylaşıyorsun"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Bu ekler yüklenemedi. Yeniden denemek için birine dokun ya da kaldır."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "E-posta adresin değiştirilemedi. Lütfen yeniden dene."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Gönderdiğimiz bağlantıyı açtığında adresin değişir."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Onay bağlantısı için {email} adresini kontrol et."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Bir e-posta adresi gir."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Bu bir e-posta adresine benzemiyor."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Bu zaten senin e-posta adresin."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ne yaptığın, ne beklediğin ve onun yerine ne olduğu."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Profilime bir gönderi sabitleyebileyim"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ne istediğin ve bunun sana neyi mümkün kılacağı."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ne işe yarardı"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Bir sorun"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Bir fikir"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Bir soru"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Bunu yalnızca Kyron ekibi okur. E-postayla yanıt verebilmemiz için hesabınla ve kullandığın uygulama sürümüyle birlikte gönderilir. Hesabını silersen bu da silinir."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Bir kelimeyi nasıl sessize alırım?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ne yapmaya çalıştığın ve nerede takıldığın."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Sorun"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron'a ulaşılamadı. Bağlantını kontrol edip yeniden dene. Henüz hiçbir şey yazılmadı, yani hiçbir şey kaybolmadı."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Temizle"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Başarısız istekler ve diğer önemli olaylar burada görünür."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Sessize alınanlar"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Yukarıya bir kelime ya da etiket ekle. Onu içeren gönderiler akışında görünmez."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Bunlardan herhangi birini içeren gönderiler akışında görünmez. Büyük/küçük harf fark etmez ve bir kelime daha uzun kelimelerin içinde de eşleşir, yani “spoiler” “spoilers” kelimesini de yakalar."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Kimse engellenmedi"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Engellemek sizi her iki yönde de birbirinizden gizler. Birini profilindeki menüden engelleyebilirsin."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Kimse sessize alınmadı"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Bir hesabı sessize almak, gönderilerini ona haber vermeden gizler. Birini profilindeki ya da bir gönderideki menüden sessize alabilirsin."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Şifre"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Eşleşmiyor."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Bu cihazda oturumun açık kalır. Diğer cihazlarda oturum kapatılır."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("En az 8 karakter kullan."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Şifren güncellenemedi. Lütfen yeniden dene."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Şifre güncellendi."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID kopyalandı"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Beğendiğin gönderiler burada, yalnızca senin için saklanır."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Henüz hiç fotoğraf ya da klip paylaşmadın."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} henüz hiç fotoğraf ya da klip paylaşmadı."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Paylaştığın her şey burada görünür."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} henüz hiçbir şey paylaşmadı."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Profilin yüklenemedi"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} yüklenemedi"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("En az 8 karakter"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Küçük harf (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("En az bir rakam"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Simge (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Büyük harf (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} yeni kayıt. Göndermeden önce Hakkında › Sistem günlüğü bölümünden incele."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Bunu yalnızca Kyron ekibi okur. Takip edebilmemiz için hesabınla birlikte gönderilir. Tam olarak neyin birlikte gittiğini görmek istersen önce Hakkında › Sistem günlüğü bölümünden günlüğü oku."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Gönderildi, teşekkürler."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Gönderildi, teşekkürler. Rapor numarası #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Ne ters gitti?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Sürüm, politikalar, durum ve sistem günlüğü"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Kaydırırken videoların kendiliğinden oynamasını durdur"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("Merkeziyetsiz kimliğin"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderasyon"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "İnceleme bekleyen raporlar ve itirazlar"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Bunları içeren gönderileri akışından uzak tut"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Oturum açılmadı"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Bildirim tercihleri"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Gizlilik ve Güvenlik"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Hesabınla ilgili kararlar ve itirazlar"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Metin boyutunu ayarla"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Hesabın"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR lenslerini kaydetme ve yayınlama hâlâ geliştiriliyor. Çektiğin hiçbir şey henüz kaydedilmez, bu yüzden kamera kapalı kalıyor."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lensler henüz hazır değil"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Canlı yayın, Kyron'un henüz çalıştırmadığı bir medya sunucusu gerektiriyor. Şimdi yayın başlatmak seni kimsenin katılamayacağı bir odaya koyar. Sesli gönderi kaydetmek bugün çalışıyor."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Canlı yayın henüz hazır değil"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Canlı yayın"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Anketlerin seçenekleri saklayacak ve oyları sayacak bir yere ihtiyacı var. Bu henüz hazır değil, yani bugün paylaşılan bir anket her yanıtı kaybeder."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Anketler henüz hazır değil"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Anket"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Bunun yerine metin gönderisi yaz"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Yeniden kontrol et"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Ayrıntı"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Yansı tabloları"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron yanıt verdi ama bir şeyler yolunda değil."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Gidiş-dönüş"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Soru sor"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Hesabın ya da bir şeyin nasıl çalıştığı hakkında"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("E-postayla"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron çöktüyse: uygulamanın günlüğünü de gönderir"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Uygulamada"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kyron ekibine buradan yaz. Mesajın hesabınla birlikte bize gizlice ulaşır ve hesaptaki e-posta adresine yanıt veririz."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Hiçbir e-posta uygulaması açılmadı. {address} kopyalandı."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Gizlilik ve verilerin"),
+      "ui_support_report": MessageLookupByLibrary.simpleMessage("Sorun bildir"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Bir şey bozuk ya da olması gerektiği gibi çalışmıyor"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Bir gönderiyi ya da hesabı bildirmek için üzerindeki menüyü kullan: böylece tam olarak hangisini kastettiğini biliriz."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Güvenlik ve kötüye kullanım"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron herkes için mi çöktü, yoksa yalnızca senin için mi"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Büyük"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Daha büyük"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Orta"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron, okunmaya değer bir şey söylemenin yeri."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Küçük"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Her zaman koyu"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Loş"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Daha yumuşak bir koyu, siyah yerine mavi-gri"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Her zaman açık"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Telefonun açık ya da koyu ayarını izle"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Engeli kaldır"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Sesini aç"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kim olduğun"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Kendi sözlerinle, inceleyen kişinin bilmesi gerekenler."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Burada ve kendi sitemde kuşlar hakkında yazıyorum."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Başka bir bağlantı ekle"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} tarihinden itibaren yeniden isteyebilirsin."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Doğrulanmayı iste"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("İstemeden önce"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("İçerik üreticisi"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Gazeteci"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Kuruluş ya da marka"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Başka bir şey"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Tanınmış kişi"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "{number} numaralı istek onaylanmadı"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Doğrulandın"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Profilini düzenle"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6 haneli kodu gir"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Kodu {seconds} saniye sonra yeniden gönder"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("{email} adresine gönderdik"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Doğrula"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron'da doğrulan"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron'da"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("doğrulanmış"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("ol."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Rozet, Kyron ekibinden birinin bu hesabın iddia ettiği kişi olduğunu kontrol ettiğini gösterir. Ek erişim sağlamaz ve satılık değildir."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Adın aynı kaldıkça rozet de kalır. Adını değiştirirsen, biri yenisini kontrol edene kadar rozet kalkar."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Nereden kontrol edebiliriz"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Başka bir bağlantı"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Bu Kyron hesabının sana ait olduğunu söyleyen bir site ya da başka bir profil: oraya Kyron adını ya da profilinin bağlantısını koy. Kyron asla kimlik belgesi istemez."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Durumun yüklenemedi"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "İsteyebilmen için yukarıdaki her şeyin işaretli olması gerekir."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("En az {days} günlük bir hesap"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Kim olduğunu anlatan bir biyografi"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Profilde adın"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Bir profil fotoğrafı"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Son {days} günde kaydında hiçbir şey yok"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Gönderildi. Bir kişi inceleyecek."),
+      "ui_verify_since":
+          MessageLookupByLibrary.simpleMessage("{date} tarihinden beri."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("İste"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kim olduğun ve bunu\nkanıtlayan bir bağlantı"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Rozet"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Adının yanında,\ngöründüğü her yerde"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Bir kişi\nkontrol eder"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Ekipten biri\nbağlantılarına bakar"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Doğrulama"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "{number} numaralı istek bir kişide"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} tarihinde {category} olarak gönderildi. Karar verildiğinde bildirim alacaksın."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("İsteği geri çek"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("İstek geri çekildi."),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("Kayıt tamamlanamadı: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("En fazla on dakika."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Dinleniyor…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron'un kayıt yapmak için mikrofon iznine ihtiyacı var. Bu izni cihaz ayarlarından verebilirsin."),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("Kayıt başlatılamadı: {error}"),
     };
 
 final messageLookup = MessageLookup();

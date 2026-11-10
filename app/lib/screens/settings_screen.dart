@@ -21,6 +21,7 @@ import 'dart:async';
 import '../widgets/kyron_app_bar.dart';
 
 import '../l10n/app_localizations.dart';
+import '../utils/localized_settings.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -36,7 +37,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// the settings screen showed the same person to everyone, and "Log Out"
   /// named an account nobody was signed in as.
   String get _email =>
-      Supabase.instance.client.auth.currentUser?.email ?? 'Not signed in';
+      Supabase.instance.client.auth.currentUser?.email ??
+      AppLocalizations.of(context)
+          .ui('ui_settings_not_signed_in', 'Not signed in');
 
   String get _handle {
     final metadata =
@@ -46,7 +49,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     // No placeholder handle: "@user" for everyone is what made a real account
     // indistinguishable from filler elsewhere in the app.
     final email = Supabase.instance.client.auth.currentUser?.email;
-    return email ?? 'Your account';
+    return email ??
+        AppLocalizations.of(context)
+            .ui('ui_settings_your_account', 'Your account');
   }
 
   bool _loggingOut = false;
@@ -69,8 +74,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         for (final theme in AppTheme.values)
           SheetAction(
             value: theme,
-            label: theme.label,
-            detail: theme.detail,
+            label: AppLocalizations.of(context).themeName(theme),
+            detail: AppLocalizations.of(context).themeDetail(theme),
             selected: theme == current,
             icon: switch (theme) {
               AppTheme.system => Iconsax.mobile_copy,
@@ -235,102 +240,102 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
-          top: false,
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(16)),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Who is actually being signed out. This asked about "@alice" for
-                // everyone, so it named an account nobody was signed in as.
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 22,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.surfaceContainerHighest,
-                      foregroundImage:
-                          avatarUrl == null ? null : NetworkImage(avatarUrl),
-                      child: Icon(
-                        Iconsax.user_copy,
-                        size: 20,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withValues(alpha: .5),
-                      ),
+        top: false,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Who is actually being signed out. This asked about "@alice" for
+              // everyone, so it named an account nobody was signed in as.
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    foregroundImage:
+                        avatarUrl == null ? null : NetworkImage(avatarUrl),
+                    child: Icon(
+                      Iconsax.user_copy,
+                      size: 20,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withValues(alpha: .5),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            _handle,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: TypographyTokens.fontSize4,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            _email,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  AppLocalizations.of(context).logOutQuestion,
-                  style: TextStyle(
-                    fontSize: TypographyTokens.fontSize6,
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  AppLocalizations.of(context).ui(
-                    'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
-                    'You will need to sign in again to get back to your account.',
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text(AppLocalizations.of(context).cancel),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          _handle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: TypographyTokens.fontSize4,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                        onPressed: _performLogout,
-                        child: Text(AppLocalizations.of(context).logOut),
-                      ),
+                        Text(
+                          _email,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Text(
+                AppLocalizations.of(context).logOutQuestion,
+                style: TextStyle(
+                  fontSize: TypographyTokens.fontSize6,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
-          )),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                AppLocalizations.of(context).ui(
+                  'ui_settings_screen_you_will_need_to_sign_in_again_to_get_back_to_yo_3dc001',
+                  'You will need to sign in again to get back to your account.',
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text(AppLocalizations.of(context).cancel),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      onPressed: _performLogout,
+                      child: Text(AppLocalizations.of(context).logOut),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -409,7 +414,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           },
                           child: Text(AppLocalizations.of(context).copy),
                         ),
-                  helpText: 'Your Decentralized Identifier',
+                  helpText: AppLocalizations.of(context).ui(
+                      'ui_settings_did_help', 'Your Decentralized Identifier'),
                 );
               },
             ),
@@ -427,7 +433,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // exactly as public as it had been. A privacy promise that the
             // system cannot keep is worse than no promise, so it is gone
             // rather than left looking like protection.
-            _groupHeader('Privacy & Safety'),
+            _groupHeader(AppLocalizations.of(context)
+                .ui('ui_settings_privacy_safety', 'Privacy & Safety')),
             _settingsRow(
               icon: Iconsax.key_copy,
               label: AppLocalizations.of(context).literalpasswordLogin,
@@ -442,7 +449,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               label: AppLocalizations.of(context).mutedWordsAndTags,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.mutedWords),
-              helpText: 'Keep posts containing these out of your feed',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_muted_words_help',
+                  'Keep posts containing these out of your feed'),
             ),
             _settingsRow(
               icon: Iconsax.like_dislike_copy,
@@ -468,10 +477,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.shield_tick_copy,
-              label: 'Account status',
+              label: AppLocalizations.of(context)
+                  .ui('ui_standing_title', 'Account status'),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.accountStatus),
-              helpText: 'Decisions about your account, and appeals',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_standing_help',
+                  'Decisions about your account, and appeals'),
             ),
             _settingsRow(
               key: const ValueKey('settings-your-reports'),
@@ -491,10 +503,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             if (ref.watch(currentUserProvider).value?.isStaff ?? false)
               _settingsRow(
                 icon: Iconsax.judge_copy,
-                label: 'Moderation',
+                label: AppLocalizations.of(context)
+                    .ui('ui_settings_moderation', 'Moderation'),
                 trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
                 onTap: () => Navigator.pushNamed(context, Routes.moderation),
-                helpText: 'Reports and appeals waiting for review',
+                helpText: AppLocalizations.of(context).ui(
+                    'ui_settings_moderation_help',
+                    'Reports and appeals waiting for review'),
               ),
             Divider(
               height: 1,
@@ -513,7 +528,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               icon: Iconsax.moon_copy,
               label: AppLocalizations.of(context)
                   .ui('ui_appearance', 'Appearance'),
-              subtitle: ref.watch(preferencesProvider).theme.label,
+              subtitle: AppLocalizations.of(context)
+                  .themeName(ref.watch(preferencesProvider).theme),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: _chooseTheme,
               helpText: AppLocalizations.of(context).ui(
@@ -524,13 +540,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             _settingsRow(
               icon: Iconsax.text_copy,
               label: AppLocalizations.of(context).literalfontSize,
-              subtitle: AppPreferences.labelForScale(
+              subtitle: AppLocalizations.of(context).textScaleNameFor(
                 ref.watch(preferencesProvider).textScale,
               ),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsFontSize),
-              helpText: 'Adjust text size',
+              helpText: AppLocalizations.of(context)
+                  .ui('ui_settings_text_size_help', 'Adjust text size'),
             ),
             _settingsRow(
               icon: Iconsax.global_copy,
@@ -548,7 +565,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () =>
                   Navigator.pushNamed(context, Routes.settingsNotifications),
-              helpText: 'Notification preferences',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_notifications_help', 'Notification preferences'),
             ),
             // One row where there were two. "Auto-Download" and "Data Saver"
             // were opposite names for the same thing, neither of them read
@@ -569,7 +587,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 semanticsLabel: AppLocalizations.of(context)
                     .ui('ui_settings_data_saver', 'Data Saver'),
               ),
-              helpText: 'Stop videos playing by themselves as you scroll',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_autoplay_help',
+                  'Stop videos playing by themselves as you scroll'),
             ),
             Divider(
               height: 1,
@@ -604,7 +624,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               label: AppLocalizations.of(context).about,
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.about),
-              helpText: 'Version, policies, status and the system log',
+              helpText: AppLocalizations.of(context).ui(
+                  'ui_settings_about_help',
+                  'Version, policies, status and the system log'),
             ),
             Divider(
               height: 1,

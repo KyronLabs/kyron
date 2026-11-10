@@ -20,6 +20,13 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Changed
+
+- **The last English screens are translated.** Sign-up's password rules, the
+  profile tabs, verification, the voice recorder, the "not ready yet" screens,
+  About, error reports, contact support, text size, appearance, muted and
+  blocked accounts and the password screen now read in all 68 languages.
+
 ### Security
 
 - **Deleting your account asks you to confirm it's you.** If you last signed

@@ -2048,6 +2048,311 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Wannan shafin yana son buɗe wata manhaja"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Yana neman buɗe hanyar haɗi ta {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Ginawa"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Hotuna da fayiloli {size} a cikin ma'ajiyar wucin-gadi"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("An 'yantar da {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Ana aunawa…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Babu abin da za a share"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Ma'aji"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Siga {version}"),
+      "ui_blocked_tab":
+          MessageLookupByLibrary.simpleMessage("Waɗanda aka toshe"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Kana wallafawa da sunanka"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a ɗora waɗannan haɗe-haɗe ba. Taɓa ɗaya don sake gwadawa, ko cire shi."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "An kasa canza imel ɗinka. Da fatan za a sake gwadawa."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adireshinka zai canza da zarar ka buɗe hanyar haɗin da muka aika."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Duba {email} don hanyar haɗin tabbatarwa."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Shigar da adireshin imel."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Wannan bai yi kama da adireshin imel ba."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Wannan ya riga ya zama adireshin imel ɗinka."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Abin da ka yi, abin da ka yi tsammani, da abin da ya faru a maimakon haka."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Bari in maƙala rubutu a bayanan martabata"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Abin da kake so, da abin da zai ba ka damar yi."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Abin da zai taimaka"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Matsala"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Ra'ayi"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Tambaya"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ƙungiyar Kyron kaɗai ke karanta wannan. Ana aika shi tare da asusunka don mu iya amsa ta imel, da kuma sigar manhajar da kake amfani da ita. Share asusunka zai share shi ma."),
+      "ui_feedback_question_example": MessageLookupByLibrary.simpleMessage(
+          "Ta yaya zan yi shiru da kalma?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Abin da kake ƙoƙarin yi, da inda ka makale."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Tambayarka"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "An kasa isa ga Kyron. Duba haɗinka ka sake gwadawa. Ba a rubuta komai ba tukuna, don haka babu abin da ya ɓace."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Share"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Buƙatun da suka gaza da sauran muhimman abubuwa suna bayyana a nan."),
+      "ui_muted_tab":
+          MessageLookupByLibrary.simpleMessage("Waɗanda aka yi wa shiru"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Ƙara kalma ko alama a sama. Rubuce-rubucen da ke ɗauke da ita ba za su bayyana a cikin ciyarwarka ba."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Rubuce-rubucen da ke ɗauke da kowane ɗayan waɗannan ba sa bayyana a cikin ciyarwarka. Babba ko ƙaramin harafi ba shi da muhimmanci, kuma kalma tana daidaitawa ko a cikin dogayen kalmomi, don haka “spoiler” yana kama “spoilers” ma."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ba a toshe kowa ba"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Toshewa yana ɓoye ku daga juna, ta ɓangarorin biyu. Toshe wani daga menu a bayanan martabarsa."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ba a yi wa kowa shiru ba"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Yin shiru da asusu yana ɓoye rubuce-rubucensa ba tare da gaya masa ba. Yi wa wani shiru daga menu a bayanan martabarsa ko wani rubutu."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Kalmar sirri"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Ba su yi daidai ba."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Za ka ci gaba da kasancewa a shiga a wannan na'urar. Za a fitar da sauran na'urori."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Yi amfani da aƙalla haruffa 8."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "An kasa sabunta kalmar sirrinka. Da fatan za a sake gwadawa."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("An sabunta kalmar sirri."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("An kwafi DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Rubuce-rubucen da kake so ana ajiye su a nan, don kai kaɗai."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Ba ka wallafa wani hoto ko bidiyo ba tukuna."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} bai wallafa wani hoto ko bidiyo ba tukuna."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Duk abin da ka wallafa zai bayyana a nan."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} bai wallafa komai ba tukuna."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "An kasa loda bayanan martabarka"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("An kasa loda @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Aƙalla haruffa 8"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Ƙaramin harafi (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Aƙalla lamba ɗaya"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Alama (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Babban harafi (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Shigarwa {count} na kwanan nan. Duba su a Game da › Rajistar tsarin kafin aikawa."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ƙungiyar Kyron kaɗai ke karanta wannan. Ana aika shi tare da asusunka don mu iya bibiya. Karanta rajistar da farko a Game da › Rajistar tsarin idan kana son ganin ainihin abin da ke tafiya tare da shi."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("An aika, na gode."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "An aika, na gode. Rahoto ne #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Me ya faru ba daidai ba?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Siga, manufofi, matsayi da rajistar tsarin"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Hana bidiyo kunna kansu yayin gungurawa"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Mai gano ka da ba na tsakiya ba"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Daidaitawa"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Rahotanni da ɗaukaka ƙara da ke jiran dubawa"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Nisantar da rubuce-rubucen da ke ɗauke da waɗannan daga ciyarwarka"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Ba a shiga ba"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Zaɓuɓɓukan sanarwa"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Sirri da Tsaro"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Shawarwari game da asusunka, da ɗaukaka ƙara"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Daidaita girman rubutu"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Asusunka"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Ana ci gaba da gina yin rikodi da wallafa ruwan tabarau na AR. Babu abin da ka ɗauka da za a ajiye tukuna, don haka kyamarar tana nan a rufe."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Ruwan tabarau ba su shirya ba tukuna"),
+      "ui_soon_lens_title":
+          MessageLookupByLibrary.simpleMessage("Ruwan tabarau na AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai tsaye yana buƙatar sabar kafofin watsa labarai da Kyron bai fara gudanarwa ba tukuna. Fara watsa shirye-shirye yanzu zai sa ka a ɗakin da babu wanda zai iya shiga. Yin rikodin rubutun murya yana aiki a yau."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Kai tsaye bai shirya ba tukuna"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Fara kai tsaye"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Ƙuri'u suna buƙatar wurin ajiye zaɓuɓɓuka da ƙirga ƙuri'u. Wannan bai samu ba tukuna, don haka ƙuri'ar da aka wallafa yau za ta rasa kowace amsa."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Ƙuri'u ba su shirya ba tukuna"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Ƙuri'a"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Rubuta rubutun rubutu a maimakon haka"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Sake dubawa"),
+      "ui_status_detail":
+          MessageLookupByLibrary.simpleMessage("Cikakken bayani"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Teburan madubi"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ya amsa, amma wani abu ba daidai ba ne."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Zuwa da dawowa"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Yi tambaya"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Game da asusunka, ko yadda wani abu ke aiki"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Ta imel"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Idan Kyron ya faɗi: yana aika rajistar manhajar tare"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("A cikin manhajar"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Rubuta wa ƙungiyar Kyron daga nan. Yana isa gare mu a sirrance, tare da asusunka, kuma muna amsa a adireshin imel ɗin da ke kansa."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Babu manhajar imel da ta buɗe. An kwafi {address}."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Sirri da bayananka"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Kai rahoton matsala"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Wani abu ya lalace ko baya yin abin da ya kamata"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Don kai rahoton rubutu ko asusu, yi amfani da menu ɗinsa: hakan yana sanar da mu daidai wanda kake nufi."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Tsaro da cin zarafi"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Ko Kyron ya daina aiki ga kowa, ko kai kaɗai"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Babba"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Mafi girma"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Matsakaici"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron wuri ne na faɗin abin da ya cancanci a karanta."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Ƙarami"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Koyaushe duhu"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Dusashe"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Duhu mai laushi, shuɗi-toka maimakon baƙi"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Koyaushe haske"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Bi saitin haske ko duhu na wayar"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Cire toshewa"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Cire shiru"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kai wanene"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Da kalmominka, abin da mai dubawa ya kamata ya sani."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Ina rubutu game da tsuntsaye a nan da kuma a shafina."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Ƙara wata hanyar haɗi"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Za ka iya sake nema daga {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Nemi tabbatarwa"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Kafin ka nema"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Mai ƙirƙira"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Ɗan jarida"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Ƙungiya ko alama"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Wani abu dabam"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Fitaccen mutum"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Ba a amince da buƙata ta {number} ba"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("An tabbatar da kai"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Gyara bayanan martabarka"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Shigar da lambar lambobi 6"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Sake aika lambar cikin daƙiƙa {seconds}"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Mun aika shi zuwa {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Tabbatar"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Sami tabbatarwa a Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Sami"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("tabbatarwa"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("a Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Lambar yabo tana nuna cewa wani a ƙungiyar Kyron ya duba cewa wannan asusun shi ne wanda yake iƙirari. Ba ya ba da ƙarin isa, kuma ba na sayarwa ba ne."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Lambar yabo tana nan muddin sunanka yana nan. Idan ka canza sunanka, za a cire ta har sai wani ya duba sabon."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Inda za mu iya dubawa"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Wata hanyar haɗi"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Wani shafi ko wani bayanan martaba da ke cewa wannan asusun Kyron naka ne: sanya sunanka na Kyron, ko hanyar haɗi zuwa bayanan martabarka, a kai. Kyron ba ya taɓa neman takardun shaida."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("An kasa loda matsayinka"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Duk abin da ke sama yana buƙatar alamar duba kafin ka iya nema."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Asusu mai shekaru aƙalla kwanaki {days}"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Tarihin rayuwa da ke faɗin kai wanene"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Sunanka a bayanan martaba"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Hoton bayanan martaba"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Babu komai a rikodinka cikin kwanaki {days} da suka gabata"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("An aika. Mutum zai duba shi."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Tun {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Nema"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kai wanene, da hanyar haɗi\nda ke tabbatar da hakan"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("Lambar yabo"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Kusa da sunanka,\nduk inda ya bayyana"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Mutum\nyana dubawa"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Wani daga ƙungiya\nyana buɗe hanyoyinka"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Tabbatarwa"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Buƙata ta {number} tana hannun mutum"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "An aika a {date}, a matsayin {category}. Za ka sami sanarwa idan an yanke hukunci."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Janye buƙatar"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("An janye buƙatar."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "An kasa kammala rikodin: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Har zuwa minti goma."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Ana sauraro…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron yana buƙatar izinin amfani da makirufo don yin rikodi. Za ka iya bayarwa a saitunan na'urarka."),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("An kasa fara rikodi: {error}"),
     };
 
 final messageLookup = MessageLookup();

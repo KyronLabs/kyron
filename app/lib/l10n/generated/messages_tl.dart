@@ -2094,6 +2094,306 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gustong magbukas ng pahinang ito ng ibang app"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Humihiling itong magbukas ng {scheme} na link."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} na naka-cache na larawan at file"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Napalaya ang {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Sinusukat…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Walang lilinisin"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Storage"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Bersyon {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Naka-block"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Nagpo-post bilang ikaw"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi na-upload ang mga attachment na iyon. I-tap ang isa para subukan ulit, o alisin ito."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi mapalitan ang email mo. Pakisubukan ulit."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Magbabago ang address mo kapag binuksan mo ang link na ipapadala namin."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Tingnan ang {email} para sa link ng kumpirmasyon."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Maglagay ng email address."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Mukhang hindi iyan email address."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("Iyan na ang email address mo."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ano ang ginawa mo, ano ang inaasahan mo, at ano ang nangyari sa halip."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Hayaan akong mag-pin ng post sa profile ko"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ano ang gusto mo, at ano ang magagawa mo dahil dito."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ano ang makakatulong"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Isang problema"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("Isang ideya"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Isang tanong"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ang Kyron team lang ang nagbabasa nito. Ipinapadala ito kasama ng account mo para makasagot kami sa email, at kasama ng bersyon ng app na gamit mo. Kapag binura mo ang account mo, mabubura rin ito."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Paano mag-mute ng salita?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ano ang sinusubukan mong gawin, at saan ka natigil."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ang tanong mo"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Hindi maabot ang Kyron. Tingnan ang koneksyon mo at subukan ulit. Wala pang naisusulat, kaya walang nawala."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("I-clear"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Dito lumalabas ang mga nabigong request at iba pang mahalagang pangyayari."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Naka-mute"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Magdagdag ng salita o tag sa itaas. Hindi na lalabas sa feed mo ang mga post na may ganito."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Hindi lumalabas sa feed mo ang mga post na may alinman sa mga ito. Hindi mahalaga ang malaki o maliit na titik, at tumutugma ang salita kahit nasa loob ng mas mahabang salita, kaya nahuhuli rin ng “spoiler” ang “spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Walang naka-block"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Itinatago kayo ng pag-block sa isa't isa, sa magkabilang panig. Mag-block ng tao mula sa menu sa profile niya."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Walang naka-mute"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Itinatago ng pag-mute ang mga post ng account nang hindi sila sinasabihan. Mag-mute ng tao mula sa menu sa profile niya o sa isang post."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Password"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Hindi magkatugma."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Mananatili kang naka-sign in sa device na ito. Masa-sign out ang ibang device."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Gumamit ng hindi bababa sa 8 character."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ma-update ang password mo. Pakisubukan ulit."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Na-update ang password."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang DID"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Dito itinatabi ang mga post na nagustuhan mo, para sa iyo lang."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Wala ka pang nai-post na larawan o clip."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "Wala pang nai-post na larawan o clip si {name}."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Lahat ng ipo-post mo ay lalabas dito."),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("Wala pang nai-post si {name}."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang profile mo"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Hindi bababa sa 8 character"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Maliit na titik (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Hindi bababa sa isang numero"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbolo (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Malaking titik (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} kamakailang entry. Suriin ang mga ito sa Tungkol › System log bago ipadala."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ang Kyron team lang ang nagbabasa nito. Ipinapadala ito kasama ng account mo para makapag-follow up kami. Basahin muna ang log sa Tungkol › System log kung gusto mong makita kung ano mismo ang kasama nito."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Naipadala, salamat."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Naipadala, salamat. Ito ang ulat #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Ano ang nagkaproblema?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Bersyon, mga patakaran, status at ang system log"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Pigilan ang mga video na kusang tumugtog habang nag-i-scroll"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Ang Decentralized Identifier mo"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderation"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Mga ulat at apela na naghihintay ng pagsusuri"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Ilayo sa feed mo ang mga post na may mga ito"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Hindi naka-sign in"),
+      "ui_settings_notifications_help": MessageLookupByLibrary.simpleMessage(
+          "Mga kagustuhan sa notification"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privacy at Kaligtasan"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Mga desisyon tungkol sa account mo, at mga apela"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Ayusin ang laki ng text"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Ang account mo"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Ginagawa pa ang pagre-record at pag-publish ng AR lens. Wala pang masi-save sa anumang makukuha mo, kaya nananatiling sarado ang camera."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Hindi pa handa ang mga lens"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR Lens"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Kailangan ng pag-live ng media server na hindi pa pinapatakbo ng Kyron. Kung magsisimula ka ng broadcast ngayon, mapupunta ka sa kuwartong walang makakapasok. Gumagana na ngayon ang pagre-record ng voice post."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Hindi pa handa ang pag-live"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Mag-live"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kailangan ng mga poll ng lugar para itabi ang mga pagpipilian at bilangin ang mga boto. Wala pa iyon, kaya mawawala ang bawat sagot sa poll na ipo-post ngayon."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Hindi pa handa ang mga poll"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Poll"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Sumulat na lang ng text post"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Suriin ulit"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detalye"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Mga mirror table"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Sumagot ang Kyron, pero may mali."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Round trip"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Magtanong"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Tungkol sa account mo, o kung paano gumagana ang isang bagay"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Sa email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kung nag-crash ang Kyron: ipinapadala kasama ang log ng app"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Sa app"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Sumulat sa Kyron team mula rito. Darating ito sa amin nang pribado, kasama ng account mo, at sasagot kami sa email address nito."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Walang nabuksang mail app. Nakopya ang {address}."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privacy at ang data mo"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Mag-ulat ng problema"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "May sira o hindi gumagana gaya ng dapat"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Para mag-ulat ng post o account, gamitin ang menu nito: sa ganoon, alam namin kung alin mismo ang tinutukoy mo."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Kaligtasan at pang-aabuso"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kung down ang Kyron para sa lahat, o sa iyo lang"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Malaki"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Mas malaki"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Katamtaman"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Ang Kyron ay lugar para magsabi ng isang bagay na sulit basahin."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Maliit"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Laging madilim"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Malamlam"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Mas malambot na dilim, bughaw-abo sa halip na itim"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Laging maliwanag"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Sundin ang setting ng telepono sa maliwanag o madilim"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("I-unblock"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("I-unmute"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Sino ka"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Sa sarili mong salita, ano ang dapat malaman ng tagasuri."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Nagsusulat ako tungkol sa mga ibon dito at sa sarili kong site."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Magdagdag ng isa pang link"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Puwede kang humiling ulit simula {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Humiling ng beripikasyon"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Bago ka humiling"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Creator"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Mamamahayag"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisasyon o brand"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Iba pa"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Public figure"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Hindi naaprubahan ang kahilingan {number}"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Beripikado ka na"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("I-edit ang profile mo"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Ilagay ang 6-digit na code"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Ipadala ulit ang code sa loob ng {seconds} segundo"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "Ipinadala namin ito sa {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("I-verify"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Magpa-verify sa Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Magpa-verify"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("ka"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("sa Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Ipinapakita ng badge na may isang tao sa Kyron team na sumuri na ang account na ito ay ang sinasabi nito. Hindi ito nagbibigay ng dagdag na abot, at hindi ito ibinebenta."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Mananatili ang badge habang hindi nagbabago ang pangalan mo. Kapag pinalitan mo ang pangalan, aalisin ito hanggang may sumuri sa bago."),
+      "ui_verify_link_first": MessageLookupByLibrary.simpleMessage(
+          "Kung saan kami puwedeng sumuri"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Isa pang link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Isang site o ibang profile na nagsasabing iyo ang Kyron account na ito: ilagay doon ang pangalan mo sa Kyron, o link sa profile mo. Hindi kailanman humihingi ang Kyron ng ID."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Hindi ma-load ang katayuan mo"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Kailangang may tsek ang lahat sa itaas bago ka makahiling."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Account na hindi bababa sa {days} araw"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Bio na nagsasabi kung sino ka"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Ang pangalan mo sa profile"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Larawan sa profile"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Walang anuman sa record mo sa nakalipas na {days} araw"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Naipadala. Titingnan ito ng isang tao."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Mula {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Humiling"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Sino ka, at isang link\nna nagpapatunay nito"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Ang badge"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Katabi ng pangalan mo,\nsaanman ito lumabas"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Isang tao\nang sumusuri"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Isang taga-team\nang nagbubukas ng links mo"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Beripikasyon"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Nasa isang tao ang kahilingan {number}"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Ipinadala noong {date}, bilang {category}. Makakatanggap ka ng notification kapag napagpasyahan na."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Bawiin ang kahilingan"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Binawi ang kahilingan."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi matapos ang recording: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Hanggang sampung minuto."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Nakikinig…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kailangan ng Kyron ng pahintulot sa mikropono para mag-record. Maibibigay mo ito sa settings ng device mo."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi masimulan ang recording: {error}"),
     };
 
 final messageLookup = MessageLookup();

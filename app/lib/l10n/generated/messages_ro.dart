@@ -2081,6 +2081,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Această pagină vrea să deschidă altă aplicație"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Cere să deschidă un link {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Versiune build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} de imagini și fișiere în cache"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} eliberați"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Se măsoară…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nimic de șters"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Stocare"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versiunea {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Blocați"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Publici în numele tău"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Aceste atașamente nu s-au încărcat. Atinge unul ca să încerci din nou, sau elimină-l."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut schimba adresa de e-mail. Încearcă din nou."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adresa se schimbă după ce deschizi linkul pe care îl trimitem."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Caută linkul de confirmare în {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Introdu o adresă de e-mail."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Nu pare a fi o adresă de e-mail."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Aceasta este deja adresa ta de e-mail."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ce ai făcut, ce te așteptai și ce s-a întâmplat în schimb."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Lasă-mă să fixez o postare pe profil"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ce ți-ai dori și ce ți-ar permite să faci."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Ce ar ajuta"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("O problemă"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("O idee"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("O întrebare"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Doar echipa Kyron citește asta. Se trimite împreună cu contul tău, ca să putem răspunde prin e-mail, și cu versiunea aplicației pe care o folosești. Dacă îți ștergi contul, se șterge și asta."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Cum ascund un cuvânt?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ce încerci să faci și unde te-ai blocat."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Întrebarea ta"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron nu a putut fi accesat. Verifică conexiunea și încearcă din nou. Nu s-a scris încă nimic, deci nu se pierde nimic."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Șterge"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Cererile eșuate și alte evenimente importante apar aici."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Ascunși"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Adaugă un cuvânt sau o etichetă mai sus. Postările care îl conțin rămân în afara fluxului tău."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Postările care conțin oricare dintre acestea rămân în afara fluxului tău. Majusculele nu contează, iar un cuvânt se potrivește și în interiorul cuvintelor mai lungi, așa că „spoiler” prinde și „spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Nimeni blocat"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Blocarea vă ascunde unul de celălalt, în ambele sensuri. Blochează pe cineva din meniul de pe profilul său."),
+      "ui_nobody_muted": MessageLookupByLibrary.simpleMessage("Nimeni ascuns"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Ascunderea unui cont îi ascunde postările fără să-i spună. Ascunde pe cineva din meniul de pe profilul său sau de pe o postare."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Parolă"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Nu se potrivesc."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Rămâi conectat pe acest dispozitiv. Celelalte dispozitive sunt deconectate."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Folosește cel puțin 8 caractere."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut actualiza parola. Încearcă din nou."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Parola a fost actualizată."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID copiat"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Postările care îți plac sunt păstrate aici, doar pentru tine."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Nu ai postat încă fotografii sau clipuri."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} nu a postat încă fotografii sau clipuri."),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("Tot ce postezi apare aici."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} nu a postat încă nimic."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut încărca profilul tău"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Nu am putut încărca @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Minimum 8 caractere"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Literă mică (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Cel puțin o cifră"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Literă mare (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} intrări recente. Verifică-le în Despre › Jurnal de sistem înainte de trimitere."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Doar echipa Kyron citește asta. Se trimite împreună cu contul tău ca să putem reveni. Citește mai întâi jurnalul în Despre › Jurnal de sistem dacă vrei să vezi exact ce se trimite cu el."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Trimis, mulțumim."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Trimis, mulțumim. Este raportul #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Ce nu a mers?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versiune, politici, stare și jurnalul de sistem"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Oprește redarea automată a videoclipurilor la derulare"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Identificatorul tău descentralizat"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderare"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Raportări și contestații care așteaptă verificarea"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Ține în afara fluxului postările care conțin acestea"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Neconectat"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Preferințe pentru notificări"),
+      "ui_settings_privacy_safety": MessageLookupByLibrary.simpleMessage(
+          "Confidențialitate și siguranță"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Decizii despre contul tău și contestații"),
+      "ui_settings_text_size_help": MessageLookupByLibrary.simpleMessage(
+          "Ajustează dimensiunea textului"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Contul tău"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Înregistrarea și publicarea lentilelor AR sunt încă în lucru. Nimic din ce capturezi nu s-ar salva încă, așa că camera rămâne închisă."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lentilele nu sunt încă gata"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lentilă AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Transmisiunea live are nevoie de un server media pe care Kyron încă nu îl rulează. Dacă ai porni acum o transmisiune, ai fi într-o cameră în care nu poate intra nimeni. Înregistrarea unei postări vocale funcționează deja."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Transmisiunea live nu este încă gata"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Transmite live"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Sondajele au nevoie de un loc unde să păstreze opțiunile și să numere voturile. Acesta încă nu există, așa că un sondaj postat azi ar pierde fiecare răspuns."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Sondajele nu sunt încă gata"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Sondaj"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Scrie în schimb o postare text"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Verifică din nou"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detalii"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Tabele oglindă"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron a răspuns, dar ceva nu e în regulă."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Dus-întors"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Pune o întrebare"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Despre contul tău sau despre cum funcționează ceva"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Prin e-mail"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Dacă Kyron s-a blocat: trimite și jurnalul aplicației"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("În aplicație"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Scrie-i echipei Kyron de aici. Mesajul ajunge la noi în privat, împreună cu contul tău, iar noi răspundem la adresa de e-mail a acestuia."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Nu s-a deschis nicio aplicație de e-mail. {address} a fost copiată."),
+      "ui_support_privacy": MessageLookupByLibrary.simpleMessage(
+          "Confidențialitate și datele tale"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Raportează o problemă"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Ceva nu funcționează sau nu face ce ar trebui"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Ca să raportezi o postare sau un cont, folosește meniul acestuia: așa știm exact la care te referi."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Siguranță și abuz"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Dacă Kyron e căzut pentru toată lumea sau doar pentru tine"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Mare"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Mai mare"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Mediu"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron este un loc în care să spui ceva ce merită citit."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Mic"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Mereu întunecat"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Estompat"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Un întunecat mai blând, gri-albăstrui în loc de negru"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Mereu luminos"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Urmează setarea luminoasă sau întunecată a telefonului"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Deblochează"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Anulează ascunderea"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Cine ești"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Cu propriile cuvinte, ce ar trebui să știe cel care verifică."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Scriu despre păsări aici și pe site-ul meu."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Adaugă alt link"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Poți cere din nou începând cu {date}."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Cere verificarea"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Înainte să ceri"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Creator"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Jurnalist"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organizație sau marcă"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Altceva"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Persoană publică"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Cererea {number} nu a fost aprobată"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Ești verificat"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Editează-ți profilul"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Introdu codul din 6 cifre"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Retrimite codul în {seconds} secunde"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("L-am trimis la {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verifică"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Obține verificarea pe Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Obține"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verificarea"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("pe Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Insigna arată că cineva din echipa Kyron a verificat că acest cont este cine pretinde că este. Nu oferă vizibilitate suplimentară și nu este de vânzare."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Insigna rămâne cât timp îți rămâne numele. Dacă îți schimbi numele, dispare până când cineva îl verifică pe cel nou."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Unde putem verifica"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("Alt link"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Un site sau alt profil care spune că acest cont Kyron este al tău: pune pe el numele tău de pe Kyron sau un link către profil. Kyron nu cere niciodată acte de identitate."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut încărca situația ta"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Totul de mai sus trebuie bifat înainte să poți cere."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Un cont de cel puțin {days} zile"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "O descriere care spune cine ești"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Numele tău pe profil"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("O fotografie de profil"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Nimic în istoricul tău în ultimele {days} zile"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Trimis. Un om se va uita."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Din {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Cere"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Cine ești, și un link\ncare o dovedește"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Insigna"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Lângă numele tău,\noriunde apare"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Un om\nverifică"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Cineva din echipă\nîți deschide linkurile"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verificare"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Cererea {number} este la un om"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Trimisă pe {date}, ca {category}. Vei primi o notificare când se decide."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Retrage cererea"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Cerere retrasă."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut finaliza înregistrarea: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Până la zece minute."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Se ascultă…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron are nevoie de permisiunea de a folosi microfonul pentru a înregistra. O poți acorda din setările dispozitivului."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Nu am putut porni înregistrarea: {error}"),
     };
 
 final messageLookup = MessageLookup();

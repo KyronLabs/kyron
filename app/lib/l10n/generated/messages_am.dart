@@ -2081,6 +2081,276 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("ይህ ገጽ ሌላ መተግበሪያ መክፈት ይፈልጋል"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "የ{scheme} አገናኝ ለመክፈት እየጠየቀ ነው።"),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("ግንባታ"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("በመሸጎጫ ውስጥ {size} ምስሎችና ፋይሎች"),
+      "ui_about_freed": MessageLookupByLibrary.simpleMessage("{size} ተለቋል"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("በመለካት ላይ…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("የሚጸዳ ምንም የለም"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("ማከማቻ"),
+      "ui_about_version": MessageLookupByLibrary.simpleMessage("ስሪት {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("የታገዱ"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("በእርስዎ ስም በመለጠፍ ላይ"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "እነዚህ አባሪዎች አልተሰቀሉም። እንደገና ለመሞከር አንዱን መታ ያድርጉ፣ ወይም ያስወግዱት።"),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "ኢሜይልዎን መቀየር አልተቻለም። እባክዎ እንደገና ይሞክሩ።"),
+      "ui_email_changes_after_link":
+          MessageLookupByLibrary.simpleMessage("የላክነውን አገናኝ ሲከፍቱ አድራሻዎ ይቀየራል።"),
+      "ui_email_check_link":
+          MessageLookupByLibrary.simpleMessage("የማረጋገጫ አገናኙን በ{email} ይመልከቱ።"),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("የኢሜይል አድራሻ ያስገቡ።"),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("ይህ የኢሜይል አድራሻ አይመስልም።"),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("ይህ አስቀድሞ የእርስዎ ኢሜይል አድራሻ ነው።"),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "ምን እንዳደረጉ፣ ምን እንደጠበቁ፣ እና በምትኩ ምን እንደተከሰተ።"),
+      "ui_feedback_idea_example":
+          MessageLookupByLibrary.simpleMessage("በመገለጫዬ ላይ ልጥፍ እንድሰካ ፍቀዱልኝ"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "ምን እንደሚፈልጉ፣ እና ምን እንዲያደርጉ እንደሚያስችልዎ።"),
+      "ui_feedback_idea_label": MessageLookupByLibrary.simpleMessage("ምን ይረዳል"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("ችግር"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("ሐሳብ"),
+      "ui_feedback_kind_question": MessageLookupByLibrary.simpleMessage("ጥያቄ"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "ይህን የሚያነበው የKyron ቡድን ብቻ ነው። በኢሜይል መመለስ እንድንችል ከመለያዎ ጋር፣ እና ከሚጠቀሙበት የመተግበሪያ ስሪት ጋር ይላካል። መለያዎን ከሰረዙ ይህም ይሰረዛል።"),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("ቃልን እንዴት ድምጸ-ከል አደርጋለሁ?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "ምን ለማድረግ እየሞከሩ እንደሆነ፣ እና የት እንደተቸገሩ።"),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("የእርስዎ ጥያቄ"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyronን ማግኘት አልተቻለም። ግንኙነትዎን ይፈትሹና እንደገና ይሞክሩ። እስካሁን ምንም አልተጻፈም፣ ስለዚህ ምንም አልጠፋም።"),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("አጽዳ"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "ያልተሳኩ ጥያቄዎችና ሌሎች ትኩረት የሚሹ ክስተቶች እዚህ ይታያሉ።"),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል የተደረጉ"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "ከላይ ቃል ወይም መለያ ያክሉ። እሱን የያዙ ልጥፎች በምግብዎ ውስጥ አይታዩም።"),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "ከእነዚህ ውስጥ ማንኛውንም የያዙ ልጥፎች በምግብዎ ውስጥ አይታዩም። የፊደል መጠን ግድ አይሰጥም፣ ቃሉም በረጃጅም ቃላት ውስጥ ይዛመዳል፣ ስለዚህ “spoiler” “spoilers”ንም ይይዛል።"),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("ማንም አልታገደም"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "ማገድ ሁለታችሁንም በሁለቱም አቅጣጫ ከአንዳችሁ ሌላው ይደብቃል። የሆነን ሰው ከመገለጫው ምናሌ ያግዱ።"),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("ማንም ድምጸ-ከል አልተደረገም"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "መለያን ድምጸ-ከል ማድረግ ሳያሳውቃቸው ልጥፎቻቸውን ይደብቃል። ከመገለጫ ወይም ከልጥፍ ምናሌ ድምጸ-ከል ያድርጉ።"),
+      "ui_password": MessageLookupByLibrary.simpleMessage("የይለፍ ቃል"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("አይዛመዱም።"),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "በዚህ መሣሪያ ላይ እንደገቡ ይቆያሉ። ሌሎች መሣሪያዎች ይወጣሉ።"),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("ቢያንስ 8 ቁምፊዎች ይጠቀሙ።"),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "የይለፍ ቃልዎን ማዘመን አልተቻለም። እባክዎ እንደገና ይሞክሩ።"),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("የይለፍ ቃል ተዘምኗል።"),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID ተቀድቷል"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "የወደዷቸው ልጥፎች ለእርስዎ ብቻ እዚህ ይቀመጣሉ።"),
+      "ui_profile_empty_media_mine":
+          MessageLookupByLibrary.simpleMessage("እስካሁን ምንም ፎቶ ወይም ቅንጥብ አልለጠፉም።"),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} እስካሁን ምንም ፎቶ ወይም ቅንጥብ አልለጠፈም።"),
+      "ui_profile_empty_posts_mine":
+          MessageLookupByLibrary.simpleMessage("የሚለጥፉት ሁሉ እዚህ ይታያል።"),
+      "ui_profile_empty_posts_other":
+          MessageLookupByLibrary.simpleMessage("{name} እስካሁን ምንም አልለጠፈም።"),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("መገለጫዎን መጫን አልተቻለም"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle}ን መጫን አልተቻለም"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("ቢያንስ 8 ቁምፊዎች"),
+      "ui_pw_rule_lower": MessageLookupByLibrary.simpleMessage("ትንሽ ፊደል (a–z)"),
+      "ui_pw_rule_number": MessageLookupByLibrary.simpleMessage("ቢያንስ አንድ ቁጥር"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("ምልክት (!@#…)"),
+      "ui_pw_rule_upper": MessageLookupByLibrary.simpleMessage("ትልቅ ፊደል (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} የቅርብ ጊዜ ግቤቶች። ከመላክዎ በፊት በስለ › የስርዓት ምዝግብ ውስጥ ይገምግሟቸው።"),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "ይህን የሚያነበው የKyron ቡድን ብቻ ነው። ክትትል ማድረግ እንድንችል ከመለያዎ ጋር ይላካል። አብሮ የሚሄደውን በትክክል ማየት ከፈለጉ መጀመሪያ በስለ › የስርዓት ምዝግብ ውስጥ ምዝግቡን ያንብቡ።"),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("ተልኳል፣ እናመሰግናለን።"),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "ተልኳል፣ እናመሰግናለን። ሪፖርት #{number} ነው።"),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("ምን ተበላሸ?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "ስሪት፣ መመሪያዎች፣ ሁኔታ እና የስርዓት ምዝግብ"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "ሲያሸብልሉ ቪዲዮዎች በራሳቸው እንዳይጫወቱ ያቁሙ"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("ያልተማከለ መለያዎ"),
+      "ui_settings_moderation": MessageLookupByLibrary.simpleMessage("ቁጥጥር"),
+      "ui_settings_moderation_help":
+          MessageLookupByLibrary.simpleMessage("ግምገማ የሚጠብቁ ሪፖርቶችና ይግባኞች"),
+      "ui_settings_muted_words_help":
+          MessageLookupByLibrary.simpleMessage("እነዚህን የያዙ ልጥፎችን ከምግብዎ ያርቁ"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("አልገቡም"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("የማሳወቂያ ምርጫዎች"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("ግላዊነት እና ደህንነት"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("ስለ መለያዎ የተሰጡ ውሳኔዎች፣ እና ይግባኞች"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("የጽሑፍ መጠን ያስተካክሉ"),
+      "ui_settings_your_account": MessageLookupByLibrary.simpleMessage("መለያዎ"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "የAR ሌንሶችን መቅዳትና ማተም ገና በመገንባት ላይ ነው። የሚያነሱት ምንም ነገር ገና አይቀመጥም፣ ስለዚህ ካሜራው ዝግ ሆኖ ይቆያል።"),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("ሌንሶች ገና ዝግጁ አይደሉም"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("የAR ሌንስ"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "ቀጥታ ለመሄድ Kyron ገና የማያሄደው የሚዲያ አገልጋይ ያስፈልጋል። አሁን ስርጭት ቢጀምሩ ማንም ሊቀላቀል በማይችልበት ክፍል ውስጥ ይሆናሉ። የድምጽ ልጥፍ መቅዳት ዛሬ ይሰራል።"),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("ቀጥታ ስርጭት ገና ዝግጁ አይደለም"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("ቀጥታ ይሂዱ"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "የሕዝብ አስተያየቶች አማራጮችን የሚያስቀምጡበትና ድምጾችን የሚቆጥሩበት ቦታ ያስፈልጋቸዋል። ያ ገና የለም፣ ስለዚህ ዛሬ የተለጠፈ የሕዝብ አስተያየት ሁሉንም መልሶች ያጣል።"),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("የሕዝብ አስተያየቶች ገና ዝግጁ አይደሉም"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("የሕዝብ አስተያየት"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("በምትኩ የጽሑፍ ልጥፍ ይጻፉ"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("እንደገና ይፈትሹ"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("ዝርዝር"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("የመስታወት ሰንጠረዦች"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron መልስ ሰጥቷል፣ ግን የሆነ ነገር ትክክል አይደለም።"),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("የደርሶ መልስ ጊዜ"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("ጥያቄ ይጠይቁ"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "ስለ መለያዎ፣ ወይም የሆነ ነገር እንዴት እንደሚሰራ"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("በኢሜይል"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ከተበላሸ፡ የመተግበሪያውን ምዝግብ አብሮ ይልካል"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("በመተግበሪያው ውስጥ"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "ከዚህ ሆነው ለKyron ቡድን ይጻፉ። በግል ከመለያዎ ጋር ይደርሰናል፣ እኛም በእሱ ላይ ባለው የኢሜይል አድራሻ እንመልሳለን።"),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "ምንም የኢሜይል መተግበሪያ አልተከፈተም። {address} ተቀድቷል።"),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("ግላዊነት እና የእርስዎ ውሂብ"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("ችግርን ሪፖርት ያድርጉ"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "የሆነ ነገር ተበላሽቷል ወይም ማድረግ ያለበትን አያደርግም"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "ልጥፍን ወይም መለያን ሪፖርት ለማድረግ ምናሌውን ይጠቀሙ፦ በዚህም የትኛውን ማለትዎ እንደሆነ በትክክል እናውቃለን።"),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("ደህንነት እና አላግባብ መጠቀም"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron ለሁሉም ሰው ተቋርጧል ወይስ ለእርስዎ ብቻ"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("ትልቅ"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("ትልቅ ይበልጥ"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("መካከለኛ"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron ለማንበብ የሚገባ ነገር የሚናገሩበት ቦታ ነው።"),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("ትንሽ"),
+      "ui_theme_dark_detail": MessageLookupByLibrary.simpleMessage("ሁልጊዜ ጨለማ"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("ደብዛዛ"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "ከጥቁር ይልቅ ሰማያዊ-ግራጫ የሆነ ለስላሳ ጨለማ"),
+      "ui_theme_light_detail": MessageLookupByLibrary.simpleMessage("ሁልጊዜ ብሩህ"),
+      "ui_theme_system_detail":
+          MessageLookupByLibrary.simpleMessage("የስልኩን ብሩህ ወይም ጨለማ ቅንብር ይከተሉ"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("እገዳ አንሳ"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("ድምጸ-ከል አንሳ"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("እርስዎ ማን ነዎት"),
+      "ui_verify_about_help":
+          MessageLookupByLibrary.simpleMessage("በራስዎ ቃላት፣ ገምጋሚው ማወቅ ያለበት።"),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "እዚህና በራሴ ድረ-ገጽ ላይ ስለ ወፎች እጽፋለሁ።"),
+      "ui_verify_add_link": MessageLookupByLibrary.simpleMessage("ሌላ አገናኝ ያክሉ"),
+      "ui_verify_again":
+          MessageLookupByLibrary.simpleMessage("ከ{date} ጀምሮ እንደገና መጠየቅ ይችላሉ።"),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("ማረጋገጫ ይጠይቁ"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("ከመጠየቅዎ በፊት"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("ፈጣሪ"),
+      "ui_verify_cat_journalist": MessageLookupByLibrary.simpleMessage("ጋዜጠኛ"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("ድርጅት ወይም ብራንድ"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("ሌላ ነገር"),
+      "ui_verify_cat_public": MessageLookupByLibrary.simpleMessage("ታዋቂ ሰው"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("ጥያቄ {number} አልጸደቀም"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("ተረጋግጠዋል"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("መገለጫዎን ያርትዑ"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("ባለ 6 አሃዝ ኮዱን ያስገቡ"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "ኮዱን በ{seconds} ሰከንድ ውስጥ እንደገና ላክ"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("ወደ {email} ልከነዋል"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("አረጋግጥ"),
+      "ui_verify_hero": MessageLookupByLibrary.simpleMessage("በKyron ላይ ይረጋገጡ"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("በKyron ላይ"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("ማረጋገጫ"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("ያግኙ።"),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "ባጁ የሚያሳየው የKyron ቡድን አባል ይህ መለያ የሚለውን እንደሆነ ማረጋገጡን ነው። ተጨማሪ ተደራሽነት አይሰጥም፣ ለሽያጭም አይቀርብም።"),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "ስምዎ እስካለ ድረስ ባጁ ይቆያል። ስምዎን ከቀየሩ፣ አዲሱን የሆነ ሰው እስኪያረጋግጥ ድረስ ይነሳል።"),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("የምናረጋግጥበት ቦታ"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("ሌላ አገናኝ"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "ይህ የKyron መለያ የእርስዎ መሆኑን የሚገልጽ ድረ-ገጽ ወይም ሌላ መገለጫ፦ በዚያ የKyron ስምዎን፣ ወይም ወደ መገለጫዎ የሚወስድ አገናኝ ያስቀምጡ። Kyron መታወቂያ ሰነዶችን በፍጹም አይጠይቅም።"),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("ያሉበትን ሁኔታ መጫን አልተቻለም"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "ከመጠየቅዎ በፊት ከላይ ያለው ሁሉ ምልክት ሊኖረው ይገባል።"),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("ቢያንስ {days} ቀናት የቆየ መለያ"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("ማን እንደሆኑ የሚገልጽ የሕይወት ታሪክ"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("በመገለጫው ላይ ያለው ስምዎ"),
+      "ui_verify_req_photo": MessageLookupByLibrary.simpleMessage("የመገለጫ ፎቶ"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "ባለፉት {days} ቀናት በመዝገብዎ ላይ ምንም የለም"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("ተልኳል። አንድ ሰው ይመለከተዋል።"),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("ከ{date} ጀምሮ።"),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("ይጠይቁ"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "ማን እንደሆኑ፣ እና ያንን\nየሚያረጋግጥ አገናኝ"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("ባጁ"),
+      "ui_verify_step_badge_detail":
+          MessageLookupByLibrary.simpleMessage("ከስምዎ አጠገብ፣\nበሚታይበት ሁሉ"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("አንድ ሰው\nያረጋግጣል"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("የቡድን አባል\nአገናኞችዎን ይከፍታል"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("ማረጋገጫ"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("ጥያቄ {number} በአንድ ሰው እጅ ነው"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} ላይ እንደ {category} ተልኳል። ውሳኔ ሲሰጥ ማሳወቂያ ይደርስዎታል።"),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("ጥያቄውን ይሰርዙ"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("ጥያቄው ተሰርዟል።"),
+      "ui_voice_finish_failed":
+          MessageLookupByLibrary.simpleMessage("ቀረጻውን መጨረስ አልተቻለም፦ {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("እስከ አስር ደቂቃ ድረስ።"),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("በማዳመጥ ላይ…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "ለመቅዳት Kyron የማይክሮፎን ፈቃድ ያስፈልገዋል። በመሣሪያ ቅንብሮችዎ ውስጥ መስጠት ይችላሉ።"),
+      "ui_voice_start_failed":
+          MessageLookupByLibrary.simpleMessage("ቀረጻውን መጀመር አልተቻለም፦ {error}"),
     };
 
 final messageLookup = MessageLookup();

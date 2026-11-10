@@ -211,7 +211,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           titleSpacing: 0,
           leading: IconButton(
             icon: const Icon(Iconsax.close_circle_copy),
-            tooltip: 'Close',
+            tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
             onPressed: _close,
           ),
           title: Text(
@@ -255,9 +255,11 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
                   onRetry: state.canPost ? _handlePost : null,
                 )
               else if (state.onlyFailedMedia)
-                const _ErrorBanner(
-                  message: 'Those attachments did not upload. Tap one to try '
-                      'again, or remove it.',
+                _ErrorBanner(
+                  message: AppLocalizations.of(context).ui(
+                    'ui_composer_uploads_failed',
+                    'Those attachments did not upload. Tap one to try again, or remove it.',
+                  ),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -521,10 +523,7 @@ class _ComposerScreenState extends ConsumerState<ComposerScreen>
           ? null
           : ToastAction(
               l10n.ui('ui_toast_view', 'View'),
-              () => navigator.pushNamed(
-                Routes.postDetail,
-                arguments: postedId,
-              ),
+              () => navigator.pushNamed(Routes.postDetail, arguments: postedId),
             ),
     );
   }
@@ -670,7 +669,9 @@ class _DraftsButton extends StatelessWidget {
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       child: Text(
-        count == 0 ? 'Drafts' : 'Drafts ($count)',
+        count == 0
+            ? AppLocalizations.of(context).drafts
+            : '${AppLocalizations.of(context).drafts} ($count)',
         style: const TextStyle(
           fontSize: TypographyTokens.fontSize2,
           fontWeight: FontWeight.w600,
@@ -698,7 +699,9 @@ class _AuthorLine extends ConsumerWidget {
         const SizedBox(width: SpacingTokens.space12),
         Expanded(
           child: Text(
-            user?.displayName ?? 'Posting as you',
+            user?.displayName ??
+                AppLocalizations.of(context)
+                    .ui('ui_composer_posting_as_you', 'Posting as you'),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontWeight: FontWeight.w600),

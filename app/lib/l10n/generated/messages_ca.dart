@@ -2410,6 +2410,311 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Aquesta pàgina vol obrir una altra aplicació"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Demana obrir un enllaç {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Compilació"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} d'imatges i fitxers a la memòria cau"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} alliberats"),
+      "ui_about_measuring":
+          MessageLookupByLibrary.simpleMessage("S'està mesurant…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("No hi ha res per esborrar"),
+      "ui_about_storage":
+          MessageLookupByLibrary.simpleMessage("Emmagatzematge"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versió {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Bloquejats"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Publiques com a tu"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Aquests fitxers adjunts no s'han pujat. Toca'n un per tornar-ho a provar, o suprimeix-lo."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut canviar el correu. Torna-ho a provar."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "L'adreça canvia quan segueixes l'enllaç que t'enviem."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Busca l'enllaç de confirmació a {email}."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "Introdueix una adreça de correu."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "No sembla una adreça de correu."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Ja és la teva adreça de correu."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Què has fet, què esperaves i què ha passat en canvi."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Deixa'm fixar una publicació al perfil"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Què t'agradaria i què et permetria fer."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Què ajudaria"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Un problema"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Una idea"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Una pregunta"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Només l'equip de Kyron llegeix això. S'envia amb el teu compte perquè puguem respondre per correu, i amb la versió de l'aplicació que fas servir. Si suprimeixes el compte, també se suprimeix."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Com silencio una paraula?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Què intentes fer i on t'has encallat."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("La teva pregunta"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut contactar amb Kyron. Comprova la connexió i torna-ho a provar. Encara no s'ha escrit res, així que no es perd res."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Esborra"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Aquí apareixen les sol·licituds fallides i altres esdeveniments destacats."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Silenciats"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Afegeix una paraula o etiqueta a dalt. Les publicacions que la continguin no apareixeran al teu canal."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Les publicacions que continguin qualsevol d'aquestes no apareixen al teu canal. No distingeix majúscules i una paraula també coincideix dins de paraules més llargues, així que «spoiler» també atrapa «spoilers»."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("No hi ha ningú bloquejat"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Bloquejar us amaga l'un de l'altre, en tots dos sentits. Bloqueja algú des del menú del seu perfil."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("No hi ha ningú silenciat"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Silenciar un compte n'amaga les publicacions sense avisar-lo. Silencia algú des del menú del seu perfil o d'una publicació."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Contrasenya"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("No coincideixen."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Continues amb la sessió iniciada en aquest dispositiu. Als altres es tanca la sessió."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Fes servir almenys 8 caràcters."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut actualitzar la contrasenya. Torna-ho a provar."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Contrasenya actualitzada."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID copiat"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Les publicacions que t'agraden es guarden aquí, només per a tu."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Encara no has publicat cap foto ni clip."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} encara no ha publicat cap foto ni clip."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Tot el que publiquis apareix aquí."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} encara no ha publicat res."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut carregar el teu perfil"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut carregar @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Mínim 8 caràcters"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Lletra minúscula (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Almenys un número"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Símbol (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Lletra majúscula (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} entrades recents. Revisa-les a Quant a › Registre del sistema abans d'enviar."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Només l'equip de Kyron llegeix això. S'envia amb el teu compte perquè puguem fer-ne el seguiment. Llegeix primer el registre a Quant a › Registre del sistema si vols veure exactament què s'hi adjunta."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Enviat, gràcies."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Enviat, gràcies. És l'informe núm. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Què ha anat malament?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versió, polítiques, estat i registre del sistema"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Evita que els vídeos es reprodueixin sols mentre et desplaces"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "El teu identificador descentralitzat"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderació"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Denúncies i apel·lacions pendents de revisió"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Mantén fora del canal les publicacions que continguin això"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Sense sessió iniciada"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Preferències de notificacions"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privadesa i seguretat"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Decisions sobre el teu compte i apel·lacions"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Ajusta la mida del text"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("El teu compte"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "La gravació i publicació de lents AR encara s'està construint. Res del que capturis no es desaria encara, així que la càmera es manté tancada."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Les lents encara no estan a punt"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Lent AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Emetre en directe necessita un servidor multimèdia que Kyron encara no té. Començar una emissió ara et posaria en una sala on ningú no pot entrar. Gravar una publicació de veu ja funciona."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "El directe encara no està a punt"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Emet en directe"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Les enquestes necessiten un lloc on guardar les opcions i comptar els vots. Encara no existeix, així que una enquesta publicada avui perdria totes les respostes."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Les enquestes encara no estan a punt"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Enquesta"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("Escriu una publicació de text"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Torna-ho a comprovar"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detall"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Taules mirall"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ha respost, però alguna cosa no va bé."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Anada i tornada"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Fes una pregunta"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Sobre el teu compte, o com funciona alguna cosa"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Per correu"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Si Kyron ha fallat: envia el registre de l'aplicació"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("A l'aplicació"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Escriu a l'equip de Kyron des d'aquí. Ens arriba en privat, amb el teu compte, i responem a l'adreça de correu que hi consta."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "No s'ha obert cap aplicació de correu. {address} s'ha copiat."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privadesa i les teves dades"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Informa d'un problema"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Alguna cosa no funciona o no fa el que hauria de fer"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Per denunciar una publicació o un compte, fes servir el seu menú: així sabem exactament a quin et refereixes."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Seguretat i abús"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Si Kyron ha caigut per a tothom o només per a tu"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Gran"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Més gran"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Mitjana"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron és un lloc per dir alguna cosa que valgui la pena llegir."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Petita"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Sempre fosc"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Atenuat"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Un fosc més suau, gris blavós en lloc de negre"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Sempre clar"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Segueix el paràmetre clar o fosc del telèfon"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Desbloqueja"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Deixa de silenciar"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Qui ets"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Amb les teves paraules, què hauria de saber qui revisa."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Escric sobre ocells aquí i al meu web."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Afegeix un altre enllaç"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Pots tornar-ho a demanar a partir del {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Demana la verificació"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Abans de demanar-ho"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Creador"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Periodista"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organització o marca"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Una altra cosa"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Figura pública"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "La sol·licitud {number} no s'ha aprovat"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Estàs verificat"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Edita el perfil"),
+      "ui_verify_email_enter_code": MessageLookupByLibrary.simpleMessage(
+          "Introdueix el codi de 6 dígits"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Torna a enviar el codi d'aquí a {seconds} segons"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("L'hem enviat a {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Verifica't a Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("el teu compte"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("a Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "La insígnia indica que algú de l'equip de Kyron ha comprovat que aquest compte és qui diu ser. No dona abast addicional i no està a la venda."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "La insígnia es manté mentre es mantingui el teu nom. Si canvies de nom, desapareix fins que algú revisi el nou."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("On podem comprovar-ho"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Un altre enllaç"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Un web o un altre perfil que digui que aquest compte de Kyron és teu: posa-hi el teu nom de Kyron o un enllaç al teu perfil. Kyron mai no demana documents d'identitat."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut carregar la teva situació"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Tot el de dalt ha d'estar marcat abans de poder-ho demanar."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Un compte d'almenys {days} dies"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Una bio que digui qui ets"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("El teu nom al perfil"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Una foto de perfil"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Res al teu historial en els últims {days} dies"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Enviat. Ho revisarà una persona."),
+      "ui_verify_since":
+          MessageLookupByLibrary.simpleMessage("Des del {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Demana"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Qui ets, i un enllaç\nque ho demostri"),
+      "ui_verify_step_badge":
+          MessageLookupByLibrary.simpleMessage("La insígnia"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Al costat del teu nom,\nallà on aparegui"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Una persona\nho revisa"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Algú de l'equip\nsegueix els teus enllaços"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verificació"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "La sol·licitud {number} la té una persona"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Enviada el {date}, com a {category}. Rebràs una notificació quan es decideixi."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Retira la sol·licitud"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Sol·licitud retirada."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut acabar la gravació: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Fins a deu minuts."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Escoltant…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron necessita permís per fer servir el micròfon per gravar. El pots donar a la configuració del dispositiu."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "No s'ha pogut començar a gravar: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2,6 +2,7 @@ import '../l10n/app_localizations.dart';
 
 // lib/screens/profile_screen.dart
 import '../services/kyron_links.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,10 +39,10 @@ import '../widgets/verified_badge.dart';
 enum ProfileTab { posts, media, likes }
 
 extension on ProfileTab {
-  String get label => switch (this) {
-        ProfileTab.posts => 'Posts',
-        ProfileTab.media => 'Media',
-        ProfileTab.likes => 'Likes',
+  String label(AppLocalizations l10n) => switch (this) {
+        ProfileTab.posts => l10n.ui('ui_saved_tab_posts', 'Posts'),
+        ProfileTab.media => l10n.ui('ui_dm_info_media', 'Media'),
+        ProfileTab.likes => l10n.ui('ui_notif_tab_likes', 'Likes'),
       };
 }
 
@@ -298,9 +299,9 @@ class _LoadedState extends ConsumerState<_Loaded> {
       );
     }
 
-    final who =
-        profile.isOwnProfile ? 'You have' : '${profile.displayName} has';
     final mine = profile.isOwnProfile;
+    final l10n = AppLocalizations.of(context);
+    final name = profile.displayName;
 
     return switch (_tab) {
       ProfileTab.posts => EmptyState(
@@ -309,18 +310,38 @@ class _LoadedState extends ConsumerState<_Loaded> {
               ? AppLocalizations.of(context).literalyouHaveNotPostedYet
               : AppLocalizations.of(context).literalnoPostsYet,
           detail: mine
-              ? 'Anything you post shows up here.'
-              : '$who not posted anything yet.',
+              ? l10n.ui(
+                  'ui_profile_empty_posts_mine',
+                  'Anything you post shows up here.',
+                )
+              : l10n
+                  .ui(
+                    'ui_profile_empty_posts_other',
+                    '{name} has not posted anything yet.',
+                  )
+                  .replaceAll('{name}', name),
         ),
       ProfileTab.media => EmptyState(
           art: EmptyArt.videos,
           title: AppLocalizations.of(context).literalnothingToLookAtYet,
-          detail: '$who not posted any photos or clips.',
+          detail: (mine
+                  ? l10n.ui(
+                      'ui_profile_empty_media_mine',
+                      'You have not posted any photos or clips.',
+                    )
+                  : l10n.ui(
+                      'ui_profile_empty_media_other',
+                      '{name} has not posted any photos or clips.',
+                    ))
+              .replaceAll('{name}', name),
         ),
       ProfileTab.likes => EmptyState(
           art: EmptyArt.likes,
           title: AppLocalizations.of(context).literalnoLikesYet,
-          detail: 'Posts you like are kept here, just for you.',
+          detail: l10n.ui(
+            'ui_profile_empty_likes',
+            'Posts you like are kept here, just for you.',
+          ),
         ),
     };
   }
@@ -382,7 +403,7 @@ class _TabStrip extends SliverPersistentHeaderDelegate {
                   key: ValueKey('profile-tab-${tab.name}'),
                   selected: tab == selected,
                   onTap: () => onSelect(tab),
-                  label: tab.label,
+                  label: tab.label(AppLocalizations.of(context)),
                 ),
               ],
             ],
@@ -857,7 +878,7 @@ class _ActionsState extends ConsumerState<_Actions> {
                   compact: true,
                   label: profile.isFollowing
                       ? AppLocalizations.of(context).following
-                      : 'Follow',
+                      : AppLocalizations.of(context).ui('ui_follow', 'Follow'),
                   icon: profile.isFollowing
                       ? Iconsax.tick_circle_copy
                       : Iconsax.add,
@@ -955,7 +976,8 @@ class _DidChip extends StatelessWidget {
         if (!context.mounted) return;
         Toast.show(
           context,
-          'DID copied',
+          AppLocalizations.of(context)
+              .ui('ui_profile_did_copied', 'DID copied'),
           spot: ToastSpot.middle,
           icon: Iconsax.copy_copy,
         );
@@ -1008,8 +1030,16 @@ class _Failed extends ConsumerWidget {
       child: SingleChildScrollView(
         child: EmptyState.failed(
           title: username == null
-              ? 'Could not load your profile'
-              : 'Could not load @$username',
+              ? AppLocalizations.of(context).ui(
+                  'ui_profile_load_failed_mine',
+                  'Could not load your profile',
+                )
+              : AppLocalizations.of(context)
+                  .ui(
+                    'ui_profile_load_failed_other',
+                    'Could not load @{handle}',
+                  )
+                  .replaceAll('{handle}', username!),
           detail: describeApiError(error, sessionIsLive: true),
           onAction: () =>
               ref.read(profileProvider(username).notifier).load(force: true),

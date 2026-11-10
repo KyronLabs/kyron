@@ -79,9 +79,8 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Posts containing any of these are kept out of your feed. '
-                    'Matching ignores case, and a word matches inside longer '
-                    'ones -- so "spoiler" also catches "spoilers".',
+                    AppLocalizations.of(context).ui('ui_muted_words_intro',
+                        'Posts containing any of these are kept out of your feed. Matching ignores case, and a word matches inside longer ones, so "spoiler" also catches "spoilers".'),
                     style: TextStyle(
                       fontSize: TypographyTokens.fontSize2,
                       color: scheme.onSurface.withValues(alpha: .7),
@@ -146,8 +145,9 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                           art: EmptyArt.muted,
                           title:
                               AppLocalizations.of(context).literalnothingMuted,
-                          detail: 'Add a word or a tag above. Posts carrying '
-                              'it stay out of your feed.',
+                          detail: AppLocalizations.of(context).ui(
+                              'ui_muted_words_empty',
+                              'Add a word or a tag above. Posts carrying it stay out of your feed.'),
                         )
                       : ListView.separated(
                           itemCount: words.length,
@@ -164,7 +164,8 @@ class _MutedWordsScreenState extends ConsumerState<MutedWordsScreen> {
                             trailing: IconButton(
                               icon: const Icon(Iconsax.close_circle_copy,
                                   size: 18),
-                              tooltip: 'Unmute',
+                              tooltip: AppLocalizations.of(context)
+                                  .ui('ui_unmute', 'Unmute'),
                               onPressed:
                                   _busy ? null : () => _remove(words[index]),
                             ),
@@ -250,10 +251,13 @@ class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen>
         // The tabs every other section uses. A bare TabBar here drew
         // Material's own full-width divider and a stub of an indicator, in
         // nobody else's style.
-        bottom: SectionTabs(controller: _tabs, labels: const [
-          'Muted',
-          'Blocked',
-        ]),
+        bottom: SectionTabs(
+          controller: _tabs,
+          labels: [
+            AppLocalizations.of(context).ui('ui_muted_tab', 'Muted'),
+            AppLocalizations.of(context).ui('ui_blocked_tab', 'Blocked'),
+          ],
+        ),
       ),
       body: SafeArea(
         child: TabBarView(
@@ -264,20 +268,23 @@ class _MutedAccountsScreenState extends ConsumerState<MutedAccountsScreen>
               unmute: (id) => ref
                   .read(moderationRepositoryProvider)
                   .setUserMuted(id, false),
-              action: 'Unmute',
-              emptyTitle: 'Nobody muted',
-              emptyDetail:
-                  'Muting an account hides their posts without telling them. '
-                  'Mute someone from the menu on their profile or a post.',
+              action: AppLocalizations.of(context).ui('ui_unmute', 'Unmute'),
+              emptyTitle: AppLocalizations.of(context)
+                  .ui('ui_nobody_muted', 'Nobody muted'),
+              emptyDetail: AppLocalizations.of(context).ui(
+                  'ui_nobody_muted_detail',
+                  'Muting an account hides their posts without telling them. Mute someone from the menu on their profile or a post.'),
             ),
             _People(
               load: () => ref.read(moderationRepositoryProvider).blockedUsers(),
               unmute: (id) =>
                   ref.read(moderationRepositoryProvider).setBlocked(id, false),
-              action: 'Unblock',
-              emptyTitle: 'Nobody blocked',
-              emptyDetail: 'Blocking hides you from each other, both ways. '
-                  'Block someone from the menu on their profile.',
+              action: AppLocalizations.of(context).ui('ui_unblock', 'Unblock'),
+              emptyTitle: AppLocalizations.of(context)
+                  .ui('ui_nobody_blocked', 'Nobody blocked'),
+              emptyDetail: AppLocalizations.of(context).ui(
+                  'ui_nobody_blocked_detail',
+                  'Blocking hides you from each other, both ways. Block someone from the menu on their profile.'),
             ),
           ],
         ),

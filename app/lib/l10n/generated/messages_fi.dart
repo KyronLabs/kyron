@@ -2064,6 +2064,306 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Tämä sivu haluaa avata toisen sovelluksen"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Se pyytää avaamaan {scheme}-linkin."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Koontiversio"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "Välimuistissa kuvia ja tiedostoja {size}"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} vapautettu"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Mitataan…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Ei tyhjennettävää"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Tallennustila"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versio {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Estetyt"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Julkaiset omalla nimelläsi"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Liitteet eivät latautuneet. Napauta yhtä yrittääksesi uudelleen tai poista se."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Sähköpostin vaihtaminen ei onnistunut. Yritä uudelleen."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Osoitteesi vaihtuu, kun avaat lähettämämme linkin."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Katso vahvistuslinkki osoitteesta {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Anna sähköpostiosoite."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Tuo ei näytä sähköpostiosoitteelta."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Se on jo sähköpostiosoitteesi."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Mitä teit, mitä odotit ja mitä tapahtui sen sijaan."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Anna minun kiinnittää julkaisu profiiliini"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Mitä haluaisit ja mitä se antaisi sinun tehdä."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Mikä auttaisi"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Ongelma"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Idea"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Kysymys"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Vain Kyron-tiimi lukee tämän. Se lähetetään tilisi kanssa, jotta voimme vastata sähköpostilla, ja käyttämäsi sovellusversion kanssa. Tilin poistaminen poistaa myös tämän."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Miten mykistän sanan?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Mitä yrität tehdä ja mihin olet jumittunut."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Kysymyksesi"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyroniin ei saatu yhteyttä. Tarkista yhteys ja yritä uudelleen. Mitään ei ole vielä kirjoitettu, joten mitään ei menetetty."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Tyhjennä"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Epäonnistuneet pyynnöt ja muut huomionarvoiset tapahtumat näkyvät tässä."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Mykistetyt"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Lisää sana tai tunniste yllä. Sitä sisältävät julkaisut pysyvät poissa syötteestäsi."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Julkaisut, joissa on mikä tahansa näistä, pysyvät poissa syötteestäsi. Kirjainkoolla ei ole väliä, ja sana osuu myös pidempien sanojen sisällä, joten ”spoiler” nappaa myös ”spoilers”."),
+      "ui_nobody_blocked": MessageLookupByLibrary.simpleMessage("Ei estettyjä"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Estäminen piilottaa teidät toisiltanne molempiin suuntiin. Estä joku hänen profiilinsa valikosta."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ei mykistettyjä"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Tilin mykistäminen piilottaa sen julkaisut kertomatta siitä. Mykistä joku hänen profiilinsa tai julkaisun valikosta."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Salasana"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Ne eivät täsmää."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Pysyt kirjautuneena tällä laitteella. Muut laitteet kirjataan ulos."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Käytä vähintään 8 merkkiä."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Salasanan päivittäminen ei onnistunut. Yritä uudelleen."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Salasana päivitetty."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID kopioitu"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Tykkäämäsi julkaisut säilytetään täällä, vain sinua varten."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Et ole julkaissut kuvia tai videoita."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ei ole julkaissut kuvia tai videoita."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Kaikki julkaisemasi näkyy täällä."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} ei ole vielä julkaissut mitään."),
+      "ui_profile_load_failed_mine":
+          MessageLookupByLibrary.simpleMessage("Profiiliasi ei voitu ladata"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Käyttäjää @{handle} ei voitu ladata"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Vähintään 8 merkkiä"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Pieni kirjain (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Vähintään yksi numero"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Erikoismerkki (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Iso kirjain (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} viimeisintä merkintää. Tarkista ne kohdasta Tietoja › Järjestelmäloki ennen lähettämistä."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Vain Kyron-tiimi lukee tämän. Se lähetetään tilisi kanssa, jotta voimme olla yhteydessä. Lue loki ensin kohdasta Tietoja › Järjestelmäloki, jos haluat nähdä tarkalleen, mitä sen mukana lähtee."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Lähetetty, kiitos."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Lähetetty, kiitos. Se on raportti #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Mikä meni vikaan?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versio, käytännöt, tila ja järjestelmäloki"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Estä videoita käynnistymästä itsestään vierittäessä"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("Hajautettu tunnisteesi"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderointi"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Tarkistusta odottavat ilmoitukset ja valitukset"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Pidä näitä sisältävät julkaisut poissa syötteestä"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Ei kirjautunut"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Ilmoitusasetukset"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Yksityisyys ja turvallisuus"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Tiliäsi koskevat päätökset ja valitukset"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Säädä tekstin kokoa"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Tilisi"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR-linssien tallentaminen ja julkaiseminen on vielä tekeillä. Mitään kuvaamaasi ei vielä tallennettaisi, joten kamera pysyy kiinni."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Linssit eivät ole vielä valmiita"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR-linssi"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Suoraan lähettäminen vaatii mediapalvelimen, jota Kyronilla ei vielä ole. Lähetyksen aloittaminen nyt veisi sinut huoneeseen, johon kukaan ei pääse. Äänijulkaisun tallentaminen toimii jo."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Suorat lähetykset eivät ole vielä valmiita"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Aloita suora lähetys"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyselyt tarvitsevat paikan vaihtoehtojen säilyttämiseen ja äänten laskemiseen. Sitä ei vielä ole, joten tänään julkaistu kysely menettäisi kaikki vastaukset."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Kyselyt eivät ole vielä valmiita"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Kysely"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Kirjoita tekstijulkaisu sen sijaan"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Tarkista uudelleen"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Tiedot"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Peilitaulut"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron vastasi, mutta jokin on vialla."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Edestakainen viive"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Kysy kysymys"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Tilistäsi tai siitä, miten jokin toimii"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Sähköpostilla"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Jos Kyron kaatui: lähettää sovelluksen lokin mukana"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Sovelluksessa"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kirjoita Kyron-tiimille täältä. Viesti tulee meille yksityisesti tilisi kanssa, ja vastaamme tilin sähköpostiosoitteeseen."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Mikään sähköpostisovellus ei avautunut. {address} on kopioitu."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Yksityisyys ja tietosi"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Ilmoita ongelmasta"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Jokin on rikki tai ei toimi niin kuin pitäisi"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Ilmoita julkaisusta tai tilistä sen valikosta: silloin tiedämme tarkalleen, mitä tarkoitat."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Turvallisuus ja väärinkäyttö"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Onko Kyron alhaalla kaikille vai vain sinulle"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Suuri"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Suurempi"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Keskikoko"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron on paikka sanoa jotain lukemisen arvoista."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Pieni"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Aina tumma"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Himmeä"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Pehmeämpi tumma, siniharmaa mustan sijaan"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Aina vaalea"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Seuraa puhelimen omaa vaaleaa tai tummaa asetusta"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Poista esto"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Poista mykistys"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kuka olet"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Omin sanoin: mitä tarkistajan pitäisi tietää."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Kirjoitan linnuista täällä ja omalla sivustollani."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Lisää toinen linkki"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Voit pyytää uudelleen {date} alkaen."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Pyydä vahvistusta"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Ennen kuin pyydät"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Sisällöntuottaja"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Toimittaja"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organisaatio tai brändi"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Jokin muu"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Julkisuuden henkilö"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Pyyntöä {number} ei hyväksytty"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Sinut on vahvistettu"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Muokkaa profiilia"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Anna 6-numeroinen koodi"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Lähetä koodi uudelleen {seconds} sekunnin kuluttua"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "Lähetimme sen osoitteeseen {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Vahvista"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Hanki vahvistus Kyronissa"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Hanki"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("vahvistus"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyronissa."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Merkki kertoo, että joku Kyron-tiimistä on tarkistanut, että tili on se, joka se sanoo olevansa. Se ei tuo lisänäkyvyyttä, eikä sitä myydä."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Merkki pysyy niin kauan kuin nimesi pysyy. Jos vaihdat nimeä, merkki poistuu, kunnes joku tarkistaa uuden."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Mistä voimme tarkistaa"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Toinen linkki"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Sivusto tai toinen profiili, jossa sanotaan, että tämä Kyron-tili on sinun: lisää sinne Kyron-nimesi tai linkki profiiliisi. Kyron ei koskaan pyydä henkilöllisyystodistuksia."),
+      "ui_verify_load_failed":
+          MessageLookupByLibrary.simpleMessage("Tilannettasi ei voitu ladata"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Kaikessa yllä on oltava rasti ennen kuin voit pyytää."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Vähintään {days} päivää vanha tili"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Esittely, joka kertoo, kuka olet"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Nimesi profiilissa"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profiilikuva"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ei merkintöjä viimeisten {days} päivän ajalta"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Lähetetty. Ihminen katsoo sen."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} alkaen."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Pyydä"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kuka olet, ja linkki,\njoka todistaa sen"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Merkki"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Nimesi vieressä,\nkaikkialla missä se näkyy"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Ihminen\ntarkistaa"),
+      "ui_verify_step_check_detail":
+          MessageLookupByLibrary.simpleMessage("Joku tiimistä\navaa linkkisi"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Vahvistus"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Pyyntö {number} on ihmisen käsittelyssä"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Lähetetty {date}, luokassa {category}. Saat ilmoituksen, kun asia on ratkaistu."),
+      "ui_verify_withdraw": MessageLookupByLibrary.simpleMessage("Peru pyyntö"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Pyyntö peruttu."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Tallennusta ei voitu viimeistellä: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Enintään kymmenen minuuttia."),
+      "ui_voice_listening":
+          MessageLookupByLibrary.simpleMessage("Kuunnellaan…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron tarvitsee luvan käyttää mikrofonia tallentaakseen. Voit antaa sen laitteen asetuksista."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Tallennusta ei voitu aloittaa: {error}"),
     };
 
 final messageLookup = MessageLookup();

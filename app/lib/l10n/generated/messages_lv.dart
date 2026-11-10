@@ -2074,6 +2074,303 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Šī lapa vēlas atvērt citu lietotni"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Tā lūdz atvērt {scheme} saiti."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Būvējums"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} kešatmiņā saglabātu attēlu un failu"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Atbrīvoti {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Mēra…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Nav ko notīrīt"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Krātuve"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Versija {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Bloķētie"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Publicē sava vārdā"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Šie pielikumi netika augšupielādēti. Pieskaries vienam, lai mēģinātu vēlreiz, vai noņem to."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās mainīt e-pastu. Mēģini vēlreiz."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Adrese mainīsies, kad atvērsi saiti, ko nosūtīsim."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Apstiprinājuma saiti meklē {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Ievadi e-pasta adresi."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Tas neizskatās pēc e-pasta adreses."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Tā jau ir tava e-pasta adrese."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Ko tu darīji, ko gaidīji un kas notika tā vietā."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Ļauj man piespraust ierakstu profilam"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Ko tu vēlētos un ko tas ļautu tev darīt."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Kas palīdzētu"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Problēma"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Ideja"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Jautājums"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "To lasa tikai Kyron komanda. Tas tiek nosūtīts kopā ar tavu kontu, lai mēs varētu atbildēt pa e-pastu, un ar tavu lietotnes versiju. Dzēšot kontu, tiek dzēsts arī tas."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Kā apklusināt vārdu?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Ko tu mēģini izdarīt un kur iestrēgi."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Tavs jautājums"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās sazināties ar Kyron. Pārbaudi savienojumu un mēģini vēlreiz. Nekas vēl nav uzrakstīts, tāpēc nekas nav zaudēts."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Notīrīt"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Šeit tiek rādīti neizdevušies pieprasījumi un citi svarīgi notikumi."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Apklusinātie"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Pievieno vārdu vai tagu augšā. Ieraksti ar to netiks rādīti tavā plūsmā."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Ieraksti, kas satur kaut ko no šī, netiek rādīti tavā plūsmā. Lielajiem un mazajiem burtiem nav nozīmes, un vārds sakrīt arī garāku vārdu iekšienē, tāpēc „spoiler” notver arī „spoilers”."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Neviens nav bloķēts"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Bloķēšana jūs paslēpj vienu no otra abos virzienos. Bloķē kādu no izvēlnes viņa profilā."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Neviens nav apklusināts"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Konta apklusināšana paslēpj tā ierakstus, viņam to nepaziņojot. Apklusini kādu no izvēlnes viņa profilā vai ierakstā."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Parole"),
+      "ui_password_mismatch": MessageLookupByLibrary.simpleMessage("Nesakrīt."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Šajā ierīcē tu paliksi pierakstījies. Citās ierīcēs tiks veikta izrakstīšanās."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Izmanto vismaz 8 rakstzīmes."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās atjaunināt paroli. Mēģini vēlreiz."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Parole atjaunināta."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID nokopēts"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Ieraksti, kas tev patīk, tiek glabāti šeit tikai tev."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Tu vēl neesi publicējis fotoattēlus vai klipus."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} vēl nav publicējis fotoattēlus vai klipus."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Viss, ko publicēsi, tiks rādīts šeit."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} vēl neko nav publicējis."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās ielādēt tavu profilu"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Neizdevās ielādēt @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Vismaz 8 rakstzīmes"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Mazais burts (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Vismaz viens cipars"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Simbols (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Lielais burts (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Nesenie ieraksti: {count}. Pirms sūtīšanas pārskati tos sadaļā Par › Sistēmas žurnāls."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "To lasa tikai Kyron komanda. Tas tiek nosūtīts kopā ar tavu kontu, lai mēs varētu sazināties. Ja vēlies redzēt, kas tieši tiek nosūtīts, vispirms izlasi žurnālu sadaļā Par › Sistēmas žurnāls."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Nosūtīts, paldies."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Nosūtīts, paldies. Tas ir ziņojums Nr. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Kas nogāja greizi?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Versija, politikas, statuss un sistēmas žurnāls"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Neļaut video atskaņoties pašiem ritinot"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Tavs decentralizētais identifikators"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Moderācija"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Ziņojumi un pārsūdzības, kas gaida pārskatīšanu"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Neļaut ierakstiem ar šo nonākt plūsmā"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Nav pierakstījies"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Paziņojumu preferences"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Privātums un drošība"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Lēmumi par tavu kontu un pārsūdzības"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Pielāgot teksta lielumu"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Tavs konts"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR lēcu ierakstīšana un publicēšana vēl tiek veidota. Nekas, ko uzņemsi, vēl netiktu saglabāts, tāpēc kamera paliek aizvērta."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Lēcas vēl nav gatavas"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR lēca"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Tiešraidei vajag mediju serveri, ko Kyron vēl nedarbina. Ja sāktu translāciju tagad, tu būtu telpā, kurā neviens nevar ienākt. Balss ieraksta ierakstīšana darbojas jau šodien."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Tiešraide vēl nav gatava"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Tiešraide"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Aptaujām vajag vietu, kur glabāt atbilžu variantus un skaitīt balsis. Tās vēl nav, tāpēc šodien publicēta aptauja zaudētu katru atbildi."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Aptaujas vēl nav gatavas"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Aptauja"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Tā vietā raksti teksta ierakstu"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Pārbaudīt vēlreiz"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Detaļa"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("Spoguļtabulas"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron atbildēja, bet kaut kas nav kārtībā."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Atbildes laiks"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Uzdot jautājumu"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Par tavu kontu vai to, kā kaut kas darbojas"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Pa e-pastu"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ja Kyron avarēja: nosūta arī lietotnes žurnālu"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Lietotnē"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Raksti Kyron komandai no šejienes. Ziņa nonāk pie mums privāti, kopā ar tavu kontu, un mēs atbildam uz tā e-pasta adresi."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Neviena e-pasta lietotne netika atvērta. {address} ir nokopēta."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Privātums un tavi dati"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Ziņot par problēmu"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Kaut kas ir salūzis vai nedarbojas, kā vajadzētu"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Lai ziņotu par ierakstu vai kontu, izmanto tā izvēlni: tā mēs precīzi zinām, kuru tu domā."),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage(
+          "Drošība un ļaunprātīga izmantošana"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Vai Kyron nedarbojas visiem vai tikai tev"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Liels"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Lielāks"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Vidējs"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron ir vieta, kur pateikt kaut ko lasīšanas vērtu."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Mazs"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Vienmēr tumšs"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Blāvs"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Maigāks tumšais, zilganpelēks melnā vietā"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Vienmēr gaišs"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Sekot tālruņa gaišajam vai tumšajam iestatījumam"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Atbloķēt"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Atcelt apklusināšanu"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Kas tu esi"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Savos vārdos: kas jāzina pārskatītājam."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Es rakstu par putniem šeit un savā vietnē."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Pievienot vēl vienu saiti"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Atkal pieprasīt vari no {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Pieprasīt verifikāciju"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Pirms pieprasīšanas"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Satura veidotājs"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Žurnālists"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Organizācija vai zīmols"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Kas cits"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Publiska persona"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Pieprasījums {number} netika apstiprināts"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Tu esi verificēts"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Rediģēt profilu"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Ievadi 6 ciparu kodu"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Atkārtoti sūtīt kodu pēc {seconds} sekundēm"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Mēs to nosūtījām uz {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Verificēt"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kļūsti verificēts Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kļūsti"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("verificēts"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Nozīmīte nozīmē, ka kāds no Kyron komandas pārbaudīja, ka šis konts ir tas, par ko uzdodas. Tā nedod papildu sasniedzamību un nav pārdošanā."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Nozīmīte paliek, kamēr paliek tavs vārds. Ja maini vārdu, tā pazūd, līdz kāds pārbauda jauno."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Kur varam pārbaudīt"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Vēl viena saite"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Vietne vai cits profils, kurā teikts, ka šis Kyron konts ir tavs: ievieto tur savu Kyron vārdu vai saiti uz profilu. Kyron nekad neprasa personu apliecinošus dokumentus."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās ielādēt tavu statusu"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Pirms pieprasīšanas visam augstāk jābūt atzīmētam."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Konts, kas ir vismaz {days} dienas vecs"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Apraksts, kas pasaka, kas tu esi"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Tavs vārds profilā"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Profila fotoattēls"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Nekas tavā vēsturē pēdējās {days} dienās"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Nosūtīts. To apskatīs cilvēks."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Kopš {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Pieprasīt"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Kas tu esi, un saite,\nkas to pierāda"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Nozīmīte"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Blakus tavam vārdam,\nvisur, kur tas redzams"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Cilvēks\npārbauda"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Kāds no komandas\natver tavas saites"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Verifikācija"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Pieprasījums {number} ir pie cilvēka"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Nosūtīts {date} kā {category}. Kad būs lēmums, saņemsi paziņojumu."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Atsaukt pieprasījumu"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Pieprasījums atsaukts."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās pabeigt ierakstu: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Līdz desmit minūtēm."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Klausos…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron ir nepieciešama atļauja izmantot mikrofonu ierakstīšanai. To vari piešķirt ierīces iestatījumos."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās sākt ierakstu: {error}"),
     };
 
 final messageLookup = MessageLookup();

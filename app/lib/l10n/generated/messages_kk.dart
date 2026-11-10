@@ -2060,6 +2060,303 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Бұл бет басқа қолданбаны ашқысы келеді"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Ол {scheme} сілтемесін ашуды сұрап тұр."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Құрастыру"),
+      "ui_about_cache_size":
+          MessageLookupByLibrary.simpleMessage("Кэште {size} сурет пен файл"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} босатылды"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Өлшенуде…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Тазалайтын ештеңе жоқ"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Жад"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Нұсқа {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Бұғатталғандар"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Өз атыңыздан жариялайсыз"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Бұл тіркемелер жүктелмеді. Қайталау үшін біреуін түртіңіз немесе оны алып тастаңыз."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Поштаңызды өзгерту мүмкін болмады. Қайталап көріңіз."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Біз жіберетін сілтемені ашқанда мекенжайыңыз өзгереді."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Растау сілтемесін {email} ішінен қараңыз."),
+      "ui_email_enter": MessageLookupByLibrary.simpleMessage(
+          "Электрондық пошта мекенжайын енгізіңіз."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Бұл электрондық пошта мекенжайына ұқсамайды."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Бұл қазірдің өзінде сіздің поштаңыз."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Не істедіңіз, не күттіңіз және оның орнына не болды."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Профиліме жазбаны бекітуге рұқсат етіңіз"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Не қалайсыз және ол сізге не істеуге мүмкіндік береді."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Не көмектесер еді"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Мәселе"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Идея"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Сұрақ"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Мұны тек Kyron командасы оқиды. Біз поштамен жауап бере алуымыз үшін ол аккаунтыңызбен және қолданатын қолданба нұсқасымен бірге жіберіледі. Аккаунтты жойсаңыз, бұл да жойылады."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Сөзді қалай дыбыссыз етемін?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Не істемексіз және қай жерде тұрып қалдыңыз."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Сұрағыңыз"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron-ға қосылу мүмкін болмады. Байланысты тексеріп, қайталап көріңіз. Әзірге ештеңе жазылмаған, сондықтан ештеңе жоғалмады."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Тазалау"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Сәтсіз сұраулар мен басқа маңызды оқиғалар осында көрсетіледі."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Дыбыссыздар"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Жоғарыда сөз не тег қосыңыз. Оны қамтитын жазбалар таспаңызға түспейді."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Осылардың кез келгенін қамтитын жазбалар таспаңызға түспейді. Бас-кіші әріп маңызды емес, ал сөз ұзынырақ сөздердің ішінде де сәйкес келеді, сондықтан «spoiler» «spoilers» сөзін де ұстайды."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Ешкім бұғатталмаған"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Бұғаттау сізді бір-біріңізден екі жақты жасырады. Біреуді оның профиліндегі мәзірден бұғаттаңыз."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Ешкім дыбыссыз етілмеген"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтты дыбыссыз ету оған айтпастан жазбаларын жасырады. Біреуді профиль не жазба мәзірінен дыбыссыз етіңіз."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Құпиясөз"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Сәйкес емес."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Бұл құрылғыда кірген күйде қаласыз. Басқа құрылғылардан шығасыз."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Кемінде 8 таңба қолданыңыз."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Құпиясөзді жаңарту мүмкін болмады. Қайталап көріңіз."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Құпиясөз жаңартылды."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID көшірілді"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Ұнаған жазбаларыңыз осында тек сіз үшін сақталады."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Сіз әлі ешқандай фото не клип жарияламадыңыз."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} әлі ешқандай фото не клип жарияламады."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Жариялағаныңыздың бәрі осында көрінеді."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} әлі ештеңе жарияламады."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Профиліңізді жүктеу мүмкін болмады"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} жүктелмеді"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Кемінде 8 таңба"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Кіші әріп (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Кемінде бір сан"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("Таңба (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Бас әріп (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Соңғы {count} жазба. Жібермес бұрын оларды Қолданба туралы › Жүйе журналы бөлімінен қараңыз."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Мұны тек Kyron командасы оқиды. Сізбен байланыса алуымыз үшін ол аккаунтыңызбен бірге жіберіледі. Онымен бірге нақты не кететінін көргіңіз келсе, алдымен Қолданба туралы › Жүйе журналы бөлімінде журналды оқыңыз."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Жіберілді, рақмет."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Жіберілді, рақмет. Бұл №{number} есеп."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Не дұрыс болмады?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Нұсқа, ережелер, күй және жүйе журналы"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Айналдырғанда бейнелер өздігінен ойнамасын"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Орталықсыздандырылған идентификаторыңыз"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Модерация"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Қарауды күтіп тұрған шағымдар мен апелляциялар"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Осыларды қамтитын жазбаларды таспадан аулақ ұстау"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Кірмеген"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Хабарландыру параметрлері"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Құпиялық және қауіпсіздік"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз туралы шешімдер және апелляциялар"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Мәтін өлшемін реттеу"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Аккаунтыңыз"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR линзаларын жазу және жариялау әлі әзірленуде. Түсіргеніңіз әзірге сақталмайды, сондықтан камера жабық тұрады."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Линзалар әлі дайын емес"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR линза"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Тікелей эфирге Kyron әлі іске қоспаған медиасервер керек. Қазір эфир бастасаңыз, ешкім қосыла алмайтын бөлмеде боласыз. Дауыстық жазба жазу бүгін де жұмыс істейді."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Тікелей эфир әлі дайын емес"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Тікелей эфир"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Сауалнамаларға нұсқаларды сақтайтын және дауыстарды санайтын орын керек. Ол әлі жоқ, сондықтан бүгін жарияланған сауалнама әр жауапты жоғалтар еді."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Сауалнамалар әлі дайын емес"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Сауалнама"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Оның орнына мәтіндік жазба жазыңыз"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Қайта тексеру"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Толығырақ"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Айналы кестелер"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron жауап берді, бірақ бірдеңе дұрыс емес."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Бару-қайту уақыты"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("Сұрақ қою"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Аккаунтыңыз туралы немесе бірдеңенің қалай жұмыс істейтіні туралы"),
+      "ui_support_by_email":
+          MessageLookupByLibrary.simpleMessage("Электрондық поштамен"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron істен шықса: қолданба журналын да жібереді"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("Қолданбада"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Kyron командасына осы жерден жазыңыз. Ол бізге жеке, аккаунтыңызбен бірге жетеді, ал біз ондағы поштаға жауап береміз."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Ешбір пошта қолданбасы ашылмады. {address} көшірілді."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Құпиялық және деректеріңіз"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Мәселе туралы хабарлау"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Бірдеңе бұзылған немесе тиісті жұмысын істемейді"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Жазбаға не аккаунтқа шағымдану үшін оның мәзірін қолданыңыз: сонда қайсысын меңзеп тұрғаныңызды нақты білеміз."),
+      "ui_support_safety": MessageLookupByLibrary.simpleMessage(
+          "Қауіпсіздік және теріс пайдалану"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron бәрі үшін істемей тұр ма, әлде тек сіз үшін бе"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Үлкен"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Үлкенірек"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Орташа"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron — оқуға тұрарлық нәрсе айтатын орын."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Кіші"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Әрқашан қараңғы"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Күңгірт"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Жұмсағырақ қараңғы, қараның орнына көкшіл-сұр"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Әрқашан жарық"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Телефонның жарық не қараңғы параметріне сай"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Бұғаттан шығару"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Дыбысын қосу"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Сіз кімсіз"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Өз сөзіңізбен: тексерушінің не білуі керек."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Мен осында және өз сайтымда құстар туралы жазамын."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Тағы сілтеме қосу"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "{date} бастап қайта сұрай аласыз."),
+      "ui_verify_ask": MessageLookupByLibrary.simpleMessage("Растауды сұрау"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Сұрамас бұрын"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Автор"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Журналист"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Ұйым немесе бренд"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Басқа нәрсе"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Қоғам қайраткері"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("№{number} сұрау мақұлданбады"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Сіз расталғансыз"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Профильді өңдеу"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("6 таңбалы кодты енгізіңіз"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Кодты {seconds} секундтан кейін қайта жіберу"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "Біз оны {email} мекенжайына жібердік"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Растау"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron-да растаудан өтіңіз"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron-да"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("растаудан"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("өтіңіз."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Белгі Kyron командасынан біреу бұл аккаунттың өзі айтқан адам екенін тексергенін білдіреді. Ол қосымша қамту бермейді және сатылмайды."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Атыңыз өзгермейінше белгі қалады. Атыңызды өзгертсеңіз, біреу жаңасын тексергенше ол алынып тасталады."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Қай жерден тексере аламыз"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Басқа сілтеме"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Бұл Kyron аккаунты сіздікі екенін айтатын сайт не басқа профиль: оған Kyron атыңызды немесе профиліңіздің сілтемесін қойыңыз. Kyron ешқашан жеке куәлік сұрамайды."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Күйіңізді жүктеу мүмкін болмады"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Сұрамас бұрын жоғарыдағының бәрі белгіленуі керек."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("Кемінде {days} күндік аккаунт"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Кім екеніңізді айтатын био"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Профильдегі атыңыз"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Профиль суреті"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Соңғы {days} күнде жазбаңызда ештеңе жоқ"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Жіберілді. Оны адам қарайды."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} бастап."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Сұрау"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Кім екеніңіз және оны\nдәлелдейтін сілтеме"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Белгі"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Атыңыздың жанында,\nол көрінетін барлық жерде"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Адам\nтексереді"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Командадан біреу\nсілтемелеріңізді ашады"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Растау"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "№{number} сұрау адамның қолында"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} күні {category} ретінде жіберілді. Шешім шыққанда хабарландыру аласыз."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Сұрауды қайтарып алу"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Сұрау қайтарып алынды."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Жазуды аяқтау мүмкін болмады: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("Он минутқа дейін."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Тыңдап тұр…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Жазу үшін Kyron-ға микрофон рұқсаты керек. Оны құрылғы параметрлерінен бере аласыз."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Жазуды бастау мүмкін болмады: {error}"),
     };
 
 final messageLookup = MessageLookup();

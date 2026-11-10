@@ -141,13 +141,16 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
             Icon(Iconsax.sms_copy, size: 64, color: KyronTheme.accent),
             const SizedBox(height: 24),
             Text(
-              "Enter the 6-digit code",
+              AppLocalizations.of(context)
+                  .ui('ui_verify_email_enter_code', 'Enter the 6-digit code'),
               style: Theme.of(context).textTheme.displayLarge,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             Text(
-              "We sent it to ${widget.email}",
+              AppLocalizations.of(context)
+                  .ui('ui_verify_email_sent_to', 'We sent it to {email}')
+                  .replaceAll('{email}', widget.email),
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -199,7 +202,12 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
               }),
             ),
             const SizedBox(height: 32),
-            AppButton(label: "Verify", onTap: _verify, isLoading: _isLoading),
+            AppButton(
+              label: AppLocalizations.of(context)
+                  .ui('ui_verify_email_verify', 'Verify'),
+              onTap: _verify,
+              isLoading: _isLoading,
+            ),
             const Spacer(),
             Center(
               child: _canResend
@@ -210,7 +218,10 @@ class _SignupVerifyEmailScreenState extends State<SignupVerifyEmailScreen> {
                       ),
                     )
                   : Text(
-                      "Resend code in $_countdown seconds",
+                      AppLocalizations.of(context)
+                          .ui('ui_verify_email_resend_in',
+                              'Resend code in {seconds} seconds')
+                          .replaceAll('{seconds}', '$_countdown'),
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium

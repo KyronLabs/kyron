@@ -2060,6 +2060,304 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ова страница жели да отвори другу апликацију"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Тражи да отвори {scheme} линк."),
+      "ui_about_build":
+          MessageLookupByLibrary.simpleMessage("Верзија изградње"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} слика и датотека у кешу"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Ослобођено {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Мерење…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("Нема шта да се обрише"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("Складиште"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Верзија {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Блокирани"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Објављујете као ви"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Ови прилози нису отпремљени. Додирните један да покушате поново или га уклоните."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће променити имејл. Покушајте поново."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Адреса се мења када отворите линк који шаљемо."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Потражите линк за потврду у {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Унесите имејл адресу."),
+      "ui_email_invalid":
+          MessageLookupByLibrary.simpleMessage("То не личи на имејл адресу."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("То је већ ваша имејл адреса."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Шта сте урадили, шта сте очекивали и шта се десило уместо тога."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Дозволите ми да закачим објаву на профил"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Шта бисте желели и шта би вам то омогућило."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Шта би помогло"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("Проблем"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Идеја"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Питање"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ово чита само тим Kyron-а. Шаље се са вашим налогом да бисмо могли да одговоримо имејлом, и са верзијом апликације коју користите. Брисањем налога брише се и ово."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Како да пригушим реч?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Шта покушавате да урадите и где сте запели."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Ваше питање"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron није доступан. Проверите везу и покушајте поново. Још ништа није написано, па ништа није изгубљено."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Обриши"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Неуспели захтеви и други важни догађаји приказују се овде."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Пригушени"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Додајте реч или ознаку изнад. Објаве које је садрже неће се приказивати у вашем фиду."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Објаве које садрже било шта од овога не приказују се у вашем фиду. Велика и мала слова нису битна, а реч се поклапа и унутар дужих речи, па „spoiler“ хвата и „spoilers“."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Нико није блокиран"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Блокирање вас сакрива једно од другог, у оба смера. Блокирајте некога из менија на његовом профилу."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Нико није пригушен"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Пригушивање налога сакрива његове објаве без обавештења. Пригушите некога из менија на профилу или објави."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Лозинка"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Не поклапају се."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Остајете пријављени на овом уређају. Остали уређаји ће бити одјављени."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("Користите најмање 8 знакова."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће ажурирати лозинку. Покушајте поново."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Лозинка је ажурирана."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID је копиран"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Објаве које вам се свиђају чувају се овде, само за вас."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Још нисте објавили фотографије ни снимке."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} још није објавио/ла фотографије ни снимке."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Све што објавите приказује се овде."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} још ништа није објавио/ла."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Није могуће учитати ваш профил"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("Није могуће учитати @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Најмање 8 знакова"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Мало слово (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Бар један број"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Симбол (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Велико слово (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "Недавних уноса: {count}. Прегледајте их у О апликацији › Системски дневник пре слања."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Ово чита само тим Kyron-а. Шаље се са вашим налогом да бисмо могли да вам се јавимо. Прво прочитајте дневник у О апликацији › Системски дневник ако желите да видите шта тачно иде уз то."),
+      "ui_report_sent": MessageLookupByLibrary.simpleMessage("Послато, хвала."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Послато, хвала. То је пријава бр. {number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Шта је пошло наопако?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Верзија, правила, стање и системски дневник"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Не пуштај видео-снимке сами од себе током померања"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Ваш децентрализовани идентификатор"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Модерација"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Пријаве и жалбе које чекају преглед"),
+      "ui_settings_muted_words_help":
+          MessageLookupByLibrary.simpleMessage("Држи објаве са овим ван фида"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Нисте пријављени"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Подешавања обавештења"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Приватност и безбедност"),
+      "ui_settings_standing_help":
+          MessageLookupByLibrary.simpleMessage("Одлуке о вашем налогу и жалбе"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Подеси величину текста"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Ваш налог"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Снимање и објављивање AR сочива још се прави. Ништа што снимите још се не би сачувало, па камера остаје затворена."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("Сочива још нису спремна"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR сочиво"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Пренос уживо захтева медијски сервер који Kyron још не покреће. Ако бисте сада почели пренос, били бисте у соби у коју нико не може да уђе. Снимање гласовне објаве већ ради."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("Пренос уживо још није спреман"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("Уживо"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Анкетама је потребно место за чување опција и бројање гласова. То још не постоји, па би анкета објављена данас изгубила сваки одговор."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("Анкете још нису спремне"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Анкета"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Напишите текстуалну објаву уместо тога"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Провери поново"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Детаљ"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Огледалне табеле"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron је одговорио, али нешто није у реду."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Повратно време"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Поставите питање"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "О вашем налогу или о томе како нешто ради"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Имејлом"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Ако се Kyron срушио: шаље и дневник апликације"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("У апликацији"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Пишите тиму Kyron-а одавде. Порука стиже до нас приватно, са вашим налогом, а одговарамо на имејл адресу на њему."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Није се отворила ниједна апликација за пошту. {address} је копирано."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Приватност и ваши подаци"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Пријавите проблем"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Нешто је покварено или не ради како треба"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Да бисте пријавили објаву или налог, користите његов мени: тако тачно знамо на шта мислите."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Безбедност и злоупотреба"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Да ли је Kyron пао за све или само за вас"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Велико"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Веће"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Средње"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron је место да кажете нешто вредно читања."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Мало"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Увек тамно"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Пригушено"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Мекша тамна, плавосива уместо црне"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Увек светло"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Прати светло или тамно подешавање телефона"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Одблокирај"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Поништи пригушивање"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ко сте"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Својим речима: шта треба да зна онај ко прегледа."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Пишем о птицама овде и на свом сајту."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Додај још један линк"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Поново можете да затражите од {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Затражите потврду"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("Пре него што затражите"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("Аутор"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Новинар"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Организација или бренд"),
+      "ui_verify_cat_other":
+          MessageLookupByLibrary.simpleMessage("Нешто друго"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Јавна личност"),
+      "ui_verify_denied":
+          MessageLookupByLibrary.simpleMessage("Захтев {number} није одобрен"),
+      "ui_verify_done": MessageLookupByLibrary.simpleMessage("Потврђени сте"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Уредите профил"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Унесите шестоцифрени код"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Поново пошаљи код за {seconds} с"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Послали смо га на {email}"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("Потврди"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Потврдите се на Kyron-у"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Потврдите"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("се"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("на Kyron-у."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Значка говори да је неко из тима Kyron-а проверио да је овај налог онај за који се представља. Не доноси додатни домет и није на продају."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Значка остаје док остаје ваше име. Ако промените име, нестаје док неко не провери ново."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Где можемо да проверимо"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Још један линк"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Сајт или други профил који каже да је овај Kyron налог ваш: ставите на њега своје Kyron име или линк ка профилу. Kyron никада не тражи личне документе."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће учитати ваше стање"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Све изнад мора бити означено пре него што можете да затражите."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Налог стар најмање {days} дана"),
+      "ui_verify_req_bio":
+          MessageLookupByLibrary.simpleMessage("Опис који каже ко сте"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Ваше име на профилу"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Профилна фотографија"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Ништа у вашој евиденцији у последњих {days} дана"),
+      "ui_verify_sent":
+          MessageLookupByLibrary.simpleMessage("Послато. Погледаће то особа."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Од {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Затражите"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ко сте, и линк\nкоји то доказује"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Значка"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Поред вашег имена,\nгде год се приказује"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Особа\nпроверава"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Неко из тима\nотвара ваше линкове"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Потврда"),
+      "ui_verify_waiting":
+          MessageLookupByLibrary.simpleMessage("Захтев {number} је код особе"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Послато {date}, као {category}. Добићете обавештење када се одлучи."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Повуци захтев"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Захтев је повучен."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће довршити снимак: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("До десет минута."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Слушам…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Kyron-у је потребна дозвола за микрофон за снимање. Можете је дати у подешавањима уређаја."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Није могуће покренути снимање: {error}"),
     };
 
 final messageLookup = MessageLookup();

@@ -2017,6 +2017,300 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("हे पेज दुसरे ॲप उघडू इच्छिते"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "ते {scheme} लिंक उघडण्यास सांगत आहे."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("बिल्ड"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "कॅशमधील {size} चित्रे आणि फाइल्स"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("{size} मोकळे झाले"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("मोजत आहे…"),
+      "ui_about_nothing_to_clear":
+          MessageLookupByLibrary.simpleMessage("साफ करण्यासारखे काही नाही"),
+      "ui_about_storage": MessageLookupByLibrary.simpleMessage("स्टोरेज"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("आवृत्ती {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("ब्लॉक केलेले"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("तुमच्या नावाने पोस्ट होत आहे"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "ही अटॅचमेंट्स अपलोड झाली नाहीत. पुन्हा प्रयत्न करण्यासाठी एकावर टॅप करा, किंवा ते काढा."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "तुमचा ईमेल बदलता आला नाही. कृपया पुन्हा प्रयत्न करा."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "आम्ही पाठवलेली लिंक उघडल्यावर तुमचा पत्ता बदलेल."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "पुष्टीकरण लिंकसाठी {email} तपासा."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("ईमेल पत्ता टाका."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "हा ईमेल पत्त्यासारखा दिसत नाही."),
+      "ui_email_same":
+          MessageLookupByLibrary.simpleMessage("हा आधीच तुमचा ईमेल पत्ता आहे."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही काय केले, तुम्हाला काय अपेक्षित होते आणि त्याऐवजी काय झाले."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "मला माझ्या प्रोफाइलवर पोस्ट पिन करू द्या"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "तुम्हाला काय हवे आहे आणि त्यामुळे तुम्ही काय करू शकाल."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("काय मदत करेल"),
+      "ui_feedback_kind_bug": MessageLookupByLibrary.simpleMessage("एक समस्या"),
+      "ui_feedback_kind_idea":
+          MessageLookupByLibrary.simpleMessage("एक कल्पना"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("एक प्रश्न"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "हे फक्त Kyron टीम वाचते. आम्ही ईमेलने उत्तर देऊ शकू म्हणून हे तुमच्या खात्यासोबत, आणि तुम्ही वापरत असलेल्या अ‍ॅप आवृत्तीसोबत पाठवले जाते. खाते हटवल्यास हेही हटते."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("एखादा शब्द म्यूट कसा करू?"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही काय करण्याचा प्रयत्न करत आहात आणि कुठे अडकलात."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("तुमचा प्रश्न"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Kyron पर्यंत पोहोचता आले नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा. अजून काही लिहिले गेले नाही, त्यामुळे काहीही हरवले नाही."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("साफ करा"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "अयशस्वी विनंत्या आणि इतर महत्त्वाच्या घटना इथे दिसतात."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("म्यूट केलेले"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "वर एखादा शब्द किंवा टॅग जोडा. तो असलेल्या पोस्ट तुमच्या फीडमध्ये येणार नाहीत."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "यापैकी काहीही असलेल्या पोस्ट तुमच्या फीडमध्ये येत नाहीत. लहान-मोठी अक्षरे महत्त्वाची नाहीत, आणि शब्द लांब शब्दांच्या आतही जुळतो, म्हणून “spoiler” “spoilers”लाही पकडतो."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("कोणालाही ब्लॉक केलेले नाही"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "ब्लॉक केल्याने तुम्ही दोघे एकमेकांपासून दोन्ही बाजूंनी लपता. एखाद्याच्या प्रोफाइलवरील मेनूमधून त्याला ब्लॉक करा."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("कोणालाही म्यूट केलेले नाही"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "खाते म्यूट केल्याने त्यांना न सांगता त्यांच्या पोस्ट लपतात. प्रोफाइल किंवा पोस्टच्या मेनूमधून म्यूट करा."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("पासवर्ड"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("जुळत नाहीत."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "या डिव्हाइसवर तुम्ही साइन इन राहाल. इतर डिव्हाइसेसवरून साइन आउट होईल."),
+      "ui_password_too_short":
+          MessageLookupByLibrary.simpleMessage("किमान ८ वर्ण वापरा."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "तुमचा पासवर्ड अपडेट करता आला नाही. कृपया पुन्हा प्रयत्न करा."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("पासवर्ड अपडेट झाला."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("DID कॉपी केला"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "तुम्हाला आवडलेल्या पोस्ट इथे फक्त तुमच्यासाठी ठेवल्या जातात."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही अजून कोणतेही फोटो किंवा क्लिप पोस्ट केलेले नाहीत."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "{name} यांनी अजून कोणतेही फोटो किंवा क्लिप पोस्ट केलेले नाहीत."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही पोस्ट केलेले सर्व इथे दिसते."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "{name} यांनी अजून काहीही पोस्ट केलेले नाही."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "तुमचे प्रोफाइल लोड करता आले नाही"),
+      "ui_profile_load_failed_other":
+          MessageLookupByLibrary.simpleMessage("@{handle} लोड करता आले नाही"),
+      "ui_pw_rule_length": MessageLookupByLibrary.simpleMessage("किमान ८ वर्ण"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("लहान अक्षर (a–z)"),
+      "ui_pw_rule_number": MessageLookupByLibrary.simpleMessage("किमान एक अंक"),
+      "ui_pw_rule_symbol": MessageLookupByLibrary.simpleMessage("चिन्ह (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("मोठे अक्षर (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} अलीकडील नोंदी. पाठवण्यापूर्वी त्या माहिती › सिस्टम लॉग मध्ये तपासा."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "हे फक्त Kyron टीम वाचते. आम्ही पाठपुरावा करू शकू म्हणून हे तुमच्या खात्यासोबत पाठवले जाते. सोबत नेमके काय जाते ते पाहायचे असल्यास आधी माहिती › सिस्टम लॉग मधील लॉग वाचा."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("पाठवले, धन्यवाद."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "पाठवले, धन्यवाद. हा अहवाल #{number} आहे."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("काय चुकले?"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "आवृत्ती, धोरणे, स्थिती आणि सिस्टम लॉग"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "स्क्रोल करताना व्हिडिओ आपोआप सुरू होऊ देऊ नका"),
+      "ui_settings_did_help":
+          MessageLookupByLibrary.simpleMessage("तुमचा विकेंद्रित ओळखकर्ता"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("नियंत्रण"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "पुनरावलोकनाच्या प्रतीक्षेतील अहवाल आणि अपील"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "हे असलेल्या पोस्ट फीडपासून दूर ठेवा"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("साइन इन केलेले नाही"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("सूचना प्राधान्ये"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("गोपनीयता आणि सुरक्षितता"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या खात्याबद्दलचे निर्णय, आणि अपील"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("मजकुराचा आकार बदला"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("तुमचे खाते"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "AR लेन्स रेकॉर्ड आणि प्रकाशित करण्याची सुविधा अजून तयार होत आहे. तुम्ही टिपलेले काहीही अजून सेव्ह होणार नाही, म्हणून कॅमेरा बंद राहतो."),
+      "ui_soon_lens_heading":
+          MessageLookupByLibrary.simpleMessage("लेन्स अजून तयार नाहीत"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("AR लेन्स"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "लाइव्ह जाण्यासाठी एक मीडिया सर्व्हर लागतो, जो Kyron अजून चालवत नाही. आत्ता प्रसारण सुरू केल्यास तुम्ही अशा खोलीत असाल जिथे कोणीही सामील होऊ शकत नाही. व्हॉइस पोस्ट रेकॉर्ड करणे आजही चालते."),
+      "ui_soon_live_heading":
+          MessageLookupByLibrary.simpleMessage("लाइव्ह अजून तयार नाही"),
+      "ui_soon_live_title": MessageLookupByLibrary.simpleMessage("लाइव्ह जा"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "पोलना पर्याय ठेवण्यासाठी आणि मते मोजण्यासाठी जागा लागते. ती अजून नाही, म्हणून आज पोस्ट केलेला पोल प्रत्येक उत्तर गमावेल."),
+      "ui_soon_poll_heading":
+          MessageLookupByLibrary.simpleMessage("पोल अजून तयार नाहीत"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("पोल"),
+      "ui_soon_write_instead":
+          MessageLookupByLibrary.simpleMessage("त्याऐवजी मजकूर पोस्ट लिहा"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("पुन्हा तपासा"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("तपशील"),
+      "ui_status_mirror": MessageLookupByLibrary.simpleMessage("मिरर टेबल्स"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Kyron ने उत्तर दिले, पण काहीतरी बरोबर नाही."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("राउंड ट्रिप"),
+      "ui_support_ask": MessageLookupByLibrary.simpleMessage("प्रश्न विचारा"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या खात्याबद्दल, किंवा एखादी गोष्ट कशी काम करते"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("ईमेलने"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron क्रॅश झाल्यास: सोबत अ‍ॅपचा लॉग पाठवते"),
+      "ui_support_in_app": MessageLookupByLibrary.simpleMessage("अ‍ॅपमध्ये"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "इथून Kyron टीमला लिहा. ते आमच्यापर्यंत खाजगीरीत्या, तुमच्या खात्यासोबत पोहोचते, आणि आम्ही त्यावरील ईमेल पत्त्यावर उत्तर देतो."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "कोणतेही मेल अ‍ॅप उघडले नाही. {address} कॉपी केला आहे."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("गोपनीयता आणि तुमचा डेटा"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("समस्या नोंदवा"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "काहीतरी बिघडले आहे किंवा अपेक्षेप्रमाणे काम करत नाही"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "पोस्ट किंवा खात्याची तक्रार करण्यासाठी त्याचा मेनू वापरा: त्यामुळे तुम्हाला नेमके कोणते म्हणायचे आहे ते आम्हाला कळते."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("सुरक्षितता आणि गैरवापर"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Kyron सगळ्यांसाठी बंद आहे की फक्त तुमच्यासाठी"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("मोठा"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("आणखी मोठा"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("मध्यम"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Kyron ही वाचण्यासारखे काहीतरी सांगण्याची जागा आहे."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("लहान"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("नेहमी डार्क"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("मंद"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "मऊ डार्क, काळ्याऐवजी निळसर-राखाडी"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("नेहमी लाइट"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "फोनच्या लाइट किंवा डार्क सेटिंगनुसार"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("अनब्लॉक करा"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("अनम्यूट करा"),
+      "ui_verify_about":
+          MessageLookupByLibrary.simpleMessage("तुम्ही कोण आहात"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या शब्दांत, पुनरावलोकनकर्त्याला काय माहीत असावे."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "मी इथे आणि माझ्या स्वतःच्या साइटवर पक्ष्यांबद्दल लिहितो."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("आणखी एक लिंक जोडा"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही {date} पासून पुन्हा विनंती करू शकता."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("पडताळणीची विनंती करा"),
+      "ui_verify_before":
+          MessageLookupByLibrary.simpleMessage("विनंती करण्यापूर्वी"),
+      "ui_verify_cat_creator": MessageLookupByLibrary.simpleMessage("निर्माते"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("पत्रकार"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("संस्था किंवा ब्रँड"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("इतर काही"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("सार्वजनिक व्यक्ती"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "विनंती {number} मंजूर झाली नाही"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("तुम्ही पडताळलेले आहात"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल संपादित करा"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("६ अंकी कोड टाका"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "{seconds} सेकंदांत कोड पुन्हा पाठवा"),
+      "ui_verify_email_sent_to": MessageLookupByLibrary.simpleMessage(
+          "आम्ही तो {email} वर पाठवला आहे"),
+      "ui_verify_email_verify": MessageLookupByLibrary.simpleMessage("पडताळा"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Kyron वर पडताळणी मिळवा"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Kyron वर"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("पडताळणी"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("मिळवा."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "बॅज म्हणजे Kyron टीममधील कोणीतरी तपासले आहे की हे खाते तेच आहे जे असल्याचा ते दावा करते. यामुळे जास्त पोहोच मिळत नाही आणि ते विक्रीसाठी नाही."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "तुमचे नाव तेच राहते तोपर्यंत बॅज राहतो. नाव बदलल्यास, कोणी नवीन नाव तपासेपर्यंत तो काढला जातो."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("आम्ही कुठे तपासू शकतो"),
+      "ui_verify_link_more": MessageLookupByLibrary.simpleMessage("दुसरी लिंक"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "हे Kyron खाते तुमचे आहे असे सांगणारी साइट किंवा दुसरे प्रोफाइल: तिथे तुमचे Kyron नाव, किंवा तुमच्या प्रोफाइलची लिंक टाका. Kyron कधीही ओळखपत्र मागत नाही."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "तुमची स्थिती लोड करता आली नाही"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "विनंती करण्यापूर्वी वरील प्रत्येक गोष्टीवर खूण असणे आवश्यक आहे."),
+      "ui_verify_req_age":
+          MessageLookupByLibrary.simpleMessage("किमान {days} दिवस जुने खाते"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही कोण आहात ते सांगणारा बायो"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइलवर तुमचे नाव"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("प्रोफाइल फोटो"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "गेल्या {days} दिवसांत तुमच्या नोंदीवर काहीही नाही"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "पाठवले. एखादी व्यक्ती ते पाहील."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("{date} पासून."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("विनंती"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "तुम्ही कोण आहात, आणि ते\nसिद्ध करणारी लिंक"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("बॅज"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या नावाशेजारी,\nजिथे ते दिसते तिथे"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("एक व्यक्ती\nतपासते"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "टीममधील कोणीतरी\nतुमच्या लिंक्स उघडते"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("पडताळणी"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "विनंती {number} एका व्यक्तीकडे आहे"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "{date} रोजी {category} म्हणून पाठवली. निर्णय झाल्यावर तुम्हाला सूचना मिळेल."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("विनंती मागे घ्या"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("विनंती मागे घेतली."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "रेकॉर्डिंग पूर्ण करता आले नाही: {error}"),
+      "ui_voice_limit":
+          MessageLookupByLibrary.simpleMessage("दहा मिनिटांपर्यंत."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("ऐकत आहे…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "रेकॉर्ड करण्यासाठी Kyron ला मायक्रोफोन वापरण्याची परवानगी हवी. तुम्ही ती डिव्हाइस सेटिंग्जमध्ये देऊ शकता."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "रेकॉर्डिंग सुरू करता आले नाही: {error}"),
     };
 
 final messageLookup = MessageLookup();

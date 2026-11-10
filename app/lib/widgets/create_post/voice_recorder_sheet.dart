@@ -119,9 +119,10 @@ class _SheetState extends State<_Sheet> {
 
     if (!await _recorder.hasPermission()) {
       setState(
-        () => _failure =
-            'Kyron needs permission to use the microphone to record. You '
-                'can grant it in your device settings.',
+        () => _failure = AppLocalizations.of(context).ui(
+          'ui_voice_no_mic',
+          'Kyron needs permission to use the microphone to record. You can grant it in your device settings.',
+        ),
       );
       return;
     }
@@ -143,7 +144,11 @@ class _SheetState extends State<_Sheet> {
         path: path,
       );
     } catch (error) {
-      setState(() => _failure = 'Could not start recording: $error');
+      setState(
+        () => _failure = AppLocalizations.of(context)
+            .ui('ui_voice_start_failed', 'Could not start recording: {error}')
+            .replaceAll('{error}', '$error'),
+      );
       return;
     }
 
@@ -196,7 +201,14 @@ class _SheetState extends State<_Sheet> {
       final path = await _recorder.stop();
       _path = path ?? _path;
     } catch (error) {
-      setState(() => _failure = 'Could not finish the recording: $error');
+      setState(
+        () => _failure = AppLocalizations.of(context)
+            .ui(
+              'ui_voice_finish_failed',
+              'Could not finish the recording: {error}',
+            )
+            .replaceAll('{error}', '$error'),
+      );
       return;
     }
 
@@ -257,22 +269,18 @@ class _SheetState extends State<_Sheet> {
                 child: Text(
                     switch (_stage) {
                       _Stage.idle => widget.forMessage
-                          ? AppLocalizations.of(
-                              context,
-                            ).ui('ui_dm_voice', 'Record a voice note')
-                          : AppLocalizations.of(
-                              context,
-                            ).ui('voice_record_post', 'Record a voice post'),
+                          ? AppLocalizations.of(context)
+                              .ui('ui_dm_voice', 'Record a voice note')
+                          : AppLocalizations.of(context)
+                              .ui('voice_record_post', 'Record a voice post'),
                       _Stage.recording => AppLocalizations.of(
                           context,
                         ).ui('voice_recording', 'Recording…'),
                       _Stage.recorded => widget.forMessage
-                          ? AppLocalizations.of(
-                              context,
-                            ).ui('voice_ready_send', 'Ready to send')
-                          : AppLocalizations.of(
-                              context,
-                            ).ui('voice_ready_attach', 'Ready to attach'),
+                          ? AppLocalizations.of(context)
+                              .ui('voice_ready_send', 'Ready to send')
+                          : AppLocalizations.of(context)
+                              .ui('voice_ready_attach', 'Ready to attach'),
                     },
                     style: Theme.of(context).textTheme.titleMedium),
               ),
@@ -397,7 +405,11 @@ class _SheetState extends State<_Sheet> {
   Widget _waveformView(ColorScheme scheme) {
     if (_samples.isEmpty) {
       return Text(
-        _stage == _Stage.idle ? 'Up to ten minutes.' : 'Listening…',
+        _stage == _Stage.idle
+            ? AppLocalizations.of(context)
+                .ui('ui_voice_limit', 'Up to ten minutes.')
+            : AppLocalizations.of(context)
+                .ui('ui_voice_listening', 'Listening…'),
         style: TextStyle(
           fontSize: TypographyTokens.fontSize2,
           color: scheme.onSurface.withValues(alpha: 0.55),

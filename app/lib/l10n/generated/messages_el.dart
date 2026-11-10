@@ -2461,6 +2461,308 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Αυτή η σελίδα θέλει να ανοίξει άλλη εφαρμογή"),
       "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
           "Ζητά να ανοίξει έναν σύνδεσμο {scheme}."),
+      "ui_about_build": MessageLookupByLibrary.simpleMessage("Έκδοση build"),
+      "ui_about_cache_size": MessageLookupByLibrary.simpleMessage(
+          "{size} εικόνες και αρχεία στην προσωρινή μνήμη"),
+      "ui_about_freed":
+          MessageLookupByLibrary.simpleMessage("Ελευθερώθηκαν {size}"),
+      "ui_about_measuring": MessageLookupByLibrary.simpleMessage("Μέτρηση…"),
+      "ui_about_nothing_to_clear": MessageLookupByLibrary.simpleMessage(
+          "Δεν υπάρχει κάτι για εκκαθάριση"),
+      "ui_about_storage":
+          MessageLookupByLibrary.simpleMessage("Αποθηκευτικός χώρος"),
+      "ui_about_version":
+          MessageLookupByLibrary.simpleMessage("Έκδοση {version}"),
+      "ui_blocked_tab": MessageLookupByLibrary.simpleMessage("Αποκλεισμένοι"),
+      "ui_composer_posting_as_you":
+          MessageLookupByLibrary.simpleMessage("Δημοσιεύεις ως εσύ"),
+      "ui_composer_uploads_failed": MessageLookupByLibrary.simpleMessage(
+          "Αυτά τα συνημμένα δεν ανέβηκαν. Πάτησε ένα για να ξαναδοκιμάσεις, ή αφαίρεσέ το."),
+      "ui_email_change_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η αλλαγή του email σου. Δοκίμασε ξανά."),
+      "ui_email_changes_after_link": MessageLookupByLibrary.simpleMessage(
+          "Η διεύθυνσή σου αλλάζει όταν ανοίξεις τον σύνδεσμο που στέλνουμε."),
+      "ui_email_check_link": MessageLookupByLibrary.simpleMessage(
+          "Δες τον σύνδεσμο επιβεβαίωσης στο {email}."),
+      "ui_email_enter":
+          MessageLookupByLibrary.simpleMessage("Γράψε μια διεύθυνση email."),
+      "ui_email_invalid": MessageLookupByLibrary.simpleMessage(
+          "Δεν μοιάζει με διεύθυνση email."),
+      "ui_email_same": MessageLookupByLibrary.simpleMessage(
+          "Αυτή είναι ήδη η διεύθυνση email σου."),
+      "ui_feedback_bug_hint": MessageLookupByLibrary.simpleMessage(
+          "Τι έκανες, τι περίμενες και τι συνέβη αντί γι' αυτό."),
+      "ui_feedback_idea_example": MessageLookupByLibrary.simpleMessage(
+          "Να μπορώ να καρφιτσώσω μια δημοσίευση στο προφίλ μου"),
+      "ui_feedback_idea_hint": MessageLookupByLibrary.simpleMessage(
+          "Τι θα ήθελες και τι θα σου επέτρεπε να κάνεις."),
+      "ui_feedback_idea_label":
+          MessageLookupByLibrary.simpleMessage("Τι θα βοηθούσε"),
+      "ui_feedback_kind_bug":
+          MessageLookupByLibrary.simpleMessage("Ένα πρόβλημα"),
+      "ui_feedback_kind_idea": MessageLookupByLibrary.simpleMessage("Μια ιδέα"),
+      "ui_feedback_kind_question":
+          MessageLookupByLibrary.simpleMessage("Μια ερώτηση"),
+      "ui_feedback_privacy": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το διαβάζει μόνο η ομάδα του Kyron. Στέλνεται μαζί με τον λογαριασμό σου, για να απαντήσουμε με email, και με την έκδοση της εφαρμογής που χρησιμοποιείς. Αν διαγράψεις τον λογαριασμό σου, διαγράφεται κι αυτό."),
+      "ui_feedback_question_example":
+          MessageLookupByLibrary.simpleMessage("Πώς κάνω σίγαση σε μια λέξη;"),
+      "ui_feedback_question_hint": MessageLookupByLibrary.simpleMessage(
+          "Τι προσπαθείς να κάνεις και πού κόλλησες."),
+      "ui_feedback_question_label":
+          MessageLookupByLibrary.simpleMessage("Η ερώτησή σου"),
+      "ui_feedback_unreachable": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η σύνδεση με το Kyron. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά. Δεν έχει γραφτεί τίποτα ακόμα, άρα δεν χάθηκε τίποτα."),
+      "ui_log_clear": MessageLookupByLibrary.simpleMessage("Εκκαθάριση"),
+      "ui_log_empty_detail": MessageLookupByLibrary.simpleMessage(
+          "Τα αποτυχημένα αιτήματα και άλλα σημαντικά συμβάντα εμφανίζονται εδώ."),
+      "ui_muted_tab": MessageLookupByLibrary.simpleMessage("Σε σίγαση"),
+      "ui_muted_words_empty": MessageLookupByLibrary.simpleMessage(
+          "Πρόσθεσε μια λέξη ή ετικέτα παραπάνω. Οι δημοσιεύσεις που την περιέχουν μένουν έξω από τη ροή σου."),
+      "ui_muted_words_intro": MessageLookupByLibrary.simpleMessage(
+          "Οι δημοσιεύσεις που περιέχουν οτιδήποτε από αυτά μένουν έξω από τη ροή σου. Κεφαλαία και πεζά δεν μετρούν, και μια λέξη ταιριάζει και μέσα σε μεγαλύτερες, έτσι το «spoiler» πιάνει και το «spoilers»."),
+      "ui_nobody_blocked":
+          MessageLookupByLibrary.simpleMessage("Κανείς αποκλεισμένος"),
+      "ui_nobody_blocked_detail": MessageLookupByLibrary.simpleMessage(
+          "Ο αποκλεισμός σάς κρύβει τον έναν από τον άλλον, και προς τις δύο κατευθύνσεις. Απόκλεισε κάποιον από το μενού στο προφίλ του."),
+      "ui_nobody_muted":
+          MessageLookupByLibrary.simpleMessage("Κανείς σε σίγαση"),
+      "ui_nobody_muted_detail": MessageLookupByLibrary.simpleMessage(
+          "Η σίγαση ενός λογαριασμού κρύβει τις δημοσιεύσεις του χωρίς να τον ενημερώνει. Βάλε κάποιον σε σίγαση από το μενού στο προφίλ του ή σε μια δημοσίευση."),
+      "ui_password": MessageLookupByLibrary.simpleMessage("Κωδικός πρόσβασης"),
+      "ui_password_mismatch":
+          MessageLookupByLibrary.simpleMessage("Δεν ταιριάζουν."),
+      "ui_password_other_devices": MessageLookupByLibrary.simpleMessage(
+          "Μένεις συνδεδεμένος σε αυτή τη συσκευή. Οι άλλες συσκευές αποσυνδέονται."),
+      "ui_password_too_short": MessageLookupByLibrary.simpleMessage(
+          "Χρησιμοποίησε τουλάχιστον 8 χαρακτήρες."),
+      "ui_password_update_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η ενημέρωση του κωδικού. Δοκίμασε ξανά."),
+      "ui_password_updated":
+          MessageLookupByLibrary.simpleMessage("Ο κωδικός ενημερώθηκε."),
+      "ui_profile_did_copied":
+          MessageLookupByLibrary.simpleMessage("Το DID αντιγράφηκε"),
+      "ui_profile_empty_likes": MessageLookupByLibrary.simpleMessage(
+          "Οι δημοσιεύσεις που σου αρέσουν φυλάσσονται εδώ, μόνο για σένα."),
+      "ui_profile_empty_media_mine": MessageLookupByLibrary.simpleMessage(
+          "Δεν έχεις δημοσιεύσει φωτογραφίες ή κλιπ."),
+      "ui_profile_empty_media_other": MessageLookupByLibrary.simpleMessage(
+          "Ο/Η {name} δεν έχει δημοσιεύσει φωτογραφίες ή κλιπ."),
+      "ui_profile_empty_posts_mine": MessageLookupByLibrary.simpleMessage(
+          "Ό,τι δημοσιεύεις εμφανίζεται εδώ."),
+      "ui_profile_empty_posts_other": MessageLookupByLibrary.simpleMessage(
+          "Ο/Η {name} δεν έχει δημοσιεύσει τίποτα ακόμα."),
+      "ui_profile_load_failed_mine": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση του προφίλ σου"),
+      "ui_profile_load_failed_other": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση του @{handle}"),
+      "ui_pw_rule_length":
+          MessageLookupByLibrary.simpleMessage("Τουλάχιστον 8 χαρακτήρες"),
+      "ui_pw_rule_lower":
+          MessageLookupByLibrary.simpleMessage("Πεζό γράμμα (a–z)"),
+      "ui_pw_rule_number":
+          MessageLookupByLibrary.simpleMessage("Τουλάχιστον ένας αριθμός"),
+      "ui_pw_rule_symbol":
+          MessageLookupByLibrary.simpleMessage("Σύμβολο (!@#…)"),
+      "ui_pw_rule_upper":
+          MessageLookupByLibrary.simpleMessage("Κεφαλαίο γράμμα (A–Z)"),
+      "ui_report_entries": MessageLookupByLibrary.simpleMessage(
+          "{count} πρόσφατες εγγραφές. Δες τες στο Σχετικά › Αρχείο καταγραφής πριν τις στείλεις."),
+      "ui_report_privacy": MessageLookupByLibrary.simpleMessage(
+          "Αυτό το διαβάζει μόνο η ομάδα του Kyron. Στέλνεται μαζί με τον λογαριασμό σου για να επικοινωνήσουμε μαζί σου. Διάβασε πρώτα το αρχείο στο Σχετικά › Αρχείο καταγραφής αν θέλεις να δεις τι ακριβώς στέλνεται μαζί."),
+      "ui_report_sent":
+          MessageLookupByLibrary.simpleMessage("Στάλθηκε, ευχαριστούμε."),
+      "ui_report_sent_number": MessageLookupByLibrary.simpleMessage(
+          "Στάλθηκε, ευχαριστούμε. Είναι η αναφορά #{number}."),
+      "ui_report_what_went_wrong":
+          MessageLookupByLibrary.simpleMessage("Τι πήγε στραβά;"),
+      "ui_settings_about_help": MessageLookupByLibrary.simpleMessage(
+          "Έκδοση, πολιτικές, κατάσταση και αρχείο καταγραφής"),
+      "ui_settings_autoplay_help": MessageLookupByLibrary.simpleMessage(
+          "Τα βίντεο να μην παίζουν μόνα τους καθώς κάνεις κύλιση"),
+      "ui_settings_did_help": MessageLookupByLibrary.simpleMessage(
+          "Το αποκεντρωμένο αναγνωριστικό σου"),
+      "ui_settings_moderation":
+          MessageLookupByLibrary.simpleMessage("Εποπτεία"),
+      "ui_settings_moderation_help": MessageLookupByLibrary.simpleMessage(
+          "Αναφορές και ενστάσεις που περιμένουν έλεγχο"),
+      "ui_settings_muted_words_help": MessageLookupByLibrary.simpleMessage(
+          "Κράτα έξω από τη ροή δημοσιεύσεις που τα περιέχουν"),
+      "ui_settings_not_signed_in":
+          MessageLookupByLibrary.simpleMessage("Δεν έχεις συνδεθεί"),
+      "ui_settings_notifications_help":
+          MessageLookupByLibrary.simpleMessage("Προτιμήσεις ειδοποιήσεων"),
+      "ui_settings_privacy_safety":
+          MessageLookupByLibrary.simpleMessage("Απόρρητο και ασφάλεια"),
+      "ui_settings_standing_help": MessageLookupByLibrary.simpleMessage(
+          "Αποφάσεις για τον λογαριασμό σου, και ενστάσεις"),
+      "ui_settings_text_size_help":
+          MessageLookupByLibrary.simpleMessage("Προσαρμογή μεγέθους κειμένου"),
+      "ui_settings_your_account":
+          MessageLookupByLibrary.simpleMessage("Ο λογαριασμός σου"),
+      "ui_soon_lens_detail": MessageLookupByLibrary.simpleMessage(
+          "Η εγγραφή και δημοσίευση φακών AR είναι ακόμα υπό κατασκευή. Τίποτα από όσα καταγράφεις δεν θα αποθηκευόταν ακόμα, γι' αυτό η κάμερα μένει κλειστή."),
+      "ui_soon_lens_heading": MessageLookupByLibrary.simpleMessage(
+          "Οι φακοί δεν είναι έτοιμοι ακόμα"),
+      "ui_soon_lens_title": MessageLookupByLibrary.simpleMessage("Φακός AR"),
+      "ui_soon_live_detail": MessageLookupByLibrary.simpleMessage(
+          "Η ζωντανή μετάδοση χρειάζεται διακομιστή πολυμέσων που το Kyron δεν τρέχει ακόμα. Αν ξεκινούσες μετάδοση τώρα, θα βρισκόσουν σε ένα δωμάτιο όπου δεν μπορεί να μπει κανείς. Η εγγραφή φωνητικής δημοσίευσης λειτουργεί ήδη."),
+      "ui_soon_live_heading": MessageLookupByLibrary.simpleMessage(
+          "Η ζωντανή μετάδοση δεν είναι έτοιμη ακόμα"),
+      "ui_soon_live_title":
+          MessageLookupByLibrary.simpleMessage("Ζωντανή μετάδοση"),
+      "ui_soon_poll_detail": MessageLookupByLibrary.simpleMessage(
+          "Οι δημοσκοπήσεις χρειάζονται ένα μέρος για να κρατούν τις επιλογές και να μετρούν τις ψήφους. Αυτό δεν υπάρχει ακόμα, οπότε μια δημοσκόπηση που δημοσιεύεται σήμερα θα έχανε κάθε απάντηση."),
+      "ui_soon_poll_heading": MessageLookupByLibrary.simpleMessage(
+          "Οι δημοσκοπήσεις δεν είναι έτοιμες ακόμα"),
+      "ui_soon_poll_title": MessageLookupByLibrary.simpleMessage("Δημοσκόπηση"),
+      "ui_soon_write_instead": MessageLookupByLibrary.simpleMessage(
+          "Γράψε μια δημοσίευση κειμένου αντί γι' αυτό"),
+      "ui_status_check_again":
+          MessageLookupByLibrary.simpleMessage("Έλεγχος ξανά"),
+      "ui_status_detail": MessageLookupByLibrary.simpleMessage("Λεπτομέρεια"),
+      "ui_status_mirror":
+          MessageLookupByLibrary.simpleMessage("Πίνακες καθρέφτες"),
+      "ui_status_not_right": MessageLookupByLibrary.simpleMessage(
+          "Το Kyron απάντησε, αλλά κάτι δεν πάει καλά."),
+      "ui_status_round_trip":
+          MessageLookupByLibrary.simpleMessage("Χρόνος απόκρισης"),
+      "ui_support_ask":
+          MessageLookupByLibrary.simpleMessage("Κάνε μια ερώτηση"),
+      "ui_support_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Για τον λογαριασμό σου ή για το πώς λειτουργεί κάτι"),
+      "ui_support_by_email": MessageLookupByLibrary.simpleMessage("Με email"),
+      "ui_support_crash_detail": MessageLookupByLibrary.simpleMessage(
+          "Αν το Kyron κατέρρευσε: στέλνει και το αρχείο καταγραφής της εφαρμογής"),
+      "ui_support_in_app":
+          MessageLookupByLibrary.simpleMessage("Στην εφαρμογή"),
+      "ui_support_intro": MessageLookupByLibrary.simpleMessage(
+          "Γράψε στην ομάδα του Kyron από εδώ. Φτάνει σε εμάς ιδιωτικά, μαζί με τον λογαριασμό σου, και απαντάμε στη διεύθυνση email του."),
+      "ui_support_no_mail": MessageLookupByLibrary.simpleMessage(
+          "Δεν άνοιξε καμία εφαρμογή email. Το {address} αντιγράφηκε."),
+      "ui_support_privacy":
+          MessageLookupByLibrary.simpleMessage("Απόρρητο και τα δεδομένα σου"),
+      "ui_support_report":
+          MessageLookupByLibrary.simpleMessage("Αναφορά προβλήματος"),
+      "ui_support_report_detail": MessageLookupByLibrary.simpleMessage(
+          "Κάτι είναι χαλασμένο ή δεν κάνει αυτό που πρέπει"),
+      "ui_support_report_hint": MessageLookupByLibrary.simpleMessage(
+          "Για να αναφέρεις μια δημοσίευση ή έναν λογαριασμό, χρησιμοποίησε το μενού του: έτσι ξέρουμε ακριβώς ποιο εννοείς."),
+      "ui_support_safety":
+          MessageLookupByLibrary.simpleMessage("Ασφάλεια και κατάχρηση"),
+      "ui_support_status_detail": MessageLookupByLibrary.simpleMessage(
+          "Αν το Kyron έχει πέσει για όλους ή μόνο για σένα"),
+      "ui_text_size_large": MessageLookupByLibrary.simpleMessage("Μεγάλο"),
+      "ui_text_size_larger": MessageLookupByLibrary.simpleMessage("Μεγαλύτερο"),
+      "ui_text_size_medium": MessageLookupByLibrary.simpleMessage("Μεσαίο"),
+      "ui_text_size_preview": MessageLookupByLibrary.simpleMessage(
+          "Το Kyron είναι ένα μέρος για να πεις κάτι που αξίζει να διαβαστεί."),
+      "ui_text_size_small": MessageLookupByLibrary.simpleMessage("Μικρό"),
+      "ui_theme_dark_detail":
+          MessageLookupByLibrary.simpleMessage("Πάντα σκούρο"),
+      "ui_theme_dim": MessageLookupByLibrary.simpleMessage("Αχνό"),
+      "ui_theme_dim_detail": MessageLookupByLibrary.simpleMessage(
+          "Ένα πιο απαλό σκούρο, γκριζομπλέ αντί για μαύρο"),
+      "ui_theme_light_detail":
+          MessageLookupByLibrary.simpleMessage("Πάντα φωτεινό"),
+      "ui_theme_system_detail": MessageLookupByLibrary.simpleMessage(
+          "Ακολουθεί τη ρύθμιση φωτεινού ή σκούρου του τηλεφώνου"),
+      "ui_unblock": MessageLookupByLibrary.simpleMessage("Άρση αποκλεισμού"),
+      "ui_unmute": MessageLookupByLibrary.simpleMessage("Άρση σίγασης"),
+      "ui_verify_about": MessageLookupByLibrary.simpleMessage("Ποιος είσαι"),
+      "ui_verify_about_help": MessageLookupByLibrary.simpleMessage(
+          "Με δικά σου λόγια, τι πρέπει να ξέρει αυτός που ελέγχει."),
+      "ui_verify_about_hint": MessageLookupByLibrary.simpleMessage(
+          "Γράφω για πουλιά εδώ και στον δικό μου ιστότοπο."),
+      "ui_verify_add_link":
+          MessageLookupByLibrary.simpleMessage("Προσθήκη άλλου συνδέσμου"),
+      "ui_verify_again": MessageLookupByLibrary.simpleMessage(
+          "Μπορείς να ζητήσεις ξανά από {date}."),
+      "ui_verify_ask":
+          MessageLookupByLibrary.simpleMessage("Αίτηση επαλήθευσης"),
+      "ui_verify_before": MessageLookupByLibrary.simpleMessage("Πριν ζητήσεις"),
+      "ui_verify_cat_creator":
+          MessageLookupByLibrary.simpleMessage("Δημιουργός"),
+      "ui_verify_cat_journalist":
+          MessageLookupByLibrary.simpleMessage("Δημοσιογράφος"),
+      "ui_verify_cat_org":
+          MessageLookupByLibrary.simpleMessage("Οργανισμός ή επωνυμία"),
+      "ui_verify_cat_other": MessageLookupByLibrary.simpleMessage("Κάτι άλλο"),
+      "ui_verify_cat_public":
+          MessageLookupByLibrary.simpleMessage("Δημόσιο πρόσωπο"),
+      "ui_verify_denied": MessageLookupByLibrary.simpleMessage(
+          "Το αίτημα {number} δεν εγκρίθηκε"),
+      "ui_verify_done":
+          MessageLookupByLibrary.simpleMessage("Έχεις επαληθευτεί"),
+      "ui_verify_edit_profile":
+          MessageLookupByLibrary.simpleMessage("Επεξεργασία προφίλ"),
+      "ui_verify_email_enter_code":
+          MessageLookupByLibrary.simpleMessage("Γράψε τον 6ψήφιο κωδικό"),
+      "ui_verify_email_resend_in": MessageLookupByLibrary.simpleMessage(
+          "Επαναποστολή κωδικού σε {seconds} δευτερόλεπτα"),
+      "ui_verify_email_sent_to":
+          MessageLookupByLibrary.simpleMessage("Τον στείλαμε στο {email}"),
+      "ui_verify_email_verify":
+          MessageLookupByLibrary.simpleMessage("Επαλήθευση"),
+      "ui_verify_hero":
+          MessageLookupByLibrary.simpleMessage("Επαληθεύσου στο Kyron"),
+      "ui_verify_hero_1": MessageLookupByLibrary.simpleMessage("Πάρε"),
+      "ui_verify_hero_2": MessageLookupByLibrary.simpleMessage("επαλήθευση"),
+      "ui_verify_hero_3": MessageLookupByLibrary.simpleMessage("στο Kyron."),
+      "ui_verify_intro": MessageLookupByLibrary.simpleMessage(
+          "Το σήμα δείχνει ότι κάποιος από την ομάδα του Kyron έλεγξε ότι αυτός ο λογαριασμός είναι αυτός που λέει. Δεν δίνει επιπλέον προβολή και δεν πωλείται."),
+      "ui_verify_keeps": MessageLookupByLibrary.simpleMessage(
+          "Το σήμα μένει όσο μένει το όνομά σου. Αν αλλάξεις όνομα, φεύγει μέχρι κάποιος να ελέγξει το νέο."),
+      "ui_verify_link_first":
+          MessageLookupByLibrary.simpleMessage("Πού μπορούμε να ελέγξουμε"),
+      "ui_verify_link_more":
+          MessageLookupByLibrary.simpleMessage("Άλλος σύνδεσμος"),
+      "ui_verify_links_help": MessageLookupByLibrary.simpleMessage(
+          "Ένας ιστότοπος ή άλλο προφίλ που λέει ότι αυτός ο λογαριασμός Kyron είναι δικός σου: βάλε εκεί το όνομά σου στο Kyron ή έναν σύνδεσμο στο προφίλ σου. Το Kyron δεν ζητά ποτέ έγγραφα ταυτότητας."),
+      "ui_verify_load_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η φόρτωση της κατάστασής σου"),
+      "ui_verify_need_ticks": MessageLookupByLibrary.simpleMessage(
+          "Όλα τα παραπάνω χρειάζονται τικ πριν μπορέσεις να ζητήσεις."),
+      "ui_verify_req_age": MessageLookupByLibrary.simpleMessage(
+          "Λογαριασμός τουλάχιστον {days} ημερών"),
+      "ui_verify_req_bio": MessageLookupByLibrary.simpleMessage(
+          "Ένα βιογραφικό που λέει ποιος είσαι"),
+      "ui_verify_req_name":
+          MessageLookupByLibrary.simpleMessage("Το όνομά σου στο προφίλ"),
+      "ui_verify_req_photo":
+          MessageLookupByLibrary.simpleMessage("Μια φωτογραφία προφίλ"),
+      "ui_verify_req_standing": MessageLookupByLibrary.simpleMessage(
+          "Τίποτα στο ιστορικό σου τις τελευταίες {days} ημέρες"),
+      "ui_verify_sent": MessageLookupByLibrary.simpleMessage(
+          "Στάλθηκε. Θα το δει ένας άνθρωπος."),
+      "ui_verify_since": MessageLookupByLibrary.simpleMessage("Από {date}."),
+      "ui_verify_step_ask": MessageLookupByLibrary.simpleMessage("Αίτηση"),
+      "ui_verify_step_ask_detail": MessageLookupByLibrary.simpleMessage(
+          "Ποιος είσαι, και ένας σύνδεσμος\nπου το αποδεικνύει"),
+      "ui_verify_step_badge": MessageLookupByLibrary.simpleMessage("Το σήμα"),
+      "ui_verify_step_badge_detail": MessageLookupByLibrary.simpleMessage(
+          "Δίπλα στο όνομά σου,\nόπου εμφανίζεται"),
+      "ui_verify_step_check":
+          MessageLookupByLibrary.simpleMessage("Ένας άνθρωπος\nελέγχει"),
+      "ui_verify_step_check_detail": MessageLookupByLibrary.simpleMessage(
+          "Κάποιος από την ομάδα\nανοίγει τους συνδέσμους σου"),
+      "ui_verify_title": MessageLookupByLibrary.simpleMessage("Επαλήθευση"),
+      "ui_verify_waiting": MessageLookupByLibrary.simpleMessage(
+          "Το αίτημα {number} το εξετάζει ένας άνθρωπος"),
+      "ui_verify_waiting_detail": MessageLookupByLibrary.simpleMessage(
+          "Στάλθηκε {date}, ως {category}. Θα λάβεις ειδοποίηση όταν αποφασιστεί."),
+      "ui_verify_withdraw":
+          MessageLookupByLibrary.simpleMessage("Απόσυρση αιτήματος"),
+      "ui_verify_withdrawn":
+          MessageLookupByLibrary.simpleMessage("Το αίτημα αποσύρθηκε."),
+      "ui_voice_finish_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η ολοκλήρωση της εγγραφής: {error}"),
+      "ui_voice_limit": MessageLookupByLibrary.simpleMessage("Έως δέκα λεπτά."),
+      "ui_voice_listening": MessageLookupByLibrary.simpleMessage("Ακούω…"),
+      "ui_voice_no_mic": MessageLookupByLibrary.simpleMessage(
+          "Το Kyron χρειάζεται άδεια για το μικρόφωνο για να ηχογραφήσει. Μπορείς να τη δώσεις στις ρυθμίσεις της συσκευής."),
+      "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η έναρξη της εγγραφής: {error}"),
     };
 
 final messageLookup = MessageLookup();

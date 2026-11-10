@@ -29,8 +29,10 @@ import '../widgets/toast.dart';
 // Dates are in the reader's way of writing them when a locale is given. The
 // team's screens give none and keep "3 Nov 2026".
 
-final _day = DateFormat('d MMM y');
-final _moment = DateFormat('d MMM y, HH:mm');
+// en_US named outright: the default locale is whatever Intl.defaultLocale
+// is when these are first used, and a bare 'en' has no date data loaded.
+final _day = DateFormat('d MMM y', 'en_US');
+final _moment = DateFormat('d MMM y, HH:mm', 'en_US');
 
 /// A day, "3 Nov 2026", in the reader's way of writing one when [locale] is
 /// given.
