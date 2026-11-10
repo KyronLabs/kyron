@@ -50,3 +50,25 @@ key -- which is public by design and is compiled into the app.
 the default privilege that keeps handing them out. **A new Prisma model still
 needs checking**: the default privilege is fixed, but it is worth running the
 security advisor after a migration adds a table.
+
+## History is recorded
+
+`supabase_migrations.schema_migrations` lists every file in `migrations/`.
+Two (2026-08-30) were applied by hand and recorded afterwards, and the
+lock-down file is named for the version the project recorded when it was
+applied. The 2026-08-30 revoke names three functions that have since been
+dropped, so it would not apply to a fresh project as it stands.
+
+## Default privileges
+
+`supabase_admin`'s default privileges in `public` still grant everything to
+`anon` on new tables. Prisma creates its tables as `postgres`, whose default
+was revoked, so nothing the API adds is exposed -- but a table created from
+the dashboard (which acts as `supabase_admin`) would be. Create tables
+through a migration, and run the security advisor after one.
+
+## Storage
+
+`kyron-media` and `kyron-private` accept at most 25 MiB, of the types
+`MediaService` accepts. Change both together: the bucket refuses what the
+API would have taken, and the API's message is the one people see.
