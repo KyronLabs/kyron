@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Opptil ti minutter.",
   "ui_voice_listening": "Lytter …",
   "ui_voice_no_mic": "Kyron trenger tillatelse til å bruke mikrofonen for å ta opp. Du kan gi den i enhetsinnstillingene.",
-  "ui_voice_start_failed": "Kunne ikke starte opptaket: {error}"
+  "ui_voice_start_failed": "Kunne ikke starte opptaket: {error}",
+  "ui_2fa_title": "Totrinnspålogging",
+  "ui_2fa_help": "En autentiseringskode for verktøy for ansatte",
+  "ui_2fa_intro": "Verktøy for ansatte ber om en kode fra en autentiseringsapp i tillegg til påloggingen din, slik at et stjålet passord alene ikke kan bruke dem.",
+  "ui_2fa_on": "Totrinnspålogging er på.",
+  "ui_2fa_remove": "Fjern",
+  "ui_2fa_set_up": "Konfigurer",
+  "ui_2fa_scan": "Skann dette med autentiseringsappen din, eller skriv inn nøkkelen nedenfor. Legg den til i to apper hvis du kan: mister du den eneste, må du be brukerstøtte om å fjerne den.",
+  "ui_2fa_key": "Oppsettsnøkkel",
+  "ui_2fa_copied": "Oppsettsnøkkel kopiert",
+  "ui_2fa_confirm": "Bekreft",
+  "ui_2fa_failed": "Kunne ikke starte oppsettet. Prøv igjen.",
+  "ui_2fa_wrong": "Den koden fungerte ikke. Sjekk klokkeslettet på telefonen og prøv igjen.",
+  "ui_2fa_code": "6-sifret kode",
+  "ui_2fa_enter": "Skriv inn koden fra autentiseringsappen din",
+  "ui_2fa_verify": "Bekreft",
+  "ui_password_breached": "Dette passordet har dukket opp i en datalekkasje, så det er blant de første angripere prøver. Velg et annet."
 }

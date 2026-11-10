@@ -2343,6 +2343,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron cần quyền dùng micrô để ghi âm. Bạn có thể cấp quyền trong cài đặt thiết bị."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Không thể bắt đầu ghi âm: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Đăng nhập hai bước"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Mã trình xác thực cho công cụ nhân viên"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Công cụ nhân viên yêu cầu mã từ ứng dụng xác thực ngoài việc đăng nhập, để chỉ một mật khẩu bị đánh cắp thì không thể dùng được."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Đăng nhập hai bước đang bật."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Gỡ bỏ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Thiết lập"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Quét mã này bằng ứng dụng xác thực, hoặc nhập khóa bên dưới. Hãy thêm vào hai ứng dụng nếu có thể: mất ứng dụng duy nhất nghĩa là phải nhờ bộ phận hỗ trợ gỡ bỏ."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Khóa thiết lập"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Đã sao chép khóa thiết lập"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Không thể bắt đầu thiết lập. Hãy thử lại."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Mã đó không đúng. Hãy kiểm tra giờ trên điện thoại và thử lại."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Mã 6 chữ số"),
+      "ui_2fa_enter":
+          MessageLookupByLibrary.simpleMessage("Nhập mã từ ứng dụng xác thực"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Xác minh"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Mật khẩu này đã xuất hiện trong một vụ rò rỉ dữ liệu, nên là một trong những mật khẩu kẻ tấn công thử đầu tiên. Hãy chọn mật khẩu khác."),
     };
 
 final messageLookup = MessageLookup();

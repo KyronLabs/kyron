@@ -14,6 +14,7 @@ import '../repositories/auth_repository.dart';
 import '../utils/api_error_message.dart';
 import '../config/legal_links.dart';
 import '../services/app_browser.dart';
+import '../services/pwned_passwords.dart';
 import '../utils/validators.dart';
 import '../widgets/kyron_app_bar.dart';
 
@@ -46,6 +47,18 @@ class _SignupScreenState extends State<SignupScreen> {
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _isLoading = true);
+
+    // Before the account exists rather than after: refusing a breached
+    // password later would leave somebody signed in with it.
+    if (await PwnedPasswords().isBreached(_password.text.trim())) {
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(_breachedMessage(context))),
+      );
+      return;
+    }
+    if (!mounted) return;
 
     try {
       final repo = AuthRepository();
@@ -209,3 +222,10 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 }
+
+String _breachedMessage(BuildContext context) =>
+    AppLocalizations.of(context).ui(
+      'ui_password_breached',
+      'This password has appeared in a data breach, so it is one of the first '
+          'that attackers try. Choose a different one.',
+    );

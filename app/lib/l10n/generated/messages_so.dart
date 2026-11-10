@@ -2398,6 +2398,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron wuxuu u baahan yahay ogolaanshaha makarafoonka si uu u duubo. Waxaad ka bixin kartaa dejinta qalabkaaga."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Lama bilaabi karin duubista: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Gelitaan laba-tallaabo ah"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Koodh xaqiijiye oo loogu talagalay qalabka shaqaalaha"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Qalabka shaqaaluhu waxay weydiiyaan koodh ka yimaada app xaqiijin ah marka lagu daro gelitaankaaga, si erey sir ah oo la xaday kaligiis aanu u isticmaalin."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Gelitaanka laba-tallaabo ah waa shidan yahay."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Ka saar"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Diyaari"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Ku iskaan garee tan app-kaaga xaqiijinta, ama geli furaha hoose. Ku dar laba app haddii aad awoodid: lumitaanka midka kaliya ee aad haysato macnaheedu waa inaad taageerada ka codsato inay ka saaraan."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Furaha diyaarinta"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Furaha diyaarinta waa la koobiyeeyay"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Xaqiiji"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Diyaarinta lama bilaabi karin. Isku day mar kale."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Koodhkaas ma shaqayn. Hubi waqtiga taleefankaaga oo isku day mar kale."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Koodh 6-god ah"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Geli koodhka app-kaaga xaqiijinta"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Xaqiiji"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Eraygan sirta ah wuxuu ka soo muuqday xog la daadiyay, markaa waa mid ka mid ah kuwa ugu horreeya ee weerarlayaashu isku dayaan. Dooro mid kale."),
     };
 
 final messageLookup = MessageLookup();

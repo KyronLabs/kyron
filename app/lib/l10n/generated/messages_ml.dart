@@ -2430,6 +2430,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "റെക്കോർഡ് ചെയ്യാൻ Kyron-ന് മൈക്രോഫോൺ അനുമതി വേണം. ഉപകരണ ക്രമീകരണങ്ങളിൽ അത് നൽകാം."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "റെക്കോർഡിംഗ് തുടങ്ങാനായില്ല: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("രണ്ട്-ഘട്ട സൈൻ-ഇൻ"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "സ്റ്റാഫ് ടൂളുകൾക്കുള്ള ഓതന്റിക്കേറ്റർ കോഡ്"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "സ്റ്റാഫ് ടൂളുകൾ നിങ്ങളുടെ സൈൻ-ഇന്നിനൊപ്പം ഒരു ഓതന്റിക്കേറ്റർ ആപ്പിലെ കോഡും ചോദിക്കുന്നു, അതിനാൽ മോഷ്ടിച്ച പാസ്‌വേഡ് മാത്രം കൊണ്ട് അവ ഉപയോഗിക്കാനാകില്ല."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("രണ്ട്-ഘട്ട സൈൻ-ഇൻ ഓണാണ്."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("നീക്കം ചെയ്യുക"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("സജ്ജമാക്കുക"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "ഇത് നിങ്ങളുടെ ഓതന്റിക്കേറ്റർ ആപ്പ് ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക, അല്ലെങ്കിൽ താഴെയുള്ള കീ നൽകുക. കഴിയുമെങ്കിൽ രണ്ട് ആപ്പുകളിൽ ചേർക്കുക: ഏക ആപ്പ് നഷ്ടപ്പെട്ടാൽ അത് നീക്കം ചെയ്യാൻ സപ്പോർട്ടിനോട് ആവശ്യപ്പെടേണ്ടിവരും."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("സജ്ജീകരണ കീ"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("സജ്ജീകരണ കീ പകർത്തി"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("സ്ഥിരീകരിക്കുക"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "സജ്ജീകരണം ആരംഭിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ആ കോഡ് പ്രവർത്തിച്ചില്ല. ഫോണിലെ സമയം പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 അക്ക കോഡ്"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "നിങ്ങളുടെ ഓതന്റിക്കേറ്റർ ആപ്പിലെ കോഡ് നൽകുക"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("പരിശോധിക്കുക"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ഈ പാസ്‌വേഡ് ഒരു ഡാറ്റാ ചോർച്ചയിൽ കണ്ടിട്ടുണ്ട്, അതിനാൽ ആക്രമണകാരികൾ ആദ്യം ശ്രമിക്കുന്നവയിൽ ഒന്നാണ് ഇത്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക."),
     };
 
 final messageLookup = MessageLookup();

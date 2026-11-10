@@ -2371,6 +2371,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron ir nepieciešama atļauja izmantot mikrofonu ierakstīšanai. To vari piešķirt ierīces iestatījumos."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Neizdevās sākt ierakstu: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Divpakāpju pierakstīšanās"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Autentifikatora kods komandas rīkiem"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Komandas rīki papildus pierakstīšanās prasa arī kodu no autentifikācijas lietotnes, lai ar nozagtu paroli vien tos nevarētu izmantot."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Divpakāpju pierakstīšanās ir ieslēgta."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Noņemt"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Iestatīt"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Noskenējiet šo ar autentifikācijas lietotni vai ievadiet tālāk norādīto atslēgu. Ja varat, pievienojiet to divām lietotnēm: pazaudējot vienīgo, būs jālūdz atbalsta dienestam to noņemt."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Iestatīšanas atslēga"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Iestatīšanas atslēga nokopēta"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Apstiprināt"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Neizdevās sākt iestatīšanu. Mēģiniet vēlreiz."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Šis kods nederēja. Pārbaudiet laiku tālrunī un mēģiniet vēlreiz."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 ciparu kods"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Ievadiet kodu no autentifikācijas lietotnes"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Pārbaudīt"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Šī parole ir parādījusies datu noplūdē, tāpēc tā ir viena no pirmajām, ko izmēģina uzbrucēji. Izvēlieties citu."),
     };
 
 final messageLookup = MessageLookup();

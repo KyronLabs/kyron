@@ -2354,6 +2354,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron inahitaji ruhusa ya maikrofoni ili kurekodi. Unaweza kuitoa kwenye mipangilio ya kifaa chako."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Imeshindwa kuanza kurekodi: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Kuingia kwa hatua mbili"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Msimbo wa kithibitishaji kwa zana za wafanyakazi"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Zana za wafanyakazi zinaomba msimbo kutoka programu ya kithibitishaji pamoja na kuingia kwako, ili nenosiri lililoibwa pekee lisiweze kuzitumia."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Kuingia kwa hatua mbili kumewashwa."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Ondoa"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Weka"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Changanua hii kwa programu yako ya kithibitishaji, au weka ufunguo ulio hapa chini. Iongeze kwenye programu mbili ukiweza: kupoteza ile pekee uliyonayo kunamaanisha kuomba usaidizi uiondoe."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Ufunguo wa kuweka"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Ufunguo wa kuweka umenakiliwa"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Thibitisha"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Imeshindwa kuanza kuweka. Jaribu tena."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Msimbo huo haukufanya kazi. Angalia saa kwenye simu yako kisha ujaribu tena."),
+      "ui_2fa_code":
+          MessageLookupByLibrary.simpleMessage("Msimbo wa tarakimu 6"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Weka msimbo kutoka programu yako ya kithibitishaji"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Thibitisha"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Nenosiri hili limeonekana katika uvujaji wa data, kwa hivyo ni kati ya ya kwanza ambayo washambuliaji hujaribu. Chagua lingine."),
     };
 
 final messageLookup = MessageLookup();

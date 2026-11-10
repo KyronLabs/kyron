@@ -2351,6 +2351,29 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ለመቅዳት Kyron የማይክሮፎን ፈቃድ ያስፈልገዋል። በመሣሪያ ቅንብሮችዎ ውስጥ መስጠት ይችላሉ።"),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("ቀረጻውን መጀመር አልተቻለም፦ {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("ባለሁለት ደረጃ መግቢያ"),
+      "ui_2fa_help":
+          MessageLookupByLibrary.simpleMessage("ለሠራተኛ መሣሪያዎች የአረጋጋጭ ኮድ"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "የሠራተኛ መሣሪያዎች ከመግቢያዎ በተጨማሪ ከአረጋጋጭ መተግበሪያ ኮድ ይጠይቃሉ፤ ስለዚህ የተሰረቀ የይለፍ ቃል ብቻውን ሊጠቀምባቸው አይችልም።"),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage("ባለሁለት ደረጃ መግቢያ በርቷል።"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("አስወግድ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("አዋቅር"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "ይህን በአረጋጋጭ መተግበሪያዎ ይቃኙ፣ ወይም ከታች ያለውን ቁልፍ ያስገቡ። ከቻሉ በሁለት መተግበሪያዎች ያክሉት፤ ብቸኛውን ካጡ እንዲወገድ ድጋፍን መጠየቅ ይኖርብዎታል።"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("የማዋቀሪያ ቁልፍ"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("የማዋቀሪያ ቁልፍ ተቀድቷል"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("አረጋግጥ"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "ማዋቀሩን መጀመር አልተቻለም። እንደገና ይሞክሩ።"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ያ ኮድ አልሠራም። በስልክዎ ላይ ያለውን ሰዓት ያረጋግጡና እንደገና ይሞክሩ።"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("ባለ6 አሃዝ ኮድ"),
+      "ui_2fa_enter":
+          MessageLookupByLibrary.simpleMessage("ከአረጋጋጭ መተግበሪያዎ ኮዱን ያስገቡ"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("አረጋግጥ"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ይህ የይለፍ ቃል በመረጃ ጥሰት ውስጥ ታይቷል፤ ስለዚህ አጥቂዎች መጀመሪያ ከሚሞክሯቸው አንዱ ነው። ሌላ ይምረጡ።"),
     };
 
 final messageLookup = MessageLookup();

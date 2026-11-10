@@ -2833,6 +2833,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron needs permission to use the microphone to record. You can grant it in your device settings."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Could not start recording: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Two-step sign-in"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "An authenticator code for staff tools"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Staff tools ask for a code from an authenticator app as well as your sign-in, so a stolen password alone cannot use them."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Two-step sign-in is on."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Remove"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Set up"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scan this with your authenticator app, or enter the key below. Add it to two apps if you can: losing your only one means asking support to remove it."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Setup key"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("Setup key copied"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Couldn't start setup. Try again."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "That code didn't work. Check the time on your phone and try again."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-digit code"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Enter the code from your authenticator app"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verify"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "This password has appeared in a data breach, so it is one of the first that attackers try. Choose a different one."),
     };
 
 final messageLookup = MessageLookup();

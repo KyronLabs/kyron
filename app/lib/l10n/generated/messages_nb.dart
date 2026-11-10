@@ -2328,6 +2328,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron trenger tillatelse til å bruke mikrofonen for å ta opp. Du kan gi den i enhetsinnstillingene."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Kunne ikke starte opptaket: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Totrinnspålogging"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "En autentiseringskode for verktøy for ansatte"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Verktøy for ansatte ber om en kode fra en autentiseringsapp i tillegg til påloggingen din, slik at et stjålet passord alene ikke kan bruke dem."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Totrinnspålogging er på."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Fjern"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Konfigurer"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Skann dette med autentiseringsappen din, eller skriv inn nøkkelen nedenfor. Legg den til i to apper hvis du kan: mister du den eneste, må du be brukerstøtte om å fjerne den."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Oppsettsnøkkel"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Oppsettsnøkkel kopiert"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Bekreft"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Kunne ikke starte oppsettet. Prøv igjen."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Den koden fungerte ikke. Sjekk klokkeslettet på telefonen og prøv igjen."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-sifret kode"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Skriv inn koden fra autentiseringsappen din"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Bekreft"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Dette passordet har dukket opp i en datalekkasje, så det er blant de første angripere prøver. Velg et annet."),
     };
 
 final messageLookup = MessageLookup();

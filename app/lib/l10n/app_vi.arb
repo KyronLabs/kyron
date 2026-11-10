@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Tối đa mười phút.",
   "ui_voice_listening": "Đang nghe…",
   "ui_voice_no_mic": "Kyron cần quyền dùng micrô để ghi âm. Bạn có thể cấp quyền trong cài đặt thiết bị.",
-  "ui_voice_start_failed": "Không thể bắt đầu ghi âm: {error}"
+  "ui_voice_start_failed": "Không thể bắt đầu ghi âm: {error}",
+  "ui_2fa_title": "Đăng nhập hai bước",
+  "ui_2fa_help": "Mã trình xác thực cho công cụ nhân viên",
+  "ui_2fa_intro": "Công cụ nhân viên yêu cầu mã từ ứng dụng xác thực ngoài việc đăng nhập, để chỉ một mật khẩu bị đánh cắp thì không thể dùng được.",
+  "ui_2fa_on": "Đăng nhập hai bước đang bật.",
+  "ui_2fa_remove": "Gỡ bỏ",
+  "ui_2fa_set_up": "Thiết lập",
+  "ui_2fa_scan": "Quét mã này bằng ứng dụng xác thực, hoặc nhập khóa bên dưới. Hãy thêm vào hai ứng dụng nếu có thể: mất ứng dụng duy nhất nghĩa là phải nhờ bộ phận hỗ trợ gỡ bỏ.",
+  "ui_2fa_key": "Khóa thiết lập",
+  "ui_2fa_copied": "Đã sao chép khóa thiết lập",
+  "ui_2fa_confirm": "Xác nhận",
+  "ui_2fa_failed": "Không thể bắt đầu thiết lập. Hãy thử lại.",
+  "ui_2fa_wrong": "Mã đó không đúng. Hãy kiểm tra giờ trên điện thoại và thử lại.",
+  "ui_2fa_code": "Mã 6 chữ số",
+  "ui_2fa_enter": "Nhập mã từ ứng dụng xác thực",
+  "ui_2fa_verify": "Xác minh",
+  "ui_password_breached": "Mật khẩu này đã xuất hiện trong một vụ rò rỉ dữ liệu, nên là một trong những mật khẩu kẻ tấn công thử đầu tiên. Hãy chọn mật khẩu khác."
 }

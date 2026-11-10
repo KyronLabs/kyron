@@ -2389,6 +2389,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron reikia leidimo naudoti mikrofoną įrašymui. Jį galite suteikti įrenginio nustatymuose."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nepavyko pradėti įrašymo: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage(
+          "Prisijungimas dviem žingsniais"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Autentifikatoriaus kodas komandos įrankiams"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Komandos įrankiai be prisijungimo prašo ir kodo iš autentifikavimo programėlės, kad vien pavogto slaptažodžio nepakaktų jais naudotis."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Prisijungimas dviem žingsniais įjungtas."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Pašalinti"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Nustatyti"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Nuskenuokite tai autentifikavimo programėle arba įveskite toliau pateiktą raktą. Jei galite, pridėkite jį prie dviejų programėlių: praradus vienintelę teks prašyti pagalbos tarnybos jį pašalinti."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Nustatymo raktas"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Nustatymo raktas nukopijuotas"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Patvirtinti"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nepavyko pradėti nustatymo. Bandykite dar kartą."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Šis kodas netiko. Patikrinkite laiką telefone ir bandykite dar kartą."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 skaitmenų kodas"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Įveskite kodą iš autentifikavimo programėlės"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Patikrinti"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Šis slaptažodis pasirodė duomenų nutekėjime, todėl jis vienas pirmųjų, kuriuos bando užpuolikai. Pasirinkite kitą."),
     };
 
 final messageLookup = MessageLookup();

@@ -2356,6 +2356,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron potrebuje povolenie používať mikrofón na nahrávanie. Udeliť ho môžete v nastaveniach zariadenia."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nahrávanie sa nepodarilo spustiť: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Dvojstupňové prihlásenie"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Kód z overovacej aplikácie pre nástroje tímu"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Nástroje tímu vyžadujú okrem prihlásenia aj kód z overovacej aplikácie, takže samotné ukradnuté heslo na ich použitie nestačí."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Dvojstupňové prihlásenie je zapnuté."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Odstrániť"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Nastaviť"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Naskenujte to overovacou aplikáciou alebo zadajte kľúč nižšie. Ak môžete, pridajte ho do dvoch aplikácií: strata tej jedinej znamená žiadať podporu o jeho odstránenie."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Kľúč na nastavenie"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Kľúč na nastavenie bol skopírovaný"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Potvrdiť"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nastavenie sa nepodarilo spustiť. Skúste to znova."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Tento kód nefungoval. Skontrolujte čas v telefóne a skúste to znova."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-miestny kód"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Zadajte kód z overovacej aplikácie"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Overiť"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Toto heslo sa objavilo v úniku údajov, takže patrí medzi prvé, ktoré útočníci skúšajú. Zvoľte iné."),
     };
 
 final messageLookup = MessageLookup();

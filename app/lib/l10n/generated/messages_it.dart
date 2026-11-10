@@ -2376,6 +2376,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron ha bisogno dell'autorizzazione a usare il microfono per registrare. Puoi concederla nelle impostazioni del dispositivo."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Impossibile avviare la registrazione: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Accesso in due passaggi"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Un codice di autenticazione per gli strumenti del team"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Gli strumenti del team chiedono un codice da un’app di autenticazione oltre al tuo accesso, così una password rubata da sola non basta per usarli."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "L’accesso in due passaggi è attivo."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Rimuovi"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Configura"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scansiona questo con la tua app di autenticazione o inserisci la chiave qui sotto. Aggiungila a due app se puoi: perdere l’unica che hai significa chiedere all’assistenza di rimuoverla."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Chiave di configurazione"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Chiave di configurazione copiata"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Conferma"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossibile avviare la configurazione. Riprova."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Quel codice non ha funzionato. Controlla l’ora del telefono e riprova."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Codice a 6 cifre"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Inserisci il codice dalla tua app di autenticazione"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Questa password è comparsa in una violazione di dati, quindi è tra le prime che gli aggressori provano. Scegline un’altra."),
     };
 
 final messageLookup = MessageLookup();

@@ -2354,6 +2354,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron memerlukan izin mikrofon untuk merekam. Kamu bisa memberikannya di pengaturan perangkat."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Tidak dapat mulai merekam: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Masuk dua langkah"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Kode autentikator untuk alat staf"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Alat staf meminta kode dari aplikasi autentikator selain proses masuk Anda, sehingga kata sandi curian saja tidak bisa menggunakannya."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Masuk dua langkah aktif."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Hapus"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Siapkan"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Pindai ini dengan aplikasi autentikator Anda, atau masukkan kunci di bawah. Tambahkan ke dua aplikasi jika bisa: kehilangan satu-satunya berarti harus meminta dukungan untuk menghapusnya."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Kunci penyiapan"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Kunci penyiapan disalin"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Konfirmasi"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Tidak dapat memulai penyiapan. Coba lagi."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Kode itu tidak berhasil. Periksa waktu di ponsel Anda dan coba lagi."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Kode 6 digit"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Masukkan kode dari aplikasi autentikator Anda"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifikasi"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Kata sandi ini pernah muncul dalam kebocoran data, jadi termasuk yang pertama dicoba penyerang. Pilih yang lain."),
     };
 
 final messageLookup = MessageLookup();

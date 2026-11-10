@@ -2627,6 +2627,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "রেকর্ড করতে Kyron-এর মাইক্রোফোন ব্যবহারের অনুমতি দরকার। ডিভাইসের সেটিংসে আপনি এটি দিতে পারেন।"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "রেকর্ডিং শুরু করা যায়নি: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("দুই-ধাপে সাইন-ইন"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "কর্মী টুলের জন্য একটি অথেন্টিকেটর কোড"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "কর্মী টুলগুলি আপনার সাইন-ইনের পাশাপাশি একটি অথেন্টিকেটর অ্যাপের কোডও চায়, যাতে শুধু চুরি হওয়া পাসওয়ার্ড দিয়ে সেগুলি ব্যবহার করা না যায়।"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("দুই-ধাপে সাইন-ইন চালু আছে।"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("সরান"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("সেট আপ করুন"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "আপনার অথেন্টিকেটর অ্যাপ দিয়ে এটি স্ক্যান করুন, অথবা নিচের কী লিখুন। পারলে দুটি অ্যাপে যোগ করুন: একমাত্রটি হারালে সেটি সরাতে সাপোর্টের কাছে অনুরোধ করতে হবে।"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("সেটআপ কী"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("সেটআপ কী কপি করা হয়েছে"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("নিশ্চিত করুন"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "সেটআপ শুরু করা যায়নি। আবার চেষ্টা করুন।"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ওই কোডটি কাজ করেনি। আপনার ফোনের সময় দেখে আবার চেষ্টা করুন।"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("৬-সংখ্যার কোড"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "আপনার অথেন্টিকেটর অ্যাপের কোডটি লিখুন"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("যাচাই করুন"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "এই পাসওয়ার্ডটি একটি ডেটা ফাঁসে দেখা গেছে, তাই আক্রমণকারীরা প্রথমেই যেগুলি চেষ্টা করে এটি তার একটি। অন্য একটি বেছে নিন।"),
     };
 
 final messageLookup = MessageLookup();

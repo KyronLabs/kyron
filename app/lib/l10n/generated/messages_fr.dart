@@ -2424,6 +2424,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron a besoin de l'autorisation d'utiliser le micro pour enregistrer. Vous pouvez l'accorder dans les réglages de votre appareil."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Impossible de démarrer l'enregistrement : {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Connexion en deux étapes"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Un code d’authentification pour les outils de l’équipe"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Les outils de l’équipe demandent un code d’une application d’authentification en plus de votre connexion, pour qu’un mot de passe volé ne suffise pas à lui seul."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "La connexion en deux étapes est activée."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Supprimer"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Configurer"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scannez ceci avec votre application d’authentification ou saisissez la clé ci-dessous. Ajoutez-la à deux applications si possible : perdre la seule que vous avez oblige à demander au support de la supprimer."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Clé de configuration"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Clé de configuration copiée"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Confirmer"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Impossible de lancer la configuration. Réessayez."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Ce code n’a pas fonctionné. Vérifiez l’heure de votre téléphone et réessayez."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Code à 6 chiffres"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Saisissez le code de votre application d’authentification"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Vérifier"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Ce mot de passe est apparu dans une fuite de données, c’est donc l’un des premiers que les attaquants essaient. Choisissez-en un autre."),
     };
 
 final messageLookup = MessageLookup();

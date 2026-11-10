@@ -2364,6 +2364,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron tarvitsee luvan käyttää mikrofonia tallentaakseen. Voit antaa sen laitteen asetuksista."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Tallennusta ei voitu aloittaa: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Kaksivaiheinen kirjautuminen"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Todennuskoodi henkilökunnan työkaluihin"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Henkilökunnan työkalut pyytävät kirjautumisen lisäksi koodin todennussovelluksesta, joten pelkällä varastetulla salasanalla niitä ei voi käyttää."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Kaksivaiheinen kirjautuminen on käytössä."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Poista"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Ota käyttöön"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Skannaa tämä todennussovelluksellasi tai syötä alla oleva avain. Lisää se kahteen sovellukseen, jos voit: ainoan menettäminen tarkoittaa, että tuen täytyy poistaa se."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Asetusavain"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Asetusavain kopioitu"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Vahvista"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Käyttöönottoa ei voitu aloittaa. Yritä uudelleen."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Koodi ei toiminut. Tarkista puhelimesi kellonaika ja yritä uudelleen."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-numeroinen koodi"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Syötä koodi todennussovelluksestasi"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Vahvista"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Tämä salasana on näkynyt tietovuodossa, joten se on ensimmäisiä, joita hyökkääjät kokeilevat. Valitse toinen."),
     };
 
 final messageLookup = MessageLookup();

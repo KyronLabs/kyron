@@ -2386,6 +2386,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron потрібен дозвіл на мікрофон для запису. Його можна надати в налаштуваннях пристрою."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Не вдалося почати запис: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Двоетапний вхід"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Код з автентифікатора для інструментів команди"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Інструменти команди, крім входу, запитують код із застосунку-автентифікатора, щоб одного викраденого пароля було недостатньо."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Двоетапний вхід увімкнено."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Видалити"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Налаштувати"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Відскануйте це застосунком-автентифікатором або введіть ключ нижче. Якщо можете, додайте його у два застосунки: втративши єдиний, доведеться просити підтримку видалити його."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Ключ налаштування"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Ключ налаштування скопійовано"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Підтвердити"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Не вдалося почати налаштування. Спробуйте ще раз."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Цей код не спрацював. Перевірте час на телефоні та спробуйте ще раз."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-значний код"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Введіть код із застосунку-автентифікатора"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Перевірити"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Цей пароль траплявся у витоку даних, тож зловмисники пробують його одним із перших. Виберіть інший."),
     };
 
 final messageLookup = MessageLookup();

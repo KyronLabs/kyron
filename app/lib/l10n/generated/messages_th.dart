@@ -2271,6 +2271,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron ต้องได้รับอนุญาตให้ใช้ไมโครโฟนเพื่อบันทึก คุณให้สิทธิ์ได้ในการตั้งค่าของอุปกรณ์"),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("เริ่มบันทึกไม่ได้: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("การลงชื่อเข้าใช้แบบสองขั้นตอน"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "รหัสจากแอปยืนยันตัวตนสำหรับเครื่องมือทีมงาน"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "เครื่องมือทีมงานต้องใช้รหัสจากแอปยืนยันตัวตนนอกเหนือจากการลงชื่อเข้าใช้ เพื่อไม่ให้รหัสผ่านที่ถูกขโมยเพียงอย่างเดียวใช้งานได้"),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "เปิดการลงชื่อเข้าใช้แบบสองขั้นตอนแล้ว"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("นำออก"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("ตั้งค่า"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "สแกนสิ่งนี้ด้วยแอปยืนยันตัวตน หรือป้อนคีย์ด้านล่าง หากทำได้ให้เพิ่มไว้ในสองแอป เพราะถ้าทำแอปเดียวที่มีหาย จะต้องขอให้ฝ่ายสนับสนุนนำออกให้"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("คีย์ตั้งค่า"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("คัดลอกคีย์ตั้งค่าแล้ว"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("ยืนยัน"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "เริ่มการตั้งค่าไม่ได้ ลองอีกครั้ง"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "รหัสนั้นใช้ไม่ได้ ตรวจสอบเวลาบนโทรศัพท์แล้วลองอีกครั้ง"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("รหัส 6 หลัก"),
+      "ui_2fa_enter":
+          MessageLookupByLibrary.simpleMessage("ป้อนรหัสจากแอปยืนยันตัวตน"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("ตรวจสอบ"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "รหัสผ่านนี้เคยปรากฏในข้อมูลรั่วไหล จึงเป็นหนึ่งในรหัสแรก ๆ ที่ผู้โจมตีลองใช้ โปรดเลือกรหัสอื่น"),
     };
 
 final messageLookup = MessageLookup();

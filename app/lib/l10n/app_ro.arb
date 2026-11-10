@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Până la zece minute.",
   "ui_voice_listening": "Se ascultă…",
   "ui_voice_no_mic": "Kyron are nevoie de permisiunea de a folosi microfonul pentru a înregistra. O poți acorda din setările dispozitivului.",
-  "ui_voice_start_failed": "Nu am putut porni înregistrarea: {error}"
+  "ui_voice_start_failed": "Nu am putut porni înregistrarea: {error}",
+  "ui_2fa_title": "Conectare în doi pași",
+  "ui_2fa_help": "Un cod de autentificare pentru instrumentele echipei",
+  "ui_2fa_intro": "Instrumentele echipei cer, pe lângă conectare, un cod dintr-o aplicație de autentificare, astfel încât o parolă furată să nu fie suficientă singură.",
+  "ui_2fa_on": "Conectarea în doi pași este activată.",
+  "ui_2fa_remove": "Elimină",
+  "ui_2fa_set_up": "Configurează",
+  "ui_2fa_scan": "Scanează asta cu aplicația de autentificare sau introdu cheia de mai jos. Adaug-o în două aplicații dacă poți: dacă o pierzi pe singura, va trebui să ceri asistenței să o elimine.",
+  "ui_2fa_key": "Cheie de configurare",
+  "ui_2fa_copied": "Cheia de configurare a fost copiată",
+  "ui_2fa_confirm": "Confirmă",
+  "ui_2fa_failed": "Configurarea nu a putut porni. Încearcă din nou.",
+  "ui_2fa_wrong": "Codul nu a funcționat. Verifică ora de pe telefon și încearcă din nou.",
+  "ui_2fa_code": "Cod din 6 cifre",
+  "ui_2fa_enter": "Introdu codul din aplicația de autentificare",
+  "ui_2fa_verify": "Verifică",
+  "ui_password_breached": "Această parolă a apărut într-o scurgere de date, deci e printre primele pe care le încearcă atacatorii. Alege alta."
 }

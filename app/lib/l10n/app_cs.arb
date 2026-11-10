@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Až deset minut.",
   "ui_voice_listening": "Poslouchám…",
   "ui_voice_no_mic": "Kyron potřebuje oprávnění používat mikrofon k nahrávání. Udělit ho můžete v nastavení zařízení.",
-  "ui_voice_start_failed": "Nahrávání se nepodařilo spustit: {error}"
+  "ui_voice_start_failed": "Nahrávání se nepodařilo spustit: {error}",
+  "ui_2fa_title": "Dvoufázové přihlášení",
+  "ui_2fa_help": "Kód z ověřovací aplikace pro nástroje týmu",
+  "ui_2fa_intro": "Nástroje týmu vyžadují kromě přihlášení i kód z ověřovací aplikace, takže samotné ukradené heslo k jejich použití nestačí.",
+  "ui_2fa_on": "Dvoufázové přihlášení je zapnuté.",
+  "ui_2fa_remove": "Odebrat",
+  "ui_2fa_set_up": "Nastavit",
+  "ui_2fa_scan": "Naskenujte to ověřovací aplikací nebo zadejte klíč níže. Pokud můžete, přidejte ho do dvou aplikací: ztráta té jediné znamená žádat podporu o jeho odebrání.",
+  "ui_2fa_key": "Klíč pro nastavení",
+  "ui_2fa_copied": "Klíč pro nastavení zkopírován",
+  "ui_2fa_confirm": "Potvrdit",
+  "ui_2fa_failed": "Nastavení se nepodařilo spustit. Zkuste to znovu.",
+  "ui_2fa_wrong": "Tento kód nefungoval. Zkontrolujte čas v telefonu a zkuste to znovu.",
+  "ui_2fa_code": "6místný kód",
+  "ui_2fa_enter": "Zadejte kód z ověřovací aplikace",
+  "ui_2fa_verify": "Ověřit",
+  "ui_password_breached": "Toto heslo se objevilo v úniku dat, takže patří k prvním, které útočníci zkoušejí. Zvolte jiné."
 }

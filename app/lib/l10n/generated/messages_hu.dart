@@ -2388,6 +2388,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "A Kyronnak engedély kell a mikrofon használatához a felvételhez. Ezt az eszköz beállításaiban adhatod meg."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nem sikerült elindítani a felvételt: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Kétlépcsős bejelentkezés"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Hitelesítőkód a csapat eszközeihez"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "A csapat eszközei a bejelentkezés mellett egy hitelesítő alkalmazás kódját is kérik, így egy ellopott jelszó önmagában nem elég a használatukhoz."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "A kétlépcsős bejelentkezés be van kapcsolva."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Eltávolítás"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Beállítás"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Olvasd be ezt a hitelesítő alkalmazással, vagy írd be az alábbi kulcsot. Ha tudod, add hozzá két alkalmazáshoz: ha az egyetlent elveszíted, a támogatást kell megkérned az eltávolítására."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Beállítási kulcs"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Beállítási kulcs másolva"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Megerősítés"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült elindítani a beállítást. Próbáld újra."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Ez a kód nem működött. Ellenőrizd az időt a telefonodon, és próbáld újra."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 jegyű kód"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Írd be a kódot a hitelesítő alkalmazásból"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ellenőrzés"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Ez a jelszó megjelent egy adatszivárgásban, ezért a támadók elsőként próbálják. Válassz másikat."),
     };
 
 final messageLookup = MessageLookup();

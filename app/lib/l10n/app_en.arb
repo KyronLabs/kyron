@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Up to ten minutes.",
   "ui_voice_listening": "Listening…",
   "ui_voice_no_mic": "Kyron needs permission to use the microphone to record. You can grant it in your device settings.",
-  "ui_voice_start_failed": "Could not start recording: {error}"
+  "ui_voice_start_failed": "Could not start recording: {error}",
+  "ui_2fa_title": "Two-step sign-in",
+  "ui_2fa_help": "An authenticator code for staff tools",
+  "ui_2fa_intro": "Staff tools ask for a code from an authenticator app as well as your sign-in, so a stolen password alone cannot use them.",
+  "ui_2fa_on": "Two-step sign-in is on.",
+  "ui_2fa_remove": "Remove",
+  "ui_2fa_set_up": "Set up",
+  "ui_2fa_scan": "Scan this with your authenticator app, or enter the key below. Add it to two apps if you can: losing your only one means asking support to remove it.",
+  "ui_2fa_key": "Setup key",
+  "ui_2fa_copied": "Setup key copied",
+  "ui_2fa_confirm": "Confirm",
+  "ui_2fa_failed": "Couldn't start setup. Try again.",
+  "ui_2fa_wrong": "That code didn't work. Check the time on your phone and try again.",
+  "ui_2fa_code": "6-digit code",
+  "ui_2fa_enter": "Enter the code from your authenticator app",
+  "ui_2fa_verify": "Verify",
+  "ui_password_breached": "This password has appeared in a data breach, so it is one of the first that attackers try. Choose a different one."
 }

@@ -2406,6 +2406,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron-ek mikrofonoa erabiltzeko baimena behar du grabatzeko. Gailuaren ezarpenetan eman dezakezu."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Ezin izan da grabatzen hasi: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Bi urratseko saio-hasiera"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Autentifikatzaile-kode bat taldearen tresnetarako"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Taldearen tresnek autentifikazio-aplikazio bateko kodea eskatzen dute saio-hasieraz gain, lapurtutako pasahitz bat bakarrik nahikoa izan ez dadin."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Bi urratseko saio-hasiera aktibatuta dago."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Kendu"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Konfiguratu"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Eskaneatu hau zure autentifikazio-aplikazioarekin, edo idatzi beheko gakoa. Gehitu bi aplikaziotan ahal baduzu: bakarra galtzen baduzu, laguntza-zerbitzuari kentzeko eskatu beharko diozu."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Konfigurazio-gakoa"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Konfigurazio-gakoa kopiatu da"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Berretsi"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Ezin izan da konfigurazioa hasi. Saiatu berriro."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Kode horrek ez du funtzionatu. Egiaztatu telefonoko ordua eta saiatu berriro."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 digituko kodea"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Idatzi zure autentifikazio-aplikazioko kodea"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Egiaztatu"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Pasahitz hau datu-filtrazio batean agertu da, beraz erasotzaileek lehenik probatzen dituztenetako bat da. Aukeratu beste bat."),
     };
 
 final messageLookup = MessageLookup();

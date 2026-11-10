@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Bis zu zehn Minuten.",
   "ui_voice_listening": "Hört zu …",
   "ui_voice_no_mic": "Kyron braucht die Berechtigung für das Mikrofon, um aufzunehmen. Du kannst sie in den Einstellungen deines Geräts erteilen.",
-  "ui_voice_start_failed": "Die Aufnahme konnte nicht gestartet werden: {error}"
+  "ui_voice_start_failed": "Die Aufnahme konnte nicht gestartet werden: {error}",
+  "ui_2fa_title": "Zweistufige Anmeldung",
+  "ui_2fa_help": "Ein Authenticator-Code für Team-Werkzeuge",
+  "ui_2fa_intro": "Team-Werkzeuge verlangen zusätzlich zur Anmeldung einen Code aus einer Authenticator-App, damit ein gestohlenes Passwort allein nicht reicht.",
+  "ui_2fa_on": "Die zweistufige Anmeldung ist aktiv.",
+  "ui_2fa_remove": "Entfernen",
+  "ui_2fa_set_up": "Einrichten",
+  "ui_2fa_scan": "Scanne dies mit deiner Authenticator-App oder gib den Schlüssel unten ein. Füge ihn wenn möglich zu zwei Apps hinzu: Verlierst du deine einzige, musst du den Support bitten, ihn zu entfernen.",
+  "ui_2fa_key": "Einrichtungsschlüssel",
+  "ui_2fa_copied": "Einrichtungsschlüssel kopiert",
+  "ui_2fa_confirm": "Bestätigen",
+  "ui_2fa_failed": "Die Einrichtung konnte nicht gestartet werden. Versuche es erneut.",
+  "ui_2fa_wrong": "Dieser Code hat nicht funktioniert. Prüfe die Uhrzeit auf deinem Handy und versuche es erneut.",
+  "ui_2fa_code": "6-stelliger Code",
+  "ui_2fa_enter": "Gib den Code aus deiner Authenticator-App ein",
+  "ui_2fa_verify": "Bestätigen",
+  "ui_password_breached": "Dieses Passwort ist in einem Datenleck aufgetaucht und gehört daher zu den ersten, die Angreifer ausprobieren. Wähle ein anderes."
 }

@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Enintään kymmenen minuuttia.",
   "ui_voice_listening": "Kuunnellaan…",
   "ui_voice_no_mic": "Kyron tarvitsee luvan käyttää mikrofonia tallentaakseen. Voit antaa sen laitteen asetuksista.",
-  "ui_voice_start_failed": "Tallennusta ei voitu aloittaa: {error}"
+  "ui_voice_start_failed": "Tallennusta ei voitu aloittaa: {error}",
+  "ui_2fa_title": "Kaksivaiheinen kirjautuminen",
+  "ui_2fa_help": "Todennuskoodi henkilökunnan työkaluihin",
+  "ui_2fa_intro": "Henkilökunnan työkalut pyytävät kirjautumisen lisäksi koodin todennussovelluksesta, joten pelkällä varastetulla salasanalla niitä ei voi käyttää.",
+  "ui_2fa_on": "Kaksivaiheinen kirjautuminen on käytössä.",
+  "ui_2fa_remove": "Poista",
+  "ui_2fa_set_up": "Ota käyttöön",
+  "ui_2fa_scan": "Skannaa tämä todennussovelluksellasi tai syötä alla oleva avain. Lisää se kahteen sovellukseen, jos voit: ainoan menettäminen tarkoittaa, että tuen täytyy poistaa se.",
+  "ui_2fa_key": "Asetusavain",
+  "ui_2fa_copied": "Asetusavain kopioitu",
+  "ui_2fa_confirm": "Vahvista",
+  "ui_2fa_failed": "Käyttöönottoa ei voitu aloittaa. Yritä uudelleen.",
+  "ui_2fa_wrong": "Koodi ei toiminut. Tarkista puhelimesi kellonaika ja yritä uudelleen.",
+  "ui_2fa_code": "6-numeroinen koodi",
+  "ui_2fa_enter": "Syötä koodi todennussovelluksestasi",
+  "ui_2fa_verify": "Vahvista",
+  "ui_password_breached": "Tämä salasana on näkynyt tietovuodossa, joten se on ensimmäisiä, joita hyökkääjät kokeilevat. Valitse toinen."
 }

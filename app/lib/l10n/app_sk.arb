@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Až desať minút.",
   "ui_voice_listening": "Počúvam…",
   "ui_voice_no_mic": "Kyron potrebuje povolenie používať mikrofón na nahrávanie. Udeliť ho môžete v nastaveniach zariadenia.",
-  "ui_voice_start_failed": "Nahrávanie sa nepodarilo spustiť: {error}"
+  "ui_voice_start_failed": "Nahrávanie sa nepodarilo spustiť: {error}",
+  "ui_2fa_title": "Dvojstupňové prihlásenie",
+  "ui_2fa_help": "Kód z overovacej aplikácie pre nástroje tímu",
+  "ui_2fa_intro": "Nástroje tímu vyžadujú okrem prihlásenia aj kód z overovacej aplikácie, takže samotné ukradnuté heslo na ich použitie nestačí.",
+  "ui_2fa_on": "Dvojstupňové prihlásenie je zapnuté.",
+  "ui_2fa_remove": "Odstrániť",
+  "ui_2fa_set_up": "Nastaviť",
+  "ui_2fa_scan": "Naskenujte to overovacou aplikáciou alebo zadajte kľúč nižšie. Ak môžete, pridajte ho do dvoch aplikácií: strata tej jedinej znamená žiadať podporu o jeho odstránenie.",
+  "ui_2fa_key": "Kľúč na nastavenie",
+  "ui_2fa_copied": "Kľúč na nastavenie bol skopírovaný",
+  "ui_2fa_confirm": "Potvrdiť",
+  "ui_2fa_failed": "Nastavenie sa nepodarilo spustiť. Skúste to znova.",
+  "ui_2fa_wrong": "Tento kód nefungoval. Skontrolujte čas v telefóne a skúste to znova.",
+  "ui_2fa_code": "6-miestny kód",
+  "ui_2fa_enter": "Zadajte kód z overovacej aplikácie",
+  "ui_2fa_verify": "Overiť",
+  "ui_password_breached": "Toto heslo sa objavilo v úniku údajov, takže patrí medzi prvé, ktoré útočníci skúšajú. Zvoľte iné."
 }

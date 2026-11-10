@@ -2373,6 +2373,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron heeft toestemming nodig om de microfoon te gebruiken voor opnames. Je kunt die geven in de instellingen van je apparaat."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "De opname kon niet worden gestart: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Inloggen in twee stappen"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Een authenticatorcode voor teamtools"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Teamtools vragen naast je inlog ook een code uit een authenticator-app, zodat een gestolen wachtwoord alleen niet genoeg is."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Inloggen in twee stappen staat aan."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Verwijderen"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Instellen"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scan dit met je authenticator-app of voer de sleutel hieronder in. Voeg hem zo mogelijk toe aan twee apps: verlies je je enige, dan moet je support vragen hem te verwijderen."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Instelsleutel"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Instelsleutel gekopieerd"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Bevestigen"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Kan het instellen niet starten. Probeer het opnieuw."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Die code werkte niet. Controleer de tijd op je telefoon en probeer het opnieuw."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-cijferige code"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Voer de code uit je authenticator-app in"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifiëren"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Dit wachtwoord is opgedoken in een datalek, dus het is een van de eerste die aanvallers proberen. Kies een ander."),
     };
 
 final messageLookup = MessageLookup();

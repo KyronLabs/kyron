@@ -2289,6 +2289,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron برای ضبط به اجازهٔ استفاده از میکروفون نیاز دارد. می‌توانی آن را در تنظیمات دستگاه بدهی."),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("نشد ضبط را شروع کنیم: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("ورود دومرحله‌ای"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "کد احرازکننده برای ابزارهای کارکنان"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "ابزارهای کارکنان علاوه بر ورود شما، کدی از برنامهٔ احرازکننده می‌خواهند تا گذرواژهٔ دزدیده‌شده به‌تنهایی برای استفاده از آن‌ها کافی نباشد."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("ورود دومرحله‌ای روشن است."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("حذف"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("راه‌اندازی"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "این را با برنامهٔ احرازکنندهٔ خود اسکن کنید یا کلید زیر را وارد کنید. اگر می‌توانید آن را به دو برنامه اضافه کنید: از دست دادن تنها برنامه یعنی باید از پشتیبانی بخواهید آن را حذف کند."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("کلید راه‌اندازی"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("کلید راه‌اندازی کپی شد"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("تأیید"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "راه‌اندازی شروع نشد. دوباره امتحان کنید."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "آن کد کار نکرد. ساعت گوشی خود را بررسی کنید و دوباره امتحان کنید."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("کد ۶ رقمی"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "کد برنامهٔ احرازکنندهٔ خود را وارد کنید"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("بررسی"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "این گذرواژه در یک نشت داده دیده شده است، پس از نخستین گذرواژه‌هایی است که مهاجمان امتحان می‌کنند. گذرواژهٔ دیگری انتخاب کنید."),
     };
 
 final messageLookup = MessageLookup();

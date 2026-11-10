@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Oʻn daqiqagacha.",
   "ui_voice_listening": "Tinglanmoqda…",
   "ui_voice_no_mic": "Yozib olish uchun Kyron’ga mikrofon ruxsati kerak. Uni qurilma sozlamalarida berishingiz mumkin.",
-  "ui_voice_start_failed": "Yozuvni boshlab boʻlmadi: {error}"
+  "ui_voice_start_failed": "Yozuvni boshlab boʻlmadi: {error}",
+  "ui_2fa_title": "Ikki bosqichli kirish",
+  "ui_2fa_help": "Xodimlar vositalari uchun autentifikator kodi",
+  "ui_2fa_intro": "Xodimlar vositalari kirishingizdan tashqari autentifikator ilovasidan kod ham so‘raydi, shunda faqat o‘g‘irlangan parol bilan ulardan foydalanib bo‘lmaydi.",
+  "ui_2fa_on": "Ikki bosqichli kirish yoqilgan.",
+  "ui_2fa_remove": "Olib tashlash",
+  "ui_2fa_set_up": "Sozlash",
+  "ui_2fa_scan": "Buni autentifikator ilovangiz bilan skanerlang yoki quyidagi kalitni kiriting. Imkoni bo‘lsa, ikkita ilovaga qo‘shing: yagona ilovani yo‘qotsangiz, uni olib tashlash uchun yordam xizmatiga murojaat qilishingiz kerak bo‘ladi.",
+  "ui_2fa_key": "Sozlash kaliti",
+  "ui_2fa_copied": "Sozlash kaliti nusxalandi",
+  "ui_2fa_confirm": "Tasdiqlash",
+  "ui_2fa_failed": "Sozlashni boshlab bo‘lmadi. Qayta urining.",
+  "ui_2fa_wrong": "Bu kod ishlamadi. Telefoningizdagi vaqtni tekshirib, qayta urining.",
+  "ui_2fa_code": "6 xonali kod",
+  "ui_2fa_enter": "Autentifikator ilovangizdagi kodni kiriting",
+  "ui_2fa_verify": "Tekshirish",
+  "ui_password_breached": "Bu parol ma’lumotlar sizib chiqishida ko‘ringan, shuning uchun hujumchilar birinchi sinab ko‘radiganlardan biri. Boshqasini tanlang."
 }

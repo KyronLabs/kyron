@@ -2397,6 +2397,34 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron precisa permiso para usar o micrófono e gravar. Podes concedelo na configuración do dispositivo."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Non se puido comezar a gravar: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage(
+          "Inicio de sesión en dous pasos"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Un código de autenticador para as ferramentas do equipo"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "As ferramentas do equipo piden un código dunha app de autenticación ademais do teu inicio de sesión, para que un contrasinal roubado non abonde por si só."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "O inicio de sesión en dous pasos está activado."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Quitar"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Configurar"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Escanea isto coa túa app de autenticación ou introduce a clave de abaixo. Engádea a dúas apps se podes: perder a única que tes obriga a pedir ao soporte que a quite."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Clave de configuración"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Copiouse a clave de configuración"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Non se puido iniciar a configuración. Téntao de novo."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Ese código non funcionou. Revisa a hora do teléfono e téntao de novo."),
+      "ui_2fa_code":
+          MessageLookupByLibrary.simpleMessage("Código de 6 díxitos"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Introduce o código da túa app de autenticación"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verificar"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Este contrasinal apareceu nunha filtración de datos, así que é dos primeiros que proban os atacantes. Escolle outro."),
     };
 
 final messageLookup = MessageLookup();

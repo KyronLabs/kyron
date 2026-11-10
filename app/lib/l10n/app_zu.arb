@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Kufika emizuzwini eyishumi.",
   "ui_voice_listening": "Iyalalela…",
   "ui_voice_no_mic": "I-Kyron idinga imvume yokusebenzisa imakrofoni ukuze iqophe. Ungayinikeza kuzilungiselelo zedivayisi yakho.",
-  "ui_voice_start_failed": "Asikwazanga ukuqala ukuqopha: {error}"
+  "ui_voice_start_failed": "Asikwazanga ukuqala ukuqopha: {error}",
+  "ui_2fa_title": "Ukungena ngezinyathelo ezimbili",
+  "ui_2fa_help": "Ikhodi yesiqinisekisi yamathuluzi abasebenzi",
+  "ui_2fa_intro": "Amathuluzi abasebenzi acela ikhodi evela ku-app yesiqinisekisi ngaphezu kokungena kwakho, ukuze iphasiwedi entshontshiwe iyodwa ingakwazi ukuwasebenzisa.",
+  "ui_2fa_on": "Ukungena ngezinyathelo ezimbili kuvuliwe.",
+  "ui_2fa_remove": "Susa",
+  "ui_2fa_set_up": "Setha",
+  "ui_2fa_scan": "Skena lokhu nge-app yakho yesiqinisekisi, noma ufake ukhiye ongezansi. Wengeze kuma-app amabili uma ungakwazi: ukulahlekelwa yiyo kuphela onayo kusho ukucela usekelo ukuthi lususe.",
+  "ui_2fa_key": "Ukhiye wokusetha",
+  "ui_2fa_copied": "Ukhiye wokusetha ukopishiwe",
+  "ui_2fa_confirm": "Qinisekisa",
+  "ui_2fa_failed": "Ayikwazanga ukuqala ukusetha. Zama futhi.",
+  "ui_2fa_wrong": "Leyo khodi ayisebenzanga. Hlola isikhathi efonini yakho bese uzama futhi.",
+  "ui_2fa_code": "Ikhodi enezinombolo ezi-6",
+  "ui_2fa_enter": "Faka ikhodi evela ku-app yakho yesiqinisekisi",
+  "ui_2fa_verify": "Qinisekisa",
+  "ui_password_breached": "Le phasiwedi ivele ekuvuzeni kwedatha, ngakho ingenye yezokuqala ezizanywa abahlaseli. Khetha enye."
 }

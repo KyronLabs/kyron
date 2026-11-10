@@ -2360,6 +2360,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron potrebuje dovoljenje za mikrofon za snemanje. Dodelite ga lahko v nastavitvah naprave."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Snemanja ni bilo mogoče začeti: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Prijava v dveh korakih"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Koda iz overitelja za orodja ekipe"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Orodja ekipe poleg prijave zahtevajo še kodo iz aplikacije za preverjanje pristnosti, zato samo ukradeno geslo ne zadošča za njihovo uporabo."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Prijava v dveh korakih je vklopljena."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Odstrani"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Nastavi"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "To skenirajte z aplikacijo za preverjanje pristnosti ali vnesite spodnji ključ. Če lahko, ga dodajte v dve aplikaciji: izguba edine pomeni, da morate podporo prositi, naj ga odstrani."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Ključ za nastavitev"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Ključ za nastavitev kopiran"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Potrdi"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nastavitve ni bilo mogoče začeti. Poskusite znova."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Ta koda ni delovala. Preverite čas na telefonu in poskusite znova."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-mestna koda"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Vnesite kodo iz aplikacije za preverjanje pristnosti"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Preveri"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "To geslo se je pojavilo v uhajanju podatkov, zato je med prvimi, ki jih napadalci preizkusijo. Izberite drugo."),
     };
 
 final messageLookup = MessageLookup();

@@ -2372,6 +2372,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ձայնագրելու համար Kyron-ին անհրաժեշտ է խոսափողի թույլտվություն։ Կարող եք այն տալ սարքի կարգավորումներում։"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Չհաջողվեց սկսել ձայնագրումը՝ {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Երկքայլ մուտք"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Նույնականացուցչի կոդ թիմի գործիքների համար"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Թիմի գործիքները մուտքից բացի պահանջում են նաև կոդ նույնականացման հավելվածից, որպեսզի միայն գողացված գաղտնաբառով հնարավոր չլինի դրանք օգտագործել։"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Երկքայլ մուտքը միացված է։"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Հեռացնել"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Կարգավորել"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Սկանավորեք սա նույնականացման հավելվածով կամ մուտքագրեք ստորև նշված բանալին։ Հնարավորության դեպքում ավելացրեք երկու հավելվածում. միակը կորցնելու դեպքում ստիպված կլինեք աջակցությանը խնդրել հեռացնել այն։"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Կարգավորման բանալի"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Կարգավորման բանալին պատճենվեց"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Հաստատել"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Չհաջողվեց սկսել կարգավորումը։ Կրկին փորձեք։"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Այդ կոդը չաշխատեց։ Ստուգեք հեռախոսի ժամը և կրկին փորձեք։"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 նիշանոց կոդ"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Մուտքագրեք նույնականացման հավելվածի կոդը"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ստուգել"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Այս գաղտնաբառը հայտնվել է տվյալների արտահոսքում, ուստի այն առաջիններից է, որ փորձում են հարձակվողները։ Ընտրեք այլ գաղտնաբառ։"),
     };
 
 final messageLookup = MessageLookup();

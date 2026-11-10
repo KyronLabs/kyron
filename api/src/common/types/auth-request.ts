@@ -8,4 +8,7 @@ import type { User } from '@prisma/client';
  */
 export interface AuthRequest extends Request {
   user: User;
+  /** How the session was proven: 'aal2' after a second factor, else 'aal1'.
+   * Set by AuthGuard from the token's own `aal` claim. */
+  aal?: 'aal1' | 'aal2';
 }

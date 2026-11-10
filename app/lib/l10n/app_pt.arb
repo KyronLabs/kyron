@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Até dez minutos.",
   "ui_voice_listening": "Ouvindo…",
   "ui_voice_no_mic": "O Kyron precisa de permissão para usar o microfone e gravar. Você pode conceder nas configurações do dispositivo.",
-  "ui_voice_start_failed": "Não foi possível iniciar a gravação: {error}"
+  "ui_voice_start_failed": "Não foi possível iniciar a gravação: {error}",
+  "ui_2fa_title": "Início de sessão em duas etapas",
+  "ui_2fa_help": "Um código de autenticador para as ferramentas da equipe",
+  "ui_2fa_intro": "As ferramentas da equipe pedem um código de um app autenticador além do seu login, para que uma senha roubada sozinha não baste para usá-las.",
+  "ui_2fa_on": "O início de sessão em duas etapas está ativado.",
+  "ui_2fa_remove": "Remover",
+  "ui_2fa_set_up": "Configurar",
+  "ui_2fa_scan": "Leia isto com seu app autenticador ou digite a chave abaixo. Adicione-a a dois apps, se puder: perder o único significa pedir ao suporte para removê-la.",
+  "ui_2fa_key": "Chave de configuração",
+  "ui_2fa_copied": "Chave de configuração copiada",
+  "ui_2fa_confirm": "Confirmar",
+  "ui_2fa_failed": "Não foi possível iniciar a configuração. Tente novamente.",
+  "ui_2fa_wrong": "Esse código não funcionou. Confira a hora do seu telefone e tente novamente.",
+  "ui_2fa_code": "Código de 6 dígitos",
+  "ui_2fa_enter": "Digite o código do seu app autenticador",
+  "ui_2fa_verify": "Verificar",
+  "ui_password_breached": "Esta senha apareceu em um vazamento de dados, então é uma das primeiras que os invasores tentam. Escolha outra."
 }

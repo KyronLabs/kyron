@@ -2369,6 +2369,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ჩასაწერად Kyron-ს მიკროფონის ნებართვა სჭირდება. მისი მიცემა მოწყობილობის პარამეტრებში შეგიძლიათ."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "ჩაწერის დაწყება ვერ მოხერხდა: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("ორსაფეხურიანი შესვლა"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "ავთენტიფიკატორის კოდი გუნდის ხელსაწყოებისთვის"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "გუნდის ხელსაწყოები შესვლის გარდა ავთენტიფიკატორი აპის კოდსაც ითხოვს, რათა მხოლოდ მოპარული პაროლით მათი გამოყენება ვერ მოხერხდეს."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "ორსაფეხურიანი შესვლა ჩართულია."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("წაშლა"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("დაყენება"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "დაასკანერეთ ეს ავთენტიფიკატორი აპით ან შეიყვანეთ ქვემოთ მოცემული გასაღები. თუ შეგიძლიათ, დაამატეთ ორ აპში: ერთადერთის დაკარგვის შემთხვევაში მხარდაჭერას მოგიწევთ სთხოვოთ მისი წაშლა."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("დაყენების გასაღები"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("დაყენების გასაღები დაკოპირდა"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("დადასტურება"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "დაყენების დაწყება ვერ მოხერხდა. სცადეთ ხელახლა."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ეს კოდი არ იმუშავა. შეამოწმეთ დრო ტელეფონზე და სცადეთ ხელახლა."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-ნიშნა კოდი"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "შეიყვანეთ კოდი ავთენტიფიკატორი აპიდან"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("შემოწმება"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ეს პაროლი მონაცემთა გაჟონვაში გამოჩნდა, ამიტომ თავდამსხმელები მას პირველ რიგში ცდიან. აირჩიეთ სხვა."),
     };
 
 final messageLookup = MessageLookup();

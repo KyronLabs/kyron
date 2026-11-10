@@ -29,8 +29,14 @@ the section; GitHub does not show it:
 
 ### Security
 
+- **Passwords found in data breaches are turned away.** Signing up or setting
+  a password checks it against the Have I Been Pwned list of leaked passwords
+  (only the first five characters of its fingerprint leave your phone), and
+  asks for a different one if it is there.
 - The website sends headers that stop it being framed or content-sniffed, and
   the API no longer accepts calls from any web page.
+- Staff accounts can turn on two-step sign-in with an authenticator app, and
+  the API can require it for moderation tools (`STAFF_REQUIRE_SECOND_FACTOR`).
 
 
 ## [0.1.45] - 2026-11-10

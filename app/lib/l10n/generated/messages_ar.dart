@@ -2532,6 +2532,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "يحتاج Kyron إلى إذن لاستخدام الميكروفون للتسجيل. يمكنك منحه من إعدادات جهازك."),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("تعذّر بدء التسجيل: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("تسجيل الدخول بخطوتين"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "رمز من تطبيق المصادقة لأدوات الفريق"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "تطلب أدوات الفريق رمزًا من تطبيق مصادقة إضافةً إلى تسجيل دخولك، كي لا تكفي كلمة مرور مسروقة وحدها لاستخدامها."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("تسجيل الدخول بخطوتين مفعّل."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("إزالة"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("إعداد"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "امسح هذا بتطبيق المصادقة، أو أدخل المفتاح أدناه. أضفه إلى تطبيقين إن استطعت: فقدان تطبيقك الوحيد يعني أن تطلب من الدعم إزالته."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("مفتاح الإعداد"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("تم نسخ مفتاح الإعداد"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "تعذّر بدء الإعداد. حاول مرة أخرى."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "لم يعمل هذا الرمز. تحقّق من الوقت على هاتفك وحاول مرة أخرى."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("رمز من 6 أرقام"),
+      "ui_2fa_enter":
+          MessageLookupByLibrary.simpleMessage("أدخل الرمز من تطبيق المصادقة"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("تحقّق"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ظهرت كلمة المرور هذه في تسريب بيانات، لذا فهي من أولى الكلمات التي يجرّبها المهاجمون. اختر كلمة أخرى."),
     };
 
 final messageLookup = MessageLookup();

@@ -2394,6 +2394,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kailangan ng Kyron ng pahintulot sa mikropono para mag-record. Maibibigay mo ito sa settings ng device mo."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Hindi masimulan ang recording: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage(
+          "Dalawang-hakbang na pag-sign in"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Code mula sa authenticator para sa mga tool ng staff"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Humihingi ang mga tool ng staff ng code mula sa authenticator app bukod sa iyong pag-sign in, para hindi magamit ang mga ito ng ninakaw na password lang."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Naka-on ang dalawang-hakbang na pag-sign in."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Alisin"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("I-set up"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "I-scan ito gamit ang iyong authenticator app, o ilagay ang key sa ibaba. Idagdag ito sa dalawang app kung kaya mo: kapag nawala ang nag-iisa mo, kailangan mong hilingin sa support na alisin ito."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Setup key"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Nakopya ang setup key"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Kumpirmahin"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi masimulan ang setup. Subukan ulit."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Hindi gumana ang code na iyon. Tingnan ang oras sa iyong telepono at subukan ulit."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-digit na code"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Ilagay ang code mula sa iyong authenticator app"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("I-verify"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Lumabas na ang password na ito sa isang data breach, kaya isa ito sa mga unang sinusubukan ng mga umaatake. Pumili ng iba."),
     };
 
 final messageLookup = MessageLookup();

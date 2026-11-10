@@ -2421,6 +2421,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "பதிவுசெய்ய Kyron க்கு மைக்ரோஃபோன் அனுமதி தேவை. அதைச் சாதன அமைப்புகளில் வழங்கலாம்."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "பதிவைத் தொடங்க முடியவில்லை: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("இரண்டு-படி உள்நுழைவு"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "பணியாளர் கருவிகளுக்கான அங்கீகரிப்புக் குறியீடு"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "திருடப்பட்ட கடவுச்சொல் மட்டும் கொண்டு பயன்படுத்த முடியாதபடி, பணியாளர் கருவிகள் உங்கள் உள்நுழைவுடன் அங்கீகரிப்பு ஆப்ஸின் குறியீட்டையும் கேட்கின்றன."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "இரண்டு-படி உள்நுழைவு இயக்கத்தில் உள்ளது."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("அகற்று"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("அமை"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "இதை உங்கள் அங்கீகரிப்பு ஆப்ஸால் ஸ்கேன் செய்யவும், அல்லது கீழே உள்ள விசையை உள்ளிடவும். முடிந்தால் இரண்டு ஆப்ஸில் சேர்க்கவும்: ஒரே ஆப்ஸைத் தொலைத்தால் அதை அகற்ற ஆதரவுக் குழுவிடம் கேட்க வேண்டியிருக்கும்."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("அமைப்பு விசை"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "அமைப்பு விசை நகலெடுக்கப்பட்டது"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("உறுதிசெய்"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "அமைப்பைத் தொடங்க முடியவில்லை. மீண்டும் முயலவும்."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "அந்தக் குறியீடு வேலை செய்யவில்லை. உங்கள் ஃபோனின் நேரத்தைச் சரிபார்த்து மீண்டும் முயலவும்."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-இலக்கக் குறியீடு"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "உங்கள் அங்கீகரிப்பு ஆப்ஸின் குறியீட்டை உள்ளிடவும்"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("சரிபார்"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "இந்தக் கடவுச்சொல் ஒரு தரவுக் கசிவில் தோன்றியுள்ளது, எனவே தாக்குபவர்கள் முதலில் முயல்பவற்றில் இதுவும் ஒன்று. வேறொன்றைத் தேர்வுசெய்யவும்."),
     };
 
 final messageLookup = MessageLookup();

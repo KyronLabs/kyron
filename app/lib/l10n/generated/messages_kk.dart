@@ -2357,6 +2357,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Жазу үшін Kyron-ға микрофон рұқсаты керек. Оны құрылғы параметрлерінен бере аласыз."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Жазуды бастау мүмкін болмады: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Екі қадамды кіру"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Қызметкер құралдарына арналған аутентификатор коды"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Қызметкер құралдары кіруіңізден бөлек аутентификатор қолданбасының кодын да сұрайды, сонда ұрланған құпиясөздің өзі ғана оларды пайдалана алмайды."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Екі қадамды кіру қосулы."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Жою"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Баптау"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Мұны аутентификатор қолданбасымен сканерлеңіз немесе төмендегі кілтті енгізіңіз. Мүмкін болса, екі қолданбаға қосыңыз: жалғызын жоғалтсаңыз, оны жою үшін қолдау қызметіне жүгінуге тура келеді."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Баптау кілті"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Баптау кілті көшірілді"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Растау"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Баптауды бастау мүмкін болмады. Қайталап көріңіз."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Бұл код жұмыс істемеді. Телефоныңыздағы уақытты тексеріп, қайталап көріңіз."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 таңбалы код"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Аутентификатор қолданбасындағы кодты енгізіңіз"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Тексеру"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Бұл құпиясөз деректердің жылыстауында көрінген, сондықтан шабуылдаушылар алдымен байқап көретіндердің бірі. Басқасын таңдаңыз."),
     };
 
 final messageLookup = MessageLookup();

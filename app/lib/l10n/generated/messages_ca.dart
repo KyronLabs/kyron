@@ -2715,6 +2715,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron necessita permís per fer servir el micròfon per gravar. El pots donar a la configuració del dispositiu."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "No s'ha pogut començar a gravar: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Inici de sessió en dos passos"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Un codi d’autenticador per a les eines de l’equip"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Les eines de l’equip demanen un codi d’una aplicació d’autenticació a més del teu inici de sessió, perquè una contrasenya robada sola no les pugui fer servir."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "L’inici de sessió en dos passos està activat."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Elimina"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Configura"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Escaneja això amb la teva aplicació d’autenticació o introdueix la clau de sota. Afegeix-la a dues aplicacions si pots: perdre l’única que tens vol dir demanar al servei d’assistència que l’eliminin."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Clau de configuració"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "S’ha copiat la clau de configuració"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Confirma"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "No s’ha pogut iniciar la configuració. Torna-ho a provar."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Aquest codi no ha funcionat. Comprova l’hora del telèfon i torna-ho a provar."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Codi de 6 dígits"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Introdueix el codi de la teva aplicació d’autenticació"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifica"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Aquesta contrasenya ha aparegut en una filtració de dades, així que és de les primeres que proven els atacants. Tria’n una altra."),
     };
 
 final messageLookup = MessageLookup();

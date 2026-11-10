@@ -2332,6 +2332,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ریکارڈ کرنے کے لیے Kyron کو مائیکروفون کی اجازت چاہیے۔ آپ اسے اپنی ڈیوائس کی ترتیبات میں دے سکتے ہیں۔"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "ریکارڈنگ شروع نہیں ہو سکی: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("دو مرحلہ سائن اِن"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "اسٹاف ٹولز کے لیے تصدیق کنندہ کوڈ"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "اسٹاف ٹولز آپ کے سائن اِن کے ساتھ تصدیق کنندہ ایپ کا کوڈ بھی مانگتے ہیں، تاکہ صرف چوری شدہ پاس ورڈ سے انہیں استعمال نہ کیا جا سکے۔"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("دو مرحلہ سائن اِن آن ہے۔"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ہٹائیں"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("سیٹ اپ کریں"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "اسے اپنی تصدیق کنندہ ایپ سے اسکین کریں، یا نیچے دی گئی کلید درج کریں۔ اگر ہو سکے تو اسے دو ایپس میں شامل کریں: واحد ایپ کھو جانے پر اسے ہٹانے کے لیے سپورٹ سے کہنا ہوگا۔"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("سیٹ اپ کلید"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("سیٹ اپ کلید کاپی ہو گئی"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("تصدیق کریں"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "سیٹ اپ شروع نہیں ہو سکا۔ دوبارہ کوشش کریں۔"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "وہ کوڈ کام نہیں آیا۔ اپنے فون کا وقت چیک کریں اور دوبارہ کوشش کریں۔"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 ہندسوں کا کوڈ"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "اپنی تصدیق کنندہ ایپ کا کوڈ درج کریں"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("تصدیق کریں"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "یہ پاس ورڈ ڈیٹا لیک میں سامنے آ چکا ہے، اس لیے حملہ آور سب سے پہلے جنہیں آزماتے ہیں یہ ان میں سے ایک ہے۔ کوئی اور منتخب کریں۔"),
     };
 
 final messageLookup = MessageLookup();

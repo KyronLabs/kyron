@@ -2379,6 +2379,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron are nevoie de permisiunea de a folosi microfonul pentru a înregistra. O poți acorda din setările dispozitivului."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nu am putut porni înregistrarea: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Conectare în doi pași"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Un cod de autentificare pentru instrumentele echipei"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Instrumentele echipei cer, pe lângă conectare, un cod dintr-o aplicație de autentificare, astfel încât o parolă furată să nu fie suficientă singură."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Conectarea în doi pași este activată."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Elimină"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Configurează"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scanează asta cu aplicația de autentificare sau introdu cheia de mai jos. Adaug-o în două aplicații dacă poți: dacă o pierzi pe singura, va trebui să ceri asistenței să o elimine."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Cheie de configurare"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Cheia de configurare a fost copiată"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Confirmă"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Configurarea nu a putut porni. Încearcă din nou."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Codul nu a funcționat. Verifică ora de pe telefon și încearcă din nou."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Cod din 6 cifre"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Introdu codul din aplicația de autentificare"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifică"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Această parolă a apărut într-o scurgere de date, deci e printre primele pe care le încearcă atacatorii. Alege alta."),
     };
 
 final messageLookup = MessageLookup();

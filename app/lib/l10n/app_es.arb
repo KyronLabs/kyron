@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Hasta diez minutos.",
   "ui_voice_listening": "Escuchando…",
   "ui_voice_no_mic": "Kyron necesita permiso para usar el micrófono y grabar. Puedes concederlo en los ajustes del dispositivo.",
-  "ui_voice_start_failed": "No se pudo empezar a grabar: {error}"
+  "ui_voice_start_failed": "No se pudo empezar a grabar: {error}",
+  "ui_2fa_title": "Inicio de sesión en dos pasos",
+  "ui_2fa_help": "Un código de autenticador para las herramientas del equipo",
+  "ui_2fa_intro": "Las herramientas del equipo piden un código de una app de autenticación además de tu inicio de sesión, para que una contraseña robada no baste por sí sola.",
+  "ui_2fa_on": "El inicio de sesión en dos pasos está activado.",
+  "ui_2fa_remove": "Quitar",
+  "ui_2fa_set_up": "Configurar",
+  "ui_2fa_scan": "Escanea esto con tu app de autenticación o introduce la clave de abajo. Añádela a dos apps si puedes: perder la única que tienes implica pedir a soporte que la quite.",
+  "ui_2fa_key": "Clave de configuración",
+  "ui_2fa_copied": "Clave de configuración copiada",
+  "ui_2fa_confirm": "Confirmar",
+  "ui_2fa_failed": "No se pudo iniciar la configuración. Inténtalo de nuevo.",
+  "ui_2fa_wrong": "Ese código no ha funcionado. Revisa la hora de tu teléfono e inténtalo de nuevo.",
+  "ui_2fa_code": "Código de 6 dígitos",
+  "ui_2fa_enter": "Introduce el código de tu app de autenticación",
+  "ui_2fa_verify": "Verificar",
+  "ui_password_breached": "Esta contraseña ha aparecido en una filtración de datos, así que es de las primeras que prueban los atacantes. Elige otra."
 }

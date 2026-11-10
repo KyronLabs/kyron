@@ -2230,6 +2230,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron צריכה הרשאה להשתמש במיקרופון כדי להקליט. אפשר לתת אותה בהגדרות המכשיר."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "לא ניתן היה להתחיל להקליט: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("כניסה בשני שלבים"),
+      "ui_2fa_help":
+          MessageLookupByLibrary.simpleMessage("קוד ממאמת עבור כלי הצוות"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "כלי הצוות מבקשים קוד מאפליקציית אימות בנוסף לכניסה שלך, כך שסיסמה גנובה לבדה לא תספיק כדי להשתמש בהם."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("כניסה בשני שלבים פעילה."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("הסרה"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("הגדרה"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "סרקו את זה באפליקציית האימות, או הזינו את המפתח שלמטה. הוסיפו אותו לשתי אפליקציות אם אפשר: אובדן האחת היחידה פירושו לבקש מהתמיכה להסיר אותו."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("מפתח הגדרה"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("מפתח ההגדרה הועתק"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("אישור"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "לא ניתן היה להתחיל את ההגדרה. נסו שוב."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "הקוד הזה לא עבד. בדקו את השעה בטלפון ונסו שוב."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("קוד בן 6 ספרות"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "הזינו את הקוד מאפליקציית האימות"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("אימות"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "הסיסמה הזו הופיעה בדליפת נתונים, ולכן היא מהראשונות שתוקפים מנסים. בחרו סיסמה אחרת."),
     };
 
 final messageLookup = MessageLookup();

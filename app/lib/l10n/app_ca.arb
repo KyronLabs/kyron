@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Fins a deu minuts.",
   "ui_voice_listening": "Escoltant…",
   "ui_voice_no_mic": "Kyron necessita permís per fer servir el micròfon per gravar. El pots donar a la configuració del dispositiu.",
-  "ui_voice_start_failed": "No s'ha pogut començar a gravar: {error}"
+  "ui_voice_start_failed": "No s'ha pogut començar a gravar: {error}",
+  "ui_2fa_title": "Inici de sessió en dos passos",
+  "ui_2fa_help": "Un codi d’autenticador per a les eines de l’equip",
+  "ui_2fa_intro": "Les eines de l’equip demanen un codi d’una aplicació d’autenticació a més del teu inici de sessió, perquè una contrasenya robada sola no les pugui fer servir.",
+  "ui_2fa_on": "L’inici de sessió en dos passos està activat.",
+  "ui_2fa_remove": "Elimina",
+  "ui_2fa_set_up": "Configura",
+  "ui_2fa_scan": "Escaneja això amb la teva aplicació d’autenticació o introdueix la clau de sota. Afegeix-la a dues aplicacions si pots: perdre l’única que tens vol dir demanar al servei d’assistència que l’eliminin.",
+  "ui_2fa_key": "Clau de configuració",
+  "ui_2fa_copied": "S’ha copiat la clau de configuració",
+  "ui_2fa_confirm": "Confirma",
+  "ui_2fa_failed": "No s’ha pogut iniciar la configuració. Torna-ho a provar.",
+  "ui_2fa_wrong": "Aquest codi no ha funcionat. Comprova l’hora del telèfon i torna-ho a provar.",
+  "ui_2fa_code": "Codi de 6 dígits",
+  "ui_2fa_enter": "Introdueix el codi de la teva aplicació d’autenticació",
+  "ui_2fa_verify": "Verifica",
+  "ui_password_breached": "Aquesta contrasenya ha aparegut en una filtració de dades, així que és de les primeres que proven els atacants. Tria’n una altra."
 }

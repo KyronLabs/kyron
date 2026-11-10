@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Sehingga sepuluh minit.",
   "ui_voice_listening": "Mendengar…",
   "ui_voice_no_mic": "Kyron memerlukan kebenaran mikrofon untuk merakam. Anda boleh memberikannya dalam tetapan peranti.",
-  "ui_voice_start_failed": "Tidak dapat mula merakam: {error}"
+  "ui_voice_start_failed": "Tidak dapat mula merakam: {error}",
+  "ui_2fa_title": "Log masuk dua langkah",
+  "ui_2fa_help": "Kod pengesah untuk alat kakitangan",
+  "ui_2fa_intro": "Alat kakitangan meminta kod daripada apl pengesah selain log masuk anda, supaya kata laluan yang dicuri sahaja tidak boleh menggunakannya.",
+  "ui_2fa_on": "Log masuk dua langkah dihidupkan.",
+  "ui_2fa_remove": "Alih keluar",
+  "ui_2fa_set_up": "Sediakan",
+  "ui_2fa_scan": "Imbas ini dengan apl pengesah anda, atau masukkan kunci di bawah. Tambahkannya pada dua apl jika boleh: kehilangan satu-satunya bermakna perlu meminta sokongan mengalih keluarnya.",
+  "ui_2fa_key": "Kunci persediaan",
+  "ui_2fa_copied": "Kunci persediaan disalin",
+  "ui_2fa_confirm": "Sahkan",
+  "ui_2fa_failed": "Tidak dapat memulakan persediaan. Cuba lagi.",
+  "ui_2fa_wrong": "Kod itu tidak berfungsi. Semak masa pada telefon anda dan cuba lagi.",
+  "ui_2fa_code": "Kod 6 digit",
+  "ui_2fa_enter": "Masukkan kod daripada apl pengesah anda",
+  "ui_2fa_verify": "Sahkan",
+  "ui_password_breached": "Kata laluan ini pernah muncul dalam kebocoran data, jadi ia antara yang pertama dicuba penyerang. Pilih yang lain."
 }

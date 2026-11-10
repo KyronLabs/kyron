@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Kuni kümme minutit.",
   "ui_voice_listening": "Kuulan…",
   "ui_voice_no_mic": "Kyron vajab salvestamiseks mikrofoni luba. Saad selle anda seadme seadetes.",
-  "ui_voice_start_failed": "Salvestamist ei saanud alustada: {error}"
+  "ui_voice_start_failed": "Salvestamist ei saanud alustada: {error}",
+  "ui_2fa_title": "Kaheastmeline sisselogimine",
+  "ui_2fa_help": "Autentimisrakenduse kood meeskonna tööriistade jaoks",
+  "ui_2fa_intro": "Meeskonna tööriistad küsivad lisaks sisselogimisele koodi autentimisrakendusest, et ainult varastatud parooliga neid kasutada ei saaks.",
+  "ui_2fa_on": "Kaheastmeline sisselogimine on sees.",
+  "ui_2fa_remove": "Eemalda",
+  "ui_2fa_set_up": "Seadista",
+  "ui_2fa_scan": "Skanni see oma autentimisrakendusega või sisesta allolev võti. Lisa see võimaluse korral kahte rakendusse: ainsa kaotamisel tuleb paluda toel see eemaldada.",
+  "ui_2fa_key": "Seadistusvõti",
+  "ui_2fa_copied": "Seadistusvõti kopeeritud",
+  "ui_2fa_confirm": "Kinnita",
+  "ui_2fa_failed": "Seadistamist ei õnnestunud alustada. Proovi uuesti.",
+  "ui_2fa_wrong": "See kood ei toiminud. Kontrolli telefoni kellaaega ja proovi uuesti.",
+  "ui_2fa_code": "6-kohaline kood",
+  "ui_2fa_enter": "Sisesta kood oma autentimisrakendusest",
+  "ui_2fa_verify": "Kontrolli",
+  "ui_password_breached": "See parool on ilmunud andmeleketes, seega on see üks esimesi, mida ründajad proovivad. Vali mõni muu."
 }

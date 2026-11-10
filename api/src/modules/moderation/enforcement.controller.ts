@@ -10,6 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
+import { staffFrom } from './staff-session';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import { AllowRestricted } from '../../common/guards/standing';
 import type { AuthRequest } from '../../common/types/auth-request';
@@ -20,7 +21,7 @@ import {
   DismissDto,
   ReasonDto,
 } from './dto/enforcement.dto';
-import { EnforcementService, type Staff } from './enforcement.service';
+import { EnforcementService } from './enforcement.service';
 
 /**
  * Two audiences. /moderation/standing and appeals are any account's own,
@@ -60,22 +61,22 @@ export class EnforcementController {
 
   @Get('reports')
   reports(@Req() req: AuthRequest) {
-    return this.svc.reportQueue(staff(req));
+    return this.svc.reportQueue(staffFrom(req));
   }
 
   @Post('reports/dismiss')
   dismiss(@Req() req: AuthRequest, @Body() dto: DismissDto) {
-    return this.svc.dismiss(staff(req), dto.target, dto.targetId);
+    return this.svc.dismiss(staffFrom(req), dto.target, dto.targetId);
   }
 
   @Get('accounts/:id')
   account(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
-    return this.svc.account(staff(req), id);
+    return this.svc.account(staffFrom(req), id);
   }
 
   @Post('actions')
   act(@Req() req: AuthRequest, @Body() dto: ActDto) {
-    return this.svc.act(staff(req), dto);
+    return this.svc.act(staffFrom(req), dto);
   }
 
   @Post('actions/:id/reverse')
@@ -84,12 +85,12 @@ export class EnforcementController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: ReasonDto,
   ) {
-    return this.svc.reverse(staff(req), id, dto.reason);
+    return this.svc.reverse(staffFrom(req), id, dto.reason);
   }
 
   @Get('appeals')
   appeals(@Req() req: AuthRequest) {
-    return this.svc.appealQueue(staff(req));
+    return this.svc.appealQueue(staffFrom(req));
   }
 
   @Post('appeals/:id/decide')
@@ -98,11 +99,8 @@ export class EnforcementController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: DecideAppealDto,
   ) {
-    return this.svc.decide(staff(req), id, dto.overturn, dto.response);
+    return this.svc.decide(staffFrom(req), id, dto.overturn, dto.response);
   }
 }
 
 /** The caller, as the service checks them: id and role, from the guard. */
-function staff(req: AuthRequest): Staff {
-  return { id: req.user.id, role: req.user.role };
-}

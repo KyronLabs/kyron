@@ -2200,6 +2200,27 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "녹음하려면 Kyron에 마이크 사용 권한이 필요해요. 기기 설정에서 허용할 수 있어요."),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("녹음을 시작하지 못했어요: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("2단계 로그인"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage("스태프 도구용 인증 코드"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "스태프 도구는 로그인과 함께 인증 앱의 코드도 요구합니다. 도난당한 비밀번호만으로는 사용할 수 없도록 하기 위해서입니다."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage("2단계 로그인이 켜져 있습니다."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("삭제"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("설정"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "인증 앱으로 이것을 스캔하거나 아래 키를 입력하세요. 가능하면 앱 두 개에 추가하세요. 하나뿐인 앱을 잃어버리면 지원팀에 삭제를 요청해야 합니다."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("설정 키"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("설정 키를 복사했습니다"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("확인"),
+      "ui_2fa_failed":
+          MessageLookupByLibrary.simpleMessage("설정을 시작할 수 없습니다. 다시 시도하세요."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "코드가 맞지 않습니다. 휴대전화의 시간을 확인하고 다시 시도하세요."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6자리 코드"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage("인증 앱의 코드를 입력하세요"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("확인"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "이 비밀번호는 데이터 유출에서 발견되어 공격자가 가장 먼저 시도하는 비밀번호 중 하나입니다. 다른 비밀번호를 선택하세요."),
     };
 
 final messageLookup = MessageLookup();

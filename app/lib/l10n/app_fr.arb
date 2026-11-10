@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Jusqu'à dix minutes.",
   "ui_voice_listening": "Écoute…",
   "ui_voice_no_mic": "Kyron a besoin de l'autorisation d'utiliser le micro pour enregistrer. Vous pouvez l'accorder dans les réglages de votre appareil.",
-  "ui_voice_start_failed": "Impossible de démarrer l'enregistrement : {error}"
+  "ui_voice_start_failed": "Impossible de démarrer l'enregistrement : {error}",
+  "ui_2fa_title": "Connexion en deux étapes",
+  "ui_2fa_help": "Un code d’authentification pour les outils de l’équipe",
+  "ui_2fa_intro": "Les outils de l’équipe demandent un code d’une application d’authentification en plus de votre connexion, pour qu’un mot de passe volé ne suffise pas à lui seul.",
+  "ui_2fa_on": "La connexion en deux étapes est activée.",
+  "ui_2fa_remove": "Supprimer",
+  "ui_2fa_set_up": "Configurer",
+  "ui_2fa_scan": "Scannez ceci avec votre application d’authentification ou saisissez la clé ci-dessous. Ajoutez-la à deux applications si possible : perdre la seule que vous avez oblige à demander au support de la supprimer.",
+  "ui_2fa_key": "Clé de configuration",
+  "ui_2fa_copied": "Clé de configuration copiée",
+  "ui_2fa_confirm": "Confirmer",
+  "ui_2fa_failed": "Impossible de lancer la configuration. Réessayez.",
+  "ui_2fa_wrong": "Ce code n’a pas fonctionné. Vérifiez l’heure de votre téléphone et réessayez.",
+  "ui_2fa_code": "Code à 6 chiffres",
+  "ui_2fa_enter": "Saisissez le code de votre application d’authentification",
+  "ui_2fa_verify": "Vérifier",
+  "ui_password_breached": "Ce mot de passe est apparu dans une fuite de données, c’est donc l’un des premiers que les attaquants essaient. Choisissez-en un autre."
 }

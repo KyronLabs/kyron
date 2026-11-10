@@ -2314,6 +2314,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ਰਿਕਾਰਡ ਕਰਨ ਲਈ Kyron ਨੂੰ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਇਜਾਜ਼ਤ ਚਾਹੀਦੀ ਹੈ। ਤੁਸੀਂ ਇਸਨੂੰ ਡਿਵਾਈਸ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਦੇ ਸਕਦੇ ਹੋ।"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕੀ: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("ਦੋ-ਪੜਾਅ ਸਾਈਨ-ਇਨ"),
+      "ui_2fa_help":
+          MessageLookupByLibrary.simpleMessage("ਸਟਾਫ਼ ਟੂਲਾਂ ਲਈ ਪ੍ਰਮਾਣਕ ਕੋਡ"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "ਸਟਾਫ਼ ਟੂਲ ਤੁਹਾਡੇ ਸਾਈਨ-ਇਨ ਦੇ ਨਾਲ-ਨਾਲ ਪ੍ਰਮਾਣਕ ਐਪ ਤੋਂ ਕੋਡ ਵੀ ਮੰਗਦੇ ਹਨ, ਤਾਂ ਜੋ ਸਿਰਫ਼ ਚੋਰੀ ਹੋਏ ਪਾਸਵਰਡ ਨਾਲ ਇਹਨਾਂ ਨੂੰ ਵਰਤਿਆ ਨਾ ਜਾ ਸਕੇ।"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("ਦੋ-ਪੜਾਅ ਸਾਈਨ-ਇਨ ਚਾਲੂ ਹੈ।"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ਹਟਾਓ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("ਸੈੱਟ ਅੱਪ ਕਰੋ"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "ਇਸਨੂੰ ਆਪਣੀ ਪ੍ਰਮਾਣਕ ਐਪ ਨਾਲ ਸਕੈਨ ਕਰੋ, ਜਾਂ ਹੇਠਾਂ ਦਿੱਤੀ ਕੁੰਜੀ ਦਾਖਲ ਕਰੋ। ਹੋ ਸਕੇ ਤਾਂ ਇਸਨੂੰ ਦੋ ਐਪਾਂ ਵਿੱਚ ਜੋੜੋ: ਇਕਲੌਤੀ ਐਪ ਗੁਆਉਣ ਦਾ ਮਤਲਬ ਹੈ ਇਸਨੂੰ ਹਟਾਉਣ ਲਈ ਸਹਾਇਤਾ ਨੂੰ ਕਹਿਣਾ।"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("ਸੈੱਟਅੱਪ ਕੁੰਜੀ"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("ਸੈੱਟਅੱਪ ਕੁੰਜੀ ਕਾਪੀ ਹੋ ਗਈ"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("ਪੁਸ਼ਟੀ ਕਰੋ"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "ਸੈੱਟਅੱਪ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ਉਹ ਕੋਡ ਕੰਮ ਨਹੀਂ ਕੀਤਾ। ਆਪਣੇ ਫ਼ੋਨ ਦਾ ਸਮਾਂ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-ਅੰਕਾਂ ਦਾ ਕੋਡ"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "ਆਪਣੀ ਪ੍ਰਮਾਣਕ ਐਪ ਤੋਂ ਕੋਡ ਦਾਖਲ ਕਰੋ"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("ਪੁਸ਼ਟੀ ਕਰੋ"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ਇਹ ਪਾਸਵਰਡ ਕਿਸੇ ਡਾਟਾ ਲੀਕ ਵਿੱਚ ਨਜ਼ਰ ਆਇਆ ਹੈ, ਇਸ ਲਈ ਹਮਲਾਵਰ ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਅਜ਼ਮਾਉਂਦੇ ਹਨ ਇਹ ਉਹਨਾਂ ਵਿੱਚੋਂ ਇੱਕ ਹੈ। ਕੋਈ ਹੋਰ ਚੁਣੋ।"),
     };
 
 final messageLookup = MessageLookup();

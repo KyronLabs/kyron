@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Tot tien minuten.",
   "ui_voice_listening": "Aan het luisteren…",
   "ui_voice_no_mic": "Kyron heeft toestemming nodig om de microfoon te gebruiken voor opnames. Je kunt die geven in de instellingen van je apparaat.",
-  "ui_voice_start_failed": "De opname kon niet worden gestart: {error}"
+  "ui_voice_start_failed": "De opname kon niet worden gestart: {error}",
+  "ui_2fa_title": "Inloggen in twee stappen",
+  "ui_2fa_help": "Een authenticatorcode voor teamtools",
+  "ui_2fa_intro": "Teamtools vragen naast je inlog ook een code uit een authenticator-app, zodat een gestolen wachtwoord alleen niet genoeg is.",
+  "ui_2fa_on": "Inloggen in twee stappen staat aan.",
+  "ui_2fa_remove": "Verwijderen",
+  "ui_2fa_set_up": "Instellen",
+  "ui_2fa_scan": "Scan dit met je authenticator-app of voer de sleutel hieronder in. Voeg hem zo mogelijk toe aan twee apps: verlies je je enige, dan moet je support vragen hem te verwijderen.",
+  "ui_2fa_key": "Instelsleutel",
+  "ui_2fa_copied": "Instelsleutel gekopieerd",
+  "ui_2fa_confirm": "Bevestigen",
+  "ui_2fa_failed": "Kan het instellen niet starten. Probeer het opnieuw.",
+  "ui_2fa_wrong": "Die code werkte niet. Controleer de tijd op je telefoon en probeer het opnieuw.",
+  "ui_2fa_code": "6-cijferige code",
+  "ui_2fa_enter": "Voer de code uit je authenticator-app in",
+  "ui_2fa_verify": "Verifiëren",
+  "ui_password_breached": "Dit wachtwoord is opgedoken in een datalek, dus het is een van de eerste die aanvallers proberen. Kies een ander."
 }

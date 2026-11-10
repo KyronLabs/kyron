@@ -2307,6 +2307,30 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "રેકોર્ડ કરવા માટે Kyronને માઇક્રોફોનની પરવાનગી જોઈએ. તમે તેને ડિવાઇસ સેટિંગમાં આપી શકો છો."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "રેકોર્ડિંગ શરૂ થઈ શક્યું નથી: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("બે-પગલાં સાઇન-ઇન"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "સ્ટાફ ટૂલ્સ માટે ઑથેન્ટિકેટર કોડ"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "સ્ટાફ ટૂલ્સ તમારા સાઇન-ઇન ઉપરાંત ઑથેન્ટિકેટર ઍપનો કોડ માગે છે, જેથી માત્ર ચોરાયેલા પાસવર્ડથી તેનો ઉપયોગ ન થઈ શકે."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("બે-પગલાં સાઇન-ઇન ચાલુ છે."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("દૂર કરો"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("સેટ અપ કરો"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "આને તમારી ઑથેન્ટિકેટર ઍપથી સ્કૅન કરો, અથવા નીચેની કી દાખલ કરો. શક્ય હોય તો બે ઍપમાં ઉમેરો: એકમાત્ર ઍપ ખોવાઈ જાય તો તેને દૂર કરવા સપોર્ટને કહેવું પડશે."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("સેટઅપ કી"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("સેટઅપ કી કૉપિ થઈ"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("પુષ્ટિ કરો"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "સેટઅપ શરૂ થઈ શક્યું નહીં. ફરી પ્રયાસ કરો."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "તે કોડ કામ ન કર્યો. તમારા ફોનનો સમય તપાસો અને ફરી પ્રયાસ કરો."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-અંકનો કોડ"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "તમારી ઑથેન્ટિકેટર ઍપનો કોડ દાખલ કરો"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("ચકાસો"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "આ પાસવર્ડ ડેટા ભંગમાં દેખાયો છે, તેથી હુમલાખોરો સૌપ્રથમ અજમાવે છે તેમાંનો એક છે. બીજો પસંદ કરો."),
     };
 
 final messageLookup = MessageLookup();

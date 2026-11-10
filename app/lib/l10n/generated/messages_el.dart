@@ -2763,6 +2763,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Το Kyron χρειάζεται άδεια για το μικρόφωνο για να ηχογραφήσει. Μπορείς να τη δώσεις στις ρυθμίσεις της συσκευής."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Δεν ήταν δυνατή η έναρξη της εγγραφής: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Σύνδεση δύο βημάτων"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Κωδικός εφαρμογής ελέγχου ταυτότητας για τα εργαλεία της ομάδας"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Τα εργαλεία της ομάδας ζητούν κωδικό από εφαρμογή ελέγχου ταυτότητας εκτός από τη σύνδεσή σου, ώστε ένας κλεμμένος κωδικός πρόσβασης μόνος του να μην αρκεί."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Η σύνδεση δύο βημάτων είναι ενεργή."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Αφαίρεση"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Ρύθμιση"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Σάρωσε αυτό με την εφαρμογή ελέγχου ταυτότητας ή εισήγαγε το κλειδί παρακάτω. Πρόσθεσέ το σε δύο εφαρμογές αν μπορείς: αν χάσεις τη μοναδική, θα πρέπει να ζητήσεις από την υποστήριξη να το αφαιρέσει."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Κλειδί ρύθμισης"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Το κλειδί ρύθμισης αντιγράφηκε"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Επιβεβαίωση"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Δεν ήταν δυνατή η έναρξη της ρύθμισης. Δοκίμασε ξανά."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Αυτός ο κωδικός δεν λειτούργησε. Έλεγξε την ώρα στο τηλέφωνό σου και δοκίμασε ξανά."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Κωδικός 6 ψηφίων"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Εισήγαγε τον κωδικό από την εφαρμογή ελέγχου ταυτότητας"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Επαλήθευση"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Αυτός ο κωδικός πρόσβασης έχει εμφανιστεί σε διαρροή δεδομένων, άρα είναι από τους πρώτους που δοκιμάζουν οι επιτιθέμενοι. Διάλεξε άλλον."),
     };
 
 final messageLookup = MessageLookup();

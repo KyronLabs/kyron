@@ -2403,6 +2403,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "I-Kyron idinga imvume yokusebenzisa imakrofoni ukuze iqophe. Ungayinikeza kuzilungiselelo zedivayisi yakho."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Asikwazanga ukuqala ukuqopha: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage(
+          "Ukungena ngezinyathelo ezimbili"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Ikhodi yesiqinisekisi yamathuluzi abasebenzi"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Amathuluzi abasebenzi acela ikhodi evela ku-app yesiqinisekisi ngaphezu kokungena kwakho, ukuze iphasiwedi entshontshiwe iyodwa ingakwazi ukuwasebenzisa."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Ukungena ngezinyathelo ezimbili kuvuliwe."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Susa"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Setha"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Skena lokhu nge-app yakho yesiqinisekisi, noma ufake ukhiye ongezansi. Wengeze kuma-app amabili uma ungakwazi: ukulahlekelwa yiyo kuphela onayo kusho ukucela usekelo ukuthi lususe."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Ukhiye wokusetha"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Ukhiye wokusetha ukopishiwe"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Qinisekisa"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Ayikwazanga ukuqala ukusetha. Zama futhi."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Leyo khodi ayisebenzanga. Hlola isikhathi efonini yakho bese uzama futhi."),
+      "ui_2fa_code":
+          MessageLookupByLibrary.simpleMessage("Ikhodi enezinombolo ezi-6"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Faka ikhodi evela ku-app yakho yesiqinisekisi"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Qinisekisa"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Le phasiwedi ivele ekuvuzeni kwedatha, ngakho ingenye yezokuqala ezizanywa abahlaseli. Khetha enye."),
     };
 
 final messageLookup = MessageLookup();

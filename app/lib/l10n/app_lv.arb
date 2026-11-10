@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Līdz desmit minūtēm.",
   "ui_voice_listening": "Klausos…",
   "ui_voice_no_mic": "Kyron ir nepieciešama atļauja izmantot mikrofonu ierakstīšanai. To vari piešķirt ierīces iestatījumos.",
-  "ui_voice_start_failed": "Neizdevās sākt ierakstu: {error}"
+  "ui_voice_start_failed": "Neizdevās sākt ierakstu: {error}",
+  "ui_2fa_title": "Divpakāpju pierakstīšanās",
+  "ui_2fa_help": "Autentifikatora kods komandas rīkiem",
+  "ui_2fa_intro": "Komandas rīki papildus pierakstīšanās prasa arī kodu no autentifikācijas lietotnes, lai ar nozagtu paroli vien tos nevarētu izmantot.",
+  "ui_2fa_on": "Divpakāpju pierakstīšanās ir ieslēgta.",
+  "ui_2fa_remove": "Noņemt",
+  "ui_2fa_set_up": "Iestatīt",
+  "ui_2fa_scan": "Noskenējiet šo ar autentifikācijas lietotni vai ievadiet tālāk norādīto atslēgu. Ja varat, pievienojiet to divām lietotnēm: pazaudējot vienīgo, būs jālūdz atbalsta dienestam to noņemt.",
+  "ui_2fa_key": "Iestatīšanas atslēga",
+  "ui_2fa_copied": "Iestatīšanas atslēga nokopēta",
+  "ui_2fa_confirm": "Apstiprināt",
+  "ui_2fa_failed": "Neizdevās sākt iestatīšanu. Mēģiniet vēlreiz.",
+  "ui_2fa_wrong": "Šis kods nederēja. Pārbaudiet laiku tālrunī un mēģiniet vēlreiz.",
+  "ui_2fa_code": "6 ciparu kods",
+  "ui_2fa_enter": "Ievadiet kodu no autentifikācijas lietotnes",
+  "ui_2fa_verify": "Pārbaudīt",
+  "ui_password_breached": "Šī parole ir parādījusies datu noplūdē, tāpēc tā ir viena no pirmajām, ko izmēģina uzbrucēji. Izvēlieties citu."
 }

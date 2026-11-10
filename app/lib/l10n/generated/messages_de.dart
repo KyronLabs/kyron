@@ -2707,6 +2707,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron braucht die Berechtigung für das Mikrofon, um aufzunehmen. Du kannst sie in den Einstellungen deines Geräts erteilen."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Die Aufnahme konnte nicht gestartet werden: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Zweistufige Anmeldung"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Ein Authenticator-Code für Team-Werkzeuge"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Team-Werkzeuge verlangen zusätzlich zur Anmeldung einen Code aus einer Authenticator-App, damit ein gestohlenes Passwort allein nicht reicht."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Die zweistufige Anmeldung ist aktiv."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Entfernen"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Einrichten"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Scanne dies mit deiner Authenticator-App oder gib den Schlüssel unten ein. Füge ihn wenn möglich zu zwei Apps hinzu: Verlierst du deine einzige, musst du den Support bitten, ihn zu entfernen."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Einrichtungsschlüssel"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Einrichtungsschlüssel kopiert"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Bestätigen"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Die Einrichtung konnte nicht gestartet werden. Versuche es erneut."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Dieser Code hat nicht funktioniert. Prüfe die Uhrzeit auf deinem Handy und versuche es erneut."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-stelliger Code"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Gib den Code aus deiner Authenticator-App ein"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Bestätigen"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Dieses Passwort ist in einem Datenleck aufgetaucht und gehört daher zu den ersten, die Angreifer ausprobieren. Wähle ein anderes."),
     };
 
 final messageLookup = MessageLookup();
