@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Түзету не қосу керек нәрсе бар ма? (міндетті емес)",
   "ui_send": "Жіберу",
   "ui_not_now": "Қазір емес",
-  "ui_back_again_to_leave": "Kyron-нан шығу үшін «Артқа» түймесін қайта басыңыз"
+  "ui_back_again_to_leave": "Kyron-нан шығу үшін «Артқа» түймесін қайта басыңыз",
+  "ui_confirm_its_you_title": "Бұл сіз екеніңізді растаңыз",
+  "ui_confirm_its_you_password": "Аккаунтты жою үшін құпия сөзді енгізіңіз.",
+  "ui_confirm_its_you_google": "Аккаунтты жою үшін Google арқылы қайта кіріңіз.",
+  "ui_confirm_its_you_failed": "Болмады. Тексеріп, қайта көріңіз.",
+  "ui_browser_leave_title": "Бұл бет басқа қолданбаны ашқысы келеді",
+  "ui_browser_leave_detail": "Ол {scheme} сілтемесін ашуды сұрап тұр."
 }

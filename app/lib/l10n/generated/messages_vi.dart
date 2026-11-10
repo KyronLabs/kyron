@@ -2037,6 +2037,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Để sau"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Nhấn quay lại lần nữa để thoát Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Xác nhận đó là bạn"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Nhập mật khẩu để xóa tài khoản của bạn."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Đăng nhập lại bằng Google để xóa tài khoản của bạn."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Không được. Hãy kiểm tra rồi thử lại."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Trang này muốn mở một ứng dụng khác"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Trang này yêu cầu mở một liên kết {scheme}."),
     };
 
 final messageLookup = MessageLookup();

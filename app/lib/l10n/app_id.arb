@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ada yang perlu kami perbaiki atau tambahkan? (opsional)",
   "ui_send": "Kirim",
   "ui_not_now": "Nanti saja",
-  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron"
+  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron",
+  "ui_confirm_its_you_title": "Konfirmasi bahwa ini Anda",
+  "ui_confirm_its_you_password": "Masukkan kata sandi untuk menghapus akun Anda.",
+  "ui_confirm_its_you_google": "Masuk lagi dengan Google untuk menghapus akun Anda.",
+  "ui_confirm_its_you_failed": "Tidak berhasil. Periksa lalu coba lagi.",
+  "ui_browser_leave_title": "Halaman ini ingin membuka aplikasi lain",
+  "ui_browser_leave_detail": "Halaman ini meminta membuka tautan {scheme}."
 }

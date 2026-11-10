@@ -1,5 +1,7 @@
+import { lookup as lookupCallback, type LookupAddress } from 'node:dns';
 import { lookup } from 'node:dns/promises';
-import { isIP } from 'node:net';
+import { isIP, type LookupFunction } from 'node:net';
+import { Agent } from 'undici';
 
 /**
  * Whether an address belongs to a range that must never be fetched on behalf
@@ -129,3 +131,54 @@ export function normaliseUrl(raw: string): URL {
 
   return url;
 }
+
+/**
+ * The resolver every link fetch connects through: it refuses a private
+ * address at the moment the socket is opened.
+ *
+ * Checking a hostname and then handing it to fetch resolves it twice, and a
+ * name server is free to answer differently the second time: public for the
+ * check, 127.0.0.1 for the connection (DNS rebinding). Done here, the address
+ * that is checked is the address that is connected to, on every hop of a
+ * redirect chain as much as the first.
+ */
+export const publicOnlyLookup: LookupFunction = (
+  hostname,
+  options,
+  callback,
+) => {
+  lookupCallback(hostname, { ...options, all: true }, (error, records) => {
+    if (error) {
+      callback(error, '', 0);
+      return;
+    }
+    const list = records as unknown as LookupAddress[];
+    const blocked = list.find((record) => isBlockedAddress(record.address));
+    if (!list.length || blocked) {
+      callback(
+        Object.assign(
+          new Error(
+            `Refusing to fetch a link pointing at ${hostname}: it resolves to a private address.`,
+          ),
+          { code: 'EPRIVATEADDRESS' },
+        ),
+        '',
+        0,
+      );
+      return;
+    }
+    if (options.all) {
+      (callback as unknown as (e: null, a: LookupAddress[]) => void)(
+        null,
+        list,
+      );
+    } else {
+      callback(null, list[0].address, list[0].family);
+    }
+  });
+};
+
+/** A connection pool for link fetches only, pinned to [publicOnlyLookup]. */
+export const linkDispatcher = new Agent({
+  connect: { lookup: publicOnlyLookup },
+});

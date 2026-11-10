@@ -10,6 +10,7 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
+import { IsStoredMediaUrl } from '../../../common/stored-media-url';
 
 /** Which of the reader's communities to list. */
 export type CommunityFilter = 'all' | 'unread' | 'running';
@@ -82,13 +83,11 @@ export class UpdateCommunityDto {
   description?: string;
 
   @IsOptional()
-  @IsString()
-  @MaxLength(2048)
+  @IsStoredMediaUrl()
   avatarUrl?: string;
 
   @IsOptional()
-  @IsString()
-  @MaxLength(2048)
+  @IsStoredMediaUrl()
   bannerUrl?: string;
 }
 

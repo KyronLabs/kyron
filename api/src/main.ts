@@ -13,10 +13,13 @@ import { MediaService } from './modules/media/media.service';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  BucketChooser,
+  corsOrigins,
   isPagesService,
-  limitFor,
+  limitForBucket,
   PAGES_BUCKET,
   readRateLimit,
+  readTrustedHops,
 } from './config/rate-limit';
 import { randomUUID } from 'node:crypto';
 import { MetricsService } from './infrastructure/observability/metrics.service';
@@ -29,6 +32,11 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter({
       logger: false,
+      // Whose word to take for the caller's address: see readTrustedHops.
+      trustProxy: ((hops: number) =>
+        hops > 0 ? (_address: string, hop: number) => hop < hops : false)(
+        readTrustedHops(),
+      ),
       // One id per request, echoed back on the response and carried on every
       // log line it produces. A caller that already has one -- a proxy, the
       // app, another service -- keeps it, so a single id spans the hop.
@@ -97,7 +105,7 @@ async function bootstrap() {
     // Read once, at boot, so a bad value still refuses to start.
     max: (
       (base: number) => (_request: unknown, key: string) =>
-        limitFor(key, base)
+        limitForBucket(key, base)
     )(readRateLimit()),
     timeWindow: 60 * 1000,
     // Per account when there is one, per address otherwise.
@@ -109,48 +117,45 @@ async function bootstrap() {
     // being broken. The token is read here, not verified -- the guard does
     // that -- so the worst a forged one buys is a private bucket of the same
     // size, while anonymous traffic stays limited by address as before.
-    keyGenerator: (request: {
-      headers: Record<string, string | string[] | undefined>;
-      ip: string;
-      url?: string;
-    }) => {
-      // kyron-links, fetching for every visitor of every shared link from one
-      // address: its own bucket (src/config/rate-limit.ts).
-      if (isPagesService(request.url, request.headers['x-kyron-pages-key'])) {
-        return PAGES_BUCKET;
+    //
+    // And a forged one per request buys nothing either: an address may only
+    // claim so many different accounts a minute before its claims stop being
+    // believed (BucketChooser).
+    keyGenerator: (
+      (chooser: BucketChooser) =>
+      (request: {
+        headers: Record<string, string | string[] | undefined>;
+        ip: string;
+        url?: string;
+      }) => {
+        // kyron-links, fetching for every visitor of every shared link from one
+        // address: its own bucket (src/config/rate-limit.ts).
+        if (isPagesService(request.url, request.headers['x-kyron-pages-key'])) {
+          return PAGES_BUCKET;
+        }
+        const header = request.headers.authorization;
+        const bearer =
+          typeof header === 'string' && header.startsWith('Bearer ')
+            ? header.slice(7)
+            : null;
+        const subject = bearer ? subjectOf(bearer) : null;
+        return chooser.bucketFor(request.ip, subject);
       }
-      const header = request.headers.authorization;
-      const bearer =
-        typeof header === 'string' && header.startsWith('Bearer ')
-          ? header.slice(7)
-          : null;
-      const subject = bearer ? subjectOf(bearer) : null;
-      return subject ? `user:${subject}` : `ip:${request.ip}`;
-    },
+    )(new BucketChooser()),
   });
 
-  // CORS_ORIGIN is a comma-separated allow-list. Unset, we reflect whatever
-  // Origin the request carries -- which together with credentials:true lets any
-  // site issue authenticated cross-origin requests. That is fine locally and
-  // wrong in production, so warn loudly rather than throw: this check must not
-  // be able to take down a running deployment on its own.
-  const allowedOrigins = config
-    .get<string>('CORS_ORIGIN')
-    ?.split(',')
-    .map((origin) => origin.trim())
-    .filter(Boolean);
-
-  if (!allowedOrigins?.length) {
+  // CORS_ORIGIN is a comma-separated allow-list. Unset, development reflects
+  // any origin and production answers only the web app's own (corsOrigins).
+  const origins = corsOrigins(config.get<string>('CORS_ORIGIN'));
+  if (!config.get<string>('CORS_ORIGIN')?.trim()) {
     logger.warn(
-      'CORS_ORIGIN is not set: reflecting any origin with credentials enabled. ' +
-        'Set it to a comma-separated allow-list before exposing this publicly.',
+      origins === true
+        ? 'CORS_ORIGIN is not set: reflecting any origin (development).'
+        : `CORS_ORIGIN is not set: allowing only ${origins.join(', ')}.`,
     );
   }
 
-  app.enableCors({
-    origin: allowedOrigins?.length ? allowedOrigins : true,
-    credentials: true,
-  });
+  app.enableCors({ origin: origins, credentials: true });
 
   // Nothing validated DTOs before this. Every class-validator decorator in the
   // codebase was inert, which is why POST /auth/login with an empty body

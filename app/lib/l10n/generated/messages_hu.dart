@@ -2078,6 +2078,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Most nem"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Nyomd meg újra a Vissza gombot a Kyronból való kilépéshez"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Erősítsd meg, hogy te vagy az"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "A fiókod törléséhez add meg a jelszavad."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "A fiókod törléséhez jelentkezz be újra a Google-lel."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Nem sikerült. Ellenőrizd, és próbáld újra."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Ez az oldal egy másik alkalmazást szeretne megnyitni"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Egy {scheme} hivatkozás megnyitását kéri."),
     };
 
 final messageLookup = MessageLookup();

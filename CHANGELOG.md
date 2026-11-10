@@ -20,6 +20,30 @@ the section; GitHub does not show it:
     -->
 
 ## [Unreleased]
+### Security
+
+- **Deleting your account asks you to confirm it's you.** If you last signed
+  in a while ago, Kyron asks for your password (or Google) first, so an
+  unlocked phone is not enough to erase an account.
+- **Blocking holds everywhere.** Someone you blocked, or who blocked you, can
+  no longer like, repost, save, quote, vote on or reply to your posts and
+  comments, and hiding one post no longer empties your feed.
+- **Deleted posts' pictures go too.** Photos and clips of a deleted post are
+  removed 30 days later, after any report or appeal about it has had time.
+- **Signing out no longer loses your messages.** Signing out, or a refresh
+  that failed for want of signal, deleted this phone's message key along with
+  the session, so messages sent to you before showed as "Waiting for this
+  message". The key now stays, and a launch without signal keeps you signed
+  in.
+- **Your sign-in is kept in the phone's keystore**, not in a plain file, and
+  Kyron is left out of backups and phone-to-phone transfers.
+- **Links in the in-app browser ask before opening another app**, and can
+  never open Kyron itself or an app's internals.
+- A security review's findings on the server: link previews can no longer be
+  steered at private addresses, uploads are checked by their contents, profile
+  fields have limits, message keys are capped per account, rate limits and
+  CORS are stricter, the old sign-in endpoints are removed, and the server
+  runs as an unprivileged user.
 
 ## [0.1.44] - 2026-11-09
 ### Changed

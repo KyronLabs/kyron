@@ -1928,6 +1928,17 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("後で"),
       "ui_back_again_to_leave":
           MessageLookupByLibrary.simpleMessage("もう一度戻るを押すとKyronを終了します"),
+      "ui_confirm_its_you_title": MessageLookupByLibrary.simpleMessage("ご本人確認"),
+      "ui_confirm_its_you_password":
+          MessageLookupByLibrary.simpleMessage("アカウントを削除するにはパスワードを入力してください。"),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "アカウントを削除するには Google でもう一度ログインしてください。"),
+      "ui_confirm_its_you_failed":
+          MessageLookupByLibrary.simpleMessage("うまくいきませんでした。確認してもう一度お試しください。"),
+      "ui_browser_leave_title":
+          MessageLookupByLibrary.simpleMessage("このページが別のアプリを開こうとしています"),
+      "ui_browser_leave_detail":
+          MessageLookupByLibrary.simpleMessage("{scheme} のリンクを開こうとしています。"),
     };
 
 final messageLookup = MessageLookup();

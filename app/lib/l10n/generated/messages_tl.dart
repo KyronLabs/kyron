@@ -2082,6 +2082,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hindi ngayon"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Pindutin muli ang back para umalis sa Kyron"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Kumpirmahing ikaw ito"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Ilagay ang password mo para i-delete ang account mo."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Mag-sign in ulit gamit ang Google para i-delete ang account mo."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Hindi ito gumana. Tingnan at subukan ulit."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Gustong magbukas ng pahinang ito ng ibang app"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Humihiling itong magbukas ng {scheme} na link."),
     };
 
 final messageLookup = MessageLookup();

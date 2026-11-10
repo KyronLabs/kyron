@@ -2116,6 +2116,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("ഇപ്പോൾ വേണ്ട"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Kyron വിടാൻ വീണ്ടും പിന്നോട്ട് അമർത്തുക"),
+      "ui_confirm_its_you_title": MessageLookupByLibrary.simpleMessage(
+          "ഇത് നിങ്ങളാണെന്ന് സ്ഥിരീകരിക്കുക"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "അക്കൗണ്ട് ഇല്ലാതാക്കാൻ പാസ്‌വേഡ് നൽകുക."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "അക്കൗണ്ട് ഇല്ലാതാക്കാൻ Google ഉപയോഗിച്ച് വീണ്ടും സൈൻ ഇൻ ചെയ്യുക."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "അത് പ്രവർത്തിച്ചില്ല. പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "ഈ പേജ് മറ്റൊരു ആപ്പ് തുറക്കാൻ ആഗ്രഹിക്കുന്നു"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "ഇത് ഒരു {scheme} ലിങ്ക് തുറക്കാൻ ആവശ്യപ്പെടുന്നു."),
     };
 
 final messageLookup = MessageLookup();

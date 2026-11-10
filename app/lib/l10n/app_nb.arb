@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Noe vi bør fikse eller legge til? (valgfritt)",
   "ui_send": "Send",
   "ui_not_now": "Ikke nå",
-  "ui_back_again_to_leave": "Trykk tilbake igjen for å forlate Kyron"
+  "ui_back_again_to_leave": "Trykk tilbake igjen for å forlate Kyron",
+  "ui_confirm_its_you_title": "Bekreft at det er deg",
+  "ui_confirm_its_you_password": "Skriv inn passordet ditt for å slette kontoen.",
+  "ui_confirm_its_you_google": "Logg på med Google igjen for å slette kontoen.",
+  "ui_confirm_its_you_failed": "Det fungerte ikke. Sjekk og prøv igjen.",
+  "ui_browser_leave_title": "Denne siden vil åpne en annen app",
+  "ui_browser_leave_detail": "Den ber om å åpne en {scheme}-lenke."
 }

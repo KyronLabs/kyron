@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "ਕੁਝ ਠੀਕ ਕਰਨਾ ਜਾਂ ਜੋੜਨਾ ਚਾਹੀਦਾ ਹੈ? (ਵਿਕਲਪਿਕ)",
   "ui_send": "ਭੇਜੋ",
   "ui_not_now": "ਹੁਣ ਨਹੀਂ",
-  "ui_back_again_to_leave": "Kyron ਛੱਡਣ ਲਈ ਦੁਬਾਰਾ ਪਿੱਛੇ ਦਬਾਓ"
+  "ui_back_again_to_leave": "Kyron ਛੱਡਣ ਲਈ ਦੁਬਾਰਾ ਪਿੱਛੇ ਦਬਾਓ",
+  "ui_confirm_its_you_title": "ਪੁਸ਼ਟੀ ਕਰੋ ਕਿ ਇਹ ਤੁਸੀਂ ਹੋ",
+  "ui_confirm_its_you_password": "ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਉਣ ਲਈ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ।",
+  "ui_confirm_its_you_google": "ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਉਣ ਲਈ ਮੁੜ Google ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ।",
+  "ui_confirm_its_you_failed": "ਇਹ ਕੰਮ ਨਹੀਂ ਕੀਤਾ। ਜਾਂਚ ਕਰੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+  "ui_browser_leave_title": "ਇਹ ਪੰਨਾ ਕੋਈ ਹੋਰ ਐਪ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦਾ ਹੈ",
+  "ui_browser_leave_detail": "ਇਹ ਇੱਕ {scheme} ਲਿੰਕ ਖੋਲ੍ਹਣ ਲਈ ਕਹਿ ਰਿਹਾ ਹੈ।"
 }

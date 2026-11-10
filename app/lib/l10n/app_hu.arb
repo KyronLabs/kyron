@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Mit javítsunk vagy adjunk hozzá? (nem kötelező)",
   "ui_send": "Küldés",
   "ui_not_now": "Most nem",
-  "ui_back_again_to_leave": "Nyomd meg újra a Vissza gombot a Kyronból való kilépéshez"
+  "ui_back_again_to_leave": "Nyomd meg újra a Vissza gombot a Kyronból való kilépéshez",
+  "ui_confirm_its_you_title": "Erősítsd meg, hogy te vagy az",
+  "ui_confirm_its_you_password": "A fiókod törléséhez add meg a jelszavad.",
+  "ui_confirm_its_you_google": "A fiókod törléséhez jelentkezz be újra a Google-lel.",
+  "ui_confirm_its_you_failed": "Nem sikerült. Ellenőrizd, és próbáld újra.",
+  "ui_browser_leave_title": "Ez az oldal egy másik alkalmazást szeretne megnyitni",
+  "ui_browser_leave_detail": "Egy {scheme} hivatkozás megnyitását kéri."
 }

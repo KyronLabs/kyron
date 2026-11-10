@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Нешто што треба да поправимо или додамо? (необавезно)",
   "ui_send": "Пошаљи",
   "ui_not_now": "Не сада",
-  "ui_back_again_to_leave": "Поново притисните Назад да бисте изашли из Kyron-а"
+  "ui_back_again_to_leave": "Поново притисните Назад да бисте изашли из Kyron-а",
+  "ui_confirm_its_you_title": "Потврдите да сте то ви",
+  "ui_confirm_its_you_password": "Унесите лозинку да бисте избрисали налог.",
+  "ui_confirm_its_you_google": "Поново се пријавите преко Google-а да бисте избрисали налог.",
+  "ui_confirm_its_you_failed": "Није успело. Проверите и покушајте поново.",
+  "ui_browser_leave_title": "Ова страница жели да отвори другу апликацију",
+  "ui_browser_leave_detail": "Тражи да отвори {scheme} линк."
 }

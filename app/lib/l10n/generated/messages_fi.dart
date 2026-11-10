@@ -2052,6 +2052,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ei nyt"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Poistu Kyronista painamalla Takaisin uudelleen"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Vahvista, että se olet sinä"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Poista tili antamalla salasanasi."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Poista tili kirjautumalla uudelleen Googlella."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Se ei onnistunut. Tarkista ja yritä uudelleen."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Tämä sivu haluaa avata toisen sovelluksen"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Se pyytää avaamaan {scheme}-linkin."),
     };
 
 final messageLookup = MessageLookup();

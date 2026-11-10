@@ -24,6 +24,7 @@ import { SearchProfilesDto } from './dto/search-profiles.dto';
 import { ListFollowsDto } from './dto/list-follows.dto';
 import { ListSuggestedDto } from './dto/list-suggested.dto';
 import { ChooseHandleDto } from './dto/choose-handle.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 import { Request } from 'express';
 
 /**
@@ -144,7 +145,7 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Patch()
-  async update(@Req() req: AuthRequest, @Body() body: any) {
+  async update(@Req() req: AuthRequest, @Body() body: UpdateProfileDto) {
     return this.svc.updateProfile(req.user.id, body);
   }
 

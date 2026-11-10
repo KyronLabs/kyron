@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Що нам виправити або додати? (необов'язково)",
   "ui_send": "Надіслати",
   "ui_not_now": "Не зараз",
-  "ui_back_again_to_leave": "Натисніть «Назад» ще раз, щоб вийти з Kyron"
+  "ui_back_again_to_leave": "Натисніть «Назад» ще раз, щоб вийти з Kyron",
+  "ui_confirm_its_you_title": "Підтвердьте, що це ви",
+  "ui_confirm_its_you_password": "Введіть пароль, щоб видалити обліковий запис.",
+  "ui_confirm_its_you_google": "Знову увійдіть через Google, щоб видалити обліковий запис.",
+  "ui_confirm_its_you_failed": "Не вдалося. Перевірте й спробуйте ще раз.",
+  "ui_browser_leave_title": "Ця сторінка хоче відкрити інший застосунок",
+  "ui_browser_leave_detail": "Вона просить відкрити посилання {scheme}."
 }

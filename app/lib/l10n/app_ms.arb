@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ada apa-apa yang patut kami baiki atau tambah? (pilihan)",
   "ui_send": "Hantar",
   "ui_not_now": "Bukan sekarang",
-  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron"
+  "ui_back_again_to_leave": "Tekan kembali sekali lagi untuk keluar dari Kyron",
+  "ui_confirm_its_you_title": "Sahkan bahawa ini anda",
+  "ui_confirm_its_you_password": "Masukkan kata laluan anda untuk memadam akaun.",
+  "ui_confirm_its_you_google": "Log masuk semula dengan Google untuk memadam akaun.",
+  "ui_confirm_its_you_failed": "Itu tidak berjaya. Semak dan cuba lagi.",
+  "ui_browser_leave_title": "Halaman ini mahu membuka apl lain",
+  "ui_browser_leave_detail": "Ia meminta untuk membuka pautan {scheme}."
 }

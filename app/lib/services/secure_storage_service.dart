@@ -12,39 +12,16 @@ class SecureStorageService {
 
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
 
-  static const _kAccessTokenKey = 'access_token';
-  static const _kRefreshTokenKey = 'refresh_token';
-  static const _kAccessExpKey = 'access_expires_at';
   static const _kUserKey = 'user_json';
   static const _kOnboardingCompleteKey = 'has_completed_onboarding';
 
-  Future<void> writeAccessToken(String token, DateTime expiresAt) async {
-    await _storage.write(key: _kAccessTokenKey, value: token);
-    await _storage.write(
-      key: _kAccessExpKey,
-      value: expiresAt.toIso8601String(),
-    );
-  }
-
-  Future<void> writeRefreshToken(String token) async {
-    await _storage.write(key: _kRefreshTokenKey, value: token);
-  }
-
-  Future<String?> readAccessToken() => _storage.read(key: _kAccessTokenKey);
-  Future<String?> readRefreshToken() => _storage.read(key: _kRefreshTokenKey);
-
-  Future<DateTime?> readAccessExpiry() async {
-    final v = await _storage.read(key: _kAccessExpKey);
-    if (v == null) return null;
-    return DateTime.tryParse(v);
-  }
-
-  Future<bool> hasValidAccessToken() async {
-    final token = await readAccessToken();
-    final expiry = await readAccessExpiry();
-    if (token == null || expiry == null) return false;
-    return expiry.isAfter(DateTime.now());
-  }
+  /// Left by the API's own sign-in, which is gone. Nothing reads them; they
+  /// are only deleted, so no phone keeps an old token lying about.
+  static const _legacyKeys = [
+    'access_token',
+    'refresh_token',
+    'access_expires_at',
+  ];
 
   Future<void> writeUserData(User user) async {
     await _storage.write(key: _kUserKey, value: jsonEncode(user.toJson()));
@@ -75,7 +52,20 @@ class SecureStorageService {
   Future<String?> readOnboardingCompletedFor() =>
       _storage.read(key: _kOnboardingCompleteKey);
 
-  Future<void> clearAll() async {
-    await _storage.deleteAll();
+  /// Forgets the signed-in account's cached details.
+  ///
+  /// Only this service's own entries. The store is shared: MessageVault and
+  /// IdentityVault keep the device's message key and identity in it, which
+  /// stay on the phone through a sign-out by design (docs/E2EE.md). This was
+  /// `deleteAll()`, which took them too, so every sign-out -- and every
+  /// failed refresh -- minted a new message key, and what had been sealed
+  /// for the old one became "Waiting for this message".
+  ///
+  /// The onboarding entry stays: it names the account that finished
+  /// onboarding, so it cannot leak to another one.
+  Future<void> clearSession() async {
+    for (final key in [_kUserKey, ..._legacyKeys]) {
+      await _storage.delete(key: key);
+    }
   }
 }

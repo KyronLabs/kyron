@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "May dapat ba kaming ayusin o idagdag? (opsyonal)",
   "ui_send": "Ipadala",
   "ui_not_now": "Hindi ngayon",
-  "ui_back_again_to_leave": "Pindutin muli ang back para umalis sa Kyron"
+  "ui_back_again_to_leave": "Pindutin muli ang back para umalis sa Kyron",
+  "ui_confirm_its_you_title": "Kumpirmahing ikaw ito",
+  "ui_confirm_its_you_password": "Ilagay ang password mo para i-delete ang account mo.",
+  "ui_confirm_its_you_google": "Mag-sign in ulit gamit ang Google para i-delete ang account mo.",
+  "ui_confirm_its_you_failed": "Hindi ito gumana. Tingnan at subukan ulit.",
+  "ui_browser_leave_title": "Gustong magbukas ng pahinang ito ng ibang app",
+  "ui_browser_leave_detail": "Humihiling itong magbukas ng {scheme} na link."
 }

@@ -10,6 +10,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { SupabaseService } from '../../infrastructure/supabase/supabase.service';
+import { MediaService } from '../media/media.service';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
 import { AccountStatus } from '@prisma/client';
@@ -469,11 +470,10 @@ export class ProfileService {
   // These write to BOTH Prisma AND Supabase
   // ==========================================
 
-  private buildFileName(userId: string, prefix: string, originalName: string) {
-    const ext = originalName.includes('.')
-      ? originalName.split('.').pop()
-      : 'bin';
-    return `${userId}_${prefix}_${Date.now()}.${ext}`;
+  /** Named by the server from what the bytes are, never from the upload's
+   * own file name, which is the uploader's to choose. */
+  private buildFileName(userId: string, prefix: string, extension: string) {
+    return `${userId}_${prefix}_${Date.now()}.${extension}`;
   }
 
   async uploadAvatar(
@@ -485,7 +485,12 @@ export class ProfileService {
     if (!fileBuffer || fileBuffer.length === 0)
       throw new BadRequestException('Empty file');
 
-    const filename = this.buildFileName(userId, 'avatar', originalName);
+    // The same checks an attachment gets: an image by its bytes, a size and
+    // pixel ceiling, a type and extension chosen here.
+    void originalName;
+    const checked = MediaService.checkPicture(fileBuffer);
+    mimeType = checked.mimeType;
+    const filename = this.buildFileName(userId, 'avatar', checked.extension);
     const folder = this.supabase.getAvatarFolder();
 
     // 1. Upload to Supabase Storage (CDN)
@@ -526,7 +531,12 @@ export class ProfileService {
     if (!fileBuffer || fileBuffer.length === 0)
       throw new BadRequestException('Empty file');
 
-    const filename = this.buildFileName(userId, 'cover', originalName);
+    // The same checks an attachment gets: an image by its bytes, a size and
+    // pixel ceiling, a type and extension chosen here.
+    void originalName;
+    const checked = MediaService.checkPicture(fileBuffer);
+    mimeType = checked.mimeType;
+    const filename = this.buildFileName(userId, 'cover', checked.extension);
     const folder = this.supabase.getCoverFolder();
 
     // 1. Upload to Supabase Storage (CDN)

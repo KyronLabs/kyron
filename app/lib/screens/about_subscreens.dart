@@ -96,19 +96,24 @@ class ServiceStatusScreen extends ConsumerWidget {
                 _Line('Detail', status.databaseDetail!),
               _Line('Mirror tables', status.mirrorTables),
               _Line('Round trip', '${status.latency.inMilliseconds} ms'),
-              const SizedBox(height: SpacingTokens.space24),
-              Text(
-                'TOKEN VERIFICATION',
-                style: TextStyle(
-                  fontSize: TypographyTokens.fontSize1,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.8,
-                  color: scheme.onSurface.withValues(alpha: .5),
+              // The API only says this to the team now (GET /health with
+              // the metrics token), so on a phone the section is usually
+              // empty, and an empty heading is just noise.
+              if (status.auth.isNotEmpty) ...[
+                const SizedBox(height: SpacingTokens.space24),
+                Text(
+                  'TOKEN VERIFICATION',
+                  style: TextStyle(
+                    fontSize: TypographyTokens.fontSize1,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.8,
+                    color: scheme.onSurface.withValues(alpha: .5),
+                  ),
                 ),
-              ),
-              const SizedBox(height: SpacingTokens.space8),
-              for (final entry in status.auth.entries)
-                _Line(entry.key, '${entry.value}'),
+                const SizedBox(height: SpacingTokens.space8),
+                for (final entry in status.auth.entries)
+                  _Line(entry.key, '${entry.value}'),
+              ],
             ],
           ),
         ),

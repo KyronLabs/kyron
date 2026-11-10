@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "কিছু ঠিক করা বা যোগ করা উচিত? (ঐচ্ছিক)",
   "ui_send": "পাঠান",
   "ui_not_now": "এখন নয়",
-  "ui_back_again_to_leave": "Kyron থেকে বের হতে আবার পিছনে চাপুন"
+  "ui_back_again_to_leave": "Kyron থেকে বের হতে আবার পিছনে চাপুন",
+  "ui_confirm_its_you_title": "নিশ্চিত করুন যে এটি আপনি",
+  "ui_confirm_its_you_password": "আপনার অ্যাকাউন্ট মুছতে পাসওয়ার্ড দিন।",
+  "ui_confirm_its_you_google": "আপনার অ্যাকাউন্ট মুছতে আবার Google দিয়ে সাইন ইন করুন।",
+  "ui_confirm_its_you_failed": "এটি কাজ করেনি। যাচাই করে আবার চেষ্টা করুন।",
+  "ui_browser_leave_title": "এই পৃষ্ঠাটি অন্য একটি অ্যাপ খুলতে চায়",
+  "ui_browser_leave_detail": "এটি একটি {scheme} লিংক খুলতে চাইছে।"
 }

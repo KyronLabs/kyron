@@ -103,19 +103,30 @@ class AuthRepository {
     } finally {
       // Clear local caches even if the network sign-out fails, so the device
       // is not left showing a signed-in shell.
-      await _storage.clearAll();
+      await _storage.clearSession();
     }
   }
 
   /// The SDK refreshes on its own schedule; this forces one and reports whether
   /// a usable session survived.
+  ///
+  /// Only an answer from Supabase that the session is gone signs anybody
+  /// out. A refresh that could not reach Supabase -- no signal, a timeout --
+  /// says nothing about the session, so it is kept: the person stays signed
+  /// in, and the SDK refreshes once there is a connection. This used to wipe
+  /// the store on any failure, which signed people out for opening the app
+  /// on a train.
   Future<bool> refresh() async {
     try {
       final res = await _auth.refreshSession();
       return res.session != null;
-    } catch (_) {
-      await _storage.clearAll();
+    } on AuthRetryableFetchException {
+      return hasPersistedSession;
+    } on AuthException {
+      await _storage.clearSession();
       return false;
+    } catch (_) {
+      return hasPersistedSession;
     }
   }
 
@@ -193,6 +204,46 @@ class AuthRepository {
   /// `passwordRecovery` event and sends the reader to the screen where a new
   /// password is set. Without the redirect the mail pointed at the project's
   /// Site URL and the account stayed locked.
+  /// Whether this account can sign in with a password, as opposed to only
+  /// through Google.
+  bool get hasPassword {
+    final providers = _auth.currentUser?.appMetadata['providers'];
+    if (providers is List) return providers.contains('email');
+    return _auth.currentUser?.appMetadata['provider'] == 'email';
+  }
+
+  /// Proves the person holding the phone knows the password, which renews
+  /// the sign-in time the API checks before anything irreversible.
+  Future<void> confirmPassword(String password) async {
+    final email = _auth.currentUser?.email;
+    if (email == null) throw const AuthException('No account is signed in.');
+    final res = await _auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+    if (res.session == null) {
+      throw const AuthException('Sign-in did not return a session.');
+    }
+  }
+
+  /// The same proof, through Google: completes when the browser hands a new
+  /// session back, or throws after [timeout].
+  Future<void> confirmWithGoogle({
+    Duration timeout = const Duration(minutes: 5),
+  }) async {
+    final before = _auth.currentSession?.accessToken;
+    final renewed = _auth.onAuthStateChange
+        .firstWhere(
+          (state) =>
+              state.event == AuthChangeEvent.signedIn &&
+              state.session != null &&
+              state.session!.accessToken != before,
+        )
+        .timeout(timeout);
+    await startGoogleSignIn();
+    await renewed;
+  }
+
   Future<void> sendPasswordReset(String email) => _auth.resetPasswordForEmail(
         email,
         redirectTo: SupabaseConfig.authRedirect,

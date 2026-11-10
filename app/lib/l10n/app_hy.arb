@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Ինչ-որ բան պե՞տք է ուղղենք կամ ավելացնենք։ (ըստ ցանկության)",
   "ui_send": "Ուղարկել",
   "ui_not_now": "Ոչ հիմա",
-  "ui_back_again_to_leave": "Կրկին սեղմեք «Հետ»՝ Kyron-ից դուրս գալու համար"
+  "ui_back_again_to_leave": "Կրկին սեղմեք «Հետ»՝ Kyron-ից դուրս գալու համար",
+  "ui_confirm_its_you_title": "Հաստատեք, որ դուք եք",
+  "ui_confirm_its_you_password": "Մուտքագրեք գաղտնաբառը՝ հաշիվը ջնջելու համար։",
+  "ui_confirm_its_you_google": "Կրկին մուտք գործեք Google-ով՝ հաշիվը ջնջելու համար։",
+  "ui_confirm_its_you_failed": "Չստացվեց։ Ստուգեք և կրկին փորձեք։",
+  "ui_browser_leave_title": "Այս էջը ցանկանում է բացել այլ հավելված",
+  "ui_browser_leave_detail": "Այն խնդրում է բացել {scheme} հղում։"
 }

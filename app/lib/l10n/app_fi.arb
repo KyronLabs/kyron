@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Pitäisikö meidän korjata tai lisätä jotain? (valinnainen)",
   "ui_send": "Lähetä",
   "ui_not_now": "Ei nyt",
-  "ui_back_again_to_leave": "Poistu Kyronista painamalla Takaisin uudelleen"
+  "ui_back_again_to_leave": "Poistu Kyronista painamalla Takaisin uudelleen",
+  "ui_confirm_its_you_title": "Vahvista, että se olet sinä",
+  "ui_confirm_its_you_password": "Poista tili antamalla salasanasi.",
+  "ui_confirm_its_you_google": "Poista tili kirjautumalla uudelleen Googlella.",
+  "ui_confirm_its_you_failed": "Se ei onnistunut. Tarkista ja yritä uudelleen.",
+  "ui_browser_leave_title": "Tämä sivu haluaa avata toisen sovelluksen",
+  "ui_browser_leave_detail": "Se pyytää avaamaan {scheme}-linkin."
 }

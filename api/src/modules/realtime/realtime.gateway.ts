@@ -25,6 +25,13 @@ const POLICY_VIOLATION = 1008;
  */
 const HEARTBEAT_MS = 30_000;
 
+/** How long a socket that brought no token may take to send one. */
+const AUTH_WINDOW_MS = 5_000;
+
+/** Open sockets one account may hold. A phone, a tablet, a laptop and some
+ * reconnects still in flight; not hundreds. */
+export const MAX_SOCKETS_PER_ACCOUNT = 8;
+
 /**
  * The socket a signed-in reader holds open.
  *
@@ -34,7 +41,9 @@ const HEARTBEAT_MS = 30_000;
  * stored. Everything a client can *do* is a REST call that already exists,
  * so there is no second, less-guarded way to write.
  */
-@WebSocketGateway({ path: '/realtime' })
+// maxPayload: nothing the app sends is larger than a token or a presence
+// frame. The default, 100 MiB, was buffered whole before anything looked at it.
+@WebSocketGateway({ path: '/realtime', maxPayload: 8 * 1024 })
 export class RealtimeGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
@@ -58,10 +67,12 @@ export class RealtimeGateway
     socket: WebSocket,
     request: IncomingMessage,
   ): Promise<void> {
-    // From the query string, not a header: a browser's WebSocket constructor
-    // cannot set one, and the mobile client should not need a second way to
-    // present the same credential.
-    const token = this.tokenFrom(request);
+    // The token comes as the first frame, `{"type":"auth","token":"..."}`,
+    // so it never sits in a URL, which is what proxies and access logs keep.
+    // `?token=` is still read for builds installed before this; it goes once
+    // those have updated.
+    const fromUrl = this.tokenFrom(request);
+    const token = fromUrl ?? (await RealtimeGateway.firstFrameToken(socket));
     if (!token) {
       socket.close(POLICY_VIOLATION, 'A token is required.');
       return;
@@ -87,6 +98,11 @@ export class RealtimeGateway
       return;
     }
 
+    if (this.realtime.socketCount(claims.sub) >= MAX_SOCKETS_PER_ACCOUNT) {
+      socket.close(POLICY_VIOLATION, 'Too many connections for this account.');
+      return;
+    }
+
     this.owner.set(socket, claims.sub);
     this.alive.add(socket);
     this.realtime.register(claims.sub, socket);
@@ -97,6 +113,48 @@ export class RealtimeGateway
       if (away !== null) this.realtime.setAway(claims.sub, socket, away);
     });
     this.startHeartbeat();
+  }
+
+  /**
+   * The token from the socket's first frame, or null when none arrives in
+   * [AUTH_WINDOW_MS] or the first frame is something else.
+   */
+  static firstFrameToken(
+    socket: Pick<WebSocket, 'once' | 'off'>,
+    windowMs = AUTH_WINDOW_MS,
+  ): Promise<string | null> {
+    return new Promise((resolve) => {
+      const onMessage = (data: unknown) => {
+        clearTimeout(timer);
+        resolve(RealtimeGateway.authFrame(data));
+      };
+      const timer = setTimeout(() => {
+        socket.off('message', onMessage);
+        resolve(null);
+      }, windowMs);
+      socket.once('message', onMessage);
+    });
+  }
+
+  /** The token in an `{"type":"auth","token":"..."}` frame, or null. */
+  static authFrame(data: unknown): string | null {
+    const text =
+      typeof data === 'string'
+        ? data
+        : Buffer.isBuffer(data)
+          ? data.toString('utf8')
+          : null;
+    if (text === null || text.length > 8 * 1024) return null;
+    try {
+      const frame = JSON.parse(text) as { type?: unknown; token?: unknown };
+      if (frame?.type !== 'auth' || typeof frame.token !== 'string') {
+        return null;
+      }
+      const token = frame.token.trim();
+      return token.length > 0 ? token : null;
+    } catch {
+      return null;
+    }
   }
 
   /**

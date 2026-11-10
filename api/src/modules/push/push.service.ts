@@ -148,11 +148,29 @@ export class PushService implements OnModuleInit, OnApplicationBootstrap {
       },
       create: { userId, token, platform, locale: locale ?? null },
     });
+    // Every notification is one request to Google per token, so an account
+    // that could hold thousands would turn each like into thousands of
+    // them. Nobody has this many phones; past it the stalest go.
+    const stale = await this.prisma.deviceToken.findMany({
+      where: { userId },
+      orderBy: { updatedAt: 'desc' },
+      skip: PushService.maxDevices,
+      select: { id: true },
+    });
+    if (stale.length) {
+      await this.prisma.deviceToken.deleteMany({
+        where: { id: { in: stale.map((row) => row.id) } },
+      });
+    }
   }
 
+  static readonly maxDevices = 10;
+
   /** Forgets one device. Called on sign-out. */
-  async forget(token: string): Promise<void> {
-    await this.prisma.deviceToken.deleteMany({ where: { token } });
+  async forget(userId: string, token: string): Promise<void> {
+    // Only the caller's own: a token is not a secret from every other app
+    // on the phone, and knowing one must not be enough to silence it.
+    await this.prisma.deviceToken.deleteMany({ where: { token, userId } });
   }
 
   /** Forgets every device of one account. */

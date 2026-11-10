@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "មានអ្វីដែលយើងគួរកែ ឬបន្ថែមទេ? (ស្រេចចិត្ត)",
   "ui_send": "ផ្ញើ",
   "ui_not_now": "ពេលក្រោយ",
-  "ui_back_again_to_leave": "ចុចថយក្រោយម្ដងទៀត ដើម្បីចាកចេញពី Kyron"
+  "ui_back_again_to_leave": "ចុចថយក្រោយម្ដងទៀត ដើម្បីចាកចេញពី Kyron",
+  "ui_confirm_its_you_title": "បញ្ជាក់ថាជាអ្នក",
+  "ui_confirm_its_you_password": "បញ្ចូលពាក្យសម្ងាត់របស់អ្នក ដើម្បីលុបគណនី។",
+  "ui_confirm_its_you_google": "ចូលម្ដងទៀតជាមួយ Google ដើម្បីលុបគណនី។",
+  "ui_confirm_its_you_failed": "មិនដំណើរការទេ។ សូមពិនិត្យ ហើយសាកម្ដងទៀត។",
+  "ui_browser_leave_title": "ទំព័រនេះចង់បើកកម្មវិធីផ្សេង",
+  "ui_browser_leave_detail": "វាកំពុងស្នើសុំបើកតំណ {scheme}។"
 }

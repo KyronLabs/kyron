@@ -2091,6 +2091,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Hozir emas"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Kyron’dan chiqish uchun yana orqaga bosing"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Bu siz ekaningizni tasdiqlang"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Hisobni oʻchirish uchun parolingizni kiriting."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Hisobni oʻchirish uchun Google orqali qayta kiring."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Boʻlmadi. Tekshirib, qayta urinib koʻring."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Bu sahifa boshqa ilovani ochmoqchi"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "U {scheme} havolasini ochishni soʻramoqda."),
     };
 
 final messageLookup = MessageLookup();

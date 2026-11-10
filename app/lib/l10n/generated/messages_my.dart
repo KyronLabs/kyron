@@ -2092,6 +2092,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("နောက်မှ"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Kyron မှ ထွက်ရန် နောက်သို့ ထပ်နှိပ်ပါ"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("သင်ဖြစ်ကြောင်း အတည်ပြုပါ"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "အကောင့်ကို ဖျက်ရန် စကားဝှက်ထည့်ပါ။"),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "အကောင့်ကို ဖျက်ရန် Google ဖြင့် ထပ်မံဝင်ပါ။"),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "မအောင်မြင်ပါ။ စစ်ဆေးပြီး ထပ်ကြိုးစားပါ။"),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "ဤစာမျက်နှာသည် အခြားအက်ပ်ကို ဖွင့်လိုသည်"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "{scheme} လင့်ခ်ကို ဖွင့်ရန် တောင်းဆိုနေသည်။"),
     };
 
 final messageLookup = MessageLookup();

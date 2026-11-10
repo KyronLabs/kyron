@@ -1,4 +1,5 @@
 import { SignJWT } from 'jose';
+import { ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { HealthController } from './health.controller';
 import { SupabaseTokenService } from '../auth/supabase-token.service';
@@ -56,6 +57,13 @@ describe('HealthController', () => {
           },
         },
         {
+          provide: ConfigService,
+          useValue: {
+            get: (key: string) =>
+              key === 'METRICS_TOKEN' ? 'metrics-token-for-tests' : undefined,
+          },
+        },
+        {
           provide: StatusHistoryService,
           useValue: { history: (days: number) => Promise.resolve({ days }) },
         },
@@ -86,7 +94,7 @@ describe('HealthController', () => {
   it('stays ok and names the issuer when Supabase is configured', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     delete process.env.SUPABASE_JWT_SECRET;
-    const body = await (await controller()).health();
+    const body = await (await controller()).detail();
 
     expect(body.status).toBe('ok');
     expect(body.auth).toMatchObject({
@@ -115,7 +123,7 @@ describe('HealthController', () => {
       .setExpirationTime('10y')
       .sign(new TextEncoder().encode('the-real-secret-of-this-project-32b!'));
 
-    const body = await (await controller()).health();
+    const body = await (await controller()).detail();
 
     expect(body.auth.secret).toContain('wrong');
     expect(body.auth.secret).toContain('JWT Secret');
@@ -132,21 +140,21 @@ describe('HealthController', () => {
     // checked. The algorithm list is the half that does.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     process.env.SUPABASE_JWT_SECRET = 'a-legacy-project-shared-secret';
-    const body = await (await controller()).health();
+    const body = await (await controller()).detail();
 
     expect(body.auth.accepts).toContain('HS256');
   });
 
   it('trims a trailing slash rather than doubling it into the issuer', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co/';
-    const body = await (await controller()).health();
+    const body = await (await controller()).detail();
 
     expect(body.auth.issuer).toBe('https://project-ref.supabase.co/auth/v1');
   });
 
   it('reports the database as reachable when it answers', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(true)).health();
+    const body = await (await controller(true)).detail();
 
     expect(body.status).toBe('ok');
     expect(body.database).toBe('reachable');
@@ -160,7 +168,7 @@ describe('HealthController', () => {
     // at boot is not restarted -- so a ten-second database outage took it
     // down until someone deployed again by hand.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(false)).health();
+    const body = await (await controller(false)).detail();
 
     expect(body.status).toBe('degraded');
     expect(body.database).toBe('unreachable');
@@ -177,7 +185,7 @@ describe('HealthController', () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     const body = await (
       await controller(false, 'db.x.supabase.co resolves only to IPv6')
-    ).health();
+    ).detail();
 
     expect(body.database).toBe('unreachable');
     expect(body.databaseDetail).toContain('only to IPv6');
@@ -187,7 +195,7 @@ describe('HealthController', () => {
     // The host resolves to IPv4, so the fault is past name resolution. An
     // empty or speculative field would send someone the wrong way.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(false, null)).health();
+    const body = await (await controller(false, null)).detail();
 
     expect(body.database).toBe('unreachable');
     expect(body).not.toHaveProperty('databaseDetail');
@@ -195,7 +203,7 @@ describe('HealthController', () => {
 
   it('never carries a detail while the database is reachable', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(true, 'stale explanation')).health();
+    const body = await (await controller(true, 'stale explanation')).detail();
 
     expect(body.database).toBe('reachable');
     expect(body).not.toHaveProperty('databaseDetail');
@@ -207,7 +215,7 @@ describe('HealthController', () => {
     // answered 500. "database: reachable" said nothing about it -- the
     // database was reachable, it simply did not hold these tables.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(true, null, false)).health();
+    const body = await (await controller(true, null, false)).detail();
 
     expect(body.database).toBe('reachable');
     expect(body.mirrorTables).toBe('missing');
@@ -215,7 +223,7 @@ describe('HealthController', () => {
 
   it('reports them present when they are', async () => {
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(true, null, true)).health();
+    const body = await (await controller(true, null, true)).detail();
 
     expect(body.mirrorTables).toBe('present');
   });
@@ -225,7 +233,7 @@ describe('HealthController', () => {
     // and reporting "missing" would send someone to re-run a migration that
     // was never the problem.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
-    const body = await (await controller(true, null, 'throws')).health();
+    const body = await (await controller(true, null, 'throws')).detail();
 
     expect(body.mirrorTables).toBe('unknown');
     expect(body.status).toBe('ok');
@@ -233,7 +241,7 @@ describe('HealthController', () => {
 
   it('says so, and stays ok, when Supabase is not configured', async () => {
     delete process.env.SUPABASE_URL;
-    const body = await (await controller()).health();
+    const body = await (await controller()).detail();
 
     // Still ok: the process is healthy, it just cannot authenticate anyone.
     // Reporting unhealthy here would take the machine out of the load
@@ -247,21 +255,46 @@ describe('HealthController', () => {
   });
 
   it('says whether push is configured, so a silent phone can be explained', async () => {
-    expect((await (await controller()).health()).push).toBe('configured');
+    expect((await (await controller()).detail()).push).toBe('configured');
     expect(
-      (await (await controller(true, null, true, false)).health()).push,
+      (await (await controller(true, null, true, false)).detail()).push,
     ).toBe('off');
   });
 
   it('says why push is off, and carries nothing when it is on', async () => {
-    const on = await (await controller()).health();
+    const on = await (await controller()).detail();
     expect(on).not.toHaveProperty('pushProblem');
     expect(on).not.toHaveProperty('pushLastFailure');
 
-    const off = await (await controller(true, null, true, false)).health();
+    const off = await (await controller(true, null, true, false)).detail();
     expect(off).toMatchObject({
       push: 'off',
       pushProblem: 'FCM_SERVICE_ACCOUNT_JSON is not set on this service.',
     });
+  });
+
+  it('tells the team everything', async () => {
+    const body = await (
+      await controller(true)
+    ).health({ headers: { authorization: 'Bearer metrics-token-for-tests' } });
+    expect(body).toHaveProperty('auth');
+    expect(body).toHaveProperty('push');
+  });
+
+  it('tells a stranger only whether it is up', async () => {
+    const instance = await controller(true);
+    for (const request of [
+      undefined,
+      { headers: {} },
+      { headers: { authorization: 'Bearer wrong' } },
+    ]) {
+      const body = await instance.health(request);
+      expect(Object.keys(body).sort()).toEqual([
+        'database',
+        'mirrorTables',
+        'status',
+        'timestamp',
+      ]);
+    }
   });
 });

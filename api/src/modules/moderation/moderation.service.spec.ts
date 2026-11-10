@@ -17,11 +17,13 @@ describe('ModerationService', () => {
     findMany: jest.fn<Promise<Record<string, string>[]>, [unknown]>(),
     upsert: jest.fn<Promise<unknown>, [unknown]>(),
     deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    count: jest.fn(() => Promise.resolve(0)),
   };
   const mute = {
     findMany: jest.fn<Promise<Record<string, unknown>[]>, [unknown]>(),
     create: jest.fn<Promise<unknown>, [unknown]>(),
     deleteMany: jest.fn<Promise<{ count: number }>, [unknown]>(),
+    count: jest.fn(() => Promise.resolve(0)),
   };
   const hiddenPost = {
     findMany: jest.fn<Promise<{ postId: string }[]>, [unknown]>(),

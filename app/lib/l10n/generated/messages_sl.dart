@@ -2050,6 +2050,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Ne zdaj"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Znova pritisnite Nazaj za izhod iz Kyrona"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Potrdite, da ste to vi"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Vnesite geslo, da izbrišete račun."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Znova se prijavite z Googlom, da izbrišete račun."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Ni uspelo. Preverite in poskusite znova."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Ta stran želi odpreti drugo aplikacijo"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "Prosi za odpiranje povezave {scheme}."),
     };
 
 final messageLookup = MessageLookup();

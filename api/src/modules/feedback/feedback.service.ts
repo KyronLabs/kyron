@@ -81,6 +81,7 @@ export class FeedbackService {
   private countOrRefuse(accountId: string): void {
     const now = Date.now();
     const since = now - FeedbackService.WINDOW_MS;
+    this.sweep(since);
     const kept = (this.recent.get(accountId) ?? []).filter((at) => at > since);
 
     if (kept.length >= FeedbackService.PER_ACCOUNT) {
@@ -98,4 +99,19 @@ export class FeedbackService {
     kept.push(now);
     this.recent.set(accountId, kept);
   }
+
+  /**
+   * Forgets accounts whose every report is older than the window. Without
+   * this an account that filed once stayed in the map until the next deploy.
+   * At most once a window, so it costs nothing per request.
+   */
+  private sweep(since: number): void {
+    if (this.lastSweep > since) return;
+    this.lastSweep = Date.now();
+    for (const [account, times] of this.recent) {
+      if (!times.some((at) => at > since)) this.recent.delete(account);
+    }
+  }
+
+  private lastSweep = 0;
 }

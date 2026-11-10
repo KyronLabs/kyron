@@ -118,10 +118,13 @@ class RealtimeClient {
       return;
     }
 
-    final url = _endpointFor(token);
+    final url = _endpointFor();
     try {
       final channel = WebSocketChannel.connect(url);
       _channel = channel;
+      // The token goes as the first frame rather than in the URL, which is
+      // what proxies and access logs keep.
+      channel.sink.add(jsonEncode({'type': 'auth', 'token': token}));
       _listener = channel.stream.listen(
         _onFrame,
         onError: _onClosed,
@@ -139,12 +142,11 @@ class RealtimeClient {
   }
 
   /// The socket URL, which is the API's with the scheme swapped.
-  Uri _endpointFor(String token) {
+  Uri _endpointFor() {
     final api = Uri.parse(baseUrl);
     return api.replace(
       scheme: api.scheme == 'https' ? 'wss' : 'ws',
       path: '/realtime',
-      queryParameters: {'token': token},
     );
   }
 

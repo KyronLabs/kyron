@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "අප නිවැරදි කළ යුතු හෝ එක් කළ යුතු දෙයක් තිබේද? (අත්‍යවශ්‍ය නොවේ)",
   "ui_send": "යවන්න",
   "ui_not_now": "දැන් නොවේ",
-  "ui_back_again_to_leave": "Kyron වෙතින් ඉවත් වීමට නැවත ආපසු ඔබන්න"
+  "ui_back_again_to_leave": "Kyron වෙතින් ඉවත් වීමට නැවත ආපසු ඔබන්න",
+  "ui_confirm_its_you_title": "මෙය ඔබ බව තහවුරු කරන්න",
+  "ui_confirm_its_you_password": "ඔබගේ ගිණුම මකා දැමීමට මුරපදය ඇතුළත් කරන්න.",
+  "ui_confirm_its_you_google": "ඔබගේ ගිණුම මකා දැමීමට නැවත Google සමඟ පුරනය වන්න.",
+  "ui_confirm_its_you_failed": "එය සාර්ථක නොවීය. පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+  "ui_browser_leave_title": "මෙම පිටුවට වෙනත් යෙදුමක් විවෘත කිරීමට අවශ්‍යයි",
+  "ui_browser_leave_detail": "එය {scheme} සබැඳියක් විවෘත කිරීමට ඉල්ලයි."
 }

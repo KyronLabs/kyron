@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Κάτι να διορθώσουμε ή να προσθέσουμε; (προαιρετικό)",
   "ui_send": "Αποστολή",
   "ui_not_now": "Όχι τώρα",
-  "ui_back_again_to_leave": "Πατήστε ξανά Πίσω για έξοδο από το Kyron"
+  "ui_back_again_to_leave": "Πατήστε ξανά Πίσω για έξοδο από το Kyron",
+  "ui_confirm_its_you_title": "Επιβεβαιώστε ότι είστε εσείς",
+  "ui_confirm_its_you_password": "Εισαγάγετε τον κωδικό σας για να διαγράψετε τον λογαριασμό σας.",
+  "ui_confirm_its_you_google": "Συνδεθείτε ξανά με το Google για να διαγράψετε τον λογαριασμό σας.",
+  "ui_confirm_its_you_failed": "Δεν λειτούργησε. Ελέγξτε το και δοκιμάστε ξανά.",
+  "ui_browser_leave_title": "Αυτή η σελίδα θέλει να ανοίξει άλλη εφαρμογή",
+  "ui_browser_leave_detail": "Ζητά να ανοίξει έναν σύνδεσμο {scheme}."
 }

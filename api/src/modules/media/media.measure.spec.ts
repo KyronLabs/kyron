@@ -93,3 +93,25 @@ describe('MediaService.maxBytesFor', () => {
     }
   });
 });
+
+describe('MediaService.checkPicture', () => {
+  const png = Buffer.concat([
+    Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+    Buffer.alloc(32),
+  ]);
+
+  it('names a picture by its bytes, whatever it was called', () => {
+    expect(MediaService.checkPicture(png)).toEqual({
+      mimeType: 'image/png',
+      extension: 'png',
+    });
+  });
+
+  it('refuses a page of HTML, a GIF and a clip', () => {
+    const refuse = (buffer: Buffer) =>
+      expect(() => MediaService.checkPicture(buffer)).toThrow(/JPEG, PNG/);
+    refuse(Buffer.from('<html><script>alert(1)</script></html>'));
+    refuse(Buffer.from('GIF89a' + 'x'.repeat(20)));
+    refuse(Buffer.from('\0\0\0\x18ftypmp42' + 'x'.repeat(20), 'latin1'));
+  });
+});

@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "มีอะไรที่เราควรแก้หรือเพิ่มไหม (ไม่บังคับ)",
   "ui_send": "ส่ง",
   "ui_not_now": "ไว้ทีหลัง",
-  "ui_back_again_to_leave": "กดย้อนกลับอีกครั้งเพื่อออกจาก Kyron"
+  "ui_back_again_to_leave": "กดย้อนกลับอีกครั้งเพื่อออกจาก Kyron",
+  "ui_confirm_its_you_title": "ยืนยันว่าเป็นคุณ",
+  "ui_confirm_its_you_password": "ป้อนรหัสผ่านเพื่อลบบัญชีของคุณ",
+  "ui_confirm_its_you_google": "ลงชื่อเข้าใช้ด้วย Google อีกครั้งเพื่อลบบัญชีของคุณ",
+  "ui_confirm_its_you_failed": "ไม่สำเร็จ ตรวจสอบแล้วลองอีกครั้ง",
+  "ui_browser_leave_title": "หน้านี้ต้องการเปิดแอปอื่น",
+  "ui_browser_leave_detail": "หน้านี้ขอเปิดลิงก์ {scheme}"
 }

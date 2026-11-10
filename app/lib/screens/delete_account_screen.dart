@@ -1,4 +1,5 @@
 // lib/screens/delete_account_screen.dart
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -9,6 +10,7 @@ import '../providers/account_provider.dart';
 import '../providers/auth_provider.dart';
 import '../routes.dart';
 import '../utils/api_error_message.dart';
+import '../widgets/action_button.dart';
 import '../widgets/settings_scaffold.dart';
 import '../widgets/toast.dart';
 
@@ -92,7 +94,24 @@ class _DeleteAccountScreenState extends ConsumerState<DeleteAccountScreen> {
     final navigator = Navigator.of(context);
     setState(() => _deleting = true);
     try {
-      await ref.read(accountRepositoryProvider).delete();
+      try {
+        await ref.read(accountRepositoryProvider).delete();
+      } on DioException catch (error) {
+        if (!_needsRecentSignIn(error)) rethrow;
+        // The sign-in behind this session is too old to delete with: ask
+        // the person to prove it is them, then try once more.
+        if (!mounted) return;
+        final confirmed = await showModalBottomSheet<bool>(
+          context: context,
+          isScrollControlled: true,
+          builder: (_) => const _ConfirmItsYouSheet(),
+        );
+        if (confirmed != true) {
+          if (mounted) setState(() => _deleting = false);
+          return;
+        }
+        await ref.read(accountRepositoryProvider).delete();
+      }
     } catch (error) {
       if (!mounted) return;
       setState(() => _deleting = false);
@@ -192,6 +211,134 @@ class _DeleteAccountScreenState extends ConsumerState<DeleteAccountScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+bool _needsRecentSignIn(DioException error) {
+  final data = error.response?.data;
+  return error.response?.statusCode == 403 &&
+      data is Map &&
+      data['code'] == 'RECENT_SIGN_IN_REQUIRED';
+}
+
+/// Signs the person in again, in place, before the account is deleted.
+///
+/// A session lasts weeks; an unlocked phone should not be enough to erase
+/// somebody. Password accounts type it again, Google accounts go back
+/// through Google. Pops true once the sign-in is fresh.
+class _ConfirmItsYouSheet extends ConsumerStatefulWidget {
+  const _ConfirmItsYouSheet();
+
+  @override
+  ConsumerState<_ConfirmItsYouSheet> createState() =>
+      _ConfirmItsYouSheetState();
+}
+
+class _ConfirmItsYouSheetState extends ConsumerState<_ConfirmItsYouSheet> {
+  final _password = TextEditingController();
+  bool _busy = false;
+  bool _obscure = true;
+  String? _error;
+
+  @override
+  void dispose() {
+    _password.dispose();
+    super.dispose();
+  }
+
+  Future<void> _go(Future<void> Function() confirm) async {
+    if (_busy) return;
+    final l10n = AppLocalizations.of(context);
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await confirm();
+      if (mounted) Navigator.pop(context, true);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _busy = false;
+        _error = l10n.ui('ui_confirm_its_you_failed',
+            "That didn't work. Check it and try again.");
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final repo = ref.read(authRepositoryProvider);
+    final withPassword = repo.hasPassword;
+
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+          SpacingTokens.space20,
+          SpacingTokens.space20,
+          SpacingTokens.space20,
+          SpacingTokens.space20 + MediaQuery.viewInsetsOf(context).bottom,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              l10n.ui('ui_confirm_its_you_title', "Confirm it's you"),
+              style: const TextStyle(
+                fontSize: TypographyTokens.fontSize6,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: SpacingTokens.space8),
+            Text(
+              withPassword
+                  ? l10n.ui('ui_confirm_its_you_password',
+                      'Enter your password to delete your account.')
+                  : l10n.ui('ui_confirm_its_you_google',
+                      'Sign in with Google again to delete your account.'),
+            ),
+            const SizedBox(height: SpacingTokens.space20),
+            if (withPassword) ...[
+              TextField(
+                key: const ValueKey('confirm-password'),
+                controller: _password,
+                obscureText: _obscure,
+                autofocus: true,
+                enabled: !_busy,
+                onSubmitted: (_) =>
+                    _go(() => repo.confirmPassword(_password.text)),
+                decoration: InputDecoration(
+                  labelText: l10n.password,
+                  errorText: _error,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscure ? Iconsax.eye_slash_copy : Iconsax.eye_copy,
+                    ),
+                    onPressed: () => setState(() => _obscure = !_obscure),
+                  ),
+                ),
+              ),
+              const SizedBox(height: SpacingTokens.space16),
+            ] else if (_error != null) ...[
+              Text(_error!,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error)),
+              const SizedBox(height: SpacingTokens.space16),
+            ],
+            ActionButton(
+              key: const ValueKey('confirm-its-you'),
+              expand: true,
+              busy: _busy,
+              label: withPassword ? l10n.continueAction : l10n.googleContinue,
+              onPressed: () => _go(withPassword
+                  ? () => repo.confirmPassword(_password.text)
+                  : repo.confirmWithGoogle),
+            ),
+          ],
+        ),
       ),
     );
   }

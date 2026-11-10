@@ -1,0 +1,13 @@
+# Keeps the commit-pinned actions in .github/workflows current. They are
+# pinned by SHA so a moved tag cannot change what runs in jobs that hold the
+# signing key; this opens a PR, with the release notes, when a new version
+# comes out.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']

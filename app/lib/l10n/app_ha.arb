@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Akwai abin da ya kamata mu gyara ko ƙara? (na zaɓi)",
   "ui_send": "Aika",
   "ui_not_now": "Ba yanzu ba",
-  "ui_back_again_to_leave": "Sake danna baya don barin Kyron"
+  "ui_back_again_to_leave": "Sake danna baya don barin Kyron",
+  "ui_confirm_its_you_title": "Tabbatar cewa kai ne",
+  "ui_confirm_its_you_password": "Shigar da kalmar sirrinka don share asusunka.",
+  "ui_confirm_its_you_google": "Sake shiga da Google don share asusunka.",
+  "ui_confirm_its_you_failed": "Hakan bai yi aiki ba. Duba shi ka sake gwadawa.",
+  "ui_browser_leave_title": "Wannan shafin yana son buɗe wata manhaja",
+  "ui_browser_leave_detail": "Yana neman buɗe hanyar haɗi ta {scheme}."
 }

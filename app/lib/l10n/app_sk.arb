@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "Niečo, čo by sme mali opraviť alebo pridať? (nepovinné)",
   "ui_send": "Odoslať",
   "ui_not_now": "Teraz nie",
-  "ui_back_again_to_leave": "Ďalším stlačením Späť opustíte Kyron"
+  "ui_back_again_to_leave": "Ďalším stlačením Späť opustíte Kyron",
+  "ui_confirm_its_you_title": "Potvrďte, že ste to vy",
+  "ui_confirm_its_you_password": "Zadajte heslo, aby ste mohli odstrániť účet.",
+  "ui_confirm_its_you_google": "Znova sa prihláste cez Google, aby ste mohli odstrániť účet.",
+  "ui_confirm_its_you_failed": "Nepodarilo sa. Skontrolujte to a skúste to znova.",
+  "ui_browser_leave_title": "Táto stránka chce otvoriť inú aplikáciu",
+  "ui_browser_leave_detail": "Žiada o otvorenie odkazu {scheme}."
 }

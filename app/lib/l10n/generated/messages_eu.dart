@@ -2091,6 +2091,18 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_not_now": MessageLookupByLibrary.simpleMessage("Orain ez"),
       "ui_back_again_to_leave": MessageLookupByLibrary.simpleMessage(
           "Sakatu atzera berriro Kyron uzteko"),
+      "ui_confirm_its_you_title":
+          MessageLookupByLibrary.simpleMessage("Berretsi zu zarela"),
+      "ui_confirm_its_you_password": MessageLookupByLibrary.simpleMessage(
+          "Idatzi pasahitza kontua ezabatzeko."),
+      "ui_confirm_its_you_google": MessageLookupByLibrary.simpleMessage(
+          "Hasi saioa berriro Google-rekin kontua ezabatzeko."),
+      "ui_confirm_its_you_failed": MessageLookupByLibrary.simpleMessage(
+          "Ez du funtzionatu. Egiaztatu eta saiatu berriro."),
+      "ui_browser_leave_title": MessageLookupByLibrary.simpleMessage(
+          "Orri honek beste aplikazio bat ireki nahi du"),
+      "ui_browser_leave_detail": MessageLookupByLibrary.simpleMessage(
+          "{scheme} esteka bat irekitzeko eskatzen du."),
     };
 
 final messageLookup = MessageLookup();

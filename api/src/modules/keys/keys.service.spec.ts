@@ -150,3 +150,27 @@ describe('KeysService', () => {
     });
   });
 });
+
+describe('KeysService ceiling', () => {
+  it('drops the stalest keys past the ceiling on publish', async () => {
+    const { service, messageKey } = build();
+    messageKey.upsert.mockResolvedValue({
+      userId: 'me',
+      deviceId: 'new',
+      publicKey: KEY,
+    });
+    messageKey.findMany.mockResolvedValueOnce([
+      { deviceId: 'old-1' },
+      { deviceId: 'old-2' },
+    ]);
+
+    await service.publish('me', 'new', KEY);
+
+    expect(messageKey.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({ skip: KeysService.maxDevices }),
+    );
+    expect(messageKey.deleteMany).toHaveBeenCalledWith({
+      where: { userId: 'me', deviceId: { in: ['old-1', 'old-2'] } },
+    });
+  });
+});

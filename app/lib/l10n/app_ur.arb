@@ -1202,5 +1202,11 @@
   "ui_check_in_hint": "کچھ ٹھیک کرنا یا شامل کرنا چاہیے؟ (اختیاری)",
   "ui_send": "بھیجیں",
   "ui_not_now": "ابھی نہیں",
-  "ui_back_again_to_leave": "Kyron چھوڑنے کے لیے دوبارہ واپس دبائیں"
+  "ui_back_again_to_leave": "Kyron چھوڑنے کے لیے دوبارہ واپس دبائیں",
+  "ui_confirm_its_you_title": "تصدیق کریں کہ یہ آپ ہیں",
+  "ui_confirm_its_you_password": "اپنا اکاؤنٹ حذف کرنے کے لیے پاس ورڈ درج کریں۔",
+  "ui_confirm_its_you_google": "اپنا اکاؤنٹ حذف کرنے کے لیے دوبارہ Google سے سائن ان کریں۔",
+  "ui_confirm_its_you_failed": "یہ کام نہیں ہوا۔ جانچ کر دوبارہ کوشش کریں۔",
+  "ui_browser_leave_title": "یہ صفحہ کوئی دوسری ایپ کھولنا چاہتا ہے",
+  "ui_browser_leave_detail": "یہ {scheme} لنک کھولنے کا کہہ رہا ہے۔"
 }
