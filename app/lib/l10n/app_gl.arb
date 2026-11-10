@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Ata dez minutos.",
   "ui_voice_listening": "Escoitando…",
   "ui_voice_no_mic": "Kyron precisa permiso para usar o micrófono e gravar. Podes concedelo na configuración do dispositivo.",
-  "ui_voice_start_failed": "Non se puido comezar a gravar: {error}"
+  "ui_voice_start_failed": "Non se puido comezar a gravar: {error}",
+  "ui_2fa_title": "Inicio de sesión en dous pasos",
+  "ui_2fa_help": "Un código de autenticador para as ferramentas do equipo",
+  "ui_2fa_intro": "As ferramentas do equipo piden un código dunha app de autenticación ademais do teu inicio de sesión, para que un contrasinal roubado non abonde por si só.",
+  "ui_2fa_on": "O inicio de sesión en dous pasos está activado.",
+  "ui_2fa_remove": "Quitar",
+  "ui_2fa_set_up": "Configurar",
+  "ui_2fa_scan": "Escanea isto coa túa app de autenticación ou introduce a clave de abaixo. Engádea a dúas apps se podes: perder a única que tes obriga a pedir ao soporte que a quite.",
+  "ui_2fa_key": "Clave de configuración",
+  "ui_2fa_copied": "Copiouse a clave de configuración",
+  "ui_2fa_confirm": "Confirmar",
+  "ui_2fa_failed": "Non se puido iniciar a configuración. Téntao de novo.",
+  "ui_2fa_wrong": "Ese código non funcionou. Revisa a hora do teléfono e téntao de novo.",
+  "ui_2fa_code": "Código de 6 díxitos",
+  "ui_2fa_enter": "Introduce o código da túa app de autenticación",
+  "ui_2fa_verify": "Verificar",
+  "ui_password_breached": "Este contrasinal apareceu nunha filtración de datos, así que é dos primeiros que proban os atacantes. Escolle outro."
 }

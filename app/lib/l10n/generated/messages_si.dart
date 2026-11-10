@@ -2371,6 +2371,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "පටිගත කිරීමට Kyron ට මයික්‍රොෆෝන අවසරය අවශ්‍යයි. ඔබට එය උපාංග සැකසීම්වලදී ලබා දිය හැක."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "පටිගත කිරීම ආරම්භ කළ නොහැකි විය: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("පියවර දෙකේ පුරනය"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "කාර්ය මණ්ඩල මෙවලම් සඳහා සත්‍යාපක කේතයක්"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "සොරකම් කළ මුරපදයකින් පමණක් ඒවා භාවිත කළ නොහැකි වන පරිදි, කාර්ය මණ්ඩල මෙවලම් ඔබේ පුරනයට අමතරව සත්‍යාපක යෙදුමකින් කේතයක් ද ඉල්ලයි."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "පියවර දෙකේ පුරනය ක්‍රියාත්මකයි."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ඉවත් කරන්න"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("සකසන්න"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "මෙය ඔබේ සත්‍යාපක යෙදුමෙන් ස්කෑන් කරන්න, නැතහොත් පහත යතුර ඇතුළත් කරන්න. හැකි නම් යෙදුම් දෙකකට එක් කරන්න: ඇති එකම යෙදුම නැති වුවහොත් එය ඉවත් කිරීමට සහාය ඉල්ලිය යුතුය."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("සැකසුම් යතුර"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("සැකසුම් යතුර පිටපත් කළා"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("තහවුරු කරන්න"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "සැකසීම ආරම්භ කළ නොහැකි විය. නැවත උත්සාහ කරන්න."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "එම කේතය ක්‍රියා කළේ නැත. ඔබේ දුරකථනයේ වේලාව පරීක්ෂා කර නැවත උත්සාහ කරන්න."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("ඉලක්කම් 6 කේතය"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "ඔබේ සත්‍යාපක යෙදුමේ කේතය ඇතුළත් කරන්න"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("සත්‍යාපනය කරන්න"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "මෙම මුරපදය දත්ත කාන්දුවක දක්නට ලැබී ඇති බැවින්, ප්‍රහාරකයින් මුලින්ම උත්සාහ කරන ඒවායින් එකකි. වෙනත් එකක් තෝරන්න."),
     };
 
 final messageLookup = MessageLookup();

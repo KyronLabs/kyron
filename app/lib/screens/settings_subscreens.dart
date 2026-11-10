@@ -29,6 +29,7 @@ import '../widgets/settings_scaffold.dart';
 import '../widgets/empty_state.dart';
 
 import '../l10n/app_localizations.dart';
+import '../services/pwned_passwords.dart';
 import '../utils/localized_settings.dart';
 
 /// Every screen in this file was `Center(child: Text(AppLocalizations.of(context).nameScreen))`.
@@ -186,6 +187,16 @@ class _SettingsPasswordLoginScreenState
   Future<void> _submit() async {
     if (!(_formKey.currentState?.validate() ?? false) || _saving) return;
     setState(() => _saving = true);
+    if (await PwnedPasswords().isBreached(_password.text)) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      _tell(AppLocalizations.of(context).ui(
+        'ui_password_breached',
+        'This password has appeared in a data breach, so it is one of the '
+            'first that attackers try. Choose a different one.',
+      ));
+      return;
+    }
     try {
       await Supabase.instance.client.auth.updateUser(
         UserAttributes(password: _password.text),

@@ -15,6 +15,7 @@ import '../services/app_preferences.dart';
 import '../widgets/action_sheet.dart';
 import '../widgets/kyron_toggle.dart';
 import '../routes.dart';
+import 'second_factor_screen.dart';
 
 import 'dart:async';
 
@@ -506,10 +507,30 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 label: AppLocalizations.of(context)
                     .ui('ui_settings_moderation', 'Moderation'),
                 trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
-                onTap: () => Navigator.pushNamed(context, Routes.moderation),
+                onTap: () async {
+                  // The staff second factor first, when one is enrolled and
+                  // this session has not passed it.
+                  if (!await passStaffSecondFactor(context)) return;
+                  if (!context.mounted) return;
+                  Navigator.pushNamed(context, Routes.moderation);
+                },
                 helpText: AppLocalizations.of(context).ui(
                     'ui_settings_moderation_help',
                     'Reports and appeals waiting for review'),
+              ),
+            if (ref.watch(currentUserProvider).value?.isStaff ?? false)
+              _settingsRow(
+                icon: Iconsax.shield_tick_copy,
+                label: AppLocalizations.of(context)
+                    .ui('ui_2fa_title', 'Two-step sign-in'),
+                trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => const SecondFactorScreen(),
+                  ),
+                ),
+                helpText: AppLocalizations.of(context)
+                    .ui('ui_2fa_help', 'An authenticator code for staff tools'),
               ),
             Divider(
               height: 1,

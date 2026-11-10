@@ -2207,6 +2207,28 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "録音するには Kyron にマイクの使用を許可する必要があります。端末の設定から許可できます。"),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("録音を開始できませんでした：{error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("2段階サインイン"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage("スタッフツール用の認証コード"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "スタッフツールでは、サインインに加えて認証アプリのコードも求められます。盗まれたパスワードだけでは使えないようにするためです。"),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage("2段階サインインはオンです。"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("削除"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("設定する"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "認証アプリでこれをスキャンするか、下のキーを入力してください。できれば2つのアプリに追加してください。唯一のアプリを失うと、サポートに削除を依頼する必要があります。"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("セットアップキー"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("セットアップキーをコピーしました"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("確認"),
+      "ui_2fa_failed":
+          MessageLookupByLibrary.simpleMessage("設定を開始できませんでした。もう一度お試しください。"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "そのコードは使えませんでした。スマートフォンの時刻を確認して、もう一度お試しください。"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6桁のコード"),
+      "ui_2fa_enter":
+          MessageLookupByLibrary.simpleMessage("認証アプリのコードを入力してください"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("確認"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "このパスワードはデータ漏えいで見つかっているため、攻撃者が最初に試すものの一つです。別のパスワードを選んでください。"),
     };
 
 final messageLookup = MessageLookup();

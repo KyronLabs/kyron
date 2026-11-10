@@ -2680,6 +2680,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron се нуждае от разрешение за микрофона, за да записва. Можете да го дадете в настройките на устройството."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Записът не можа да започне: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("Вход в две стъпки"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Код от удостоверител за инструментите на екипа"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Инструментите на екипа искат код от приложение за удостоверяване освен входа ви, така че откраднатата парола сама по себе си не стига, за да се използват."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Входът в две стъпки е включен."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Премахване"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Настройване"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Сканирайте това с приложението си за удостоверяване или въведете ключа по-долу. Добавете го в две приложения, ако можете: загубата на единственото означава да молите поддръжката да го премахне."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Ключ за настройка"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Ключът за настройка е копиран"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Потвърждаване"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Настройката не можа да започне. Опитайте отново."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Този код не проработи. Проверете часа на телефона си и опитайте отново."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-цифрен код"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Въведете кода от приложението си за удостоверяване"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Проверка"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Тази парола се е появила при изтичане на данни, затова е сред първите, които нападателите опитват. Изберете друга."),
     };
 
 final messageLookup = MessageLookup();

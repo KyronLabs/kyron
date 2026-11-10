@@ -2358,6 +2358,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron-у је потребна дозвола за микрофон за снимање. Можете је дати у подешавањима уређаја."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Није могуће покренути снимање: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Пријава у два корака"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Код из аутентификатора за алате тима"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Алати тима уз пријаву траже и код из апликације за аутентификацију, тако да сама украдена лозинка није довољна за њихово коришћење."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Пријава у два корака је укључена."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Уклони"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Подеси"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Скенирајте ово апликацијом за аутентификацију или унесите кључ испод. Ако можете, додајте га у две апликације: губитак једине значи да морате тражити подршку да га уклони."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Кључ за подешавање"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Кључ за подешавање је копиран"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Потврди"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Подешавање није могло да почне. Покушајте поново."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Тај код није успео. Проверите време на телефону и покушајте поново."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Шестоцифрени код"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Унесите код из апликације за аутентификацију"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Провери"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Ова лозинка се појавила у цурењу података, па је међу првима које нападачи пробају. Изаберите другу."),
     };
 
 final messageLookup = MessageLookup();

@@ -2651,6 +2651,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Yazmaq üçün Kyron-a mikrofon icazəsi lazımdır. Onu cihaz ayarlarında verə bilərsiniz."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Yazıya başlamaq mümkün olmadı: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("İki addımlı giriş"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "İşçi alətləri üçün autentifikator kodu"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "İşçi alətləri girişinizlə yanaşı autentifikator tətbiqindən kod da tələb edir ki, təkcə oğurlanmış parol onlardan istifadə edə bilməsin."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("İki addımlı giriş aktivdir."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Sil"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Quraşdır"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Bunu autentifikator tətbiqinizlə skan edin və ya aşağıdakı açarı daxil edin. Bacarırsınızsa, iki tətbiqə əlavə edin: yeganə tətbiqi itirsəniz, onu silmək üçün dəstəyə müraciət etməli olacaqsınız."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Quraşdırma açarı"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Quraşdırma açarı kopyalandı"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Təsdiqlə"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Quraşdırmanı başlatmaq mümkün olmadı. Yenidən cəhd edin."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Bu kod işləmədi. Telefonunuzdakı vaxtı yoxlayın və yenidən cəhd edin."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 rəqəmli kod"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Autentifikator tətbiqinizdəki kodu daxil edin"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Yoxla"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Bu parol məlumat sızmasında görünüb, ona görə də hücumçuların ilk sınadıqlarından biridir. Başqasını seçin."),
     };
 
 final messageLookup = MessageLookup();

@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Upp till tio minuter.",
   "ui_voice_listening": "Lyssnar…",
   "ui_voice_no_mic": "Kyron behöver tillstånd att använda mikrofonen för att spela in. Du kan ge det i enhetens inställningar.",
-  "ui_voice_start_failed": "Det gick inte att starta inspelningen: {error}"
+  "ui_voice_start_failed": "Det gick inte att starta inspelningen: {error}",
+  "ui_2fa_title": "Tvåstegsinloggning",
+  "ui_2fa_help": "En autentiseringskod för personalverktyg",
+  "ui_2fa_intro": "Personalverktyg kräver en kod från en autentiseringsapp utöver din inloggning, så att ett stulet lösenord ensamt inte räcker för att använda dem.",
+  "ui_2fa_on": "Tvåstegsinloggning är på.",
+  "ui_2fa_remove": "Ta bort",
+  "ui_2fa_set_up": "Konfigurera",
+  "ui_2fa_scan": "Skanna detta med din autentiseringsapp eller ange nyckeln nedan. Lägg till den i två appar om du kan: förlorar du din enda måste du be supporten att ta bort den.",
+  "ui_2fa_key": "Konfigurationsnyckel",
+  "ui_2fa_copied": "Konfigurationsnyckeln har kopierats",
+  "ui_2fa_confirm": "Bekräfta",
+  "ui_2fa_failed": "Det gick inte att starta konfigurationen. Försök igen.",
+  "ui_2fa_wrong": "Den koden fungerade inte. Kontrollera tiden på telefonen och försök igen.",
+  "ui_2fa_code": "6-siffrig kod",
+  "ui_2fa_enter": "Ange koden från din autentiseringsapp",
+  "ui_2fa_verify": "Verifiera",
+  "ui_password_breached": "Det här lösenordet har förekommit i en dataläcka, så det är bland de första som angripare provar. Välj ett annat."
 }

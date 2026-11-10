@@ -2627,6 +2627,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron vajab salvestamiseks mikrofoni luba. Saad selle anda seadme seadetes."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Salvestamist ei saanud alustada: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Kaheastmeline sisselogimine"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Autentimisrakenduse kood meeskonna tööriistade jaoks"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Meeskonna tööriistad küsivad lisaks sisselogimisele koodi autentimisrakendusest, et ainult varastatud parooliga neid kasutada ei saaks."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Kaheastmeline sisselogimine on sees."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Eemalda"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Seadista"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Skanni see oma autentimisrakendusega või sisesta allolev võti. Lisa see võimaluse korral kahte rakendusse: ainsa kaotamisel tuleb paluda toel see eemaldada."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Seadistusvõti"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Seadistusvõti kopeeritud"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Kinnita"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Seadistamist ei õnnestunud alustada. Proovi uuesti."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "See kood ei toiminud. Kontrolli telefoni kellaaega ja proovi uuesti."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-kohaline kood"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Sisesta kood oma autentimisrakendusest"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Kontrolli"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "See parool on ilmunud andmeleketes, seega on see üks esimesi, mida ründajad proovivad. Vali mõni muu."),
     };
 
 final messageLookup = MessageLookup();

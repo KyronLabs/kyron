@@ -2341,6 +2341,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron'un kayıt yapmak için mikrofon iznine ihtiyacı var. Bu izni cihaz ayarlarından verebilirsin."),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("Kayıt başlatılamadı: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("İki adımlı oturum açma"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Ekip araçları için kimlik doğrulayıcı kodu"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Ekip araçları, oturum açmanızın yanı sıra bir kimlik doğrulama uygulamasından kod da ister; böylece çalınmış bir parola tek başına onları kullanamaz."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("İki adımlı oturum açma açık."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Kaldır"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Kur"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Bunu kimlik doğrulama uygulamanızla tarayın veya aşağıdaki anahtarı girin. Yapabiliyorsanız iki uygulamaya ekleyin: tek uygulamanızı kaybetmek, kaldırılması için destekten yardım istemek demektir."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Kurulum anahtarı"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Kurulum anahtarı kopyalandı"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Onayla"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Kurulum başlatılamadı. Tekrar deneyin."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Bu kod işe yaramadı. Telefonunuzdaki saati kontrol edip tekrar deneyin."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 haneli kod"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Kimlik doğrulama uygulamanızdaki kodu girin"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Doğrula"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Bu parola bir veri sızıntısında görüldü, bu yüzden saldırganların ilk denediklerinden biri. Başka bir parola seçin."),
     };
 
 final messageLookup = MessageLookup();

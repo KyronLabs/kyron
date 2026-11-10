@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "En fazla on dakika.",
   "ui_voice_listening": "Dinleniyor…",
   "ui_voice_no_mic": "Kyron'un kayıt yapmak için mikrofon iznine ihtiyacı var. Bu izni cihaz ayarlarından verebilirsin.",
-  "ui_voice_start_failed": "Kayıt başlatılamadı: {error}"
+  "ui_voice_start_failed": "Kayıt başlatılamadı: {error}",
+  "ui_2fa_title": "İki adımlı oturum açma",
+  "ui_2fa_help": "Ekip araçları için kimlik doğrulayıcı kodu",
+  "ui_2fa_intro": "Ekip araçları, oturum açmanızın yanı sıra bir kimlik doğrulama uygulamasından kod da ister; böylece çalınmış bir parola tek başına onları kullanamaz.",
+  "ui_2fa_on": "İki adımlı oturum açma açık.",
+  "ui_2fa_remove": "Kaldır",
+  "ui_2fa_set_up": "Kur",
+  "ui_2fa_scan": "Bunu kimlik doğrulama uygulamanızla tarayın veya aşağıdaki anahtarı girin. Yapabiliyorsanız iki uygulamaya ekleyin: tek uygulamanızı kaybetmek, kaldırılması için destekten yardım istemek demektir.",
+  "ui_2fa_key": "Kurulum anahtarı",
+  "ui_2fa_copied": "Kurulum anahtarı kopyalandı",
+  "ui_2fa_confirm": "Onayla",
+  "ui_2fa_failed": "Kurulum başlatılamadı. Tekrar deneyin.",
+  "ui_2fa_wrong": "Bu kod işe yaramadı. Telefonunuzdaki saati kontrol edip tekrar deneyin.",
+  "ui_2fa_code": "6 haneli kod",
+  "ui_2fa_enter": "Kimlik doğrulama uygulamanızdaki kodu girin",
+  "ui_2fa_verify": "Doğrula",
+  "ui_password_breached": "Bu parola bir veri sızıntısında görüldü, bu yüzden saldırganların ilk denediklerinden biri. Başka bir parola seçin."
 }

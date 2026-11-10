@@ -2339,6 +2339,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron behöver tillstånd att använda mikrofonen för att spela in. Du kan ge det i enhetens inställningar."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Det gick inte att starta inspelningen: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Tvåstegsinloggning"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "En autentiseringskod för personalverktyg"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Personalverktyg kräver en kod från en autentiseringsapp utöver din inloggning, så att ett stulet lösenord ensamt inte räcker för att använda dem."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Tvåstegsinloggning är på."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Ta bort"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Konfigurera"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Skanna detta med din autentiseringsapp eller ange nyckeln nedan. Lägg till den i två appar om du kan: förlorar du din enda måste du be supporten att ta bort den."),
+      "ui_2fa_key":
+          MessageLookupByLibrary.simpleMessage("Konfigurationsnyckel"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage(
+          "Konfigurationsnyckeln har kopierats"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Bekräfta"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Det gick inte att starta konfigurationen. Försök igen."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Den koden fungerade inte. Kontrollera tiden på telefonen och försök igen."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-siffrig kod"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Ange koden från din autentiseringsapp"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifiera"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Det här lösenordet har förekommit i en dataläcka, så det är bland de första som angripare provar. Välj ett annat."),
     };
 
 final messageLookup = MessageLookup();

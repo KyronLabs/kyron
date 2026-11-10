@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Op til ti minutter.",
   "ui_voice_listening": "Lytter…",
   "ui_voice_no_mic": "Kyron skal have tilladelse til at bruge mikrofonen for at optage. Du kan give den i enhedens indstillinger.",
-  "ui_voice_start_failed": "Optagelsen kunne ikke startes: {error}"
+  "ui_voice_start_failed": "Optagelsen kunne ikke startes: {error}",
+  "ui_2fa_title": "Totrinslogin",
+  "ui_2fa_help": "En godkendelseskode til personaleværktøjer",
+  "ui_2fa_intro": "Personaleværktøjer beder om en kode fra en godkendelsesapp ud over dit login, så en stjålet adgangskode alene ikke kan bruge dem.",
+  "ui_2fa_on": "Totrinslogin er slået til.",
+  "ui_2fa_remove": "Fjern",
+  "ui_2fa_set_up": "Konfigurer",
+  "ui_2fa_scan": "Scan dette med din godkendelsesapp, eller indtast nøglen nedenfor. Føj den til to apps, hvis du kan: mister du din eneste, skal du bede support om at fjerne den.",
+  "ui_2fa_key": "Opsætningsnøgle",
+  "ui_2fa_copied": "Opsætningsnøgle kopieret",
+  "ui_2fa_confirm": "Bekræft",
+  "ui_2fa_failed": "Kunne ikke starte opsætningen. Prøv igen.",
+  "ui_2fa_wrong": "Den kode virkede ikke. Tjek klokkeslættet på din telefon, og prøv igen.",
+  "ui_2fa_code": "6-cifret kode",
+  "ui_2fa_enter": "Indtast koden fra din godkendelsesapp",
+  "ui_2fa_verify": "Bekræft",
+  "ui_password_breached": "Denne adgangskode er dukket op i et datalæk, så den er blandt de første, angribere prøver. Vælg en anden."
 }

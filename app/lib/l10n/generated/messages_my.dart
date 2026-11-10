@@ -2406,6 +2406,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "အသံဖမ်းရန် Kyron သည် မိုက်ခရိုဖုန်းခွင့်ပြုချက် လိုအပ်သည်။ စက်ဆက်တင်တွင် ပေးနိုင်ပါသည်။"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "အသံဖမ်းခြင်း စတင်၍မရပါ- {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("နှစ်ဆင့် အကောင့်ဝင်ခြင်း"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "ဝန်ထမ်းကိရိယာများအတွက် အထောက်အထားစိစစ်ကုဒ်"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "ခိုးယူထားသော စကားဝှက်တစ်ခုတည်းဖြင့် အသုံးမပြုနိုင်စေရန် ဝန်ထမ်းကိရိယာများသည် သင့်အကောင့်ဝင်မှုအပြင် အထောက်အထားစိစစ်အက်ပ်မှ ကုဒ်ကိုလည်း တောင်းသည်။"),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "နှစ်ဆင့် အကောင့်ဝင်ခြင်း ဖွင့်ထားသည်။"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ဖယ်ရှားရန်"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("စနစ်ထည့်ရန်"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "၎င်းကို သင့်အထောက်အထားစိစစ်အက်ပ်ဖြင့် စကင်ဖတ်ပါ သို့မဟုတ် အောက်ပါကီးကို ထည့်ပါ။ ဖြစ်နိုင်လျှင် အက်ပ်နှစ်ခုတွင် ထည့်ပါ- တစ်ခုတည်းသောအက်ပ် ပျောက်သွားပါက ၎င်းကို ဖယ်ရှားရန် ပံ့ပိုးကူညီရေးကို တောင်းဆိုရမည်။"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("စနစ်ထည့်သွင်းကီး"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("စနစ်ထည့်သွင်းကီး ကူးယူပြီး"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("အတည်ပြုရန်"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "စနစ်ထည့်သွင်းခြင်းကို စတင်၍မရပါ။ ထပ်စမ်းကြည့်ပါ။"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ထိုကုဒ် အလုပ်မလုပ်ပါ။ သင့်ဖုန်းရှိ အချိန်ကို စစ်ဆေးပြီး ထပ်စမ်းကြည့်ပါ။"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("ဂဏန်း 6 လုံးကုဒ်"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "သင့်အထောက်အထားစိစစ်အက်ပ်မှ ကုဒ်ကို ထည့်ပါ"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("စိစစ်ရန်"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ဤစကားဝှက်သည် ဒေတာပေါက်ကြားမှုတွင် ပေါ်လာဖူးသဖြင့် တိုက်ခိုက်သူများ ပထမဆုံး စမ်းကြည့်သည့်အရာများထဲမှ တစ်ခုဖြစ်သည်။ အခြားတစ်ခု ရွေးပါ။"),
     };
 
 final messageLookup = MessageLookup();

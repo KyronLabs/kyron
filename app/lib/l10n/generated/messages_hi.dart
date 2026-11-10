@@ -2314,6 +2314,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "रिकॉर्ड करने के लिए Kyron को माइक्रोफ़ोन की अनुमति चाहिए। आप इसे अपने डिवाइस की सेटिंग में दे सकते हैं।"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "रिकॉर्डिंग शुरू नहीं हो सकी: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("दो-चरणीय साइन-इन"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "स्टाफ़ टूल के लिए ऑथेंटिकेटर कोड"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "स्टाफ़ टूल आपके साइन-इन के साथ-साथ ऑथेंटिकेटर ऐप से कोड भी मांगते हैं, ताकि सिर्फ़ चुराए गए पासवर्ड से उनका इस्तेमाल न हो सके।"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("दो-चरणीय साइन-इन चालू है।"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("हटाएं"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("सेट अप करें"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "इसे अपने ऑथेंटिकेटर ऐप से स्कैन करें, या नीचे दी गई कुंजी डालें। हो सके तो इसे दो ऐप में जोड़ें: इकलौता ऐप खोने पर इसे हटाने के लिए सहायता से कहना होगा।"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("सेटअप कुंजी"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("सेटअप कुंजी कॉपी हो गई"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("पुष्टि करें"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "सेटअप शुरू नहीं हो सका। फिर से कोशिश करें।"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "वह कोड काम नहीं किया। अपने फ़ोन का समय जांचें और फिर से कोशिश करें।"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 अंकों का कोड"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "अपने ऑथेंटिकेटर ऐप का कोड डालें"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("सत्यापित करें"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "यह पासवर्ड किसी डेटा लीक में दिखा है, इसलिए हमलावर सबसे पहले जिन्हें आज़माते हैं, यह उनमें से एक है। कोई दूसरा चुनें।"),
     };
 
 final messageLookup = MessageLookup();

@@ -2360,6 +2360,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron potrzebuje dostępu do mikrofonu, aby nagrywać. Możesz go przyznać w ustawieniach urządzenia."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nie udało się rozpocząć nagrania: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Logowanie dwuetapowe"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Kod z aplikacji uwierzytelniającej do narzędzi zespołu"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Narzędzia zespołu wymagają oprócz logowania kodu z aplikacji uwierzytelniającej, więc samo skradzione hasło nie wystarczy, by z nich korzystać."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Logowanie dwuetapowe jest włączone."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Usuń"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Skonfiguruj"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Zeskanuj to aplikacją uwierzytelniającą lub wpisz klucz poniżej. Jeśli możesz, dodaj go do dwóch aplikacji: utrata jedynej oznacza konieczność poproszenia pomocy technicznej o jego usunięcie."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Klucz konfiguracji"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Skopiowano klucz konfiguracji"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Potwierdź"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nie udało się rozpocząć konfiguracji. Spróbuj ponownie."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Ten kod nie zadziałał. Sprawdź godzinę w telefonie i spróbuj ponownie."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Kod 6-cyfrowy"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Wpisz kod z aplikacji uwierzytelniającej"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Zweryfikuj"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "To hasło pojawiło się w wycieku danych, więc jest jednym z pierwszych, które próbują atakujący. Wybierz inne."),
     };
 
 final messageLookup = MessageLookup();

@@ -2311,6 +2311,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "रेकॉर्ड करण्यासाठी Kyron ला मायक्रोफोन वापरण्याची परवानगी हवी. तुम्ही ती डिव्हाइस सेटिंग्जमध्ये देऊ शकता."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "रेकॉर्डिंग सुरू करता आले नाही: {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("दोन-टप्पी साइन-इन"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "कर्मचारी साधनांसाठी ऑथेंटिकेटर कोड"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "कर्मचारी साधने तुमच्या साइन-इनसोबत ऑथेंटिकेटर ॲपचा कोडही मागतात, जेणेकरून फक्त चोरलेल्या पासवर्डने ती वापरता येऊ नयेत."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("दोन-टप्पी साइन-इन चालू आहे."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("काढा"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("सेट अप करा"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "हे तुमच्या ऑथेंटिकेटर ॲपने स्कॅन करा, किंवा खालील की टाका. शक्य असल्यास दोन ॲपमध्ये जोडा: एकमेव ॲप हरवल्यास ती काढण्यासाठी सपोर्टला विनंती करावी लागेल."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("सेटअप की"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("सेटअप की कॉपी केली"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("पुष्टी करा"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "सेटअप सुरू करता आला नाही. पुन्हा प्रयत्न करा."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "तो कोड चालला नाही. तुमच्या फोनवरील वेळ तपासा आणि पुन्हा प्रयत्न करा."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-अंकी कोड"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "तुमच्या ऑथेंटिकेटर ॲपमधील कोड टाका"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("पडताळा"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "हा पासवर्ड डेटा लीकमध्ये आढळला आहे, त्यामुळे हल्लेखोर सर्वात आधी वापरून पाहतात त्यांपैकी हा एक आहे. दुसरा निवडा."),
     };
 
 final messageLookup = MessageLookup();

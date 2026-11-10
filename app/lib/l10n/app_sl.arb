@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Do deset minut.",
   "ui_voice_listening": "Poslušam …",
   "ui_voice_no_mic": "Kyron potrebuje dovoljenje za mikrofon za snemanje. Dodelite ga lahko v nastavitvah naprave.",
-  "ui_voice_start_failed": "Snemanja ni bilo mogoče začeti: {error}"
+  "ui_voice_start_failed": "Snemanja ni bilo mogoče začeti: {error}",
+  "ui_2fa_title": "Prijava v dveh korakih",
+  "ui_2fa_help": "Koda iz overitelja za orodja ekipe",
+  "ui_2fa_intro": "Orodja ekipe poleg prijave zahtevajo še kodo iz aplikacije za preverjanje pristnosti, zato samo ukradeno geslo ne zadošča za njihovo uporabo.",
+  "ui_2fa_on": "Prijava v dveh korakih je vklopljena.",
+  "ui_2fa_remove": "Odstrani",
+  "ui_2fa_set_up": "Nastavi",
+  "ui_2fa_scan": "To skenirajte z aplikacijo za preverjanje pristnosti ali vnesite spodnji ključ. Če lahko, ga dodajte v dve aplikaciji: izguba edine pomeni, da morate podporo prositi, naj ga odstrani.",
+  "ui_2fa_key": "Ključ za nastavitev",
+  "ui_2fa_copied": "Ključ za nastavitev kopiran",
+  "ui_2fa_confirm": "Potrdi",
+  "ui_2fa_failed": "Nastavitve ni bilo mogoče začeti. Poskusite znova.",
+  "ui_2fa_wrong": "Ta koda ni delovala. Preverite čas na telefonu in poskusite znova.",
+  "ui_2fa_code": "6-mestna koda",
+  "ui_2fa_enter": "Vnesite kodo iz aplikacije za preverjanje pristnosti",
+  "ui_2fa_verify": "Preveri",
+  "ui_password_breached": "To geslo se je pojavilo v uhajanju podatkov, zato je med prvimi, ki jih napadalci preizkusijo. Izberite drugo."
 }

@@ -2387,6 +2387,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "ರೆಕಾರ್ಡ್ ಮಾಡಲು Kyron ಗೆ ಮೈಕ್ರೊಫೋನ್ ಅನುಮತಿ ಬೇಕು. ಅದನ್ನು ನಿಮ್ಮ ಸಾಧನದ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀಡಬಹುದು."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "ರೆಕಾರ್ಡಿಂಗ್ ಪ್ರಾರಂಭಿಸಲು ಆಗಲಿಲ್ಲ: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("ಎರಡು ಹಂತದ ಸೈನ್-ಇನ್"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "ಸಿಬ್ಬಂದಿ ಪರಿಕರಗಳಿಗಾಗಿ ದೃಢೀಕರಣ ಕೋಡ್"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "ಸಿಬ್ಬಂದಿ ಪರಿಕರಗಳು ನಿಮ್ಮ ಸೈನ್-ಇನ್ ಜೊತೆಗೆ ದೃಢೀಕರಣ ಆ್ಯಪ್‌ನ ಕೋಡ್ ಅನ್ನೂ ಕೇಳುತ್ತವೆ, ಹಾಗಾಗಿ ಕದ್ದ ಪಾಸ್‌ವರ್ಡ್ ಒಂದರಿಂದಲೇ ಅವುಗಳನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("ಎರಡು ಹಂತದ ಸೈನ್-ಇನ್ ಆನ್ ಆಗಿದೆ."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ತೆಗೆದುಹಾಕಿ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("ಹೊಂದಿಸಿ"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "ಇದನ್ನು ನಿಮ್ಮ ದೃಢೀಕರಣ ಆ್ಯಪ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ಅಥವಾ ಕೆಳಗಿನ ಕೀಯನ್ನು ನಮೂದಿಸಿ. ಸಾಧ್ಯವಾದರೆ ಎರಡು ಆ್ಯಪ್‌ಗಳಿಗೆ ಸೇರಿಸಿ: ಒಂದೇ ಆ್ಯಪ್ ಕಳೆದುಕೊಂಡರೆ ಅದನ್ನು ತೆಗೆದುಹಾಕಲು ಬೆಂಬಲವನ್ನು ಕೇಳಬೇಕಾಗುತ್ತದೆ."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("ಸೆಟಪ್ ಕೀ"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("ಸೆಟಪ್ ಕೀ ನಕಲಿಸಲಾಗಿದೆ"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("ದೃಢೀಕರಿಸಿ"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "ಸೆಟಪ್ ಪ್ರಾರಂಭಿಸಲು ಆಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "ಆ ಕೋಡ್ ಕೆಲಸ ಮಾಡಲಿಲ್ಲ. ನಿಮ್ಮ ಫೋನ್‌ನ ಸಮಯ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6-ಅಂಕಿಯ ಕೋಡ್"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "ನಿಮ್ಮ ದೃಢೀಕರಣ ಆ್ಯಪ್‌ನ ಕೋಡ್ ನಮೂದಿಸಿ"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("ಪರಿಶೀಲಿಸಿ"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ಈ ಪಾಸ್‌ವರ್ಡ್ ಡೇಟಾ ಸೋರಿಕೆಯಲ್ಲಿ ಕಾಣಿಸಿಕೊಂಡಿದೆ, ಹಾಗಾಗಿ ದಾಳಿಕೋರರು ಮೊದಲು ಪ್ರಯತ್ನಿಸುವವುಗಳಲ್ಲಿ ಇದು ಒಂದು. ಬೇರೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ."),
     };
 
 final messageLookup = MessageLookup();

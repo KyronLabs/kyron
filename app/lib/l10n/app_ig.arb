@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Ruo nkeji iri.",
   "ui_voice_listening": "Na-ege ntị…",
   "ui_voice_no_mic": "Kyron chọrọ ikike iji maikrofon dekọọ. Ị nwere ike inye ya na ntọala ngwaọrụ gị.",
-  "ui_voice_start_failed": "Enweghị ike ịmalite ndekọ: {error}"
+  "ui_voice_start_failed": "Enweghị ike ịmalite ndekọ: {error}",
+  "ui_2fa_title": "Nbanye nzọụkwụ abụọ",
+  "ui_2fa_help": "Koodu nkwenye maka ngwaọrụ ndị ọrụ",
+  "ui_2fa_intro": "Ngwaọrụ ndị ọrụ na-arịọ koodu sitere na ngwa nkwenye tinyere nbanye gị, ka okwuntughe e zuru ezu naanị ya ghara iji ha.",
+  "ui_2fa_on": "Nbanye nzọụkwụ abụọ dị.",
+  "ui_2fa_remove": "Wepụ",
+  "ui_2fa_set_up": "Hazie",
+  "ui_2fa_scan": "Nyochaa nke a site na ngwa nkwenye gị, ma ọ bụ tinye igodo dị n’okpuru. Tinye ya na ngwa abụọ ma ọ bụrụ na ị nwere ike: ịtụfu naanị otu i nwere pụtara ịrịọ nkwado ka ha wepụ ya.",
+  "ui_2fa_key": "Igodo nhazi",
+  "ui_2fa_copied": "Edepụtala igodo nhazi",
+  "ui_2fa_confirm": "Kwado",
+  "ui_2fa_failed": "Enweghị ike ịmalite nhazi. Nwaa ọzọ.",
+  "ui_2fa_wrong": "Koodu ahụ arụghị ọrụ. Lelee oge dị na ekwentị gị wee nwaa ọzọ.",
+  "ui_2fa_code": "Koodu ọnụọgụ 6",
+  "ui_2fa_enter": "Tinye koodu sitere na ngwa nkwenye gị",
+  "ui_2fa_verify": "Nyochaa",
+  "ui_password_breached": "Okwuntughe a apụtala na ntapu data, ya mere ọ bụ otu n’ime ndị mbụ ndị na-awakpo na-anwale. Họrọ nke ọzọ."
 }

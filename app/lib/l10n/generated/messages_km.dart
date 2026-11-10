@@ -2321,6 +2321,31 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron ត្រូវការការអនុញ្ញាតប្រើមីក្រូហ្វូនដើម្បីថត។ អ្នកអាចផ្ដល់វានៅក្នុងការកំណត់ឧបករណ៍។"),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "មិនអាចចាប់ផ្ដើមថតបានទេ៖ {error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("ការចូលពីរជំហាន"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "កូដកម្មវិធីផ្ទៀងផ្ទាត់សម្រាប់ឧបករណ៍បុគ្គលិក"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "ឧបករណ៍បុគ្គលិកស្នើកូដពីកម្មវិធីផ្ទៀងផ្ទាត់ បន្ថែមលើការចូលរបស់អ្នក ដើម្បីកុំឲ្យពាក្យសម្ងាត់ដែលត្រូវបានលួចតែមួយអាចប្រើវាបាន។"),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("ការចូលពីរជំហានត្រូវបានបើក។"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("ដកចេញ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("រៀបចំ"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "ស្កេនវាជាមួយកម្មវិធីផ្ទៀងផ្ទាត់របស់អ្នក ឬបញ្ចូលកូនសោខាងក្រោម។ បើអាច សូមបន្ថែមវាទៅកម្មវិធីពីរ៖ ការបាត់កម្មវិធីតែមួយគត់មានន័យថាត្រូវស្នើផ្នែកជំនួយឲ្យដកវាចេញ។"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("កូនសោរៀបចំ"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("បានចម្លងកូនសោរៀបចំ"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("បញ្ជាក់"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "មិនអាចចាប់ផ្ដើមការរៀបចំបានទេ។ សូមព្យាយាមម្ដងទៀត។"),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "កូដនោះមិនដំណើរការទេ។ សូមពិនិត្យម៉ោងនៅលើទូរសព្ទរបស់អ្នក ហើយព្យាយាមម្ដងទៀត។"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("កូដ 6 ខ្ទង់"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "បញ្ចូលកូដពីកម្មវិធីផ្ទៀងផ្ទាត់របស់អ្នក"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("ផ្ទៀងផ្ទាត់"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "ពាក្យសម្ងាត់នេះបានលេចឡើងក្នុងការលេចធ្លាយទិន្នន័យ ដូច្នេះវាជាពាក្យមួយក្នុងចំណោមពាក្យដំបូងដែលអ្នកវាយប្រហារសាកល្បង។ សូមជ្រើសរើសពាក្យផ្សេង។"),
     };
 
 final messageLookup = MessageLookup();

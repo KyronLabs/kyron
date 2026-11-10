@@ -2353,6 +2353,33 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron yana buƙatar izinin amfani da makirufo don yin rikodi. Za ka iya bayarwa a saitunan na'urarka."),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("An kasa fara rikodi: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Shiga mai matakai biyu"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Lambar manhajar tantancewa don kayan aikin ma’aikata"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Kayan aikin ma’aikata suna neman lamba daga manhajar tantancewa ban da shigarka, don kada kalmar sirri da aka sace ita kaɗai ta iya amfani da su."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Shiga mai matakai biyu yana kunne."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Cire"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Saita"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Duba wannan da manhajar tantancewarka, ko shigar da maɓallin da ke ƙasa. Ƙara shi a manhajoji biyu idan za ka iya: rasa guda ɗaya tilo yana nufin neman taimako su cire shi."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Maɓallin saitawa"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("An kwafi maɓallin saitawa"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Tabbatar"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Ba a iya fara saitawa ba. Sake gwadawa."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Waccan lambar ba ta yi aiki ba. Duba lokaci a wayarka ka sake gwadawa."),
+      "ui_2fa_code":
+          MessageLookupByLibrary.simpleMessage("Lamba mai lambobi 6"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Shigar da lambar daga manhajar tantancewarka"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Tabbatar"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Wannan kalmar sirri ta bayyana a cikin satar bayanai, don haka tana cikin na farko da maharan ke gwadawa. Zaɓi wata daban."),
     };
 
 final messageLookup = MessageLookup();

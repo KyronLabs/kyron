@@ -2633,6 +2633,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron potřebuje oprávnění používat mikrofon k nahrávání. Udělit ho můžete v nastavení zařízení."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Nahrávání se nepodařilo spustit: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Dvoufázové přihlášení"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Kód z ověřovací aplikace pro nástroje týmu"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Nástroje týmu vyžadují kromě přihlášení i kód z ověřovací aplikace, takže samotné ukradené heslo k jejich použití nestačí."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Dvoufázové přihlášení je zapnuté."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Odebrat"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Nastavit"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Naskenujte to ověřovací aplikací nebo zadejte klíč níže. Pokud můžete, přidejte ho do dvou aplikací: ztráta té jediné znamená žádat podporu o jeho odebrání."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Klíč pro nastavení"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Klíč pro nastavení zkopírován"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Potvrdit"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Nastavení se nepodařilo spustit. Zkuste to znovu."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Tento kód nefungoval. Zkontrolujte čas v telefonu a zkuste to znovu."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6místný kód"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Zadejte kód z ověřovací aplikace"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ověřit"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Toto heslo se objevilo v úniku dat, takže patří k prvním, které útočníci zkoušejí. Zvolte jiné."),
     };
 
 final messageLookup = MessageLookup();

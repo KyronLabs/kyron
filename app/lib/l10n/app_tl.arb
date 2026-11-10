@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Hanggang sampung minuto.",
   "ui_voice_listening": "Nakikinig…",
   "ui_voice_no_mic": "Kailangan ng Kyron ng pahintulot sa mikropono para mag-record. Maibibigay mo ito sa settings ng device mo.",
-  "ui_voice_start_failed": "Hindi masimulan ang recording: {error}"
+  "ui_voice_start_failed": "Hindi masimulan ang recording: {error}",
+  "ui_2fa_title": "Dalawang-hakbang na pag-sign in",
+  "ui_2fa_help": "Code mula sa authenticator para sa mga tool ng staff",
+  "ui_2fa_intro": "Humihingi ang mga tool ng staff ng code mula sa authenticator app bukod sa iyong pag-sign in, para hindi magamit ang mga ito ng ninakaw na password lang.",
+  "ui_2fa_on": "Naka-on ang dalawang-hakbang na pag-sign in.",
+  "ui_2fa_remove": "Alisin",
+  "ui_2fa_set_up": "I-set up",
+  "ui_2fa_scan": "I-scan ito gamit ang iyong authenticator app, o ilagay ang key sa ibaba. Idagdag ito sa dalawang app kung kaya mo: kapag nawala ang nag-iisa mo, kailangan mong hilingin sa support na alisin ito.",
+  "ui_2fa_key": "Setup key",
+  "ui_2fa_copied": "Nakopya ang setup key",
+  "ui_2fa_confirm": "Kumpirmahin",
+  "ui_2fa_failed": "Hindi masimulan ang setup. Subukan ulit.",
+  "ui_2fa_wrong": "Hindi gumana ang code na iyon. Tingnan ang oras sa iyong telepono at subukan ulit.",
+  "ui_2fa_code": "6-digit na code",
+  "ui_2fa_enter": "Ilagay ang code mula sa iyong authenticator app",
+  "ui_2fa_verify": "I-verify",
+  "ui_password_breached": "Lumabas na ang password na ito sa isang data breach, kaya isa ito sa mga unang sinusubukan ng mga umaatake. Pumili ng iba."
 }

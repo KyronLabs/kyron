@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Hamar minutu arte.",
   "ui_voice_listening": "Entzuten…",
   "ui_voice_no_mic": "Kyron-ek mikrofonoa erabiltzeko baimena behar du grabatzeko. Gailuaren ezarpenetan eman dezakezu.",
-  "ui_voice_start_failed": "Ezin izan da grabatzen hasi: {error}"
+  "ui_voice_start_failed": "Ezin izan da grabatzen hasi: {error}",
+  "ui_2fa_title": "Bi urratseko saio-hasiera",
+  "ui_2fa_help": "Autentifikatzaile-kode bat taldearen tresnetarako",
+  "ui_2fa_intro": "Taldearen tresnek autentifikazio-aplikazio bateko kodea eskatzen dute saio-hasieraz gain, lapurtutako pasahitz bat bakarrik nahikoa izan ez dadin.",
+  "ui_2fa_on": "Bi urratseko saio-hasiera aktibatuta dago.",
+  "ui_2fa_remove": "Kendu",
+  "ui_2fa_set_up": "Konfiguratu",
+  "ui_2fa_scan": "Eskaneatu hau zure autentifikazio-aplikazioarekin, edo idatzi beheko gakoa. Gehitu bi aplikaziotan ahal baduzu: bakarra galtzen baduzu, laguntza-zerbitzuari kentzeko eskatu beharko diozu.",
+  "ui_2fa_key": "Konfigurazio-gakoa",
+  "ui_2fa_copied": "Konfigurazio-gakoa kopiatu da",
+  "ui_2fa_confirm": "Berretsi",
+  "ui_2fa_failed": "Ezin izan da konfigurazioa hasi. Saiatu berriro.",
+  "ui_2fa_wrong": "Kode horrek ez du funtzionatu. Egiaztatu telefonoko ordua eta saiatu berriro.",
+  "ui_2fa_code": "6 digituko kodea",
+  "ui_2fa_enter": "Idatzi zure autentifikazio-aplikazioko kodea",
+  "ui_2fa_verify": "Egiaztatu",
+  "ui_password_breached": "Pasahitz hau datu-filtrazio batean agertu da, beraz erasotzaileek lehenik probatzen dituztenetako bat da. Aukeratu beste bat."
 }

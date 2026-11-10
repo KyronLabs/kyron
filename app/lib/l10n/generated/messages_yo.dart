@@ -2367,6 +2367,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron nílò àṣẹ láti lo gbohùngbohùn láti gbàsílẹ̀. O lè fún un nínú ètò ẹ̀rọ rẹ."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "A kò lè bẹ̀rẹ̀ gbígbàsílẹ̀: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Ìwọlé onígbésẹ̀ méjì"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Kóòdù aláṣẹ̀rí fún àwọn irinṣẹ́ òṣìṣẹ́"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Àwọn irinṣẹ́ òṣìṣẹ́ máa ń béèrè kóòdù láti inú áàpù aláṣẹ̀rí pẹ̀lú ìwọlé rẹ, kí ọ̀rọ̀ aṣínà tí wọ́n jí nìkan má lè lò wọ́n."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Ìwọlé onígbésẹ̀ méjì ti tàn."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Yọ kúrò"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Ṣètò"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Ṣàyẹ̀wò èyí pẹ̀lú áàpù aláṣẹ̀rí rẹ, tàbí tẹ kọ́kọ́rọ́ tó wà nísàlẹ̀. Fi kún áàpù méjì tí o bá lè ṣe é: pípàdánù èyí kan ṣoṣo tí o ní túmọ̀ sí bíbéèrè lọ́wọ́ àtìlẹ́yìn láti yọ ọ́ kúrò."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Kọ́kọ́rọ́ ìṣètò"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("A ti ṣe ẹ̀dà kọ́kọ́rọ́ ìṣètò"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Jẹ́rìí"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Kò ṣeé ṣe láti bẹ̀rẹ̀ ìṣètò. Gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Kóòdù yẹn kò ṣiṣẹ́. Ṣàyẹ̀wò àkókò lórí fóònù rẹ kí o sì gbìyànjú lẹ́ẹ̀kan sí i."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Kóòdù oní-nọ́ńbà 6"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Tẹ kóòdù láti inú áàpù aláṣẹ̀rí rẹ"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ṣàyẹ̀wò"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Ọ̀rọ̀ aṣínà yìí ti fara hàn nínú jíjò dátà, nítorí náà ó wà lára àwọn àkọ́kọ́ tí àwọn olùkọlù ń gbìyànjú. Yan òmíràn."),
     };
 
 final messageLookup = MessageLookup();

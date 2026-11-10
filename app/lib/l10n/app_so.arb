@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Ilaa toban daqiiqo.",
   "ui_voice_listening": "Waa la dhegaysanayaa…",
   "ui_voice_no_mic": "Kyron wuxuu u baahan yahay ogolaanshaha makarafoonka si uu u duubo. Waxaad ka bixin kartaa dejinta qalabkaaga.",
-  "ui_voice_start_failed": "Lama bilaabi karin duubista: {error}"
+  "ui_voice_start_failed": "Lama bilaabi karin duubista: {error}",
+  "ui_2fa_title": "Gelitaan laba-tallaabo ah",
+  "ui_2fa_help": "Koodh xaqiijiye oo loogu talagalay qalabka shaqaalaha",
+  "ui_2fa_intro": "Qalabka shaqaaluhu waxay weydiiyaan koodh ka yimaada app xaqiijin ah marka lagu daro gelitaankaaga, si erey sir ah oo la xaday kaligiis aanu u isticmaalin.",
+  "ui_2fa_on": "Gelitaanka laba-tallaabo ah waa shidan yahay.",
+  "ui_2fa_remove": "Ka saar",
+  "ui_2fa_set_up": "Diyaari",
+  "ui_2fa_scan": "Ku iskaan garee tan app-kaaga xaqiijinta, ama geli furaha hoose. Ku dar laba app haddii aad awoodid: lumitaanka midka kaliya ee aad haysato macnaheedu waa inaad taageerada ka codsato inay ka saaraan.",
+  "ui_2fa_key": "Furaha diyaarinta",
+  "ui_2fa_copied": "Furaha diyaarinta waa la koobiyeeyay",
+  "ui_2fa_confirm": "Xaqiiji",
+  "ui_2fa_failed": "Diyaarinta lama bilaabi karin. Isku day mar kale.",
+  "ui_2fa_wrong": "Koodhkaas ma shaqayn. Hubi waqtiga taleefankaaga oo isku day mar kale.",
+  "ui_2fa_code": "Koodh 6-god ah",
+  "ui_2fa_enter": "Geli koodhka app-kaaga xaqiijinta",
+  "ui_2fa_verify": "Xaqiiji",
+  "ui_password_breached": "Eraygan sirta ah wuxuu ka soo muuqday xog la daadiyay, markaa waa mid ka mid ah kuwa ugu horreeya ee weerarlayaashu isku dayaan. Dooro mid kale."
 }

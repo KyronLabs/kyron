@@ -2013,6 +2013,26 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron 需要麦克风权限才能录音。你可以在设备设置中授予权限。"),
       "ui_voice_start_failed":
           MessageLookupByLibrary.simpleMessage("无法开始录音：{error}"),
+      "ui_2fa_title": MessageLookupByLibrary.simpleMessage("两步登录"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage("员工工具的验证器代码"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "员工工具除了登录外还要求输入验证器应用中的代码，这样仅凭被盗的密码无法使用它们。"),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage("两步登录已开启。"),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("移除"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("设置"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "用验证器应用扫描此码，或输入下方的密钥。如果可以，请添加到两个应用中：丢失唯一的应用意味着需要请支持团队将其移除。"),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("设置密钥"),
+      "ui_2fa_copied": MessageLookupByLibrary.simpleMessage("已复制设置密钥"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("确认"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage("无法开始设置。请重试。"),
+      "ui_2fa_wrong":
+          MessageLookupByLibrary.simpleMessage("该代码无效。请检查手机上的时间后重试。"),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 位代码"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage("输入验证器应用中的代码"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("验证"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "此密码曾出现在数据泄露中，因此是攻击者最先尝试的密码之一。请换一个。"),
     };
 
 final messageLookup = MessageLookup();

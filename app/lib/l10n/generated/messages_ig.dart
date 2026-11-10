@@ -2293,6 +2293,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kyron chọrọ ikike iji maikrofon dekọọ. Ị nwere ike inye ya na ntọala ngwaọrụ gị."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Enweghị ike ịmalite ndekọ: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Nbanye nzọụkwụ abụọ"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Koodu nkwenye maka ngwaọrụ ndị ọrụ"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Ngwaọrụ ndị ọrụ na-arịọ koodu sitere na ngwa nkwenye tinyere nbanye gị, ka okwuntughe e zuru ezu naanị ya ghara iji ha."),
+      "ui_2fa_on":
+          MessageLookupByLibrary.simpleMessage("Nbanye nzọụkwụ abụọ dị."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Wepụ"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Hazie"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Nyochaa nke a site na ngwa nkwenye gị, ma ọ bụ tinye igodo dị n’okpuru. Tinye ya na ngwa abụọ ma ọ bụrụ na ị nwere ike: ịtụfu naanị otu i nwere pụtara ịrịọ nkwado ka ha wepụ ya."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Igodo nhazi"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Edepụtala igodo nhazi"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Kwado"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Enweghị ike ịmalite nhazi. Nwaa ọzọ."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Koodu ahụ arụghị ọrụ. Lelee oge dị na ekwentị gị wee nwaa ọzọ."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("Koodu ọnụọgụ 6"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Tinye koodu sitere na ngwa nkwenye gị"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Nyochaa"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Okwuntughe a apụtala na ntapu data, ya mere ọ bụ otu n’ime ndị mbụ ndị na-awakpo na-anwale. Họrọ nke ọzọ."),
     };
 
 final messageLookup = MessageLookup();

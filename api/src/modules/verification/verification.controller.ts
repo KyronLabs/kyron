@@ -11,9 +11,9 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
+import { staffFrom } from '../moderation/staff-session';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
-import type { Staff } from '../moderation/enforcement.service';
 import {
   ApplyDto,
   DecideVerificationDto,
@@ -47,7 +47,7 @@ export class VerificationController {
 
   @Get('moderation/verifications')
   queue(@Req() req: AuthRequest) {
-    return this.svc.queue(staff(req));
+    return this.svc.queue(staffFrom(req));
   }
 
   @Post('moderation/verifications/:id/decide')
@@ -56,7 +56,7 @@ export class VerificationController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: DecideVerificationDto,
   ) {
-    return this.svc.decide(staff(req), id, dto.approve, dto.response);
+    return this.svc.decide(staffFrom(req), id, dto.approve, dto.response);
   }
 
   @Put('moderation/accounts/:id/verified')
@@ -65,10 +65,6 @@ export class VerificationController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: SetVerifiedDto,
   ) {
-    return this.svc.setVerified(staff(req), id, dto.verified, dto.reason);
+    return this.svc.setVerified(staffFrom(req), id, dto.verified, dto.reason);
   }
-}
-
-function staff(req: AuthRequest): Staff {
-  return { id: req.user.id, role: req.user.role };
 }

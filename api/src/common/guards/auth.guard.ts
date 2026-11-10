@@ -88,6 +88,10 @@ export class AuthGuard implements CanActivate {
     // When the person last actually signed in, for the few routes that ask
     // for a recent one (requireRecentSignIn).
     (request as any).signedInAt = signedInAt(claims);
+    // Whether this session passed a second factor, for staff powers
+    // (staffFrom). Supabase writes it into every token it issues.
+    (request as any).aal =
+      (claims as { aal?: unknown }).aal === 'aal2' ? 'aal2' : 'aal1';
 
     // Suspensions and bans, enforced here rather than in each service: the
     // status column was set by nothing and read only by the password sign-in

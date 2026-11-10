@@ -2405,6 +2405,32 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Yozib olish uchun Kyron’ga mikrofon ruxsati kerak. Uni qurilma sozlamalarida berishingiz mumkin."),
       "ui_voice_start_failed": MessageLookupByLibrary.simpleMessage(
           "Yozuvni boshlab boʻlmadi: {error}"),
+      "ui_2fa_title":
+          MessageLookupByLibrary.simpleMessage("Ikki bosqichli kirish"),
+      "ui_2fa_help": MessageLookupByLibrary.simpleMessage(
+          "Xodimlar vositalari uchun autentifikator kodi"),
+      "ui_2fa_intro": MessageLookupByLibrary.simpleMessage(
+          "Xodimlar vositalari kirishingizdan tashqari autentifikator ilovasidan kod ham so‘raydi, shunda faqat o‘g‘irlangan parol bilan ulardan foydalanib bo‘lmaydi."),
+      "ui_2fa_on": MessageLookupByLibrary.simpleMessage(
+          "Ikki bosqichli kirish yoqilgan."),
+      "ui_2fa_remove": MessageLookupByLibrary.simpleMessage("Olib tashlash"),
+      "ui_2fa_set_up": MessageLookupByLibrary.simpleMessage("Sozlash"),
+      "ui_2fa_scan": MessageLookupByLibrary.simpleMessage(
+          "Buni autentifikator ilovangiz bilan skanerlang yoki quyidagi kalitni kiriting. Imkoni bo‘lsa, ikkita ilovaga qo‘shing: yagona ilovani yo‘qotsangiz, uni olib tashlash uchun yordam xizmatiga murojaat qilishingiz kerak bo‘ladi."),
+      "ui_2fa_key": MessageLookupByLibrary.simpleMessage("Sozlash kaliti"),
+      "ui_2fa_copied":
+          MessageLookupByLibrary.simpleMessage("Sozlash kaliti nusxalandi"),
+      "ui_2fa_confirm": MessageLookupByLibrary.simpleMessage("Tasdiqlash"),
+      "ui_2fa_failed": MessageLookupByLibrary.simpleMessage(
+          "Sozlashni boshlab bo‘lmadi. Qayta urining."),
+      "ui_2fa_wrong": MessageLookupByLibrary.simpleMessage(
+          "Bu kod ishlamadi. Telefoningizdagi vaqtni tekshirib, qayta urining."),
+      "ui_2fa_code": MessageLookupByLibrary.simpleMessage("6 xonali kod"),
+      "ui_2fa_enter": MessageLookupByLibrary.simpleMessage(
+          "Autentifikator ilovangizdagi kodni kiriting"),
+      "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Tekshirish"),
+      "ui_password_breached": MessageLookupByLibrary.simpleMessage(
+          "Bu parol ma’lumotlar sizib chiqishida ko‘ringan, shuning uchun hujumchilar birinchi sinab ko‘radiganlardan biri. Boshqasini tanlang."),
     };
 
 final messageLookup = MessageLookup();

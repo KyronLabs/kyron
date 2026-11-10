@@ -1374,5 +1374,21 @@
   "ui_voice_limit": "Hadi dakika kumi.",
   "ui_voice_listening": "Inasikiliza…",
   "ui_voice_no_mic": "Kyron inahitaji ruhusa ya maikrofoni ili kurekodi. Unaweza kuitoa kwenye mipangilio ya kifaa chako.",
-  "ui_voice_start_failed": "Imeshindwa kuanza kurekodi: {error}"
+  "ui_voice_start_failed": "Imeshindwa kuanza kurekodi: {error}",
+  "ui_2fa_title": "Kuingia kwa hatua mbili",
+  "ui_2fa_help": "Msimbo wa kithibitishaji kwa zana za wafanyakazi",
+  "ui_2fa_intro": "Zana za wafanyakazi zinaomba msimbo kutoka programu ya kithibitishaji pamoja na kuingia kwako, ili nenosiri lililoibwa pekee lisiweze kuzitumia.",
+  "ui_2fa_on": "Kuingia kwa hatua mbili kumewashwa.",
+  "ui_2fa_remove": "Ondoa",
+  "ui_2fa_set_up": "Weka",
+  "ui_2fa_scan": "Changanua hii kwa programu yako ya kithibitishaji, au weka ufunguo ulio hapa chini. Iongeze kwenye programu mbili ukiweza: kupoteza ile pekee uliyonayo kunamaanisha kuomba usaidizi uiondoe.",
+  "ui_2fa_key": "Ufunguo wa kuweka",
+  "ui_2fa_copied": "Ufunguo wa kuweka umenakiliwa",
+  "ui_2fa_confirm": "Thibitisha",
+  "ui_2fa_failed": "Imeshindwa kuanza kuweka. Jaribu tena.",
+  "ui_2fa_wrong": "Msimbo huo haukufanya kazi. Angalia saa kwenye simu yako kisha ujaribu tena.",
+  "ui_2fa_code": "Msimbo wa tarakimu 6",
+  "ui_2fa_enter": "Weka msimbo kutoka programu yako ya kithibitishaji",
+  "ui_2fa_verify": "Thibitisha",
+  "ui_password_breached": "Nenosiri hili limeonekana katika uvujaji wa data, kwa hivyo ni kati ya ya kwanza ambayo washambuliaji hujaribu. Chagua lingine."
 }
