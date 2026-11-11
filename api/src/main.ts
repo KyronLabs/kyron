@@ -25,6 +25,7 @@ import { randomUUID } from 'node:crypto';
 import { MetricsService } from './infrastructure/observability/metrics.service';
 import { installRequestLogging } from './infrastructure/observability/request-log';
 import { RealtimeService } from './modules/realtime/realtime.service';
+import { secondFactorRequired } from './modules/moderation/staff-session';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
@@ -189,6 +190,12 @@ async function bootstrap() {
   // reads as a loopback-only bind and is the first thing anyone checks when a
   // platform reports the app is not reachable on 0.0.0.0.
   logger.log(`🚀 Kyron API (Fastify) listening on 0.0.0.0:${port}`);
+  // Said at boot so a deploy's logs show whether staff tools are guarded.
+  logger.log(
+    secondFactorRequired()
+      ? 'Staff tools require a second factor (STAFF_REQUIRE_SECOND_FACTOR=true).'
+      : 'Staff tools do not require a second factor (STAFF_REQUIRE_SECOND_FACTOR is not true).',
+  );
 
   const shutdown = async () => {
     logger.log('SIGINT/SIGTERM received: closing Nest app...');
