@@ -21,6 +21,15 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+## [0.1.47] - 2026-11-11
+
+### Changed
+
+- Bug fixes and performance improvements.
+
+<!-- What's new
+Bug fixes and performance improvements.
+-->
 ## [0.1.46] - 2026-11-10
 ### Changed
 
@@ -2634,7 +2643,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.46...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.47...HEAD
+[0.1.47]: https://github.com/KyronLabs/kyron/compare/v0.1.46...v0.1.47
 [0.1.46]: https://github.com/KyronLabs/kyron/compare/v0.1.45...v0.1.46
 [0.1.45]: https://github.com/KyronLabs/kyron/compare/v0.1.44...v0.1.45
 [0.1.44]: https://github.com/KyronLabs/kyron/compare/v0.1.43...v0.1.44
