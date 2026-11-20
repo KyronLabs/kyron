@@ -58,6 +58,14 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
+          # Pinned, not "whatever stable shipped last night": Flutter 3.50
+          # raised Flutter's minimum Gradle to 9.3.1, and this project's
+          # wrapper is on 8.14 (app/android/gradle/wrapper), where every
+          # Android build dies applying the Flutter Gradle plugin at
+          # `flutter build`. Move this pin and the Android toolchain
+          # (gradle-wrapper.properties, AGP and Kotlin in settings.gradle.kts)
+          # up together, never apart.
+          flutter-version: '3.47.9'
           channel: stable
           cache: true
 
@@ -142,6 +150,14 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
+          # Pinned, not "whatever stable shipped last night": Flutter 3.50
+          # raised Flutter's minimum Gradle to 9.3.1, and this project's
+          # wrapper is on 8.14 (app/android/gradle/wrapper), where every
+          # Android build dies applying the Flutter Gradle plugin at
+          # `flutter build`. Move this pin and the Android toolchain
+          # (gradle-wrapper.properties, AGP and Kotlin in settings.gradle.kts)
+          # up together, never apart.
+          flutter-version: '3.47.9'
           channel: stable
           cache: true
 
@@ -301,6 +317,14 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
+          # Pinned, not "whatever stable shipped last night": Flutter 3.50
+          # raised Flutter's minimum Gradle to 9.3.1, and this project's
+          # wrapper is on 8.14 (app/android/gradle/wrapper), where every
+          # Android build dies applying the Flutter Gradle plugin at
+          # `flutter build`. Move this pin and the Android toolchain
+          # (gradle-wrapper.properties, AGP and Kotlin in settings.gradle.kts)
+          # up together, never apart.
+          flutter-version: '3.47.9'
           channel: stable
           cache: true
 
