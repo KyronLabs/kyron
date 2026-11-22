@@ -9,8 +9,8 @@ ALTER TYPE "CoinKind" ADD VALUE 'PURCHASE_EARN';
 --
 -- Program rules are versioned JSON, nominations are not awards, and each
 -- benefit is written once with an append-only audit event. The first reward
--- handler is promotional coins; it uses the existing non-cash CoinEntry
--- ledger and never creates withdrawable creator earnings.
+-- handler is promotional coins. Approved reward-funded gifts create
+-- withdrawable REWARD_EARN creator proceeds, just like PURCHASE_EARN.
 
 CREATE TYPE "RewardProgramStatus" AS ENUM ('DRAFT', 'ACTIVE', 'PAUSED', 'ENDED');
 CREATE TYPE "RewardNominationStatus" AS ENUM ('PENDING', 'APPROVED', 'DECLINED');
