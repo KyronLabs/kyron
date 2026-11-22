@@ -32,7 +32,8 @@ export class CreateRewardProgramDto {
   @IsString()
   @Transform(trimmed)
   @Matches(/^[a-z0-9][a-z0-9._-]{2,63}$/, {
-    message: 'key must be 3-64 lowercase letters, numbers, dots, underscores or hyphens.',
+    message:
+      'key must be 3-64 lowercase letters, numbers, dots, underscores or hyphens.',
   })
   key!: string;
 
