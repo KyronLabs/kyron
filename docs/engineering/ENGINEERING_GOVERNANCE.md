@@ -200,7 +200,7 @@ Until replaced with a fail-closed release process:
 
 - Treat migration logs as a mandatory release verification.
 - Do not declare a deployment healthy solely because the process starts or `/health` answers.
-- Do not run baseline resolution unless the existing schema is proven to match the migration being marked applied.
+- Never run baseline resolution automatically during API startup. Do not run it manually unless the existing schema is proven to match the exact migration being marked applied, a verified backup exists, and the change has explicit operator approval.
 - Require explicit approval for migration repairs.
 - Preserve database backups and recovery instructions before risky schema changes.
 
