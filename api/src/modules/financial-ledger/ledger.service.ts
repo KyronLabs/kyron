@@ -44,10 +44,14 @@ export interface PostLedgerTransactionInput {
   postings: LedgerPostingInput[];
 }
 
-type LedgerTransactionWithPostings =
-  Prisma.LedgerTransactionGetPayload<{
-    include: { postings: { include: { account: true } } };
-  }>;
+type LedgerTransactionRecord = Prisma.LedgerTransactionGetPayload<{
+  include: { postings: { include: { account: true } } };
+}>;
+
+type LedgerTransactionWithPostings = Omit<
+  LedgerTransactionRecord,
+  'createdXid' | 'requestHash'
+>;
 
 function stableValue(value: unknown): unknown {
   if (value instanceof Date) return value.toISOString();
@@ -235,10 +239,11 @@ export class LedgerService {
           })),
         });
 
-        return tx.ledgerTransaction.findUniqueOrThrow({
+        const record = await tx.ledgerTransaction.findUniqueOrThrow({
           where: { id: transaction.id },
           include: { postings: { include: { account: true } } },
         });
+        return this.publicTransaction(record);
       });
     } catch (error) {
       if (
@@ -256,7 +261,7 @@ export class LedgerService {
               'The idempotency key was already used for a different ledger event.',
             );
           }
-          return existing;
+          return this.publicTransaction(existing);
         }
 
         if (input.reversalOfId) {
@@ -267,6 +272,14 @@ export class LedgerService {
       }
       throw error;
     }
+  }
+
+  private publicTransaction(
+    record: LedgerTransactionRecord,
+  ): LedgerTransactionWithPostings {
+    const { createdXid: _createdXid, requestHash: _requestHash, ...result } =
+      record;
+    return result;
   }
 
   private validate(input: PostLedgerTransactionInput): void {
