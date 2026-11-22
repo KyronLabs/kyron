@@ -26,7 +26,7 @@ if [ ! -x "$PRISMA" ]; then
 fi
 
 echo "[start] applying pending database migrations (timeout: ${MIGRATE_TIMEOUT}s)"
-if timeout "${MIGRATE_TIMEOUT}s" "$PRISMA" migrate deploy; then
+if timeout --kill-after=10s "${MIGRATE_TIMEOUT}s" "$PRISMA" migrate deploy; then
   echo "[start] database migrations are up to date"
 else
   status=$?
