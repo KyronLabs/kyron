@@ -271,15 +271,16 @@ run('post excellence rewards, against a real database', () => {
       )?.status,
     ).toBe('PENDING');
 
-    // Time passing does not create new complimentary coins.
+    // Time passing does not create new complimentary coins or consume the
+    // five reward coins left after the mixed-source gift.
     const laterWallet = await gifts.wallet(
       authorId,
       new Date(now.getTime() + 8 * 24 * 60 * 60 * 1000),
     );
     expect(laterWallet).toMatchObject({
-      coins: 0,
+      coins: 5,
       legacyComplimentary: 0,
-      promotional: 0,
+      promotional: 5,
     });
   });
 
