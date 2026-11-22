@@ -4,10 +4,9 @@ import {
   type OnApplicationBootstrap,
   type OnModuleDestroy,
 } from '@nestjs/common';
-import { AccountStatus, CoinKind } from '@prisma/client';
+import { AccountStatus } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { WEEKLY_COINS, weekStart } from '../gifts/gift-catalogue';
 import { NotificationsService } from '../notifications/notifications.service';
 import { type PushText, say } from './push-text';
 import { PushService } from './push.service';
@@ -16,25 +15,19 @@ const HOUR = 3_600_000;
 const DAY = 24 * HOUR;
 
 /**
- * The pushes nobody's action sends: "while you were away" for somebody who
- * has not opened the app in a while and has something new waiting, and
- * "your coins are back" when the week's gift coins refill.
+ * The reminder nobody's action sends: "while you were away" for somebody who
+ * has not opened the app in a while and has something new waiting.
  *
- * Every one has to be worth opening. A reminder with nothing behind it
- * teaches people to switch notifications off, so:
+ * It only goes after 36 hours without the app, only with something new since
+ * then and since the last one sent, at most once a day, in the person's
+ * evening, and never to somebody gone a month -- they have decided.
  *
- * - **Away** goes only after 36 hours without the app, only with something
- *   new since then and since the last one sent, at most once a day, in the
- *   person's evening, and never to somebody gone a month -- they have
- *   decided.
- * - **Coins** goes once a week, only to somebody who spent some last week:
- *   a wallet that was never touched has nothing new to say.
- * - Both are off with User.reminderPushes, from Settings, Notifications.
+ * It is disabled with User.reminderPushes, from Settings, Notifications.
  *
  * Run every 15 minutes while the server is up, and from outside by
- * .github/workflows/scheduled-pushes.yml, which also wakes a sleeping
- * server. Each run decides from the database and records what it sent, so
- * two runs at once, or one run twice, send nothing twice.
+ * .github/workflows/scheduled-pushes.yml, which also wakes a sleeping server.
+ * Each run decides from the database and records what it sent, so two runs
+ * at once, or one run twice, send nothing twice.
  */
 @Injectable()
 export class ScheduledPushService
@@ -52,8 +45,6 @@ export class ScheduledPushService
   static readonly awayEvery = 22 * HOUR;
   /** The local hours they may arrive in: evening, before it is late. */
   static readonly evening = { from: 18, to: 21 } as const;
-  /** The local hours the coins one may arrive in: a weekday morning. */
-  static readonly morning = { from: 9, to: 12 } as const;
   /** Until the app reports a phone's offset: West Africa, where the team
    * and most of the test are. */
   static readonly defaultOffsetMinutes = 60;
@@ -82,20 +73,17 @@ export class ScheduledPushService
     if (this.timer) clearInterval(this.timer);
   }
 
-  /** Sends whatever is due now, and says how many of each went. */
-  async runDue(now = new Date()): Promise<{ away: number; coins: number }> {
-    if (this.running) return { away: 0, coins: 0 };
+  /** Sends the away reminder if one is due. */
+  async runDue(now = new Date()): Promise<{ away: number }> {
+    if (this.running) return { away: 0 };
     this.running = true;
     try {
       const away = await this.awayDue(now);
-      const coins = await this.coinsDue(now);
-      if (away || coins) {
-        this.log.log(`Sent ${away} away and ${coins} coins reminder(s).`);
-      }
-      return { away, coins };
+      if (away) this.log.log(`Sent ${away} away reminder(s).`);
+      return { away };
     } catch (error) {
       this.log.error(`A scheduled run failed: ${String(error)}`);
-      return { away: 0, coins: 0 };
+      return { away: 0 };
     } finally {
       this.running = false;
     }
@@ -244,45 +232,4 @@ export class ScheduledPushService
     return parts.length ? parts : null;
   }
 
-  private async coinsDue(now: Date): Promise<number> {
-    const week = weekStart(now);
-    const lastWeek = new Date(week.getTime() - 7 * DAY);
-    const spent = await this.prisma.coinEntry.findMany({
-      where: {
-        kind: CoinKind.SPEND,
-        createdAt: { gte: lastWeek, lt: week },
-        user: {
-          ...this.reachable,
-          OR: [{ refillPushAt: null }, { refillPushAt: { lt: week } }],
-        },
-      },
-      distinct: ['userId'],
-      select: {
-        user: {
-          select: { id: true, utcOffsetMinutes: true, refillPushAt: true },
-        },
-      },
-      take: ScheduledPushService.batch,
-    });
-
-    let sent = 0;
-    for (const { user } of spent) {
-      const hour = ScheduledPushService.localHour(now, user.utcOffsetMinutes);
-      if (!ScheduledPushService.within(hour, ScheduledPushService.morning)) {
-        continue;
-      }
-      const claimed = await this.prisma.user.updateMany({
-        where: { id: user.id, refillPushAt: user.refillPushAt ?? null },
-        data: { refillPushAt: now },
-      });
-      if (claimed.count === 0) continue;
-      await this.push.sendTo(user.id, {
-        title: say('refill_title'),
-        body: say('refill_body', { coins: WEEKLY_COINS }),
-        data: { type: 'coins' },
-      });
-      sent++;
-    }
-    return sent;
-  }
 }
