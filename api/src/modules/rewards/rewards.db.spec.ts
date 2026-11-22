@@ -205,6 +205,13 @@ run('post excellence rewards, against a real database', () => {
       promotional: 30,
     });
 
+    // Free or reward-credit spending creates non-cashable proceeds for the
+    // recipient; it must never land in the future purchase-funded EARN bucket.
+    const recipientWallet = await gifts.wallet(nominatorId, now);
+    expect(recipientWallet.earned).toBe(120);
+    expect(recipientWallet.withdrawableEarned).toBe(0);
+    expect(recipientWallet.promotionalEarned).toBe(120);
+
     // The next refill restores the weekly bucket without consuming or capping
     // the promotional balance.
     const nextWeek = nextRefill(now);
