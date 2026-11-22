@@ -255,9 +255,7 @@ export class GiftsService {
         const rewardFunded = entry.kind === CoinKind.REWARD_SPEND;
         return {
           userId: recipientId,
-          kind: rewardFunded
-            ? CoinKind.REWARD_EARN
-            : CoinKind.PROMOTIONAL_EARN,
+          kind: rewardFunded ? CoinKind.REWARD_EARN : CoinKind.PROMOTIONAL_EARN,
           amount: -entry.amount,
           key: `gift:${gift.id}:${rewardFunded ? 'reward' : 'legacy'}-earn`,
           giftId: gift.id,
