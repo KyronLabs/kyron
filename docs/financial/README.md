@@ -1,6 +1,6 @@
 # Kyron Financial Ecosystem
 
-**Status:** Implementation foundation — additive database layer only  
+**Status:** Implementation foundation — additive database and ledger service layer  
 **Owner:** KyronLabs / Kyron  
 **Baseline:** 22 November 2026
 
@@ -62,6 +62,8 @@ The additive Prisma schema and migration introduce:
 - `CreatorConversionRate` — immutable country/currency rate versions.
 - `FinancialAuditEvent` — append-only operational/security audit evidence.
 
+The backend `LedgerService` posts balanced events atomically, fingerprints idempotent requests, and creates full reversals as new transactions.
+
 Database enforcement:
 - At least two posting lines per ledger transaction.
 - Total debits must equal total credits.
@@ -105,15 +107,14 @@ Bank payout integration is provider-neutral until a provider is selected after c
 
 ## Implementation sequence
 
-1. **Ledger foundation (this phase):** schema, migration, database invariants, integration tests.
-2. **Ledger service:** chart-of-accounts provisioning, idempotent posting, reversal, audit and reconciliation services.
-3. **Legacy bridge:** reconcile existing `CoinEntry` balances/provenance and create opening ledger entries under a reviewed, repeatable migration plan.
-4. **Google Play purchases:** package catalogue, purchase verification, refunds/voids, idempotent coin grant.
-5. **Creator payable and risk controls:** immediate accrual, reason-coded holds, eligibility and reservations.
-6. **Withdrawal quotes:** dynamic rate snapshot, fee disclosure, expiry and accepted quote evidence. Minimum remains disabled until approved.
-7. **Bank payouts:** provider adapter, dual control, idempotency, webhook verification and settlement reconciliation.
-8. **User/admin UI:** wallet, purchase, creator earnings, bank destination, withdrawal, history and staff operations.
-9. **Controlled launch:** sandbox, reconciliation, fraud/compliance review, support runbooks and staged enablement.
+1. **Ledger foundation (this phase):** schema, migration, database invariants, idempotent posting/reversal service and integration tests.
+2. **Legacy bridge:** reconcile existing `CoinEntry` balances/provenance and create opening ledger entries under a reviewed, repeatable migration plan.
+3. **Google Play purchases:** package catalogue, purchase verification, refunds/voids, idempotent coin grant.
+4. **Creator payable and risk controls:** immediate accrual, reason-coded holds, eligibility and reservations.
+5. **Withdrawal quotes:** dynamic rate snapshot, fee disclosure, expiry and accepted quote evidence. Minimum remains disabled until approved.
+6. **Bank payouts:** provider adapter, dual control, idempotency, webhook verification and settlement reconciliation.
+7. **User/admin UI:** wallet, purchase, creator earnings, bank destination, withdrawal, history and staff operations.
+8. **Controlled launch:** sandbox, reconciliation, fraud/compliance review, support runbooks and staged enablement.
 
 ## Explicit non-goals for this migration
 
