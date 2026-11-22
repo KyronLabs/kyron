@@ -308,15 +308,24 @@ A feature should be disabled by default in a jurisdiction until required review 
 
 ### 3.1 Current test-economy boundary
 
-The current incentives repository explicitly describes a test system:
-- Weekly wallet top-up to 100 coins at Monday 00:00 UTC.
-- Earned coins separated from spendable coins.
-- No coin purchases.
-- No withdrawals.
-- No representation of money.
-- Gifts implemented in the main app/API.
+The coin system has moved beyond the original test-economy assumptions:
+- The former 100-coin Monday wallet top-up is retired. Existing unspent weekly
+  grants remain as grandfathered `legacyComplimentary` balances and are never
+  automatically replenished.
+- New promotional coin grants are issued only through staff-approved post
+  excellence reward programmes.
+- Creator proceeds from legacy/promotional spending are tracked as
+  `PROMOTIONAL_EARN`; they are not purchase-funded.
+- `PURCHASE_EARN` is reserved for proceeds whose source is verified purchased
+  coin spending. Historic `EARN` rows have unknown test-era provenance and
+  must never be treated as payout-eligible.
+- No coin-purchase or payout path is enabled by this rewards change.
+- Gifts remain implemented in the main app/API.
 
-The test economy is not a production financial ledger. Do not simply turn on purchases or payouts against the existing test assumptions.
+This is still not a complete production financial ledger. Do not simply turn
+on purchases or payouts: first settle the coin's legal/commercial meaning,
+purchase evidence, liabilities, reconciliation, consumer disclosures and
+jurisdiction-specific requirements.
 
 ### 3.2 Financial design decisions required
 
