@@ -73,7 +73,7 @@ The recent read-only review reported:
 - Historical tracked environment file with a local database password and placeholder JWT secret. Reuse outside local development and credential rotation remain to be confirmed.
 - Public Git history containing AI-session references. Accessibility and revocation status remain unverified.
 - Supabase `supabase_admin` default privileges documented as broad for `anon` on newly created public-schema tables.
-- API startup may continue after migration failure or timeout.
+- The prior startup implementation could continue after migration failure or timeout. A fail-closed correction is now proposed on a dedicated branch; CI and staging deployment evidence are still required before closure.
 - Development signing key intentionally present in source; owner confirms production/private key isolation.
 
 Do not mark the historical administrator, database credential or AI-session findings closed without evidence. The owner-confirmed 2FA and key separation should not be unnecessarily reopened unless new evidence contradicts them.
