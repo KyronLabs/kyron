@@ -39,10 +39,13 @@ export interface PostLedgerTransactionInput {
   metadata?: Prisma.InputJsonValue;
   actorId?: string | null;
   effectiveAt?: Date;
-  /** Set only when recording a full compensating reversal. */
-  reversalOfId?: string | null;
   postings: LedgerPostingInput[];
 }
+
+type LedgerPostCommand = PostLedgerTransactionInput & {
+  /** Internal-only link for a full compensating reversal. */
+  reversalOfId?: string | null;
+};
 
 type LedgerTransactionRecord = Prisma.LedgerTransactionGetPayload<{
   include: { postings: { include: { account: true } } };
@@ -68,7 +71,7 @@ function stableValue(value: unknown): unknown {
   return value;
 }
 
-function requestFingerprint(input: PostLedgerTransactionInput): string {
+function requestFingerprint(input: LedgerPostCommand): string {
   const canonical = {
     eventType: input.eventType,
     sourceType: input.sourceType,
@@ -161,11 +164,11 @@ export class LedgerService {
   }
 
   private async postInternal(
-    request: PostLedgerTransactionInput,
+    request: LedgerPostCommand,
     allowNonActiveAccounts: boolean,
   ): Promise<LedgerTransactionWithPostings> {
     this.validate(request);
-    const input: PostLedgerTransactionInput = {
+    const input: LedgerPostCommand = {
       ...request,
       postings: request.postings.map((line) => ({
         ...line,
