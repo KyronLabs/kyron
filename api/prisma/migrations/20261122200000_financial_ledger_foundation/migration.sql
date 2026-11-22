@@ -111,7 +111,7 @@ REVOKE ALL ON TABLE
   "LedgerPosting",
   "CreatorConversionRate",
   "FinancialAuditEvent"
-FROM PUBLIC, anon, authenticated;
+FROM PUBLIC, anon, authenticated, service_role;
 
 CREATE UNIQUE INDEX "LedgerAccount_accountKey_key" ON "LedgerAccount"("accountKey");
 CREATE UNIQUE INDEX "LedgerTransaction_idempotencyKey_key" ON "LedgerTransaction"("idempotencyKey");
@@ -129,13 +129,10 @@ CREATE INDEX "FinancialAuditEvent_actorId_createdAt_idx" ON "FinancialAuditEvent
 CREATE INDEX "FinancialAuditEvent_subjectType_subjectId_createdAt_idx" ON "FinancialAuditEvent"("subjectType", "subjectId", "createdAt");
 CREATE INDEX "FinancialAuditEvent_eventType_createdAt_idx" ON "FinancialAuditEvent"("eventType", "createdAt");
 
-ALTER TABLE "LedgerAccount"
-  ADD CONSTRAINT "LedgerAccount_ownerId_fkey"
-  FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
+-- Actor/owner IDs are immutable UUID snapshots, intentionally not foreign
+-- keys to User. Account deletion must not mutate or cascade through financial
+-- evidence; the retained UUID is pseudonymous and the User row may be deleted.
 ALTER TABLE "LedgerTransaction"
-  ADD CONSTRAINT "LedgerTransaction_actorId_fkey"
-  FOREIGN KEY ("actorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT "LedgerTransaction_reversalOfId_fkey"
   FOREIGN KEY ("reversalOfId") REFERENCES "LedgerTransaction"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -144,14 +141,6 @@ ALTER TABLE "LedgerPosting"
   FOREIGN KEY ("transactionId") REFERENCES "LedgerTransaction"("id") ON DELETE RESTRICT ON UPDATE CASCADE,
   ADD CONSTRAINT "LedgerPosting_accountId_fkey"
   FOREIGN KEY ("accountId") REFERENCES "LedgerAccount"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
-ALTER TABLE "CreatorConversionRate"
-  ADD CONSTRAINT "CreatorConversionRate_createdById_fkey"
-  FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
-ALTER TABLE "FinancialAuditEvent"
-  ADD CONSTRAINT "FinancialAuditEvent_actorId_fkey"
-  FOREIGN KEY ("actorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- A transaction and all of its postings must be written in one database
 -- transaction. This prevents adding a balanced pair to an old ledger event.
