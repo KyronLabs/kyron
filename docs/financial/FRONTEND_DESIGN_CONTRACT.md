@@ -6,9 +6,10 @@ No financial UI is included in the ledger foundation migration. This contract is
 
 Read and follow:
 - Root `DESIGN_SYSTEM_COMPLIANCE_REPORT.md`.
-- `KyronLabs/design-system/frontend/philosophy.md`.
-- `KyronLabs/design-system/frontend/components/buttons.md`.
-- Design-system token files for colors, typography, spacing, motion and accessibility.
+- `KyronLabs/design-system/frontend/philosophy.md` (mobile visual and interaction rules, including color, spacing and motion).
+- `KyronLabs/design-system/frontend/components/buttons.md` (button geometry and shared widgets).
+- `KyronLabs/design-system/design-tokens/typography.md`.
+- `KyronLabs/design-system/design-tokens/spacing.md`.
 - Existing Flutter implementation and package APIs in `app/` and the pinned design-system dependency.
 
 The design-system compliance report is a measured report, not a blanket certificate. It says app-wide touch-target coverage is incomplete and spacing/motion are not comprehensively guarded. Every new financial screen must include its own tests for those dimensions.
