@@ -157,10 +157,17 @@ export class LedgerService {
   }
 
   private async postInternal(
-    input: PostLedgerTransactionInput,
+    request: PostLedgerTransactionInput,
     allowNonActiveAccounts: boolean,
   ): Promise<LedgerTransactionWithPostings> {
-    this.validate(input);
+    this.validate(request);
+    const input: PostLedgerTransactionInput = {
+      ...request,
+      postings: request.postings.map((line) => ({
+        ...line,
+        amount: new Prisma.Decimal(line.amount).toFixed(8),
+      })),
+    };
     const requestHash = requestFingerprint(input);
 
     try {
@@ -306,6 +313,14 @@ export class LedgerService {
 
       if (!amount.isFinite() || amount.lte(0)) {
         throw new BadRequestException('Posting amount must be greater than zero.');
+      }
+      if (amount.decimalPlaces() > 8) {
+        throw new BadRequestException(
+          'Posting amount supports at most eight decimal places.',
+        );
+      }
+      if (input.currencyCode === 'KCOIN' && !amount.isInteger()) {
+        throw new BadRequestException('Virtual coin postings must be whole coins.');
       }
 
       if (line.side === 'DEBIT') debits = debits.plus(amount);
