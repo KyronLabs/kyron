@@ -43,8 +43,7 @@ class _Gifts extends GiftsRepository {
         wallet: GiftWallet(
           coins: coins,
           earned: 0,
-          weeklyCoins: 100,
-          refillsAt: DateTime(2026, 11, 2),
+          legacyComplimentary: 0,
         ),
       );
 
@@ -66,7 +65,7 @@ class _Gifts extends GiftsRepository {
       giftId: 'g1',
       type: type,
       gifts: 4,
-      wallet: GiftWallet(coins: coins - 5, earned: 0, weeklyCoins: 100),
+      wallet: GiftWallet(coins: coins - 5, earned: 0),
     );
   }
 }
@@ -139,7 +138,7 @@ void main() {
     });
 
     test(
-      'a wallet keeps promotional rewards separate from the weekly refill',
+      'a wallet keeps promotional rewards separate from legacy complimentary coins',
       () {
         final wallet = GiftWallet.fromJson(const {
           'coins': 150,
@@ -147,11 +146,11 @@ void main() {
           'purchaseFundedEarned': 0,
           'promotionalEarned': 10,
           'promotional': 50,
-          'weeklyCoins': 100,
+          'legacyComplimentary': 100,
         });
         expect(wallet.coins, 150);
         expect(wallet.promotional, 50);
-        expect(wallet.weeklyCoins, 100);
+        expect(wallet.legacyComplimentary, 100);
         expect(wallet.earned, 10);
         expect(wallet.purchaseFundedEarned, 0);
         expect(wallet.promotionalEarned, 10);
