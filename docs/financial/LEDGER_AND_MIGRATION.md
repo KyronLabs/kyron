@@ -130,6 +130,6 @@ The migration enforces:
 - immutable conversion-rate and audit-event rows;
 - stable account identity/denomination;
 - restrictive foreign keys from postings to accounts/transactions;
-- `SET NULL` actor/owner references so user deletion cannot erase the evidence.
+- Actor/owner UUIDs are retained as immutable pseudonymous references without User foreign keys, so user deletion cannot mutate or cascade through financial evidence.
 
 Application services must still enforce authorization, idempotency semantics, account status, event-source validity and business-level limits. Database triggers are defense in depth, not a substitute for service logic.
