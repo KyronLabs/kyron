@@ -2,6 +2,7 @@
 -- GiftsService spends the weekly allowance first and promotional credits second.
 ALTER TYPE "CoinKind" ADD VALUE 'REWARD_GRANT';
 ALTER TYPE "CoinKind" ADD VALUE 'REWARD_SPEND';
+ALTER TYPE "CoinKind" ADD VALUE 'PROMOTIONAL_EARN';
 
 -- Post excellence rewards.
 --
