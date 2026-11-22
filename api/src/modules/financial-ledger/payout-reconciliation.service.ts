@@ -25,7 +25,10 @@ export abstract class PayoutWebhookProvider {
 export class DisabledPayoutWebhookProvider extends PayoutWebhookProvider {
   readonly providerCode = 'disabled';
   isConfigured(): boolean { return false; }
-  verifyAndParse(): Promise<NormalizedPayoutWebhookEvent> {
+  verifyAndParse(
+    _rawBody: Uint8Array,
+    _headers: Record<string, string | string[] | undefined>,
+  ): Promise<NormalizedPayoutWebhookEvent> {
     return Promise.reject(new ServiceUnavailableException('No authenticated payout webhook provider has been configured.'));
   }
 }

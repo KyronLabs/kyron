@@ -12,7 +12,10 @@ describe('payout webhook provider boundary', () => {
     class TestProvider extends PayoutWebhookProvider {
       readonly providerCode = 'test-provider';
       isConfigured(): boolean { return true; }
-      async verifyAndParse(rawBody: Uint8Array) {
+      async verifyAndParse(
+        rawBody: Uint8Array,
+        _headers: Record<string, string | string[] | undefined>,
+      ) {
         expect(Array.from(rawBody)).toEqual([1, 2, 3]);
         return {
           providerEventId: 'evt_123',
