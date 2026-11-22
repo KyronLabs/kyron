@@ -9,7 +9,7 @@ class GiftsRepository {
   GiftsRepository(this._api);
   final ApiClient _api;
 
-  /// The catalogue and the reader's wallet, refilled if a week has turned.
+  /// The catalogue and the reader's current wallet; reading never grants coins.
   Future<GiftSheetData> sheet() async {
     final res = await _api.dio.get<Map<String, dynamic>>('/gifts');
     return GiftSheetData.fromJson(res.data ?? const {});
