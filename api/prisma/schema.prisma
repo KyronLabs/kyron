@@ -2348,6 +2348,36 @@ enum CreatorEarningReservationStatus {
   SETTLED
 }
 
+enum CreatorWithdrawalStatus {
+  REQUESTED
+  UNDER_REVIEW
+  APPROVED
+  PROCESSING
+  PAID
+  FAILED
+  CANCELLED
+  REVERSED
+}
+
+enum PayoutDestinationStatus {
+  ACTIVE
+  DISABLED
+}
+
+enum PayoutAttemptStatus {
+  CREATED
+  SUBMITTED
+  SUCCEEDED
+  FAILED
+  UNKNOWN
+}
+
+enum FxQuoteStatus {
+  ACTIVE
+  CONSUMED
+  EXPIRED
+}
+
 /// Immutable creator proceeds attributed to one positive CoinEntry.
 /// No User or Gift foreign key: financial evidence survives account/social deletion.
 model CreatorEarning {
@@ -2397,9 +2427,114 @@ model CreatorEarningReservation {
   createdAt      DateTime                        @default(now()) @db.Timestamptz()
   finalizedAt    DateTime?                       @db.Timestamptz()
   lines          CreatorEarningReservationLine[]
+  withdrawal     CreatorWithdrawal?
 
   @@index([creatorId, status, createdAt])
   @@index([status, expiresAt])
+}
+
+
+/// Provider-tokenized bank destination. Kyron stores no raw account or card data.
+model PayoutDestination {
+  id                    String                   @id @default(uuid()) @db.Uuid
+  creatorId             String                   @db.Uuid
+  providerCode          String                   @db.VarChar(40)
+  providerRecipientRef  String                   @db.VarChar(255)
+  countryCode           String                   @db.Char(2)
+  currency              String                   @db.Char(3)
+  bankCode              String?                  @db.VarChar(40)
+  accountLast4          String?                  @db.Char(4)
+  status                PayoutDestinationStatus @default(ACTIVE)
+  createdAt             DateTime                 @default(now()) @db.Timestamptz()
+  updatedAt             DateTime                 @updatedAt @db.Timestamptz()
+  withdrawals           CreatorWithdrawal[]
+
+  @@unique([providerCode, providerRecipientRef])
+  @@index([creatorId, status, createdAt])
+}
+
+/// Immutable, time-bounded conversion quote. Amounts are integer minor units;
+/// the quote provider, not the client, supplies the rate and final amount.
+model FxQuote {
+  id                 String        @id @default(uuid()) @db.Uuid
+  creatorId          String        @db.Uuid
+  coinAmount         Int
+  targetCurrency     String        @db.Char(3)
+  targetAmountMinor  BigInt
+  rateNumerator      BigInt
+  rateDenominator    BigInt
+  providerCode       String        @db.VarChar(40)
+  providerQuoteRef   String?       @db.VarChar(255)
+  status             FxQuoteStatus @default(ACTIVE)
+  quotedAt           DateTime      @default(now()) @db.Timestamptz()
+  expiresAt          DateTime      @db.Timestamptz()
+  withdrawals        CreatorWithdrawal[]
+
+  @@index([creatorId, status, expiresAt])
+  @@index([expiresAt])
+}
+
+/// A request to pay out a settled creator-earnings reservation.
+model CreatorWithdrawal {
+  id                String                 @id @default(uuid()) @db.Uuid
+  creatorId         String                 @db.Uuid
+  reservationId     String                 @unique @db.Uuid
+  destinationId     String                 @db.Uuid
+  fxQuoteId         String                 @db.Uuid
+  idempotencyKey    String                 @unique @db.VarChar(200)
+  coinAmount        Int
+  currency          String                 @db.Char(3)
+  fiatAmountMinor   BigInt
+  status            CreatorWithdrawalStatus @default(REQUESTED)
+  requestedAt       DateTime               @default(now()) @db.Timestamptz()
+  approvedAt        DateTime?              @db.Timestamptz()
+  completedAt       DateTime?              @db.Timestamptz()
+  failureCode       String?                @db.VarChar(80)
+  reservation       CreatorEarningReservation @relation(fields: [reservationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  destination       PayoutDestination      @relation(fields: [destinationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  fxQuote           FxQuote                @relation(fields: [fxQuoteId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  attempts          PayoutAttempt[]
+
+  @@index([creatorId, status, requestedAt])
+  @@index([status, requestedAt])
+}
+
+/// Each provider submission is separately recorded so retries cannot create
+/// duplicate transfers. UNKNOWN requires reconciliation before another submit.
+model PayoutAttempt {
+  id                   String              @id @default(uuid()) @db.Uuid
+  withdrawalId         String              @db.Uuid
+  providerCode         String              @db.VarChar(40)
+  idempotencyKey       String              @unique @db.VarChar(200)
+  providerTransferRef  String?             @db.VarChar(255)
+  status               PayoutAttemptStatus @default(CREATED)
+  submittedAt          DateTime?           @db.Timestamptz()
+  completedAt          DateTime?           @db.Timestamptz()
+  providerErrorCode    String?             @db.VarChar(100)
+  createdAt            DateTime            @default(now()) @db.Timestamptz()
+  withdrawal           CreatorWithdrawal   @relation(fields: [withdrawalId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([withdrawalId, createdAt])
+  @@index([providerCode, providerTransferRef])
+  @@index([status, createdAt])
+}
+
+/// Deduplicated provider webhook inbox. Payloads are not retained; only hashes
+/// and normalized event metadata are persisted.
+model PayoutProviderEvent {
+  id               String   @id @default(uuid()) @db.Uuid
+  providerCode     String   @db.VarChar(40)
+  providerEventId  String   @db.VarChar(255)
+  withdrawalId     String?  @db.Uuid
+  eventType        String   @db.VarChar(100)
+  payloadHash      String   @db.Char(64)
+  receivedAt       DateTime @default(now()) @db.Timestamptz()
+  processedAt      DateTime? @db.Timestamptz()
+  processingError  String?  @db.VarChar(500)
+
+  @@unique([providerCode, providerEventId])
+  @@index([withdrawalId, receivedAt])
+  @@index([processedAt, receivedAt])
 }
 
 model CreatorEarningReservationLine {
