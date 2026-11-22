@@ -112,6 +112,7 @@ run('gifts, against a real database', () => {
     expect((await gifts.wallet(ada, WEDNESDAY)).earned).toBe(5);
     expect((await gifts.wallet(ada, WEDNESDAY)).purchaseFundedEarned).toBe(0);
     expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(5);
+    expect((await gifts.wallet(ada, WEDNESDAY)).withdrawableEarned).toBe(0);
     expect(delivery.ofType('notification.new')).toContainEqual({
       type: 'notification.new',
       kind: 'gift',
