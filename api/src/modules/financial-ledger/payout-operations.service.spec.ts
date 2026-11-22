@@ -119,20 +119,18 @@ describe('PayoutOperationsService', () => {
       expect(report.unresolvedProviderEventCount).toBe(1);
       expect(report.unmatchedTerminalProviderEventCount).toBe(1);
       expect(report.unresolvedProviderEvents).toHaveLength(1);
-      expect(payoutAttemptFindMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            status: {
-              in: [
-                PayoutAttemptStatus.CREATED,
-                PayoutAttemptStatus.SUBMITTED,
-                PayoutAttemptStatus.UNKNOWN,
-              ],
-            },
-          }),
-          take: 25,
-        }),
-      );
+      expect(payoutAttemptFindMany.mock.calls[0]?.[0]).toMatchObject({
+        where: {
+          status: {
+            in: [
+              PayoutAttemptStatus.CREATED,
+              PayoutAttemptStatus.SUBMITTED,
+              PayoutAttemptStatus.UNKNOWN,
+            ],
+          },
+        },
+        take: 25,
+      });
       expect(payoutAttemptFindMany).toHaveBeenCalledTimes(1);
     });
 
@@ -163,14 +161,12 @@ describe('PayoutOperationsService', () => {
       });
 
       expect(result.status).toBe('REVIEW_REQUESTED');
-      expect(financialAuditCreate).toHaveBeenCalledWith(
-        expect.objectContaining({
-          data: expect.objectContaining({
-            eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_REQUESTED',
-            subjectId: 'attempt-1',
-          }),
-        }),
-      );
+      expect(financialAuditCreate.mock.calls[0]?.[0]).toMatchObject({
+        data: {
+          eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_REQUESTED',
+          subjectId: 'attempt-1',
+        },
+      });
       expect(payoutAttemptFindUnique).toHaveBeenCalledTimes(1);
     });
 
@@ -234,14 +230,12 @@ describe('PayoutOperationsService', () => {
       });
 
       expect(result.status).toBe('RESOLVED');
-      expect(financialAuditCreate).toHaveBeenCalledWith(
-        expect.objectContaining({
-          data: expect.objectContaining({
-            eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_RESOLVED',
-            requestId: 'review-request-4',
-          }),
-        }),
-      );
+      expect(financialAuditCreate.mock.calls[0]?.[0]).toMatchObject({
+        data: {
+          eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_RESOLVED',
+          requestId: 'review-request-4',
+        },
+      });
     });
 
     it('requires an existing review request', async () => {
