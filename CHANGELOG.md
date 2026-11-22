@@ -21,6 +21,12 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+### Changed
+
+- Retire the automatic 100-coin weekly complimentary wallet top-up and its
+  Monday push reminder. Existing unspent grants are preserved as legacy
+  complimentary balances; new coins are issued through approved rewards.
+
 ## [0.1.48] - 2026-11-20
 
 ### Changed
