@@ -157,8 +157,9 @@ Use these statuses consistently:
 ### 0.5 Deployment migration safety — P0
 
 - Review `api/scripts/start.sh` and the Render deploy model.
-- Remove unverified automatic baseline resolution from the normal deployment path.
-- Ensure migration failure or timeout fails the release/deployment gate.
+- Remove unverified automatic baseline resolution from the normal deployment path. (Implemented on the startup-hardening branch; verify CI and staging.)
+- Ensure migration failure or timeout fails the release/deployment gate. (Implemented on the startup-hardening branch; verify CI and staging.)
+- Make API startup fail when Postgres remains unreachable after bounded retries. (Implemented on the startup-hardening branch; verify CI and staging.)
 - Add a schema-version/readiness check that distinguishes DB reachability from migration currency.
 - Prove baseline correctness before any migration is marked applied.
 - Test backup and restore before risky migrations.
