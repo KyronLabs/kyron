@@ -2,7 +2,11 @@ import { Module } from '@nestjs/common';
 
 import { LedgerService } from './ledger.service';
 import { CreatorEarningsService } from './creator-earnings.service';
-import { DisabledPayoutWebhookProvider, PayoutReconciliationService, PayoutWebhookProvider } from './payout-reconciliation.service';
+import {
+  DisabledPayoutWebhookProvider,
+  PayoutReconciliationService,
+  PayoutWebhookProvider,
+} from './payout-reconciliation.service';
 import {
   BankPayoutProvider,
   CreatorWithdrawalsService,
@@ -18,12 +22,20 @@ import {
     CreatorWithdrawalsService,
     PayoutReconciliationService,
     DisabledPayoutWebhookProvider,
-    { provide: PayoutWebhookProvider, useExisting: DisabledPayoutWebhookProvider },
+    {
+      provide: PayoutWebhookProvider,
+      useExisting: DisabledPayoutWebhookProvider,
+    },
     DisabledFxQuoteProvider,
     DisabledBankPayoutProvider,
     { provide: FxQuoteProvider, useExisting: DisabledFxQuoteProvider },
     { provide: BankPayoutProvider, useExisting: DisabledBankPayoutProvider },
   ],
-  exports: [LedgerService, CreatorEarningsService, CreatorWithdrawalsService, PayoutReconciliationService],
+  exports: [
+    LedgerService,
+    CreatorEarningsService,
+    CreatorWithdrawalsService,
+    PayoutReconciliationService,
+  ],
 })
 export class FinancialLedgerModule {}
