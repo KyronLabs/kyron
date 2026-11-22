@@ -25,7 +25,7 @@ describe('API container startup script', () => {
     marker = join(root, 'api-started');
     writeFileSync(
       prisma,
-      '#!/bin/sh\nexit "${FAKE_PRISMA_EXIT:-0}"\n',
+      '#!/bin/sh\nif [ -n "${FAKE_PRISMA_SLEEP:-}" ]; then sleep "$FAKE_PRISMA_SLEEP"; fi\nexit "${FAKE_PRISMA_EXIT:-0}"\n',
     );
     chmodSync(prisma, 0o755);
     writeFileSync(
@@ -65,6 +65,13 @@ describe('API container startup script', () => {
     expect(result.status).toBe(23);
     expect(result.stderr).toContain('refusing to start the API');
     expect(result.stdout).not.toContain('baselin');
+    expect(existsSync(marker)).toBe(false);
+  });
+
+  it('does not start the API when the migration command times out', () => {
+    const result = run({ MIGRATE_TIMEOUT: '1', FAKE_PRISMA_SLEEP: '3' });
+    expect(result.status).toBe(124);
+    expect(result.stderr).toContain('exceeded 1s');
     expect(existsSync(marker)).toBe(false);
   });
 
