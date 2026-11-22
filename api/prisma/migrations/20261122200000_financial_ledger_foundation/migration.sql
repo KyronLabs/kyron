@@ -5,6 +5,11 @@
 -- The existing CoinEntry remains the virtual-coin source ledger during the
 -- separately reviewed bridge/migration phase.
 
+-- CoinEntry.userId is retained as an immutable UUID snapshot. The old
+-- cascading User FK would erase virtual-coin provenance when an account is
+-- deleted, so remove only the FK; do not rewrite or delete any existing rows.
+ALTER TABLE "CoinEntry" DROP CONSTRAINT "CoinEntry_userId_fkey";
+
 CREATE TYPE "FinancialAccountType" AS ENUM (
   'ASSET',
   'LIABILITY',
