@@ -1117,7 +1117,7 @@ enum CoinKind {
   EARN
   /// Creator proceeds attributable to verified purchased coin spending.
   PURCHASE_EARN
-  /// Creator credits from the weekly refill and promotional rewards. Never cashable.
+  /// Creator credits from legacy complimentary and promotional spending. Never cashable.
   PROMOTIONAL_EARN
   /// Promotional credits granted by a post rewards programme. Positive.
   REWARD_GRANT
