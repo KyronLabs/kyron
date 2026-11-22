@@ -298,7 +298,7 @@ The `render.yaml` itself warns that the live API service was originally created 
 
 This behavior may preserve service availability, but it can also allow an application version to run against an outdated schema. The README likewise warns that `/health` indicates database reachability, not schema currency.
 
-**Production requirement:** Before relying on this behavior for a production release, replace the implicit “start anyway” posture with a deliberate, observable release gate. A release must not be declared healthy when required migrations failed. The migration baseline must be proven against the actual database before any baseline resolution is performed. Use a controlled migration/release step, explicit failure status, and a compatibility/rollback plan.
+**Operational control:** The startup path is designed to fail closed for migration and database-connectivity failures. Existing databases with unrecorded migration history must be reconciled separately by an operator: compare the live schema with the exact migration, take and verify a backup, document the decision, then use Prisma's explicit resolve command only after approval. Never add automatic baseline resolution to normal startup. A dedicated Render release phase or one-off migration job remains preferable to running migrations concurrently from every API instance before horizontal scaling.
 
 ### 11.3 One-instance assumption
 
