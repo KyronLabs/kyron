@@ -449,24 +449,6 @@ export class RewardsService {
         );
       }
 
-      // Protect award caps from two different nominations being approved
-      // concurrently for the same post or creator.
-      await tx.$queryRaw`SELECT id FROM "Post" WHERE id = ${nomination.postId}::uuid FOR UPDATE`;
-      await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${nomination.post.authorId}::uuid FOR UPDATE`;
-
-      const currentPost = await tx.post.findFirst({
-        where: {
-          id: nomination.postId,
-          deletedAt: null,
-          author: { status: AccountStatus.ACTIVE },
-        },
-        select: { id: true, authorId: true },
-      });
-      if (!currentPost || currentPost.authorId !== nomination.post.authorId) {
-        throw new BadRequestException(
-          'This post or its author is no longer eligible for a reward.',
-        );
-      }
       // Lock and re-read the programme before awarding. A concurrent pause,
       // end date change, or policy edit must not race an approval.
       await tx.$queryRaw`SELECT id FROM "PostRewardProgram" WHERE id = ${nomination.programId}::uuid FOR UPDATE`;
@@ -485,6 +467,24 @@ export class RewardsService {
         );
       }
 
+      // Protect award caps from two different nominations being approved
+      // concurrently for the same post or creator.
+      await tx.$queryRaw`SELECT id FROM "Post" WHERE id = ${nomination.postId}::uuid FOR UPDATE`;
+      await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${nomination.post.authorId}::uuid FOR UPDATE`;
+
+      const currentPost = await tx.post.findFirst({
+        where: {
+          id: nomination.postId,
+          deletedAt: null,
+          author: { status: AccountStatus.ACTIVE },
+        },
+        select: { id: true, authorId: true },
+      });
+      if (!currentPost || currentPost.authorId !== nomination.post.authorId) {
+        throw new BadRequestException(
+          'This post or its author is no longer eligible for a reward.',
+        );
+      }
       const policy = parsePostRewardPolicy(nomination.policySnapshot);
       const postAwards = await tx.postRewardGrant.groupBy({
         by: ['nominationId'],
