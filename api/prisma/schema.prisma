@@ -185,6 +185,12 @@ model User {
   postRewardsReceived    PostRewardGrant[]      @relation("PostRewardRecipient")
   postRewardsGranted     PostRewardGrant[]      @relation("PostRewardGranter")
   rewardAuditEvents      PostRewardAuditEvent[] @relation("PostRewardAuditActor")
+  // Financial evidence survives account deletion; ownership/actor links are
+  // nulled rather than cascading through immutable ledger history.
+  ledgerAccounts          LedgerAccount[]         @relation("LedgerAccountOwner")
+  ledgerTransactions      LedgerTransaction[]     @relation("LedgerTransactionActor")
+  financialAuditEvents    FinancialAuditEvent[]   @relation("FinancialAuditActor")
+  conversionRatesCreated  CreatorConversionRate[] @relation("CreatorConversionRateActor")
 
   @@index([email])
   @@index([status])
@@ -1135,6 +1141,27 @@ enum CoinKind {
   REWARD_EARN
 }
 
+/// Account classification for the general ledger. Normal balance is stored
+/// explicitly on each account so account-specific reports do not guess.
+enum FinancialAccountType {
+  ASSET
+  LIABILITY
+  EQUITY
+  REVENUE
+  EXPENSE
+}
+
+enum FinancialEntrySide {
+  DEBIT
+  CREDIT
+}
+
+enum FinancialAccountStatus {
+  ACTIVE
+  FROZEN
+  CLOSED
+}
+
 /// One movement in somebody's wallet. Append-only: a balance is a sum of
 /// these, and nothing ever edits one in place, so every number on a wallet
 /// screen can be traced to the rows that make it.
@@ -1299,6 +1326,115 @@ model PostRewardAuditEvent {
   @@index([nominationId, createdAt])
   @@index([grantId, createdAt])
   @@index([actorId, createdAt])
+}
+
+/// A chart-of-accounts entry. accountKey is a stable, deterministic key
+/// (for example USER:<uuid>:COIN:CREATOR_PAYABLE) and is never reused.
+model LedgerAccount {
+  id           String                 @id @default(uuid()) @db.Uuid
+  accountKey   String                 @unique @db.VarChar(160)
+  name         String                 @db.VarChar(120)
+  accountType  FinancialAccountType
+  normalSide   FinancialEntrySide
+  currencyCode String                 @db.VarChar(12)
+  ownerId      String?                @db.Uuid
+  status       FinancialAccountStatus @default(ACTIVE)
+  createdAt    DateTime               @default(now()) @db.Timestamptz()
+  updatedAt    DateTime               @updatedAt @db.Timestamptz()
+
+  owner    User?           @relation("LedgerAccountOwner", fields: [ownerId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  postings LedgerPosting[]
+
+  @@index([ownerId, currencyCode, status])
+  @@index([accountType, currencyCode])
+}
+
+/// One immutable, idempotent accounting event in exactly one currency.
+/// Cross-currency conversions are represented by correlated balanced
+/// transactions in each currency, tied together by correlationId and a
+/// persisted CreatorConversionRate snapshot.
+model LedgerTransaction {
+  id             String   @id @default(uuid()) @db.Uuid
+  idempotencyKey String   @unique @db.VarChar(200)
+  eventType      String   @db.VarChar(64)
+  sourceType     String   @db.VarChar(64)
+  sourceId       String?  @db.VarChar(160)
+  correlationId  String?  @db.VarChar(160)
+  currencyCode   String   @db.VarChar(12)
+  description    String?  @db.VarChar(500)
+  metadata       Json?
+  reversalOfId   String?  @db.Uuid
+  actorId        String?  @db.Uuid
+  effectiveAt    DateTime @default(now()) @db.Timestamptz()
+  createdAt      DateTime @default(now()) @db.Timestamptz()
+
+  actor      User                 @relation("LedgerTransactionActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  reversalOf LedgerTransaction?  @relation("LedgerReversal", fields: [reversalOfId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  reversals  LedgerTransaction[] @relation("LedgerReversal")
+  postings   LedgerPosting[]
+
+  @@index([sourceType, sourceId])
+  @@index([correlationId])
+  @@index([actorId, createdAt])
+  @@index([reversalOfId])
+  @@index([createdAt])
+}
+
+/// One positive debit or credit line. The database rejects edits/deletes and
+/// verifies that every transaction balances before its SQL transaction commits.
+model LedgerPosting {
+  id            String             @id @default(uuid()) @db.Uuid
+  transactionId String             @db.Uuid
+  accountId     String             @db.Uuid
+  lineNumber    Int
+  side          FinancialEntrySide
+  amount        Decimal            @db.Decimal(24, 8)
+  memo          String?            @db.VarChar(240)
+  createdAt     DateTime           @default(now()) @db.Timestamptz()
+
+  transaction LedgerTransaction @relation(fields: [transactionId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  account     LedgerAccount     @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@unique([transactionId, lineNumber])
+  @@index([accountId, createdAt])
+}
+
+/// Immutable country/currency conversion-rate version. Withdrawals must copy
+/// the chosen rate and calculated fiat amount into their own quote record.
+model CreatorConversionRate {
+  id            String   @id @default(uuid()) @db.Uuid
+  countryCode   String   @db.Char(2)
+  currencyCode  String   @db.Char(3)
+  fiatPerCoin   Decimal  @db.Decimal(24, 12)
+  rateSource    String   @db.VarChar(80)
+  policyVersion Int      @default(1)
+  effectiveAt   DateTime @db.Timestamptz()
+  expiresAt     DateTime? @db.Timestamptz()
+  createdById   String?  @db.Uuid
+  createdAt     DateTime @default(now()) @db.Timestamptz()
+
+  createdBy User? @relation("CreatorConversionRateActor", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([countryCode, currencyCode, effectiveAt])
+}
+
+/// Append-only security/operations audit record for financial actions.
+/// Never store full bank-account numbers, secrets or raw identity documents here.
+model FinancialAuditEvent {
+  id          String   @id @default(uuid()) @db.Uuid
+  actorId     String?  @db.Uuid
+  eventType   String   @db.VarChar(80)
+  subjectType String   @db.VarChar(80)
+  subjectId   String?  @db.VarChar(160)
+  requestId   String?  @db.VarChar(160)
+  metadata    Json
+  createdAt   DateTime @default(now()) @db.Timestamptz()
+
+  actor User? @relation("FinancialAuditActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([actorId, createdAt])
+  @@index([subjectType, subjectId, createdAt])
+  @@index([eventType, createdAt])
 }
 
 // ==========================================
