@@ -346,10 +346,7 @@ export class LegacyCoinReconciliationService {
             string,
             ExistingLedgerTransaction[]
           >();
-          const existingByKey = new Map<
-            string,
-            ExistingLedgerTransaction[]
-          >();
+          const existingByKey = new Map<string, ExistingLedgerTransaction[]>();
           for (const transaction of existing) {
             if (transaction.sourceId) {
               const matches = existingBySource.get(transaction.sourceId) ?? [];
