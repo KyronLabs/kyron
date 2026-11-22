@@ -192,6 +192,14 @@ run('gifts, against a real database', () => {
     ).toBe(1);
   });
 
+  it('lets an existing complimentary balance continue to fund gifts', async () => {
+    const before = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
+    expect(before).toBe(93);
+
+    const sent = await gifts.send(ben, post, gift('gem'), NEXT_TUESDAY);
+    expect(sent.wallet.coins).toBe(73);
+  });
+
   it('counts each kind of gift a post was given', async () => {
     const summary = await gifts.summary(post, ben);
     const counted = Object.fromEntries(
@@ -278,7 +286,7 @@ run('gifts, against a real database', () => {
     });
 
     expect((await feed.getPost(post, ben)).viewerGift).toBe(last.type);
-    expect((await feed.getPost(post, cy)).viewerGift).toBe('gem');
+    expect((await feed.getPost(post, cy)).viewerGift).toBe('crown');
     // The author has given it nothing; Cy's and Ben's gifts are theirs.
     expect((await feed.getPost(post, ada)).viewerGift).toBeNull();
   });
@@ -364,7 +372,7 @@ run('gifts, against a real database', () => {
       .filter((row) => row.kind === 'gift')
       .map((row) => row.actor?.id);
     expect(senders).not.toContain(cy);
-    // Ben's three on the first post, and his Rose on the pictured one.
+    // Ben's four on the first post, and his Rose on the pictured one.
     expect(senders).toHaveLength(4);
   });
 
