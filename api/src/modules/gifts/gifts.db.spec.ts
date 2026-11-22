@@ -27,7 +27,7 @@ run('gifts, against a real database', () => {
   let gifts: GiftsService;
   let delivery: RecordingDelivery;
 
-  const [ada, ben, cy, newcomer] = [0, 1, 2, 3].map(() => randomUUID());
+  const [ada, ben, cy, newcomer, rewardSender, rewardCreator] = [0, 1, 2, 3, 4, 5].map(() => randomUUID());
   const stamp = Date.now();
   let post = '';
 
@@ -45,6 +45,8 @@ run('gifts, against a real database', () => {
       [ben, 'Ben'],
       [cy, 'Cy'],
       [newcomer, 'Newcomer'],
+      [rewardSender, 'RewardSender'],
+      [rewardCreator, 'RewardCreator'],
     ]) {
       await prisma.user.create({
         data: { id, name, email: `${name}.${stamp}@example.test` },
@@ -60,6 +62,14 @@ run('gifts, against a real database', () => {
         key: `legacy-weekly-grant:${userId}`,
       })),
     });
+    await prisma.coinEntry.create({
+      data: {
+        userId: rewardSender,
+        kind: 'REWARD_GRANT',
+        amount: 10,
+        key: `reward-test:${stamp}`,
+      },
+    });
     post = (
       await prisma.post.create({
         data: { authorId: ada, content: 'Something worth a gift' },
@@ -69,7 +79,7 @@ run('gifts, against a real database', () => {
 
   afterAll(async () => {
     await prisma?.user.deleteMany({
-      where: { id: { in: [ada, ben, cy, newcomer] } },
+      where: { id: { in: [ada, ben, cy, newcomer, rewardSender, rewardCreator] } },
     });
     await prisma?.$disconnect();
   });
@@ -118,6 +128,33 @@ run('gifts, against a real database', () => {
       kind: 'gift',
       actorId: ben,
       postId: post,
+    });
+  });
+
+
+  it('materializes approved reward-funded proceeds as withdrawable earnings', async () => {
+    const rewardPost = (
+      await prisma.post.create({
+        data: { authorId: rewardCreator, content: 'Reward-funded earnings' },
+      })
+    ).id;
+    const sent = await gifts.send(rewardSender, rewardPost, gift('fire'));
+    const earning = await prisma.creatorEarning.findUniqueOrThrow({
+      where: {
+        sourceCoinEntryKey: `gift:${sent.gift.id}:reward-earn`,
+      },
+    });
+
+    expect(earning).toMatchObject({
+      creatorId: rewardCreator,
+      source: 'APPROVED_REWARD',
+      amount: 5,
+      withdrawable: true,
+      giftId: sent.gift.id,
+    });
+    expect(await gifts.wallet(rewardCreator)).toMatchObject({
+      rewardFundedEarned: 5,
+      withdrawableEarned: 5,
     });
   });
 
