@@ -540,7 +540,7 @@ export class RewardsService {
         await tx.coinEntry.create({
           data: {
             userId: recipientId,
-            kind: CoinKind.GRANT,
+            kind: CoinKind.REWARD_GRANT,
             amount: reward.amount,
             key: `reward:${grantId}`,
           },
