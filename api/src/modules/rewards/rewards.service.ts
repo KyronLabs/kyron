@@ -472,7 +472,7 @@ export class RewardsService {
       await tx.$queryRaw`SELECT id FROM "PostRewardProgram" WHERE id = ${nomination.programId}::uuid FOR UPDATE`;
       const currentProgram = await tx.postRewardProgram.findUnique({
         where: { id: nomination.programId },
-        select: { status: true, startsAt: true, endsAt: true },
+        select: { status: true, startsAt: true, endsAt: true, policy: true },
       });
       if (
         !currentProgram ||
@@ -512,10 +512,13 @@ export class RewardsService {
           AND "rewardType" = 'PROMOTIONAL_COINS'
       `;
       const alreadyGranted = budgetRows[0]?.total ?? 0;
-      if (
-        alreadyGranted + proposedPromotionalCoins >
-        policy.limits.maxTotalPromotionalCoins
-      ) {
+      // The saved nomination snapshot controls its own award terms, but the
+      // current programme policy controls the remaining programme-wide
+      // budget. Editing the budget down therefore takes effect immediately.
+      const currentBudget = parsePostRewardPolicy(
+        currentProgram.policy,
+      ).limits.maxTotalPromotionalCoins;
+      if (alreadyGranted + proposedPromotionalCoins > currentBudget) {
         throw new ConflictException(
           'This programme has reached its promotional coin budget.',
         );
