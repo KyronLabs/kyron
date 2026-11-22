@@ -242,6 +242,26 @@ export class GiftsService {
           requestId: input.requestId,
         },
       });
+      // Capture the financial facts before any social record can be deleted.
+      // This snapshot has no FK to the sender, recipient, post or comment.
+      await tx.financialSourceRecord.create({
+        data: {
+          sourceType: 'GIFT',
+          sourceId: gift.id,
+          eventType: 'GIFT_SENT',
+          actorId: senderId,
+          beneficiaryId: recipientId,
+          relatedIds: { postId, commentId },
+          amount: kind.coins,
+          unitCode: 'COIN',
+          payload: {
+            type: kind.type,
+            coins: kind.coins,
+            requestId: input.requestId,
+          },
+          occurredAt: gift.createdAt,
+        },
+      });
       const spendEntries = await this.spendFromWallet(
         tx,
         senderId,
