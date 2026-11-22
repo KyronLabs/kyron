@@ -8,14 +8,7 @@ import { AccountStatus, CoinKind, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
-import {
-  GIFT_CATALOGUE,
-  type GiftType,
-  WEEKLY_COINS,
-  giftType,
-  nextRefill,
-  weekStart,
-} from './gift-catalogue';
+import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
 /** What a wallet screen shows. */
 export interface Wallet {
