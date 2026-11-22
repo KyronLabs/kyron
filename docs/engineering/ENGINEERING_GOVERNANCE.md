@@ -196,7 +196,7 @@ Never run `prisma migrate reset`, `DROP SCHEMA`, destructive seed logic or equiv
 
 The startup script now runs Prisma migrations with a bounded timeout and exits non-zero on migration failure; it never auto-baselines or starts the API after a failed migration. PrismaService also refuses application startup after its bounded database connection retries are exhausted. These controls are implemented on the startup-hardening branch and must be confirmed by CI and a staging deployment before being treated as deployed production behavior.
 
-Until replaced with a fail-closed release process:
+Until a dedicated migration release phase or one-off migration job is adopted:
 
 - Treat migration logs as a mandatory release verification.
 - Do not declare a deployment healthy solely because the process starts or `/health` answers.
