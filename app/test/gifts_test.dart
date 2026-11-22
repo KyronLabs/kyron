@@ -138,22 +138,36 @@ void main() {
     });
 
     test(
-      'a wallet keeps promotional rewards separate from legacy complimentary coins',
+      'reward-funded proceeds are withdrawable, while legacy weekly proceeds are not',
       () {
-        final wallet = GiftWallet.fromJson(const {
-          'coins': 150,
-          'earned': 10,
+        final rewardWallet = GiftWallet.fromJson(const {
+          'coins': 50,
+          'earned': 100,
+          'withdrawableEarned': 100,
           'purchaseFundedEarned': 0,
-          'promotionalEarned': 10,
+          'rewardFundedEarned': 100,
+          'promotionalEarned': 0,
           'promotional': 50,
-          'legacyComplimentary': 100,
+          'legacyComplimentary': 0,
         });
-        expect(wallet.coins, 150);
-        expect(wallet.promotional, 50);
-        expect(wallet.legacyComplimentary, 100);
-        expect(wallet.earned, 10);
-        expect(wallet.purchaseFundedEarned, 0);
-        expect(wallet.promotionalEarned, 10);
+        expect(rewardWallet.coins, 50);
+        expect(rewardWallet.promotional, 50);
+        expect(rewardWallet.earned, 100);
+        expect(rewardWallet.withdrawableEarned, 100);
+        expect(rewardWallet.rewardFundedEarned, 100);
+
+        final legacyWallet = GiftWallet.fromJson(const {
+          'coins': 0,
+          'earned': 10,
+          'withdrawableEarned': 0,
+          'purchaseFundedEarned': 0,
+          'rewardFundedEarned': 0,
+          'promotionalEarned': 10,
+          'legacyComplimentary': 0,
+        });
+        expect(legacyWallet.earned, 10);
+        expect(legacyWallet.withdrawableEarned, 0);
+        expect(legacyWallet.promotionalEarned, 10);
       },
     );
 
