@@ -28,6 +28,7 @@ run('post excellence rewards, against a real database', () => {
   const nominatorId = randomUUID();
   const stamp = Date.now();
   let nominatedPostId = '';
+  let secondNominatedPostId = '';
   let recipientPostId = '';
 
   beforeAll(async () => {
@@ -66,6 +67,14 @@ run('post excellence rewards, against a real database', () => {
         data: {
           authorId,
           content: 'An unusually thoughtful post that deserves human review.',
+        },
+      })
+    ).id;
+    secondNominatedPostId = (
+      await prisma.post.create({
+        data: {
+          authorId,
+          content: 'A second exceptional post reserved for the budget-cap test.',
         },
       })
     ).id;
@@ -109,7 +118,7 @@ run('post excellence rewards, against a real database', () => {
       limits: {
         maxAwardsPerPost: 1,
         maxAwardsPerCreatorPer30Days: 2,
-        maxTotalPromotionalCoins: 1000,
+        maxTotalPromotionalCoins: 50,
       },
       rewards: [{ type: 'PROMOTIONAL_COINS', amount: 50 }],
     };
@@ -142,6 +151,16 @@ run('post excellence rewards, against a real database', () => {
         where: { nominationId: nomination.id },
       }),
     ).toBe(0);
+
+    await expect(
+      rewards.decide(
+        { id: nominatorId, role: UserRole.MODERATOR },
+        nomination.id,
+        'APPROVE',
+        'Attempted self-review.',
+        now,
+      ),
+    ).rejects.toThrow('You cannot review a nomination you submitted.');
 
     const decision = await rewards.decide(
       staff,
@@ -227,6 +246,30 @@ run('post excellence rewards, against a real database', () => {
     expect(recipientWallet.earned).toBe(137);
     expect(recipientWallet.purchaseFundedEarned).toBe(10);
     expect(recipientWallet.promotionalEarned).toBe(120);
+
+    // A later nomination keeps its original policy snapshot, but cannot
+    // exceed the programme's current shared budget after the first award.
+    const pendingSecond = await rewards.nominate(
+      nominatorId,
+      program.id,
+      {
+        postId: secondNominatedPostId,
+        reason:
+          'This second post is also excellent, but the programme budget is spent.',
+      },
+      now,
+    );
+    await expect(
+      rewards.decide(staff, pendingSecond.id, 'APPROVE', 'Over budget.', now),
+    ).rejects.toThrow('programme has reached its promotional coin budget');
+    expect(
+      (
+        await prisma.postRewardNomination.findUnique({
+          where: { id: pendingSecond.id },
+          select: { status: true },
+        })
+      )?.status,
+    ).toBe('PENDING');
 
     // The next refill restores the weekly bucket without consuming or capping
     // the promotional balance.
