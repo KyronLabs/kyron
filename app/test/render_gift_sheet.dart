@@ -35,7 +35,7 @@ class _Gifts extends GiftsRepository {
         giftId: 'g',
         type: type,
         gifts: 1,
-        wallet: const GiftWallet(coins: 88, earned: 0, weeklyCoins: 100),
+        wallet: const GiftWallet(coins: 88, earned: 0, promotional: 88),
       );
 
   @override
@@ -53,8 +53,7 @@ class _Gifts extends GiftsRepository {
         wallet: GiftWallet(
           coins: 93,
           earned: 0,
-          weeklyCoins: 100,
-          refillsAt: DateTime(2026, 11, 2),
+          promotional: 93,
         ),
       );
 }
