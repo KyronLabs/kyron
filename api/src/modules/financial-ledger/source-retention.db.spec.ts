@@ -188,11 +188,11 @@ run('financial source retention, against a real database', () => {
       eventType: 'GIFT_SENT',
       actorId: giftSenderId,
       beneficiaryId: recipientAId,
-      amount: 5,
       unitCode: 'COIN',
       relatedIds: { postId: postAId, commentId: null },
       payload: { type: 'spark', coins: 5 },
     });
+    expect(giftPostSource.amount?.toNumber()).toBe(5);
 
     const giftCommentSource =
       await prisma.financialSourceRecord.findUniqueOrThrow({
@@ -222,7 +222,6 @@ run('financial source retention, against a real database', () => {
       eventType: 'REWARD_GRANTED',
       actorId: staffId,
       beneficiaryId: recipientAId,
-      amount: 12,
       unitCode: 'COIN',
       relatedIds: {
         programId,
@@ -234,6 +233,7 @@ run('financial source retention, against a real database', () => {
         rewardPayload: { amount: 12 },
       },
     });
+    expect(rewardSourceA.amount?.toNumber()).toBe(12);
 
     // A hard comment delete cascades through Gift; the source snapshot has
     // no relation to that comment or its parent post.
