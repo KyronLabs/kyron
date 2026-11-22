@@ -56,11 +56,15 @@ describe('PrismaService startup readiness', () => {
     jest.useFakeTimers();
 
     const initialization = service.onModuleInit();
-    await jest.runAllTimersAsync();
-
-    await expect(initialization).rejects.toThrow(
+    // Attach the rejection assertion before advancing fake timers. Otherwise
+    // Jest can observe the expected rejection as unhandled before the
+    // assertion is awaited.
+    const startupRejection = expect(initialization).rejects.toThrow(
       'Database connection is unavailable; refusing to start the API.',
     );
+
+    await jest.runAllTimersAsync();
+    await startupRejection;
     expect(connect).toHaveBeenCalledTimes(5);
   });
 });
