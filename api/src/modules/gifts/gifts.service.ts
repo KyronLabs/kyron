@@ -24,7 +24,7 @@ export interface Wallet {
   /** All non-spendable gift proceeds, including promotional proceeds. */
   earned: number;
   /** Proceeds originating from purchased coins; reserved for future payout accounting. */
-  withdrawableEarned: number;
+  purchaseFundedEarned: number;
   /** Gift proceeds originating from free or promotional coins; never cashable. */
   promotionalEarned: number;
   /** Promotional credits still available; not part of the weekly refill cap. */
@@ -499,8 +499,11 @@ export class GiftsService {
     const balances = await this.ledgerBalances(tx, userId);
     return {
       coins: balances.weekly + balances.promotional,
-      earned: balances.earned + balances.promotionalEarned,
-      withdrawableEarned: balances.earned,
+      earned:
+        balances.earned +
+        balances.purchaseFundedEarned +
+        balances.promotionalEarned,
+      purchaseFundedEarned: balances.purchaseFundedEarned,
       promotionalEarned: balances.promotionalEarned,
       promotional: balances.promotional,
       weeklyCoins: WEEKLY_COINS,
@@ -520,6 +523,7 @@ export class GiftsService {
     weekly: number;
     promotional: number;
     earned: number;
+    purchaseFundedEarned: number;
     promotionalEarned: number;
   }> {
     const sums = await tx.coinEntry.groupBy({
@@ -533,7 +537,10 @@ export class GiftsService {
       weekly: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
       promotional:
         sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
+      // EARN is legacy test history with unknown provenance. Never include it
+      // in the purchase-funded amount used by future payout accounting.
       earned: sum(CoinKind.EARN),
+      purchaseFundedEarned: sum(CoinKind.PURCHASE_EARN),
       promotionalEarned: sum(CoinKind.PROMOTIONAL_EARN),
     };
   }
