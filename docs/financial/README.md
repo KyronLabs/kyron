@@ -47,6 +47,7 @@ The existing `CoinEntry` model remains the source record for historical virtual-
 - `PROMOTIONAL_EARN` is legacy complimentary proceeds and is not withdrawable.
 - Legacy `EARN` has unknown test-era provenance and must never become withdrawable by inference.
 - Reward-funded creator proceeds have the same withdrawal eligibility as purchased-coin proceeds; their source labels are retained for reconciliation.
+- The foundation migration removes the cascading User foreign key from `CoinEntry`; its `userId` remains as an immutable UUID snapshot, so account deletion no longer erases coin history.
 - Existing coin balances are not fiat balances.
 
 Do not silently rewrite old rows or infer purchase provenance from a user's current total.
