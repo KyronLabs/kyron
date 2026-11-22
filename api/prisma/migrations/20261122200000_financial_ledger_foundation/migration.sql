@@ -96,6 +96,23 @@ CREATE TABLE "FinancialAuditEvent" (
   CONSTRAINT "FinancialAuditEvent_pkey" PRIMARY KEY ("id")
 );
 
+-- These tables contain financial/accounting evidence. They are API-owned,
+-- not client Data API tables. Keep them out of anon/authenticated access even
+-- if project-level default privileges change; Prisma uses the server DB role.
+ALTER TABLE "LedgerAccount" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LedgerTransaction" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LedgerPosting" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "CreatorConversionRate" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FinancialAuditEvent" ENABLE ROW LEVEL SECURITY;
+
+REVOKE ALL ON TABLE
+  "LedgerAccount",
+  "LedgerTransaction",
+  "LedgerPosting",
+  "CreatorConversionRate",
+  "FinancialAuditEvent"
+FROM PUBLIC, anon, authenticated;
+
 CREATE UNIQUE INDEX "LedgerAccount_accountKey_key" ON "LedgerAccount"("accountKey");
 CREATE UNIQUE INDEX "LedgerTransaction_idempotencyKey_key" ON "LedgerTransaction"("idempotencyKey");
 CREATE UNIQUE INDEX "LedgerPosting_transactionId_lineNumber_key" ON "LedgerPosting"("transactionId", "lineNumber");
