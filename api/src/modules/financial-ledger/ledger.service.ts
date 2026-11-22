@@ -277,8 +277,10 @@ export class LedgerService {
   private publicTransaction(
     record: LedgerTransactionRecord,
   ): LedgerTransactionWithPostings {
-    const { createdXid: _createdXid, requestHash: _requestHash, ...result } =
-      record;
+    const { createdXid, requestHash, ...result } = record;
+    // These are persistence-only fields and must not leak through service DTOs.
+    void createdXid;
+    void requestHash;
     return result;
   }
 
