@@ -177,7 +177,6 @@ model User {
   verificationsReviewed  VerificationRequest[]   @relation("VerificationReviewer")
   giftsSent              Gift[]                  @relation("GiftSender")
   giftsReceived          Gift[]                  @relation("GiftRecipient")
-  coinEntries            CoinEntry[]
   rewardProgramsCreated PostRewardProgram[]     @relation("PostRewardProgramCreator")
   rewardProgramsUpdated PostRewardProgram[]     @relation("PostRewardProgramUpdater")
   rewardNominationsMade  PostRewardNomination[] @relation("PostRewardNominator")
@@ -1172,7 +1171,7 @@ model CoinEntry {
 
   createdAt DateTime @default(now()) @db.Timestamptz()
 
-  user User  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // userId is an immutable UUID snapshot, not a cascading User foreign key.
   // SetNull: an entry leaves the ledger only with its own account.
   gift Gift? @relation(fields: [giftId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
