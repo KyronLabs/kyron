@@ -624,12 +624,10 @@ export class RewardsService {
           },
         });
         return;
-      default: {
-        const unsupported: never = reward;
+      default:
         throw new BadRequestException(
-          `No reward handler is registered for ${String(unsupported)}.`,
+          `No reward handler is registered for ${String(reward.type)}.`,
         );
-      }
     }
   }
 
