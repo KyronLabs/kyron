@@ -233,6 +233,7 @@ run('post excellence rewards, against a real database', () => {
         limits: {
           maxAwardsPerPost: 1,
           maxAwardsPerCreatorPer30Days: 2,
+          maxTotalPromotionalCoins: 1000,
         },
         rewards: [{ type: 'PROMOTIONAL_COINS', amount: 10 }],
       },
