@@ -69,11 +69,17 @@ class GiftWallet {
   /// All gift proceeds received. Never spendable.
   final int earned;
 
-  /// Proceeds from purchased coin gifts; reserved for future payout
-  /// accounting.
+  /// Proceeds eligible for withdrawal, from purchased or approved reward coins.
+  final int withdrawableEarned;
+
+  /// Source breakdown; purchased-coin proceeds are withdrawable.
   final int purchaseFundedEarned;
 
-  /// Proceeds from free or reward-credit gifts; never cashable.
+  /// Source breakdown; approved reward-funded proceeds are also withdrawable.
+  final int rewardFundedEarned;
+
+  /// Historical proceeds from the retired weekly complimentary credits.
+  /// These legacy proceeds are not withdrawable.
   final int promotionalEarned;
 
   /// Unspent promotional reward credits, also spendable on gifts.
@@ -85,7 +91,9 @@ class GiftWallet {
   const GiftWallet({
     required this.coins,
     required this.earned,
+    this.withdrawableEarned = 0,
     this.purchaseFundedEarned = 0,
+    this.rewardFundedEarned = 0,
     this.promotionalEarned = 0,
     this.legacyComplimentary = 0,
     this.promotional = 0,
@@ -94,8 +102,12 @@ class GiftWallet {
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         earned: (json['earned'] as num?)?.toInt() ?? 0,
+        withdrawableEarned:
+            (json['withdrawableEarned'] as num?)?.toInt() ?? 0,
         purchaseFundedEarned:
             (json['purchaseFundedEarned'] as num?)?.toInt() ?? 0,
+        rewardFundedEarned:
+            (json['rewardFundedEarned'] as num?)?.toInt() ?? 0,
         promotionalEarned: (json['promotionalEarned'] as num?)?.toInt() ?? 0,
         legacyComplimentary:
             (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
