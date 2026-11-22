@@ -69,7 +69,8 @@ class GiftWallet {
   /// All gift proceeds received. Never spendable.
   final int earned;
 
-  /// Proceeds from purchased coin gifts; reserved for future payout accounting.
+  /// Proceeds from purchased coin gifts; reserved for future payout
+  /// accounting.
   final int purchaseFundedEarned;
 
   /// Proceeds from free or reward-credit gifts; never cashable.
