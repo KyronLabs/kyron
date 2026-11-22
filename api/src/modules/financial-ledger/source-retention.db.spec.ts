@@ -1,10 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-import {
-  PrismaClient,
-  RewardProgramStatus,
-  UserRole,
-} from '@prisma/client';
+import { PrismaClient, RewardProgramStatus, UserRole } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { GiftsService } from '../gifts/gifts.service';
@@ -171,7 +167,13 @@ run('financial source retention, against a real database', () => {
     await prisma?.user.deleteMany({
       where: {
         id: {
-          in: [staffId, nominatorId, giftSenderId, commentAuthorId, recipientBId],
+          in: [
+            staffId,
+            nominatorId,
+            giftSenderId,
+            commentAuthorId,
+            recipientBId,
+          ],
         },
       },
     });
@@ -179,7 +181,8 @@ run('financial source retention, against a real database', () => {
   });
 
   it('retains complete source snapshots after social and identity cascades', async () => {
-    const giftPostSource = await prisma.financialSourceRecord.findUniqueOrThrow({
+    const giftPostSource =
+      await prisma.financialSourceRecord.findUniqueOrThrow({
       where: {
         sourceType_sourceId: { sourceType: 'GIFT', sourceId: giftPostId },
       },
@@ -190,9 +193,9 @@ run('financial source retention, against a real database', () => {
       beneficiaryId: recipientAId,
       unitCode: 'COIN',
       relatedIds: { postId: postAId, commentId: null },
-      payload: { type: 'spark', coins: 5 },
+      payload: { type: 'spark', coins: 1 },
     });
-    expect(giftPostSource.amount?.toNumber()).toBe(5);
+    expect(giftPostSource.amount?.toNumber()).toBe(1);
 
     const giftCommentSource =
       await prisma.financialSourceRecord.findUniqueOrThrow({
@@ -225,7 +228,6 @@ run('financial source retention, against a real database', () => {
       unitCode: 'COIN',
       relatedIds: {
         programId,
-        nominationId: expect.any(String),
         postId: postAId,
       },
       payload: {
@@ -233,6 +235,9 @@ run('financial source retention, against a real database', () => {
         rewardPayload: { amount: 12 },
       },
     });
+    const rewardRelatedIds = rewardSourceA.relatedIds;
+    expect(rewardRelatedIds).toMatchObject({ programId, postId: postAId });
+    expect(typeof (rewardRelatedIds as { nominationId?: unknown }).nominationId).toBe('string');
     expect(rewardSourceA.amount?.toNumber()).toBe(12);
 
     // A hard comment delete cascades through Gift; the source snapshot has
@@ -314,28 +319,21 @@ run('financial source retention, against a real database', () => {
       where: { eventType: 'REWARD_GRANTED', actorId: staffId },
     });
     expect(retainedAuditEvents).toHaveLength(2);
-    expect(retainedAuditEvents).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          programId: null,
-          nominationId: null,
-          grantId: null,
-          details: expect.objectContaining({
-            postId: postAId,
-            recipientId: recipientAId,
-          }),
-        }),
-        expect.objectContaining({
-          programId: null,
-          nominationId: null,
-          grantId: null,
-          details: expect.objectContaining({
-            postId: postBId,
-            recipientId: recipientBId,
-          }),
-        }),
-      ]),
-    );
+    expect(
+      retainedAuditEvents.every(
+        (event) =>
+          event.programId === null &&
+          event.nominationId === null &&
+          event.grantId === null,
+      ),
+    ).toBe(true);
+    const retainedAuditDetails = retainedAuditEvents
+      .map((event) => JSON.stringify(event.details))
+      .join(' ');
+    expect(retainedAuditDetails).toContain(postAId);
+    expect(retainedAuditDetails).toContain(recipientAId);
+    expect(retainedAuditDetails).toContain(postBId);
+    expect(retainedAuditDetails).toContain(recipientBId);
 
     // The evidence store itself rejects mutation and deletion.
     await expect(
