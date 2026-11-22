@@ -34,10 +34,7 @@ run('post excellence rewards, against a real database', () => {
   beforeAll(async () => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
     rewards = new RewardsService(prisma as PrismaService);
-    gifts = new GiftsService(
-      prisma as PrismaService,
-      new RecordingDelivery(),
-    );
+    gifts = new GiftsService(prisma as PrismaService, new RecordingDelivery());
 
     await prisma.user.create({
       data: {
@@ -75,7 +72,8 @@ run('post excellence rewards, against a real database', () => {
       await prisma.post.create({
         data: {
           authorId,
-          content: 'A second exceptional post reserved for the budget-cap test.',
+          content:
+            'A second exceptional post reserved for the budget-cap test.',
         },
       })
     ).id;
