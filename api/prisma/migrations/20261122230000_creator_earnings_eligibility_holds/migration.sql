@@ -51,8 +51,7 @@ SELECT
   "createdAt"
 FROM "CoinEntry"
 WHERE "kind" IN ('PURCHASE_EARN', 'REWARD_EARN', 'PROMOTIONAL_EARN', 'EARN')
-  AND "amount" > 0
-ON CONFLICT ("sourceCoinEntryKey") DO NOTHING;
+  AND "amount" > 0;
 
 CREATE TABLE "CreatorEarningHold" (
   "id" UUID NOT NULL,
