@@ -707,8 +707,8 @@ class _RemindersSwitchState extends ConsumerState<_RemindersSwitch> {
       title: Text(l10n.ui('ui_reminders', 'Reminders')),
       subtitle: Text(
         l10n.ui(
-          'ui_reminders_detail',
-          "What's new after you've been away, and when your coins are back. "
+          'ui_reminders_detail_away',
+          "An occasional reminder when there's something new after you've been away. "
               'Never more than one a day.',
         ),
       ),
