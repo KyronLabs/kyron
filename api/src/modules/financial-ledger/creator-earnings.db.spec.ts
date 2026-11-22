@@ -122,6 +122,26 @@ run('creator earnings, holds and reservations against Postgres', () => {
     });
     expect((await earnings.balance(creatorId)).availableCoins).toBe(25);
 
+    const expiresAt = new Date(Date.now() + 1_000);
+    const expiring = await earnings.reserve({
+      creatorId,
+      amount: 25,
+      idempotencyKey: `reserve-expiring:${stamp}`,
+      expiresAt,
+      actorId: creatorId,
+    });
+    const afterExpiry = new Date(expiresAt.getTime() + 1_000);
+    expect(await earnings.balance(creatorId, afterExpiry)).toMatchObject({
+      reservedCoins: 0,
+      availableCoins: 25,
+    });
+    await earnings.finalizeReservation({
+      reservationId: expiring.id,
+      status: 'RELEASED',
+      actorId: creatorId,
+      now: afterExpiry,
+    });
+
     const second = await earnings.reserve({
       creatorId,
       amount: 25,

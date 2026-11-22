@@ -197,7 +197,14 @@ export class CreatorEarningsService {
           SELECT COALESCE(SUM(l."amount"), 0)
           FROM "CreatorEarningReservationLine" l
           JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
-          WHERE l."earningId" = e."id" AND r."status" IN ('ACTIVE', 'SETTLED')
+          WHERE l."earningId" = e."id"
+            AND (
+              r."status" = 'SETTLED'
+              OR (
+                r."status" = 'ACTIVE'
+                AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
+              )
+            )
         )), 0)::int AS "reservedCoins",
         COALESCE(SUM(CASE WHEN NOT EXISTS (
           SELECT 1 FROM "CreatorEarningHold" h
@@ -206,7 +213,14 @@ export class CreatorEarningsService {
           SELECT COALESCE(SUM(l."amount"), 0)
           FROM "CreatorEarningReservationLine" l
           JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
-          WHERE l."earningId" = e."id" AND r."status" IN ('ACTIVE', 'SETTLED')
+          WHERE l."earningId" = e."id"
+            AND (
+              r."status" = 'SETTLED'
+              OR (
+                r."status" = 'ACTIVE'
+                AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
+              )
+            )
         ), 0) ELSE 0 END), 0)::int AS "availableCoins"
       FROM "CreatorEarning" e
       WHERE e."creatorId" = ${creatorId}::uuid
@@ -285,7 +299,13 @@ export class CreatorEarningsService {
             FROM "CreatorEarningReservationLine" l
             JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
             WHERE l."earningId" = e."id"
-              AND r."status" IN ('ACTIVE', 'SETTLED')
+              AND (
+                r."status" = 'SETTLED'
+                OR (
+                  r."status" = 'ACTIVE'
+                  AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
+                )
+              )
           ), 0)::int AS "reservedAmount"
         FROM "CreatorEarning" e
         WHERE e."creatorId" = ${input.creatorId}::uuid
