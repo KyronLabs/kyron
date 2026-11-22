@@ -78,10 +78,7 @@ export class PrismaService
     const host = describeDatabaseHost(process.env.DATABASE_URL);
     this.logger.error(
       `Could not reach Postgres${host ? ` at ${host}` : ''} after ` +
-        `${CONNECT_ATTEMPTS} attempts. Starting anyway: Prisma connects on ` +
-        'first query, so this recovers on its own once the database is ' +
-        'reachable. Until then every data route will fail and GET /health ' +
-        'reports the database as unreachable.',
+        `${CONNECT_ATTEMPTS} attempts. Refusing to start the API.`,
     );
 
     const diagnosis = await this.diagnoseHost();
