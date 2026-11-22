@@ -80,6 +80,9 @@ export class DisabledBankPayoutProvider extends BankPayoutProvider {
   }
 }
 
+const MAX_POSTGRES_INT = 2_147_483_647;
+const MAX_POSTGRES_BIGINT = 9_223_372_036_854_775_807n;
+
 export interface CreatorWithdrawalPolicy {
   enabled: boolean;
   minimumCoins: number | null;
@@ -92,7 +95,9 @@ export function readCreatorWithdrawalPolicy(
   const parsedMinimum =
     rawMinimum && /^\d+$/.test(rawMinimum) ? Number(rawMinimum) : NaN;
   const minimumCoins =
-    Number.isSafeInteger(parsedMinimum) && parsedMinimum > 0
+    Number.isSafeInteger(parsedMinimum) &&
+    parsedMinimum > 0 &&
+    parsedMinimum <= MAX_POSTGRES_INT
       ? parsedMinimum
       : null;
 
@@ -130,6 +135,8 @@ export class CreatorWithdrawalsService {
     }
     if (
       !Number.isSafeInteger(input.coinAmount) ||
+      input.coinAmount <= 0 ||
+      input.coinAmount > MAX_POSTGRES_INT ||
       input.coinAmount < policy.minimumCoins
     ) {
       throw new BadRequestException(
@@ -183,10 +190,17 @@ export class CreatorWithdrawalsService {
     const now = new Date();
     if (
       quote.currency !== destination.currency ||
+      !/^[A-Z]{3}$/.test(quote.currency) ||
       !quote.providerCode.trim() ||
+      quote.providerCode.length > 40 ||
+      (quote.providerQuoteRef?.length ?? 0) > 255 ||
       quote.targetAmountMinor <= 0n ||
+      quote.targetAmountMinor > MAX_POSTGRES_BIGINT ||
       quote.rateNumerator <= 0n ||
+      quote.rateNumerator > MAX_POSTGRES_BIGINT ||
       quote.rateDenominator <= 0n ||
+      quote.rateDenominator > MAX_POSTGRES_BIGINT ||
+      !Number.isFinite(quote.expiresAt.getTime()) ||
       quote.expiresAt <= now
     ) {
       throw new BadRequestException('The FX provider returned an invalid quote.');
@@ -332,6 +346,13 @@ export class CreatorWithdrawalsService {
         );
       }
       if (
+        withdrawal.coinAmount < (policy.minimumCoins ?? Number.MAX_SAFE_INTEGER) ||
+        withdrawal.destination.status !== PayoutDestinationStatus.ACTIVE ||
+        withdrawal.destination.creatorId !== withdrawal.creatorId ||
+        withdrawal.fxQuote.creatorId !== withdrawal.creatorId ||
+        withdrawal.fxQuote.coinAmount !== withdrawal.coinAmount ||
+        withdrawal.fxQuote.targetCurrency !== withdrawal.currency ||
+        withdrawal.fxQuote.targetAmountMinor !== withdrawal.fiatAmountMinor ||
         withdrawal.fxQuote.status !== FxQuoteStatus.ACTIVE ||
         withdrawal.fxQuote.expiresAt <= new Date()
       ) {
