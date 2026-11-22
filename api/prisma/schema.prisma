@@ -1115,8 +1115,10 @@ enum CoinKind {
   GRANT
   /// Coins spent from the weekly allowance. Negative.
   SPEND
-  /// What a post's author received for a gift. Positive and not spendable.
+  /// Creator proceeds from purchased coin spending. Reserved for verified purchases.
   EARN
+  /// Creator credits from the weekly refill and promotional rewards. Never cashable.
+  PROMOTIONAL_EARN
   /// Promotional credits granted by a post rewards programme. Positive.
   REWARD_GRANT
   /// Promotional credits spent on a gift. Negative.
