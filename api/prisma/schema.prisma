@@ -1351,6 +1351,7 @@ model LedgerTransaction {
   // Database transaction id; postings may only be appended in the same SQL transaction.
   createdXid     BigInt   @default(dbgenerated("txid_current()")) @db.BigInt
   idempotencyKey String   @unique @db.VarChar(200)
+  requestHash    String   @db.Char(64)
   eventType      String   @db.VarChar(64)
   sourceType     String   @db.VarChar(64)
   sourceId       String?  @db.VarChar(160)
@@ -1358,7 +1359,7 @@ model LedgerTransaction {
   currencyCode   String   @db.VarChar(12)
   description    String?  @db.VarChar(500)
   metadata       Json?
-  reversalOfId   String?  @db.Uuid
+  reversalOfId   String?  @unique @db.Uuid
   actorId        String?  @db.Uuid
   effectiveAt    DateTime @default(now()) @db.Timestamptz()
   createdAt      DateTime @default(now()) @db.Timestamptz()
