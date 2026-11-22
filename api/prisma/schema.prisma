@@ -1115,8 +1115,10 @@ enum CoinKind {
   GRANT
   /// Coins spent from the weekly allowance. Negative.
   SPEND
-  /// Creator proceeds from purchased coin spending. Reserved for verified purchases.
+  /// Legacy test creator proceeds; provenance is unknown and must never be paid out.
   EARN
+  /// Creator proceeds attributable to verified purchased coin spending.
+  PURCHASE_EARN
   /// Creator credits from the weekly refill and promotional rewards. Never cashable.
   PROMOTIONAL_EARN
   /// Promotional credits granted by a post rewards programme. Positive.
