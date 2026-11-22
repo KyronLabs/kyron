@@ -15,8 +15,8 @@ export interface GiftType {
 
 // In price order, which is the order the sheet shows them: two rows of four.
 // Spark, Fire, Gem and Crown keep the keys and prices they shipped with, so
-// every gift already sent still names one of these. The dearest is a week's
-// refill (WEEKLY_COINS): one gift a week can be the big one.
+// every gift already sent still names one of these. Gift prices are no longer
+// tied to a recurring complimentary wallet allowance.
 //
 // The app draws each gift from app/assets/gifts/<type>.png, and a gold
 // present icon for a type it has no picture for -- a gift added here before
@@ -40,34 +40,3 @@ export function giftType(type: string): GiftType | undefined {
   return GIFT_CATALOGUE.find((gift) => gift.type === type);
 }
 
-/**
- * What the weekly refill tops a wallet up to.
- *
- * A top-up rather than an addition, so an account that never sends anything
- * holds 100 coins rather than piling up a hoard to spend all at once. Test
- * coins only: there is no way to buy more.
- */
-export const WEEKLY_COINS = 100;
-
-/**
- * The start of the week [at] falls in: Monday, 00:00 UTC.
- *
- * One instant for everybody, wherever they are. A refill at local midnight
- * would need the account's time zone, which Kyron does not keep.
- */
-export function weekStart(at: Date): Date {
-  const day = new Date(
-    Date.UTC(at.getUTCFullYear(), at.getUTCMonth(), at.getUTCDate()),
-  );
-  // getUTCDay: Sunday is 0. Days since Monday, then.
-  const sinceMonday = (day.getUTCDay() + 6) % 7;
-  day.setUTCDate(day.getUTCDate() - sinceMonday);
-  return day;
-}
-
-/** When the wallet next refills: the Monday after [at]. */
-export function nextRefill(at: Date): Date {
-  const next = weekStart(at);
-  next.setUTCDate(next.getUTCDate() + 7);
-  return next;
-}
