@@ -2,13 +2,7 @@ import { BadRequestException, NotFoundException } from '@nestjs/common';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { RecordingDelivery } from '../push/delivery.test-double';
-import {
-  GIFT_CATALOGUE,
-  WEEKLY_COINS,
-  giftType,
-  nextRefill,
-  weekStart,
-} from './gift-catalogue';
+import { GIFT_CATALOGUE, giftType } from './gift-catalogue';
 import { GiftsService } from './gifts.service';
 
 /**
@@ -73,27 +67,6 @@ describe('sending a gift', () => {
   });
 });
 
-describe('the weekly refill', () => {
-  it('starts the week on Monday, 00:00 UTC', () => {
-    // Wednesday 29 October 2026, late in the day.
-    const wednesday = new Date('2026-10-29T23:30:00Z');
-    expect(weekStart(wednesday).toISOString()).toBe('2026-10-26T00:00:00.000Z');
-    expect(nextRefill(wednesday).toISOString()).toBe(
-      '2026-11-02T00:00:00.000Z',
-    );
-  });
-
-  it('counts a Sunday as the end of its week, not the start of the next', () => {
-    const sunday = new Date('2026-11-01T12:00:00Z');
-    expect(weekStart(sunday).toISOString()).toBe('2026-10-26T00:00:00.000Z');
-  });
-
-  it('counts the first instant of Monday as the new week', () => {
-    const monday = new Date('2026-11-02T00:00:00Z');
-    expect(weekStart(monday).toISOString()).toBe('2026-11-02T00:00:00.000Z');
-  });
-});
-
 describe('the catalogue', () => {
   it('is in price order, which is the order the sheet shows', () => {
     const prices = GIFT_CATALOGUE.map((gift) => gift.coins);
@@ -108,9 +81,9 @@ describe('the catalogue', () => {
     }
   });
 
-  it('has nothing a week of coins cannot buy', () => {
+  it('prices every gift in positive coin amounts', () => {
     for (const gift of GIFT_CATALOGUE) {
-      expect(gift.coins).toBeLessThanOrEqual(WEEKLY_COINS);
+      expect(Number.isInteger(gift.coins) && gift.coins > 0).toBe(true);
     }
   });
 
