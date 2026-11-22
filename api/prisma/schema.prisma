@@ -1355,6 +1355,8 @@ model LedgerAccount {
 /// persisted CreatorConversionRate snapshot.
 model LedgerTransaction {
   id             String   @id @default(uuid()) @db.Uuid
+  // Database transaction id; postings may only be appended in the same SQL transaction.
+  createdXid     BigInt   @default(dbgenerated("txid_current()")) @db.BigInt
   idempotencyKey String   @unique @db.VarChar(200)
   eventType      String   @db.VarChar(64)
   sourceType     String   @db.VarChar(64)
