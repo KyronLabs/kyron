@@ -138,7 +138,7 @@ export class PayoutReconciliationService {
         where: { id: eventId },
       });
       if (!event)
-       throw new ConflictException('Payout provider event not found.');
+        throw new ConflictException('Payout provider event not found.');
       if (event.processedAt) return { status: 'DUPLICATE' as const };
       if (
         event.outcome !== PayoutProviderEventOutcome.SUCCEEDED &&
