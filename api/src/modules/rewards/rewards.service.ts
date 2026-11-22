@@ -627,8 +627,9 @@ export class RewardsService {
   ): Promise<void> {
     switch (reward.type) {
       case 'PROMOTIONAL_COINS':
-        // This is a non-cash, non-withdrawable grant to the existing virtual
-        // gift wallet. Its unique key ties the wallet entry to this grant.
+        // The reward grant is spendable in the existing gift wallet. If the
+        // recipient gives a gift with it, the creator receives withdrawable
+        // REWARD_EARN proceeds on the same terms as PURCHASE_EARN.
         await tx.coinEntry.create({
           data: {
             userId: recipientId,
