@@ -114,7 +114,7 @@ ALTER TABLE "CreatorEarningReservationLine"
 CREATE FUNCTION "kyron_assert_creator_earning_reservation_total"()
 RETURNS trigger
 LANGUAGE plpgsql
-AS $
+AS $creator_earning_total$
 DECLARE
   allocated INTEGER;
 BEGIN
@@ -130,7 +130,7 @@ BEGIN
   END IF;
   RETURN NULL;
 END;
-$;
+$creator_earning_total$;
 CREATE CONSTRAINT TRIGGER "CreatorEarningReservation_allocation_total"
 AFTER INSERT ON "CreatorEarningReservation"
 DEFERRABLE INITIALLY DEFERRED
