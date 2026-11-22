@@ -109,9 +109,7 @@ const GIFT_KEY =
 const REWARD_KEY =
   /^reward:([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
-export function mapLegacyCoinKind(
-  kind: string,
-): LegacyCoinKindMapping | null {
+export function mapLegacyCoinKind(kind: string): LegacyCoinKindMapping | null {
   return KIND_MAPPING[kind as CoinKind] ?? null;
 }
 

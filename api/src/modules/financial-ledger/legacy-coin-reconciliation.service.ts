@@ -342,8 +342,14 @@ export class LegacyCoinReconciliationService {
             },
           });
 
-          const existingBySource = new Map<string, ExistingLedgerTransaction[]>();
-          const existingByKey = new Map<string, ExistingLedgerTransaction[]>();
+          const existingBySource = new Map<
+            string,
+            ExistingLedgerTransaction[]
+          >();
+          const existingByKey = new Map<
+            string,
+            ExistingLedgerTransaction[]
+          >();
           for (const transaction of existing) {
             if (transaction.sourceId) {
               const matches = existingBySource.get(transaction.sourceId) ?? [];
@@ -710,10 +716,7 @@ export class LegacyCoinReconciliationService {
             continue;
           }
 
-          if (
-            source.unitCode !== 'COIN' &&
-            source.unitCode !== 'KCOIN'
-          ) {
+          if (source.unitCode !== 'COIN' && source.unitCode !== 'KCOIN') {
             addIssue({
               code: 'REWARD_UNIT_MISMATCH',
               severity: 'BLOCKER',
