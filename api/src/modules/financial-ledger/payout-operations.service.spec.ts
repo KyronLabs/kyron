@@ -70,7 +70,7 @@ describe('PayoutOperationsService', () => {
   });
 
   describe('getOperationalReport', () => {
-    it('reports stale attempts and unresolved events without writes', async () => {
+    it('reports stale attempts and events without writes', async () => {
       payoutAttemptFindMany.mockResolvedValue([]);
       payoutAttemptCount.mockResolvedValue(2);
       payoutProviderEventFindMany.mockResolvedValue([
