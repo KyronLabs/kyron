@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import {
   Controller,
   Delete,
@@ -44,7 +41,9 @@ interface MultipartRequest {
 }
 
 function isStringArray(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every((item) => typeof item === 'string');
+  return (
+    Array.isArray(value) && value.every((item) => typeof item === 'string')
+  );
 }
 
 /** An unguarded route: `user` is present only when a token was supplied. */
@@ -236,10 +235,7 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Post('follow-many')
-  async followMany(
-    @Req() req: AuthRequest,
-    @Body() body: { ids?: unknown },
-  ) {
+  async followMany(@Req() req: AuthRequest, @Body() body: { ids?: unknown }) {
     const ids = body.ids;
 
     if (!isStringArray(ids)) {
