@@ -96,6 +96,10 @@ model User {
   // When the away reminder last went, so it cannot be sent twice in a row.
   awayPushAt DateTime? @db.Timestamptz()
 
+  // Historical weekly-refill push timestamp. Retained for rolling-deploy
+  // compatibility only; current code no longer reads or writes it.
+  refillPushAt DateTime? @db.Timestamptz()
+
   // When a suspension ends. Kept in step with status by
   // ModerationService.applyStanding from the actions that are in force, so
   // the guard can tell a running suspension from a finished one without a
