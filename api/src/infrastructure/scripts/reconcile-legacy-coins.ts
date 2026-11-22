@@ -9,9 +9,9 @@ async function main(): Promise<void> {
     const includeUserBalances = process.argv.includes(
       '--include-user-balances',
     );
-    const report = await new LegacyCoinReconciliationService(
-      prisma,
-    ).dryRun({ includeUserBalances });
+    const report = await new LegacyCoinReconciliationService(prisma).dryRun({
+      includeUserBalances,
+    });
 
     console.log(JSON.stringify(report, null, 2));
     if (report.summary.issues.blockers > 0) {

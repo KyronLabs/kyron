@@ -78,8 +78,7 @@ describe('legacy coin bridge mapping', () => {
         amount: '7',
       },
       {
-        accountKey:
-          'SYSTEM:LEGACY_COIN_BRIDGE:KCOIN:REWARD_PROMOTIONAL:OFFSET',
+        accountKey: 'SYSTEM:LEGACY_COIN_BRIDGE:KCOIN:REWARD_PROMOTIONAL:OFFSET',
         side: 'CREDIT',
         amount: '7',
       },
@@ -127,12 +126,8 @@ describe('legacy coin bridge mapping', () => {
     const giftId = '0c3f4c62-42c5-4d10-a11a-1185d2139de4';
     const grantId = '4dfe11f2-dede-4351-a7a7-3d06db8db913';
 
-    expect(giftIdFromCoinEntryKey(`gift:${giftId}:reward-spend`)).toBe(
-      giftId,
-    );
-    expect(
-      rewardGrantIdFromCoinEntryKey(`reward:${grantId}`),
-    ).toBe(grantId);
+    expect(giftIdFromCoinEntryKey(`gift:${giftId}:reward-spend`)).toBe(giftId);
+    expect(rewardGrantIdFromCoinEntryKey(`reward:${grantId}`)).toBe(grantId);
     expect(giftIdFromCoinEntryKey('not-a-gift-key')).toBeNull();
     expect(rewardGrantIdFromCoinEntryKey(`reward:${grantId}:extra`)).toBeNull();
   });

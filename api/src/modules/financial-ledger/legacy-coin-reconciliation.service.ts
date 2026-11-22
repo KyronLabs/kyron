@@ -13,8 +13,6 @@ import {
   type LegacyLedgerTransactionPlan,
 } from './legacy-coin-bridge';
 
-type Tx = Prisma.TransactionClient;
-
 type CoinEntryRow = LegacyCoinEntryLike;
 
 type SourceSnapshot = {
@@ -99,10 +97,7 @@ export interface LegacyCoinReconciliationReport {
     newTransactions: number;
     debitTotal: string;
     creditTotal: string;
-    buckets: Record<
-      LegacyCoinBucket,
-      { ownerAccounts: number; net: string }
-    >;
+    buckets: Record<LegacyCoinBucket, { ownerAccounts: number; net: string }>;
     byKind: Record<
       string,
       { entries: number; net: string; positive: string; negative: string }
@@ -308,9 +303,7 @@ export class LegacyCoinReconciliationService {
 
           coinEntries += rows.length;
           const rowIds = rows.map((row) => row.id);
-          const expectedKeys = rows.map(
-            (row) => `legacy-coin-entry:${row.id}`,
-          );
+          const expectedKeys = rows.map((row) => `legacy-coin-entry:${row.id}`);
 
           const existing = await tx.ledgerTransaction.findMany({
             where: {
@@ -349,14 +342,8 @@ export class LegacyCoinReconciliationService {
             },
           });
 
-          const existingBySource = new Map<
-            string,
-            ExistingLedgerTransaction[]
-          >();
-          const existingByKey = new Map<
-            string,
-            ExistingLedgerTransaction[]
-          >();
+          const existingBySource = new Map<string, ExistingLedgerTransaction[]>();
+          const existingByKey = new Map<string, ExistingLedgerTransaction[]>();
           for (const transaction of existing) {
             if (transaction.sourceId) {
               const matches = existingBySource.get(transaction.sourceId) ?? [];
@@ -397,8 +384,7 @@ export class LegacyCoinReconciliationService {
             }
 
             mappedEntries += 1;
-            const balances =
-              userBuckets.get(row.userId) ?? zeroUserBuckets();
+            const balances = userBuckets.get(row.userId) ?? zeroUserBuckets();
             balances[mapping.bucket] = balances[mapping.bucket].plus(
               row.amount,
             );
@@ -420,15 +406,15 @@ export class LegacyCoinReconciliationService {
               addIssue({
                 code: 'ZERO_AMOUNT',
                 severity: 'BLOCKER',
-                message: 'Zero-value CoinEntry rows cannot be imported as ledger postings.',
+                message:
+                  'Zero-value CoinEntry rows cannot be imported as ledger postings.',
                 entryId: row.id,
                 userId: row.userId,
               });
             } else {
               eligibleTransactions += 1;
               const sourceMatches = existingBySource.get(row.id) ?? [];
-              const keyMatches =
-                existingByKey.get(plan.idempotencyKey) ?? [];
+              const keyMatches = existingByKey.get(plan.idempotencyKey) ?? [];
               const exactMatch = sourceMatches.find(
                 (transaction) =>
                   transaction.sourceType === plan.sourceType &&
@@ -570,10 +556,7 @@ export class LegacyCoinReconciliationService {
           const giftIds = Array.from(
             new Set(
               rows
-                .map(
-                  (row) =>
-                    row.giftId ?? giftIdFromCoinEntryKey(row.key),
-                )
+                .map((row) => row.giftId ?? giftIdFromCoinEntryKey(row.key))
                 .filter((id): id is string => id !== null),
             ),
           );
@@ -602,7 +585,10 @@ export class LegacyCoinReconciliationService {
             }
           }
 
-          for (const grantIdBatch of chunks(grantIds, SOURCE_QUERY_BATCH_SIZE)) {
+          for (const grantIdBatch of chunks(
+            grantIds,
+            SOURCE_QUERY_BATCH_SIZE,
+          )) {
             const snapshots = await tx.financialSourceRecord.findMany({
               where: {
                 sourceType: 'POST_REWARD_GRANT',
@@ -639,10 +625,7 @@ export class LegacyCoinReconciliationService {
             continue;
           }
 
-          if (
-            source.unitCode !== 'COIN' &&
-            source.unitCode !== 'KCOIN'
-          ) {
+          if (source.unitCode !== 'COIN' && source.unitCode !== 'KCOIN') {
             addIssue({
               code: 'GIFT_UNIT_MISMATCH',
               severity: 'BLOCKER',
@@ -761,10 +744,7 @@ export class LegacyCoinReconciliationService {
           }
 
           for (const row of grantRows) {
-            if (
-              source.beneficiaryId &&
-              source.beneficiaryId !== row.userId
-            ) {
+            if (source.beneficiaryId && source.beneficiaryId !== row.userId) {
               addIssue({
                 code: 'REWARD_BENEFICIARY_MISMATCH',
                 severity: 'BLOCKER',
@@ -813,7 +793,9 @@ export class LegacyCoinReconciliationService {
         };
 
         for (const [userId, balances] of userBuckets) {
-          for (const bucket of Object.keys(bucketTotals) as LegacyCoinBucket[]) {
+          for (const bucket of Object.keys(
+            bucketTotals,
+          ) as LegacyCoinBucket[]) {
             const balance = balances[bucket];
             const totals = bucketTotals[bucket];
             if (!balance.isZero()) totals.ownerAccounts += 1;
@@ -896,12 +878,10 @@ export class LegacyCoinReconciliationService {
             .map(([userId, balances]) => ({
               userId,
               buckets: {
-                LEGACY_COMPLIMENTARY:
-                  balances.LEGACY_COMPLIMENTARY.toFixed(0),
+                LEGACY_COMPLIMENTARY: balances.LEGACY_COMPLIMENTARY.toFixed(0),
                 REWARD_PROMOTIONAL: balances.REWARD_PROMOTIONAL.toFixed(0),
                 CREATOR_PAYABLE: balances.CREATOR_PAYABLE.toFixed(0),
-                CREATOR_PROMOTIONAL:
-                  balances.CREATOR_PROMOTIONAL.toFixed(0),
+                CREATOR_PROMOTIONAL: balances.CREATOR_PROMOTIONAL.toFixed(0),
                 CREATOR_UNKNOWN: balances.CREATOR_UNKNOWN.toFixed(0),
               },
             }));

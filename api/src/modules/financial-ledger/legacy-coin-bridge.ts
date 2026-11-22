@@ -17,7 +17,7 @@ export type LegacyCoinBucket = (typeof LEGACY_COIN_BUCKETS)[number];
 export interface LegacyCoinEntryLike {
   id: string;
   userId: string;
-  kind: CoinKind | string;
+  kind: string;
   amount: number;
   key: string;
   giftId: string | null;
@@ -104,11 +104,13 @@ const KIND_MAPPING: Record<CoinKind, LegacyCoinKindMapping> = {
 };
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const GIFT_KEY = /^gift:([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}):/i;
-const REWARD_KEY = /^reward:([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
+const GIFT_KEY =
+  /^gift:([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}):/i;
+const REWARD_KEY =
+  /^reward:([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
 export function mapLegacyCoinKind(
-  kind: CoinKind | string,
+  kind: string,
 ): LegacyCoinKindMapping | null {
   return KIND_MAPPING[kind as CoinKind] ?? null;
 }
