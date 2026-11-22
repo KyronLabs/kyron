@@ -310,6 +310,33 @@ run('financial source retention, against a real database', () => {
       payload: { rewardPayload: { amount: 12 } },
     });
 
+    const retainedAuditEvents = await prisma.postRewardAuditEvent.findMany({
+      where: { eventType: 'REWARD_GRANTED', actorId: staffId },
+    });
+    expect(retainedAuditEvents).toHaveLength(2);
+    expect(retainedAuditEvents).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          programId: null,
+          nominationId: null,
+          grantId: null,
+          details: expect.objectContaining({
+            postId: postAId,
+            recipientId: recipientAId,
+          }),
+        }),
+        expect.objectContaining({
+          programId: null,
+          nominationId: null,
+          grantId: null,
+          details: expect.objectContaining({
+            postId: postBId,
+            recipientId: recipientBId,
+          }),
+        }),
+      ]),
+    );
+
     // The evidence store itself rejects mutation and deletion.
     await expect(
       prisma.financialSourceRecord.update({
