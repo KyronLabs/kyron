@@ -138,6 +138,19 @@ void main() {
       expect(sent.type, 'rose');
     });
 
+    test('a wallet keeps promotional rewards separate from the weekly refill', () {
+      final wallet = GiftWallet.fromJson(const {
+        'coins': 150,
+        'earned': 10,
+        'promotional': 50,
+        'weeklyCoins': 100,
+      });
+      expect(wallet.coins, 150);
+      expect(wallet.promotional, 50);
+      expect(wallet.weeklyCoins, 100);
+      expect(wallet.earned, 10);
+    });
+
     test('a post carries its gift count, and none means zero', () {
       expect(FeedPost.fromJson(const {'id': 'p', 'gifts': 7}).gifts, 7);
       expect(FeedPost.fromJson(const {'id': 'p'}).gifts, 0);
