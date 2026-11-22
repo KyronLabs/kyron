@@ -23,6 +23,10 @@ the section; GitHub does not show it:
 
 ### Changed
 
+- Reward-funded gifts now generate withdrawable creator earnings on the same
+  terms as purchased-coin gifts. Source remains recorded for reconciliation;
+  grandfathered weekly complimentary gifts retain their legacy treatment.
+
 - Retire the automatic 100-coin weekly complimentary wallet top-up and its
   Monday push reminder. Existing unspent grants are preserved as legacy
   complimentary balances; new coins are issued through approved rewards.
