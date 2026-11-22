@@ -256,7 +256,7 @@ export class GiftsService {
             userId: recipientId,
             // Weekly refill and reward credits are not purchased value.
             // Their recipient proceeds must stay outside any future payout
-            // calculation, which will use CoinKind.EARN only.
+            // calculation, which will use CoinKind.PURCHASE_EARN only.
             kind: CoinKind.PROMOTIONAL_EARN,
             amount: kind.coins,
             key: `gift:${gift.id}:promotional-earn`,
