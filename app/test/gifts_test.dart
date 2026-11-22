@@ -429,7 +429,10 @@ void main() {
     testWidgets('explains how new coins are issued', (tester) async {
       await _openSheet(tester);
 
-      expect(find.textContaining('not automatically replenished'), findsOneWidget);
+      expect(
+        find.textContaining('not automatically replenished'),
+        findsOneWidget,
+      );
       expect(find.textContaining('reward programmes'), findsOneWidget);
     });
 
