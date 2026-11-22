@@ -19,6 +19,7 @@ run('financial ledger, against a real database', () => {
   let prisma: PrismaClient;
   let ledger: LedgerService;
   const userId = randomUUID();
+  const coinEntryKey = `ledger-retention:${randomUUID()}`;
   const stamp = randomUUID();
   const debitAccountId = randomUUID();
   const creditAccountId = randomUUID();
@@ -34,6 +35,14 @@ run('financial ledger, against a real database', () => {
         id: userId,
         name: 'Ledger test owner',
         email: `ledger-test-${stamp}@example.test`,
+      },
+    });
+    await prisma.coinEntry.create({
+      data: {
+        userId,
+        kind: 'GRANT',
+        amount: 7,
+        key: coinEntryKey,
       },
     });
 
@@ -364,5 +373,10 @@ run('financial ledger, against a real database', () => {
         where: { transactionId: balancedTransactionId },
       }),
     ).toBe(2);
+    expect(
+      await prisma.coinEntry.findUnique({
+        where: { key: coinEntryKey },
+      }),
+    ).toMatchObject({ userId, amount: 7 });
   });
 });
