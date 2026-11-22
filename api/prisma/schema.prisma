@@ -1368,7 +1368,7 @@ model LedgerTransaction {
   effectiveAt    DateTime @default(now()) @db.Timestamptz()
   createdAt      DateTime @default(now()) @db.Timestamptz()
 
-  actor      User                 @relation("LedgerTransactionActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  actor      User?                @relation("LedgerTransactionActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   reversalOf LedgerTransaction?  @relation("LedgerReversal", fields: [reversalOfId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   reversals  LedgerTransaction[] @relation("LedgerReversal")
   postings   LedgerPosting[]
