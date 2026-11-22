@@ -43,6 +43,10 @@ interface MultipartRequest {
   file(): Promise<MultipartFile | undefined>;
 }
 
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string');
+}
+
 /** An unguarded route: `user` is present only when a token was supplied. */
 interface OptionalAuthRequest extends Request {
   user?: { id: string };
@@ -217,10 +221,13 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Post('interests')
-  async saveInterests(@Req() req: AuthRequest, @Body() body: any) {
+  async saveInterests(
+    @Req() req: AuthRequest,
+    @Body() body: { interests?: unknown },
+  ) {
     const interests = body.interests;
 
-    if (!Array.isArray(interests)) {
+    if (!isStringArray(interests)) {
       throw new BadRequestException('Invalid interests array');
     }
 
@@ -229,10 +236,13 @@ export class ProfileController {
 
   @UseGuards(AuthGuard)
   @Post('follow-many')
-  async followMany(@Req() req: AuthRequest, @Body() body: any) {
+  async followMany(
+    @Req() req: AuthRequest,
+    @Body() body: { ids?: unknown },
+  ) {
     const ids = body.ids;
 
-    if (!Array.isArray(ids)) {
+    if (!isStringArray(ids)) {
       throw new BadRequestException('ids must be an array of user IDs');
     }
 
