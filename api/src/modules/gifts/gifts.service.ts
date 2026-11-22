@@ -16,11 +16,15 @@ export interface Wallet {
   coins: number;
   /** Remaining balance from the retired weekly complimentary grant. */
   legacyComplimentary: number;
-  /** All non-spendable gift proceeds, including promotional proceeds. */
+  /** All non-spendable creator proceeds, including legacy complimentary proceeds. */
   earned: number;
-  /** Proceeds originating from purchased coins; reserved for future payout accounting. */
+  /** All proceeds eligible for withdrawal: purchased-coin and reward-funded gifts. */
+  withdrawableEarned: number;
+  /** Source breakdown; purchase-funded proceeds are withdrawable. */
   purchaseFundedEarned: number;
-  /** Gift proceeds originating from free or promotional coins; never cashable. */
+  /** Source breakdown; approved reward-funded proceeds are also withdrawable. */
+  rewardFundedEarned: number;
+  /** Historical proceeds from retired weekly complimentary credits; not withdrawable. */
   promotionalEarned: number;
   /** Unspent promotional reward credits. */
   promotional: number;
@@ -243,20 +247,23 @@ export class GiftsService {
         kind.coins,
         gift.id,
       );
+      // Preserve the source of the coins used for this gift. Proceeds funded
+      // by approved rewards are withdrawable exactly like PURCHASE_EARN;
+      // historical weekly complimentary proceeds keep their old treatment.
+      const creatorEarnings = spendEntries.map((entry) => {
+        const rewardFunded = entry.kind === CoinKind.REWARD_SPEND;
+        return {
+          userId: recipientId,
+          kind: rewardFunded
+            ? CoinKind.REWARD_EARN
+            : CoinKind.PROMOTIONAL_EARN,
+          amount: -entry.amount,
+          key: `gift:${gift.id}:${rewardFunded ? 'reward' : 'legacy'}-earn`,
+          giftId: gift.id,
+        };
+      });
       await tx.coinEntry.createMany({
-        data: [
-          ...spendEntries,
-          {
-            userId: recipientId,
-            // Legacy complimentary and reward credits are not purchased
-            // value. Their recipient proceeds must stay outside any future
-            // payout calculation, which will use PURCHASE_EARN only.
-            kind: CoinKind.PROMOTIONAL_EARN,
-            amount: kind.coins,
-            key: `gift:${gift.id}:promotional-earn`,
-            giftId: gift.id,
-          },
-        ],
+        data: [...spendEntries, ...creatorEarnings],
       });
       // One statement, so two gifts of new kinds arriving at once both land:
       // a read-then-write would lose one of them.
@@ -474,8 +481,12 @@ export class GiftsService {
       earned:
         balances.earned +
         balances.purchaseFundedEarned +
+        balances.rewardFundedEarned +
         balances.promotionalEarned,
+      withdrawableEarned:
+        balances.purchaseFundedEarned + balances.rewardFundedEarned,
       purchaseFundedEarned: balances.purchaseFundedEarned,
+      rewardFundedEarned: balances.rewardFundedEarned,
       promotionalEarned: balances.promotionalEarned,
       promotional: balances.promotional,
     };
@@ -494,6 +505,7 @@ export class GiftsService {
     earned: number;
     purchaseFundedEarned: number;
     promotionalEarned: number;
+    rewardFundedEarned: number;
   }> {
     const sums = await tx.coinEntry.groupBy({
       by: ['kind'],
@@ -507,10 +519,11 @@ export class GiftsService {
       // weekly complimentary programme was retired.
       legacyComplimentary: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
       promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
-      // EARN is legacy test history with unknown provenance. Never include it
-      // in the purchase-funded amount used by future payout accounting.
+      // EARN is legacy test history with unknown provenance and remains
+      // outside the withdrawable amount.
       earned: sum(CoinKind.EARN),
       purchaseFundedEarned: sum(CoinKind.PURCHASE_EARN),
+      rewardFundedEarned: sum(CoinKind.REWARD_EARN),
       promotionalEarned: sum(CoinKind.PROMOTIONAL_EARN),
     };
   }
