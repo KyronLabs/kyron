@@ -102,12 +102,10 @@ class GiftWallet {
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         earned: (json['earned'] as num?)?.toInt() ?? 0,
-        withdrawableEarned:
-            (json['withdrawableEarned'] as num?)?.toInt() ?? 0,
+        withdrawableEarned: (json['withdrawableEarned'] as num?)?.toInt() ?? 0,
         purchaseFundedEarned:
             (json['purchaseFundedEarned'] as num?)?.toInt() ?? 0,
-        rewardFundedEarned:
-            (json['rewardFundedEarned'] as num?)?.toInt() ?? 0,
+        rewardFundedEarned: (json['rewardFundedEarned'] as num?)?.toInt() ?? 0,
         promotionalEarned: (json['promotionalEarned'] as num?)?.toInt() ?? 0,
         legacyComplimentary:
             (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
