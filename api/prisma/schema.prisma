@@ -1132,10 +1132,6 @@ enum CoinKind {
   /// Creator proceeds funded by approved post-reward coins. Withdrawable on
   /// the same terms as PURCHASE_EARN; source is retained for reconciliation.
   REWARD_EARN
-  /// Coins granted only after backend verification of a Google Play purchase.
-  PURCHASE_GRANT
-  /// Purchased coins spent on a gift; preserves purchased-fund provenance.
-  PURCHASE_SPEND
 }
 
 enum GooglePlayPurchaseStatus {

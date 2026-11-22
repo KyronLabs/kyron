@@ -2,9 +2,6 @@
 -- No user foreign keys: financial evidence must survive account deletion.
 CREATE TYPE "GooglePlayPurchaseStatus" AS ENUM ('VERIFIED', 'CONSUMED', 'VOIDED', 'REFUNDED');
 
-ALTER TYPE "CoinKind" ADD VALUE IF NOT EXISTS 'PURCHASE_GRANT';
-ALTER TYPE "CoinKind" ADD VALUE IF NOT EXISTS 'PURCHASE_SPEND';
-
 CREATE TABLE "GooglePlayPurchase" (
   "id" UUID NOT NULL,
   "userId" UUID NOT NULL,
