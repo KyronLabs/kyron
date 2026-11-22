@@ -109,7 +109,7 @@ The migration in this phase creates new tables and database enforcement only. It
 
 It also removes the old cascading foreign key from `CoinEntry.userId` without changing any rows. `userId` remains a required UUID snapshot, so deleting a Kyron account no longer cascades through its virtual-coin history. No code path currently depends on a Prisma `CoinEntry.user` relation; wallet queries continue to filter by `userId`.
 
-**Remaining retention blocker:** `Gift` still cascades on recipient/post/comment deletion, and `PostRewardGrant` still cascades on programme/nomination/post/recipient deletion. Although `CoinEntry` rows survive and `CoinEntry.giftId` is `SET NULL`, those source rows can be lost. Before real-money records are created or the legacy bridge is run, implement a reviewed tombstone/soft-delete strategy for Gift and reward-grant source records, preserving source IDs, amounts, provenance, audit events and legal retention requirements.
+**Historical retention boundary:** operational `Gift` and `PostRewardGrant` rows remain subject to social/identity cascades, but PR #209 writes their minimum financial source facts to independent immutable `FinancialSourceRecord` rows in the same transaction. The `CoinEntry.giftId` relation may still be set to null; current gift idempotency keys retain the gift UUID for reconciliation. Rows deleted before PR #209 and not available for its backfill remain unrecoverable. A missing source snapshot is therefore a reconciliation blocker, not an invitation to infer provenance.
 
 Before the bridge is enabled:
 1. Take and verify a database backup.
@@ -163,5 +163,10 @@ separately identified event.
 The migration backfills snapshots for Gift and PostRewardGrant rows that
 still exist when it is applied. It cannot reconstruct sources already erased
 by earlier cascades. This table is provenance, not a spendable balance and
-not a replacement for CoinEntry or the double-entry ledger. PR #210 will use
-it as a stable source when reconciling historical movements.
+not a replacement for CoinEntry or the double-entry ledger. PR #210's
+read-only reconciliation uses these snapshots as an independent source of
+truth for gift and reward validation; missing snapshots block the affected
+history from a future import.
+
+See [Legacy CoinEntry reconciliation](./LEGACY_COIN_RECONCILIATION.md) for the
+kind mapping, report semantics, dry-run command and explicit non-goals.
