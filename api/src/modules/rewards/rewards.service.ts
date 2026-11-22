@@ -18,7 +18,6 @@ import { EnforcementService, type Staff } from '../moderation/enforcement.servic
 import {
   parsePostRewardPolicy,
   type PromotionalCoinsReward,
-  type PostRewardPolicyV1,
 } from './post-reward-policy';
 import {
   CreateRewardProgramDto,
