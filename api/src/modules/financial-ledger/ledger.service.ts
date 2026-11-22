@@ -165,7 +165,7 @@ export class LedgerService {
 
     try {
       return await this.prisma.$transaction(async (tx) => {
-        const accounts: Prisma.LedgerAccountGetPayload<object>[] = [];
+        const accountIds: string[] = [];
         for (const line of input.postings) {
           const account = await tx.ledgerAccount.upsert({
             where: { accountKey: line.accountKey },
@@ -197,7 +197,7 @@ export class LedgerService {
             );
           }
 
-          accounts.push(account);
+          accountIds.push(account.id);
         }
 
         const transaction = await tx.ledgerTransaction.create({
@@ -220,7 +220,7 @@ export class LedgerService {
         await tx.ledgerPosting.createMany({
           data: input.postings.map((line, index) => ({
             transactionId: transaction.id,
-            accountId: accounts[index].id,
+            accountId: accountIds[index],
             lineNumber: index + 1,
             side: line.side,
             amount: line.amount,
