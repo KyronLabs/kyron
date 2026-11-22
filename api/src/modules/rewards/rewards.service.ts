@@ -116,27 +116,32 @@ export class RewardsService {
     input: NominationInput,
     now = new Date(),
   ) {
-    const program = await this.prisma.postRewardProgram.findFirst({
-      where: {
-        id: programId,
-        status: RewardProgramStatus.ACTIVE,
-        AND: [
-          { OR: [{ startsAt: null }, { startsAt: { lte: now } }] },
-          { OR: [{ endsAt: null }, { endsAt: { gt: now } }] },
-        ],
-      },
-    });
-    if (!program) throw new NotFoundException('Reward programme not found.');
-
-    const policy = parsePostRewardPolicy(program.policy);
-    if (!policy.nomination.enabled) {
-      throw new BadRequestException('This programme is not accepting nominations.');
-    }
-
     try {
       return await this.prisma.$transaction(async (tx) => {
-        // Serialise this account's nomination submissions so parallel requests
-        // cannot race past the programme's per-day limit.
+        // Lock and re-read the programme so a concurrent pause or policy
+        // edit cannot slip between eligibility checking and nomination.
+        await tx.$queryRaw`SELECT id FROM "PostRewardProgram" WHERE id = ${programId}::uuid FOR UPDATE`;
+        const program = await tx.postRewardProgram.findFirst({
+          where: {
+            id: programId,
+            status: RewardProgramStatus.ACTIVE,
+            AND: [
+              { OR: [{ startsAt: null }, { startsAt: { lte: now } }] },
+              { OR: [{ endsAt: null }, { endsAt: { gt: now } }] },
+            ],
+          },
+        });
+        if (!program) throw new NotFoundException('Reward programme not found.');
+
+        const policy = parsePostRewardPolicy(program.policy);
+        if (!policy.nomination.enabled) {
+          throw new BadRequestException(
+            'This programme is not accepting nominations.',
+          );
+        }
+
+        // Serialise this account's nomination submissions so parallel
+        // requests cannot race past the programme's per-day limit.
         await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${userId}::uuid FOR UPDATE`;
 
         const post = await tx.post.findFirst({
@@ -270,29 +275,32 @@ export class RewardsService {
     input: UpdateRewardProgramDto,
   ) {
     this.requireStaff(staff);
-    const current = await this.prisma.postRewardProgram.findUnique({
-      where: { id: programId },
-    });
-    if (!current) throw new NotFoundException('Reward programme not found.');
-
-    const nextPolicy = input.policy
-      ? parsePostRewardPolicy(input.policy)
-      : parsePostRewardPolicy(current.policy);
-    const startsAt =
-      input.startsAt === undefined
-        ? current.startsAt
-        : input.startsAt
-          ? new Date(input.startsAt)
-          : null;
-    const endsAt =
-      input.endsAt === undefined
-        ? current.endsAt
-        : input.endsAt
-          ? new Date(input.endsAt)
-          : null;
-    this.assertDateWindow(startsAt, endsAt);
-
     return this.prisma.$transaction(async (tx) => {
+      // Concurrent policy edits must produce distinct versions, not overwrite
+      // one another with two updates based on the same stale row.
+      await tx.$queryRaw`SELECT id FROM "PostRewardProgram" WHERE id = ${programId}::uuid FOR UPDATE`;
+      const current = await tx.postRewardProgram.findUnique({
+        where: { id: programId },
+      });
+      if (!current) throw new NotFoundException('Reward programme not found.');
+
+      const nextPolicy = input.policy
+        ? parsePostRewardPolicy(input.policy)
+        : parsePostRewardPolicy(current.policy);
+      const startsAt =
+        input.startsAt === undefined
+          ? current.startsAt
+          : input.startsAt
+            ? new Date(input.startsAt)
+            : null;
+      const endsAt =
+        input.endsAt === undefined
+          ? current.endsAt
+          : input.endsAt
+            ? new Date(input.endsAt)
+            : null;
+      this.assertDateWindow(startsAt, endsAt);
+
       const updated = await tx.postRewardProgram.update({
         where: { id: programId },
         data: {
@@ -438,21 +446,47 @@ export class RewardsService {
         );
       }
 
+      // Protect award caps from two different nominations being approved
+      // concurrently for the same post or creator.
+      await tx.$queryRaw`SELECT id FROM "Post" WHERE id = ${nomination.postId}::uuid FOR UPDATE`;
+      await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${nomination.post.authorId}::uuid FOR UPDATE`;
+
+      const currentPost = await tx.post.findFirst({
+        where: {
+          id: nomination.postId,
+          deletedAt: null,
+          author: { status: AccountStatus.ACTIVE },
+        },
+        select: { id: true, authorId: true },
+      });
+      if (!currentPost || currentPost.authorId !== nomination.post.authorId) {
+        throw new BadRequestException(
+          'This post or its author is no longer eligible for a reward.',
+        );
+      }
+      if (nomination.program.status !== RewardProgramStatus.ACTIVE) {
+        throw new ConflictException(
+          'This reward programme is paused or has ended.',
+        );
+      }
+
       const policy = parsePostRewardPolicy(nomination.policySnapshot);
-      const postAwards = await tx.postRewardGrant.count({
+      const postAwards = await tx.postRewardGrant.groupBy({
+        by: ['nominationId'],
         where: {
           programId: nomination.programId,
           postId: nomination.postId,
         },
       });
-      if (postAwards >= policy.limits.maxAwardsPerPost) {
+      if (postAwards.length >= policy.limits.maxAwardsPerPost) {
         throw new ConflictException(
           'This post has reached the programme’s award limit.',
         );
       }
 
       const creatorSince = new Date(now.getTime() - 30 * DAY_MS);
-      const creatorAwards = await tx.postRewardGrant.count({
+      const creatorAwards = await tx.postRewardGrant.groupBy({
+        by: ['nominationId'],
         where: {
           programId: nomination.programId,
           recipientId: nomination.post.authorId,
@@ -460,7 +494,7 @@ export class RewardsService {
         },
       });
       if (
-        creatorAwards + policy.rewards.length >
+        creatorAwards.length + 1 >
         policy.limits.maxAwardsPerCreatorPer30Days
       ) {
         throw new ConflictException(
