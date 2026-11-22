@@ -464,6 +464,67 @@ def check_release_trigger() -> list[str]:
     return said
 
 
+
+def check_debug_build_reliability() -> list[str]:
+    """Keep the long-running development Android build from self-cancelling.
+
+    The four APK variants are intentionally separate because each must carry
+    the same versionCode. A newer push must not SIGTERM the active Gradle
+    process; the newest pending run can build after it. Dependency resolution
+    is performed once before the builds, so each Flutter build must use
+    --no-pub. The job timeout and shell diagnostic trap make an actual
+    timeout/interruption distinguishable from a compiler failure.
+    """
+    name = "flutter-debug.yml"
+    path = WORKFLOWS / name
+    workflow = yaml.safe_load(path.read_text(encoding="utf-8"))
+    said: list[str] = []
+
+    concurrency = workflow.get("concurrency") or {}
+    if concurrency.get("cancel-in-progress") is not False:
+        said.append(
+            f"{name}: cancel-in-progress must be false; otherwise a newer push "
+            "can SIGTERM the active Flutter/Gradle build (exit 143)"
+        )
+
+    android = (workflow.get("jobs") or {}).get("android") or {}
+    timeout = android.get("timeout-minutes", 0)
+    if not isinstance(timeout, int) or timeout < 120:
+        said.append(
+            f"{name}: the Android job needs an explicit timeout-minutes of at "
+            "least 120 for its four release APK builds and Play bundle"
+        )
+
+    steps = android.get("steps") or []
+    build_runs = [
+        str(step.get("run", ""))
+        for step in steps
+        if "flutter build" in str(step.get("run", ""))
+    ]
+    if not build_runs or any("--no-pub" not in run for run in build_runs):
+        said.append(
+            f"{name}: every Flutter build must use --no-pub after the single "
+            "dependency-install step"
+        )
+
+    apk_step = next(
+        (run for run in build_runs if "flutter build apk" in run),
+        "",
+    )
+    if "trap " not in apk_step or "stage=" not in apk_step:
+        said.append(
+            f"{name}: the APK build needs a stage-aware EXIT diagnostic trap "
+            "so interruptions identify the active ABI and elapsed time"
+        )
+    if "eq 4" not in apk_step:
+        said.append(
+            f"{name}: the APK build must assert that all four ABI/universal "
+            "artifacts exist before continuing"
+        )
+
+    return said
+
+
 def main() -> int:
     problems: list[str] = []
     for name, publish_job in PUBLISHING.items():
@@ -480,6 +541,7 @@ def main() -> int:
         problems += check_play_upload(name)
 
     problems += check_release_trigger()
+    problems += check_debug_build_reliability()
 
     if problems:
         for problem in problems:
