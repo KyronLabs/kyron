@@ -137,9 +137,7 @@ void main() {
       expect(sent.type, 'rose');
     });
 
-    test(
-      'reward-funded proceeds are withdrawable, while legacy weekly proceeds are not',
-      () {
+    test('reward coins can be withdrawn; legacy weekly coins cannot', () {
         final rewardWallet = GiftWallet.fromJson(const {
           'coins': 50,
           'earned': 100,
