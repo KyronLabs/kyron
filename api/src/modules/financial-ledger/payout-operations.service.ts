@@ -130,11 +130,7 @@ export class PayoutOperationsService {
         'staleAfterMinutes must be between 1 and 10080.',
       );
     }
-    if (
-      !Number.isSafeInteger(limit) ||
-      limit < 1 ||
-      limit > MAX_REPORT_LIMIT
-    ) {
+    if (!Number.isSafeInteger(limit) || limit < 1 || limit > MAX_REPORT_LIMIT) {
       throw new BadRequestException('limit must be between 1 and 500.');
     }
 
@@ -241,7 +237,9 @@ export class PayoutOperationsService {
     ]);
 
     const validReviewRequests = reviewRequests.filter(
-      (review): review is typeof review & {
+      (
+        review,
+      ): review is typeof review & {
         subjectId: string;
         requestId: string;
       } => Boolean(review.subjectId && review.requestId),
@@ -335,7 +333,7 @@ export class PayoutOperationsService {
     this.validateAuditInput(input.actorId, input.requestId);
     if (
       !MANUAL_REVIEW_REASON_CODES.includes(
-        input.reasonCode as PayoutManualReviewReasonCode,
+        input.reasonCode,
       )
     ) {
       throw new BadRequestException('Invalid payout review reason code.');
@@ -426,7 +424,7 @@ export class PayoutOperationsService {
     this.validateAuditInput(input.actorId, input.requestId);
     if (
       !MANUAL_REVIEW_RESOLUTION_CODES.includes(
-        input.resolutionCode as PayoutManualReviewResolutionCode,
+        input.resolutionCode,
       )
     ) {
       throw new BadRequestException('Invalid payout review resolution code.');
@@ -590,9 +588,7 @@ export class PayoutOperationsService {
       return prepared;
     }
 
-    let result: Awaited<
-      ReturnType<PayoutReconciliationService['reconcile']>
-    >;
+    let result: Awaited<ReturnType<PayoutReconciliationService['reconcile']>>;
     try {
       result = await this.reconciliation.reconcile(prepared.eventId);
     } catch (error) {
