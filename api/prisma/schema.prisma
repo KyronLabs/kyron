@@ -2378,6 +2378,12 @@ enum FxQuoteStatus {
   EXPIRED
 }
 
+enum PayoutProviderEventOutcome {
+  PENDING
+  SUCCEEDED
+  FAILED
+}
+
 /// Immutable creator proceeds attributed to one positive CoinEntry.
 /// No User or Gift foreign key: financial evidence survives account/social deletion.
 model CreatorEarning {
@@ -2526,15 +2532,24 @@ model PayoutProviderEvent {
   providerCode     String   @db.VarChar(40)
   providerEventId  String   @db.VarChar(255)
   withdrawalId     String?  @db.Uuid
-  eventType        String   @db.VarChar(100)
-  payloadHash      String   @db.Char(64)
-  receivedAt       DateTime @default(now()) @db.Timestamptz()
+  eventType              String                      @db.VarChar(100)
+  payloadHash            String                      @db.Char(64)
+  outcome                PayoutProviderEventOutcome?
+  providerTransferRef    String?                     @db.VarChar(255)
+  providerIdempotencyKey String?                     @db.VarChar(200)
+  amountMinor            BigInt?
+  currency               String?                     @db.Char(3)
+  providerOccurredAt     DateTime?                   @db.Timestamptz()
+  receivedAt             DateTime                    @default(now()) @db.Timestamptz()
   processedAt      DateTime? @db.Timestamptz()
   processingError  String?  @db.VarChar(500)
 
   @@unique([providerCode, providerEventId])
   @@index([withdrawalId, receivedAt])
   @@index([processedAt, receivedAt])
+  @@index([providerCode, providerTransferRef])
+  @@index([providerCode, providerIdempotencyKey])
+  @@index([outcome, processedAt, receivedAt])
 }
 
 model CreatorEarningReservationLine {
