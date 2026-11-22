@@ -1,4 +1,4 @@
--- Keep promotional reward credits distinct from the weekly refill bucket.
+-- Keep promotional reward credits distinct from grandfathered complimentary balances.
 -- GiftsService spends the weekly allowance first and promotional credits second.
 ALTER TYPE "CoinKind" ADD VALUE 'REWARD_GRANT';
 ALTER TYPE "CoinKind" ADD VALUE 'REWARD_SPEND';
