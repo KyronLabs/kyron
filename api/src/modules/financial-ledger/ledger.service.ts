@@ -126,18 +126,6 @@ export class LedgerService {
       throw new NotFoundException('Ledger transaction was not found.');
     }
 
-    const existing = await this.prisma.ledgerTransaction.findUnique({
-      where: { reversalOfId: transactionId },
-      include: { postings: { include: { account: true } } },
-    });
-
-    if (existing) {
-      if (existing.idempotencyKey === idempotencyKey) return existing;
-      throw new ConflictException(
-        'This ledger transaction has already been reversed.',
-      );
-    }
-
     return this.postInternal(
       {
         idempotencyKey,
@@ -177,7 +165,7 @@ export class LedgerService {
 
     try {
       return await this.prisma.$transaction(async (tx) => {
-        const accounts = [];
+        const accounts: Prisma.LedgerAccountGetPayload<object>[] = [];
         for (const line of input.postings) {
           const account = await tx.ledgerAccount.upsert({
             where: { accountKey: line.accountKey },
