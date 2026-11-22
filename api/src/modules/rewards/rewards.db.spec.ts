@@ -57,8 +57,9 @@ run('post excellence rewards, against a real database', () => {
     await prisma.user.create({
       data: {
         id: nominatorId,
-        name: 'Nominator',
+        name: 'Nominator and moderator',
         email: `reward-nominator-${stamp}@example.test`,
+        role: UserRole.MODERATOR,
       },
     });
 
