@@ -206,10 +206,26 @@ run('post excellence rewards, against a real database', () => {
     });
 
     // Free or reward-credit spending creates non-cashable proceeds for the
-    // recipient; it must never land in the future purchase-funded EARN bucket.
+    // recipient; it must never land in the purchase-funded earnings bucket.
+    await prisma.coinEntry.createMany({
+      data: [
+        {
+          userId: nominatorId,
+          kind: CoinKind.EARN,
+          amount: 7,
+          key: `legacy-test-earnings:${stamp}`,
+        },
+        {
+          userId: nominatorId,
+          kind: CoinKind.PURCHASE_EARN,
+          amount: 10,
+          key: `verified-purchase-earnings:${stamp}`,
+        },
+      ],
+    });
     const recipientWallet = await gifts.wallet(nominatorId, now);
-    expect(recipientWallet.earned).toBe(120);
-    expect(recipientWallet.purchaseFundedEarned).toBe(0);
+    expect(recipientWallet.earned).toBe(137);
+    expect(recipientWallet.purchaseFundedEarned).toBe(10);
     expect(recipientWallet.promotionalEarned).toBe(120);
 
     // The next refill restores the weekly bucket without consuming or capping
