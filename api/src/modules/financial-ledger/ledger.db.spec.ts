@@ -236,8 +236,8 @@ run('financial ledger, against a real database', () => {
       where: { id: balancedTransactionId },
     });
 
-    expect(account.ownerId).toBeNull();
-    expect(transaction.actorId).toBeNull();
+    expect(account.ownerId).toBe(userId);
+    expect(transaction.actorId).toBe(userId);
     expect(
       await prisma.ledgerPosting.count({
         where: { transactionId: balancedTransactionId },
