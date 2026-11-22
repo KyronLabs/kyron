@@ -99,7 +99,7 @@ export class GiftsService {
   }
 
   /** The reader's current wallet; reading it never issues new coins. */
-  async wallet(userId: string): Promise<Wallet> {
+  async wallet(userId: string, _at?: Date): Promise<Wallet> {
     return this.prisma.$transaction(async (tx) => {
       await this.lock(tx, userId);
       return this.balances(tx, userId);
