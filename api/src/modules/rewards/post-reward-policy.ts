@@ -41,7 +41,11 @@ function integer(
   min: number,
   max: number,
 ): number {
-  if (!Number.isInteger(value) || (value as number) < min || (value as number) > max) {
+  if (
+    !Number.isInteger(value) ||
+    (value as number) < min ||
+    (value as number) > max
+  ) {
     throw new BadRequestException(
       `Reward policy ${name} must be a whole number from ${min} to ${max}.`,
     );
@@ -51,7 +55,9 @@ function integer(
 
 function boolean(value: unknown, name: string): boolean {
   if (typeof value !== 'boolean') {
-    throw new BadRequestException(`Reward policy ${name} must be true or false.`);
+    throw new BadRequestException(
+      `Reward policy ${name} must be true or false.`,
+    );
   }
   return value;
 }
@@ -78,7 +84,9 @@ export function parsePostRewardPolicy(value: unknown): PostRewardPolicyV1 {
   }
 
   if (root.rewards.length < 1 || root.rewards.length > 3) {
-    throw new BadRequestException('A reward programme must define 1 to 3 rewards.');
+    throw new BadRequestException(
+      'A reward programme must define 1 to 3 rewards.',
+    );
   }
 
   const rewards = root.rewards.map((raw, index): PromotionalCoinsReward => {
