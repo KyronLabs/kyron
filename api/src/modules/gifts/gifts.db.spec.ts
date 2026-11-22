@@ -27,7 +27,9 @@ run('gifts, against a real database', () => {
   let gifts: GiftsService;
   let delivery: RecordingDelivery;
 
-  const [ada, ben, cy, newcomer, rewardSender, rewardCreator] = [0, 1, 2, 3, 4, 5].map(() => randomUUID());
+  const [ada, ben, cy, newcomer, rewardSender, rewardCreator] = [
+    0, 1, 2, 3, 4, 5,
+  ].map(() => randomUUID());
   const stamp = Date.now();
   let post = '';
 
@@ -79,7 +81,9 @@ run('gifts, against a real database', () => {
 
   afterAll(async () => {
     await prisma?.user.deleteMany({
-      where: { id: { in: [ada, ben, cy, newcomer, rewardSender, rewardCreator] } },
+      where: {
+        id: { in: [ada, ben, cy, newcomer, rewardSender, rewardCreator] },
+      },
     });
     await prisma?.$disconnect();
   });
@@ -130,7 +134,6 @@ run('gifts, against a real database', () => {
       postId: post,
     });
   });
-
 
   it('materializes approved reward-funded proceeds as withdrawable earnings', async () => {
     const rewardPost = (

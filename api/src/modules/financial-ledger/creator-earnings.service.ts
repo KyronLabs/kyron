@@ -27,7 +27,9 @@ export function planCreatorEarning(
   entry: CreatorEarningCoinEntry,
 ): Prisma.CreatorEarningCreateManyInput {
   if (!Number.isInteger(entry.amount) || entry.amount <= 0) {
-    throw new BadRequestException('Creator earning amounts must be positive whole coins.');
+    throw new BadRequestException(
+      'Creator earning amounts must be positive whole coins.',
+    );
   }
 
   const sourceByKind: Partial<Record<CoinKind, CreatorEarningSource>> = {
@@ -93,7 +95,9 @@ export class CreatorEarningsService {
     actorId: string;
   }) {
     if (!input.reasonCode.trim() || input.reasonCode.length > 80) {
-      throw new BadRequestException('A valid creator-earning hold reason is required.');
+      throw new BadRequestException(
+        'A valid creator-earning hold reason is required.',
+      );
     }
     return this.prisma.$transaction(async (tx) => {
       const snapshot = await tx.creatorEarning.findUnique({
@@ -107,7 +111,9 @@ export class CreatorEarningsService {
         where: { id: input.earningId },
       });
       if (!earning.withdrawable) {
-        throw new BadRequestException('Non-withdrawable creator proceeds cannot enter payout holds.');
+        throw new BadRequestException(
+          'Non-withdrawable creator proceeds cannot enter payout holds.',
+        );
       }
 
       const hold = await tx.creatorEarningHold.create({
@@ -135,11 +141,7 @@ export class CreatorEarningsService {
   }
 
   /** Release is a one-way transition; the original hold evidence is retained. */
-  async releaseHold(input: {
-    holdId: string;
-    actorId: string;
-    note?: string;
-  }) {
+  async releaseHold(input: { holdId: string; actorId: string; note?: string }) {
     return this.prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "CreatorEarningHold" WHERE id = ${input.holdId}::uuid FOR UPDATE`;
       const hold = await tx.creatorEarningHold.findUnique({
@@ -173,7 +175,10 @@ export class CreatorEarningsService {
    * Returns only proceeds which are withdrawable, currently available and
    * not held. Active and settled reservations both reduce the remaining value.
    */
-  async balance(creatorId: string, now = new Date()): Promise<CreatorEarningBalance> {
+  async balance(
+    creatorId: string,
+    now = new Date(),
+  ): Promise<CreatorEarningBalance> {
     const [row] = await this.prisma.$queryRaw<
       Array<{
         withdrawableCoins: number;
@@ -208,12 +213,14 @@ export class CreatorEarningsService {
         AND e."withdrawable" = TRUE
         AND e."availableAt" <= ${now}
     `;
-    return row ?? {
-      withdrawableCoins: 0,
-      heldCoins: 0,
-      reservedCoins: 0,
-      availableCoins: 0,
-    };
+    return (
+      row ?? {
+        withdrawableCoins: 0,
+        heldCoins: 0,
+        reservedCoins: 0,
+        availableCoins: 0,
+      }
+    );
   }
 
   /**
@@ -230,14 +237,20 @@ export class CreatorEarningsService {
     now?: Date;
   }) {
     if (!Number.isInteger(input.amount) || input.amount <= 0) {
-      throw new BadRequestException('Reservation amount must be positive whole coins.');
+      throw new BadRequestException(
+        'Reservation amount must be positive whole coins.',
+      );
     }
     if (!input.idempotencyKey || input.idempotencyKey.length > 200) {
-      throw new BadRequestException('A valid reservation idempotency key is required.');
+      throw new BadRequestException(
+        'A valid reservation idempotency key is required.',
+      );
     }
     const now = input.now ?? new Date();
     if (input.expiresAt && input.expiresAt <= now) {
-      throw new BadRequestException('Reservation expiry must be in the future.');
+      throw new BadRequestException(
+        'Reservation expiry must be in the future.',
+      );
     }
 
     return this.prisma.$transaction(async (tx) => {
@@ -245,14 +258,17 @@ export class CreatorEarningsService {
         SELECT id FROM "User" WHERE id = ${input.creatorId}::uuid FOR UPDATE
       `;
       if (lockedCreator.length === 0) {
-        throw new NotFoundException("Creator account not found.");
+        throw new NotFoundException('Creator account not found.');
       }
       const existing = await tx.creatorEarningReservation.findUnique({
         where: { idempotencyKey: input.idempotencyKey },
         include: { lines: true },
       });
       if (existing) {
-        if (existing.creatorId !== input.creatorId || existing.amount !== input.amount) {
+        if (
+          existing.creatorId !== input.creatorId ||
+          existing.amount !== input.amount
+        ) {
           throw new ConflictException(
             'The reservation idempotency key was already used for another request.',
           );
@@ -337,10 +353,7 @@ export class CreatorEarningsService {
   /** Release returns reserved value to availability; settle consumes it. */
   async finalizeReservation(input: {
     reservationId: string;
-    status: Extract<
-      CreatorEarningReservationStatus,
-      'RELEASED' | 'SETTLED'
-    >;
+    status: Extract<CreatorEarningReservationStatus, 'RELEASED' | 'SETTLED'>;
     actorId: string;
     now?: Date;
   }) {
@@ -360,7 +373,9 @@ export class CreatorEarningsService {
       }
       if (reservation.status === input.status) return reservation;
       if (reservation.status !== CreatorEarningReservationStatus.ACTIVE) {
-        throw new ConflictException('This reservation has already been finalized.');
+        throw new ConflictException(
+          'This reservation has already been finalized.',
+        );
       }
       const finalized = await tx.creatorEarningReservation.update({
         where: { id: reservation.id },

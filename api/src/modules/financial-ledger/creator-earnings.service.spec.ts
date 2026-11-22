@@ -38,9 +38,7 @@ describe('creator earning provenance', () => {
       source: CreatorEarningSource.LEGACY_PROMOTIONAL,
       withdrawable: false,
     });
-    expect(
-      planCreatorEarning({ ...base, kind: CoinKind.EARN }),
-    ).toMatchObject({
+    expect(planCreatorEarning({ ...base, kind: CoinKind.EARN })).toMatchObject({
       source: CreatorEarningSource.UNKNOWN,
       withdrawable: false,
     });
