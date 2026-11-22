@@ -88,10 +88,10 @@ export class HealthController {
 
     const pushStatus = this.push.status;
     return {
-      // Deliberately still "ok" with the database down, and still HTTP 200.
-      // The process is serving; reporting unhealthy would take the machine out
-      // of rotation and hide the very information this endpoint exists to
-      // give. "degraded" says which it is without doing that.
+      // A database can become unreachable after the process has started.
+      // Keep this diagnostic endpoint at HTTP 200 and report "degraded" in
+      // the body rather than taking the running instance out of rotation.
+      // Initial startup is separately gated on a successful DB connection.
       status: databaseReachable ? 'ok' : 'degraded',
       timestamp: Date.now(),
       database: databaseReachable ? 'reachable' : 'unreachable',

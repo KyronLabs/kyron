@@ -73,7 +73,7 @@ No service extraction is approved solely for repository tidiness or speculative 
 
 ### 4.1 Protected branches
 
-For production repositories, `main` is the protected integration branch. Configure GitHub branch protection/rulesets to require:
+For production repositories, `main` is the intended protected integration branch. **Current verified state for `KyronLabs/kyron`: GitHub branch metadata reports `main` as unprotected as of 22 November 2026.** Treat the controls below as not yet enforced until the repository owner verifies applicable organisation rulesets and enables branch protection. Require:
 
 - Pull requests for normal changes.
 - Required CI checks.
@@ -194,13 +194,13 @@ Never run `prisma migrate reset`, `DROP SCHEMA`, destructive seed logic or equiv
 
 ### 6.3 Migration authority and deployment
 
-The current startup script attempts migration, may attempt a baseline resolution and can start the API even after migration failure/timeout. This is a known production-readiness concern.
+The startup script now runs Prisma migrations with a bounded timeout and exits non-zero on migration failure; it never auto-baselines or starts the API after a failed migration. PrismaService also refuses application startup after its bounded database connection retries are exhausted. These controls are implemented on the startup-hardening branch and must be confirmed by CI and a staging deployment before being treated as deployed production behavior.
 
-Until replaced with a fail-closed release process:
+Until a dedicated migration release phase or one-off migration job is adopted:
 
 - Treat migration logs as a mandatory release verification.
 - Do not declare a deployment healthy solely because the process starts or `/health` answers.
-- Do not run baseline resolution unless the existing schema is proven to match the migration being marked applied.
+- Never run baseline resolution automatically during API startup. Do not run it manually unless the existing schema is proven to match the exact migration being marked applied, a verified backup exists, and the change has explicit operator approval.
 - Require explicit approval for migration repairs.
 - Preserve database backups and recovery instructions before risky schema changes.
 

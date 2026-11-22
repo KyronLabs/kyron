@@ -73,7 +73,7 @@ The recent read-only review reported:
 - Historical tracked environment file with a local database password and placeholder JWT secret. Reuse outside local development and credential rotation remain to be confirmed.
 - Public Git history containing AI-session references. Accessibility and revocation status remain unverified.
 - Supabase `supabase_admin` default privileges documented as broad for `anon` on newly created public-schema tables.
-- API startup may continue after migration failure or timeout.
+- The prior startup implementation could continue after migration failure or timeout. A fail-closed correction is now proposed on a dedicated branch; CI and staging deployment evidence are still required before closure.
 - Development signing key intentionally present in source; owner confirms production/private key isolation.
 
 Do not mark the historical administrator, database credential or AI-session findings closed without evidence. The owner-confirmed 2FA and key separation should not be unnecessarily reopened unless new evidence contradicts them.
@@ -157,13 +157,14 @@ Use these statuses consistently:
 ### 0.5 Deployment migration safety — P0
 
 - Review `api/scripts/start.sh` and the Render deploy model.
-- Remove unverified automatic baseline resolution from the normal deployment path.
-- Ensure migration failure or timeout fails the release/deployment gate.
+- Remove unverified automatic baseline resolution from the normal deployment path. (Implemented on the startup-hardening branch; verify CI and staging.)
+- Ensure migration failure or timeout fails the release/deployment gate. (Implemented on the startup-hardening branch; verify CI and staging.)
+- Make API startup fail when Postgres remains unreachable after bounded retries. (Implemented on the startup-hardening branch; verify CI and staging.)
 - Add a schema-version/readiness check that distinguishes DB reachability from migration currency.
 - Prove baseline correctness before any migration is marked applied.
 - Test backup and restore before risky migrations.
 
-**Exit evidence:** A staging deploy with successful migration, deliberate migration-failure test, clear failure status and documented recovery.
+**Exit evidence:** Passing CI tests for migration success/failure/timeout and database-connectivity failure; a staging deploy with successful migration; a deliberate migration-failure deployment that never serves traffic; clear platform failure status; and a documented, rehearsed recovery. The branch changes alone do not close this gate.
 
 ### 0.6 Architecture/documentation reconciliation
 

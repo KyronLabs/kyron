@@ -161,12 +161,9 @@ describe('HealthController', () => {
   });
 
   it('reports degraded, not unhealthy, when the database is unreachable', async () => {
-    // Deliberately still 'degraded' rather than a failure: the process is
-    // serving, and reporting unhealthy takes the machine out of rotation and
-    // hides the one piece of information this endpoint exists to give. The
-    // API used to refuse to boot in this situation, and a machine that exits
-    // at boot is not restarted -- so a ten-second database outage took it
-    // down until someone deployed again by hand.
+    // This covers a runtime database outage after the API has already started.
+    // Keep the diagnostic endpoint available and report degraded in its body;
+    // a separate startup gate now prevents the API from booting without Postgres.
     process.env.SUPABASE_URL = 'https://project-ref.supabase.co';
     const body = await (await controller(false)).detail();
 

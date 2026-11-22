@@ -130,15 +130,17 @@ against. The API runs as a single instance, which is what
 `docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md` mean when they say "one
 process". More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
-**Migrations apply themselves on deploy.** A merge to `main` redeploys the API,
+**Migrations apply before the API starts.** A merge to `main` redeploys the API,
 and [`api/scripts/start.sh`](api/scripts/start.sh) runs `prisma migrate deploy`
-before the server starts, so there is nothing to apply by hand. If a migration
-fails or takes longer than `MIGRATE_TIMEOUT` (180s), the server starts anyway
-on the old schema: the deploy looks green, and only the routes that need the
-new tables or columns fail. `GET /health` says whether the database is
-reachable, not whether it is up to date, so the place to check is the
-`[start]` lines in the deploy log on Render, or the newest row in
-`_prisma_migrations`.
+with a 180-second default timeout (configurable with `MIGRATE_TIMEOUT`). If a
+migration fails or times out, the container exits non-zero and does not start
+the API. The startup script never marks a migration as applied automatically.
+The API also refuses to finish startup if Postgres remains unreachable after
+its connection retries. Check the `[start]` lines in the Render deploy log and
+confirm the newest rows in `_prisma_migrations`. `GET /health` reports current
+database reachability, not migration currency. Existing databases with an
+unrecorded migration history must be reconciled by an operator before this
+fail-closed startup path is deployed; do not add automatic baseline resolution.
 
 ---
 

@@ -294,11 +294,11 @@ The `render.yaml` itself warns that the live API service was originally created 
 
 ### 11.2 Startup and migrations — release-blocking concern
 
-`api/scripts/start.sh` attempts `prisma migrate deploy` at startup. If it fails, the script attempts to mark a hard-coded baseline migration as applied and retries. If migrations still fail or time out, the script logs the issue and starts the API anyway.
+`api/scripts/start.sh` runs `prisma migrate deploy` with a bounded timeout before starting the API. A missing Prisma CLI, invalid timeout, migration failure or timeout exits the container with a non-zero status. The script does not attempt automatic baseline resolution. The NestJS Prisma provider also refuses to complete application startup when Postgres remains unreachable after its bounded connection retries.
 
-This behavior may preserve service availability, but it can also allow an application version to run against an outdated schema. The README likewise warns that `/health` indicates database reachability, not schema currency.
+The fail-closed behavior deliberately sacrifices partial availability rather than serve requests against an unverified or unreachable database. The README likewise warns that `/health` indicates database reachability, not schema currency; migration currency must be established by the deployment process.
 
-**Production requirement:** Before relying on this behavior for a production release, replace the implicit “start anyway” posture with a deliberate, observable release gate. A release must not be declared healthy when required migrations failed. The migration baseline must be proven against the actual database before any baseline resolution is performed. Use a controlled migration/release step, explicit failure status, and a compatibility/rollback plan.
+**Operational control:** The startup path is designed to fail closed for migration and database-connectivity failures. Existing databases with unrecorded migration history must be reconciled separately by an operator: compare the live schema with the exact migration, take and verify a backup, document the decision, then use Prisma's explicit resolve command only after approval. Never add automatic baseline resolution to normal startup. A dedicated Render release phase or one-off migration job remains preferable to running migrations concurrently from every API instance before horizontal scaling.
 
 ### 11.3 One-instance assumption
 

@@ -50,18 +50,11 @@ export class PrismaService
   userFollowers: any;
 
   /**
-   * Connects, but never refuses to boot.
-   *
-   * This used to throw after five attempts, which killed the process -- and a
-   * machine that exits at boot is not restarted, so a database that was
-   * unreachable for ten seconds took the API down until someone deployed
-   * again by hand. It cost a full outage over a hostname with a missing
-   * segment, which resolved to nothing and so could never recover on its own.
-   *
-   * Prisma connects lazily on first query anyway, so an API that starts
-   * without a database recovers by itself the moment one is reachable. Until
-   * then GET /health reports it, which is the difference between a diagnosis
-   * and a machine that is simply gone.
+   * The API must not become ready without its database. The container entry
+   * point applies migrations first; this connection check verifies that the
+   * application can reach Postgres before Nest starts serving requests.
+   * A failed boot is visible to the platform and can be retried by its
+   * restart policy instead of presenting a live but unusable API.
    */
   async onModuleInit(): Promise<void> {
     for (let attempt = 1; attempt <= CONNECT_ATTEMPTS; attempt++) {
@@ -85,14 +78,15 @@ export class PrismaService
     const host = describeDatabaseHost(process.env.DATABASE_URL);
     this.logger.error(
       `Could not reach Postgres${host ? ` at ${host}` : ''} after ` +
-        `${CONNECT_ATTEMPTS} attempts. Starting anyway: Prisma connects on ` +
-        'first query, so this recovers on its own once the database is ' +
-        'reachable. Until then every data route will fail and GET /health ' +
-        'reports the database as unreachable.',
+        `${CONNECT_ATTEMPTS} attempts. Refusing to start the API.`,
     );
 
     const diagnosis = await this.diagnoseHost();
     if (diagnosis) this.logger.error(diagnosis);
+
+    throw new Error(
+      'Database connection is unavailable; refusing to start the API.',
+    );
   }
 
   /**
