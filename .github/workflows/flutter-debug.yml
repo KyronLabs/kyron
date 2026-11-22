@@ -318,7 +318,18 @@ jobs:
 
           stage=initialization
           started=$SECONDS
-          trap 'status=$?; if [ "$status" -ne 0 ]; then echo "::error::Android build stopped during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds. This is not automatically classified as a compiler failure; inspect the job cancellation/timeout reason and the last Gradle output."; fi' EXIT
+          interrupted=no
+          report_interruption() {
+            local signal=$1
+            local code=143
+            if [ "$signal" = INT ]; then code=130; fi
+            interrupted=yes
+            echo "::error::Android build received $signal during ${stage:-unknown} after $((SECONDS-started)) seconds (exit $code)."
+            exit "$code"
+          }
+          trap 'report_interruption TERM' TERM
+          trap 'report_interruption INT' INT
+          trap 'status=$?; if [ "$status" -ne 0 ] && [ "$interrupted" != yes ]; then echo "::error::Android build failed during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds. Inspect the last Gradle output for the underlying cause."; fi' EXIT
 
           build arm64-v8a   --target-platform android-arm64
           build armeabi-v7a --target-platform android-arm
