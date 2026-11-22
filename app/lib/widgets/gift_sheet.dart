@@ -365,16 +365,10 @@ class _SheetState extends ConsumerState<_Sheet> {
   }
 
   String _notice(BuildContext context, GiftWallet wallet) {
-    final l10n = AppLocalizations.of(context);
-    final refills = wallet.refillsAt;
-    final notice = l10n.ui(
-      'ui_gift_test_notice',
-      'Test coins: they cannot be bought and have no cash value.',
+    return AppLocalizations.of(context).ui(
+      'ui_gift_rewards_notice',
+      'Coins are not automatically replenished. New coins are awarded through Kyron reward programmes.',
     );
-    if (refills == null) return notice;
-    final when = DateFormat.MMMEd(Localizations.localeOf(context).toString())
-        .format(refills);
-    return '$notice ${l10n.ui('ui_gift_refills_on', r'Refills $date.').replaceAll(r'$date', when)}';
   }
 }
 
