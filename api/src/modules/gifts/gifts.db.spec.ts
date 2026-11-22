@@ -373,7 +373,7 @@ run('gifts, against a real database', () => {
       .map((row) => row.actor?.id);
     expect(senders).not.toContain(cy);
     // Ben's four on the first post, and his Rose on the pictured one.
-    expect(senders).toHaveLength(4);
+    expect(senders).toHaveLength(5);
   });
 
   describe('to a comment', () => {
