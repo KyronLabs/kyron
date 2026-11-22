@@ -185,12 +185,6 @@ model User {
   postRewardsReceived    PostRewardGrant[]      @relation("PostRewardRecipient")
   postRewardsGranted     PostRewardGrant[]      @relation("PostRewardGranter")
   rewardAuditEvents      PostRewardAuditEvent[] @relation("PostRewardAuditActor")
-  // Financial evidence survives account deletion; ownership/actor links are
-  // nulled rather than cascading through immutable ledger history.
-  ledgerAccounts          LedgerAccount[]         @relation("LedgerAccountOwner")
-  ledgerTransactions      LedgerTransaction[]     @relation("LedgerTransactionActor")
-  financialAuditEvents    FinancialAuditEvent[]   @relation("FinancialAuditActor")
-  conversionRatesCreated  CreatorConversionRate[] @relation("CreatorConversionRateActor")
 
   @@index([email])
   @@index([status])
@@ -1342,7 +1336,6 @@ model LedgerAccount {
   createdAt    DateTime               @default(now()) @db.Timestamptz()
   updatedAt    DateTime               @updatedAt @db.Timestamptz()
 
-  owner    User?           @relation("LedgerAccountOwner", fields: [ownerId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   postings LedgerPosting[]
 
   @@index([ownerId, currencyCode, status])
@@ -1370,7 +1363,6 @@ model LedgerTransaction {
   effectiveAt    DateTime @default(now()) @db.Timestamptz()
   createdAt      DateTime @default(now()) @db.Timestamptz()
 
-  actor      User?                @relation("LedgerTransactionActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   reversalOf LedgerTransaction?  @relation("LedgerReversal", fields: [reversalOfId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   reversals  LedgerTransaction[] @relation("LedgerReversal")
   postings   LedgerPosting[]
@@ -1415,7 +1407,6 @@ model CreatorConversionRate {
   createdById   String?  @db.Uuid
   createdAt     DateTime @default(now()) @db.Timestamptz()
 
-  createdBy User? @relation("CreatorConversionRateActor", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   @@index([countryCode, currencyCode, effectiveAt])
 }
@@ -1432,7 +1423,6 @@ model FinancialAuditEvent {
   metadata    Json
   createdAt   DateTime @default(now()) @db.Timestamptz()
 
-  actor User? @relation("FinancialAuditActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   @@index([actorId, createdAt])
   @@index([subjectType, subjectId, createdAt])
