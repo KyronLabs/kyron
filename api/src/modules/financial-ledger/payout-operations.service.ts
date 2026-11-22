@@ -84,6 +84,7 @@ export interface PayoutOperationalReport {
     id: string;
     providerCode: string;
     providerEventId: string;
+    withdrawalId: string | null;
     eventType: string;
     outcome: PayoutProviderEventOutcome | null;
     providerTransferRef: string | null;
@@ -98,6 +99,7 @@ export interface PayoutOperationalReport {
     reasonCode: string;
     requestedAt: Date;
     resolved: boolean;
+    resolvedAt: Date | null;
     resolutionCode: string | null;
   }>;
 }
@@ -196,6 +198,7 @@ export class PayoutOperationsService {
           id: true,
           providerCode: true,
           providerEventId: true,
+          withdrawalId: true,
           eventType: true,
           outcome: true,
           providerTransferRef: true,
@@ -213,6 +216,7 @@ export class PayoutOperationsService {
       this.prisma.payoutProviderEvent.count({
         where: {
           ...unresolvedEventWhere,
+          withdrawalId: null,
           outcome: {
             in: [
               PayoutProviderEventOutcome.SUCCEEDED,
@@ -298,6 +302,7 @@ export class PayoutOperationsService {
             metadataString(review.metadata, 'reasonCode') ?? 'UNKNOWN',
           requestedAt: review.createdAt,
           resolved: Boolean(resolution),
+          resolvedAt: resolution?.resolvedAt ?? null,
           resolutionCode: resolution?.resolutionCode ?? null,
         };
       }),
