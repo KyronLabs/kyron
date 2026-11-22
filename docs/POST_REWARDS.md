@@ -23,7 +23,7 @@ points leaderboard, a popularity contest, or a creator-payout system.
   as promotional earnings, never as purchase-funded creator earnings. The
   future payout path must use only the purchase-funded PURCHASE_EARN ledger kind.
   The legacy `earned` wallet total remains a display aggregate; payout code
-  must read `withdrawableEarned` / PURCHASE_EARN only, never the aggregate.
+  must read `purchaseFundedEarned` / PURCHASE_EARN only, never the aggregate.
 - **Auditable and idempotent.** Nomination, review and grant writes happen in
   database transactions. A unique key prevents the same nomination/reward type
   from being granted twice. Audit events record who performed each action.
