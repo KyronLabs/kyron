@@ -1134,8 +1134,8 @@ model CoinEntry {
   kind   CoinKind
   amount Int
   /// Unique, so the same event can never be recorded twice: a refill is
-  /// `grant:<user>:<week>`, a gift's two sides are `gift:<id>:spend` and
-  /// `gift:<id>:earn`.
+  /// `grant:<user>:<week>`, a gift's spend and proceeds entries, or
+  /// `reward:<grantId>` for a programme award.
   key    String   @unique
   giftId String?  @db.Uuid
 
