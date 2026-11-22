@@ -535,8 +535,7 @@ export class GiftsService {
       sums.find((row) => row.kind === kind)?._sum.amount ?? 0;
     return {
       weekly: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
-      promotional:
-        sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
+      promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
       // EARN is legacy test history with unknown provenance. Never include it
       // in the purchase-funded amount used by future payout accounting.
       earned: sum(CoinKind.EARN),
