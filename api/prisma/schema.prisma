@@ -1120,7 +1120,7 @@ enum CoinKind {
   /// Legacy test creator proceeds; provenance is unknown and must never be paid out.
   EARN
   /// Creator proceeds attributable to verified purchased coin spending.
-  /// Withdrawable.
+  /// Withdrawable, including reward-funded proceeds.
   PURCHASE_EARN
   /// Historical creator proceeds from the retired weekly complimentary grants.
   /// Kept separate because their original promotional terms were non-cashable.
