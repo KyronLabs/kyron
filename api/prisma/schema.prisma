@@ -90,13 +90,11 @@ model User {
   lastActiveAt     DateTime? @db.Timestamptz()
   utcOffsetMinutes Int?
 
-  // The pushes nobody's action sends: "while you were away" and "your coins
-  // are back". Off, neither is sent; everything somebody does still is.
+  // Whether the app may send an occasional "while you were away" reminder.
   reminderPushes Boolean @default(true)
 
-  // When each of those last went, so neither goes twice for one occasion.
-  awayPushAt   DateTime? @db.Timestamptz()
-  refillPushAt DateTime? @db.Timestamptz()
+  // When the away reminder last went, so it cannot be sent twice in a row.
+  awayPushAt DateTime? @db.Timestamptz()
 
   // When a suspension ends. Kept in step with status by
   // ModerationService.applyStanding from the actions that are in force, so
@@ -1111,9 +1109,9 @@ enum RewardNominationStatus {
 }
 
 enum CoinKind {
-  /// Test coins handed out by the weekly refill. Positive.
+  /// Legacy complimentary credits issued by the retired weekly grant. Positive.
   GRANT
-  /// Coins spent from the weekly allowance. Negative.
+  /// Spend against legacy complimentary credits. Negative.
   SPEND
   /// Legacy test creator proceeds; provenance is unknown and must never be paid out.
   EARN
@@ -1135,9 +1133,9 @@ model CoinEntry {
   userId String   @db.Uuid
   kind   CoinKind
   amount Int
-  /// Unique, so the same event can never be recorded twice: a refill is
-  /// `grant:<user>:<week>`, a gift's spend and proceeds entries, or
-  /// `reward:<grantId>` for a programme award.
+  /// Unique, so the same event can never be recorded twice: legacy grant
+  /// entries, a gift's spend and proceeds entries, or `reward:<grantId>`
+  /// for a programme award.
   key    String   @unique
   giftId String?  @db.Uuid
 
