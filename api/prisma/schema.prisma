@@ -2265,3 +2265,27 @@ model Mention {
   @@index([postId])
   @@index([commentId])
 }
+
+
+/// Immutable, privacy-minimised snapshot of a financial source event.
+/// Deliberately has no foreign keys to social or identity records: those
+/// records may be deleted while this provenance remains available to the
+/// ledger bridge, reconciliation and audit workflows.
+model FinancialSourceRecord {
+  id             String   @id @default(uuid()) @db.Uuid
+  sourceType     String   @db.VarChar(64)
+  sourceId       String   @db.VarChar(160)
+  eventType      String   @db.VarChar(80)
+  actorId        String?  @db.Uuid
+  beneficiaryId  String?  @db.Uuid
+  relatedIds     Json
+  amount         Decimal? @db.Decimal(24, 8)
+  unitCode       String?  @db.VarChar(16)
+  payload        Json
+  occurredAt     DateTime @db.Timestamptz()
+  createdAt      DateTime @default(now()) @db.Timestamptz()
+
+  @@unique([sourceType, sourceId])
+  @@index([beneficiaryId, occurredAt(sort: Desc)])
+  @@index([sourceType, occurredAt])
+}
