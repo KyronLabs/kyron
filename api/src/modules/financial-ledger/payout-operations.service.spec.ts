@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   NotFoundException,
 } from '@nestjs/common';
@@ -120,7 +121,7 @@ describe('PayoutOperationsService', () => {
     it('rejects unsafe report limits and stale windows', async () => {
       await expect(
         service.getOperationalReport({ staleAfterMinutes: 0 }),
-      ).rejects.toBeInstanceOf(ConflictException);
+      ).rejects.toBeInstanceOf(BadRequestException);
     });
   });
 
