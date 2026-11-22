@@ -32,7 +32,6 @@ const MANUAL_REVIEW_RESOLUTION_CODES = [
   'NO_ACTION_REQUIRED',
 ] as const;
 
-
 function metadataString(
   metadata: Prisma.JsonValue,
   key: string,
@@ -295,7 +294,8 @@ export class PayoutOperationsService {
         return {
           payoutAttemptId: review.subjectId,
           requestId: review.requestId,
-          reasonCode: metadataString(review.metadata, 'reasonCode') ?? 'UNKNOWN',
+          reasonCode:
+            metadataString(review.metadata, 'reasonCode') ?? 'UNKNOWN',
           requestedAt: review.createdAt,
           resolved: Boolean(resolution),
           resolutionCode: resolution?.resolutionCode ?? null,
