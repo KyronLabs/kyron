@@ -14,7 +14,10 @@ import {
 } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { EnforcementService, type Staff } from '../moderation/enforcement.service';
+import {
+  EnforcementService,
+  type Staff,
+} from '../moderation/enforcement.service';
 import {
   parsePostRewardPolicy,
   type PromotionalCoinsReward,
@@ -131,7 +134,9 @@ export class RewardsService {
             ],
           },
         });
-        if (!program) throw new NotFoundException('Reward programme not found.');
+        if (!program) {
+          throw new NotFoundException('Reward programme not found.');
+        }
 
         const policy = parsePostRewardPolicy(program.policy);
         if (!policy.nomination.enabled) {
@@ -153,19 +158,28 @@ export class RewardsService {
           select: { id: true, authorId: true, createdAt: true },
         });
         if (!post) throw new NotFoundException('Post not found.');
-        if (post.authorId === userId && !policy.nomination.allowSelfNomination) {
+        if (
+          post.authorId === userId &&
+          !policy.nomination.allowSelfNomination
+        ) {
           throw new BadRequestException('You cannot nominate your own post.');
         }
 
         const ageMs = now.getTime() - post.createdAt.getTime();
         if (ageMs < 0) {
-          throw new BadRequestException('This post has an invalid creation time.');
+          throw new BadRequestException(
+            'This post has an invalid creation time.',
+          );
         }
         if (ageMs < policy.nomination.minPostAgeHours * 60 * 60 * 1000) {
-          throw new BadRequestException('This post is too new to be nominated.');
+          throw new BadRequestException(
+            'This post is too new to be nominated.',
+          );
         }
         if (ageMs > policy.nomination.maxPostAgeDays * DAY_MS) {
-          throw new BadRequestException('This post is outside the nomination window.');
+          throw new BadRequestException(
+            'This post is outside the nomination window.',
+          );
         }
 
         const since = new Date(now.getTime() - DAY_MS);
@@ -415,7 +429,9 @@ export class RewardsService {
       });
       if (!nomination) throw new NotFoundException('Nomination not found.');
       if (nomination.status !== RewardNominationStatus.PENDING) {
-        throw new ConflictException('This nomination has already been decided.');
+        throw new ConflictException(
+          'This nomination has already been decided.',
+        );
       }
       if (nomination.nominatorId === staff.id) {
         throw new ForbiddenException(
@@ -506,8 +522,7 @@ export class RewardsService {
 
       const proposedPromotionalCoins = policy.rewards.reduce(
         (total, reward) =>
-          total +
-          (reward.type === 'PROMOTIONAL_COINS' ? reward.amount : 0),
+          total + (reward.type === 'PROMOTIONAL_COINS' ? reward.amount : 0),
         0,
       );
       const budgetRows = await tx.$queryRaw<Array<{ total: number }>>`
@@ -520,9 +535,8 @@ export class RewardsService {
       // The saved nomination snapshot controls its own award terms, but the
       // current programme policy controls the remaining programme-wide
       // budget. Editing the budget down therefore takes effect immediately.
-      const currentBudget = parsePostRewardPolicy(
-        currentProgram.policy,
-      ).limits.maxTotalPromotionalCoins;
+      const currentBudget = parsePostRewardPolicy(currentProgram.policy).limits
+        .maxTotalPromotionalCoins;
       if (alreadyGranted + proposedPromotionalCoins > currentBudget) {
         throw new ConflictException(
           'This programme has reached its promotional coin budget.',
@@ -645,7 +659,9 @@ export class RewardsService {
         !Number.isFinite(endsAt.getTime()) ||
         endsAt <= startsAt)
     ) {
-      throw new BadRequestException('Programme end time must be after its start time.');
+      throw new BadRequestException(
+        'Programme end time must be after its start time.',
+      );
     }
   }
 }
