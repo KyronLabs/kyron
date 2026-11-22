@@ -214,15 +214,14 @@ run('financial source retention, against a real database', () => {
       payload: { type: 'fire', coins: 5 },
     });
 
-    const rewardSourceA =
-      await prisma.financialSourceRecord.findUniqueOrThrow({
-        where: {
-          sourceType_sourceId: {
-            sourceType: 'POST_REWARD_GRANT',
-            sourceId: grantAId,
-          },
+    const rewardSourceA = await prisma.financialSourceRecord.findUniqueOrThrow({
+      where: {
+        sourceType_sourceId: {
+          sourceType: 'POST_REWARD_GRANT',
+          sourceId: grantAId,
         },
-      });
+      },
+    });
     expect(rewardSourceA).toMatchObject({
       eventType: 'REWARD_GRANTED',
       actorId: staffId,
@@ -321,12 +320,14 @@ run('financial source retention, against a real database', () => {
       where: { eventType: 'REWARD_GRANTED', actorId: staffId },
     });
     expect(retainedAuditEvents).toHaveLength(2);
-    expect(retainedAuditEvents.every(
-      (event) =>
-        event.programId === null &&
-        event.nominationId === null &&
-        event.grantId === null,
-    )).toBe(true);
+    expect(
+      retainedAuditEvents.every(
+        (event) =>
+          event.programId === null &&
+          event.nominationId === null &&
+          event.grantId === null,
+      ),
+    ).toBe(true);
     const retainedAuditDetails = retainedAuditEvents
       .map((event) => JSON.stringify(event.details))
       .join(' ');
