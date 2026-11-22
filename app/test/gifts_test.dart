@@ -415,10 +415,11 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    testWidgets('says the coins are test coins, every time', (tester) async {
+    testWidgets('explains how new coins are issued', (tester) async {
       await _openSheet(tester);
 
-      expect(find.textContaining('no cash value'), findsOneWidget);
+      expect(find.textContaining('not automatically replenished'), findsOneWidget);
+      expect(find.textContaining('reward programmes'), findsOneWidget);
     });
 
     testWidgets('shows the balance in its top right corner', (tester) async {
