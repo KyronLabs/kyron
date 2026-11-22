@@ -73,9 +73,10 @@ type Tx = Prisma.TransactionClient;
  *
  * - **A ledger, not a balance.** Every movement is a CoinEntry, and a balance
  *   is their sum. Nothing is ever updated in place.
- * - **No free-credit cash-out.** Legacy complimentary and rewarded coins
- *   create PROMOTIONAL_EARN for recipients; only verified purchased-coin
- *   spending may create PURCHASE_EARN, which the future payout path may use.
+ * - **Reward proceeds are withdrawable.** Approved reward-coin spending
+ *   creates REWARD_EARN, on the same terms as purchase-funded PURCHASE_EARN.
+ *   Retired weekly complimentary spending stays PROMOTIONAL_EARN and is not
+ *   withdrawable. Legacy EARN rows have unknown provenance and stay excluded.
  * - **Nothing twice.** Each entry has a unique key, and each send carries the
  *   app's requestId, so a retry or a double tap is the same gift.
  * - **One spender at a time.** Every change to a wallet locks the account's
