@@ -1,6 +1,6 @@
 # Kyron Financial Ecosystem
 
-**Status:** Implementation foundation — additive database and ledger service layer  
+**Status:** Immutable ledger foundation and read-only legacy coin reconciliation  
 **Owner:** KyronLabs / Kyron  
 **Baseline:** 22 November 2026
 
@@ -52,7 +52,7 @@ The existing `CoinEntry` model remains the source record for historical virtual-
 
 Do not silently rewrite old rows or infer purchase provenance from a user's current total.
 
-**Outstanding source-retention blocker:** current `Gift` rows can still be cascade-deleted with their recipient, post or comment; `PostRewardGrant` rows can be cascade-deleted with their program, nomination, post or recipient. `CoinEntry` will now survive user deletion, but its `giftId` can be nulled when a Gift is deleted and the richer source record may disappear. Before the real-money bridge or launch, introduce reviewed tombstone/soft-delete retention for these source records and verify that reward audit evidence remains linkable.
+**Historical source-retention boundary:** Gift and PostRewardGrant operational rows remain subject to social/identity cascades. PR #209 now snapshots their minimum financial facts into immutable `FinancialSourceRecord` rows in the same transaction as the event. The optional `CoinEntry.giftId` can still be nulled, so reconciliation recovers gift IDs from the stable `gift:<uuid>:...` idempotency key. Source events deleted before PR #209 and not present for its backfill cannot be reconstructed; PR #210 treats missing snapshots as blockers rather than guessing.
 
 ## New ledger foundation
 
@@ -110,7 +110,7 @@ Bank payout integration is provider-neutral until a provider is selected after c
 ## Implementation sequence
 
 1. **Ledger foundation (this phase):** schema, migration, database invariants, idempotent posting/reversal service and integration tests.
-2. **Legacy bridge:** reconcile existing `CoinEntry` balances/provenance and create opening ledger entries under a reviewed, repeatable migration plan.
+2. **Legacy bridge:** PR #210 provides a read-only, repeatable dry-run inventory and source reconciliation. Any later opening-balance import is a separate implementation and approval gate; this phase does not post ledger entries.
 3. **Google Play purchases:** package catalogue, purchase verification, refunds/voids, idempotent coin grant.
 4. **Creator payable and risk controls:** immediate accrual, reason-coded holds, eligibility and reservations.
 5. **Withdrawal quotes:** dynamic rate snapshot, fee disclosure, expiry and accepted quote evidence. Minimum remains disabled until approved.
@@ -145,6 +145,14 @@ When frontend work begins, it must follow both the design-system source and the 
 - Add screen-level and component tests. The compliance report explicitly says touch-target coverage is incomplete and spacing/motion are not comprehensively guarded; new screens must not repeat those gaps.
 
 The compliance report must remain honest: do not claim app-wide compliance based only on a local screen test.
+
+## Legacy coin reconciliation
+
+PR #210 adds a read-only, repeatable `CoinEntry` reconciliation command. It
+maps all current coin kinds into segregated KCOIN buckets, checks gift and
+reward source snapshots, detects existing ledger references and produces
+balanced posting proposals without creating accounts, transactions or
+postings. See [Legacy CoinEntry reconciliation](./LEGACY_COIN_RECONCILIATION.md).
 
 
 ## Financial source retention
