@@ -137,8 +137,8 @@ def main() -> int:
     report.extend(
         [
             "",
-            "**Policy:** missing/extra keys and placeholder changes fail this check, except the
-            small explicit English-fallback allowlist in the validator. "
+            "**Policy:** missing/extra keys and placeholder changes fail this check, "
+            "except the small explicit English-fallback allowlist in the validator. "
             "Values identical to English are reported for human review because brand names, "
             "technical labels, and short symbols may legitimately remain unchanged.",
         ]
