@@ -145,3 +145,13 @@ When frontend work begins, it must follow both the design-system source and the 
 - Add screen-level and component tests. The compliance report explicitly says touch-target coverage is incomplete and spacing/motion are not comprehensively guarded; new screens must not repeat those gaps.
 
 The compliance report must remain honest: do not claim app-wide compliance based only on a local screen test.
+
+
+## Financial source retention
+
+Gift and fulfilled reward events are copied transactionally into the immutable
+`FinancialSourceRecord` evidence table. It preserves the source event ID,
+pseudonymous actor and beneficiary UUIDs, related source identifiers, value,
+unit and the minimum event payload needed for reconciliation. It intentionally
+does not copy profile details, post/comment text, nomination reasons or review
+notes. See [Ledger and Migration](./LEDGER_AND_MIGRATION.md#financial-source-record-retention).
