@@ -1,3 +1,4 @@
+import { ForbiddenException } from '@nestjs/common';
 import { UserRole } from '@prisma/client';
 import { secondFactorRequired, staffFrom } from './staff-session';
 
@@ -7,7 +8,7 @@ const req = (role: UserRole, aal?: 'aal1' | 'aal2') =>
 describe('staffFrom', () => {
   it('refuses staff without a second factor once required', () => {
     expect(() => staffFrom(req(UserRole.ADMIN, 'aal1'), true)).toThrow(
-      expect.objectContaining({ status: 403 }),
+      ForbiddenException,
     );
     expect(() => staffFrom(req(UserRole.MODERATOR), true)).toThrow();
   });
