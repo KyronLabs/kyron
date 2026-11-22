@@ -73,7 +73,7 @@ No service extraction is approved solely for repository tidiness or speculative 
 
 ### 4.1 Protected branches
 
-For production repositories, `main` is the protected integration branch. Configure GitHub branch protection/rulesets to require:
+For production repositories, `main` is the intended protected integration branch. **Current verified state for `KyronLabs/kyron`: GitHub branch metadata reports `main` as unprotected as of 22 November 2026.** Treat the controls below as not yet enforced until the repository owner verifies applicable organisation rulesets and enables branch protection. Require:
 
 - Pull requests for normal changes.
 - Required CI checks.
