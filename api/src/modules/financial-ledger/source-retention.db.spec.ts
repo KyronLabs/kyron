@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-import { PrismaClient, RewardProgramStatus, UserRole } from '@prisma/client';
+import { Prisma, PrismaClient, RewardProgramStatus, UserRole } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { GiftsService } from '../gifts/gifts.service';
@@ -235,9 +235,9 @@ run('financial source retention, against a real database', () => {
         rewardPayload: { amount: 12 },
       },
     });
-    const rewardRelatedIds = rewardSourceA.relatedIds;
+    const rewardRelatedIds = rewardSourceA.relatedIds as Prisma.JsonObject;
     expect(rewardRelatedIds).toMatchObject({ programId, postId: postAId });
-    expect(typeof (rewardRelatedIds as { nominationId?: unknown }).nominationId).toBe('string');
+    expect(typeof rewardRelatedIds.nominationId).toBe('string');
     expect(rewardSourceA.amount?.toNumber()).toBe(12);
 
     // A hard comment delete cascades through Gift; the source snapshot has
