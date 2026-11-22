@@ -1113,10 +1113,14 @@ enum RewardNominationStatus {
 enum CoinKind {
   /// Test coins handed out by the weekly refill. Positive.
   GRANT
-  /// Coins spent on a gift. Negative.
+  /// Coins spent from the weekly allowance. Negative.
   SPEND
-  /// What a post's author received for a gift. Positive.
+  /// What a post's author received for a gift. Positive and not spendable.
   EARN
+  /// Promotional credits granted by a post rewards programme. Positive.
+  REWARD_GRANT
+  /// Promotional credits spent on a gift. Negative.
+  REWARD_SPEND
 }
 
 /// One movement in somebody's wallet. Append-only: a balance is a sum of
