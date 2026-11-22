@@ -89,7 +89,7 @@ export function readCreatorWithdrawalPolicy(
 ): CreatorWithdrawalPolicy {
   const rawMinimum = env.CREATOR_WITHDRAWAL_MIN_COINS;
   const parsedMinimum =
-    rawMinimum && /^\\d+$/.test(rawMinimum) ? Number(rawMinimum) : NaN;
+    rawMinimum && /^\d+$/.test(rawMinimum) ? Number(rawMinimum) : NaN;
   const minimumCoins =
     Number.isSafeInteger(parsedMinimum) && parsedMinimum > 0
       ? parsedMinimum
