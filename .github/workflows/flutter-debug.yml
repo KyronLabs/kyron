@@ -14,12 +14,13 @@ on:
 permissions:
   contents: read
 
-# One development build per branch at a time. Cancelled on a newer push: an
-# older build is superseded the moment the next commit lands, and publishing it
-# after would put a stale APK behind the "Latest" badge.
+# Keep an active build alive. Cancelling a Gradle process on every newer push
+# sends SIGTERM (143) through Flutter/Gradle and turns a recoverable queue into
+# a failed run. GitHub retains only the newest pending run in this concurrency
+# group; the running build completes before that pending build starts.
 concurrency:
   group: debug-build-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
 # it reads that one answer -- so the APKs, the bundle and the Windows zip out of
@@ -91,6 +92,7 @@ jobs:
     name: Build the Android development APKs and Play bundle
     needs: version
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     env:
       KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     defaults:
@@ -301,7 +303,9 @@ jobs:
           build() {
             local name=$1
             shift
-            ( cd app && flutter build apk --release "$@" \
+            stage=$name
+            echo "::group::Building $name APK"
+            ( cd app && flutter build apk --release --no-pub "$@" \
                 --build-number "$KYRON_BUILD_NUMBER" \
                 ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
                 ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
@@ -309,14 +313,34 @@ jobs:
             # which is a broken build rather than a smaller one.
             test -f "$out" || { echo "Missing $out after the $name build."; exit 1; }
             mv "$out" "debug-artifacts/${stem}-${name}.apk"
+            echo "::endgroup::"
           }
+
+          stage=initialization
+          started=$SECONDS
+          interrupted=no
+          report_interruption() {
+            local signal=$1
+            local code=143
+            if [ "$signal" = INT ]; then code=130; fi
+            interrupted=yes
+            echo "::error::Android build received $signal during ${stage:-unknown} after $((SECONDS-started)) seconds (exit $code)."
+            exit "$code"
+          }
+          trap 'report_interruption TERM' TERM
+          trap 'report_interruption INT' INT
+          trap 'status=$?; if [ "$status" -ne 0 ] && [ "$interrupted" != yes ]; then echo "::error::Android build failed during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds. Inspect the last Gradle output for the underlying cause."; fi' EXIT
 
           build arm64-v8a   --target-platform android-arm64
           build armeabi-v7a --target-platform android-arm
           build x86_64      --target-platform android-x64
           build universal
 
+          stage=artifact-validation
+          test "$(find debug-artifacts -maxdepth 1 -name '*.apk' -type f | wc -l)" -eq 4
           ls -lh debug-artifacts
+          stage=complete
+          echo "All four APK variants completed in $((SECONDS-started)) seconds."
 
       # The checks that would have caught each of these. An APK that is
       # debuggable, or enormous, or signed with a key nobody has seen before
@@ -393,7 +417,7 @@ jobs:
           test -f app/android/app/google-services.json
 
           scripts/write-upload-key.sh
-          ( cd app && flutter build appbundle --release \
+          ( cd app && flutter build appbundle --release --no-pub \
               --build-number "$KYRON_BUILD_NUMBER" \
               ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
               ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
@@ -465,7 +489,7 @@ jobs:
           # one element per argument. Not splatted with @: that is for cmdlets,
           # and only recent PowerShell extends it to native commands. Not
           # $args either -- that name is already PowerShell's.
-          $flags = @('--release', '--build-number', $env:KYRON_BUILD_NUMBER)
+          $flags = @('--release', '--no-pub', '--build-number', $env:KYRON_BUILD_NUMBER)
           if ($env:SUPABASE_ANON_KEY) {
             $flags += "--dart-define=SUPABASE_ANON_KEY=$env:SUPABASE_ANON_KEY"
           }
