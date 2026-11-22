@@ -164,7 +164,7 @@ Use these statuses consistently:
 - Prove baseline correctness before any migration is marked applied.
 - Test backup and restore before risky migrations.
 
-**Exit evidence:** A staging deploy with successful migration, deliberate migration-failure test, clear failure status and documented recovery.
+**Exit evidence:** Passing CI tests for migration success/failure/timeout and database-connectivity failure; a staging deploy with successful migration; a deliberate migration-failure deployment that never serves traffic; clear platform failure status; and a documented, rehearsed recovery. The branch changes alone do not close this gate.
 
 ### 0.6 Architecture/documentation reconciliation
 
