@@ -93,6 +93,9 @@ export class GiftsService {
 
   /** The reader's current wallet; reading it never issues new coins. */
   async wallet(userId: string, _at?: Date): Promise<Wallet> {
+    // Retain the former optional timestamp argument for callers compiled
+    // against the earlier wallet API; it no longer drives a refill.
+    void _at;
     return this.prisma.$transaction(async (tx) => {
       await this.lock(tx, userId);
       return this.balances(tx, userId);
@@ -438,6 +441,8 @@ export class GiftsService {
     senderId: string,
     now: Date,
   ): Promise<SentGift> {
+    // Idempotent retries do not depend on a wallet/refill timestamp anymore.
+    void now;
     // The count of whatever the gift went to.
     const target =
       gift.commentId === null
