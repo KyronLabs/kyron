@@ -58,10 +58,7 @@ export class RewardsController {
   }
 
   @Post('moderation/rewards/programs')
-  createProgram(
-    @Req() req: AuthRequest,
-    @Body() body: CreateRewardProgramDto,
-  ) {
+  createProgram(@Req() req: AuthRequest, @Body() body: CreateRewardProgramDto) {
     return this.rewards.createProgram(staffFrom(req), body);
   }
 
@@ -88,11 +85,6 @@ export class RewardsController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() body: DecidePostRewardNominationDto,
   ) {
-    return this.rewards.decide(
-      staffFrom(req),
-      id,
-      body.decision,
-      body.note,
-    );
+    return this.rewards.decide(staffFrom(req), id, body.decision, body.note);
   }
 }
