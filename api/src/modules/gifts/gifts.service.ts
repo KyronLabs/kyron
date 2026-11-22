@@ -19,11 +19,13 @@ import {
 
 /** What a wallet screen shows. */
 export interface Wallet {
-  /** What can be spent: test coins from the weekly refill, less gifts sent. */
+  /** All spendable weekly and promotional coins, less gifts sent. */
   coins: number;
   /** What this account's posts have been given. Cannot be spent. */
   earned: number;
-  /** What the refill tops coins up to. */
+  /** Promotional credits still available; not part of the weekly refill cap. */
+  promotional: number;
+  /** What the weekly allowance tops up to, independently of promotions. */
   weeklyCoins: number;
   refillsAt: Date;
 }
@@ -234,15 +236,15 @@ export class GiftsService {
           requestId: input.requestId,
         },
       });
+      const spendEntries = await this.spendFromWallet(
+        tx,
+        senderId,
+        kind.coins,
+        gift.id,
+      );
       await tx.coinEntry.createMany({
         data: [
-          {
-            userId: senderId,
-            kind: CoinKind.SPEND,
-            amount: -kind.coins,
-            key: `gift:${gift.id}:spend`,
-            giftId: gift.id,
-          },
+          ...spendEntries,
           {
             userId: recipientId,
             kind: CoinKind.EARN,
@@ -472,18 +474,37 @@ export class GiftsService {
       select: { id: true },
     });
     if (done) return;
-    const { coins } = await this.balances(tx, userId, now);
+    const { weekly } = await this.ledgerBalances(tx, userId);
     await tx.coinEntry.create({
       data: {
         userId,
         kind: CoinKind.GRANT,
-        amount: Math.max(0, WEEKLY_COINS - coins),
+        amount: Math.max(0, WEEKLY_COINS - weekly),
         key,
       },
     });
   }
 
   private async balances(tx: Tx, userId: string, now: Date): Promise<Wallet> {
+    const balances = await this.ledgerBalances(tx, userId);
+    return {
+      coins: balances.weekly + balances.promotional,
+      earned: balances.earned,
+      promotional: balances.promotional,
+      weeklyCoins: WEEKLY_COINS,
+      refillsAt: nextRefill(now),
+    };
+  }
+
+  /**
+   * The weekly allowance and reward credits are separate spendable buckets.
+   * The Monday refill tops up only the weekly bucket; a reward therefore
+   * remains additive and cannot silently replace somebody's free allowance.
+   */
+  private async ledgerBalances(
+    tx: Tx,
+    userId: string,
+  ): Promise<{ weekly: number; promotional: number; earned: number }> {
     const sums = await tx.coinEntry.groupBy({
       by: ['kind'],
       where: { userId },
@@ -492,11 +513,49 @@ export class GiftsService {
     const sum = (kind: CoinKind) =>
       sums.find((row) => row.kind === kind)?._sum.amount ?? 0;
     return {
-      coins: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
+      weekly: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
+      promotional:
+        sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
       earned: sum(CoinKind.EARN),
-      weeklyCoins: WEEKLY_COINS,
-      refillsAt: nextRefill(now),
     };
+  }
+
+  /** Spend the weekly allowance first, then promotional reward credits. */
+  private async spendFromWallet(
+    tx: Tx,
+    userId: string,
+    amount: number,
+    giftId: string,
+  ): Promise<Prisma.CoinEntryCreateManyInput[]> {
+    const balances = await this.ledgerBalances(tx, userId);
+    const weekly = Math.max(0, balances.weekly);
+    const promotional = Math.max(0, balances.promotional);
+    if (weekly + promotional < amount) {
+      throw new BadRequestException('Your wallet no longer covers this gift.');
+    }
+
+    const weeklySpend = Math.min(weekly, amount);
+    const promotionalSpend = amount - weeklySpend;
+    const entries: Prisma.CoinEntryCreateManyInput[] = [];
+    if (weeklySpend > 0) {
+      entries.push({
+        userId,
+        kind: CoinKind.SPEND,
+        amount: -weeklySpend,
+        key: `gift:${giftId}:weekly-spend`,
+        giftId,
+      });
+    }
+    if (promotionalSpend > 0) {
+      entries.push({
+        userId,
+        kind: CoinKind.REWARD_SPEND,
+        amount: -promotionalSpend,
+        key: `gift:${giftId}:reward-spend`,
+        giftId,
+      });
+    }
+    return entries;
   }
 
   /** Holds the account's row until the transaction ends. */
