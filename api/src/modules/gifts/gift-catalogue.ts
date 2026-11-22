@@ -39,4 +39,3 @@ export const GIFT_TYPES = GIFT_CATALOGUE.map((gift) => gift.type);
 export function giftType(type: string): GiftType | undefined {
   return GIFT_CATALOGUE.find((gift) => gift.type === type);
 }
-
