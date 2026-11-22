@@ -60,8 +60,8 @@ class GiftType {
 
 /// What the reader has to send gifts with, and what their posts were given.
 ///
-/// Test coins: they come from a weekly refill and cannot be bought, and
-/// earnings cannot be withdrawn. The sheet says so, every time it opens.
+/// Coins are not automatically replenished. New coins are issued through
+/// Kyron's post-reward programmes; promotional credits are not cashable.
 class GiftWallet {
   /// What can be spent.
   final int coins;
@@ -79,18 +79,16 @@ class GiftWallet {
   /// Unspent promotional reward credits, also spendable on gifts.
   final int promotional;
 
-  /// What the weekly refill tops up to, excluding promotional rewards.
-  final int weeklyCoins;
-  final DateTime? refillsAt;
+  /// Unspent balance from the retired weekly complimentary grants.
+  final int legacyComplimentary;
 
   const GiftWallet({
     required this.coins,
     required this.earned,
     this.purchaseFundedEarned = 0,
     this.promotionalEarned = 0,
+    this.legacyComplimentary = 0,
     this.promotional = 0,
-    required this.weeklyCoins,
-    this.refillsAt,
   });
 
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
@@ -98,12 +96,10 @@ class GiftWallet {
         earned: (json['earned'] as num?)?.toInt() ?? 0,
         purchaseFundedEarned:
             (json['purchaseFundedEarned'] as num?)?.toInt() ?? 0,
-        promotionalEarned:
-            (json['promotionalEarned'] as num?)?.toInt() ?? 0,
+        promotionalEarned: (json['promotionalEarned'] as num?)?.toInt() ?? 0,
+        legacyComplimentary:
+            (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
         promotional: (json['promotional'] as num?)?.toInt() ?? 0,
-        weeklyCoins: (json['weeklyCoins'] as num?)?.toInt() ?? 0,
-        refillsAt:
-            DateTime.tryParse(json['refillsAt'] as String? ?? '')?.toLocal(),
       );
 }
 
