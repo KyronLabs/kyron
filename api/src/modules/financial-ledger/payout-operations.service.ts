@@ -71,11 +71,12 @@ export interface PayoutOperationalReport {
     providerErrorCode: string | null;
     createdAt: Date;
     submittedAt: Date | null;
+    ageMinutes: number;
     withdrawal: {
       id: string;
       status: CreatorWithdrawalStatus;
       currency: string;
-      fiatAmountMinor: bigint;
+      fiatAmountMinor: string;
     };
   }>;
   unresolvedProviderEventCount: number;
@@ -288,7 +289,21 @@ export class PayoutOperationsService {
       staleAfterMinutes,
       staleBefore,
       staleAttemptCount,
-      staleAttempts,
+      staleAttempts: staleAttempts.map((attempt) => ({
+        ...attempt,
+        ageMinutes: Math.max(
+          0,
+          Math.floor(
+            (generatedAt.getTime() -
+              (attempt.submittedAt ?? attempt.createdAt).getTime()) /
+              60_000,
+          ),
+        ),
+        withdrawal: {
+          ...attempt.withdrawal,
+          fiatAmountMinor: attempt.withdrawal.fiatAmountMinor.toString(),
+        },
+      })),
       unresolvedProviderEventCount,
       unmatchedTerminalProviderEventCount,
       unresolvedProviderEvents,
