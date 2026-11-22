@@ -55,8 +55,8 @@ describe('disabled payout adapters', () => {
   });
 
   it('refuses to submit bank payouts without a configured provider', async () => {
-    await expect(new DisabledBankPayoutProvider().submit()).rejects.toBeInstanceOf(
-      ServiceUnavailableException,
-    );
+    await expect(
+      new DisabledBankPayoutProvider().submit(),
+    ).rejects.toBeInstanceOf(ServiceUnavailableException);
   });
 });

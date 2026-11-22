@@ -60,9 +60,11 @@ export class DisabledFxQuoteProvider extends FxQuoteProvider {
     return false;
   }
 
-  async quote(): Promise<FxQuoteResult> {
-    throw new ServiceUnavailableException(
-      'No foreign-exchange quote provider has been configured.',
+  quote(): Promise<FxQuoteResult> {
+    return Promise.reject(
+      new ServiceUnavailableException(
+        'No foreign-exchange quote provider has been configured.',
+      ),
     );
   }
 }
@@ -73,9 +75,11 @@ export class DisabledBankPayoutProvider extends BankPayoutProvider {
     return false;
   }
 
-  async submit(): Promise<BankPayoutResult> {
-    throw new ServiceUnavailableException(
-      'No bank payout provider has been configured.',
+  submit(): Promise<BankPayoutResult> {
+    return Promise.reject(
+      new ServiceUnavailableException(
+        'No bank payout provider has been configured.',
+      ),
     );
   }
 }
@@ -179,7 +183,9 @@ export class CreatorWithdrawalsService {
       },
     });
     if (!destination) {
-      throw new NotFoundException('An active payout destination was not found.');
+      throw new NotFoundException(
+        'An active payout destination was not found.',
+      );
     }
 
     const quote = await this.fxProvider.quote({
@@ -203,7 +209,9 @@ export class CreatorWithdrawalsService {
       !Number.isFinite(quote.expiresAt.getTime()) ||
       quote.expiresAt <= now
     ) {
-      throw new BadRequestException('The FX provider returned an invalid quote.');
+      throw new BadRequestException(
+        'The FX provider returned an invalid quote.',
+      );
     }
 
     const reservation = await this.earnings.reserve({
@@ -346,7 +354,8 @@ export class CreatorWithdrawalsService {
         );
       }
       if (
-        withdrawal.coinAmount < (policy.minimumCoins ?? Number.MAX_SAFE_INTEGER) ||
+        withdrawal.coinAmount <
+          (policy.minimumCoins ?? Number.MAX_SAFE_INTEGER) ||
         withdrawal.destination.status !== PayoutDestinationStatus.ACTIVE ||
         withdrawal.destination.creatorId !== withdrawal.creatorId ||
         withdrawal.fxQuote.creatorId !== withdrawal.creatorId ||
@@ -437,7 +446,9 @@ export class CreatorWithdrawalsService {
       }
 
       if (!result.providerTransferRef?.trim()) {
-        throw new Error('Provider accepted a payout without a transfer reference.');
+        throw new Error(
+          'Provider accepted a payout without a transfer reference.',
+        );
       }
       await this.prisma.$transaction(async (tx) => {
         await tx.payoutAttempt.update({
