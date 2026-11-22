@@ -144,6 +144,8 @@ void main() {
         final wallet = GiftWallet.fromJson(const {
           'coins': 150,
           'earned': 10,
+          'withdrawableEarned': 0,
+          'promotionalEarned': 10,
           'promotional': 50,
           'weeklyCoins': 100,
         });
@@ -151,6 +153,8 @@ void main() {
         expect(wallet.promotional, 50);
         expect(wallet.weeklyCoins, 100);
         expect(wallet.earned, 10);
+        expect(wallet.withdrawableEarned, 0);
+        expect(wallet.promotionalEarned, 10);
       },
     );
 
