@@ -8,6 +8,7 @@ import { AccountStatus, CoinKind, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
+import { planCreatorEarning } from '../financial-ledger/creator-earnings.service';
 import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
 /** What a wallet screen shows. */
@@ -283,6 +284,17 @@ export class GiftsService {
       });
       await tx.coinEntry.createMany({
         data: [...spendEntries, ...creatorEarnings],
+      });
+      await tx.creatorEarning.createMany({
+        data: creatorEarnings.map((entry) =>
+          planCreatorEarning({
+            userId: entry.userId,
+            kind: entry.kind,
+            amount: entry.amount,
+            key: entry.key,
+            giftId: entry.giftId ?? null,
+          }),
+        ),
       });
       // One statement, so two gifts of new kinds arriving at once both land:
       // a read-then-write would lose one of them.

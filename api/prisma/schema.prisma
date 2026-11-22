@@ -2334,3 +2334,84 @@ model GooglePlayNotification {
   @@index([purchaseTokenHash, receivedAt])
   @@index([processedAt, receivedAt])
 }
+
+enum CreatorEarningSource {
+  PURCHASE
+  APPROVED_REWARD
+  LEGACY_PROMOTIONAL
+  UNKNOWN
+}
+
+enum CreatorEarningReservationStatus {
+  ACTIVE
+  RELEASED
+  SETTLED
+}
+
+/// Immutable creator proceeds attributed to one positive CoinEntry.
+/// No User or Gift foreign key: financial evidence survives account/social deletion.
+model CreatorEarning {
+  id                  String               @id @default(uuid()) @db.Uuid
+  creatorId           String               @db.Uuid
+  sourceCoinEntryKey  String               @unique @db.VarChar(200)
+  giftId              String?              @db.Uuid
+  source              CreatorEarningSource
+  amount              Int
+  withdrawable        Boolean
+  availableAt         DateTime             @default(now()) @db.Timestamptz()
+  createdAt           DateTime             @default(now()) @db.Timestamptz()
+  holds               CreatorEarningHold[]
+  reservationLines    CreatorEarningReservationLine[]
+
+  @@index([creatorId, withdrawable, availableAt, createdAt])
+  @@index([giftId])
+}
+
+/// A mutable release marker over an immutable hold decision. Every placement
+/// and release is also recorded in FinancialAuditEvent.
+model CreatorEarningHold {
+  id           String         @id @default(uuid()) @db.Uuid
+  earningId    String         @db.Uuid
+  reasonCode   String         @db.VarChar(80)
+  note         String?        @db.VarChar(500)
+  placedById   String         @db.Uuid
+  createdAt    DateTime       @default(now()) @db.Timestamptz()
+  releasedAt   DateTime?      @db.Timestamptz()
+  releasedById String?        @db.Uuid
+  releaseNote  String?        @db.VarChar(500)
+  earning      CreatorEarning @relation(fields: [earningId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([earningId, releasedAt])
+  @@index([createdAt])
+}
+
+/// A withdrawal-independent reservation primitive. PR #213 will connect a
+/// successful payout to SETTLED; until then these rows only reserve coin value.
+model CreatorEarningReservation {
+  id             String                          @id @default(uuid()) @db.Uuid
+  creatorId      String                          @db.Uuid
+  idempotencyKey String                          @unique @db.VarChar(200)
+  amount         Int
+  status         CreatorEarningReservationStatus @default(ACTIVE)
+  expiresAt      DateTime?                       @db.Timestamptz()
+  createdAt      DateTime                        @default(now()) @db.Timestamptz()
+  finalizedAt    DateTime?                       @db.Timestamptz()
+  lines          CreatorEarningReservationLine[]
+
+  @@index([creatorId, status, createdAt])
+  @@index([status, expiresAt])
+}
+
+model CreatorEarningReservationLine {
+  id            String                     @id @default(uuid()) @db.Uuid
+  reservationId String                     @db.Uuid
+  earningId     String                     @db.Uuid
+  amount        Int
+  createdAt     DateTime                   @default(now()) @db.Timestamptz()
+  reservation   CreatorEarningReservation  @relation(fields: [reservationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  earning       CreatorEarning             @relation(fields: [earningId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@unique([reservationId, earningId])
+  @@index([earningId])
+}
+
