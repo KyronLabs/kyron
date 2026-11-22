@@ -209,7 +209,7 @@ run('post excellence rewards, against a real database', () => {
     // recipient; it must never land in the future purchase-funded EARN bucket.
     const recipientWallet = await gifts.wallet(nominatorId, now);
     expect(recipientWallet.earned).toBe(120);
-    expect(recipientWallet.withdrawableEarned).toBe(0);
+    expect(recipientWallet.purchaseFundedEarned).toBe(0);
     expect(recipientWallet.promotionalEarned).toBe(120);
 
     // The next refill restores the weekly bucket without consuming or capping
