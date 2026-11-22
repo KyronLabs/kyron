@@ -52,6 +52,8 @@ The existing `CoinEntry` model remains the source record for historical virtual-
 
 Do not silently rewrite old rows or infer purchase provenance from a user's current total.
 
+**Outstanding source-retention blocker:** current `Gift` rows can still be cascade-deleted with their recipient, post or comment; `PostRewardGrant` rows can be cascade-deleted with their program, nomination, post or recipient. `CoinEntry` will now survive user deletion, but its `giftId` can be nulled when a Gift is deleted and the richer source record may disappear. Before the real-money bridge or launch, introduce reviewed tombstone/soft-delete retention for these source records and verify that reward audit evidence remains linkable.
+
 ## New ledger foundation
 
 The additive Prisma schema and migration introduce:
