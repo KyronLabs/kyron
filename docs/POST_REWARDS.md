@@ -32,7 +32,7 @@ points leaderboard, a popularity contest, or a creator-payout system.
    exceptional.
 4. The nomination enters the staff queue. It does not alter feed ranking,
    unlock visibility, or grant any currency.
-5. A staff member approves or declines it. Staff routes use the existing
+5. A staff member approves or declines it. The programme budget and per-post / per-creator caps are checked again under transaction locks. Staff routes use the existing
    staff-session check, including AAL2 when
    STAFF_REQUIRE_SECOND_FACTOR=true.
 6. Approval checks the saved policy snapshot and current post/author
@@ -55,7 +55,8 @@ A v1 programme policy has this shape:
   },
   "limits": {
     "maxAwardsPerPost": 1,
-    "maxAwardsPerCreatorPer30Days": 2
+    "maxAwardsPerCreatorPer30Days": 2,
+    "maxTotalPromotionalCoins": 10000
   },
   "rewards": [
     { "type": "PROMOTIONAL_COINS", "amount": 50 }
