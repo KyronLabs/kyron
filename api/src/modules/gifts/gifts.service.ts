@@ -77,8 +77,8 @@ type Tx = Prisma.TransactionClient;
  * - **A ledger, not a balance.** Every movement is a CoinEntry, and a balance
  *   is their sum. Nothing is ever updated in place.
  * - **No free-credit cash-out.** Weekly and rewarded coins create
- *   PROMOTIONAL_EARN for recipients; only purchase-funded spending may create
- *   EARN, which the future payout path must use.
+ *   PROMOTIONAL_EARN for recipients; only verified purchased-coin spending may create
+ *   PURCHASE_EARN, which the future payout path must use.
  * - **Nothing twice.** Each entry has a unique key, and each send carries the
  *   app's requestId, so a retry or a double tap is the same gift.
  * - **One spender at a time.** Every change to a wallet locks the account's
