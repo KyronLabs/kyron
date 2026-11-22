@@ -1,3 +1,8 @@
+-- Keep promotional reward credits distinct from the weekly refill bucket.
+-- GiftsService spends the weekly allowance first and promotional credits second.
+ALTER TYPE "CoinKind" ADD VALUE 'REWARD_GRANT';
+ALTER TYPE "CoinKind" ADD VALUE 'REWARD_SPEND';
+
 -- Post excellence rewards.
 --
 -- Program rules are versioned JSON, nominations are not awards, and each
