@@ -70,7 +70,7 @@ describe('PayoutOperationsService', () => {
   });
 
   describe('getOperationalReport', () => {
-    it('returns stale attempts and unresolved events without mutating them', async () => {
+    it('reports stale attempts and unresolved events without writes', async () => {
       payoutAttemptFindMany.mockResolvedValue([]);
       payoutAttemptCount.mockResolvedValue(2);
       payoutProviderEventFindMany.mockResolvedValue([
@@ -175,7 +175,7 @@ describe('PayoutOperationsService', () => {
       ).rejects.toBeInstanceOf(ConflictException);
     });
 
-    it('returns duplicate for an identical idempotent review request', async () => {
+    it('deduplicates identical manual review requests', async () => {
       payoutAttemptFindUnique.mockResolvedValue({
         id: 'attempt-1',
         status: PayoutAttemptStatus.SUBMITTED,
@@ -201,7 +201,7 @@ describe('PayoutOperationsService', () => {
   });
 
   describe('resolveManualReview', () => {
-    it('records a resolution without changing payout or reservation state', async () => {
+    it('records a resolution without financial mutation', async () => {
       payoutAttemptFindUnique.mockResolvedValue({ id: 'attempt-1' });
       financialAuditFindFirst
         .mockResolvedValueOnce({ id: 'review-audit-1' })
@@ -242,7 +242,7 @@ describe('PayoutOperationsService', () => {
   });
 
   describe('reprocessUnmatchedProviderEvent', () => {
-    it('reprocesses only unmatched terminal events and audits the result', async () => {
+    it('reprocesses unmatched terminal events and audits outcome', async () => {
       payoutProviderEventFindUnique.mockResolvedValue({
         id: 'event-1',
         providerCode: 'example',
@@ -292,7 +292,7 @@ describe('PayoutOperationsService', () => {
       expect(reconcile).not.toHaveBeenCalled();
     });
 
-    it('does not reprocess an event that is already linked or processed', async () => {
+    it('rejects linked or processed provider events', async () => {
       payoutProviderEventFindUnique.mockResolvedValue({
         id: 'event-3',
         providerCode: 'example',
