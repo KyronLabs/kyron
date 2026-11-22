@@ -22,6 +22,7 @@ import { AccountModule } from './modules/account/account.module';
 import { VerificationModule } from './modules/verification/verification.module';
 import { GiftsModule } from './modules/gifts/gifts.module';
 import { PublicModule } from './modules/public/public.module';
+import { RewardsModule } from './modules/rewards/rewards.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { PublicModule } from './modules/public/public.module';
     AccountModule,
     VerificationModule,
     GiftsModule,
+    RewardsModule,
     PublicModule,
   ],
   controllers: [],
