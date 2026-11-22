@@ -60,32 +60,56 @@ class GiftType {
 
 /// What the reader has to send gifts with, and what their posts were given.
 ///
-/// Test coins: they come from a weekly refill and cannot be bought, and
-/// earnings cannot be withdrawn. The sheet says so, every time it opens.
+/// Coins are not automatically replenished. New coins are issued through
+/// Kyron's post-reward programmes; promotional credits are not cashable.
 class GiftWallet {
   /// What can be spent.
   final int coins;
 
-  /// What this account's posts have been given. Never spendable.
+  /// All gift proceeds received. Never spendable.
   final int earned;
 
-  /// What the refill tops coins up to.
-  final int weeklyCoins;
-  final DateTime? refillsAt;
+  /// Proceeds eligible for withdrawal, from purchased or approved reward coins.
+  final int withdrawableEarned;
+
+  /// Source breakdown; purchased-coin proceeds are withdrawable.
+  final int purchaseFundedEarned;
+
+  /// Source breakdown; approved reward-funded proceeds are also withdrawable.
+  final int rewardFundedEarned;
+
+  /// Historical proceeds from the retired weekly complimentary credits.
+  /// These legacy proceeds are not withdrawable.
+  final int promotionalEarned;
+
+  /// Unspent promotional reward credits, also spendable on gifts.
+  final int promotional;
+
+  /// Unspent balance from the retired weekly complimentary grants.
+  final int legacyComplimentary;
 
   const GiftWallet({
     required this.coins,
     required this.earned,
-    required this.weeklyCoins,
-    this.refillsAt,
+    this.withdrawableEarned = 0,
+    this.purchaseFundedEarned = 0,
+    this.rewardFundedEarned = 0,
+    this.promotionalEarned = 0,
+    this.legacyComplimentary = 0,
+    this.promotional = 0,
   });
 
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         earned: (json['earned'] as num?)?.toInt() ?? 0,
-        weeklyCoins: (json['weeklyCoins'] as num?)?.toInt() ?? 0,
-        refillsAt:
-            DateTime.tryParse(json['refillsAt'] as String? ?? '')?.toLocal(),
+        withdrawableEarned: (json['withdrawableEarned'] as num?)?.toInt() ?? 0,
+        purchaseFundedEarned:
+            (json['purchaseFundedEarned'] as num?)?.toInt() ?? 0,
+        rewardFundedEarned: (json['rewardFundedEarned'] as num?)?.toInt() ?? 0,
+        promotionalEarned: (json['promotionalEarned'] as num?)?.toInt() ?? 0,
+        legacyComplimentary:
+            (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
+        promotional: (json['promotional'] as num?)?.toInt() ?? 0,
       );
 }
 

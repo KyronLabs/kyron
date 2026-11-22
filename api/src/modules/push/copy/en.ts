@@ -94,12 +94,15 @@ export const en = {
 
   test_working: 'Notifications are working.',
 
-  // Pushes nobody's action sends (ScheduledPushService): what is new for
-  // somebody who has been away, and the weekly coins coming back.
+  // The reminder nobody's action sends: what is new for somebody who has
+  // been away.
   away_title: 'While you were away',
   away_posted: '{who} posted.',
   away_activity_one: '1 new notification.',
   away_activity: '{count} new notifications.',
+
+  // Retired weekly coin reminder keys. Kept in the shared copy contract so
+  // the translated catalogs remain structurally compatible; no code sends them.
   refill_title: 'Your coins are back',
   refill_body: '{coins} coins to send as gifts this week.',
 } as const;

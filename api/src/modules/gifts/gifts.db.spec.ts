@@ -12,9 +12,9 @@ import { RecordingDelivery } from '../push/delivery.test-double';
 import { GiftsService } from './gifts.service';
 
 /**
- * Gifts against a real Postgres: the ledger, the lock, the refill. Skipped
- * unless MODERATION_TEST_DATABASE_URL names a migrated database (see
- * docs/MODERATION.md), because CI has none.
+ * Gifts against a real Postgres: the ledger, grandfathered balances and
+ * wallet locks. Skipped unless MODERATION_TEST_DATABASE_URL names a migrated
+ * database (see docs/MODERATION.md).
  */
 const url = process.env.MODERATION_TEST_DATABASE_URL;
 const run = url ? describe : describe.skip;
@@ -27,7 +27,7 @@ run('gifts, against a real database', () => {
   let gifts: GiftsService;
   let delivery: RecordingDelivery;
 
-  const [ada, ben, cy] = [0, 1, 2].map(() => randomUUID());
+  const [ada, ben, cy, newcomer] = [0, 1, 2, 3].map(() => randomUUID());
   const stamp = Date.now();
   let post = '';
 
@@ -44,11 +44,22 @@ run('gifts, against a real database', () => {
       [ada, 'Ada'],
       [ben, 'Ben'],
       [cy, 'Cy'],
+      [newcomer, 'Newcomer'],
     ]) {
       await prisma.user.create({
         data: { id, name, email: `${name}.${stamp}@example.test` },
       });
     }
+    // These balances model complimentary grants issued before the weekly
+    // benefit was retired. New users do not receive a grant automatically.
+    await prisma.coinEntry.createMany({
+      data: [ada, ben, cy].map((userId) => ({
+        userId,
+        kind: 'GRANT' as const,
+        amount: 100,
+        key: `legacy-weekly-grant:${userId}`,
+      })),
+    });
     post = (
       await prisma.post.create({
         data: { authorId: ada, content: 'Something worth a gift' },
@@ -57,18 +68,39 @@ run('gifts, against a real database', () => {
   });
 
   afterAll(async () => {
-    await prisma?.user.deleteMany({ where: { id: { in: [ada, ben, cy] } } });
+    await prisma?.user.deleteMany({
+      where: { id: { in: [ada, ben, cy, newcomer] } },
+    });
     await prisma?.$disconnect();
   });
 
-  it('fills a new wallet to 100 coins, once', async () => {
-    const first = await gifts.wallet(ben, WEDNESDAY);
-    const again = await gifts.wallet(ben, WEDNESDAY);
+  it('does not issue automatic coins to a new wallet', async () => {
+    const first = await gifts.wallet(newcomer, WEDNESDAY);
+    const again = await gifts.wallet(newcomer, NEXT_TUESDAY);
 
-    expect(first).toMatchObject({ coins: 100, earned: 0, weeklyCoins: 100 });
-    expect(again.coins).toBe(100);
+    expect(first).toMatchObject({
+      coins: 0,
+      legacyComplimentary: 0,
+      promotional: 0,
+    });
+    expect(again.coins).toBe(0);
     expect(
-      await prisma.coinEntry.count({ where: { userId: ben, kind: 'GRANT' } }),
+      await prisma.coinEntry.count({
+        where: { userId: newcomer, kind: 'GRANT' },
+      }),
+    ).toBe(0);
+  });
+
+  it('preserves old complimentary balances without replenishing them', async () => {
+    const first = await gifts.wallet(cy, WEDNESDAY);
+    const afterWeek = await gifts.wallet(cy, NEXT_TUESDAY);
+
+    expect(first).toMatchObject({ coins: 100, legacyComplimentary: 100 });
+    expect(afterWeek).toMatchObject({ coins: 100, legacyComplimentary: 100 });
+    expect(
+      await prisma.coinEntry.count({
+        where: { userId: cy, kind: 'GRANT' },
+      }),
     ).toBe(1);
   });
 
@@ -78,6 +110,9 @@ run('gifts, against a real database', () => {
     expect(sent.wallet.coins).toBe(95);
     expect(sent.gifts).toBe(1);
     expect((await gifts.wallet(ada, WEDNESDAY)).earned).toBe(5);
+    expect((await gifts.wallet(ada, WEDNESDAY)).purchaseFundedEarned).toBe(0);
+    expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(5);
+    expect((await gifts.wallet(ada, WEDNESDAY)).withdrawableEarned).toBe(0);
     expect(delivery.ofType('notification.new')).toContainEqual({
       type: 'notification.new',
       kind: 'gift',
@@ -87,9 +122,13 @@ run('gifts, against a real database', () => {
   });
 
   it('does not let earnings be spent', async () => {
-    // Ada has 5 earned and her own 100 coins: earnings never join the coins.
+    // Ada has 5 in gift proceeds and her own grandfathered 100 coins.
     const wallet = await gifts.wallet(ada, WEDNESDAY);
-    expect(wallet).toMatchObject({ coins: 100, earned: 5 });
+    expect(wallet).toMatchObject({
+      coins: 100,
+      legacyComplimentary: 100,
+      earned: 5,
+    });
   });
 
   it('treats a retried request as the same gift', async () => {
@@ -121,11 +160,9 @@ run('gifts, against a real database', () => {
   });
 
   it('never spends the same coins twice, however many gifts arrive at once', async () => {
-    // Cy has 100. Ten crowns at once would be 500; two fit.
-    //
-    // Refilled first and on its own. Otherwise all ten race to write the
-    // week's refill, nine lose on its unique key, and the test passes without
-    // the lock it exists to prove -- which it did, until this line.
+    // Cy has 100 grandfathered coins. Ten crowns at once would be 500;
+    // exactly two fit. The balance was seeded before the requests so the test
+    // isolates the wallet lock, not coin issuance.
     expect((await gifts.wallet(cy, WEDNESDAY)).coins).toBe(100);
     const results = await Promise.allSettled(
       Array.from({ length: 10 }, () =>
@@ -138,24 +175,30 @@ run('gifts, against a real database', () => {
     expect((await gifts.wallet(cy, WEDNESDAY)).coins).toBe(0);
   });
 
-  it('refuses a gift the wallet cannot cover, and says when it refills', async () => {
+  it('refuses a gift the wallet cannot cover without promising a refill', async () => {
     await expect(
       gifts.send(cy, post, gift('spark'), WEDNESDAY),
-    ).rejects.toThrow('Your coins refill every Monday.');
+    ).rejects.toThrow('wallet');
+    expect((await gifts.wallet(cy, NEXT_TUESDAY)).coins).toBe(0);
   });
 
-  it('refills once the week turns: up to 100, not on top of what is left', async () => {
-    expect((await gifts.wallet(cy, NEXT_TUESDAY)).coins).toBe(100);
-    // Ben still had coins left; the refill tops him up rather than adding 100.
-    expect((await gifts.wallet(ben, NEXT_TUESDAY)).coins).toBe(100);
+  it('does not increase grandfathered balances when a week turns', async () => {
+    const before = (await gifts.wallet(ben, WEDNESDAY)).coins;
+    const after = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
+    expect(after).toBe(before);
+    expect(
+      await prisma.coinEntry.count({
+        where: { userId: ben, kind: 'GRANT' },
+      }),
+    ).toBe(1);
   });
 
-  it('refills a full wallet only once in a week, even after it spends', async () => {
-    // Full at the start of the week, so the refill adds nothing -- and must
-    // still count as this week's, or the next gift would trigger another.
-    await gifts.wallet(cy, NEXT_TUESDAY);
-    await gifts.send(cy, post, gift('gem'), NEXT_TUESDAY);
-    expect((await gifts.wallet(cy, NEXT_TUESDAY)).coins).toBe(80);
+  it('lets an existing complimentary balance continue to fund gifts', async () => {
+    const before = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
+    expect(before).toBe(93);
+
+    const sent = await gifts.send(ben, post, gift('gem'), NEXT_TUESDAY);
+    expect(sent.wallet.coins).toBe(73);
   });
 
   it('counts each kind of gift a post was given', async () => {
@@ -244,7 +287,7 @@ run('gifts, against a real database', () => {
     });
 
     expect((await feed.getPost(post, ben)).viewerGift).toBe(last.type);
-    expect((await feed.getPost(post, cy)).viewerGift).toBe('gem');
+    expect((await feed.getPost(post, cy)).viewerGift).toBe('crown');
     // The author has given it nothing; Cy's and Ben's gifts are theirs.
     expect((await feed.getPost(post, ada)).viewerGift).toBeNull();
   });
@@ -330,8 +373,8 @@ run('gifts, against a real database', () => {
       .filter((row) => row.kind === 'gift')
       .map((row) => row.actor?.id);
     expect(senders).not.toContain(cy);
-    // Ben's three on the first post, and his Rose on the pictured one.
-    expect(senders).toHaveLength(4);
+    // Ben's four on the first post, and his Rose on the pictured one.
+    expect(senders).toHaveLength(5);
   });
 
   describe('to a comment', () => {

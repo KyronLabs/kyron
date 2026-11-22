@@ -43,8 +43,7 @@ class _Gifts extends GiftsRepository {
         wallet: GiftWallet(
           coins: coins,
           earned: 0,
-          weeklyCoins: 100,
-          refillsAt: DateTime(2026, 11, 2),
+          legacyComplimentary: 0,
         ),
       );
 
@@ -66,7 +65,7 @@ class _Gifts extends GiftsRepository {
       giftId: 'g1',
       type: type,
       gifts: 4,
-      wallet: GiftWallet(coins: coins - 5, earned: 0, weeklyCoins: 100),
+      wallet: GiftWallet(coins: coins - 5, earned: 0),
     );
   }
 }
@@ -136,6 +135,37 @@ void main() {
         'gifts': 2,
       });
       expect(sent.type, 'rose');
+    });
+
+    test('reward coins can be withdrawn; legacy weekly coins cannot', () {
+      final rewardWallet = GiftWallet.fromJson(const {
+        'coins': 50,
+        'earned': 100,
+        'withdrawableEarned': 100,
+        'purchaseFundedEarned': 0,
+        'rewardFundedEarned': 100,
+        'promotionalEarned': 0,
+        'promotional': 50,
+        'legacyComplimentary': 0,
+      });
+      expect(rewardWallet.coins, 50);
+      expect(rewardWallet.promotional, 50);
+      expect(rewardWallet.earned, 100);
+      expect(rewardWallet.withdrawableEarned, 100);
+      expect(rewardWallet.rewardFundedEarned, 100);
+
+      final legacyWallet = GiftWallet.fromJson(const {
+        'coins': 0,
+        'earned': 10,
+        'withdrawableEarned': 0,
+        'purchaseFundedEarned': 0,
+        'rewardFundedEarned': 0,
+        'promotionalEarned': 10,
+        'legacyComplimentary': 0,
+      });
+      expect(legacyWallet.earned, 10);
+      expect(legacyWallet.withdrawableEarned, 0);
+      expect(legacyWallet.promotionalEarned, 10);
     });
 
     test('a post carries its gift count, and none means zero', () {
@@ -396,10 +426,14 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    testWidgets('says the coins are test coins, every time', (tester) async {
+    testWidgets('explains how new coins are issued', (tester) async {
       await _openSheet(tester);
 
-      expect(find.textContaining('no cash value'), findsOneWidget);
+      expect(
+        find.textContaining('not automatically replenished'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('reward programmes'), findsOneWidget);
     });
 
     testWidgets('shows the balance in its top right corner', (tester) async {

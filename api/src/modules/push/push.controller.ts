@@ -175,7 +175,7 @@ export class ScheduledPushController {
   @HttpCode(200)
   run(
     @Headers('x-cron-key') key: string | undefined,
-  ): Promise<{ away: number; coins: number }> {
+  ): Promise<{ away: number }> {
     const expected = process.env.CRON_KEY ?? '';
     if (!expected || !key || !ScheduledPushController.same(key, expected)) {
       throw new NotFoundException();

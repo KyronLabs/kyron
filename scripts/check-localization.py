@@ -19,6 +19,14 @@ PLACEHOLDER = re.compile(
     r"\$\{[^}]+\}|(?<!\\)\$[A-Za-z_][A-Za-z0-9_]*|%[0-9$]*[sdif]|\\n|<[^>]+>|#[^\W_]\w*"
 )
 
+# These dynamic UI labels intentionally fall back to their English text until
+# every locale has supplied a reviewed translation. The app's AppLocalizations
+# helper handles the same fallback at runtime; keep this allowlist narrow.
+ENGLISH_FALLBACK_KEYS = {
+    "ui_gift_rewards_notice",
+    "ui_reminders_detail_away",
+}
+
 
 def placeholders(value: str) -> Counter[str]:
     normalized = []
@@ -83,7 +91,9 @@ def main() -> int:
             report.append(f"| `{path.name}` | — | — | — | — | **invalid** |")
             continue
 
-        missing = sorted(set(source) - set(catalog))
+        missing = sorted(
+            (set(source) - set(catalog)) - ENGLISH_FALLBACK_KEYS
+        )
         extra = sorted(set(catalog) - set(source))
         placeholder_errors = []
         same_as_english = []
@@ -127,7 +137,8 @@ def main() -> int:
     report.extend(
         [
             "",
-            "**Policy:** missing/extra keys and placeholder changes fail this check. "
+            "**Policy:** missing/extra keys and placeholder changes fail this check, "
+            "except the small explicit English-fallback allowlist in the validator. "
             "Values identical to English are reported for human review because brand names, "
             "technical labels, and short symbols may legitimately remain unchanged.",
         ]

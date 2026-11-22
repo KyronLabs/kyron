@@ -90,12 +90,14 @@ model User {
   lastActiveAt     DateTime? @db.Timestamptz()
   utcOffsetMinutes Int?
 
-  // The pushes nobody's action sends: "while you were away" and "your coins
-  // are back". Off, neither is sent; everything somebody does still is.
+  // Whether the app may send an occasional "while you were away" reminder.
   reminderPushes Boolean @default(true)
 
-  // When each of those last went, so neither goes twice for one occasion.
-  awayPushAt   DateTime? @db.Timestamptz()
+  // When the away reminder last went, so it cannot be sent twice in a row.
+  awayPushAt DateTime? @db.Timestamptz()
+
+  // Historical weekly-refill push timestamp. Retained for rolling-deploy
+  // compatibility only; current code no longer reads or writes it.
   refillPushAt DateTime? @db.Timestamptz()
 
   // When a suspension ends. Kept in step with status by
@@ -176,6 +178,13 @@ model User {
   giftsSent              Gift[]                  @relation("GiftSender")
   giftsReceived          Gift[]                  @relation("GiftRecipient")
   coinEntries            CoinEntry[]
+  rewardProgramsCreated PostRewardProgram[]     @relation("PostRewardProgramCreator")
+  rewardProgramsUpdated PostRewardProgram[]     @relation("PostRewardProgramUpdater")
+  rewardNominationsMade  PostRewardNomination[] @relation("PostRewardNominator")
+  rewardNominationsReviewed PostRewardNomination[] @relation("PostRewardReviewer")
+  postRewardsReceived    PostRewardGrant[]      @relation("PostRewardRecipient")
+  postRewardsGranted     PostRewardGrant[]      @relation("PostRewardGranter")
+  rewardAuditEvents      PostRewardAuditEvent[] @relation("PostRewardAuditActor")
 
   @@index([email])
   @@index([status])
@@ -282,6 +291,8 @@ model Post {
   signals     InterestSignal[]
   poll        Poll?
   gifts       Gift[]
+  rewardNominations PostRewardNomination[]
+  rewardGrants      PostRewardGrant[]
 
   // SetNull, not Cascade: deleting a quoted post should not delete everyone's
   // commentary on it. The client renders the gap.
@@ -1088,13 +1099,40 @@ model BannedIdentity {
 /// The two never mix -- a gift received cannot be spent again -- because
 /// once coins are bought with money, earnings are what a creator is owed and
 /// coins are what a buyer prepaid, and those are different obligations.
+enum RewardProgramStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ENDED
+}
+
+enum RewardNominationStatus {
+  PENDING
+  APPROVED
+  DECLINED
+}
+
 enum CoinKind {
-  /// Test coins handed out by the weekly refill. Positive.
+  /// Legacy complimentary credits issued by the retired weekly grant. Positive.
   GRANT
-  /// Coins spent on a gift. Negative.
+  /// Spend against legacy complimentary credits. Negative.
   SPEND
-  /// What a post's author received for a gift. Positive.
+  /// Legacy test creator proceeds; provenance is unknown and must never be paid out.
   EARN
+  /// Creator proceeds attributable to verified purchased coin spending.
+  /// Withdrawable. Reward-funded proceeds have the same eligibility and are
+  /// recorded separately as REWARD_EARN.
+  PURCHASE_EARN
+  /// Historical creator proceeds from the retired weekly complimentary grants.
+  /// Kept separate because their original promotional terms were non-cashable.
+  PROMOTIONAL_EARN
+  /// Promotional credits granted by a post rewards programme. Positive.
+  REWARD_GRANT
+  /// Promotional credits spent on a gift. Negative.
+  REWARD_SPEND
+  /// Creator proceeds funded by approved post-reward coins. Withdrawable on
+  /// the same terms as PURCHASE_EARN; source is retained for reconciliation.
+  REWARD_EARN
 }
 
 /// One movement in somebody's wallet. Append-only: a balance is a sum of
@@ -1105,9 +1143,9 @@ model CoinEntry {
   userId String   @db.Uuid
   kind   CoinKind
   amount Int
-  /// Unique, so the same event can never be recorded twice: a refill is
-  /// `grant:<user>:<week>`, a gift's two sides are `gift:<id>:spend` and
-  /// `gift:<id>:earn`.
+  /// Unique, so the same event can never be recorded twice: legacy grant
+  /// entries, a gift's spend and proceeds entries, or `reward:<grantId>`
+  /// for a programme award.
   key    String   @unique
   giftId String?  @db.Uuid
 
@@ -1157,6 +1195,110 @@ model Gift {
   @@index([commentId, type])
   // The notifications list reads a recipient's gifts newest first.
   @@index([recipientId, createdAt(sort: Desc)])
+}
+
+/// A configurable, versioned programme for recognising exceptional posts.
+/// Rules are declarative JSON; they are never executable user-supplied code.
+model PostRewardProgram {
+  id          String              @id @default(uuid()) @db.Uuid
+  key         String              @unique @db.VarChar(64)
+  name        String              @db.VarChar(100)
+  description String?             @db.Text
+  status      RewardProgramStatus @default(DRAFT)
+  policyVersion Int               @default(1)
+  policy      Json
+  startsAt    DateTime?           @db.Timestamptz()
+  endsAt      DateTime?           @db.Timestamptz()
+  createdById String?             @db.Uuid
+  updatedById String?             @db.Uuid
+  createdAt   DateTime            @default(now()) @db.Timestamptz()
+  updatedAt   DateTime            @updatedAt @db.Timestamptz()
+
+  createdBy  User?                 @relation("PostRewardProgramCreator", fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  updatedBy  User?                 @relation("PostRewardProgramUpdater", fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  nominations PostRewardNomination[]
+  grants      PostRewardGrant[]
+  events      PostRewardAuditEvent[]
+
+  @@index([status, startsAt, endsAt])
+}
+
+/// A community or staff nomination. Submitting one never awards anything:
+/// every award still requires an explicit staff decision.
+model PostRewardNomination {
+  id             String                 @id @default(uuid()) @db.Uuid
+  programId      String                 @db.Uuid
+  postId         String                 @db.Uuid
+  nominatorId    String?                @db.Uuid
+  reason         String                 @db.Text
+  status         RewardNominationStatus @default(PENDING)
+  policyVersion  Int
+  policySnapshot Json
+  reviewedById   String?                @db.Uuid
+  reviewNote     String?                @db.Text
+  reviewedAt     DateTime?              @db.Timestamptz()
+  createdAt      DateTime               @default(now()) @db.Timestamptz()
+  updatedAt      DateTime               @updatedAt @db.Timestamptz()
+
+  program    PostRewardProgram @relation(fields: [programId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post       Post              @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  nominator  User?             @relation("PostRewardNominator", fields: [nominatorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  reviewer   User?             @relation("PostRewardReviewer", fields: [reviewedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  grants     PostRewardGrant[]
+  events     PostRewardAuditEvent[]
+
+  @@unique([programId, postId, nominatorId])
+  @@index([programId, status, createdAt])
+  @@index([postId, createdAt])
+  @@index([nominatorId, createdAt])
+}
+
+/// One fulfilled benefit. The string rewardType and JSON payload let new
+/// reward handlers ship without turning every new idea into a schema enum.
+model PostRewardGrant {
+  id             String   @id @default(uuid()) @db.Uuid
+  programId      String   @db.Uuid
+  nominationId   String   @db.Uuid
+  postId         String   @db.Uuid
+  recipientId    String   @db.Uuid
+  rewardType     String   @db.VarChar(64)
+  payload        Json
+  idempotencyKey String   @unique
+  grantedById    String?  @db.Uuid
+  createdAt      DateTime @default(now()) @db.Timestamptz()
+
+  program    PostRewardProgram    @relation(fields: [programId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  nomination PostRewardNomination @relation(fields: [nominationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post       Post                 @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  recipient  User                 @relation("PostRewardRecipient", fields: [recipientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  grantedBy  User?                @relation("PostRewardGranter", fields: [grantedById], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  events     PostRewardAuditEvent[]
+
+  @@unique([nominationId, rewardType])
+  @@index([recipientId, createdAt(sort: Desc)])
+  @@index([postId, createdAt(sort: Desc)])
+}
+
+/// Append-only audit trail for programme, nomination and grant decisions.
+model PostRewardAuditEvent {
+  id           String   @id @default(uuid()) @db.Uuid
+  programId    String?  @db.Uuid
+  nominationId String?  @db.Uuid
+  grantId      String?  @db.Uuid
+  actorId      String?  @db.Uuid
+  eventType    String   @db.VarChar(64)
+  details      Json
+  createdAt    DateTime @default(now()) @db.Timestamptz()
+
+  program    PostRewardProgram?    @relation(fields: [programId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  nomination PostRewardNomination? @relation(fields: [nominationId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  grant      PostRewardGrant?      @relation(fields: [grantId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  actor      User?                 @relation("PostRewardAuditActor", fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([programId, createdAt])
+  @@index([nominationId, createdAt])
+  @@index([grantId, createdAt])
+  @@index([actorId, createdAt])
 }
 
 // ==========================================

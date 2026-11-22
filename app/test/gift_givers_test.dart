@@ -50,7 +50,7 @@ class _Gifts extends GiftsRepository {
         catalogue: [
           GiftType(type: 'spark', name: 'Spark', emoji: '', coins: 1),
         ],
-        wallet: GiftWallet(coins: 50, earned: 0, weeklyCoins: 100),
+        wallet: GiftWallet(coins: 50, earned: 0, promotional: 50),
       );
 }
 

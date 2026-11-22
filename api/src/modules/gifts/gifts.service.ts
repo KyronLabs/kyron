@@ -8,24 +8,26 @@ import { AccountStatus, CoinKind, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
-import {
-  GIFT_CATALOGUE,
-  type GiftType,
-  WEEKLY_COINS,
-  giftType,
-  nextRefill,
-  weekStart,
-} from './gift-catalogue';
+import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
 /** What a wallet screen shows. */
 export interface Wallet {
-  /** What can be spent: test coins from the weekly refill, less gifts sent. */
+  /** All spendable legacy complimentary and promotional coins, less gifts sent. */
   coins: number;
-  /** What this account's posts have been given. Cannot be spent. */
+  /** Remaining balance from the retired weekly complimentary grant. */
+  legacyComplimentary: number;
+  /** All non-spendable creator proceeds, including legacy complimentary proceeds. */
   earned: number;
-  /** What the refill tops coins up to. */
-  weeklyCoins: number;
-  refillsAt: Date;
+  /** All proceeds eligible for withdrawal: purchased-coin and reward-funded gifts. */
+  withdrawableEarned: number;
+  /** Source breakdown; purchase-funded proceeds are withdrawable. */
+  purchaseFundedEarned: number;
+  /** Source breakdown; approved reward-funded proceeds are also withdrawable. */
+  rewardFundedEarned: number;
+  /** Historical proceeds from retired weekly complimentary credits; not withdrawable. */
+  promotionalEarned: number;
+  /** Unspent promotional reward credits. */
+  promotional: number;
 }
 
 export interface SentGift {
@@ -64,12 +66,17 @@ type Tx = Prisma.TransactionClient;
 /**
  * Gifts: spending coins on somebody else's post.
  *
- * A test version. Coins come only from the weekly refill and earnings cannot
- * be withdrawn, so nothing here is money yet. It is built the way money
- * needs it anyway, because retrofitting that is the expensive part:
+ * The original weekly complimentary grant is retired. Existing unspent
+ * grants remain as grandfathered legacy balances; no new automatic grants
+ * are issued. The ledger keeps the source of every spend and creator credit
+ * explicit so later purchase and payout systems cannot mix promotional value:
  *
  * - **A ledger, not a balance.** Every movement is a CoinEntry, and a balance
  *   is their sum. Nothing is ever updated in place.
+ * - **Reward proceeds are withdrawable.** Approved reward-coin spending
+ *   creates REWARD_EARN, on the same terms as purchase-funded PURCHASE_EARN.
+ *   Retired weekly complimentary spending stays PROMOTIONAL_EARN and is not
+ *   withdrawable. Legacy EARN rows have unknown provenance and stay excluded.
  * - **Nothing twice.** Each entry has a unique key, and each send carries the
  *   app's requestId, so a retry or a double tap is the same gift.
  * - **One spender at a time.** Every change to a wallet locks the account's
@@ -89,12 +96,14 @@ export class GiftsService {
     return GIFT_CATALOGUE;
   }
 
-  /** The reader's wallet, refilled first if a new week has started. */
-  async wallet(userId: string, now = new Date()): Promise<Wallet> {
+  /** The reader's current wallet; reading it never issues new coins. */
+  async wallet(userId: string, _at?: Date): Promise<Wallet> {
+    // Retain the former optional timestamp argument for callers compiled
+    // against the earlier wallet API; it no longer drives a refill.
+    void _at;
     return this.prisma.$transaction(async (tx) => {
       await this.lock(tx, userId);
-      await this.refill(tx, userId, now);
-      return this.balances(tx, userId, now);
+      return this.balances(tx, userId);
     });
   }
 
@@ -214,12 +223,11 @@ export class GiftsService {
         };
       }
 
-      await this.refill(tx, senderId, now);
-      const { coins } = await this.balances(tx, senderId, now);
+      const { coins } = await this.balances(tx, senderId);
       if (coins < kind.coins) {
         throw new BadRequestException(
           `A ${kind.name} costs ${kind.coins} coins and you have ${coins}. ` +
-            'Your coins refill every Monday.',
+            'New coins are issued through Kyron reward programmes; wallets are not refilled automatically.',
         );
       }
 
@@ -234,23 +242,27 @@ export class GiftsService {
           requestId: input.requestId,
         },
       });
+      const spendEntries = await this.spendFromWallet(
+        tx,
+        senderId,
+        kind.coins,
+        gift.id,
+      );
+      // Preserve the source of the coins used for this gift. Proceeds funded
+      // by approved rewards are withdrawable exactly like PURCHASE_EARN;
+      // historical weekly complimentary proceeds keep their old treatment.
+      const creatorEarnings = spendEntries.map((entry) => {
+        const rewardFunded = entry.kind === CoinKind.REWARD_SPEND;
+        return {
+          userId: recipientId,
+          kind: rewardFunded ? CoinKind.REWARD_EARN : CoinKind.PROMOTIONAL_EARN,
+          amount: -entry.amount,
+          key: `gift:${gift.id}:${rewardFunded ? 'reward' : 'legacy'}-earn`,
+          giftId: gift.id,
+        };
+      });
       await tx.coinEntry.createMany({
-        data: [
-          {
-            userId: senderId,
-            kind: CoinKind.SPEND,
-            amount: -kind.coins,
-            key: `gift:${gift.id}:spend`,
-            giftId: gift.id,
-          },
-          {
-            userId: recipientId,
-            kind: CoinKind.EARN,
-            amount: kind.coins,
-            key: `gift:${gift.id}:earn`,
-            giftId: gift.id,
-          },
-        ],
+        data: [...spendEntries, ...creatorEarnings],
       });
       // One statement, so two gifts of new kinds arriving at once both land:
       // a read-then-write would lose one of them.
@@ -435,6 +447,8 @@ export class GiftsService {
     senderId: string,
     now: Date,
   ): Promise<SentGift> {
+    // Idempotent retries do not depend on a wallet/refill timestamp anymore.
+    void now;
     // The count of whatever the gift went to.
     const target =
       gift.commentId === null
@@ -453,37 +467,45 @@ export class GiftsService {
         coins: gift.coins,
         createdAt: gift.createdAt,
       },
-      wallet: await this.balances(tx, senderId, now),
+      wallet: await this.balances(tx, senderId),
       gifts: target?.giftCount ?? 0,
     };
   }
 
-  /**
-   * Tops the wallet up to [WEEKLY_COINS], once a week.
-   *
-   * The week's entry is written even when it adds nothing. Without it, an
-   * account that started the week full would be refilled again after its
-   * first gift, and every gift after that.
-   */
-  private async refill(tx: Tx, userId: string, now: Date): Promise<void> {
-    const key = `grant:${userId}:${weekStart(now).toISOString().slice(0, 10)}`;
-    const done = await tx.coinEntry.findUnique({
-      where: { key },
-      select: { id: true },
-    });
-    if (done) return;
-    const { coins } = await this.balances(tx, userId, now);
-    await tx.coinEntry.create({
-      data: {
-        userId,
-        kind: CoinKind.GRANT,
-        amount: Math.max(0, WEEKLY_COINS - coins),
-        key,
-      },
-    });
+  private async balances(tx: Tx, userId: string): Promise<Wallet> {
+    const balances = await this.ledgerBalances(tx, userId);
+    return {
+      coins: balances.legacyComplimentary + balances.promotional,
+      legacyComplimentary: balances.legacyComplimentary,
+      earned:
+        balances.earned +
+        balances.purchaseFundedEarned +
+        balances.rewardFundedEarned +
+        balances.promotionalEarned,
+      withdrawableEarned:
+        balances.purchaseFundedEarned + balances.rewardFundedEarned,
+      purchaseFundedEarned: balances.purchaseFundedEarned,
+      rewardFundedEarned: balances.rewardFundedEarned,
+      promotionalEarned: balances.promotionalEarned,
+      promotional: balances.promotional,
+    };
   }
 
-  private async balances(tx: Tx, userId: string, now: Date): Promise<Wallet> {
+  /**
+   * Grandfathered complimentary credits and reward credits are separate
+   * spendable buckets. No code path replenishes the legacy balance.
+   */
+  private async ledgerBalances(
+    tx: Tx,
+    userId: string,
+  ): Promise<{
+    legacyComplimentary: number;
+    promotional: number;
+    earned: number;
+    purchaseFundedEarned: number;
+    promotionalEarned: number;
+    rewardFundedEarned: number;
+  }> {
     const sums = await tx.coinEntry.groupBy({
       by: ['kind'],
       where: { userId },
@@ -492,11 +514,55 @@ export class GiftsService {
     const sum = (kind: CoinKind) =>
       sums.find((row) => row.kind === kind)?._sum.amount ?? 0;
     return {
-      coins: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
+      // GRANT/SPEND are retained only to honour balances issued before the
+      // weekly complimentary programme was retired.
+      legacyComplimentary: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
+      promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
+      // EARN is legacy test history with unknown provenance and remains
+      // outside the withdrawable amount.
       earned: sum(CoinKind.EARN),
-      weeklyCoins: WEEKLY_COINS,
-      refillsAt: nextRefill(now),
+      purchaseFundedEarned: sum(CoinKind.PURCHASE_EARN),
+      rewardFundedEarned: sum(CoinKind.REWARD_EARN),
+      promotionalEarned: sum(CoinKind.PROMOTIONAL_EARN),
     };
+  }
+
+  /** Spend grandfathered complimentary credits first, then reward credits. */
+  private async spendFromWallet(
+    tx: Tx,
+    userId: string,
+    amount: number,
+    giftId: string,
+  ): Promise<Prisma.CoinEntryCreateManyInput[]> {
+    const balances = await this.ledgerBalances(tx, userId);
+    const legacyComplimentary = Math.max(0, balances.legacyComplimentary);
+    const promotional = Math.max(0, balances.promotional);
+    if (legacyComplimentary + promotional < amount) {
+      throw new BadRequestException('Your wallet no longer covers this gift.');
+    }
+
+    const legacySpend = Math.min(legacyComplimentary, amount);
+    const promotionalSpend = amount - legacySpend;
+    const entries: Prisma.CoinEntryCreateManyInput[] = [];
+    if (legacySpend > 0) {
+      entries.push({
+        userId,
+        kind: CoinKind.SPEND,
+        amount: -legacySpend,
+        key: `gift:${giftId}:legacy-spend`,
+        giftId,
+      });
+    }
+    if (promotionalSpend > 0) {
+      entries.push({
+        userId,
+        kind: CoinKind.REWARD_SPEND,
+        amount: -promotionalSpend,
+        key: `gift:${giftId}:reward-spend`,
+        giftId,
+      });
+    }
+    return entries;
   }
 
   /** Holds the account's row until the transaction ends. */
