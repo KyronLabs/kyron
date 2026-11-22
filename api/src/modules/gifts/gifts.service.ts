@@ -21,8 +21,12 @@ import {
 export interface Wallet {
   /** All spendable weekly and promotional coins, less gifts sent. */
   coins: number;
-  /** What this account's posts have been given. Cannot be spent. */
+  /** All non-spendable gift proceeds, including promotional proceeds. */
   earned: number;
+  /** Proceeds originating from purchased coins; reserved for future payout accounting. */
+  withdrawableEarned: number;
+  /** Gift proceeds originating from free or promotional coins; never cashable. */
+  promotionalEarned: number;
   /** Promotional credits still available; not part of the weekly refill cap. */
   promotional: number;
   /** What the weekly allowance tops up to, independently of promotions. */
@@ -247,9 +251,12 @@ export class GiftsService {
           ...spendEntries,
           {
             userId: recipientId,
-            kind: CoinKind.EARN,
+            // Weekly refill and reward credits are not purchased value.
+            // Their recipient proceeds must stay outside any future payout
+            // calculation, which will use CoinKind.EARN only.
+            kind: CoinKind.PROMOTIONAL_EARN,
             amount: kind.coins,
-            key: `gift:${gift.id}:earn`,
+            key: `gift:${gift.id}:promotional-earn`,
             giftId: gift.id,
           },
         ],
@@ -489,7 +496,9 @@ export class GiftsService {
     const balances = await this.ledgerBalances(tx, userId);
     return {
       coins: balances.weekly + balances.promotional,
-      earned: balances.earned,
+      earned: balances.earned + balances.promotionalEarned,
+      withdrawableEarned: balances.earned,
+      promotionalEarned: balances.promotionalEarned,
       promotional: balances.promotional,
       weeklyCoins: WEEKLY_COINS,
       refillsAt: nextRefill(now),
@@ -504,7 +513,12 @@ export class GiftsService {
   private async ledgerBalances(
     tx: Tx,
     userId: string,
-  ): Promise<{ weekly: number; promotional: number; earned: number }> {
+  ): Promise<{
+    weekly: number;
+    promotional: number;
+    earned: number;
+    promotionalEarned: number;
+  }> {
     const sums = await tx.coinEntry.groupBy({
       by: ['kind'],
       where: { userId },
@@ -517,6 +531,7 @@ export class GiftsService {
       promotional:
         sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
       earned: sum(CoinKind.EARN),
+      promotionalEarned: sum(CoinKind.PROMOTIONAL_EARN),
     };
   }
 
