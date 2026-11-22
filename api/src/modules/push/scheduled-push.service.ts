@@ -231,5 +231,4 @@ export class ScheduledPushService
     }
     return parts.length ? parts : null;
   }
-
 }
