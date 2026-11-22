@@ -313,7 +313,9 @@ export class LedgerService {
 
     for (const line of input.postings) {
       if (!line.accountKey || line.accountKey.length > 160) {
-        throw new BadRequestException('Every posting needs a valid account key.');
+        throw new BadRequestException(
+          'Every posting needs a valid account key.',
+        );
       }
       if (!line.name || line.name.length > 120) {
         throw new BadRequestException('Every posting needs an account name.');
@@ -326,11 +328,15 @@ export class LedgerService {
       try {
         amount = new Prisma.Decimal(line.amount);
       } catch {
-        throw new BadRequestException('Posting amount must be a decimal string.');
+        throw new BadRequestException(
+          'Posting amount must be a decimal string.',
+        );
       }
 
       if (!amount.isFinite() || amount.lte(0)) {
-        throw new BadRequestException('Posting amount must be greater than zero.');
+        throw new BadRequestException(
+          'Posting amount must be greater than zero.',
+        );
       }
       if (amount.decimalPlaces() > 8) {
         throw new BadRequestException(
@@ -338,12 +344,18 @@ export class LedgerService {
         );
       }
       if (input.currencyCode === 'KCOIN' && !amount.isInteger()) {
-        throw new BadRequestException('Virtual coin postings must be whole coins.');
+        throw new BadRequestException(
+          'Virtual coin postings must be whole coins.',
+        );
       }
 
       if (line.side === 'DEBIT') debits = debits.plus(amount);
       else if (line.side === 'CREDIT') credits = credits.plus(amount);
-      else throw new BadRequestException('Posting side must be DEBIT or CREDIT.');
+      else {
+        throw new BadRequestException(
+          'Posting side must be DEBIT or CREDIT.',
+        );
+      }
     }
 
     if (!debits.eq(credits)) {
