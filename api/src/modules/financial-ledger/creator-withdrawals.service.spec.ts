@@ -45,11 +45,9 @@ describe('disabled payout adapters', () => {
   });
 
   it('refuses to create FX quotes without a configured provider', async () => {
-    await expect(new DisabledFxQuoteProvider().quote({
-      creatorId: 'creator',
-      coinAmount: 500,
-      targetCurrency: 'GHS',
-    })).rejects.toBeInstanceOf(ServiceUnavailableException);
+    await expect(new DisabledFxQuoteProvider().quote()).rejects.toBeInstanceOf(
+      ServiceUnavailableException,
+    );
   });
 
   it('reports that the bank payout provider is not configured', () => {
@@ -57,12 +55,8 @@ describe('disabled payout adapters', () => {
   });
 
   it('refuses to submit bank payouts without a configured provider', async () => {
-    await expect(new DisabledBankPayoutProvider().submit({
-      providerCode: 'unconfigured',
-      providerRecipientRef: 'opaque-ref',
-      currency: 'GHS',
-      amountMinor: 1000n,
-      idempotencyKey: 'payout:test',
-    })).rejects.toBeInstanceOf(ServiceUnavailableException);
+    await expect(new DisabledBankPayoutProvider().submit()).rejects.toBeInstanceOf(
+      ServiceUnavailableException,
+    );
   });
 });
