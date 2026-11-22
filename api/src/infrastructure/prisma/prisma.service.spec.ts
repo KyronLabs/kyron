@@ -38,3 +38,29 @@ describe('describeDatabaseHost', () => {
     expect(describeDatabaseHost(undefined)).toBeNull();
   });
 });
+
+
+describe('PrismaService startup readiness', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('refuses to finish startup when all database connection attempts fail', async () => {
+    const { PrismaService } = await import('./prisma.service');
+    const service = new PrismaService();
+    const connect = jest
+      .spyOn(service, '$connect')
+      .mockRejectedValue(new Error('database unavailable'));
+    jest.spyOn(service, 'diagnoseHost').mockResolvedValue(null);
+    jest.useFakeTimers();
+
+    const initialization = service.onModuleInit();
+    await jest.runAllTimersAsync();
+
+    await expect(initialization).rejects.toThrow(
+      'Database connection is unavailable; refusing to start the API.',
+    );
+    expect(connect).toHaveBeenCalledTimes(5);
+  });
+});
