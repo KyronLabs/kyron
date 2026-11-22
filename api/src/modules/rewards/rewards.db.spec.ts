@@ -8,7 +8,6 @@ import {
 } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { nextRefill } from '../gifts/gift-catalogue';
 import { RecordingDelivery } from '../push/delivery.test-double';
 import { GiftsService } from '../gifts/gifts.service';
 import { RewardsService } from './rewards.service';
@@ -117,9 +116,9 @@ run('post excellence rewards, against a real database', () => {
       limits: {
         maxAwardsPerPost: 1,
         maxAwardsPerCreatorPer30Days: 2,
-        maxTotalPromotionalCoins: 50,
+        maxTotalPromotionalCoins: 100,
       },
-      rewards: [{ type: 'PROMOTIONAL_COINS', amount: 50 }],
+      rewards: [{ type: 'PROMOTIONAL_COINS', amount: 100 }],
     };
 
     const program = await rewards.createProgram(staff, {
@@ -189,38 +188,28 @@ run('post excellence rewards, against a real database', () => {
       }),
     ).toBe(1);
 
-    // The award is on top of, not in place of, the weekly 100-coin allowance.
+    // A new account receives no automatic complimentary grant. Its only
+    // spendable coins here are the staff-approved promotional reward.
     const wallet = await gifts.wallet(authorId, now);
     expect(wallet).toMatchObject({
-      coins: 150,
+      coins: 100,
+      legacyComplimentary: 0,
       earned: 0,
-      promotional: 50,
-      weeklyCoins: 100,
+      promotional: 100,
     });
 
-    // Gifts consume the weekly bucket first, then promotional reward credits.
+    // With no weekly bucket, the gift consumes only the promotional reward.
     await gifts.send(
       authorId,
       recipientPostId,
       { type: 'rocket', requestId: randomUUID() },
       now,
     );
-    const afterWeeklySpend = await gifts.wallet(authorId, now);
-    expect(afterWeeklySpend).toMatchObject({
-      coins: 50,
-      promotional: 50,
-    });
-
-    await gifts.send(
-      authorId,
-      recipientPostId,
-      { type: 'gem', requestId: randomUUID() },
-      now,
-    );
     const afterRewardSpend = await gifts.wallet(authorId, now);
     expect(afterRewardSpend).toMatchObject({
-      coins: 30,
-      promotional: 30,
+      coins: 0,
+      legacyComplimentary: 0,
+      promotional: 0,
     });
 
     // Free or reward-credit spending creates non-cashable proceeds for the
@@ -242,9 +231,9 @@ run('post excellence rewards, against a real database', () => {
       ],
     });
     const recipientWallet = await gifts.wallet(nominatorId, now);
-    expect(recipientWallet.earned).toBe(137);
+    expect(recipientWallet.earned).toBe(117);
     expect(recipientWallet.purchaseFundedEarned).toBe(10);
-    expect(recipientWallet.promotionalEarned).toBe(120);
+    expect(recipientWallet.promotionalEarned).toBe(100);
 
     // A later nomination keeps its original policy snapshot, but cannot
     // exceed the programme's current shared budget after the first award.
@@ -270,14 +259,15 @@ run('post excellence rewards, against a real database', () => {
       )?.status,
     ).toBe('PENDING');
 
-    // The next refill restores the weekly bucket without consuming or capping
-    // the promotional balance.
-    const nextWeek = nextRefill(now);
-    const nextWallet = await gifts.wallet(authorId, nextWeek);
-    expect(nextWallet).toMatchObject({
-      coins: 130,
-      promotional: 30,
-      weeklyCoins: 100,
+    // Time passing does not create new complimentary coins.
+    const laterWallet = await gifts.wallet(
+      authorId,
+      new Date(now.getTime() + 8 * 24 * 60 * 60 * 1000),
+    );
+    expect(laterWallet).toMatchObject({
+      coins: 0,
+      legacyComplimentary: 0,
+      promotional: 0,
     });
   });
 
