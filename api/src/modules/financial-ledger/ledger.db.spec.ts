@@ -18,6 +18,7 @@ run('financial ledger, against a real database', () => {
   const stamp = randomUUID();
   const debitAccountId = randomUUID();
   const creditAccountId = randomUUID();
+  const wrongCurrencyAccountId = randomUUID();
   let balancedTransactionId = '';
 
   beforeAll(async () => {
@@ -49,6 +50,15 @@ run('financial ledger, against a real database', () => {
           accountType: 'LIABILITY',
           normalSide: 'CREDIT',
           currencyCode: 'KCOIN',
+          ownerId: userId,
+        },
+        {
+          id: wrongCurrencyAccountId,
+          accountKey: `test:${stamp}:wrong-currency`,
+          name: 'Test GHS account',
+          accountType: 'LIABILITY',
+          normalSide: 'CREDIT',
+          currencyCode: 'GHS',
           ownerId: userId,
         },
       ],
@@ -138,6 +148,44 @@ run('financial ledger, against a real database', () => {
         });
       }),
     ).rejects.toThrow();
+  });
+
+  it('rejects a posting to an account denominated in another currency', async () => {
+    const id = randomUUID();
+
+    await expect(
+      prisma.$transaction(async (tx) => {
+        await tx.ledgerTransaction.create({
+          data: {
+            id,
+            idempotencyKey: `test-currency-mismatch:${id}`,
+            eventType: 'TEST_CURRENCY_MISMATCH',
+            sourceType: 'TEST',
+            sourceId: id,
+            currencyCode: 'KCOIN',
+            actorId: userId,
+          },
+        });
+        await tx.ledgerPosting.createMany({
+          data: [
+            {
+              transactionId: id,
+              accountId: debitAccountId,
+              lineNumber: 1,
+              side: 'DEBIT',
+              amount: 10,
+            },
+            {
+              transactionId: id,
+              accountId: wrongCurrencyAccountId,
+              lineNumber: 2,
+              side: 'CREDIT',
+              amount: 10,
+            },
+          ],
+        });
+      }),
+    ).rejects.toThrow(/another currency/i);
   });
 
   it('rejects posting lines added after the parent transaction committed', async () => {
