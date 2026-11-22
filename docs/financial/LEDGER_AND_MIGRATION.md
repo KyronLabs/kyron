@@ -109,6 +109,8 @@ The migration in this phase creates new tables and database enforcement only. It
 
 It also removes the old cascading foreign key from `CoinEntry.userId` without changing any rows. `userId` remains a required UUID snapshot, so deleting a Kyron account no longer cascades through its virtual-coin history. No code path currently depends on a Prisma `CoinEntry.user` relation; wallet queries continue to filter by `userId`.
 
+**Remaining retention blocker:** `Gift` still cascades on recipient/post/comment deletion, and `PostRewardGrant` still cascades on programme/nomination/post/recipient deletion. Although `CoinEntry` rows survive and `CoinEntry.giftId` is `SET NULL`, those source rows can be lost. Before real-money records are created or the legacy bridge is run, implement a reviewed tombstone/soft-delete strategy for Gift and reward-grant source records, preserving source IDs, amounts, provenance, audit events and legal retention requirements.
+
 Before the bridge is enabled:
 1. Take and verify a database backup.
 2. Reconcile live schema and `_prisma_migrations` against the repository's migration history.
