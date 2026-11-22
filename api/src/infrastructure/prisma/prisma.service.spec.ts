@@ -39,7 +39,6 @@ describe('describeDatabaseHost', () => {
   });
 });
 
-
 describe('PrismaService startup readiness', () => {
   afterEach(() => {
     jest.useRealTimers();
