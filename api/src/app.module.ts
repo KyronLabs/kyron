@@ -23,6 +23,7 @@ import { VerificationModule } from './modules/verification/verification.module';
 import { GiftsModule } from './modules/gifts/gifts.module';
 import { PublicModule } from './modules/public/public.module';
 import { RewardsModule } from './modules/rewards/rewards.module';
+import { FinancialLedgerModule } from './modules/financial-ledger/financial-ledger.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { RewardsModule } from './modules/rewards/rewards.module';
     VerificationModule,
     GiftsModule,
     RewardsModule,
+    FinancialLedgerModule,
     PublicModule,
   ],
   controllers: [],
