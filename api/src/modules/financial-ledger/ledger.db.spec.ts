@@ -2,6 +2,9 @@ import { randomUUID } from 'node:crypto';
 
 import { PrismaClient } from '@prisma/client';
 
+import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { LedgerService } from './ledger.service';
+
 const url = process.env.MODERATION_TEST_DATABASE_URL;
 const run = url ? describe : describe.skip;
 
@@ -14,6 +17,7 @@ const run = url ? describe : describe.skip;
  */
 run('financial ledger, against a real database', () => {
   let prisma: PrismaClient;
+  let ledger: LedgerService;
   const userId = randomUUID();
   const stamp = randomUUID();
   const debitAccountId = randomUUID();
@@ -23,6 +27,7 @@ run('financial ledger, against a real database', () => {
 
   beforeAll(async () => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
+    ledger = new LedgerService(prisma as PrismaService);
 
     await prisma.user.create({
       data: {
@@ -217,6 +222,74 @@ run('financial ledger, against a real database', () => {
     await expect(
       prisma.ledgerPosting.delete({ where: { id: posting.id } }),
     ).rejects.toThrow();
+  });
+
+  it('posts idempotently and rejects an idempotency key reused for another event', async () => {
+    const idempotencyKey = `service-post:${stamp}`;
+    const input = {
+      idempotencyKey,
+      eventType: 'SERVICE_TEST',
+      sourceType: 'TEST',
+      sourceId: stamp,
+      currencyCode: 'KCOIN',
+      actorId: userId,
+      metadata: { test: true },
+      postings: [
+        {
+          accountKey: `test:${stamp}:debit`,
+          name: 'Test debit account',
+          accountType: 'ASSET' as const,
+          normalSide: 'DEBIT' as const,
+          ownerId: userId,
+          side: 'DEBIT' as const,
+          amount: '5.00000000',
+        },
+        {
+          accountKey: `test:${stamp}:credit`,
+          name: 'Test credit account',
+          accountType: 'LIABILITY' as const,
+          normalSide: 'CREDIT' as const,
+          ownerId: userId,
+          side: 'CREDIT' as const,
+          amount: '5.00000000',
+        },
+      ],
+    };
+
+    const first = await ledger.post(input);
+    const retry = await ledger.post(input);
+    expect(retry.id).toBe(first.id);
+
+    await expect(
+      ledger.post({
+        ...input,
+        postings: input.postings.map((line) => ({
+          ...line,
+          amount: '6.00000000',
+        })),
+      }),
+    ).rejects.toThrow(/idempotency key/i);
+  });
+
+  it('reverses a posted event with new opposite postings', async () => {
+    const reversal = await ledger.reverse(
+      balancedTransactionId,
+      `reverse:${balancedTransactionId}`,
+      userId,
+    );
+    const replay = await ledger.reverse(
+      balancedTransactionId,
+      `reverse:${balancedTransactionId}`,
+      userId,
+    );
+
+    expect(replay.id).toBe(reversal.id);
+    expect(reversal.reversalOfId).toBe(balancedTransactionId);
+    expect(reversal.postings).toHaveLength(2);
+    expect(reversal.postings.map((line) => line.side)).toEqual([
+      'CREDIT',
+      'DEBIT',
+    ]);
   });
 
   it('protects ledger account identity while allowing status changes', async () => {
