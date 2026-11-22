@@ -314,11 +314,14 @@ The coin system has moved beyond the original test-economy assumptions:
   automatically replenished.
 - New promotional coin grants are issued only through staff-approved post
   excellence reward programmes.
-- Creator proceeds from legacy/promotional spending are tracked as
-  `PROMOTIONAL_EARN`; they are not purchase-funded.
-- `PURCHASE_EARN` is reserved for proceeds whose source is verified purchased
-  coin spending. Historic `EARN` rows have unknown test-era provenance and
-  must never be treated as payout-eligible.
+- Creator proceeds funded by approved reward coins are withdrawable on the
+  same terms as purchased-coin proceeds. `REWARD_EARN` and `PURCHASE_EARN`
+  both contribute to `withdrawableEarned`; the separate kinds retain source
+  attribution for reconciliation, not different creator treatment.
+- Proceeds funded by the grandfathered weekly complimentary balance remain
+  separately classified as `PROMOTIONAL_EARN` and are not withdrawable.
+- Historic `EARN` rows have unknown test-era provenance and must never be
+  treated as payout-eligible.
 - No coin-purchase or payout path is enabled by this rewards change.
 - Gifts remain implemented in the main app/API.
 
