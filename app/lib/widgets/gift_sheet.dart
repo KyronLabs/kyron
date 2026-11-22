@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
@@ -309,7 +308,7 @@ class _SheetState extends ConsumerState<_Sheet> {
                 // Said every time, not once: nobody should think these are
                 // worth anything while they are not.
                 Text(
-                  _notice(context, wallet),
+                  _notice(context),
                   style: TextStyle(
                     fontSize: TypographyTokens.fontSize1,
                     height: 1.4,
@@ -364,7 +363,7 @@ class _SheetState extends ConsumerState<_Sheet> {
     );
   }
 
-  String _notice(BuildContext context, GiftWallet wallet) {
+  String _notice(BuildContext context) {
     return AppLocalizations.of(context).ui(
       'ui_gift_rewards_notice',
       'Coins are not automatically replenished. New coins are awarded through Kyron reward programmes.',
