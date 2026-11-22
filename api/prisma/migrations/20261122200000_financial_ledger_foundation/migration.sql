@@ -36,6 +36,7 @@ CREATE TABLE "LedgerTransaction" (
   "id" UUID NOT NULL,
   "createdXid" BIGINT NOT NULL DEFAULT txid_current(),
   "idempotencyKey" VARCHAR(200) NOT NULL,
+  "requestHash" CHAR(64) NOT NULL,
   "eventType" VARCHAR(64) NOT NULL,
   "sourceType" VARCHAR(64) NOT NULL,
   "sourceId" VARCHAR(160),
@@ -115,6 +116,7 @@ FROM PUBLIC, anon, authenticated, service_role;
 
 CREATE UNIQUE INDEX "LedgerAccount_accountKey_key" ON "LedgerAccount"("accountKey");
 CREATE UNIQUE INDEX "LedgerTransaction_idempotencyKey_key" ON "LedgerTransaction"("idempotencyKey");
+CREATE UNIQUE INDEX "LedgerTransaction_reversalOfId_key" ON "LedgerTransaction"("reversalOfId") WHERE "reversalOfId" IS NOT NULL;
 CREATE UNIQUE INDEX "LedgerPosting_transactionId_lineNumber_key" ON "LedgerPosting"("transactionId", "lineNumber");
 CREATE INDEX "LedgerAccount_ownerId_currencyCode_status_idx" ON "LedgerAccount"("ownerId", "currencyCode", "status");
 CREATE INDEX "LedgerAccount_accountType_currencyCode_idx" ON "LedgerAccount"("accountType", "currencyCode");
