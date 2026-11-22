@@ -69,7 +69,7 @@ Database enforcement:
 - Posted transactions, postings, audit events and conversion-rate versions cannot be updated or deleted.
 - Corrections use new compensating events.
 - Account identity and denomination cannot be rewritten.
-- Deleting a user nulls actor/owner references rather than cascading through financial evidence.
+- Actor/owner UUIDs are immutable snapshots without User foreign keys, so deleting a user cannot mutate or cascade through financial evidence.
 
 A ledger transaction represents one currency. A cross-currency conversion is a correlated set of balanced transactions, with the conversion rate snapshot recorded alongside the withdrawal quote.
 
