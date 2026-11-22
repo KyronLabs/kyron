@@ -188,17 +188,26 @@ run('post excellence rewards, against a real database', () => {
       }),
     ).toBe(1);
 
-    // A new account receives no automatic complimentary grant. Its only
-    // spendable coins here are the staff-approved promotional reward.
+    // New accounts receive no automatic complimentary grant. Seed five
+    // grandfathered weekly coins to prove a mixed-source gift is split in
+    // the ledger, while reward-funded proceeds remain withdrawable.
+    await prisma.coinEntry.create({
+      data: {
+        userId: authorId,
+        kind: CoinKind.GRANT,
+        amount: 5,
+        key: `legacy-weekly-balance:${stamp}`,
+      },
+    });
     const wallet = await gifts.wallet(authorId, now);
     expect(wallet).toMatchObject({
-      coins: 100,
-      legacyComplimentary: 0,
+      coins: 105,
+      legacyComplimentary: 5,
       earned: 0,
       promotional: 100,
     });
 
-    // With no weekly bucket, the gift consumes only the promotional reward.
+    // Legacy complimentary credits are spent first, then reward credits.
     await gifts.send(
       authorId,
       recipientPostId,
@@ -207,13 +216,14 @@ run('post excellence rewards, against a real database', () => {
     );
     const afterRewardSpend = await gifts.wallet(authorId, now);
     expect(afterRewardSpend).toMatchObject({
-      coins: 0,
+      coins: 5,
       legacyComplimentary: 0,
-      promotional: 0,
+      promotional: 5,
     });
 
-    // Free or reward-credit spending creates non-cashable proceeds for the
-    // recipient; it must never land in the purchase-funded earnings bucket.
+    // Reward-funded creator proceeds are withdrawable just like proceeds from
+    // purchased-coin spending. Only the five legacy weekly coins remain
+    // classified as non-withdrawable historical promotional proceeds.
     await prisma.coinEntry.createMany({
       data: [
         {
@@ -232,8 +242,10 @@ run('post excellence rewards, against a real database', () => {
     });
     const recipientWallet = await gifts.wallet(nominatorId, now);
     expect(recipientWallet.earned).toBe(117);
+    expect(recipientWallet.withdrawableEarned).toBe(105);
     expect(recipientWallet.purchaseFundedEarned).toBe(10);
-    expect(recipientWallet.promotionalEarned).toBe(100);
+    expect(recipientWallet.rewardFundedEarned).toBe(95);
+    expect(recipientWallet.promotionalEarned).toBe(5);
 
     // A later nomination keeps its original policy snapshot, but cannot
     // exceed the programme's current shared budget after the first award.
