@@ -90,6 +90,7 @@ run('financial ledger, against a real database', () => {
         data: {
           id,
           idempotencyKey: `test-ledger:${id}`,
+            requestHash: 'a'.repeat(64),
           eventType: 'TEST_POSTING',
           sourceType: 'TEST',
           sourceId: id,
@@ -144,6 +145,7 @@ run('financial ledger, against a real database', () => {
           data: {
             id,
             idempotencyKey: `test-unbalanced:${id}`,
+            requestHash: 'b'.repeat(64),
             eventType: 'TEST_UNBALANCED',
             sourceType: 'TEST',
             sourceId: id,
@@ -173,6 +175,7 @@ run('financial ledger, against a real database', () => {
           data: {
             id,
             idempotencyKey: `test-currency-mismatch:${id}`,
+            requestHash: 'c'.repeat(64),
             eventType: 'TEST_CURRENCY_MISMATCH',
             sourceType: 'TEST',
             sourceId: id,
