@@ -1,0 +1,97 @@
+# Post Excellence Rewards
+
+Kyron's rewards engine recognises unusually valuable posts. It is not a
+points leaderboard, a popularity contest, or a creator-payout system.
+
+## Principles
+
+- **Editorial judgement first.** A nomination asks for a human review. Likes,
+  views, reposts, gifts, follower counts and other popularity signals do not
+  automatically qualify a post or decide an award.
+- **A nomination is not a promise.** Only an authorised staff decision creates
+  a grant. Declines and approvals are recorded.
+- **Versioned programmes.** Every nomination stores the programme policy and
+  version it was submitted under. Editing a programme cannot silently change
+  the rules or potential benefit for nominations already in the queue.
+- **Extensible, not executable.** Programmes store versioned JSON policy data.
+  Reward types are dispatched through explicit server-side handlers. A policy
+  cannot run code, call a URL or choose an arbitrary class.
+- **Separate accounting.** The initial reward type is promotional coins. They
+  are added to the existing virtual gift wallet through a unique CoinEntry
+  grant. They are not money, not purchased currency, and cannot be withdrawn.
+  Gift earnings remain a separate balance.
+- **Auditable and idempotent.** Nomination, review and grant writes happen in
+  database transactions. A unique key prevents the same nomination/reward type
+  from being granted twice. Audit events record who performed each action.
+
+## Workflow
+
+1. A staff member creates a programme as a draft.
+2. Staff configures its policy and activates it when ready.
+3. An eligible signed-in account nominates a post and explains what makes it
+   exceptional.
+4. The nomination enters the staff queue. It does not alter feed ranking,
+   unlock visibility, or grant any currency.
+5. A staff member approves or declines it. Staff routes use the existing
+   staff-session check, including AAL2 when
+   STAFF_REQUIRE_SECOND_FACTOR=true.
+6. Approval checks the saved policy snapshot and current post/author
+   eligibility, enforces the programme's award caps, writes the grant and
+   its audit events, and applies the registered reward handler atomically.
+
+## Policy version 1
+
+A v1 programme policy has this shape:
+
+```json
+{
+  "version": 1,
+  "nomination": {
+    "enabled": true,
+    "minPostAgeHours": 24,
+    "maxPostAgeDays": 30,
+    "maxPerUserPerDay": 3,
+    "allowSelfNomination": false
+  },
+  "limits": {
+    "maxAwardsPerPost": 1,
+    "maxAwardsPerCreatorPer30Days": 2
+  },
+  "rewards": [
+    { "type": "PROMOTIONAL_COINS", "amount": 50 }
+  ]
+}
+```
+
+The ranges are validated by the API. V1 supports manual review and the
+PROMOTIONAL_COINS handler only. A new reward type must have a server-side
+handler and tests before it can be configured. New policy versions can add
+new nomination, eligibility, budget, quality-review, or programme mechanics
+without changing the meaning of existing policy snapshots.
+
+## API
+
+Public, authenticated routes:
+
+- GET /rewards/programs
+- POST /rewards/programs/:programId/nominations
+- GET /rewards/me
+
+Staff routes:
+
+- GET /moderation/rewards/programs
+- POST /moderation/rewards/programs
+- PATCH /moderation/rewards/programs/:id
+- GET /moderation/rewards/nominations
+- POST /moderation/rewards/nominations/:id/decision
+
+All routes are authenticated. Staff routes require an ADMIN or MODERATOR
+account; when second-factor enforcement is enabled they also require an
+AAL2 session.
+
+## Deliberately not included yet
+
+There is no automatic post-scoring model, trending threshold, feed boost,
+badge, cash balance, payout, or public leaderboard. These should be separate
+reward handlers or policy versions with their own abuse controls, user-facing
+rules and tests. The existing retired Kyron Points award route is not revived.
