@@ -417,6 +417,11 @@ export class RewardsService {
       if (nomination.status !== RewardNominationStatus.PENDING) {
         throw new ConflictException('This nomination has already been decided.');
       }
+      if (nomination.nominatorId === staff.id) {
+        throw new ForbiddenException(
+          'You cannot review a nomination you submitted.',
+        );
+      }
 
       if (decision === 'DECLINE') {
         const updated = await tx.postRewardNomination.update({
