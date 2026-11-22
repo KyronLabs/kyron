@@ -24,6 +24,7 @@ export interface PostRewardPolicyV1 {
   limits: {
     maxAwardsPerPost: number;
     maxAwardsPerCreatorPer30Days: number;
+    maxTotalPromotionalCoins: number;
   };
   rewards: PromotionalCoinsReward[];
 }
@@ -140,6 +141,12 @@ export function parsePostRewardPolicy(value: unknown): PostRewardPolicyV1 {
         1,
         30,
       ),
+      maxTotalPromotionalCoins: integer(
+        limits.maxTotalPromotionalCoins,
+        'limits.maxTotalPromotionalCoins',
+        1,
+        10_000_000,
+      ),
     },
     rewards,
   };
@@ -158,6 +165,7 @@ export const DEFAULT_POST_REWARD_POLICY: PostRewardPolicyV1 = {
   limits: {
     maxAwardsPerPost: 1,
     maxAwardsPerCreatorPer30Days: 2,
+    maxTotalPromotionalCoins: 10_000,
   },
   rewards: [{ type: 'PROMOTIONAL_COINS', amount: 50 }],
 };
