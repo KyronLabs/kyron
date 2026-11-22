@@ -138,36 +138,35 @@ void main() {
     });
 
     test('reward coins can be withdrawn; legacy weekly coins cannot', () {
-        final rewardWallet = GiftWallet.fromJson(const {
-          'coins': 50,
-          'earned': 100,
-          'withdrawableEarned': 100,
-          'purchaseFundedEarned': 0,
-          'rewardFundedEarned': 100,
-          'promotionalEarned': 0,
-          'promotional': 50,
-          'legacyComplimentary': 0,
-        });
-        expect(rewardWallet.coins, 50);
-        expect(rewardWallet.promotional, 50);
-        expect(rewardWallet.earned, 100);
-        expect(rewardWallet.withdrawableEarned, 100);
-        expect(rewardWallet.rewardFundedEarned, 100);
+      final rewardWallet = GiftWallet.fromJson(const {
+        'coins': 50,
+        'earned': 100,
+        'withdrawableEarned': 100,
+        'purchaseFundedEarned': 0,
+        'rewardFundedEarned': 100,
+        'promotionalEarned': 0,
+        'promotional': 50,
+        'legacyComplimentary': 0,
+      });
+      expect(rewardWallet.coins, 50);
+      expect(rewardWallet.promotional, 50);
+      expect(rewardWallet.earned, 100);
+      expect(rewardWallet.withdrawableEarned, 100);
+      expect(rewardWallet.rewardFundedEarned, 100);
 
-        final legacyWallet = GiftWallet.fromJson(const {
-          'coins': 0,
-          'earned': 10,
-          'withdrawableEarned': 0,
-          'purchaseFundedEarned': 0,
-          'rewardFundedEarned': 0,
-          'promotionalEarned': 10,
-          'legacyComplimentary': 0,
-        });
-        expect(legacyWallet.earned, 10);
-        expect(legacyWallet.withdrawableEarned, 0);
-        expect(legacyWallet.promotionalEarned, 10);
-      },
-    );
+      final legacyWallet = GiftWallet.fromJson(const {
+        'coins': 0,
+        'earned': 10,
+        'withdrawableEarned': 0,
+        'purchaseFundedEarned': 0,
+        'rewardFundedEarned': 0,
+        'promotionalEarned': 10,
+        'legacyComplimentary': 0,
+      });
+      expect(legacyWallet.earned, 10);
+      expect(legacyWallet.withdrawableEarned, 0);
+      expect(legacyWallet.promotionalEarned, 10);
+    });
 
     test('a post carries its gift count, and none means zero', () {
       expect(FeedPost.fromJson(const {'id': 'p', 'gifts': 7}).gifts, 7);
