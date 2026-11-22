@@ -69,13 +69,17 @@ class GiftWallet {
   /// What this account's posts have been given. Never spendable.
   final int earned;
 
-  /// What the refill tops coins up to.
+  /// Unspent promotional reward credits, also spendable on gifts.
+  final int promotional;
+
+  /// What the weekly refill tops up to, excluding promotional rewards.
   final int weeklyCoins;
   final DateTime? refillsAt;
 
   const GiftWallet({
     required this.coins,
     required this.earned,
+    this.promotional = 0,
     required this.weeklyCoins,
     this.refillsAt,
   });
@@ -83,6 +87,7 @@ class GiftWallet {
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         earned: (json['earned'] as num?)?.toInt() ?? 0,
+        promotional: (json['promotional'] as num?)?.toInt() ?? 0,
         weeklyCoins: (json['weeklyCoins'] as num?)?.toInt() ?? 0,
         refillsAt:
             DateTime.tryParse(json['refillsAt'] as String? ?? '')?.toLocal(),
