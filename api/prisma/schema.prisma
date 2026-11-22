@@ -1134,6 +1134,13 @@ enum CoinKind {
   REWARD_EARN
 }
 
+enum GooglePlayPurchaseStatus {
+  VERIFIED
+  CONSUMED
+  VOIDED
+  REFUNDED
+}
+
 /// Account classification for the general ledger. Normal balance is stored
 /// explicitly on each account so account-specific reports do not guess.
 enum FinancialAccountType {
@@ -2288,4 +2295,42 @@ model FinancialSourceRecord {
   @@unique([sourceType, sourceId])
   @@index([beneficiaryId, occurredAt(sort: Desc)])
   @@index([sourceType, occurredAt])
+}
+
+
+/// One-time Google Play product purchase. The raw purchase token is encrypted;
+/// its SHA-256 digest is the globally unique lookup/idempotency key.
+model GooglePlayPurchase {
+  id                  String                  @id @default(uuid()) @db.Uuid
+  userId              String                  @db.Uuid
+  purchaseTokenHash   String                  @unique @db.Char(64)
+  encryptedToken      String                  @db.Text
+  productId           String                  @db.VarChar(160)
+  orderId             String?                 @db.VarChar(160)
+  quantity            Int
+  coinAmount          Int
+  purchaseTime        DateTime                @db.Timestamptz()
+  acknowledgementState Int
+  status              GooglePlayPurchaseStatus @default(VERIFIED)
+  coinEntryKey        String                  @unique @db.VarChar(200)
+  createdAt           DateTime                @default(now()) @db.Timestamptz()
+  updatedAt           DateTime                @updatedAt @db.Timestamptz()
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([orderId])
+}
+
+/// Idempotency inbox for Google Play RTDN and administrative lifecycle events.
+model GooglePlayNotification {
+  id                String   @id @default(uuid()) @db.Uuid
+  messageId         String   @unique @db.VarChar(200)
+  eventType         String   @db.VarChar(80)
+  purchaseTokenHash String?  @db.Char(64)
+  payload           Json
+  receivedAt        DateTime @default(now()) @db.Timestamptz()
+  processedAt       DateTime? @db.Timestamptz()
+  processingError   String?  @db.VarChar(500)
+
+  @@index([purchaseTokenHash, receivedAt])
+  @@index([processedAt, receivedAt])
 }
