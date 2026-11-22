@@ -90,7 +90,7 @@ run('financial ledger, against a real database', () => {
         data: {
           id,
           idempotencyKey: `test-ledger:${id}`,
-            requestHash: 'a'.repeat(64),
+          requestHash: 'a'.repeat(64),
           eventType: 'TEST_POSTING',
           sourceType: 'TEST',
           sourceId: id,
