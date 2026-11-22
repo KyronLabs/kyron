@@ -116,7 +116,7 @@ FROM PUBLIC, anon, authenticated, service_role;
 
 CREATE UNIQUE INDEX "LedgerAccount_accountKey_key" ON "LedgerAccount"("accountKey");
 CREATE UNIQUE INDEX "LedgerTransaction_idempotencyKey_key" ON "LedgerTransaction"("idempotencyKey");
-CREATE UNIQUE INDEX "LedgerTransaction_reversalOfId_key" ON "LedgerTransaction"("reversalOfId") WHERE "reversalOfId" IS NOT NULL;
+CREATE UNIQUE INDEX "LedgerTransaction_reversalOfId_key" ON "LedgerTransaction"("reversalOfId");
 CREATE UNIQUE INDEX "LedgerPosting_transactionId_lineNumber_key" ON "LedgerPosting"("transactionId", "lineNumber");
 CREATE INDEX "LedgerAccount_ownerId_currencyCode_status_idx" ON "LedgerAccount"("ownerId", "currencyCode", "status");
 CREATE INDEX "LedgerAccount_accountType_currencyCode_idx" ON "LedgerAccount"("accountType", "currencyCode");
