@@ -6,6 +6,7 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import {
+  CreatorEarningReservationStatus,
   CreatorWithdrawalStatus,
   FxQuoteStatus,
   PayoutAttemptStatus,
@@ -200,6 +201,20 @@ export class CreatorWithdrawalsService {
       now,
     });
 
+    if (
+      reservation.status !== CreatorEarningReservationStatus.ACTIVE ||
+      !reservation.expiresAt ||
+      reservation.expiresAt <= now
+    ) {
+      throw new ConflictException(
+        'The earnings reservation has expired or is no longer active.',
+      );
+    }
+    const quoteExpiresAt =
+      reservation.expiresAt < quote.expiresAt
+        ? reservation.expiresAt
+        : quote.expiresAt;
+
     return this.prisma.$transaction(async (tx) => {
       const fxQuote = await tx.fxQuote.create({
         data: {
@@ -211,7 +226,7 @@ export class CreatorWithdrawalsService {
           rateDenominator: quote.rateDenominator,
           providerCode: quote.providerCode,
           providerQuoteRef: quote.providerQuoteRef,
-          expiresAt: quote.expiresAt,
+          expiresAt: quoteExpiresAt,
         },
       });
       const withdrawal = await tx.creatorWithdrawal.create({
