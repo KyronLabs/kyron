@@ -575,6 +575,31 @@ export class RewardsService {
             grantedById: staff.id,
           },
         });
+        // Retain the awarded value and all source identifiers independently
+        // of the programme, nomination, post and recipient lifecycles.
+        await tx.financialSourceRecord.create({
+          data: {
+            sourceType: 'POST_REWARD_GRANT',
+            sourceId: grant.id,
+            eventType: 'REWARD_GRANTED',
+            actorId: staff.id,
+            beneficiaryId: grant.recipientId,
+            relatedIds: {
+              programId: grant.programId,
+              nominationId: grant.nominationId,
+              postId: grant.postId,
+            },
+            amount: reward.type === 'PROMOTIONAL_COINS' ? reward.amount : null,
+            unitCode: reward.type === 'PROMOTIONAL_COINS' ? 'COIN' : null,
+            payload: {
+              rewardType: grant.rewardType,
+              rewardPayload: grant.payload,
+              idempotencyKey: grant.idempotencyKey,
+              grantedById: staff.id,
+            },
+            occurredAt: grant.createdAt,
+          },
+        });
         await this.applyReward(tx, grant.id, grant.recipientId, reward);
         await tx.postRewardAuditEvent.create({
           data: {
