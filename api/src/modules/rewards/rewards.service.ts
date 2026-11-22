@@ -589,8 +589,7 @@ export class RewardsService {
               nominationId: grant.nominationId,
               postId: grant.postId,
             },
-            amount:
-              reward.type === 'PROMOTIONAL_COINS' ? reward.amount : null,
+            amount: reward.type === 'PROMOTIONAL_COINS' ? reward.amount : null,
             unitCode: reward.type === 'PROMOTIONAL_COINS' ? 'COIN' : null,
             payload: {
               rewardType: grant.rewardType,
