@@ -511,10 +511,15 @@ def check_debug_build_reliability() -> list[str]:
         (run for run in build_runs if "flutter build apk" in run),
         "",
     )
-    if "trap " not in apk_step or "stage=" not in apk_step:
+    if (
+        "trap " not in apk_step
+        or "stage=" not in apk_step
+        or "report_interruption TERM" not in apk_step
+        or "report_interruption INT" not in apk_step
+    ):
         said.append(
-            f"{name}: the APK build needs a stage-aware EXIT diagnostic trap "
-            "so interruptions identify the active ABI and elapsed time"
+            f"{name}: the APK build needs stage-aware EXIT, TERM and INT "
+            "diagnostics so interruptions identify the active ABI and elapsed time"
         )
     if "eq 4" not in apk_step:
         said.append(
