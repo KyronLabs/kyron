@@ -352,9 +352,7 @@ export class LedgerService {
       if (line.side === 'DEBIT') debits = debits.plus(amount);
       else if (line.side === 'CREDIT') credits = credits.plus(amount);
       else {
-        throw new BadRequestException(
-          'Posting side must be DEBIT or CREDIT.',
-        );
+        throw new BadRequestException('Posting side must be DEBIT or CREDIT.');
       }
     }
 
