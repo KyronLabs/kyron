@@ -8,6 +8,7 @@ import {
   CreatorWithdrawalStatus,
   PayoutAttemptStatus,
   PayoutProviderEventOutcome,
+  Prisma,
 } from '@prisma/client';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { PayoutReconciliationService } from './payout-reconciliation.service';
@@ -30,6 +31,22 @@ const MANUAL_REVIEW_RESOLUTION_CODES = [
   'ESCALATED_TO_PROVIDER',
   'NO_ACTION_REQUIRED',
 ] as const;
+
+
+function metadataString(
+  metadata: Prisma.JsonValue,
+  key: string,
+): string | null {
+  if (
+    metadata === null ||
+    Array.isArray(metadata) ||
+    typeof metadata !== 'object'
+  ) {
+    return null;
+  }
+  const value = metadata[key];
+  return typeof value === 'string' ? value : null;
+}
 
 export type PayoutManualReviewReasonCode =
   (typeof MANUAL_REVIEW_REASON_CODES)[number];
@@ -227,20 +244,16 @@ export class PayoutOperationsService {
         requestId: string;
       } => Boolean(review.subjectId && review.requestId),
     );
-    const reviewAttemptIds = [
-      ...new Set(validReviewRequests.map((review) => review.subjectId)),
-    ];
-    const reviewRequestIds = [
-      ...new Set(validReviewRequests.map((review) => review.requestId)),
-    ];
     const resolutions =
-      reviewAttemptIds.length > 0 && reviewRequestIds.length > 0
+      validReviewRequests.length > 0
         ? await this.prisma.financialAuditEvent.findMany({
             where: {
               eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_RESOLVED',
               subjectType: 'PAYOUT_ATTEMPT',
-              subjectId: { in: reviewAttemptIds },
-              requestId: { in: reviewRequestIds },
+              OR: validReviewRequests.map((review) => ({
+                subjectId: review.subjectId,
+                requestId: review.requestId,
+              })),
             },
             select: {
               subjectId: true,
@@ -257,14 +270,11 @@ export class PayoutOperationsService {
     >();
     for (const resolution of resolutions) {
       if (!resolution.subjectId || !resolution.requestId) continue;
-      const metadata = resolution.metadata as Record<string, unknown>;
       resolutionByReview.set(
         `${resolution.subjectId}:${resolution.requestId}`,
         {
           resolutionCode:
-            typeof metadata.resolutionCode === 'string'
-              ? metadata.resolutionCode
-              : 'UNKNOWN',
+            metadataString(resolution.metadata, 'resolutionCode') ?? 'UNKNOWN',
           resolvedAt: resolution.createdAt,
         },
       );
@@ -282,14 +292,10 @@ export class PayoutOperationsService {
       recentManualReviews: validReviewRequests.map((review) => {
         const key = `${review.subjectId}:${review.requestId}`;
         const resolution = resolutionByReview.get(key);
-        const metadata = review.metadata as Record<string, unknown>;
         return {
           payoutAttemptId: review.subjectId,
           requestId: review.requestId,
-          reasonCode:
-            typeof metadata.reasonCode === 'string'
-              ? metadata.reasonCode
-              : 'UNKNOWN',
+          reasonCode: metadataString(review.metadata, 'reasonCode') ?? 'UNKNOWN',
           requestedAt: review.createdAt,
           resolved: Boolean(resolution),
           resolutionCode: resolution?.resolutionCode ?? null,
@@ -352,10 +358,9 @@ export class PayoutOperationsService {
         select: { actorId: true, metadata: true },
       });
       if (existing) {
-        const metadata = existing.metadata as Record<string, unknown>;
         if (
           existing.actorId !== input.actorId ||
-          metadata.reasonCode !== input.reasonCode
+          metadataString(existing.metadata, 'reasonCode') !== input.reasonCode
         ) {
           throw new ConflictException(
             'The review request ID was already used with different details.',
@@ -442,13 +447,10 @@ export class PayoutOperationsService {
         select: { actorId: true, metadata: true },
       });
       if (existingResolution) {
-        const metadata = existingResolution.metadata as Record<
-          string,
-          unknown
-        >;
         if (
           existingResolution.actorId !== input.actorId ||
-          metadata.resolutionCode !== input.resolutionCode
+          metadataString(existingResolution.metadata, 'resolutionCode') !==
+            input.resolutionCode
         ) {
           throw new ConflictException(
             'The review request was already resolved with different details.',
