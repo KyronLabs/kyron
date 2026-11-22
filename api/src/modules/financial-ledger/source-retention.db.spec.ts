@@ -163,6 +163,18 @@ run('financial source retention, against a real database', () => {
   });
 
   afterAll(async () => {
+    if (programId) {
+      await prisma?.postRewardProgram.deleteMany({
+        where: { id: programId },
+      });
+    }
+    await prisma?.user.deleteMany({
+      where: {
+        id: {
+          in: [staffId, nominatorId, giftSenderId, commentAuthorId, recipientBId],
+        },
+      },
+    });
     await prisma?.$disconnect();
   });
 
