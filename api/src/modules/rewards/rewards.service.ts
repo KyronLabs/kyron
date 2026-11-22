@@ -158,6 +158,9 @@ export class RewardsService {
         }
 
         const ageMs = now.getTime() - post.createdAt.getTime();
+        if (ageMs < 0) {
+          throw new BadRequestException('This post has an invalid creation time.');
+        }
         if (ageMs < policy.nomination.minPostAgeHours * 60 * 60 * 1000) {
           throw new BadRequestException('This post is too new to be nominated.');
         }
@@ -464,9 +467,21 @@ export class RewardsService {
           'This post or its author is no longer eligible for a reward.',
         );
       }
-      if (nomination.program.status !== RewardProgramStatus.ACTIVE) {
+      // Lock and re-read the programme before awarding. A concurrent pause,
+      // end date change, or policy edit must not race an approval.
+      await tx.$queryRaw`SELECT id FROM "PostRewardProgram" WHERE id = ${nomination.programId}::uuid FOR UPDATE`;
+      const currentProgram = await tx.postRewardProgram.findUnique({
+        where: { id: nomination.programId },
+        select: { status: true, startsAt: true, endsAt: true },
+      });
+      if (
+        !currentProgram ||
+        currentProgram.status !== RewardProgramStatus.ACTIVE ||
+        (currentProgram.startsAt && currentProgram.startsAt > now) ||
+        (currentProgram.endsAt && currentProgram.endsAt <= now)
+      ) {
         throw new ConflictException(
-          'This reward programme is paused or has ended.',
+          'This reward programme is paused, not yet active, or has ended.',
         );
       }
 
@@ -481,6 +496,28 @@ export class RewardsService {
       if (postAwards.length >= policy.limits.maxAwardsPerPost) {
         throw new ConflictException(
           'This post has reached the programme’s award limit.',
+        );
+      }
+
+      const proposedPromotionalCoins = policy.rewards.reduce(
+        (total, reward) =>
+          total +
+          (reward.type === 'PROMOTIONAL_COINS' ? reward.amount : 0),
+        0,
+      );
+      const budgetRows = await tx.$queryRaw<Array<{ total: number }>>`
+        SELECT COALESCE(SUM(("payload"->>'amount')::int), 0)::int AS total
+        FROM "PostRewardGrant"
+        WHERE "programId" = ${nomination.programId}::uuid
+          AND "rewardType" = 'PROMOTIONAL_COINS'
+      `;
+      const alreadyGranted = budgetRows[0]?.total ?? 0;
+      if (
+        alreadyGranted + proposedPromotionalCoins >
+        policy.limits.maxTotalPromotionalCoins
+      ) {
+        throw new ConflictException(
+          'This programme has reached its promotional coin budget.',
         );
       }
 
