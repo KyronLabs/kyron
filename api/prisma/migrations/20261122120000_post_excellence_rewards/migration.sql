@@ -181,3 +181,8 @@ ALTER TABLE "PostRewardProgram" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "PostRewardNomination" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "PostRewardGrant" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "PostRewardAuditEvent" ENABLE ROW LEVEL SECURITY;
+
+-- The scheduled weekly complimentary coin benefit has been retired.
+-- Existing GRANT entries remain in the immutable ledger as grandfathered
+-- balances; only the unused per-user refill-notification timestamp is removed.
+ALTER TABLE "User" DROP COLUMN IF EXISTS "refillPushAt";
