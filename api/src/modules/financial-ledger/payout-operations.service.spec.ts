@@ -71,7 +71,23 @@ describe('PayoutOperationsService', () => {
 
   describe('getOperationalReport', () => {
     it('reports stale attempts and events without writes', async () => {
-      payoutAttemptFindMany.mockResolvedValue([]);
+      payoutAttemptFindMany.mockResolvedValue([
+        {
+          id: 'attempt-1',
+          status: PayoutAttemptStatus.UNKNOWN,
+          providerCode: 'example',
+          providerTransferRef: null,
+          providerErrorCode: 'PROVIDER_OUTCOME_UNKNOWN',
+          createdAt: new Date('2026-11-22T00:00:00.000Z'),
+          submittedAt: null,
+          withdrawal: {
+            id: 'withdrawal-1',
+            status: 'PROCESSING',
+            currency: 'GHS',
+            fiatAmountMinor: 2500n,
+          },
+        },
+      ]);
       payoutAttemptCount.mockResolvedValue(2);
       payoutProviderEventFindMany.mockResolvedValue([
         {
@@ -98,6 +114,8 @@ describe('PayoutOperationsService', () => {
       });
 
       expect(report.staleAttemptCount).toBe(2);
+      expect(report.staleAttempts[0].ageMinutes).toBeGreaterThanOrEqual(30);
+      expect(report.staleAttempts[0].withdrawal.fiatAmountMinor).toBe('2500');
       expect(report.unresolvedProviderEventCount).toBe(1);
       expect(report.unmatchedTerminalProviderEventCount).toBe(1);
       expect(report.unresolvedProviderEvents).toHaveLength(1);
