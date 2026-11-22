@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 
-import { Prisma, PrismaClient, RewardProgramStatus, UserRole } from '@prisma/client';
+import type { Prisma } from '@prisma/client';
+import { PrismaClient, RewardProgramStatus, UserRole } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { GiftsService } from '../gifts/gifts.service';
@@ -183,10 +184,10 @@ run('financial source retention, against a real database', () => {
   it('retains complete source snapshots after social and identity cascades', async () => {
     const giftPostSource =
       await prisma.financialSourceRecord.findUniqueOrThrow({
-      where: {
-        sourceType_sourceId: { sourceType: 'GIFT', sourceId: giftPostId },
-      },
-    });
+        where: {
+          sourceType_sourceId: { sourceType: 'GIFT', sourceId: giftPostId },
+        },
+      });
     expect(giftPostSource).toMatchObject({
       eventType: 'GIFT_SENT',
       actorId: giftSenderId,
