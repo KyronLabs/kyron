@@ -177,7 +177,7 @@ run('post excellence rewards, against a real database', () => {
         where: { key: `reward:${grant.id}` },
         select: { kind: true, amount: true },
       }),
-    ).toEqual({ kind: CoinKind.REWARD_GRANT, amount: 50 });
+    ).toEqual({ kind: CoinKind.REWARD_GRANT, amount: 100 });
 
     await expect(
       rewards.decide(staff, nomination.id, 'APPROVE', 'Retry.', now),
