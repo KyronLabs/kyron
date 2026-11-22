@@ -137,3 +137,31 @@ The migration enforces:
 - Actor/owner UUIDs are retained as immutable pseudonymous references without User foreign keys, so user deletion cannot mutate or cascade through financial evidence.
 
 Application services must still enforce authorization, idempotency semantics, account status, event-source validity and business-level limits. Database triggers are defense in depth, not a substitute for service logic.
+
+
+## Financial source-record retention
+
+The financial ledger migration deliberately leaves the existing `CoinEntry`
+history in place. This retention layer adds `FinancialSourceRecord`, an
+immutable, API-owned snapshot for source events that can create or explain
+coin movements.
+
+A source record is written in the same database transaction as its source
+event. The unique (`sourceType`, `sourceId`) key makes the source identity
+unambiguous. Gift snapshots retain sender/recipient UUIDs, post/comment UUIDs,
+gift type, coin amount and request ID. Reward snapshots retain grant,
+programme, nomination, post, beneficiary and staff actor UUIDs, reward type,
+reward payload and idempotency key.
+
+These identifiers are pseudonymous references, not copies of names, email
+addresses, post text, comment text, nomination reasons or review notes. The
+table has no foreign keys to users or social content, so deleting those
+records cannot delete or rewrite the source evidence. Its database trigger
+rejects updates and deletes; corrections must be represented by a new,
+separately identified event.
+
+The migration backfills snapshots for Gift and PostRewardGrant rows that
+still exist when it is applied. It cannot reconstruct sources already erased
+by earlier cascades. This table is provenance, not a spendable balance and
+not a replacement for CoinEntry or the double-entry ledger. PR #210 will use
+it as a stable source when reconciling historical movements.
