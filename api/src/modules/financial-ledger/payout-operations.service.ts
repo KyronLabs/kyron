@@ -135,9 +135,7 @@ export class PayoutOperationsService {
       limit < 1 ||
       limit > MAX_REPORT_LIMIT
     ) {
-      throw new BadRequestException(
-        'limit must be between 1 and 500.',
-      );
+      throw new BadRequestException('limit must be between 1 and 500.');
     }
 
     const generatedAt = new Date();
