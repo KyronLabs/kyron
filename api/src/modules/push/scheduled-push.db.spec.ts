@@ -3,7 +3,6 @@ import { randomUUID } from 'node:crypto';
 import { CoinKind, PrismaClient } from '@prisma/client';
 
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { weekStart } from '../gifts/gift-catalogue';
 import { NotificationsService } from '../notifications/notifications.service';
 import { render } from './push-text';
 import type { PushMessage, PushService } from './push.service';
@@ -11,7 +10,7 @@ import { ScheduledPushService } from './scheduled-push.service';
 
 /**
  * The scheduled pushes against a real Postgres: who is told they missed
- * something, and only when they did; who is told their coins are back.
+ * something, and only when they did. Weekly coin reminders are retired.
  * Skipped unless MODERATION_TEST_DATABASE_URL names a migrated database.
  */
 const url = process.env.MODERATION_TEST_DATABASE_URL;
@@ -31,9 +30,11 @@ const EVENING = (() => {
   return at;
 })();
 
-/** 10:00 in Lagos on the most recent Monday at least a day past. */
+/** 10:00 UTC on the current week's Monday. */
 const MONDAY_MORNING = (() => {
-  const at = weekStart(new Date(Date.now() - 24 * HOUR));
+  const at = new Date();
+  const sinceMonday = (at.getUTCDay() + 6) % 7;
+  at.setUTCDate(at.getUTCDate() - sinceMonday);
   at.setUTCHours(9, 0, 0, 0);
   return at;
 })();
@@ -173,36 +174,22 @@ run('scheduled pushes, against a real database', () => {
     expect(sentTo(ada)).toHaveLength(1);
   });
 
-  it('tells somebody who spent coins last week that they are back', async () => {
-    const lastWeek = new Date(
-      weekStart(MONDAY_MORNING).getTime() - 2 * 24 * HOUR,
-    );
+  it('does not announce weekly coins, even to somebody with legacy spending', async () => {
     await prisma.coinEntry.create({
       data: {
         userId: ben,
         kind: CoinKind.SPEND,
         amount: -5,
-        key: `spend:${ben}:${stamp}`,
-        createdAt: lastWeek,
+        key: `legacy-spend:${ben}:${stamp}`,
+        createdAt: new Date(MONDAY_MORNING.getTime() - 8 * 24 * HOUR),
       },
     });
 
-    await scheduled.runDue(MONDAY_MORNING);
-    const coins = sentTo(ben).filter((s) => s.message.data?.type === 'coins');
-    expect(coins).toHaveLength(1);
-    expect(render(coins[0].message.body, 'en')).toBe(
-      '100 coins to send as gifts this week.',
-    );
-    // Nobody who spent nothing.
+    const result = await scheduled.runDue(MONDAY_MORNING);
+    expect(result).toEqual({ away: 0 });
     expect(
-      sentTo(cy).filter((s) => s.message.data?.type === 'coins'),
+      sent.filter((item) => item.message.data?.type === 'coins'),
     ).toHaveLength(0);
-
-    // Once a week.
-    await scheduled.runDue(new Date(MONDAY_MORNING.getTime() + HOUR));
-    expect(
-      sentTo(ben).filter((s) => s.message.data?.type === 'coins'),
-    ).toHaveLength(1);
   });
 });
 
