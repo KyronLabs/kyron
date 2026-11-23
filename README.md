@@ -113,13 +113,13 @@ static download/marketing site from `web/build/web/`.
 ```
 ┌─────────────────────────────────────────────┐
 │   Flutter client · Android / Windows apps  │
-│   Riverpod state  ·  Dio HTTP  ·  REST      │
+│   Riverpod · Dio HTTP · REST + WebSocket   │
 └───────────────────────┬─────────────────────┘
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
 │   REST controllers + WebSocket gateway     │
-│   Supabase JWT verified against JWKS        │
+│   Supabase JWT verified server-side        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
 ┌───────┴───────────┐   ┌─────────┴───────────┐
