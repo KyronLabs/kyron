@@ -283,8 +283,74 @@ export class CreatorWithdrawalsService {
     });
   }
 
-  /** Internal approval boundary; authorization must be enforced by its caller. */
-  async approve(withdrawalId: string, actorId: string) {
+  /**
+   * First-person approval request. The withdrawal remains REQUESTED/UNDER_REVIEW;
+   * this records the initiating administrator but does not approve or submit it.
+   */
+  async requestApproval(input: {
+    withdrawalId: string;
+    actorId: string;
+    requestId: string;
+  }) {
+    return this.prisma.$transaction(async (tx) => {
+      await tx.$queryRaw`SELECT id FROM "CreatorWithdrawal" WHERE id = ${input.withdrawalId}::uuid FOR UPDATE`;
+      const withdrawal = await tx.creatorWithdrawal.findUnique({
+        where: { id: input.withdrawalId },
+      });
+      if (!withdrawal) {
+        throw new NotFoundException('Creator withdrawal not found.');
+      }
+      if (
+        withdrawal.status !== CreatorWithdrawalStatus.REQUESTED &&
+        withdrawal.status !== CreatorWithdrawalStatus.UNDER_REVIEW
+      ) {
+        throw new ConflictException(
+          'This withdrawal cannot enter approval from its current state.',
+        );
+      }
+      if (withdrawal.approvalRequestId) {
+        if (
+          withdrawal.approvalRequestId === input.requestId &&
+          withdrawal.approvalRequestedById === input.actorId
+        ) {
+          return withdrawal;
+        }
+        throw new ConflictException(
+          'A dual-control approval request is already pending.',
+        );
+      }
+
+      const requestedAt = new Date();
+      const updated = await tx.creatorWithdrawal.update({
+        where: { id: withdrawal.id },
+        data: {
+          approvalRequestId: input.requestId,
+          approvalRequestedById: input.actorId,
+          approvalRequestedAt: requestedAt,
+        },
+      });
+      await tx.financialAuditEvent.create({
+        data: {
+          actorId: input.actorId,
+          eventType: 'CREATOR_WITHDRAWAL_APPROVAL_REQUESTED',
+          subjectType: 'CREATOR_WITHDRAWAL',
+          subjectId: withdrawal.id,
+          requestId: input.requestId,
+          metadata: {
+            priorStatus: withdrawal.status,
+            requiresDifferentAdministrator: true,
+          },
+        },
+      });
+      return updated;
+    });
+  }
+
+  /**
+   * Second-person approval. The request key and distinct actor are both checked
+   * while holding the withdrawal row lock, so concurrent approvals serialize.
+   */
+  async approve(withdrawalId: string, actorId: string, requestId: string) {
     return this.prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "CreatorWithdrawal" WHERE id = ${withdrawalId}::uuid FOR UPDATE`;
       const withdrawal = await tx.creatorWithdrawal.findUnique({
@@ -301,11 +367,28 @@ export class CreatorWithdrawalsService {
           'This withdrawal cannot be approved from its current state.',
         );
       }
+      if (
+        !withdrawal.approvalRequestId ||
+        withdrawal.approvalRequestId !== requestId ||
+        !withdrawal.approvalRequestedById
+      ) {
+        throw new ConflictException(
+          'A matching dual-control approval request is required.',
+        );
+      }
+      if (withdrawal.approvalRequestedById === actorId) {
+        throw new ConflictException(
+          'The administrator who requested approval cannot approve the same withdrawal.',
+        );
+      }
+
+      const approvedAt = new Date();
       const approved = await tx.creatorWithdrawal.update({
         where: { id: withdrawal.id },
         data: {
           status: CreatorWithdrawalStatus.APPROVED,
-          approvedAt: new Date(),
+          approvedAt,
+          approvedById: actorId,
         },
       });
       await tx.financialAuditEvent.create({
@@ -314,7 +397,12 @@ export class CreatorWithdrawalsService {
           eventType: 'CREATOR_WITHDRAWAL_APPROVED',
           subjectType: 'CREATOR_WITHDRAWAL',
           subjectId: withdrawal.id,
-          metadata: {},
+          requestId,
+          metadata: {
+            approvalRequestedById: withdrawal.approvalRequestedById,
+            approvedById: actorId,
+            approvalRequestId: requestId,
+          },
         },
       });
       return approved;
