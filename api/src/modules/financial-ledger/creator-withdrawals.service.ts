@@ -637,8 +637,7 @@ export class CreatorWithdrawalsService {
         );
       }
       if (
-        withdrawal.reservation.status !==
-        CreatorEarningReservationStatus.ACTIVE
+        withdrawal.reservation.status !== CreatorEarningReservationStatus.ACTIVE
       ) {
         throw new ConflictException(
           'The creator earnings reservation must be active before payout submission.',
