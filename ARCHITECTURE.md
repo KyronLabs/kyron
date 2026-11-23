@@ -13,13 +13,13 @@ One client, one API, one database.
 
 ```
 ┌─────────────────────────────────────────────┐
-│   Flutter  ·  Android · iOS · Web           │
+│   Flutter client · Android / Windows apps  │
 │   Riverpod state  ·  Dio HTTP  ·  REST      │
 └───────────────────────┬─────────────────────┘
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
-│   17 REST controllers  ·  rate limited      │
+│   REST controllers + WebSocket gateway     │
 │   Supabase JWT verified against JWKS        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
@@ -35,19 +35,22 @@ One client, one API, one database.
 
 | Part | Tech | Responsibility |
 |:--|:--|:--|
-| Client | Flutter, Riverpod, Dio | Every screen; talks REST to the API |
-| API | NestJS on Fastify, Prisma | Auth, feed ranking, posts, comments, messages, communities, moderation, media handoff |
-| Database | Postgres, hosted by Supabase | One database. All 40 tables |
-| Storage | Supabase Storage | Uploaded photos, video and voice recordings |
-| Auth | Supabase Auth | Issues the JWT; the API verifies it against Supabase's JWKS |
+| Client | Flutter, Riverpod, Dio | Android and Windows app release targets; REST API client |
+| API | NestJS on Fastify, Prisma | Auth, feed ranking, posts, comments, messages, communities, moderation, financial operations and media processing |
+| Database | Postgres, hosted by Supabase | Prisma-managed application schema plus Supabase-specific migrations for grants, RLS and client-facing objects |
+| Storage | Supabase Storage | Public post media and private chat/view-once attachments |
+| Auth | Supabase Auth | Issues the JWT; the API verifies it using the configured Supabase token-verification path |
 
 ### Directories that are not services
 
-`media/` holds an empty Dockerfile and nothing else, a placeholder for a
-service that has not been started. `identity/` was the same until the
-decision to stop at a verifiable identifier (`docs/IDENTITY.md`) meant it never
-would be, and it was removed. `web/` holds a committed
-static build of the marketing site.
+The top-level `media/` directory is not a separately deployed
+service. The active upload, validation, poster and re-encode queue/worker
+implementation lives inside the API at `api/src/modules/media/`. Likewise,
+identity is an API module at `api/src/modules/identity/`, not an independent
+identity service; the product stops at a verifiable account identifier and
+does not provide portable/federated identity (`docs/IDENTITY.md`). The
+committed `web/build/web/` output is a static download/marketing site. The
+interactive Flutter web app is withdrawn and is not a current release target.
 
 ---
 
@@ -108,11 +111,25 @@ time the screen was opened. Anything newer is unread.
 
 ## Media
 
-The client picks a file, uploads it to the API, and the API puts it in Supabase
-Storage and answers with a public URL, which is stored on the post.
+The API's media module owns upload validation and Storage handoff.
+It checks file signatures and per-kind size limits, measures supported image
+dimensions from the bytes, and probes video on upload. For public post videos,
+the request also attempts to create a poster and records duration/dimensions;
+clips longer than five minutes are rejected when ffprobe can measure them.
 
-There is no transcoding, no server-side thumbnail generation and no duration
-ceiling enforced past the client. See [`ROADMAP.md`](ROADMAP.md).
+Eligible public videos (height over 1280 pixels or bitrate over 2.5 Mbps) are
+queued in the Postgres `MediaJob` table. The in-process `MediaWorker` claims
+jobs with `FOR UPDATE SKIP LOCKED`, processes one clip at a time with ffmpeg,
+and writes a smaller H.264/AAC file back over the same Storage path. The
+original upload remains available when ffmpeg is absent, refuses the clip, or
+cannot produce a smaller file. Queue failures are retried up to the configured
+attempt limit and are exposed through media queue metrics.
+
+Private chat and view-once attachments use private Storage references and
+bypass public poster generation and re-encoding. This pipeline is part of the
+API process; it is not a separately deployed media service. See
+[`docs/MEDIA_JOBS.md`](docs/MEDIA_JOBS.md) and
+[`api/src/modules/media/`](api/src/modules/media/).
 
 ---
 
@@ -120,7 +137,7 @@ ceiling enforced past the client. See [`ROADMAP.md`](ROADMAP.md).
 
 | Target | What runs there |
 |:--|:--|
-| Render (`render.yaml`) | The API, as one Docker service (`api/Dockerfile`); `api/scripts/start.sh` runs `prisma migrate deploy` on every boot. And the static marketing site with the committed Flutter web build |
+| Render (`render.yaml`) | The API as one Docker service (`api/Dockerfile`), plus a static download/marketing site from the committed `web/build/web/` output. The interactive web app is withdrawn. |
 | Supabase | Postgres, Auth and Storage |
 
 Redis appears in `docker-compose.yml` and in the API's config, and nothing in
@@ -130,7 +147,11 @@ Redis appears in `docker-compose.yml` and in the API's config, and nothing in
 
 ## Data
 
-Prisma owns the schema; migrations live in `api/prisma/migrations` and are
-applied on every boot. A separate set of migrations in `supabase/migrations`
-covers what the client reads directly (profiles, interests) and the grants that
-shut the anon key out of the API's own tables.
+Prisma owns the API-managed schema; migrations live in
+`api/prisma/migrations`. The container entrypoint runs
+`prisma migrate deploy` before starting the compiled API and exits non-zero
+when migration execution fails or times out. It does not resolve baselines
+automatically. A separate set of migrations in `supabase/migrations/` covers
+Supabase-specific objects such as client-facing tables, RLS and grants. Changes
+that span both migration owners need an explicit order and a verified upgrade
+path.
