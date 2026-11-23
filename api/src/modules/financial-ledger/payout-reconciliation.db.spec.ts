@@ -290,9 +290,9 @@ run('payout terminal reconciliation against Postgres', () => {
       reservationStatus: CreatorEarningReservationStatus.ACTIVE,
     });
 
-    await expect(reconciliation.reconcile(fixture.eventId)).rejects.toBeInstanceOf(
-      ConflictException,
-    );
+    await expect(
+      reconciliation.reconcile(fixture.eventId),
+    ).rejects.toBeInstanceOf(ConflictException);
 
     const [attempt, withdrawal, reservation, event] = await Promise.all([
       prisma.payoutAttempt.findUniqueOrThrow({
