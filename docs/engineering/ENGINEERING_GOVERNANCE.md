@@ -194,7 +194,7 @@ Never run `prisma migrate reset`, `DROP SCHEMA`, destructive seed logic or equiv
 
 ### 6.3 Migration authority and deployment
 
-The startup script now runs Prisma migrations with a bounded timeout and exits non-zero on migration failure; it never auto-baselines or starts the API after a failed migration. PrismaService also refuses application startup after its bounded database connection retries are exhausted. These controls are implemented on the startup-hardening branch and must be confirmed by CI and a staging deployment before being treated as deployed production behavior.
+The startup hardening is merged into `main` (verified at repository commit `73e04644eed0c943fd6df8ba1a39e4b2029218c7`, 23 November 2026). `api/scripts/start.sh` runs `prisma migrate deploy` with a bounded timeout, never auto-baselines, and exits before API startup on migration failure or timeout. `PrismaService` refuses startup after five failed database-connection attempts. Startup-script tests cover migration success, failure, timeout and invalid timeout, and the main-branch CI has passed. This establishes implementation and CI coverage only; it does not establish successful staging/production deployment or close the operational migration-safety gate. A successful staging migration, deliberate failed-migration deployment with no traffic served, platform failure-status check, and rehearsed recovery are still required.
 
 Until a dedicated migration release phase or one-off migration job is adopted:
 
@@ -313,8 +313,9 @@ Never log access tokens, passwords, service-account JSON, recovery codes, messag
 
 - Commit lockfiles and use deterministic install commands in CI.
 - Review major dependency upgrades and transitive/native build changes.
-- Enable Dependabot or equivalent dependency update monitoring where appropriate.
-- Run dependency vulnerability scanning.
+- Dependabot update monitoring is configured in `.github/dependabot.yml` for GitHub Actions (`/`), API npm dependencies (`/api`) and Flutter/Dart pub dependencies (`/app`), on a weekly schedule. The owner confirmed on 23 November 2026 that Dependabot has been granted access to the private `KyronLabs/design-system` repository used by the app's Git dependency.
+- Treat dependency update PRs as proposed upgrades: CI and compatibility review remain required, especially for major versions and native Flutter/Android dependencies.
+- Run dependency vulnerability scanning. Dependabot version updates do not, by themselves, prove that GitHub Dependabot alerts or automatic security updates are enabled; verify those repository settings separately.
 - Pin production builds to known commits/tags and immutable package refs.
 - Review third-party SDK permissions and data handling.
 - Preserve software licences and attribution for fonts, artwork, SDKs and other assets.
