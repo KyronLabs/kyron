@@ -1,60 +1,78 @@
-# Kyron Repository Folder Structure
+# Kyron Repository Structure
 
-The tree below is what is in the repository. An earlier version of this file
-described a layout the code does not use — `app/lib/features/`, `api/src/feed/`
-and an `identity/` service with AT Protocol logic in it.
+This guide describes the current repository layout. Exact screen, model and
+test counts are intentionally omitted because they change frequently; use the
+source tree and CI for current inventories.
 
 ```
-kyron/                          # repository root
-│
-├── app/                        # Flutter client (Android · iOS · Web)
+kyron/
+├── app/                              # Flutter client
+│   ├── android/                      # Android runner and Play build
+│   ├── windows/                      # Windows runner
+│   ├── ios/                          # iOS runner source (not a current release target)
+│   ├── web/                          # Flutter web source (interactive web app withdrawn)
 │   ├── lib/
-│   │   ├── models/             # plain data classes, JSON in and out
-│   │   ├── providers/          # Riverpod state per feature
-│   │   ├── repositories/       # one per API area, over Dio
-│   │   ├── screens/            # 43 screens
-│   │   ├── services/           # ApiClient, auth, profile, logging
-│   │   ├── utils/              # pure helpers: thread layout, formatting
-│   │   ├── widgets/            # shared UI: post card, thread, sheets
-│   │   └── routes.dart         # every named route
-│   ├── test/                   # 32 test files, 388 tests
+│   │   ├── models/                   # data models and JSON mapping
+│   │   ├── providers/                 # Riverpod state
+│   │   ├── repositories/              # API repositories over Dio
+│   │   ├── screens/                   # application screens
+│   │   ├── services/                  # API client, auth and platform services
+│   │   ├── utils/                     # pure helpers and formatting
+│   │   ├── widgets/                   # shared UI components
+│   │   └── routes.dart                # named routes
+│   ├── test/                          # Flutter unit and widget tests
 │   └── pubspec.yaml
 │
-├── api/                        # NestJS API (Fastify adapter)
+├── api/                              # NestJS API using the Fastify adapter
 │   ├── prisma/
-│   │   ├── schema.prisma       # 40 models
-│   │   └── migrations/         # applied on every boot by scripts/start.sh
+│   │   ├── schema.prisma              # Prisma-managed relational schema
+│   │   └── migrations/                # API-managed database migrations
 │   ├── src/
-│   │   ├── modules/            # auth, feed, messages, communities,
-│   │   │                       # profile, moderation, notifications,
-│   │   │                       # media, links, users, identity, gateway
-│   │   ├── infrastructure/     # Prisma and Supabase clients
-│   │   ├── config/             # environment, validated at boot
-│   │   └── common/             # guards, filters, shared DTOs
-│   └── package.json            # npm, not pnpm
+│   │   ├── modules/                   # domain modules: feed, messages, media,
+│   │   │                              # identity, moderation, financial ledger, etc.
+│   │   ├── infrastructure/            # Prisma, Supabase and observability adapters
+│   │   ├── config/                    # environment and runtime configuration
+│   │   └── main.ts                    # API bootstrap
+│   ├── scripts/                       # fail-closed startup and operational scripts
+│   ├── test/                          # API end-to-end test support
+│   └── package.json                  # npm scripts and dependencies
 │
 ├── supabase/
-│   └── migrations/             # client-facing tables, RLS and grants
+│   └── migrations/                   # Supabase-specific RLS, grants and SQL objects
 │
-├── web/build/web/              # committed static marketing site
+├── web/build/web/                    # committed static download/marketing site
+├── infra/postgres/init/              # local PostgreSQL role initialization
+├── media/                            # not a separately deployed service; see api/src/modules/media/
+├── docs/                             # product and engineering documentation
+├── .github/workflows/                # Flutter, API, Windows and release workflows
 │
-├── docs/                       # images and assets used by the docs
-│
-├── media/                      # an empty Dockerfile. Not a service yet
-├── infra/postgres/init/        # the roles the quickstart database needs
-│
-├── ROADMAP.md                  # what is built, what is not, what is next
-├── ARCHITECTURE.md             # how the running system fits together
-└── CHANGELOG.md                # notable changes, newest first
+├── ARCHITECTURE.md                   # current system boundaries and runtime shape
+├── FOLDER_STRUCTURE.md               # this repository guide
+├── ROADMAP.md                        # product work and next steps
+└── CHANGELOG.md                      # user-facing release notes
 ```
 
-## Where things go
+## Where changes belong
 
-| Adding | Put it in |
+| Change | Location |
 |:--|:--|
-| A screen | `app/lib/screens/`, with a route in `routes.dart` |
-| Shared UI | `app/lib/widgets/` |
-| Logic worth testing on its own | `app/lib/utils/`, as a pure function |
-| An API area | `api/src/modules/<area>/` with a controller, service and spec |
-| A schema change | `api/prisma/schema.prisma` plus a migration |
-| Anything the client reads directly from Postgres | `supabase/migrations/` |
+| A Flutter screen | `app/lib/screens/`, with its route in `routes.dart` |
+| Shared Flutter UI | `app/lib/widgets/` |
+| Pure client-side logic | `app/lib/utils/` with focused tests |
+| An API domain feature | `api/src/modules/<area>/` with its module, controller/service as needed, and specs |
+| A Prisma-managed schema change | `api/prisma/schema.prisma` plus a migration |
+| Supabase-specific RLS, grants or client-facing SQL | `supabase/migrations/` |
+| Local PostgreSQL initialization | `infra/postgres/init/` |
+| API startup or operational tooling | `api/scripts/` |
+| Architecture or operating guidance | `docs/engineering/` and the linked root-level guides |
+
+## Runtime boundaries
+
+- The Flutter application and NestJS API are separate deployable artifacts.
+- The API is a modular monolith backed by one Supabase PostgreSQL database.
+- Media upload, queueing and re-encoding run inside the API; the root-level
+  `media/` directory is not a deployed media service.
+- The top-level `web/build/web/` output is a static site. It does not mean the
+  interactive Flutter web application is currently available.
+- Redis is not currently the backing store for the API's rate limiter,
+  realtime registry or media queue; the media queue is stored in PostgreSQL.

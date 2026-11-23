@@ -1,98 +1,121 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Kyron API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+The API is the server side of Kyron. It is a **NestJS application using the
+Fastify adapter**, organised as a modular monolith rather than separately
+deployed microservices.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+It uses:
 
-## Description
+- PostgreSQL, with the application schema managed by Prisma.
+- Supabase Auth for account identity and JWTs verified by the API.
+- Supabase Storage for uploaded media.
+- A Postgres-backed media-job table and an in-process worker for eligible
+  video re-encoding.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The active app release targets are Android and Windows. The web build in
+`web/build/web` is a static download/marketing site; the interactive web app
+is withdrawn.
 
-## Project setup
+## Requirements
 
-```bash
-$ npm install
-```
+- Node.js 22 (the Docker image and API CI both use Node 22).
+- npm.
+- A disposable PostgreSQL database for local development and database tests.
+- A Supabase project for authenticated application flows and Storage.
 
-## Compile and run the project
+## Local development
+
+From the repository root, start the development PostgreSQL service:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker compose up -d postgres
 ```
 
-## Run tests
+The repository's Docker Compose setup prepares the Supabase-compatible
+PostgreSQL roles used by the migrations. For an existing local database,
+inspect the SQL in `infra/postgres/init/` and ensure the expected roles and
+Supabase auth helpers exist before applying migrations.
+
+Then configure the API environment and start it:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd api
+cp .env.example .env
+# Fill in the local DATABASE_URL and the required Supabase project values.
+npm ci
+npx prisma generate
+npx prisma migrate deploy
+npm run start:dev
 ```
 
-## Deployment
+The development server listens on the configured `PORT` (3000 by default).
+Never commit a populated `.env` file or paste production credentials into
+issues, logs or pull requests. The checked-in `.env.example` contains
+placeholders and documents the current environment variables.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## Database and startup behavior
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- `api/prisma/schema.prisma` and `api/prisma/migrations/` own the
+  Prisma-managed application schema.
+- `supabase/migrations/` holds Supabase-specific SQL such as grants, RLS and
+  client-facing database objects. Keep both migration sets in sync when a
+  change spans both ownership areas.
+- `npm run start:dev` starts the NestJS development process directly. Apply
+  pending migrations first with `npx prisma migrate deploy`.
+- `npm start` runs `scripts/start.sh`: it executes
+  `prisma migrate deploy` with a bounded timeout and starts the compiled API
+  only if migrations succeed. The script does not automatically baseline a
+  database or mark migrations as applied.
+- Prisma also checks database connectivity during application startup and
+  refuses to start after its bounded connection retries are exhausted.
+
+Do not use `prisma migrate reset`, destructive seed logic or manual baseline
+resolution against production. Reconcile existing migration history and
+verify backups before an operator-authorised repair.
+
+## Quality checks
+
+Run these from `api/`:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run typecheck
+npm run build
+npm test
+npm run lint
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+The API CI workflow runs dependency auditing, Prisma generation, typecheck,
+build, Jest unit specs and ESLint when API code changes.
 
-## Resources
+Database integration specs use a PostgreSQL database and are skipped when
+`MODERATION_TEST_DATABASE_URL` is not set. Against a disposable database,
+provide both `DATABASE_URL` and `MODERATION_TEST_DATABASE_URL`, apply the
+migrations and run:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+npx jest db.spec --runInBand
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The CI database job uses PostgreSQL 16 and prepares the Supabase roles and
+auth helper functions required by the migration set before applying
+migrations. Do not point database integration tests at production data.
 
-## Support
+## Runtime media processing
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+The API Docker image installs ffmpeg. The media module validates uploads,
+probes video and creates a poster during the upload request, then queues
+eligible public clips for re-encoding. A worker processes one Postgres-backed
+`MediaJob` at a time and writes a smaller H.264 result over the same Storage
+path. If ffmpeg is unavailable or a re-encode cannot improve the file, the
+original upload remains available; see [Media jobs](../docs/MEDIA_JOBS.md).
 
-## Stay in touch
+Private chat and view-once uploads use private Storage paths and do not enter
+the public poster/re-encode path.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Related documentation
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- [System architecture](../ARCHITECTURE.md)
+- [Production readiness masterplan](../docs/engineering/PRODUCTION_READINESS_MASTERPLAN.md)
+- [Media processing queue](../docs/MEDIA_JOBS.md)
+- [Observability](../docs/OBSERVABILITY.md)
+- [API environment template](.env.example)
