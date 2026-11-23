@@ -176,6 +176,16 @@ by a separate server-side kill switch:
 - The requester and approver IDs must differ. Withdrawals approved before the
   dual-control metadata existed are not eligible for submission through this
   path until properly re-approved.
+- The earnings reservation must still be `ACTIVE` before a payout attempt is
+  created.
+- A definite provider rejection updates the payout attempt, withdrawal and
+  earnings reservation to their terminal states in one database transaction.
+  The rejection and reservation-release audit events are committed in that
+  same transaction.
+- Provider transport errors and persistence failures after an accepted
+  response remain unresolved/unknown and require reconciliation; a known
+  rejection is never relabelled as an unknown provider outcome merely because
+  reservation finalization failed.
 
 The kill switch is evaluated before any database preparation or provider
 configuration check. A closed switch therefore cannot create a payout attempt
