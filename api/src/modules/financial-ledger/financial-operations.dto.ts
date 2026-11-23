@@ -61,7 +61,7 @@ export class ResolvePayoutManualReviewDto {
   resolutionCode!: PayoutManualReviewResolutionCode;
 }
 
-/** Idempotent operational request to replay stored terminal provider evidence. */
+/** Idempotent request to replay stored terminal provider evidence. */
 export class ReprocessPayoutProviderEventDto {
   @IsString()
   @Transform(trimmed)
