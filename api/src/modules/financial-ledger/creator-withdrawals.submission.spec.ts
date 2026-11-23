@@ -5,7 +5,6 @@ import {
 import {
   CreatorWithdrawalStatus,
   FxQuoteStatus,
-  PayoutAttemptStatus,
   PayoutDestinationStatus,
 } from '@prisma/client';
 import { CreatorWithdrawalsService } from './creator-withdrawals.service';
