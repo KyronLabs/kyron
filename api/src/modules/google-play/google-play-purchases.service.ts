@@ -1,10 +1,12 @@
 import {
   BadRequestException,
   ConflictException,
+  ForbiddenException,
+  NotFoundException,
   Injectable,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { CoinKind, GooglePlayPurchaseStatus, Prisma } from '@prisma/client';
+import { AccountStatus, CoinKind, GooglePlayPurchaseStatus, Prisma } from '@prisma/client';
 import { createCipheriv, createHash, randomBytes } from 'node:crypto';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -17,6 +19,7 @@ import {
 
 const DEFAULT_PACKAGE_NAME = 'so.kyron.app';
 const MAX_POSTGRES_INT = 2_147_483_647;
+const MAX_POSTGRES_BIGINT = 9_223_372_036_854_775_807n;
 const MAX_PURCHASE_QUANTITY = 1000;
 const TOKEN_PREFIX = 'v1';
 
@@ -336,9 +339,12 @@ export class GooglePlayPurchasesService {
       );
     }
     if (
-      developerRevenue &&
-      (developerRevenue.currencyCode !== gross.currencyCode ||
-        developerRevenue.amountNanos < 0n)
+      (order.developerRevenueInBuyerCurrency && !developerRevenue) ||
+      (developerRevenue &&
+        (developerRevenue.currencyCode !== gross.currencyCode ||
+          developerRevenue.amountNanos < 0n ||
+          developerRevenue.amountNanos > MAX_POSTGRES_BIGINT)) ||
+      gross.amountNanos > MAX_POSTGRES_BIGINT
     ) {
       throw new BadRequestException(
         'Google Play returned inconsistent purchase accounting details.',
@@ -433,6 +439,18 @@ export class GooglePlayPurchasesService {
       return await this.prisma.$transaction(async (tx) => {
         // Serialize purchased credits with gift spending on this wallet.
         await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${input.userId}::uuid FOR UPDATE`;
+        const lockedUsers = await tx.$queryRaw<Array<{ id: string }>>`SELECT id FROM "User" WHERE id = ${input.userId}::uuid FOR UPDATE`;
+        if (lockedUsers.length === 0) {
+          throw new NotFoundException('Account not found.');
+        }
+        const user = await tx.user.findUnique({
+          where: { id: input.userId },
+          select: { status: true },
+        });
+        if (!user) throw new NotFoundException('Account not found.');
+        if (user.status !== AccountStatus.ACTIVE) {
+          throw new ForbiddenException('This account cannot purchase coins.');
+        }
         const existing = await tx.googlePlayPurchase.findUnique({
           where: { purchaseTokenHash: input.purchaseTokenHash },
         });
