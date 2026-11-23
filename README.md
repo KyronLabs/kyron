@@ -73,7 +73,7 @@ The plan, and the order, is in [`ROADMAP.md`](ROADMAP.md).
 
 ## ◈ Quickstart
 
-**Prerequisites:** Node.js 22 · Flutter (stable channel) · Docker
+**Prerequisites:** Node.js 22 · Flutter 3.47.9 (the CI-pinned stable version) · Docker
 
 ```bash
 # 1. Clone
