@@ -121,4 +121,16 @@ export class FinancialOperationsController {
       dto.requestId,
     );
   }
+
+  /** Read-only eligibility assessment; never prepares or submits a payout. */
+  @Get('creator-withdrawals/:id/submission-readiness')
+  submissionReadiness(
+    @Req() request: AuthRequest,
+    @Param('id', ParseUUIDPipe) withdrawalId: string,
+  ) {
+    return this.withdrawals.getSubmissionReadinessForOperator(
+      withdrawalId,
+      request.user.id,
+    );
+  }
 }

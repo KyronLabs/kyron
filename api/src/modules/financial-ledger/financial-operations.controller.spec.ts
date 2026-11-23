@@ -14,6 +14,7 @@ describe('FinancialOperationsController', () => {
   const reprocessUnmatchedProviderEvent = jest.fn();
   const requestApproval = jest.fn();
   const approve = jest.fn();
+  const getSubmissionReadinessForOperator = jest.fn();
 
   const request = {
     user: { id: 'admin-1' },
@@ -35,7 +36,11 @@ describe('FinancialOperationsController', () => {
         },
         {
           provide: CreatorWithdrawalsService,
-          useValue: { requestApproval, approve },
+          useValue: {
+            requestApproval,
+            approve,
+            getSubmissionReadinessForOperator,
+          },
         },
       ],
     })
@@ -56,6 +61,10 @@ describe('FinancialOperationsController', () => {
     reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
     requestApproval.mockResolvedValue({ status: 'REQUESTED' });
     approve.mockResolvedValue({ status: 'APPROVED' });
+    getSubmissionReadinessForOperator.mockResolvedValue({
+      ready: false,
+      blockers: [],
+    });
   });
 
   it('applies token authentication before financial access control', () => {
@@ -164,6 +173,19 @@ describe('FinancialOperationsController', () => {
       '33333333-3333-4333-8333-333333333333',
       'admin-1',
       'withdrawal-approval-01',
+    );
+  });
+
+  it('reads payout submission readiness under the authenticated actor', async () => {
+    const instance = await controller();
+    await instance.submissionReadiness(
+      request,
+      '33333333-3333-4333-8333-333333333333',
+    );
+
+    expect(getSubmissionReadinessForOperator).toHaveBeenCalledWith(
+      '33333333-3333-4333-8333-333333333333',
+      'admin-1',
     );
   });
 });

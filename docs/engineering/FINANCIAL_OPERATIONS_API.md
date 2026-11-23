@@ -136,6 +136,31 @@ Approval does not submit a payout, create a payout attempt, call a provider or
 move funds. Existing provider adapters remain disabled.
 
 
+
+### Inspect payout submission readiness
+
+`GET /financial-operations/creator-withdrawals/:id/submission-readiness`
+
+Returns an operator preflight assessment with a `ready` boolean and stable
+blocker codes. The assessment checks the separate payout-submission kill
+switch, creator-withdrawal feature flag and minimum, bank-provider
+configuration, APPROVED withdrawal state, complete dual-control approval by
+two different administrators, active destination ownership, matching and
+unexpired FX quote, active earnings reservation, and unresolved payout
+attempts.
+
+The response includes only the withdrawal ID, coin amount, currency, fiat
+minor-unit amount as a decimal string, blocker codes and assessment time. It
+does not return tokenized recipient references or bank details. Each
+assessment appends a `CREATOR_PAYOUT_SUBMISSION_PREFLIGHT_VIEWED` audit event
+with the authenticated administrator, readiness result and blocker codes.
+
+This operation is a read-only financial preflight: it does not create a payout
+attempt, change a withdrawal or reservation, consume an FX quote, reserve
+coins, or call a provider. A `ready: true` result is a point-in-time assessment,
+not authorization to dispatch; all checks are repeated by the protected
+submission service when any future dispatch path is explicitly approved.
+
 ## Payout submission safety gate
 
 The internal `CreatorWithdrawalsService.submitApproved()` boundary is protected
