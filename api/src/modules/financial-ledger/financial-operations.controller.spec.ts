@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Test } from '@nestjs/testing';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
@@ -51,10 +52,9 @@ describe('FinancialOperationsController', () => {
   });
 
   it('applies token authentication before financial access control', () => {
-    expect(Reflect.getMetadata('__guards__', FinancialOperationsController)).toEqual([
-      AuthGuard,
-      FinancialOperationsGuard,
-    ]);
+    expect(
+      Reflect.getMetadata('__guards__', FinancialOperationsController),
+    ).toEqual([AuthGuard, FinancialOperationsGuard]);
   });
 
   it('forwards bounded report filters', async () => {
