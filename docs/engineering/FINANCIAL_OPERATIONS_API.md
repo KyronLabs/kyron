@@ -97,7 +97,12 @@ Only an unprocessed, unmatched event with an already authenticated terminal
 outcome (`SUCCEEDED` or `FAILED`) can be replayed. The request delegates to
 the existing payout reconciliation service, preserving its locks, provider
 reference matching, amount/currency checks, state checks and reservation
-finalization rules.
+finalization rules. Reconciliation also verifies that an already-terminal
+payout has the matching `SETTLED` or `RELEASED` creator reservation before
+consuming additional provider evidence. A mismatch remains unresolved for
+manual reconciliation; it is not silently marked as applied. Competing
+terminal events for the same payout attempt are serialized by the payout
+attempt lock, and only the first valid terminal transition can finalize it.
 
 
 ### Request dual-control withdrawal approval

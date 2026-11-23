@@ -200,6 +200,19 @@ export class PayoutReconciliationService {
         lockedAttempt.status === attemptStatus &&
         withdrawal.status === withdrawalStatus
       ) {
+        await tx.$queryRaw`SELECT id FROM "CreatorEarningReservation" WHERE id = ${withdrawal.reservationId}::uuid FOR UPDATE`;
+        const reservation = await tx.creatorEarningReservation.findUnique({
+          where: { id: withdrawal.reservationId },
+        });
+        const expectedReservationStatus = succeeded
+          ? CreatorEarningReservationStatus.SETTLED
+          : CreatorEarningReservationStatus.RELEASED;
+        if (!reservation || reservation.status !== expectedReservationStatus) {
+          throw new ConflictException(
+            'The payout is already terminal, but its creator earnings reservation does not match; manual reconciliation is required.',
+          );
+        }
+
         await tx.payoutProviderEvent.update({
           where: { id: event.id },
           data: {
