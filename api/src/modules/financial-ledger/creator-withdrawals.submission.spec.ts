@@ -250,9 +250,9 @@ describe('creator payout submission safety boundary', () => {
     );
     expect(prisma.payoutAttempt.update).not.toHaveBeenCalled();
     expect(tx.$queryRaw).toHaveBeenCalledTimes(3);
-    expect(tx.payoutAttempt.findUnique.mock.invocationCallOrder[0]).toBeGreaterThan(
-      tx.$queryRaw.mock.invocationCallOrder[1],
-    );
+    expect(
+      tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
+    ).toBeGreaterThan(tx.$queryRaw.mock.invocationCallOrder[1]);
     expect(tx.$queryRaw.mock.invocationCallOrder[2]).toBeGreaterThan(
       tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
     );
