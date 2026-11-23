@@ -433,6 +433,156 @@ export class CreatorWithdrawalsService {
   }
 
   /**
+   * Read-only preflight for an operator. It deliberately does not reserve,
+   * create attempts, consume FX quotes or call the payout provider.
+   */
+  async getSubmissionReadinessForOperator(
+    withdrawalId: string,
+    actorId: string,
+    now = new Date(),
+  ) {
+    const withdrawal = await this.prisma.creatorWithdrawal.findUnique({
+      where: { id: withdrawalId },
+      select: {
+        id: true,
+        creatorId: true,
+        coinAmount: true,
+        currency: true,
+        fiatAmountMinor: true,
+        status: true,
+        approvalRequestId: true,
+        approvalRequestedById: true,
+        approvalRequestedAt: true,
+        approvedById: true,
+        approvedAt: true,
+        destination: {
+          select: {
+            creatorId: true,
+            status: true,
+          },
+        },
+        fxQuote: {
+          select: {
+            creatorId: true,
+            coinAmount: true,
+            targetCurrency: true,
+            targetAmountMinor: true,
+            status: true,
+            expiresAt: true,
+          },
+        },
+        reservation: {
+          select: {
+            status: true,
+          },
+        },
+        attempts: {
+          select: {
+            status: true,
+          },
+        },
+      },
+    });
+    if (!withdrawal) {
+      throw new NotFoundException('Creator withdrawal not found.');
+    }
+
+    const withdrawalPolicy = this.policy();
+    const submissionPolicy = readCreatorPayoutSubmissionPolicy();
+    const blockers: string[] = [];
+
+    if (!submissionPolicy.enabled) {
+      blockers.push('PAYOUT_SUBMISSIONS_DISABLED');
+    }
+    if (!withdrawalPolicy.enabled) {
+      blockers.push('CREATOR_WITHDRAWALS_DISABLED');
+    }
+    if (withdrawalPolicy.minimumCoins === null) {
+      blockers.push('WITHDRAWAL_MINIMUM_NOT_CONFIGURED');
+    }
+    if (!this.payoutProvider.isConfigured()) {
+      blockers.push('BANK_PAYOUT_PROVIDER_NOT_CONFIGURED');
+    }
+    if (withdrawal.status !== CreatorWithdrawalStatus.APPROVED) {
+      blockers.push('WITHDRAWAL_NOT_APPROVED');
+    }
+    if (
+      !withdrawal.approvalRequestId ||
+      !withdrawal.approvalRequestedById ||
+      !withdrawal.approvalRequestedAt ||
+      !withdrawal.approvedById ||
+      !withdrawal.approvedAt ||
+      withdrawal.approvalRequestedById === withdrawal.approvedById
+    ) {
+      blockers.push('DUAL_CONTROL_APPROVAL_INCOMPLETE');
+    }
+    if (
+      withdrawalPolicy.minimumCoins !== null &&
+      withdrawal.coinAmount < withdrawalPolicy.minimumCoins
+    ) {
+      blockers.push('BELOW_WITHDRAWAL_MINIMUM');
+    }
+    if (
+      withdrawal.destination.status !== PayoutDestinationStatus.ACTIVE ||
+      withdrawal.destination.creatorId !== withdrawal.creatorId
+    ) {
+      blockers.push('PAYOUT_DESTINATION_INVALID');
+    }
+    if (
+      withdrawal.fxQuote.creatorId !== withdrawal.creatorId ||
+      withdrawal.fxQuote.coinAmount !== withdrawal.coinAmount ||
+      withdrawal.fxQuote.targetCurrency !== withdrawal.currency ||
+      withdrawal.fxQuote.targetAmountMinor !== withdrawal.fiatAmountMinor ||
+      withdrawal.fxQuote.status !== FxQuoteStatus.ACTIVE ||
+      withdrawal.fxQuote.expiresAt <= now
+    ) {
+      blockers.push('FX_QUOTE_INVALID_OR_EXPIRED');
+    }
+    if (
+      withdrawal.reservation.status !==
+      CreatorEarningReservationStatus.ACTIVE
+    ) {
+      blockers.push('EARNINGS_RESERVATION_NOT_ACTIVE');
+    }
+    if (
+      withdrawal.attempts.some(
+        (attempt) =>
+          attempt.status === PayoutAttemptStatus.CREATED ||
+          attempt.status === PayoutAttemptStatus.SUBMITTED ||
+          attempt.status === PayoutAttemptStatus.UNKNOWN,
+      )
+    ) {
+      blockers.push('PAYOUT_ATTEMPT_REQUIRES_RECONCILIATION');
+    }
+
+    const ready = blockers.length === 0;
+    const result = {
+      withdrawalId: withdrawal.id,
+      ready,
+      blockers,
+      coinAmount: withdrawal.coinAmount,
+      currency: withdrawal.currency,
+      fiatAmountMinor: withdrawal.fiatAmountMinor.toString(),
+      checkedAt: now.toISOString(),
+    };
+
+    await this.prisma.financialAuditEvent.create({
+      data: {
+        actorId,
+        eventType: 'CREATOR_PAYOUT_SUBMISSION_PREFLIGHT_VIEWED',
+        subjectType: 'CREATOR_WITHDRAWAL',
+        subjectId: withdrawal.id,
+        metadata: {
+          ready,
+          blockerCodes: blockers,
+        },
+      },
+    });
+
+    return result;
+  }
+
+  /**
    * Submits only an approved withdrawal. A provider timeout is UNKNOWN, never
    * treated as a definite failure and never blindly retried.
    */
