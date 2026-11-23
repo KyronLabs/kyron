@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
+import { ConflictException } from '@nestjs/common';
 import {
   CreatorEarningReservationStatus,
   CreatorWithdrawalStatus,
@@ -43,10 +44,17 @@ run('payout terminal reconciliation against Postgres', () => {
     await prisma?.$disconnect();
   });
 
-  const createFixture = async (
-    reservationStatus: CreatorEarningReservationStatus = CreatorEarningReservationStatus.ACTIVE,
-    outcome: PayoutProviderEventOutcome = PayoutProviderEventOutcome.SUCCEEDED,
-  ): Promise<Fixture> => {
+  const createFixture = async ({
+    reservationStatus = CreatorEarningReservationStatus.ACTIVE,
+    outcome = PayoutProviderEventOutcome.SUCCEEDED,
+    withdrawalStatus = CreatorWithdrawalStatus.PROCESSING,
+    attemptStatus = PayoutAttemptStatus.SUBMITTED,
+  }: {
+    reservationStatus?: CreatorEarningReservationStatus;
+    outcome?: PayoutProviderEventOutcome;
+    withdrawalStatus?: CreatorWithdrawalStatus;
+    attemptStatus?: PayoutAttemptStatus;
+  } = {}): Promise<Fixture> => {
     const stamp = randomUUID();
     const creatorId = randomUUID();
     const reservation = await prisma.$transaction(async (tx) => {
@@ -111,7 +119,7 @@ run('payout terminal reconciliation against Postgres', () => {
         coinAmount: 10,
         currency: 'GHS',
         fiatAmountMinor: 500n,
-        status: CreatorWithdrawalStatus.PROCESSING,
+        status: withdrawalStatus,
       },
     });
     const attempt = await prisma.payoutAttempt.create({
@@ -120,7 +128,7 @@ run('payout terminal reconciliation against Postgres', () => {
         providerCode: 'test-provider',
         idempotencyKey: `payout:${withdrawal.id}`,
         providerTransferRef: `transfer:${stamp}`,
-        status: PayoutAttemptStatus.SUBMITTED,
+        status: attemptStatus,
       },
     });
     const event = await prisma.payoutProviderEvent.create({
@@ -181,9 +189,9 @@ run('payout terminal reconciliation against Postgres', () => {
   });
 
   it('does not overwrite a reservation already finalized by another operation', async () => {
-    const fixture = await createFixture(
-      CreatorEarningReservationStatus.RELEASED,
-    );
+    const fixture = await createFixture({
+      reservationStatus: CreatorEarningReservationStatus.RELEASED,
+    });
 
     await expect(reconciliation.reconcile(fixture.eventId)).rejects.toThrow(
       'The creator earnings reservation is not active.',
@@ -209,11 +217,107 @@ run('payout terminal reconciliation against Postgres', () => {
     expect(event.processedAt).toBeNull();
   });
 
-  it('releases a reservation atomically after a terminal provider failure', async () => {
-    const fixture = await createFixture(
-      CreatorEarningReservationStatus.ACTIVE,
-      PayoutProviderEventOutcome.FAILED,
+  it('serializes competing terminal events for the same payout attempt', async () => {
+    const fixture = await createFixture();
+    const attempt = await prisma.payoutAttempt.findUniqueOrThrow({
+      where: { id: fixture.attemptId },
+    });
+    const competingEvent = await prisma.payoutProviderEvent.create({
+      data: {
+        providerCode: 'test-provider',
+        providerEventId: `competing-event:${randomUUID()}`,
+        eventType: 'transfer.failed',
+        payloadHash: 'b'.repeat(64),
+        outcome: PayoutProviderEventOutcome.FAILED,
+        providerTransferRef: attempt.providerTransferRef,
+        providerIdempotencyKey: attempt.idempotencyKey,
+        amountMinor: 500n,
+        currency: 'GHS',
+        providerOccurredAt: new Date(),
+      },
+    });
+
+    const outcomes = await Promise.allSettled([
+      reconciliation.reconcile(fixture.eventId),
+      reconciliation.reconcile(competingEvent.id),
+    ]);
+    const fulfilled = outcomes.filter(
+      (outcome) => outcome.status === 'fulfilled',
     );
+    const rejected = outcomes.find(
+      (outcome): outcome is PromiseRejectedResult =>
+        outcome.status === 'rejected',
+    );
+    expect(fulfilled).toHaveLength(1);
+    expect(rejected?.reason).toBeInstanceOf(ConflictException);
+
+    const [finalAttempt, finalWithdrawal, finalReservation, providerEvents] =
+      await Promise.all([
+        prisma.payoutAttempt.findUniqueOrThrow({
+          where: { id: fixture.attemptId },
+        }),
+        prisma.creatorWithdrawal.findUniqueOrThrow({
+          where: { id: fixture.withdrawalId },
+        }),
+        prisma.creatorEarningReservation.findUniqueOrThrow({
+          where: { id: fixture.reservationId },
+        }),
+        prisma.payoutProviderEvent.findMany({
+          where: { id: { in: [fixture.eventId, competingEvent.id] } },
+        }),
+      ]);
+
+    const succeeded = finalAttempt.status === PayoutAttemptStatus.SUCCEEDED;
+    expect([
+      PayoutAttemptStatus.SUCCEEDED,
+      PayoutAttemptStatus.FAILED,
+    ]).toContain(finalAttempt.status);
+    expect(finalWithdrawal.status).toBe(
+      succeeded ? CreatorWithdrawalStatus.PAID : CreatorWithdrawalStatus.FAILED,
+    );
+    expect(finalReservation.status).toBe(
+      succeeded
+        ? CreatorEarningReservationStatus.SETTLED
+        : CreatorEarningReservationStatus.RELEASED,
+    );
+    expect(providerEvents.filter((event) => event.processedAt)).toHaveLength(1);
+  });
+
+  it('does not mark an already-applied payout event processed when its reservation is inconsistent', async () => {
+    const fixture = await createFixture({
+      attemptStatus: PayoutAttemptStatus.SUCCEEDED,
+      withdrawalStatus: CreatorWithdrawalStatus.PAID,
+      reservationStatus: CreatorEarningReservationStatus.ACTIVE,
+    });
+
+    await expect(reconciliation.reconcile(fixture.eventId)).rejects.toBeInstanceOf(
+      ConflictException,
+    );
+
+    const [attempt, withdrawal, reservation, event] = await Promise.all([
+      prisma.payoutAttempt.findUniqueOrThrow({
+        where: { id: fixture.attemptId },
+      }),
+      prisma.creatorWithdrawal.findUniqueOrThrow({
+        where: { id: fixture.withdrawalId },
+      }),
+      prisma.creatorEarningReservation.findUniqueOrThrow({
+        where: { id: fixture.reservationId },
+      }),
+      prisma.payoutProviderEvent.findUniqueOrThrow({
+        where: { id: fixture.eventId },
+      }),
+    ]);
+    expect(attempt.status).toBe(PayoutAttemptStatus.SUCCEEDED);
+    expect(withdrawal.status).toBe(CreatorWithdrawalStatus.PAID);
+    expect(reservation.status).toBe(CreatorEarningReservationStatus.ACTIVE);
+    expect(event.processedAt).toBeNull();
+  });
+
+  it('releases a reservation atomically after a terminal provider failure', async () => {
+    const fixture = await createFixture({
+      outcome: PayoutProviderEventOutcome.FAILED,
+    });
 
     await expect(reconciliation.reconcile(fixture.eventId)).resolves.toEqual({
       status: 'FAILED',
