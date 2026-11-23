@@ -1132,6 +1132,10 @@ enum CoinKind {
   /// Creator proceeds funded by approved post-reward coins. Withdrawable on
   /// the same terms as PURCHASE_EARN; source is retained for reconciliation.
   REWARD_EARN
+  /// Coins purchased through a verified one-time Google Play product. Positive.
+  PURCHASE_GRANT
+  /// Purchased coins spent on a gift. Negative; creator proceeds become PURCHASE_EARN.
+  PURCHASE_SPEND
 }
 
 enum GooglePlayPurchaseStatus {
@@ -2311,6 +2315,11 @@ model GooglePlayPurchase {
   coinAmount          Int
   purchaseTime        DateTime                @db.Timestamptz()
   acknowledgementState Int
+  /// Play's buyer-paid order total, stored in 10^-9 currency units without rounding.
+  purchaseCurrencyCode String?                 @db.Char(3)
+  grossAmountNanos     BigInt?
+  /// Developer revenue after Play fees/tax deductions, when Play supplies it.
+  developerRevenueNanos BigInt?
   status              GooglePlayPurchaseStatus @default(VERIFIED)
   coinEntryKey        String                  @unique @db.VarChar(200)
   createdAt           DateTime                @default(now()) @db.Timestamptz()
