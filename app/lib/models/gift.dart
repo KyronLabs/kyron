@@ -88,6 +88,9 @@ class GiftWallet {
   /// Unspent balance from the retired weekly complimentary grants.
   final int legacyComplimentary;
 
+  /// Unspent purchased coins, distinct from promotional credits.
+  final int purchased;
+
   const GiftWallet({
     required this.coins,
     required this.earned,
@@ -97,6 +100,7 @@ class GiftWallet {
     this.promotionalEarned = 0,
     this.legacyComplimentary = 0,
     this.promotional = 0,
+    this.purchased = 0,
   });
 
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
