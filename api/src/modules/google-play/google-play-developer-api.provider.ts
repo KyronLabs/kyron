@@ -105,6 +105,7 @@ export class GooglePlayDeveloperApiProvider {
           Authorization: `Bearer ${accessToken}`,
           Accept: 'application/json',
         },
+        signal: AbortSignal.timeout(10_000),
       });
     } catch {
       throw new ServiceUnavailableException(
@@ -189,6 +190,7 @@ export class GooglePlayDeveloperApiProvider {
           grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
           assertion,
         }),
+        signal: AbortSignal.timeout(10_000),
       });
       if (!response.ok) {
         throw new Error('OAuth token exchange failed.');
