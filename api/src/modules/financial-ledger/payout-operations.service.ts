@@ -16,7 +16,7 @@ import { PayoutReconciliationService } from './payout-reconciliation.service';
 const MAX_REPORT_LIMIT = 500;
 const MAX_STALE_MINUTES = 10_080;
 
-const MANUAL_REVIEW_REASON_CODES = [
+export const PAYOUT_MANUAL_REVIEW_REASON_CODES = [
   'STALE_CREATED_ATTEMPT',
   'STALE_SUBMITTED_ATTEMPT',
   'UNKNOWN_PROVIDER_OUTCOME',
@@ -25,7 +25,7 @@ const MANUAL_REVIEW_REASON_CODES = [
   'OTHER',
 ] as const;
 
-const MANUAL_REVIEW_RESOLUTION_CODES = [
+export const PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES = [
   'EVIDENCE_ATTACHED_FOR_RECONCILIATION',
   'NO_PROVIDER_TRANSFER_FOUND',
   'ESCALATED_TO_PROVIDER',
@@ -48,10 +48,10 @@ function metadataString(
 }
 
 export type PayoutManualReviewReasonCode =
-  (typeof MANUAL_REVIEW_REASON_CODES)[number];
+  (typeof PAYOUT_MANUAL_REVIEW_REASON_CODES)[number];
 
 export type PayoutManualReviewResolutionCode =
-  (typeof MANUAL_REVIEW_RESOLUTION_CODES)[number];
+  (typeof PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES)[number];
 
 export interface PayoutOperationalReportInput {
   staleAfterMinutes?: number;
@@ -321,6 +321,40 @@ export class PayoutOperationsService {
   }
 
   /**
+   * Reads the report and records who accessed financial operations. Only
+   * aggregate counts and the requested bounds are added to the audit trail;
+   * individual payout details remain in the report response only.
+   */
+  async getOperationalReportForOperator(
+    input: PayoutOperationalReportInput,
+    actorId: string,
+  ): Promise<PayoutOperationalReport> {
+    if (!actorId.trim() || actorId.length > 80) {
+      throw new BadRequestException('A valid audit actor is required.');
+    }
+
+    const report = await this.getOperationalReport(input);
+    await this.prisma.financialAuditEvent.create({
+      data: {
+        actorId,
+        eventType: 'FINANCIAL_OPERATIONS_REPORT_VIEWED',
+        subjectType: 'PAYOUT_OPERATIONS_REPORT',
+        metadata: {
+          staleAfterMinutes: report.staleAfterMinutes,
+          limit: input.limit ?? 100,
+          staleAttemptCount: report.staleAttemptCount,
+          unresolvedProviderEventCount: report.unresolvedProviderEventCount,
+          unmatchedTerminalProviderEventCount:
+            report.unmatchedTerminalProviderEventCount,
+          returnedStaleAttemptCount: report.staleAttempts.length,
+          returnedProviderEventCount: report.unresolvedProviderEvents.length,
+        },
+      },
+    });
+    return report;
+  }
+
+  /**
    * Records a human review request. It deliberately does not change payout
    * state, submit a transfer, release a reservation, or retry a provider call.
    */
@@ -331,7 +365,7 @@ export class PayoutOperationsService {
     reasonCode: PayoutManualReviewReasonCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (!MANUAL_REVIEW_REASON_CODES.includes(input.reasonCode)) {
+    if (!PAYOUT_MANUAL_REVIEW_REASON_CODES.includes(input.reasonCode)) {
       throw new BadRequestException('Invalid payout review reason code.');
     }
 
@@ -418,7 +452,7 @@ export class PayoutOperationsService {
     resolutionCode: PayoutManualReviewResolutionCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (!MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)) {
+    if (!PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)) {
       throw new BadRequestException('Invalid payout review resolution code.');
     }
 
