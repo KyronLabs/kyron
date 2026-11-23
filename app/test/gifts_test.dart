@@ -168,6 +168,20 @@ void main() {
       expect(legacyWallet.promotionalEarned, 10);
     });
 
+    test('purchased coins are parsed separately from promotional balances', () {
+      final wallet = GiftWallet.fromJson(const {
+        'coins': 150,
+        'earned': 0,
+        'legacyComplimentary': 20,
+        'promotional': 30,
+        'purchased': 100,
+      });
+      expect(wallet.coins, 150);
+      expect(wallet.legacyComplimentary, 20);
+      expect(wallet.promotional, 30);
+      expect(wallet.purchased, 100);
+    });
+
     test('a post carries its gift count, and none means zero', () {
       expect(FeedPost.fromJson(const {'id': 'p', 'gifts': 7}).gifts, 7);
       expect(FeedPost.fromJson(const {'id': 'p'}).gifts, 0);
