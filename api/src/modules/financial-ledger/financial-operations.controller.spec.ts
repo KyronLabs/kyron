@@ -2,9 +2,7 @@ import 'reflect-metadata';
 import { Test } from '@nestjs/testing';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
-import {
-  FinancialOperationsController,
-} from './financial-operations.controller';
+import { FinancialOperationsController } from './financial-operations.controller';
 import { FinancialOperationsGuard } from './financial-operations.guard';
 import { PayoutOperationsService } from './payout-operations.service';
 
@@ -61,7 +59,8 @@ describe('FinancialOperationsController', () => {
   });
 
   it('audits report reads under the authenticated actor', async () => {
-    await (await controller()).report(request, {
+    const instance = await controller();
+    await instance.report(request, {
       staleAfterMinutes: 30,
       limit: 25,
     });
@@ -76,14 +75,11 @@ describe('FinancialOperationsController', () => {
   });
 
   it('uses the authenticated actor for manual reviews', async () => {
-    await (await controller()).requestManualReview(
-      request,
-      '11111111-1111-4111-8111-111111111111',
-      {
-        requestId: 'review-request-01',
-        reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
-      },
-    );
+    const instance = await controller();
+    await instance.requestManualReview(request, '11111111-1111-4111-8111-111111111111', {
+      requestId: 'review-request-01',
+      reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
+    });
 
     expect(requestManualReview).toHaveBeenCalledWith({
       payoutAttemptId: '11111111-1111-4111-8111-111111111111',
@@ -94,14 +90,11 @@ describe('FinancialOperationsController', () => {
   });
 
   it('uses the authenticated actor when resolving reviews', async () => {
-    await (await controller()).resolveManualReview(
-      request,
-      '11111111-1111-4111-8111-111111111111',
-      {
-        requestId: 'review-request-01',
-        resolutionCode: 'NO_ACTION_REQUIRED',
-      },
-    );
+    const instance = await controller();
+    await instance.resolveManualReview(request, '11111111-1111-4111-8111-111111111111', {
+      requestId: 'review-request-01',
+      resolutionCode: 'NO_ACTION_REQUIRED',
+    });
 
     expect(resolveManualReview).toHaveBeenCalledWith({
       payoutAttemptId: '11111111-1111-4111-8111-111111111111',
@@ -112,11 +105,10 @@ describe('FinancialOperationsController', () => {
   });
 
   it('uses the authenticated actor when replaying evidence', async () => {
-    await (await controller()).reprocessProviderEvent(
-      request,
-      '22222222-2222-4222-8222-222222222222',
-      { requestId: 'provider-replay-01' },
-    );
+    const instance = await controller();
+    await instance.reprocessProviderEvent(request, '22222222-2222-4222-8222-222222222222', {
+      requestId: 'provider-replay-01',
+    });
 
     expect(reprocessUnmatchedProviderEvent).toHaveBeenCalledWith({
       providerEventId: '22222222-2222-4222-8222-222222222222',
