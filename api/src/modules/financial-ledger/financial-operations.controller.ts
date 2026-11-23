@@ -32,8 +32,14 @@ export class FinancialOperationsController {
 
   /** Read-only report of stale attempts, unmatched evidence and reviews. */
   @Get('payouts')
-  report(@Query() query: PayoutOperationsReportQueryDto) {
-    return this.operations.getOperationalReport(query);
+  report(
+    @Req() request: AuthRequest,
+    @Query() query: PayoutOperationsReportQueryDto,
+  ) {
+    return this.operations.getOperationalReportForOperator(
+      query,
+      request.user.id,
+    );
   }
 
   /** Opens an auditable manual-review item for an unresolved payout attempt. */
