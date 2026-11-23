@@ -166,5 +166,4 @@ describe('FinancialOperationsController', () => {
       'withdrawal-approval-01',
     );
   });
-
 });
