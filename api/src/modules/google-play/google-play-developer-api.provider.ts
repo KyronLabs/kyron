@@ -197,17 +197,19 @@ export class GooglePlayDeveloperApiProvider {
       }
 
       const token = (await response.json()) as OAuthTokenResponse;
+      const expiresIn = token.expires_in;
       if (
         !token.access_token ||
-        !Number.isSafeInteger(token.expires_in) ||
-        (token.expires_in ?? 0) <= 0
+        typeof expiresIn !== 'number' ||
+        !Number.isSafeInteger(expiresIn) ||
+        expiresIn <= 0
       ) {
         throw new Error('OAuth token response was invalid.');
       }
 
       this.cachedAccessToken = {
         value: token.access_token,
-        expiresAt: Date.now() + token.expires_in * 1000,
+        expiresAt: Date.now() + expiresIn * 1000,
       };
       return token.access_token;
     } catch {
