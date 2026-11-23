@@ -139,4 +139,27 @@ describe('CreatorWithdrawalsService dual-control approval', () => {
       service.approve(withdrawal.id, 'admin-approver', 'another-request-02'),
     ).rejects.toBeInstanceOf(ConflictException);
   });
+  it('returns the existing approval on an identical retry', async () => {
+    const { service, tx } = createHarness();
+    tx.creatorWithdrawal.findUnique.mockResolvedValue({
+      ...withdrawal,
+      status: CreatorWithdrawalStatus.APPROVED,
+      approvalRequestId: 'withdrawal-approval-01',
+      approvalRequestedById: 'admin-requester',
+      approvalRequestedAt: new Date(),
+      approvedById: 'admin-approver',
+      approvedAt: new Date(),
+    });
+
+    const result = await service.approve(
+      withdrawal.id,
+      'admin-approver',
+      'withdrawal-approval-01',
+    );
+
+    expect(result.status).toBe(CreatorWithdrawalStatus.APPROVED);
+    expect(tx.creatorWithdrawal.update).not.toHaveBeenCalled();
+    expect(tx.financialAuditEvent.create).not.toHaveBeenCalled();
+  });
+
 });
