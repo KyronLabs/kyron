@@ -164,6 +164,7 @@ run('legacy coin reconciliation, against a real database', () => {
             CREATOR_PAYABLE: '0',
             CREATOR_PROMOTIONAL: '0',
             CREATOR_UNKNOWN: '0',
+            PURCHASED_COIN: '0',
           },
         },
         {
@@ -174,6 +175,7 @@ run('legacy coin reconciliation, against a real database', () => {
             CREATOR_PAYABLE: '10',
             CREATOR_PROMOTIONAL: '5',
             CREATOR_UNKNOWN: '3',
+            PURCHASED_COIN: '0',
           },
         },
       ]),
