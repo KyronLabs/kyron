@@ -226,6 +226,7 @@ export class PayoutReconciliationService {
           'The withdrawal is not in a reconcilable processing state.',
         );
       }
+      await tx.$queryRaw`SELECT id FROM "CreatorEarningReservation" WHERE id = ${withdrawal.reservationId}::uuid FOR UPDATE`;
       const reservation = await tx.creatorEarningReservation.findUnique({
         where: { id: withdrawal.reservationId },
       });

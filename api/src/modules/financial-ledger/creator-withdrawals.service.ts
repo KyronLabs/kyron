@@ -712,6 +712,20 @@ export class CreatorWithdrawalsService {
     if (!result.accepted) {
       const providerErrorCode = result.errorCode ?? 'PROVIDER_REJECTED';
       await this.prisma.$transaction(async (tx) => {
+        await tx.$queryRaw`SELECT id FROM "PayoutAttempt" WHERE id = ${prepared.attempt.id}::uuid FOR UPDATE`;
+        const currentAttempt = await tx.payoutAttempt.findUnique({
+          where: { id: prepared.attempt.id },
+          select: { status: true },
+        });
+        if (
+          !currentAttempt ||
+          currentAttempt.status !== PayoutAttemptStatus.CREATED
+        ) {
+          throw new ConflictException(
+            'The payout attempt changed before the provider rejection could be finalized; manual reconciliation is required.',
+          );
+        }
+
         await tx.$queryRaw`SELECT id FROM "CreatorEarningReservation" WHERE id = ${prepared.withdrawal.reservationId}::uuid FOR UPDATE`;
         const reservation = await tx.creatorEarningReservation.findUnique({
           where: { id: prepared.withdrawal.reservationId },

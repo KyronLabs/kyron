@@ -87,6 +87,9 @@ describe('creator payout submission safety boundary', () => {
           id: 'attempt-1',
           idempotencyKey: 'payout:33333333-3333-4333-8333-333333333333',
         }),
+        findUnique: jest
+          .fn()
+          .mockResolvedValue({ status: PayoutAttemptStatus.CREATED }),
         update: jest.fn(),
       },
       fxQuote: {
@@ -246,6 +249,33 @@ describe('creator payout submission safety boundary', () => {
       }),
     );
     expect(prisma.payoutAttempt.update).not.toHaveBeenCalled();
+    expect(tx.$queryRaw).toHaveBeenCalledTimes(3);
+    expect(
+      tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
+    ).toBeGreaterThan(tx.$queryRaw.mock.invocationCallOrder[1]);
+    expect(tx.$queryRaw.mock.invocationCallOrder[2]).toBeGreaterThan(
+      tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
+    );
+  });
+
+  it('does not overwrite an attempt already finalized by a competing provider event', async () => {
+    process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
+    const { service, tx, payoutProvider, withdrawal } = createHarness();
+    payoutProvider.submit.mockResolvedValue({
+      accepted: false,
+      errorCode: 'BANK_ACCOUNT_CLOSED',
+    });
+    tx.payoutAttempt.findUnique.mockResolvedValue({
+      status: PayoutAttemptStatus.SUCCEEDED,
+    });
+
+    await expect(service.submitApproved(withdrawal.id)).rejects.toBeInstanceOf(
+      ConflictException,
+    );
+
+    expect(tx.creatorEarningReservation.findUnique).not.toHaveBeenCalled();
+    expect(tx.payoutAttempt.update).not.toHaveBeenCalled();
+    expect(tx.creatorWithdrawal.update).toHaveBeenCalledTimes(1);
   });
 
   it('does not relabel a known provider rejection as UNKNOWN when finalization fails', async () => {
