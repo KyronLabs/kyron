@@ -1,7 +1,4 @@
-import {
-  ConflictException,
-  ServiceUnavailableException,
-} from '@nestjs/common';
+import { ConflictException, ServiceUnavailableException } from '@nestjs/common';
 import {
   CreatorWithdrawalStatus,
   FxQuoteStatus,
@@ -23,10 +20,7 @@ describe('creator payout submission safety boundary', () => {
   });
 
   afterAll(() => {
-    const restore = (
-      key: string,
-      value: string | undefined,
-    ): void => {
+    const restore = (key: string, value: string | undefined): void => {
       if (value === undefined) {
         delete process.env[key];
       } else {
@@ -34,10 +28,7 @@ describe('creator payout submission safety boundary', () => {
       }
     };
 
-    restore(
-      'CREATOR_PAYOUT_SUBMISSIONS_ENABLED',
-      originalEnv.submissions,
-    );
+    restore('CREATOR_PAYOUT_SUBMISSIONS_ENABLED', originalEnv.submissions);
     restore('CREATOR_WITHDRAWALS_ENABLED', originalEnv.withdrawals);
     restore('CREATOR_WITHDRAWAL_MIN_COINS', originalEnv.minimum);
   });
@@ -92,8 +83,8 @@ describe('creator payout submission safety boundary', () => {
       },
     };
     const prisma = {
-      $transaction: jest.fn(
-        (callback: (transaction: typeof tx) => unknown) => callback(tx),
+      $transaction: jest.fn((callback: (transaction: typeof tx) => unknown) =>
+        callback(tx),
       ),
       payoutAttempt: {
         update: jest.fn(),
