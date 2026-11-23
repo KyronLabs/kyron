@@ -1,13 +1,49 @@
-# Keeps the commit-pinned actions in .github/workflows current. They are
-# pinned by SHA so a moved tag cannot change what runs in jobs that hold the
-# signing key; this opens a PR, with the release notes, when a new version
-# comes out.
+# Keep the pinned GitHub Actions, API npm packages and Flutter/Dart
+# dependencies current. Version updates are grouped only for minor/patch
+# releases; major updates remain separate for deliberate compatibility review.
+#
+# The app depends on KyronLabs/design-system through a private Git dependency.
+# The KyronLabs organisation must grant Dependabot access to that private
+# repository for pub lockfile resolution and complete Flutter dependency updates.
 version: 2
+
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 5
     groups:
       actions:
-        patterns: ['*']
+        patterns:
+          - "*"
+
+  - package-ecosystem: npm
+    directory: /api
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      production-minor-and-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-minor-and-patch:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: pub
+    directory: /app
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      pub-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
