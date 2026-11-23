@@ -300,14 +300,6 @@ export class CreatorWithdrawalsService {
       if (!withdrawal) {
         throw new NotFoundException('Creator withdrawal not found.');
       }
-      if (
-        withdrawal.status !== CreatorWithdrawalStatus.REQUESTED &&
-        withdrawal.status !== CreatorWithdrawalStatus.UNDER_REVIEW
-      ) {
-        throw new ConflictException(
-          'This withdrawal cannot enter approval from its current state.',
-        );
-      }
       if (withdrawal.approvalRequestId) {
         if (
           withdrawal.approvalRequestId === input.requestId &&
@@ -317,6 +309,14 @@ export class CreatorWithdrawalsService {
         }
         throw new ConflictException(
           'A dual-control approval request is already pending.',
+        );
+      }
+      if (
+        withdrawal.status !== CreatorWithdrawalStatus.REQUESTED &&
+        withdrawal.status !== CreatorWithdrawalStatus.UNDER_REVIEW
+      ) {
+        throw new ConflictException(
+          'This withdrawal cannot enter approval from its current state.',
         );
       }
 
