@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
-import { SupabaseTokenModule } from '../auth/supabase-token.module';
-import { FinancialOperationsController } from './financial-operations.controller';
-import { FinancialOperationsGuard } from './financial-operations.guard';
 
+import { SupabaseTokenModule } from '../auth/supabase-token.module';
+import {
+  FinancialOperationsController,
+} from './financial-operations.controller';
+import { FinancialOperationsGuard } from './financial-operations.guard';
 import { LedgerService } from './ledger.service';
 import { CreatorEarningsService } from './creator-earnings.service';
 import { PayoutOperationsService } from './payout-operations.service';
