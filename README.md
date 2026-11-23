@@ -4,11 +4,12 @@
 
 ### An open social app you can run yourself
 
-*Flutter client · NestJS API · Postgres. One codebase → Android · iOS · Web.*
+*Flutter client · NestJS API · Postgres. Android and Windows are the current app release targets.*
 
 <br>
 
-[![CI](https://github.com/KyronLabs/kyron/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions)
+[![Flutter CI](https://github.com/KyronLabs/kyron/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions/workflows/flutter-ci.yml)
+[![API CI](https://github.com/KyronLabs/kyron/actions/workflows/api-ci.yml/badge.svg)](https://github.com/KyronLabs/kyron/actions/workflows/api-ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Stars](https://img.shields.io/github/stars/KyronLabs/kyron?style=social)](https://github.com/KyronLabs/kyron)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -42,7 +43,7 @@ does today. Where something is planned rather than built, it says so.
 | **Notifications** | Delivered over the socket when the app is open and as a push when it is not — [how it is wired and what it needs](docs/PUSH.md) |
 | **Feed** | Ranked by interests, who you follow, what you have liked, how long you read, what you have asked to see less of, and recency; cursor-paged |
 | **Posts** | Text, photos, video, polls, voice recordings, link previews, quotes, reposts |
-| **Video** | Normalised to H.264, capped, a poster cut from the clip, and re-encoded on a queue rather than while you wait — [why the upload answers before the encode finishes](docs/MEDIA_JOBS.md) |
+| **Video** | The API probes public clips, creates a poster and queues oversized/high-bitrate video for background H.264 re-encoding; the original remains available if processing cannot improve it — [how the upload and queue work](docs/MEDIA_JOBS.md) |
 | **Comments** | Real threading at any depth, connector rails, a page per comment, media in replies |
 | **Profiles** | Bio, links, avatar and cover, followers and following, editing |
 | **Messages** | One-to-one, attachments, read state, mute, block, report, delete. Text is encrypted end to end — [what that does and does not cover](docs/E2EE.md) |
@@ -72,7 +73,7 @@ The plan, and the order, is in [`ROADMAP.md`](ROADMAP.md).
 
 ## ◈ Quickstart
 
-**Prerequisites:** Node.js 20 · Flutter (stable channel) · Docker
+**Prerequisites:** Node.js 22 · Flutter (stable channel) · Docker
 
 ```bash
 # 1. Clone
@@ -82,15 +83,16 @@ git clone https://github.com/KyronLabs/kyron.git && cd kyron
 docker compose up -d postgres
 
 # 3. API                                    → http://localhost:3000
-cd api && npm install && npx prisma migrate deploy && npm run start:dev
+cd api && npm ci && npx prisma generate && npx prisma migrate deploy && npm run start:dev
 
 # 4. App
 cd ../app && flutter pub get && flutter run
 ```
 
-The API needs `DATABASE_URL` and `SUPABASE_URL` set; it refuses to boot without
-them rather than starting in a state that fails later. See
-[`api/.env.example`](api/.env.example).
+The API needs a local `DATABASE_URL` and the appropriate Supabase project
+settings, including the server-side service-role key for Storage operations.
+It refuses to boot without its required configuration rather than starting in
+a state that fails later. See [`api/.env.example`](api/.env.example).
 
 The migrations revoke table access from two roles that only Supabase's Postgres
 has. The Docker database creates them on first start; on any other plain
@@ -102,18 +104,21 @@ once before migrating. A Docker volume from an attempt that stopped at
 
 ## ◈ Architecture
 
-One API, one database. Not microservices — the `media/` directory is a
-placeholder for a service that has not been written.
+One API, one database. Kyron is a modular monolith, not a microservice
+topology. The top-level `media/` folder is not a deployed service: the active
+media upload and background re-encode implementation is part of the API in
+`api/src/modules/media/`. The web app is withdrawn; Render still serves a
+static download/marketing site from `web/build/web/`.
 
 ```
 ┌─────────────────────────────────────────────┐
-│   Flutter  ·  Android · iOS · Web           │
+│   Flutter client · Android / Windows apps  │
 │   Riverpod state  ·  Dio HTTP  ·  REST      │
 └───────────────────────┬─────────────────────┘
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
-│   17 REST controllers  ·  rate limited      │
+│   REST controllers + WebSocket gateway     │
 │   Supabase JWT verified against JWKS        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
@@ -123,10 +128,12 @@ placeholder for a service that has not been written.
 └───────────────────┘   └─────────────────────┘
 ```
 
-The API and the static web build both run on Render (`render.yaml`) — the API
-is what `app/lib/services/api_client.dart` points at, and `/health` on it is
-the quickest way to see which Supabase project a deployment is verifying
-against. The API runs as a single instance, which is what
+The API and a static download/marketing site both run on Render
+(`render.yaml`). The interactive Flutter web app is withdrawn; the current
+app release targets are Android and Windows. The API is what
+`app/lib/services/api_client.dart` points at, and `/health` on it is the
+quickest way to see which Supabase project a deployment is verifying against.
+The API runs as a single instance, which is what
 `docs/OBSERVABILITY.md` and `docs/PERFORMANCE.md` mean when they say "one
 process". More in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
@@ -161,10 +168,11 @@ each is separate for a reason rather than for tidiness.
 
 ## ◈ Testing and CI
 
-| Suite | Count | Runs on |
+| Area | Checks | Workflow |
 |:--|:--|:--|
-| Flutter widget and unit tests | 771 | Every push and PR touching `app/` |
-| API unit tests | 443 | Every push and PR touching `api/` |
+| Flutter | Dart formatting, Flutter analysis and widget/unit tests; Windows release build and packaging validation | [Flutter CI](.github/workflows/flutter-ci.yml) on app changes and workflow changes |
+| API | Production dependency audit, Prisma generation, typecheck, build, Jest unit specs and ESLint | [API CI](.github/workflows/api-ci.yml) on API changes |
+| API database | PostgreSQL 16 migrations and database-backed integration specs | Separate job in [API CI](.github/workflows/api-ci.yml) |
 
 Locally:
 
