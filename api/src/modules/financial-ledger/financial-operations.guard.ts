@@ -5,7 +5,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { UserRole } from '@prisma/client';
+import { AccountStatus, UserRole } from '@prisma/client';
 import type { AuthRequest } from '../../common/types/auth-request';
 
 /**
@@ -20,7 +20,10 @@ export class FinancialOperationsGuard implements CanActivate {
     const request = context.switchToHttp().getRequest<AuthRequest>();
 
     // Hide the existence of financial operations from non-admin accounts.
-    if (request.user?.role !== UserRole.ADMIN) {
+    if (
+      request.user?.role !== UserRole.ADMIN ||
+      request.user.status !== AccountStatus.ACTIVE
+    ) {
       throw new NotFoundException();
     }
 
