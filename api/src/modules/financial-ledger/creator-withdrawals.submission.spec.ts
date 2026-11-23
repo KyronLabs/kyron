@@ -250,8 +250,7 @@ describe('creator payout submission safety boundary', () => {
 
   it('does not relabel a known provider rejection as UNKNOWN when finalization fails', async () => {
     process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
-    const { service, prisma, tx, payoutProvider, withdrawal } =
-      createHarness();
+    const { service, prisma, tx, payoutProvider, withdrawal } = createHarness();
     payoutProvider.submit.mockResolvedValue({
       accepted: false,
       errorCode: 'BANK_ACCOUNT_CLOSED',
