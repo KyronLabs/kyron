@@ -51,7 +51,7 @@ export class FinancialOperationsController {
     });
   }
 
-  /** Closes an operational review; it does not change payout financial state. */
+  /** Closes a review without changing payout financial state. */
   @Post('payout-attempts/:id/manual-review/resolve')
   resolveManualReview(
     @Req() request: AuthRequest,
