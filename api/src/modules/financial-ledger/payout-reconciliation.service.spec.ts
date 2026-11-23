@@ -60,7 +60,10 @@ describe('payout webhook provider boundary', () => {
 
 
 describe('payout terminal reconciliation locking', () => {
-  const createHarness = (reservationStatus = CreatorEarningReservationStatus.ACTIVE) => {
+  const createHarness = (
+    reservationStatus: CreatorEarningReservationStatus =
+      CreatorEarningReservationStatus.ACTIVE,
+  ) => {
     const event = {
       id: 'event-1',
       processedAt: null,
