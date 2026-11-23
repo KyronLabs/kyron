@@ -438,7 +438,6 @@ export class GooglePlayPurchasesService {
     try {
       return await this.prisma.$transaction(async (tx) => {
         // Serialize purchased credits with gift spending on this wallet.
-        await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${input.userId}::uuid FOR UPDATE`;
         const lockedUsers = await tx.$queryRaw<Array<{ id: string }>>`SELECT id FROM "User" WHERE id = ${input.userId}::uuid FOR UPDATE`;
         if (lockedUsers.length === 0) {
           throw new NotFoundException('Account not found.');
