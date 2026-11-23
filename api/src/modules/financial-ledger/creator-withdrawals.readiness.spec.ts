@@ -8,6 +8,9 @@ import {
 } from '@prisma/client';
 import { CreatorWithdrawalsService } from './creator-withdrawals.service';
 
+const partial = (value: Record<string, unknown>): Record<string, unknown> =>
+  expect.objectContaining(value) as unknown as Record<string, unknown>;
+
 describe('creator payout submission readiness preflight', () => {
   const originalEnv = {
     submissions: process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED,
@@ -30,10 +33,7 @@ describe('creator payout submission readiness preflight', () => {
       }
     };
 
-    restore(
-      'CREATOR_PAYOUT_SUBMISSIONS_ENABLED',
-      originalEnv.submissions,
-    );
+    restore('CREATOR_PAYOUT_SUBMISSIONS_ENABLED', originalEnv.submissions);
     restore('CREATOR_WITHDRAWALS_ENABLED', originalEnv.withdrawals);
     restore('CREATOR_WITHDRAWAL_MIN_COINS', originalEnv.minimum);
   });
@@ -70,8 +70,7 @@ describe('creator payout submission readiness preflight', () => {
   });
 
   const createHarness = (
-    withdrawal: ReturnType<typeof makeWithdrawal> | null =
-      makeWithdrawal(),
+    withdrawal: ReturnType<typeof makeWithdrawal> | null = makeWithdrawal(),
     providerConfigured = true,
   ) => {
     const findUnique = jest.fn().mockResolvedValue(withdrawal);
@@ -103,13 +102,8 @@ describe('creator payout submission readiness preflight', () => {
   };
 
   it('reports a fully eligible withdrawal without preparing or submitting it', async () => {
-    const {
-      service,
-      findUnique,
-      auditCreate,
-      transaction,
-      submit,
-    } = createHarness();
+    const { service, findUnique, auditCreate, transaction, submit } =
+      createHarness();
 
     const result = await service.getSubmissionReadinessForOperator(
       '33333333-3333-4333-8333-333333333333',
@@ -167,12 +161,12 @@ describe('creator payout submission readiness preflight', () => {
       reservation: {
         status: CreatorEarningReservationStatus.RELEASED,
       },
-      attempts: [
-        { status: PayoutAttemptStatus.UNKNOWN },
-      ],
+      attempts: [{ status: PayoutAttemptStatus.UNKNOWN }],
     });
-    const { service, auditCreate, transaction, submit } =
-      createHarness(withdrawal, false);
+    const { service, auditCreate, transaction, submit } = createHarness(
+      withdrawal,
+      false,
+    );
 
     const result = await service.getSubmissionReadinessForOperator(
       withdrawal.id,
@@ -194,16 +188,18 @@ describe('creator payout submission readiness preflight', () => {
         'PAYOUT_ATTEMPT_REQUIRES_RECONCILIATION',
       ]),
     );
-    expect(auditCreate).toHaveBeenCalledWith({
-      data: expect.objectContaining({
-        actorId: 'admin-1',
-        eventType: 'CREATOR_PAYOUT_SUBMISSION_PREFLIGHT_VIEWED',
-        metadata: expect.objectContaining({
-          ready: false,
-          blockerCodes: result.blockers,
+    expect(auditCreate).toHaveBeenCalledWith(
+      partial({
+        data: partial({
+          actorId: 'admin-1',
+          eventType: 'CREATOR_PAYOUT_SUBMISSION_PREFLIGHT_VIEWED',
+          metadata: partial({
+            ready: false,
+            blockerCodes: result.blockers,
+          }),
         }),
       }),
-    });
+    );
     expect(transaction).not.toHaveBeenCalled();
     expect(submit).not.toHaveBeenCalled();
   });
@@ -242,9 +238,7 @@ describe('creator payout submission readiness preflight', () => {
       'admin-1',
     );
 
-    expect(JSON.stringify(result)).not.toContain(
-      'sensitive-recipient-token',
-    );
+    expect(JSON.stringify(result)).not.toContain('sensitive-recipient-token');
   });
 
   it('does not audit or mutate when the withdrawal does not exist', async () => {
