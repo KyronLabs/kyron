@@ -13,9 +13,11 @@ Every route requires:
 - An access token whose verified `aal` claim is `aal2` (second factor).
 
 The AAL2 requirement is mandatory for this API and is independent of
-`STAFF_REQUIRE_SECOND_FACTOR`. A password-only session receives
-`403 FINANCIAL_OPERATIONS_SECOND_FACTOR_REQUIRED`. Non-admin or inactive
-accounts receive a not-found response.
+`STAFF_REQUIRE_SECOND_FACTOR`. A password-only admin session receives
+`403 FINANCIAL_OPERATIONS_SECOND_FACTOR_REQUIRED`. The financial guard hides
+the routes from non-admin accounts; Kyron's general authentication guard also
+enforces the account's suspension, ban and deletion status before the
+financial guard runs.
 
 The acting administrator ID is always taken from the authenticated request.
 No endpoint accepts an actor ID from the caller. Request IDs are required for
