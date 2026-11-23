@@ -50,6 +50,13 @@ describe('FinancialOperationsController', () => {
     reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
   });
 
+  it('applies token authentication before financial access control', () => {
+    expect(Reflect.getMetadata('__guards__', FinancialOperationsController)).toEqual([
+      AuthGuard,
+      FinancialOperationsGuard,
+    ]);
+  });
+
   it('forwards bounded report filters', async () => {
     await (await controller()).report({
       staleAfterMinutes: 30,
