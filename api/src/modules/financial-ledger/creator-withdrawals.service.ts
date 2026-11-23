@@ -360,6 +360,13 @@ export class CreatorWithdrawalsService {
         throw new NotFoundException('Creator withdrawal not found.');
       }
       if (
+        withdrawal.status === CreatorWithdrawalStatus.APPROVED &&
+        withdrawal.approvalRequestId === requestId &&
+        withdrawal.approvedById === actorId
+      ) {
+        return withdrawal;
+      }
+      if (
         withdrawal.status !== CreatorWithdrawalStatus.REQUESTED &&
         withdrawal.status !== CreatorWithdrawalStatus.UNDER_REVIEW
       ) {
