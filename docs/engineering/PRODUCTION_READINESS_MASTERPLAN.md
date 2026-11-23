@@ -73,7 +73,7 @@ The recent read-only review reported:
 - Historical tracked environment file with a local database password and placeholder JWT secret. Reuse outside local development and credential rotation remain to be confirmed.
 - Public Git history containing AI-session references. Accessibility and revocation status remain unverified.
 - Supabase `supabase_admin` default privileges documented as broad for `anon` on newly created public-schema tables.
-- The prior startup implementation could continue after migration failure or timeout. A fail-closed correction is now proposed on a dedicated branch; CI and staging deployment evidence are still required before closure.
+- Startup migration handling has been hardened on `main`: `api/scripts/start.sh` runs `prisma migrate deploy` with a bounded timeout, refuses automatic baselining, and exits before API startup on migration failure or timeout. `PrismaService` also fails startup after bounded database-connection retries. The startup-script tests cover migration success, failure, timeout and invalid timeout; the remaining deployment-migration gate is operational staging evidence and a rehearsed recovery, not branch implementation.
 - Development signing key intentionally present in source; owner confirms production/private key isolation.
 
 Do not mark the historical administrator, database credential or AI-session findings closed without evidence. The owner-confirmed 2FA and key separation should not be unnecessarily reopened unless new evidence contradicts them.
@@ -157,9 +157,11 @@ Use these statuses consistently:
 ### 0.5 Deployment migration safety — P0
 
 - Review `api/scripts/start.sh` and the Render deploy model.
-- Remove unverified automatic baseline resolution from the normal deployment path. (Implemented on the startup-hardening branch; verify CI and staging.)
-- Ensure migration failure or timeout fails the release/deployment gate. (Implemented on the startup-hardening branch; verify CI and staging.)
-- Make API startup fail when Postgres remains unreachable after bounded retries. (Implemented on the startup-hardening branch; verify CI and staging.)
+- Keep automatic baseline resolution out of normal startup. The current `api/scripts/start.sh` runs `prisma migrate deploy` and contains no automatic baseline path. Baseline repair remains an explicit operator action after schema comparison and backup verification.
+- Keep migration failure and timeout fail-closed: the startup script uses a bounded timeout and exits non-zero without starting the API when migration deployment fails or times out.
+- Keep API startup fail-closed when Postgres remains unreachable after five bounded connection attempts in `PrismaService`.
+- CI coverage for startup-script success, migration failure, timeout and invalid timeout is implemented and has passed on `main`.
+- Still required: staging deployment with successful migration; deliberate migration-failure deployment proving no traffic is served; platform failure-status verification; schema-version/readiness check; backup/restore and documented recovery rehearsal.
 - Add a schema-version/readiness check that distinguishes DB reachability from migration currency.
 - Prove baseline correctness before any migration is marked applied.
 - Test backup and restore before risky migrations.
@@ -168,10 +170,8 @@ Use these statuses consistently:
 
 ### 0.6 Architecture/documentation reconciliation
 
-- Replace stale `ARCHITECTURE.md` claims, particularly media transcoding and module/controller counts.
-- Reconcile README, ROADMAP and folder guide test totals against current CI.
-- Update cross-repository inventory and dependency ownership.
-- Record platform status (Android, Windows, iOS, web) without inferring readiness from folders.
+- The 23 November 2026 documentation pass revised the root `ARCHITECTURE.md`, root `README.md`, `FOLDER_STRUCTURE.md` and `api/README.md` against the current repository structure and implementation.
+- Remaining: reconcile any stale ROADMAP/test-total claims against current CI, update cross-repository inventory and dependency ownership, and record Android/Windows/iOS/web status without inferring readiness from folders.
 
 **Exit evidence:** The three engineering documents in this directory plus updated links/status references in the main README.
 
