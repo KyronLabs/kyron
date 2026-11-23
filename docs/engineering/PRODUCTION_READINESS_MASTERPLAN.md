@@ -67,16 +67,16 @@ These are accepted as owner-provided confirmations for planning. The 2FA setting
 
 ### 2.4 Security findings still requiring closure
 
-The recent read-only review reported:
+A read-only repository-history review on 23 November 2026 confirmed the following artifacts. The evidence and verification boundaries are recorded in [SECURITY_HISTORY_REVIEW.md](SECURITY_HISTORY_REVIEW.md); no secret values or session URLs are reproduced there.
 
-- Historical hardcoded administrator credentials in an old seed script and compiled output. It remains unverified whether the account was created or used in production.
-- Historical tracked environment file with a local database password and placeholder JWT secret. Reuse outside local development and credential rotation remain to be confirmed.
-- Public Git history containing AI-session references. Accessibility and revocation status remain unverified.
-- Supabase `supabase_admin` default privileges documented as broad for `anon` on newly created public-schema tables.
-- Startup migration handling has been hardened on `main`: `api/scripts/start.sh` runs `prisma migrate deploy` with a bounded timeout, refuses automatic baselining, and exits before API startup on migration failure or timeout. `PrismaService` also fails startup after bounded database-connection retries. The startup-script tests cover migration success, failure, timeout and invalid timeout; the remaining deployment-migration gate is operational staging evidence and a rehearsed recovery, not branch implementation.
-- Development signing key intentionally present in source; owner confirms production/private key isolation.
+- **Historical administrator seed:** an earlier `api/prisma/seed.ts` and committed compiled output conditionally created a fixed `ADMIN` account using a written-down password. The current seed no longer creates that account, and the current API authenticates through Supabase. It remains unverified whether the historical row was ever created in a production database or whether any privileged action was taken with it.
+- **Tracked environment credentials:** an older tracked `api/.env` revision contained a remote Render PostgreSQL connection URL with embedded credentials and a SendGrid-format key; a separate legacy environment file contained local development database credentials. These values were not tested and may be stale, but their appearance in Git history is confirmed. Current copies are absent from `main`; deleting a file does not remove its historical Git objects. Rotation/revocation evidence remains outstanding under [issue #169](https://github.com/KyronLabs/kyron/issues/169).
+- **AI coding-session references:** Claude Code session URLs appear in `Claude-Session` commit-message trailers. At least 200 distinct commit records and five distinct session URLs were found in the inspected GitHub search windows. The repository is private now; its historical visibility, whether any URL resolves for an unintended viewer, and whether the sessions have been revoked remain unverified. No URLs or opaque session identifiers should be copied into reports.
+- **Supabase privileges:** `supabase_admin` default privileges have been documented as broad for `anon` on newly created public-schema tables. Live grants, RLS, storage policies and migration-history reconciliation still require an operational Supabase audit.
+- **Deployment migration safety:** startup migration handling is hardened on `main`. `api/scripts/start.sh` runs `prisma migrate deploy` with a bounded timeout, refuses automatic baselining, and exits before API startup on migration failure or timeout. `PrismaService` also fails startup after bounded database-connection retries. Startup-script tests cover migration success, failure, timeout and invalid timeout. Staging migration, deliberate failure-deployment, platform failure-status and recovery evidence remain outstanding.
+- **Development signing key:** intentionally present in source; owner confirms production/private key isolation.
 
-Do not mark the historical administrator, database credential or AI-session findings closed without evidence. The owner-confirmed 2FA and key separation should not be unnecessarily reopened unless new evidence contradicts them.
+Do not close the historical administrator, credential, AI-session or Supabase findings based on repository cleanup alone. The owner-confirmed 2FA and key separation should not be unnecessarily reopened unless new evidence contradicts them.
 
 ## 3. Programme governance
 
