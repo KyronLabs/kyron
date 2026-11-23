@@ -16,7 +16,7 @@ import { PayoutReconciliationService } from './payout-reconciliation.service';
 const MAX_REPORT_LIMIT = 500;
 const MAX_STALE_MINUTES = 10_080;
 
-const MANUAL_REVIEW_REASON_CODES = [
+export const PAYOUT_MANUAL_REVIEW_REASON_CODES = [
   'STALE_CREATED_ATTEMPT',
   'STALE_SUBMITTED_ATTEMPT',
   'UNKNOWN_PROVIDER_OUTCOME',
@@ -25,7 +25,7 @@ const MANUAL_REVIEW_REASON_CODES = [
   'OTHER',
 ] as const;
 
-const MANUAL_REVIEW_RESOLUTION_CODES = [
+export const PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES = [
   'EVIDENCE_ATTACHED_FOR_RECONCILIATION',
   'NO_PROVIDER_TRANSFER_FOUND',
   'ESCALATED_TO_PROVIDER',
@@ -48,10 +48,10 @@ function metadataString(
 }
 
 export type PayoutManualReviewReasonCode =
-  (typeof MANUAL_REVIEW_REASON_CODES)[number];
+  (typeof PAYOUT_MANUAL_REVIEW_REASON_CODES)[number];
 
 export type PayoutManualReviewResolutionCode =
-  (typeof MANUAL_REVIEW_RESOLUTION_CODES)[number];
+  (typeof PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES)[number];
 
 export interface PayoutOperationalReportInput {
   staleAfterMinutes?: number;
@@ -331,7 +331,7 @@ export class PayoutOperationsService {
     reasonCode: PayoutManualReviewReasonCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (!MANUAL_REVIEW_REASON_CODES.includes(input.reasonCode)) {
+    if (!PAYOUT_MANUAL_REVIEW_REASON_CODES.includes(input.reasonCode)) {
       throw new BadRequestException('Invalid payout review reason code.');
     }
 
@@ -418,7 +418,7 @@ export class PayoutOperationsService {
     resolutionCode: PayoutManualReviewResolutionCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (!MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)) {
+    if (!PAYOUT_MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)) {
       throw new BadRequestException('Invalid payout review resolution code.');
     }
 
