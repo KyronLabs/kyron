@@ -33,7 +33,10 @@ periods, underscores, colons or hyphens.
 Both query parameters are optional. `staleAfterMinutes` is bounded from 1 to
 10,080; `limit` is bounded from 1 to 500. The report includes stale
 `CREATED`, `SUBMITTED` and `UNKNOWN` attempts, unresolved provider events
-and recent manual-review audit records. Monetary minor-unit values are returned
+and recent manual-review audit records. Each report read also creates a
+`FINANCIAL_OPERATIONS_REPORT_VIEWED` audit event with the acting admin,
+requested bounds and aggregate counts; individual payout details are not
+copied into that audit record. Monetary minor-unit values are returned
 as decimal strings to remain JSON-safe.
 
 ### Request manual review
