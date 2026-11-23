@@ -140,6 +140,40 @@ describe('PayoutOperationsService', () => {
       expect(payoutAttemptFindMany).toHaveBeenCalledTimes(1);
     });
 
+    it('audits report access with the operator identity', async () => {
+      payoutAttemptFindMany.mockResolvedValue([]);
+      payoutAttemptCount.mockResolvedValue(0);
+      payoutProviderEventFindMany.mockResolvedValue([]);
+      payoutProviderEventCount
+        .mockResolvedValueOnce(0)
+        .mockResolvedValueOnce(0);
+      financialAuditFindMany.mockResolvedValue([]);
+      financialAuditCreate.mockResolvedValue({ id: 'audit-report-1' });
+
+      const report = await service.getOperationalReportForOperator(
+        { staleAfterMinutes: 45, limit: 50 },
+        'admin-1',
+      );
+
+      expect(report.staleAttemptCount).toBe(0);
+      expect(firstMockCallArgument(financialAuditCreate)).toMatchObject({
+        data: {
+          actorId: 'admin-1',
+          eventType: 'FINANCIAL_OPERATIONS_REPORT_VIEWED',
+          subjectType: 'PAYOUT_OPERATIONS_REPORT',
+          metadata: {
+            staleAfterMinutes: 45,
+            limit: 50,
+            staleAttemptCount: 0,
+            unresolvedProviderEventCount: 0,
+            unmatchedTerminalProviderEventCount: 0,
+            returnedStaleAttemptCount: 0,
+            returnedProviderEventCount: 0,
+          },
+        },
+      });
+    });
+
     it('rejects unsafe report limits and stale windows', async () => {
       await expect(
         service.getOperationalReport({ staleAfterMinutes: 0 }),
