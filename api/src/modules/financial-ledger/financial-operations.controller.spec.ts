@@ -52,9 +52,12 @@ describe('FinancialOperationsController', () => {
   });
 
   it('applies token authentication before financial access control', () => {
-    expect(
-      Reflect.getMetadata('__guards__', FinancialOperationsController),
-    ).toEqual([AuthGuard, FinancialOperationsGuard]);
+    const guards: unknown = Reflect.getMetadata(
+      '__guards__',
+      FinancialOperationsController,
+    );
+
+    expect(guards).toEqual([AuthGuard, FinancialOperationsGuard]);
   });
 
   it('forwards bounded report filters', async () => {
