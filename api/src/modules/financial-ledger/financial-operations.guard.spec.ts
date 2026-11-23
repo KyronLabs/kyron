@@ -3,7 +3,7 @@ import {
   ForbiddenException,
   NotFoundException,
 } from '@nestjs/common';
-import { UserRole } from '@prisma/client';
+import { AccountStatus, UserRole } from '@prisma/client';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsGuard } from './financial-operations.guard';
 
@@ -42,7 +42,11 @@ describe('FinancialOperationsGuard', () => {
 
   it('requires AAL2 independently of staff policy', () => {
     const request = {
-      user: { id: 'admin-1', role: UserRole.ADMIN },
+      user: {
+        id: 'admin-1',
+        role: UserRole.ADMIN,
+        status: AccountStatus.ACTIVE,
+      },
       aal: 'aal1',
     } as AuthRequest;
 
@@ -59,7 +63,11 @@ describe('FinancialOperationsGuard', () => {
 
   it('allows only an admin session verified with a second factor', () => {
     const request = {
-      user: { id: 'admin-1', role: UserRole.ADMIN },
+      user: {
+        id: 'admin-1',
+        role: UserRole.ADMIN,
+        status: AccountStatus.ACTIVE,
+      },
       aal: 'aal2',
     } as AuthRequest;
 
