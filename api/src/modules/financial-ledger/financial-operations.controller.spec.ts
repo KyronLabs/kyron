@@ -76,10 +76,14 @@ describe('FinancialOperationsController', () => {
 
   it('uses the authenticated actor for manual reviews', async () => {
     const instance = await controller();
-    await instance.requestManualReview(request, '11111111-1111-4111-8111-111111111111', {
-      requestId: 'review-request-01',
-      reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
-    });
+    await instance.requestManualReview(
+      request,
+      '11111111-1111-4111-8111-111111111111',
+      {
+        requestId: 'review-request-01',
+        reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
+      },
+    );
 
     expect(requestManualReview).toHaveBeenCalledWith({
       payoutAttemptId: '11111111-1111-4111-8111-111111111111',
@@ -91,10 +95,14 @@ describe('FinancialOperationsController', () => {
 
   it('uses the authenticated actor when resolving reviews', async () => {
     const instance = await controller();
-    await instance.resolveManualReview(request, '11111111-1111-4111-8111-111111111111', {
-      requestId: 'review-request-01',
-      resolutionCode: 'NO_ACTION_REQUIRED',
-    });
+    await instance.resolveManualReview(
+      request,
+      '11111111-1111-4111-8111-111111111111',
+      {
+        requestId: 'review-request-01',
+        resolutionCode: 'NO_ACTION_REQUIRED',
+      },
+    );
 
     expect(resolveManualReview).toHaveBeenCalledWith({
       payoutAttemptId: '11111111-1111-4111-8111-111111111111',
@@ -106,9 +114,13 @@ describe('FinancialOperationsController', () => {
 
   it('uses the authenticated actor when replaying evidence', async () => {
     const instance = await controller();
-    await instance.reprocessProviderEvent(request, '22222222-2222-4222-8222-222222222222', {
-      requestId: 'provider-replay-01',
-    });
+    await instance.reprocessProviderEvent(
+      request,
+      '22222222-2222-4222-8222-222222222222',
+      {
+        requestId: 'provider-replay-01',
+      },
+    );
 
     expect(reprocessUnmatchedProviderEvent).toHaveBeenCalledWith({
       providerEventId: '22222222-2222-4222-8222-222222222222',
