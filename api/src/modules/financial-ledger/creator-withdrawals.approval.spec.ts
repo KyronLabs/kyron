@@ -2,6 +2,10 @@ import { ConflictException } from '@nestjs/common';
 import { CreatorWithdrawalStatus } from '@prisma/client';
 import { CreatorWithdrawalsService } from './creator-withdrawals.service';
 
+const partial = (value: Record<string, unknown>): Record<string, unknown> =>
+  expect.objectContaining(value) as unknown as Record<string, unknown>;
+const anyDate = (): unknown => anyDate() as unknown;
+
 describe('CreatorWithdrawalsService dual-control approval', () => {
   const withdrawal = {
     id: '33333333-3333-4333-8333-333333333333',
@@ -55,14 +59,14 @@ describe('CreatorWithdrawalsService dual-control approval', () => {
     expect(tx.$queryRaw).toHaveBeenCalled();
     expect(tx.creatorWithdrawal.update).toHaveBeenCalledWith({
       where: { id: withdrawal.id },
-      data: expect.objectContaining({
+      data: partial({
         approvalRequestId: 'withdrawal-approval-01',
         approvalRequestedById: 'admin-requester',
-        approvalRequestedAt: expect.any(Date),
+        approvalRequestedAt: anyDate(),
       }),
     });
     expect(tx.financialAuditEvent.create).toHaveBeenCalledWith({
-      data: expect.objectContaining({
+      data: partial({
         actorId: 'admin-requester',
         eventType: 'CREATOR_WITHDRAWAL_APPROVAL_REQUESTED',
         requestId: 'withdrawal-approval-01',
@@ -107,18 +111,18 @@ describe('CreatorWithdrawalsService dual-control approval', () => {
 
     expect(tx.creatorWithdrawal.update).toHaveBeenCalledWith({
       where: { id: withdrawal.id },
-      data: expect.objectContaining({
+      data: partial({
         status: CreatorWithdrawalStatus.APPROVED,
         approvedById: 'admin-approver',
-        approvedAt: expect.any(Date),
+        approvedAt: anyDate(),
       }),
     });
     expect(tx.financialAuditEvent.create).toHaveBeenCalledWith({
-      data: expect.objectContaining({
+      data: partial({
         actorId: 'admin-approver',
         eventType: 'CREATOR_WITHDRAWAL_APPROVED',
         requestId: 'withdrawal-approval-01',
-        metadata: expect.objectContaining({
+        metadata: partial({
           approvalRequestedById: 'admin-requester',
           approvedById: 'admin-approver',
         }),
@@ -161,5 +165,4 @@ describe('CreatorWithdrawalsService dual-control approval', () => {
     expect(tx.creatorWithdrawal.update).not.toHaveBeenCalled();
     expect(tx.financialAuditEvent.create).not.toHaveBeenCalled();
   });
-
 });
