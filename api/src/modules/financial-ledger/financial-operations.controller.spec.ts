@@ -9,7 +9,7 @@ import { FinancialOperationsGuard } from './financial-operations.guard';
 import { PayoutOperationsService } from './payout-operations.service';
 
 describe('FinancialOperationsController', () => {
-  const getOperationalReport = jest.fn();
+  const getOperationalReportForOperator = jest.fn();
   const requestManualReview = jest.fn();
   const resolveManualReview = jest.fn();
   const reprocessUnmatchedProviderEvent = jest.fn();
@@ -26,7 +26,7 @@ describe('FinancialOperationsController', () => {
         {
           provide: PayoutOperationsService,
           useValue: {
-            getOperationalReport,
+            getOperationalReportForOperator,
             requestManualReview,
             resolveManualReview,
             reprocessUnmatchedProviderEvent,
@@ -45,7 +45,7 @@ describe('FinancialOperationsController', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    getOperationalReport.mockResolvedValue({ staleAttemptCount: 0 });
+    getOperationalReportForOperator.mockResolvedValue({ staleAttemptCount: 0 });
     requestManualReview.mockResolvedValue({ status: 'REVIEW_REQUESTED' });
     resolveManualReview.mockResolvedValue({ status: 'RESOLVED' });
     reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
@@ -60,16 +60,19 @@ describe('FinancialOperationsController', () => {
     expect(guards).toEqual([AuthGuard, FinancialOperationsGuard]);
   });
 
-  it('forwards bounded report filters', async () => {
-    await (await controller()).report({
+  it('audits report reads under the authenticated actor', async () => {
+    await (await controller()).report(request, {
       staleAfterMinutes: 30,
       limit: 25,
     });
 
-    expect(getOperationalReport).toHaveBeenCalledWith({
-      staleAfterMinutes: 30,
-      limit: 25,
-    });
+    expect(getOperationalReportForOperator).toHaveBeenCalledWith(
+      {
+        staleAfterMinutes: 30,
+        limit: 25,
+      },
+      'admin-1',
+    );
   });
 
   it('uses the authenticated actor for manual reviews', async () => {
