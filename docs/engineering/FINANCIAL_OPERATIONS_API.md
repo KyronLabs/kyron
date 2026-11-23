@@ -135,6 +135,28 @@ requests cannot create a second approval.
 Approval does not submit a payout, create a payout attempt, call a provider or
 move funds. Existing provider adapters remain disabled.
 
+
+## Payout submission safety gate
+
+The internal `CreatorWithdrawalsService.submitApproved()` boundary is protected
+by a separate server-side kill switch:
+
+- `CREATOR_PAYOUT_SUBMISSIONS_ENABLED` must be exactly `true`; it defaults
+  to closed when unset or set to any other value.
+- The existing creator-withdrawal feature flag and configured minimum remain
+  independently required.
+- A configured bank payout provider is also required.
+- The withdrawal must contain the persisted approval request ID, requester,
+  request timestamp, approver and approval timestamp.
+- The requester and approver IDs must differ. Withdrawals approved before the
+  dual-control metadata existed are not eligible for submission through this
+  path until properly re-approved.
+
+The kill switch is evaluated before any database preparation or provider
+configuration check. A closed switch therefore cannot create a payout attempt
+or call a provider. This PR adds no dispatch endpoint, worker, provider adapter
+or automatic submission behavior. The default remains disabled.
+
 ## Explicitly out of scope
 
 - No endpoint submits a payout or creates a new payout attempt.
