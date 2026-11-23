@@ -4,6 +4,7 @@ import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsController } from './financial-operations.controller';
 import { FinancialOperationsGuard } from './financial-operations.guard';
+import { CreatorWithdrawalsService } from './creator-withdrawals.service';
 import { PayoutOperationsService } from './payout-operations.service';
 
 describe('FinancialOperationsController', () => {
@@ -11,6 +12,8 @@ describe('FinancialOperationsController', () => {
   const requestManualReview = jest.fn();
   const resolveManualReview = jest.fn();
   const reprocessUnmatchedProviderEvent = jest.fn();
+  const requestApproval = jest.fn();
+  const approve = jest.fn();
 
   const request = {
     user: { id: 'admin-1' },
@@ -30,6 +33,10 @@ describe('FinancialOperationsController', () => {
             reprocessUnmatchedProviderEvent,
           },
         },
+        {
+          provide: CreatorWithdrawalsService,
+          useValue: { requestApproval, approve },
+        },
       ],
     })
       .overrideGuard(AuthGuard)
@@ -47,6 +54,8 @@ describe('FinancialOperationsController', () => {
     requestManualReview.mockResolvedValue({ status: 'REVIEW_REQUESTED' });
     resolveManualReview.mockResolvedValue({ status: 'RESOLVED' });
     reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
+    requestApproval.mockResolvedValue({ status: 'REQUESTED' });
+    approve.mockResolvedValue({ status: 'APPROVED' });
   });
 
   it('applies token authentication before financial access control', () => {
@@ -128,4 +137,34 @@ describe('FinancialOperationsController', () => {
       requestId: 'provider-replay-01',
     });
   });
+  it('requests dual-control approval under the authenticated actor', async () => {
+    const instance = await controller();
+    await instance.requestWithdrawalApproval(
+      request,
+      '33333333-3333-4333-8333-333333333333',
+      { requestId: 'withdrawal-approval-01' },
+    );
+
+    expect(requestApproval).toHaveBeenCalledWith({
+      withdrawalId: '33333333-3333-4333-8333-333333333333',
+      actorId: 'admin-1',
+      requestId: 'withdrawal-approval-01',
+    });
+  });
+
+  it('approves using the authenticated second administrator', async () => {
+    const instance = await controller();
+    await instance.approveWithdrawal(
+      request,
+      '33333333-3333-4333-8333-333333333333',
+      { requestId: 'withdrawal-approval-01' },
+    );
+
+    expect(approve).toHaveBeenCalledWith(
+      '33333333-3333-4333-8333-333333333333',
+      'admin-1',
+      'withdrawal-approval-01',
+    );
+  });
+
 });
