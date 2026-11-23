@@ -81,6 +81,8 @@ git clone https://github.com/KyronLabs/kyron.git && cd kyron
 
 # 2. Postgres
 docker compose up -d postgres
+cp api/.env.example api/.env
+# Edit api/.env with your local DATABASE_URL and Supabase project values.
 
 # 3. API                                    → http://localhost:3000
 cd api && npm ci && npx prisma generate && npx prisma migrate deploy && npm run start:dev
