@@ -1,7 +1,4 @@
-import {
-  ConflictException,
-  ServiceUnavailableException,
-} from '@nestjs/common';
+import { ConflictException, ServiceUnavailableException } from '@nestjs/common';
 import {
   CreatorEarningReservationStatus,
   CreatorWithdrawalStatus,
@@ -10,6 +7,10 @@ import {
   PayoutDestinationStatus,
 } from '@prisma/client';
 import { CreatorWithdrawalsService } from './creator-withdrawals.service';
+
+const partial = (value: Record<string, unknown>): Record<string, unknown> =>
+  expect.objectContaining(value) as unknown as Record<string, unknown>;
+const anyDate = (): unknown => expect.any(Date) as unknown;
 
 describe('creator payout submission safety boundary', () => {
   const originalEnv = {
@@ -100,8 +101,8 @@ describe('creator payout submission safety boundary', () => {
       },
     };
     const prisma = {
-      $transaction: jest.fn(
-        (callback: (transaction: typeof tx) => unknown) => callback(tx),
+      $transaction: jest.fn((callback: (transaction: typeof tx) => unknown) =>
+        callback(tx),
       ),
       payoutAttempt: {
         update: jest.fn(),
@@ -185,8 +186,7 @@ describe('creator payout submission safety boundary', () => {
 
   it('atomically records a provider rejection and releases the earnings reservation', async () => {
     process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
-    const { service, prisma, tx, payoutProvider, withdrawal } =
-      createHarness();
+    const { service, prisma, tx, payoutProvider, withdrawal } = createHarness();
     payoutProvider.submit.mockResolvedValue({
       accepted: false,
       errorCode: 'BANK_ACCOUNT_CLOSED',
@@ -197,34 +197,40 @@ describe('creator payout submission safety boundary', () => {
     });
 
     expect(prisma.$transaction).toHaveBeenCalledTimes(2);
-    expect(tx.payoutAttempt.update).toHaveBeenCalledWith({
-      where: { id: 'attempt-1' },
-      data: expect.objectContaining({
-        status: PayoutAttemptStatus.FAILED,
-        providerErrorCode: 'BANK_ACCOUNT_CLOSED',
-        completedAt: expect.any(Date),
+    expect(tx.payoutAttempt.update).toHaveBeenCalledWith(
+      partial({
+        where: { id: 'attempt-1' },
+        data: partial({
+          status: PayoutAttemptStatus.FAILED,
+          providerErrorCode: 'BANK_ACCOUNT_CLOSED',
+          completedAt: anyDate(),
+        }),
       }),
-    });
-    expect(tx.creatorWithdrawal.update).toHaveBeenLastCalledWith({
-      where: { id: withdrawal.id },
-      data: expect.objectContaining({
-        status: CreatorWithdrawalStatus.FAILED,
-        failureCode: 'BANK_ACCOUNT_CLOSED',
-        completedAt: expect.any(Date),
+    );
+    expect(tx.creatorWithdrawal.update).toHaveBeenLastCalledWith(
+      partial({
+        where: { id: withdrawal.id },
+        data: partial({
+          status: CreatorWithdrawalStatus.FAILED,
+          failureCode: 'BANK_ACCOUNT_CLOSED',
+          completedAt: anyDate(),
+        }),
       }),
-    });
-    expect(tx.creatorEarningReservation.update).toHaveBeenCalledWith({
-      where: { id: withdrawal.reservationId },
-      data: {
-        status: CreatorEarningReservationStatus.RELEASED,
-        finalizedAt: expect.any(Date),
-      },
-    });
+    );
+    expect(tx.creatorEarningReservation.update).toHaveBeenCalledWith(
+      partial({
+        where: { id: withdrawal.reservationId },
+        data: partial({
+          status: CreatorEarningReservationStatus.RELEASED,
+          finalizedAt: anyDate(),
+        }),
+      }),
+    );
     expect(tx.financialAuditEvent.create).toHaveBeenCalledTimes(2);
     expect(tx.financialAuditEvent.create).toHaveBeenNthCalledWith(
       1,
-      expect.objectContaining({
-        data: expect.objectContaining({
+      partial({
+        data: partial({
           eventType: 'CREATOR_PAYOUT_REJECTED',
           subjectId: withdrawal.id,
         }),
@@ -232,8 +238,8 @@ describe('creator payout submission safety boundary', () => {
     );
     expect(tx.financialAuditEvent.create).toHaveBeenNthCalledWith(
       2,
-      expect.objectContaining({
-        data: expect.objectContaining({
+      partial({
+        data: partial({
           eventType: 'CREATOR_EARNINGS_RESERVATION_RELEASED',
           subjectId: withdrawal.reservationId,
         }),
