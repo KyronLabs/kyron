@@ -4,7 +4,7 @@ import { CreatorWithdrawalsService } from './creator-withdrawals.service';
 
 const partial = (value: Record<string, unknown>): Record<string, unknown> =>
   expect.objectContaining(value) as unknown as Record<string, unknown>;
-const anyDate = (): unknown => anyDate() as unknown;
+const anyDate = (): unknown => expect.any(Date) as unknown;
 
 describe('CreatorWithdrawalsService dual-control approval', () => {
   const withdrawal = {
