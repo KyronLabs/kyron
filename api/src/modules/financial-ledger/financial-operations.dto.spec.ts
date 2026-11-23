@@ -78,5 +78,4 @@ describe('financial operations DTOs', () => {
 
     await expect(validate(dto)).resolves.not.toHaveLength(0);
   });
-
 });
