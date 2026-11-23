@@ -92,6 +92,22 @@ export interface CreatorWithdrawalPolicy {
   minimumCoins: number | null;
 }
 
+export interface CreatorPayoutSubmissionPolicy {
+  enabled: boolean;
+}
+
+/**
+ * Independent kill switch for bank transfers. Withdrawal requests and payout
+ * submissions have separate operational approvals; submissions default closed.
+ */
+export function readCreatorPayoutSubmissionPolicy(
+  env: NodeJS.ProcessEnv = process.env,
+): CreatorPayoutSubmissionPolicy {
+  return {
+    enabled: env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED === 'true',
+  };
+}
+
 export function readCreatorWithdrawalPolicy(
   env: NodeJS.ProcessEnv = process.env,
 ): CreatorWithdrawalPolicy {
@@ -421,6 +437,12 @@ export class CreatorWithdrawalsService {
    * treated as a definite failure and never blindly retried.
    */
   async submitApproved(withdrawalId: string) {
+    if (!readCreatorPayoutSubmissionPolicy().enabled) {
+      throw new ServiceUnavailableException(
+        'Creator payout submissions are disabled by server policy.',
+      );
+    }
+
     const policy = this.policy();
     if (!policy.enabled) {
       throw new ServiceUnavailableException(
@@ -446,6 +468,18 @@ export class CreatorWithdrawalsService {
       if (withdrawal.status !== CreatorWithdrawalStatus.APPROVED) {
         throw new ConflictException(
           'Only an approved withdrawal can be submitted.',
+        );
+      }
+      if (
+        !withdrawal.approvalRequestId ||
+        !withdrawal.approvalRequestedById ||
+        !withdrawal.approvalRequestedAt ||
+        !withdrawal.approvedById ||
+        !withdrawal.approvedAt ||
+        withdrawal.approvalRequestedById === withdrawal.approvedById
+      ) {
+        throw new ConflictException(
+          'A complete dual-control approval by two different administrators is required before payout submission.',
         );
       }
       if (
