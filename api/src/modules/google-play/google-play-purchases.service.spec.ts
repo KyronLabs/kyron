@@ -84,7 +84,10 @@ describe('GooglePlayPurchasesService', () => {
     ]);
 
     tx = {
-      $queryRaw: jest.fn().mockResolvedValue([]),
+      $queryRaw: jest.fn().mockResolvedValue([{ id: userId }]),
+      user: {
+        findUnique: jest.fn().mockResolvedValue({ status: 'ACTIVE' }),
+      },
       googlePlayPurchase: {
         findUnique: jest.fn().mockResolvedValue(null),
         create: jest.fn().mockImplementation(({ data }) =>
