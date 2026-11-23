@@ -1,7 +1,4 @@
-import {
-  ConflictException,
-  ServiceUnavailableException,
-} from '@nestjs/common';
+import { ConflictException, ServiceUnavailableException } from '@nestjs/common';
 import {
   CreatorEarningReservationStatus,
   CreatorWithdrawalStatus,
@@ -13,6 +10,9 @@ import {
   PayoutReconciliationService,
   PayoutWebhookProvider,
 } from './payout-reconciliation.service';
+
+const partial = (value: Record<string, unknown>): Record<string, unknown> =>
+  expect.objectContaining(value) as unknown as Record<string, unknown>;
 
 describe('payout webhook provider boundary', () => {
   it('fails closed when no provider verifier is configured', async () => {
@@ -58,12 +58,8 @@ describe('payout webhook provider boundary', () => {
   });
 });
 
-
 describe('payout terminal reconciliation locking', () => {
-  const createHarness = (
-    reservationStatus: CreatorEarningReservationStatus =
-      CreatorEarningReservationStatus.ACTIVE,
-  ) => {
+  const createHarness = (reservationStatus: CreatorEarningReservationStatus = CreatorEarningReservationStatus.ACTIVE) => {
     const event = {
       id: 'event-1',
       processedAt: null,
@@ -116,8 +112,8 @@ describe('payout terminal reconciliation locking', () => {
       },
     };
     const prisma = {
-      $transaction: jest.fn(
-        (callback: (transaction: typeof tx) => unknown) => callback(tx),
+      $transaction: jest.fn((callback: (transaction: typeof tx) => unknown) =>
+        callback(tx),
       ),
     };
     const service = new PayoutReconciliationService(
@@ -137,9 +133,9 @@ describe('payout terminal reconciliation locking', () => {
     });
 
     expect(tx.$queryRaw).toHaveBeenCalledTimes(3);
-    expect(tx.payoutAttempt.findUnique.mock.invocationCallOrder[0]).toBeGreaterThan(
-      tx.$queryRaw.mock.invocationCallOrder[1],
-    );
+    expect(
+      tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
+    ).toBeGreaterThan(tx.$queryRaw.mock.invocationCallOrder[1]);
     expect(tx.$queryRaw.mock.invocationCallOrder[2]).toBeGreaterThan(
       tx.payoutAttempt.findUnique.mock.invocationCallOrder[0],
     );
@@ -147,9 +143,9 @@ describe('payout terminal reconciliation locking', () => {
       tx.creatorEarningReservation.findUnique.mock.invocationCallOrder[0],
     ).toBeGreaterThan(tx.$queryRaw.mock.invocationCallOrder[2]);
     expect(tx.creatorEarningReservation.update).toHaveBeenCalledWith(
-      expect.objectContaining({
+      partial({
         where: { id: 'reservation-1' },
-        data: expect.objectContaining({
+        data: partial({
           status: CreatorEarningReservationStatus.SETTLED,
         }),
       }),
