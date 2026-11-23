@@ -418,9 +418,7 @@ export class PayoutOperationsService {
     resolutionCode: PayoutManualReviewResolutionCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (
-      !MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)
-    ) {
+    if (!MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)) {
       throw new BadRequestException('Invalid payout review resolution code.');
     }
 
