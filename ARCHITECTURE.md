@@ -14,13 +14,13 @@ One client, one API, one database.
 ```
 ┌─────────────────────────────────────────────┐
 │   Flutter client · Android / Windows apps  │
-│   Riverpod state  ·  Dio HTTP  ·  REST      │
+│   Riverpod · Dio HTTP · REST + WebSocket   │
 └───────────────────────┬─────────────────────┘
                         │  HTTPS / JSON
 ┌───────────────────────┴─────────────────────┐
 │   NestJS on Fastify                         │
 │   REST controllers + WebSocket gateway     │
-│   Supabase JWT verified against JWKS        │
+│   Supabase JWT verified server-side        │
 └───────┬─────────────────────────┬───────────┘
         │  Prisma                 │
 ┌───────┴───────────┐   ┌─────────┴───────────┐
@@ -58,8 +58,11 @@ interactive Flutter web app is withdrawn and is not a current release target.
 
 1. The client signs in through Supabase Auth and receives a JWT.
 2. Every API request carries it as a bearer token.
-3. `AuthGuard` verifies the signature against Supabase's JWKS endpoint, checks
-   the issuer and expiry, and resolves the token's subject to a row in `User`.
+3. `AuthGuard` delegates token verification to `SupabaseTokenService`, which
+   uses the configured Supabase verification path (JWKS for signing-key
+   projects, or the legacy shared secret where that is still configured). The
+   guard checks the issuer and expiry, then resolves the subject to a row in
+   `User`.
 
 There is no session table and no refresh handled by the API; Supabase owns both.
 
