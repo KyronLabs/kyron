@@ -1,10 +1,16 @@
 import { ConflictException, ServiceUnavailableException } from '@nestjs/common';
 import {
+  CreatorEarningReservationStatus,
   CreatorWithdrawalStatus,
   FxQuoteStatus,
+  PayoutAttemptStatus,
   PayoutDestinationStatus,
 } from '@prisma/client';
 import { CreatorWithdrawalsService } from './creator-withdrawals.service';
+
+const partial = (value: Record<string, unknown>): Record<string, unknown> =>
+  expect.objectContaining(value) as unknown as Record<string, unknown>;
+const anyDate = (): unknown => expect.any(Date) as unknown;
 
 describe('creator payout submission safety boundary', () => {
   const originalEnv = {
@@ -62,6 +68,11 @@ describe('creator payout submission safety boundary', () => {
         status: FxQuoteStatus.ACTIVE,
         expiresAt: new Date(Date.now() + 60_000),
       },
+      reservation: {
+        id: '44444444-4444-4444-8444-444444444444',
+        status: CreatorEarningReservationStatus.ACTIVE,
+        amount: 100,
+      },
       attempts: [],
       ...overrides,
     };
@@ -72,10 +83,17 @@ describe('creator payout submission safety boundary', () => {
         update: jest.fn(),
       },
       payoutAttempt: {
-        create: jest.fn(),
+        create: jest.fn().mockResolvedValue({
+          id: 'attempt-1',
+          idempotencyKey: 'payout:33333333-3333-4333-8333-333333333333',
+        }),
         update: jest.fn(),
       },
       fxQuote: {
+        update: jest.fn(),
+      },
+      creatorEarningReservation: {
+        findUnique: jest.fn().mockResolvedValue(withdrawal.reservation),
         update: jest.fn(),
       },
       financialAuditEvent: {
@@ -101,7 +119,7 @@ describe('creator payout submission safety boundary', () => {
       payoutProvider as never,
     );
 
-    return { service, prisma, tx, payoutProvider };
+    return { service, prisma, tx, payoutProvider, withdrawal };
   };
 
   it('keeps the submission kill switch closed by default', async () => {
@@ -146,5 +164,123 @@ describe('creator payout submission safety boundary', () => {
 
     expect(tx.payoutAttempt.create).not.toHaveBeenCalled();
     expect(payoutProvider.submit).not.toHaveBeenCalled();
+  });
+
+  it('requires an active earnings reservation before creating a payout attempt', async () => {
+    process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
+    const { service, tx, payoutProvider } = createHarness({
+      reservation: {
+        id: '44444444-4444-4444-8444-444444444444',
+        status: CreatorEarningReservationStatus.SETTLED,
+        amount: 100,
+      },
+    });
+
+    await expect(
+      service.submitApproved('33333333-3333-4333-8333-333333333333'),
+    ).rejects.toBeInstanceOf(ConflictException);
+
+    expect(tx.payoutAttempt.create).not.toHaveBeenCalled();
+    expect(payoutProvider.submit).not.toHaveBeenCalled();
+  });
+
+  it('atomically records a provider rejection and releases the earnings reservation', async () => {
+    process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
+    const { service, prisma, tx, payoutProvider, withdrawal } = createHarness();
+    payoutProvider.submit.mockResolvedValue({
+      accepted: false,
+      errorCode: 'BANK_ACCOUNT_CLOSED',
+    });
+
+    await expect(service.submitApproved(withdrawal.id)).resolves.toEqual({
+      status: 'FAILED',
+    });
+
+    expect(prisma.$transaction).toHaveBeenCalledTimes(2);
+    expect(tx.payoutAttempt.update).toHaveBeenCalledWith(
+      partial({
+        where: { id: 'attempt-1' },
+        data: partial({
+          status: PayoutAttemptStatus.FAILED,
+          providerErrorCode: 'BANK_ACCOUNT_CLOSED',
+          completedAt: anyDate(),
+        }),
+      }),
+    );
+    expect(tx.creatorWithdrawal.update).toHaveBeenLastCalledWith(
+      partial({
+        where: { id: withdrawal.id },
+        data: partial({
+          status: CreatorWithdrawalStatus.FAILED,
+          failureCode: 'BANK_ACCOUNT_CLOSED',
+          completedAt: anyDate(),
+        }),
+      }),
+    );
+    expect(tx.creatorEarningReservation.update).toHaveBeenCalledWith(
+      partial({
+        where: { id: withdrawal.reservationId },
+        data: partial({
+          status: CreatorEarningReservationStatus.RELEASED,
+          finalizedAt: anyDate(),
+        }),
+      }),
+    );
+    expect(tx.financialAuditEvent.create).toHaveBeenCalledTimes(2);
+    expect(tx.financialAuditEvent.create).toHaveBeenNthCalledWith(
+      1,
+      partial({
+        data: partial({
+          eventType: 'CREATOR_PAYOUT_REJECTED',
+          subjectId: withdrawal.id,
+        }),
+      }),
+    );
+    expect(tx.financialAuditEvent.create).toHaveBeenNthCalledWith(
+      2,
+      partial({
+        data: partial({
+          eventType: 'CREATOR_EARNINGS_RESERVATION_RELEASED',
+          subjectId: withdrawal.reservationId,
+        }),
+      }),
+    );
+    expect(prisma.payoutAttempt.update).not.toHaveBeenCalled();
+  });
+
+  it('does not relabel a known provider rejection as UNKNOWN when finalization fails', async () => {
+    process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
+    const { service, prisma, tx, payoutProvider, withdrawal } = createHarness();
+    payoutProvider.submit.mockResolvedValue({
+      accepted: false,
+      errorCode: 'BANK_ACCOUNT_CLOSED',
+    });
+    tx.creatorEarningReservation.update.mockRejectedValue(
+      new Error('reservation write failed'),
+    );
+
+    await expect(service.submitApproved(withdrawal.id)).rejects.toThrow(
+      'reservation write failed',
+    );
+
+    expect(prisma.payoutAttempt.update).not.toHaveBeenCalled();
+  });
+
+  it('marks an ambiguous provider exception as UNKNOWN', async () => {
+    process.env.CREATOR_PAYOUT_SUBMISSIONS_ENABLED = 'true';
+    const { service, prisma, payoutProvider, withdrawal } = createHarness();
+    payoutProvider.submit.mockRejectedValue(new Error('provider timeout'));
+
+    await expect(service.submitApproved(withdrawal.id)).rejects.toThrow(
+      'provider timeout',
+    );
+
+    expect(prisma.payoutAttempt.update).toHaveBeenCalledWith({
+      where: { id: 'attempt-1' },
+      data: {
+        status: PayoutAttemptStatus.UNKNOWN,
+        providerErrorCode: 'PROVIDER_OUTCOME_UNKNOWN',
+      },
+    });
   });
 });

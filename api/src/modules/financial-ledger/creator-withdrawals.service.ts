@@ -609,7 +609,12 @@ export class CreatorWithdrawalsService {
       await tx.$queryRaw`SELECT id FROM "CreatorWithdrawal" WHERE id = ${withdrawalId}::uuid FOR UPDATE`;
       const withdrawal = await tx.creatorWithdrawal.findUnique({
         where: { id: withdrawalId },
-        include: { destination: true, fxQuote: true, attempts: true },
+        include: {
+          destination: true,
+          fxQuote: true,
+          attempts: true,
+          reservation: true,
+        },
       });
       if (!withdrawal) {
         throw new NotFoundException('Creator withdrawal not found.');
@@ -632,6 +637,13 @@ export class CreatorWithdrawalsService {
         );
       }
       if (
+        withdrawal.reservation.status !== CreatorEarningReservationStatus.ACTIVE
+      ) {
+        throw new ConflictException(
+          'The creator earnings reservation must be active before payout submission.',
+        );
+      }
+      if (
         withdrawal.coinAmount <
           (policy.minimumCoins ?? Number.MAX_SAFE_INTEGER) ||
         withdrawal.destination.status !== PayoutDestinationStatus.ACTIVE ||
@@ -644,7 +656,7 @@ export class CreatorWithdrawalsService {
         withdrawal.fxQuote.expiresAt <= new Date()
       ) {
         throw new ConflictException(
-          'The withdrawal FX quote has expired or was consumed.',
+          'The withdrawal destination or FX quote is invalid, expired or consumed.',
         );
       }
       const priorUnresolved = withdrawal.attempts.some(
@@ -676,8 +688,9 @@ export class CreatorWithdrawalsService {
       return { withdrawal, attempt };
     });
 
+    let result: BankPayoutResult;
     try {
-      const result = await this.payoutProvider.submit({
+      result = await this.payoutProvider.submit({
         providerCode: prepared.withdrawal.destination.providerCode,
         providerRecipientRef:
           prepared.withdrawal.destination.providerRecipientRef,
@@ -685,49 +698,100 @@ export class CreatorWithdrawalsService {
         amountMinor: prepared.withdrawal.fiatAmountMinor,
         idempotencyKey: prepared.attempt.idempotencyKey,
       });
-      if (!result.accepted) {
-        await this.prisma.$transaction(async (tx) => {
-          await tx.payoutAttempt.update({
-            where: { id: prepared.attempt.id },
-            data: {
-              status: PayoutAttemptStatus.FAILED,
-              completedAt: new Date(),
-              providerErrorCode: result.errorCode ?? 'PROVIDER_REJECTED',
-            },
-          });
-          await tx.creatorWithdrawal.update({
-            where: { id: prepared.withdrawal.id },
-            data: {
-              status: CreatorWithdrawalStatus.FAILED,
-              completedAt: new Date(),
-              failureCode: result.errorCode ?? 'PROVIDER_REJECTED',
-            },
-          });
-          await tx.financialAuditEvent.create({
-            data: {
-              eventType: 'CREATOR_PAYOUT_REJECTED',
-              subjectType: 'CREATOR_WITHDRAWAL',
-              subjectId: prepared.withdrawal.id,
-              metadata: {
-                payoutAttemptId: prepared.attempt.id,
-                providerErrorCode: result.errorCode ?? 'PROVIDER_REJECTED',
-              },
-            },
-          });
-        });
-        await this.earnings.finalizeReservation({
-          reservationId: prepared.withdrawal.reservationId,
-          status: 'RELEASED',
-          actorId: prepared.withdrawal.creatorId,
-        });
-        return { status: 'FAILED' as const };
-      }
+    } catch (error) {
+      await this.prisma.payoutAttempt.update({
+        where: { id: prepared.attempt.id },
+        data: {
+          status: PayoutAttemptStatus.UNKNOWN,
+          providerErrorCode: 'PROVIDER_OUTCOME_UNKNOWN',
+        },
+      });
+      throw error;
+    }
 
-      if (!result.providerTransferRef?.trim()) {
-        throw new Error(
-          'Provider accepted a payout without a transfer reference.',
-        );
-      }
+    if (!result.accepted) {
+      const providerErrorCode = result.errorCode ?? 'PROVIDER_REJECTED';
+      await this.prisma.$transaction(async (tx) => {
+        await tx.$queryRaw`SELECT id FROM "CreatorEarningReservation" WHERE id = ${prepared.withdrawal.reservationId}::uuid FOR UPDATE`;
+        const reservation = await tx.creatorEarningReservation.findUnique({
+          where: { id: prepared.withdrawal.reservationId },
+        });
+        if (
+          !reservation ||
+          reservation.status !== CreatorEarningReservationStatus.ACTIVE
+        ) {
+          throw new ConflictException(
+            'The provider rejected the payout, but its earnings reservation is no longer active; manual reconciliation is required.',
+          );
+        }
+
+        const completedAt = new Date();
+        await tx.payoutAttempt.update({
+          where: { id: prepared.attempt.id },
+          data: {
+            status: PayoutAttemptStatus.FAILED,
+            completedAt,
+            providerErrorCode,
+          },
+        });
+        await tx.creatorWithdrawal.update({
+          where: { id: prepared.withdrawal.id },
+          data: {
+            status: CreatorWithdrawalStatus.FAILED,
+            completedAt,
+            failureCode: providerErrorCode,
+          },
+        });
+        await tx.creatorEarningReservation.update({
+          where: { id: reservation.id },
+          data: {
+            status: CreatorEarningReservationStatus.RELEASED,
+            finalizedAt: completedAt,
+          },
+        });
+        await tx.financialAuditEvent.create({
+          data: {
+            eventType: 'CREATOR_PAYOUT_REJECTED',
+            subjectType: 'CREATOR_WITHDRAWAL',
+            subjectId: prepared.withdrawal.id,
+            metadata: {
+              payoutAttemptId: prepared.attempt.id,
+              providerErrorCode,
+              reservationId: reservation.id,
+            },
+          },
+        });
+        await tx.financialAuditEvent.create({
+          data: {
+            actorId: prepared.withdrawal.creatorId,
+            eventType: 'CREATOR_EARNINGS_RESERVATION_RELEASED',
+            subjectType: 'CREATOR_EARNING_RESERVATION',
+            subjectId: reservation.id,
+            metadata: {
+              amount: reservation.amount,
+              payoutAttemptId: prepared.attempt.id,
+              reason: 'PROVIDER_REJECTED',
+            },
+          },
+        });
+      });
+      return { status: 'FAILED' as const };
+    }
+
+    if (!result.providerTransferRef?.trim()) {
+      await this.prisma.payoutAttempt.update({
+        where: { id: prepared.attempt.id },
+        data: {
+          status: PayoutAttemptStatus.UNKNOWN,
+          providerErrorCode: 'PROVIDER_ACCEPTED_WITHOUT_TRANSFER_REFERENCE',
+        },
+      });
+      throw new Error(
+        'Provider accepted a payout without a transfer reference.',
+      );
+    }
+
+    try {
       await this.prisma.$transaction(async (tx) => {
         await tx.payoutAttempt.update({
           where: { id: prepared.attempt.id },
@@ -749,16 +813,17 @@ export class CreatorWithdrawalsService {
           },
         });
       });
-      return { status: 'SUBMITTED' as const };
     } catch (error) {
       await this.prisma.payoutAttempt.update({
         where: { id: prepared.attempt.id },
         data: {
           status: PayoutAttemptStatus.UNKNOWN,
-          providerErrorCode: 'PROVIDER_OUTCOME_UNKNOWN',
+          providerErrorCode: 'PROVIDER_OUTCOME_PERSISTENCE_UNKNOWN',
         },
       });
       throw error;
     }
+
+    return { status: 'SUBMITTED' as const };
   }
 }
