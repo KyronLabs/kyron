@@ -114,6 +114,7 @@ class GiftWallet {
         legacyComplimentary:
             (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
         promotional: (json['promotional'] as num?)?.toInt() ?? 0,
+        purchased: (json['purchased'] as num?)?.toInt() ?? 0,
       );
 }
 
