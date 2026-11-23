@@ -9,6 +9,12 @@ import {
 } from '@prisma/client';
 import { PayoutOperationsService } from './payout-operations.service';
 
+function firstMockCallArgument(mock: {
+  mock: { calls: unknown[][] };
+}): unknown {
+  return mock.mock.calls[0]?.[0];
+}
+
 describe('PayoutOperationsService', () => {
   const payoutAttemptFindMany = jest.fn();
   const payoutAttemptCount = jest.fn();
@@ -119,7 +125,7 @@ describe('PayoutOperationsService', () => {
       expect(report.unresolvedProviderEventCount).toBe(1);
       expect(report.unmatchedTerminalProviderEventCount).toBe(1);
       expect(report.unresolvedProviderEvents).toHaveLength(1);
-      expect(payoutAttemptFindMany.mock.calls[0]?.[0]).toMatchObject({
+      expect(firstMockCallArgument(payoutAttemptFindMany)).toMatchObject({
         where: {
           status: {
             in: [
@@ -161,7 +167,7 @@ describe('PayoutOperationsService', () => {
       });
 
       expect(result.status).toBe('REVIEW_REQUESTED');
-      expect(financialAuditCreate.mock.calls[0]?.[0]).toMatchObject({
+      expect(firstMockCallArgument(financialAuditCreate)).toMatchObject({
         data: {
           eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_REQUESTED',
           subjectId: 'attempt-1',
