@@ -331,11 +331,7 @@ export class PayoutOperationsService {
     reasonCode: PayoutManualReviewReasonCode;
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
-    if (
-      !MANUAL_REVIEW_REASON_CODES.includes(
-        input.reasonCode,
-      )
-    ) {
+    if (!MANUAL_REVIEW_REASON_CODES.includes(input.reasonCode)) {
       throw new BadRequestException('Invalid payout review reason code.');
     }
 
@@ -423,9 +419,7 @@ export class PayoutOperationsService {
   }) {
     this.validateAuditInput(input.actorId, input.requestId);
     if (
-      !MANUAL_REVIEW_RESOLUTION_CODES.includes(
-        input.resolutionCode,
-      )
+      !MANUAL_REVIEW_RESOLUTION_CODES.includes(input.resolutionCode)
     ) {
       throw new BadRequestException('Invalid payout review resolution code.');
     }
