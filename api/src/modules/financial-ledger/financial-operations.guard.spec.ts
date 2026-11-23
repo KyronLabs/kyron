@@ -40,7 +40,7 @@ describe('FinancialOperationsGuard', () => {
     );
   });
 
-  it('requires AAL2 even when the global staff second-factor flag is off', () => {
+  it('requires AAL2 independently of staff policy', () => {
     const request = {
       user: { id: 'admin-1', role: UserRole.ADMIN },
       aal: 'aal1',
