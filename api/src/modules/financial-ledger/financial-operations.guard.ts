@@ -29,7 +29,7 @@ export class FinancialOperationsGuard implements CanActivate {
         statusCode: 403,
         code: 'FINANCIAL_OPERATIONS_SECOND_FACTOR_REQUIRED',
         message:
-          'A session verified with a second factor is required for financial operations.',
+          'A verified second factor is required for financial operations.',
       });
     }
 
