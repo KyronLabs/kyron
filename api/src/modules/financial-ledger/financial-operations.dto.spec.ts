@@ -28,7 +28,7 @@ describe('financial operations DTOs', () => {
     await expect(validate(dto)).resolves.not.toHaveLength(0);
   });
 
-  it('accepts a supported manual-review reason and a valid request key', async () => {
+  it('accepts a valid manual-review request', async () => {
     const dto = plainToInstance(RequestPayoutManualReviewDto, {
       requestId: 'review-request-01',
       reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
