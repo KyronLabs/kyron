@@ -203,7 +203,7 @@ export class GooglePlayPurchasesService {
       enabled,
       packageName,
       accountObfuscationId: enabled ? accountObfuscationId(userId) : null,
-      products: enabled ? products : [],
+      products: enabled && products ? products : [],
     };
   }
 
