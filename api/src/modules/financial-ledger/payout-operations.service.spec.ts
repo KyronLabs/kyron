@@ -236,7 +236,7 @@ describe('PayoutOperationsService', () => {
       });
 
       expect(result.status).toBe('RESOLVED');
-      expect(financialAuditCreate.mock.calls[0]?.[0]).toMatchObject({
+      expect(firstMockCallArgument(financialAuditCreate)).toMatchObject({
         data: {
           eventType: 'CREATOR_PAYOUT_MANUAL_REVIEW_RESOLVED',
           requestId: 'review-request-4',
