@@ -321,6 +321,40 @@ export class PayoutOperationsService {
   }
 
   /**
+   * Reads the report and records who accessed financial operations. Only
+   * aggregate counts and the requested bounds are added to the audit trail;
+   * individual payout details remain in the report response only.
+   */
+  async getOperationalReportForOperator(
+    input: PayoutOperationalReportInput,
+    actorId: string,
+  ): Promise<PayoutOperationalReport> {
+    if (!actorId.trim() || actorId.length > 80) {
+      throw new BadRequestException('A valid audit actor is required.');
+    }
+
+    const report = await this.getOperationalReport(input);
+    await this.prisma.financialAuditEvent.create({
+      data: {
+        actorId,
+        eventType: 'FINANCIAL_OPERATIONS_REPORT_VIEWED',
+        subjectType: 'PAYOUT_OPERATIONS_REPORT',
+        metadata: {
+          staleAfterMinutes: report.staleAfterMinutes,
+          limit: input.limit ?? 100,
+          staleAttemptCount: report.staleAttemptCount,
+          unresolvedProviderEventCount: report.unresolvedProviderEventCount,
+          unmatchedTerminalProviderEventCount:
+            report.unmatchedTerminalProviderEventCount,
+          returnedStaleAttemptCount: report.staleAttempts.length,
+          returnedProviderEventCount: report.unresolvedProviderEvents.length,
+        },
+      },
+    });
+    return report;
+  }
+
+  /**
    * Records a human review request. It deliberately does not change payout
    * state, submit a transfer, release a reservation, or retry a provider call.
    */
