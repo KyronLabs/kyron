@@ -40,6 +40,21 @@ describe('FinancialOperationsGuard', () => {
     );
   });
 
+  it('rejects suspended admins even when their session is AAL2', () => {
+    const request = {
+      user: {
+        id: 'admin-1',
+        role: UserRole.ADMIN,
+        status: AccountStatus.SUSPENDED,
+      },
+      aal: 'aal2',
+    } as AuthRequest;
+
+    expect(() => guard.canActivate(contextFor(request))).toThrow(
+      NotFoundException,
+    );
+  });
+
   it('requires AAL2 independently of staff policy', () => {
     const request = {
       user: {
