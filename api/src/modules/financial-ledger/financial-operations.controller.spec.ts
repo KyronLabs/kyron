@@ -1,0 +1,112 @@
+import { Test } from '@nestjs/testing';
+import { AuthGuard } from '../../common/guards/auth.guard';
+import type { AuthRequest } from '../../common/types/auth-request';
+import { FinancialOperationsController } from './financial-operations.controller';
+import { FinancialOperationsGuard } from './financial-operations.guard';
+import { PayoutOperationsService } from './payout-operations.service';
+
+describe('FinancialOperationsController', () => {
+  const getOperationalReport = jest.fn();
+  const requestManualReview = jest.fn();
+  const resolveManualReview = jest.fn();
+  const reprocessUnmatchedProviderEvent = jest.fn();
+
+  const request = {
+    user: { id: 'admin-1' },
+    aal: 'aal2',
+  } as AuthRequest;
+
+  const controller = async () => {
+    const module = await Test.createTestingModule({
+      controllers: [FinancialOperationsController],
+      providers: [
+        {
+          provide: PayoutOperationsService,
+          useValue: {
+            getOperationalReport,
+            requestManualReview,
+            resolveManualReview,
+            reprocessUnmatchedProviderEvent,
+          },
+        },
+      ],
+    })
+      .overrideGuard(AuthGuard)
+      .useValue({ canActivate: () => true })
+      .overrideGuard(FinancialOperationsGuard)
+      .useValue({ canActivate: () => true })
+      .compile();
+
+    return module.get(FinancialOperationsController);
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    getOperationalReport.mockResolvedValue({ staleAttemptCount: 0 });
+    requestManualReview.mockResolvedValue({ status: 'REVIEW_REQUESTED' });
+    resolveManualReview.mockResolvedValue({ status: 'RESOLVED' });
+    reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
+  });
+
+  it('forwards bounded report filters', async () => {
+    await (await controller()).report({
+      staleAfterMinutes: 30,
+      limit: 25,
+    });
+
+    expect(getOperationalReport).toHaveBeenCalledWith({
+      staleAfterMinutes: 30,
+      limit: 25,
+    });
+  });
+
+  it('takes the actor from the authenticated request for manual reviews', async () => {
+    await (await controller()).requestManualReview(
+      request,
+      '11111111-1111-4111-8111-111111111111',
+      {
+        requestId: 'review-request-01',
+        reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
+      },
+    );
+
+    expect(requestManualReview).toHaveBeenCalledWith({
+      payoutAttemptId: '11111111-1111-4111-8111-111111111111',
+      actorId: 'admin-1',
+      requestId: 'review-request-01',
+      reasonCode: 'UNKNOWN_PROVIDER_OUTCOME',
+    });
+  });
+
+  it('takes the actor from the authenticated request when resolving reviews', async () => {
+    await (await controller()).resolveManualReview(
+      request,
+      '11111111-1111-4111-8111-111111111111',
+      {
+        requestId: 'review-request-01',
+        resolutionCode: 'NO_ACTION_REQUIRED',
+      },
+    );
+
+    expect(resolveManualReview).toHaveBeenCalledWith({
+      payoutAttemptId: '11111111-1111-4111-8111-111111111111',
+      actorId: 'admin-1',
+      requestId: 'review-request-01',
+      resolutionCode: 'NO_ACTION_REQUIRED',
+    });
+  });
+
+  it('takes the actor from the authenticated request when reprocessing evidence', async () => {
+    await (await controller()).reprocessProviderEvent(
+      request,
+      '22222222-2222-4222-8222-222222222222',
+      { requestId: 'provider-replay-01' },
+    );
+
+    expect(reprocessUnmatchedProviderEvent).toHaveBeenCalledWith({
+      providerEventId: '22222222-2222-4222-8222-222222222222',
+      actorId: 'admin-1',
+      requestId: 'provider-replay-01',
+    });
+  });
+});
