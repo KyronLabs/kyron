@@ -207,10 +207,7 @@ export class PayoutReconciliationService {
         const expectedReservationStatus = succeeded
           ? CreatorEarningReservationStatus.SETTLED
           : CreatorEarningReservationStatus.RELEASED;
-        if (
-          !reservation ||
-          reservation.status !== expectedReservationStatus
-        ) {
+        if (!reservation || reservation.status !== expectedReservationStatus) {
           throw new ConflictException(
             'The payout is already terminal, but its creator earnings reservation does not match; manual reconciliation is required.',
           );
