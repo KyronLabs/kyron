@@ -539,8 +539,7 @@ export class CreatorWithdrawalsService {
       blockers.push('FX_QUOTE_INVALID_OR_EXPIRED');
     }
     if (
-      withdrawal.reservation.status !==
-      CreatorEarningReservationStatus.ACTIVE
+      withdrawal.reservation.status !== CreatorEarningReservationStatus.ACTIVE
     ) {
       blockers.push('EARNINGS_RESERVATION_NOT_ACTIVE');
     }
