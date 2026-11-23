@@ -61,7 +61,10 @@ describe('FinancialOperationsController', () => {
     reprocessUnmatchedProviderEvent.mockResolvedValue({ status: 'PAID' });
     requestApproval.mockResolvedValue({ status: 'REQUESTED' });
     approve.mockResolvedValue({ status: 'APPROVED' });
-    getSubmissionReadinessForOperator.mockResolvedValue({ ready: false, blockers: [] });
+    getSubmissionReadinessForOperator.mockResolvedValue({
+      ready: false,
+      blockers: [],
+    });
   });
 
   it('applies token authentication before financial access control', () => {
