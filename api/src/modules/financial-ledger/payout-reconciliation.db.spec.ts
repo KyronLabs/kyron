@@ -29,9 +29,7 @@ type Fixture = {
 run('payout terminal reconciliation against Postgres', () => {
   let prisma: PrismaClient;
   let reconciliation: PayoutReconciliationService;
-  const fixtures: Fixture[] = [];
-
-  beforeAll(async () => {
+  beforeAll(() => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
     reconciliation = new PayoutReconciliationService(
       prisma as PrismaService,
@@ -40,50 +38,47 @@ run('payout terminal reconciliation against Postgres', () => {
   });
 
   afterAll(async () => {
-    for (const fixture of fixtures) {
-      await prisma.financialAuditEvent.deleteMany({
-        where: {
-          OR: [
-            { subjectId: fixture.withdrawalId },
-            { subjectId: fixture.reservationId },
-          ],
-        },
-      });
-      await prisma.payoutProviderEvent.deleteMany({
-        where: { id: fixture.eventId },
-      });
-      await prisma.payoutAttempt.deleteMany({
-        where: { id: fixture.attemptId },
-      });
-      await prisma.creatorWithdrawal.deleteMany({
-        where: { id: fixture.withdrawalId },
-      });
-      await prisma.fxQuote.deleteMany({ where: { id: fixture.fxQuoteId } });
-      await prisma.payoutDestination.deleteMany({
-        where: { id: fixture.destinationId },
-      });
-      await prisma.creatorEarningReservation.deleteMany({
-        where: { id: fixture.reservationId },
-      });
-    }
+    // Financial source, allocation and provider records are intentionally
+    // immutable; this isolated test database is discarded after the run.
     await prisma?.$disconnect();
   });
 
   const createFixture = async (
-    reservationStatus: CreatorEarningReservationStatus =
-      CreatorEarningReservationStatus.ACTIVE,
-    outcome: PayoutProviderEventOutcome =
-      PayoutProviderEventOutcome.SUCCEEDED,
+    reservationStatus: CreatorEarningReservationStatus = CreatorEarningReservationStatus.ACTIVE,
+    outcome: PayoutProviderEventOutcome = PayoutProviderEventOutcome.SUCCEEDED,
   ): Promise<Fixture> => {
     const stamp = randomUUID();
     const creatorId = randomUUID();
-    const reservation = await prisma.creatorEarningReservation.create({
-      data: {
-        creatorId,
-        idempotencyKey: `payout-reconcile-reservation:${stamp}`,
-        amount: 10,
-        status: reservationStatus,
-      },
+    const reservation = await prisma.$transaction(async (tx) => {
+      const earning = await tx.creatorEarning.create({
+        data: {
+          creatorId,
+          sourceCoinEntryKey: `payout-reconcile-earning:${stamp}`,
+          source: 'APPROVED_REWARD',
+          amount: 10,
+          withdrawable: true,
+        },
+      });
+      const createdReservation = await tx.creatorEarningReservation.create({
+        data: {
+          creatorId,
+          idempotencyKey: `payout-reconcile-reservation:${stamp}`,
+          amount: 10,
+          status: reservationStatus,
+          finalizedAt:
+            reservationStatus === CreatorEarningReservationStatus.ACTIVE
+              ? null
+              : new Date(),
+        },
+      });
+      await tx.creatorEarningReservationLine.create({
+        data: {
+          reservationId: createdReservation.id,
+          earningId: earning.id,
+          amount: 10,
+        },
+      });
+      return createdReservation;
     });
     const destination = await prisma.payoutDestination.create({
       data: {
@@ -150,7 +145,6 @@ run('payout terminal reconciliation against Postgres', () => {
       attemptId: attempt.id,
       eventId: event.id,
     };
-    fixtures.push(fixture);
     return fixture;
   };
 
