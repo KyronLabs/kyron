@@ -1,7 +1,9 @@
 import { Test } from '@nestjs/testing';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
-import { FinancialOperationsController } from './financial-operations.controller';
+import {
+  FinancialOperationsController,
+} from './financial-operations.controller';
 import { FinancialOperationsGuard } from './financial-operations.guard';
 import { PayoutOperationsService } from './payout-operations.service';
 
@@ -60,7 +62,7 @@ describe('FinancialOperationsController', () => {
     });
   });
 
-  it('takes the actor from the authenticated request for manual reviews', async () => {
+  it('uses the authenticated actor for manual reviews', async () => {
     await (await controller()).requestManualReview(
       request,
       '11111111-1111-4111-8111-111111111111',
@@ -78,7 +80,7 @@ describe('FinancialOperationsController', () => {
     });
   });
 
-  it('takes the actor from the authenticated request when resolving reviews', async () => {
+  it('uses the authenticated actor when resolving reviews', async () => {
     await (await controller()).resolveManualReview(
       request,
       '11111111-1111-4111-8111-111111111111',
@@ -96,7 +98,7 @@ describe('FinancialOperationsController', () => {
     });
   });
 
-  it('takes the actor from the authenticated request when reprocessing evidence', async () => {
+  it('uses the authenticated actor when replaying evidence', async () => {
     await (await controller()).reprocessProviderEvent(
       request,
       '22222222-2222-4222-8222-222222222222',
