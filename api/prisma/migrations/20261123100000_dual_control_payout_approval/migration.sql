@@ -28,6 +28,9 @@ ALTER TABLE "CreatorWithdrawal"
   ADD CONSTRAINT "CreatorWithdrawal_dual_control_distinct_actors"
   CHECK (
     "approvedById" IS NULL
-    OR "approvalRequestedById" IS NULL
-    OR "approvedById" <> "approvalRequestedById"
+    OR (
+      "approvalRequestId" IS NOT NULL
+      AND "approvalRequestedById" IS NOT NULL
+      AND "approvedById" <> "approvalRequestedById"
+    )
   );
