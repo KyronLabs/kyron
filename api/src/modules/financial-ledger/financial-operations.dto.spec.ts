@@ -1,6 +1,7 @@
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import {
+  CreatorWithdrawalApprovalDto,
   PayoutOperationsReportQueryDto,
   ReprocessPayoutProviderEventDto,
   RequestPayoutManualReviewDto,
@@ -62,4 +63,20 @@ describe('financial operations DTOs', () => {
 
     await expect(validate(dto)).resolves.toHaveLength(0);
   });
+  it('validates dual-control withdrawal approval request keys', async () => {
+    const dto = plainToInstance(CreatorWithdrawalApprovalDto, {
+      requestId: 'withdrawal-approval-01',
+    });
+
+    await expect(validate(dto)).resolves.toHaveLength(0);
+  });
+
+  it('rejects malformed dual-control approval request keys', async () => {
+    const dto = plainToInstance(CreatorWithdrawalApprovalDto, {
+      requestId: 'bad key',
+    });
+
+    await expect(validate(dto)).resolves.not.toHaveLength(0);
+  });
+
 });
