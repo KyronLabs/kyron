@@ -63,7 +63,14 @@ export class GooglePlayDeveloperApiProvider {
 
   isConfigured(): boolean {
     const account = this.serviceAccount();
-    return !!account;
+    const packageName =
+      process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim() || 'so.kyron.app';
+    return (
+      !!account &&
+      /^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)+$/.test(
+        packageName,
+      )
+    );
   }
 
   async getProductPurchase(token: string): Promise<GooglePlayProductPurchaseV2> {
