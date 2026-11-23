@@ -10,6 +10,7 @@ export const LEGACY_COIN_BUCKETS = [
   'CREATOR_PAYABLE',
   'CREATOR_PROMOTIONAL',
   'CREATOR_UNKNOWN',
+  'PURCHASED_COIN',
 ] as const;
 
 export type LegacyCoinBucket = (typeof LEGACY_COIN_BUCKETS)[number];
@@ -99,6 +100,16 @@ const KIND_MAPPING: Record<CoinKind, LegacyCoinKindMapping> = {
   [CoinKind.EARN]: {
     bucket: 'CREATOR_UNKNOWN',
     label: 'Creator proceeds with unknown legacy provenance',
+    withdrawable: false,
+  },
+  [CoinKind.PURCHASE_GRANT]: {
+    bucket: 'PURCHASED_COIN',
+    label: 'Purchased virtual coins',
+    withdrawable: false,
+  },
+  [CoinKind.PURCHASE_SPEND]: {
+    bucket: 'PURCHASED_COIN',
+    label: 'Purchased virtual coins',
     withdrawable: false,
   },
 };
