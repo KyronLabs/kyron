@@ -2492,10 +2492,14 @@ model CreatorWithdrawal {
   currency          String                 @db.Char(3)
   fiatAmountMinor   BigInt
   status            CreatorWithdrawalStatus @default(REQUESTED)
-  requestedAt       DateTime               @default(now()) @db.Timestamptz()
-  approvedAt        DateTime?              @db.Timestamptz()
-  completedAt       DateTime?              @db.Timestamptz()
-  failureCode       String?                @db.VarChar(80)
+  requestedAt            DateTime               @default(now()) @db.Timestamptz()
+  approvedAt             DateTime?              @db.Timestamptz()
+  approvalRequestId      String?                @unique @db.VarChar(160)
+  approvalRequestedById  String?                @db.Uuid
+  approvalRequestedAt    DateTime?              @db.Timestamptz()
+  approvedById           String?                @db.Uuid
+  completedAt            DateTime?              @db.Timestamptz()
+  failureCode            String?                @db.VarChar(80)
   reservation       CreatorEarningReservation @relation(fields: [reservationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   destination       PayoutDestination      @relation(fields: [destinationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   fxQuote           FxQuote                @relation(fields: [fxQuoteId], references: [id], onDelete: Restrict, onUpdate: Cascade)

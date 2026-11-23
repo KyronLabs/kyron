@@ -13,11 +13,13 @@ import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsGuard } from './financial-operations.guard';
 import {
+  CreatorWithdrawalApprovalDto,
   PayoutOperationsReportQueryDto,
   ReprocessPayoutProviderEventDto,
   RequestPayoutManualReviewDto,
   ResolvePayoutManualReviewDto,
 } from './financial-operations.dto';
+import { CreatorWithdrawalsService } from './creator-withdrawals.service';
 import { PayoutOperationsService } from './payout-operations.service';
 
 /**
@@ -28,7 +30,10 @@ import { PayoutOperationsService } from './payout-operations.service';
 @Controller('financial-operations')
 @UseGuards(AuthGuard, FinancialOperationsGuard)
 export class FinancialOperationsController {
-  constructor(private readonly operations: PayoutOperationsService) {}
+  constructor(
+    private readonly operations: PayoutOperationsService,
+    private readonly withdrawals: CreatorWithdrawalsService,
+  ) {}
 
   /** Read-only report of stale attempts, unmatched evidence and reviews. */
   @Get('payouts')
@@ -88,5 +93,32 @@ export class FinancialOperationsController {
       actorId: request.user.id,
       requestId: dto.requestId,
     });
+  }
+  /** First administrator requests approval; withdrawal state is unchanged. */
+  @Post('creator-withdrawals/:id/approval-request')
+  requestWithdrawalApproval(
+    @Req() request: AuthRequest,
+    @Param('id', ParseUUIDPipe) withdrawalId: string,
+    @Body() dto: CreatorWithdrawalApprovalDto,
+  ) {
+    return this.withdrawals.requestApproval({
+      withdrawalId,
+      actorId: request.user.id,
+      requestId: dto.requestId,
+    });
+  }
+
+  /** A different AAL2 administrator completes the approval transition. */
+  @Post('creator-withdrawals/:id/approve')
+  approveWithdrawal(
+    @Req() request: AuthRequest,
+    @Param('id', ParseUUIDPipe) withdrawalId: string,
+    @Body() dto: CreatorWithdrawalApprovalDto,
+  ) {
+    return this.withdrawals.approve(
+      withdrawalId,
+      request.user.id,
+      dto.requestId,
+    );
   }
 }

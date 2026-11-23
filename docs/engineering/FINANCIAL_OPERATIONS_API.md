@@ -99,6 +99,42 @@ the existing payout reconciliation service, preserving its locks, provider
 reference matching, amount/currency checks, state checks and reservation
 finalization rules.
 
+
+### Request dual-control withdrawal approval
+
+`POST /financial-operations/creator-withdrawals/:id/approval-request`
+
+```json
+{
+  "requestId": "withdrawal-approval-01"
+}
+```
+
+The authenticated AAL2 administrator records the approval request. The
+withdrawal remains in its existing `REQUESTED` or `UNDER_REVIEW` state.
+The request stores the initiating administrator, timestamp and unique request
+key, and appends a `CREATOR_WITHDRAWAL_APPROVAL_REQUESTED` audit event.
+
+### Approve a withdrawal with a second administrator
+
+`POST /financial-operations/creator-withdrawals/:id/approve`
+
+```json
+{
+  "requestId": "withdrawal-approval-01"
+}
+```
+
+A different authenticated AAL2 administrator must supply the exact request
+key. The service locks the withdrawal row, verifies the pending request and
+distinct actor identity, then records `approvedById`, transitions the
+withdrawal to `APPROVED`, and appends a `CREATOR_WITHDRAWAL_APPROVED`
+audit event containing both administrator IDs. Replays and competing approval
+requests cannot create a second approval.
+
+Approval does not submit a payout, create a payout attempt, call a provider or
+move funds. Existing provider adapters remain disabled.
+
 ## Explicitly out of scope
 
 - No endpoint submits a payout or creates a new payout attempt.

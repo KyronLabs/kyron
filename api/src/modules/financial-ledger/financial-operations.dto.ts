@@ -67,3 +67,11 @@ export class ReprocessPayoutProviderEventDto {
   @Matches(/^[A-Za-z0-9][A-Za-z0-9._:-]{7,159}$/)
   requestId!: string;
 }
+
+/** Idempotency key for the two-person withdrawal approval workflow. */
+export class CreatorWithdrawalApprovalDto {
+  @IsString()
+  @Transform(trimmed)
+  @Matches(/^[A-Za-z0-9][A-Za-z0-9._:-]{7,159}$/)
+  requestId!: string;
+}
