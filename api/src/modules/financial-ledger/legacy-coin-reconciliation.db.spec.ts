@@ -16,6 +16,7 @@ run('legacy coin reconciliation, against a real database', () => {
   const creatorId = randomUUID();
   const giftId = randomUUID();
   const rewardGiftId = randomUUID();
+  const purchaseGiftId = randomUUID();
   const rewardGrantId = randomUUID();
   const missingGiftId = randomUUID();
   const stamp = randomUUID();
@@ -65,6 +66,24 @@ run('legacy coin reconciliation, against a real database', () => {
           key: `gift:${rewardGiftId}:reward-earn`,
         },
         {
+          userId: senderId,
+          kind: 'PURCHASE_GRANT',
+          amount: 12,
+          key: `google-play-purchase:${stamp}`,
+        },
+        {
+          userId: senderId,
+          kind: 'PURCHASE_SPEND',
+          amount: -4,
+          key: `gift:${purchaseGiftId}:purchase-spend`,
+        },
+        {
+          userId: creatorId,
+          kind: 'PURCHASE_EARN',
+          amount: 4,
+          key: `gift:${purchaseGiftId}:purchase-earn`,
+        },
+        {
           userId: creatorId,
           kind: 'EARN',
           amount: 3,
@@ -98,6 +117,18 @@ run('legacy coin reconciliation, against a real database', () => {
           unitCode: 'COIN',
           payload: { type: 'star', coins: 10 },
           occurredAt: new Date('2026-10-02T12:00:00.000Z'),
+        },
+        {
+          sourceType: 'GIFT',
+          sourceId: purchaseGiftId,
+          eventType: 'GIFT_SENT',
+          actorId: senderId,
+          beneficiaryId: creatorId,
+          relatedIds: {},
+          amount: 4,
+          unitCode: 'COIN',
+          payload: { type: 'fire', coins: 4 },
+          occurredAt: new Date('2026-10-04T12:00:00.000Z'),
         },
         {
           sourceType: 'POST_REWARD_GRANT',
@@ -139,16 +170,16 @@ run('legacy coin reconciliation, against a real database', () => {
       scope: 'SELECTED_USERS',
       mutationCount: 0,
       summary: {
-        coinEntries: 7,
+        coinEntries: 10,
         users: 2,
-        mappedEntries: 7,
+        mappedEntries: 10,
         unmappedEntries: 0,
         zeroAmountEntries: 0,
-        eligibleTransactions: 7,
+        eligibleTransactions: 10,
         alreadyImportedEntries: 0,
-        newTransactions: 7,
-        debitTotal: '63',
-        creditTotal: '63',
+        newTransactions: 10,
+        debitTotal: '83',
+        creditTotal: '83',
       },
     });
     expect(report.summary.issues.blockers).toBe(0);
@@ -164,7 +195,7 @@ run('legacy coin reconciliation, against a real database', () => {
             CREATOR_PAYABLE: '0',
             CREATOR_PROMOTIONAL: '0',
             CREATOR_UNKNOWN: '0',
-            PURCHASED_COIN: '0',
+            PURCHASED_COIN: '8',
           },
         },
         {
@@ -172,7 +203,7 @@ run('legacy coin reconciliation, against a real database', () => {
           buckets: {
             LEGACY_COMPLIMENTARY: '0',
             REWARD_PROMOTIONAL: '0',
-            CREATOR_PAYABLE: '10',
+            CREATOR_PAYABLE: '14',
             CREATOR_PROMOTIONAL: '5',
             CREATOR_UNKNOWN: '3',
             PURCHASED_COIN: '0',
