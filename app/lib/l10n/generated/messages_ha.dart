@@ -2380,6 +2380,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Tabbatar"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Wannan kalmar sirri ta bayyana a cikin satar bayanai, don haka tana cikin na farko da maharan ke gwadawa. Zaɓi wata daban."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Jakar kuɗi"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Tsabar da za a iya kashewa"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Jimillar abin da aka samu daga kyaututtuka"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Daga kyaututtukan da suka cancanta, kafin binciken biyan kuɗi"),
     };
 
 final messageLookup = MessageLookup();

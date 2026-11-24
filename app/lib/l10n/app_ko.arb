@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6자리 코드",
   "ui_2fa_enter": "인증 앱의 코드를 입력하세요",
   "ui_2fa_verify": "확인",
-  "ui_password_breached": "이 비밀번호는 데이터 유출에서 발견되어 공격자가 가장 먼저 시도하는 비밀번호 중 하나입니다. 다른 비밀번호를 선택하세요."
+  "ui_password_breached": "이 비밀번호는 데이터 유출에서 발견되어 공격자가 가장 먼저 시도하는 비밀번호 중 하나입니다. 다른 비밀번호를 선택하세요.",
+  "ui_wallet_title": "지갑",
+  "ui_wallet_spendable": "사용 가능한 코인",
+  "ui_wallet_received": "선물로 얻은 총수익",
+  "ui_wallet_qualifying": "요건을 충족한 선물 수익(지급 심사 전)"
 }

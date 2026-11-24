@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-sifret kode",
   "ui_2fa_enter": "Skriv inn koden fra autentiseringsappen din",
   "ui_2fa_verify": "Bekreft",
-  "ui_password_breached": "Dette passordet har dukket opp i en datalekkasje, så det er blant de første angripere prøver. Velg et annet."
+  "ui_password_breached": "Dette passordet har dukket opp i en datalekkasje, så det er blant de første angripere prøver. Velg et annet.",
+  "ui_wallet_title": "Lommebok",
+  "ui_wallet_spendable": "Mynter du kan bruke",
+  "ui_wallet_received": "Samlet inntekt fra gaver",
+  "ui_wallet_qualifying": "Fra kvalifiserte gaver før kontroll av utbetaling"
 }

@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Koodu ọnụọgụ 6",
   "ui_2fa_enter": "Tinye koodu sitere na ngwa nkwenye gị",
   "ui_2fa_verify": "Nyochaa",
-  "ui_password_breached": "Okwuntughe a apụtala na ntapu data, ya mere ọ bụ otu n’ime ndị mbụ ndị na-awakpo na-anwale. Họrọ nke ọzọ."
+  "ui_password_breached": "Okwuntughe a apụtala na ntapu data, ya mere ọ bụ otu n’ime ndị mbụ ndị na-awakpo na-anwale. Họrọ nke ọzọ.",
+  "ui_wallet_title": "Akpa ego",
+  "ui_wallet_spendable": "Mkpụrụ ego ị nwere ike imefu",
+  "ui_wallet_received": "Mkpokọta ego e nwetara n’onyinye",
+  "ui_wallet_qualifying": "Site n’onyinye ndị ruru eru, tupu nyocha ịkwụ ụgwọ"
 }

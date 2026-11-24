@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Kôd od 6 znamenki",
   "ui_2fa_enter": "Unesite kôd iz aplikacije za autentifikaciju",
   "ui_2fa_verify": "Potvrdi",
-  "ui_password_breached": "Ova se lozinka pojavila u curenju podataka, pa je među prvima koje napadači isprobavaju. Odaberite drugu."
+  "ui_password_breached": "Ova se lozinka pojavila u curenju podataka, pa je među prvima koje napadači isprobavaju. Odaberite drugu.",
+  "ui_wallet_title": "Novčanik",
+  "ui_wallet_spendable": "Novčići za trošenje",
+  "ui_wallet_received": "Ukupna zarada od darova",
+  "ui_wallet_qualifying": "Od prihvatljivih darova, prije provjera isplate"
 }

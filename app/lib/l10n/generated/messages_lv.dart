@@ -2398,6 +2398,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Pārbaudīt"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Šī parole ir parādījusies datu noplūdē, tāpēc tā ir viena no pirmajām, ko izmēģina uzbrucēji. Izvēlieties citu."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Maks"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Tērēšanai pieejamās monētas"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Kopējie ienākumi no dāvanām"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "No atbilstošām dāvanām pirms izmaksas pārbaudes"),
     };
 
 final messageLookup = MessageLookup();

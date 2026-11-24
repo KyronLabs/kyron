@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Lamba mai lambobi 6",
   "ui_2fa_enter": "Shigar da lambar daga manhajar tantancewarka",
   "ui_2fa_verify": "Tabbatar",
-  "ui_password_breached": "Wannan kalmar sirri ta bayyana a cikin satar bayanai, don haka tana cikin na farko da maharan ke gwadawa. Zaɓi wata daban."
+  "ui_password_breached": "Wannan kalmar sirri ta bayyana a cikin satar bayanai, don haka tana cikin na farko da maharan ke gwadawa. Zaɓi wata daban.",
+  "ui_wallet_title": "Jakar kuɗi",
+  "ui_wallet_spendable": "Tsabar da za a iya kashewa",
+  "ui_wallet_received": "Jimillar abin da aka samu daga kyaututtuka",
+  "ui_wallet_qualifying": "Daga kyaututtukan da suka cancanta, kafin binciken biyan kuɗi"
 }

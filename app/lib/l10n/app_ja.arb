@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6桁のコード",
   "ui_2fa_enter": "認証アプリのコードを入力してください",
   "ui_2fa_verify": "確認",
-  "ui_password_breached": "このパスワードはデータ漏えいで見つかっているため、攻撃者が最初に試すものの一つです。別のパスワードを選んでください。"
+  "ui_password_breached": "このパスワードはデータ漏えいで見つかっているため、攻撃者が最初に試すものの一つです。別のパスワードを選んでください。",
+  "ui_wallet_title": "ウォレット",
+  "ui_wallet_spendable": "使用できるコイン",
+  "ui_wallet_received": "ギフトによる総収益",
+  "ui_wallet_qualifying": "対象ギフトによる収益（支払い審査前）"
 }

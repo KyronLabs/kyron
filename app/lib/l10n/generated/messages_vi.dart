@@ -2369,6 +2369,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Xác minh"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Mật khẩu này đã xuất hiện trong một vụ rò rỉ dữ liệu, nên là một trong những mật khẩu kẻ tấn công thử đầu tiên. Hãy chọn mật khẩu khác."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Ví"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Xu có thể sử dụng"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Tổng thu nhập từ quà tặng"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Từ quà tặng đủ điều kiện, trước khi xét duyệt chi trả"),
     };
 
 final messageLookup = MessageLookup();

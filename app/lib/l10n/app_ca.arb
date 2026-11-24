@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Codi de 6 dígits",
   "ui_2fa_enter": "Introdueix el codi de la teva aplicació d’autenticació",
   "ui_2fa_verify": "Verifica",
-  "ui_password_breached": "Aquesta contrasenya ha aparegut en una filtració de dades, així que és de les primeres que proven els atacants. Tria’n una altra."
+  "ui_password_breached": "Aquesta contrasenya ha aparegut en una filtració de dades, així que és de les primeres que proven els atacants. Tria’n una altra.",
+  "ui_wallet_title": "Cartera",
+  "ui_wallet_spendable": "Monedes disponibles per gastar",
+  "ui_wallet_received": "Guanys totals per regals",
+  "ui_wallet_qualifying": "De regals que compleixen els requisits, abans de verificar el pagament"
 }

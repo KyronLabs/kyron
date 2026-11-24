@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 位代码",
   "ui_2fa_enter": "输入验证器应用中的代码",
   "ui_2fa_verify": "验证",
-  "ui_password_breached": "此密码曾出现在数据泄露中，因此是攻击者最先尝试的密码之一。请换一个。"
+  "ui_password_breached": "此密码曾出现在数据泄露中，因此是攻击者最先尝试的密码之一。请换一个。",
+  "ui_wallet_title": "钱包",
+  "ui_wallet_spendable": "可用金币",
+  "ui_wallet_received": "礼物总收益",
+  "ui_wallet_qualifying": "来自符合条件的礼物，尚待付款审核"
 }

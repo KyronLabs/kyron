@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Kod 6-cyfrowy",
   "ui_2fa_enter": "Wpisz kod z aplikacji uwierzytelniającej",
   "ui_2fa_verify": "Zweryfikuj",
-  "ui_password_breached": "To hasło pojawiło się w wycieku danych, więc jest jednym z pierwszych, które próbują atakujący. Wybierz inne."
+  "ui_password_breached": "To hasło pojawiło się w wycieku danych, więc jest jednym z pierwszych, które próbują atakujący. Wybierz inne.",
+  "ui_wallet_title": "Portfel",
+  "ui_wallet_spendable": "Monety do wydania",
+  "ui_wallet_received": "Łączne zarobki z prezentów",
+  "ui_wallet_qualifying": "Z kwalifikujących się prezentów, przed weryfikacją wypłaty"
 }

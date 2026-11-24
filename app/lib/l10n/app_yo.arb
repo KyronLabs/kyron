@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Kóòdù oní-nọ́ńbà 6",
   "ui_2fa_enter": "Tẹ kóòdù láti inú áàpù aláṣẹ̀rí rẹ",
   "ui_2fa_verify": "Ṣàyẹ̀wò",
-  "ui_password_breached": "Ọ̀rọ̀ aṣínà yìí ti fara hàn nínú jíjò dátà, nítorí náà ó wà lára àwọn àkọ́kọ́ tí àwọn olùkọlù ń gbìyànjú. Yan òmíràn."
+  "ui_password_breached": "Ọ̀rọ̀ aṣínà yìí ti fara hàn nínú jíjò dátà, nítorí náà ó wà lára àwọn àkọ́kọ́ tí àwọn olùkọlù ń gbìyànjú. Yan òmíràn.",
+  "ui_wallet_title": "Àpò owó",
+  "ui_wallet_spendable": "Ẹyọ owó tí o lè ná",
+  "ui_wallet_received": "Àpapọ̀ èrè láti inú àwọn ẹ̀bùn",
+  "ui_wallet_qualifying": "Láti inú àwọn ẹ̀bùn tó péye, ṣáájú àyẹ̀wò ìsanwó"
 }

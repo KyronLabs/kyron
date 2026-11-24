@@ -31,6 +31,7 @@ import 'screens/post_collection_screen.dart';
 import 'screens/post_detail_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/wallet_screen.dart';
 import 'screens/settings_subscreens.dart';
 import 'screens/splash_screen.dart';
 import 'screens/welcome_screen.dart';
@@ -115,6 +116,7 @@ class Routes {
   static const settingsNotifications = '/settings/notifications';
   static const settingsContactSupport = '/settings/contact-support';
   static const settingsFeedback = '/settings/feedback';
+  static const wallet = '/settings/wallet';
   static const accountStatus = '/settings/account-status';
   static const yourReports = '/settings/your-reports';
   static const verification = '/verification';
@@ -281,6 +283,9 @@ class Routes {
 
       case settingsContactSupport:
         return _page(const SettingsContactSupportScreen());
+
+      case wallet:
+        return _page(const WalletScreen());
 
       case accountStatus:
         return _page(const AccountStatusScreen());

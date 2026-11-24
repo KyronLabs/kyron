@@ -2705,6 +2705,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Проверка"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Тази парола се е появила при изтичане на данни, затова е сред първите, които нападателите опитват. Изберете друга."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Портфейл"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Монети за харчене"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Общ приход от подаръци"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "От отговарящи на условията подаръци, преди проверките за изплащане"),
     };
 
 final messageLookup = MessageLookup();

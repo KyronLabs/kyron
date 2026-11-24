@@ -2353,6 +2353,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Bekreft"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Dette passordet har dukket opp i en datalekkasje, så det er blant de første angripere prøver. Velg et annet."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Lommebok"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Mynter du kan bruke"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Samlet inntekt fra gaver"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Fra kvalifiserte gaver før kontroll av utbetaling"),
     };
 
 final messageLookup = MessageLookup();

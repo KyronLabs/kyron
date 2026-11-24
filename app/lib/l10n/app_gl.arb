@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Código de 6 díxitos",
   "ui_2fa_enter": "Introduce o código da túa app de autenticación",
   "ui_2fa_verify": "Verificar",
-  "ui_password_breached": "Este contrasinal apareceu nunha filtración de datos, así que é dos primeiros que proban os atacantes. Escolle outro."
+  "ui_password_breached": "Este contrasinal apareceu nunha filtración de datos, así que é dos primeiros que proban os atacantes. Escolle outro.",
+  "ui_wallet_title": "Carteira",
+  "ui_wallet_spendable": "Moedas dispoñibles para gastar",
+  "ui_wallet_received": "Ganancias totais por agasallos",
+  "ui_wallet_qualifying": "De agasallos que cumpren os requisitos, antes de verificar o pagamento"
 }

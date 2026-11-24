@@ -2789,6 +2789,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Επαλήθευση"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Αυτός ο κωδικός πρόσβασης έχει εμφανιστεί σε διαρροή δεδομένων, άρα είναι από τους πρώτους που δοκιμάζουν οι επιτιθέμενοι. Διάλεξε άλλον."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Πορτοφόλι"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Νομίσματα για χρήση"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Συνολικά έσοδα από δώρα"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Από επιλέξιμα δώρα, πριν από τους ελέγχους πληρωμής"),
     };
 
 final messageLookup = MessageLookup();

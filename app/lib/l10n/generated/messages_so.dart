@@ -2424,6 +2424,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Xaqiiji"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Eraygan sirta ah wuxuu ka soo muuqday xog la daadiyay, markaa waa mid ka mid ah kuwa ugu horreeya ee weerarlayaashu isku dayaan. Dooro mid kale."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Boorsada"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage(
+          "Qadaadiicda la isticmaali karo"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Wadarta dakhliga hadiyadaha"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Hadiyadaha u qalma, ka hor hubinta lacag bixinta"),
     };
 
 final messageLookup = MessageLookup();

@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Mã 6 chữ số",
   "ui_2fa_enter": "Nhập mã từ ứng dụng xác thực",
   "ui_2fa_verify": "Xác minh",
-  "ui_password_breached": "Mật khẩu này đã xuất hiện trong một vụ rò rỉ dữ liệu, nên là một trong những mật khẩu kẻ tấn công thử đầu tiên. Hãy chọn mật khẩu khác."
+  "ui_password_breached": "Mật khẩu này đã xuất hiện trong một vụ rò rỉ dữ liệu, nên là một trong những mật khẩu kẻ tấn công thử đầu tiên. Hãy chọn mật khẩu khác.",
+  "ui_wallet_title": "Ví",
+  "ui_wallet_spendable": "Xu có thể sử dụng",
+  "ui_wallet_received": "Tổng thu nhập từ quà tặng",
+  "ui_wallet_qualifying": "Từ quà tặng đủ điều kiện, trước khi xét duyệt chi trả"
 }

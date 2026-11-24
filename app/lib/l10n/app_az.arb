@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 rəqəmli kod",
   "ui_2fa_enter": "Autentifikator tətbiqinizdəki kodu daxil edin",
   "ui_2fa_verify": "Yoxla",
-  "ui_password_breached": "Bu parol məlumat sızmasında görünüb, ona görə də hücumçuların ilk sınadıqlarından biridir. Başqasını seçin."
+  "ui_password_breached": "Bu parol məlumat sızmasında görünüb, ona görə də hücumçuların ilk sınadıqlarından biridir. Başqasını seçin.",
+  "ui_wallet_title": "Pul kisəsi",
+  "ui_wallet_spendable": "Xərclənə bilən sikkələr",
+  "ui_wallet_received": "Hədiyyələrdən ümumi qazanc",
+  "ui_wallet_qualifying": "Ödəniş yoxlamasından əvvəl uyğun hədiyyələrdən qazanc"
 }

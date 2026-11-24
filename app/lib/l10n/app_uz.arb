@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 xonali kod",
   "ui_2fa_enter": "Autentifikator ilovangizdagi kodni kiriting",
   "ui_2fa_verify": "Tekshirish",
-  "ui_password_breached": "Bu parol ma’lumotlar sizib chiqishida ko‘ringan, shuning uchun hujumchilar birinchi sinab ko‘radiganlardan biri. Boshqasini tanlang."
+  "ui_password_breached": "Bu parol ma’lumotlar sizib chiqishida ko‘ringan, shuning uchun hujumchilar birinchi sinab ko‘radiganlardan biri. Boshqasini tanlang.",
+  "ui_wallet_title": "Hamyon",
+  "ui_wallet_spendable": "Sarflash mumkin boʻlgan tangalar",
+  "ui_wallet_received": "Sovgʻalardan jami daromad",
+  "ui_wallet_qualifying": "Toʻlov tekshiruvidan oldin talablarga mos sovgʻalardan olingan daromad"
 }

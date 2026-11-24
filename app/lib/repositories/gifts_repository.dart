@@ -15,6 +15,19 @@ class GiftsRepository {
     return GiftSheetData.fromJson(res.data ?? const {});
   }
 
+  /// The wallet overview must distinguish a real zero from missing balances.
+  Future<GiftWallet> wallet() async {
+    final res = await _api.dio.get<Map<String, dynamic>>('/gifts');
+    final wallet = res.data?['wallet'];
+    if (wallet is! Map<String, dynamic> ||
+        wallet['coins'] is! int ||
+        wallet['earned'] is! int ||
+        wallet['withdrawableEarned'] is! int) {
+      throw const FormatException('Incomplete wallet response');
+    }
+    return GiftWallet.fromJson(wallet);
+  }
+
   /// Sends one. [requestId] is made once per press and reused for any
   /// retry, so a request that reached the server but whose answer was lost
   /// is the same gift when it is sent again -- never a second charge.

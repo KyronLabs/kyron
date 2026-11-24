@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Ikhodi enezinombolo ezi-6",
   "ui_2fa_enter": "Faka ikhodi evela ku-app yakho yesiqinisekisi",
   "ui_2fa_verify": "Qinisekisa",
-  "ui_password_breached": "Le phasiwedi ivele ekuvuzeni kwedatha, ngakho ingenye yezokuqala ezizanywa abahlaseli. Khetha enye."
+  "ui_password_breached": "Le phasiwedi ivele ekuvuzeni kwedatha, ngakho ingenye yezokuqala ezizanywa abahlaseli. Khetha enye.",
+  "ui_wallet_title": "Isikhwama semali",
+  "ui_wallet_spendable": "Izinhlamvu zemali ezingasetshenziswa",
+  "ui_wallet_received": "Isamba semali etholwe ngezipho",
+  "ui_wallet_qualifying": "Eziphweni ezifanelekayo, ngaphambi kokuhlolwa kwenkokhelo"
 }

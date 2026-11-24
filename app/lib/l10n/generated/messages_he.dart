@@ -2255,6 +2255,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("אימות"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "הסיסמה הזו הופיעה בדליפת נתונים, ולכן היא מהראשונות שתוקפים מנסים. בחרו סיסמה אחרת."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("ארנק"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("מטבעות זמינים לשימוש"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("סך ההכנסות ממתנות"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "מתוך מתנות שעומדות בתנאים, לפני בדיקות התשלום"),
     };
 
 final messageLookup = MessageLookup();

@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Codice a 6 cifre",
   "ui_2fa_enter": "Inserisci il codice dalla tua app di autenticazione",
   "ui_2fa_verify": "Verifica",
-  "ui_password_breached": "Questa password è comparsa in una violazione di dati, quindi è tra le prime che gli aggressori provano. Scegline un’altra."
+  "ui_password_breached": "Questa password è comparsa in una violazione di dati, quindi è tra le prime che gli aggressori provano. Scegline un’altra.",
+  "ui_wallet_title": "Portafoglio",
+  "ui_wallet_spendable": "Monete spendibili",
+  "ui_wallet_received": "Guadagni totali dai regali",
+  "ui_wallet_qualifying": "Da regali idonei, prima delle verifiche per il pagamento"
 }

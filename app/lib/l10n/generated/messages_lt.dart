@@ -2415,6 +2415,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Patikrinti"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Šis slaptažodis pasirodė duomenų nutekėjime, todėl jis vienas pirmųjų, kuriuos bando užpuolikai. Pasirinkite kitą."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Piniginė"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Išleidžiamos monetos"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Visos pajamos iš dovanų"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Iš reikalavimus atitinkančių dovanų prieš išmokos patikrą"),
     };
 
 final messageLookup = MessageLookup();

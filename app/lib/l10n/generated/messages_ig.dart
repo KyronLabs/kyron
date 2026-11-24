@@ -2319,6 +2319,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Nyochaa"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Okwuntughe a apụtala na ntapu data, ya mere ọ bụ otu n’ime ndị mbụ ndị na-awakpo na-anwale. Họrọ nke ọzọ."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Akpa ego"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Mkpụrụ ego ị nwere ike imefu"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Mkpokọta ego e nwetara n’onyinye"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Site n’onyinye ndị ruru eru, tupu nyocha ịkwụ ụgwọ"),
     };
 
 final messageLookup = MessageLookup();

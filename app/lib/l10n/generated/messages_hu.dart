@@ -2414,6 +2414,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ellenőrzés"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Ez a jelszó megjelent egy adatszivárgásban, ezért a támadók elsőként próbálják. Válassz másikat."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Pénztárca"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Elkölthető érmék"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Ajándékokból származó összes bevétel"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "A feltételeknek megfelelő ajándékokból, a kifizetés ellenőrzése előtt"),
     };
 
 final messageLookup = MessageLookup();

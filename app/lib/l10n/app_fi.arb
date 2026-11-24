@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-numeroinen koodi",
   "ui_2fa_enter": "Syötä koodi todennussovelluksestasi",
   "ui_2fa_verify": "Vahvista",
-  "ui_password_breached": "Tämä salasana on näkynyt tietovuodossa, joten se on ensimmäisiä, joita hyökkääjät kokeilevat. Valitse toinen."
+  "ui_password_breached": "Tämä salasana on näkynyt tietovuodossa, joten se on ensimmäisiä, joita hyökkääjät kokeilevat. Valitse toinen.",
+  "ui_wallet_title": "Lompakko",
+  "ui_wallet_spendable": "Käytettävissä olevat kolikot",
+  "ui_wallet_received": "Lahjoista saadut tulot yhteensä",
+  "ui_wallet_qualifying": "Ehdot täyttävistä lahjoista ennen maksun tarkistuksia"
 }

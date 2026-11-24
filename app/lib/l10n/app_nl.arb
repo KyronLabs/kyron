@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-cijferige code",
   "ui_2fa_enter": "Voer de code uit je authenticator-app in",
   "ui_2fa_verify": "Verifiëren",
-  "ui_password_breached": "Dit wachtwoord is opgedoken in een datalek, dus het is een van de eerste die aanvallers proberen. Kies een ander."
+  "ui_password_breached": "Dit wachtwoord is opgedoken in een datalek, dus het is een van de eerste die aanvallers proberen. Kies een ander.",
+  "ui_wallet_title": "Portemonnee",
+  "ui_wallet_spendable": "Besteedbare munten",
+  "ui_wallet_received": "Totale inkomsten uit cadeaus",
+  "ui_wallet_qualifying": "Uit in aanmerking komende cadeaus, vóór de uitbetalingscontrole"
 }

@@ -2653,6 +2653,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Kontrolli"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "See parool on ilmunud andmeleketes, seega on see üks esimesi, mida ründajad proovivad. Vali mõni muu."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Rahakott"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Kasutatavad mündid"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Kingitustest teenitud summa"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Tingimustele vastavatest kingitustest enne väljamakse kontrolli"),
     };
 
 final messageLookup = MessageLookup();

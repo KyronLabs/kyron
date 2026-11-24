@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-siffrig kod",
   "ui_2fa_enter": "Ange koden från din autentiseringsapp",
   "ui_2fa_verify": "Verifiera",
-  "ui_password_breached": "Det här lösenordet har förekommit i en dataläcka, så det är bland de första som angripare provar. Välj ett annat."
+  "ui_password_breached": "Det här lösenordet har förekommit i en dataläcka, så det är bland de första som angripare provar. Välj ett annat.",
+  "ui_wallet_title": "Plånbok",
+  "ui_wallet_spendable": "Mynt att använda",
+  "ui_wallet_received": "Totala intäkter från gåvor",
+  "ui_wallet_qualifying": "Från kvalificerade gåvor före utbetalningskontroll"
 }
