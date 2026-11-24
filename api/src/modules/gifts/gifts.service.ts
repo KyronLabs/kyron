@@ -520,7 +520,9 @@ export class GiftsService {
     const balances = await this.ledgerBalances(tx, userId);
     return {
       coins:
-        balances.legacyComplimentary + balances.promotional + balances.purchased,
+        balances.legacyComplimentary +
+        balances.promotional +
+        balances.purchased,
       legacyComplimentary: balances.legacyComplimentary,
       purchased: balances.purchased,
       earned:
