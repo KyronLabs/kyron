@@ -477,6 +477,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             _settingsRow(
+              icon: Iconsax.coin_1,
+              label: AppLocalizations.of(context)
+                  .ui('ui_wallet_title', 'Wallet'),
+              trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
+              onTap: () => Navigator.pushNamed(context, Routes.wallet),
+            ),
+            _settingsRow(
               icon: Iconsax.shield_tick_copy,
               label: AppLocalizations.of(context)
                   .ui('ui_standing_title', 'Account status'),
