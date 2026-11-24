@@ -342,6 +342,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final strings = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -352,7 +353,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          AppLocalizations.of(context).settings,
+          strings.settings,
           style: TextStyle(
             fontSize: TypographyTokens.fontSize5,
             fontWeight: FontWeight.w600,
@@ -478,8 +479,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             _settingsRow(
               icon: Iconsax.coin_1,
-              label: AppLocalizations.of(context)
-                  .ui('ui_wallet_title', 'Wallet'),
+              label: strings.ui('ui_wallet_title', 'Wallet'),
               trailing: const Icon(Iconsax.arrow_right_3_copy, size: 20),
               onTap: () => Navigator.pushNamed(context, Routes.wallet),
             ),
