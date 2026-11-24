@@ -6,7 +6,12 @@ import {
   Injectable,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { AccountStatus, CoinKind, GooglePlayPurchaseStatus, Prisma } from '@prisma/client';
+import {
+  AccountStatus,
+  CoinKind,
+  GooglePlayPurchaseStatus,
+  Prisma,
+} from '@prisma/client';
 import { createCipheriv, createHash, randomBytes } from 'node:crypto';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -44,7 +49,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
-function parseProducts(raw: string | undefined): GooglePlayCoinProduct[] | null {
+function parseProducts(
+  raw: string | undefined,
+): GooglePlayCoinProduct[] | null {
   if (!raw) return null;
   try {
     const parsed: unknown = JSON.parse(raw);
@@ -129,8 +136,7 @@ function moneyNanos(
     !/^[A-Z]{3}$/.test(money.currencyCode) ||
     (money.units !== undefined && !/^-?\d+$/.test(money.units)) ||
     (money.nanos !== undefined &&
-      (!Number.isInteger(money.nanos) ||
-        Math.abs(money.nanos) > 999_999_999))
+      (!Number.isInteger(money.nanos) || Math.abs(money.nanos) > 999_999_999))
   ) {
     return null;
   }
@@ -229,8 +235,8 @@ export class GooglePlayPurchasesService {
       );
     }
 
-    const product = parseProducts(process.env.GOOGLE_PLAY_COIN_PRODUCTS)
-      ?.find((item) => item.productId === productId);
+    const products = parseProducts(process.env.GOOGLE_PLAY_COIN_PRODUCTS);
+    const product = products?.find((item) => item.productId === productId);
     const key = encryptionKey();
     if (
       !product ||
@@ -248,7 +254,9 @@ export class GooglePlayPurchasesService {
       purchaseToken.length < 20 ||
       purchaseToken.length > 4096
     ) {
-      throw new BadRequestException('A valid Google Play purchase token is required.');
+      throw new BadRequestException(
+        'A valid Google Play purchase token is required.',
+      );
     }
 
     const digest = tokenHash(purchaseToken);
@@ -305,8 +313,7 @@ export class GooglePlayPurchasesService {
     }
     const orderItem = orderLine(order, productId);
     const quantity = line.productOfferDetails?.quantity ?? 1;
-    const orderedQuantity =
-      orderItem.oneTimePurchaseDetails?.quantity ?? 1;
+    const orderedQuantity = orderItem.oneTimePurchaseDetails?.quantity ?? 1;
     if (
       !Number.isSafeInteger(quantity) ||
       quantity <= 0 ||
@@ -330,9 +337,7 @@ export class GooglePlayPurchasesService {
     }
 
     const gross = moneyNanos(orderItem.total ?? order.total);
-    const developerRevenue = moneyNanos(
-      order.developerRevenueInBuyerCurrency,
-    );
+    const developerRevenue = moneyNanos(order.developerRevenueInBuyerCurrency);
     if (!gross || gross.amountNanos <= 0n) {
       throw new BadRequestException(
         'Google Play did not return a valid purchase amount.',
@@ -370,13 +375,10 @@ export class GooglePlayPurchasesService {
       purchaseTokenHash: digest,
       orderId,
       purchaseTime: completedAt,
-      acknowledgementState: acknowledgementState(
-        purchase.acknowledgementState,
-      ),
+      acknowledgementState: acknowledgementState(purchase.acknowledgementState),
       currencyCode: gross.currencyCode,
       grossAmountNanos: gross.amountNanos,
-      developerRevenueNanos:
-        developerRevenue?.amountNanos ?? null,
+      developerRevenueNanos: developerRevenue?.amountNanos ?? null,
       encryptionKey: key,
     });
 
@@ -438,7 +440,14 @@ export class GooglePlayPurchasesService {
     try {
       return await this.prisma.$transaction(async (tx) => {
         // Serialize purchased credits with gift spending on this wallet.
-        const lockedUsers = await tx.$queryRaw<Array<{ id: string }>>`SELECT id FROM "User" WHERE id = ${input.userId}::uuid FOR UPDATE`;
+        const lockedUsers = await tx.$queryRaw<
+          Array<{ id: string }>
+        >`
+          SELECT id
+          FROM "User"
+          WHERE id = ${input.userId}::uuid
+          FOR UPDATE
+        `;
         if (lockedUsers.length === 0) {
           throw new NotFoundException('Account not found.');
         }
