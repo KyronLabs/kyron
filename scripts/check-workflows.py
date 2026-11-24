@@ -74,7 +74,7 @@ def check(name: str, publish_job: str) -> list[str]:
     body = "\n".join(
         str(step.get("run", "")) for step in publish.get("steps", [])
     )
-    for expected in ("arm64-v8a.apk",)
+    for expected in ("arm64-v8a.apk",):
         if expected not in body:
             said.append(
                 f"{name}: {publish_job!r} does not check for {expected} before "
@@ -91,7 +91,7 @@ COUNTER = "scripts/build-number.sh"
 def check_build_number(name: str, workflow: dict, readers: list[str]) -> list[str]:
     """One build number for the whole run, and the same kind in both workflows.
 
-    Per-job, the two platforms out of one tag would carry different ones. And
+    Per-job builds out of one tag would carry different build numbers. And
     it is the commit count, worked out once by scripts/build-number.sh, not
     the run number: each workflow has its own run number, so the development
     builds were at 119 when Release ran for the first time as 1, and one
@@ -529,6 +529,15 @@ def check_debug_build_reliability() -> list[str]:
 
 def main() -> int:
     problems: list[str] = []
+    # Keep the temporary platform pause enforced across CI, development, and
+    # versioned releases so a later edit cannot silently reintroduce Windows.
+    for workflow_name in ("flutter-ci.yml", "flutter-debug.yml", "flutter-release.yml"):
+        workflow = yaml.safe_load((WORKFLOWS / workflow_name).read_text(encoding="utf-8"))
+        if "windows" in (workflow.get("jobs") or {}):
+            problems.append(
+                f"{workflow_name}: Windows builds are paused; remove the Windows job"
+            )
+
     for name, publish_job in PUBLISHING.items():
         problems += check(name, publish_job)
 
