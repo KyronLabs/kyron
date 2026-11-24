@@ -209,6 +209,47 @@ describe('GooglePlayPurchasesService', () => {
     expect(googlePlay.consume).not.toHaveBeenCalled();
   });
 
+  it('rejects a processed order whose purchase token does not match', async () => {
+    googlePlay.getOrder.mockResolvedValue({
+      ...order,
+      purchaseToken: 'a-different-purchase-token',
+    });
+
+    await expect(
+      service.verify(userId, 'coins.test.small', purchaseToken),
+    ).rejects.toThrow(/not confirmed as processed/i);
+
+    expect(tx.googlePlayPurchase.create).not.toHaveBeenCalled();
+    expect(tx.coinEntry.create).not.toHaveBeenCalled();
+    expect(ledger.postInTransaction).not.toHaveBeenCalled();
+  });
+
+  it('rejects an order response with a mismatched order identifier', async () => {
+    googlePlay.getOrder.mockResolvedValue({
+      ...order,
+      orderId: 'GPA.9999-9999-9999-99999',
+    });
+
+    await expect(
+      service.verify(userId, 'coins.test.small', purchaseToken),
+    ).rejects.toThrow(/not confirmed as processed/i);
+
+    expect(tx.googlePlayPurchase.create).not.toHaveBeenCalled();
+    expect(ledger.postInTransaction).not.toHaveBeenCalled();
+  });
+
+  it('rejects an order response that omits its purchase token', async () => {
+    const { purchaseToken: _purchaseToken, ...withoutToken } = order;
+    googlePlay.getOrder.mockResolvedValue(withoutToken);
+
+    await expect(
+      service.verify(userId, 'coins.test.small', purchaseToken),
+    ).rejects.toThrow(/not confirmed as processed/i);
+
+    expect(tx.coinEntry.create).not.toHaveBeenCalled();
+    expect(ledger.postInTransaction).not.toHaveBeenCalled();
+  });
+
   it('does not credit a pending Play purchase', async () => {
     googlePlay.getProductPurchase.mockResolvedValue({
       ...purchased,
