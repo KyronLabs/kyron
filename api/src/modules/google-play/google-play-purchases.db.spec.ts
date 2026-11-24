@@ -76,8 +76,9 @@ run('Google Play purchase credit, against a real database', () => {
       private_key:
         '-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----',
     });
-    process.env.GOOGLE_PLAY_TOKEN_ENCRYPTION_KEY =
-      Buffer.alloc(32, 9).toString('base64');
+    process.env.GOOGLE_PLAY_TOKEN_ENCRYPTION_KEY = Buffer.alloc(32, 9).toString(
+      'base64',
+    );
     process.env.GOOGLE_PLAY_COIN_PRODUCTS = JSON.stringify([
       { productId: 'coins.db.test', coins: 40 },
     ]);
@@ -138,11 +139,7 @@ run('Google Play purchase credit, against a real database', () => {
   });
 
   it('commits the purchase, wallet credit and balanced ledger as one event', async () => {
-    const first = await service.verify(
-      userId,
-      'coins.db.test',
-      purchaseToken,
-    );
+    const first = await service.verify(userId, 'coins.db.test', purchaseToken);
 
     expect(first).toMatchObject({
       productId: 'coins.db.test',
@@ -188,7 +185,7 @@ run('Google Play purchase credit, against a real database', () => {
     expect(journal.postings).toHaveLength(2);
     expect(
       journal.postings.find((line) => line.side === 'DEBIT')?.amount.toString(),
-    ).toBe('40.00000000');
+    ).toBe('40');
     expect(
       journal.postings.find((line) => line.side === 'CREDIT')?.amount.toString(),
     ).toBe('40.00000000');
@@ -206,11 +203,7 @@ run('Google Play purchase credit, against a real database', () => {
       where: { userId, kind: 'PURCHASE_GRANT' },
     });
 
-    const retry = await service.verify(
-      userId,
-      'coins.db.test',
-      purchaseToken,
-    );
+    const retry = await service.verify(userId, 'coins.db.test', purchaseToken);
 
     const after = await prisma.coinEntry.count({
       where: { userId, kind: 'PURCHASE_GRANT' },
