@@ -305,7 +305,8 @@ export class GooglePlayPurchasesService {
     const order = await this.googlePlay.getOrder(orderId);
     if (
       order.state !== 'PROCESSED' ||
-      (order.purchaseToken && order.purchaseToken !== purchaseToken)
+      order.orderId !== orderId ||
+      order.purchaseToken !== purchaseToken
     ) {
       throw new BadRequestException(
         'Google Play has not confirmed this order as processed.',
