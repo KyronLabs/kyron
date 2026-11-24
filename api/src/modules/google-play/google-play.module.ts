@@ -9,10 +9,7 @@ import { GooglePlayPurchasesService } from './google-play-purchases.service';
 @Module({
   imports: [SupabaseTokenModule, FinancialLedgerModule],
   controllers: [GooglePlayPurchasesController],
-  providers: [
-    GooglePlayDeveloperApiProvider,
-    GooglePlayPurchasesService,
-  ],
+  providers: [GooglePlayDeveloperApiProvider, GooglePlayPurchasesService],
   exports: [GooglePlayPurchasesService],
 })
 export class GooglePlayModule {}
