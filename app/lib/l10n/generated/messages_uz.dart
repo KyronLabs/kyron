@@ -2431,6 +2431,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Tekshirish"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Bu parol ma’lumotlar sizib chiqishida ko‘ringan, shuning uchun hujumchilar birinchi sinab ko‘radiganlardan biri. Boshqasini tanlang."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Hamyon"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage(
+          "Sarflash mumkin boʻlgan tangalar"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Sovgʻalardan jami daromad"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Toʻlov tekshiruvidan oldin talablarga mos sovgʻalardan olingan daromad"),
     };
 
 final messageLookup = MessageLookup();

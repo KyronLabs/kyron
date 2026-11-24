@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Msimbo wa tarakimu 6",
   "ui_2fa_enter": "Weka msimbo kutoka programu yako ya kithibitishaji",
   "ui_2fa_verify": "Thibitisha",
-  "ui_password_breached": "Nenosiri hili limeonekana katika uvujaji wa data, kwa hivyo ni kati ya ya kwanza ambayo washambuliaji hujaribu. Chagua lingine."
+  "ui_password_breached": "Nenosiri hili limeonekana katika uvujaji wa data, kwa hivyo ni kati ya ya kwanza ambayo washambuliaji hujaribu. Chagua lingine.",
+  "ui_wallet_title": "Pochi",
+  "ui_wallet_spendable": "Sarafu zinazoweza kutumika",
+  "ui_wallet_received": "Jumla ya mapato kutokana na zawadi",
+  "ui_wallet_qualifying": "Kutokana na zawadi zinazostahiki, kabla ya ukaguzi wa malipo"
 }

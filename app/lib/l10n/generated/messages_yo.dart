@@ -2393,6 +2393,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ṣàyẹ̀wò"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Ọ̀rọ̀ aṣínà yìí ti fara hàn nínú jíjò dátà, nítorí náà ó wà lára àwọn àkọ́kọ́ tí àwọn olùkọlù ń gbìyànjú. Yan òmíràn."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Àpò owó"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Ẹyọ owó tí o lè ná"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Àpapọ̀ èrè láti inú àwọn ẹ̀bùn"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Láti inú àwọn ẹ̀bùn tó péye, ṣáájú àyẹ̀wò ìsanwó"),
     };
 
 final messageLookup = MessageLookup();

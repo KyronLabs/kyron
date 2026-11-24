@@ -2229,6 +2229,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("確認"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "このパスワードはデータ漏えいで見つかっているため、攻撃者が最初に試すものの一つです。別のパスワードを選んでください。"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("ウォレット"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage("使用できるコイン"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage("ギフトによる総収益"),
+      "ui_wallet_qualifying":
+          MessageLookupByLibrary.simpleMessage("対象ギフトによる収益（支払い審査前）"),
     };
 
 final messageLookup = MessageLookup();

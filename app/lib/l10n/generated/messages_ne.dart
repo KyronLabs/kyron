@@ -2413,6 +2413,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("प्रमाणित गर्नुहोस्"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "यो पासवर्ड डेटा चुहावटमा देखिएको छ, त्यसैले आक्रमणकारीहरूले सबैभन्दा पहिले प्रयास गर्नेमध्ये यो एक हो। अर्को छान्नुहोस्।"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("वालेट"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("खर्च गर्न मिल्ने सिक्का"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("उपहारबाट कुल कमाइ"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "भुक्तानी जाँचअघि योग्य उपहारबाट भएको कमाइ"),
     };
 
 final messageLookup = MessageLookup();

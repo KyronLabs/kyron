@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Koodh 6-god ah",
   "ui_2fa_enter": "Geli koodhka app-kaaga xaqiijinta",
   "ui_2fa_verify": "Xaqiiji",
-  "ui_password_breached": "Eraygan sirta ah wuxuu ka soo muuqday xog la daadiyay, markaa waa mid ka mid ah kuwa ugu horreeya ee weerarlayaashu isku dayaan. Dooro mid kale."
+  "ui_password_breached": "Eraygan sirta ah wuxuu ka soo muuqday xog la daadiyay, markaa waa mid ka mid ah kuwa ugu horreeya ee weerarlayaashu isku dayaan. Dooro mid kale.",
+  "ui_wallet_title": "Boorsada",
+  "ui_wallet_spendable": "Qadaadiicda la isticmaali karo",
+  "ui_wallet_received": "Wadarta dakhliga hadiyadaha",
+  "ui_wallet_qualifying": "Hadiyadaha u qalma, ka hor hubinta lacag bixinta"
 }

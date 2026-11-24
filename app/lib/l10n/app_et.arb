@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-kohaline kood",
   "ui_2fa_enter": "Sisesta kood oma autentimisrakendusest",
   "ui_2fa_verify": "Kontrolli",
-  "ui_password_breached": "See parool on ilmunud andmeleketes, seega on see üks esimesi, mida ründajad proovivad. Vali mõni muu."
+  "ui_password_breached": "See parool on ilmunud andmeleketes, seega on see üks esimesi, mida ründajad proovivad. Vali mõni muu.",
+  "ui_wallet_title": "Rahakott",
+  "ui_wallet_spendable": "Kasutatavad mündid",
+  "ui_wallet_received": "Kingitustest teenitud summa",
+  "ui_wallet_qualifying": "Tingimustele vastavatest kingitustest enne väljamakse kontrolli"
 }

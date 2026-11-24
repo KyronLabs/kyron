@@ -25,12 +25,7 @@ class WalletScreen extends ConsumerWidget {
         top: false,
         child: user == null
             ? Center(
-                child: Text(
-                  strings.ui(
-                    'ui_wallet_sign_in',
-                    'Sign in to view your wallet.',
-                  ),
-                ),
+                child: Text(strings.signInToKyron),
               )
             : _WalletBalances(key: ValueKey(user.id)),
       ),
@@ -49,7 +44,10 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
   late Future<GiftWallet> _wallet = ref.read(giftsRepositoryProvider).wallet();
 
   void _refresh() {
-    setState(() => _wallet = ref.read(giftsRepositoryProvider).wallet());
+    final next = ref.read(giftsRepositoryProvider).wallet();
+    setState(() {
+      _wallet = next;
+    });
   }
 
   @override
@@ -57,17 +55,28 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
     final strings = AppLocalizations.of(context);
     final locale = Localizations.localeOf(context).toString();
     final numbers = NumberFormat.decimalPattern(locale);
+    String coins(int count) {
+      if (count == 1) return strings.ui('ui_gift_one_coin', '1 coin');
+      final units = strings.ui('ui_gift_coins', r'$count coins');
+      return units.replaceAll(r'$count', numbers.format(count));
+    }
+
     return FutureBuilder<GiftWallet>(
       future: _wallet,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
           return Center(
             child: CircularProgressIndicator(
-              semanticsLabel: strings.ui('ui_wallet_loading', 'Loading wallet'),
+              semanticsLabel: strings.ui(
+                'audit_skeleton_loading_18e82bcc',
+                'Loading…',
+              ),
             ),
           );
         }
         final wallet = snapshot.data;
+        final retry = strings.retry;
+        final action = wallet == null ? retry : strings.literalcheckAgain;
         return ListView(
           children: [
             Padding(
@@ -77,19 +86,14 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                   Expanded(
                     child: Text(
                       wallet == null
-                          ? strings.ui(
-                              'ui_wallet_error',
-                              'Could not load your wallet.',
-                            )
-                          : strings.ui('ui_wallet_balances', 'Coin balances'),
+                          ? strings.literalcouldNotLoadThisList
+                          : strings.ui('analytics_coins', 'Coins'),
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                   ActionIconButton(
                     icon: Iconsax.refresh_copy,
-                    tooltip: wallet == null
-                        ? strings.ui('ui_wallet_retry', 'Retry')
-                        : strings.ui('ui_wallet_refresh', 'Refresh balances'),
+                    tooltip: action,
                     size: kMinInteractiveDimension,
                     outlined: false,
                     onPressed: _refresh,
@@ -101,28 +105,20 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
               const Hairline(),
               _Balance(
                 strings.ui('ui_wallet_spendable', 'Spendable coins'),
-                numbers.format(wallet.coins),
+                coins(wallet.coins),
               ),
               const Hairline(),
               _Balance(
-                strings.ui(
-                  'ui_wallet_received',
-                  'Total gift earnings in coins',
-                ),
-                numbers.format(wallet.earned),
+                strings.ui('ui_wallet_received', 'Total gift earnings'),
+                coins(wallet.earned),
               ),
               const Hairline(),
               _Balance(
                 strings.ui(
                   'ui_wallet_qualifying',
-                  'Qualifying gift earnings in coins',
+                  'From qualifying gifts, before payout checks',
                 ),
-                numbers.format(wallet.withdrawableEarned),
-                detail: strings.ui(
-                  'ui_wallet_qualifying_detail',
-                  'Included in total gift earnings. Payout eligibility and '
-                      'holds are checked separately.',
-                ),
+                coins(wallet.withdrawableEarned),
               ),
             ],
           ],
@@ -133,11 +129,10 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
 }
 
 class _Balance extends StatelessWidget {
-  const _Balance(this.label, this.value, {this.detail});
+  const _Balance(this.label, this.value);
 
   final String label;
   final String value;
-  final String? detail;
 
   @override
   Widget build(BuildContext context) {
@@ -151,10 +146,6 @@ class _Balance extends StatelessWidget {
             Text(label, style: type.bodyMedium),
             const SizedBox(height: SpacingTokens.space4),
             Text(value, style: type.headlineMedium),
-            if (detail != null) ...[
-              const SizedBox(height: SpacingTokens.space8),
-              Text(detail!, style: type.bodySmall),
-            ],
           ],
         ),
       ),

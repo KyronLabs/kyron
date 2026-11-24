@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Código de 6 dígitos",
   "ui_2fa_enter": "Digite o código do seu app autenticador",
   "ui_2fa_verify": "Verificar",
-  "ui_password_breached": "Esta senha apareceu em um vazamento de dados, então é uma das primeiras que os invasores tentam. Escolha outra."
+  "ui_password_breached": "Esta senha apareceu em um vazamento de dados, então é uma das primeiras que os invasores tentam. Escolha outra.",
+  "ui_wallet_title": "Carteira",
+  "ui_wallet_spendable": "Moedas disponíveis para gastar",
+  "ui_wallet_received": "Ganhos totais com presentes",
+  "ui_wallet_qualifying": "De presentes elegíveis, antes da verificação do pagamento"
 }

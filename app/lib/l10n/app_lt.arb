@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 skaitmenų kodas",
   "ui_2fa_enter": "Įveskite kodą iš autentifikavimo programėlės",
   "ui_2fa_verify": "Patikrinti",
-  "ui_password_breached": "Šis slaptažodis pasirodė duomenų nutekėjime, todėl jis vienas pirmųjų, kuriuos bando užpuolikai. Pasirinkite kitą."
+  "ui_password_breached": "Šis slaptažodis pasirodė duomenų nutekėjime, todėl jis vienas pirmųjų, kuriuos bando užpuolikai. Pasirinkite kitą.",
+  "ui_wallet_title": "Piniginė",
+  "ui_wallet_spendable": "Išleidžiamos monetos",
+  "ui_wallet_received": "Visos pajamos iš dovanų",
+  "ui_wallet_qualifying": "Iš reikalavimus atitinkančių dovanų prieš išmokos patikrą"
 }

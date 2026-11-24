@@ -2432,6 +2432,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("စိစစ်ရန်"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "ဤစကားဝှက်သည် ဒေတာပေါက်ကြားမှုတွင် ပေါ်လာဖူးသဖြင့် တိုက်ခိုက်သူများ ပထမဆုံး စမ်းကြည့်သည့်အရာများထဲမှ တစ်ခုဖြစ်သည်။ အခြားတစ်ခု ရွေးပါ။"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("ပိုက်ဆံအိတ်"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("သုံးစွဲနိုင်သော ဒင်္ဂါးများ"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "လက်ဆောင်များမှ စုစုပေါင်းဝင်ငွေ"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "ငွေထုတ်ပေးမှု မစစ်ဆေးမီ အကျုံးဝင်သော လက်ဆောင်များမှ ဝင်ငွေ"),
     };
 
 final messageLookup = MessageLookup();

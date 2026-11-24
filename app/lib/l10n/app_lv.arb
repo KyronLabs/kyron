@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 ciparu kods",
   "ui_2fa_enter": "Ievadiet kodu no autentifikācijas lietotnes",
   "ui_2fa_verify": "Pārbaudīt",
-  "ui_password_breached": "Šī parole ir parādījusies datu noplūdē, tāpēc tā ir viena no pirmajām, ko izmēģina uzbrucēji. Izvēlieties citu."
+  "ui_password_breached": "Šī parole ir parādījusies datu noplūdē, tāpēc tā ir viena no pirmajām, ko izmēģina uzbrucēji. Izvēlieties citu.",
+  "ui_wallet_title": "Maks",
+  "ui_wallet_spendable": "Tērēšanai pieejamās monētas",
+  "ui_wallet_received": "Kopējie ienākumi no dāvanām",
+  "ui_wallet_qualifying": "No atbilstošām dāvanām pirms izmaksas pārbaudes"
 }

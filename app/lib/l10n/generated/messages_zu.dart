@@ -2430,6 +2430,14 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Qinisekisa"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Le phasiwedi ivele ekuvuzeni kwedatha, ngakho ingenye yezokuqala ezizanywa abahlaseli. Khetha enye."),
+      "ui_wallet_title":
+          MessageLookupByLibrary.simpleMessage("Isikhwama semali"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage(
+          "Izinhlamvu zemali ezingasetshenziswa"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Isamba semali etholwe ngezipho"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Eziphweni ezifanelekayo, ngaphambi kokuhlolwa kwenkokhelo"),
     };
 
 final messageLookup = MessageLookup();

@@ -1392,5 +1392,9 @@
   "ui_2fa_enter": "Enter the code from your authenticator app",
   "ui_2fa_verify": "Verify",
   "ui_password_breached": "This password has appeared in a data breach, so it is one of the first that attackers try. Choose a different one.",
-  "ui_gift_refills_on": "Refills $date."
+  "ui_gift_refills_on": "Refills $date.",
+  "ui_wallet_title": "Wallet",
+  "ui_wallet_spendable": "Spendable coins",
+  "ui_wallet_received": "Total gift earnings",
+  "ui_wallet_qualifying": "From qualifying gifts, before payout checks"
 }

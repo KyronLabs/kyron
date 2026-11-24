@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Kod 6 digit",
   "ui_2fa_enter": "Masukkan kod daripada apl pengesah anda",
   "ui_2fa_verify": "Sahkan",
-  "ui_password_breached": "Kata laluan ini pernah muncul dalam kebocoran data, jadi ia antara yang pertama dicuba penyerang. Pilih yang lain."
+  "ui_password_breached": "Kata laluan ini pernah muncul dalam kebocoran data, jadi ia antara yang pertama dicuba penyerang. Pilih yang lain.",
+  "ui_wallet_title": "Dompet",
+  "ui_wallet_spendable": "Syiling yang boleh dibelanjakan",
+  "ui_wallet_received": "Jumlah pendapatan daripada hadiah",
+  "ui_wallet_qualifying": "Daripada hadiah yang layak, sebelum semakan pembayaran"
 }

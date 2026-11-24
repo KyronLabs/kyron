@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-digit na code",
   "ui_2fa_enter": "Ilagay ang code mula sa iyong authenticator app",
   "ui_2fa_verify": "I-verify",
-  "ui_password_breached": "Lumabas na ang password na ito sa isang data breach, kaya isa ito sa mga unang sinusubukan ng mga umaatake. Pumili ng iba."
+  "ui_password_breached": "Lumabas na ang password na ito sa isang data breach, kaya isa ito sa mga unang sinusubukan ng mga umaatake. Pumili ng iba.",
+  "ui_wallet_title": "Wallet",
+  "ui_wallet_spendable": "Mga baryang maaaring gastusin",
+  "ui_wallet_received": "Kabuuang kita mula sa mga regalo",
+  "ui_wallet_qualifying": "Mula sa mga kwalipikadong regalo, bago suriin ang pagbabayad"
 }

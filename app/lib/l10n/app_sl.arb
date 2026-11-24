@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-mestna koda",
   "ui_2fa_enter": "Vnesite kodo iz aplikacije za preverjanje pristnosti",
   "ui_2fa_verify": "Preveri",
-  "ui_password_breached": "To geslo se je pojavilo v uhajanju podatkov, zato je med prvimi, ki jih napadalci preizkusijo. Izberite drugo."
+  "ui_password_breached": "To geslo se je pojavilo v uhajanju podatkov, zato je med prvimi, ki jih napadalci preizkusijo. Izberite drugo.",
+  "ui_wallet_title": "Denarnica",
+  "ui_wallet_spendable": "Kovanci za porabo",
+  "ui_wallet_received": "Skupni zaslužek od daril",
+  "ui_wallet_qualifying": "Od upravičenih daril pred preverjanjem izplačila"
 }

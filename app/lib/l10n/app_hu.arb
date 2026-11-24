@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 jegyű kód",
   "ui_2fa_enter": "Írd be a kódot a hitelesítő alkalmazásból",
   "ui_2fa_verify": "Ellenőrzés",
-  "ui_password_breached": "Ez a jelszó megjelent egy adatszivárgásban, ezért a támadók elsőként próbálják. Válassz másikat."
+  "ui_password_breached": "Ez a jelszó megjelent egy adatszivárgásban, ezért a támadók elsőként próbálják. Válassz másikat.",
+  "ui_wallet_title": "Pénztárca",
+  "ui_wallet_spendable": "Elkölthető érmék",
+  "ui_wallet_received": "Ajándékokból származó összes bevétel",
+  "ui_wallet_qualifying": "A feltételeknek megfelelő ajándékokból, a kifizetés ellenőrzése előtt"
 }

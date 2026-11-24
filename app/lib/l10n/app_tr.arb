@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 haneli kod",
   "ui_2fa_enter": "Kimlik doğrulama uygulamanızdaki kodu girin",
   "ui_2fa_verify": "Doğrula",
-  "ui_password_breached": "Bu parola bir veri sızıntısında görüldü, bu yüzden saldırganların ilk denediklerinden biri. Başka bir parola seçin."
+  "ui_password_breached": "Bu parola bir veri sızıntısında görüldü, bu yüzden saldırganların ilk denediklerinden biri. Başka bir parola seçin.",
+  "ui_wallet_title": "Cüzdan",
+  "ui_wallet_spendable": "Harcanabilir jetonlar",
+  "ui_wallet_received": "Hediyelerden toplam kazanç",
+  "ui_wallet_qualifying": "Ödeme kontrollerinden önce uygun hediyelerden elde edilen kazanç"
 }

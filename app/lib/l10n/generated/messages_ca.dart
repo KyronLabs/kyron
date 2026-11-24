@@ -2742,6 +2742,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Verifica"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Aquesta contrasenya ha aparegut en una filtració de dades, així que és de les primeres que proven els atacants. Tria’n una altra."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Cartera"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage(
+          "Monedes disponibles per gastar"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("Guanys totals per regals"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "De regals que compleixen els requisits, abans de verificar el pagament"),
     };
 
 final messageLookup = MessageLookup();

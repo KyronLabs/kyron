@@ -2397,6 +2397,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Ստուգել"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Այս գաղտնաբառը հայտնվել է տվյալների արտահոսքում, ուստի այն առաջիններից է, որ փորձում են հարձակվողները։ Ընտրեք այլ գաղտնաբառ։"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Դրամապանակ"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage(
+          "Ծախսելու համար հասանելի մետաղադրամներ"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Նվերներից ստացված ընդհանուր եկամուտ"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Պայմաններին համապատասխանող նվերներից՝ մինչև վճարման ստուգումը"),
     };
 
 final messageLookup = MessageLookup();

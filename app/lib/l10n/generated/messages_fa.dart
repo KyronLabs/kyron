@@ -2314,6 +2314,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("بررسی"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "این گذرواژه در یک نشت داده دیده شده است، پس از نخستین گذرواژه‌هایی است که مهاجمان امتحان می‌کنند. گذرواژهٔ دیگری انتخاب کنید."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("کیف پول"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("سکه‌های قابل خرج"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("کل درآمد از هدیه‌ها"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "از هدیه‌های واجد شرایط، پیش از بررسی پرداخت"),
     };
 
 final messageLookup = MessageLookup();

@@ -43,7 +43,7 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       gifts.reads.single.completeError(const FormatException());
       await tester.pumpAndSettle();
-      expect(find.text('Could not load your wallet.'), findsOneWidget);
+      expect(find.text('Could not load this list'), findsOneWidget);
       final retry = find.byTooltip('Retry');
       expect(tester.getSize(retry).shortestSide, greaterThanOrEqualTo(44));
       await tester.tap(retry);
@@ -52,15 +52,15 @@ void main() {
         const GiftWallet(coins: 1234, earned: 16, withdrawableEarned: 9),
       );
       await tester.pumpAndSettle();
-      expect(find.text('1,234'), findsOneWidget);
-      expect(find.text('16'), findsOneWidget);
-      expect(find.text('9'), findsOneWidget);
-      await tester.tap(find.byTooltip('Refresh balances'));
+      expect(find.text('1,234 coins'), findsOneWidget);
+      expect(find.text('16 coins'), findsOneWidget);
+      expect(find.text('9 coins'), findsOneWidget);
+      await tester.tap(find.byTooltip('Check again'));
       await tester.pump();
-      expect(find.text('1,234'), findsNothing);
+      expect(find.text('1,234 coins'), findsNothing);
       gifts.reads.last.complete(const GiftWallet(coins: 0, earned: 0));
       await tester.pumpAndSettle();
-      expect(find.text('0'), findsNWidgets(3));
+      expect(find.text('0 coins'), findsNWidgets(3));
       expect(gifts.reads, hasLength(3));
     });
   }
@@ -76,7 +76,7 @@ void main() {
         child: const MaterialApp(home: WalletScreen()),
       ),
     );
-    expect(find.text('Sign in to view your wallet.'), findsOneWidget);
+    expect(find.text('Sign in to Kyron'), findsOneWidget);
     expect(gifts.reads, isEmpty);
   });
 }

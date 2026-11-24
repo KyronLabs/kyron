@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Cod din 6 cifre",
   "ui_2fa_enter": "Introdu codul din aplicația de autentificare",
   "ui_2fa_verify": "Verifică",
-  "ui_password_breached": "Această parolă a apărut într-o scurgere de date, deci e printre primele pe care le încearcă atacatorii. Alege alta."
+  "ui_password_breached": "Această parolă a apărut într-o scurgere de date, deci e printre primele pe care le încearcă atacatorii. Alege alta.",
+  "ui_wallet_title": "Portofel",
+  "ui_wallet_spendable": "Monede disponibile pentru cheltuit",
+  "ui_wallet_received": "Câștiguri totale din cadouri",
+  "ui_wallet_qualifying": "Din cadouri eligibile, înainte de verificarea plății"
 }

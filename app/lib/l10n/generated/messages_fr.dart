@@ -2451,6 +2451,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Vérifier"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Ce mot de passe est apparu dans une fuite de données, c’est donc l’un des premiers que les attaquants essaient. Choisissez-en un autre."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Portefeuille"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Pièces disponibles à dépenser"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Gains totaux issus des cadeaux"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Dont cadeaux admissibles, avant vérification du versement"),
     };
 
 final messageLookup = MessageLookup();

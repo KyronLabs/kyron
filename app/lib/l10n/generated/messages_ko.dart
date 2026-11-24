@@ -2221,6 +2221,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("확인"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "이 비밀번호는 데이터 유출에서 발견되어 공격자가 가장 먼저 시도하는 비밀번호 중 하나입니다. 다른 비밀번호를 선택하세요."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("지갑"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage("사용 가능한 코인"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage("선물로 얻은 총수익"),
+      "ui_wallet_qualifying":
+          MessageLookupByLibrary.simpleMessage("요건을 충족한 선물 수익(지급 심사 전)"),
     };
 
 final messageLookup = MessageLookup();

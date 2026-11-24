@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6místný kód",
   "ui_2fa_enter": "Zadejte kód z ověřovací aplikace",
   "ui_2fa_verify": "Ověřit",
-  "ui_password_breached": "Toto heslo se objevilo v úniku dat, takže patří k prvním, které útočníci zkoušejí. Zvolte jiné."
+  "ui_password_breached": "Toto heslo se objevilo v úniku dat, takže patří k prvním, které útočníci zkoušejí. Zvolte jiné.",
+  "ui_wallet_title": "Peněženka",
+  "ui_wallet_spendable": "Mince k útratě",
+  "ui_wallet_received": "Celkové výdělky z dárků",
+  "ui_wallet_qualifying": "Ze způsobilých dárků před kontrolou výplaty"
 }

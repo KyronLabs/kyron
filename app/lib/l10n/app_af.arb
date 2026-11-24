@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-syferkode",
   "ui_2fa_enter": "Voer die kode van jou verifieerder-app in",
   "ui_2fa_verify": "Verifieer",
-  "ui_password_breached": "Hierdie wagwoord het in ’n datalek verskyn, so dit is een van die eerstes wat aanvallers probeer. Kies ’n ander een."
+  "ui_password_breached": "Hierdie wagwoord het in ’n datalek verskyn, so dit is een van die eerstes wat aanvallers probeer. Kies ’n ander een.",
+  "ui_wallet_title": "Beursie",
+  "ui_wallet_spendable": "Beskikbare munte om te bestee",
+  "ui_wallet_received": "Totale geskenkverdienste",
+  "ui_wallet_qualifying": "Uit kwalifiserende geskenke, voor uitbetalingskontroles"
 }

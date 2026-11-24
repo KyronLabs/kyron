@@ -2374,6 +2374,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("አረጋግጥ"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "ይህ የይለፍ ቃል በመረጃ ጥሰት ውስጥ ታይቷል፤ ስለዚህ አጥቂዎች መጀመሪያ ከሚሞክሯቸው አንዱ ነው። ሌላ ይምረጡ።"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("የሳንቲም ቦርሳ"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("ለማውጣት የሚቻሉ ሳንቲሞች"),
+      "ui_wallet_received":
+          MessageLookupByLibrary.simpleMessage("ከስጦታ የተገኘ ጠቅላላ ገቢ"),
+      "ui_wallet_qualifying":
+          MessageLookupByLibrary.simpleMessage("ከብቁ ስጦታዎች፣ ከክፍያ ማረጋገጫ በፊት"),
     };
 
 final messageLookup = MessageLookup();

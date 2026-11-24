@@ -2033,6 +2033,11 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("验证"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "此密码曾出现在数据泄露中，因此是攻击者最先尝试的密码之一。请换一个。"),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("钱包"),
+      "ui_wallet_spendable": MessageLookupByLibrary.simpleMessage("可用金币"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage("礼物总收益"),
+      "ui_wallet_qualifying":
+          MessageLookupByLibrary.simpleMessage("来自符合条件的礼物，尚待付款审核"),
     };
 
 final messageLookup = MessageLookup();

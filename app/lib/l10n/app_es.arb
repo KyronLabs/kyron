@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Código de 6 dígitos",
   "ui_2fa_enter": "Introduce el código de tu app de autenticación",
   "ui_2fa_verify": "Verificar",
-  "ui_password_breached": "Esta contraseña ha aparecido en una filtración de datos, así que es de las primeras que prueban los atacantes. Elige otra."
+  "ui_password_breached": "Esta contraseña ha aparecido en una filtración de datos, así que es de las primeras que prueban los atacantes. Elige otra.",
+  "ui_wallet_title": "Cartera",
+  "ui_wallet_spendable": "Monedas disponibles para gastar",
+  "ui_wallet_received": "Ganancias totales por regalos",
+  "ui_wallet_qualifying": "De regalos que cumplen los requisitos, antes de verificar el pago"
 }

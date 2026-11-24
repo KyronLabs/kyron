@@ -2390,6 +2390,13 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_2fa_verify": MessageLookupByLibrary.simpleMessage("Vahvista"),
       "ui_password_breached": MessageLookupByLibrary.simpleMessage(
           "Tämä salasana on näkynyt tietovuodossa, joten se on ensimmäisiä, joita hyökkääjät kokeilevat. Valitse toinen."),
+      "ui_wallet_title": MessageLookupByLibrary.simpleMessage("Lompakko"),
+      "ui_wallet_spendable":
+          MessageLookupByLibrary.simpleMessage("Käytettävissä olevat kolikot"),
+      "ui_wallet_received": MessageLookupByLibrary.simpleMessage(
+          "Lahjoista saadut tulot yhteensä"),
+      "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
+          "Ehdot täyttävistä lahjoista ennen maksun tarkistuksia"),
     };
 
 final messageLookup = MessageLookup();

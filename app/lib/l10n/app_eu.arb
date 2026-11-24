@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6 digituko kodea",
   "ui_2fa_enter": "Idatzi zure autentifikazio-aplikazioko kodea",
   "ui_2fa_verify": "Egiaztatu",
-  "ui_password_breached": "Pasahitz hau datu-filtrazio batean agertu da, beraz erasotzaileek lehenik probatzen dituztenetako bat da. Aukeratu beste bat."
+  "ui_password_breached": "Pasahitz hau datu-filtrazio batean agertu da, beraz erasotzaileek lehenik probatzen dituztenetako bat da. Aukeratu beste bat.",
+  "ui_wallet_title": "Diru-zorroa",
+  "ui_wallet_spendable": "Gastatzeko txanponak",
+  "ui_wallet_received": "Oparien bidezko irabaziak guztira",
+  "ui_wallet_qualifying": "Baldintzak betetzen dituzten oparietatik, ordainketa egiaztatu aurretik"
 }

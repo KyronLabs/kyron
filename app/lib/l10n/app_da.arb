@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "6-cifret kode",
   "ui_2fa_enter": "Indtast koden fra din godkendelsesapp",
   "ui_2fa_verify": "Bekræft",
-  "ui_password_breached": "Denne adgangskode er dukket op i et datalæk, så den er blandt de første, angribere prøver. Vælg en anden."
+  "ui_password_breached": "Denne adgangskode er dukket op i et datalæk, så den er blandt de første, angribere prøver. Vælg en anden.",
+  "ui_wallet_title": "Tegnebog",
+  "ui_wallet_spendable": "Mønter til rådighed",
+  "ui_wallet_received": "Samlet indtjening fra gaver",
+  "ui_wallet_qualifying": "Fra kvalificerede gaver før kontrol af udbetaling"
 }

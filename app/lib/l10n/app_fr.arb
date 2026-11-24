@@ -1390,5 +1390,9 @@
   "ui_2fa_code": "Code à 6 chiffres",
   "ui_2fa_enter": "Saisissez le code de votre application d’authentification",
   "ui_2fa_verify": "Vérifier",
-  "ui_password_breached": "Ce mot de passe est apparu dans une fuite de données, c’est donc l’un des premiers que les attaquants essaient. Choisissez-en un autre."
+  "ui_password_breached": "Ce mot de passe est apparu dans une fuite de données, c’est donc l’un des premiers que les attaquants essaient. Choisissez-en un autre.",
+  "ui_wallet_title": "Portefeuille",
+  "ui_wallet_spendable": "Pièces disponibles à dépenser",
+  "ui_wallet_received": "Gains totaux issus des cadeaux",
+  "ui_wallet_qualifying": "Dont cadeaux admissibles, avant vérification du versement"
 }
