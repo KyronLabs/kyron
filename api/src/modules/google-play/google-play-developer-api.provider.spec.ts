@@ -7,7 +7,8 @@ describe('GooglePlayDeveloperApiProvider configuration', () => {
   beforeEach(() => {
     process.env.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON = JSON.stringify({
       client_email: 'kyron-test@project.iam.gserviceaccount.com',
-      private_key: '-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----',
+      private_key:
+        '-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----',
     });
     process.env.GOOGLE_PLAY_PACKAGE_NAME = 'so.kyron.app';
     provider = new GooglePlayDeveloperApiProvider();

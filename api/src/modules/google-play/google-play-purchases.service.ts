@@ -441,9 +441,7 @@ export class GooglePlayPurchasesService {
     try {
       return await this.prisma.$transaction(async (tx) => {
         // Serialize purchased credits with gift spending on this wallet.
-        const lockedUsers = await tx.$queryRaw<
-          Array<{ id: string }>
-        >`
+        const lockedUsers = await tx.$queryRaw<Array<{ id: string }>>`
           SELECT id
           FROM "User"
           WHERE id = ${input.userId}::uuid

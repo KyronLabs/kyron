@@ -186,10 +186,15 @@ jobs:
             -Stem "kyron-ci-${{ github.run_number }}" `
             -OutputDirectory ci-artifacts
 
-      # Keep the packaged ZIP on the runner only. Versioned releases upload
-      # their own Windows build from flutter-release.yml with one-day retention.
-      # Uploading a ~35 MB ZIP for every pull-request commit exhausted the
-      # organisation's included Actions artifact storage.
+      # So a Windows build of any branch can be downloaded and tried without
+      # cutting a release or owning a Windows machine to build on.
+      - name: Upload the Windows app
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: kyron-windows-${{ github.run_number }}
+          path: ci-artifacts/*.zip
+          if-no-files-found: error
+          retention-days: 14
 
   # A separate job, because it has nothing to do with Flutter and should not
   # wait behind an Android toolchain to tell you a heading is malformed.

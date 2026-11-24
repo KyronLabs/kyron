@@ -62,6 +62,26 @@ const order: GooglePlayOrder = {
   },
 };
 
+interface CoinEntryCreateInput {
+  data: {
+    userId: string;
+    kind: string;
+    amount: number;
+    key: string;
+  };
+}
+
+interface LedgerPostInput {
+  currencyCode: string;
+  idempotencyKey: string;
+  postings: Array<{
+    side: string;
+    accountType: string;
+    ownerId?: string;
+    amount: string;
+  }>;
+}
+
 interface PurchaseTransactionMock {
   $queryRaw: jest.Mock;
   user: { findUnique: jest.Mock };
@@ -70,7 +90,9 @@ interface PurchaseTransactionMock {
     create: jest.Mock;
     updateMany: jest.Mock;
   };
-  coinEntry: { create: jest.Mock };
+  coinEntry: {
+    create: jest.Mock<Promise<unknown>, [CoinEntryCreateInput]>;
+  };
   financialSourceRecord: { create: jest.Mock };
   financialAuditEvent: { create: jest.Mock };
 }
@@ -85,7 +107,12 @@ describe('GooglePlayPurchasesService', () => {
   let service: GooglePlayPurchasesService;
   let prisma: PurchasePrismaMock;
   let tx: PurchaseTransactionMock;
-  let ledger: { postInTransaction: jest.Mock };
+  let ledger: {
+    postInTransaction: jest.Mock<
+      Promise<{ id: string }>,
+      [unknown, LedgerPostInput]
+    >;
+  };
   let googlePlay: {
     isConfigured: jest.Mock;
     getProductPurchase: jest.Mock;
@@ -100,7 +127,8 @@ describe('GooglePlayPurchasesService', () => {
     process.env.GOOGLE_PLAY_PACKAGE_NAME = 'so.kyron.app';
     process.env.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON = JSON.stringify({
       client_email: 'kyron-test@project.iam.gserviceaccount.com',
-      private_key: '-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----',
+      private_key:
+        '-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----',
     });
     process.env.GOOGLE_PLAY_TOKEN_ENCRYPTION_KEY = Buffer.alloc(32, 7).toString(
       'base64',
@@ -109,16 +137,16 @@ describe('GooglePlayPurchasesService', () => {
       { productId: 'coins.test.small', coins: 100 },
     ]);
 
-    const createPurchase = jest.fn().mockImplementation(
-      ({ data }: { data: Record<string, unknown> }) => {
+    const createPurchase = jest
+      .fn()
+      .mockImplementation(({ data }: { data: Record<string, unknown> }) => {
         createdPurchaseData = data;
         return Promise.resolve({
           id: 'purchase-row-1',
           ...data,
           status: 'VERIFIED',
         });
-      },
-    );
+      });
     tx = {
       $queryRaw: jest.fn().mockResolvedValue([{ id: userId }]),
       user: {
@@ -129,7 +157,11 @@ describe('GooglePlayPurchasesService', () => {
         create: createPurchase,
         updateMany: jest.fn().mockResolvedValue({ count: 1 }),
       },
-      coinEntry: { create: jest.fn().mockResolvedValue({}) },
+      coinEntry: {
+        create: jest
+          .fn<Promise<unknown>, [CoinEntryCreateInput]>()
+          .mockResolvedValue({}),
+      },
       financialSourceRecord: { create: jest.fn().mockResolvedValue({}) },
       financialAuditEvent: { create: jest.fn().mockResolvedValue({}) },
     };
@@ -141,7 +173,7 @@ describe('GooglePlayPurchasesService', () => {
     };
     ledger = {
       postInTransaction: jest
-        .fn()
+        .fn<Promise<{ id: string }>, [unknown, LedgerPostInput]>()
         .mockResolvedValue({ id: 'ledger-transaction-1' }),
     };
     googlePlay = {
@@ -175,7 +207,8 @@ describe('GooglePlayPurchasesService', () => {
   });
 
   it('does not invent a product catalogue when the server mapping is invalid', () => {
-    process.env.GOOGLE_PLAY_COIN_PRODUCTS = '[{"productId":"coins.test.small","coins":0}]';
+    process.env.GOOGLE_PLAY_COIN_PRODUCTS =
+      '[{"productId":"coins.test.small","coins":0}]';
 
     expect(service.catalogue(userId)).toMatchObject({
       enabled: false,
@@ -303,38 +336,34 @@ describe('GooglePlayPurchasesService', () => {
       purchaseToken,
     );
 
-    expect(tx.coinEntry.create).toHaveBeenCalledWith({
-      data: {
-        userId,
-        kind: 'PURCHASE_GRANT',
-        amount: 200,
-        key: expect.stringMatching(
-          /^google-play-purchase:[a-f0-9]{64}$/,
-        ),
-      },
-    });
-    expect(ledger.postInTransaction).toHaveBeenCalledWith(
-      tx,
-      expect.objectContaining({
-        currencyCode: 'KCOIN',
-        idempotencyKey: expect.stringMatching(
-          /^google-play-purchase:[a-f0-9]{64}$/,
-        ),
-        postings: [
-          expect.objectContaining({
-            side: 'DEBIT',
-            accountType: 'ASSET',
-            amount: '200',
-          }),
-          expect.objectContaining({
-            side: 'CREDIT',
-            accountType: 'LIABILITY',
-            ownerId: userId,
-            amount: '200',
-          }),
-        ],
-      }),
+    expect(tx.coinEntry.create).toHaveBeenCalledTimes(1);
+    const coinEntryCall = tx.coinEntry.create.mock.calls[0]?.[0];
+    expect(coinEntryCall?.data.userId).toBe(userId);
+    expect(coinEntryCall?.data.kind).toBe('PURCHASE_GRANT');
+    expect(coinEntryCall?.data.amount).toBe(200);
+    expect(coinEntryCall?.data.key).toMatch(
+      /^google-play-purchase:[a-f0-9]{64}$/,
     );
+
+    expect(ledger.postInTransaction).toHaveBeenCalledTimes(1);
+    const ledgerCall = ledger.postInTransaction.mock.calls[0]?.[1];
+    expect(ledgerCall?.currencyCode).toBe('KCOIN');
+    expect(ledgerCall?.idempotencyKey).toMatch(
+      /^google-play-purchase:[a-f0-9]{64}$/,
+    );
+    expect(ledgerCall?.postings).toMatchObject([
+      {
+        side: 'DEBIT',
+        accountType: 'ASSET',
+        amount: '200',
+      },
+      {
+        side: 'CREDIT',
+        accountType: 'LIABILITY',
+        ownerId: userId,
+        amount: '200',
+      },
+    ]);
     expect(tx.financialSourceRecord.create).toHaveBeenCalled();
     expect(tx.financialAuditEvent.create).toHaveBeenCalled();
     expect(googlePlay.consume).toHaveBeenCalledWith(
