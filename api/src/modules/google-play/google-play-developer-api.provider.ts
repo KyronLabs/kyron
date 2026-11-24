@@ -67,27 +67,24 @@ export class GooglePlayDeveloperApiProvider {
       process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim() || 'so.kyron.app';
     return (
       !!account &&
-      /^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)+$/.test(
-        packageName,
-      )
+      /^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)+$/.test(packageName)
     );
   }
 
-  async getProductPurchase(token: string): Promise<GooglePlayProductPurchaseV2> {
-    const url =
-      `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/productsv2/tokens/${encodeURIComponent(token)}`;
+  async getProductPurchase(
+    token: string,
+  ): Promise<GooglePlayProductPurchaseV2> {
+    const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/productsv2/tokens/${encodeURIComponent(token)}`;
     return this.request<GooglePlayProductPurchaseV2>(url, 'GET', true);
   }
 
   async getOrder(orderId: string): Promise<GooglePlayOrder> {
-    const url =
-      `${API_ROOT}/${encodeURIComponent(this.packageName())}/orders/${encodeURIComponent(orderId)}`;
+    const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/orders/${encodeURIComponent(orderId)}`;
     return this.request<GooglePlayOrder>(url, 'GET', true);
   }
 
   async consume(productId: string, token: string): Promise<void> {
-    const url =
-      `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/products/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(token)}:consume`;
+    const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/products/${encodeURIComponent(productId)}/tokens/${encodeURIComponent(token)}:consume`;
     await this.request<void>(url, 'POST', false);
   }
 
