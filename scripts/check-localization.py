@@ -24,6 +24,9 @@ PLACEHOLDER = re.compile(
 # helper handles the same fallback at runtime; keep this allowlist narrow.
 ENGLISH_FALLBACK_KEYS = {
     "ui_gift_rewards_notice",
+    "ui_wallet_purchased_coins",
+    "ui_wallet_reward_coins",
+    "ui_wallet_legacy_complimentary_coins",
     "ui_reminders_detail_away",
 }
 
