@@ -67,7 +67,7 @@ export class GooglePlayDeveloperApiProvider {
       process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim() || 'so.kyron.app';
     return (
       !!account &&
-      /^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)+$/.test(packageName)
+      /^[A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z][A-Za-z0-9_]*)+$/.test(packageName)
     );
   }
 
