@@ -239,7 +239,13 @@ describe('GooglePlayPurchasesService', () => {
   });
 
   it('rejects an order response that omits its purchase token', async () => {
-    const { purchaseToken: _purchaseToken, ...withoutToken } = order;
+    const withoutToken: GooglePlayOrder = {
+      orderId: order.orderId,
+      state: order.state,
+      lineItems: order.lineItems,
+      total: order.total,
+      developerRevenueInBuyerCurrency: order.developerRevenueInBuyerCurrency,
+    };
     googlePlay.getOrder.mockResolvedValue(withoutToken);
 
     await expect(
