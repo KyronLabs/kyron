@@ -23,8 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
-# it reads that one answer -- so the APKs, the bundle and the Windows zip out of
-# one push carry the same number rather than one each. It is the commit count,
+# it reads that one answer -- so the APKs and bundle out of one push carry the same number. It is the commit count,
 # shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
@@ -139,9 +138,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Release mode, like the Windows half below, and for the same reason
-      # stated differently: a development build has to be one the people it is
-      # for can actually run.
+      # Release mode: a development build has to be one the people it is for
+      # can actually run.
       #
       # `--debug` produced an APK that would not install. Two things were
       # wrong with it and release mode fixes both. It carried
@@ -437,100 +435,18 @@ jobs:
           name: android
           path: debug-artifacts/*
           if-no-files-found: error
-          retention-days: 14
-
-  windows:
-    name: Build the Windows development app
-    needs: version
-    runs-on: windows-latest
-    env:
-      KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
-    defaults:
-      run:
-        working-directory: app
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
-        with:
-          # Pinned, not "whatever stable shipped last night": Flutter 3.50
-          # raised Flutter's minimum Gradle to 9.3.1, and this project's
-          # wrapper is on 8.14 (app/android/gradle/wrapper), where every
-          # Android build dies applying the Flutter Gradle plugin at
-          # `flutter build`. Move this pin and the Android toolchain
-          # (gradle-wrapper.properties, AGP and Kotlin in settings.gradle.kts)
-          # up together, never apart.
-          flutter-version: '3.47.9'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      # Release mode: `flutter build windows --debug` links against the
-      # Visual C++ *debug* runtime -- ucrtbased.dll, vcruntime140d.dll --
-      # which ships with Visual Studio and not with Windows. A debug zip
-      # therefore fails to start on the machine of anyone who does not develop
-      # on it, which is everyone this build is for.
-      #
-      # This comment used to end "Android has no equivalent problem, so its
-      # APKs stay debug." Android had exactly the equivalent problem, and the
-      # APKs would not install. Both halves are release builds now.
-      - name: Build the Windows app
-        env:
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = 'Stop'
-          # A plain array passed to a native command, which PowerShell expands
-          # one element per argument. Not splatted with @: that is for cmdlets,
-          # and only recent PowerShell extends it to native commands. Not
-          # $args either -- that name is already PowerShell's.
-          $flags = @('--release', '--no-pub', '--build-number', $env:KYRON_BUILD_NUMBER)
-          if ($env:SUPABASE_ANON_KEY) {
-            $flags += "--dart-define=SUPABASE_ANON_KEY=$env:SUPABASE_ANON_KEY"
-          }
-          if ($env:GIPHY_API_KEY) {
-            $flags += "--dart-define=GIPHY_API_KEY=$env:GIPHY_API_KEY"
-          }
-          flutter build windows $flags
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
-      # A Windows app is a folder, not a file: the executable needs
-      # flutter_windows.dll, every plugin's DLL and the whole data directory
-      # beside it. The zip carries the folder, with a name inside it, because
-      # unzipping a bare pile of DLLs into Downloads ends badly.
-      - name: Package the Windows app
-        working-directory: .
-        shell: pwsh
-        env:
-          VERSION: ${{ needs.version.outputs.version }}
-        run: |
-          & ./scripts/package-windows.ps1 `
-            -Stem "kyron-$env:VERSION+$env:KYRON_BUILD_NUMBER-dev" `
-            -OutputDirectory debug-artifacts
-
-      - name: Hand the Windows build to the publish job
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: windows
-          path: debug-artifacts/*
-          if-no-files-found: error
-          retention-days: 14
+          retention-days: 1
 
   publish:
     name: Publish the development build
-    needs: [version, android, windows]
+    needs: [version, android]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     env:
       KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     steps:
-      - name: Collect both platforms
+      - name: Collect Android artifacts
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           path: incoming
@@ -544,9 +460,8 @@ jobs:
           find incoming -type f -exec mv {} debug-artifacts/ \;
           ls -lh debug-artifacts
 
-          # Both platforms, or it is not this build.
+          # The Android APK must be present before publishing.
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
-          test -f "debug-artifacts/${stem}-windows-x64.zip"
           test -f "debug-artifacts/${stem}-arm64-v8a.apk"
 
       # A prerelease, so that GitHub's "Latest" is the version that shipped
@@ -570,13 +485,8 @@ jobs:
 
             ---
 
-            A development build off `main`, not a release. Both halves are
+            A development Android build off `main`, not a versioned release. It is
             compiled in release mode; only the signature is a development one.
-
-            **Windows** — `*-windows-x64.zip`. Unzip anywhere and run
-            `Kyron.exe` inside the `Kyron` folder; keep the folder together.
-            Windows will warn that the publisher is unknown, because the build
-            is not code-signed.
 
             **Android** — take `arm64-v8a` unless you know otherwise; it fits
             essentially every phone sold since about 2015. `universal` works

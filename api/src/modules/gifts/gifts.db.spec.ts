@@ -27,9 +27,16 @@ run('gifts, against a real database', () => {
   let gifts: GiftsService;
   let delivery: RecordingDelivery;
 
-  const [ada, ben, cy, newcomer, rewardSender, rewardCreator] = [
-    0, 1, 2, 3, 4, 5,
-  ].map(() => randomUUID());
+  const [
+    ada,
+    ben,
+    cy,
+    newcomer,
+    rewardSender,
+    rewardCreator,
+    purchaseSender,
+    purchaseCreator,
+  ] = Array.from({ length: 8 }, () => randomUUID());
   const stamp = Date.now();
   let post = '';
 
@@ -49,6 +56,8 @@ run('gifts, against a real database', () => {
       [newcomer, 'Newcomer'],
       [rewardSender, 'RewardSender'],
       [rewardCreator, 'RewardCreator'],
+      [purchaseSender, 'PurchaseSender'],
+      [purchaseCreator, 'PurchaseCreator'],
     ]) {
       await prisma.user.create({
         data: { id, name, email: `${name}.${stamp}@example.test` },
@@ -82,7 +91,18 @@ run('gifts, against a real database', () => {
   afterAll(async () => {
     await prisma?.user.deleteMany({
       where: {
-        id: { in: [ada, ben, cy, newcomer, rewardSender, rewardCreator] },
+        id: {
+          in: [
+            ada,
+            ben,
+            cy,
+            newcomer,
+            rewardSender,
+            rewardCreator,
+            purchaseSender,
+            purchaseCreator,
+          ],
+        },
       },
     });
     await prisma?.$disconnect();
@@ -157,6 +177,59 @@ run('gifts, against a real database', () => {
     });
     expect(await gifts.wallet(rewardCreator)).toMatchObject({
       rewardFundedEarned: 5,
+      withdrawableEarned: 5,
+    });
+  });
+
+  it('turns purchased coin spending into withdrawable purchase-funded creator proceeds', async () => {
+    const purchasePost = (
+      await prisma.post.create({
+        data: { authorId: purchaseCreator, content: 'Purchased coin proceeds' },
+      })
+    ).id;
+    await prisma.coinEntry.create({
+      data: {
+        userId: purchaseSender,
+        kind: 'PURCHASE_GRANT',
+        amount: 10,
+        key: `test-purchase-grant:${stamp}`,
+      },
+    });
+
+    const sent = await gifts.send(purchaseSender, purchasePost, gift('fire'));
+    const purchaseSpend = await prisma.coinEntry.findUniqueOrThrow({
+      where: { key: `gift:${sent.gift.id}:purchase-spend` },
+    });
+    const purchaseEarn = await prisma.coinEntry.findUniqueOrThrow({
+      where: { key: `gift:${sent.gift.id}:purchase-earn` },
+    });
+    const earning = await prisma.creatorEarning.findUniqueOrThrow({
+      where: { sourceCoinEntryKey: purchaseEarn.key },
+    });
+
+    expect(sent.wallet).toMatchObject({
+      coins: 5,
+      purchased: 5,
+      legacyComplimentary: 0,
+      promotional: 0,
+    });
+    expect(purchaseSpend).toMatchObject({
+      kind: 'PURCHASE_SPEND',
+      amount: -5,
+    });
+    expect(purchaseEarn).toMatchObject({
+      kind: 'PURCHASE_EARN',
+      amount: 5,
+    });
+    expect(earning).toMatchObject({
+      creatorId: purchaseCreator,
+      source: 'PURCHASE',
+      amount: 5,
+      withdrawable: true,
+      giftId: sent.gift.id,
+    });
+    expect(await gifts.wallet(purchaseCreator)).toMatchObject({
+      purchaseFundedEarned: 5,
       withdrawableEarned: 5,
     });
   });

@@ -122,5 +122,5 @@ jobs:
           gh workflow run flutter-release.yml \
             --repo "$GITHUB_REPOSITORY" \
             --ref "v${VERSION}"
-          echo "Release started for v${VERSION}: the bundle, APKs and Windows" \
-            "app will be on the GitHub release when it finishes." >> "$GITHUB_STEP_SUMMARY"
+          echo "Release started for v${VERSION}: the Android bundle and APKs" \
+            "will be on the GitHub release when it finishes." >> "$GITHUB_STEP_SUMMARY"

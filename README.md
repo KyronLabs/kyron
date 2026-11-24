@@ -4,7 +4,7 @@
 
 ### An open social app you can run yourself
 
-*Flutter client · NestJS API · Postgres. Android and Windows are the current app release targets.*
+*Flutter client · NestJS API · Postgres. Android is the active app release target; Windows builds are temporarily paused.*
 
 <br>
 
@@ -114,7 +114,7 @@ static download/marketing site from `web/build/web/`.
 
 ```
 ┌─────────────────────────────────────────────┐
-│   Flutter client · Android / Windows apps  │
+│   Flutter client · Android app             │
 │   Riverpod · Dio HTTP · REST + WebSocket   │
 └───────────────────────┬─────────────────────┘
                         │  HTTPS / JSON
@@ -132,7 +132,7 @@ static download/marketing site from `web/build/web/`.
 
 The API and a static download/marketing site both run on Render
 (`render.yaml`). The interactive Flutter web app is withdrawn; the current
-app release targets are Android and Windows. The API is what
+app release target is Android; Windows packaging is temporarily paused. The API is what
 `app/lib/services/api_client.dart` points at, and `/health` on it is the
 quickest way to see which Supabase project a deployment is verifying against.
 The API runs as a single instance, which is what
@@ -172,7 +172,7 @@ each is separate for a reason rather than for tidiness.
 
 | Area | Checks | Workflow |
 |:--|:--|:--|
-| Flutter | Dart formatting, Flutter analysis and widget/unit tests; Windows release build and packaging validation | [Flutter CI](.github/workflows/flutter-ci.yml) on app changes and workflow changes |
+| Flutter | Dart formatting, Flutter analysis and widget/unit tests; Android release wiring checks. Windows build validation is paused. | [Flutter CI](.github/workflows/flutter-ci.yml) on app changes and workflow changes |
 | API | Production dependency audit, Prisma generation, typecheck, build, Jest unit specs and ESLint | [API CI](.github/workflows/api-ci.yml) on API changes |
 | API database | PostgreSQL 16 migrations and database-backed integration specs | Separate job in [API CI](.github/workflows/api-ci.yml) |
 
@@ -193,28 +193,27 @@ number of commits behind the one being built (`scripts/build-number.sh`). Both
 build workflows count the same way, so version codes rise across development
 builds and releases alike — which phones and Play both require.
 
-Kyron is one app on several platforms. Windows and Android are the two being
-shipped now, and every build produces both:
+Kyron currently publishes Android builds only. Windows packaging is temporarily
+paused to stay within the available GitHub Actions artifact-storage allowance.
+The Windows project files remain in `app/windows/`, but no Windows app is built
+or attached to development or versioned releases.
 
-| | Windows | Android |
-|---|---|---|
-| **Development build**, on every push to `main` | `*-windows-x64.zip` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
-| **Release**, on a `vX.Y.Z` tag | `*-windows-x64.zip` | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
+| | Android |
+|---|---|
+| **Development build**, on every push to `main` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
+| **Release**, on a `vX.Y.Z` tag | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
 
 To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
 or `major`. It checks the signing secrets first, then bumps the version,
 commits, tags `vX.Y.Z` and starts **Release** on that tag. (It has to start it
 by name: a tag pushed with a workflow's own token starts no other workflow.)
-Both platforms build in parallel from one set of checks and are published
-together — the publish job waits for both, so a release is never half of one.
-`scripts/check-workflows.py` checks that shape on every pull request, because
-a release workflow that has quietly lost a platform still parses and still
-runs.
+The Android build follows the shared checks, then publishes its checked APKs
+and Play bundle. `scripts/check-workflows.py` verifies that wiring on every
+pull request and keeps the temporary Windows pause from being undone silently.
 
-The Windows app is a folder, not a file: the zip carries `Kyron.exe` with
-`flutter_windows.dll`, the plugin DLLs and the `data` directory beside it. It
-is not code-signed, so Windows warns that the publisher is unknown. Not every
-feature is there yet — [what runs where](app/lib/services/platform_support.dart).
+The Windows runner and packaging script remain in the repository for a later
+return to desktop builds. They are not part of current CI or releases. Platform
+feature coverage is tracked in [what runs where](app/lib/services/platform_support.dart).
 
 Release signing needs `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
 `ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD` as repository secrets, and push

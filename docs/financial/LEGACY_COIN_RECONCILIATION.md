@@ -15,13 +15,17 @@ postings. Do not treat a clean dry run as authorization to import or move funds.
 | `SPEND` | `LEGACY_COMPLIMENTARY` | No | Spending those grandfathered coins |
 | `REWARD_GRANT` | `REWARD_PROMOTIONAL` | No | Coins issued by an approved post-reward grant |
 | `REWARD_SPEND` | `REWARD_PROMOTIONAL` | No | Spending approved reward coins |
+| `PURCHASE_GRANT` | `PURCHASED_COIN` | No | Coins credited from a verified Google Play purchase |
+| `PURCHASE_SPEND` | `PURCHASED_COIN` | No | Spending purchased coins on a gift |
 | `PURCHASE_EARN` | `CREATOR_PAYABLE` | Yes | Creator proceeds explicitly attributed to purchased-coin spending |
 | `REWARD_EARN` | `CREATOR_PAYABLE` | Yes | Creator proceeds explicitly attributed to approved reward-coin spending |
 | `PROMOTIONAL_EARN` | `CREATOR_PROMOTIONAL` | No | Creator proceeds funded by the retired weekly complimentary balance |
 | `EARN` | `CREATOR_UNKNOWN` | No | Legacy test-era proceeds with unknown provenance |
 
 The same bucket is used for a grant and its later spend so the projected
-liability is the signed sum of the original entries. Purchased-coin and
+liability is the signed sum of the original entries. Purchased wallet coins
+are kept separate from reward/legacy promotional coins; they are spendable,
+but only the creator's resulting `PURCHASE_EARN` proceeds are withdrawable. Purchased-coin and
 approved reward-funded creator proceeds share the payable bucket because the
 approved policy gives them the same withdrawal eligibility; the original
 CoinEntry kind remains in every proposed transaction's metadata. Unknown
@@ -74,7 +78,7 @@ npm run prisma:generate
 npm run financial:legacy-coin-dry-run
 ```
 
-To include every pseudonymous owner UUID and their five projected balances:
+To include every pseudonymous owner UUID and their six projected balances:
 
 ```bash
 npm run financial:legacy-coin-dry-run -- --include-user-balances

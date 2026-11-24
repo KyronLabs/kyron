@@ -23,8 +23,8 @@ concurrency:
   cancel-in-progress: false
 
 # The build number is worked out once, in the checks job, and every job after
-# it reads that one answer -- so the APKs, the bundle and the Windows zip out of
-# one tag carry the same number. It is the tag's commit count, not this
+# it reads that one answer -- so all Android outputs from one tag carry the
+# same number. It is the tag's commit count, not this
 # workflow's run number: the development builds count the same way, so a
 # release's bundle and theirs are one rising sequence in Play. Why that matters
 # is in scripts/build-number.sh.
@@ -301,84 +301,6 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  windows:
-    name: Build the Windows release
-    needs: checks
-    runs-on: windows-latest
-    env:
-      KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
-    defaults:
-      run:
-        working-directory: app
-    steps:
-      - name: Checkout release tag
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
-        with:
-          # Pinned, not "whatever stable shipped last night": Flutter 3.50
-          # raised Flutter's minimum Gradle to 9.3.1, and this project's
-          # wrapper is on 8.14 (app/android/gradle/wrapper), where every
-          # Android build dies applying the Flutter Gradle plugin at
-          # `flutter build`. Move this pin and the Android toolchain
-          # (gradle-wrapper.properties, AGP and Kotlin in settings.gradle.kts)
-          # up together, never apart.
-          flutter-version: '3.47.9'
-          channel: stable
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build the Windows app
-        env:
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = 'Stop'
-          # A plain array passed to a native command, which PowerShell expands
-          # one element per argument. Not splatted with @: that is for cmdlets,
-          # and only recent PowerShell extends it to native commands. Not
-          # $args either -- that name is already PowerShell's.
-          $flags = @('--release', '--build-number', $env:KYRON_BUILD_NUMBER)
-          if ($env:SUPABASE_ANON_KEY) {
-            $flags += "--dart-define=SUPABASE_ANON_KEY=$env:SUPABASE_ANON_KEY"
-          }
-          if ($env:GIPHY_API_KEY) {
-            $flags += "--dart-define=GIPHY_API_KEY=$env:GIPHY_API_KEY"
-          }
-          flutter build windows $flags
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
-      # A Windows app is a folder, not a file: the executable needs
-      # flutter_windows.dll, every plugin's DLL and the whole data directory
-      # beside it, and none of that is inside the .exe. So the zip carries the
-      # folder, and it has a name inside it -- unzipping a bare pile of DLLs
-      # into Downloads is how that ends badly.
-      #
-      # The Release directory is located rather than spelled out: Flutter moved
-      # it from build/windows to build/windows/x64 once already, and a
-      # hard-coded path that stops matching would silently zip nothing.
-      - name: Package the Windows app
-        working-directory: .
-        shell: pwsh
-        env:
-          VERSION: ${{ needs.checks.outputs.version }}
-        run: |
-          & ./scripts/package-windows.ps1 `
-            -Stem "kyron-$env:VERSION+$env:KYRON_BUILD_NUMBER" `
-            -OutputDirectory release-artifacts
-
-      - name: Hand the Windows build to the publish job
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: windows
-          path: release-artifacts/*
-          if-no-files-found: error
-          retention-days: 1
-
   # A release's bundle goes on to a Play testing track once it has passed
   # scripts/check-aab.sh, so testers get each version without anybody
   # downloading it from here and uploading it to Play Console by hand. Only
@@ -460,12 +382,10 @@ jobs:
           python3 scripts/play-upload.py --package so.kyron.app --track "$PLAY_TRACK" \
             --name "${VERSION}" --notes-file play-notes.txt "$bundle"
 
-  # One release, published once, with both platforms in it. Separate because
-  # the two builds run on different operating systems and a release that
-  # appeared after the first one finished would be missing the other.
+  # One Android release, published once after the build and verification jobs.
   publish:
     name: Publish the release
-    needs: [checks, android, windows]
+    needs: [checks, android]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -475,7 +395,7 @@ jobs:
       - name: Checkout release tag
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Collect both platforms
+      - name: Collect Android artifacts
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           path: incoming
@@ -489,10 +409,7 @@ jobs:
           find incoming -type f -exec mv {} release-artifacts/ \;
           ls -lh release-artifacts
 
-          # Both platforms, or it is not this release. A download-artifact that
-          # quietly returned nothing would otherwise publish an Android-only
-          # release under a version that promised both.
-          test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-windows-x64.zip"
+          # The Android APK must be present before publishing.
           test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}-arm64-v8a.apk"
           test -f "release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
 
@@ -524,14 +441,6 @@ jobs:
             ${{ env.notes }}
 
             ---
-
-            ### Windows
-
-            `kyron-*-windows-x64.zip`. Unzip it anywhere and run `Kyron.exe`
-            inside the `Kyron` folder — keep the folder together, the DLLs
-            beside the executable are the app. Windows will warn that the
-            publisher is unknown, because the build is not code-signed; More
-            info → Run anyway.
 
             ### Android
 

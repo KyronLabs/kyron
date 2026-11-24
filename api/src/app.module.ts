@@ -24,6 +24,7 @@ import { GiftsModule } from './modules/gifts/gifts.module';
 import { PublicModule } from './modules/public/public.module';
 import { RewardsModule } from './modules/rewards/rewards.module';
 import { FinancialLedgerModule } from './modules/financial-ledger/financial-ledger.module';
+import { GooglePlayModule } from './modules/google-play/google-play.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { FinancialLedgerModule } from './modules/financial-ledger/financial-ledg
     GiftsModule,
     RewardsModule,
     FinancialLedgerModule,
+    GooglePlayModule,
     PublicModule,
   ],
   controllers: [],

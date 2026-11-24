@@ -29,6 +29,8 @@ describe('legacy coin bridge mapping', () => {
     [CoinKind.REWARD_EARN, 'CREATOR_PAYABLE', true],
     [CoinKind.PROMOTIONAL_EARN, 'CREATOR_PROMOTIONAL', false],
     [CoinKind.EARN, 'CREATOR_UNKNOWN', false],
+    [CoinKind.PURCHASE_GRANT, 'PURCHASED_COIN', false],
+    [CoinKind.PURCHASE_SPEND, 'PURCHASED_COIN', false],
   ] as const)(
     'maps %s without changing its eligibility',
     (kind, bucket, withdrawable) => {

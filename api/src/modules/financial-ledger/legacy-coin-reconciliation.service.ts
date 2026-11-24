@@ -125,6 +125,7 @@ const SOURCE_QUERY_BATCH_SIZE = 400;
 const GIFT_LINKED_KINDS = new Set<string>([
   CoinKind.SPEND,
   CoinKind.REWARD_SPEND,
+  CoinKind.PURCHASE_SPEND,
   CoinKind.PURCHASE_EARN,
   CoinKind.PROMOTIONAL_EARN,
   CoinKind.REWARD_EARN,
@@ -146,6 +147,7 @@ function zeroUserBuckets(): Record<LegacyCoinBucket, Prisma.Decimal> {
     CREATOR_PAYABLE: new Prisma.Decimal(0),
     CREATOR_PROMOTIONAL: new Prisma.Decimal(0),
     CREATOR_UNKNOWN: new Prisma.Decimal(0),
+    PURCHASED_COIN: new Prisma.Decimal(0),
   };
 }
 
@@ -499,7 +501,8 @@ export class LegacyCoinReconciliationService {
               };
               if (
                 row.kind === CoinKind.SPEND ||
-                row.kind === CoinKind.REWARD_SPEND
+                row.kind === CoinKind.REWARD_SPEND ||
+                row.kind === CoinKind.PURCHASE_SPEND
               ) {
                 if (row.amount >= 0) {
                   addIssue({
@@ -790,6 +793,10 @@ export class LegacyCoinReconciliationService {
             ownerAccounts: 0,
             net: new Prisma.Decimal(0),
           },
+          PURCHASED_COIN: {
+            ownerAccounts: 0,
+            net: new Prisma.Decimal(0),
+          },
         };
 
         for (const [userId, balances] of userBuckets) {
@@ -883,6 +890,7 @@ export class LegacyCoinReconciliationService {
                 CREATOR_PAYABLE: balances.CREATOR_PAYABLE.toFixed(0),
                 CREATOR_PROMOTIONAL: balances.CREATOR_PROMOTIONAL.toFixed(0),
                 CREATOR_UNKNOWN: balances.CREATOR_UNKNOWN.toFixed(0),
+                PURCHASED_COIN: balances.PURCHASED_COIN.toFixed(0),
               },
             }));
         }

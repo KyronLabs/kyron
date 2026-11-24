@@ -13,8 +13,10 @@ import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
 /** What a wallet screen shows. */
 export interface Wallet {
-  /** All spendable legacy complimentary and promotional coins, less gifts sent. */
+  /** All spendable legacy, reward-promotional and purchased coins, less gifts sent. */
   coins: number;
+  /** Purchased coins remaining after gifts; separate for transparent wallet reporting. */
+  purchased: number;
   /** Remaining balance from the retired weekly complimentary grant. */
   legacyComplimentary: number;
   /** All non-spendable creator proceeds, including legacy complimentary proceeds. */
@@ -274,11 +276,21 @@ export class GiftsService {
       // historical weekly complimentary proceeds keep their old treatment.
       const creatorEarnings = spendEntries.map((entry) => {
         const rewardFunded = entry.kind === CoinKind.REWARD_SPEND;
+        const purchaseFunded = entry.kind === CoinKind.PURCHASE_SPEND;
+        const source = rewardFunded
+          ? 'reward'
+          : purchaseFunded
+            ? 'purchase'
+            : 'legacy';
         return {
           userId: recipientId,
-          kind: rewardFunded ? CoinKind.REWARD_EARN : CoinKind.PROMOTIONAL_EARN,
+          kind: rewardFunded
+            ? CoinKind.REWARD_EARN
+            : purchaseFunded
+              ? CoinKind.PURCHASE_EARN
+              : CoinKind.PROMOTIONAL_EARN,
           amount: -entry.amount,
-          key: `gift:${gift.id}:${rewardFunded ? 'reward' : 'legacy'}-earn`,
+          key: `gift:${gift.id}:${source}-earn`,
           giftId: gift.id,
         };
       });
@@ -507,8 +519,12 @@ export class GiftsService {
   private async balances(tx: Tx, userId: string): Promise<Wallet> {
     const balances = await this.ledgerBalances(tx, userId);
     return {
-      coins: balances.legacyComplimentary + balances.promotional,
+      coins:
+        balances.legacyComplimentary +
+        balances.promotional +
+        balances.purchased,
       legacyComplimentary: balances.legacyComplimentary,
+      purchased: balances.purchased,
       earned:
         balances.earned +
         balances.purchaseFundedEarned +
@@ -533,6 +549,7 @@ export class GiftsService {
   ): Promise<{
     legacyComplimentary: number;
     promotional: number;
+    purchased: number;
     earned: number;
     purchaseFundedEarned: number;
     promotionalEarned: number;
@@ -550,6 +567,7 @@ export class GiftsService {
       // weekly complimentary programme was retired.
       legacyComplimentary: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
       promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
+      purchased: sum(CoinKind.PURCHASE_GRANT) + sum(CoinKind.PURCHASE_SPEND),
       // EARN is legacy test history with unknown provenance and remains
       // outside the withdrawable amount.
       earned: sum(CoinKind.EARN),
@@ -559,7 +577,7 @@ export class GiftsService {
     };
   }
 
-  /** Spend grandfathered complimentary credits first, then reward credits. */
+  /** Spend grandfathered credits, then reward credits, then purchased coins. */
   private async spendFromWallet(
     tx: Tx,
     userId: string,
@@ -569,12 +587,14 @@ export class GiftsService {
     const balances = await this.ledgerBalances(tx, userId);
     const legacyComplimentary = Math.max(0, balances.legacyComplimentary);
     const promotional = Math.max(0, balances.promotional);
-    if (legacyComplimentary + promotional < amount) {
+    const purchased = Math.max(0, balances.purchased);
+    if (legacyComplimentary + promotional + purchased < amount) {
       throw new BadRequestException('Your wallet no longer covers this gift.');
     }
 
     const legacySpend = Math.min(legacyComplimentary, amount);
-    const promotionalSpend = amount - legacySpend;
+    const promotionalSpend = Math.min(promotional, amount - legacySpend);
+    const purchasedSpend = amount - legacySpend - promotionalSpend;
     const entries: Prisma.CoinEntryCreateManyInput[] = [];
     if (legacySpend > 0) {
       entries.push({
@@ -591,6 +611,15 @@ export class GiftsService {
         kind: CoinKind.REWARD_SPEND,
         amount: -promotionalSpend,
         key: `gift:${giftId}:reward-spend`,
+        giftId,
+      });
+    }
+    if (purchasedSpend > 0) {
+      entries.push({
+        userId,
+        kind: CoinKind.PURCHASE_SPEND,
+        amount: -purchasedSpend,
+        key: `gift:${giftId}:purchase-spend`,
         giftId,
       });
     }

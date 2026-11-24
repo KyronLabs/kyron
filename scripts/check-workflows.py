@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Check that a release actually ships everything it promises.
 
-Kyron is one app on several platforms, and every build of it -- a tag, or a
-push to main -- is supposed to produce Windows and Android together. That is
-not one setting: it is two build jobs on two operating systems, a build number
-they have to agree on, and a publish job that waits for both. Nothing about
-getting one of those wrong fails a build. It just publishes half a release.
+Kyron's Windows build is temporarily paused to keep CI and artifact storage
+within the available Actions allowance. Development and versioned releases
+currently publish Android only. The validator checks that the Android build
+and its release artifact stay wired together.
 
 So the shape is asserted here and checked in CI. This is not a YAML linter --
 GitHub will tell you soon enough if the file will not parse. It checks the
@@ -29,10 +28,9 @@ PUBLISHING = {
     "flutter-debug.yml": "publish",
 }
 
-# What a published build has to carry. The key is the job name; the value is
-# what its runner has to be, because an Android build on Windows and a Windows
-# build on Ubuntu both fail in ways that look like something else.
-PLATFORMS = {"android": "ubuntu-latest", "windows": "windows-latest"}
+# What a published build has to carry. Windows is intentionally paused;
+# the Android output remains the only supported release platform for now.
+PLATFORMS = {"android": "ubuntu-latest"}
 
 
 def check(name: str, publish_job: str) -> list[str]:
@@ -57,8 +55,8 @@ def check(name: str, publish_job: str) -> list[str]:
         said.append(f"{name}: no {publish_job!r} job")
         return said
 
-    # The publish job waiting on both is what makes one release rather than a
-    # race between two of them.
+    # The publish job waits for Android so it cannot publish before the
+    # checked artifacts are ready.
     needs = publish.get("needs") or []
     if isinstance(needs, str):
         needs = [needs]
@@ -71,13 +69,12 @@ def check(name: str, publish_job: str) -> list[str]:
 
     said += check_build_number(name, workflow, [*PLATFORMS, publish_job])
 
-    # And the publish job checks the files are there. download-artifact
-    # answering with nothing is not an error, so without this a Windows build
-    # that failed to upload publishes an Android-only release.
+    # And the publish job checks the Android files are there. download-artifact
+    # answering with nothing is not an error, so check before publishing.
     body = "\n".join(
         str(step.get("run", "")) for step in publish.get("steps", [])
     )
-    for expected in ("windows-x64.zip", "arm64-v8a.apk"):
+    for expected in ("arm64-v8a.apk",):
         if expected not in body:
             said.append(
                 f"{name}: {publish_job!r} does not check for {expected} before "
@@ -94,7 +91,7 @@ COUNTER = "scripts/build-number.sh"
 def check_build_number(name: str, workflow: dict, readers: list[str]) -> list[str]:
     """One build number for the whole run, and the same kind in both workflows.
 
-    Per-job, the two platforms out of one tag would carry different ones. And
+    Per-job builds out of one tag would carry different build numbers. And
     it is the commit count, worked out once by scripts/build-number.sh, not
     the run number: each workflow has its own run number, so the development
     builds were at 119 when Release ran for the first time as 1, and one
@@ -532,6 +529,15 @@ def check_debug_build_reliability() -> list[str]:
 
 def main() -> int:
     problems: list[str] = []
+    # Keep the temporary platform pause enforced across CI, development, and
+    # versioned releases so a later edit cannot silently reintroduce Windows.
+    for workflow_name in ("flutter-ci.yml", "flutter-debug.yml", "flutter-release.yml"):
+        workflow = yaml.safe_load((WORKFLOWS / workflow_name).read_text(encoding="utf-8"))
+        if "windows" in (workflow.get("jobs") or {}):
+            problems.append(
+                f"{workflow_name}: Windows builds are paused; remove the Windows job"
+            )
+
     for name, publish_job in PUBLISHING.items():
         problems += check(name, publish_job)
 
@@ -554,7 +560,7 @@ def main() -> int:
         return 1
 
     names = ", ".join(sorted(PUBLISHING))
-    print(f"{names}: both platforms, one counted build number, a checked bundle, one release.")
+    print(f"{names}: Android artifacts, one counted build number, a checked bundle, one release.")
     return 0
 
 

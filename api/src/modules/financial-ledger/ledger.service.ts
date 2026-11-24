@@ -178,76 +178,14 @@ export class LedgerService {
     const requestHash = requestFingerprint(input);
 
     try {
-      return await this.prisma.$transaction(async (tx) => {
-        const accountIds: string[] = [];
-        for (const line of input.postings) {
-          const account = await tx.ledgerAccount.upsert({
-            where: { accountKey: line.accountKey },
-            create: {
-              accountKey: line.accountKey,
-              name: line.name,
-              accountType: line.accountType,
-              normalSide: line.normalSide,
-              currencyCode: input.currencyCode,
-              ownerId: line.ownerId ?? null,
-            },
-            update: {},
-          });
-
-          if (
-            account.currencyCode !== input.currencyCode ||
-            account.accountType !== line.accountType ||
-            account.normalSide !== line.normalSide ||
-            account.ownerId !== (line.ownerId ?? null)
-          ) {
-            throw new ConflictException(
-              `Ledger account identity mismatch for ${line.accountKey}.`,
-            );
-          }
-
-          if (!allowNonActiveAccounts && account.status !== 'ACTIVE') {
-            throw new ConflictException(
-              `Ledger account ${line.accountKey} is not active.`,
-            );
-          }
-
-          accountIds.push(account.id);
-        }
-
-        const transaction = await tx.ledgerTransaction.create({
-          data: {
-            idempotencyKey: input.idempotencyKey,
-            requestHash,
-            eventType: input.eventType,
-            sourceType: input.sourceType,
-            sourceId: input.sourceId ?? null,
-            correlationId: input.correlationId ?? null,
-            currencyCode: input.currencyCode,
-            description: input.description ?? null,
-            metadata: input.metadata,
-            actorId: input.actorId ?? null,
-            effectiveAt: input.effectiveAt,
-            reversalOfId: input.reversalOfId ?? null,
-          },
-        });
-
-        await tx.ledgerPosting.createMany({
-          data: input.postings.map((line, index) => ({
-            transactionId: transaction.id,
-            accountId: accountIds[index],
-            lineNumber: index + 1,
-            side: line.side,
-            amount: line.amount,
-            memo: line.memo ?? null,
-          })),
-        });
-
-        const record = await tx.ledgerTransaction.findUniqueOrThrow({
-          where: { id: transaction.id },
-          include: { postings: { include: { account: true } } },
-        });
-        return this.publicTransaction(record);
-      });
+      return await this.prisma.$transaction((tx) =>
+        this.writeWithinTransaction(
+          tx,
+          input,
+          requestHash,
+          allowNonActiveAccounts,
+        ),
+      );
     } catch (error) {
       if (
         error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -275,6 +213,105 @@ export class LedgerService {
       }
       throw error;
     }
+  }
+
+  /**
+   * Posts into a caller-owned SQL transaction. Used when another financial
+   * source record and its ledger event must commit or roll back together.
+   *
+   * The caller owns idempotency for its source event; this method does not
+   * open a nested transaction or swallow unique-key conflicts.
+   */
+  async postInTransaction(
+    tx: Prisma.TransactionClient,
+    request: PostLedgerTransactionInput,
+  ): Promise<LedgerTransactionWithPostings> {
+    this.validate(request);
+    const input: LedgerPostCommand = {
+      ...request,
+      postings: request.postings.map((line) => ({
+        ...line,
+        amount: new Prisma.Decimal(line.amount).toFixed(8),
+      })),
+    };
+    const requestHash = requestFingerprint(input);
+    return this.writeWithinTransaction(tx, input, requestHash, false);
+  }
+
+  private async writeWithinTransaction(
+    tx: Prisma.TransactionClient,
+    input: LedgerPostCommand,
+    requestHash: string,
+    allowNonActiveAccounts: boolean,
+  ): Promise<LedgerTransactionWithPostings> {
+    const accountIds: string[] = [];
+    for (const line of input.postings) {
+      const account = await tx.ledgerAccount.upsert({
+        where: { accountKey: line.accountKey },
+        create: {
+          accountKey: line.accountKey,
+          name: line.name,
+          accountType: line.accountType,
+          normalSide: line.normalSide,
+          currencyCode: input.currencyCode,
+          ownerId: line.ownerId ?? null,
+        },
+        update: {},
+      });
+
+      if (
+        account.currencyCode !== input.currencyCode ||
+        account.accountType !== line.accountType ||
+        account.normalSide !== line.normalSide ||
+        account.ownerId !== (line.ownerId ?? null)
+      ) {
+        throw new ConflictException(
+          `Ledger account identity mismatch for ${line.accountKey}.`,
+        );
+      }
+
+      if (!allowNonActiveAccounts && account.status !== 'ACTIVE') {
+        throw new ConflictException(
+          `Ledger account ${line.accountKey} is not active.`,
+        );
+      }
+
+      accountIds.push(account.id);
+    }
+
+    const transaction = await tx.ledgerTransaction.create({
+      data: {
+        idempotencyKey: input.idempotencyKey,
+        requestHash,
+        eventType: input.eventType,
+        sourceType: input.sourceType,
+        sourceId: input.sourceId ?? null,
+        correlationId: input.correlationId ?? null,
+        currencyCode: input.currencyCode,
+        description: input.description ?? null,
+        metadata: input.metadata,
+        actorId: input.actorId ?? null,
+        effectiveAt: input.effectiveAt,
+        reversalOfId: input.reversalOfId ?? null,
+      },
+    });
+
+    await tx.ledgerPosting.createMany({
+      data: input.postings.map((line, index) => ({
+        transactionId: transaction.id,
+        accountId: accountIds[index],
+        lineNumber: index + 1,
+        side: line.side,
+        amount: line.amount,
+        memo: line.memo ?? null,
+      })),
+    });
+
+    const record = await tx.ledgerTransaction.findUniqueOrThrow({
+      where: { id: transaction.id },
+      include: { postings: { include: { account: true } } },
+    });
+    return this.publicTransaction(record);
   }
 
   private publicTransaction(
