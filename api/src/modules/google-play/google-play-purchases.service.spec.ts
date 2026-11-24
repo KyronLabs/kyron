@@ -217,7 +217,7 @@ describe('GooglePlayPurchasesService', () => {
 
     await expect(
       service.verify(userId, 'coins.test.small', purchaseToken),
-    ).rejects.toThrow(/not confirmed as processed/i);
+    ).rejects.toThrow(/has not confirmed this order as processed/i);
 
     expect(tx.googlePlayPurchase.create).not.toHaveBeenCalled();
     expect(tx.coinEntry.create).not.toHaveBeenCalled();
@@ -232,7 +232,7 @@ describe('GooglePlayPurchasesService', () => {
 
     await expect(
       service.verify(userId, 'coins.test.small', purchaseToken),
-    ).rejects.toThrow(/not confirmed as processed/i);
+    ).rejects.toThrow(/has not confirmed this order as processed/i);
 
     expect(tx.googlePlayPurchase.create).not.toHaveBeenCalled();
     expect(ledger.postInTransaction).not.toHaveBeenCalled();
@@ -250,7 +250,7 @@ describe('GooglePlayPurchasesService', () => {
 
     await expect(
       service.verify(userId, 'coins.test.small', purchaseToken),
-    ).rejects.toThrow(/not confirmed as processed/i);
+    ).rejects.toThrow(/has not confirmed this order as processed/i);
 
     expect(tx.coinEntry.create).not.toHaveBeenCalled();
     expect(ledger.postInTransaction).not.toHaveBeenCalled();
