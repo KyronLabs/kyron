@@ -52,7 +52,7 @@ dependencies:
   # zoom, a video you cannot play and a Share button that does nothing.
   video_player: ^2.9.2
   photo_view: ^0.15.0
-  share_plus: ^10.1.2
+  share_plus: ^12.0.2
 
   # The About screen reports the running build and clears the on-device cache.
   # Both were previously invented: the version was the literal string "1.0.0"
