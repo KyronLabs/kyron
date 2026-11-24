@@ -183,12 +183,10 @@ run('Google Play purchase credit, against a real database', () => {
       key: purchase.coinEntryKey,
     });
     expect(journal.postings).toHaveLength(2);
-    expect(
-      journal.postings.find((line) => line.side === 'DEBIT')?.amount.toString(),
-    ).toBe('40');
-    expect(
-      journal.postings.find((line) => line.side === 'CREDIT')?.amount.toString(),
-    ).toBe('40.00000000');
+    const debit = journal.postings.find((line) => line.side === 'DEBIT');
+    const credit = journal.postings.find((line) => line.side === 'CREDIT');
+    expect(debit?.amount.toString()).toBe('40');
+    expect(credit?.amount.toString()).toBe('40');
     expect(source).toMatchObject({
       sourceType: 'GOOGLE_PLAY_PURCHASE',
       sourceId: purchase.id,
