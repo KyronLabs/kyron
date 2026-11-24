@@ -40,27 +40,54 @@ void main() {
           ),
         ),
       );
+
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       gifts.reads.single.completeError(const FormatException());
       await tester.pumpAndSettle();
+
       expect(find.text('Could not load this list'), findsOneWidget);
       final retry = find.byTooltip('Retry');
       expect(tester.getSize(retry).shortestSide, greaterThanOrEqualTo(44));
+
       await tester.tap(retry);
       await tester.pump();
       gifts.reads.last.complete(
-        const GiftWallet(coins: 1234, earned: 16, withdrawableEarned: 9),
+        const GiftWallet(
+          coins: 1234,
+          earned: 16,
+          withdrawableEarned: 9,
+          purchased: 900,
+          promotional: 300,
+          legacyComplimentary: 34,
+        ),
       );
       await tester.pumpAndSettle();
+
       expect(find.text('1,234 coins'), findsOneWidget);
       expect(find.text('16 coins'), findsOneWidget);
       expect(find.text('9 coins'), findsOneWidget);
+      expect(find.text('Purchased coins'), findsOneWidget);
+      expect(find.text('900 coins'), findsOneWidget);
+      expect(find.text('Reward coins'), findsOneWidget);
+      expect(find.text('300 coins'), findsOneWidget);
+      expect(find.text('Legacy complimentary coins'), findsOneWidget);
+      expect(find.text('34 coins'), findsOneWidget);
+      expect(
+        find.text(
+          'Coins are not automatically replenished. '
+          'New coins are awarded through Kyron reward programmes.',
+        ),
+        findsOneWidget,
+      );
+
       await tester.tap(find.byTooltip('Check again'));
       await tester.pump();
       expect(find.text('1,234 coins'), findsNothing);
+
       gifts.reads.last.complete(const GiftWallet(coins: 0, earned: 0));
       await tester.pumpAndSettle();
       expect(find.text('0 coins'), findsNWidgets(3));
+      expect(find.text('Purchased coins'), findsNothing);
       expect(gifts.reads, hasLength(3));
     });
   }
@@ -76,6 +103,7 @@ void main() {
         child: const MaterialApp(home: WalletScreen()),
       ),
     );
+
     expect(find.text('Sign in to Kyron'), findsOneWidget);
     expect(gifts.reads, isEmpty);
   });

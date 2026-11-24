@@ -13,6 +13,9 @@ void main() {
   // reviewed translations are supplied for every supported locale.
   const englishFallbackKeys = {
     'ui_gift_rewards_notice',
+    'ui_wallet_purchased_coins',
+    'ui_wallet_reward_coins',
+    'ui_wallet_legacy_complimentary_coins',
     'ui_reminders_detail_away',
   };
 

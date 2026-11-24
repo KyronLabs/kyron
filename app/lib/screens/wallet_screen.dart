@@ -74,6 +74,7 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
             ),
           );
         }
+
         final wallet = snapshot.data;
         final retry = strings.retry;
         final action = wallet == null ? retry : strings.literalcheckAgain;
@@ -85,9 +86,7 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 children: [
                   Expanded(
                     child: Text(
-                      wallet == null
-                          ? strings.literalcouldNotLoadThisList
-                          : strings.ui('analytics_coins', 'Coins'),
+                      strings.ui('analytics_coins', 'Coins'),
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
@@ -101,16 +100,49 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 ],
               ),
             ),
-            if (wallet != null) ...[
-              const Hairline(),
+            const Hairline(),
+            if (wallet == null)
+              Padding(
+                padding: const EdgeInsets.all(SpacingTokens.space16),
+                child: Text(
+                  strings.literalcouldNotLoadThisList,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              )
+            else ...[
               _Balance(
                 strings.ui('ui_wallet_spendable', 'Spendable coins'),
                 coins(wallet.coins),
+                prominent: true,
               ),
+              if (_hasCoinSourceBreakdown(wallet)) ...[
+                const Hairline(),
+                _Balance(
+                  strings.ui('ui_wallet_purchased_coins', 'Purchased coins'),
+                  coins(wallet.purchased),
+                  detail: true,
+                ),
+                const Hairline(),
+                _Balance(
+                  strings.ui('ui_wallet_reward_coins', 'Reward coins'),
+                  coins(wallet.promotional),
+                  detail: true,
+                ),
+                const Hairline(),
+                _Balance(
+                  strings.ui(
+                    'ui_wallet_legacy_complimentary_coins',
+                    'Legacy complimentary coins',
+                  ),
+                  coins(wallet.legacyComplimentary),
+                  detail: true,
+                ),
+              ],
               const Hairline(),
               _Balance(
                 strings.ui('ui_wallet_received', 'Total gift earnings'),
                 coins(wallet.earned),
+                prominent: true,
               ),
               const Hairline(),
               _Balance(
@@ -120,19 +152,42 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 ),
                 coins(wallet.withdrawableEarned),
               ),
+              const Hairline(),
+              Padding(
+                padding: const EdgeInsets.all(SpacingTokens.space16),
+                child: Text(
+                  strings.ui(
+                    'ui_gift_rewards_notice',
+                    'Coins are not automatically replenished. New coins are awarded through Kyron reward programmes.',
+                  ),
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
             ],
           ],
         );
       },
     );
   }
+
+  bool _hasCoinSourceBreakdown(GiftWallet wallet) =>
+      wallet.purchased != 0 ||
+      wallet.promotional != 0 ||
+      wallet.legacyComplimentary != 0;
 }
 
 class _Balance extends StatelessWidget {
-  const _Balance(this.label, this.value);
+  const _Balance(
+    this.label,
+    this.value, {
+    this.detail = false,
+    this.prominent = false,
+  });
 
   final String label;
   final String value;
+  final bool detail;
+  final bool prominent;
 
   @override
   Widget build(BuildContext context) {
@@ -143,9 +198,12 @@ class _Balance extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(label, style: type.bodyMedium),
+            Text(label, style: detail ? type.bodySmall : type.bodyMedium),
             const SizedBox(height: SpacingTokens.space4),
-            Text(value, style: type.headlineMedium),
+            Text(
+              value,
+              style: prominent ? type.headlineMedium : type.titleMedium,
+            ),
           ],
         ),
       ),
