@@ -179,7 +179,12 @@ export class LedgerService {
 
     try {
       return await this.prisma.$transaction((tx) =>
-        this.writeWithinTransaction(tx, input, requestHash, allowNonActiveAccounts),
+        this.writeWithinTransaction(
+          tx,
+          input,
+          requestHash,
+          allowNonActiveAccounts,
+        ),
       );
     } catch (error) {
       if (
@@ -307,7 +312,6 @@ export class LedgerService {
       include: { postings: { include: { account: true } } },
     });
     return this.publicTransaction(record);
-
   }
 
   private publicTransaction(
