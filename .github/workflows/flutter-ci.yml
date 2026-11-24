@@ -127,11 +127,10 @@ jobs:
           # the store fails here rather than at the upload.
           python3 scripts/changelog.py store Unreleased
 
-      # Same reasoning, one level up. A release is meant to carry Windows and
-      # Android together, which is two build jobs, one build number and a
-      # publish job that waits for both -- and none of those failing is
-      # something a workflow file failing to parse would catch. Checked here so
-      # it is found on the pull request rather than by half a release.
+      # Same reasoning, one level up. A release is meant to carry its checked
+      # Android outputs together, with one build number and a publish job that
+      # waits for them. Checked here so workflow wiring errors are caught on
+      # the pull request rather than during a release.
       - name: Check the release wiring
         run: |
           python3 -m pip install --quiet pyyaml

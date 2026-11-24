@@ -23,8 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
-# it reads that one answer -- so the APKs, the bundle and the Windows zip out of
-# one push carry the same number rather than one each. It is the commit count,
+# it reads that one answer -- so the APKs and bundle out of one push carry the same number. It is the commit count,
 # shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
