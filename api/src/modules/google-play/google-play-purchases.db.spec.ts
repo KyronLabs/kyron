@@ -191,9 +191,9 @@ run('Google Play purchase credit, against a real database', () => {
       sourceType: 'GOOGLE_PLAY_PURCHASE',
       sourceId: purchase.id,
       beneficiaryId: userId,
-      amount: 40,
       unitCode: 'KCOIN',
     });
+    expect(source.amount?.toString()).toBe('40');
   });
 
   it('re-verifies a consumed token without issuing a second coin grant', async () => {
