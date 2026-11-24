@@ -172,7 +172,6 @@ export class GooglePlayDeveloperApiProvider {
       })
         .setProtectedHeader({ alg: 'RS256', typ: 'JWT' })
         .setIssuer(account.client_email)
-        .setSubject(account.client_email)
         .setAudience(TOKEN_URL)
         .setIssuedAt(now)
         .setExpirationTime(now + 3600)
