@@ -71,7 +71,11 @@ run('Google Play refund worker against Postgres', () => {
     });
     const results = await Promise.all([worker.runBatch(), worker.runBatch()]);
     expect(reconciliation.reconcile).toHaveBeenCalledTimes(1);
-    expect(reconciliation.reconcile).toHaveBeenCalledWith(event.id, null);
+    expect(reconciliation.reconcile).toHaveBeenCalledWith(
+      event.id,
+      null,
+      expect.any(String),
+    );
     expect(results).toContainEqual({
       status: 'BATCH_COMPLETE',
       claimed: 1,
@@ -122,7 +126,11 @@ run('Google Play refund worker against Postgres', () => {
     });
     reconciliation.reconcile.mockRejectedValue(new Error('unavailable'));
     expect(await worker.runBatch()).toMatchObject({ claimed: 1, failed: 1 });
-    expect(reconciliation.reconcile).toHaveBeenCalledWith(expired.id, null);
+    expect(reconciliation.reconcile).toHaveBeenCalledWith(
+      expired.id,
+      null,
+      expect.any(String),
+    );
     expect(reconciliation.reconcile).toHaveBeenCalledTimes(1);
     const retried = await get(expired.id);
     expect(retried.reconciliationAttemptCount).toBe(31);

@@ -160,7 +160,7 @@ export class GooglePlayRefundWorkerService {
     try {
       // Null actor is a system action. This is exactly the same evidence
       // reconciliation used by the AAL2 operator endpoint.
-      await this.reconciliation.reconcile(receipt.id, null);
+      await this.reconciliation.reconcile(receipt.id, null, leaseId);
     } catch {
       failed = true;
     }

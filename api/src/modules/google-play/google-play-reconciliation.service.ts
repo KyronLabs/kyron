@@ -143,7 +143,7 @@ export class GooglePlayReconciliationService {
     };
   }
 
-  async reconcile(id: string, actorId: string | null) {
+  async reconcile(id: string, actorId: string | null, leaseId?: string) {
     const key = encryptionKey();
     const packageName = process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim();
     if (
@@ -162,15 +162,18 @@ export class GooglePlayReconciliationService {
     });
     if (!event) throw new NotFoundException('Google Play receipt not found.');
     if (event.processedAt) return { status: 'DUPLICATE' as const, id };
+    if (leaseId && event.reconciliationLeaseId !== leaseId) {
+      return { status: 'SUPERSEDED' as const, id };
+    }
     if (!REFUND_EVENTS.has(event.eventType) || !event.purchaseTokenHash) {
-      return this.pending(id, actorId, 'NOT_A_ONE_TIME_REFUND');
+      return this.pending(id, actorId, 'NOT_A_ONE_TIME_REFUND', leaseId);
     }
 
     const payload = jsonRecord(event.payload);
     const local = await this.prisma.googlePlayPurchase.findUnique({
       where: { purchaseTokenHash: event.purchaseTokenHash },
     });
-    if (!local) return this.pending(id, actorId, 'UNMATCHED_PURCHASE');
+    if (!local) return this.pending(id, actorId, 'UNMATCHED_PURCHASE', leaseId);
     if (
       payload.packageName !== packageName ||
       !local.orderId ||
@@ -180,7 +183,7 @@ export class GooglePlayReconciliationService {
         ? payload.productId !== local.productId
         : payload.orderId !== local.orderId)
     ) {
-      return this.pending(id, actorId, 'RECEIPT_IDENTITY_MISMATCH');
+      return this.pending(id, actorId, 'RECEIPT_IDENTITY_MISMATCH', leaseId);
     }
 
     let token: string;
@@ -190,7 +193,7 @@ export class GooglePlayReconciliationService {
         throw new Error('Token digest mismatch.');
       }
     } catch {
-      return this.pending(id, actorId, 'TOKEN_UNAVAILABLE');
+      return this.pending(id, actorId, 'TOKEN_UNAVAILABLE', leaseId);
     }
 
     let observation: RefundObservation | null;
@@ -211,7 +214,7 @@ export class GooglePlayReconciliationService {
         event.eventType,
       );
       if (!observation) {
-        return this.pending(id, actorId, 'REFUND_NOT_CONFIRMED');
+        return this.pending(id, actorId, 'REFUND_NOT_CONFIRMED', leaseId);
       }
       supporting = await this.voidEvidence(
         token,
@@ -220,7 +223,7 @@ export class GooglePlayReconciliationService {
       );
     } catch {
       // Never expose the provider response, bearer, token or exception details.
-      return this.pending(id, actorId, 'PROVIDER_RETRY_REQUIRED');
+      return this.pending(id, actorId, 'PROVIDER_RETRY_REQUIRED', leaseId);
     }
     const confirmed = observation;
 
@@ -232,6 +235,9 @@ export class GooglePlayReconciliationService {
         where: { id },
       });
       if (current.processedAt) return { status: 'DUPLICATE' as const, id };
+      if (leaseId && current.reconciliationLeaseId !== leaseId) {
+        return { status: 'SUPERSEDED' as const, id };
+      }
       const purchase = await tx.googlePlayPurchase.findUniqueOrThrow({
         where: { id: local.id },
       });
@@ -316,14 +322,22 @@ export class GooglePlayReconciliationService {
     });
   }
 
-  private pending(id: string, actorId: string | null, reason: string) {
+  private pending(
+    id: string,
+    actorId: string | null,
+    reason: string,
+    leaseId?: string,
+  ) {
     return this.prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "GooglePlayNotification" WHERE id = ${id}::uuid FOR UPDATE`;
       const event = await tx.googlePlayNotification.findUniqueOrThrow({
         where: { id },
-        select: { processedAt: true },
+        select: { processedAt: true, reconciliationLeaseId: true },
       });
       if (event.processedAt) return { status: 'DUPLICATE' as const, id };
+      if (leaseId && event.reconciliationLeaseId !== leaseId) {
+        return { status: 'SUPERSEDED' as const, id };
+      }
       return this.recordPending(tx, id, actorId, reason);
     });
   }
