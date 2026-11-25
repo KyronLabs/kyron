@@ -701,7 +701,7 @@ export class GooglePlayReconciliationService {
         actorId: input.actorId,
         beneficiaryId: input.userId,
         relatedIds: { purchaseId: input.purchaseId },
-        amount: input.coins,
+        amount: Math.abs(input.coins),
         unitCode: 'COIN',
         payload: input.payload,
         occurredAt: new Date(),

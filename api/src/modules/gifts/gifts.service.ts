@@ -662,7 +662,8 @@ export class GiftsService {
         GROUP BY item."purchaseId"
       ), recoveries AS (
         SELECT evidence."relatedIds"->>'purchaseId' AS purchase_id,
-               SUM(evidence.amount) AS coins
+               SUM(CASE WHEN evidence."sourceType" = ${PURCHASE_RECOVERY_SOURCE}
+                        THEN evidence.amount ELSE -evidence.amount END) AS coins
         FROM "FinancialSourceRecord" evidence
         WHERE evidence."sourceType" IN (
           ${PURCHASE_RECOVERY_SOURCE}, ${PURCHASE_RECOVERY_CORRECTION}

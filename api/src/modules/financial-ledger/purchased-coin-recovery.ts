@@ -4,13 +4,14 @@ export const PURCHASE_RECOVERY_SOURCE = 'GOOGLE_PLAY_PURCHASE_RECOVERY';
 export const PURCHASE_RECOVERY_CORRECTION =
   'GOOGLE_PLAY_PURCHASE_RECOVERY_CORRECTION';
 
-/** Recovery evidence uses positive debits and negative compensating credits. */
+/** Evidence amounts are unsigned. The source type determines direction. */
 export async function netPurchasedCoinRecovery(
   tx: Prisma.TransactionClient,
   userId: string,
   purchaseId?: string,
 ): Promise<number> {
-  const total = await tx.financialSourceRecord.aggregate({
+  const total = await tx.financialSourceRecord.groupBy({
+    by: ['sourceType'],
     where: {
       sourceType: {
         in: [PURCHASE_RECOVERY_SOURCE, PURCHASE_RECOVERY_CORRECTION],
@@ -22,5 +23,10 @@ export async function netPurchasedCoinRecovery(
     },
     _sum: { amount: true },
   });
-  return total._sum.amount?.toNumber() ?? 0;
+  return total.reduce((net, row) => {
+    const amount = row._sum.amount?.toNumber() ?? 0;
+    return row.sourceType === PURCHASE_RECOVERY_SOURCE
+      ? net + amount
+      : net - amount;
+  }, 0);
 }
