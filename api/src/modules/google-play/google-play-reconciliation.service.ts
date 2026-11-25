@@ -328,11 +328,42 @@ export class GooglePlayReconciliationService {
           },
           _sum: { amount: true },
         });
-        // Legacy gifts carry no purchase allocation. Assume all purchased
-        // spend could have come from this order to get a safe lower bound.
+        const [attribution] = await tx.$queryRaw<
+          { total: bigint; originalOrder: bigint }[]
+        >`
+          SELECT COALESCE(SUM(item.coins), 0) AS total,
+                 COALESCE(SUM(item.coins) FILTER (
+                   WHERE item."purchaseId" = ${purchaseId}::uuid
+                 ), 0) AS "originalOrder"
+          FROM "FinancialSourceRecord" evidence
+          CROSS JOIN LATERAL jsonb_to_recordset(evidence.payload->'allocations')
+            AS item("purchaseId" uuid, coins integer)
+          WHERE evidence."sourceType" = 'GIFT_PURCHASE_SPEND_ALLOCATION'
+            AND evidence."beneficiaryId" = ${purchase.userId}::uuid
+        `;
+        const purchasedSpend = -(spend._sum.amount ?? 0);
+        const attributedSpend = Number(attribution.total);
+        const originalOrderAttributedSpend = Number(attribution.originalOrder);
+        if (
+          !Number.isSafeInteger(purchasedSpend) ||
+          !Number.isSafeInteger(attributedSpend) ||
+          attributedSpend < 0 ||
+          attributedSpend > purchasedSpend ||
+          originalOrderAttributedSpend < 0 ||
+          originalOrderAttributedSpend > Math.min(attributedSpend, grant.amount)
+        ) {
+          throw new ConflictException(
+            'Purchased coin spend attribution is inconsistent.',
+          );
+        }
+        // Only spending explicitly linked to another order can be excluded
+        // from this order’s conservative estimate.
+        const unattributedPurchasedSpend = purchasedSpend - attributedSpend;
         const conservativelyUnspentOrderCoins = Math.max(
           0,
-          grant.amount + (spend._sum.amount ?? 0),
+          grant.amount -
+            originalOrderAttributedSpend -
+            unattributedPurchasedSpend,
         );
         const originalOrderCoverage = Math.min(
           coveredByPurchasedWalletCoins,
@@ -345,6 +376,8 @@ export class GooglePlayReconciliationService {
           purchasedWalletCoins,
           coveredByPurchasedWalletCoins,
           originalOrderCoverage,
+          originalOrderAttributedSpend,
+          unattributedPurchasedSpend,
           coinsRequiringAttributionReview:
             verifiedRefundCoins - originalOrderCoverage,
           uncoveredCoins: verifiedRefundCoins - coveredByPurchasedWalletCoins,

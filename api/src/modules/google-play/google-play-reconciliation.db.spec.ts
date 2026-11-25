@@ -260,15 +260,31 @@ run('Google Play refund evidence against Postgres', () => {
       purchasedWalletCoins: 25,
       coveredByPurchasedWalletCoins: 25,
       originalOrderCoverage: 25,
+      originalOrderAttributedSpend: 0,
+      unattributedPurchasedSpend: 95,
       coinsRequiringAttributionReview: 55,
       uncoveredCoins: 55,
+    });
+    const otherGrantKey = randomUUID();
+    const otherPurchase = await prisma.googlePlayPurchase.create({
+      data: {
+        userId: refundUser,
+        purchaseTokenHash: tokenHash(randomUUID()),
+        encryptedToken: 'unused-by-preview',
+        productId,
+        quantity: 1,
+        coinAmount: 100,
+        purchaseTime: new Date(),
+        acknowledgementState: 1,
+        coinEntryKey: otherGrantKey,
+      },
     });
     await prisma.coinEntry.create({
       data: {
         userId: refundUser,
         kind: 'PURCHASE_GRANT',
         amount: 100,
-        key: randomUUID(),
+        key: otherGrantKey,
       },
     });
     expect(await service.previewRefundReversal(refundPurchase)).toMatchObject({
@@ -277,6 +293,32 @@ run('Google Play refund evidence against Postgres', () => {
       originalOrderCoverage: 25,
       coinsRequiringAttributionReview: 55,
       uncoveredCoins: 0,
+    });
+    const giftId = randomUUID();
+    await prisma.financialSourceRecord.create({
+      data: {
+        sourceType: 'GIFT_PURCHASE_SPEND_ALLOCATION',
+        sourceId: giftId,
+        eventType: 'PURCHASED_COINS_SPENT',
+        beneficiaryId: refundUser,
+        relatedIds: { giftId },
+        amount: 95,
+        unitCode: 'COIN',
+        payload: {
+          allocations: [
+            { purchaseId: refundPurchase, coins: 20 },
+            { purchaseId: otherPurchase.id, coins: 60 },
+          ],
+          unattributedCoins: 15,
+        },
+        occurredAt: new Date(),
+      },
+    });
+    expect(await service.previewRefundReversal(refundPurchase)).toMatchObject({
+      originalOrderCoverage: 80,
+      originalOrderAttributedSpend: 20,
+      unattributedPurchasedSpend: 15,
+      coinsRequiringAttributionReview: 0,
     });
   });
 
