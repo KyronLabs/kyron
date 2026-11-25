@@ -176,6 +176,14 @@ when their paths change and reports success for docs-only changes. Require
 the **Kyron PR gate** job in branch protection once it has reported on GitHub.
 The individual workflows still run on their existing push triggers.
 
+Trusted Flutter CI, development builds, and versioned releases require
+`DESIGN_SYSTEM_READ_TOKEN` as a repository Actions secret. Use a fine-grained
+GitHub token restricted to read-only contents of `KyronLabs/design-system`.
+Fork PRs do not receive this secret. A maintainer can review a fork's changes,
+then bring them onto a Kyron branch for the required Flutter check. The workflows
+cache the Flutter SDK separately and do not put private packages in the shared
+pub cache.
+
 | Area | Checks | Workflow |
 |:--|:--|:--|
 | Flutter | Dart formatting, Flutter analysis and widget/unit tests; Android release wiring checks. Windows build validation is paused. | [Flutter CI](.github/workflows/flutter-ci.yml) on app changes and workflow changes |

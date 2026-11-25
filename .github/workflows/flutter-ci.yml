@@ -12,6 +12,10 @@ on:
       # workflow ran nothing at all.
       - '.github/workflows/**'
   workflow_call:
+    secrets:
+      DESIGN_SYSTEM_READ_TOKEN:
+        description: Read-only access to KyronLabs/design-system for trusted builds
+        required: false
 
 permissions:
   contents: read
@@ -35,6 +39,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
@@ -49,9 +54,12 @@ jobs:
           flutter-version: '3.47.9'
           channel: stable
           cache: true
+          pub-cache: false
 
       - name: Install dependencies
-        run: flutter pub get
+        env:
+          DESIGN_SYSTEM_READ_TOKEN: ${{ secrets.DESIGN_SYSTEM_READ_TOKEN }}
+        run: bash ../scripts/flutter-pub-get-ci.sh
 
       # Checks the whole tree rather than a diff. The previous version derived
       # its file list from a diff range that differed between events -- a push
