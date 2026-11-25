@@ -247,7 +247,12 @@ export class GooglePlayReconciliationService {
       async (tx) => {
         const purchase = await tx.googlePlayPurchase.findUnique({
           where: { id: purchaseId },
-          select: { userId: true, quantity: true, coinAmount: true },
+          select: {
+            userId: true,
+            quantity: true,
+            coinAmount: true,
+            coinEntryKey: true,
+          },
         });
         if (!purchase)
           throw new NotFoundException('Google Play purchase not found.');
@@ -304,12 +309,44 @@ export class GooglePlayReconciliationService {
           verifiedRefundCoins,
           purchasedWalletCoins,
         );
+        const grant = await tx.coinEntry.findUnique({
+          where: { key: purchase.coinEntryKey },
+          select: { userId: true, kind: true, amount: true },
+        });
+        if (
+          grant?.userId !== purchase.userId ||
+          grant.kind !== CoinKind.PURCHASE_GRANT ||
+          grant.amount !== purchase.coinAmount
+        ) {
+          throw new ConflictException('Purchase credit could not be verified.');
+        }
+        const spend = await tx.coinEntry.aggregate({
+          where: {
+            userId: purchase.userId,
+            kind: CoinKind.PURCHASE_SPEND,
+            amount: { lt: 0 },
+          },
+          _sum: { amount: true },
+        });
+        // Legacy gifts carry no purchase allocation. Assume all purchased
+        // spend could have come from this order to get a safe lower bound.
+        const conservativelyUnspentOrderCoins = Math.max(
+          0,
+          grant.amount + (spend._sum.amount ?? 0),
+        );
+        const originalOrderCoverage = Math.min(
+          coveredByPurchasedWalletCoins,
+          conservativelyUnspentOrderCoins,
+        );
         return {
           purchaseId,
           refundedQuantity,
           verifiedRefundCoins,
           purchasedWalletCoins,
           coveredByPurchasedWalletCoins,
+          originalOrderCoverage,
+          coinsRequiringAttributionReview:
+            verifiedRefundCoins - originalOrderCoverage,
           uncoveredCoins: verifiedRefundCoins - coveredByPurchasedWalletCoins,
         };
       },
