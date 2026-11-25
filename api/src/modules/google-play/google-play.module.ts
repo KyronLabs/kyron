@@ -2,10 +2,13 @@ import { Module } from '@nestjs/common';
 
 import { SupabaseTokenModule } from '../auth/supabase-token.module';
 import { FinancialLedgerModule } from '../financial-ledger/financial-ledger.module';
+import { FinancialOperationsGuard } from '../financial-ledger/financial-operations.guard';
 import { GooglePlayPurchasesController } from './google-play-purchases.controller';
 import { GooglePlayDeveloperApiProvider } from './google-play-developer-api.provider';
 import { GooglePlayPurchasesService } from './google-play-purchases.service';
 import { GooglePlayNotificationsController } from './google-play-notifications.controller';
+import { GooglePlayReconciliationController } from './google-play-reconciliation.controller';
+import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
 import {
   GooglePlayNotificationAuth,
   GooglePlayNotificationsService,
@@ -16,12 +19,15 @@ import {
   controllers: [
     GooglePlayPurchasesController,
     GooglePlayNotificationsController,
+    GooglePlayReconciliationController,
   ],
   providers: [
     GooglePlayDeveloperApiProvider,
     GooglePlayPurchasesService,
     GooglePlayNotificationAuth,
     GooglePlayNotificationsService,
+    GooglePlayReconciliationService,
+    FinancialOperationsGuard,
   ],
   exports: [GooglePlayPurchasesService],
 })
