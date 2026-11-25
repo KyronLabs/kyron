@@ -18,7 +18,7 @@ import {
 } from './google-play-token';
 
 const SOURCE = 'GOOGLE_PLAY_REFUND_OBSERVATION';
-const REFUND_EVENTS = new Set([
+export const REFUND_EVENTS = new Set([
   'ONE_TIME_FULL_VOID',
   'ONE_TIME_PARTIAL_VOID',
   'ONE_TIME_CANCELED',
@@ -132,6 +132,8 @@ export class GooglePlayReconciliationService {
         eventType: true,
         receivedAt: true,
         processingError: true,
+        reconciliationAttemptCount: true,
+        reconciliationNextAttemptAt: true,
       },
     });
     const items = rows.slice(0, 100);
@@ -141,7 +143,7 @@ export class GooglePlayReconciliationService {
     };
   }
 
-  async reconcile(id: string, actorId: string) {
+  async reconcile(id: string, actorId: string | null) {
     const key = encryptionKey();
     const packageName = process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim();
     if (
@@ -314,7 +316,7 @@ export class GooglePlayReconciliationService {
     });
   }
 
-  private pending(id: string, actorId: string, reason: string) {
+  private pending(id: string, actorId: string | null, reason: string) {
     return this.prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "GooglePlayNotification" WHERE id = ${id}::uuid FOR UPDATE`;
       const event = await tx.googlePlayNotification.findUniqueOrThrow({
@@ -329,7 +331,7 @@ export class GooglePlayReconciliationService {
   private async recordPending(
     tx: Prisma.TransactionClient,
     id: string,
-    actorId: string,
+    actorId: string | null,
     reason: string,
   ) {
     await tx.googlePlayNotification.update({

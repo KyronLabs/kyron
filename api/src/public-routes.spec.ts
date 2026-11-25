@@ -44,6 +44,10 @@ const PUBLIC = new Map<string, string>([
     'checks a dedicated GOOGLE_PLAY_RECOVERY_CRON_KEY itself',
   ],
   [
+    'POST /internal/google-play/refund-reconciliation',
+    'checks a dedicated GOOGLE_PLAY_RECOVERY_CRON_KEY itself',
+  ],
+  [
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],

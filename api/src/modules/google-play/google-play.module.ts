@@ -15,6 +15,11 @@ import {
 } from './google-play-recovery.controller';
 import { GooglePlayRecoveryService } from './google-play-recovery.service';
 import {
+  GooglePlayRefundWorkerController,
+  GooglePlayRefundWorkerOperationsController,
+} from './google-play-refund-worker.controller';
+import { GooglePlayRefundWorkerService } from './google-play-refund-worker.service';
+import {
   GooglePlayNotificationAuth,
   GooglePlayNotificationsService,
 } from './google-play-notifications.service';
@@ -27,6 +32,8 @@ import {
     GooglePlayReconciliationController,
     GooglePlayRecoveryController,
     GooglePlayRecoveryOperationsController,
+    GooglePlayRefundWorkerController,
+    GooglePlayRefundWorkerOperationsController,
   ],
   providers: [
     GooglePlayDeveloperApiProvider,
@@ -35,6 +42,7 @@ import {
     GooglePlayNotificationsService,
     GooglePlayReconciliationService,
     GooglePlayRecoveryService,
+    GooglePlayRefundWorkerService,
     FinancialOperationsGuard,
   ],
   exports: [GooglePlayPurchasesService],
