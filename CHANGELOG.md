@@ -21,6 +21,13 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+## [0.1.50] - 2026-11-25
+### Added
+
+- Open coin recharge from Wallet or the red plus beside your gift balance.
+  The shop shows the packs and prices available in your Google Play storefront.
+- Open Coin help from the shop or Wallet for purchase and refund guidance.
+
 ## [0.1.49] - 2026-11-25
 ### Added
 
