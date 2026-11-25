@@ -36,6 +36,10 @@ const PUBLIC = new Map<string, string>([
     'checks CRON_KEY itself, and is a 404 on a server without one',
   ],
   [
+    'POST /purchases/google-play/notifications',
+    'requires the dedicated Google OIDC push identity, not a user session',
+  ],
+  [
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],

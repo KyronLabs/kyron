@@ -103,6 +103,37 @@ The client purchase callback is not proof of payment. The API must verify purcha
 
 Purchase UI must not ship until the backend verification and refund/reconciliation path is tested.
 
+### RTDN receipt boundary
+
+`POST /purchases/google-play/notifications` receives wrapped, authenticated
+Pub/Sub push messages only when `GOOGLE_PLAY_RTDN_ENABLED=true` and all
+dedicated push settings are configured. Verify Google's RS256 signature,
+issuer, expiration, audience, verified service-account email and immutable
+numeric service-account subject. Configure the exact subscription resource
+and Android package. Restrict IAM access to the dedicated push account's
+token-minting permissions and the topic's publishers.
+
+The existing `GooglePlayNotification` inbox deduplicates message IDs and
+rejects an ID reused with different decoded content. A successful response
+means receipt was committed, not that financial state changed. Retain a
+SHA-256 fingerprint, normalized event metadata, token hashes and encrypted
+tokens (including distinct pending refund-review tokens). Do not retain raw
+Pub/Sub bodies or JWTs. The inbox distinguishes purchases, cancellations,
+full and quantity-based partial voids, pending chargeback reviews,
+subscription notices and console test events. Malformed or unsupported
+events are rejected; configure Pub/Sub dead-letter handling.
+
+This slice does not call the Publisher API, grant or debit coins, update
+purchase status, issue or review refunds, change holds or move money.
+`processedAt` remains null until a later reconciliation implementation.
+Verify authoritative order and quantity evidence before posting compensating
+entries. Pending chargeback reviews require timely operator handling (Google
+documents a 24-hour response window). Keep live ingestion and purchases
+disabled until these operational paths are implemented and tested.
+
+References: [RTDN event reference](https://developer.android.com/google/play/billing/rtdn-reference)
+and [authenticated Pub/Sub pushes](https://cloud.google.com/pubsub/docs/authenticate-push-subscriptions).
+
 ## Bank payout boundary
 
 Bank payout integration is provider-neutral until a provider is selected after country coverage, licensing, settlement status, fees, reversals, webhook security and support procedures have been assessed. Store only the minimum bank destination data required, encrypt sensitive values, and never write full account numbers or credentials into audit metadata or application logs.
