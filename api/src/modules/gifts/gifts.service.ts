@@ -615,6 +615,12 @@ export class GiftsService {
       });
     }
     if (purchasedSpend > 0) {
+      await this.recordPurchasedSpendAllocation(
+        tx,
+        userId,
+        giftId,
+        purchasedSpend,
+      );
       entries.push({
         userId,
         kind: CoinKind.PURCHASE_SPEND,
@@ -624,6 +630,79 @@ export class GiftsService {
       });
     }
     return entries;
+  }
+
+  private async recordPurchasedSpendAllocation(
+    tx: Tx,
+    userId: string,
+    giftId: string,
+    purchasedSpend: number,
+  ) {
+    // The caller holds the buyer wallet lock. Historical spends could have
+    // come from any prior credit, so reserve the unknown amount against
+    // each lot rather than assigning an invented historical FIFO order.
+    const lots = await tx.$queryRaw<
+      { purchaseId: string; available: bigint }[]
+    >`
+      WITH allocations AS (
+        SELECT item."purchaseId", SUM(item.coins) AS coins
+        FROM "FinancialSourceRecord" evidence
+        CROSS JOIN LATERAL jsonb_to_recordset(evidence.payload->'allocations')
+          AS item("purchaseId" uuid, coins integer)
+        WHERE evidence."sourceType" = 'GIFT_PURCHASE_SPEND_ALLOCATION'
+          AND evidence."beneficiaryId" = ${userId}::uuid
+        GROUP BY item."purchaseId"
+      ), unknown_spend AS (
+        SELECT GREATEST(
+          COALESCE(SUM(-entry.amount::bigint), 0) -
+          (SELECT COALESCE(SUM(coins), 0) FROM allocations), 0
+        ) AS coins
+        FROM "CoinEntry" entry
+        WHERE entry."userId" = ${userId}::uuid AND entry.kind = 'PURCHASE_SPEND'
+          AND entry.amount < 0
+      )
+      SELECT purchase.id AS "purchaseId", balance.available
+      FROM "GooglePlayPurchase" purchase
+      JOIN "CoinEntry" credit ON credit.key = purchase."coinEntryKey"
+      LEFT JOIN allocations ON allocations."purchaseId" = purchase.id
+      CROSS JOIN unknown_spend
+      CROSS JOIN LATERAL (
+        SELECT (
+          credit.amount - COALESCE(allocations.coins, 0) -
+          unknown_spend.coins
+        )::bigint AS available
+      ) balance
+      WHERE purchase."userId" = ${userId}::uuid
+        AND credit."userId" = purchase."userId"
+        AND credit.kind = 'PURCHASE_GRANT'
+        AND credit.amount = purchase."coinAmount"
+        AND purchase.status IN ('VERIFIED', 'CONSUMED')
+        AND balance.available > 0
+      ORDER BY credit."createdAt", purchase.id
+    `;
+    let remaining = purchasedSpend;
+    const allocations = [];
+    for (const lot of lots) {
+      if (remaining === 0) break;
+      const coins = Math.min(remaining, Number(lot.available));
+      allocations.push({ purchaseId: lot.purchaseId, coins });
+      remaining -= coins;
+    }
+
+    await tx.financialSourceRecord.create({
+      data: {
+        sourceType: 'GIFT_PURCHASE_SPEND_ALLOCATION',
+        sourceId: giftId,
+        eventType: 'PURCHASED_COINS_SPENT',
+        actorId: userId,
+        beneficiaryId: userId,
+        relatedIds: { giftId },
+        amount: purchasedSpend,
+        unitCode: 'COIN',
+        payload: { allocations, unattributedCoins: remaining },
+        occurredAt: new Date(),
+      },
+    });
   }
 
   /** Holds the account's row until the transaction ends. */
