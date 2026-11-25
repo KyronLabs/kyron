@@ -6,7 +6,10 @@ import {
   type GooglePlayOrder,
   type GooglePlayProductPurchaseV2,
 } from './google-play-developer-api.provider';
-import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
+import {
+  ChargebackReviewDecision,
+  GooglePlayReconciliationService,
+} from './google-play-reconciliation.service';
 import { encryptPurchaseToken, tokenHash } from './google-play-token';
 
 const url = process.env.MODERATION_TEST_DATABASE_URL;
@@ -151,7 +154,25 @@ run('Google Play refund evidence against Postgres', () => {
       notificationId: event.id,
       purchaseId,
       observedAt: source.occurredAt,
+      review: null,
     });
+    const recordReview = (decision: ChargebackReviewDecision) =>
+      service.reviewChargebackEvidence(source.id, actorId, decision);
+    const decision = ChargebackReviewDecision.ReferForRecovery;
+    const [review, retry] = await Promise.all([
+      recordReview(decision),
+      recordReview(decision),
+    ]);
+    expect(retry).toEqual(review);
+    await expect(
+      recordReview(ChargebackReviewDecision.NoAction),
+    ).rejects.toThrow('This evidence already has a review decision.');
+    expect((await service.listChargebackEvidence()).items).toContainEqual(
+      expect.objectContaining({
+        evidenceId: source.id,
+        review: { reviewId: review.reviewId, decision },
+      }),
+    );
     const current = await prisma.googlePlayNotification.findUniqueOrThrow({
       where: { id: event.id },
     });
