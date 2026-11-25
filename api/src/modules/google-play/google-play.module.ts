@@ -10,6 +10,11 @@ import { GooglePlayNotificationsController } from './google-play-notifications.c
 import { GooglePlayReconciliationController } from './google-play-reconciliation.controller';
 import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
 import {
+  GooglePlayRecoveryController,
+  GooglePlayRecoveryOperationsController,
+} from './google-play-recovery.controller';
+import { GooglePlayRecoveryService } from './google-play-recovery.service';
+import {
   GooglePlayNotificationAuth,
   GooglePlayNotificationsService,
 } from './google-play-notifications.service';
@@ -20,6 +25,8 @@ import {
     GooglePlayPurchasesController,
     GooglePlayNotificationsController,
     GooglePlayReconciliationController,
+    GooglePlayRecoveryController,
+    GooglePlayRecoveryOperationsController,
   ],
   providers: [
     GooglePlayDeveloperApiProvider,
@@ -27,6 +34,7 @@ import {
     GooglePlayNotificationAuth,
     GooglePlayNotificationsService,
     GooglePlayReconciliationService,
+    GooglePlayRecoveryService,
     FinancialOperationsGuard,
   ],
   exports: [GooglePlayPurchasesService],

@@ -103,13 +103,17 @@ export class GooglePlayDeveloperApiProvider {
     pageToken?: string,
   ): Promise<GooglePlayVoidedPurchasesPage> {
     const query = new URLSearchParams({
-      startTime: String(startTime),
-      endTime: String(endTime),
       type: '0',
       includeQuantityBasedPartialRefund: 'true',
       maxResults: '100',
     });
-    if (pageToken) query.set('token', pageToken);
+    if (pageToken) {
+      // Google ignores time filters when a continuation token is supplied.
+      query.set('token', pageToken);
+    } else {
+      query.set('startTime', String(startTime));
+      query.set('endTime', String(endTime));
+    }
     const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/voidedpurchases?${query.toString()}`;
     return this.request<GooglePlayVoidedPurchasesPage>(url, 'GET', true);
   }

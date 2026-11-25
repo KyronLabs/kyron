@@ -2330,6 +2330,22 @@ model GooglePlayPurchase {
 }
 
 /// Idempotency inbox for Google Play RTDN and administrative lifecycle events.
+/// Durable Voided Purchases API scan checkpoint, independent of RTDN receipt.
+model GooglePlayRecoveryCheckpoint {
+  packageName        String    @id @db.VarChar(255)
+  revision           Int       @default(0)
+  coveredThrough     DateTime? @db.Timestamptz()
+  windowStart        DateTime? @db.Timestamptz()
+  windowEnd          DateTime? @db.Timestamptz()
+  encryptedPageToken String?   @db.Text
+  pagesInWindow      Int       @default(0)
+  lastAttemptAt      DateTime? @db.Timestamptz()
+  lastSuccessAt      DateTime? @db.Timestamptz()
+  lastError          String?   @db.VarChar(80)
+  createdAt          DateTime  @default(now()) @db.Timestamptz()
+  updatedAt          DateTime  @updatedAt @db.Timestamptz()
+}
+
 model GooglePlayNotification {
   id                String   @id @default(uuid()) @db.Uuid
   messageId         String   @unique @db.VarChar(200)

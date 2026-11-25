@@ -236,3 +236,47 @@ pseudonymous actor and beneficiary UUIDs, related source identifiers, value,
 unit and the minimum event payload needed for reconciliation. It intentionally
 does not copy profile details, post/comment text, nomination reasons or review
 notes. See [Ledger and Migration](./LEDGER_AND_MIGRATION.md#financial-source-record-retention).
+
+### Scheduled recovery of missed void notifications
+
+The separate `Google Play void recovery` workflow runs twice per hour when
+repository variable `GOOGLE_PLAY_RECOVERY_ENABLED=true`. Configure the
+same dedicated random `GOOGLE_PLAY_RECOVERY_CRON_KEY` as a GitHub secret
+and an API environment variable; also enable
+`GOOGLE_PLAY_RECOVERY_ENABLED=true` on the API, with configured Publisher
+credentials, package and token encryption key. Do not reuse CRON_KEY.
+Without these settings, the workflow is skipped or the API fails closed.
+
+A successful page stores normalized, encrypted-token receipts in the existing
+GooglePlayNotification inbox and advances the package checkpoint in one
+transaction. A revision compare-and-swap prevents competing runners from
+overwriting progress. The first scan requests the preceding 29 days ending
+five minutes before the current time. Later scans overlap the last completed
+window by 48 hours, and a fixed window plus encrypted continuation token
+survives restarts. The completed coverage watermark advances only after the
+last page; a backward clock adjustment cannot reduce it. Provider
+selection is by API visibility time, not the returned void timestamp; never
+derive the next cursor from that timestamp. The workflow attempts at most six
+pages per run, resumes next run, and surfaces failures without logging tokens.
+An invalid continuation token restarts the same window with deterministic
+receipt IDs. A malformed page or retention gap fails closed. A checkpoint
+older than the supported window requires audited manual incident recovery;
+do not reset it and silently claim the missing history was covered.
+
+Exact repeated provider records use deterministic IDs based on package, order,
+token digest, void time, quantity, reason and source. RTDN uses Pub/Sub message
+IDs, so the same underlying refund may have a receipt from each channel.
+Both feed the same cumulative observation service; do not sum receipts or
+observations, and never assume a partial quantity is a full refund. Recovered
+notices are `ONE_TIME_VOID_RECOVERED` and remain pending for authoritative
+order/product verification through the existing operator retry path. A
+scheduled verification worker, chargeback review and ledger posting are
+still separate follow-ups. No coin, creator earnings, purchase status or
+payout changes occur during the sweep.
+
+AAL2 administrators can inspect sanitized checkpoint progress and pending
+recovered receipt count at `GET /financial-operations/google-play/void-recovery`.
+The endpoint omits encrypted continuation tokens, raw purchase tokens and
+provider bodies. A retention gap or repeated page/provider error requires
+operator intervention. The checkpoint table is RLS-enabled and inaccessible
+to public Supabase roles.

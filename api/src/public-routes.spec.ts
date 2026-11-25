@@ -40,6 +40,10 @@ const PUBLIC = new Map<string, string>([
     'requires the dedicated Google OIDC push identity, not a user session',
   ],
   [
+    'POST /internal/google-play/void-recovery',
+    'checks a dedicated GOOGLE_PLAY_RECOVERY_CRON_KEY itself',
+  ],
+  [
     'GET /profile/:username',
     'public profiles; returns no email, and reads a session if one is sent',
   ],
