@@ -413,6 +413,37 @@ run('Google Play refund evidence against Postgres', () => {
       ]);
       expect(correctionReplay).toEqual(correction);
       expect(correction).toMatchObject({ restoredCoins: 85 });
+      const history = await service.listRefundRecoveries({
+        purchaseId: refundPurchase,
+        shortfallOnly: true,
+      });
+      expect(history).toMatchObject({
+        items: [
+          {
+            recoveryId: posted.recoveryId,
+            noticeId: posted.noticeId,
+            purchaseId: refundPurchase,
+            refundEvidenceId: chargeback.id,
+            recoveredCoins: 85,
+            recordedShortfallCoins: 35,
+            ledgerTransactionId: posted.ledgerTransactionId,
+            correction: {
+              correctionId: correction.correctionId,
+              noticeId: correction.noticeId,
+              restoredCoins: 85,
+              ledgerTransactionId: correction.ledgerTransactionId,
+            },
+          },
+        ],
+        nextAfter: null,
+      });
+      expect(history.items[0]).not.toHaveProperty('payload');
+      expect(
+        await service.listRefundRecoveries({
+          purchaseId: refundPurchase,
+          after: posted.recoveryId,
+        }),
+      ).toEqual({ items: [], nextAfter: null });
       const notices = await listPurchasedCoinNotices(prisma, refundUser);
       expect(notices).toMatchObject([
         {
