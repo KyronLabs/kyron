@@ -107,6 +107,30 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Check development signing inputs
+        env:
+          DEV_KEYSTORE: ${{ secrets.ANDROID_DEV_KEYSTORE_BASE64 }}
+          DEV_STORE_PASSWORD: ${{ secrets.ANDROID_DEV_KEYSTORE_PASSWORD }}
+          DEV_KEY_PASSWORD: ${{ secrets.ANDROID_DEV_KEY_PASSWORD }}
+          DEV_KEY_ALIAS: ${{ secrets.ANDROID_DEV_KEY_ALIAS }}
+          DEV_CERT_SHA256: ${{ vars.ANDROID_DEV_CERT_SHA256 }}
+        run: |
+          set -euo pipefail
+          missing=()
+          [[ -n "$DEV_KEYSTORE" ]] || missing+=(ANDROID_DEV_KEYSTORE_BASE64)
+          [[ -n "$DEV_STORE_PASSWORD" ]] || missing+=(ANDROID_DEV_KEYSTORE_PASSWORD)
+          [[ -n "$DEV_KEY_PASSWORD" ]] || missing+=(ANDROID_DEV_KEY_PASSWORD)
+          [[ -n "$DEV_KEY_ALIAS" ]] || missing+=(ANDROID_DEV_KEY_ALIAS)
+          [[ -n "$DEV_CERT_SHA256" ]] || missing+=(ANDROID_DEV_CERT_SHA256)
+          if (( ${#missing[@]} > 0 )); then
+            printf '::error::Missing development signing settings: %s. See app/android/dev-signing/README.md.\n' "${missing[*]}"
+            exit 1
+          fi
+          if [[ ! "$DEV_CERT_SHA256" =~ ^[0-9A-Fa-f]{64}$ ]]; then
+            echo "::error::ANDROID_DEV_CERT_SHA256 must be 64 hexadecimal characters."
+            exit 1
+          fi
+
       # Pinned rather than left to whatever the runner image ships. The Android
       # Gradle Plugin and Kotlin target 17 (app/android/app/build.gradle.kts).
       - name: Set up Java

@@ -4,8 +4,10 @@ The previous development signing certificate is retired. Its public
 certificate and fingerprint remain as parser test fixtures and as a deny
 list entry. No private keystore belongs in source control.
 
-Before merging the signing migration, generate a **new** private key on a
-trusted device. Do not reuse the previous development key or the Play
+If Development Build reports missing signing settings, provision them before
+rerunning it. Generate a **new** private key on a trusted device if you have
+not already created one. If a replacement key is already in use, keep the
+same key and certificate to preserve app upgrades. Do not reuse the previous development key or the Play
 upload key. Back up the new keystore securely outside this repository.
 
 ```bash
@@ -27,8 +29,12 @@ issue, commit, public log or paste site.
 - `ANDROID_DEV_KEYSTORE_PASSWORD`: store password.
 - `ANDROID_DEV_KEY_PASSWORD`: private-key password.
 - `ANDROID_DEV_KEY_ALIAS`: key alias.
-- Repository variable `ANDROID_DEV_CERT_SHA256`: lowercase SHA-256 of the
+- Repository **Actions variable** `ANDROID_DEV_CERT_SHA256`: lowercase SHA-256 of the
   new public DER certificate (the first field printed by sha256sum).
+
+Add these at repository scope. The Development Build job does not select a
+GitHub environment, so environment-scoped values are unavailable. The preflight
+reports missing names without printing their values.
 
 Use a trusted password manager or local protected files when provisioning
 secrets. Do not print the base64 in shared terminal logs. For example with
