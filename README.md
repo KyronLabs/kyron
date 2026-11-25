@@ -225,6 +225,13 @@ it — they are signed with the development key, so adding the upload key does
 not change what is on anybody's phone. It signs only that build's `.aab`, which
 Play re-signs before anybody installs it.
 
+Development builds now publish their verified APKs and Play-compatible bundle
+directly to GitHub Releases from the Android runner. They do not use temporary
+Actions artifact storage. The Android job has contents-write permission for
+release publication, and checkout does not persist that credential. Temporary
+signing files are removed before publishing. Versioned releases retain their
+separate artifact and Play-upload jobs.
+
 ### Google Play
 
 The `.aab` is what goes to Play; the APKs are for installing by hand. Every
