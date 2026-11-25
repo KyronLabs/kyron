@@ -6,11 +6,7 @@ on:
       - "app/lib/l10n/**"
       - "scripts/check-localization.py"
       - ".github/workflows/localization.yml"
-  pull_request:
-    paths:
-      - "app/lib/l10n/**"
-      - "scripts/check-localization.py"
-      - ".github/workflows/localization.yml"
+  workflow_call:
   workflow_dispatch:
 
 permissions:

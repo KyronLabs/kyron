@@ -9,10 +9,7 @@ on:
     paths:
       - 'api/**'
       - '.github/workflows/api-ci.yml'
-  pull_request:
-    paths:
-      - 'api/**'
-      - '.github/workflows/api-ci.yml'
+  workflow_call:
 
 permissions:
   contents: read

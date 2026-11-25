@@ -1,0 +1,109 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changed:
+    name: Identify CI requirements
+    runs-on: ubuntu-latest
+    outputs:
+      api: ${{ steps.paths.outputs.api }}
+      flutter: ${{ steps.paths.outputs.flutter }}
+      localization: ${{ steps.paths.outputs.localization }}
+    steps:
+      - name: Checkout the proposed merge
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The merge and both parents. The first parent is the exact base
+          # used for the merge ref, even if the target branch moves later.
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Classify changed paths
+        id: paths
+        shell: bash
+        run: |
+          git diff --name-only --no-renames -z HEAD^1 HEAD > "$RUNNER_TEMP/changed-paths"
+          api=false
+          flutter=false
+          localization=false
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              api/*|.github/workflows/api-ci.yml) api=true ;;
+            esac
+            case "$path" in
+              app/*|CHANGELOG.md|scripts/*|.github/workflows/*) flutter=true ;;
+            esac
+            case "$path" in
+              app/lib/l10n/*|scripts/check-localization.py|.github/workflows/localization.yml)
+                localization=true ;;
+            esac
+            # A change to this dispatcher must exercise every workflow.
+            if [[ "$path" == .github/workflows/pr-gate.yml ]]; then
+              api=true
+              flutter=true
+              localization=true
+            fi
+          done < "$RUNNER_TEMP/changed-paths"
+          {
+            echo "api=$api"
+            echo "flutter=$flutter"
+            echo "localization=$localization"
+          } >> "$GITHUB_OUTPUT"
+
+  api:
+    needs: changed
+    if: needs.changed.outputs.api == 'true'
+    uses: ./.github/workflows/api-ci.yml
+
+  flutter:
+    needs: changed
+    if: needs.changed.outputs.flutter == 'true'
+    uses: ./.github/workflows/flutter-ci.yml
+
+  localization:
+    needs: changed
+    if: needs.changed.outputs.localization == 'true'
+    uses: ./.github/workflows/localization.yml
+
+  gate:
+    name: Kyron PR gate
+    needs: [changed, api, flutter, localization]
+    if: always()
+    runs-on: ubuntu-latest
+    env:
+      CLASSIFY_RESULT: ${{ needs.changed.result }}
+      API_REQUIRED: ${{ needs.changed.outputs.api }}
+      API_RESULT: ${{ needs.api.result }}
+      FLUTTER_REQUIRED: ${{ needs.changed.outputs.flutter }}
+      FLUTTER_RESULT: ${{ needs.flutter.result }}
+      L10N_REQUIRED: ${{ needs.changed.outputs.localization }}
+      L10N_RESULT: ${{ needs.localization.result }}
+    steps:
+      - name: Verify required suites passed
+        shell: bash
+        run: |
+          if [[ "$CLASSIFY_RESULT" != success ]]; then
+            echo "::error::Could not determine which suites to run."
+            exit 1
+          fi
+
+          check() {
+            local suite=$1 required=$2 result=$3
+            case "$required:$result" in
+              true:success|false:skipped) ;;
+              *)
+                echo "::error::$suite was required=$required and finished with result=$result."
+                return 1 ;;
+            esac
+          }
+          check 'API' "$API_REQUIRED" "$API_RESULT"
+          check 'Flutter' "$FLUTTER_REQUIRED" "$FLUTTER_RESULT"
+          check 'Localization' "$L10N_REQUIRED" "$L10N_RESULT"
