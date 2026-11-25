@@ -289,6 +289,8 @@ jobs:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
         run: |
+          set -euo pipefail
+          rm -f app/build/app/outputs/bundle/release/app-release.aab
           scripts/android-ci.sh run app flutter build appbundle --release --no-pub \
             --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
@@ -311,7 +313,7 @@ jobs:
           bundle="release-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
           cp "$src" "$bundle"
           scripts/check-aab.sh --keystore app/android/upload-keystore.jks \
-            --build "$KYRON_BUILD_NUMBER" "$bundle"
+            --build "$KYRON_BUILD_NUMBER" --version "$VERSION" "$bundle"
           ls -lh release-artifacts
 
       # The same check the development builds get, for the same reason: a

@@ -15,7 +15,7 @@
 #                   plus whatever pubspec.yaml says.
 #
 # Usage:
-#   scripts/check-aab.sh --keystore FILE [--build N] AAB...
+#   scripts/check-aab.sh --keystore FILE [--build N] [--version X.Y.Z] AAB...
 #
 # The keystore is the upload key's, opened with ANDROID_KEYSTORE_PASSWORD and
 # ANDROID_KEY_ALIAS from the environment -- the names of the repository
@@ -31,16 +31,24 @@ here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PACKAGE=so.kyron.app
 
 usage() {
-  echo "usage: scripts/check-aab.sh --keystore FILE [--build N] AAB..."
+  echo "usage: scripts/check-aab.sh --keystore FILE [--build N] [--version X.Y.Z] AAB..."
 }
 
 keystore=
 build=
+version_expected=
 bundles=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --keystore) keystore=${2:-}; shift; [ $# -eq 0 ] || shift ;;
     --build) build=${2:-}; shift; [ $# -eq 0 ] || shift ;;
+    --version)
+      if [ "$#" -lt 2 ] || ! [[ "$2" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "--version requires X.Y.Z." >&2
+        exit 2
+      fi
+      version_expected=$2
+      shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) bundles+=("$1"); shift ;;
   esac
@@ -85,6 +93,11 @@ for bundle in "${bundles[@]}"; do
   if [ -n "$build" ] && [ "$code" != $((100000 + build)) ]; then
     echo "$name: versionCode $code, and build $build should be $((100000 + build))."
     echo "Was --build-number passed to flutter build appbundle?"
+    exit 1
+  fi
+
+  if [ -n "$version_expected" ] && [ "$version" != "$version_expected" ]; then
+    echo "$name: versionName $version does not match release version $version_expected."
     exit 1
   fi
 
