@@ -14,7 +14,7 @@ import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsGuard } from '../financial-ledger/financial-operations.guard';
 import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
 
-export class GooglePlayNotificationListQuery {
+export class GooglePlayEvidenceListQuery {
   @IsOptional()
   @IsUUID()
   after?: string;
@@ -28,7 +28,7 @@ export class GooglePlayReconciliationController {
   ) {}
 
   @Get()
-  list(@Query() query: GooglePlayNotificationListQuery) {
+  list(@Query() query: GooglePlayEvidenceListQuery) {
     return this.reconciliation.listPending(query.after);
   }
 
@@ -38,5 +38,18 @@ export class GooglePlayReconciliationController {
     @Req() request: AuthRequest,
   ) {
     return this.reconciliation.reconcile(id, request.user.id);
+  }
+}
+
+@Controller('financial-operations/google-play/chargeback-evidence')
+@UseGuards(AuthGuard, FinancialOperationsGuard)
+export class GooglePlayChargebackEvidenceController {
+  constructor(
+    private readonly reconciliation: GooglePlayReconciliationService,
+  ) {}
+
+  @Get()
+  list(@Query() query: GooglePlayEvidenceListQuery) {
+    return this.reconciliation.listChargebackEvidence(query.after);
   }
 }

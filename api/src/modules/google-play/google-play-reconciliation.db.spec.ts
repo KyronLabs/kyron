@@ -35,7 +35,7 @@ run('Google Play refund evidence against Postgres', () => {
     listVoidedPurchases: jest.fn(),
   };
 
-  function observation(remaining: number) {
+  function observation(remaining: number, voidedReason = 7) {
     const order: GooglePlayOrder = {
       orderId,
       purchaseToken: token,
@@ -61,7 +61,7 @@ run('Google Play refund evidence against Postgres', () => {
           orderId,
           purchaseToken: token,
           voidedTimeMillis: '1795500000000',
-          voidedReason: 7,
+          voidedReason,
           voidedSource: 2,
         },
       ],
@@ -145,6 +145,13 @@ run('Google Play refund evidence against Postgres', () => {
       },
     });
     expect(JSON.stringify(source.payload)).not.toContain(token);
+    const chargebacks = await service.listChargebackEvidence();
+    expect(chargebacks.items).toContainEqual({
+      evidenceId: source.id,
+      notificationId: event.id,
+      purchaseId,
+      observedAt: source.occurredAt,
+    });
     const current = await prisma.googlePlayNotification.findUniqueOrThrow({
       where: { id: event.id },
     });
@@ -171,10 +178,14 @@ run('Google Play refund evidence against Postgres', () => {
         select: { processedAt: true },
       }),
     ).toEqual({ processedAt: null });
-    observation(0);
+    observation(0, 1);
     expect(await service.reconcile(event.id, actorId)).toMatchObject({
       status: 'EVIDENCE_RETAINED',
     });
+    const chargebacks = await service.listChargebackEvidence();
+    expect(
+      chargebacks.items.some((row) => row.notificationId === event.id),
+    ).toBe(false);
   });
 
   it('leaves unmatched receipts and provider failures retryable', async () => {
