@@ -23,7 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
-# it reads that one answer -- so the APKs and bundle out of one push carry the same number. It is the commit count,
+# it reads that one answer -- so the APKs out of one push carry the same number. It is the commit count,
 # shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
@@ -88,8 +88,9 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
   android:
-    name: Build, validate and publish the development APKs and Play bundle
+    name: Build, validate and publish the development APKs
     needs: version
+    if: github.ref == 'refs/heads/main'
     # Avoid an unreviewed Android host-image upgrade via ubuntu-latest.
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -153,71 +154,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Release mode: a development build has to be one the people it is for
-      # can actually run.
-      #
-      # `--debug` produced an APK that would not install. Two things were
-      # wrong with it and release mode fixes both. It carried
-      # `android:debuggable="true"`, which ColorOS, MIUI, Funtouch and several
-      # other OEM skins refuse outright from an unknown source -- the message
-      # they show is "App not installed as package appears to be invalid",
-      # which sounds like a corrupt file and is not. And it was enormous:
-      # 114 MB for arm64 and 190 MB universal, because a Flutter debug APK
-      # carries the Dart kernel for the JIT (87 MB of `kernel_blob.bin`), the
-      # debug engine (39 MB of `libflutter.so`) and 15 MB of Vulkan validation
-      # layers that exist only in debug. Over a phone connection that is a
-      # download long enough to truncate, and a truncated APK fails with that
-      # same message.
-      #
-      # The signing key is written below, and it has to be, because the
-      # absence of one is what made "package appears to be invalid" come
-      # back after this workflow was already building in release mode.
-      #
-      # With no `key.properties`, `buildTypes.release` falls back to
-      # `signingConfigs.debug` -- and on a fresh runner there is no
-      # `~/.android/debug.keystore`, so Gradle mints a brand new one. Every
-      # development build was therefore signed with a *different* key:
-      #
-      #   build 74  CN=Android Debug  notBefore Sep 13 12:48:15 2026
-      #   build 75  CN=Android Debug  notBefore Sep 13 18:12:08 2026
-      #
-      # Each certificate created during its own build, minutes before it
-      # signed the APK. Android refuses to install a package whose signature
-      # does not match the one already installed -- that is
-      # INSTALL_FAILED_UPDATE_INCOMPATIBLE -- and the package installers on
-      # ColorOS, MIUI and Funtouch report it as "App not installed as package
-      # appears to be invalid". Same words as the debuggable failure, entirely
-      # different cause, and it strikes on the *second* install rather than
-      # the first, which is why it reads as intermittent.
-      #
-      # And a third cause, found the same way: `--split-per-abi` gave each APK
-      # in a build a different versionCode, so the second file anybody tried
-      # was refused as a downgrade -- again in those six words. The builds
-      # below are one architecture at a time for that reason.
-      # Optional here, unlike the release. A development APK without push is
-      # still worth having, and this is what a contributor's own checkout
-      # looks like -- the Gradle plugin is skipped and the build says so.
-      # One key for every development build, so build N+1 installs over
-      # build N instead of being refused.
-      #
-      # `ANDROID_DEV_KEYSTORE_BASE64` if it is set, so development builds can
-      # have a key of their own, taken as a set rather than field by field --
-      # half of one keystore and half of another is a build failure with a
-      # confusing message.
-      #
-      # Never the release key. That is the Play upload key, and it used to be
-      # the fallback here: so adding it as a secret, to publish to Play, would
-      # quietly re-sign every development build with it, and every phone
-      # carrying the last one would refuse the next as a different app until
-      # it was uninstalled. The upload key signs what goes to Play and nothing
-      # else -- here, the bundle built after the APKs, which is not installed
-      # by hand.
-      #
-      # Without a development key -- which is the state this repository is
-      # actually in -- the key committed at app/android/dev-signing/. There is
-      # always a key.
-      # A build signed with one nobody has seen before is a build nobody can
-      # install, and "set a secret first" is not an answer a fork can use.
+      # Official development builds must have their own non-public signing
+      # key. Never fall back to the historical committed key, Android's
+      # generated debug key, or the Google Play upload key.
       - name: Write the signing key
         working-directory: .
         env:
@@ -225,47 +164,48 @@ jobs:
           DEV_STORE_PASSWORD: ${{ secrets.ANDROID_DEV_KEYSTORE_PASSWORD }}
           DEV_KEY_PASSWORD: ${{ secrets.ANDROID_DEV_KEY_PASSWORD }}
           DEV_KEY_ALIAS: ${{ secrets.ANDROID_DEV_KEY_ALIAS }}
+          DEV_CERT_SHA256: ${{ vars.ANDROID_DEV_CERT_SHA256 }}
         run: |
           set -euo pipefail
-          if [ -n "$DEV_KEYSTORE" ]; then
-            which=development
-            keystore=$DEV_KEYSTORE
-            store_password=$DEV_STORE_PASSWORD
-            key_password=$DEV_KEY_PASSWORD
-            key_alias=$DEV_KEY_ALIAS
-          else
-            # The key in the repository. Not a fallback to nothing: there is
-            # always a key, because a build signed with a key nobody has seen
-            # before is a build nobody can install.
-            #
-            # app/android/dev-signing/README.md is the argument for committing
-            # it, including why it is safe and why that does not generalise.
-            which="committed development"
-            keystore=
-            store_password=kyron-development
-            key_password=kyron-development
-            key_alias=kyron-dev
+          umask 077
+          if [ -z "$DEV_KEYSTORE" ] || [ -z "$DEV_STORE_PASSWORD" ] || [ -z "$DEV_KEY_PASSWORD" ] || [ -z "$DEV_KEY_ALIAS" ]; then
+            echo "::error::Configure a new private development keystore and all four development signing secrets."
+            exit 1
           fi
-
-          if [ -n "$keystore" ]; then
-            printf '%s' "$keystore" | base64 --decode > app/android/dev-keystore.jks
-            store_file=../dev-keystore.jks
-            echo "KYRON_PINNED=no" >> "$GITHUB_ENV"
-          else
-            store_file=../dev-signing/kyron-dev.jks
-            # Only the committed key has a fingerprint this repository knows,
-            # so only then can the check below compare against it.
-            echo "KYRON_PINNED=yes" >> "$GITHUB_ENV"
+          pin=$(printf '%s' "$DEV_CERT_SHA256" | tr '[:upper:]' '[:lower:]')
+          if [[ ! "$pin" =~ ^[0-9a-f]{64}$ ]]; then
+            echo "::error::Configure ANDROID_DEV_CERT_SHA256 with the new certificate fingerprint."
+            exit 1
           fi
-
+          legacy=$(tr -d '[:space:]' < app/android/dev-signing/fingerprint.txt)
+          if [ "$pin" = "$legacy" ]; then
+            echo "::error::The retired development signing certificate cannot sign official builds."
+            exit 1
+          fi
+          # Gradle reads Java properties. Restrict these values to a safe
+          # alphabet so a newline, backslash or delimiter cannot alter them.
+          for value in "$DEV_STORE_PASSWORD" "$DEV_KEY_PASSWORD" "$DEV_KEY_ALIAS"; do
+            if [[ ! "$value" =~ ^[A-Za-z0-9_-]{6,128}$ ]]; then
+              echo "::error::Use 6-128 safe ASCII characters for signing properties."
+              exit 1
+            fi
+          done
+          printf '%s' "$DEV_KEYSTORE" | base64 --decode > app/android/dev-keystore.jks
+          actual=$(keytool -exportcert -keystore app/android/dev-keystore.jks \
+            -alias "$DEV_KEY_ALIAS" -storepass:env DEV_STORE_PASSWORD | sha256sum | cut -d' ' -f1)
+          if [ "$actual" != "$pin" ]; then
+            echo "::error::Development keystore certificate does not match the configured fingerprint."
+            exit 1
+          fi
           cat > app/android/key.properties <<EOF
-          storePassword=$store_password
-          keyPassword=$key_password
-          keyAlias=$key_alias
-          storeFile=$store_file
+          storePassword=$DEV_STORE_PASSWORD
+          keyPassword=$DEV_KEY_PASSWORD
+          keyAlias=$DEV_KEY_ALIAS
+          storeFile=../dev-keystore.jks
           EOF
+          echo "KYRON_DEV_CERT_SHA256=$pin" >> "$GITHUB_ENV"
           echo "KYRON_SIGNED=yes" >> "$GITHUB_ENV"
-          echo "Signing with the $which key."
+          echo "Private development signing configured."
 
       - name: Write the Firebase configuration
         working-directory: .
@@ -364,87 +304,16 @@ jobs:
         working-directory: .
         run: |
           set -euo pipefail
-          # Pinned to the key committed at app/android/dev-signing, when that
-          # is the key in use: it is the only one whose fingerprint this
-          # repository knows. A secret keystore has nothing here to pin to,
-          # and everything else about the check still applies.
-          if [ "${KYRON_PINNED:-no}" = yes ]; then
-            pin=$(tr -d '[:space:]' < app/android/dev-signing/fingerprint.txt)
-            test -n "$pin" || {
-              echo "app/android/dev-signing/fingerprint.txt is empty."
-              exit 1
-            }
-            scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" --pin "$pin" debug-artifacts/*.apk
-          else
-            scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" debug-artifacts/*.apk
-          fi
+          scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" --pin "$KYRON_DEV_CERT_SHA256" debug-artifacts/*.apk
 
-      # And the bundle for Play, from the same commit and with the same number.
-      #
-      # Only versioned releases used to make one, so the newest code was never
-      # something Play could be given without cutting a version -- a bump, a
-      # changelog section, a tag and a public release, to put a build in front
-      # of internal testers. Now every development build carries one, and a
-      # release is for when there is a version to name.
-      #
-      # Signed with the upload key, which is what Play requires and what it
-      # replaces with the app signing key before anybody installs it. So this
-      # changes nothing on anybody's phone: the APKs above are still the
-      # development key's, and checked as such before this step rewrites
-      # key.properties.
-      #
-      # Required here, where the secrets are, so a deleted one is a failed
-      # build rather than a bundle that quietly stopped appearing. A fork has
-      # none of them and gets the APKs.
-      - name: Build the Play bundle
-        working-directory: .
-        env:
-          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-          VERSION: ${{ needs.version.outputs.version }}
-          CANONICAL: ${{ github.repository == 'KyronLabs/kyron' }}
-        run: |
-          set -euo pipefail
-          if [ -z "$ANDROID_KEYSTORE_BASE64" ] || [ -z "$GOOGLE_SERVICES_JSON" ]; then
-            if [ "$CANONICAL" = true ]; then
-              echo "No upload key or no GOOGLE_SERVICES_JSON, so no Play bundle."
-              echo "Both are repository secrets; README.md, Builds and releases."
-              exit 1
-            fi
-            echo "::notice::No upload key in this repository, so no Play bundle."
-            exit 0
-          fi
-
-          # Push is not optional in something going to Play.
-          test -f app/android/app/google-services.json
-
-          scripts/write-upload-key.sh
-          scripts/android-ci.sh run app flutter build appbundle --release --no-pub \
-              --build-number "$KYRON_BUILD_NUMBER" \
-              ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
-              ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
-
-          src=app/build/app/outputs/bundle/release/app-release.aab
-          test -f "$src" || { echo "Missing $src"; exit 1; }
-          # No -dev: nothing about it is a development build's but the
-          # version name, which is the last release's.
-          bundle="debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
-          mv "$src" "$bundle"
-          scripts/check-aab.sh --keystore app/android/upload-keystore.jks \
-            --build "$KYRON_BUILD_NUMBER" "$bundle"
-
+      # Play upload credentials and AAB generation belong exclusively to
+      # the versioned Release workflow.
       # Keep the files on this runner. Only release assets are published;
       # there is no upload-artifact/download-artifact handoff.
       - name: Verify the complete development release file set
         working-directory: .
         env:
           VERSION: ${{ needs.version.outputs.version }}
-          CANONICAL: ${{ github.repository == 'KyronLabs/kyron' }}
         run: |
           set -euo pipefail
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
@@ -453,16 +322,14 @@ jobs:
             test -s "debug-artifacts/${stem}-$abi.apk"
           done
           test "$(find debug-artifacts -maxdepth 1 -type f -name '*.apk' | wc -l)" -eq 4
-          if [ "$CANONICAL" = true ]; then
-            test -s "debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
-          fi
+          test "$(find debug-artifacts -maxdepth 1 -type f | wc -l)" -eq 4
 
       # Remove local signing material before the release action executes.
       # The release action receives only the validated output files.
       - name: Remove temporary signing material
         working-directory: .
         if: always()
-        run: rm -f app/android/key.properties app/android/dev-keystore.jks app/android/upload-keystore.jks app/android/app/google-services.json
+        run: rm -f app/android/key.properties app/android/dev-keystore.jks app/android/app/google-services.json
 
       # A prerelease, so that GitHub's "Latest" is the version that shipped
       # rather than the newest commit. These were published as "Latest" while
@@ -494,25 +361,14 @@ jobs:
             Every APK here is the same build and carries the same version, so
             it does not matter which you try first.
 
-            **Google Play** — the `.aab` is this build for Play, signed with
-            the upload key: Play Console → Test and release → Internal
-            testing → Create new release. It cannot be installed by hand.
-            Its version name is the last release's; its version code is
-            100000 plus the build number in its name, and above every build
-            before it.
+            **Google Play** — only versioned releases contain the Play bundle
+            and can be sent to Play testing.
 
-            **Coming from build 78 or earlier, uninstall Kyron first.** Those
-            builds were signed with a different key — a new one each time, for
-            74 to 77 — and Android will not accept an update whose signature
-            is not the one already on the phone. It refuses with *"App not
-            installed as package appears to be invalid"*, which sounds like a
-            corrupt file and is not. This is the last time: every build from
-            79 onwards carries the same key, so they install over each other
-            normally.
-
-            Also uninstall first if you have Kyron from the Play Store. These
-            are signed with a development key rather than the store one, and
-            the two cannot sit side by side.
+            **Signing-key change:** uninstall any Kyron development build
+            signed with the retired development certificate before installing
+            this one. Do not uninstall the Play Store app merely to update it;
+            use the Play Store for that. Development builds use a different
+            signing certificate and must be downloaded from official releases.
 
             If those six words still appear on a clean phone, the download was
             interrupted — check the file is the full size shown here and try
@@ -521,4 +377,4 @@ jobs:
           make_latest: false
           generate_release_notes: false
           fail_on_unmatched_files: true
-          files: debug-artifacts/*
+          files: debug-artifacts/*.apk

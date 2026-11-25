@@ -333,6 +333,10 @@ def check_bundle(name: str) -> list[str]:
     runs = [str(step.get("run", "")) for step in steps]
 
     builds = [i for i, run in enumerate(runs) if "flutter build appbundle" in run]
+    if name == "flutter-debug.yml":
+        if builds or any(BUNDLE_CHECK in run for run in runs):
+            return [f"{name}: Play bundles belong only to versioned releases"]
+        return []
     if not builds:
         return [f"{name}: the 'android' job builds no app bundle, so it has nothing for Play"]
 
@@ -509,7 +513,7 @@ def check_debug_build_reliability() -> list[str]:
     if not isinstance(timeout, int) or timeout < 120:
         said.append(
             f"{name}: the Android job needs an explicit timeout-minutes of at "
-            "least 120 for its four release APK builds and Play bundle"
+            "least 120 for its four release APK builds"
         )
 
     steps = android.get("steps") or []
@@ -537,9 +541,9 @@ def check_debug_build_reliability() -> list[str]:
         options = steps[index].get("with") or {}
         if (
             INSTALL_CHECK not in before
-            or BUNDLE_CHECK not in before
+            or '--pin "$KYRON_DEV_CERT_SHA256"' not in before
             or 'for abi in arm64-v8a armeabi-v7a x86_64 universal' not in before
-            or options.get("files") != "debug-artifacts/*"
+            or options.get("files") != "debug-artifacts/*.apk"
             or options.get("fail_on_unmatched_files") is not True
             or options.get("prerelease") is not True
             or options.get("make_latest") is not False
@@ -553,6 +557,17 @@ def check_debug_build_reliability() -> list[str]:
             for step in steps[:index]
         ):
             said.append(f"{name}: do not persist the write-capable checkout token")
+    if android.get("if") != "github.ref == 'refs/heads/main'":
+        said.append(f"{name}: official development signing must be restricted to main")
+    if any(
+        re.search(r"secrets\.(ANDROID_KEYSTORE_BASE64|ANDROID_KEYSTORE_PASSWORD|ANDROID_KEY_PASSWORD|ANDROID_KEY_ALIAS|PLAY_SERVICE_ACCOUNT_JSON)\b", str(step))
+        for step in all_steps
+    ):
+        said.append(f"{name}: development must not receive Play signing/upload credentials")
+    if (WORKFLOWS.parents[1] / "app/android/dev-signing/kyron-dev.jks").exists():
+        said.append(f"{name}: retired development private key must not be tracked")
+    if not any("The retired development signing certificate" in str(step.get("run", "")) for step in steps):
+        said.append(f"{name}: reject the retired development certificate")
     build_runs = [
         str(step.get("run", ""))
         for step in steps

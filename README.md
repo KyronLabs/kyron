@@ -200,7 +200,7 @@ or attached to development or versioned releases.
 
 | | Android |
 |---|---|
-| **Development build**, on every push to `main` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
+| **Development build**, on every push to `main` | APKs signed with a private development key, per architecture and universal |
 | **Release**, on a `vX.Y.Z` tag | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
 
 To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
@@ -220,13 +220,12 @@ Release signing needs `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
 needs `GOOGLE_SERVICES_JSON`. The keystore is the Play upload key and must never
 be committed. **Create Versioned Release** opens it with those passwords
 (`scripts/check-release-secrets.sh`) before it changes anything, and prints the
-key's fingerprints in its run summary. A development build's APKs never use
-it — they are signed with the development key, so adding the upload key does
-not change what is on anybody's phone. It signs only that build's `.aab`, which
-Play re-signs before anybody installs it.
+key's fingerprints in its run summary. Development builds never receive the
+Play upload key. Configure a new private development key as described in
+[development signing](app/android/dev-signing/README.md).
 
-Development builds now publish their verified APKs and Play-compatible bundle
-directly to GitHub Releases from the Android runner. They do not use temporary
+Development builds publish their four verified APKs directly to GitHub
+Releases from the Android runner. They do not use temporary
 Actions artifact storage. The Android job has contents-write permission for
 release publication, and checkout does not persist that credential. Temporary
 signing files are removed before publishing. Versioned releases retain their
@@ -234,11 +233,10 @@ separate artifact and Play-upload jobs.
 
 ### Google Play
 
-The `.aab` is what goes to Play; the APKs are for installing by hand. Every
-build has one: a development build's, to put the newest `main` in front of
-internal testers, and a release's, for a version with a name and notes. Both
-are checked before they are published (`scripts/check-aab.sh`): signed with
-the upload key, and carrying the version code their build number gives.
+The `.aab` is what goes to Play; the APKs are for installing by hand. Only
+versioned releases create an AAB. It is checked before publication
+(`scripts/check-aab.sh`): signed with the upload key and carrying the version
+code derived from the release's build number.
 
 Once it is set up (below), every **versioned release** sends its bundle to
 **Closed testing - Alpha**, where Kyron's testers are, with its changelog
@@ -248,16 +246,11 @@ overview** shows where it is. To send to another track, set the repository
 variable `PLAY_TRACK` (Settings → Secrets and variables → Actions →
 Variables) to Play's name for it: `internal` for internal testing, `beta` for
 open testing. Never production; the script refuses it, and that stays a
-decision made in Play Console. Development builds are not sent:
-their bundle carries the last release's version name, and testers would get
-every merge to `main`. To put one in front of testers anyway, or before this
-is set up: in Play Console → **Test and release → Testing → Internal testing
-→ Create new release**, upload `kyron-X.Y.Z+N.aab` from its GitHub release. With Play App Signing (the default),
-Google re-signs it with the app signing key and keeps the key that signed this
-upload as the upload key — the fingerprints in Create Versioned Release's run
-summary should match **App integrity → Upload key certificate**. Use a release
-for anything beyond internal testing: a development build's version name is
-the last release's, so in Play two different builds can both read `0.1.1`.
+decision made in Play Console. Development builds are not sent and no longer receive the upload key.
+Use a versioned release for Play testing, or use the verified development
+APKs for sideload testing. With Play App Signing (the default), Google re-signs
+the AAB with the app signing key. Verify the release upload certificate against
+Play Console's App integrity settings.
 
 #### Sending bundles to Play from CI
 
