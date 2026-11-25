@@ -35,6 +35,22 @@ describe('Google Play recovery window', () => {
     expect(resumed?.start.getTime()).toBe(now.getTime() - 3 * day);
   });
 
+  it('never regresses coverage when the clock moves backwards', () => {
+    expect(
+      recoveryWindow(now, {
+        ...base,
+        coveredThrough: new Date(now.getTime() + day),
+      }),
+    ).toBeNull();
+    expect(
+      recoveryWindow(now, {
+        ...base,
+        windowStart: new Date(now.getTime() - day),
+        windowEnd: new Date(now.getTime() + day),
+      }),
+    ).toBeNull();
+  });
+
   it('keeps the exact open window and fails closed on expired coverage', () => {
     const windowStart = new Date(now.getTime() - 2 * day);
     const windowEnd = new Date(now.getTime() - day);

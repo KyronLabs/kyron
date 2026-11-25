@@ -1,4 +1,8 @@
-import { Injectable, ServiceUnavailableException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import type { GooglePlayRecoveryCheckpoint } from '@prisma/client';
 import { createHash } from 'node:crypto';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -75,7 +79,13 @@ export function recoveryWindow(
       ? checkpoint.coveredThrough.getTime() - OVERLAP
       : end - INITIAL_LOOKBACK);
   const windowEnd = checkpoint.windowEnd?.getTime() ?? end;
-  if (start < now.getTime() - MAX_WINDOW_AGE || start >= windowEnd) {
+  if (
+    start < now.getTime() - MAX_WINDOW_AGE ||
+    start >= windowEnd ||
+    windowEnd > end ||
+    (checkpoint.coveredThrough &&
+      windowEnd < checkpoint.coveredThrough.getTime())
+  ) {
     return null;
   }
   return { start: new Date(start), end: new Date(windowEnd) };
@@ -238,8 +248,7 @@ export class GooglePlayRecoveryService {
     } catch (error) {
       // A rejected continuation may have expired. Replay the same fixed
       // window, never advance across a page that was not committed.
-      const rejected =
-        error instanceof Error && error.name === 'BadRequestException';
+      const rejected = error instanceof BadRequestException;
       return this.fail(
         state,
         now,
@@ -252,7 +261,8 @@ export class GooglePlayRecoveryService {
     let next: string | null;
     try {
       const result = record(response);
-      const items = result.voidedPurchases ?? [];
+      const items =
+        result.voidedPurchases === undefined ? [] : result.voidedPurchases;
       if (!Array.isArray(items) || items.length > 100) {
         throw new Error('Invalid provider page size.');
       }

@@ -253,7 +253,8 @@ transaction. A revision compare-and-swap prevents competing runners from
 overwriting progress. The first scan requests the preceding 29 days ending
 five minutes before the current time. Later scans overlap the last completed
 window by 48 hours, and a fixed window plus encrypted continuation token
-survives restarts. No checkpoint moves forward on incomplete pages. Provider
+survives restarts. The completed coverage watermark advances only after the
+last page; a backward clock adjustment cannot reduce it. Provider
 selection is by API visibility time, not the returned void timestamp; never
 derive the next cursor from that timestamp. The workflow attempts at most six
 pages per run, resumes next run, and surfaces failures without logging tokens.
