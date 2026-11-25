@@ -30,7 +30,7 @@ PUBLISHING = {
 
 # What a published build has to carry. Windows is intentionally paused;
 # the Android output remains the only supported release platform for now.
-PLATFORMS = {"android": "ubuntu-latest"}
+PLATFORMS = {"android": "ubuntu-24.04"}
 
 
 def check(name: str, publish_job: str) -> list[str]:
@@ -66,6 +66,20 @@ def check(name: str, publish_job: str) -> list[str]:
                 f"{name}: {publish_job!r} does not wait for {platform!r}, so a "
                 f"release can be published without it"
             )
+
+    # Require CI-only resource limits before compilation and diagnostics
+    # around every distribution build.
+    android_steps = (jobs.get("android") or {}).get("steps") or []
+    configured = False
+    for step in android_steps:
+        run = str(step.get("run", ""))
+        if "scripts/android-ci.sh configure" in run:
+            configured = True
+        if "flutter build" in run:
+            if not configured:
+                said.append(f"{name}: configure Android CI resources before building")
+            if "scripts/android-ci.sh run app flutter build" not in run:
+                said.append(f"{name}: Android builds must collect resource diagnostics")
 
     said += check_build_number(name, workflow, [*PLATFORMS, publish_job])
 
