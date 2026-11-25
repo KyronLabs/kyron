@@ -8,9 +8,9 @@ on:
       - '.github/workflows/flutter-debug.yml'
   workflow_dispatch:
 
-# Read-only by default. Only the publish job, which creates the GitHub
-# release, can write: the build jobs hold the signing key and run
-# third-party actions, and need nothing more than a checkout.
+# Read-only by default. The Android job publishes its validated files
+# directly to GitHub Releases, avoiding temporary Actions artifact storage.
+# Only that job needs contents: write; checkout does not persist the token.
 permissions:
   contents: read
 
@@ -88,11 +88,13 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
   android:
-    name: Build the Android development APKs and Play bundle
+    name: Build, validate and publish the development APKs and Play bundle
     needs: version
     # Avoid an unreviewed Android host-image upgrade via ubuntu-latest.
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    permissions:
+      contents: write
     env:
       KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
     defaults:
@@ -101,6 +103,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       # Pinned rather than left to whatever the runner image ships. The Android
       # Gradle Plugin and Kotlin target 17 (app/android/app/build.gradle.kts).
@@ -434,40 +438,31 @@ jobs:
           scripts/check-aab.sh --keystore app/android/upload-keystore.jks \
             --build "$KYRON_BUILD_NUMBER" "$bundle"
 
-      - name: Hand the Android build to the publish job
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: android
-          path: debug-artifacts/*
-          if-no-files-found: error
-          retention-days: 1
-
-  publish:
-    name: Publish the development build
-    needs: [version, android]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    env:
-      KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
-    steps:
-      - name: Collect Android artifacts
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          path: incoming
-
-      - name: Gather them into one directory
+      # Keep the files on this runner. Only release assets are published;
+      # there is no upload-artifact/download-artifact handoff.
+      - name: Verify the complete development release file set
+        working-directory: .
         env:
           VERSION: ${{ needs.version.outputs.version }}
+          CANONICAL: ${{ github.repository == 'KyronLabs/kyron' }}
         run: |
           set -euo pipefail
-          mkdir -p debug-artifacts
-          find incoming -type f -exec mv {} debug-artifacts/ \;
-          ls -lh debug-artifacts
-
-          # The Android APK must be present before publishing.
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
-          test -f "debug-artifacts/${stem}-arm64-v8a.apk"
+          test -s "debug-artifacts/${stem}-arm64-v8a.apk"
+          for abi in arm64-v8a armeabi-v7a x86_64 universal; do
+            test -s "debug-artifacts/${stem}-$abi.apk"
+          done
+          test "$(find debug-artifacts -maxdepth 1 -type f -name '*.apk' | wc -l)" -eq 4
+          if [ "$CANONICAL" = true ]; then
+            test -s "debug-artifacts/kyron-${VERSION}+${KYRON_BUILD_NUMBER}.aab"
+          fi
+
+      # Remove local signing material before the release action executes.
+      # The release action receives only the validated output files.
+      - name: Remove temporary signing material
+        working-directory: .
+        if: always()
+        run: rm -f app/android/key.properties app/android/dev-keystore.jks app/android/upload-keystore.jks app/android/app/google-services.json
 
       # A prerelease, so that GitHub's "Latest" is the version that shipped
       # rather than the newest commit. These were published as "Latest" while
@@ -525,4 +520,5 @@ jobs:
           prerelease: true
           make_latest: false
           generate_release_notes: false
+          fail_on_unmatched_files: true
           files: debug-artifacts/*
