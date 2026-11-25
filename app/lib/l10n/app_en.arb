@@ -1398,12 +1398,6 @@
   "ui_wallet_received": "Total gift earnings",
   "ui_wallet_qualifying": "From qualifying gifts, before payout checks",
   "ui_wallet_purchased_coins": "Purchased coins",
-  "ui_wallet_recent_adjustments": "Recent adjustments",
-  "ui_wallet_coins_restored": "Coins restored",
-  "ui_wallet_coins_removed": "Coins removed",
-  "ui_wallet_verified_refund": "Verified refund: $coins",
-  "ui_wallet_play_order": "Google Play order: $reference",
-  "ui_wallet_notice_reference": "Adjustment reference: $reference",
   "ui_wallet_reward_coins": "Reward coins",
   "ui_wallet_legacy_complimentary_coins": "Legacy complimentary coins"
 }
