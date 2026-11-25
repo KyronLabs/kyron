@@ -31,8 +31,9 @@
 # and not on releases is a check that will be missing the day it matters.
 #
 # Usage:
-#   scripts/check-apks.sh [--pin SHA256] APK...
+#   scripts/check-apks.sh [--build N] [--pin SHA256] APK...
 #
+# --build requires package so.kyron.app and versionCode 100000 + N.
 # --pin requires the signing certificate to be one particular one, by its
 # SHA-256. Development builds pin to the key committed at
 # app/android/dev-signing; a release has no fingerprint in the repository to
@@ -52,15 +53,17 @@ set -euo pipefail
 here=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 usage() {
-  echo "usage: scripts/check-apks.sh [--pin SHA256] APK..."
+  echo "usage: scripts/check-apks.sh [--build N] [--pin SHA256] APK..."
 }
 
 pin=
+build=
 apks=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --pin)   pin=$(tr -d '[:space:]' <<<"${2:-}"); shift 2 ;;
     --pin=*) pin=$(tr -d '[:space:]' <<<"${1#--pin=}"); shift ;;
+    --build) build=${2:-}; [[ "$build" =~ ^[0-9]+$ ]] || { echo "--build requires a number." >&2; exit 2; }; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     --) shift; break ;;
     -*) echo "check-apks.sh: unknown option $1" >&2; usage >&2; exit 2 ;;
@@ -113,6 +116,13 @@ for apk in "${apks[@]}"; do
   version=$(sed -n "s/^package:.* versionCode='\([^']*\)'.*/\1/p" <<<"$badging")
   test -n "$package" || { echo "$name: no package name in the manifest."; exit 1; }
   test -n "$version" || { echo "$name: no versionCode in the manifest."; exit 1; }
+  if [ -n "$build" ]; then
+    expected_version=$((100000 + 10#$build))
+    if [ "$package" != so.kyron.app ] || [ "$version" != "$expected_version" ]; then
+      echo "$name: expected so.kyron.app versionCode $expected_version, got $package $version."
+      exit 1
+    fi
+  fi
 
   if [ -z "$identity" ]; then
     identity="$package $version"

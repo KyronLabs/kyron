@@ -200,14 +200,8 @@ or attached to development or versioned releases.
 
 | | Android |
 |---|---|
-| **Development build**, manually dispatched from `main` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
+| **Development build**, on every push to `main` | APKs signed with the development key, per architecture and universal, plus a Play `.aab` |
 | **Release**, on a `vX.Y.Z` tag | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
-
-Normal pull requests and merges still run the relevant CI checks. To create
-an installable development distribution, open **Actions → Development Build →
-Run workflow**, select `main`, and run it when needed. This avoids repeating
-four APK builds, a Play bundle and temporary artifact uploads on every merge.
-Versioned releases remain independent of this development-build policy.
 
 To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
 or `major`. It checks the signing secrets first, then bumps the version,

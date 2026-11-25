@@ -1,8 +1,11 @@
 name: Development Build
 
-# Distribution builds are expensive. CI still validates each app change;
-# request a signed development distribution only when someone needs it.
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - '.github/workflows/flutter-debug.yml'
   workflow_dispatch:
 
 # Read-only by default. Only the publish job, which creates the GitHub
@@ -11,23 +14,21 @@ on:
 permissions:
   contents: read
 
-# Keep an active manually requested build alive. A runner shutdown is an
-# infrastructure interruption; never deliberately cancel a healthy build to
-# replace it with another request. GitHub retains only the newest pending run.
+# Keep an active build alive. Cancelling a Gradle process on every newer push
+# sends SIGTERM (143) through Flutter/Gradle and turns a recoverable queue into
+# a failed run. GitHub retains only the newest pending run in this concurrency
+# group; the running build completes before that pending build starts.
 concurrency:
   group: debug-build-${{ github.ref }}
   cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
-# it reads that one answer -- so the APKs and bundle from one commit carry the
-# same number. It is the commit count,
+# it reads that one answer -- so the APKs and bundle out of one push carry the same number. It is the commit count,
 # shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
   version:
     name: Read the version and describe the build
-    # Never build a signed distribution from a manually selected feature branch.
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
@@ -107,6 +108,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            app/android/**/*.gradle*
+            app/android/gradle.properties
+            app/android/gradle/wrapper/gradle-wrapper.properties
+            app/pubspec.lock
 
       # Before anything Gradle runs, and in its own step. Left to the build,
       # the NDK was downloaded twelve minutes into `flutter build` -- two of
@@ -263,20 +270,10 @@ jobs:
             echo "No GOOGLE_SERVICES_JSON secret, so this build has no push."
           fi
 
-      # One `flutter build` per architecture, rather than `--split-per-abi`.
-      #
-      # Splitting makes the Flutter Gradle Plugin rewrite each split's
-      # versionCode to `abi * 1000 + build`, so build 78 shipped four files
-      # numbered 1078, 2078, 4078 and -- the universal one -- 78. Android
-      # refuses a package whose versionCode is below the one already
-      # installed, so somebody who took the arm64 APK, hit a problem, and
-      # then tried the universal one was refused again and told the package
-      # appears to be invalid. Which it was not.
-      #
-      # The APKs are the same size built this way, and they all carry the one
-      # number app/android/app/build.gradle.kts asked for. That file refuses
-      # `--split-per-abi` outright now, and the check below reads the
-      # versionCode back out of every APK.
+      # Build all three ABI-specific APKs together. Flutter's explicit
+      # force-version-code-ignoring-abi property keeps the same versionCode
+      # on every APK, so switching downloads is not a downgrade. Build the
+      # universal APK separately; the SDK/toolchain can reuse prior work.
       - name: Build every APK
         working-directory: .
         env:
@@ -292,27 +289,7 @@ jobs:
           set -euo pipefail
           mkdir -p debug-artifacts
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
-          out=app/build/app/outputs/flutter-apk/app-release.apk
-
-          # Every build writes to the same path, so each one is collected and
-          # removed before the next starts. No --target-platform is what
-          # makes the last one universal.
-          build() {
-            local name=$1
-            shift
-            stage=$name
-            echo "::group::Building $name APK"
-            ( cd app && flutter build apk --release --no-pub "$@" \
-                --build-number "$KYRON_BUILD_NUMBER" \
-                ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
-                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
-            # Missing means the build claimed success and produced nothing,
-            # which is a broken build rather than a smaller one.
-            test -f "$out" || { echo "Missing $out after the $name build."; exit 1; }
-            mv "$out" "debug-artifacts/${stem}-${name}.apk"
-            echo "::endgroup::"
-          }
-
+          out=app/build/app/outputs/flutter-apk
           stage=initialization
           started=$SECONDS
           interrupted=no
@@ -326,13 +303,37 @@ jobs:
           }
           trap 'report_interruption TERM' TERM
           trap 'report_interruption INT' INT
-          trap 'status=$?; if [ "$status" -ne 0 ] && [ "$interrupted" != yes ]; then echo "::error::Android build failed during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds. Inspect the last Gradle output for the underlying cause."; fi' EXIT
+          trap 'status=$?; if [ "$status" -ne 0 ] && [ "$interrupted" != yes ]; then echo "::error::Android build failed during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds."; fi' EXIT
 
-          build arm64-v8a   --target-platform android-arm64
-          build armeabi-v7a --target-platform android-arm
-          build x86_64      --target-platform android-x64
+          build() {
+            stage=$1
+            shift
+            local stage_started=$SECONDS
+            echo "::group::Building $stage APKs"
+            ( cd app && flutter build apk --release --no-pub "$@" \
+                --build-number "$KYRON_BUILD_NUMBER" \
+                ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
+                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
+            echo "$stage completed in $((SECONDS-stage_started)) seconds."
+            echo "::endgroup::"
+          }
+
+          # Remove expected outputs before compiling; never publish stale files.
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            rm -f "$out/app-$abi-release.apk"
+          done
+          build split --split-per-abi --android-project-arg=force-version-code-ignoring-abi=true
+          stage=collect-splits
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            test -f "$out/app-$abi-release.apk" || { echo "Missing $abi APK."; exit 1; }
+            mv "$out/app-$abi-release.apk" "debug-artifacts/${stem}-$abi.apk"
+          done
+
+          rm -f "$out/app-release.apk"
           build universal
-
+          stage=collect-universal
+          test -f "$out/app-release.apk" || { echo "Missing universal APK."; exit 1; }
+          mv "$out/app-release.apk" "debug-artifacts/${stem}-universal.apk"
           stage=artifact-validation
           test "$(find debug-artifacts -maxdepth 1 -name '*.apk' -type f | wc -l)" -eq 4
           ls -lh debug-artifacts
@@ -364,9 +365,9 @@ jobs:
               echo "app/android/dev-signing/fingerprint.txt is empty."
               exit 1
             }
-            scripts/check-apks.sh --pin "$pin" debug-artifacts/*.apk
+            scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" --pin "$pin" debug-artifacts/*.apk
           else
-            scripts/check-apks.sh debug-artifacts/*.apk
+            scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" debug-artifacts/*.apk
           fi
 
       # And the bundle for Play, from the same commit and with the same number.
