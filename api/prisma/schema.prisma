@@ -2356,8 +2356,15 @@ model GooglePlayNotification {
   processedAt       DateTime? @db.Timestamptz()
   processingError   String?  @db.VarChar(500)
 
+  /// Worker scheduling metadata only; processedAt remains the evidence marker.
+  reconciliationAttemptCount  Int       @default(0)
+  reconciliationNextAttemptAt DateTime  @default(now()) @db.Timestamptz()
+  reconciliationLeaseId       String?   @db.Uuid
+  reconciliationLeaseUntil    DateTime? @db.Timestamptz()
+
   @@index([purchaseTokenHash, receivedAt])
   @@index([processedAt, receivedAt])
+  @@index([processedAt, reconciliationNextAttemptAt, receivedAt], map: "GooglePlayNotification_reconcile_due_idx")
 }
 
 enum CreatorEarningSource {

@@ -280,3 +280,40 @@ The endpoint omits encrypted continuation tokens, raw purchase tokens and
 provider bodies. A retention gap or repeated page/provider error requires
 operator intervention. The checkpoint table is RLS-enabled and inaccessible
 to public Supabase roles.
+
+### Automated authoritative refund verification
+
+The recovery workflow now has an independent verification job. Opt in with
+repository variable `GOOGLE_PLAY_AUTOMATED_RECONCILIATION_ENABLED=true`,
+the API flag of the same name, and the existing
+`GOOGLE_PLAY_RECONCILIATION_ENABLED=true`. Configure the same dedicated
+`GOOGLE_PLAY_RECOVERY_CRON_KEY`, Publisher credentials and encryption key.
+The verification job runs even if the separate receipt recovery job fails.
+Both are off by default. No purchase activation is implied.
+
+Each request claims up to two due one-time refund receipts via a single
+Postgres UPDATE with FOR UPDATE SKIP LOCKED and a two-minute lease. The
+worker runs the existing authoritative reconciliation service with a null
+actor ID (system observation, not an impersonated administrator). No
+provider network calls are made while holding the claim transaction.
+Concurrent workers may not claim the same live lease. An expired lease is
+reclaimable, and a superseded worker cannot overwrite another worker's
+retry scheduling. The existing purchase/receipt locks and unique evidence
+source protect financial observations even if a lease expires mid-request.
+
+Unresolved or failed receipts are retried with exponential delays of
+5 minutes up to 24 hours. The attempt counter saturates at 31; receipts
+are never discarded or marked processed merely because of repeated errors.
+The scheduled job makes at most six two-receipt requests per run, and may
+drain fewer; monitor backlog and provider limits before increasing it.
+Administrators can still retry immediately through the existing AAL2
+operator endpoint, which shares evidence idempotency. Pending chargeback
+review, test and subscription notifications are not claimed by this worker.
+
+AAL2 administrators can inspect aggregate due, leased, deferred and
+unresolved counts at
+`GET /financial-operations/google-play/refund-reconciliation`.
+The existing pending list now exposes attempt count and next attempt time.
+Neither endpoint reveals tokens or provider response bodies. A processed
+receipt still means only that evidence was retained. There is no balance
+deduction, creator clawback, provider refund or payout in this slice.

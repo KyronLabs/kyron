@@ -188,6 +188,42 @@ run('Google Play refund evidence against Postgres', () => {
     ).toBe(false);
   });
 
+  it('does not write retry evidence after another worker takes the lease', async () => {
+    const event = await receipt(digest);
+    const leaseId = randomUUID();
+    const replacement = randomUUID();
+    await prisma.googlePlayNotification.update({
+      where: { id: event.id },
+      data: {
+        reconciliationLeaseId: leaseId,
+        reconciliationLeaseUntil: new Date(Date.now() + 120_000),
+      },
+    });
+    provider.getOrder.mockImplementationOnce(async () => {
+      await prisma.googlePlayNotification.update({
+        where: { id: event.id },
+        data: { reconciliationLeaseId: replacement },
+      });
+      throw new Error('provider unavailable');
+    });
+
+    expect(await service.reconcile(event.id, null, leaseId)).toEqual({
+      status: 'SUPERSEDED',
+      id: event.id,
+    });
+    expect(
+      await prisma.googlePlayNotification.findUniqueOrThrow({
+        where: { id: event.id },
+        select: { processingError: true, reconciliationLeaseId: true },
+      }),
+    ).toEqual({ processingError: null, reconciliationLeaseId: replacement });
+    expect(
+      await prisma.financialAuditEvent.count({
+        where: { subjectId: event.id },
+      }),
+    ).toBe(0);
+  });
+
   it('leaves unmatched receipts and provider failures retryable', async () => {
     const unknown = await receipt(tokenHash(randomUUID()));
     expect(await service.reconcile(unknown.id, actorId)).toMatchObject({

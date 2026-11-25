@@ -59,3 +59,49 @@ jobs:
             esac
           done
           echo "Page budget reached; the next run resumes the saved cursor."
+
+  verify:
+    # Independent of receipt recovery: a failed sweep must not stall work
+    # already in the inbox, and either capability can be enabled separately.
+    if: vars.GOOGLE_PLAY_AUTOMATED_RECONCILIATION_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify bounded batches of due refund receipts
+        env:
+          RECOVERY_KEY: ${{ secrets.GOOGLE_PLAY_RECOVERY_CRON_KEY }}
+          API_URL: ${{ vars.KYRON_API_URL || 'https://kyron-47r6.onrender.com' }}
+        run: |
+          set -euo pipefail
+          if [ -z "$RECOVERY_KEY" ]; then
+            echo "::error::Dedicated Google Play recovery key is missing."
+            exit 1
+          fi
+          for batch in 1 2 3 4 5 6; do
+            if ! result=$(curl -fsS --max-time 90 -X POST \
+              -H "x-recovery-key: $RECOVERY_KEY" \
+              "$API_URL/internal/google-play/refund-reconciliation"); then
+              echo "::error::Google Play refund verification did not succeed."
+              exit 1
+            fi
+            status=$(jq -er '.status' <<< "$result")
+            case "$status" in
+              DRAINED)
+                echo "No currently due refund receipts."
+                exit 0
+                ;;
+              BATCH_COMPLETE)
+                # Only numeric aggregate counts are returned by the endpoint.
+                jq -e '{claimed, verified, pending, failed, superseded}' <<< "$result"
+                if [ "$(jq -er '.failed' <<< "$result")" -gt 0 ]; then
+                  echo "::error::A worker error occurred. Leases/backoff preserve retryability."
+                  exit 1
+                fi
+                ;;
+              *)
+                echo "::error::Unexpected verification response."
+                exit 1
+                ;;
+            esac
+          done
+          echo "Batch budget reached; the next run continues due work."
