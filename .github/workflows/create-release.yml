@@ -3,36 +3,31 @@ name: Create Versioned Release
 on:
   workflow_dispatch:
     inputs:
-      bump:
-        description: Semantic version component to increment
+      version:
+        description: Version already merged into main (X.Y.Z)
         required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-        default: patch
+        type: string
 
 permissions:
   contents: write
   # To start the Release workflow on the tag; see the last step.
   actions: write
 
-# Two of these at once would race on the version bump and push, and the loser
-# would tag a version it did not write.
+# Serialize tag creation and release dispatch.
 concurrency:
   group: create-release
   cancel-in-progress: false
 
 jobs:
-  version-and-tag:
-    name: Bump version, stamp the changelog and tag
+  tag:
+    name: Validate the merged version, tag and dispatch
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: main
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Configure Git
@@ -40,12 +35,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      # First, so a malformed changelog fails before the version has been
-      # bumped and committed. A release with nothing written under Unreleased
-      # is not refused: it says "Bug fixes and performance improvements."
-      # (scripts/changelog.py, "When nothing was written").
-      - name: Read the notes under Unreleased
-        run: python3 scripts/changelog.py unreleased
+      - name: Validate the merged release version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Enter a release version in X.Y.Z format."
+            exit 1
+          fi
+          current=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?$/\1/p' app/pubspec.yaml)
+          if [[ "$current" != "$VERSION" ]]; then
+            echo "::error::The version must match the pubspec on the dispatched main commit."
+            exit 1
+          fi
+          python3 scripts/changelog.py show "$VERSION" > /dev/null
 
       # The same JDK the release build signs with; the check below reads the
       # key through it.
@@ -81,31 +85,21 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Bump pubspec version
-        id: version
-        run: |
-          version=$(python3 scripts/bump-version.py "${{ inputs.bump }}")
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-
-      - name: Stamp the changelog
+      - name: Tag the reviewed release commit
         env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: python3 scripts/changelog.py release "$VERSION"
-
-      # The app's "What's new" card reads the latest versions from a file it
-      # carries, written from the changelog just stamped, so the build this
-      # tag makes describes itself.
-      - name: Write the app's What's new notes
-        run: python3 scripts/changelog.py app-notes
-
-      - name: Commit and tag
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
+          VERSION: ${{ inputs.version }}
         run: |
-          git add app/pubspec.yaml CHANGELOG.md app/lib/assets/whats_new.json
-          git commit -m "chore(release): v${VERSION}"
-          git tag -a "v${VERSION}" -m "Kyron v${VERSION}"
-          git push origin main "v${VERSION}"
+          set -euo pipefail
+          tag="v$VERSION"
+          if git show-ref --verify --quiet "refs/tags/$tag"; then
+            if [[ "$(git rev-parse "refs/tags/$tag^{commit}")" != "$(git rev-parse HEAD)" ]]; then
+              echo "::error::$tag already points to a different commit."
+              exit 1
+            fi
+          else
+            git tag -a "$tag" -m "Kyron $tag"
+            git push origin "refs/tags/$tag"
+          fi
 
       # The tag alone starts nothing. It was pushed with this workflow's own
       # GITHUB_TOKEN, and GitHub runs no workflow for an event that token
@@ -117,7 +111,7 @@ jobs:
       - name: Start the release build
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ steps.version.outputs.version }}
+          VERSION: ${{ inputs.version }}
         run: |
           gh workflow run flutter-release.yml \
             --repo "$GITHUB_REPOSITORY" \
