@@ -67,6 +67,8 @@ jobs:
     needs: changed
     if: needs.changed.outputs.flutter == 'true'
     uses: ./.github/workflows/flutter-ci.yml
+    secrets:
+      DESIGN_SYSTEM_READ_TOKEN: ${{ github.event.pull_request.head.repo.full_name == github.repository && secrets.DESIGN_SYSTEM_READ_TOKEN || '' }}
 
   localization:
     needs: changed
