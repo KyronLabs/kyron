@@ -160,7 +160,10 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
 
   Future<void> _load() async {
     if (!_currentAccount || _loading) return;
-    setState(() => _loading = true);
+    setState(() {
+      _loading = true;
+      _products = const [];
+    });
     try {
       final catalogue =
           await ref.read(playCoinsRepositoryProvider).catalogue(_cancel);
@@ -182,6 +185,11 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
         catalogue.coinsByProduct.keys.toSet(),
       );
       if (!_currentAccount) return;
+      if (details.error != null) {
+        await _checkPastPurchases();
+        _show(_PurchaseMessage.retry);
+        return;
+      }
       final products = details.productDetails
           .where((product) => catalogue.coinsByProduct.containsKey(product.id))
           .toList()
