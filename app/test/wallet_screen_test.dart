@@ -25,6 +25,8 @@ class _Gifts extends Fake implements GiftsRepository {
 void main() {
   for (final dark in [false, true]) {
     testWidgets('wallet states (dark $dark)', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(420, 960));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
       final gifts = _Gifts();
       await tester.pumpWidget(
         ProviderScope(
@@ -72,6 +74,28 @@ void main() {
       expect(find.text('300 coins'), findsOneWidget);
       expect(find.text('Legacy complimentary coins'), findsOneWidget);
       expect(find.text('34 coins'), findsOneWidget);
+      await tester.tap(find.text('Recharge'));
+      await tester.pumpAndSettle();
+      expect(find.text('Buy coins'), findsOneWidget);
+      final shop = find.ancestor(
+        of: find.text('Buy coins'),
+        matching: find.byType(BottomSheet),
+      );
+      await tester.tap(find.descendant(
+        of: shop,
+        matching: find.byTooltip('Coin help'),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.text('How do I buy coins?'), findsOneWidget);
+      await tester.tap(find.text('How do I buy coins?'));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Choose a coin pack and tap Recharge'),
+          findsOneWidget);
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      Navigator.of(tester.element(find.text('Buy coins'))).pop();
+      await tester.pumpAndSettle();
+
       expect(
         find.text(
           'Coins are not automatically replenished. '

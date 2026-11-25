@@ -39,6 +39,34 @@ Three different concepts must never be presented as interchangeable:
 
 There is no assumed fixed coin-to-currency equivalence. A dynamic rate must be explicitly configured and captured as immutable evidence for every accepted quote.
 
+## Google Play coin packs for Closed testing
+
+Use the same product IDs and coin quantities across Play storefronts. Configure
+market availability and local prices in Play Console. The app displays the
+formatted price that Play returns for the tester's active storefront, including
+its currency. A phone's language and a Kyron profile location can differ from
+the tester's Play storefront. The app only offers products returned by both
+Google Play and Kyron's server catalogue.
+
+| Play product ID | Coins | Ghana reference price for Closed testing |
+| --- | ---: | ---: |
+| `coins_100` | 100 | GH₵5 |
+| `coins_500` | 500 | GH₵25 |
+| `coins_1000` | 1,000 | GH₵50 |
+
+Before activating test offers, confirm the testers' Play storefronts, including
+Türkiye and the applicable Congo storefronts. Review the local price and
+availability for each supported storefront in Play Console. Use matching
+`productId` and `coins` values in the test API's `GOOGLE_PLAY_COIN_PRODUCTS`
+catalogue and verify the purchase with a Play-installed build and a license
+tester account. Check a supported storefront, a storefront with no offers,
+and an account that changes storefront between sessions. Keep the production
+market approval separate from this test configuration.
+
+The local pack price is the cost of buying virtual coins. Creator bank
+withdrawals use their own country and currency eligibility and the dynamic
+rate captured when a withdrawal quote is accepted.
+
 ## Existing source records
 
 The existing `CoinEntry` model remains the source record for historical virtual-coin movements during the bridge phase.

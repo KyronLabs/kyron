@@ -12,11 +12,14 @@ import '../l10n/app_localizations.dart';
 import '../models/feed_post.dart';
 import '../models/gift.dart';
 import '../providers/gifts_provider.dart';
+import '../providers/auth_provider.dart';
 import '../repositories/gifts_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import 'action_button.dart';
 import 'app_sheet.dart';
 import 'gift_motion.dart';
+import 'play_coin_purchase_panel.dart';
 
 /// Choosing a gift for a post and sending it.
 ///
@@ -284,6 +287,33 @@ class _SheetState extends ConsumerState<_Sheet> {
                       ),
                     ),
                     _Balance(wallet: wallet),
+                    const SizedBox(width: SpacingTokens.space4),
+                    ActionIconButton(
+                      tooltip: l10n.ui('ui_wallet_play_buy', 'Buy coins'),
+                      icon: Iconsax.add_copy,
+                      iconColor: scheme.error,
+                      outlined: false,
+                      size: kMinInteractiveDimension,
+                      onPressed: _sending
+                          ? null
+                          : () {
+                              final user = ref.read(currentAuthUserProvider);
+                              if (user == null) return;
+                              unawaited(openCoinPurchaseSheet(
+                                context,
+                                userId: user.id,
+                                coins: (amount) => coinLabel(l10n, amount),
+                                onWalletChanged: () {
+                                  if (!mounted ||
+                                      ref.read(currentAuthUserProvider)?.id !=
+                                          user.id) return;
+                                  setState(() => _data = ref
+                                      .read(giftsRepositoryProvider)
+                                      .sheet());
+                                },
+                              ));
+                            },
+                    ),
                   ],
                 ),
                 const SizedBox(height: SpacingTokens.space16),
