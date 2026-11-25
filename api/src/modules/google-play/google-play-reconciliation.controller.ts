@@ -78,6 +78,16 @@ export class GooglePlayChargebackEvidenceController {
   }
 }
 
+export class GooglePlayRecoveryNoticeDto {
+  @IsUUID()
+  noticeId!: string;
+}
+
+export class GooglePlayPostRecoveryDto extends GooglePlayRecoveryNoticeDto {
+  @IsUUID()
+  requestId!: string;
+}
+
 @Controller('financial-operations/google-play/purchases')
 @UseGuards(AuthGuard, FinancialOperationsGuard)
 export class GooglePlayRefundReversalController {
@@ -88,5 +98,35 @@ export class GooglePlayRefundReversalController {
   @Get(':id/reversal-preview')
   preview(@Param('id', ParseUUIDPipe) id: string) {
     return this.reconciliation.previewRefundReversal(id);
+  }
+  @Post(':id/recover')
+  @HttpCode(200)
+  recover(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: GooglePlayPostRecoveryDto,
+    @Req() request: AuthRequest,
+  ) {
+    return this.reconciliation.recoverVerifiedRefund(
+      id,
+      request.user.id,
+      body.requestId,
+      body.noticeId,
+    );
+  }
+
+  @Post(':id/recoveries/:recoveryId/correct')
+  @HttpCode(200)
+  correct(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Param('recoveryId', ParseUUIDPipe) recoveryId: string,
+    @Body() body: GooglePlayRecoveryNoticeDto,
+    @Req() request: AuthRequest,
+  ) {
+    return this.reconciliation.correctRefundRecovery(
+      id,
+      recoveryId,
+      request.user.id,
+      body.noticeId,
+    );
   }
 }

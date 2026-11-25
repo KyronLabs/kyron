@@ -39,3 +39,9 @@ Use an idempotent transaction that takes the same buyer wallet lock as gift spen
 Before enabling in a market, add or verify spend attribution that distinguishes gifted coins from unspent coins by order. Until then, the pooled reversal preview is an estimate for review and cannot authorize a debit. Then confirm the terms and notices with the appropriate reviewer, including the treatment of accounts aged 13–17. Validate full and partial refunds, duplicate events, competing orders, concurrent spending, insufficient balances, disputed adjustments, and correction entries against PostgreSQL. Verify recovery controls in a test environment before changing live balances.
 
 [Google Play Voided Purchases API](https://developers.google.com/android-publisher/voided-purchases)
+
+## Staff posting workflow
+
+The recovery and correction endpoints require an active admin and a verified second factor. They are disabled by default. Before enabling them, staff need an approved notice process that can supply a real internal notice reference. The API stores the supplied reference for audit and does not deliver or verify user notices itself.
+
+The initial posting workflow recovers only proven unspent credit on the refunded order. It records unresolved amounts as shortfalls. Pooled recovery, negative balances and restrictions require separate implementation and remain outside this workflow. Corrections restore the original debit through a compensating ledger posting and prevent another automated or routine staff debit against the corrected order pending separate case review.
