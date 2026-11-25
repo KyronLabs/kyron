@@ -346,11 +346,9 @@ jobs:
   # first, and 0.1.5 reached a track nobody was testing on. Closed and open
   # testing releases are reviewed by Google before testers get them.
   #
-  # Releases only, deliberately. A development build's bundle carries the
-  # last release's version name, so in Play two different builds would both
-  # read "0.1.3", and testers would get every merge to main. What reaches
-  # testers is what somebody chose to cut as a version; a development bundle
-  # can still be uploaded by hand from its GitHub release.
+  # Releases only, deliberately. Development builds never receive the
+  # Play upload key and do not produce a bundle. What reaches testers is
+  # what a maintainer chose to cut as a version.
   #
   # Its own job, so a Play outage or a revoked key fails this and not the
   # GitHub release, which is published either way. And the bundle it sends
