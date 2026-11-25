@@ -25,7 +25,7 @@ WORKFLOWS = Path(__file__).resolve().parents[1] / ".github" / "workflows"
 # each that does the publishing.
 PUBLISHING = {
     "flutter-release.yml": "publish",
-    "flutter-debug.yml": "publish",
+    "flutter-debug.yml": "android",
 }
 
 # What a published build has to carry. Windows is intentionally paused;
@@ -55,13 +55,13 @@ def check(name: str, publish_job: str) -> list[str]:
         said.append(f"{name}: no {publish_job!r} job")
         return said
 
-    # The publish job waits for Android so it cannot publish before the
-    # checked artifacts are ready.
+    # A versioned release publishes from a separate job; the development
+    # build publishes in its Android job after validating the local files.
     needs = publish.get("needs") or []
     if isinstance(needs, str):
         needs = [needs]
     for platform in PLATFORMS:
-        if platform in jobs and platform not in needs:
+        if platform in jobs and platform != publish_job and platform not in needs:
             said.append(
                 f"{name}: {publish_job!r} does not wait for {platform!r}, so a "
                 f"release can be published without it"
@@ -81,10 +81,9 @@ def check(name: str, publish_job: str) -> list[str]:
             if "scripts/android-ci.sh run app flutter build" not in run:
                 said.append(f"{name}: Android builds must collect resource diagnostics")
 
-    said += check_build_number(name, workflow, [*PLATFORMS, publish_job])
+    said += check_build_number(name, workflow, list(dict.fromkeys([*PLATFORMS, publish_job])))
 
-    # And the publish job checks the Android files are there. download-artifact
-    # answering with nothing is not an error, so check before publishing.
+    # Check local files or downloaded files before publishing.
     body = "\n".join(
         str(step.get("run", "")) for step in publish.get("steps", [])
     )
@@ -514,6 +513,46 @@ def check_debug_build_reliability() -> list[str]:
         )
 
     steps = android.get("steps") or []
+    # Direct publish avoids the temporary Actions artifact quota. Require
+    # local validation before the release action and never upload to Play.
+    all_steps = [
+        step
+        for job in (workflow.get("jobs") or {}).values()
+        for step in (job.get("steps") or [])
+    ]
+    if any(
+        str(step.get("uses", "")).startswith(("actions/upload-artifact", "actions/download-artifact"))
+        for step in all_steps
+    ):
+        said.append(f"{name}: development builds must not use temporary Actions artifacts")
+    publishes = [
+        i for i, step in enumerate(steps)
+        if str(step.get("uses", "")).startswith("softprops/action-gh-release")
+    ]
+    if len(publishes) != 1:
+        said.append(f"{name}: Android must publish its checked local files directly")
+    else:
+        index = publishes[0]
+        before = "\n".join(str(step.get("run", "")) for step in steps[:index])
+        options = steps[index].get("with") or {}
+        if (
+            INSTALL_CHECK not in before
+            or BUNDLE_CHECK not in before
+            or 'for abi in arm64-v8a armeabi-v7a x86_64 universal' not in before
+            or options.get("files") != "debug-artifacts/*"
+            or options.get("fail_on_unmatched_files") is not True
+            or options.get("prerelease") is not True
+            or options.get("make_latest") is not False
+        ):
+            said.append(f"{name}: require all local checks before direct prerelease publication")
+        if (android.get("permissions") or {}).get("contents") != "write":
+            said.append(f"{name}: direct release publication needs contents: write")
+        if not any(
+            str(step.get("uses", "")).startswith("actions/checkout")
+            and (step.get("with") or {}).get("persist-credentials") is False
+            for step in steps[:index]
+        ):
+            said.append(f"{name}: do not persist the write-capable checkout token")
     build_runs = [
         str(step.get("run", ""))
         for step in steps
