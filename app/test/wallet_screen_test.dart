@@ -25,6 +25,8 @@ class _Gifts extends Fake implements GiftsRepository {
 void main() {
   for (final dark in [false, true]) {
     testWidgets('wallet states (dark $dark)', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(420, 960));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
       final gifts = _Gifts();
       await tester.pumpWidget(
         ProviderScope(

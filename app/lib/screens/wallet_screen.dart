@@ -152,7 +152,6 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                   ),
                 ),
               ),
-              const Hairline(),
               if (_hasCoinSourceBreakdown(wallet)) ...[
                 const Hairline(),
                 _Balance(
