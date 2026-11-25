@@ -188,7 +188,9 @@ export class GooglePlayRecoveryService {
       return await this.recoverPage(packageName, key, now);
     } catch {
       // Do not log provider payloads, cursors or database query arguments.
-      throw new ServiceUnavailableException('Google Play void recovery failed.');
+      throw new ServiceUnavailableException(
+        'Google Play void recovery failed.',
+      );
     }
   }
 
@@ -197,9 +199,10 @@ export class GooglePlayRecoveryService {
       data: [{ packageName }],
       skipDuplicates: true,
     });
-    let state = await this.prisma.googlePlayRecoveryCheckpoint.findUniqueOrThrow(
-      { where: { packageName } },
-    );
+    let state =
+      await this.prisma.googlePlayRecoveryCheckpoint.findUniqueOrThrow({
+        where: { packageName },
+      });
     const window = recoveryWindow(now, state);
     if (!window) {
       return this.fail(state, now, 'RETENTION_GAP_OR_CLOCK_REGRESSION');

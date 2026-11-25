@@ -27,9 +27,7 @@ describe('Google Play recovery window', () => {
   it('starts with 29 days and overlaps completed windows by 48 hours', () => {
     const initial = recoveryWindow(now, base);
     expect(initial?.end.getTime()).toBe(now.getTime() - 300_000);
-    expect(initial?.start.getTime()).toBe(
-      now.getTime() - 300_000 - 29 * day,
-    );
+    expect(initial?.start.getTime()).toBe(now.getTime() - 300_000 - 29 * day);
     const coveredThrough = new Date(now.getTime() - day);
     const resumed = recoveryWindow(now, { ...base, coveredThrough });
     expect(resumed?.start.getTime()).toBe(now.getTime() - 3 * day);
@@ -75,9 +73,9 @@ describe('Google Play recovery evidence', () => {
     expect(a.payload.encryptedPurchaseToken).not.toBe(
       b.payload.encryptedPurchaseToken,
     );
-    expect(
-      decryptPurchaseToken(a.payload.encryptedPurchaseToken, key),
-    ).toBe(item.purchaseToken);
+    expect(decryptPurchaseToken(a.payload.encryptedPurchaseToken, key)).toBe(
+      item.purchaseToken,
+    );
     expect(JSON.stringify(a)).not.toContain(item.purchaseToken);
     expect(a.payload.voidedSource).toBe(0);
     expect(
