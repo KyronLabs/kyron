@@ -136,7 +136,7 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
     setState(() => _checking = true);
     try {
       final android = _billing
-          .getPlatformAddition<GooglePlayInAppPurchasePlatformAddition>();
+          .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
       final response = await android.queryPastPurchases();
       await _handle(response.pastPurchases);
       if (response.error != null) {
