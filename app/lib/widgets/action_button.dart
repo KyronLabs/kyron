@@ -201,6 +201,7 @@ class ActionButton extends StatelessWidget {
 /// looks misaligned. This matches the height and keeps the target square.
 class ActionIconButton extends StatelessWidget {
   final IconData icon;
+  final Color? iconColor;
   final VoidCallback? onPressed;
 
   /// Read out by screen readers, and shown on a long press.
@@ -224,6 +225,7 @@ class ActionIconButton extends StatelessWidget {
   const ActionIconButton({
     super.key,
     required this.icon,
+    this.iconColor,
     required this.onPressed,
     required this.tooltip,
     this.outlined = true,
@@ -265,7 +267,8 @@ class ActionIconButton extends StatelessWidget {
                       color: scheme.onSurface,
                     ),
                   )
-                : Icon(icon, size: size * 0.45, color: scheme.onSurface),
+                : Icon(icon,
+                    size: size * 0.45, color: iconColor ?? scheme.onSurface),
           ),
         ),
       ),

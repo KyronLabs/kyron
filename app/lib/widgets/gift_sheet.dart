@@ -16,6 +16,7 @@ import '../providers/auth_provider.dart';
 import '../repositories/gifts_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
+import 'action_button.dart';
 import 'app_sheet.dart';
 import 'gift_motion.dart';
 import 'play_coin_purchase_panel.dart';
@@ -287,13 +288,12 @@ class _SheetState extends ConsumerState<_Sheet> {
                     ),
                     _Balance(wallet: wallet),
                     const SizedBox(width: SpacingTokens.space4),
-                    IconButton.filled(
+                    ActionIconButton(
                       tooltip: l10n.ui('ui_wallet_play_buy', 'Buy coins'),
-                      style: IconButton.styleFrom(
-                        backgroundColor: scheme.error,
-                        foregroundColor: scheme.onError,
-                      ),
-                      icon: const Icon(Icons.add_rounded),
+                      icon: Iconsax.add_copy,
+                      iconColor: scheme.error,
+                      outlined: false,
+                      size: kMinInteractiveDimension,
                       onPressed: _sending
                           ? null
                           : () {

@@ -26,10 +26,12 @@ class WalletScreen extends ConsumerWidget {
       appBar: KyronAppBar(
         title: Text(strings.ui('ui_wallet_title', 'Wallet')),
         actions: [
-          IconButton(
+          ActionIconButton(
             tooltip: strings.ui('ui_coin_help', 'Coin help'),
             onPressed: () => openCoinHelp(context),
-            icon: const Icon(Icons.help_outline_rounded),
+            icon: Iconsax.message_question_copy,
+            size: kMinInteractiveDimension,
+            outlined: false,
           ),
         ],
       ),
@@ -126,44 +128,31 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 ),
               )
             else ...[
+              _Balance(
+                strings.ui('ui_wallet_spendable', 'Spendable coins'),
+                coins(wallet.coins),
+                prominent: true,
+              ),
               Padding(
-                padding: const EdgeInsets.all(SpacingTokens.space16),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surfaceContainer,
-                    borderRadius: BorderRadius.circular(RadiusTokens.radius20),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _Balance(
-                        strings.ui('ui_wallet_spendable', 'Spendable coins'),
-                        coins(wallet.coins),
-                        prominent: true,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                          SpacingTokens.space16,
-                          0,
-                          SpacingTokens.space16,
-                          SpacingTokens.space16,
-                        ),
-                        child: ActionButton(
-                          label: strings.ui('ui_wallet_recharge', 'Recharge'),
-                          icon: Icons.add_rounded,
-                          expand: true,
-                          onPressed: () => openCoinPurchaseSheet(
-                            context,
-                            userId: widget.userId,
-                            coins: coins,
-                            onWalletChanged: _refresh,
-                          ),
-                        ),
-                      ),
-                    ],
+                padding: const EdgeInsets.fromLTRB(
+                  SpacingTokens.space16,
+                  0,
+                  SpacingTokens.space16,
+                  SpacingTokens.space16,
+                ),
+                child: ActionButton(
+                  label: strings.ui('ui_wallet_recharge', 'Recharge'),
+                  icon: Iconsax.add_copy,
+                  expand: true,
+                  onPressed: () => openCoinPurchaseSheet(
+                    context,
+                    userId: widget.userId,
+                    coins: coins,
+                    onWalletChanged: _refresh,
                   ),
                 ),
               ),
+              const Hairline(),
               if (_hasCoinSourceBreakdown(wallet)) ...[
                 const Hairline(),
                 _Balance(

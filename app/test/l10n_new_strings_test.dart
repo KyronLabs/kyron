@@ -33,6 +33,8 @@ void main() {
     'ui_coin_help_refunds',
     'ui_coin_help_refunds_detail',
     'ui_wallet_recharge',
+    'ui_wallet_play_regional_prices',
+    'ui_wallet_play_no_regional_packs',
     'ui_wallet_recent_adjustments',
     'ui_wallet_coins_restored',
     'ui_wallet_coins_removed',

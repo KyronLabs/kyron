@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 import '../l10n/app_localizations.dart';
@@ -62,6 +63,7 @@ class CoinHelpScreen extends StatelessWidget {
                 ),
               ExpansionTile(
                 title: Text(question),
+                trailing: const Icon(Iconsax.arrow_down_1_copy),
                 expandedCrossAxisAlignment: CrossAxisAlignment.start,
                 childrenPadding: const EdgeInsets.fromLTRB(
                   SpacingTokens.space16,
