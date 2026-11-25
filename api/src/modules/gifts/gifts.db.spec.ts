@@ -187,16 +187,37 @@ run('gifts, against a real database', () => {
         data: { authorId: purchaseCreator, content: 'Purchased coin proceeds' },
       })
     ).id;
-    await prisma.coinEntry.create({
-      data: {
-        userId: purchaseSender,
-        kind: 'PURCHASE_GRANT',
-        amount: 10,
-        key: `test-purchase-grant:${stamp}`,
-      },
-    });
+    const purchaseIds: string[] = [];
+    for (const [index, amount] of [2, 8].entries()) {
+      const key = `test-purchase-grant:${stamp}:${index}`;
+      const createdAt = new Date(WEDNESDAY.getTime() + index);
+      const purchase = await prisma.googlePlayPurchase.create({
+        data: {
+          userId: purchaseSender,
+          purchaseTokenHash: randomUUID().replaceAll('-', '').repeat(2),
+          encryptedToken: 'test-token',
+          productId: 'test-coins',
+          quantity: 1,
+          coinAmount: amount,
+          purchaseTime: createdAt,
+          acknowledgementState: 1,
+          coinEntryKey: key,
+        },
+      });
+      purchaseIds.push(purchase.id);
+      await prisma.coinEntry.create({
+        data: {
+          userId: purchaseSender,
+          kind: 'PURCHASE_GRANT',
+          amount,
+          key,
+          createdAt,
+        },
+      });
+    }
 
-    const sent = await gifts.send(purchaseSender, purchasePost, gift('fire'));
+    const request = gift('fire');
+    const sent = await gifts.send(purchaseSender, purchasePost, request);
     const purchaseSpend = await prisma.coinEntry.findUniqueOrThrow({
       where: { key: `gift:${sent.gift.id}:purchase-spend` },
     });
@@ -205,6 +226,22 @@ run('gifts, against a real database', () => {
     });
     const earning = await prisma.creatorEarning.findUniqueOrThrow({
       where: { sourceCoinEntryKey: purchaseEarn.key },
+    });
+
+    const allocation = await prisma.financialSourceRecord.findUniqueOrThrow({
+      where: {
+        sourceType_sourceId: {
+          sourceType: 'GIFT_PURCHASE_SPEND_ALLOCATION',
+          sourceId: sent.gift.id,
+        },
+      },
+    });
+    expect(allocation.payload).toEqual({
+      allocations: [
+        { purchaseId: purchaseIds[0], coins: 2 },
+        { purchaseId: purchaseIds[1], coins: 3 },
+      ],
+      unattributedCoins: 0,
     });
 
     expect(sent.wallet).toMatchObject({
@@ -231,6 +268,22 @@ run('gifts, against a real database', () => {
     expect(await gifts.wallet(purchaseCreator)).toMatchObject({
       purchaseFundedEarned: 5,
       withdrawableEarned: 5,
+    });
+    const replay = await gifts.send(purchaseSender, purchasePost, request);
+    expect(replay.gift.id).toBe(sent.gift.id);
+    const later = await gifts.send(purchaseSender, purchasePost, gift('fire'));
+    const laterAllocation =
+      await prisma.financialSourceRecord.findUniqueOrThrow({
+        where: {
+          sourceType_sourceId: {
+            sourceType: 'GIFT_PURCHASE_SPEND_ALLOCATION',
+            sourceId: later.gift.id,
+          },
+        },
+      });
+    expect(laterAllocation.payload).toEqual({
+      allocations: [{ purchaseId: purchaseIds[1], coins: 5 }],
+      unattributedCoins: 0,
     });
   });
 
