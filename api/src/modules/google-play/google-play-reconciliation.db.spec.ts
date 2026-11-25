@@ -188,6 +188,59 @@ run('Google Play refund evidence against Postgres', () => {
     ).toBe(false);
   });
 
+  it('previews the highest cumulative refund against purchased coins only', async () => {
+    const refundUser = randomUUID();
+    const refundPurchase = randomUUID();
+    await prisma.googlePlayPurchase.create({
+      data: {
+        id: refundPurchase,
+        userId: refundUser,
+        purchaseTokenHash: tokenHash(randomUUID()),
+        encryptedToken: 'unused-by-preview',
+        productId,
+        quantity: 3,
+        coinAmount: 120,
+        purchaseTime: new Date(),
+        acknowledgementState: 1,
+        coinEntryKey: randomUUID(),
+      },
+    });
+    await prisma.financialSourceRecord.createMany({
+      data: [1, 2, 2].map((quantity) => ({
+        sourceType: 'GOOGLE_PLAY_REFUND_OBSERVATION',
+        sourceId: randomUUID(),
+        eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+        beneficiaryId: refundUser,
+        relatedIds: { purchaseId: refundPurchase },
+        payload: { cumulativeRefundedQuantity: quantity },
+        occurredAt: new Date(),
+      })),
+    });
+    await prisma.coinEntry.createMany({
+      data: (
+        [
+          { kind: 'PURCHASE_GRANT', amount: 120 },
+          { kind: 'PURCHASE_SPEND', amount: -95 },
+          { kind: 'REWARD_GRANT', amount: 200 },
+        ] as const
+      ).map(({ kind, amount }) => ({
+        userId: refundUser,
+        kind,
+        amount,
+        key: randomUUID(),
+      })),
+    });
+
+    expect(await service.previewRefundReversal(refundPurchase)).toEqual({
+      purchaseId: refundPurchase,
+      refundedQuantity: 2,
+      verifiedRefundCoins: 80,
+      purchasedWalletCoins: 25,
+      coveredByPurchasedWalletCoins: 25,
+      uncoveredCoins: 55,
+    });
+  });
+
   it('does not write retry evidence after another worker takes the lease', async () => {
     const event = await receipt(digest);
     const leaseId = randomUUID();

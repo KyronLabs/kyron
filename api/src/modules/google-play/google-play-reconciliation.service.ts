@@ -1,9 +1,10 @@
 import {
+  ConflictException,
   Injectable,
   NotFoundException,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import type { GooglePlayPurchase, Prisma } from '@prisma/client';
+import { CoinKind, type GooglePlayPurchase, type Prisma } from '@prisma/client';
 import { createHash } from 'node:crypto';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import {
@@ -156,6 +157,81 @@ export class GooglePlayReconciliationService {
           ? items[items.length - 1].evidenceId
           : null,
     };
+  }
+
+  async previewRefundReversal(purchaseId: string) {
+    return this.prisma.$transaction(
+      async (tx) => {
+        const purchase = await tx.googlePlayPurchase.findUnique({
+          where: { id: purchaseId },
+          select: { userId: true, quantity: true, coinAmount: true },
+        });
+        if (!purchase)
+          throw new NotFoundException('Google Play purchase not found.');
+
+        const evidence = await tx.financialSourceRecord.findMany({
+          where: {
+            sourceType: SOURCE,
+            eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+            beneficiaryId: purchase.userId,
+            relatedIds: { path: ['purchaseId'], equals: purchaseId },
+          },
+          select: { payload: true },
+        });
+        if (!evidence.length) {
+          throw new NotFoundException('Verified refund evidence not found.');
+        }
+
+        let refundedQuantity = 0;
+        for (const row of evidence) {
+          const quantity = jsonRecord(row.payload).cumulativeRefundedQuantity;
+          if (
+            typeof quantity !== 'number' ||
+            !Number.isSafeInteger(quantity) ||
+            quantity < 1 ||
+            quantity > purchase.quantity
+          ) {
+            throw new ConflictException(
+              'Refund quantity evidence is inconsistent.',
+            );
+          }
+          refundedQuantity = Math.max(refundedQuantity, quantity);
+        }
+        if (
+          purchase.quantity < 1 ||
+          purchase.coinAmount < 1 ||
+          purchase.coinAmount % purchase.quantity !== 0
+        ) {
+          throw new ConflictException(
+            'Purchase coin allocation is inconsistent.',
+          );
+        }
+
+        const verifiedRefundCoins =
+          (purchase.coinAmount / purchase.quantity) * refundedQuantity;
+        const balance = await tx.coinEntry.aggregate({
+          where: {
+            userId: purchase.userId,
+            kind: { in: [CoinKind.PURCHASE_GRANT, CoinKind.PURCHASE_SPEND] },
+          },
+          _sum: { amount: true },
+        });
+        const purchasedWalletCoins = Math.max(0, balance._sum.amount ?? 0);
+        const coveredByPurchasedWalletCoins = Math.min(
+          verifiedRefundCoins,
+          purchasedWalletCoins,
+        );
+        return {
+          purchaseId,
+          refundedQuantity,
+          verifiedRefundCoins,
+          purchasedWalletCoins,
+          coveredByPurchasedWalletCoins,
+          uncoveredCoins: verifiedRefundCoins - coveredByPurchasedWalletCoins,
+        };
+      },
+      { isolationLevel: 'RepeatableRead' },
+    );
   }
 
   async listPending(after?: string) {

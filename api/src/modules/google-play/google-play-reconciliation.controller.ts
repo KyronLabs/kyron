@@ -53,3 +53,16 @@ export class GooglePlayChargebackEvidenceController {
     return this.reconciliation.listChargebackEvidence(query.after);
   }
 }
+
+@Controller('financial-operations/google-play/purchases')
+@UseGuards(AuthGuard, FinancialOperationsGuard)
+export class GooglePlayRefundReversalController {
+  constructor(
+    private readonly reconciliation: GooglePlayReconciliationService,
+  ) {}
+
+  @Get(':id/reversal-preview')
+  preview(@Param('id', ParseUUIDPipe) id: string) {
+    return this.reconciliation.previewRefundReversal(id);
+  }
+}
