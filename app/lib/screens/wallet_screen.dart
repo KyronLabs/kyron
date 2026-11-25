@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -12,6 +15,7 @@ import '../routes.dart';
 import '../widgets/action_button.dart';
 import '../widgets/hairline.dart';
 import '../widgets/kyron_app_bar.dart';
+import '../widgets/play_coin_purchase_panel.dart';
 
 class WalletScreen extends ConsumerWidget {
   const WalletScreen({super.key});
@@ -28,14 +32,16 @@ class WalletScreen extends ConsumerWidget {
             ? Center(
                 child: Text(strings.signInToKyron),
               )
-            : _WalletBalances(key: ValueKey(user.id)),
+            : _WalletBalances(userId: user.id, key: ValueKey(user.id)),
       ),
     );
   }
 }
 
 class _WalletBalances extends ConsumerStatefulWidget {
-  const _WalletBalances({super.key});
+  const _WalletBalances({required this.userId, super.key});
+
+  final String userId;
 
   @override
   ConsumerState<_WalletBalances> createState() => _WalletBalancesState();
@@ -62,10 +68,12 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
       return units.replaceAll(r'$count', numbers.format(count));
     }
 
+    final supportsPlayBilling = !kIsWeb && Platform.isAndroid;
     return FutureBuilder<GiftWallet>(
       future: _wallet,
       builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
+        if (snapshot.connectionState != ConnectionState.done &&
+            (!supportsPlayBilling || !snapshot.hasData)) {
           return Center(
             child: CircularProgressIndicator(
               semanticsLabel: strings.ui(
@@ -102,6 +110,12 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
               ),
             ),
             const Hairline(),
+            if (supportsPlayBilling)
+              PlayCoinPurchasePanel(
+                userId: widget.userId,
+                coins: coins,
+                onWalletChanged: _refresh,
+              ),
             if (wallet == null)
               Padding(
                 padding: const EdgeInsets.all(SpacingTokens.space16),

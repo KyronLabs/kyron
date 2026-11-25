@@ -14,6 +14,13 @@ void main() {
   const englishFallbackKeys = {
     'ui_gift_rewards_notice',
     'ui_wallet_purchased_coins',
+    'ui_wallet_play_unavailable',
+    'ui_wallet_play_pending',
+    'ui_wallet_play_checking',
+    'ui_wallet_play_credited',
+    'ui_wallet_play_finishing',
+    'ui_wallet_play_retry',
+    'ui_wallet_play_buy',
     'ui_wallet_recent_adjustments',
     'ui_wallet_coins_restored',
     'ui_wallet_coins_removed',
