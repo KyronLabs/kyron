@@ -217,10 +217,11 @@ or attached to development or versioned releases.
 | **Development build**, on every push to `main` | APKs signed with a private development key, per architecture and universal |
 | **Release**, on a `vX.Y.Z` tag | APKs signed with the upload key, per architecture and universal, plus a Play `.aab` |
 
-To cut a release, run **Create Versioned Release** and choose `patch`, `minor`
-or `major`. It checks the signing secrets first, then bumps the version,
-commits, tags `vX.Y.Z` and starts **Release** on that tag. (It has to start it
-by name: a tag pushed with a workflow's own token starts no other workflow.)
+Prepare a release through a pull request. Run `python3 scripts/bump-version.py patch`
+(or `minor` or `major`), `python3 scripts/changelog.py release X.Y.Z`, and
+`python3 scripts/changelog.py app-notes`. After merging that PR, run **Create
+Versioned Release** from `main` and enter the merged version. The workflow
+checks the signing secrets, tags the reviewed commit, and starts **Release**.
 The Android build follows the shared checks, then publishes its checked APKs
 and Play bundle. `scripts/check-workflows.py` verifies that wiring on every
 pull request and keeps the temporary Windows pause from being undone silently.

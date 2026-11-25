@@ -1,5 +1,22 @@
 [
   {
+    "version": "0.1.49",
+    "items": [
+      {
+        "title": "Eligible Android users can buy coin packs from the Wallet with Google Play.",
+        "detail": "Kyron verifies the purchase before updating the balance, and unfinished purchases can be checked again in the Wallet."
+      },
+      {
+        "title": "Reward-funded gifts now generate withdrawable creator earnings on the same terms as purchased-coin gifts.",
+        "detail": "Source remains recorded for reconciliation; grandfathered weekly complimentary gifts retain their legacy treatment."
+      },
+      {
+        "title": "Retire the automatic 100-coin weekly complimentary wallet top-up and its Monday push reminder.",
+        "detail": "Existing unspent grants are preserved as legacy complimentary balances; new coins are issued through approved rewards."
+      }
+    ]
+  },
+  {
     "version": "0.1.48",
     "items": [
       {
@@ -72,19 +89,6 @@
       {
         "title": "A security review's findings on the server: link previews can no longer be steered at private addresses, uploads are checked by their contents, profile fields have limits, message keys are capped per account, rate limits and CORS are stricter, the old sign-in endpoints are removed, and the server runs as an unprivileged user.",
         "detail": ""
-      }
-    ]
-  },
-  {
-    "version": "0.1.44",
-    "items": [
-      {
-        "title": "Kyron now speaks your language everywhere.",
-        "detail": "The buttons, menus, empty screens and error messages that were still in English are now translated in all 68 languages, and the language screen no longer claims parts of the app stay in English."
-      },
-      {
-        "title": "Back takes you Home, not out.",
-        "detail": "From Explore, Communities or Messages, back goes to Home; on Home, it asks for a second press before Kyron closes, so a stray back never leaves the app."
       }
     ]
   }

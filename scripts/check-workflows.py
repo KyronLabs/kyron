@@ -439,10 +439,10 @@ def check_wiring(name: str) -> list[str]:
 def check_release_trigger() -> list[str]:
     """That cutting a release starts the build of it.
 
-    "Create Versioned Release" bumps the version, tags it and pushes the tag
+    "Create Versioned Release" tags the reviewed version and pushes the tag
     with the workflow's own GITHUB_TOKEN -- and GitHub starts no workflow for
     an event that token caused. So the Release workflow's `on: push: tags`
-    never fires for a tag pushed there: the version is bumped, the tag is
+    never fires for a tag pushed there: the tag is
     up, and nothing builds it. Dispatch is the documented exception, so the
     release has to be asked for by name.
     """
