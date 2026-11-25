@@ -16,6 +16,18 @@ A refund or chargeback is eligible only after Kyron links authoritative Google P
 
 When several orders compete for the same purchased balance, apply outstanding eligible recoveries in verified refund-time order, using the internal purchase ID to break ties. If an earlier case is unresolved or eligibility is uncertain, route competing cases to staff review before debiting.
 
+## Abuse review and temporary restrictions
+
+An unrecovered amount is a risk signal for staff review. Review repeated shortfalls alongside verified chargebacks and other documented indicators. A single refund, chargeback, or shortfall is insufficient evidence of abuse. Ordinary refunds leave the wallet usable by default.
+
+For a verified chargeback with credible fraud indicators, authorized staff may temporarily restrict gifting or new coin purchases while the case is reviewed. Scope the restriction to the wallet activity at risk. Record the evidence, decision, responsible staff member and review deadline. Notify the buyer of the affected activity and provide an appeal route. Lift the restriction when the case closes or the deadline passes unless staff document a justified extension and notify the buyer. Apply any broader sanction for confirmed repeated abuse through Kyron’s moderation process.
+
+Shortfalls do not automatically reduce future coin grants. Any future-purchase offset requires a separate approved recovery policy with prior disclosure, an explicit cap, staff authorization, and a dispute process. It must preserve the protection for already-gifted coins and unrelated purchases.
+
+## Purchased-coin spend attribution
+
+When sending a new gift funded by purchased coins, allocate its purchased portion to the oldest eligible unspent purchase credits first. Order credits by the time they became spendable, then by internal purchase ID to break ties. Persist the allocation with the gift spend in the same transaction. Historical spends without recorded allocations remain subject to attribution review. Any launch of expiring purchased coins requires per-credit expiry tracking and defined rules for spending and refund recovery before activation.
+
 ## User notice and disputes
 
 Show the buyer the order reference, verified refund amount in coins, coins removed, and a way to dispute the adjustment. The wallet display should distinguish an actual debit from any unresolved amount tracked internally. A valid dispute can suspend further staff action on the case. Correct an erroneous debit with a linked compensating entry. Store a minimal audit trail and keep raw purchase tokens and provider responses out of notices and operator-facing logs.
