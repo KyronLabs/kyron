@@ -90,7 +90,8 @@ jobs:
   android:
     name: Build the Android development APKs and Play bundle
     needs: version
-    runs-on: ubuntu-latest
+    # Avoid an unreviewed Android host-image upgrade via ubuntu-latest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
       KYRON_BUILD_NUMBER: ${{ needs.version.outputs.build }}
@@ -114,6 +115,10 @@ jobs:
             app/android/gradle.properties
             app/android/gradle/wrapper/gradle-wrapper.properties
             app/pubspec.lock
+
+      - name: Configure Android CI resource budget
+        working-directory: .
+        run: scripts/android-ci.sh configure
 
       # Before anything Gradle runs, and in its own step. Left to the build,
       # the NDK was downloaded twelve minutes into `flutter build` -- two of
@@ -310,10 +315,10 @@ jobs:
             shift
             local stage_started=$SECONDS
             echo "::group::Building $stage APKs"
-            ( cd app && flutter build apk --release --no-pub "$@" \
+            scripts/android-ci.sh run app flutter build apk --release --no-pub "$@" \
                 --build-number "$KYRON_BUILD_NUMBER" \
                 ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
-                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
+                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
             echo "$stage completed in $((SECONDS-stage_started)) seconds."
             echo "::endgroup::"
           }
@@ -415,10 +420,10 @@ jobs:
           test -f app/android/app/google-services.json
 
           scripts/write-upload-key.sh
-          ( cd app && flutter build appbundle --release --no-pub \
+          scripts/android-ci.sh run app flutter build appbundle --release --no-pub \
               --build-number "$KYRON_BUILD_NUMBER" \
               ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
-              ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
+              ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
 
           src=app/build/app/outputs/bundle/release/app-release.aab
           test -f "$src" || { echo "Missing $src"; exit 1; }

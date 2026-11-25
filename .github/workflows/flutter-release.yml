@@ -115,7 +115,8 @@ jobs:
   android:
     name: Build the Android release
     needs: checks
-    runs-on: ubuntu-latest
+    # Avoid an unreviewed Android host-image upgrade via ubuntu-latest.
+    runs-on: ubuntu-24.04
     env:
       KYRON_BUILD_NUMBER: ${{ needs.checks.outputs.build }}
     defaults:
@@ -140,6 +141,10 @@ jobs:
             app/android/gradle.properties
             app/android/gradle/wrapper/gradle-wrapper.properties
             app/pubspec.lock
+
+      - name: Configure Android CI resource budget
+        working-directory: .
+        run: scripts/android-ci.sh configure
 
       # Before anything Gradle runs, and in its own step. Left to the build,
       # the NDK was downloaded twelve minutes into `flutter build` -- two of
@@ -248,10 +253,10 @@ jobs:
             shift
             local stage_started=$SECONDS
             echo "::group::Building $stage APKs"
-            ( cd app && flutter build apk --release --no-pub "$@" \
+            scripts/android-ci.sh run app flutter build apk --release --no-pub "$@" \
                 --build-number "$KYRON_BUILD_NUMBER" \
                 ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
-                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
+                ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
             echo "$stage completed in $((SECONDS-stage_started)) seconds."
             echo "::endgroup::"
           }
@@ -279,11 +284,12 @@ jobs:
           echo "All four APK variants completed in $((SECONDS-started)) seconds."
 
       - name: Build release App Bundle
+        working-directory: .
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
         run: |
-          flutter build appbundle --release --no-pub \
+          scripts/android-ci.sh run app flutter build appbundle --release --no-pub \
             --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
                 ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
