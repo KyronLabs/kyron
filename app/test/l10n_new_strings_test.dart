@@ -9,11 +9,17 @@ import 'package:kyron_app/l10n/app_localizations.dart';
 /// really shows it: a key the code names but no catalog has is English in
 /// every language, which is how 55 of them shipped.
 void main() {
-  // These two new labels deliberately use their English fallback until
+  // These labels deliberately use their English fallback until
   // reviewed translations are supplied for every supported locale.
   const englishFallbackKeys = {
     'ui_gift_rewards_notice',
     'ui_wallet_purchased_coins',
+    'ui_wallet_recent_adjustments',
+    'ui_wallet_coins_restored',
+    'ui_wallet_coins_removed',
+    'ui_wallet_verified_refund',
+    'ui_wallet_play_order',
+    'ui_wallet_notice_reference',
     'ui_wallet_reward_coins',
     'ui_wallet_legacy_complimentary_coins',
     'ui_reminders_detail_away',

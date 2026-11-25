@@ -8,6 +8,7 @@ import '../l10n/app_localizations.dart';
 import '../models/gift.dart';
 import '../providers/auth_provider.dart';
 import '../providers/gifts_provider.dart';
+import '../routes.dart';
 import '../widgets/action_button.dart';
 import '../widgets/hairline.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -163,6 +164,79 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
+              if (wallet.recoveryNotices.isNotEmpty) ...[
+                const Hairline(),
+                Padding(
+                  padding: const EdgeInsets.all(SpacingTokens.space16),
+                  child: Text(
+                    strings.ui(
+                      'ui_wallet_recent_adjustments',
+                      'Recent adjustments',
+                    ),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                for (final notice in wallet.recoveryNotices) ...[
+                  _Balance(
+                    notice.correction
+                        ? strings.ui(
+                            'ui_wallet_coins_restored',
+                            'Coins restored',
+                          )
+                        : strings.ui(
+                            'ui_wallet_coins_removed',
+                            'Coins removed',
+                          ),
+                    coins(notice.coins),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(SpacingTokens.space16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (notice.occurredAt case final date?)
+                          Text(DateFormat.yMMMd(locale).format(date.toLocal())),
+                        if (notice.verifiedRefundCoins case final amount?)
+                          Text(
+                            strings
+                                .ui(
+                                  'ui_wallet_verified_refund',
+                                  r'Verified refund: $coins',
+                                )
+                                .replaceAll(r'$coins', coins(amount)),
+                          ),
+                        if (notice.orderReference case final order?)
+                          SelectableText(
+                            strings
+                                .ui(
+                                  'ui_wallet_play_order',
+                                  r'Google Play order: $reference',
+                                )
+                                .replaceAll(r'$reference', order),
+                          ),
+                        SelectableText(
+                          strings
+                              .ui(
+                                'ui_wallet_notice_reference',
+                                r'Adjustment reference: $reference',
+                              )
+                              .replaceAll(r'$reference', notice.id),
+                        ),
+                        const SizedBox(height: SpacingTokens.space8),
+                        ActionButton(
+                          label: strings.contactSupport,
+                          kind: ActionButtonKind.outlined,
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            Routes.settingsContactSupport,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Hairline(),
+                ],
+              ],
             ],
           ],
         );

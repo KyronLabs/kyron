@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { PrismaClient } from '@prisma/client';
+import { listPurchasedCoinNotices } from '../financial-ledger/purchased-coin-recovery';
 import { LedgerService } from '../financial-ledger/ledger.service';
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import {
@@ -215,6 +216,7 @@ run('Google Play refund evidence against Postgres', () => {
     const refundUser = randomUUID();
     const refundPurchase = randomUUID();
     const grantKey = randomUUID();
+    const refundOrder = `GPA.${refundPurchase}`;
     await prisma.googlePlayPurchase.create({
       data: {
         id: refundPurchase,
@@ -227,6 +229,7 @@ run('Google Play refund evidence against Postgres', () => {
         purchaseTime: new Date(),
         acknowledgementState: 1,
         coinEntryKey: grantKey,
+        orderId: refundOrder,
       },
     });
     await prisma.financialSourceRecord.createMany({
@@ -375,16 +378,10 @@ run('Google Play refund evidence against Postgres', () => {
       },
     });
     const requestId = randomUUID();
-    const noticeId = randomUUID();
     process.env.GOOGLE_PLAY_REFUND_RECOVERY_ENABLED = 'true';
     try {
       const recover = () =>
-        service.recoverVerifiedRefund(
-          refundPurchase,
-          actorId,
-          requestId,
-          noticeId,
-        );
+        service.recoverVerifiedRefund(refundPurchase, actorId, requestId);
       await expect(recover()).rejects.toThrow(
         'Chargeback evidence requires a recovery referral.',
       );
@@ -404,13 +401,11 @@ run('Google Play refund evidence against Postgres', () => {
           outstandingRefundCoins: 35,
         },
       );
-      const correctionNotice = randomUUID();
       const correct = () =>
         service.correctRefundRecovery(
           refundPurchase,
           posted.recoveryId,
           actorId,
-          correctionNotice,
         );
       const [correction, correctionReplay] = await Promise.all([
         correct(),
@@ -418,6 +413,25 @@ run('Google Play refund evidence against Postgres', () => {
       ]);
       expect(correctionReplay).toEqual(correction);
       expect(correction).toMatchObject({ restoredCoins: 85 });
+      const notices = await listPurchasedCoinNotices(prisma, refundUser);
+      expect(notices).toMatchObject([
+        {
+          id: correction.noticeId,
+          kind: 'CORRECTION',
+          coins: 85,
+          verifiedRefundCoins: null,
+          orderReference: refundOrder,
+        },
+        {
+          id: posted.noticeId,
+          kind: 'RECOVERY',
+          coins: 85,
+          verifiedRefundCoins: 120,
+          orderReference: refundOrder,
+        },
+      ]);
+      expect(await listPurchasedCoinNotices(prisma, userId)).toEqual([]);
+
       expect(await service.previewRefundReversal(refundPurchase)).toMatchObject(
         {
           netRecoveredForOrder: 0,
@@ -425,12 +439,7 @@ run('Google Play refund evidence against Postgres', () => {
         },
       );
       await expect(
-        service.recoverVerifiedRefund(
-          refundPurchase,
-          actorId,
-          randomUUID(),
-          noticeId,
-        ),
+        service.recoverVerifiedRefund(refundPurchase, actorId, randomUUID()),
       ).rejects.toThrow('A corrected recovery requires separate case review.');
     } finally {
       delete process.env.GOOGLE_PLAY_REFUND_RECOVERY_ENABLED;

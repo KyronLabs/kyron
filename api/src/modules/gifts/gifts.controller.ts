@@ -5,6 +5,7 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  Query,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -21,10 +22,16 @@ export class GiftsController {
 
   /** The gift sheet in one call: what can be sent, and what is in hand. */
   @Get('gifts')
-  async sheet(@Req() req: AuthRequest) {
+  async sheet(
+    @Req() req: AuthRequest,
+    @Query('recoveryNotices') recoveryNotices?: string,
+  ) {
     return {
       catalogue: this.svc.catalogue(),
-      wallet: await this.svc.wallet(req.user.id),
+      wallet:
+        recoveryNotices === 'true'
+          ? await this.svc.walletWithNotices(req.user.id)
+          : await this.svc.wallet(req.user.id),
     };
   }
 

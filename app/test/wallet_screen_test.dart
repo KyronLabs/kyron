@@ -84,11 +84,34 @@ void main() {
       await tester.pump();
       expect(find.text('1,234 coins'), findsNothing);
 
-      gifts.reads.last.complete(const GiftWallet(coins: 0, earned: 0));
+      gifts.reads.last.complete(
+        const GiftWallet(
+          coins: 0,
+          earned: 0,
+          recoveryNotices: [
+            WalletRecoveryNotice(
+              id: 'test-adjustment',
+              correction: false,
+              coins: 25,
+              verifiedRefundCoins: 40,
+              orderReference: 'test-order',
+            ),
+          ],
+        ),
+      );
       await tester.pumpAndSettle();
       expect(find.text('0 coins'), findsNWidgets(3));
       expect(find.text('Purchased coins'), findsNothing);
       expect(gifts.reads, hasLength(3));
+      await tester.scrollUntilVisible(
+        find.text('Adjustment reference: test-adjustment'),
+        140,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text('25 coins'), findsOneWidget);
+      expect(find.text('Verified refund: 40 coins'), findsOneWidget);
+      expect(find.text('Google Play order: test-order'), findsOneWidget);
+      expect(find.text('Contact support'), findsOneWidget);
     });
   }
 
