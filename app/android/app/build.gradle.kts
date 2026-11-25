@@ -40,7 +40,8 @@ if (googleServices.exists()) {
 // Every APK out of one build carries this, and Android will not install a
 // package whose versionCode is lower than the one already on the phone.
 //
-// `--split-per-abi` makes Flutter's Gradle plugin rewrite each split to
+// Without the force-version-code-ignoring-abi property, `--split-per-abi`
+// makes Flutter's Gradle plugin rewrite each split to
 // `abi * 1000 + build`, so build 78 shipped four files with four different
 // numbers -- armeabi-v7a 1078, arm64-v8a 2078, x86_64 4078 -- while the
 // universal APK kept the plain 78. Install the arm64 one and then try the
@@ -154,27 +155,17 @@ android {
     }
 }
 
-// `--split-per-abi` is the thing that breaks the rule above, and it cannot be
-// undone after the fact: the Flutter Gradle Plugin rewrites each split's
-// versionCode during configuration, and by the time anything here could set
-// it back the Android Gradle Plugin has finalised the property --
-// "The value for this property cannot be changed any further."
-//
-// So it is refused at the point where somebody would type it, rather than
-// discovered four files later. Build one architecture at a time instead:
-//
-//   flutter build apk --release --target-platform android-arm64
-//
-// which produces the same APK, at the same size, carrying the versionCode
-// this file asked for. Both workflows do exactly that.
-if ((project.findProperty("split-per-abi") as String?)?.toBoolean() == true) {
+// Flutter supports a Gradle project property which suppresses ABI-specific
+// versionCode offsets. Require it whenever APK splitting is requested. This
+// permits the three targeted APKs to be built in one invocation without
+// weakening the uniform-version contract checked by scripts/check-apks.sh.
+if (
+    (project.findProperty("split-per-abi") as String?)?.toBoolean() == true &&
+    (project.findProperty("force-version-code-ignoring-abi") as String?)?.toBoolean() != true
+) {
     throw GradleException(
-        "--split-per-abi gives each APK a different versionCode " +
-            "(abi * 1000 + build) and leaves the universal APK on the lowest " +
-            "of them, so the second file somebody tries is refused as a " +
-            "downgrade -- in the words \"App not installed as package " +
-            "appears to be invalid\". Build one architecture at a time: " +
-            "flutter build apk --release --target-platform android-arm64"
+        "Use --android-project-arg=force-version-code-ignoring-abi=true " +
+            "with --split-per-abi so all APK variants carry the same versionCode."
     )
 }
 

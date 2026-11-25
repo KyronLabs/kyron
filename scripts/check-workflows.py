@@ -207,6 +207,8 @@ def check_install_guard(name: str) -> list[str]:
         for i, step in enumerate(steps)
         if str(step.get("uses", "")).startswith("actions/upload-artifact")
     ]
+    if any("--build" not in str(steps[i].get("run", "")) for i in checks):
+        said.append(f"{name}: APK checks must verify the counted build number")
     if uploads and min(checks) > min(uploads):
         said.append(
             f"{name}: {INSTALL_CHECK} runs after the upload, which is after "
@@ -214,17 +216,16 @@ def check_install_guard(name: str) -> list[str]:
         )
 
     for step in steps:
-        # Each split gets versionCode `abi * 1000 + build` and the universal
-        # APK the plain build number, so one build ships four files the phone
-        # will not install over each other. The Gradle build refuses the flag
-        # too; this catches it on the pull request instead of eight minutes
-        # into a build.
-        if "--split-per-abi" in str(step.get("run", "")):
+        # Flutter's normal ABI split offsets break sideloaded updates. The
+        # supported explicit override keeps every APK at the base versionCode.
+        run = str(step.get("run", ""))
+        if (
+            "--split-per-abi" in run
+            and "--android-project-arg=force-version-code-ignoring-abi=true" not in run
+        ):
             said.append(
-                f"{name}: {step.get('name')!r} builds with --split-per-abi, "
-                f"which gives every APK in the build a different versionCode "
-                f"-- the second file a reader tries is then refused as a "
-                f"downgrade. Build one --target-platform at a time"
+                f"{name}: {step.get('name')!r} must suppress ABI versionCode "
+                "offsets when splitting APKs"
             )
 
         if "--print-certs" in str(step.get("run", "")):
@@ -465,8 +466,8 @@ def check_release_trigger() -> list[str]:
 def check_debug_build_reliability() -> list[str]:
     """Keep the long-running development Android build from self-cancelling.
 
-    The four APK variants are intentionally separate because each must carry
-    the same versionCode. A newer push must not SIGTERM the active Gradle
+    Build the three ABI APKs together with the version-code override, then
+    build the universal APK. A newer push must not SIGTERM the active Gradle
     process; the newest pending run can build after it. Dependency resolution
     is performed once before the builds, so each Flutter build must use
     --no-pub. The job timeout and shell diagnostic trap make an actual
@@ -476,6 +477,12 @@ def check_debug_build_reliability() -> list[str]:
     path = WORKFLOWS / name
     workflow = yaml.safe_load(path.read_text(encoding="utf-8"))
     said: list[str] = []
+
+    triggers = workflow.get("on", workflow.get(True)) or {}
+    if "main" not in (triggers.get("push") or {}).get("branches", []):
+        said.append(f"{name}: automatic development builds must remain enabled on main")
+    if "workflow_dispatch" not in triggers:
+        said.append(f"{name}: manual reruns must remain available")
 
     concurrency = workflow.get("concurrency") or {}
     if concurrency.get("cancel-in-progress") is not False:
@@ -518,6 +525,14 @@ def check_debug_build_reliability() -> list[str]:
             f"{name}: the APK build needs stage-aware EXIT, TERM and INT "
             "diagnostics so interruptions identify the active ABI and elapsed time"
         )
+    if (
+        "build split --split-per-abi --android-project-arg=force-version-code-ignoring-abi=true" not in apk_step
+        or "build universal" not in apk_step
+        or "build arm64-v8a" in apk_step
+        or "build armeabi-v7a" in apk_step
+        or "build x86_64" in apk_step
+    ):
+        said.append(f"{name}: use one split APK build and one universal APK build")
     if "eq 4" not in apk_step:
         said.append(
             f"{name}: the APK build must assert that all four ABI/universal "

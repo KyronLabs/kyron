@@ -134,6 +134,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            app/android/**/*.gradle*
+            app/android/gradle.properties
+            app/android/gradle/wrapper/gradle-wrapper.properties
+            app/pubspec.lock
 
       # Before anything Gradle runs, and in its own step. Left to the build,
       # the NDK was downloaded twelve minutes into `flutter build` -- two of
@@ -202,17 +208,10 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: scripts/write-upload-key.sh
 
-      # One `flutter build` per architecture, rather than `--split-per-abi`.
-      # All of them are published: the per-architecture ones are roughly a
-      # third the size, and the universal one is what to reach for when you do
-      # not know which architecture a handset is.
-      #
-      # Splitting would make the Flutter Gradle Plugin rewrite each split's
-      # versionCode to `abi * 1000 + build` and leave the universal APK on the
-      # lowest of them, so the second file somebody tried would be refused as
-      # a downgrade -- reported by OEM installers as "App not installed as
-      # package appears to be invalid". app/android/app/build.gradle.kts
-      # refuses the flag outright; this is the shape that works.
+      # Build all three ABI-specific APKs together. Flutter's explicit
+      # force-version-code-ignoring-abi property keeps the same versionCode
+      # on every APK, so switching downloads is not a downgrade. Build the
+      # universal APK separately; the SDK/toolchain can reuse prior work.
       - name: Build every APK
         working-directory: .
         env:
@@ -228,35 +227,63 @@ jobs:
           set -euo pipefail
           mkdir -p release-artifacts
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}"
-          out=app/build/app/outputs/flutter-apk/app-release.apk
+          out=app/build/app/outputs/flutter-apk
+          stage=initialization
+          started=$SECONDS
+          interrupted=no
+          report_interruption() {
+            local signal=$1
+            local code=143
+            if [ "$signal" = INT ]; then code=130; fi
+            interrupted=yes
+            echo "::error::Android build received $signal during ${stage:-unknown} after $((SECONDS-started)) seconds (exit $code)."
+            exit "$code"
+          }
+          trap 'report_interruption TERM' TERM
+          trap 'report_interruption INT' INT
+          trap 'status=$?; if [ "$status" -ne 0 ] && [ "$interrupted" != yes ]; then echo "::error::Android build failed during ${stage:-unknown} (exit ${status}) after $((SECONDS-started)) seconds."; fi' EXIT
 
-          # Every build writes to the same path, so each one is collected and
-          # removed before the next starts. No --target-platform is what
-          # makes the last one universal.
           build() {
-            local name=$1
+            stage=$1
             shift
-            ( cd app && flutter build apk --release "$@" \
+            local stage_started=$SECONDS
+            echo "::group::Building $stage APKs"
+            ( cd app && flutter build apk --release --no-pub "$@" \
                 --build-number "$KYRON_BUILD_NUMBER" \
                 ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
                 ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"} )
-            # Missing means the build claimed success and produced nothing,
-            # which is a broken release rather than a smaller one.
-            test -f "$out" || { echo "Missing $out after the $name build."; exit 1; }
-            mv "$out" "release-artifacts/${stem}-${name}.apk"
+            echo "$stage completed in $((SECONDS-stage_started)) seconds."
+            echo "::endgroup::"
           }
 
-          build arm64-v8a   --target-platform android-arm64
-          build armeabi-v7a --target-platform android-arm
-          build x86_64      --target-platform android-x64
+          # Remove expected outputs before compiling; never publish stale files.
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            rm -f "$out/app-$abi-release.apk"
+          done
+          build split --split-per-abi --android-project-arg=force-version-code-ignoring-abi=true
+          stage=collect-splits
+          for abi in arm64-v8a armeabi-v7a x86_64; do
+            test -f "$out/app-$abi-release.apk" || { echo "Missing $abi APK."; exit 1; }
+            mv "$out/app-$abi-release.apk" "release-artifacts/${stem}-$abi.apk"
+          done
+
+          rm -f "$out/app-release.apk"
           build universal
+          stage=collect-universal
+          test -f "$out/app-release.apk" || { echo "Missing universal APK."; exit 1; }
+          mv "$out/app-release.apk" "release-artifacts/${stem}-universal.apk"
+          stage=artifact-validation
+          test "$(find release-artifacts -maxdepth 1 -name '*.apk' -type f | wc -l)" -eq 4
+          ls -lh release-artifacts
+          stage=complete
+          echo "All four APK variants completed in $((SECONDS-started)) seconds."
 
       - name: Build release App Bundle
         env:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
         run: |
-          flutter build appbundle --release \
+          flutter build appbundle --release --no-pub \
             --build-number "$KYRON_BUILD_NUMBER" \
             ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY"} \
                 ${GIPHY_API_KEY:+--dart-define=GIPHY_API_KEY="$GIPHY_API_KEY"}
@@ -291,7 +318,7 @@ jobs:
       # all four APKs have to carry the same certificate as each other.
       - name: Check the APKs are installable
         working-directory: .
-        run: scripts/check-apks.sh release-artifacts/*.apk
+        run: scripts/check-apks.sh --build "$KYRON_BUILD_NUMBER" release-artifacts/*.apk
 
       - name: Hand the Android build to the publish job
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
