@@ -11,15 +11,7 @@ on:
       # and a filter naming only this file meant a change to the release
       # workflow ran nothing at all.
       - '.github/workflows/**'
-  pull_request:
-    paths:
-      - 'app/**'
-      - 'CHANGELOG.md'
-      - 'scripts/**'
-      # Every workflow, not just this one: the release wiring is checked below,
-      # and a filter naming only this file meant a change to the release
-      # workflow ran nothing at all.
-      - '.github/workflows/**'
+  workflow_call:
 
 permissions:
   contents: read

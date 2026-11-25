@@ -170,6 +170,12 @@ each is separate for a reason rather than for tidiness.
 
 ## ◈ Testing and CI
 
+[Pull Request CI](.github/workflows/pr-gate.yml) reports **Kyron PR gate** on
+every PR with a merge ref. It runs the API, Flutter, and localization suites
+when their paths change and reports success for docs-only changes. Require
+the **Kyron PR gate** job in branch protection once it has reported on GitHub.
+The individual workflows still run on their existing push triggers.
+
 | Area | Checks | Workflow |
 |:--|:--|:--|
 | Flutter | Dart formatting, Flutter analysis and widget/unit tests; Android release wiring checks. Windows build validation is paused. | [Flutter CI](.github/workflows/flutter-ci.yml) on app changes and workflow changes |
