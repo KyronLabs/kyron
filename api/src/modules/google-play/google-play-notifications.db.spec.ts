@@ -47,10 +47,7 @@ run('Google Play durable notification receipt', () => {
     prisma = new PrismaClient({ datasources: { db: { url } } });
     auth = new GooglePlayNotificationAuth();
     jest.spyOn(auth, 'verify').mockResolvedValue(undefined);
-    service = new GooglePlayNotificationsService(
-      prisma as PrismaService,
-      auth,
-    );
+    service = new GooglePlayNotificationsService(prisma as PrismaService, auth);
     process.env.GOOGLE_PLAY_RTDN_ENABLED = 'true';
     process.env.GOOGLE_PLAY_RTDN_AUDIENCE = 'test-audience';
     process.env.GOOGLE_PLAY_RTDN_SERVICE_ACCOUNT_EMAIL =
@@ -95,9 +92,7 @@ run('Google Play durable notification receipt', () => {
 
   it('rejects unauthenticated and disabled deliveries without inserting', async () => {
     const deniedId = `rtdn-denied-${randomUUID()}`;
-    jest
-      .spyOn(auth, 'verify')
-      .mockRejectedValueOnce(new UnauthorizedException());
+    jest.spyOn(auth, 'verify').mockRejectedValueOnce(new UnauthorizedException());
     await expect(
       service.ingest('Bearer test', body(deniedId)),
     ).rejects.toBeInstanceOf(UnauthorizedException);

@@ -1,10 +1,5 @@
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
-import {
-  createLocalJWKSet,
-  exportJWK,
-  generateKeyPair,
-  SignJWT,
-} from 'jose';
+import { createLocalJWKSet, exportJWK, generateKeyPair, SignJWT } from 'jose';
 import { createHash } from 'node:crypto';
 import {
   normalizeGooglePlayPush,
