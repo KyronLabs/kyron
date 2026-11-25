@@ -63,6 +63,13 @@ class AuditTests(unittest.TestCase):
             self.assertEqual(data["rule_counts"]["sendgrid-key"], 1)
             self.assertIn(".env", data["sensitive_paths_for_review"])
 
+    def test_path_with_token_is_redacted(self):
+        synthetic = "SG." + "A" * 22 + "." + "B" * 43
+        self.assertEqual(
+            audit.safe_path("archive/" + synthetic + ".env"),
+            "[credential-shaped filename redacted]",
+        )
+
     def test_java_keystore_is_flagged(self):
         self.assertEqual(audit.scan_blob(b"\xfe\xed\xfe\xed" + b"\x00" * 20),
                          {"java-keystore-binary": 1})

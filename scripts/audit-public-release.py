@@ -2,8 +2,8 @@
 """Read-only, redacted audit of every reachable Git blob.
 
 Run in a trusted private environment against a full mirror/checkout, not in
-public CI. Reports only rule names, object IDs, line counts/locations, and
-selected file paths, never matching secret bytes. This is a heuristic audit,
+public CI. Reports only rule names, object IDs, match counts, and selected
+file paths, never matched credential bytes. This is a heuristic audit,
 not a replacement for Gitleaks or provider-side revocation evidence.
 """
 from __future__ import annotations
@@ -82,6 +82,13 @@ def scan_blob(data: bytes) -> dict[str, int]:
     return {name: count for name, count in counts.items() if count}
 
 
+def safe_path(path: str) -> str:
+    # Filenames themselves can contain tokens. Do not reproduce those names.
+    if scan_blob(os.fsencode(path)):
+        return "[credential-shaped filename redacted]"
+    return path
+
+
 def read_exact(stream, size: int) -> bytes:
     chunks = bytearray()
     while len(chunks) < size:
@@ -157,7 +164,7 @@ def main() -> int:
                         item = {"oid": oid.decode(), "rules": matches}
                         if kind == "blob":
                             # Git supplies one representative path per object.
-                            item["path"] = path
+                            item["path"] = safe_path(path)
                             findings.append(item)
                         else:
                             item["type"] = kind
@@ -178,7 +185,7 @@ def main() -> int:
     for value in names.split(b"\0"):
         path = os.fsdecode(value.strip(b"\n"))
         if path and SENSITIVE_PATH.search(path):
-            path_reviews.add(path)
+            path_reviews.add(safe_path(path))
     result = {
         "scope": "all objects reachable from local refs; not remote-only or unreachable objects",
         "refs": len(refs),
