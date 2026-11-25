@@ -17,7 +17,10 @@ class GiftsRepository {
 
   /// The wallet overview must distinguish a real zero from missing balances.
   Future<GiftWallet> wallet() async {
-    final res = await _api.dio.get<Map<String, dynamic>>('/gifts');
+    final res = await _api.dio.get<Map<String, dynamic>>(
+      '/gifts',
+      queryParameters: {'recoveryNotices': 'true'},
+    );
     final wallet = res.data?['wallet'];
     if (wallet is! Map<String, dynamic> ||
         wallet['coins'] is! int ||

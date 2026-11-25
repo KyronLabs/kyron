@@ -78,12 +78,7 @@ export class GooglePlayChargebackEvidenceController {
   }
 }
 
-export class GooglePlayRecoveryNoticeDto {
-  @IsUUID()
-  noticeId!: string;
-}
-
-export class GooglePlayPostRecoveryDto extends GooglePlayRecoveryNoticeDto {
+export class GooglePlayPostRecoveryDto {
   @IsUUID()
   requestId!: string;
 }
@@ -110,7 +105,6 @@ export class GooglePlayRefundReversalController {
       id,
       request.user.id,
       body.requestId,
-      body.noticeId,
     );
   }
 
@@ -119,14 +113,12 @@ export class GooglePlayRefundReversalController {
   correct(
     @Param('id', ParseUUIDPipe) id: string,
     @Param('recoveryId', ParseUUIDPipe) recoveryId: string,
-    @Body() body: GooglePlayRecoveryNoticeDto,
     @Req() request: AuthRequest,
   ) {
     return this.reconciliation.correctRefundRecovery(
       id,
       recoveryId,
       request.user.id,
-      body.noticeId,
     );
   }
 }

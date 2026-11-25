@@ -58,6 +58,34 @@ class GiftType {
       : const [];
 }
 
+class WalletRecoveryNotice {
+  final String id;
+  final bool correction;
+  final String? orderReference;
+  final int coins;
+  final int? verifiedRefundCoins;
+  final DateTime? occurredAt;
+
+  const WalletRecoveryNotice({
+    required this.id,
+    required this.correction,
+    required this.coins,
+    this.orderReference,
+    this.verifiedRefundCoins,
+    this.occurredAt,
+  });
+
+  factory WalletRecoveryNotice.fromJson(Map<String, dynamic> json) =>
+      WalletRecoveryNotice(
+        id: json['id'] as String,
+        correction: json['kind'] == 'CORRECTION',
+        orderReference: json['orderReference'] as String?,
+        coins: json['coins'] as int,
+        verifiedRefundCoins: json['verifiedRefundCoins'] as int?,
+        occurredAt: DateTime.tryParse(json['occurredAt'] as String? ?? ''),
+      );
+}
+
 /// What the reader has to send gifts with, and what their posts were given.
 ///
 /// Coins are not automatically replenished. New coins are issued through
@@ -91,6 +119,8 @@ class GiftWallet {
   /// Unspent purchased coins, distinct from promotional credits.
   final int purchased;
 
+  final List<WalletRecoveryNotice> recoveryNotices;
+
   const GiftWallet({
     required this.coins,
     required this.earned,
@@ -101,6 +131,7 @@ class GiftWallet {
     this.legacyComplimentary = 0,
     this.promotional = 0,
     this.purchased = 0,
+    this.recoveryNotices = const [],
   });
 
   factory GiftWallet.fromJson(Map<String, dynamic> json) => GiftWallet(
@@ -115,6 +146,15 @@ class GiftWallet {
             (json['legacyComplimentary'] as num?)?.toInt() ?? 0,
         promotional: (json['promotional'] as num?)?.toInt() ?? 0,
         purchased: (json['purchased'] as num?)?.toInt() ?? 0,
+        recoveryNotices: (json['recoveryNotices'] as List<Object?>? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .where(
+              (notice) =>
+                  notice['kind'] == 'RECOVERY' ||
+                  notice['kind'] == 'CORRECTION',
+            )
+            .map(WalletRecoveryNotice.fromJson)
+            .toList(growable: false),
       );
 }
 

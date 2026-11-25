@@ -42,6 +42,6 @@ Before enabling in a market, add or verify spend attribution that distinguishes 
 
 ## Staff posting workflow
 
-The recovery and correction endpoints require an active admin and a verified second factor. They are disabled by default. Before enabling them, staff need an approved notice process that can supply a real internal notice reference. The API stores the supplied reference for audit and does not deliver or verify user notices itself.
+The recovery and correction endpoints require an active admin and a verified second factor. They are disabled by default. Each committed recovery or correction is its own durable buyer notice. The Wallet shows the 20 most recent adjustments, including the stable reference, affected Google Play order when present, verified refund amount for debits, actual coin adjustment, and a link to Contact support. The API exposes these notices only to the signed-in buyer. This app view does not send an email or push or establish that the buyer read the notice. Confirm the applicable market notice requirements before activation.
 
 The initial posting workflow recovers only proven unspent credit on the refunded order. It records unresolved amounts as shortfalls. Pooled recovery, negative balances and restrictions require separate implementation and remain outside this workflow. Corrections restore the original debit through a compensating ledger posting and prevent another automated or routine staff debit against the corrected order pending separate case review.

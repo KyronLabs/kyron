@@ -426,7 +426,6 @@ export class GooglePlayReconciliationService {
     purchaseId: string,
     actorId: string,
     requestId: string,
-    noticeId: string,
   ) {
     this.requireRecoveryEnabled();
     return this.prisma.$transaction(async (tx) => {
@@ -441,12 +440,11 @@ export class GooglePlayReconciliationService {
         },
       });
       if (replay) {
-        if (jsonRecord(replay.payload).noticeId !== noticeId) {
-          throw new ConflictException(
-            'This request already used a different notice.',
-          );
-        }
-        return { recoveryId: replay.id, ...jsonRecord(replay.payload) };
+        return {
+          ...jsonRecord(replay.payload),
+          recoveryId: replay.id,
+          noticeId: replay.id,
+        };
       }
 
       const evidenceScope = {
@@ -517,7 +515,6 @@ export class GooglePlayReconciliationService {
           })
         : null;
       const payload = {
-        noticeId,
         verifiedRefundCoins: preview.verifiedRefundCoins,
         refundEvidenceId: preview.refundEvidenceId,
         recoveredCoins,
@@ -533,7 +530,7 @@ export class GooglePlayReconciliationService {
         coins: recoveredCoins,
         payload,
       });
-      return { recoveryId: recovery.id, ...payload };
+      return { recoveryId: recovery.id, noticeId: recovery.id, ...payload };
     });
   }
 
@@ -541,7 +538,6 @@ export class GooglePlayReconciliationService {
     purchaseId: string,
     recoveryId: string,
     actorId: string,
-    noticeId: string,
   ) {
     this.requireRecoveryEnabled();
     return this.prisma.$transaction(async (tx) => {
@@ -565,12 +561,11 @@ export class GooglePlayReconciliationService {
         },
       });
       if (existing) {
-        if (jsonRecord(existing.payload).noticeId !== noticeId) {
-          throw new ConflictException(
-            'This correction already used a different notice.',
-          );
-        }
-        return { correctionId: existing.id, ...jsonRecord(existing.payload) };
+        return {
+          ...jsonRecord(existing.payload),
+          correctionId: existing.id,
+          noticeId: existing.id,
+        };
       }
       const restoredCoins = recovery.amount?.toNumber() ?? 0;
       const { ledgerTransactionId } = jsonRecord(recovery.payload);
@@ -591,7 +586,6 @@ export class GooglePlayReconciliationService {
         originalPostingId: ledgerTransactionId,
       });
       const payload = {
-        noticeId,
         restoredCoins,
         ledgerTransactionId: posting.id,
       };
@@ -604,7 +598,11 @@ export class GooglePlayReconciliationService {
         coins: -restoredCoins,
         payload,
       });
-      return { correctionId: correction.id, ...payload };
+      return {
+        correctionId: correction.id,
+        noticeId: correction.id,
+        ...payload,
+      };
     });
   }
 

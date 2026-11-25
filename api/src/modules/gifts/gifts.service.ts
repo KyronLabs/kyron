@@ -1,4 +1,5 @@
 import {
+  listPurchasedCoinNotices,
   netPurchasedCoinRecovery,
   PURCHASE_RECOVERY_CORRECTION,
   PURCHASE_RECOVERY_SOURCE,
@@ -105,6 +106,15 @@ export class GiftsService {
   }
 
   /** The reader's current wallet; reading it never issues new coins. */
+  async walletWithNotices(userId: string) {
+    return this.prisma.$transaction(async (tx) => {
+      await this.lock(tx, userId);
+      const wallet = await this.balances(tx, userId);
+      const recoveryNotices = await listPurchasedCoinNotices(tx, userId);
+      return { ...wallet, recoveryNotices };
+    });
+  }
+
   async wallet(userId: string, _at?: Date): Promise<Wallet> {
     // Retain the former optional timestamp argument for callers compiled
     // against the earlier wallet API; it no longer drives a refill.
