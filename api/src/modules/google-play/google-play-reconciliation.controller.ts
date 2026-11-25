@@ -1,6 +1,8 @@
 import {
+  Body,
   Controller,
   Get,
+  HttpCode,
   Param,
   ParseUUIDPipe,
   Post,
@@ -8,11 +10,14 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { IsOptional, IsUUID } from 'class-validator';
+import { IsEnum, IsOptional, IsUUID } from 'class-validator';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsGuard } from '../financial-ledger/financial-operations.guard';
-import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
+import {
+  ChargebackReviewDecision,
+  GooglePlayReconciliationService,
+} from './google-play-reconciliation.service';
 
 export class GooglePlayEvidenceListQuery {
   @IsOptional()
@@ -41,6 +46,11 @@ export class GooglePlayReconciliationController {
   }
 }
 
+export class GooglePlayChargebackReviewDto {
+  @IsEnum(ChargebackReviewDecision)
+  decision!: ChargebackReviewDecision;
+}
+
 @Controller('financial-operations/google-play/chargeback-evidence')
 @UseGuards(AuthGuard, FinancialOperationsGuard)
 export class GooglePlayChargebackEvidenceController {
@@ -51,6 +61,20 @@ export class GooglePlayChargebackEvidenceController {
   @Get()
   list(@Query() query: GooglePlayEvidenceListQuery) {
     return this.reconciliation.listChargebackEvidence(query.after);
+  }
+
+  @Post(':id/review')
+  @HttpCode(200)
+  review(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: GooglePlayChargebackReviewDto,
+    @Req() request: AuthRequest,
+  ) {
+    return this.reconciliation.reviewChargebackEvidence(
+      id,
+      request.user.id,
+      body.decision,
+    );
   }
 }
 

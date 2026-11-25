@@ -19,6 +19,7 @@ import {
 } from './google-play-token';
 
 const SOURCE = 'GOOGLE_PLAY_REFUND_OBSERVATION';
+const CHARGEBACK_REVIEW_SOURCE = 'GOOGLE_PLAY_CHARGEBACK_REVIEW';
 const CHARGEBACK_REASON = 7; // Google Play Voided Purchases API
 const CHARGEBACK_PAGE_SIZE = 100;
 export const REFUND_EVENTS = new Set([
@@ -115,6 +116,20 @@ export function observeRefund(
   };
 }
 
+export enum ChargebackReviewDecision {
+  NoAction = 'NO_ACTION',
+  ReferForRecovery = 'REFER_FOR_RECOVERY',
+}
+
+const chargebackEvidenceFilter = {
+  sourceType: SOURCE,
+  eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+  payload: {
+    path: ['voidScan', 'matched'],
+    array_contains: [{ voidedReason: CHARGEBACK_REASON }],
+  },
+} satisfies Prisma.FinancialSourceRecordWhereInput;
+
 @Injectable()
 export class GooglePlayReconciliationService {
   constructor(
@@ -125,12 +140,7 @@ export class GooglePlayReconciliationService {
   async listChargebackEvidence(after?: string) {
     const rows = await this.prisma.financialSourceRecord.findMany({
       where: {
-        sourceType: SOURCE,
-        eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
-        payload: {
-          path: ['voidScan', 'matched'],
-          array_contains: [{ voidedReason: CHARGEBACK_REASON }],
-        },
+        ...chargebackEvidenceFilter,
         ...(after ? { id: { gt: after } } : {}),
       },
       orderBy: { id: 'asc' },
@@ -138,13 +148,28 @@ export class GooglePlayReconciliationService {
       select: { id: true, sourceId: true, relatedIds: true, occurredAt: true },
     });
 
-    const items = rows.slice(0, CHARGEBACK_PAGE_SIZE).map((row) => {
+    const page = rows.slice(0, CHARGEBACK_PAGE_SIZE);
+    const reviews = await this.prisma.financialSourceRecord.findMany({
+      where: {
+        sourceType: CHARGEBACK_REVIEW_SOURCE,
+        sourceId: { in: page.map((row) => row.id) },
+      },
+      select: { id: true, sourceId: true, eventType: true },
+    });
+    const reviewsByEvidence = new Map(
+      reviews.map(({ id, sourceId, eventType }) => [
+        sourceId,
+        { reviewId: id, decision: eventType },
+      ]),
+    );
+    const items = page.map((row) => {
       const { purchaseId } = jsonRecord(row.relatedIds);
       return {
         evidenceId: row.id,
         notificationId: row.sourceId,
         purchaseId: typeof purchaseId === 'string' ? purchaseId : null,
         observedAt: row.occurredAt,
+        review: reviewsByEvidence.get(row.id) ?? null,
       };
     });
 
@@ -157,6 +182,64 @@ export class GooglePlayReconciliationService {
           ? items[items.length - 1].evidenceId
           : null,
     };
+  }
+
+  reviewChargebackEvidence(
+    evidenceId: string,
+    actorId: string,
+    decision: ChargebackReviewDecision,
+  ) {
+    return this.prisma.$transaction(async (tx) => {
+      await tx.$queryRaw`SELECT id FROM "FinancialSourceRecord" WHERE id = ${evidenceId}::uuid AND "sourceType" = ${SOURCE} FOR UPDATE`;
+      const evidence = await tx.financialSourceRecord.findFirst({
+        where: { ...chargebackEvidenceFilter, id: evidenceId },
+        select: { id: true },
+      });
+      if (!evidence) {
+        throw new NotFoundException('Chargeback evidence not found.');
+      }
+
+      const key = {
+        sourceType: CHARGEBACK_REVIEW_SOURCE,
+        sourceId: evidence.id,
+      };
+      const previous = await tx.financialSourceRecord.findUnique({
+        where: { sourceType_sourceId: key },
+        select: { id: true, eventType: true },
+      });
+      if (previous) {
+        if (previous.eventType !== String(decision)) {
+          throw new ConflictException(
+            'This evidence already has a review decision.',
+          );
+        }
+        return { evidenceId, reviewId: previous.id, decision };
+      }
+
+      const now = new Date();
+      const review = await tx.financialSourceRecord.create({
+        data: {
+          ...key,
+          eventType: decision,
+          actorId,
+          relatedIds: { evidenceId },
+          payload: {},
+          occurredAt: now,
+        },
+        select: { id: true },
+      });
+      await tx.financialAuditEvent.create({
+        data: {
+          actorId,
+          eventType: 'GOOGLE_PLAY_CHARGEBACK_EVIDENCE_REVIEWED',
+          subjectType: 'GOOGLE_PLAY_CHARGEBACK_EVIDENCE',
+          subjectId: evidenceId,
+          requestId: review.id,
+          metadata: { decision },
+        },
+      });
+      return { evidenceId, reviewId: review.id, decision };
+    });
   }
 
   async previewRefundReversal(purchaseId: string) {
