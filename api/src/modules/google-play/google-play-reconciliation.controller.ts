@@ -10,7 +10,7 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { IsEnum, IsOptional, IsUUID } from 'class-validator';
+import { IsEnum, IsIn, IsOptional, IsUUID } from 'class-validator';
 import { AuthGuard } from '../../common/guards/auth.guard';
 import type { AuthRequest } from '../../common/types/auth-request';
 import { FinancialOperationsGuard } from '../financial-ledger/financial-operations.guard';
@@ -83,12 +83,31 @@ export class GooglePlayPostRecoveryDto {
   requestId!: string;
 }
 
+export class GooglePlayRecoveryListQuery extends GooglePlayEvidenceListQuery {
+  @IsOptional()
+  @IsUUID()
+  purchaseId?: string;
+
+  @IsOptional()
+  @IsIn(['true', 'false'])
+  shortfallOnly?: string;
+}
+
 @Controller('financial-operations/google-play/purchases')
 @UseGuards(AuthGuard, FinancialOperationsGuard)
 export class GooglePlayRefundReversalController {
   constructor(
     private readonly reconciliation: GooglePlayReconciliationService,
   ) {}
+
+  @Get('recoveries')
+  listRecoveries(@Query() query: GooglePlayRecoveryListQuery) {
+    return this.reconciliation.listRefundRecoveries({
+      after: query.after,
+      purchaseId: query.purchaseId,
+      shortfallOnly: query.shortfallOnly === 'true',
+    });
+  }
 
   @Get(':id/reversal-preview')
   preview(@Param('id', ParseUUIDPipe) id: string) {

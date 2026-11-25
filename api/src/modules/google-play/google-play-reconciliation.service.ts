@@ -422,6 +422,96 @@ export class GooglePlayReconciliationService {
     };
   }
 
+  async listRefundRecoveries(query: {
+    after?: string;
+    purchaseId?: string;
+    shortfallOnly?: boolean;
+  }) {
+    const pageSize = 100;
+    const rows = await this.prisma.financialSourceRecord.findMany({
+      where: {
+        sourceType: PURCHASE_RECOVERY_SOURCE,
+        ...(query.after ? { id: { gt: query.after } } : {}),
+        ...(query.purchaseId
+          ? { relatedIds: { path: ['purchaseId'], equals: query.purchaseId } }
+          : {}),
+        ...(query.shortfallOnly
+          ? { payload: { path: ['shortfallCoins'], gt: 0 } }
+          : {}),
+      },
+      orderBy: { id: 'asc' },
+      take: pageSize + 1,
+      select: {
+        id: true,
+        amount: true,
+        occurredAt: true,
+        relatedIds: true,
+        payload: true,
+      },
+    });
+    const page = rows.slice(0, pageSize);
+    const corrections = await this.prisma.financialSourceRecord.findMany({
+      where: {
+        sourceType: PURCHASE_RECOVERY_CORRECTION,
+        sourceId: { in: page.map(({ id }) => id) },
+      },
+      select: {
+        id: true,
+        sourceId: true,
+        amount: true,
+        occurredAt: true,
+        payload: true,
+      },
+    });
+    const correctionsByRecovery = new Map(
+      corrections.map((correction) => [correction.sourceId, correction]),
+    );
+    const items = page.map((row) => {
+      const { purchaseId } = jsonRecord(row.relatedIds);
+      const {
+        verifiedRefundCoins,
+        refundEvidenceId,
+        shortfallCoins,
+        ledgerTransactionId,
+      } = jsonRecord(row.payload);
+      const correction = correctionsByRecovery.get(row.id);
+      const correctionPosting = jsonRecord(
+        correction?.payload,
+      ).ledgerTransactionId;
+      return {
+        recoveryId: row.id,
+        noticeId: row.id,
+        purchaseId: typeof purchaseId === 'string' ? purchaseId : null,
+        refundEvidenceId:
+          typeof refundEvidenceId === 'string' ? refundEvidenceId : null,
+        verifiedRefundCoins:
+          typeof verifiedRefundCoins === 'number' ? verifiedRefundCoins : null,
+        recoveredCoins: row.amount?.toNumber() ?? 0,
+        recordedShortfallCoins:
+          typeof shortfallCoins === 'number' ? shortfallCoins : null,
+        ledgerTransactionId:
+          typeof ledgerTransactionId === 'string' ? ledgerTransactionId : null,
+        occurredAt: row.occurredAt,
+        correction: correction
+          ? {
+              correctionId: correction.id,
+              noticeId: correction.id,
+              restoredCoins: correction.amount?.toNumber() ?? 0,
+              ledgerTransactionId:
+                typeof correctionPosting === 'string'
+                  ? correctionPosting
+                  : null,
+              occurredAt: correction.occurredAt,
+            }
+          : null,
+      };
+    });
+    return {
+      items,
+      nextAfter: rows.length > pageSize ? page[page.length - 1].id : null,
+    };
+  }
+
   recoverVerifiedRefund(
     purchaseId: string,
     actorId: string,
