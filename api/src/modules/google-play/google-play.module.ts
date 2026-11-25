@@ -7,7 +7,10 @@ import { GooglePlayPurchasesController } from './google-play-purchases.controlle
 import { GooglePlayDeveloperApiProvider } from './google-play-developer-api.provider';
 import { GooglePlayPurchasesService } from './google-play-purchases.service';
 import { GooglePlayNotificationsController } from './google-play-notifications.controller';
-import { GooglePlayReconciliationController } from './google-play-reconciliation.controller';
+import {
+  GooglePlayChargebackEvidenceController,
+  GooglePlayReconciliationController,
+} from './google-play-reconciliation.controller';
 import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
 import {
   GooglePlayRecoveryController,
@@ -25,6 +28,7 @@ import {
     GooglePlayPurchasesController,
     GooglePlayNotificationsController,
     GooglePlayReconciliationController,
+    GooglePlayChargebackEvidenceController,
     GooglePlayRecoveryController,
     GooglePlayRecoveryOperationsController,
   ],

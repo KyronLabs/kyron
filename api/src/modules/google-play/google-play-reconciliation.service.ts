@@ -18,6 +18,8 @@ import {
 } from './google-play-token';
 
 const SOURCE = 'GOOGLE_PLAY_REFUND_OBSERVATION';
+const CHARGEBACK_REASON = 7; // Google Play Voided Purchases API
+const CHARGEBACK_PAGE_SIZE = 100;
 const REFUND_EVENTS = new Set([
   'ONE_TIME_FULL_VOID',
   'ONE_TIME_PARTIAL_VOID',
@@ -118,6 +120,43 @@ export class GooglePlayReconciliationService {
     private readonly prisma: PrismaService,
     private readonly googlePlay: GooglePlayDeveloperApiProvider,
   ) {}
+
+  async listChargebackEvidence(after?: string) {
+    const rows = await this.prisma.financialSourceRecord.findMany({
+      where: {
+        sourceType: SOURCE,
+        eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+        payload: {
+          path: ['voidScan', 'matched'],
+          array_contains: [{ voidedReason: CHARGEBACK_REASON }],
+        },
+        ...(after ? { id: { gt: after } } : {}),
+      },
+      orderBy: { id: 'asc' },
+      take: CHARGEBACK_PAGE_SIZE + 1,
+      select: { id: true, sourceId: true, relatedIds: true, occurredAt: true },
+    });
+
+    const items = rows.slice(0, CHARGEBACK_PAGE_SIZE).map((row) => {
+      const { purchaseId } = jsonRecord(row.relatedIds);
+      return {
+        evidenceId: row.id,
+        notificationId: row.sourceId,
+        purchaseId: typeof purchaseId === 'string' ? purchaseId : null,
+        observedAt: row.occurredAt,
+      };
+    });
+
+    // Each item is a refund observation. Multiple observations can refer to
+    // the same purchase and must not be treated as independent debits.
+    return {
+      items,
+      nextAfter:
+        rows.length > CHARGEBACK_PAGE_SIZE
+          ? items[items.length - 1].evidenceId
+          : null,
+    };
+  }
 
   async listPending(after?: string) {
     const rows = await this.prisma.googlePlayNotification.findMany({
