@@ -10,6 +10,7 @@ import { GooglePlayNotificationsController } from './google-play-notifications.c
 import {
   GooglePlayChargebackEvidenceController,
   GooglePlayReconciliationController,
+  GooglePlayRefundReversalController,
 } from './google-play-reconciliation.controller';
 import { GooglePlayReconciliationService } from './google-play-reconciliation.service';
 import {
@@ -33,6 +34,7 @@ import {
     GooglePlayPurchasesController,
     GooglePlayNotificationsController,
     GooglePlayReconciliationController,
+    GooglePlayRefundReversalController,
     GooglePlayChargebackEvidenceController,
     GooglePlayRecoveryController,
     GooglePlayRecoveryOperationsController,
