@@ -448,6 +448,7 @@ jobs:
         run: |
           set -euo pipefail
           stem="kyron-${VERSION}+${KYRON_BUILD_NUMBER}-dev"
+          test -s "debug-artifacts/${stem}-arm64-v8a.apk"
           for abi in arm64-v8a armeabi-v7a x86_64 universal; do
             test -s "debug-artifacts/${stem}-$abi.apk"
           done
