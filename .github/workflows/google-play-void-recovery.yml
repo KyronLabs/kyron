@@ -1,0 +1,61 @@
+name: Google Play void recovery
+
+on:
+  schedule:
+    - cron: '11,41 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: google-play-void-recovery
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    if: vars.GOOGLE_PLAY_RECOVERY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Recover bounded pages into the durable inbox
+        env:
+          RECOVERY_KEY: ${{ secrets.GOOGLE_PLAY_RECOVERY_CRON_KEY }}
+          API_URL: ${{ vars.KYRON_API_URL || 'https://kyron-47r6.onrender.com' }}
+        run: |
+          set -euo pipefail
+          if [ -z "$RECOVERY_KEY" ]; then
+            echo "::error::Dedicated Google Play recovery key is missing."
+            exit 1
+          fi
+          for page in 1 2 3 4 5 6; do
+            if ! result=$(curl -fsS --max-time 90 -X POST \
+              -H "x-recovery-key: $RECOVERY_KEY" \
+              "$API_URL/internal/google-play/void-recovery"); then
+              echo "::error::Google Play recovery endpoint did not succeed."
+              exit 1
+            fi
+            status=$(jq -er '.status' <<< "$result")
+            case "$status" in
+              WINDOW_COMPLETE)
+                echo "Recovery window committed."
+                exit 0
+                ;;
+              PAGE_RETAINED)
+                echo "Recovery page committed; continuing."
+                ;;
+              SUPERSEDED)
+                echo "Another worker advanced the checkpoint."
+                exit 0
+                ;;
+              RETRY_REQUIRED)
+                echo "::error::Recovery checkpoint requires retry or operator review."
+                exit 1
+                ;;
+              *)
+                echo "::error::Unexpected recovery response."
+                exit 1
+                ;;
+            esac
+          done
+          echo "Page budget reached; the next run resumes the saved cursor."
