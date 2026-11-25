@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -10,8 +12,64 @@ import 'package:kyron_design_system/kyron_design_system.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/auth_provider.dart';
 import '../repositories/play_coins_repository.dart';
+import '../screens/coin_help_screen.dart';
 import 'action_button.dart';
-import 'hairline.dart';
+import 'app_sheet.dart';
+
+Future<void> openCoinPurchaseSheet(
+  BuildContext context, {
+  required String userId,
+  required String Function(int) coins,
+  required VoidCallback onWalletChanged,
+}) async {
+  await showAppSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    useSafeArea: true,
+    builder: (context) {
+      final strings = AppLocalizations.of(context);
+      return SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(SpacingTokens.space16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    strings.ui('ui_wallet_play_buy', 'Buy coins'),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  )),
+                  IconButton(
+                    tooltip: strings.ui('ui_coin_help', 'Coin help'),
+                    onPressed: () => openCoinHelp(context),
+                    icon: const Icon(Icons.help_outline_rounded),
+                  ),
+                ],
+              ),
+              if (!kIsWeb && Platform.isAndroid)
+                PlayCoinPurchasePanel(
+                  userId: userId,
+                  coins: coins,
+                  onWalletChanged: onWalletChanged,
+                )
+              else
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: SpacingTokens.space16),
+                  child: Text(strings.ui('ui_wallet_play_unavailable',
+                      'Coin purchases are unavailable on this device.')),
+                ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
 
 class PlayCoinPurchasePanel extends ConsumerStatefulWidget {
   const PlayCoinPurchasePanel({
@@ -48,6 +106,7 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
   late final StreamSubscription<List<PurchaseDetails>> _updates;
   PlayCoinCatalogue? _catalogue;
   List<ProductDetails> _products = const [];
+  String? _selectedProductId;
   _PurchaseMessage? _message;
   bool _loading = false;
   bool _checking = false;
@@ -101,7 +160,7 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
         setState(() {
           _catalogue = null;
           _products = const [];
-          _message = null;
+          _message = _PurchaseMessage.unavailable;
         });
         return;
       }
@@ -121,6 +180,9 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
             .compareTo(catalogue.coinsByProduct[b.id]!));
       setState(() {
         _products = products;
+        if (!products.any((product) => product.id == _selectedProductId)) {
+          _selectedProductId = products.firstOrNull?.id;
+        }
         _message = products.isEmpty ? _PurchaseMessage.unavailable : null;
       });
       await _checkPastPurchases();
@@ -264,39 +326,54 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
           'Check your purchase again before buying more.'),
       null => null,
     };
-    if (_products.isEmpty && message == null) return const SizedBox.shrink();
+    final selected = _products
+        .where((product) => product.id == _selectedProductId)
+        .firstOrNull;
+    final blocked = _buying ||
+        _launching ||
+        _checking ||
+        _loading ||
+        _verifying.isNotEmpty ||
+        _message == _PurchaseMessage.pending ||
+        _message == _PurchaseMessage.finishing ||
+        _message == _PurchaseMessage.retry ||
+        _message == _PurchaseMessage.unavailable;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(SpacingTokens.space16),
-          child: Text(
-            strings.ui('ui_wallet_play_buy', 'Buy coins'),
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ),
+        if (_loading && _products.isEmpty)
+          const Center(child: CircularProgressIndicator()),
         for (final product in _products)
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: SpacingTokens.space16,
-              vertical: SpacingTokens.space8,
-            ),
-            child: ActionButton(
-              label:
-                  '${widget.coins(_catalogue!.coinsByProduct[product.id]!)} · ${product.price}',
-              kind: ActionButtonKind.outlined,
-              onPressed: _buying ||
-                      _launching ||
-                      _checking ||
-                      _loading ||
-                      _verifying.isNotEmpty ||
-                      _message == _PurchaseMessage.pending ||
-                      _message == _PurchaseMessage.finishing ||
-                      _message == _PurchaseMessage.retry
+            padding: const EdgeInsets.only(bottom: SpacingTokens.space8),
+            child: ListTile(
+              selected: product.id == _selectedProductId,
+              tileColor: Theme.of(context).colorScheme.surfaceContainer,
+              selectedTileColor:
+                  Theme.of(context).colorScheme.secondaryContainer,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(RadiusTokens.radius12),
+              ),
+              leading: Icon(product.id == _selectedProductId
+                  ? Icons.radio_button_checked
+                  : Icons.radio_button_off),
+              title:
+                  Text(widget.coins(_catalogue!.coinsByProduct[product.id]!)),
+              trailing: Text(product.price,
+                  style: Theme.of(context).textTheme.titleMedium),
+              onTap: blocked
                   ? null
-                  : () => unawaited(_buy(product)),
+                  : () => setState(() => _selectedProductId = product.id),
             ),
+          ),
+        if (_products.isNotEmpty)
+          ActionButton(
+            label: strings.ui('ui_wallet_recharge', 'Recharge'),
+            expand: true,
+            onPressed: blocked || selected == null
+                ? null
+                : () => unawaited(_buy(selected)),
           ),
         if (message != null)
           Padding(
@@ -317,7 +394,6 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
                   _checking || _loading ? null : () => unawaited(_load()),
             ),
           ),
-        const Hairline(),
       ],
     );
   }

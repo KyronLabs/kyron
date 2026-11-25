@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -12,6 +9,7 @@ import '../models/gift.dart';
 import '../providers/auth_provider.dart';
 import '../providers/gifts_provider.dart';
 import '../routes.dart';
+import 'coin_help_screen.dart';
 import '../widgets/action_button.dart';
 import '../widgets/hairline.dart';
 import '../widgets/kyron_app_bar.dart';
@@ -25,7 +23,16 @@ class WalletScreen extends ConsumerWidget {
     final user = ref.watch(currentAuthUserProvider);
     final strings = AppLocalizations.of(context);
     return Scaffold(
-      appBar: KyronAppBar(title: Text(strings.ui('ui_wallet_title', 'Wallet'))),
+      appBar: KyronAppBar(
+        title: Text(strings.ui('ui_wallet_title', 'Wallet')),
+        actions: [
+          IconButton(
+            tooltip: strings.ui('ui_coin_help', 'Coin help'),
+            onPressed: () => openCoinHelp(context),
+            icon: const Icon(Icons.help_outline_rounded),
+          ),
+        ],
+      ),
       body: SafeArea(
         top: false,
         child: user == null
@@ -51,6 +58,8 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
   late Future<GiftWallet> _wallet = ref.read(giftsRepositoryProvider).wallet();
 
   void _refresh() {
+    if (!mounted || ref.read(currentAuthUserProvider)?.id != widget.userId)
+      return;
     final next = ref.read(giftsRepositoryProvider).wallet();
     setState(() {
       _wallet = next;
@@ -68,12 +77,10 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
       return units.replaceAll(r'$count', numbers.format(count));
     }
 
-    final supportsPlayBilling = !kIsWeb && Platform.isAndroid;
     return FutureBuilder<GiftWallet>(
       future: _wallet,
       builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done &&
-            (!supportsPlayBilling || !snapshot.hasData)) {
+        if (snapshot.connectionState != ConnectionState.done) {
           return Center(
             child: CircularProgressIndicator(
               semanticsLabel: strings.ui(
@@ -110,12 +117,6 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
               ),
             ),
             const Hairline(),
-            if (supportsPlayBilling)
-              PlayCoinPurchasePanel(
-                userId: widget.userId,
-                coins: coins,
-                onWalletChanged: _refresh,
-              ),
             if (wallet == null)
               Padding(
                 padding: const EdgeInsets.all(SpacingTokens.space16),
@@ -125,10 +126,43 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 ),
               )
             else ...[
-              _Balance(
-                strings.ui('ui_wallet_spendable', 'Spendable coins'),
-                coins(wallet.coins),
-                prominent: true,
+              Padding(
+                padding: const EdgeInsets.all(SpacingTokens.space16),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(RadiusTokens.radius20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _Balance(
+                        strings.ui('ui_wallet_spendable', 'Spendable coins'),
+                        coins(wallet.coins),
+                        prominent: true,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          SpacingTokens.space16,
+                          0,
+                          SpacingTokens.space16,
+                          SpacingTokens.space16,
+                        ),
+                        child: ActionButton(
+                          label: strings.ui('ui_wallet_recharge', 'Recharge'),
+                          icon: Icons.add_rounded,
+                          expand: true,
+                          onPressed: () => openCoinPurchaseSheet(
+                            context,
+                            userId: widget.userId,
+                            coins: coins,
+                            onWalletChanged: _refresh,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               if (_hasCoinSourceBreakdown(wallet)) ...[
                 const Hairline(),
