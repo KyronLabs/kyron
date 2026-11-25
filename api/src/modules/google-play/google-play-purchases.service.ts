@@ -12,7 +12,7 @@ import {
   GooglePlayPurchaseStatus,
   Prisma,
 } from '@prisma/client';
-import { createCipheriv, createHash, randomBytes } from 'node:crypto';
+import { createHash } from 'node:crypto';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { LedgerService } from '../financial-ledger/ledger.service';
@@ -21,12 +21,16 @@ import {
   type GooglePlayOrder,
   type GooglePlayProductPurchaseV2,
 } from './google-play-developer-api.provider';
+import {
+  encryptionKey,
+  encryptPurchaseToken,
+  tokenHash,
+} from './google-play-token';
 
 const DEFAULT_PACKAGE_NAME = 'so.kyron.app';
 const MAX_POSTGRES_INT = 2_147_483_647;
 const MAX_POSTGRES_BIGINT = 9_223_372_036_854_775_807n;
 const MAX_PURCHASE_QUANTITY = 1000;
-const TOKEN_PREFIX = 'v1';
 
 export interface GooglePlayCoinProduct {
   productId: string;
@@ -84,44 +88,11 @@ function parseProducts(
   }
 }
 
-function tokenHash(token: string): string {
-  return createHash('sha256').update(token, 'utf8').digest('hex');
-}
-
 function accountObfuscationId(userId: string): string {
   return createHash('sha256')
     .update('kyron/google-play/account/v1:', 'utf8')
     .update(userId, 'utf8')
     .digest('hex');
-}
-
-function encryptionKey(): Buffer | null {
-  const raw = process.env.GOOGLE_PLAY_TOKEN_ENCRYPTION_KEY;
-  if (!raw || !/^[A-Za-z0-9+/]+={0,2}$/.test(raw)) return null;
-  const decoded = Buffer.from(raw, 'base64');
-  if (
-    decoded.length !== 32 ||
-    decoded.toString('base64').replace(/=+$/, '') !== raw.replace(/=+$/, '')
-  ) {
-    return null;
-  }
-  return decoded;
-}
-
-function encryptPurchaseToken(token: string, key: Buffer): string {
-  const nonce = randomBytes(12);
-  const cipher = createCipheriv('aes-256-gcm', key, nonce);
-  const ciphertext = Buffer.concat([
-    cipher.update(token, 'utf8'),
-    cipher.final(),
-  ]);
-  const tag = cipher.getAuthTag();
-  return [
-    TOKEN_PREFIX,
-    nonce.toString('base64url'),
-    tag.toString('base64url'),
-    ciphertext.toString('base64url'),
-  ].join('.');
 }
 
 function moneyNanos(
