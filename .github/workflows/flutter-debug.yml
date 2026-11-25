@@ -1,11 +1,8 @@
 name: Development Build
 
+# Distribution builds are expensive. CI still validates each app change;
+# request a signed development distribution only when someone needs it.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'app/**'
-      - '.github/workflows/flutter-debug.yml'
   workflow_dispatch:
 
 # Read-only by default. Only the publish job, which creates the GitHub
@@ -14,21 +11,23 @@ on:
 permissions:
   contents: read
 
-# Keep an active build alive. Cancelling a Gradle process on every newer push
-# sends SIGTERM (143) through Flutter/Gradle and turns a recoverable queue into
-# a failed run. GitHub retains only the newest pending run in this concurrency
-# group; the running build completes before that pending build starts.
+# Keep an active manually requested build alive. A runner shutdown is an
+# infrastructure interruption; never deliberately cancel a healthy build to
+# replace it with another request. GitHub retains only the newest pending run.
 concurrency:
   group: debug-build-${{ github.ref }}
   cancel-in-progress: false
 
 # The build number is worked out once, in the first job, and every job after
-# it reads that one answer -- so the APKs and bundle out of one push carry the same number. It is the commit count,
+# it reads that one answer -- so the APKs and bundle from one commit carry the
+# same number. It is the commit count,
 # shared with the Release workflow: scripts/build-number.sh says why.
 
 jobs:
   version:
     name: Read the version and describe the build
+    # Never build a signed distribution from a manually selected feature branch.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}

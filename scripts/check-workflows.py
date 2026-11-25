@@ -466,8 +466,9 @@ def check_debug_build_reliability() -> list[str]:
     """Keep the long-running development Android build from self-cancelling.
 
     The four APK variants are intentionally separate because each must carry
-    the same versionCode. A newer push must not SIGTERM the active Gradle
-    process; the newest pending run can build after it. Dependency resolution
+    the same versionCode. Only an explicit request from main should spend
+    runner minutes on signed distributions. A newer request must not
+    SIGTERM the active Gradle process. Dependency resolution
     is performed once before the builds, so each Flutter build must use
     --no-pub. The job timeout and shell diagnostic trap make an actual
     timeout/interruption distinguishable from a compiler failure.
@@ -477,10 +478,25 @@ def check_debug_build_reliability() -> list[str]:
     workflow = yaml.safe_load(path.read_text(encoding="utf-8"))
     said: list[str] = []
 
+    # PyYAML 1.1 interprets the unquoted GitHub Actions key 'on' as True.
+    triggers = workflow.get("on", workflow.get(True)) or {}
+    if set(triggers) != {"workflow_dispatch"}:
+        said.append(
+            f"{name}: development distribution must be manually dispatched "
+            "to avoid rebuilding every app change"
+        )
+
+    version = (workflow.get("jobs") or {}).get("version") or {}
+    if version.get("if") != "github.ref == 'refs/heads/main'":
+        said.append(
+            f"{name}: manually dispatched signed development builds "
+            "must be restricted to main"
+        )
+
     concurrency = workflow.get("concurrency") or {}
     if concurrency.get("cancel-in-progress") is not False:
         said.append(
-            f"{name}: cancel-in-progress must be false; otherwise a newer push "
+            f"{name}: cancel-in-progress must be false; otherwise a newer request "
             "can SIGTERM the active Flutter/Gradle build (exit 143)"
         )
 
