@@ -13,7 +13,10 @@ import {
 
 @Module({
   imports: [SupabaseTokenModule, FinancialLedgerModule],
-  controllers: [GooglePlayPurchasesController, GooglePlayNotificationsController],
+  controllers: [
+    GooglePlayPurchasesController,
+    GooglePlayNotificationsController,
+  ],
   providers: [
     GooglePlayDeveloperApiProvider,
     GooglePlayPurchasesService,

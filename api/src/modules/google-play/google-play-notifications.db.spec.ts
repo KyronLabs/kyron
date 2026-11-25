@@ -92,7 +92,9 @@ run('Google Play durable notification receipt', () => {
 
   it('rejects unauthenticated and disabled deliveries without inserting', async () => {
     const deniedId = `rtdn-denied-${randomUUID()}`;
-    jest.spyOn(auth, 'verify').mockRejectedValueOnce(new UnauthorizedException());
+    jest
+      .spyOn(auth, 'verify')
+      .mockRejectedValueOnce(new UnauthorizedException());
     await expect(
       service.ingest('Bearer test', body(deniedId)),
     ).rejects.toBeInstanceOf(UnauthorizedException);
