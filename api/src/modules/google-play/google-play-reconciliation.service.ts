@@ -7,6 +7,12 @@ import {
 import { CoinKind, type GooglePlayPurchase, type Prisma } from '@prisma/client';
 import { createHash } from 'node:crypto';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { LedgerService } from '../financial-ledger/ledger.service';
+import {
+  netPurchasedCoinRecovery,
+  PURCHASE_RECOVERY_CORRECTION,
+  PURCHASE_RECOVERY_SOURCE,
+} from '../financial-ledger/purchased-coin-recovery';
 import {
   GooglePlayDeveloperApiProvider,
   type GooglePlayOrder,
@@ -135,6 +141,7 @@ export class GooglePlayReconciliationService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly googlePlay: GooglePlayDeveloperApiProvider,
+    private readonly ledger: LedgerService,
   ) {}
 
   async listChargebackEvidence(after?: string) {
@@ -242,149 +249,476 @@ export class GooglePlayReconciliationService {
     });
   }
 
-  async previewRefundReversal(purchaseId: string) {
+  previewRefundReversal(purchaseId: string) {
     return this.prisma.$transaction(
-      async (tx) => {
-        const purchase = await tx.googlePlayPurchase.findUnique({
-          where: { id: purchaseId },
-          select: {
-            userId: true,
-            quantity: true,
-            coinAmount: true,
-            coinEntryKey: true,
-          },
-        });
-        if (!purchase)
-          throw new NotFoundException('Google Play purchase not found.');
-
-        const evidence = await tx.financialSourceRecord.findMany({
-          where: {
-            sourceType: SOURCE,
-            eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
-            beneficiaryId: purchase.userId,
-            relatedIds: { path: ['purchaseId'], equals: purchaseId },
-          },
-          select: { payload: true },
-        });
-        if (!evidence.length) {
-          throw new NotFoundException('Verified refund evidence not found.');
-        }
-
-        let refundedQuantity = 0;
-        for (const row of evidence) {
-          const quantity = jsonRecord(row.payload).cumulativeRefundedQuantity;
-          if (
-            typeof quantity !== 'number' ||
-            !Number.isSafeInteger(quantity) ||
-            quantity < 1 ||
-            quantity > purchase.quantity
-          ) {
-            throw new ConflictException(
-              'Refund quantity evidence is inconsistent.',
-            );
-          }
-          refundedQuantity = Math.max(refundedQuantity, quantity);
-        }
-        if (
-          purchase.quantity < 1 ||
-          purchase.coinAmount < 1 ||
-          purchase.coinAmount % purchase.quantity !== 0
-        ) {
-          throw new ConflictException(
-            'Purchase coin allocation is inconsistent.',
-          );
-        }
-
-        const verifiedRefundCoins =
-          (purchase.coinAmount / purchase.quantity) * refundedQuantity;
-        const balance = await tx.coinEntry.aggregate({
-          where: {
-            userId: purchase.userId,
-            kind: { in: [CoinKind.PURCHASE_GRANT, CoinKind.PURCHASE_SPEND] },
-          },
-          _sum: { amount: true },
-        });
-        const purchasedWalletCoins = Math.max(0, balance._sum.amount ?? 0);
-        const coveredByPurchasedWalletCoins = Math.min(
-          verifiedRefundCoins,
-          purchasedWalletCoins,
-        );
-        const grant = await tx.coinEntry.findUnique({
-          where: { key: purchase.coinEntryKey },
-          select: { userId: true, kind: true, amount: true },
-        });
-        if (
-          grant?.userId !== purchase.userId ||
-          grant.kind !== CoinKind.PURCHASE_GRANT ||
-          grant.amount !== purchase.coinAmount
-        ) {
-          throw new ConflictException('Purchase credit could not be verified.');
-        }
-        const spend = await tx.coinEntry.aggregate({
-          where: {
-            userId: purchase.userId,
-            kind: CoinKind.PURCHASE_SPEND,
-            amount: { lt: 0 },
-          },
-          _sum: { amount: true },
-        });
-        const [attribution] = await tx.$queryRaw<
-          { total: bigint; originalOrder: bigint }[]
-        >`
-          SELECT COALESCE(SUM(item.coins), 0) AS total,
-                 COALESCE(SUM(item.coins) FILTER (
-                   WHERE item."purchaseId" = ${purchaseId}::uuid
-                 ), 0) AS "originalOrder"
-          FROM "FinancialSourceRecord" evidence
-          CROSS JOIN LATERAL jsonb_to_recordset(evidence.payload->'allocations')
-            AS item("purchaseId" uuid, coins integer)
-          WHERE evidence."sourceType" = 'GIFT_PURCHASE_SPEND_ALLOCATION'
-            AND evidence."beneficiaryId" = ${purchase.userId}::uuid
-        `;
-        const purchasedSpend = -(spend._sum.amount ?? 0);
-        const attributedSpend = Number(attribution.total);
-        const originalOrderAttributedSpend = Number(attribution.originalOrder);
-        if (
-          !Number.isSafeInteger(purchasedSpend) ||
-          !Number.isSafeInteger(attributedSpend) ||
-          attributedSpend < 0 ||
-          attributedSpend > purchasedSpend ||
-          originalOrderAttributedSpend < 0 ||
-          originalOrderAttributedSpend > Math.min(attributedSpend, grant.amount)
-        ) {
-          throw new ConflictException(
-            'Purchased coin spend attribution is inconsistent.',
-          );
-        }
-        // Only spending explicitly linked to another order can be excluded
-        // from this order’s conservative estimate.
-        const unattributedPurchasedSpend = purchasedSpend - attributedSpend;
-        const conservativelyUnspentOrderCoins = Math.max(
-          0,
-          grant.amount -
-            originalOrderAttributedSpend -
-            unattributedPurchasedSpend,
-        );
-        const originalOrderCoverage = Math.min(
-          coveredByPurchasedWalletCoins,
-          conservativelyUnspentOrderCoins,
-        );
-        return {
-          purchaseId,
-          refundedQuantity,
-          verifiedRefundCoins,
-          purchasedWalletCoins,
-          coveredByPurchasedWalletCoins,
-          originalOrderCoverage,
-          originalOrderAttributedSpend,
-          unattributedPurchasedSpend,
-          coinsRequiringAttributionReview:
-            verifiedRefundCoins - originalOrderCoverage,
-          uncoveredCoins: verifiedRefundCoins - coveredByPurchasedWalletCoins,
-        };
-      },
+      (tx) => this.calculateRefundReversal(tx, purchaseId),
       { isolationLevel: 'RepeatableRead' },
     );
+  }
+
+  private async calculateRefundReversal(
+    tx: Prisma.TransactionClient,
+    purchaseId: string,
+  ) {
+    const purchase = await tx.googlePlayPurchase.findUnique({
+      where: { id: purchaseId },
+      select: {
+        userId: true,
+        quantity: true,
+        coinAmount: true,
+        coinEntryKey: true,
+      },
+    });
+    if (!purchase)
+      throw new NotFoundException('Google Play purchase not found.');
+
+    const evidence = await tx.financialSourceRecord.findMany({
+      where: {
+        sourceType: SOURCE,
+        eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+        beneficiaryId: purchase.userId,
+        relatedIds: { path: ['purchaseId'], equals: purchaseId },
+      },
+      select: { id: true, payload: true },
+      orderBy: { id: 'asc' },
+    });
+    if (!evidence.length) {
+      throw new NotFoundException('Verified refund evidence not found.');
+    }
+
+    let refundedQuantity = 0;
+    let refundEvidenceId = evidence[0].id;
+    for (const row of evidence) {
+      const quantity = jsonRecord(row.payload).cumulativeRefundedQuantity;
+      if (
+        typeof quantity !== 'number' ||
+        !Number.isSafeInteger(quantity) ||
+        quantity < 1 ||
+        quantity > purchase.quantity
+      ) {
+        throw new ConflictException(
+          'Refund quantity evidence is inconsistent.',
+        );
+      }
+      if (quantity > refundedQuantity) {
+        refundedQuantity = quantity;
+        refundEvidenceId = row.id;
+      }
+    }
+    if (
+      purchase.quantity < 1 ||
+      purchase.coinAmount < 1 ||
+      purchase.coinAmount % purchase.quantity !== 0
+    ) {
+      throw new ConflictException('Purchase coin allocation is inconsistent.');
+    }
+
+    const verifiedRefundCoins =
+      (purchase.coinAmount / purchase.quantity) * refundedQuantity;
+    const balance = await tx.coinEntry.aggregate({
+      where: {
+        userId: purchase.userId,
+        kind: { in: [CoinKind.PURCHASE_GRANT, CoinKind.PURCHASE_SPEND] },
+      },
+      _sum: { amount: true },
+    });
+    const netRecoveredForOrder = await netPurchasedCoinRecovery(
+      tx,
+      purchase.userId,
+      purchaseId,
+    );
+    const netRecoveredFromWallet = await netPurchasedCoinRecovery(
+      tx,
+      purchase.userId,
+    );
+    const purchasedWalletCoins = Math.max(
+      0,
+      (balance._sum.amount ?? 0) - netRecoveredFromWallet,
+    );
+    const outstandingRefundCoins = Math.max(
+      0,
+      verifiedRefundCoins - netRecoveredForOrder,
+    );
+    const coveredByPurchasedWalletCoins = Math.min(
+      outstandingRefundCoins,
+      purchasedWalletCoins,
+    );
+    const grant = await tx.coinEntry.findUnique({
+      where: { key: purchase.coinEntryKey },
+      select: { userId: true, kind: true, amount: true },
+    });
+    if (
+      grant?.userId !== purchase.userId ||
+      grant.kind !== CoinKind.PURCHASE_GRANT ||
+      grant.amount !== purchase.coinAmount
+    ) {
+      throw new ConflictException('Purchase credit could not be verified.');
+    }
+    const spend = await tx.coinEntry.aggregate({
+      where: {
+        userId: purchase.userId,
+        kind: CoinKind.PURCHASE_SPEND,
+        amount: { lt: 0 },
+      },
+      _sum: { amount: true },
+    });
+    const [attribution] = await tx.$queryRaw<
+      { total: bigint; originalOrder: bigint }[]
+    >`
+      SELECT COALESCE(SUM(item.coins), 0) AS total,
+             COALESCE(SUM(item.coins) FILTER (
+               WHERE item."purchaseId" = ${purchaseId}::uuid
+             ), 0) AS "originalOrder"
+      FROM "FinancialSourceRecord" evidence
+      CROSS JOIN LATERAL jsonb_to_recordset(evidence.payload->'allocations')
+        AS item("purchaseId" uuid, coins integer)
+      WHERE evidence."sourceType" = 'GIFT_PURCHASE_SPEND_ALLOCATION'
+        AND evidence."beneficiaryId" = ${purchase.userId}::uuid
+    `;
+    const purchasedSpend = -(spend._sum.amount ?? 0);
+    const attributedSpend = Number(attribution.total);
+    const originalOrderAttributedSpend = Number(attribution.originalOrder);
+    if (
+      !Number.isSafeInteger(purchasedSpend) ||
+      !Number.isSafeInteger(attributedSpend) ||
+      attributedSpend < 0 ||
+      attributedSpend > purchasedSpend ||
+      originalOrderAttributedSpend < 0 ||
+      originalOrderAttributedSpend > Math.min(attributedSpend, grant.amount)
+    ) {
+      throw new ConflictException(
+        'Purchased coin spend attribution is inconsistent.',
+      );
+    }
+    // Only spending explicitly linked to another order can be excluded
+    // from this order’s conservative estimate.
+    const unattributedPurchasedSpend = purchasedSpend - attributedSpend;
+    const conservativelyUnspentOrderCoins = Math.max(
+      0,
+      grant.amount -
+        originalOrderAttributedSpend -
+        unattributedPurchasedSpend -
+        netRecoveredForOrder,
+    );
+    const originalOrderCoverage = Math.min(
+      coveredByPurchasedWalletCoins,
+      conservativelyUnspentOrderCoins,
+    );
+    return {
+      purchaseId,
+      refundedQuantity,
+      verifiedRefundCoins,
+      outstandingRefundCoins,
+      refundEvidenceId,
+      purchasedWalletCoins,
+      coveredByPurchasedWalletCoins,
+      originalOrderCoverage,
+      netRecoveredForOrder,
+      originalOrderAttributedSpend,
+      unattributedPurchasedSpend,
+      coinsRequiringAttributionReview:
+        outstandingRefundCoins - originalOrderCoverage,
+      uncoveredCoins: outstandingRefundCoins - coveredByPurchasedWalletCoins,
+    };
+  }
+
+  recoverVerifiedRefund(
+    purchaseId: string,
+    actorId: string,
+    requestId: string,
+    noticeId: string,
+  ) {
+    this.requireRecoveryEnabled();
+    return this.prisma.$transaction(async (tx) => {
+      const purchase = await this.lockRecoveryWallet(tx, purchaseId);
+      const sourceId = `${purchaseId}:${requestId}`;
+      const replay = await tx.financialSourceRecord.findUnique({
+        where: {
+          sourceType_sourceId: {
+            sourceType: PURCHASE_RECOVERY_SOURCE,
+            sourceId,
+          },
+        },
+      });
+      if (replay) {
+        if (jsonRecord(replay.payload).noticeId !== noticeId) {
+          throw new ConflictException(
+            'This request already used a different notice.',
+          );
+        }
+        return { recoveryId: replay.id, ...jsonRecord(replay.payload) };
+      }
+
+      const evidenceScope = {
+        beneficiaryId: purchase.userId,
+        relatedIds: { path: ['purchaseId'], equals: purchaseId },
+      };
+      const correction = await tx.financialSourceRecord.findFirst({
+        where: { ...evidenceScope, sourceType: PURCHASE_RECOVERY_CORRECTION },
+        select: { id: true },
+      });
+      if (correction) {
+        throw new ConflictException(
+          'A corrected recovery requires separate case review.',
+        );
+      }
+      const chargebacks = await tx.financialSourceRecord.findMany({
+        where: { ...chargebackEvidenceFilter, ...evidenceScope },
+        select: { id: true },
+      });
+      if (chargebacks.length) {
+        const referrals = await tx.financialSourceRecord.count({
+          where: {
+            sourceType: CHARGEBACK_REVIEW_SOURCE,
+            sourceId: { in: chargebacks.map(({ id }) => id) },
+            eventType: ChargebackReviewDecision.ReferForRecovery,
+          },
+        });
+        if (referrals !== chargebacks.length) {
+          throw new ConflictException(
+            'Chargeback evidence requires a recovery referral.',
+          );
+        }
+      }
+
+      const preview = await this.calculateRefundReversal(tx, purchaseId);
+      const outstanding = preview.outstandingRefundCoins;
+      if (!outstanding) {
+        throw new ConflictException(
+          'The verified refund is already recovered.',
+        );
+      }
+      // Only proven credit from this order is eligible for this operation.
+      const recoveredCoins = Math.min(
+        outstanding,
+        preview.originalOrderCoverage,
+      );
+      const original = await tx.ledgerTransaction.findUnique({
+        where: { idempotencyKey: purchase.coinEntryKey },
+        select: { id: true, sourceId: true, eventType: true },
+      });
+      if (
+        original?.sourceId !== purchaseId ||
+        original.eventType !== 'GOOGLE_PLAY_COIN_PURCHASE'
+      ) {
+        throw new ConflictException(
+          'The original purchase posting could not be verified.',
+        );
+      }
+      const posting = recoveredCoins
+        ? await this.postRecoveryLedger(tx, {
+            sourceType: PURCHASE_RECOVERY_SOURCE,
+            sourceId,
+            purchaseId,
+            userId: purchase.userId,
+            actorId,
+            coins: recoveredCoins,
+            originalPostingId: original.id,
+          })
+        : null;
+      const payload = {
+        noticeId,
+        verifiedRefundCoins: preview.verifiedRefundCoins,
+        refundEvidenceId: preview.refundEvidenceId,
+        recoveredCoins,
+        shortfallCoins: outstanding - recoveredCoins,
+        ledgerTransactionId: posting?.id ?? null,
+      };
+      const recovery = await this.writeRecoveryEvidence(tx, {
+        sourceType: PURCHASE_RECOVERY_SOURCE,
+        sourceId,
+        purchaseId,
+        userId: purchase.userId,
+        actorId,
+        coins: recoveredCoins,
+        payload,
+      });
+      return { recoveryId: recovery.id, ...payload };
+    });
+  }
+
+  correctRefundRecovery(
+    purchaseId: string,
+    recoveryId: string,
+    actorId: string,
+    noticeId: string,
+  ) {
+    this.requireRecoveryEnabled();
+    return this.prisma.$transaction(async (tx) => {
+      const purchase = await this.lockRecoveryWallet(tx, purchaseId);
+      const recovery = await tx.financialSourceRecord.findFirst({
+        where: {
+          id: recoveryId,
+          sourceType: PURCHASE_RECOVERY_SOURCE,
+          beneficiaryId: purchase.userId,
+          relatedIds: { path: ['purchaseId'], equals: purchaseId },
+        },
+      });
+      if (!recovery)
+        throw new NotFoundException('Purchase recovery not found.');
+      const existing = await tx.financialSourceRecord.findUnique({
+        where: {
+          sourceType_sourceId: {
+            sourceType: PURCHASE_RECOVERY_CORRECTION,
+            sourceId: recoveryId,
+          },
+        },
+      });
+      if (existing) {
+        if (jsonRecord(existing.payload).noticeId !== noticeId) {
+          throw new ConflictException(
+            'This correction already used a different notice.',
+          );
+        }
+        return { correctionId: existing.id, ...jsonRecord(existing.payload) };
+      }
+      const restoredCoins = recovery.amount?.toNumber() ?? 0;
+      const { ledgerTransactionId } = jsonRecord(recovery.payload);
+      if (
+        !Number.isSafeInteger(restoredCoins) ||
+        restoredCoins <= 0 ||
+        typeof ledgerTransactionId !== 'string'
+      ) {
+        throw new ConflictException('This recovery has no debit to correct.');
+      }
+      const posting = await this.postRecoveryLedger(tx, {
+        sourceType: PURCHASE_RECOVERY_CORRECTION,
+        sourceId: recoveryId,
+        purchaseId,
+        userId: purchase.userId,
+        actorId,
+        coins: -restoredCoins,
+        originalPostingId: ledgerTransactionId,
+      });
+      const payload = {
+        noticeId,
+        restoredCoins,
+        ledgerTransactionId: posting.id,
+      };
+      const correction = await this.writeRecoveryEvidence(tx, {
+        sourceType: PURCHASE_RECOVERY_CORRECTION,
+        sourceId: recoveryId,
+        purchaseId,
+        userId: purchase.userId,
+        actorId,
+        coins: -restoredCoins,
+        payload,
+      });
+      return { correctionId: correction.id, ...payload };
+    });
+  }
+
+  private requireRecoveryEnabled() {
+    if (process.env.GOOGLE_PLAY_REFUND_RECOVERY_ENABLED !== 'true') {
+      throw new ServiceUnavailableException(
+        'Refund recovery posting is disabled.',
+      );
+    }
+  }
+
+  private async lockRecoveryWallet(
+    tx: Prisma.TransactionClient,
+    purchaseId: string,
+  ) {
+    const purchase = await tx.googlePlayPurchase.findUnique({
+      where: { id: purchaseId },
+      select: { userId: true, coinEntryKey: true },
+    });
+    if (!purchase)
+      throw new NotFoundException('Google Play purchase not found.');
+    const owner = await tx.$queryRaw<{ id: string }[]>`
+      SELECT id FROM "User" WHERE id = ${purchase.userId}::uuid FOR UPDATE
+    `;
+    if (!owner.length)
+      throw new NotFoundException('Purchase wallet not found.');
+    await tx.$queryRaw`SELECT id FROM "GooglePlayPurchase" WHERE id = ${purchaseId}::uuid FOR UPDATE`;
+    return purchase;
+  }
+
+  private postRecoveryLedger(
+    tx: Prisma.TransactionClient,
+    input: {
+      sourceType: string;
+      sourceId: string;
+      purchaseId: string;
+      userId: string;
+      actorId: string;
+      coins: number;
+      originalPostingId: string;
+    },
+  ) {
+    const amount = String(Math.abs(input.coins));
+    return this.ledger.postInTransaction(tx, {
+      idempotencyKey: `${input.sourceType}:${input.sourceId}`,
+      eventType: input.sourceType,
+      sourceType: input.sourceType,
+      sourceId: input.sourceId,
+      currencyCode: 'KCOIN',
+      actorId: input.actorId,
+      metadata: {
+        purchaseId: input.purchaseId,
+        originalPostingId: input.originalPostingId,
+      },
+      postings: [
+        {
+          accountKey: `USER:${input.userId}:KCOIN:PURCHASED`,
+          name: 'Purchased coin wallet liability',
+          accountType: 'LIABILITY',
+          normalSide: 'CREDIT',
+          ownerId: input.userId,
+          side: input.coins > 0 ? 'DEBIT' : 'CREDIT',
+          amount,
+        },
+        {
+          accountKey: 'SYSTEM:GOOGLE_PLAY:KCOIN:ISSUANCE_CLEARING',
+          name: 'Google Play purchased coin issuance clearing',
+          accountType: 'ASSET',
+          normalSide: 'DEBIT',
+          side: input.coins > 0 ? 'CREDIT' : 'DEBIT',
+          amount,
+        },
+      ],
+    });
+  }
+
+  private async writeRecoveryEvidence(
+    tx: Prisma.TransactionClient,
+    input: {
+      sourceType: string;
+      sourceId: string;
+      purchaseId: string;
+      userId: string;
+      actorId: string;
+      coins: number;
+      payload: Prisma.InputJsonObject;
+    },
+  ) {
+    const evidence = await tx.financialSourceRecord.create({
+      data: {
+        sourceType: input.sourceType,
+        sourceId: input.sourceId,
+        eventType: input.sourceType,
+        actorId: input.actorId,
+        beneficiaryId: input.userId,
+        relatedIds: { purchaseId: input.purchaseId },
+        amount: Math.abs(input.coins),
+        unitCode: 'COIN',
+        payload: input.payload,
+        occurredAt: new Date(),
+      },
+      select: { id: true },
+    });
+    await tx.financialAuditEvent.create({
+      data: {
+        actorId: input.actorId,
+        eventType: input.sourceType,
+        subjectType: 'GOOGLE_PLAY_PURCHASE',
+        subjectId: input.purchaseId,
+        requestId: evidence.id,
+        metadata: input.payload,
+      },
+    });
+    return evidence;
   }
 
   async listPending(after?: string) {

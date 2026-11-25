@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { PrismaClient } from '@prisma/client';
+import { LedgerService } from '../financial-ledger/ledger.service';
 import type { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import {
   GooglePlayDeveloperApiProvider,
@@ -94,6 +95,7 @@ run('Google Play refund evidence against Postgres', () => {
     service = new GooglePlayReconciliationService(
       prisma as PrismaService,
       provider as unknown as GooglePlayDeveloperApiProvider,
+      new LedgerService(prisma as PrismaService),
     );
     await prisma.googlePlayPurchase.create({
       data: {
@@ -253,13 +255,15 @@ run('Google Play refund evidence against Postgres', () => {
       })),
     });
 
-    expect(await service.previewRefundReversal(refundPurchase)).toEqual({
+    expect(await service.previewRefundReversal(refundPurchase)).toMatchObject({
       purchaseId: refundPurchase,
       refundedQuantity: 2,
       verifiedRefundCoins: 80,
+      outstandingRefundCoins: 80,
       purchasedWalletCoins: 25,
       coveredByPurchasedWalletCoins: 25,
       originalOrderCoverage: 25,
+      netRecoveredForOrder: 0,
       originalOrderAttributedSpend: 0,
       unattributedPurchasedSpend: 95,
       coinsRequiringAttributionReview: 55,
@@ -320,6 +324,117 @@ run('Google Play refund evidence against Postgres', () => {
       unattributedPurchasedSpend: 15,
       coinsRequiringAttributionReview: 0,
     });
+    await prisma.user.create({
+      data: {
+        id: refundUser,
+        name: 'Refund recovery test',
+        email: `${refundUser}@example.test`,
+      },
+    });
+    const ledger = new LedgerService(prisma as PrismaService);
+    await prisma.$transaction((tx) =>
+      ledger.postInTransaction(tx, {
+        idempotencyKey: grantKey,
+        eventType: 'GOOGLE_PLAY_COIN_PURCHASE',
+        sourceType: 'GOOGLE_PLAY_PURCHASE',
+        sourceId: refundPurchase,
+        currencyCode: 'KCOIN',
+        postings: [
+          {
+            accountKey: 'SYSTEM:GOOGLE_PLAY:KCOIN:ISSUANCE_CLEARING',
+            name: 'Google Play purchased coin issuance clearing',
+            accountType: 'ASSET',
+            normalSide: 'DEBIT',
+            side: 'DEBIT',
+            amount: '120',
+          },
+          {
+            accountKey: `USER:${refundUser}:KCOIN:PURCHASED`,
+            name: 'Purchased coin wallet liability',
+            accountType: 'LIABILITY',
+            normalSide: 'CREDIT',
+            ownerId: refundUser,
+            side: 'CREDIT',
+            amount: '120',
+          },
+        ],
+      }),
+    );
+    const chargeback = await prisma.financialSourceRecord.create({
+      data: {
+        sourceType: 'GOOGLE_PLAY_REFUND_OBSERVATION',
+        sourceId: randomUUID(),
+        eventType: 'GOOGLE_PLAY_REFUND_QUANTITY_OBSERVED',
+        beneficiaryId: refundUser,
+        relatedIds: { purchaseId: refundPurchase },
+        payload: {
+          cumulativeRefundedQuantity: 3,
+          voidScan: { matched: [{ voidedReason: 7 }] },
+        },
+        occurredAt: new Date(),
+      },
+    });
+    const requestId = randomUUID();
+    const noticeId = randomUUID();
+    process.env.GOOGLE_PLAY_REFUND_RECOVERY_ENABLED = 'true';
+    try {
+      const recover = () =>
+        service.recoverVerifiedRefund(
+          refundPurchase,
+          actorId,
+          requestId,
+          noticeId,
+        );
+      await expect(recover()).rejects.toThrow(
+        'Chargeback evidence requires a recovery referral.',
+      );
+      await service.reviewChargebackEvidence(
+        chargeback.id,
+        actorId,
+        ChargebackReviewDecision.ReferForRecovery,
+      );
+      const [posted, replay] = await Promise.all([recover(), recover()]);
+      expect(replay).toEqual(posted);
+      expect(posted).toMatchObject({ recoveredCoins: 85, shortfallCoins: 35 });
+      expect(await service.previewRefundReversal(refundPurchase)).toMatchObject(
+        {
+          netRecoveredForOrder: 85,
+          purchasedWalletCoins: 40,
+          originalOrderCoverage: 0,
+          outstandingRefundCoins: 35,
+        },
+      );
+      const correctionNotice = randomUUID();
+      const correct = () =>
+        service.correctRefundRecovery(
+          refundPurchase,
+          posted.recoveryId,
+          actorId,
+          correctionNotice,
+        );
+      const [correction, correctionReplay] = await Promise.all([
+        correct(),
+        correct(),
+      ]);
+      expect(correctionReplay).toEqual(correction);
+      expect(correction).toMatchObject({ restoredCoins: 85 });
+      expect(await service.previewRefundReversal(refundPurchase)).toMatchObject(
+        {
+          netRecoveredForOrder: 0,
+          purchasedWalletCoins: 125,
+        },
+      );
+      await expect(
+        service.recoverVerifiedRefund(
+          refundPurchase,
+          actorId,
+          randomUUID(),
+          noticeId,
+        ),
+      ).rejects.toThrow('A corrected recovery requires separate case review.');
+    } finally {
+      delete process.env.GOOGLE_PLAY_REFUND_RECOVERY_ENABLED;
+    }
   });
 
   it('does not write retry evidence after another worker takes the lease', async () => {

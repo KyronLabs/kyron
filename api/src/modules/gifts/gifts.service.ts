@@ -1,4 +1,9 @@
 import {
+  netPurchasedCoinRecovery,
+  PURCHASE_RECOVERY_CORRECTION,
+  PURCHASE_RECOVERY_SOURCE,
+} from '../financial-ledger/purchased-coin-recovery';
+import {
   BadRequestException,
   ConflictException,
   Injectable,
@@ -567,7 +572,10 @@ export class GiftsService {
       // weekly complimentary programme was retired.
       legacyComplimentary: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
       promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
-      purchased: sum(CoinKind.PURCHASE_GRANT) + sum(CoinKind.PURCHASE_SPEND),
+      purchased:
+        sum(CoinKind.PURCHASE_GRANT) +
+        sum(CoinKind.PURCHASE_SPEND) -
+        (await netPurchasedCoinRecovery(tx, userId)),
       // EARN is legacy test history with unknown provenance and remains
       // outside the withdrawable amount.
       earned: sum(CoinKind.EARN),
@@ -652,6 +660,16 @@ export class GiftsService {
         WHERE evidence."sourceType" = 'GIFT_PURCHASE_SPEND_ALLOCATION'
           AND evidence."beneficiaryId" = ${userId}::uuid
         GROUP BY item."purchaseId"
+      ), recoveries AS (
+        SELECT evidence."relatedIds"->>'purchaseId' AS purchase_id,
+               SUM(CASE WHEN evidence."sourceType" = ${PURCHASE_RECOVERY_SOURCE}
+                        THEN evidence.amount ELSE -evidence.amount END) AS coins
+        FROM "FinancialSourceRecord" evidence
+        WHERE evidence."sourceType" IN (
+          ${PURCHASE_RECOVERY_SOURCE}, ${PURCHASE_RECOVERY_CORRECTION}
+        )
+          AND evidence."beneficiaryId" = ${userId}::uuid
+        GROUP BY evidence."relatedIds"->>'purchaseId'
       ), unknown_spend AS (
         SELECT GREATEST(
           COALESCE(SUM(-entry.amount::bigint), 0) -
@@ -665,11 +683,12 @@ export class GiftsService {
       FROM "GooglePlayPurchase" purchase
       JOIN "CoinEntry" credit ON credit.key = purchase."coinEntryKey"
       LEFT JOIN allocations ON allocations."purchaseId" = purchase.id
+      LEFT JOIN recoveries ON recoveries.purchase_id = purchase.id::text
       CROSS JOIN unknown_spend
       CROSS JOIN LATERAL (
         SELECT (
           credit.amount - COALESCE(allocations.coins, 0) -
-          unknown_spend.coins
+          unknown_spend.coins - COALESCE(recoveries.coins, 0)
         )::bigint AS available
       ) balance
       WHERE purchase."userId" = ${userId}::uuid
