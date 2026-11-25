@@ -58,12 +58,12 @@ The current API verifies Supabase tokens and resolves application users by the S
 ### Required operational evidence
 
 - The owner reconfirmed on 25 November 2026 that the historical database credentials have been rotated and invalidated. The earlier live audit observed successful startup and migration checks after rotation. No authentication attempt with the historical credentials was made.
-- The owner confirmed on 25 November 2026 that the former mail provider is no longer used. Provider-side revocation or account/key deletion is not independently confirmed. Retirement of an integration does not by itself revoke its historical credentials.
+- The owner confirmed on 25 November 2026 that the former mail-provider account was closed and had not been used for over a year. Treat the account retirement as owner-confirmed; provider-side credential invalidation has not been independently tested. Do not reactivate the account or attempt to use the historical key. The historical blob remains subject to the publication audit.
 - Remove the stale app-level `JWT_SECRET` from Render after confirming no old deployment or other service consumes it. Do not generate a replacement merely to satisfy the obsolete variable.
 - Verify the issue/rotation date of `SUPABASE_SERVICE_ROLE_KEY` and determine from the project's current signing mode whether `SUPABASE_JWT_SECRET` is still needed. Rotate only with a coordinated auth-key migration plan.
 - Review provider access logs for suspicious use where retention permits.
 
-The existing [issue #169](https://github.com/KyronLabs/kyron/issues/169) remains open as of this review and has no recorded comments or closure evidence. The owner has confirmed the historical database credential is retired and the former mail integration is unused. The old app-level `JWT_SECRET` remains obsolete. Track outstanding revocation evidence, current Supabase service credentials and other runtime settings in that issue.
+The existing [issue #169](https://github.com/KyronLabs/kyron/issues/169) remains open as of this review and has no recorded comments or closure evidence. The owner has confirmed the historical database credential is retired and the former mail integration is unused. The old app-level `JWT_SECRET` remains obsolete. Track current Supabase service credentials, other runtime settings and remaining publication-audit evidence in that issue.
 
 ## 3. AI coding-session references in commit metadata
 
@@ -95,7 +95,7 @@ No live Supabase query was run for this report.
 
 ## 5. Triage order
 
-1. **Credential verification and rotation:** historical database credential retirement is owner-confirmed; confirm revocation of the retired mail-provider credential, and verify current Supabase service-key/signing-key rotation.
+1. **Credential verification and rotation:** historical database credential retirement is owner-confirmed; former mail-provider account closure is owner-confirmed; verify current Supabase service-key/signing-key rotation.
 2. **Administrator account verification:** check the production application-user and Supabase Auth records and review historical auth/admin activity.
 3. **AI-session access:** owner confirms the five known references do not provide access; retain the metadata review in the full-history publication scan.
 4. **Supabase privilege audit:** complete the live grant/RLS/storage/migration review.

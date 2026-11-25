@@ -150,7 +150,7 @@ Supabase's security advisor reports `auth_leaked_password_protection` as WARN: l
 
 ## 7. Credential and administrator follow-up
 
-- The owner confirmed the historical Render PostgreSQL password was rotated on 23 November 2026 and reconfirmed its invalidation on 25 November. The Render API subsequently connected and completed its migration check. The former mail provider is no longer used, as confirmed on 25 November; provider-side credential revocation is not yet verified. Current Supabase service-role key/JWT-secret issuance and rotation history still require evidence.
+- The owner confirmed the historical Render PostgreSQL password was rotated on 23 November 2026 and reconfirmed its invalidation on 25 November. The Render API subsequently connected and completed its migration check. The owner confirmed on 25 November that the former mail-provider account was closed and had not been used for over a year. Account retirement is owner-confirmed; key invalidation was not independently tested. Current Supabase service-role key/JWT-secret issuance and rotation history still require evidence.
 - Current database state has no row for the historical seeded administrator email. Two current `ADMIN` rows both match Supabase Auth identities and have no local password. This does not prove whether the legacy seed account was created or used before it was removed.
 - On 25 November the owner confirmed the historical AI coding-session URLs do not grant access. No independent provider-side access test was performed.
 
