@@ -197,7 +197,8 @@ export class GooglePlayRefundWorkerService {
           ...(failed ? { processingError: 'AUTOMATED_RETRY_REQUIRED' } : {}),
         },
       });
-      if (postponed.count) return failed ? ('failed' as const) : ('pending' as const);
+      if (postponed.count)
+        return failed ? ('failed' as const) : ('pending' as const);
 
       // An administrator may have processed the receipt between the two
       // updates; clean up only a lease still owned by this worker.
