@@ -1,4 +1,9 @@
-import { createCipheriv, createHash, randomBytes } from 'node:crypto';
+import {
+  createCipheriv,
+  createDecipheriv,
+  createHash,
+  randomBytes,
+} from 'node:crypto';
 
 const TOKEN_PREFIX = 'v1';
 
@@ -33,4 +38,42 @@ export function encryptPurchaseToken(token: string, key: Buffer): string {
     tag.toString('base64url'),
     ciphertext.toString('base64url'),
   ].join('.');
+}
+
+/** Decode only the authenticated envelope written by encryptPurchaseToken. */
+export function decryptPurchaseToken(encrypted: string, key: Buffer): string {
+  try {
+    const [version, nonce, tag, ciphertext, extra] = encrypted.split('.');
+    if (
+      version !== TOKEN_PREFIX ||
+      extra !== undefined ||
+      !nonce ||
+      !tag ||
+      !ciphertext ||
+      encrypted.length > 8192
+    ) {
+      throw new Error('Invalid token envelope.');
+    }
+    const parts = [nonce, tag, ciphertext].map((part) => {
+      const bytes = Buffer.from(part, 'base64url');
+      if (bytes.toString('base64url') !== part) {
+        throw new Error('Invalid token encoding.');
+      }
+      return bytes;
+    });
+    if (parts[0].length !== 12 || parts[1].length !== 16) {
+      throw new Error('Invalid token envelope.');
+    }
+    const decipher = createDecipheriv('aes-256-gcm', key, parts[0]);
+    decipher.setAuthTag(parts[1]);
+    const token = new TextDecoder('utf-8', { fatal: true }).decode(
+      Buffer.concat([decipher.update(parts[2]), decipher.final()]),
+    );
+    if (!token || token.length > 4096) {
+      throw new Error('Invalid token length.');
+    }
+    return token;
+  } catch {
+    throw new Error('Google Play token could not be decrypted.');
+  }
 }

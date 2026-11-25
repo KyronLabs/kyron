@@ -50,6 +50,20 @@ export interface GooglePlayOrder {
   };
 }
 
+export interface GooglePlayVoidedPurchase {
+  purchaseToken?: string;
+  orderId?: string;
+  voidedTimeMillis?: string;
+  voidedQuantity?: number;
+  voidedReason?: number;
+  voidedSource?: number;
+}
+
+export interface GooglePlayVoidedPurchasesPage {
+  voidedPurchases?: GooglePlayVoidedPurchase[];
+  tokenPagination?: { nextPageToken?: string };
+}
+
 interface OAuthTokenResponse {
   access_token?: string;
   expires_in?: number;
@@ -81,6 +95,23 @@ export class GooglePlayDeveloperApiProvider {
   async getOrder(orderId: string): Promise<GooglePlayOrder> {
     const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/orders/${encodeURIComponent(orderId)}`;
     return this.request<GooglePlayOrder>(url, 'GET', true);
+  }
+
+  async listVoidedPurchases(
+    startTime: number,
+    endTime: number,
+    pageToken?: string,
+  ): Promise<GooglePlayVoidedPurchasesPage> {
+    const query = new URLSearchParams({
+      startTime: String(startTime),
+      endTime: String(endTime),
+      type: '0',
+      includeQuantityBasedPartialRefund: 'true',
+      maxResults: '100',
+    });
+    if (pageToken) query.set('token', pageToken);
+    const url = `${API_ROOT}/${encodeURIComponent(this.packageName())}/purchases/voidedpurchases?${query.toString()}`;
+    return this.request<GooglePlayVoidedPurchasesPage>(url, 'GET', true);
   }
 
   async consume(productId: string, token: string): Promise<void> {

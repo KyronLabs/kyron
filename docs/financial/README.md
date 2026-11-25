@@ -134,6 +134,48 @@ disabled until these operational paths are implemented and tested.
 References: [RTDN event reference](https://developer.android.com/google/play/billing/rtdn-reference)
 and [authenticated Pub/Sub pushes](https://cloud.google.com/pubsub/docs/authenticate-push-subscriptions).
 
+### Authoritative refund observation (evidence only)
+
+Active administrators with AAL2 can list outstanding receipt IDs using
+`GET /financial-operations/google-play/notifications?after=<UUID>` and retry
+one receipt with
+`POST /financial-operations/google-play/notifications/<UUID>/reconcile`.
+The list contains no encrypted tokens, raw payloads or customer addresses.
+Reconciliation defaults off (`GOOGLE_PLAY_RECONCILIATION_ENABLED=false`);
+the purchase grant flag is independent.
+
+Bind one-time void or cancellation notices to the stored purchase token,
+order ID, product, original quantity and purchaser's obfuscated identity
+using fresh Publisher API evidence. Partial monetary refunds without
+confirmed quantity reductions, missing refundable quantities and inconsistent
+evidence remain unresolved. The original quantity minus remaining refundable
+quantity is cumulative, never the amount of one notification. Use the
+original recorded coin amount rather than the current product catalogue.
+The Voided Purchases API provides supporting reason/source evidence; its
+visibility is limited to 30 days and the bounded scan may be incomplete.
+An empty page does not establish absence of a refund. This is an operator
+retry path, not yet a scheduled global sweep for missed notifications.
+
+An immutable `GOOGLE_PLAY_REFUND_OBSERVATION` source record and audit event
+are committed atomically with the receipt's processing marker. Serialize
+observations per purchase and reject cumulative regressions. Multiple
+notifications may report the same cumulative quantity. **Never sum these
+records.** The generic source amount and unit are unset; cumulative coin
+equivalents are evidence fields, not postings.
+
+Unmatched, inconsistent, unavailable and pending-review notices remain
+discoverable for retry. Processed means evidence retained, not funds
+recovered. This slice performs no automatic reversal, freeze, creator
+clawback, purchase status mutation, refund review response or payout.
+Later posting must apply only an independently idempotent incremental
+difference under the correct purchase and wallet locks. Keep live coin
+purchases disabled until those paths and missed-notification recovery
+are implemented and tested.
+
+References: [Orders](https://developers.google.com/android-publisher/api-ref/rest/v3/orders),
+[ProductPurchaseV2](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.productsv2)
+and [Voided Purchases](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.voidedpurchases/list).
+
 ## Bank payout boundary
 
 Bank payout integration is provider-neutral until a provider is selected after country coverage, licensing, settlement status, fees, reversals, webhook security and support procedures have been assessed. Store only the minimum bank destination data required, encrypt sensitive values, and never write full account numbers or credentials into audit metadata or application logs.
