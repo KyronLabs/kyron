@@ -157,9 +157,9 @@ describe('Google Play encrypted token decoding', () => {
     const key = Buffer.alloc(32, 7);
     const encrypted = encryptPurchaseToken(token, key);
     expect(decryptPurchaseToken(encrypted, key)).toBe(token);
-    expect(() =>
-      decryptPurchaseToken(encrypted, Buffer.alloc(32, 8)),
-    ).toThrow('Google Play token could not be decrypted.');
+    expect(() => decryptPurchaseToken(encrypted, Buffer.alloc(32, 8))).toThrow(
+      'Google Play token could not be decrypted.',
+    );
     const parts = encrypted.split('.');
     parts[3] = (parts[3][0] === 'A' ? 'B' : 'A') + parts[3].slice(1);
     expect(() => decryptPurchaseToken(parts.join('.'), key)).toThrow(

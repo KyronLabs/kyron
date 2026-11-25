@@ -210,7 +210,11 @@ export class GooglePlayReconciliationService {
       if (!observation) {
         return this.pending(id, actorId, 'REFUND_NOT_CONFIRMED');
       }
-      supporting = await this.voidEvidence(token, local.orderId, local.quantity);
+      supporting = await this.voidEvidence(
+        token,
+        local.orderId,
+        local.quantity,
+      );
     } catch {
       // Never expose the provider response, bearer, token or exception details.
       return this.pending(id, actorId, 'PROVIDER_RETRY_REQUIRED');
@@ -301,7 +305,11 @@ export class GooglePlayReconciliationService {
         where: { id },
         data: { processedAt: new Date(), processingError: null },
       });
-      return { status: 'EVIDENCE_RETAINED' as const, id, evidenceId: evidence.id };
+      return {
+        status: 'EVIDENCE_RETAINED' as const,
+        id,
+        evidenceId: evidence.id,
+      };
     });
   }
 

@@ -23,7 +23,9 @@ export class GooglePlayNotificationListQuery {
 @Controller('financial-operations/google-play/notifications')
 @UseGuards(AuthGuard, FinancialOperationsGuard)
 export class GooglePlayReconciliationController {
-  constructor(private readonly reconciliation: GooglePlayReconciliationService) {}
+  constructor(
+    private readonly reconciliation: GooglePlayReconciliationService,
+  ) {}
 
   @Get()
   list(@Query() query: GooglePlayNotificationListQuery) {
