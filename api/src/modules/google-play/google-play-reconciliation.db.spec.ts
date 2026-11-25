@@ -426,12 +426,10 @@ run('Google Play refund evidence against Postgres', () => {
             refundEvidenceId: chargeback.id,
             recoveredCoins: 85,
             recordedShortfallCoins: 35,
-            ledgerTransactionId: posted.ledgerTransactionId,
             correction: {
               correctionId: correction.correctionId,
               noticeId: correction.noticeId,
               restoredCoins: 85,
-              ledgerTransactionId: correction.ledgerTransactionId,
             },
           },
         ],
