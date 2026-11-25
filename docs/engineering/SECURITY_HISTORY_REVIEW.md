@@ -10,7 +10,7 @@
 The repository history confirms three classes of historical artifacts:
 
 1. A legacy seed could create a fixed administrator account using a written-down password.
-2. Tracked environment-file revisions contained credential-shaped values, including a remote Render PostgreSQL URL with embedded credentials and a SendGrid-format key.
+2. Tracked environment-file revisions contained credential-shaped values, including a remote Render PostgreSQL URL with embedded credentials and a retired mail-provider credential.
 3. Commit messages contain Claude Code session URLs in `Claude-Session` trailers.
 
 These findings establish that the material entered Git history. They do **not** establish that a seeded administrator existed in production, that a historical credential remained valid or was reused, or that an AI session was accessible to an unintended viewer.
@@ -43,27 +43,27 @@ The current API verifies Supabase tokens and resolves application users by the S
 ### Evidence
 
 - `api/.env` was added in commit `496c07bc4c392292540109b77e9e76eefb045abc` (24 November 2025) and changed in later November 2025 commits.
-- A tracked revision at `b30cffd2e271c14dce48894123e38044b1b06887` (25 November 2025) contained a non-loopback Render PostgreSQL URL with embedded credentials, a placeholder-like `JWT_SECRET`, and a value matching the SendGrid API-key format. None of these values is reproduced or tested here.
+- A tracked revision at `b30cffd2e271c14dce48894123e38044b1b06887` (25 November 2025) contained a non-loopback Render PostgreSQL URL with embedded credentials, a placeholder-like `JWT_SECRET`, and a credential-shaped value for a retired mail provider. None of these values is reproduced or tested here.
 - The same historical revision added `api/kyron-api_OLD.env`, which contained local development database credentials and a placeholder-like JWT value.
 - Cleanup commit `3d1944d9cbb805a2fbaaf5ae1438af18721dd754` removed `api/kyron-api_OLD.env` and generated build output. Current `main` contains neither historical environment file.
 - The root `.gitignore` now ignores `.env`, `.env.*` and `*.env`, while allowing example files. This prevents routine re-addition but does not remove the old blobs from Git history.
 
 ### Current-code context
 
-- The API's own legacy JWT authentication settings and SendGrid integration are no longer part of the current implementation. The current app's password-reset flow calls Supabase Auth's `resetPasswordForEmail`; no current SendGrid integration or package was found.
+- The API's legacy sign-in and mail-provider integration have been retired. Authentication mail is handled by Supabase Auth, including `resetPasswordForEmail`. No active integration or dependency for the former provider was found; its unused test-environment settings and example comments are removed.
 - The current API's shared-secret JWT fallback is a different setting, `SUPABASE_JWT_SECRET`, used only when the Supabase project still signs with its legacy shared secret. The API also supports JWKS-based signing keys. Do not confuse this with the historical app-level `JWT_SECRET`.
 - `render.yaml` still lists a `JWT_SECRET` environment slot marked `sync: false`, although the current API source and `api/.env.example` no longer use the old app-level setting. Treat this as stale configuration to review, not as evidence that the old secret is currently consumed.
 - The current `SUPABASE_SERVICE_ROLE_KEY` remains a sensitive runtime setting. Its issue date and rotation history cannot be established from repository source.
 
 ### Required operational evidence
 
-- Confirm whether the historical remote database credential is still active. If it is, or its retirement cannot be established, rotate the database password at the provider, update Render's `DATABASE_URL`, deploy in a controlled window and verify connectivity/migrations.
-- Revoke the historical SendGrid key unless another current service outside this repository still uses it.
+- The owner reconfirmed on 25 November 2026 that the historical database credentials have been rotated and invalidated. The earlier live audit observed successful startup and migration checks after rotation. No authentication attempt with the historical credentials was made.
+- The owner confirmed on 25 November 2026 that the former mail provider is no longer used. Provider-side revocation or account/key deletion is not independently confirmed. Retirement of an integration does not by itself revoke its historical credentials.
 - Remove the stale app-level `JWT_SECRET` from Render after confirming no old deployment or other service consumes it. Do not generate a replacement merely to satisfy the obsolete variable.
 - Verify the issue/rotation date of `SUPABASE_SERVICE_ROLE_KEY` and determine from the project's current signing mode whether `SUPABASE_JWT_SECRET` is still needed. Rotate only with a coordinated auth-key migration plan.
 - Review provider access logs for suspicious use where retention permits.
 
-The existing [issue #169](https://github.com/KyronLabs/kyron/issues/169) remains open as of this review and has no recorded comments or closure evidence. Its checklist should be re-triaged against the current code: SendGrid and the old app-level `JWT_SECRET` appear obsolete, while the remote database credential and current Supabase service credentials require explicit provider-side verification.
+The existing [issue #169](https://github.com/KyronLabs/kyron/issues/169) remains open as of this review and has no recorded comments or closure evidence. The owner has confirmed the historical database credential is retired and the former mail integration is unused. The old app-level `JWT_SECRET` remains obsolete. Track outstanding revocation evidence, current Supabase service credentials and other runtime settings in that issue.
 
 ## 3. AI coding-session references in commit metadata
 
@@ -76,7 +76,7 @@ The existing [issue #169](https://github.com/KyronLabs/kyron/issues/169) remains
 
 ### Required operational evidence
 
-- The owner should check each referenced session from the account that created it and determine its sharing/access mode.
+- The owner confirmed on 25 November 2026 that the referenced session URLs do not provide access. This records the owner's assurance, not an independently authenticated provider-side access test.
 - Revoke or invalidate any session that is shared more broadly than intended, using the provider's supported controls.
 - Preserve the findings and decide whether commit-history rewriting is warranted only after session access is addressed. Rewriting Git history does not revoke an AI session, and existing clones/forks may retain old commit metadata.
 - Do not copy full session URLs or opaque session identifiers into issues, reports, logs or new commit messages.
@@ -95,12 +95,12 @@ No live Supabase query was run for this report.
 
 ## 5. Triage order
 
-1. **Credential verification and rotation:** establish current status of the historical remote Render database credential; verify current Supabase service-key/signing-key rotation; revoke the obsolete SendGrid key if no other service uses it.
+1. **Credential verification and rotation:** historical database credential retirement is owner-confirmed; confirm revocation of the retired mail-provider credential, and verify current Supabase service-key/signing-key rotation.
 2. **Administrator account verification:** check the production application-user and Supabase Auth records and review historical auth/admin activity.
-3. **AI-session revocation review:** determine access scope for the five known session references and revoke any over-shared sessions.
+3. **AI-session access:** owner confirms the five known references do not provide access; retain the metadata review in the full-history publication scan.
 4. **Supabase privilege audit:** complete the live grant/RLS/storage/migration review.
 5. **Evidence-based closure:** record dates, provider-side confirmation and test results against the existing security issues. Do not mark a finding resolved merely because a file or code path was removed.
 
 ## 6. Limitations
 
-This was a repository and Git-metadata review. It did not test credentials, attempt to authenticate as the historical administrator, query the production database, inspect Render environment values, inspect Supabase Auth users or logs, contact SendGrid, open Claude sessions, or modify any provider setting. The next operational stage requires authorized provider-side access and explicit change approval.
+This was a repository and Git-metadata review. It did not test credentials, attempt to authenticate as the historical administrator, query the production database, inspect Render environment values, inspect Supabase Auth users or logs, contact the former mail provider, open Claude sessions, or modify any provider setting. The next operational stage requires authorized provider-side access and explicit change approval.

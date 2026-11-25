@@ -25,8 +25,6 @@ const DEFAULTS: Record<string, string> = {
   SUPABASE_SERVICE_ROLE_KEY: 'test-service-role-key',
   SUPABASE_ANON_KEY: 'test-anon-key',
   DATABASE_URL: 'postgresql://user:pass@127.0.0.1:5432/postgres',
-  SENDGRID_API_KEY: 'SG.test',
-  EMAIL_FROM: 'noreply@example.test',
 };
 
 for (const [key, value] of Object.entries(DEFAULTS)) {
