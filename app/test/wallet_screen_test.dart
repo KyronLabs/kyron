@@ -121,6 +121,28 @@ void main() {
           image.dispose();
         });
       }
+      await tester.tap(find.text('Display currency'));
+      await tester.pumpAndSettle();
+      expect(find.byType(DraggableScrollableSheet), findsOneWidget);
+      if (preview) {
+        final boundary = tester.renderObject<RenderRepaintBoundary>(
+            find.byType(RepaintBoundary).first);
+        await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 2);
+          final data = await image.toByteData(format: ui.ImageByteFormat.png);
+          await File('wallet-currency-${dark ? 'dark' : 'light'}.png')
+              .writeAsBytes(data!.buffer.asUint8List());
+          image.dispose();
+        });
+      }
+      await tester.enterText(find.byType(TextField), 'usd');
+      await tester.pumpAndSettle();
+      expect(find.text('USD'), findsOneWidget);
+      expect(find.text('EUR'), findsNothing);
+      await tester.tap(find.text('USD'));
+      await tester.tap(find.byType(BackButton).last);
+      await tester.pumpAndSettle();
+      expect(find.text('Google Play currency (GHS)'), findsOneWidget);
       await tester.pageBack();
       await tester.pumpAndSettle();
       expect(find.text('1,234 coins'), findsOneWidget);

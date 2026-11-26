@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:kyron_design_system/kyron_design_system.dart';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -67,25 +69,105 @@ class WalletSettingsScreen extends ConsumerWidget {
           ListTile(
               title: Text(
                   strings.ui('ui_wallet_set_currency', 'Display currency')),
-              subtitle: Text(strings.ui('ui_wallet_currency_hint',
-                  'Estimates use the current 100-coin pack price. An estimate is available only in the currency Google Play quotes.')),
-              trailing: DropdownButton<String>(
-                  value: code,
-                  items: [
-                    for (final item in options)
-                      DropdownMenuItem(
-                          value: item,
-                          child: Text(item == 'AUTO'
-                              ? strings.ui('ui_wallet_auto', 'Auto')
-                              : item))
-                  ],
-                  onChanged: (value) async {
-                    if (value == null) return;
-                    final prefs = await SharedPreferences.getInstance();
-                    await prefs.setString(_key, value);
-                    if (context.mounted) ref.invalidate(walletCurrencyProvider);
-                  })),
-          ListTile(title: Text(automatic), trailing: Text(store ?? '—')),
+              subtitle: Text(code == 'AUTO'
+                  ? (store == null ? automatic : '$automatic ($store)')
+                  : code),
+              trailing: const Icon(Iconsax.arrow_right_3_copy),
+              onTap: () async {
+                var selected = code;
+                var query = '';
+                final value = await showModalBottomSheet<String>(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => SafeArea(
+                      top: false,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.viewInsetsOf(context).bottom),
+                        child: DraggableScrollableSheet(
+                          initialChildSize: .6,
+                          minChildSize: .4,
+                          maxChildSize: .95,
+                          builder: (context, controller) => Material(
+                            color: Theme.of(context).colorScheme.surface,
+                            borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(RadiusTokens.radius20)),
+                            clipBehavior: Clip.antiAlias,
+                            child: StatefulBuilder(
+                                builder: (context, update) => Column(children: [
+                                      SizedBox(
+                                          height: 56,
+                                          child: Row(children: [
+                                            BackButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(context)),
+                                            Expanded(
+                                                child: Text(
+                                                    strings.ui(
+                                                        'ui_wallet_set_currency',
+                                                        'Display currency'),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleMedium)),
+                                            TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    context, selected),
+                                                child: Text(strings.done)),
+                                          ])),
+                                      Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal:
+                                                  SpacingTokens.space16),
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                prefixIcon: const Icon(Iconsax
+                                                    .search_normal_1_copy),
+                                                hintText: strings.search),
+                                            onChanged: (text) => update(() =>
+                                                query =
+                                                    text.trim().toLowerCase()),
+                                          )),
+                                      Expanded(
+                                          child: ListView(
+                                              controller: controller,
+                                              children: [
+                                            ListTile(
+                                                subtitle: Text(strings.ui(
+                                                    'ui_wallet_currency_hint',
+                                                    'Estimates use the current 100-coin pack price. An estimate is available only in the currency Google Play quotes.'))),
+                                            for (final item in options)
+                                              if ((item == 'AUTO'
+                                                      ? '$automatic ${store ?? ''}'
+                                                      : item)
+                                                  .toLowerCase()
+                                                  .contains(query))
+                                                ListTile(
+                                                    title: Text(item == 'AUTO'
+                                                        ? automatic
+                                                        : item),
+                                                    subtitle: item == 'AUTO' &&
+                                                            store != null
+                                                        ? Text(store)
+                                                        : null,
+                                                    selected: item == selected,
+                                                    trailing: item == selected
+                                                        ? const Icon(Iconsax
+                                                            .tick_circle_copy)
+                                                        : null,
+                                                    onTap: () => update(
+                                                        () => selected = item)),
+                                          ])),
+                                    ])),
+                          ),
+                        ),
+                      )),
+                );
+                if (value == null || value == code || !context.mounted) return;
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString(_key, value);
+                if (context.mounted) ref.invalidate(walletCurrencyProvider);
+              }),
           ListTile(
               title: Text(strings.ui('ui_wallet_coins_faq', 'Coins FAQ')),
               onTap: () => openCoinHelp(context)),
