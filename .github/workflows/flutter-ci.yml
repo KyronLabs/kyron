@@ -75,18 +75,6 @@ jobs:
         # The legacy app currently has warning-level lints; keep errors fatal while allowing CI to report warnings.
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
 
-      - name: Render the coin shop preview
-        env:
-          KYRON_COIN_PREVIEW: '1'
-        run: flutter test test/coin_purchase_preview_test.dart
-
-      - name: Save the coin shop preview
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: coin-shop-preview
-          path: app/coin-shop-preview.png
-          if-no-files-found: error
-
       - name: Test
         run: flutter test
 
