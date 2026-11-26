@@ -14,6 +14,7 @@ import 'package:kyron_app/providers/auth_provider.dart';
 import 'package:kyron_app/providers/gifts_provider.dart';
 import 'package:kyron_app/repositories/gifts_repository.dart';
 import 'package:kyron_app/screens/wallet_screen.dart';
+import 'package:kyron_app/screens/wallet_settings_screen.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 class _Gifts extends Fake implements GiftsRepository {
@@ -51,6 +52,9 @@ void main() {
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            walletCurrencyProvider.overrideWith((ref) async => 'AUTO'),
+            walletPriceProvider
+                .overrideWith((ref) async => (currency: 'GHS', perCoin: 0.05)),
             currentAuthUserProvider.overrideWith(
               (ref) => User(id: 'creator', email: 'creator@example.test'),
             ),
@@ -87,9 +91,10 @@ void main() {
       await tester.pumpAndSettle();
 
       if (preview) {
-        final art = find.byType(Image).first.evaluate().single;
-        await tester
-            .runAsync(() => precacheImage((art.widget as Image).image, art));
+        for (final art in find.byType(Image).evaluate()) {
+          await tester
+              .runAsync(() => precacheImage((art.widget as Image).image, art));
+        }
         await tester.pumpAndSettle();
         final boundary = tester.renderObject<RenderRepaintBoundary>(
             find.byType(RepaintBoundary).first);
@@ -101,6 +106,23 @@ void main() {
           image.dispose();
         });
       }
+      await tester.tap(find.byTooltip('Wallet settings'));
+      await tester.pumpAndSettle();
+      expect(find.text('Display currency'), findsOneWidget);
+      expect(find.text('Coins FAQ'), findsOneWidget);
+      if (preview) {
+        final boundary = tester.renderObject<RenderRepaintBoundary>(
+            find.byType(RepaintBoundary).first);
+        await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 2);
+          final data = await image.toByteData(format: ui.ImageByteFormat.png);
+          await File('wallet-settings-${dark ? 'dark' : 'light'}.png')
+              .writeAsBytes(data!.buffer.asUint8List());
+          image.dispose();
+        });
+      }
+      await tester.pageBack();
+      await tester.pumpAndSettle();
       expect(find.text('1,234 coins'), findsOneWidget);
       expect(find.text('16 coins'), findsOneWidget);
       expect(find.text('9 coins'), findsOneWidget);

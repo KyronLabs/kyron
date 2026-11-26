@@ -9,7 +9,7 @@ import '../models/gift.dart';
 import '../providers/auth_provider.dart';
 import '../providers/gifts_provider.dart';
 import '../routes.dart';
-import 'coin_help_screen.dart';
+import 'wallet_settings_screen.dart';
 import '../widgets/action_button.dart';
 import '../widgets/app_sheet.dart';
 import 'wallet_transactions_screen.dart';
@@ -45,9 +45,11 @@ class _WalletFrame extends StatelessWidget {
           actions: [
             if (refresh != null) refresh!,
             ActionIconButton(
-                tooltip: strings.ui('ui_coin_help', 'Coin help'),
-                onPressed: () => openCoinHelp(context),
-                icon: Iconsax.message_question_copy,
+                tooltip: strings.ui('ui_wallet_settings', 'Wallet settings'),
+                onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                        builder: (_) => const WalletSettingsScreen())),
+                icon: Iconsax.setting_2_copy,
                 size: kMinInteractiveDimension,
                 outlined: false),
           ]),
@@ -71,6 +73,7 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
   void _refresh() {
     if (!mounted || ref.read(currentAuthUserProvider)?.id != widget.userId)
       return;
+    ref.invalidate(walletPriceProvider);
     final next = ref.read(giftsRepositoryProvider).wallet();
     setState(() {
       _wallet = next;
@@ -81,6 +84,8 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
   Widget build(BuildContext context) {
     final strings = AppLocalizations.of(context);
     final locale = Localizations.localeOf(context).toString();
+    final quote = ref.watch(walletPriceProvider).asData?.value;
+    final currency = ref.watch(walletCurrencyProvider).asData?.value;
     final numbers = NumberFormat.decimalPattern(locale);
     String coins(int count) {
       if (count == 1) return strings.ui('ui_gift_one_coin', '1 coin');
@@ -130,6 +135,11 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                       label:
                           strings.ui('ui_wallet_spendable', 'Spendable coins'),
                       amount: coins(wallet.coins),
+                      estimate: quote != null &&
+                              (currency == 'AUTO' || currency == quote.currency)
+                          ? '${strings.ui('ui_wallet_estimate', 'Estimated purchase value')}  ≈ ${NumberFormat.simpleCurrency(locale: locale, name: quote.currency).format(wallet.coins * quote.perCoin)} ${quote.currency}'
+                          : strings.ui('ui_wallet_estimate_missing',
+                              'Purchase estimate unavailable'),
                       recharge: strings.ui('ui_wallet_recharge', 'Recharge'),
                       withdraw: strings.ui('ui_wallet_withdraw', 'Withdraw'),
                       onWithdraw: () => showAppSheet<void>(
@@ -348,12 +358,14 @@ class _CoinPocket extends StatelessWidget {
   const _CoinPocket(
       {required this.label,
       required this.amount,
+      required this.estimate,
       required this.recharge,
       required this.withdraw,
       required this.onWithdraw,
       required this.onRecharge});
   final String label;
   final String amount;
+  final String estimate;
   final String recharge;
   final String withdraw;
   final VoidCallback onWithdraw;
@@ -385,11 +397,20 @@ class _CoinPocket extends StatelessWidget {
                         style: theme.textTheme.labelLarge?.copyWith(
                             color: const Color(0xFFE4DBCA), letterSpacing: .6)),
                     const SizedBox(height: SpacingTokens.space4),
-                    Text(amount,
-                        style: theme.textTheme.headlineMedium?.copyWith(
-                            color: const Color(0xFFFFF9EF),
-                            fontSize: 32,
-                            fontWeight: FontWeight.w600)),
+                    Row(children: [
+                      Image.asset('assets/gifts/coin.png',
+                          width: 24, height: 24, excludeFromSemantics: true),
+                      const SizedBox(width: SpacingTokens.space8),
+                      Flexible(
+                          child: Text(amount,
+                              style: theme.textTheme.headlineMedium?.copyWith(
+                                  color: const Color(0xFFFFF9EF),
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w600)))
+                    ]),
+                    Text(estimate,
+                        style: theme.textTheme.bodySmall
+                            ?.copyWith(color: Colors.white)),
                   ]),
             ),
           ]);

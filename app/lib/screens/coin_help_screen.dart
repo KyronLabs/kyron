@@ -91,7 +91,7 @@ class CoinHelpScreen extends StatelessWidget {
             strings.ui(
                 'ui_coin_help_rate', "How much are my earnings worth in cash?"),
             strings.ui('ui_coin_help_rate_detail',
-                "Wallet shows coins. A cash payout needs a withdrawal quote using the applicable country, currency and conversion rate. No bank payout quote is available in the app yet.")
+                "Wallet shows your coin count and, when available, an estimated purchase value based on the current Google Play price of the 100-coin pack. This estimate includes all spendable coins, even those received as rewards. It does not show how much you paid or how much you can withdraw. Change the display currency in Wallet settings. A cash payout needs a withdrawal quote using the applicable country, currency and conversion rate. No bank payout quote is available in the app yet.")
           )
         ]
       ),

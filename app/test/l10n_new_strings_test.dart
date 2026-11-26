@@ -12,6 +12,14 @@ void main() {
   // These labels deliberately use their English fallback until
   // reviewed translations are supplied for every supported locale.
   const englishFallbackKeys = {
+    'ui_wallet_store_currency',
+    'ui_wallet_settings',
+    'ui_wallet_set_currency',
+    'ui_wallet_currency_hint',
+    'ui_wallet_auto',
+    'ui_wallet_coins_faq',
+    'ui_wallet_estimate',
+    'ui_wallet_estimate_missing',
     'ui_coin_help_section_buying',
     'ui_coin_help_store',
     'ui_coin_help_store_detail',
