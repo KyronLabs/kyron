@@ -21,6 +21,12 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+## [0.1.51] - 2026-11-26
+### Changed
+
+- **See your balance and recent transactions in the redesigned Wallet.** Open Wallet settings to find the Coins FAQ and choose a display currency by country.
+- **Browse illustrated coin packs from the gift sheet.** Tap the red plus beside your balance to see Google Play prices.
+
 ## [0.1.50] - 2026-11-25
 ### Added
 
@@ -2475,7 +2481,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.49...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.51...HEAD
+[0.1.51]: https://github.com/KyronLabs/kyron/compare/v0.1.50...v0.1.51
 [0.1.49]: https://github.com/KyronLabs/kyron/compare/v0.1.48...v0.1.49
 [0.1.48]: https://github.com/KyronLabs/kyron/compare/v0.1.47...v0.1.48
 [0.1.47]: https://github.com/KyronLabs/kyron/compare/v0.1.46...v0.1.47

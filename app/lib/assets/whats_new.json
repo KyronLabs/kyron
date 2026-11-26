@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.51",
+    "items": [
+      {
+        "title": "See your balance and recent transactions in the redesigned Wallet.",
+        "detail": "Open Wallet settings to find the Coins FAQ and choose a display currency by country."
+      },
+      {
+        "title": "Browse illustrated coin packs from the gift sheet.",
+        "detail": "Tap the red plus beside your balance to see Google Play prices."
+      }
+    ]
+  },
+  {
     "version": "0.1.50",
     "items": [
       {
@@ -43,27 +56,6 @@
     "items": [
       {
         "title": "Bug fixes and performance improvements.",
-        "detail": ""
-      }
-    ]
-  },
-  {
-    "version": "0.1.46",
-    "items": [
-      {
-        "title": "The web app is withdrawn until further notice.",
-        "detail": "Kyron is the Android and Windows apps; the website's \"Log In\" and sign-up buttons now lead to the download page, and old links to the web app land there too."
-      },
-      {
-        "title": "Passwords found in data breaches are turned away.",
-        "detail": "Signing up or setting a password checks it against the Have I Been Pwned list of leaked passwords (only the first five characters of its fingerprint leave your phone), and asks for a different one if it is there."
-      },
-      {
-        "title": "The website sends headers that stop it being framed or content-sniffed, and the API no longer accepts calls from any web page.",
-        "detail": ""
-      },
-      {
-        "title": "Staff accounts can turn on two-step sign-in with an authenticator app, and the API can require it for moderation tools (STAFF_REQUIRE_SECOND_FACTOR).",
         "detail": ""
       }
     ]
