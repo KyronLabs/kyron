@@ -17,6 +17,7 @@ import '../repositories/gifts_repository.dart';
 import '../utils/api_error_message.dart';
 import '../utils/format_count.dart';
 import 'action_button.dart';
+import 'post_action_colors.dart';
 import 'app_sheet.dart';
 import 'gift_motion.dart';
 import 'play_coin_purchase_panel.dart';
@@ -286,14 +287,8 @@ class _SheetState extends ConsumerState<_Sheet> {
                         ),
                       ),
                     ),
-                    _Balance(wallet: wallet),
-                    const SizedBox(width: SpacingTokens.space4),
-                    ActionIconButton(
-                      tooltip: l10n.ui('ui_wallet_play_buy', 'Buy coins'),
-                      icon: Iconsax.add_copy,
-                      iconColor: scheme.error,
-                      outlined: false,
-                      size: kMinInteractiveDimension,
+                    _Balance(
+                      wallet: wallet,
                       onPressed: _sending
                           ? null
                           : () {
@@ -472,47 +467,78 @@ class CoinIcon extends StatelessWidget {
 class _Balance extends StatelessWidget {
   final GiftWallet wallet;
 
-  const _Balance({required this.wallet});
+  final VoidCallback? onPressed;
+
+  const _Balance({required this.wallet, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context);
 
+    final balance = l10n
+        .ui('ui_gift_balance', r'You have $coins')
+        .replaceAll(r'$coins', coinLabel(l10n, wallet.coins));
+    final buy = l10n.ui('ui_wallet_play_buy', 'Buy coins');
     return Semantics(
-      label: l10n
-          .ui('ui_gift_balance', r'You have $coins')
-          .replaceAll(r'$coins', coinLabel(l10n, wallet.coins)),
-      excludeSemantics: true,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(
-          SpacingTokens.space4,
-          SpacingTokens.space4,
-          SpacingTokens.space12,
-          SpacingTokens.space4,
-        ),
-        decoration: BoxDecoration(
-          color: scheme.onSurface.withValues(alpha: 0.06),
-          borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const CoinIcon(size: 22),
-            const SizedBox(width: SpacingTokens.space4),
-            Text(
-              formatCount(wallet.coins),
-              style: TextStyle(
-                fontSize: TypographyTokens.fontSize3,
-                fontWeight: FontWeight.w700,
-                color: scheme.onSurface,
-                fontFeatures: const [FontFeature.tabularFigures()],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+        button: true,
+        enabled: onPressed != null,
+        label: '$balance. $buy',
+        onTap: onPressed,
+        excludeSemantics: true,
+        child: Tooltip(
+            message: buy,
+            child: InkWell(
+                onTap: onPressed,
+                borderRadius: BorderRadius.circular(RadiusTokens.radiusFull),
+                child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                        minHeight: kMinInteractiveDimension),
+                    child: Center(
+                      widthFactor: 1,
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(
+                          SpacingTokens.space4,
+                          SpacingTokens.space4,
+                          SpacingTokens.space4,
+                          SpacingTokens.space4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: scheme.onSurface.withValues(alpha: 0.06),
+                          borderRadius:
+                              BorderRadius.circular(RadiusTokens.radiusFull),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const CoinIcon(size: 22),
+                            const SizedBox(width: SpacingTokens.space4),
+                            Text(
+                              formatCount(wallet.coins),
+                              style: TextStyle(
+                                fontSize: TypographyTokens.fontSize3,
+                                fontWeight: FontWeight.w700,
+                                color: scheme.onSurface,
+                                fontFeatures: const [
+                                  FontFeature.tabularFigures()
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: SpacingTokens.space8),
+                            const DecoratedBox(
+                              decoration: BoxDecoration(
+                                  color: PostActionColors.like,
+                                  shape: BoxShape.circle),
+                              child: Padding(
+                                padding: EdgeInsets.all(SpacingTokens.space4),
+                                child: Icon(Iconsax.add_copy,
+                                    size: 16, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )))));
   }
 }
 
