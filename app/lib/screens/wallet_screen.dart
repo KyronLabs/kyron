@@ -22,27 +22,34 @@ class WalletScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(currentAuthUserProvider);
     final strings = AppLocalizations.of(context);
+    if (user != null) {
+      return _WalletBalances(userId: user.id, key: ValueKey(user.id));
+    }
+    return _WalletFrame(body: Center(child: Text(strings.signInToKyron)));
+  }
+}
+
+class _WalletFrame extends StatelessWidget {
+  const _WalletFrame({required this.body, this.refresh});
+  final Widget body;
+  final Widget? refresh;
+
+  @override
+  Widget build(BuildContext context) {
+    final strings = AppLocalizations.of(context);
     return Scaffold(
       appBar: KyronAppBar(
-        title: Text(strings.ui('ui_wallet_title', 'Wallet')),
-        actions: [
-          ActionIconButton(
-            tooltip: strings.ui('ui_coin_help', 'Coin help'),
-            onPressed: () => openCoinHelp(context),
-            icon: Iconsax.message_question_copy,
-            size: kMinInteractiveDimension,
-            outlined: false,
-          ),
-        ],
-      ),
-      body: SafeArea(
-        top: false,
-        child: user == null
-            ? Center(
-                child: Text(strings.signInToKyron),
-              )
-            : _WalletBalances(userId: user.id, key: ValueKey(user.id)),
-      ),
+          title: Text(strings.ui('ui_wallet_title', 'Wallet')),
+          actions: [
+            if (refresh != null) refresh!,
+            ActionIconButton(
+                tooltip: strings.ui('ui_coin_help', 'Coin help'),
+                onPressed: () => openCoinHelp(context),
+                icon: Iconsax.message_question_copy,
+                size: kMinInteractiveDimension,
+                outlined: false),
+          ]),
+      body: SafeArea(top: false, child: body),
     );
   }
 }
@@ -83,189 +90,193 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
       future: _wallet,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return Center(
+          return _WalletFrame(
+              body: Center(
             child: CircularProgressIndicator(
               semanticsLabel: strings.ui(
                 'audit_skeleton_loading_18e82bcc',
                 'Loading…',
               ),
             ),
-          );
+          ));
         }
 
         final wallet = snapshot.data;
         final retry = strings.retry;
         final action = wallet == null ? retry : strings.literalcheckAgain;
-        return ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(SpacingTokens.space16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      strings.ui('analytics_coins', 'Coins'),
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                  ),
-                  ActionIconButton(
-                    icon: Iconsax.refresh_copy,
-                    tooltip: action,
-                    size: kMinInteractiveDimension,
-                    outlined: false,
-                    onPressed: _refresh,
-                  ),
-                ],
-              ),
-            ),
-            const Hairline(),
-            if (wallet == null)
-              Padding(
-                padding: const EdgeInsets.all(SpacingTokens.space16),
-                child: Text(
-                  strings.literalcouldNotLoadThisList,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              )
-            else ...[
-              Padding(
-                padding: const EdgeInsets.all(SpacingTokens.space16),
-                child: _CoinPocket(
-                  label: strings.ui('ui_wallet_spendable', 'Spendable coins'),
-                  amount: coins(wallet.coins),
-                  recharge: strings.ui('ui_wallet_recharge', 'Recharge'),
-                  onRecharge: () => openCoinPurchaseSheet(
-                    context,
-                    userId: widget.userId,
-                    coins: coins,
-                    onWalletChanged: _refresh,
-                  ),
-                ),
-              ),
-              if (_hasCoinSourceBreakdown(wallet)) ...[
-                const Hairline(),
-                _Balance(
-                  strings.ui('ui_wallet_purchased_coins', 'Purchased coins'),
-                  coins(wallet.purchased),
-                  detail: true,
-                ),
-                const Hairline(),
-                _Balance(
-                  strings.ui('ui_wallet_reward_coins', 'Reward coins'),
-                  coins(wallet.promotional),
-                  detail: true,
-                ),
-                const Hairline(),
-                _Balance(
-                  strings.ui(
-                    'ui_wallet_legacy_complimentary_coins',
-                    'Legacy complimentary coins',
-                  ),
-                  coins(wallet.legacyComplimentary),
-                  detail: true,
-                ),
-              ],
-              const Hairline(),
-              _Balance(
-                strings.ui('ui_wallet_received', 'Total gift earnings'),
-                coins(wallet.earned),
-                prominent: true,
-              ),
-              const Hairline(),
-              _Balance(
-                strings.ui(
-                  'ui_wallet_qualifying',
-                  'From qualifying gifts, before payout checks',
-                ),
-                coins(wallet.withdrawableEarned),
-              ),
-              const Hairline(),
-              Padding(
-                padding: const EdgeInsets.all(SpacingTokens.space16),
-                child: Text(
-                  strings.ui(
-                    'ui_gift_rewards_notice',
-                    'Coins are not automatically replenished. New coins are awarded through Kyron reward programmes.',
-                  ),
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ),
-              if (wallet.recoveryNotices.isNotEmpty) ...[
-                const Hairline(),
-                Padding(
-                  padding: const EdgeInsets.all(SpacingTokens.space16),
-                  child: Text(
-                    strings.ui(
-                      'ui_wallet_recent_adjustments',
-                      'Recent adjustments',
-                    ),
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
-                for (final notice in wallet.recoveryNotices) ...[
-                  _Balance(
-                    notice.correction
-                        ? strings.ui(
-                            'ui_wallet_coins_restored',
-                            'Coins restored',
-                          )
-                        : strings.ui(
-                            'ui_wallet_coins_removed',
-                            'Coins removed',
-                          ),
-                    coins(notice.coins),
-                  ),
+        return _WalletFrame(
+            refresh: ActionIconButton(
+                icon: Iconsax.refresh_copy,
+                tooltip: action,
+                size: kMinInteractiveDimension,
+                outlined: false,
+                onPressed: _refresh),
+            body: ListView(
+              children: [
+                if (wallet == null)
                   Padding(
                     padding: const EdgeInsets.all(SpacingTokens.space16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (notice.occurredAt case final date?)
-                          Text(DateFormat.yMMMd(locale).format(date.toLocal())),
-                        if (notice.verifiedRefundCoins case final amount?)
-                          Text(
-                            strings
-                                .ui(
-                                  'ui_wallet_verified_refund',
-                                  r'Verified refund: $coins',
-                                )
-                                .replaceAll(r'$coins', coins(amount)),
-                          ),
-                        if (notice.orderReference case final order?)
-                          SelectableText(
-                            strings
-                                .ui(
-                                  'ui_wallet_play_order',
-                                  r'Google Play order: $reference',
-                                )
-                                .replaceAll(r'$reference', order),
-                          ),
-                        SelectableText(
-                          strings
-                              .ui(
-                                'ui_wallet_notice_reference',
-                                r'Adjustment reference: $reference',
-                              )
-                              .replaceAll(r'$reference', notice.id),
-                        ),
-                        const SizedBox(height: SpacingTokens.space8),
-                        ActionButton(
-                          label: strings.contactSupport,
-                          kind: ActionButtonKind.outlined,
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            Routes.settingsContactSupport,
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      strings.literalcouldNotLoadThisList,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  )
+                else ...[
+                  Padding(
+                    padding: const EdgeInsets.all(SpacingTokens.space16),
+                    child: _CoinPocket(
+                      label:
+                          strings.ui('ui_wallet_spendable', 'Spendable coins'),
+                      amount: coins(wallet.coins),
+                      recharge: strings.ui('ui_wallet_recharge', 'Recharge'),
+                      onRecharge: () => openCoinPurchaseSheet(
+                        context,
+                        userId: widget.userId,
+                        coins: coins,
+                        onWalletChanged: _refresh,
+                      ),
                     ),
                   ),
+                  if (_hasCoinSourceBreakdown(wallet)) ...[
+                    const Hairline(),
+                    _Balance(
+                      strings.ui(
+                          'ui_wallet_purchased_coins', 'Purchased coins'),
+                      coins(wallet.purchased),
+                      detail: true,
+                    ),
+                    const Hairline(),
+                    _Balance(
+                      strings.ui('ui_wallet_reward_coins', 'Reward coins'),
+                      coins(wallet.promotional),
+                      detail: true,
+                    ),
+                    const Hairline(),
+                    _Balance(
+                      strings.ui(
+                        'ui_wallet_legacy_complimentary_coins',
+                        'Legacy complimentary coins',
+                      ),
+                      coins(wallet.legacyComplimentary),
+                      detail: true,
+                    ),
+                  ],
                   const Hairline(),
+                  _Balance(
+                    strings.ui('ui_wallet_received', 'Total gift earnings'),
+                    coins(wallet.earned),
+                    prominent: true,
+                  ),
+                  const Hairline(),
+                  _Balance(
+                    strings.ui(
+                      'ui_wallet_qualifying',
+                      'From qualifying gifts, before payout checks',
+                    ),
+                    coins(wallet.withdrawableEarned),
+                  ),
+                  ExpansionTile(
+                    title: Text(strings.ui(
+                        'ui_wallet_bank_withdrawals', 'Bank withdrawals')),
+                    trailing: const Icon(Iconsax.arrow_down_1_copy),
+                    childrenPadding: const EdgeInsets.fromLTRB(
+                        SpacingTokens.space16,
+                        0,
+                        SpacingTokens.space16,
+                        SpacingTokens.space16),
+                    children: [
+                      Text(strings.ui('ui_wallet_withdrawal_availability',
+                          'Bank withdrawals are not available in the app yet. Qualifying gift earnings are reviewed before payout.')),
+                    ],
+                  ),
+                  const Hairline(),
+                  Padding(
+                    padding: const EdgeInsets.all(SpacingTokens.space16),
+                    child: Text(
+                      strings.ui(
+                        'ui_gift_rewards_notice',
+                        'Coins are not automatically replenished. New coins are awarded through Kyron reward programmes.',
+                      ),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
+                  if (wallet.recoveryNotices.isNotEmpty) ...[
+                    const Hairline(),
+                    Padding(
+                      padding: const EdgeInsets.all(SpacingTokens.space16),
+                      child: Text(
+                        strings.ui(
+                          'ui_wallet_recent_adjustments',
+                          'Recent adjustments',
+                        ),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    for (final notice in wallet.recoveryNotices) ...[
+                      _Balance(
+                        notice.correction
+                            ? strings.ui(
+                                'ui_wallet_coins_restored',
+                                'Coins restored',
+                              )
+                            : strings.ui(
+                                'ui_wallet_coins_removed',
+                                'Coins removed',
+                              ),
+                        coins(notice.coins),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(SpacingTokens.space16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (notice.occurredAt case final date?)
+                              Text(DateFormat.yMMMd(locale)
+                                  .format(date.toLocal())),
+                            if (notice.verifiedRefundCoins case final amount?)
+                              Text(
+                                strings
+                                    .ui(
+                                      'ui_wallet_verified_refund',
+                                      r'Verified refund: $coins',
+                                    )
+                                    .replaceAll(r'$coins', coins(amount)),
+                              ),
+                            if (notice.orderReference case final order?)
+                              SelectableText(
+                                strings
+                                    .ui(
+                                      'ui_wallet_play_order',
+                                      r'Google Play order: $reference',
+                                    )
+                                    .replaceAll(r'$reference', order),
+                              ),
+                            SelectableText(
+                              strings
+                                  .ui(
+                                    'ui_wallet_notice_reference',
+                                    r'Adjustment reference: $reference',
+                                  )
+                                  .replaceAll(r'$reference', notice.id),
+                            ),
+                            const SizedBox(height: SpacingTokens.space8),
+                            ActionButton(
+                              label: strings.contactSupport,
+                              kind: ActionButtonKind.outlined,
+                              onPressed: () => Navigator.pushNamed(
+                                context,
+                                Routes.settingsContactSupport,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Hairline(),
+                    ],
+                  ],
                 ],
               ],
-            ],
-          ],
-        );
+            ));
       },
     );
   }
@@ -329,7 +340,7 @@ class _CoinPocket extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         LayoutBuilder(builder: (context, constraints) {
-          return Stack(alignment: Alignment.bottomLeft, children: [
+          return Stack(alignment: AlignmentDirectional.centerStart, children: [
             Positioned.fill(
                 child: Image.asset('assets/wallet/coin-pocket.webp',
                     fit: BoxFit.fill, excludeFromSemantics: true)),
@@ -337,19 +348,22 @@ class _CoinPocket extends StatelessWidget {
               constraints: BoxConstraints(minHeight: constraints.maxWidth / 2),
               padding: EdgeInsets.fromLTRB(
                   SpacingTokens.space24,
-                  constraints.maxWidth * .22,
+                  constraints.maxWidth * .20,
                   SpacingTokens.space24,
-                  SpacingTokens.space20),
+                  SpacingTokens.space24),
               child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(label,
-                        style: theme.textTheme.titleSmall
-                            ?.copyWith(color: Colors.white)),
+                        style: theme.textTheme.labelLarge?.copyWith(
+                            color: const Color(0xFFE4DBCA), letterSpacing: .6)),
+                    const SizedBox(height: SpacingTokens.space4),
                     Text(amount,
                         style: theme.textTheme.headlineMedium?.copyWith(
-                            color: Colors.white, fontWeight: FontWeight.w700)),
+                            color: const Color(0xFFFFF9EF),
+                            fontSize: 32,
+                            fontWeight: FontWeight.w600)),
                   ]),
             ),
           ]);
