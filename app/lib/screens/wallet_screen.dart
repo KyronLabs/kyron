@@ -325,58 +325,41 @@ class _CoinPocket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colors = theme.colorScheme;
-    final radius = BorderRadius.circular(SpacingTokens.space16);
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final (inset, top, color) in [
-          (SpacingTokens.space24, 0.0, colors.primary),
-          (
-            SpacingTokens.space12,
-            SpacingTokens.space8,
-            colors.primaryContainer
-          ),
-        ])
-          Positioned(
-            top: top,
-            left: inset,
-            right: inset,
-            height: 42,
-            child: DecoratedBox(
-                decoration: BoxDecoration(color: color, borderRadius: radius)),
-          ),
-        Padding(
-          padding: const EdgeInsets.only(top: SpacingTokens.space16),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                color: colors.surfaceContainerHigh,
-                borderRadius: radius,
-                border: Border.all(color: colors.outlineVariant)),
-            child: Padding(
-              padding: const EdgeInsets.all(SpacingTokens.space16),
+        LayoutBuilder(builder: (context, constraints) {
+          return Stack(alignment: Alignment.bottomLeft, children: [
+            Positioned.fill(
+                child: Image.asset('assets/wallet/coin-pocket.webp',
+                    fit: BoxFit.fill, excludeFromSemantics: true)),
+            Container(
+              constraints: BoxConstraints(minHeight: constraints.maxWidth / 2),
+              padding: EdgeInsets.fromLTRB(
+                  SpacingTokens.space24,
+                  constraints.maxWidth * .22,
+                  SpacingTokens.space24,
+                  SpacingTokens.space20),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(children: [
-                      Expanded(
-                          child:
-                              Text(label, style: theme.textTheme.titleSmall)),
-                      Image.asset('assets/gifts/coin.png',
-                          width: 36, height: 36, excludeFromSemantics: true),
-                    ]),
+                    Text(label,
+                        style: theme.textTheme.titleSmall
+                            ?.copyWith(color: Colors.white)),
                     Text(amount,
-                        style: theme.textTheme.headlineMedium
-                            ?.copyWith(fontWeight: FontWeight.w700)),
-                    const SizedBox(height: SpacingTokens.space16),
-                    ActionButton(
-                        label: recharge,
-                        icon: Iconsax.add_copy,
-                        expand: true,
-                        onPressed: onRecharge),
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                            color: Colors.white, fontWeight: FontWeight.w700)),
                   ]),
             ),
-          ),
-        ),
+          ]);
+        }),
+        const SizedBox(height: SpacingTokens.space12),
+        ActionButton(
+            label: recharge,
+            icon: Iconsax.add_copy,
+            expand: true,
+            onPressed: onRecharge),
       ],
     );
   }
