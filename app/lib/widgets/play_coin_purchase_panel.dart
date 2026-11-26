@@ -28,51 +28,65 @@ Future<void> openCoinPurchaseSheet(
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
-    builder: (context) {
-      final strings = AppLocalizations.of(context);
-      return SafeArea(
-        top: false,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(SpacingTokens.space16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                      child: Text(
+    builder: (context) => CoinPurchaseSheet(
+      child: !kIsWeb && Platform.isAndroid
+          ? PlayCoinPurchasePanel(
+              userId: userId,
+              coins: coins,
+              onWalletChanged: onWalletChanged,
+            )
+          : Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: SpacingTokens.space16,
+              ),
+              child: Text(AppLocalizations.of(context).ui(
+                'ui_wallet_play_unavailable',
+                'Coin purchases are unavailable on this device.',
+              )),
+            ),
+    ),
+  );
+}
+
+class CoinPurchaseSheet extends StatelessWidget {
+  const CoinPurchaseSheet({required this.child, super.key});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final strings = AppLocalizations.of(context);
+    return SafeArea(
+      top: false,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(SpacingTokens.space16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
                     strings.ui('ui_wallet_play_buy', 'Buy coins'),
                     style: Theme.of(context).textTheme.titleLarge,
-                  )),
-                  ActionIconButton(
-                    tooltip: strings.ui('ui_coin_help', 'Coin help'),
-                    onPressed: () => openCoinHelp(context),
-                    icon: Iconsax.message_question_copy,
-                    size: kMinInteractiveDimension,
-                    outlined: false,
                   ),
-                ],
-              ),
-              if (!kIsWeb && Platform.isAndroid)
-                PlayCoinPurchasePanel(
-                  userId: userId,
-                  coins: coins,
-                  onWalletChanged: onWalletChanged,
-                )
-              else
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: SpacingTokens.space16),
-                  child: Text(strings.ui('ui_wallet_play_unavailable',
-                      'Coin purchases are unavailable on this device.')),
                 ),
-            ],
-          ),
+                ActionIconButton(
+                  tooltip: strings.ui('ui_coin_help', 'Coin help'),
+                  onPressed: () => openCoinHelp(context),
+                  icon: Iconsax.message_question_copy,
+                  size: kMinInteractiveDimension,
+                  outlined: false,
+                ),
+              ],
+            ),
+            child,
+          ],
         ),
-      );
-    },
-  );
+      ),
+    );
+  }
 }
 
 class PlayCoinPurchasePanel extends ConsumerStatefulWidget {
@@ -376,38 +390,16 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
           ),
         for (final product in _products) ...[
           const Hairline(),
-          Semantics(
+          CoinPackOption(
+            coins: _catalogue!.coinsByProduct[product.id]!,
+            label: widget.coins(_catalogue!.coinsByProduct[product.id]!),
+            price: product.price,
             selected: product.id == _selectedProductId,
-            button: true,
-            child: InkWell(
-              splashFactory: NoSplash.splashFactory,
-              onTap: blocked
-                  ? null
-                  : () => setState(() => _selectedProductId = product.id),
-              child: ConstrainedBox(
-                constraints:
-                    const BoxConstraints(minHeight: kMinInteractiveDimension),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: SpacingTokens.space12),
-                  child: Row(
-                    children: [
-                      Icon(product.id == _selectedProductId
-                          ? Iconsax.tick_circle_copy
-                          : Iconsax.record_copy),
-                      const SizedBox(width: SpacingTokens.space12),
-                      Expanded(
-                          child: Text(widget
-                              .coins(_catalogue!.coinsByProduct[product.id]!))),
-                      Flexible(
-                          child: Text(product.price,
-                              textAlign: TextAlign.end,
-                              style: Theme.of(context).textTheme.titleMedium)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            onTap: blocked
+                ? null
+                : () => setState(
+                      () => _selectedProductId = product.id,
+                    ),
           ),
         ],
         if (_products.isNotEmpty) ...[
@@ -442,6 +434,75 @@ class _PlayCoinPurchasePanelState extends ConsumerState<PlayCoinPurchasePanel>
             ),
           ),
       ],
+    );
+  }
+}
+
+class CoinPackOption extends StatelessWidget {
+  const CoinPackOption({
+    required this.coins,
+    required this.label,
+    required this.price,
+    required this.selected,
+    required this.onTap,
+    super.key,
+  });
+
+  final int coins;
+  final String label;
+  final String price;
+  final bool selected;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    final art = switch (coins) {
+      100 => 'assets/gifts/coin_pack_100.png',
+      500 => 'assets/gifts/coin_pack_500.png',
+      1000 => 'assets/gifts/coin_pack_1000.png',
+      _ => 'assets/gifts/coin.png',
+    };
+    return Semantics(
+      selected: selected,
+      button: true,
+      child: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        onTap: onTap,
+        child: Ink(
+          color: selected ? colors.primary.withValues(alpha: 0.08) : null,
+          padding: const EdgeInsets.symmetric(
+            horizontal: SpacingTokens.space8,
+            vertical: SpacingTokens.space8,
+          ),
+          child: Row(
+            children: [
+              Image.asset(
+                art,
+                width: kMinInteractiveDimension,
+                height: kMinInteractiveDimension,
+                fit: BoxFit.contain,
+                excludeFromSemantics: true,
+              ),
+              const SizedBox(width: SpacingTokens.space12),
+              Expanded(child: Text(label, style: theme.textTheme.titleMedium)),
+              Flexible(
+                child: Text(
+                  price,
+                  textAlign: TextAlign.end,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ),
+              const SizedBox(width: SpacingTokens.space8),
+              Icon(
+                selected ? Iconsax.tick_circle_copy : Iconsax.record_copy,
+                color: selected ? colors.primary : colors.onSurfaceVariant,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

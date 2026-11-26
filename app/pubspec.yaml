@@ -117,6 +117,9 @@ flutter:
     # Each by name, so the folder's README.md -- where each came from -- is
     # not shipped in the app with them.
     - assets/gifts/coin.png
+    - assets/gifts/coin_pack_100.png
+    - assets/gifts/coin_pack_500.png
+    - assets/gifts/coin_pack_1000.png
     - assets/gifts/spark.png
     - assets/gifts/rose.png
     - assets/gifts/fire.png
