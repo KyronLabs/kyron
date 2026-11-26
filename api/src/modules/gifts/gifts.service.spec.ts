@@ -73,10 +73,18 @@ describe('the catalogue', () => {
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
   });
 
-  it('keeps the gifts that have already been sent, at their prices', () => {
-    // Gift.type and Gift.coins on rows already written name these.
-    const shipped = { spark: 1, fire: 5, gem: 20, crown: 50 };
-    for (const [type, coins] of Object.entries(shipped)) {
+  it('uses the release prices for the stable gift types', () => {
+    const prices = {
+      spark: 5,
+      rose: 10,
+      fire: 15,
+      star: 20,
+      gem: 30,
+      cake: 40,
+      crown: 50,
+      rocket: 100,
+    };
+    for (const [type, coins] of Object.entries(prices)) {
       expect(giftType(type)?.coins).toBe(coins);
     }
   });

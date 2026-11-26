@@ -195,9 +195,9 @@ run('financial source retention, against a real database', () => {
       beneficiaryId: recipientAId,
       unitCode: 'COIN',
       relatedIds: { postId: postAId, commentId: null },
-      payload: { type: 'spark', coins: 1 },
+      payload: { type: 'spark', coins: 5 },
     });
-    expect(giftPostSource.amount?.toNumber()).toBe(1);
+    expect(giftPostSource.amount?.toNumber()).toBe(5);
 
     const giftCommentSource =
       await prisma.financialSourceRecord.findUniqueOrThrow({
@@ -211,7 +211,7 @@ run('financial source retention, against a real database', () => {
     expect(giftCommentSource).toMatchObject({
       beneficiaryId: commentAuthorId,
       relatedIds: { postId: postBId, commentId },
-      payload: { type: 'fire', coins: 5 },
+      payload: { type: 'fire', coins: 15 },
     });
 
     const rewardSourceA = await prisma.financialSourceRecord.findUniqueOrThrow({
