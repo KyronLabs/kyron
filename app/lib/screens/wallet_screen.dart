@@ -11,6 +11,8 @@ import '../providers/gifts_provider.dart';
 import '../routes.dart';
 import 'coin_help_screen.dart';
 import '../widgets/action_button.dart';
+import '../widgets/app_sheet.dart';
+import 'wallet_transactions_screen.dart';
 import '../widgets/hairline.dart';
 import '../widgets/kyron_app_bar.dart';
 import '../widgets/play_coin_purchase_panel.dart';
@@ -129,6 +131,31 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                           strings.ui('ui_wallet_spendable', 'Spendable coins'),
                       amount: coins(wallet.coins),
                       recharge: strings.ui('ui_wallet_recharge', 'Recharge'),
+                      withdraw: strings.ui('ui_wallet_withdraw', 'Withdraw'),
+                      onWithdraw: () => showAppSheet<void>(
+                          context: context,
+                          builder: (context) => SafeArea(
+                              child: Padding(
+                                  padding: const EdgeInsets.all(
+                                      SpacingTokens.space20),
+                                  child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            strings.ui(
+                                                'ui_wallet_bank_withdrawals',
+                                                'Bank withdrawals'),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge),
+                                        const SizedBox(
+                                            height: SpacingTokens.space12),
+                                        Text(strings.ui(
+                                            'ui_wallet_withdrawal_availability',
+                                            'Bank withdrawals are not available in the app yet. Qualifying gift earnings are reviewed before payout.')),
+                                      ])))),
                       onRecharge: () => openCoinPurchaseSheet(
                         context,
                         userId: widget.userId,
@@ -136,6 +163,15 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                         onWalletChanged: _refresh,
                       ),
                     ),
+                  ),
+                  ListTile(
+                    title: Text(strings.ui(
+                        'ui_wallet_view_transactions', 'View transactions')),
+                    trailing: const Icon(Iconsax.arrow_right_3_copy),
+                    onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                            builder: (_) => WalletTransactionsScreen(
+                                userId: widget.userId))),
                   ),
                   if (_hasCoinSourceBreakdown(wallet)) ...[
                     const Hairline(),
@@ -174,20 +210,6 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                       'From qualifying gifts, before payout checks',
                     ),
                     coins(wallet.withdrawableEarned),
-                  ),
-                  ExpansionTile(
-                    title: Text(strings.ui(
-                        'ui_wallet_bank_withdrawals', 'Bank withdrawals')),
-                    trailing: const Icon(Iconsax.arrow_down_1_copy),
-                    childrenPadding: const EdgeInsets.fromLTRB(
-                        SpacingTokens.space16,
-                        0,
-                        SpacingTokens.space16,
-                        SpacingTokens.space16),
-                    children: [
-                      Text(strings.ui('ui_wallet_withdrawal_availability',
-                          'Bank withdrawals are not available in the app yet. Qualifying gift earnings are reviewed before payout.')),
-                    ],
                   ),
                   const Hairline(),
                   Padding(
@@ -327,10 +349,14 @@ class _CoinPocket extends StatelessWidget {
       {required this.label,
       required this.amount,
       required this.recharge,
+      required this.withdraw,
+      required this.onWithdraw,
       required this.onRecharge});
   final String label;
   final String amount;
   final String recharge;
+  final String withdraw;
+  final VoidCallback onWithdraw;
   final VoidCallback onRecharge;
 
   @override
@@ -369,11 +395,18 @@ class _CoinPocket extends StatelessWidget {
           ]);
         }),
         const SizedBox(height: SpacingTokens.space12),
-        ActionButton(
-            label: recharge,
-            icon: Iconsax.add_copy,
-            expand: true,
-            onPressed: onRecharge),
+        Row(children: [
+          Expanded(
+              child: ActionButton(
+                  label: recharge, expand: true, onPressed: onRecharge)),
+          const SizedBox(width: SpacingTokens.space8),
+          Expanded(
+              child: ActionButton(
+                  label: withdraw,
+                  kind: ActionButtonKind.outlined,
+                  expand: true,
+                  onPressed: onWithdraw)),
+        ]),
       ],
     );
   }

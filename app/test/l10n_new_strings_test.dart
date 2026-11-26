@@ -12,6 +12,15 @@ void main() {
   // These labels deliberately use their English fallback until
   // reviewed translations are supplied for every supported locale.
   const englishFallbackKeys = {
+    'ui_wallet_withdraw',
+    'ui_wallet_view_transactions',
+    'ui_wallet_transactions',
+    'ui_wallet_transactions_empty',
+    'ui_wallet_transactions_recent',
+    'ui_wallet_purchase_debit',
+    'ui_wallet_gift_spend',
+    'ui_wallet_gift_earning',
+    'ui_wallet_coin_entry',
     'ui_wallet_bank_withdrawals',
     'ui_wallet_withdrawal_availability',
     'ui_gift_rewards_notice',

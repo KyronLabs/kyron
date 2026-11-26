@@ -31,6 +31,20 @@ class GiftsRepository {
     return GiftWallet.fromJson(wallet);
   }
 
+  Future<List<({String kind, int amount, DateTime time})>>
+      transactions() async {
+    final result = await _api.dio.get<List<dynamic>>('/wallet/transactions');
+    final rows = result.data;
+    if (rows == null) throw const FormatException('Missing transactions');
+    return rows
+        .map((row) => (
+              kind: row['kind'] as String,
+              amount: row['amount'] as int,
+              time: DateTime.parse(row['createdAt'] as String).toLocal(),
+            ))
+        .toList();
+  }
+
   /// Sends one. [requestId] is made once per press and reused for any
   /// retry, so a request that reached the server but whose answer was lost
   /// is the same gift when it is sent again -- never a second charge.

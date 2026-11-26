@@ -101,6 +101,15 @@ export class GiftsService {
     private readonly delivery: DeliveryService,
   ) {}
 
+  transactions(userId: string) {
+    return this.prisma.coinEntry.findMany({
+      where: { userId },
+      select: { id: true, kind: true, amount: true, createdAt: true },
+      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      take: 50,
+    });
+  }
+
   catalogue(): readonly GiftType[] {
     return GIFT_CATALOGUE;
   }
