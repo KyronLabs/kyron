@@ -75,9 +75,6 @@ jobs:
         # The legacy app currently has warning-level lints; keep errors fatal while allowing CI to report warnings.
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
 
-      - name: Test
-        run: flutter test
-
       - name: Render the coin shop preview
         env:
           KYRON_COIN_PREVIEW: '1'
@@ -89,6 +86,9 @@ jobs:
           name: coin-shop-preview
           path: app/coin-shop-preview.png
           if-no-files-found: error
+
+      - name: Test
+        run: flutter test
 
       # test/format-vectors.json is a vendored copy of the spec that lives in
       # KyronLabs/kyron-lenses. Lens.tryParse here and lens.py there are two

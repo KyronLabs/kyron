@@ -487,7 +487,7 @@ class CoinPackOption extends StatelessWidget {
               ),
               const SizedBox(width: SpacingTokens.space12),
               Expanded(child: Text(label, style: theme.textTheme.titleMedium)),
-              Flexible(
+              Expanded(
                 child: Text(
                   price,
                   textAlign: TextAlign.end,

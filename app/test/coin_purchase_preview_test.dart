@@ -46,6 +46,7 @@ void main() {
         key: capture,
         child: MaterialApp(
           theme: KyronTheme.darkTheme,
+          debugShowCheckedModeBanner: false,
           home: Builder(
             builder: (context) => Scaffold(
               appBar: AppBar(title: const Text('Wallet')),
@@ -97,11 +98,29 @@ void main() {
         ),
       ),
     );
+    if (capturePreview) {
+      final context = tester.element(find.text('Open coin shop'));
+      await tester.runAsync(() async {
+        for (final pack in packs.keys) {
+          await precacheImage(
+            AssetImage('assets/gifts/coin_pack_$pack.png'),
+            context,
+          );
+        }
+      });
+    }
     await tester.tap(find.text('Open coin shop'));
     await tester.pumpAndSettle();
 
     expect(find.byType(CoinPackOption), findsNWidgets(3));
     expect(find.byType(Image), findsNWidgets(3));
+    if (capturePreview) {
+      final loadedArt =
+          tester.widgetList<RawImage>(find.byType(RawImage)).where(
+                (image) => image.image != null,
+              );
+      expect(loadedArt, hasLength(3));
+    }
     await tester.tap(find.text('500 coins'));
     await tester.pumpAndSettle();
     expect(
