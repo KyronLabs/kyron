@@ -59,7 +59,8 @@ class CoinPurchaseSheet extends StatelessWidget {
     return SafeArea(
       top: false,
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(SpacingTokens.space16),
+        padding: const EdgeInsets.fromLTRB(SpacingTokens.space20, 0,
+            SpacingTokens.space20, SpacingTokens.space20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,7 +70,10 @@ class CoinPurchaseSheet extends StatelessWidget {
                 Expanded(
                   child: Text(
                     strings.ui('ui_wallet_play_buy', 'Buy coins'),
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: TextStyle(
+                        fontSize: TypographyTokens.fontSize6,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ),
                 ActionIconButton(
