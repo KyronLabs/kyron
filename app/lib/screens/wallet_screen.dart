@@ -128,23 +128,13 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                 ),
               )
             else ...[
-              _Balance(
-                strings.ui('ui_wallet_spendable', 'Spendable coins'),
-                coins(wallet.coins),
-                prominent: true,
-              ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  SpacingTokens.space16,
-                  0,
-                  SpacingTokens.space16,
-                  SpacingTokens.space16,
-                ),
-                child: ActionButton(
-                  label: strings.ui('ui_wallet_recharge', 'Recharge'),
-                  icon: Iconsax.add_copy,
-                  expand: true,
-                  onPressed: () => openCoinPurchaseSheet(
+                padding: const EdgeInsets.all(SpacingTokens.space16),
+                child: _CoinPocket(
+                  label: strings.ui('ui_wallet_spendable', 'Spendable coins'),
+                  amount: coins(wallet.coins),
+                  recharge: strings.ui('ui_wallet_recharge', 'Recharge'),
+                  onRecharge: () => openCoinPurchaseSheet(
                     context,
                     userId: widget.userId,
                     coins: coins,
@@ -317,6 +307,60 @@ class _Balance extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _CoinPocket extends StatelessWidget {
+  const _CoinPocket(
+      {required this.label,
+      required this.amount,
+      required this.recharge,
+      required this.onRecharge});
+  final String label;
+  final String amount;
+  final String recharge;
+  final VoidCallback onRecharge;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        LayoutBuilder(builder: (context, constraints) {
+          return Stack(alignment: Alignment.bottomLeft, children: [
+            Positioned.fill(
+                child: Image.asset('assets/wallet/coin-pocket.webp',
+                    fit: BoxFit.fill, excludeFromSemantics: true)),
+            Container(
+              constraints: BoxConstraints(minHeight: constraints.maxWidth / 2),
+              padding: EdgeInsets.fromLTRB(
+                  SpacingTokens.space24,
+                  constraints.maxWidth * .22,
+                  SpacingTokens.space24,
+                  SpacingTokens.space20),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(label,
+                        style: theme.textTheme.titleSmall
+                            ?.copyWith(color: Colors.white)),
+                    Text(amount,
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                            color: Colors.white, fontWeight: FontWeight.w700)),
+                  ]),
+            ),
+          ]);
+        }),
+        const SizedBox(height: SpacingTokens.space12),
+        ActionButton(
+            label: recharge,
+            icon: Iconsax.add_copy,
+            expand: true,
+            onPressed: onRecharge),
+      ],
     );
   }
 }

@@ -116,6 +116,7 @@ flutter:
     # The gifts' artwork and the coin, cut out by tools/cut_gift_art.py.
     # Each by name, so the folder's README.md -- where each came from -- is
     # not shipped in the app with them.
+    - assets/wallet/coin-pocket.webp
     - assets/gifts/coin.png
     - assets/gifts/coin_pack_100.png
     - assets/gifts/coin_pack_500.png

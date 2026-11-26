@@ -68,6 +68,16 @@ jobs:
       # a file nobody touched was never examined. That was survivable only
       # because most of the tree was unformatted anyway; now that it is clean,
       # checking everything is both simpler and stricter.
+      - name: Render wallet
+        env:
+          WALLET_PREVIEW: '1'
+        run: flutter test test/wallet_screen_test.dart
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: wallet-preview
+          path: app/wallet-*.png
+
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed lib test
 
