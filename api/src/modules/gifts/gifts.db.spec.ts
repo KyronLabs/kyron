@@ -77,7 +77,7 @@ run('gifts, against a real database', () => {
       data: {
         userId: rewardSender,
         kind: 'REWARD_GRANT',
-        amount: 10,
+        amount: 20,
         key: `reward-test:${stamp}`,
       },
     });
@@ -141,11 +141,11 @@ run('gifts, against a real database', () => {
   it('moves coins from sender to author, and tells the author', async () => {
     const sent = await gifts.send(ben, post, gift('fire'), WEDNESDAY);
 
-    expect(sent.wallet.coins).toBe(95);
+    expect(sent.wallet.coins).toBe(85);
     expect(sent.gifts).toBe(1);
-    expect((await gifts.wallet(ada, WEDNESDAY)).earned).toBe(5);
+    expect((await gifts.wallet(ada, WEDNESDAY)).earned).toBe(15);
     expect((await gifts.wallet(ada, WEDNESDAY)).purchaseFundedEarned).toBe(0);
-    expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(5);
+    expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(15);
     expect((await gifts.wallet(ada, WEDNESDAY)).withdrawableEarned).toBe(0);
     expect(delivery.ofType('notification.new')).toContainEqual({
       type: 'notification.new',
@@ -171,13 +171,13 @@ run('gifts, against a real database', () => {
     expect(earning).toMatchObject({
       creatorId: rewardCreator,
       source: 'APPROVED_REWARD',
-      amount: 5,
+      amount: 15,
       withdrawable: true,
       giftId: sent.gift.id,
     });
     expect(await gifts.wallet(rewardCreator)).toMatchObject({
-      rewardFundedEarned: 5,
-      withdrawableEarned: 5,
+      rewardFundedEarned: 15,
+      withdrawableEarned: 15,
     });
   });
 
@@ -188,7 +188,7 @@ run('gifts, against a real database', () => {
       })
     ).id;
     const purchaseIds: string[] = [];
-    for (const [index, amount] of [2, 8].entries()) {
+    for (const [index, amount] of [2, 28].entries()) {
       const key = `test-purchase-grant:${stamp}:${index}`;
       const createdAt = new Date(WEDNESDAY.getTime() + index);
       const purchase = await prisma.googlePlayPurchase.create({
@@ -239,35 +239,35 @@ run('gifts, against a real database', () => {
     expect(allocation.payload).toEqual({
       allocations: [
         { purchaseId: purchaseIds[0], coins: 2 },
-        { purchaseId: purchaseIds[1], coins: 3 },
+        { purchaseId: purchaseIds[1], coins: 13 },
       ],
       unattributedCoins: 0,
     });
 
     expect(sent.wallet).toMatchObject({
-      coins: 5,
-      purchased: 5,
+      coins: 15,
+      purchased: 15,
       legacyComplimentary: 0,
       promotional: 0,
     });
     expect(purchaseSpend).toMatchObject({
       kind: 'PURCHASE_SPEND',
-      amount: -5,
+      amount: -15,
     });
     expect(purchaseEarn).toMatchObject({
       kind: 'PURCHASE_EARN',
-      amount: 5,
+      amount: 15,
     });
     expect(earning).toMatchObject({
       creatorId: purchaseCreator,
       source: 'PURCHASE',
-      amount: 5,
+      amount: 15,
       withdrawable: true,
       giftId: sent.gift.id,
     });
     expect(await gifts.wallet(purchaseCreator)).toMatchObject({
-      purchaseFundedEarned: 5,
-      withdrawableEarned: 5,
+      purchaseFundedEarned: 15,
+      withdrawableEarned: 15,
     });
     const replay = await gifts.send(purchaseSender, purchasePost, request);
     expect(replay.gift.id).toBe(sent.gift.id);
@@ -282,18 +282,18 @@ run('gifts, against a real database', () => {
         },
       });
     expect(laterAllocation.payload).toEqual({
-      allocations: [{ purchaseId: purchaseIds[1], coins: 5 }],
+      allocations: [{ purchaseId: purchaseIds[1], coins: 15 }],
       unattributedCoins: 0,
     });
   });
 
   it('does not let earnings be spent', async () => {
-    // Ada has 5 in gift proceeds and her own grandfathered 100 coins.
+    // Ada has 15 in gift proceeds and her own grandfathered 100 coins.
     const wallet = await gifts.wallet(ada, WEDNESDAY);
     expect(wallet).toMatchObject({
       coins: 100,
       legacyComplimentary: 100,
-      earned: 5,
+      earned: 15,
     });
   });
 
@@ -361,10 +361,10 @@ run('gifts, against a real database', () => {
 
   it('lets an existing complimentary balance continue to fund gifts', async () => {
     const before = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
-    expect(before).toBe(93);
+    expect(before).toBe(75);
 
     const sent = await gifts.send(ben, post, gift('gem'), NEXT_TUESDAY);
-    expect(sent.wallet.coins).toBe(73);
+    expect(sent.wallet.coins).toBe(45);
   });
 
   it('counts each kind of gift a post was given', async () => {
@@ -578,7 +578,7 @@ run('gifts, against a real database', () => {
 
       expect(sent.gifts).toBe(1);
       expect((await gifts.wallet(ben, NEXT_TUESDAY)).earned).toBe(
-        earnedBefore + 20,
+        earnedBefore + 30,
       );
       expect(
         await prisma.comment.findUniqueOrThrow({

@@ -54,6 +54,10 @@ Google Play and Kyron's server catalogue.
 | `coins_500` | 500 | GH₵25 |
 | `coins_1000` | 1,000 | GH₵50 |
 
+The starter pack covers 20 Sparks at 5 coins each, 10 Roses at 10 coins
+each, or one Rocket at 100 coins. The gift catalogue sets coin costs
+for new gifts. Previously sent gifts retain their recorded coin amounts.
+
 Before activating test offers, confirm the testers' Play storefronts, including
 Türkiye and the applicable Congo storefronts. Review the local price and
 availability for each supported storefront in Play Console. Use matching
