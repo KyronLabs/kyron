@@ -1,5 +1,7 @@
-Wrote app/lib/assets/whats_new.json
-items": [
+[
+  {
+    "version": "0.1.51",
+    "items": [
       {
         "title": "See your balance and recent transactions in the redesigned Wallet.",
         "detail": "Open Wallet settings to find the Coins FAQ and choose a display currency by country."
