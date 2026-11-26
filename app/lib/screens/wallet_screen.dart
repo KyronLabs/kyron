@@ -85,7 +85,8 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
     final strings = AppLocalizations.of(context);
     final locale = Localizations.localeOf(context).toString();
     final quote = ref.watch(walletPriceProvider).asData?.value;
-    final currency = ref.watch(walletCurrencyProvider).asData?.value;
+    final currency =
+        ref.watch(walletCurrencyProvider).asData?.value.split(':').last;
     final numbers = NumberFormat.decimalPattern(locale);
     String coins(int count) {
       if (count == 1) return strings.ui('ui_gift_one_coin', '1 coin');

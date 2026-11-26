@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:kyron_app/models/country.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
@@ -48,10 +49,15 @@ void main() {
           }
         });
       }
+      final names = await tester.runAsync(() async =>
+          (jsonDecode(await rootBundle.loadString('assets/countries/en.json'))
+                  as Map)
+              .cast<String, String>());
       final gifts = _Gifts();
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            countryNamesProvider('en').overrideWith((ref) async => names!),
             walletCurrencyProvider.overrideWith((ref) async => 'AUTO'),
             walletPriceProvider
                 .overrideWith((ref) async => (currency: 'GHS', perCoin: 0.05)),
@@ -137,11 +143,11 @@ void main() {
           image.dispose();
         });
       }
-      await tester.enterText(find.byType(TextField), 'usd');
+      await tester.enterText(find.byType(TextField), 'ghana');
       await tester.pumpAndSettle();
-      expect(find.text('USD'), findsOneWidget);
-      expect(find.text('EUR'), findsNothing);
-      await tester.tap(find.text('USD'));
+      expect(find.text('Ghana'), findsOneWidget);
+      expect(find.text('France'), findsNothing);
+      await tester.tap(find.text('Ghana'));
       await tester.tap(find.byType(BackButton).last);
       await tester.pumpAndSettle();
       expect(find.text('Google Play currency (GHS)'), findsOneWidget);
