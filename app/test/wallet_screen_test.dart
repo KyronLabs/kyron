@@ -61,6 +61,8 @@ void main() {
             giftsRepositoryProvider.overrideWithValue(gifts),
           ],
           child: MaterialApp(
+            builder: (context, child) => RepaintBoundary(
+                key: const ValueKey('wallet-preview-root'), child: child),
             debugShowCheckedModeBanner: false,
             theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
             home: const WalletScreen(),
@@ -97,7 +99,7 @@ void main() {
         }
         await tester.pumpAndSettle();
         final boundary = tester.renderObject<RenderRepaintBoundary>(
-            find.byType(RepaintBoundary).first);
+            find.byKey(const ValueKey('wallet-preview-root')));
         await tester.runAsync(() async {
           final image = await boundary.toImage(pixelRatio: 2);
           final data = await image.toByteData(format: ui.ImageByteFormat.png);
@@ -112,7 +114,7 @@ void main() {
       expect(find.text('Coins FAQ'), findsOneWidget);
       if (preview) {
         final boundary = tester.renderObject<RenderRepaintBoundary>(
-            find.byType(RepaintBoundary).first);
+            find.byKey(const ValueKey('wallet-preview-root')));
         await tester.runAsync(() async {
           final image = await boundary.toImage(pixelRatio: 2);
           final data = await image.toByteData(format: ui.ImageByteFormat.png);
@@ -126,7 +128,7 @@ void main() {
       expect(find.byType(DraggableScrollableSheet), findsOneWidget);
       if (preview) {
         final boundary = tester.renderObject<RenderRepaintBoundary>(
-            find.byType(RepaintBoundary).first);
+            find.byKey(const ValueKey('wallet-preview-root')));
         await tester.runAsync(() async {
           final image = await boundary.toImage(pixelRatio: 2);
           final data = await image.toByteData(format: ui.ImageByteFormat.png);
