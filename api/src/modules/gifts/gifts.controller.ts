@@ -35,6 +35,11 @@ export class GiftsController {
     };
   }
 
+  @Get('wallet/transactions')
+  transactions(@Req() req: AuthRequest) {
+    return this.svc.transactions(req.user.id);
+  }
+
   @Get('feed/posts/:id/gifts')
   summary(@Req() req: AuthRequest, @Param('id', ParseUUIDPipe) id: string) {
     return this.svc.summary(id, req.user.id);

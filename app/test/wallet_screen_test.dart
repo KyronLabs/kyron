@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:kyron_app/models/country.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
@@ -14,6 +15,7 @@ import 'package:kyron_app/providers/auth_provider.dart';
 import 'package:kyron_app/providers/gifts_provider.dart';
 import 'package:kyron_app/repositories/gifts_repository.dart';
 import 'package:kyron_app/screens/wallet_screen.dart';
+import 'package:kyron_app/screens/wallet_settings_screen.dart';
 import 'package:kyron_design_system/kyron_design_system.dart';
 
 class _Gifts extends Fake implements GiftsRepository {
@@ -47,16 +49,26 @@ void main() {
           }
         });
       }
+      final names = await tester.runAsync(() async =>
+          (jsonDecode(await rootBundle.loadString('assets/countries/en.json'))
+                  as Map)
+              .cast<String, String>());
       final gifts = _Gifts();
       await tester.pumpWidget(
         ProviderScope(
           overrides: [
+            countryNamesProvider('en').overrideWith((ref) async => names!),
+            walletCurrencyProvider.overrideWith((ref) async => 'AUTO'),
+            walletPriceProvider
+                .overrideWith((ref) async => (currency: 'GHS', perCoin: 0.05)),
             currentAuthUserProvider.overrideWith(
               (ref) => User(id: 'creator', email: 'creator@example.test'),
             ),
             giftsRepositoryProvider.overrideWithValue(gifts),
           ],
           child: MaterialApp(
+            builder: (context, child) => RepaintBoundary(
+                key: const ValueKey('wallet-preview-root'), child: child),
             debugShowCheckedModeBanner: false,
             theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
             home: const WalletScreen(),
@@ -87,12 +99,13 @@ void main() {
       await tester.pumpAndSettle();
 
       if (preview) {
-        final art = find.byType(Image).first.evaluate().single;
-        await tester
-            .runAsync(() => precacheImage((art.widget as Image).image, art));
+        for (final art in find.byType(Image).evaluate()) {
+          await tester
+              .runAsync(() => precacheImage((art.widget as Image).image, art));
+        }
         await tester.pumpAndSettle();
         final boundary = tester.renderObject<RenderRepaintBoundary>(
-            find.byType(RepaintBoundary).first);
+            find.byKey(const ValueKey('wallet-preview-root')));
         await tester.runAsync(() async {
           final image = await boundary.toImage(pixelRatio: 2);
           final data = await image.toByteData(format: ui.ImageByteFormat.png);
@@ -101,6 +114,45 @@ void main() {
           image.dispose();
         });
       }
+      await tester.tap(find.byTooltip('Wallet settings'));
+      await tester.pumpAndSettle();
+      expect(find.text('Display currency'), findsOneWidget);
+      expect(find.text('Coins FAQ'), findsOneWidget);
+      if (preview) {
+        final boundary = tester.renderObject<RenderRepaintBoundary>(
+            find.byKey(const ValueKey('wallet-preview-root')));
+        await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 2);
+          final data = await image.toByteData(format: ui.ImageByteFormat.png);
+          await File('wallet-settings-${dark ? 'dark' : 'light'}.png')
+              .writeAsBytes(data!.buffer.asUint8List());
+          image.dispose();
+        });
+      }
+      await tester.tap(find.text('Display currency'));
+      await tester.pumpAndSettle();
+      expect(find.byType(DraggableScrollableSheet), findsOneWidget);
+      if (preview) {
+        final boundary = tester.renderObject<RenderRepaintBoundary>(
+            find.byKey(const ValueKey('wallet-preview-root')));
+        await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 2);
+          final data = await image.toByteData(format: ui.ImageByteFormat.png);
+          await File('wallet-currency-${dark ? 'dark' : 'light'}.png')
+              .writeAsBytes(data!.buffer.asUint8List());
+          image.dispose();
+        });
+      }
+      await tester.enterText(find.byType(TextField), 'ghana');
+      await tester.pumpAndSettle();
+      expect(find.text('Ghana'), findsOneWidget);
+      expect(find.text('France'), findsNothing);
+      await tester.tap(find.text('Ghana'));
+      await tester.tap(find.byType(BackButton).last);
+      await tester.pumpAndSettle();
+      expect(find.text('Google Play currency (GHS)'), findsOneWidget);
+      await tester.pageBack();
+      await tester.pumpAndSettle();
       expect(find.text('1,234 coins'), findsOneWidget);
       expect(find.text('16 coins'), findsOneWidget);
       expect(find.text('9 coins'), findsOneWidget);
