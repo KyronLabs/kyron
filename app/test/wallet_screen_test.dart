@@ -1,4 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,6 +32,21 @@ void main() {
     testWidgets('wallet states (dark $dark)', (tester) async {
       await tester.binding.setSurfaceSize(const Size(420, 960));
       addTearDown(() => tester.binding.setSurfaceSize(null));
+      final preview = Platform.environment['WALLET_PREVIEW'] == '1';
+      if (preview) {
+        await tester.runAsync(() async {
+          final fonts =
+              jsonDecode(await rootBundle.loadString('FontManifest.json'))
+                  as List;
+          for (final entry in fonts) {
+            final loader = FontLoader(entry['family'] as String);
+            for (final font in entry['fonts']) {
+              loader.addFont(rootBundle.load(font['asset'] as String));
+            }
+            await loader.load();
+          }
+        });
+      }
       final gifts = _Gifts();
       await tester.pumpWidget(
         ProviderScope(
@@ -37,6 +57,7 @@ void main() {
             giftsRepositoryProvider.overrideWithValue(gifts),
           ],
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: dark ? KyronTheme.darkTheme : KyronTheme.lightTheme,
             home: const WalletScreen(),
           ),
@@ -65,6 +86,21 @@ void main() {
       );
       await tester.pumpAndSettle();
 
+      if (preview) {
+        final art = find.byType(Image).first.evaluate().single;
+        await tester
+            .runAsync(() => precacheImage((art.widget as Image).image, art));
+        await tester.pumpAndSettle();
+        final boundary = tester.renderObject<RenderRepaintBoundary>(
+            find.byType(RepaintBoundary).first);
+        await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 2);
+          final data = await image.toByteData(format: ui.ImageByteFormat.png);
+          await File('wallet-${dark ? 'dark' : 'light'}.png')
+              .writeAsBytes(data!.buffer.asUint8List());
+          image.dispose();
+        });
+      }
       expect(find.text('1,234 coins'), findsOneWidget);
       expect(find.text('16 coins'), findsOneWidget);
       expect(find.text('9 coins'), findsOneWidget);
