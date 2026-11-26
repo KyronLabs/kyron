@@ -73,9 +73,9 @@ class WalletSettingsScreen extends ConsumerWidget {
           'GHS': 'GH₵',
           'CDF': 'FC',
           'XAF': 'FCFA',
-          'AFN': '؋',
+          'AFN': 'Af',
           'ALL': 'L',
-          'DZD': 'د.ج',
+          'DZD': 'DA',
           'AOA': 'Kz',
         }[iso] ??
         NumberFormat.simpleCurrency(
