@@ -404,9 +404,8 @@ class _CoinPocket extends StatelessWidget {
                       const SizedBox(width: SpacingTokens.space8),
                       Flexible(
                           child: Text(amount,
-                              style: theme.textTheme.headlineMedium?.copyWith(
+                              style: theme.textTheme.headlineLarge?.copyWith(
                                   color: const Color(0xFFFFF9EF),
-                                  fontSize: 32,
                                   fontWeight: FontWeight.w600)))
                     ]),
                     Text(estimate,
