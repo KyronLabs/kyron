@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -51,9 +52,9 @@ class _Gifts extends GiftsRepository {
           GiftType(type: 'rocket', name: 'Rocket', emoji: '🚀', coins: 100),
         ],
         wallet: GiftWallet(
-          coins: 93,
+          coins: 77,
           earned: 0,
-          promotional: 93,
+          promotional: 77,
         ),
       );
 }
@@ -71,6 +72,15 @@ void main() {
       await loader.load();
     }
 
+    final manifest =
+        jsonDecode(await rootBundle.loadString('FontManifest.json')) as List;
+    for (final entry in manifest) {
+      final loader = FontLoader(entry['family'] as String);
+      for (final font in entry['fonts']) {
+        loader.addFont(rootBundle.load(font['asset'] as String));
+      }
+      await loader.load();
+    }
     tester.view.devicePixelRatio = 1;
     tester.view.physicalSize = const Size(390, 600);
     addTearDown(tester.view.reset);
@@ -129,17 +139,6 @@ void main() {
       );
       await tester.tap(find.text('open'));
       await shoot('gift-sheet-${dark ? 'dark' : 'light'}');
-      await tester.tap(find.byType(GiftArt).at(2));
-      await shoot('gift-sheet-picked-${dark ? 'dark' : 'light'}');
-      if (!dark) {
-        await tester.tap(find.text('Send Fire'));
-        await tester.pump();
-        for (final ms in [120, 200, 300]) {
-          await tester.pump(Duration(milliseconds: ms));
-          await shoot('gift-sent-$ms', settle: false);
-        }
-      }
     }
-    exit(0);
   });
 }

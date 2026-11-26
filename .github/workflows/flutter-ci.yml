@@ -68,6 +68,22 @@ jobs:
       # a file nobody touched was never examined. That was survivable only
       # because most of the tree was unformatted anyway; now that it is clean,
       # checking everything is both simpler and stricter.
+      - name: Capture both sheet headers
+        env:
+          KYRON_COIN_PREVIEW: '1'
+        run: |
+          flutter test test/coin_purchase_preview_test.dart
+          flutter test test/render_gift_sheet.dart --dart-define=shots=/tmp/header-shots
+          cp /tmp/header-shots/gift-sheet-light.png /tmp/header-shots/gift-sheet-dark.png .
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: verified-headers
+          path: |
+            app/coin-shop-preview.png
+            app/gift-sheet-light.png
+            app/gift-sheet-dark.png
+
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed lib test
 
