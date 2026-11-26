@@ -1,12 +1,12 @@
 name: Create Versioned Release
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - app/pubspec.yaml
+      - .github/workflows/create-release.yml
   workflow_dispatch:
-    inputs:
-      version:
-        description: Version already merged into main (X.Y.Z)
-        required: true
-        type: string
 
 permissions:
   contents: write
@@ -30,41 +30,39 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Validate the merged release version
-        env:
-          VERSION: ${{ inputs.version }}
+      - name: Read the reviewed release version
+        id: version
         run: |
           set -euo pipefail
-          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "::error::Enter a release version in X.Y.Z format."
-            exit 1
+          version=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?$/\1/p' app/pubspec.yaml)
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "::error::Invalid pubspec version"; exit 1; }
+          if git show-ref --verify --quiet "refs/tags/v$version"; then
+            if [[ "$GITHUB_RUN_ATTEMPT" -gt 1 && "$(git rev-parse "v$version^{commit}")" == "$GITHUB_SHA" ]]; then
+              echo "value=$version" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Version $version already tagged." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
-          current=$(sed -nE 's/^version: ([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?$/\1/p' app/pubspec.yaml)
-          if [[ "$current" != "$VERSION" ]]; then
-            echo "::error::The version must match the pubspec on the dispatched main commit."
-            exit 1
-          fi
-          python3 scripts/changelog.py show "$VERSION" > /dev/null
+          python3 scripts/changelog.py show "$version" > /dev/null
+          echo "value=$version" >> "$GITHUB_OUTPUT"
 
       # The same JDK the release build signs with; the check below reads the
       # key through it.
       - name: Set up Java
+        if: steps.version.outputs.value != ''
         uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: '17'
 
-      # Also before the bump. Release needs these to sign the bundle and give
+      # Before tagging. Release needs these to sign the bundle and give
       # it push, and it reads them only once the tag exists -- so a missing or
       # mistyped one left a version committed and tagged with nothing built
       # under it. The upload key's fingerprints are public; they go in the
       # run summary to compare with Play Console's upload key certificate.
       - name: Check the release secrets
+        if: steps.version.outputs.value != ''
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -86,20 +84,16 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Tag the reviewed release commit
+        if: steps.version.outputs.value != ''
         env:
-          VERSION: ${{ inputs.version }}
+          VERSION: ${{ steps.version.outputs.value }}
         run: |
           set -euo pipefail
-          tag="v$VERSION"
-          if git show-ref --verify --quiet "refs/tags/$tag"; then
-            if [[ "$(git rev-parse "refs/tags/$tag^{commit}")" != "$(git rev-parse HEAD)" ]]; then
-              echo "::error::$tag already points to a different commit."
-              exit 1
-            fi
-          else
-            git tag -a "$tag" -m "Kyron $tag"
-            git push origin "refs/tags/$tag"
-          fi
+          if git show-ref --verify --quiet "refs/tags/v$VERSION"; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "v$VERSION" -m "Kyron v$VERSION"
+          git push origin "refs/tags/v$VERSION"
 
       # The tag alone starts nothing. It was pushed with this workflow's own
       # GITHUB_TOKEN, and GitHub runs no workflow for an event that token
@@ -109,9 +103,10 @@ jobs:
       # by name, on the tag just pushed. scripts/check-workflows.py holds
       # this in place.
       - name: Start the release build
+        if: steps.version.outputs.value != ''
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ inputs.version }}
+          VERSION: ${{ steps.version.outputs.value }}
         run: |
           gh workflow run flutter-release.yml \
             --repo "$GITHUB_REPOSITORY" \
