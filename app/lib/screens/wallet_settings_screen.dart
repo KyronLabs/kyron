@@ -30,9 +30,8 @@ final walletPriceProvider = FutureProvider.autoDispose<WalletPrice?>((
   if (user == null || kIsWeb || !Platform.isAndroid) return null;
   final token = CancelToken();
   ref.onDispose(token.cancel);
-  final catalogue = await ref
-      .watch(playCoinsRepositoryProvider)
-      .catalogue(token);
+  final catalogue =
+      await ref.watch(playCoinsRepositoryProvider).catalogue(token);
   final count = catalogue?.coinsByProduct['coins_100'];
   if (count == null || count != 100) return null;
   final products = await InAppPurchase.instance.queryProductDetails({
@@ -64,10 +63,8 @@ class WalletSettingsScreen extends ConsumerWidget {
       'Google Play currency',
     );
     final locale = Localizations.localeOf(context);
-    final names = ref
-        .watch(countryNamesProvider(locale.languageCode))
-        .asData
-        ?.value;
+    final names =
+        ref.watch(countryNamesProvider(locale.languageCode)).asData?.value;
     String symbol(String iso) =>
         const {
           'GHS': 'GH₵',
@@ -93,21 +90,20 @@ class WalletSettingsScreen extends ConsumerWidget {
     final rank = {
       for (final entry in countries.asMap().entries) entry.value: entry.key,
     };
-    final options =
-        [
-          for (final row in walletCurrencies)
-            (
-              country: row.country,
-              id: '${row.country}:${row.currency}',
-              name: names?[row.country] ?? row.country,
-              iso: row.currency,
-            ),
-        ]..sort((a, b) {
-          final order = (rank[a.country] ?? countries.length).compareTo(
-            rank[b.country] ?? countries.length,
-          );
-          return order != 0 ? order : a.iso.compareTo(b.iso);
-        });
+    final options = [
+      for (final row in walletCurrencies)
+        (
+          country: row.country,
+          id: '${row.country}:${row.currency}',
+          name: names?[row.country] ?? row.country,
+          iso: row.currency,
+        ),
+    ]..sort((a, b) {
+        final order = (rank[a.country] ?? countries.length).compareTo(
+          rank[b.country] ?? countries.length,
+        );
+        return order != 0 ? order : a.iso.compareTo(b.iso);
+      });
     final active = options.where((row) => row.id == code).firstOrNull;
     return Scaffold(
       appBar: KyronAppBar(
@@ -123,8 +119,8 @@ class WalletSettingsScreen extends ConsumerWidget {
               code == 'AUTO'
                   ? (store == null ? automatic : '$automatic ($store)')
                   : active == null
-                  ? detail(code.split(':').last)
-                  : '${active.name} · ${detail(active.iso)}',
+                      ? detail(code.split(':').last)
+                      : '${active.name} · ${detail(active.iso)}',
             ),
             trailing: const Icon(Iconsax.arrow_right_3_copy),
             onTap: names == null
