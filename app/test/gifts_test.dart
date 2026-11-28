@@ -316,35 +316,6 @@ void main() {
       expect(find.text('3'), findsNothing);
     });
 
-    testWidgets('opens the gifts, with a light tap of haptics, and no like', (
-      tester,
-    ) async {
-      final felt = haptics(tester);
-      var gifts = 0;
-      var likes = 0;
-      await tester.pumpWidget(
-        row(onGift: (_) => gifts++, onLike: () => likes++),
-      );
-
-      await tester.longPress(heart);
-      await tester.pumpAndSettle();
-
-      expect(gifts, 1);
-      expect(likes, 0);
-      expect(felt, ['HapticFeedbackType.lightImpact']);
-    });
-
-    testWidgets('does not pop up the Like tooltip over the sheet', (
-      tester,
-    ) async {
-      await tester.pumpWidget(row(onGift: (_) {}));
-
-      await tester.longPress(heart);
-      await tester.pump(const Duration(milliseconds: 100));
-
-      expect(find.text('Like'), findsNothing);
-    });
-
     testWidgets('still likes on a tap, with the tick a tap always had', (
       tester,
     ) async {
@@ -363,29 +334,6 @@ void main() {
       expect(felt, ['HapticFeedbackType.selectionClick']);
     });
 
-    testWidgets('lifts the heart and sets it back exactly where it was', (
-      tester,
-    ) async {
-      await tester.pumpWidget(row(onGift: (_) {}));
-      double scale() {
-        final transforms = tester.widgetList<Transform>(
-          find.ancestor(of: heart, matching: find.byType(Transform)),
-        );
-        return transforms
-            .map((t) => t.transform.getMaxScaleOnAxis())
-            .reduce((a, b) => a * b);
-      }
-
-      expect(scale(), 1);
-      await tester.longPress(heart);
-      // longPress has already held for the gesture's timeout; this is
-      // partway into the lift that follows.
-      await tester.pump(const Duration(milliseconds: 120));
-      expect(scale(), greaterThan(1.1));
-      await tester.pumpAndSettle();
-      expect(scale(), 1);
-    });
-
     test('the lift starts and ends at rest, and peaks in between', () {
       expect(liftCurve(0), 0);
       expect(liftCurve(1), 0);
@@ -393,26 +341,6 @@ void main() {
       for (var t = 0.0; t <= 1; t += 0.05) {
         expect(liftCurve(t), inInclusiveRange(0, 1));
       }
-    });
-
-    testWidgets('tells a screen reader that holding sends a gift', (
-      tester,
-    ) async {
-      final semantics = tester.ensureSemantics();
-      await tester.pumpWidget(row(onGift: (_) {}));
-
-      expect(
-        tester.getSemantics(find.byTooltip('Like')),
-        matchesSemantics(
-          isFocusable: true,
-          hasTapAction: true,
-          hasLongPressAction: true,
-          hasFocusAction: true,
-          onLongPressHint: 'Send a gift',
-          tooltip: 'Like',
-        ),
-      );
-      semantics.dispose();
     });
 
     testWidgets('is only a like where gifts cannot be sent', (tester) async {
@@ -708,7 +636,7 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    testWidgets('opens the gifts sooner than the platform long press', (
+    testWidgets('does not open gifts on a sustained press', (
       tester,
     ) async {
       var opened = 0;
@@ -716,7 +644,7 @@ void main() {
 
       // Under the platform's 500ms, past this one's 350.
       await hold(tester, const Duration(milliseconds: 400));
-      expect(opened, 1);
+      expect(opened, 0);
     });
 
     testWidgets('does not open on a slow tap', (tester) async {
@@ -800,7 +728,12 @@ void main() {
                       count: value.topGifts.isEmpty ? 0 : value.gifts,
                       yours: value.viewerGift != null,
                       onTap: gift,
-                      content: Text(value.content),
+                      content: Builder(
+                        builder: (context) => TextButton(
+                          onPressed: () => gift(context),
+                          child: Text(value.content),
+                        ),
+                      ),
                       footer: PostActionsRow(
                         post: value,
                         onReply: () {},
@@ -823,7 +756,7 @@ void main() {
     }
 
     Future<void> send(WidgetTester tester, String type) async {
-      await tester.longPress(find.byIcon(Iconsax.heart_copy));
+      await tester.tap(find.text(_post.content));
       await tester.pumpAndSettle();
       await tester.tap(
         find.byWidgetPredicate((w) => w is GiftArt && w.type == type).first,
@@ -857,7 +790,6 @@ void main() {
       expect(find.text('Send a gift'), findsNothing);
       // Hold, pick, sent, landed: soft each time, and never a buzz.
       expect(felt, [
-        'lightImpact',
         'selectionClick',
         'lightImpact',
         'selectionClick',

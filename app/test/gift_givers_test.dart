@@ -137,12 +137,12 @@ void main() {
     expect(find.textContaining('route /'), findsOneWidget);
   });
 
-  testWidgets('holding the heart still opens the gifts to send', (
+  testWidgets('holding the heart leaves gifts closed', (
     tester,
   ) async {
     await card(tester);
     await tester.longPress(find.byIcon(Iconsax.heart_copy));
     await tester.pumpAndSettle();
-    expect(find.text('Pick a gift'), findsOneWidget);
+    expect(find.text('Pick a gift'), findsNothing);
   });
 }

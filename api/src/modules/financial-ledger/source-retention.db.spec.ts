@@ -65,7 +65,7 @@ run('financial source retention, against a real database', () => {
     await prisma.coinEntry.create({
       data: {
         userId: giftSenderId,
-        kind: 'GRANT',
+        kind: 'REWARD_GRANT',
         amount: 100,
         key: `retention-wallet:${stamp}`,
       },
