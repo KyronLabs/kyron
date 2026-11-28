@@ -1,5 +1,22 @@
 [
   {
+    "version": "0.1.52",
+    "items": [
+      {
+        "title": "The wallet shows what is actually available to withdraw.",
+        "detail": "Under qualifying gift earnings, a new balance counts only what remains once payout holds and reservations are taken into account."
+      },
+      {
+        "title": "New coin gifting is paused.",
+        "detail": "The gift sheet says gifting is paused instead of offering coins, and new Google Play purchase offers can be switched off separately while paid orders are still honoured."
+      },
+      {
+        "title": "Legacy complimentary and test coins are retired from the wallet.",
+        "detail": "Balances and transaction history now show only purchased coins and approved rewards; the Wallet row in Settings and the long-press gift shortcut on hearts are gone."
+      }
+    ]
+  },
+  {
     "version": "0.1.51",
     "items": [
       {
@@ -44,15 +61,6 @@
   },
   {
     "version": "0.1.48",
-    "items": [
-      {
-        "title": "Bug fixes and performance improvements.",
-        "detail": ""
-      }
-    ]
-  },
-  {
-    "version": "0.1.47",
     "items": [
       {
         "title": "Bug fixes and performance improvements.",

@@ -21,6 +21,13 @@ the section; GitHub does not show it:
 
 ## [Unreleased]
 
+## [0.1.52] - 2026-11-28
+### Changed
+
+- **The wallet shows what is actually available to withdraw.** Under qualifying gift earnings, a new balance counts only what remains once payout holds and reservations are taken into account.
+- **New coin gifting is paused.** The gift sheet says gifting is paused instead of offering coins, and new Google Play purchase offers can be switched off separately while paid orders are still honoured.
+- **Legacy complimentary and test coins are retired from the wallet.** Balances and transaction history now show only purchased coins and approved rewards; the Wallet row in Settings and the long-press gift shortcut on hearts are gone.
+
 ## [0.1.51] - 2026-11-26
 ### Changed
 
@@ -2481,7 +2488,8 @@ Pull down on your feed and the Kyron leaf sways while maple leaves fall as it re
   The API accepts none of them: an attachment was dropped on send and a
   scheduled post went out immediately.
 
-[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.51...HEAD
+[Unreleased]: https://github.com/KyronLabs/kyron/compare/v0.1.52...HEAD
+[0.1.52]: https://github.com/KyronLabs/kyron/compare/v0.1.51...v0.1.52
 [0.1.51]: https://github.com/KyronLabs/kyron/compare/v0.1.50...v0.1.51
 [0.1.49]: https://github.com/KyronLabs/kyron/compare/v0.1.48...v0.1.49
 [0.1.48]: https://github.com/KyronLabs/kyron/compare/v0.1.47...v0.1.48
