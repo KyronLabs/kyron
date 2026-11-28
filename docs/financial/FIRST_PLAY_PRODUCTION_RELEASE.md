@@ -1,6 +1,10 @@
 # Kyron’s first Google Play production release
 
-**Release requirement.** The first public build must let eligible users buy Kyron coins with Google Play Billing, send gifts, and withdraw qualifying creator earnings through a live bank payout. Hold the production submission until that flow and its reconciliation pass on the signed release candidate.
+**Release sequence under consideration.** A social-only first release can precede live finance. The purchase-to-bank milestones below remain the acceptance gates for financial activation. Before submitting a social-only build, verify the exact production configuration and signed candidate in Closed testing, then review the Play Console listing and declarations against the features users can access.
+
+For a social-only deployment, leave CASH_EARNING_GIFTS_ENABLED unset or false, set GOOGLE_PLAY_NEW_SALES_PAUSED=true, and keep creator withdrawal requests and payout submissions disabled. The gift switch pauses every new coin-funded gift on posts and comments. An already committed gift can be retried. Leave authoritative purchase verification, refunds, corrections and support available for existing transactions. Deactivate Play offers for the intended production storefronts and account for any shared testing catalogue. Pausing offers in the API cannot recall a checkout already opened on a device.
+
+Check existing balances and outstanding orders before rollout. Verify that testers can read history and contact support, and that social features work with gifting paused. Review or hide inactive recharge, withdrawal and reward promotions. For new cash-earning markets, establish verified recipient eligibility, approved payout routes, fees, age rules and settlement evidence before switching on acceptance. A global on/off switch alone does not implement country or creator eligibility.
 
 See the [28 November financial flow audit](FINANCIAL_FLOW_AUDIT.md) for the implementation map, evidence and ordered production gates.
 

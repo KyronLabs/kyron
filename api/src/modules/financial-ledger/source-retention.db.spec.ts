@@ -39,7 +39,9 @@ run('financial source retention, against a real database', () => {
   let grantBId = '';
   let programId = '';
 
+  const previousGiftFlag = process.env.CASH_EARNING_GIFTS_ENABLED;
   beforeAll(async () => {
+    process.env.CASH_EARNING_GIFTS_ENABLED = 'true';
     prisma = new PrismaClient({ datasources: { db: { url } } });
     gifts = new GiftsService(prisma as PrismaService, new RecordingDelivery());
     rewards = new RewardsService(prisma as PrismaService);
@@ -160,6 +162,9 @@ run('financial source retention, against a real database', () => {
   });
 
   afterAll(async () => {
+    if (previousGiftFlag === undefined)
+      delete process.env.CASH_EARNING_GIFTS_ENABLED;
+    else process.env.CASH_EARNING_GIFTS_ENABLED = previousGiftFlag;
     if (programId) {
       await prisma?.postRewardProgram.deleteMany({
         where: { id: programId },

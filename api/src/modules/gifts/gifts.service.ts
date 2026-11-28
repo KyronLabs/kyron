@@ -9,6 +9,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  ServiceUnavailableException,
 } from '@nestjs/common';
 import { AccountStatus, CoinKind, Prisma } from '@prisma/client';
 
@@ -115,7 +116,11 @@ export class GiftsService {
   }
 
   catalogue(): readonly GiftType[] {
-    return GIFT_CATALOGUE;
+    return this.giftingEnabled() ? GIFT_CATALOGUE : [];
+  }
+
+  private giftingEnabled(): boolean {
+    return process.env.CASH_EARNING_GIFTS_ENABLED === 'true';
   }
 
   /** The reader's current wallet; reading it never issues new coins. */
@@ -254,6 +259,11 @@ export class GiftsService {
         };
       }
 
+      if (!this.giftingEnabled()) {
+        throw new ServiceUnavailableException(
+          'Coin gifting is currently paused.',
+        );
+      }
       const { coins } = await this.balances(tx, senderId);
       if (coins < kind.coins) {
         throw new BadRequestException(

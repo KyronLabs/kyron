@@ -53,6 +53,7 @@ void main() {
     'ui_wallet_coin_entry',
     'ui_wallet_bank_withdrawals',
     'ui_wallet_withdrawal_availability',
+    'ui_gift_paused',
     'ui_gift_rewards_notice',
     'ui_wallet_purchased_coins',
     'ui_wallet_play_unavailable',
