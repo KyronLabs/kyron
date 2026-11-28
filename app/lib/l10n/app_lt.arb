@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Piniginė",
   "ui_wallet_spendable": "Išleidžiamos monetos",
   "ui_wallet_received": "Visos pajamos iš dovanų",
-  "ui_wallet_qualifying": "Iš reikalavimus atitinkančių dovanų prieš išmokos patikrą"
+  "ui_wallet_qualifying": "Iš reikalavimus atitinkančių dovanų prieš išmokos patikrą",
+  "ui_wallet_available_earnings": "Galima po išmokėjimo sulaikymų ir rezervų"
 }

@@ -606,7 +606,10 @@ export class CreatorWithdrawalsService {
     }
 
     const prepared = await this.prisma.$transaction(async (tx) => {
-      await tx.$queryRaw`SELECT id FROM "CreatorWithdrawal" WHERE id = ${withdrawalId}::uuid FOR UPDATE`;
+      // Serialize submission with new reservations across the quote expiry boundary.
+      await tx.$queryRaw`SELECT w.id FROM "CreatorWithdrawal" w
+        JOIN "User" u ON u.id = w."creatorId"
+        WHERE w.id = ${withdrawalId}::uuid FOR UPDATE OF w, u`;
       const withdrawal = await tx.creatorWithdrawal.findUnique({
         where: { id: withdrawalId },
         include: {

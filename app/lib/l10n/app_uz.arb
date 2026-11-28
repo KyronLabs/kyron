@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Hamyon",
   "ui_wallet_spendable": "Sarflash mumkin boʻlgan tangalar",
   "ui_wallet_received": "Sovgʻalardan jami daromad",
-  "ui_wallet_qualifying": "Toʻlov tekshiruvidan oldin talablarga mos sovgʻalardan olingan daromad"
+  "ui_wallet_qualifying": "Toʻlov tekshiruvidan oldin talablarga mos sovgʻalardan olingan daromad",
+  "ui_wallet_available_earnings": "To'lov to'xtatilishi va zaxiralardan keyin mavjud"
 }

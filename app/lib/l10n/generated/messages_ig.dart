@@ -2326,6 +2326,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Mkpokọta ego e nwetara n’onyinye"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Site n’onyinye ndị ruru eru, tupu nyocha ịkwụ ụgwọ"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Dị ya mgbe nkwụsị ịkwụ ụgwọ na echekwara gasịrị"),
     };
 
 final messageLookup = MessageLookup();

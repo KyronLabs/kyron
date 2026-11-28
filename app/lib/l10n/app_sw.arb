@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Pochi",
   "ui_wallet_spendable": "Sarafu zinazoweza kutumika",
   "ui_wallet_received": "Jumla ya mapato kutokana na zawadi",
-  "ui_wallet_qualifying": "Kutokana na zawadi zinazostahiki, kabla ya ukaguzi wa malipo"
+  "ui_wallet_qualifying": "Kutokana na zawadi zinazostahiki, kabla ya ukaguzi wa malipo",
+  "ui_wallet_available_earnings": "Inapatikana baada ya kushikiliwa kwa malipo na akihifadhiwa"
 }

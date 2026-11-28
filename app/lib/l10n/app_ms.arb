@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Dompet",
   "ui_wallet_spendable": "Syiling yang boleh dibelanjakan",
   "ui_wallet_received": "Jumlah pendapatan daripada hadiah",
-  "ui_wallet_qualifying": "Daripada hadiah yang layak, sebelum semakan pembayaran"
+  "ui_wallet_qualifying": "Daripada hadiah yang layak, sebelum semakan pembayaran",
+  "ui_wallet_available_earnings": "Tersedia selepas penahanan pembayaran dan tempahan"
 }

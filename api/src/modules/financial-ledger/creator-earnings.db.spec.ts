@@ -154,8 +154,16 @@ run('creator earnings, holds and reservations against Postgres', () => {
       actorId: creatorId,
     });
     expect(await earnings.balance(creatorId)).toMatchObject({
-      reservedCoins: 25,
+      settledCoins: 25,
+      reservedCoins: 0,
       availableCoins: 0,
     });
+    await expect(
+      earnings.reserve({
+        creatorId,
+        amount: 1,
+        idempotencyKey: `after-settlement:${stamp}`,
+      }),
+    ).rejects.toThrow();
   });
 });

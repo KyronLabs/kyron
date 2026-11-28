@@ -222,6 +222,14 @@ class _WalletBalancesState extends ConsumerState<_WalletBalances> {
                     ),
                     coins(wallet.withdrawableEarned),
                   ),
+                  if (wallet.availableEarned != null) ...[
+                    const Hairline(),
+                    _Balance(
+                      strings.ui('ui_wallet_available_earnings',
+                          'Available after payout holds and reservations'),
+                      coins(wallet.availableEarned!),
+                    ),
+                  ],
                   const Hairline(),
                   Padding(
                     padding: const EdgeInsets.all(SpacingTokens.space16),

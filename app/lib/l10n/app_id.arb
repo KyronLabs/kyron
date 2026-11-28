@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Dompet",
   "ui_wallet_spendable": "Koin yang dapat dibelanjakan",
   "ui_wallet_received": "Total penghasilan dari hadiah",
-  "ui_wallet_qualifying": "Dari hadiah yang memenuhi syarat, sebelum pemeriksaan pencairan"
+  "ui_wallet_qualifying": "Dari hadiah yang memenuhi syarat, sebelum pemeriksaan pencairan",
+  "ui_wallet_available_earnings": "Tersedia setelah penahanan pembayaran dan reservasi"
 }

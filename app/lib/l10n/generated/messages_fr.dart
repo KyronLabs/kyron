@@ -2458,6 +2458,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Gains totaux issus des cadeaux"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Dont cadeaux admissibles, avant vérification du versement"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Disponible après les retenues de versement et les réservations"),
     };
 
 final messageLookup = MessageLookup();

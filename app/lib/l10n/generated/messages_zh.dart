@@ -2038,6 +2038,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
       "ui_wallet_received": MessageLookupByLibrary.simpleMessage("礼物总收益"),
       "ui_wallet_qualifying":
           MessageLookupByLibrary.simpleMessage("来自符合条件的礼物，尚待付款审核"),
+      "ui_wallet_available_earnings":
+          MessageLookupByLibrary.simpleMessage("扣除付款冻结和预留后可用"),
     };
 
 final messageLookup = MessageLookup();

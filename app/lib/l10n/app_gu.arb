@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "વૉલેટ",
   "ui_wallet_spendable": "ખર્ચી શકાય એવા સિક્કા",
   "ui_wallet_received": "ભેટોમાંથી કુલ કમાણી",
-  "ui_wallet_qualifying": "ચુકવણીની તપાસ પહેલાં પાત્ર ભેટોમાંથી કમાણી"
+  "ui_wallet_qualifying": "ચુકવણીની તપાસ પહેલાં પાત્ર ભેટોમાંથી કમાણી",
+  "ui_wallet_available_earnings": "ચુકવણી હોલ્ડ અને આરક્ષણો પછી ઉપલબ્ધ"
 }

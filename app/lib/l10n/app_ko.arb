@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "지갑",
   "ui_wallet_spendable": "사용 가능한 코인",
   "ui_wallet_received": "선물로 얻은 총수익",
-  "ui_wallet_qualifying": "요건을 충족한 선물 수익(지급 심사 전)"
+  "ui_wallet_qualifying": "요건을 충족한 선물 수익(지급 심사 전)",
+  "ui_wallet_available_earnings": "지급 보류 및 예약 후 사용 가능한 금액"
 }

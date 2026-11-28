@@ -2431,6 +2431,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Wadarta dakhliga hadiyadaha"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Hadiyadaha u qalma, ka hor hubinta lacag bixinta"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Waxaa jira marka lacag-bixinta la hayo iyo kaydinta ka dib"),
     };
 
 final messageLookup = MessageLookup();

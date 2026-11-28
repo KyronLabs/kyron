@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Isikhwama semali",
   "ui_wallet_spendable": "Izinhlamvu zemali ezingasetshenziswa",
   "ui_wallet_received": "Isamba semali etholwe ngezipho",
-  "ui_wallet_qualifying": "Eziphweni ezifanelekayo, ngaphambi kokuhlolwa kwenkokhelo"
+  "ui_wallet_qualifying": "Eziphweni ezifanelekayo, ngaphambi kokuhlolwa kwenkokhelo",
+  "ui_wallet_available_earnings": "Itholakala ngemva kokubambelela kwezinkokhelo nokugcinwa"
 }

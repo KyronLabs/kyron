@@ -60,6 +60,7 @@ export function planCreatorEarning(
 export interface CreatorEarningBalance {
   withdrawableCoins: number;
   heldCoins: number;
+  settledCoins: number;
   reservedCoins: number;
   availableCoins: number;
 }
@@ -68,6 +69,46 @@ interface ReservationCandidate {
   id: string;
   amount: number;
   reservedAmount: number;
+}
+
+// A payout awaiting a provider result still owns its coins after quote expiry.
+function countedReservation(now: Date) {
+  return Prisma.sql`(r."status" = 'SETTLED' OR (
+    r."status" = 'ACTIVE' AND (
+      r."expiresAt" IS NULL OR r."expiresAt" > ${now} OR EXISTS (
+        SELECT 1 FROM "CreatorWithdrawal" w
+        WHERE w."reservationId" = r.id AND w.status = 'PROCESSING'
+      )
+    )
+  ))`;
+}
+
+export async function creatorEarningBalance(
+  tx: Tx,
+  creatorId: string,
+  now = new Date(),
+): Promise<CreatorEarningBalance> {
+  const [row] = await tx.$queryRaw<CreatorEarningBalance[]>`
+    SELECT COALESCE(SUM(e.amount), 0)::int AS "withdrawableCoins",
+      COALESCE(SUM(CASE WHEN held THEN remaining ELSE 0 END), 0)::int AS "heldCoins",
+      COALESCE(SUM(active), 0)::int AS "reservedCoins",
+      COALESCE(SUM(settled), 0)::int AS "settledCoins",
+      COALESCE(SUM(CASE WHEN held THEN 0 ELSE remaining END), 0)::int AS "availableCoins"
+    FROM "CreatorEarning" e
+    CROSS JOIN LATERAL (
+      SELECT COALESCE(SUM(l.amount) FILTER (WHERE r.status = 'ACTIVE'), 0) AS active,
+             COALESCE(SUM(l.amount) FILTER (WHERE r.status = 'SETTLED'), 0) AS settled
+      FROM "CreatorEarningReservationLine" l
+      JOIN "CreatorEarningReservation" r ON r.id = l."reservationId"
+      WHERE l."earningId" = e.id AND ${countedReservation(now)}
+    ) allocations
+    CROSS JOIN LATERAL (
+      SELECT GREATEST(e.amount - active - settled, 0) AS remaining,
+        EXISTS (SELECT 1 FROM "CreatorEarningHold" h WHERE h."earningId" = e.id AND h."releasedAt" IS NULL) AS held
+    ) amounts
+    WHERE e."creatorId" = ${creatorId}::uuid AND e.withdrawable AND e."availableAt" <= ${now}
+  `;
+  return row;
 }
 
 @Injectable()
@@ -171,70 +212,8 @@ export class CreatorEarningsService {
     });
   }
 
-  /**
-   * Returns only proceeds which are withdrawable, currently available and
-   * not held. Active and settled reservations both reduce the remaining value.
-   */
-  async balance(
-    creatorId: string,
-    now = new Date(),
-  ): Promise<CreatorEarningBalance> {
-    const [row] = await this.prisma.$queryRaw<
-      Array<{
-        withdrawableCoins: number;
-        heldCoins: number;
-        reservedCoins: number;
-        availableCoins: number;
-      }>
-    >`
-      SELECT
-        COALESCE(SUM(e."amount"), 0)::int AS "withdrawableCoins",
-        COALESCE(SUM(CASE WHEN EXISTS (
-          SELECT 1 FROM "CreatorEarningHold" h
-          WHERE h."earningId" = e."id" AND h."releasedAt" IS NULL
-        ) THEN e."amount" ELSE 0 END), 0)::int AS "heldCoins",
-        COALESCE(SUM((
-          SELECT COALESCE(SUM(l."amount"), 0)
-          FROM "CreatorEarningReservationLine" l
-          JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
-          WHERE l."earningId" = e."id"
-            AND (
-              r."status" = 'SETTLED'
-              OR (
-                r."status" = 'ACTIVE'
-                AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
-              )
-            )
-        )), 0)::int AS "reservedCoins",
-        COALESCE(SUM(CASE WHEN NOT EXISTS (
-          SELECT 1 FROM "CreatorEarningHold" h
-          WHERE h."earningId" = e."id" AND h."releasedAt" IS NULL
-        ) THEN GREATEST(e."amount" - (
-          SELECT COALESCE(SUM(l."amount"), 0)
-          FROM "CreatorEarningReservationLine" l
-          JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
-          WHERE l."earningId" = e."id"
-            AND (
-              r."status" = 'SETTLED'
-              OR (
-                r."status" = 'ACTIVE'
-                AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
-              )
-            )
-        ), 0) ELSE 0 END), 0)::int AS "availableCoins"
-      FROM "CreatorEarning" e
-      WHERE e."creatorId" = ${creatorId}::uuid
-        AND e."withdrawable" = TRUE
-        AND e."availableAt" <= ${now}
-    `;
-    return (
-      row ?? {
-        withdrawableCoins: 0,
-        heldCoins: 0,
-        reservedCoins: 0,
-        availableCoins: 0,
-      }
-    );
+  balance(creatorId: string, now = new Date()): Promise<CreatorEarningBalance> {
+    return creatorEarningBalance(this.prisma, creatorId, now);
   }
 
   /**
@@ -299,13 +278,7 @@ export class CreatorEarningsService {
             FROM "CreatorEarningReservationLine" l
             JOIN "CreatorEarningReservation" r ON r."id" = l."reservationId"
             WHERE l."earningId" = e."id"
-              AND (
-                r."status" = 'SETTLED'
-                OR (
-                  r."status" = 'ACTIVE'
-                  AND (r."expiresAt" IS NULL OR r."expiresAt" > ${now})
-                )
-              )
+              AND ${countedReservation(now)}
           ), 0)::int AS "reservedAmount"
         FROM "CreatorEarning" e
         WHERE e."creatorId" = ${input.creatorId}::uuid

@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Tegnebog",
   "ui_wallet_spendable": "Mønter til rådighed",
   "ui_wallet_received": "Samlet indtjening fra gaver",
-  "ui_wallet_qualifying": "Fra kvalificerede gaver før kontrol af udbetaling"
+  "ui_wallet_qualifying": "Fra kvalificerede gaver før kontrol af udbetaling",
+  "ui_wallet_available_earnings": "Tilgængelig efter tilbageholdelse af udbetalinger og reservationer"
 }

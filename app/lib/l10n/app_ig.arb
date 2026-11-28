@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Akpa ego",
   "ui_wallet_spendable": "Mkpụrụ ego ị nwere ike imefu",
   "ui_wallet_received": "Mkpokọta ego e nwetara n’onyinye",
-  "ui_wallet_qualifying": "Site n’onyinye ndị ruru eru, tupu nyocha ịkwụ ụgwọ"
+  "ui_wallet_qualifying": "Site n’onyinye ndị ruru eru, tupu nyocha ịkwụ ụgwọ",
+  "ui_wallet_available_earnings": "Dị ya mgbe nkwụsị ịkwụ ụgwọ na echekwara gasịrị"
 }

@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Àpò owó",
   "ui_wallet_spendable": "Ẹyọ owó tí o lè ná",
   "ui_wallet_received": "Àpapọ̀ èrè láti inú àwọn ẹ̀bùn",
-  "ui_wallet_qualifying": "Láti inú àwọn ẹ̀bùn tó péye, ṣáájú àyẹ̀wò ìsanwó"
+  "ui_wallet_qualifying": "Láti inú àwọn ẹ̀bùn tó péye, ṣáájú àyẹ̀wò ìsanwó",
+  "ui_wallet_available_earnings": "Ó ṣeé ṣe lẹ́yìn ìdẹ́rí ìsanwó àti àpàmọ́"
 }

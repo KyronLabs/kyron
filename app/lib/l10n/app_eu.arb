@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Diru-zorroa",
   "ui_wallet_spendable": "Gastatzeko txanponak",
   "ui_wallet_received": "Oparien bidezko irabaziak guztira",
-  "ui_wallet_qualifying": "Baldintzak betetzen dituzten oparietatik, ordainketa egiaztatu aurretik"
+  "ui_wallet_qualifying": "Baldintzak betetzen dituzten oparietatik, ordainketa egiaztatu aurretik",
+  "ui_wallet_available_earnings": "Ordainketen atxikipenen eta erreserben ondoren erabilgarri"
 }

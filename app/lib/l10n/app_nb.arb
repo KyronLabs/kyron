@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Lommebok",
   "ui_wallet_spendable": "Mynter du kan bruke",
   "ui_wallet_received": "Samlet inntekt fra gaver",
-  "ui_wallet_qualifying": "Fra kvalifiserte gaver før kontroll av utbetaling"
+  "ui_wallet_qualifying": "Fra kvalifiserte gaver før kontroll av utbetaling",
+  "ui_wallet_available_earnings": "Tilgjengelig etter tilbakehold av utbetalinger og reservasjoner"
 }

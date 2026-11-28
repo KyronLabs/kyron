@@ -2438,6 +2438,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Isamba semali etholwe ngezipho"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Eziphweni ezifanelekayo, ngaphambi kokuhlolwa kwenkokhelo"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Itholakala ngemva kokubambelela kwezinkokhelo nokugcinwa"),
     };
 
 final messageLookup = MessageLookup();

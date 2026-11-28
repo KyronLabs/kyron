@@ -2420,6 +2420,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("उपहारबाट कुल कमाइ"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "भुक्तानी जाँचअघि योग्य उपहारबाट भएको कमाइ"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "भुक्तानी रोक्का र सुरक्षित रकमपछि उपलब्ध"),
     };
 
 final messageLookup = MessageLookup();

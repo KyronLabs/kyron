@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "ウォレット",
   "ui_wallet_spendable": "使用できるコイン",
   "ui_wallet_received": "ギフトによる総収益",
-  "ui_wallet_qualifying": "対象ギフトによる収益（支払い審査前）"
+  "ui_wallet_qualifying": "対象ギフトによる収益（支払い審査前）",
+  "ui_wallet_available_earnings": "支払い保留と予約を差し引いた後の利用可能額"
 }

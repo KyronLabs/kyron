@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "የሳንቲም ቦርሳ",
   "ui_wallet_spendable": "ለማውጣት የሚቻሉ ሳንቲሞች",
   "ui_wallet_received": "ከስጦታ የተገኘ ጠቅላላ ገቢ",
-  "ui_wallet_qualifying": "ከብቁ ስጦታዎች፣ ከክፍያ ማረጋገጫ በፊት"
+  "ui_wallet_qualifying": "ከብቁ ስጦታዎች፣ ከክፍያ ማረጋገጫ በፊት",
+  "ui_wallet_available_earnings": "ከክፍያ ማቆየት እና ከመጠባበቂያዎች በኋላ የሚገኘው"
 }

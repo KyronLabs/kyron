@@ -2427,6 +2427,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Kabuuang kita mula sa mga regalo"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Mula sa mga kwalipikadong regalo, bago suriin ang pagbabayad"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Magagamit matapos ang mga hold sa payout at mga reserba"),
     };
 
 final messageLookup = MessageLookup();

@@ -2388,6 +2388,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jumla ya mapato kutokana na zawadi"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Kutokana na zawadi zinazostahiki, kabla ya ukaguzi wa malipo"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Inapatikana baada ya kushikiliwa kwa malipo na akihifadhiwa"),
     };
 
 final messageLookup = MessageLookup();

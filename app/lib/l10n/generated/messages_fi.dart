@@ -2397,6 +2397,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Lahjoista saadut tulot yhteensä"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Ehdot täyttävistä lahjoista ennen maksun tarkistuksia"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Käytettävissä maksunpidätysten ja varausten jälkeen"),
     };
 
 final messageLookup = MessageLookup();

@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Peněženka",
   "ui_wallet_spendable": "Mince k útratě",
   "ui_wallet_received": "Celkové výdělky z dárků",
-  "ui_wallet_qualifying": "Ze způsobilých dárků před kontrolou výplaty"
+  "ui_wallet_qualifying": "Ze způsobilých dárků před kontrolou výplaty",
+  "ui_wallet_available_earnings": "Dostupné po blokacích výplat a rezervacích"
 }

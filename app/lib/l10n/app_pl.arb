@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Portfel",
   "ui_wallet_spendable": "Monety do wydania",
   "ui_wallet_received": "Łączne zarobki z prezentów",
-  "ui_wallet_qualifying": "Z kwalifikujących się prezentów, przed weryfikacją wypłaty"
+  "ui_wallet_qualifying": "Z kwalifikujących się prezentów, przed weryfikacją wypłaty",
+  "ui_wallet_available_earnings": "Dostępne po wstrzymaniu wypłat i rezerwacjach"
 }

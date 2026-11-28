@@ -99,6 +99,7 @@ class GiftWallet {
 
   /// Proceeds eligible for withdrawal, from purchased or approved reward coins.
   final int withdrawableEarned;
+  final int? availableEarned;
 
   /// Source breakdown; purchased-coin proceeds are withdrawable.
   final int purchaseFundedEarned;
@@ -125,6 +126,7 @@ class GiftWallet {
     required this.coins,
     required this.earned,
     this.withdrawableEarned = 0,
+    this.availableEarned,
     this.purchaseFundedEarned = 0,
     this.rewardFundedEarned = 0,
     this.promotionalEarned = 0,
@@ -138,6 +140,8 @@ class GiftWallet {
         coins: (json['coins'] as num?)?.toInt() ?? 0,
         earned: (json['earned'] as num?)?.toInt() ?? 0,
         withdrawableEarned: (json['withdrawableEarned'] as num?)?.toInt() ?? 0,
+        availableEarned:
+            (json['earningAvailability']?['availableCoins'] as num?)?.toInt(),
         purchaseFundedEarned:
             (json['purchaseFundedEarned'] as num?)?.toInt() ?? 0,
         rewardFundedEarned: (json['rewardFundedEarned'] as num?)?.toInt() ?? 0,

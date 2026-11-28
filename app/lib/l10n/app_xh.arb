@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Isipaji",
   "ui_wallet_spendable": "Iingqekembe ezinokusetyenziswa",
   "ui_wallet_received": "Ingeniso iyonke evela kwizipho",
-  "ui_wallet_qualifying": "Kwizipho ezifanelekileyo, ngaphambi kokuhlolwa kwentlawulo"
+  "ui_wallet_qualifying": "Kwizipho ezifanelekileyo, ngaphambi kokuhlolwa kwentlawulo",
+  "ui_wallet_available_earnings": "Iyafumaneka emva kokubambelela kwentlawulo nakwizicwangciso"
 }

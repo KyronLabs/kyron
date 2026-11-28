@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "वॉलेट",
   "ui_wallet_spendable": "खर्च करने योग्य सिक्के",
   "ui_wallet_received": "उपहारों से कुल कमाई",
-  "ui_wallet_qualifying": "योग्य उपहारों से, भुगतान की जाँच से पहले"
+  "ui_wallet_qualifying": "योग्य उपहारों से, भुगतान की जाँच से पहले",
+  "ui_wallet_available_earnings": "भुगतान रोक और आरक्षण के बाद उपलब्ध"
 }

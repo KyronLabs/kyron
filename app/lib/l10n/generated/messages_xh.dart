@@ -2428,6 +2428,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ingeniso iyonke evela kwizipho"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Kwizipho ezifanelekileyo, ngaphambi kokuhlolwa kwentlawulo"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Iyafumaneka emva kokubambelela kwentlawulo nakwizicwangciso"),
     };
 
 final messageLookup = MessageLookup();

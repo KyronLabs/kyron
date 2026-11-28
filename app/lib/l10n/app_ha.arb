@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Jakar kuɗi",
   "ui_wallet_spendable": "Tsabar da za a iya kashewa",
   "ui_wallet_received": "Jimillar abin da aka samu daga kyaututtuka",
-  "ui_wallet_qualifying": "Daga kyaututtukan da suka cancanta, kafin binciken biyan kuɗi"
+  "ui_wallet_qualifying": "Daga kyaututtukan da suka cancanta, kafin binciken biyan kuɗi",
+  "ui_wallet_available_earnings": "Yana nan bayan rikon biyan kuɗi da ajiyayyu"
 }

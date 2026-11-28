@@ -2422,6 +2422,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           MessageLookupByLibrary.simpleMessage("Visos pajamos iš dovanų"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Iš reikalavimus atitinkančių dovanų prieš išmokos patikrą"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Galima po išmokėjimo sulaikymų ir rezervų"),
     };
 
 final messageLookup = MessageLookup();
