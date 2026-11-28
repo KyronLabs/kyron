@@ -14,7 +14,10 @@ import { AccountStatus, CoinKind, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { DeliveryService } from '../push/delivery.service';
-import { planCreatorEarning } from '../financial-ledger/creator-earnings.service';
+import {
+  creatorEarningBalance,
+  planCreatorEarning,
+} from '../financial-ledger/creator-earnings.service';
 import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
 /** What a wallet screen shows. */
@@ -29,6 +32,7 @@ export interface Wallet {
   earned: number;
   /** All proceeds eligible for withdrawal: purchased-coin and reward-funded gifts. */
   withdrawableEarned: number;
+  earningAvailability: Awaited<ReturnType<typeof creatorEarningBalance>>;
   /** Source breakdown; purchase-funded proceeds are withdrawable. */
   purchaseFundedEarned: number;
   /** Source breakdown; approved reward-funded proceeds are also withdrawable. */
@@ -554,6 +558,7 @@ export class GiftsService {
         balances.purchaseFundedEarned +
         balances.rewardFundedEarned +
         balances.promotionalEarned,
+      earningAvailability: await creatorEarningBalance(tx, userId),
       withdrawableEarned:
         balances.purchaseFundedEarned + balances.rewardFundedEarned,
       purchaseFundedEarned: balances.purchaseFundedEarned,
