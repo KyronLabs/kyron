@@ -173,6 +173,7 @@ export class GooglePlayPurchasesService {
     const packageName =
       process.env.GOOGLE_PLAY_PACKAGE_NAME?.trim() || DEFAULT_PACKAGE_NAME;
     const enabled =
+      process.env.GOOGLE_PLAY_NEW_SALES_PAUSED !== 'true' &&
       process.env.GOOGLE_PLAY_PURCHASES_ENABLED === 'true' &&
       packageName.length <= 255 &&
       products !== null &&

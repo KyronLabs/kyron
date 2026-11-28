@@ -266,6 +266,13 @@ class _SheetState extends ConsumerState<_Sheet> {
                 child: Center(child: CircularProgressIndicator()),
               );
             }
+            if (data.catalogue.isEmpty) {
+              return Padding(
+                padding: const EdgeInsets.all(SpacingTokens.space16),
+                child: Text(l10n.ui(
+                    'ui_gift_paused', 'Coin gifting is currently paused.')),
+              );
+            }
             final wallet = data.wallet;
             final picked = _picked;
             final affordable = picked != null && picked.coins <= wallet.coins;

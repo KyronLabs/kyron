@@ -45,7 +45,9 @@ run('gifts, against a real database', () => {
     requestId,
   });
 
+  const previousGiftFlag = process.env.CASH_EARNING_GIFTS_ENABLED;
   beforeAll(async () => {
+    process.env.CASH_EARNING_GIFTS_ENABLED = 'true';
     prisma = new PrismaClient({ datasources: { db: { url } } });
     delivery = new RecordingDelivery();
     gifts = new GiftsService(prisma as PrismaService, delivery);
@@ -89,6 +91,9 @@ run('gifts, against a real database', () => {
   });
 
   afterAll(async () => {
+    if (previousGiftFlag === undefined)
+      delete process.env.CASH_EARNING_GIFTS_ENABLED;
+    else process.env.CASH_EARNING_GIFTS_ENABLED = previousGiftFlag;
     await prisma?.user.deleteMany({
       where: {
         id: {
@@ -269,8 +274,21 @@ run('gifts, against a real database', () => {
       purchaseFundedEarned: 15,
       withdrawableEarned: 15,
     });
-    const replay = await gifts.send(purchaseSender, purchasePost, request);
-    expect(replay.gift.id).toBe(sent.gift.id);
+    delete process.env.CASH_EARNING_GIFTS_ENABLED;
+    try {
+      expect(gifts.catalogue()).toEqual([]);
+      await expect(
+        gifts.send(purchaseSender, purchasePost, gift('fire')),
+      ).rejects.toThrow('gifting is currently paused');
+      const replay = await gifts.send(purchaseSender, purchasePost, request);
+      expect(replay.gift.id).toBe(sent.gift.id);
+      expect((await gifts.wallet(purchaseSender)).purchased).toBe(15);
+      expect((await gifts.wallet(purchaseCreator)).purchaseFundedEarned).toBe(
+        15,
+      );
+    } finally {
+      process.env.CASH_EARNING_GIFTS_ENABLED = 'true';
+    }
     const later = await gifts.send(purchaseSender, purchasePost, gift('fire'));
     const laterAllocation =
       await prisma.financialSourceRecord.findUniqueOrThrow({

@@ -206,6 +206,20 @@ describe('GooglePlayPurchasesService', () => {
     });
   });
 
+  it('hides offers while continuing to verify completed purchases', async () => {
+    process.env.GOOGLE_PLAY_NEW_SALES_PAUSED = 'true';
+    expect(service.catalogue(userId)).toMatchObject({
+      enabled: false,
+      products: [],
+    });
+    const result = await service.verify(
+      userId,
+      'coins.test.small',
+      purchaseToken,
+    );
+    expect(result.coinsGranted).toBe(200);
+  });
+
   it('does not invent a product catalogue when the server mapping is invalid', () => {
     process.env.GOOGLE_PLAY_COIN_PRODUCTS =
       '[{"productId":"coins.test.small","coins":0}]';
