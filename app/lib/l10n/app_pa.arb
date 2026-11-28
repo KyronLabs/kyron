@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "ਵਾਲਿਟ",
   "ui_wallet_spendable": "ਖਰਚੇ ਜਾ ਸਕਣ ਵਾਲੇ ਸਿੱਕੇ",
   "ui_wallet_received": "ਤੋਹਫ਼ਿਆਂ ਤੋਂ ਕੁੱਲ ਕਮਾਈ",
-  "ui_wallet_qualifying": "ਭੁਗਤਾਨ ਦੀ ਜਾਂਚ ਤੋਂ ਪਹਿਲਾਂ ਯੋਗ ਤੋਹਫ਼ਿਆਂ ਤੋਂ ਕਮਾਈ"
+  "ui_wallet_qualifying": "ਭੁਗਤਾਨ ਦੀ ਜਾਂਚ ਤੋਂ ਪਹਿਲਾਂ ਯੋਗ ਤੋਹਫ਼ਿਆਂ ਤੋਂ ਕਮਾਈ",
+  "ui_wallet_available_earnings": "ਭੁਗਤਾਨ ਰੋਕ ਅਤੇ ਰਾਖਵੇਂ ਤੋਂ ਬਾਅਦ ਉਪਲਬਧ"
 }

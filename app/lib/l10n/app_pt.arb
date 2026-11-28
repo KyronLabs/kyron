@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Carteira",
   "ui_wallet_spendable": "Moedas disponíveis para gastar",
   "ui_wallet_received": "Ganhos totais com presentes",
-  "ui_wallet_qualifying": "De presentes elegíveis, antes da verificação do pagamento"
+  "ui_wallet_qualifying": "De presentes elegíveis, antes da verificação do pagamento",
+  "ui_wallet_available_earnings": "Disponível após retenções de pagamento e reservas"
 }

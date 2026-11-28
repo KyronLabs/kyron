@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "钱包",
   "ui_wallet_spendable": "可用金币",
   "ui_wallet_received": "礼物总收益",
-  "ui_wallet_qualifying": "来自符合条件的礼物，尚待付款审核"
+  "ui_wallet_qualifying": "来自符合条件的礼物，尚待付款审核",
+  "ui_wallet_available_earnings": "扣除付款冻结和预留后可用"
 }

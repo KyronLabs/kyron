@@ -2387,6 +2387,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Jimillar abin da aka samu daga kyaututtuka"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Daga kyaututtukan da suka cancanta, kafin binciken biyan kuɗi"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Yana nan bayan rikon biyan kuɗi da ajiyayyu"),
     };
 
 final messageLookup = MessageLookup();

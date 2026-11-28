@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Plånbok",
   "ui_wallet_spendable": "Mynt att använda",
   "ui_wallet_received": "Totala intäkter från gåvor",
-  "ui_wallet_qualifying": "Från kvalificerade gåvor före utbetalningskontroll"
+  "ui_wallet_qualifying": "Från kvalificerade gåvor före utbetalningskontroll",
+  "ui_wallet_available_earnings": "Tillgängligt efter återhållna utbetalningar och reservationer"
 }

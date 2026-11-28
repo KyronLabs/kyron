@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "بٹوہ",
   "ui_wallet_spendable": "خرچ کے لیے دستیاب سکے",
   "ui_wallet_received": "تحائف سے کل آمدنی",
-  "ui_wallet_qualifying": "ادائیگی کی جانچ سے پہلے اہل تحائف سے آمدنی"
+  "ui_wallet_qualifying": "ادائیگی کی جانچ سے پہلے اہل تحائف سے آمدنی",
+  "ui_wallet_available_earnings": "ادائیگی کی روک تھام اور ریزرو کے بعد دستیاب"
 }

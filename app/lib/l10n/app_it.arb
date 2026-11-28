@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Portafoglio",
   "ui_wallet_spendable": "Monete spendibili",
   "ui_wallet_received": "Guadagni totali dai regali",
-  "ui_wallet_qualifying": "Da regali idonei, prima delle verifiche per il pagamento"
+  "ui_wallet_qualifying": "Da regali idonei, prima delle verifiche per il pagamento",
+  "ui_wallet_available_earnings": "Disponibile dopo trattenute di pagamento e prenotazioni"
 }

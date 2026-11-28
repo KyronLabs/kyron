@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Кошелёк",
   "ui_wallet_spendable": "Монеты для трат",
   "ui_wallet_received": "Общий доход от подарков",
-  "ui_wallet_qualifying": "От подарков, отвечающих условиям, до проверки выплаты"
+  "ui_wallet_qualifying": "От подарков, отвечающих условиям, до проверки выплаты",
+  "ui_wallet_available_earnings": "Доступно после удержаний выплат и резервов"
 }

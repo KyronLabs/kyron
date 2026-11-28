@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Wallet",
   "ui_wallet_spendable": "Verfügbare Münzen zum Ausgeben",
   "ui_wallet_received": "Gesamte Einnahmen aus Geschenken",
-  "ui_wallet_qualifying": "Aus berechtigten Geschenken, vor der Auszahlungsprüfung"
+  "ui_wallet_qualifying": "Aus berechtigten Geschenken, vor der Auszahlungsprüfung",
+  "ui_wallet_available_earnings": "Verfügbar nach Auszahlungssperren und Reservierungen"
 }

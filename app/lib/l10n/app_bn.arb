@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "ওয়ালেট",
   "ui_wallet_spendable": "খরচ করার মতো কয়েন",
   "ui_wallet_received": "উপহার থেকে মোট আয়",
-  "ui_wallet_qualifying": "যোগ্য উপহার থেকে আয়, অর্থ প্রদানের যাচাইয়ের আগে"
+  "ui_wallet_qualifying": "যোগ্য উপহার থেকে আয়, অর্থ প্রদানের যাচাইয়ের আগে",
+  "ui_wallet_available_earnings": "পেআউট হোল্ড ও সংরক্ষণের পরে উপলব্ধ"
 }

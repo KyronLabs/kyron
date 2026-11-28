@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Portofel",
   "ui_wallet_spendable": "Monede disponibile pentru cheltuit",
   "ui_wallet_received": "Câștiguri totale din cadouri",
-  "ui_wallet_qualifying": "Din cadouri eligibile, înainte de verificarea plății"
+  "ui_wallet_qualifying": "Din cadouri eligibile, înainte de verificarea plății",
+  "ui_wallet_available_earnings": "Disponibil după reținerile de plată și rezervări"
 }

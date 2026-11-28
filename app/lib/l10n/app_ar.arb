@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "المحفظة",
   "ui_wallet_spendable": "عملات متاحة للإنفاق",
   "ui_wallet_received": "إجمالي أرباح الهدايا",
-  "ui_wallet_qualifying": "من الهدايا المؤهلة، قبل التحقق من استحقاق الدفع"
+  "ui_wallet_qualifying": "من الهدايا المؤهلة، قبل التحقق من استحقاق الدفع",
+  "ui_wallet_available_earnings": "المتاح بعد احتجازات الدفع والحجوزات"
 }

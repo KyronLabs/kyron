@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Ví",
   "ui_wallet_spendable": "Xu có thể sử dụng",
   "ui_wallet_received": "Tổng thu nhập từ quà tặng",
-  "ui_wallet_qualifying": "Từ quà tặng đủ điều kiện, trước khi xét duyệt chi trả"
+  "ui_wallet_qualifying": "Từ quà tặng đủ điều kiện, trước khi xét duyệt chi trả",
+  "ui_wallet_available_earnings": "Khả dụng sau các khoảng tạm giữ thanh toán và dự phòng"
 }

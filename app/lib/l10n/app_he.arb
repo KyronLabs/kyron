@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "ארנק",
   "ui_wallet_spendable": "מטבעות זמינים לשימוש",
   "ui_wallet_received": "סך ההכנסות ממתנות",
-  "ui_wallet_qualifying": "מתוך מתנות שעומדות בתנאים, לפני בדיקות התשלום"
+  "ui_wallet_qualifying": "מתוך מתנות שעומדות בתנאים, לפני בדיקות התשלום",
+  "ui_wallet_available_earnings": "זמין לאחר עיכבות תשלום ושמירות"
 }

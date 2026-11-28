@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Denarnica",
   "ui_wallet_spendable": "Kovanci za porabo",
   "ui_wallet_received": "Skupni zaslužek od daril",
-  "ui_wallet_qualifying": "Od upravičenih daril pred preverjanjem izplačila"
+  "ui_wallet_qualifying": "Od upravičenih daril pred preverjanjem izplačila",
+  "ui_wallet_available_earnings": "Na voljo po zadržkih izplačil in rezervacijah"
 }

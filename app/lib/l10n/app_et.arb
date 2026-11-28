@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Rahakott",
   "ui_wallet_spendable": "Kasutatavad mündid",
   "ui_wallet_received": "Kingitustest teenitud summa",
-  "ui_wallet_qualifying": "Tingimustele vastavatest kingitustest enne väljamakse kontrolli"
+  "ui_wallet_qualifying": "Tingimustele vastavatest kingitustest enne väljamakse kontrolli",
+  "ui_wallet_available_earnings": "Saadaval pärast väljamakse kinnipidamisi ja reserveeringuid"
 }

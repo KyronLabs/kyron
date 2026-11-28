@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Новчаник",
   "ui_wallet_spendable": "Новчићи за трошење",
   "ui_wallet_received": "Укупна зарада од поклона",
-  "ui_wallet_qualifying": "Од поклона који испуњавају услове, пре провере исплате"
+  "ui_wallet_qualifying": "Од поклона који испуњавају услове, пре провере исплате",
+  "ui_wallet_available_earnings": "Доступно након задршки исплате и резервација"
 }

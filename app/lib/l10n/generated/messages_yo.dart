@@ -2400,6 +2400,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Àpapọ̀ èrè láti inú àwọn ẹ̀bùn"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "Láti inú àwọn ẹ̀bùn tó péye, ṣáájú àyẹ̀wò ìsanwó"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Ó ṣeé ṣe lẹ́yìn ìdẹ́rí ìsanwó àti àpàmọ́"),
     };
 
 final messageLookup = MessageLookup();

@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "वॉलेट",
   "ui_wallet_spendable": "खर्च करता येणारी नाणी",
   "ui_wallet_received": "भेटींमधून एकूण कमाई",
-  "ui_wallet_qualifying": "देयकाच्या पडताळणीपूर्वी पात्र भेटींमधून मिळालेली कमाई"
+  "ui_wallet_qualifying": "देयकाच्या पडताळणीपूर्वी पात्र भेटींमधून मिळालेली कमाई",
+  "ui_wallet_available_earnings": "पेआउट होल्ड आणि आरक्षणांनंतर उपलब्ध"
 }

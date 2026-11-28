@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Beursie",
   "ui_wallet_spendable": "Beskikbare munte om te bestee",
   "ui_wallet_received": "Totale geskenkverdienste",
-  "ui_wallet_qualifying": "Uit kwalifiserende geskenke, voor uitbetalingskontroles"
+  "ui_wallet_qualifying": "Uit kwalifiserende geskenke, voor uitbetalingskontroles",
+  "ui_wallet_available_earnings": "Beskikbaar na uitbetalingshou en reserverings"
 }

@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Cartera",
   "ui_wallet_spendable": "Monedes disponibles per gastar",
   "ui_wallet_received": "Guanys totals per regals",
-  "ui_wallet_qualifying": "De regals que compleixen els requisits, abans de verificar el pagament"
+  "ui_wallet_qualifying": "De regals que compleixen els requisits, abans de verificar el pagament",
+  "ui_wallet_available_earnings": "Disponible després de les retencions de pagament i les reserves"
 }

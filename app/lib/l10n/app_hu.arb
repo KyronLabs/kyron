@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Pénztárca",
   "ui_wallet_spendable": "Elkölthető érmék",
   "ui_wallet_received": "Ajándékokból származó összes bevétel",
-  "ui_wallet_qualifying": "A feltételeknek megfelelő ajándékokból, a kifizetés ellenőrzése előtt"
+  "ui_wallet_qualifying": "A feltételeknek megfelelő ajándékokból, a kifizetés ellenőrzése előtt",
+  "ui_wallet_available_earnings": "Elérhető a kifizetési visszatartások és foglalások után"
 }

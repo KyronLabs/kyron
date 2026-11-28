@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Wallet",
   "ui_wallet_spendable": "Mga baryang maaaring gastusin",
   "ui_wallet_received": "Kabuuang kita mula sa mga regalo",
-  "ui_wallet_qualifying": "Mula sa mga kwalipikadong regalo, bago suriin ang pagbabayad"
+  "ui_wallet_qualifying": "Mula sa mga kwalipikadong regalo, bago suriin ang pagbabayad",
+  "ui_wallet_available_earnings": "Magagamit matapos ang mga hold sa payout at mga reserba"
 }

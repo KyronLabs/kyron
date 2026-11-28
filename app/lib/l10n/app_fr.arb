@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Portefeuille",
   "ui_wallet_spendable": "Pièces disponibles à dépenser",
   "ui_wallet_received": "Gains totaux issus des cadeaux",
-  "ui_wallet_qualifying": "Dont cadeaux admissibles, avant vérification du versement"
+  "ui_wallet_qualifying": "Dont cadeaux admissibles, avant vérification du versement",
+  "ui_wallet_available_earnings": "Disponible après les retenues de versement et les réservations"
 }

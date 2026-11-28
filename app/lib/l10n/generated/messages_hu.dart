@@ -2421,6 +2421,8 @@ Map<String, dynamic> _notInlinedMessages(_) => <String, dynamic>{
           "Ajándékokból származó összes bevétel"),
       "ui_wallet_qualifying": MessageLookupByLibrary.simpleMessage(
           "A feltételeknek megfelelő ajándékokból, a kifizetés ellenőrzése előtt"),
+      "ui_wallet_available_earnings": MessageLookupByLibrary.simpleMessage(
+          "Elérhető a kifizetési visszatartások és foglalások után"),
     };
 
 final messageLookup = MessageLookup();

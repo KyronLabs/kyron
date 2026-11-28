@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Maks",
   "ui_wallet_spendable": "Tērēšanai pieejamās monētas",
   "ui_wallet_received": "Kopējie ienākumi no dāvanām",
-  "ui_wallet_qualifying": "No atbilstošām dāvanām pirms izmaksas pārbaudes"
+  "ui_wallet_qualifying": "No atbilstošām dāvanām pirms izmaksas pārbaudes",
+  "ui_wallet_available_earnings": "Pieejams pēc izmaksu aizturējumiem un rezervācijām"
 }

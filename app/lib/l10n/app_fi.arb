@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Lompakko",
   "ui_wallet_spendable": "Käytettävissä olevat kolikot",
   "ui_wallet_received": "Lahjoista saadut tulot yhteensä",
-  "ui_wallet_qualifying": "Ehdot täyttävistä lahjoista ennen maksun tarkistuksia"
+  "ui_wallet_qualifying": "Ehdot täyttävistä lahjoista ennen maksun tarkistuksia",
+  "ui_wallet_available_earnings": "Käytettävissä maksunpidätysten ja varausten jälkeen"
 }

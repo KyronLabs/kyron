@@ -1394,5 +1394,6 @@
   "ui_wallet_title": "Boorsada",
   "ui_wallet_spendable": "Qadaadiicda la isticmaali karo",
   "ui_wallet_received": "Wadarta dakhliga hadiyadaha",
-  "ui_wallet_qualifying": "Hadiyadaha u qalma, ka hor hubinta lacag bixinta"
+  "ui_wallet_qualifying": "Hadiyadaha u qalma, ka hor hubinta lacag bixinta",
+  "ui_wallet_available_earnings": "Waxaa jira marka lacag-bixinta la hayo iyo kaydinta ka dib"
 }
