@@ -169,12 +169,12 @@ void main() {
       expect(find.byIcon(Iconsax.archive_tick), findsOneWidget);
     });
 
-    testWidgets('holding the heart opens the gift sheet', (tester) async {
+    testWidgets('holding the heart does not open gifts', (tester) async {
       var held = 0;
       await _pump(tester, _reply(), onGift: (_) => held++);
 
       await tester.longPress(find.byIcon(Iconsax.heart_copy));
-      expect(held, 1);
+      expect(held, 0);
     });
 
     testWidgets("wears the reply's gifts on its heart", (tester) async {

@@ -143,10 +143,6 @@ class CommentTile extends StatelessWidget {
                     tooltip: l10n.ui('ui_like', 'Like'),
                     burst: true,
                     onTap: onLike,
-                    onLongPress: onGift,
-                    longPressHint: onGift == null
-                        ? null
-                        : l10n.ui('ui_gift_title', 'Send a gift'),
                     topper: comment.topGifts.isEmpty
                         ? null
                         : GiftStack(comment.topGifts),

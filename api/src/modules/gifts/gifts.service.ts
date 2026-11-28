@@ -21,6 +21,16 @@ import {
 } from '../financial-ledger/creator-earnings.service';
 import { GIFT_CATALOGUE, type GiftType, giftType } from './gift-catalogue';
 
+// Historical test entries remain outside every user-facing wallet projection.
+const activeCoinKinds: CoinKind[] = [
+  CoinKind.REWARD_GRANT,
+  CoinKind.REWARD_SPEND,
+  CoinKind.REWARD_EARN,
+  CoinKind.PURCHASE_GRANT,
+  CoinKind.PURCHASE_SPEND,
+  CoinKind.PURCHASE_EARN,
+];
+
 /** What a wallet screen shows. */
 export interface Wallet {
   /** All spendable legacy, reward-promotional and purchased coins, less gifts sent. */
@@ -108,7 +118,7 @@ export class GiftsService {
 
   transactions(userId: string) {
     return this.prisma.coinEntry.findMany({
-      where: { userId },
+      where: { userId, kind: { in: activeCoinKinds } },
       select: { id: true, kind: true, amount: true, createdAt: true },
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       take: 50,
@@ -596,15 +606,14 @@ export class GiftsService {
   }> {
     const sums = await tx.coinEntry.groupBy({
       by: ['kind'],
-      where: { userId },
+      where: { userId, kind: { in: activeCoinKinds } },
       _sum: { amount: true },
     });
     const sum = (kind: CoinKind) =>
       sums.find((row) => row.kind === kind)?._sum.amount ?? 0;
     return {
-      // GRANT/SPEND are retained only to honour balances issued before the
-      // weekly complimentary programme was retired.
-      legacyComplimentary: sum(CoinKind.GRANT) + sum(CoinKind.SPEND),
+      // Compatibility fields for older clients always exclude retired test units.
+      legacyComplimentary: 0,
       promotional: sum(CoinKind.REWARD_GRANT) + sum(CoinKind.REWARD_SPEND),
       purchased:
         sum(CoinKind.PURCHASE_GRANT) +
@@ -612,14 +621,14 @@ export class GiftsService {
         (await netPurchasedCoinRecovery(tx, userId)),
       // EARN is legacy test history with unknown provenance and remains
       // outside the withdrawable amount.
-      earned: sum(CoinKind.EARN),
+      earned: 0,
       purchaseFundedEarned: sum(CoinKind.PURCHASE_EARN),
       rewardFundedEarned: sum(CoinKind.REWARD_EARN),
-      promotionalEarned: sum(CoinKind.PROMOTIONAL_EARN),
+      promotionalEarned: 0,
     };
   }
 
-  /** Spend grandfathered credits, then reward credits, then purchased coins. */
+  /** Spend approved reward credits before purchased coins. */
   private async spendFromWallet(
     tx: Tx,
     userId: string,
@@ -627,26 +636,15 @@ export class GiftsService {
     giftId: string,
   ): Promise<Prisma.CoinEntryCreateManyInput[]> {
     const balances = await this.ledgerBalances(tx, userId);
-    const legacyComplimentary = Math.max(0, balances.legacyComplimentary);
     const promotional = Math.max(0, balances.promotional);
     const purchased = Math.max(0, balances.purchased);
-    if (legacyComplimentary + promotional + purchased < amount) {
+    if (promotional + purchased < amount) {
       throw new BadRequestException('Your wallet no longer covers this gift.');
     }
 
-    const legacySpend = Math.min(legacyComplimentary, amount);
-    const promotionalSpend = Math.min(promotional, amount - legacySpend);
-    const purchasedSpend = amount - legacySpend - promotionalSpend;
+    const promotionalSpend = Math.min(promotional, amount);
+    const purchasedSpend = amount - promotionalSpend;
     const entries: Prisma.CoinEntryCreateManyInput[] = [];
-    if (legacySpend > 0) {
-      entries.push({
-        userId,
-        kind: CoinKind.SPEND,
-        amount: -legacySpend,
-        key: `gift:${giftId}:legacy-spend`,
-        giftId,
-      });
-    }
     if (promotionalSpend > 0) {
       entries.push({
         userId,

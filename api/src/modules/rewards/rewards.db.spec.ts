@@ -206,8 +206,8 @@ run('post excellence rewards, against a real database', () => {
     });
     const wallet = await gifts.wallet(authorId, now);
     expect(wallet).toMatchObject({
-      coins: 105,
-      legacyComplimentary: 5,
+      coins: 100,
+      legacyComplimentary: 0,
       earned: 0,
       promotional: 100,
     });
@@ -221,9 +221,9 @@ run('post excellence rewards, against a real database', () => {
     );
     const afterRewardSpend = await gifts.wallet(authorId, now);
     expect(afterRewardSpend).toMatchObject({
-      coins: 5,
+      coins: 0,
       legacyComplimentary: 0,
-      promotional: 5,
+      promotional: 0,
     });
 
     // Reward-funded creator proceeds are withdrawable just like proceeds from
@@ -246,11 +246,11 @@ run('post excellence rewards, against a real database', () => {
       ],
     });
     const recipientWallet = await gifts.wallet(nominatorId, now);
-    expect(recipientWallet.earned).toBe(117);
-    expect(recipientWallet.withdrawableEarned).toBe(105);
+    expect(recipientWallet.earned).toBe(110);
+    expect(recipientWallet.withdrawableEarned).toBe(110);
     expect(recipientWallet.purchaseFundedEarned).toBe(10);
-    expect(recipientWallet.rewardFundedEarned).toBe(95);
-    expect(recipientWallet.promotionalEarned).toBe(5);
+    expect(recipientWallet.rewardFundedEarned).toBe(100);
+    expect(recipientWallet.promotionalEarned).toBe(0);
 
     // A later nomination keeps its original policy snapshot, but cannot
     // exceed the programme's current shared budget after the first award.
@@ -283,9 +283,9 @@ run('post excellence rewards, against a real database', () => {
       new Date(now.getTime() + 8 * 24 * 60 * 60 * 1000),
     );
     expect(laterWallet).toMatchObject({
-      coins: 5,
+      coins: 0,
       legacyComplimentary: 0,
-      promotional: 5,
+      promotional: 0,
     });
   });
 

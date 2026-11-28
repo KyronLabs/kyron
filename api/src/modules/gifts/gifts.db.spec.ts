@@ -12,7 +12,7 @@ import { RecordingDelivery } from '../push/delivery.test-double';
 import { GiftsService } from './gifts.service';
 
 /**
- * Gifts against a real Postgres: the ledger, grandfathered balances and
+ * Gifts against a real Postgres: the ledger, reward balances and
  * wallet locks. Skipped unless MODERATION_TEST_DATABASE_URL names a migrated
  * database (see docs/MODERATION.md).
  */
@@ -65,14 +65,13 @@ run('gifts, against a real database', () => {
         data: { id, name, email: `${name}.${stamp}@example.test` },
       });
     }
-    // These balances model complimentary grants issued before the weekly
-    // benefit was retired. New users do not receive a grant automatically.
+    // Current gifts can be funded by approved rewards.
     await prisma.coinEntry.createMany({
       data: [ada, ben, cy].map((userId) => ({
         userId,
-        kind: 'GRANT' as const,
+        kind: 'REWARD_GRANT' as const,
         amount: 100,
-        key: `legacy-weekly-grant:${userId}`,
+        key: `reward-grant:${userId}`,
       })),
     });
     await prisma.coinEntry.create({
@@ -130,12 +129,15 @@ run('gifts, against a real database', () => {
     ).toBe(0);
   });
 
-  it('preserves old complimentary balances without replenishing them', async () => {
+  it('excludes legacy grants from spendable rewards', async () => {
+    await prisma.coinEntry.create({
+      data: { userId: cy, kind: 'GRANT', amount: 33, key: `retired:${stamp}` },
+    });
     const first = await gifts.wallet(cy, WEDNESDAY);
     const afterWeek = await gifts.wallet(cy, NEXT_TUESDAY);
 
-    expect(first).toMatchObject({ coins: 100, legacyComplimentary: 100 });
-    expect(afterWeek).toMatchObject({ coins: 100, legacyComplimentary: 100 });
+    expect(first).toMatchObject({ coins: 100, legacyComplimentary: 0 });
+    expect(afterWeek).toMatchObject({ coins: 100, legacyComplimentary: 0 });
     expect(
       await prisma.coinEntry.count({
         where: { userId: cy, kind: 'GRANT' },
@@ -150,8 +152,8 @@ run('gifts, against a real database', () => {
     expect(sent.gifts).toBe(1);
     expect((await gifts.wallet(ada, WEDNESDAY)).earned).toBe(15);
     expect((await gifts.wallet(ada, WEDNESDAY)).purchaseFundedEarned).toBe(0);
-    expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(15);
-    expect((await gifts.wallet(ada, WEDNESDAY)).withdrawableEarned).toBe(0);
+    expect((await gifts.wallet(ada, WEDNESDAY)).promotionalEarned).toBe(0);
+    expect((await gifts.wallet(ada, WEDNESDAY)).withdrawableEarned).toBe(15);
     expect(delivery.ofType('notification.new')).toContainEqual({
       type: 'notification.new',
       kind: 'gift',
@@ -306,11 +308,11 @@ run('gifts, against a real database', () => {
   });
 
   it('does not let earnings be spent', async () => {
-    // Ada has 15 in gift proceeds and her own grandfathered 100 coins.
+    // Ada has 15 in gift proceeds and her own 100 reward coins.
     const wallet = await gifts.wallet(ada, WEDNESDAY);
     expect(wallet).toMatchObject({
       coins: 100,
-      legacyComplimentary: 100,
+      legacyComplimentary: 0,
       earned: 15,
     });
   });
@@ -344,7 +346,7 @@ run('gifts, against a real database', () => {
   });
 
   it('never spends the same coins twice, however many gifts arrive at once', async () => {
-    // Cy has 100 grandfathered coins. Ten crowns at once would be 500;
+    // Cy has 100 reward coins. Ten crowns at once would be 500;
     // exactly two fit. The balance was seeded before the requests so the test
     // isolates the wallet lock, not coin issuance.
     expect((await gifts.wallet(cy, WEDNESDAY)).coins).toBe(100);
@@ -366,18 +368,18 @@ run('gifts, against a real database', () => {
     expect((await gifts.wallet(cy, NEXT_TUESDAY)).coins).toBe(0);
   });
 
-  it('does not increase grandfathered balances when a week turns', async () => {
+  it('does not increase reward balances when a week turns', async () => {
     const before = (await gifts.wallet(ben, WEDNESDAY)).coins;
     const after = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
     expect(after).toBe(before);
     expect(
       await prisma.coinEntry.count({
-        where: { userId: ben, kind: 'GRANT' },
+        where: { userId: ben, kind: 'REWARD_GRANT' },
       }),
     ).toBe(1);
   });
 
-  it('lets an existing complimentary balance continue to fund gifts', async () => {
+  it('lets approved rewards continue to fund gifts', async () => {
     const before = (await gifts.wallet(ben, NEXT_TUESDAY)).coins;
     expect(before).toBe(75);
 

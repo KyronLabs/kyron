@@ -101,9 +101,6 @@ class PostActionsRow extends StatelessWidget {
           tooltip: post.liked ? 'Unlike' : 'Like',
           burst: true,
           onTap: onLike,
-          onLongPress: onGift,
-          longPressHint:
-              AppLocalizations.of(context).ui('ui_gift_title', 'Send a gift'),
         ),
         const Spacer(),
         PostAction(
